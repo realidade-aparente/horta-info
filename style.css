@@ -93,8 +93,8 @@ footer {
 
 /* Moldura fixa para imagens de plantas - 320x240, alinhada à esquerda */
 .image-frame {
-  width: 320px;          /* largura fixa da moldura */
-  height: 240px;         /* altura fixa da moldura */
+  width: 640px;          /* largura fixa da moldura */
+  height: 480px;         /* altura fixa da moldura */
   margin: 0 0 1.5rem 0;  /* alinhado à esquerda, com espaço em baixo */
   border-radius: 8px;
   overflow: hidden;      /* se a imagem for maior, fica “cortada” dentro da moldura */
