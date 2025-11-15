@@ -90,3 +90,23 @@ footer {
   color: #4a5568;
   padding: 1rem 0;
 }
+
+/* Moldura para imagens de plantas */
+.image-frame {
+  max-width: 320px;      /* largura máxima da moldura */
+  max-height: 240px;     /* altura máxima da moldura */
+  margin: 0 auto 1.5rem; /* centrado e com espaço em baixo */
+  border-radius: 8px;
+  overflow: hidden;      /* se a imagem for maior, fica “cortada” dentro da moldura */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #edf2f7;   /* cinzento-claro de fundo */
+}
+
+/* A imagem adapta-se à moldura sem sair para fora */
+.image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;   /* mostra a imagem inteira dentro da moldura */
+}
