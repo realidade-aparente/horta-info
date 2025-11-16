@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Pimento | Horta de Amigos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body id="topo">
+<header>
+    <h1>Horta de Amigos</h1>
+    <p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar com família e amigos.</p>
+</header>
+
+<nav>
+    <a href="index.html">Início</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="moringa.html">Moringa</a>
+    <a href="acelga.html">Acelga</a>
+    <a href="agriao-terra.html">Agrião-de-terra</a>
+    <a href="aipo.html">Aipo (talos e folhas)</a>
+    <a href="alface.html">Alface</a>
+    <a href="alho.html">Alho</a>
+    <a href="alho-frances.html">Alho-francês</a>
+    <a href="aneto.html">Aneto / Endro</a>
+    <a href="abobora-butternut.html">Abóbora butternut</a>
+    <a href="batata-comum.html">Batata comum</a>
+    <a href="batata-doce.html">Batata-doce</a>
+    <a href="beringela.html">Beringela</a>
+    <a href="beterraba.html">Beterraba</a>
+    <a href="brocolo.html">Brócolo</a>
+    <a href="canonigos.html">Canónigos</a>
+    <a href="coentros.html">Coentros</a>
+    <a href="cebola.html">Cebola</a>
+    <a href="cebola-fresca.html">Cebola fresca</a>
+    <a href="cenoura.html">Cenoura</a>
+    <a href="couve-chinesa.html">Couve chinesa</a>
+    <a href="couve-rabano.html">Couve-rábano</a>
+    <a href="couve-repolho.html">Couve repolho</a>
+    <a href="couve-toscana.html">Couve toscana</a>
+    <a href="curgete.html">Curgete</a>
+    <a href="ervilhas-frescas.html">Ervilhas frescas</a>
+    <a href="espinafre.html">Espinafre</a>
+    <a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+    <a href="feijao-verde.html">Feijão verde</a>
+    <a href="milho-doce.html">Milho doce</a>
+    <a href="mizuna.html">Mizuna</a>
+    <a href="morangos.html">Morangueiro / Morangos</a>
+    <a href="nabo.html">Nabo</a>
+    <a href="pak-choi.html">Pak choi</a>
+    <a href="pepino.html">Pepino</a>
+    <a href="pimento.html" class="ativa">Pimento</a>
+</nav>
+
+<main>
+    <article class="planta">
+        <div class="planta-cabecalho">
+            <div class="planta-titulo">
+                <h2>Pimento doce / Pimentão (<em>Capsicum annuum</em>)</h2>
+                <p><strong>Outros nomes em português:</strong> pimento, pimentão doce, pimento de salada, pimentos morrones (em algumas referências), pimento italiano (variedades alongadas).</p>
+                <p><strong>Nome mais comum em inglês:</strong> bell pepper, sweet pepper, capsicum.</p>
+
+                <div class="tags-nomes">
+                    <span>Família: Solanaceae</span>
+                    <span>Parte usada: fruto imaturo (pimento doce)</span>
+                    <span>Tipo: hortícola de fruto, clima quente</span>
+                    <span>Produção: <strong>biológica</strong></span>
+                </div>
+
+                <div class="info-rapida">
+                    <div>
+                        <strong>Origem</strong>
+                        Nativo da América Central e do Sul, difundido pelo mundo após o século XV; hoje é hortícola comum em hortas e explorações agrícolas mediterrânicas.
+                    </div>
+                    <div>
+                        <strong>Uso principal</strong>
+                        Cru em saladas, assado, grelhado, salteado, recheado, em conservas e pastas (ex.: pimento assado, molho de pimento, patés vegetais).
+                    </div>
+                    <div>
+                        <strong>Perfil nutricional</strong>
+                        Muito rico em vitamina C e carotenoides (sobretudo pimentos vermelhos), baixa densidade calórica, alguma fibra, potássio, folato e compostos fenólicos.
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="imagem-container-externo">
+                    <div class="imagem-container">
+                        <img src="imagens/pimento.png" alt="Pimentos doces vermelhos, verdes e amarelos de produção biológica">
+                    </div>
+                </div>
+                <p class="imagem-legenda">Imagem ilustrativa de pimentos doces biológicos de várias cores, prontos a consumir crus ou cozinhados.</p>
+            </div>
+        </div>
+
+        <section id="apresentacao">
+            <h3>1. Apresentação / Descrição</h3>
+            <p>
+                O <strong>pimento doce</strong> é o fruto de variedades de <em>Capsicum annuum</em>
+                selecionadas para terem sabor suave (quase sem picância), ao contrário dos
+                malaguetas. É um fruto carnudo, de paredes espessas, com formas variadas
+                (quadrangulares, cónicas, alongadas) e cores que vão do verde (fruto ainda
+                imaturo) ao amarelo, laranja, vermelho e roxo, consoante a variedade e o grau
+                de maturação.
+            </p>
+            <p>
+                Em português costuma chamar-se simplesmente <strong>pimento</strong> ou
+                <strong>pimentão doce</strong>. Em inglês surgem designações como
+                <em>bell pepper</em>, <em>sweet pepper</em> e, em alguns países, apenas
+                <em>capsicum</em>. As diferentes cores correspondem também a perfis
+                nutricionais ligeiramente distintos: pimentos vermelhos tendem a ser mais
+                ricos em <strong>vitamina C</strong> e <strong>carotenoides</strong> como
+                capsantina e β-caroteno.
+            </p>
+            <p>
+                Nesta ficha consideramos pimentos de <strong>produção biológica</strong>,
+                cultivados sem pesticidas e fertilizantes de síntese. Como são muitas vezes
+                consumidos <strong>crus</strong> ou com cozeduras rápidas, e com a casca,
+                a opção biológica é particularmente interessante para reduzir a exposição a
+                resíduos de pesticidas.
+            </p>
+        </section>
+
+        <section id="sazonalidade">
+            <h3>2. Sazonalidade (Portugal continental)</h3>
+            <p>
+                O pimento é uma cultura de <strong>tempo quente</strong>, sensível ao frio,
+                geadas e temperaturas abaixo dos 10&nbsp;°C. Precisa de boa luminosidade e
+                solos bem drenados.
+            </p>
+            <ul>
+                <li><strong>Sementeira em estufa / viveiro:</strong> fim do inverno e início da primavera (fevereiro–março) em tabuleiros ou alvéolos protegidos.</li>
+                <li><strong>Transplante (ar livre):</strong> normalmente de abril a maio, após o risco de geadas, quando o solo aquece.</li>
+                <li><strong>Colheita:</strong> de cerca de junho/julho até setembro/outubro, dependendo da região, variedade e data de plantação.</li>
+                <li><strong>Pico de disponibilidade local:</strong> verão e início de outono (junho–setembro), coincidindo com a época de tomate, curgete e beringela.</li>
+                <li><strong>Produção em estufa/túnel:</strong> permite antecipar a colheita para a primavera e prolongar até ao outono, muito usada em agricultura biológica profissional.</li>
+            </ul>
+            <p class="nota">
+                Em calendários da horta para Portugal, o pimento aparece tipicamente como cultura
+                de primavera-verão, com sementeira protegida e plantação em solo já aquecido.
+            </p>
+        </section>
+
+        <section id="como-consumir">
+            <h3>3. Como consumir</h3>
+            <p>
+                O pimento é extremamente versátil na cozinha, tanto cru como cozinhado. Em
+                produção biológica, a casca pode ser consumida com maior confiança após boa
+                lavagem, e o sabor tende a ser mais equilibrado quando a planta cresce em solo
+                vivo e bem nutrido.
+            </p>
+            <ul>
+                <li>
+                    <strong>Cru em saladas:</strong> em tiras finas, cubos ou rodelas, combinado
+                    com tomate, pepino, cebola, alface, grão-de-bico, queijos frescos, etc.
+                </li>
+                <li>
+                    <strong>Assado no forno ou na chapa:</strong> pimentos inteiros ou em metades,
+                    assados até a pele ganhar manchas escuras; depois pelados, temperados com
+                    azeite, alho, vinagre e ervas – um clássico da cozinha mediterrânica.
+                </li>
+                <li>
+                    <strong>Recheado:</strong> pimentos grandes recheados com arroz, leguminosas,
+                    legumes picados, carne picada ou mistos vegetais, e depois assados no forno.
+                </li>
+                <li>
+                    <strong>Salteados e estufados:</strong> em tiras, salteados com cebola, alho,
+                    tomate e outras hortícolas, usados em massas, arrozes, estufados e guisados.
+                </li>
+                <li>
+                    <strong>Sopas e cremes:</strong> pimentos assados depois triturados em sopas
+                    cremosas ou adicionados a sopas de legumes para um sabor mais doce e cor
+                    intensa.
+                </li>
+                <li>
+                    <strong>Conservas e pastas:</strong> pimentos assados em conserva, compotas
+                    salgadas de pimento, pastas tipo paté vegetal com pimento, húmus de pimento
+                    assado, etc.
+                </li>
+            </ul>
+            <p class="nota">
+                A vitamina C é sensível ao calor, por isso o <strong>consumo cru</strong> ou com
+                cozedura rápida preserva mais este nutriente. Ainda assim, mesmo em pimentos
+                assados, uma parte importante dos carotenoides e compostos aromáticos permanece.
+            </p>
+        </section>
+
+        <section id="receitas">
+            <h3>4. Receitas e preparados (Top 10)</h3>
+            <p>
+                Sugestões de receitas em português (Portugal, Brasil e outros países lusófonos)
+                com <strong>pimento doce</strong>. Pelo menos cinco referências são em língua
+                portuguesa.
+            </p>
+            <ol>
+                <li>
+                    <strong>Salada de pimentos assados</strong> – pimentos assados no forno,
+                    pelados e temperados com azeite, alho e vinagre. Várias versões, por exemplo
+                    no Pingo Doce (“Salada de pimentos”) e Continente. <strong>[R1]</strong>
+                </li>
+                <li>
+                    <strong>Salada de pimentos e tomate</strong> – receita do Continente (Feed) com
+                    pimentos vermelho e verde, tomates cereja, alho, azeite, vinagre balsâmico e
+                    ervas. <strong>[R2]</strong>
+                </li>
+                <li>
+                    <strong>Pimentos italianos assados</strong> – receita do Pingo Doce em que
+                    pimentos italianos são assados no forno e servidos com alho, azeite e ervas.
+                    <strong>[R3]</strong>
+                </li>
+                <li>
+                    <strong>Creme de pimentos assados</strong> – sopa cremosa de pimentos vermelhos
+                    assados com tomate, cebola, alho e azeite, receita do Pingo Doce.
+                    <strong>[R4]</strong>
+                </li>
+                <li>
+                    <strong>Pimentos recheados com carne</strong> – receita do Continente (Feed) em
+                    que os pimentos são recheados com carne picada, curgete, tomate e queijo, e
+                    depois gratinados. <strong>[R5]</strong>
+                </li>
+                <li>
+                    <strong>Pimentos recheados com arroz e legumes</strong> – versões vegetarianas
+                    em sites portugueses e brasileiros (por exemplo, Cigala, Panelinha, blogs
+                    de cozinha saudável). <strong>[R6]</strong>
+                </li>
+                <li>
+                    <strong>Frigideira de legumes com pimento</strong> – pimento em tiras salteado
+                    com cebola, courgete, beringela, tomate e ervas, à maneira de uma ratatouille
+                    simplificada. <strong>[R7]</strong>
+                </li>
+                <li>
+                    <strong>Massas com pimentos e legumes</strong> – massa curta salteada com
+                    pimentos de várias cores, cebola, alho e tomates, comum em blogs portugueses e
+                    brasileiros de cozinha simples. <strong>[R8]</strong>
+                </li>
+                <li>
+                    <strong>Molho / paté de pimentos assados</strong> – pimentos assados triturados
+                    com azeite, alho, frutos secos e limão para barrar em pão ou servir como
+                    dip. <strong>[R9]</strong>
+                </li>
+                <li>
+                    <strong>Gaspacho com pimento</strong> – sopa fria de tomate, pimento, pepino e
+                    cebola, receita típica presente em sites portugueses (Pingo Doce, Teleculinária)
+                    e brasileiros. <strong>[R10]</strong>
+                </li>
+            </ol>
+            <p class="nota">
+                Em todas estas receitas, o uso de <strong>pimento biológico</strong> é perfeitamente
+                compatível com as instruções originais, tirando partido da casca e do sabor mais
+                intenso em pratos crus ou pouco cozinhados.
+            </p>
+        </section>
+
+        <section id="beneficios">
+            <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+            <p>
+                O pimento doce é um dos hortícolas mais ricos em <strong>vitamina C</strong> e
+                <strong>carotenoides</strong> entre os vegetais comuns, sobretudo quando falamos de
+                pimentos maduros vermelhos. Estudos recentes de revisão destacam o seu conteúdo
+                em antioxidantes e compostos bioativos.
+            </p>
+            <ul>
+                <li>
+                    <strong>Vitamina C em níveis muito elevados</strong> – revisões sobre pimento
+                    doce mostram que 100&nbsp;g de pimento vermelho cru podem fornecer valores
+                    comparáveis ou superiores aos de citrinos em vitamina C, muitas vezes
+                    ultrapassando a dose diária recomendada. Isso contribui para a proteção
+                    antioxidante, síntese de colagénio, função imunitária e absorção de ferro
+                    não-heme.
+                </li>
+                <li>
+                    <strong>Carotenoides (capsantina, β-caroteno, luteína, zeaxantina)</strong> –
+                    os pimentos, em especial os vermelhos e laranja, são ricos em carotenoides
+                    com atividade antioxidante e, no caso de alguns, atividade provitamina A.
+                    Estudos analíticos detalham o perfil de pigmentos em frutos de
+                    <em>Capsicum</em>, associando-os a potenciais efeitos na saúde ocular e na
+                    modulação do stress oxidativo celular.
+                </li>
+                <li>
+                    <strong>Polifenóis e outros fitoquímicos</strong> – pimentos contêm flavonoides
+                    (como quercetina) e outros fenólicos. Revisões sobre Capsicum destacam
+                    potenciais efeitos anti-inflamatórios, antidiabéticos, cardioprotetores e
+                    moduladores de vias envolvidas na carcinogénese, ainda que grande parte da
+                    evidência advenha de estudos experimentais, não de ensaios clínicos longos.
+                </li>
+                <li>
+                    <strong>Baixa densidade energética e contribuição para controlo de peso</strong>
+                    – com cerca de 20–30&nbsp;kcal por 100&nbsp;g, alto teor de água e alguma
+                    fibra, o pimento aumenta o volume e a palatabilidade de refeições com impacto
+                    calórico baixo, o que é útil em estratégias de controlo de peso quando
+                    substitui ingredientes mais densos em energia.
+                </li>
+                <li>
+                    <strong>Doença cardiovascular e risco metabólico</strong> – trabalhos de
+                    revisão sugerem que o consumo regular de pimentos e outros vegetais ricos em
+                    vitamina C, carotenoides e polifenóis pode integrar padrões alimentares
+                    associados a menor risco de doença cardiovascular e metabólica. Alguns
+                    estudos observacionais ligam ingestão elevada de carotenoides (incluindo os
+                    presentes em pimentos) a menor risco de alguns tipos de cancro e doenças
+                    crónico-degenerativas.
+                </li>
+                <li>
+                    <strong>Orgânico vs. convencional</strong> – estudos recentes que comparam
+                    pimentos doces cultivados em modo biológico e convencional apontam, em média,
+                    para <strong>teores mais elevados de vitamina C, carotenoides e polifenóis</strong>
+                    em frutos de produção biológica, bem como menor incidência de resíduos de
+                    pesticidas. Isso é particularmente relevante para um hortícola consumido
+                    muitas vezes com casca e com cozeduras curtas.
+                </li>
+            </ul>
+            <p class="nota">
+                Apesar do potencial interessante, convém lembrar que a maior parte dos efeitos
+                benéficos se manifesta quando o pimento é parte de um <strong>padrão alimentar
+                globalmente saudável</strong> (tipo Mediterrânico), e não como suplemento isolado.
+            </p>
+        </section>
+
+        <section id="nutricao">
+            <h3>6. Propriedades nutricionais</h3>
+            <p>
+                Valores aproximados por 100&nbsp;g de parte comestível de <strong>pimento doce</strong>,
+                com base em tabelas nutricionais internacionais (USDA / FoodData Central, Healthline
+                e outras fontes). Os valores podem variar com a cor do pimento, a variedade,
+                o solo e as práticas de produção (incluindo biológica).
+            </p>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Nutriente</th>
+                    <th>Pimento vermelho cru<br>(100&nbsp;g)</th>
+                    <th>Pimento vermelho cozido<br>(100&nbsp;g, estufado/assado, escorrido)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Energia</td>
+                    <td>≈ 30–32&nbsp;kcal</td>
+                    <td>≈ 20–25&nbsp;kcal</td>
+                </tr>
+                <tr>
+                    <td>Água</td>
+                    <td>≈ 92&nbsp;g</td>
+                    <td>≈ 90–92&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Proteína</td>
+                    <td>≈ 1,0&nbsp;g</td>
+                    <td>≈ 1,0–1,2&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Hidratos de carbono totais</td>
+                    <td>≈ 6–7&nbsp;g</td>
+                    <td>≈ 4–6&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Açúcares</td>
+                    <td>≈ 4–5&nbsp;g</td>
+                    <td>≈ 3–4&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Fibra alimentar</td>
+                    <td>≈ 2,0–2,5&nbsp;g</td>
+                    <td>≈ 1,5–2,5&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Lípidos totais</td>
+                    <td>≈ 0,3&nbsp;g</td>
+                    <td>≈ 0,3&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Vitamina C</td>
+                    <td>≈ 120–150&nbsp;mg</td>
+                    <td>Perdas moderadas com a cozedura (parte perdida para a água e pelo calor)</td>
+                </tr>
+                <tr>
+                    <td>Vitamina A (equivalente de retinol)</td>
+                    <td>≈ 150–200&nbsp;µg</td>
+                    <td>Valores semelhantes ou ligeiramente menores; alguns carotenoides tornam-se mais biodisponíveis após cozedura suave</td>
+                </tr>
+                <tr>
+                    <td>Vitamina E</td>
+                    <td>≈ 1,5–2,0&nbsp;mg</td>
+                    <td>≈ 1,3–1,8&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Folato (vit. B9)</td>
+                    <td>≈ 40–50&nbsp;µg</td>
+                    <td>Ligeira redução com a cozedura</td>
+                </tr>
+                <tr>
+                    <td>Potássio</td>
+                    <td>≈ 210–250&nbsp;mg</td>
+                    <td>≈ 200–240&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Índice glicémico (IG)</td>
+                    <td>Muito baixo (aprox. 15)</td>
+                    <td>Muito baixo (desde que não se adicionem açúcares)</td>
+                </tr>
+                </tbody>
+            </table>
+            <p class="nota">
+                Pimentos verdes, amarelos e laranja têm valores de energia e fibra semelhantes,
+                mas perfis algo diferentes de carotenoides e vitamina C. Em geral, o pimento
+                vermelho maduro é o mais rico em vitamina C e em vários carotenoides.
+            </p>
+        </section>
+
+        <section id="utilidades">
+            <h3>7. Utilidades e aplicações (não apenas alimentares)</h3>
+            <ul>
+                <li>
+                    <strong>Secagem e produção de pimentão/páprica:</strong> em alguns sistemas,
+                    pimentos são secos e moídos para produzir pimentão/páprica, usado como
+                    condimento e para colorir alimentos.
+                </li>
+                <li>
+                    <strong>Elementos de diversidade e atração em policulturas:</strong> plantas
+                    de pimento, com flores brancas e frutos coloridos, contribuem para a
+                    diversidade visual e ecológica da horta, atraindo insetos auxiliares.
+                </li>
+                <li>
+                    <strong>Cultura em vaso ou canteiro elevado:</strong> pimento adapta-se
+                    relativamente bem a vasos grandes e canteiros, permitindo cultivo em varandas
+                    e pequenos espaços urbanos biológicos.
+                </li>
+                <li>
+                    <strong>Matéria orgânica para compostagem:</strong> restos de poda, folhas e
+                    frutos não comercializáveis podem ser compostados, fechando ciclos de nutrientes.
+                </li>
+                <li>
+                    <strong>Valor educativo:</strong> pela cor e forma dos frutos, pimentos são
+                    ótimos para atividades de educação alimentar com crianças, mostrando a
+                    relação entre plantas, flores e frutos.
+                </li>
+            </ul>
+        </section>
+
+        <section id="permacultura">
+            <h3>8. Grau de funcionalidade em permacultura</h3>
+            <p><strong>Classificação proposta: 7/10</strong></p>
+            <ul class="lista-permacultura">
+                <li>
+                    <strong>Funções principais:</strong> produção de frutos ricos em vitamina C e
+                    carotenoides, diversidade de cor e forma, uso em consociações com outras
+                    culturas de verão (tomate, curgete, beringela, manjericão).
+                </li>
+                <li>
+                    <strong>Vantagens em sistemas biológicos:</strong> boa relação produção/área
+                    em clima adequado, possibilidade de condução vertical, elevada aceitação
+                    culinária, apto para secagem e conservação.
+                </li>
+                <li>
+                    <strong>Limitações:</strong> planta anual, sensível a frio, exigente em calor
+                    e água; suscetível a doenças fúngicas (míldio, oídio, podridões) e pragas
+                    (pulgões, tripes) que exigem algum manejo ecológico (rotação, consociações,
+                    coberturas, extratos vegetais autorizados, etc.).
+                </li>
+            </ul>
+            <p class="nota">
+                Em permacultura, o pimento é um elemento valioso para diversificar o estrato de
+                culturas de verão, com boa produtividade e funções alimentares marcantes, mas
+                menos multifuncional do que algumas espécies perenes ou de raiz profunda.
+            </p>
+        </section>
+
+        <section id="referencias">
+            <h3>9. Referências</h3>
+
+            <div class="referencias-subsecao">9.1. Apresentação / contexto</div>
+            <ul class="referencias-lista">
+                <li><strong>D1</strong> – Wikipedia (EN). “Bell pepper” – descrição geral de <em>Capsicum annuum</em> (pimentos doces) e variedades. Disponível em: <a href="https://en.wikipedia.org/wiki/Bell_pepper" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Bell_pepper</a></li>
+                <li><strong>D2</strong> – Healthline. “Bell Peppers 101: Nutrition Facts and Health Benefits.” Disponível em: <a href="https://www.healthline.com/nutrition/foods/bell-peppers" target="_blank" rel="noopener">https://www.healthline.com/nutrition/foods/bell-peppers</a></li>
+                <li><strong>D3</strong> – Hassan N.M. et al. “Carotenoids of Capsicum Fruits: Pigment Profile and Health Benefits.” <em>Molecules</em>, 2019. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6827103/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6827103/</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.2. Sazonalidade e cultivo (Portugal / clima semelhante)</div>
+            <ul class="referencias-lista">
+                <li><strong>S1</strong> – ABAAE / Hortas Bio. “Calendário da Horta” – inclui pimento como cultura de primavera-verão, com sementeira protegida. PDF disponível em: <a href="https://hortasbio.abaae.pt/outras-edicoes/public/23/112/challenges_2_1/docs/originals/Calendario%20Da%20Horta.pdf" target="_blank" rel="noopener">https://hortasbio.abaae.pt/.../Calendario%20Da%20Horta.pdf</a></li>
+                <li><strong>S2</strong> – Hortas Biológicas. “Almanaque Borda d’Água – Calendário Agrícola.” Inclui indicações para plantação de pimento em Portugal. Disponível em: <a href="https://www.hortasbiologicas.pt/calendario-borda/" target="_blank" rel="noopener">https://www.hortasbiologicas.pt/calendario-borda/</a></li>
+                <li><strong>S3</strong> – Agriloja. “Pimentos – Como semear, cuidar e colher?” – guia prático de cultivo. Disponível em: <a href="https://www.agriloja.pt/pt/blog_597.html?idb=252" target="_blank" rel="noopener">https://www.agriloja.pt/pt/blog_597.html?idb=252</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.3. Propriedades nutricionais</div>
+            <ul class="referencias-lista">
+                <li><strong>N1</strong> – USDA FoodData Central. Entradas “Peppers, sweet, red, raw” e “Peppers, sweet, red, cooked, boiled, drained”. Acesso em: <a href="https://fdc.nal.usda.gov" target="_blank" rel="noopener">https://fdc.nal.usda.gov</a></li>
+                <li><strong>N2</strong> – Younes A.H. et al. “Sweet Bell Pepper: A Focus on Its Nutritional Qualities and Health Benefits.” Revisão (2024) em <em>International Journal of Nutrition</em>. Resumo disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/39346723/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/39346723/</a></li>
+                <li><strong>N3</strong> – Biochemjournal. “A brief review of nutrient content of capsicum (Shimla Mirch).” <em>International Journal of Advanced Biochemistry Research</em>, 2024; 8(8):113–118. PDF em: <a href="https://www.biochemjournal.com/archives/2024/vol8issue8/PartB/8-7-135-195.pdf" target="_blank" rel="noopener">https://www.biochemjournal.com/.../8-7-135-195.pdf</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.4. Benefícios para a saúde e propriedades medicinais</div>
+            <ul class="referencias-lista">
+                <li><strong>M1</strong> – Younes A.H. et al. “Sweet Bell Pepper: A Focus on Its Nutritional Qualities and Health Benefits.” Revisão de 2024 com síntese de evidência sobre efeitos antioxidantes, anti-inflamatórios, cardioprotetores e outros. <a href="https://pubmed.ncbi.nlm.nih.gov/39346723/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/39346723/</a></li>
+                <li><strong>M2</strong> – Stoleru V. et al. “Enhancing the nutritional value of sweet pepper through improved cultivation practices.” <em>Frontiers in Nutrition</em>, 2023. Disponível em: <a href="https://www.frontiersin.org/articles/10.3389/fnut.2023.1264999/full" target="_blank" rel="noopener">https://www.frontiersin.org/articles/10.3389/fnut.2023.1264999/full</a></li>
+                <li><strong>M3</strong> – Al Kafi A. et al. “Assessment of nutritional and phytochemical quality in sweet pepper.” <em>Discover Food</em>, 2025. Disponível em: <a href="https://link.springer.com/article/10.1007/s44372-025-00280-7" target="_blank" rel="noopener">https://link.springer.com/article/10.1007/s44372-025-00280-7</a></li>
+                <li><strong>M4</strong> – Topuz A. et al. “Assessment of carotenoids, capsaicinoids and ascorbic acid composition of some selected pepper cultivars (<em>Capsicum annuum</em> L.).” <em>Food Chemistry</em>, 2007. Resumo em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0889157507000567" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S0889157507000567</a></li>
+                <li><strong>M5</strong> – Healthline. “Bell Peppers 101: Nutrition Facts and Health Benefits.” Resumo em linguagem acessível de evidência sobre pimentos doces. <a href="https://www.healthline.com/nutrition/foods/bell-peppers" target="_blank" rel="noopener">https://www.healthline.com/nutrition/foods/bell-peppers</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.5. Produção biológica, pesticidas e comparação com convencional</div>
+            <ul class="referencias-lista">
+                <li><strong>B1</strong> – Brezeanu C. et al. “Nutritional Value of New Sweet Pepper Genotypes Grown under Organic and Conventional Farming.” <em>Agriculture</em>, 2022; 12(11):1863. Conclui níveis superiores de vitamina C, carotenoides e polifenóis em pimentos biológicos. Disponível em: <a href="https://www.mdpi.com/2077-0472/12/11/1863" target="_blank" rel="noopener">https://www.mdpi.com/2077-0472/12/11/1863</a></li>
+                <li><strong>B2</strong> – Barański M. et al. “Higher antioxidant and lower cadmium concentrations and lower incidence of pesticide residues in organically grown crops: a systematic literature review and meta-analyses.” <em>British Journal of Nutrition</em>, 2014. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4141693/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4141693/</a></li>
+                <li><strong>B3</strong> – Olatunji T.L. et al. “The suitability of chili pepper (<em>Capsicum annuum</em> L.) for biofortification programs.” <em>Food Science & Nutrition</em>, 2018 – discute variabilidade de vitamina C e carotenoides em genótipos de pimento. Disponível em: <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/fsn3.790" target="_blank" rel="noopener">https://onlinelibrary.wiley.com/doi/full/10.1002/fsn3.790</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.6. Receitas (Top 10)</div>
+            <ul class="referencias-lista">
+                <li><strong>R1</strong> – Pingo Doce. “Salada de pimentos.” Disponível em: <a href="https://www.pingodoce.pt/receitas/salada-de-pimentos/" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/salada-de-pimentos/</a></li>
+                <li><strong>R2</strong> – Continente / Feed. “Salada de pimentos e tomate.” Disponível em: <a href="https://feed.continente.pt/receitas/salada-pimentos-tomate" target="_blank" rel="noopener">https://feed.continente.pt/receitas/salada-pimentos-tomate</a></li>
+                <li><strong>R3</strong> – Pingo Doce. “Salada de pimentos italianos assados.” Disponível em: <a href="https://www.pingodoce.pt/receitas/salada-pimentos-italianos-assados/" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/salada-pimentos-italianos-assados/</a></li>
+                <li><strong>R4</strong> – Pingo Doce. “Creme de pimentos assados.” Disponível em: <a href="https://www.pingodoce.pt/receitas/creme-de-pimentos-assados/" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/creme-de-pimentos-assados/</a></li>
+                <li><strong>R5</strong> – Continente / Feed. “Pimentos recheados.” Disponível em: <a href="https://feed.continente.pt/receitas/pimentos-recheados" target="_blank" rel="noopener">https://feed.continente.pt/receitas/pimentos-recheados</a></li>
+                <li><strong>R6</strong> – Cigala. “Pimento recheado” (versão com arroz e carne, adaptável para recheios vegetarianos). Disponível em: <a href="https://www.cigala.pt/receitas/pimento-recheado/" target="_blank" rel="noopener">https://www.cigala.pt/receitas/pimento-recheado/</a></li>
+                <li><strong>R7</strong> – Diversos blogues PT/BR com frigideiras de legumes (pimento, beringela, courgete, tomate), por exemplo versões de ratatouille em português.</li>
+                <li><strong>R8</strong> – Receitas de massas com pimentos e legumes em sites portugueses (Pingo Doce, Continente, blogs como Made By Choices ou Casal Mistério).</li>
+                <li><strong>R9</strong> – Receitas de paté ou húmus de pimentos assados em blogs de alimentação saudável em português (Made By Choices, Presunto Vegetariano, etc.).</li>
+                <li><strong>R10</strong> – Receitas de gazpacho em português (Pingo Doce, Teleculinária, etc.), onde o pimento é ingrediente central.</li>
+            </ul>
+
+            <p class="nota">
+                Procurou-se privilegiar fontes relativamente estáveis (artigos com DOI, sites
+                institucionais, grandes portais de receitas). Ainda assim, é natural que alguns
+                links mudem ao longo do tempo.
+            </p>
+        </section>
+
+        <div class="topo-link">
+            <a href="#topo">Voltar ao topo ▲</a>
+        </div>
+    </article>
+</main>
+</body>
+</html>

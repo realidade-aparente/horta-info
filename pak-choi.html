@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Pak choi (couve chinesa) | Horta de Amigos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body id="topo">
+<header>
+    <h1>Horta de Amigos</h1>
+    <p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar com família e amigos.</p>
+</header>
+
+<nav>
+    <a href="index.html">Início</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="moringa.html">Moringa</a>
+    <a href="acelga.html">Acelga</a>
+    <a href="agriao-terra.html">Agrião-de-terra</a>
+    <a href="aipo.html">Aipo (talos e folhas)</a>
+    <a href="alface.html">Alface</a>
+    <a href="alho.html">Alho</a>
+    <a href="alho-frances.html">Alho-francês</a>
+    <a href="aneto.html">Aneto / Endro</a>
+    <a href="abobora-butternut.html">Abóbora butternut</a>
+    <a href="batata-comum.html">Batata comum</a>
+    <a href="batata-doce.html">Batata-doce</a>
+    <a href="beringela.html">Beringela</a>
+    <a href="beterraba.html">Beterraba</a>
+    <a href="brocolo.html">Brócolo</a>
+    <a href="canonigos.html">Canónigos</a>
+    <a href="coentros.html">Coentros</a>
+    <a href="cebola.html">Cebola</a>
+    <a href="cebola-fresca.html">Cebola fresca</a>
+    <a href="cenoura.html">Cenoura</a>
+    <a href="couve-chinesa.html">Couve chinesa</a>
+    <a href="couve-rabano.html">Couve-rábano</a>
+    <a href="couve-repolho.html">Couve repolho</a>
+    <a href="couve-toscana.html">Couve toscana</a>
+    <a href="curgete.html">Curgete</a>
+    <a href="ervilhas-frescas.html">Ervilhas frescas</a>
+    <a href="espinafre.html">Espinafre</a>
+    <a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+    <a href="feijao-verde.html">Feijão verde</a>
+    <a href="milho-doce.html">Milho doce</a>
+    <a href="mizuna.html">Mizuna</a>
+    <a href="morangos.html">Morangueiro / Morangos</a>
+    <a href="nabo.html">Nabo</a>
+    <a href="pak-choi.html" class="ativa">Pak choi</a>
+</nav>
+
+<main>
+    <article class="planta">
+        <div class="planta-cabecalho">
+            <div class="planta-titulo">
+                <h2>Pak choi / Bok choy (<em>Brassica rapa</em> subsp. <em>chinensis</em>)</h2>
+                <p><strong>Outros nomes em português:</strong> pak choi, pak-choi, bok choy, couve chinesa (tipo folha), acelga chinesa.</p>
+                <p><strong>Nome mais comum em inglês:</strong> pak choi / pak choy / bok choy, Chinese cabbage (bok choy type).</p>
+
+                <div class="tags-nomes">
+                    <span>Família: Brassicaceae (crucíferas)</span>
+                    <span>Parte usada: folhas e pecíolos (talos carnudos)</span>
+                    <span>Tipo: hortícola de folha, clima fresco</span>
+                    <span>Produção: <strong>biológica</strong></span>
+                </div>
+
+                <div class="info-rapida">
+                    <div>
+                        <strong>Origem</strong>
+                        Hortícola de folha originária da Ásia Oriental (China), hoje cultivada em todo o mundo e cada vez mais comum em hortas biológicas.
+                    </div>
+                    <div>
+                        <strong>Uso principal</strong>
+                        Salteados rápidos, sopas, saladas, pratos de massa e wok; usa-se folha e talo, de forma semelhante a acelga ou couve chinesa.
+                    </div>
+                    <div>
+                        <strong>Perfil nutricional</strong>
+                        Muito baixa em calorias, rica em vitamina C, vitamina K, provitamina A, folato, cálcio e outros minerais, com glucosinolatos típicos das brássicas.
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="imagem-container-externo">
+                    <div class="imagem-container">
+                        <img src="imagens/pak-choi.png" alt="Pak choi fresco biológico com folhas verdes e talos brancos">
+                    </div>
+                </div>
+                <p class="imagem-legenda">Imagem ilustrativa de pak choi de produção biológica, pronto a ser usado em salteados ou sopas.</p>
+            </div>
+        </div>
+
+        <section id="apresentacao">
+            <h3>1. Apresentação / Descrição</h3>
+            <p>
+                O <strong>pak choi</strong> (também escrito <strong>pak-choi</strong> ou
+                <strong>bok choy</strong>) é uma forma de <em>Brassica rapa</em> subsp.
+                <em>chinensis</em>, da família das brássicas, à qual pertencem também as couves,
+                brócolos, nabiças, rúcula, etc. Ao contrário das couves que formam “cabeça”,
+                o pak choi forma uma roseta de folhas alongadas com pecíolos (talos) carnudos
+                brancos ou verde-claros e lâminas de folha verde-escuras.
+            </p>
+            <p>
+                Em português surgem designações como <strong>pak choi</strong>,
+                <strong>couve chinesa</strong> (sobretudo em embalagens de supermercados),
+                <strong>acelga chinesa</strong> ou simplesmente “couve asiática”. Em inglês,
+                aparecem as grafias <em>pak choi</em>, <em>pak choy</em> e
+                <em>bok choy</em>.
+            </p>
+            <p>
+                Nesta ficha consideramos pak choi de <strong>produção biológica</strong>, sem
+                uso de pesticidas e fertilizantes de síntese. Como é muitas vezes consumido com
+                pouca cozedura (salteados rápidos, wok, sopas com cozedura curta) e usando a folha
+                e o talo praticamente sem descascar, a opção biológica é especialmente interessante
+                para reduzir a exposição a resíduos de pesticidas.
+            </p>
+        </section>
+
+        <section id="sazonalidade">
+            <h3>2. Sazonalidade (Portugal continental)</h3>
+            <p>
+                O pak choi é uma cultura de <strong>clima fresco</strong>, semelhante a outras
+                couves de ciclo curto. Tolera bem o frio moderado e tende a subir à flor se
+                sujeito a calor intenso ou stress hídrico.
+            </p>
+            <ul>
+                <li><strong>Sementeira (ar livre):</strong> de finais de inverno/início da primavera (fevereiro–abril) e de fim de verão/início de outono (agosto–setembro), dependendo da região.</li>
+                <li><strong>Colheita:</strong> cerca de 40–60 dias após a sementeira, podendo colher-se plantas inteiras ou folhas/talos individuais (“cut-and-come-again”).</li>
+                <li><strong>Pico de disponibilidade local:</strong> primavera e outono, com produções de inverno em zonas mais amenas ou com algum abrigo.</li>
+                <li><strong>Produção em estufa/túnel:</strong> permite estender a época e suavizar extremos de temperatura, favorecendo a produção biológica quase todo o ano.</li>
+            </ul>
+            <p class="nota">
+                Em hortas biológicas familiares, é comum intercalar pequenas linhas de pak choi
+                entre outras culturas (por exemplo, entre linhas de tomate ou feijão), explorando
+                o seu ciclo rápido para aproveitar melhor o espaço e o tempo.
+            </p>
+        </section>
+
+        <section id="como-consumir">
+            <h3>3. Como consumir</h3>
+            <p>
+                O pak choi é extremamente versátil na cozinha, adaptando-se bem a uma
+                alimentação diária baseada em hortícolas frescos. Em produção biológica, pode
+                ser usado cru ou pouco cozinhado com maior confiança relativamente a resíduos
+                de pesticidas.
+            </p>
+            <ul>
+                <li>
+                    <strong>Salteado rápido (wok ou frigideira):</strong> o uso mais comum. As
+                    folhas e talos cortados são salteados em azeite ou óleo de sésamo, com alho e
+                    gengibre, e um pouco de molho de soja ou tamari. Cozedura muito breve (3–5
+                    minutos) deixa os talos crocantes e as folhas tenras.
+                </li>
+                <li>
+                    <strong>Sopas e caldos asiáticos (ramen, miso, etc.):</strong> talos e folhas
+                    são adicionados nos últimos minutos de cozedura, tal como se faz com espinafre
+                    ou couve galega em sopas portuguesas.
+                </li>
+                <li>
+                    <strong>Cozer a vapor:</strong> talos cortados em pedaços e folhas podem ser
+                    cozidos a vapor durante poucos minutos e depois temperados com azeite, molho de
+                    soja, limão, sementes de sésamo, etc.
+                </li>
+                <li>
+                    <strong>Cru, em tiras finas:</strong> as partes mais tenras podem ser usadas em
+                    saladas, cortadas em juliana, combinadas com cenoura, couve roxa, maçã, frutos
+                    secos e um molho com gengibre, limão e azeite.
+                </li>
+                <li>
+                    <strong>Assado / grelhado:</strong> metades de pak choi podem ser grelhadas ou
+                    assadas rapidamente, ganhando sabor tostado, e servidas com um molho leve de
+                    soja, vinagre e sésamo.
+                </li>
+                <li>
+                    <strong>Fermentado ou em pickles:</strong> pode ser usado em fermentações tipo
+                    “kimchi” ligeiro ou pickles rápidos, tal como outras couves asiáticas.
+                </li>
+            </ul>
+            <p class="nota">
+                Em produção biológica, a lavagem continua a ser importante para remover terra,
+                insetos e partículas, mas há menor preocupação com resíduos de pesticidas
+                sistémicos. Como é uma brássica, o pak choi cru em grandes quantidades pode
+                contribuir com compostos bócio-génicos – para quem tem patologia da tiroide, é
+                prudente discutir o consumo com um profissional de saúde.
+            </p>
+        </section>
+
+        <section id="receitas">
+            <h3>4. Receitas e preparados (Top 10)</h3>
+            <p>
+                Sugestões de receitas em português (Portugal e Brasil) com <strong>pak choi</strong>
+                ou couve chinesa. Pelo menos cinco referências são em língua portuguesa.
+            </p>
+            <ol>
+                <li>
+                    <strong>Couve pak choi salteada</strong> – receita simples do Continente, com
+                    pak choi, alho, gengibre, mel, molho de soja e óleo de sésamo, preparada em
+                    frigideira ou wok. <strong>[R1]</strong>
+                </li>
+                <li>
+                    <strong>Pak choi salteada com sésamo</strong> – receita portuguesa do blogue
+                    Healthy Bites, com pak choi, alho, azeite, vinagre de sidra e sementes de
+                    sésamo. <strong>[R2]</strong>
+                </li>
+                <li>
+                    <strong>Couve pak-choi com cogumelos salteados</strong> – receita da Fruta
+                    Feia, em que o pak choi é marcado na frigideira e depois salteado com
+                    cogumelos, molho de soja e sementes de sésamo. <strong>[R3]</strong>
+                </li>
+                <li>
+                    <strong>Salteado de couve pak-choi e cogumelos shiitake</strong> – receita
+                    brasileira (VerdeAcqua), com pak choi, cogumelos, pimenta e alho, servida como
+                    acompanhamento. <strong>[R4]</strong>
+                </li>
+                <li>
+                    <strong>Frango e couve pak choi</strong> – receita brasileira (Imensos
+                    Sabores) de frango salteado com pak choi, gengibre e outros temperos.
+                    <strong>[R5]</strong>
+                </li>
+                <li>
+                    <strong>Massa salteada com molho de soja e pak choi</strong> – receita da
+                    Kikkoman em português, combinando legumes, pak choi, massa e molho de soja.
+                    <strong>[R6]</strong>
+                </li>
+                <li>
+                    <strong>Couve-chinesa com cogumelos e macarrão</strong> – receita do site
+                    TudoGostoso (Brasil), com couve chinesa (pak choi), cogumelos shiitake,
+                    macarrão de soja e molho de soja. <strong>[R7]</strong>
+                </li>
+                <li>
+                    <strong>Salada asiática de couve-chinesa</strong> – receita do Almanaque
+                    Culinário (BR), com pak choi, cenoura, tofu fumado, amendoim e molho de
+                    limão, soja e especiarias. <strong>[R8]</strong>
+                </li>
+                <li>
+                    <strong>Pak choi salteado (Thermomix)</strong> – receita em português no
+                    Cookidoo (Thermomix), com pak choi, alho, azeite e temperos simples.
+                    <strong>[R9]</strong>
+                </li>
+                <li>
+                    <strong>Artigo “Couve Pak Choi: receitas e como cozinhar”</strong> – artigo do
+                    Continente com várias sugestões de utilização (crua, salteada, em sopas,
+                    estufados, etc.), que pode servir de base para múltiplas receitas simples.
+                    <strong>[R10]</strong>
+                </li>
+            </ol>
+            <p class="nota">
+                Em todas estas receitas pode (e faz sentido) usar <strong>pak choi biológico</strong>,
+                sobretudo quando a cozedura é rápida ou quando se usam partes mais tenras com pouca
+                preparação. Nas receitas que indicam “couve chinesa” genérica, o pak choi pode ser
+                usado diretamente ou em combinação com outras couves asiáticas.
+            </p>
+        </section>
+
+        <section id="beneficios">
+            <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+            <p>
+                Como brássica de folha, o pak choi combina <strong>densidade nutricional elevada</strong>
+                com baixo valor energético e uma diversidade de compostos bioativos, em especial
+                <strong>glucosinolatos</strong> e respetivos produtos de hidrólise.
+            </p>
+            <ul>
+                <li>
+                    <strong>Vitamina C, vitamina K e provitamina A</strong> – 100&nbsp;g de pak
+                    choi cru podem fornecer cerca de 13&nbsp;kcal, boa quantidade de vitamina C e
+                    contribuições relevantes de vitamina A (sob a forma de carotenoides) e
+                    vitamina K. Estes micronutrientes estão associados à função imunitária,
+                    síntese de colagénio, coagulação sanguínea e saúde óssea.
+                </li>
+                <li>
+                    <strong>Glucosinolatos e compostos sulfurados</strong> – estudos recentes sobre
+                    o <em>Brassica rapa</em> subsp. <em>chinensis</em> mostram grande variabilidade
+                    em tipos e níveis de glucosinolatos entre variedades de pak choi, com destaque
+                    para compostos como glucobrassicina e sinigrina. Estes compostos, quando
+                    transformados em isotiocianatos e indóis, têm sido estudados quanto a efeitos
+                    potenciais em vias de detoxificação, inflamação e carcinogénese em modelos
+                    laboratoriais.
+                </li>
+                <li>
+                    <strong>Brássicas e prevenção de doença crónica</strong> – revisões sobre o
+                    grupo das brássicas apontam para uma associação entre consumo regular destes
+                    vegetais e menor risco de alguns tipos de cancro e de doença cardiovascular,
+                    embora os resultados variem entre estudos e não permitam atribuir o efeito a
+                    uma única espécie.
+                </li>
+                <li>
+                    <strong>Função antioxidante e anti-inflamatória</strong> – além dos
+                    glucosinolatos, o pak choi contém vitaminas antioxidantes (C, A), carotenoides
+                    e compostos fenólicos. Estudos com extratos de <em>Brassica rapa</em> ricos em
+                    glucosinolatos mostram capacidades antioxidantes e efeitos em modelos
+                    inflamatórios celulares e animais, sugerindo um contributo potencial na
+                    modulação do stress oxidativo.
+                </li>
+                <li>
+                    <strong>Baixo índice glicémico e apoio ao controlo de peso</strong> – pela
+                    combinação de poucas calorias, bastante água e alguma fibra, o pak choi pode
+                    ajudar a aumentar o volume das refeições com baixo impacto calórico, o que é
+                    útil em estratégias de controlo de peso quando substitui acompanhamentos mais
+                    densos energeticamente.
+                </li>
+                <li>
+                    <strong>Orgânico vs. convencional</strong> – estudos que comparam culturas
+                    biológicas e convencionais sugerem, em média, <strong>menores níveis de
+                    resíduos de pesticidas</strong> e, nalguns casos, maiores teores de certos
+                    antioxidantes nos produtos biológicos. Dado que as brássicas folhosas tendem
+                    a ser culturas com uso significativo de pesticidas em sistemas convencionais,
+                    a produção biológica de pak choi pode ser particularmente relevante para quem
+                    o consome com frequência.
+                </li>
+            </ul>
+            <p class="nota">
+                A evidência específica em humanos sobre pak choi isoladamente ainda é limitada; a
+                maior parte dos dados refere-se ao grupo das brássicas ou a estudos laboratoriais.
+                A leitura mais prudente é ver o pak choi como parte de um <strong>padrão alimentar
+                vegetal diversificado</strong>, e não como “cura” ou suplemento isolado.
+            </p>
+        </section>
+
+        <section id="nutricao">
+            <h3>6. Propriedades nutricionais</h3>
+            <p>
+                Valores aproximados por 100&nbsp;g de parte comestível de <strong>pak choi</strong>,
+                com base em tabelas nutricionais internacionais (USDA / FDC, FatSecret) e
+                referências sobre “Chinese cabbage (bok choy/pak choi)”. Os valores variam com a
+                variedade, solo, práticas de produção (incluindo biológica) e maturação.
+            </p>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Nutriente</th>
+                    <th>Pak choi cru<br>(100&nbsp;g, folhas e talos)</th>
+                    <th>Pak choi cozido<br>(100&nbsp;g, cozido e escorrido)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Energia</td>
+                    <td>≈ 13–16&nbsp;kcal</td>
+                    <td>≈ 12–15&nbsp;kcal</td>
+                </tr>
+                <tr>
+                    <td>Água</td>
+                    <td>≈ 94–95&nbsp;g</td>
+                    <td>≈ 93–95&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Proteína</td>
+                    <td>≈ 1,5–1,7&nbsp;g</td>
+                    <td>≈ 1,5–2,0&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Hidratos de carbono totais</td>
+                    <td>≈ 2,0–2,5&nbsp;g</td>
+                    <td>≈ 2,0–2,5&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Açúcares</td>
+                    <td>≈ 1,2–1,8&nbsp;g</td>
+                    <td>≈ 1,2–1,8&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Fibra alimentar</td>
+                    <td>≈ 1,0–1,2&nbsp;g</td>
+                    <td>≈ 1,0–1,5&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Lípidos totais</td>
+                    <td>&lt; 0,3&nbsp;g</td>
+                    <td>&lt; 0,3&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Vitamina C</td>
+                    <td>≈ 40–50&nbsp;mg</td>
+                    <td>Redução moderada com a cozedura (parte perdida para a água e calor)</td>
+                </tr>
+                <tr>
+                    <td>Vitamina K</td>
+                    <td>≈ 40–50&nbsp;µg</td>
+                    <td>Valores semelhantes ou ligeira redução (vitamina relativamente estável ao calor)</td>
+                </tr>
+                <tr>
+                    <td>Vitamina A (equivalente de retinol)</td>
+                    <td>≈ 100–200&nbsp;µg</td>
+                    <td>Alguma perda com a cozedura, mas com potencial aumento de biodisponibilidade dos carotenoides</td>
+                </tr>
+                <tr>
+                    <td>Folato (vit. B9)</td>
+                    <td>≈ 60–70&nbsp;µg</td>
+                    <td>Ligeira redução com a cozedura</td>
+                </tr>
+                <tr>
+                    <td>Cálcio</td>
+                    <td>≈ 100–120&nbsp;mg</td>
+                    <td>≈ 90–110&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Potássio</td>
+                    <td>≈ 200–260&nbsp;mg</td>
+                    <td>≈ 190–240&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Sódio (natural)</td>
+                    <td>≈ 60–70&nbsp;mg</td>
+                    <td>≈ 60–70&nbsp;mg</td>
+                </tr>
+                </tbody>
+            </table>
+            <p class="nota">
+                Em receitas com <strong>molho de soja</strong> ou outros condimentos salgados, o
+                teor de sódio final do prato aumenta substancialmente. O pak choi em si é pouco
+                calórico e com sódio moderado, mas o contexto da receita importa muito.
+            </p>
+        </section>
+
+        <section id="utilidades">
+            <h3>7. Utilidades e aplicações (não apenas alimentares)</h3>
+            <ul>
+                <li>
+                    <strong>Cultura de ciclo curto e ocupação de espaços livres:</strong> o pak
+                    choi cresce rápido e ocupa bem o solo entre outras culturas, reduzindo o
+                    aparecimento de infestantes e protegendo a superfície do solo.
+                </li>
+                <li>
+                    <strong>Consociação com outras plantas:</strong> pode ser consociado com
+                    alfaces, cenouras, ervilhas, cebola e alho, desde que se respeite a rotação de
+                    brássicas para evitar acumulação de pragas específicas.
+                </li>
+                <li>
+                    <strong>Matéria verde para compostagem:</strong> restos de colheita e plantas
+                    que subiram à flor podem ser incorporados no composto, fornecendo azoto e
+                    estrutura.
+                </li>
+                <li>
+                    <strong>Horta ornamental comestível:</strong> variedades com talos claros e
+                    folhas verde-escuras podem ser usadas em canteiros ornamentais, integrando
+                    estética e produção de alimento.
+                </li>
+                <li>
+                    <strong>Valor educativo:</strong> pela rapidez de crescimento, é adequado para
+                    projetos pedagógicos em escolas e hortas comunitárias, mostrando aos iniciantes
+                    um ciclo de produção relativamente rápido.
+                </li>
+            </ul>
+        </section>
+
+        <section id="permacultura">
+            <h3>8. Grau de funcionalidade em permacultura</h3>
+            <p><strong>Classificação proposta: 7/10</strong></p>
+            <ul class="lista-permacultura">
+                <li>
+                    <strong>Funções principais:</strong> produção de folhas e talos para consumo
+                    rápido, ocupação de solo, fornecimento de matéria verde e diversificação de
+                    texturas e sabores na horta.
+                </li>
+                <li>
+                    <strong>Vantagens em sistemas biológicos:</strong> ciclo curto, boa resposta a
+                    cultivo intensivo, adequado para sucessão rápida entre culturas de verão e
+                    inverno, e para “encher” espaços temporariamente vazios em canteiros.
+                </li>
+                <li>
+                    <strong>Limitações:</strong> planta anual/bianual, não perene, com alguma
+                    suscetibilidade a pragas de brássicas (alticas, lagartas, mosca, etc.); em
+                    climas quentes pode exigir sombra parcial e irrigação cuidadosa para evitar
+                    subida precoce a flor.
+                </li>
+            </ul>
+            <p class="nota">
+                A pontuação reflete um bom equilíbrio entre utilidade alimentar, velocidade de
+                crescimento e funções ecológicas, mas com algumas limitações por ser uma cultura
+                exigente em termos de proteção biológica face a pragas específicas.
+            </p>
+        </section>
+
+        <section id="referencias">
+            <h3>9. Referências</h3>
+
+            <div class="referencias-subsecao">9.1. Apresentação / contexto</div>
+            <ul class="referencias-lista">
+                <li><strong>D1</strong> – Wikipedia (EN). “Bok choy” – descrição botânica de <em>Brassica rapa</em> subsp. <em>chinensis</em> e valores nutricionais gerais. Disponível em: <a href="https://en.wikipedia.org/wiki/Bok_choy" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Bok_choy</a></li>
+                <li><strong>D2</strong> – CABI Crop Compendium. Ficha de <em>Brassica rapa</em> subsp. <em>chinensis</em> (Chinese cabbage, pak choi group). Acesso via biblioteca / subscrição.</li>
+                <li><strong>D3</strong> – Feed Continente (PT). “Couve Pak Choi: receitas e como cozinhar” – guia introdutório em português. Disponível em: <a href="https://feed.continente.pt/alimentacao/pak-choi" target="_blank" rel="noopener">https://feed.continente.pt/alimentacao/pak-choi</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.2. Sazonalidade e cultivo (Portugal / clima semelhante)</div>
+            <ul class="referencias-lista">
+                <li><strong>S1</strong> – Artigos e fichas de horticultura em clima mediterrânico (ex.: Hortas Bio / ABAAE, manuais de horticultura biológica) que incluem pak choi como cultura de outono/primavera.</li>
+                <li><strong>S2</strong> – RHS (Royal Horticultural Society). “Pak choi – grow your own” – indicações de época de sementeira e ciclo de produção em clima temperado. Disponível em: <a href="https://www.rhs.org.uk/vegetables/pak-choi/grow-your-own" target="_blank" rel="noopener">https://www.rhs.org.uk/vegetables/pak-choi/grow-your-own</a></li>
+                <li><strong>S3</strong> – Feed Continente. “Couve Pak Choi: receitas e como cozinhar” – nota sobre versatilidade na cozinha e utilização em salteados, sopas e saladas. Disponível em: <a href="https://feed.continente.pt/alimentacao/pak-choi" target="_blank" rel="noopener">https://feed.continente.pt/alimentacao/pak-choi</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.3. Propriedades nutricionais</div>
+            <ul class="referencias-lista">
+                <li><strong>N1</strong> – USDA / FoodData Central. Várias entradas para “Chinese cabbage (bok choy/pak choi)”. Acesso em: <a href="https://fdc.nal.usda.gov" target="_blank" rel="noopener">https://fdc.nal.usda.gov</a></li>
+                <li><strong>N2</strong> – FatSecret. “Chinese Cabbage (Bok-Choy, Pak-Choi), raw, per 100g” – 13 kcal/100&nbsp;g e distribuição aproximada de macronutrientes. Disponível em: <a href="https://foods.fatsecret.com/calories-nutrition/usda/chinese-cabbage-%28bok-choy-pak-choi%29?portionamount=100.000&portionid=59045" target="_blank" rel="noopener">https://foods.fatsecret.com/.../chinese-cabbage-(bok-choy-pak-choi)</a></li>
+                <li><strong>N3</strong> – Verywell Fit. “Bok Choy Nutrition Facts and Health Benefits” – valores por chávena (70&nbsp;g) e descrição nutricional. Disponível em: <a href="https://www.verywellfit.com/carb-information-for-bok-choy-2241765" target="_blank" rel="noopener">https://www.verywellfit.com/carb-information-for-bok-choy-2241765</a></li>
+                <li><strong>N4</strong> – Open Food Facts. Ficha “Bok choy – USDA” – resumo de informação nutricional. Disponível em: <a href="https://world.openfoodfacts.org/product/2000000125289/bok-choy-usda" target="_blank" rel="noopener">https://world.openfoodfacts.org/product/2000000125289/bok-choy-usda</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.4. Benefícios para a saúde e propriedades medicinais</div>
+            <ul class="referencias-lista">
+                <li><strong>M1</strong> – Medical News Today. “Bok choy: Benefits, nutrition, diet, vs spinach, and risks.” Disponível em: <a href="https://www.medicalnewstoday.com/articles/280948" target="_blank" rel="noopener">https://www.medicalnewstoday.com/articles/280948</a></li>
+                <li><strong>M2</strong> – Kim S.-H. et al. “Variability of Glucosinolates in Pak Choy (<em>Brassica rapa</em> subsp. <em>chinensis</em>) Germplasm.” <em>Plants</em>, 2024;13(1):9. Disponível em: <a href="https://www.mdpi.com/2223-7747/13/1/9" target="_blank" rel="noopener">https://www.mdpi.com/2223-7747/13/1/9</a></li>
+                <li><strong>M3</strong> – Maina S. et al. “Human, animal and plant health benefits of glucosinolates and strategies for enhanced bioactivity: A systematic review.” <em>Molecules</em>, 2020;25(16):3682. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7464879/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7464879/</a></li>
+                <li><strong>M4</strong> – Choi H. et al. “Antioxidant and Anti-Inflammatory Activities of High-Glucosinolate <em>Brassica rapa</em> Lines.” <em>Antioxidants</em>, 2023. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10525794/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10525794/</a></li>
+                <li><strong>M5</strong> – Diversity of glucosinolates among common Brassicaceae vegetables – revisão em <em>Horticulture Research</em> / <em>Horticultural Plant Journal</em> sobre variação de glucosinolatos em <em>Brassica rapa</em> e outras espécies. Exemplo: <a href="https://www.sciopen.com/article/10.1016/j.hpj.2022.08.006" target="_blank" rel="noopener">https://www.sciopen.com/article/10.1016/j.hpj.2022.08.006</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.5. Produção biológica, pesticidas e comparação com convencional</div>
+            <ul class="referencias-lista">
+                <li><strong>B1</strong> – Barański M. et al. “Higher antioxidant and lower cadmium concentrations and lower incidence of pesticide residues in organically grown crops: a systematic literature review and meta-analyses.” <em>British Journal of Nutrition</em>, 2014. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4141693/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4141693/</a></li>
+                <li><strong>B2</strong> – Matt D. et al. “Quality of Organic vs. Conventional Food and Effects on Health.” Relatório de revisão. Disponível em: <a href="https://orgprints.org/19504/1/Report_2011_%281%29.pdf" target="_blank" rel="noopener">https://orgprints.org/19504/1/Report_2011_(1).pdf</a></li>
+                <li><strong>B3</strong> – Baker B.P. et al. “Pesticide residues in conventional, IPM-grown and organic foods: insights from three US datasets.” The Organic Center. Disponível em: <a href="https://www.organic-center.org/reportfiles/bakerbenbrook.pdf" target="_blank" rel="noopener">https://www.organic-center.org/reportfiles/bakerbenbrook.pdf</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.6. Receitas (Top 10)</div>
+            <ul class="referencias-lista">
+                <li><strong>R1</strong> – Feed Continente (PT). “Couve chinesa pak choi salteada” (e outras receitas relacionadas). Disponível em: <a href="https://feed.continente.pt/receitas/couve-chinesa-salteada" target="_blank" rel="noopener">https://feed.continente.pt/receitas/couve-chinesa-salteada</a></li>
+                <li><strong>R2</strong> – Healthy Bites (PT). “Receita de pak choi salteada com sésamo (sem glúten, sem lactose, paleo)”. Disponível em: <a href="https://healthybites.pt/recipe/receita-de-pak-choi-salteada-com-sesamo-sem-gluten-sem-lactose-paleo/" target="_blank" rel="noopener">https://healthybites.pt/recipe/receita-de-pak-choi-salteada-com-sesamo-sem-gluten-sem-lactose-paleo/</a></li>
+                <li><strong>R3</strong> – Fruta Feia (PT). “Couve pak-choi com cogumelos salteados”. Disponível em: <a href="https://frutafeia.pt/en/node/202325" target="_blank" rel="noopener">https://frutafeia.pt/en/node/202325</a></li>
+                <li><strong>R4</strong> – VerdeAcqua (BR). “Salteado de couve pak-choi e cogumelos shiitake”. Disponível em: <a href="https://verdeacqua.eco.br/salteado-de-couve-pak-choi-e-cogumelos-shiitake/" target="_blank" rel="noopener">https://verdeacqua.eco.br/salteado-de-couve-pak-choi-e-cogumelos-shiitake/</a></li>
+                <li><strong>R5</strong> – Imensos Sabores (PT/BR). “Frango e couve pak choi”. Disponível em: <a href="https://imensossabores.com.br/carnes/frango-e-couve-pak-choi/" target="_blank" rel="noopener">https://imensossabores.com.br/carnes/frango-e-couve-pak-choi/</a></li>
+                <li><strong>R6</strong> – Kikkoman (PT). “Massa salteada com molho de soja e pak choi”. Disponível em: <a href="https://www.kikkoman.pt/receitas/detail/massa-salteada-com-molho-de-soja-e-pak-choi" target="_blank" rel="noopener">https://www.kikkoman.pt/receitas/detail/massa-salteada-com-molho-de-soja-e-pak-choi</a></li>
+                <li><strong>R7</strong> – TudoGostoso (BR). “Couve chinesa com cogumelos e macarrão”. Disponível em: <a href="https://www.tudogostoso.com.br/receita/180989-couve-chinesa-com-cogumelos-e-macarrao.html" target="_blank" rel="noopener">https://www.tudogostoso.com.br/receita/180989-couve-chinesa-com-cogumelos-e-macarrao.html</a></li>
+                <li><strong>R8</strong> – Almanaque Culinário (BR). “Salada asiática de couve-chinesa”. Disponível em: <a href="https://www.almanaqueculinario.com.br/receita/salada-asiatica-de-couve-chinesa-22614" target="_blank" rel="noopener">https://www.almanaqueculinario.com.br/receita/salada-asiatica-de-couve-chinesa-22614</a></li>
+                <li><strong>R9</strong> – Cookidoo (Thermomix – PT). “Pak choi salteado”. Disponível em: <a href="https://cookidoo.pt/recipes/recipe/pt-PT/r55092" target="_blank" rel="noopener">https://cookidoo.pt/recipes/recipe/pt-PT/r55092</a></li>
+                <li><strong>R10</strong> – Feed Continente (PT). “Couve Pak Choi: receitas e como cozinhar” – várias sugestões de utilização. Disponível em: <a href="https://feed.continente.pt/alimentacao/pak-choi" target="_blank" rel="noopener">https://feed.continente.pt/alimentacao/pak-choi</a></li>
+            </ul>
+
+            <p class="nota">
+                Sempre que possível foram privilegiadas fontes com maior probabilidade de
+                permanência (artigos com DOI, sites institucionais, grandes portais de receitas).
+                Ainda assim, é natural que alguns links mudem ao longo do tempo.
+            </p>
+        </section>
+
+        <div class="topo-link">
+            <a href="#topo">Voltar ao topo ▲</a>
+        </div>
+    </article>
+</main>
+</body>
+</html>

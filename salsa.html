@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Salsa / Salsinha (Petroselinum crispum) | Horta de Amigos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body id="topo">
+<header>
+    <h1>Horta de Amigos</h1>
+    <p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar com família e amigos.</p>
+</header>
+
+<nav>
+    <a href="index.html">Início</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="moringa.html">Moringa</a>
+    <a href="acelga.html">Acelga</a>
+    <a href="agriao-terra.html">Agrião-de-terra</a>
+    <a href="aipo.html">Aipo (talos e folhas)</a>
+    <a href="alface.html">Alface</a>
+    <a href="alho.html">Alho</a>
+    <a href="alho-frances.html">Alho-francês</a>
+    <a href="aneto.html">Aneto / Endro</a>
+    <a href="abobora-butternut.html">Abóbora butternut</a>
+    <a href="batata-comum.html">Batata comum</a>
+    <a href="batata-doce.html">Batata-doce</a>
+    <a href="beringela.html">Beringela</a>
+    <a href="beterraba.html">Beterraba</a>
+    <a href="brocolo.html">Brócolo</a>
+    <a href="canonigos.html">Canónigos</a>
+    <a href="coentros.html">Coentros</a>
+    <a href="cebola.html">Cebola</a>
+    <a href="cebola-fresca.html">Cebola fresca</a>
+    <a href="cenoura.html">Cenoura</a>
+    <a href="couve-chinesa.html">Couve chinesa</a>
+    <a href="couve-rabano.html">Couve-rábano</a>
+    <a href="couve-repolho.html">Couve repolho</a>
+    <a href="couve-toscana.html">Couve toscana</a>
+    <a href="curgete.html">Curgete</a>
+    <a href="ervilhas-frescas.html">Ervilhas frescas</a>
+    <a href="espinafre.html">Espinafre</a>
+    <a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+    <a href="feijao-verde.html">Feijão verde</a>
+    <a href="milho-doce.html">Milho doce</a>
+    <a href="mizuna.html">Mizuna</a>
+    <a href="morangos.html">Morangueiro / Morangos</a>
+    <a href="nabo.html">Nabo</a>
+    <a href="pak-choi.html">Pak choi</a>
+    <a href="pepino.html">Pepino</a>
+    <a href="pimento.html">Pimento</a>
+    <a href="rabanete.html">Rabanete</a>
+    <a href="rabano.html">Rábano / Daikon</a>
+    <a href="rucula.html">Rúcula</a>
+    <a href="salanova.html">Salanova</a>
+    <a href="salsa.html" class="ativa">Salsa</a>
+</nav>
+
+<main>
+    <article class="planta">
+        <div class="planta-cabecalho">
+            <div class="planta-titulo">
+                <h2>Salsa / Salsinha (<em>Petroselinum crispum</em>)</h2>
+                <p><strong>Outros nomes em português:</strong> salsa, salsinha (BR), perrexil (Galiza), salsa lisa, salsa crespa.</p>
+                <p><strong>Nome mais comum em inglês:</strong> parsley (curly parsley, flat-leaf/Italian parsley).</p>
+
+                <div class="tags-nomes">
+                    <span>Família: Apiaceae (umbelíferas)</span>
+                    <span>Parte usada: folhas (e caules tenros)</span>
+                    <span>Tipo: aromática / hortícola de folha</span>
+                    <span>Produção: <strong>biológica</strong></span>
+                </div>
+
+                <div class="info-rapida">
+                    <div>
+                        <strong>Origem</strong>
+                        Erva aromática mediterrânica, hoje cultivada em todo o mundo, essencial na cozinha portuguesa, brasileira e de muitos outros países.
+                    </div>
+                    <div>
+                        <strong>Uso principal</strong>
+                        Tempero fresco para sopas, arroz, molhos, peixe, carne, saladas, pestos, sumos verdes e pratos de leguminosas.
+                    </div>
+                    <div>
+                        <strong>Perfil nutricional</strong>
+                        Muito rica em vitamina K, vitamina C, folato, ferro, potássio e flavonoides (especialmente apigenina), com elevada densidade de micronutrientes por 100 g.
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="imagem-container-externo">
+                    <div class="imagem-container">
+                        <img src="imagens/salsa.png" alt="Molho de salsa biológica fresca, de folhas verdes">
+                    </div>
+                </div>
+                <p class="imagem-legenda">Imagem ilustrativa de salsa biológica fresca, pronta a usar como tempero.</p>
+            </div>
+        </div>
+
+        <section id="apresentacao">
+            <h3>1. Apresentação / Descrição</h3>
+            <p>
+                A <strong>salsa</strong> (<em>Petroselinum crispum</em>) é uma erva aromática
+                bienal da família Apiaceae, a mesma das cenouras, aipo e coentros. Existem
+                variedades de folha <strong>crespa</strong> e de folha <strong>lisa</strong>
+                (por vezes designada “salsa italiana”), ambas amplamente usadas como
+                condimento e como ingrediente principal em molhos e saladas. citeturn7search0turn7search10
+            </p>
+            <p>
+                Em português, é chamada <strong>salsa</strong> em Portugal, <strong>salsinha</strong>
+                no Brasil e <strong>perrexil</strong> na Galiza. Em inglês, o termo genérico é
+                <em>parsley</em>. As folhas e caules tenros são a parte mais utilizada; a raiz
+                de algumas variedades (<em>parsley root</em>) também é comestível, mas aqui o
+                foco são as <strong>folhas frescas</strong> de produção biológica.
+            </p>
+            <p>
+                A salsa é uma das ervas de cozinha mais ricas em micronutrientes: fornece
+                vitamina K, vitamina C, vitamina A (via carotenoides), folato, ferro e
+                potássio, além de flavonoides como a <strong>apigenina</strong>, que em
+                estudos de composição aparece em níveis particularmente elevados.
+                citeturn7search0turn7search4turn7search12turn7search20turn7search24
+            </p>
+            <p>
+                Em contexto de horta biológica, a salsa é uma cultura de folha relativamente
+                robusta, que beneficia de solos ricos em matéria orgânica e boa disponibilidade
+                de água, produzindo folhas aromáticas durante vários meses, sobretudo em clima
+                ameno.
+            </p>
+        </section>
+
+        <section id="sazonalidade">
+            <h3>2. Sazonalidade (Portugal continental)</h3>
+            <p>
+                A salsa prefere <strong>climas amenos</strong> e não aprecia calor extremo ou
+                geadas muito fortes. Em boa parte de Portugal continental, pode ser cultivada
+                grande parte do ano, com melhor desempenho na meia-estação.
+            </p>
+            <ul>
+                <li>
+                    <strong>Sementeira:</strong> geralmente de <strong>fevereiro/março a
+                    maio</strong> e de <strong>setembro a outubro</strong>. A germinação pode
+                    ser lenta; ajuda demolhar as sementes 12–24 horas antes.
+                </li>
+                <li>
+                    <strong>Colheita:</strong> a partir de 60–90 dias após a sementeira,
+                    colhendo folhas externas ou cortando molhos. Em sistemas bem cuidados, a
+                    planta pode produzir durante muitos meses.
+                </li>
+                <li>
+                    <strong>Clima:</strong> tolera algum frio, mas o crescimento abranda no
+                    inverno mais rigoroso; no verão muito quente, pode amarelecer e espigar.
+                </li>
+                <li>
+                    <strong>Consociação:</strong> combina bem com tomate, cebola, alho, alface
+                    e outras hortícolas, contribuindo para diversidade e atração de insetos
+                    úteis quando em flor.
+                </li>
+            </ul>
+            <p class="nota">
+                Guias de horticultura portuguesa e brasileira apresentam a salsa como aromática
+                bem adaptada a canteiros, vasos e floreiras, desde que o solo seja fértil,
+                fofo e com humidade regular.
+            </p>
+        </section>
+
+        <section id="como-consumir">
+            <h3>3. Como consumir</h3>
+            <p>
+                A salsa pode ser consumida <strong>crua</strong>, adicionada no fim da
+                confeção para preservar aroma e vitamina C, ou <strong>ligeiramente cozinhada</strong>
+                em refogados, sopas e guisados.
+            </p>
+            <ul>
+                <li>
+                    <strong>Picada fresca:</strong> sobre sopas (caldo verde, sopa de legumes),
+                    arroz, massas, pratos de peixe e carne, omeletes e leguminosas cozidas.
+                </li>
+                <li>
+                    <strong>Molhos e pestos:</strong> protagonista em pestos de salsa, molhos
+                    verdes para peixe (tipo molho à espanhola ou salsa verde italiana) e
+                    temperos para saladas e bowls.
+                </li>
+                <li>
+                    <strong>Saladas de ervas:</strong> combinada com coentros, hortelã e
+                    cebolinho, em saladas tipo tabule (com bulgur, tomate e pepino) ou
+                    variações com quinoa e outros grãos.
+                </li>
+                <li>
+                    <strong>Sumos e smoothies verdes:</strong> pequena quantidade de salsa em
+                    sumos de fruta/legumes, acrescentando clorofila, vitamina C e sabor
+                    refrescante.
+                </li>
+                <li>
+                    <strong>Congelada:</strong> picada e congelada em cubos de gelo com água ou
+                    azeite, para usar mais tarde em sopas e refogados.
+                </li>
+                <li>
+                    <strong>Infusões e preparados tradicionais:</strong> em alguns contextos,
+                    usa-se salsa em infusões e decocções, embora a evidência científica
+                    robusta se concentre sobretudo em extratos mais padronizados (ver secção 5).
+                </li>
+            </ul>
+            <p class="nota">
+                Como tem sabor relativamente intenso, pequenas quantidades já são suficientes
+                para mudar um prato – o que é interessante do ponto de vista nutricional, pois
+                concentra muitos micronutrientes em poucas colheres de sopa.
+            </p>
+        </section>
+
+        <section id="receitas">
+            <h3>4. Receitas e preparados (Top 10)</h3>
+            <p>
+                Sugestões de receitas em português (Portugal, Brasil e outros países
+                lusófonos) que utilizam <strong>salsa fresca</strong>. Pelo menos cinco
+                referências são em língua portuguesa.
+            </p>
+            <ol>
+                <li>
+                    <strong>Salada com pesto de salsa</strong> – receita da Weat, com salada
+                    de agrião, rúcula, tomate e nozes, servida com um pesto de salsa (salsa,
+                    parmesão, vinagre, azeite). <strong>[R1]</strong> citeturn7search7
+                </li>
+                <li>
+                    <strong>Molho pesto de salsa (com caju)</strong> – receita da Anita Healthy,
+                    um pesto de salsa com caju, azeite, alho e limão, ótimo para massas e
+                    bowls. <strong>[R2]</strong> citeturn7search15
+                </li>
+                <li>
+                    <strong>Massa com pesto de salsa</strong> – receita em português com massa
+                    cozida, pesto de salsa, alho, malagueta e anchovas (ou variações sem
+                    anchovas para versão vegetariana). <strong>[R3]</strong> citeturn7search23
+                </li>
+                <li>
+                    <strong>Salada de salmão com pesto e espargos</strong> – receita da
+                    Dieta Biotrês, onde o pesto inclui salsa, manjericão, alho, azeite e
+                    pinhões, servido com salmão e espargos. <strong>[R4]</strong> citeturn7search19
+                </li>
+                <li>
+                    <strong>Salsa, coentros e estragão – ervas cheias de aroma</strong> –
+                    artigo da Auchan com sugestões de uso da salsa em molhos, marinadas e
+                    temperos para peixe, carne e saladas. <strong>[R5]</strong> citeturn7search22
+                </li>
+                <li>
+                    <strong>Molho vinagrete com salsa fresca</strong> – qualquer receita
+                    clássica em português de vinagrete (azeite, vinagre, sal, pimenta, cebola,
+                    tomate) com salsa picada abundante; existem muitas versões em sites como
+                    TudoGostoso, Panelinha, SaborIntenso, etc. <strong>[R6]</strong>
+                </li>
+                <li>
+                    <strong>Tabule (salada de bulgur com salsa)</strong> – receitas em
+                    português (PT/BR) de tabule, em que a salsa é um dos ingredientes
+                    principais, em grande quantidade. <strong>[R7]</strong>
+                </li>
+                <li>
+                    <strong>Arroz de ervas com salsa</strong> – versões de “arroz de salsa”
+                    ou “arroz com ervas” em blogs lusófonos, em que a salsa entra em boa
+                    quantidade no final da cozedura. <strong>[R8]</strong>
+                </li>
+                <li>
+                    <strong>Batatas assadas com alho e salsa</strong> – receita clássica em
+                    português, presente em vários sites, com batatas assadas, azeite, alho e
+                    salsa fresca picada no fim. <strong>[R9]</strong>
+                </li>
+                <li>
+                    <strong>Ovos mexidos ou omelete com salsa</strong> – qualquer receita de
+                    omelete com salsa em português (PT/BR) serve como modelo; a salsa é
+                    adicionada no fim ou misturada aos ovos batidos. <strong>[R10]</strong>
+                </li>
+            </ol>
+        </section>
+
+        <section id="beneficios">
+            <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+            <p>
+                A salsa tem sido objeto de numerosas revisões recentes que analisam os seus
+                <strong>nutrientes</strong> e <strong>fitoquímicos</strong> (especialmente
+                flavonoides como a apigenina) e os respetivos efeitos em modelos celulares,
+                animais e, em menor número, em humanos.
+            </p>
+            <ul>
+                <li>
+                    <strong>Perfil nutricional denso</strong> – 100&nbsp;g de salsa fresca
+                    fornecem cerca de 36&nbsp;kcal, quase 3&nbsp;g de proteína, cerca de
+                    6&nbsp;g de hidratos de carbono e 3,3&nbsp;g de fibra, além de níveis muito
+                    elevados de vitamina K, vitamina C (≈ 130–160&nbsp;mg), vitamina A (via
+                    beta‑caroteno), folato e ferro. citeturn7search20turn7search24turn7search4turn7search12
+                </li>
+                <li>
+                    <strong>Flavonoides e apigenina</strong> – a salsa é particularmente rica
+                    em apigenina e seus glicosídeos; revisões sobre o potencial nutracêutico
+                    da salsa e monografias sobre apigenina apontam para atividades
+                    antioxidantes, anti-inflamatórias, antitumorais e moduladoras de vias
+                    metabólicas, sobretudo em modelos experimentais.
+                    citeturn7search0turn7search5turn7search1turn7search13
+                </li>
+                <li>
+                    <strong>Potencial antioxidante e anti-inflamatório</strong> – revisões de
+                    2024–2025 destacam que extratos de <em>Petroselinum crispum</em> apresentam
+                    forte capacidade antioxidante, redução de marcadores inflamatórios e
+                    efeitos benéficos em modelos de stress oxidativo, resistência à insulina,
+                    hepatotoxicidade e nefrotoxicidade. citeturn7search1turn7search13turn7search5turn7search21turn7search24
+                </li>
+                <li>
+                    <strong>Saúde renal</strong> – revisão em <em>Frontiers in Medicine</em>
+                    (2024) compila estudos onde a salsa, em extrato ou preparações
+                    tradicionais, melhora biomarcadores renais, reduz stress oxidativo e
+                    inflamação e mostra potencial como adjuvante em algumas condições do
+                    trato urinário, embora ainda sejam necessários mais ensaios clínicos
+                    robustos. citeturn7search9turn7search1turn7search18
+                </li>
+                <li>
+                    <strong>Pressão arterial, retenção de líquidos e sistema imunitário</strong>
+                    – artigos de divulgação em português, com base em literatura científica,
+                    sintetizam que a salsa, rica em potássio e com algum efeito diurético,
+                    pode ajudar a modular a pressão arterial e a retenção hídrica, ao mesmo
+                    tempo que os antioxidantes e a vitamina C contribuem para o sistema
+                    imunitário. citeturn7search18turn7search6turn7search14turn7search21
+                </li>
+                <li>
+                    <strong>Precauções</strong> – devido ao elevado teor de vitamina K, a
+                    ingestão de grandes quantidades de salsa (ou suplementos concentrados)
+                    deve ser avaliada em pessoas a tomar anticoagulantes como a varfarina.
+                    Algumas fontes também recomendam evitar consumos muito elevados em
+                    grávidas, devido a potenciais efeitos uterotónicos descritos em doses
+                    concentradas de extrato. citeturn7search0turn7search21turn7news38
+                </li>
+            </ul>
+            <p class="nota">
+                Em contexto de alimentação do dia a dia, usar salsa fresca como tempero e
+                ingrediente em refeições variadas é considerado seguro para a maioria das
+                pessoas saudáveis. Cautela é sobretudo relevante para quem usa medicamentos
+                específicos ou recorre a suplementos concentrados de extrato de salsa.
+            </p>
+        </section>
+
+        <section id="nutricao">
+            <h3>6. Propriedades nutricionais</h3>
+            <p>
+                Valores aproximados por 100&nbsp;g de parte comestível de <strong>salsa
+                fresca</strong>, com base em tabelas de composição (parsley, <em>Petroselinum
+                crispum</em>). Os valores variam com a variedade, origem e práticas de
+                produção (incluindo agricultura biológica). citeturn7search20turn7search24turn7search4turn7search12
+            </p>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Nutriente</th>
+                    <th>Salsa crua<br>(100&nbsp;g, folhas)</th>
+                    <th>Salsa cozinhada<br>(100&nbsp;g, escorrida, sem sal)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Energia</td>
+                    <td>≈ 36&nbsp;kcal</td>
+                    <td>≈ 30–35&nbsp;kcal</td>
+                </tr>
+                <tr>
+                    <td>Água</td>
+                    <td>≈ 87–88&nbsp;g</td>
+                    <td>≈ 88–89&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Proteína</td>
+                    <td>≈ 3,0&nbsp;g</td>
+                    <td>≈ 3,0–3,2&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Hidratos de carbono totais</td>
+                    <td>≈ 6,0–6,5&nbsp;g</td>
+                    <td>≈ 5,5–6,0&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Açúcares</td>
+                    <td>≈ 0,8–1,0&nbsp;g</td>
+                    <td>≈ 0,8–1,0&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Fibra alimentar</td>
+                    <td>≈ 3,3&nbsp;g</td>
+                    <td>≈ 3,0–3,3&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Lípidos totais</td>
+                    <td>≈ 0,8&nbsp;g</td>
+                    <td>≈ 0,8&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Vitamina C</td>
+                    <td>≈ 130–160&nbsp;mg</td>
+                    <td>Reduz-se significativamente com a cozedura prolongada</td>
+                </tr>
+                <tr>
+                    <td>Vitamina A (RAE, via carotenoides)</td>
+                    <td>≈ 300–400&nbsp;µg</td>
+                    <td>Ligeira redução, com possível aumento de biodisponibilidade</td>
+                </tr>
+                <tr>
+                    <td>Vitamina K</td>
+                    <td>≈ 160–170&nbsp;µg</td>
+                    <td>Relativamente estável, com pequenas perdas</td>
+                </tr>
+                <tr>
+                    <td>Folato (vit. B9)</td>
+                    <td>≈ 150&nbsp;µg</td>
+                    <td>Alguma redução com a cozedura e a água de cozedura</td>
+                </tr>
+                <tr>
+                    <td>Potássio</td>
+                    <td>≈ 550&nbsp;mg</td>
+                    <td>≈ 520–540&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Ferro</td>
+                    <td>≈ 5&nbsp;mg</td>
+                    <td>≈ 5&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Índice glicémico (IG)</td>
+                    <td>Muito baixo</td>
+                    <td>Muito baixo, desde que não se adicionem açúcares</td>
+                </tr>
+                </tbody>
+            </table>
+            <p class="nota">
+                Apesar de rara­mente se consumir 100&nbsp;g de salsa de uma vez, usar salsa em
+                abundância ao longo do dia (sopas, saladas, pratos principais) ajuda a
+                aumentar a ingestão de micronutrientes sem praticamente acrescentar calorias.
+            </p>
+        </section>
+
+        <section id="utilidades">
+            <h3>7. Utilidades e aplicações (não apenas alimentares)</h3>
+            <ul>
+                <li>
+                    <strong>Planta companheira em consociações:</strong> a salsa pode ajudar a
+                    diversificar o sistema e, segundo alguns horticultores, a criar ambiente
+                    menos favorável a certas pragas, quando associada a outras hortícolas.
+                </li>
+                <li>
+                    <strong>Flor para insetos úteis:</strong> se deixada florir, produz
+                    umbelas que atraem insetos benéficos (como sirfídeos e vespas parasitas),
+                    importantes no controlo biológico de pragas.
+                </li>
+                <li>
+                    <strong>Produção de sementes:</strong> plantas do segundo ano podem ser
+                    mantidas para produção de semente, contribuindo para autonomia na horta,
+                    especialmente em sistemas de permacultura.
+                </li>
+                <li>
+                    <strong>Biomassa para compostagem:</strong> talos lenhosos e excedentes
+                    podem ser incorporados no composto, fechando o ciclo de nutrientes.
+                </li>
+                <li>
+                    <strong>Valor educativo e cultural:</strong> erva muito conhecida, útil em
+                    hortas escolares para mostrar a ligação entre gastronomia tradicional
+                    portuguesa/brasileira e plantas aromáticas.
+                </li>
+            </ul>
+        </section>
+
+        <section id="permacultura">
+            <h3>8. Grau de funcionalidade em permacultura</h3>
+            <p><strong>Classificação proposta: 8/10</strong></p>
+            <ul class="lista-permacultura">
+                <li>
+                    <strong>Funções principais:</strong> fornecimento de aromáticos e
+                    micronutrientes, atração de insetos úteis (quando em flor), contribuição
+                    para consociações, produção de sementes e biomassa para compostagem.
+                </li>
+                <li>
+                    <strong>Vantagens em sistemas biológicos:</strong> fácil de integrar em
+                    canteiros e bordaduras, alta densidade de nutrientes, consumo regular em
+                    pequenas quantidades, boa adaptação a vasos e pequenos espaços.
+                </li>
+                <li>
+                    <strong>Limitações:</strong> raiz relativamente superficial, não é
+                    leguminosa (não fixa azoto), pode sofrer em verões muito quentes e secos,
+                    e é cultura de ciclo anual/bienal (não perene de longa duração).
+                </li>
+            </ul>
+            <p class="nota">
+                Em permacultura, a salsa funciona como "mini-central de micronutrientes" e
+                planta de serviço ecológico (flor, diversidade, consociações), justificando
+                uma classificação elevada em funcionalidade, especialmente em hortas
+                familiares de produção biológica.
+            </p>
+        </section>
+
+        <section id="referencias">
+            <h3>9. Referências</h3>
+
+            <div class="referencias-subsecao">9.1. Apresentação / contexto</div>
+            <ul class="referencias-lista">
+                <li><strong>D1</strong> – Wikipedia (PT). "Salsa (planta)." Disponível em: <a href="https://pt.wikipedia.org/wiki/Salsa_(planta)" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Salsa_(planta)</a></li>
+                <li><strong>D2</strong> – Wikipedia (EN). "Parsley." Disponível em: <a href="https://en.wikipedia.org/wiki/Parsley" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Parsley</a></li>
+                <li><strong>D3</strong> – Piedade.eu. "Salsa – Composição, Benefícios para Saúde, Horticultura 101." Disponível em: <a href="https://piedade.eu/salsa/" target="_blank" rel="noopener">https://piedade.eu/salsa/</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.2. Propriedades nutricionais</div>
+            <ul class="referencias-lista">
+                <li><strong>N1</strong> – 2000kcal.cz. "Parsley, Petroselinum crispum: Calories and other nutrition." Disponível em: <a href="https://www.2000kcal.cz/lang/en/values/parsley-2905" target="_blank" rel="noopener">https://www.2000kcal.cz/lang/en/values/parsley-2905</a></li>
+                <li><strong>N2</strong> – Crocus Media. "Parsley, a nutritional powerhouse." Disponível em: <a href="https://www.crocusmedia.vn/origin-nutrition/herbs-and-spices/parsley-a-nutritional-powerhouse.html" target="_blank" rel="noopener">https://www.crocusmedia.vn/.../parsley-a-nutritional-powerhouse.html</a></li>
+                <li><strong>N3</strong> – Aprifel. "Parsley – Nutritional sheet." Disponível em: <a href="https://www.aprifel.com/en/nutritional-sheet/persil/" target="_blank" rel="noopener">https://www.aprifel.com/en/nutritional-sheet/persil/</a></li>
+                <li><strong>N4</strong> – NutriCare. "Parsley: nutritional properties and health benefits." Disponível em: <a href="https://nutricare.es/en-eu/blogs/beneficio-de-los-alimentos/perejil-propiedades-nutricionales-y-beneficios-para-la-salud" target="_blank" rel="noopener">https://nutricare.es/.../perejil-propiedades-nutricionales-y-beneficios-para-la-salud</a></li>
+                <li><strong>N5</strong> – AndraFarm. "Nutrient content in Parsley." Disponível em: <a href="https://m.andrafarm.com/_andra.php?_en=ENGLISH&_i=0-tanaman-kelompok&kelompok=Peterseli+%28Parsley%29&topik=gizi" target="_blank" rel="noopener">https://m.andrafarm.com/...Peterseli...(Parsley)...</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.3. Benefícios para a saúde e propriedades medicinais</div>
+            <ul class="referencias-lista">
+                <li><strong>M1</strong> – Ganea M. et al. "Exploring the Therapeutic Efficacy of Parsley (<em>Petroselinum crispum</em> Mill.)." <em>International Journal of Molecular Sciences</em>, 2024. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10856782/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10856782/</a></li>
+                <li><strong>M2</strong> – Casanova L.M. et al. "What Is New about Parsley, a Potential Source of Bioactive Compounds?" <em>Medicines</em>, 2017 / atualizações 2024. Disponível em: <a href="https://www.mdpi.com/1661-3821/4/1/8" target="_blank" rel="noopener">https://www.mdpi.com/1661-3821/4/1/8</a></li>
+                <li><strong>M3</strong> – Artigo "Nutraceutical potential of parsley (<em>Petroselinum crispum</em> Mill.)" (<em>Italian Journal of Food Science</em>, 2025). Disponível em: <a href="https://www.itjfs.com/index.php/ijfs/article/view/2806" target="_blank" rel="noopener">https://www.itjfs.com/index.php/ijfs/article/view/2806</a></li>
+                <li><strong>M4</strong> – Alobaidi S. et al. "Renal health benefits and therapeutic effects of parsley in nephrology." <em>Frontiers in Medicine</em>, 2024. Disponível em: <a href="https://www.frontiersin.org/articles/10.3389/fmed.2024.1494740/full" target="_blank" rel="noopener">https://www.frontiersin.org/articles/10.3389/fmed.2024.1494740/full</a></li>
+                <li><strong>M5</strong> – Healthline. "8 Impressive Health Benefits and Uses of Parsley." 2019. Disponível em: <a href="https://www.healthline.com/nutrition/parsley-benefits" target="_blank" rel="noopener">https://www.healthline.com/nutrition/parsley-benefits</a></li>
+                <li><strong>M6</strong> – WebMD. "Health Benefits of Parsley." Disponível em: <a href="https://www.webmd.com/diet/health-benefits-parsley" target="_blank" rel="noopener">https://www.webmd.com/diet/health-benefits-parsley</a></li>
+                <li><strong>M7</strong> – Verywell Health. "Why Parsley Might Be the Superfood You're Overlooking." 2024. Disponível em: <a href="https://www.verywellhealth.com/benefits-of-parsley-8734763" target="_blank" rel="noopener">https://www.verywellhealth.com/benefits-of-parsley-8734763</a></li>
+                <li><strong>M8</strong> – Tua Saúde. "12 benefícios da salsa (salsinha) para a saúde e como consumir." Disponível em: <a href="https://www.tuasaude.com/salsa/" target="_blank" rel="noopener">https://www.tuasaude.com/salsa/</a></li>
+                <li><strong>M9</strong> – Terra. "7 benefícios da salsinha para a saúde." 2025. Disponível em: <a href="https://www.terra.com.br/vida-e-estilo/saude/7-beneficios-da-salsinha-para-a-saude,eb63bdc2c6bd2b7217cb2f1ea095e18bw1p5yf78.html" target="_blank" rel="noopener">https://www.terra.com.br/.../7-beneficios-da-salsinha-para-a-saude</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.4. Produção biológica, pesticidas e saúde (geral)</div>
+            <ul class="referencias-lista">
+                <li><strong>B1</strong> – Rahman A. et al. "Evaluating Nutritional Value and Impact on Human Health of Organic Versus Conventional Foods." <em>Foods</em>, 2024. Disponível em: <a href="https://www.mdpi.com/2304-8158/13/2/208" target="_blank" rel="noopener">https://www.mdpi.com/2304-8158/13/2/208</a></li>
+                <li><strong>B2</strong> – Vigar V. et al. "A Systematic Review of Organic Versus Conventional Food Consumption: Is There a Measurable Benefit on Human Health?" <em>Nutrients</em>, 2019. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7019963/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7019963/</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.5. Receitas (Top 10)</div>
+            <ul class="referencias-lista">
+                <li><strong>R1</strong> – Weat. "Salada com pesto de Salsa." Disponível em: <a href="https://weat.pt/receita-weat/salada-weat/" target="_blank" rel="noopener">https://weat.pt/receita-weat/salada-weat/</a></li>
+                <li><strong>R2</strong> – Anita Healthy. "Molho Pesto de Salsa." Disponível em: <a href="https://www.anitahealthy.com/molho-pesto-de-salsa/" target="_blank" rel="noopener">https://www.anitahealthy.com/molho-pesto-de-salsa/</a></li>
+                <li><strong>R3</strong> – Voltz Maraîchage (PT). "Massa com pesto de salsa." Disponível em: <a href="https://pt.pt.voltz-maraichage.com/massa-com-pesto-de-salsa" target="_blank" rel="noopener">https://pt.pt.voltz-maraichage.com/massa-com-pesto-de-salsa</a></li>
+                <li><strong>R4</strong> – Dieta Biotrês. "Salada de salmão com molho pesto e espargos." Disponível em: <a href="https://www.dietabiotres.pt/receitas/receitas-de-entradas/salada-de-salmao-com-pesto/" target="_blank" rel="noopener">https://www.dietabiotres.pt/.../salada-de-salmao-com-pesto/</a></li>
+                <li><strong>R5</strong> – Auchan. "Salsa, coentros e estragão – Ervas cheias de aroma e benefícios." Disponível em: <a href="https://auchaneeu.auchan.pt/vida-saudavel/nutricao/salsa-coentros-estragao/" target="_blank" rel="noopener">https://auchaneeu.auchan.pt/vida-saudavel/nutricao/salsa-coentros-estragao/</a></li>
+                <li><strong>R6</strong> – Várias receitas de vinagrete com salsa em sites PT/BR (TudoGostoso, Panelinha, SaborIntenso, etc.).</li>
+                <li><strong>R7</strong> – Receitas de tabule (tabbouleh) em português, onde a salsa é ingrediente principal (por exemplo, Panelinha, TudoGostoso, etc.).</li>
+                <li><strong>R8</strong> – Receitas de "arroz de salsa" ou "arroz com ervas" em blogs portugueses e brasileiros de culinária saudável.</li>
+                <li><strong>R9</strong> – Receitas de batatas assadas com alho e salsa em portais de receitas em português (Pingo Doce, Continente, SaborIntenso, etc.).</li>
+                <li><strong>R10</strong> – Receitas de omeletes e ovos mexidos com salsa em sites PT/BR (Panelinha, TudoGostoso, etc.).</li>
+            </ul>
+
+            <p class="nota">
+                Foram privilegiadas fontes científicas (artigos com DOI, revisões recentes) e
+                portais de receitas em português. Alguns links podem mudar com o tempo, mas os
+                títulos e autores permitem reencontrar a informação quando necessário.
+            </p>
+        </section>
+
+        <div class="topo-link">
+            <a href="#topo">Voltar ao topo ▲</a>
+        </div>
+    </article>
+</main>
+</body>
+</html>

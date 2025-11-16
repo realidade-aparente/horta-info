@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Rabanete | Horta de Amigos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body id="topo">
+<header>
+    <h1>Horta de Amigos</h1>
+    <p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar com família e amigos.</p>
+</header>
+
+<nav>
+    <a href="index.html">Início</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="moringa.html">Moringa</a>
+    <a href="acelga.html">Acelga</a>
+    <a href="agriao-terra.html">Agrião-de-terra</a>
+    <a href="aipo.html">Aipo (talos e folhas)</a>
+    <a href="alface.html">Alface</a>
+    <a href="alho.html">Alho</a>
+    <a href="alho-frances.html">Alho-francês</a>
+    <a href="aneto.html">Aneto / Endro</a>
+    <a href="abobora-butternut.html">Abóbora butternut</a>
+    <a href="batata-comum.html">Batata comum</a>
+    <a href="batata-doce.html">Batata-doce</a>
+    <a href="beringela.html">Beringela</a>
+    <a href="beterraba.html">Beterraba</a>
+    <a href="brocolo.html">Brócolo</a>
+    <a href="canonigos.html">Canónigos</a>
+    <a href="coentros.html">Coentros</a>
+    <a href="cebola.html">Cebola</a>
+    <a href="cebola-fresca.html">Cebola fresca</a>
+    <a href="cenoura.html">Cenoura</a>
+    <a href="couve-chinesa.html">Couve chinesa</a>
+    <a href="couve-rabano.html">Couve-rábano</a>
+    <a href="couve-repolho.html">Couve repolho</a>
+    <a href="couve-toscana.html">Couve toscana</a>
+    <a href="curgete.html">Curgete</a>
+    <a href="ervilhas-frescas.html">Ervilhas frescas</a>
+    <a href="espinafre.html">Espinafre</a>
+    <a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+    <a href="feijao-verde.html">Feijão verde</a>
+    <a href="milho-doce.html">Milho doce</a>
+    <a href="mizuna.html">Mizuna</a>
+    <a href="morangos.html">Morangueiro / Morangos</a>
+    <a href="nabo.html">Nabo</a>
+    <a href="pak-choi.html">Pak choi</a>
+    <a href="pepino.html">Pepino</a>
+    <a href="pimento.html">Pimento</a>
+    <a href="rabanete.html" class="ativa">Rabanete</a>
+</nav>
+
+<main>
+    <article class="planta">
+        <div class="planta-cabecalho">
+            <div class="planta-titulo">
+                <h2>Rabanete (<em>Raphanus sativus</em>)</h2>
+                <p><strong>Outros nomes em português:</strong> rabanete vermelho, rabanete redondo, rabanete comprido, rabanete francês (variedades alongadas).</p>
+                <p><strong>Nome mais comum em inglês:</strong> radish.</p>
+
+                <div class="tags-nomes">
+                    <span>Família: Brassicaceae (crucíferas)</span>
+                    <span>Parte usada: raiz (e folhas tenras)</span>
+                    <span>Tipo: hortícola de raiz, ciclo rápido</span>
+                    <span>Produção: <strong>biológica</strong></span>
+                </div>
+
+                <div class="info-rapida">
+                    <div>
+                        <strong>Origem</strong>
+                        Espécie de raiz originária da Ásia, cultivada há milénios e hoje comum em hortas e sistemas de agricultura biológica em todo o mundo.
+                    </div>
+                    <div>
+                        <strong>Uso principal</strong>
+                        Consumo cru em saladas, pickles e pratos de verão, mas também assado, salteado ou em sopas; as folhas jovens podem entrar em sopas e salteados.
+                    </div>
+                    <div>
+                        <strong>Perfil nutricional</strong>
+                        Muito rico em água, baixo em calorias, fonte de vitamina C, fibra e compostos de enxofre (glucosinolatos e isotiocianatos) com potencial efeito antioxidante e modulador do metabolismo.
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="imagem-container-externo">
+                    <div class="imagem-container">
+                        <img src="imagens/rabanete.png" alt="Rabanetes vermelhos biológicos com folhas verdes frescas">
+                    </div>
+                </div>
+                <p class="imagem-legenda">Imagem ilustrativa de rabanetes biológicos recém-colhidos, com raiz crocante e folhas ainda frescas.</p>
+            </div>
+        </div>
+
+        <section id="apresentacao">
+            <h3>1. Apresentação / Descrição</h3>
+            <p>
+                O <strong>rabanete</strong> é a raiz carnuda de <em>Raphanus sativus</em>, uma
+                crucífera aparentada com as couves, os nabos e a rúcula. As variedades mais
+                comuns em hortas domésticas e produção biológica são pequenas raízes redondas
+                ou ligeiramente alongadas, com casca vermelha ou bicolor e polpa branca, de
+                sabor <strong>picante</strong> e textura crocante.
+            </p>
+            <p>
+                Em português, além de <strong>rabanete</strong>, usam-se designações como
+                <strong>rabanete vermelho</strong> ou <strong>rabanete francês</strong> (para
+                algumas variedades alongadas). Em inglês, é conhecido como <em>radish</em>.
+                Existem também rabanetes pretos, roxos ou brancos (incluindo o rabanete-daikon),
+                mas nesta ficha o foco principal são os rabanetes pequenos, normalmente
+                consumidos crus, tal como são frequentemente produzidos em hortas biológicas.
+            </p>
+            <p>
+                Como se trata de uma <strong>cultura de raiz</strong>, que se desenvolve
+                diretamente no solo e em contacto íntimo com a terra, o modo de produção
+                assume particular importância. Estudos sobre hortícolas de raiz mostram que
+                pesticidas persistentes, outros contaminantes orgânicos e metais pesados
+                presentes no solo podem ser absorvidos e acumular-se nas raízes comestíveis,
+                sendo depois ingeridos com o alimento. Por isso, o rabanete é um exemplo
+                típico de hortícola em que a <strong>produção biológica</strong> (sem uso de
+                pesticidas de síntese e com maior foco na saúde do solo) é especialmente
+                valorizada.
+            </p>
+        </section>
+
+        <section id="sazonalidade">
+            <h3>2. Sazonalidade (Portugal continental)</h3>
+            <p>
+                O rabanete é uma cultura de <strong>ciclo muito rápido</strong> (4–6 semanas do
+                sementeira à colheita, em condições favoráveis) e prefere temperaturas amenas
+                a frescas. Em clima mediterrânico, como o de grande parte de Portugal
+                continental, adapta-se bem a sementeiras em grande parte do ano, evitando
+                apenas os períodos de calor mais intenso.
+            </p>
+            <ul>
+                <li>
+                    <strong>Sementeira direta em linhas ou a lanço:</strong> geralmente de
+                    <strong>outubro a abril/maio</strong>, consoante a região. Em zonas mais
+                    frescas, pode prolongar-se até ao início do verão; em locais muito quentes,
+                    convém evitar os meses de maior calor para prevenir subida prematura a
+                    flor (espigamento) e raízes lenhosas.
+                </li>
+                <li>
+                    <strong>Colheita:</strong> cerca de 4–6 semanas após a sementeira, quando as
+                    raízes estão bem formadas mas ainda tenras e com sabor equilibrado.
+                </li>
+                <li>
+                    <strong>Produção contínua:</strong> em horta biológica é comum fazer pequenas
+                    sementeiras escalonadas (por exemplo, todas as 2–3 semanas) para ter
+                    rabanetes ao longo de grande parte do outono, inverno e primavera.
+                </li>
+                <li>
+                    <strong>Consociação:</strong> o rabanete é frequentemente semeado entre linhas
+                    de outras culturas de crescimento mais lento (cenoura, alface, couves),
+                    funcionando como "marcador de linha" e aproveitando bem o espaço.
+                </li>
+            </ul>
+            <p class="nota">
+                Fontes portuguesas sobre horticultura biológica e a Revista <em>Jardins</em>
+                apresentam o rabanete como uma das culturas mais fáceis e rápidas para iniciar
+                uma horta, ideal para quem está a aprender ou para envolver crianças no
+                processo.
+            </p>
+        </section>
+
+        <section id="como-consumir">
+            <h3>3. Como consumir</h3>
+            <p>
+                O rabanete é tradicionalmente consumido <strong>cru</strong>, mas admite vários
+                outros usos. Tanto a raiz como as <strong>folhas jovens</strong> são
+                comestíveis, desde que bem lavadas e livres de sinais de doença ou pragas.
+            </p>
+            <ul>
+                <li>
+                    <strong>Em saladas cruas:</strong> em rodelas finas, meias-luas ou tiras
+                    finas, combinado com alface, agrião, rúcula, pepino, cenoura, maçã, etc.
+                    Uma leve marinada em limão ou vinagre suaviza o picante.
+                </li>
+                <li>
+                    <strong>Pickles de rabanete:</strong> rabanete em fatias finas, colocado em
+                    salmoura com vinagre, especiarias e um ligeiro toque de doçura; muito
+                    usado como acompanhamento em pratos asiáticos e em sandes.
+                </li>
+                <li>
+                    <strong>Assado ou salteado:</strong> rabanetes inteiros ou em metades,
+                    temperados com azeite e ervas e assados no forno, ou salteados rapidamente
+                    em frigideira; o sabor torna-se mais suave e adocicado.
+                </li>
+                <li>
+                    <strong>Folhas de rabanete:</strong> podem ser usadas em sopas (tipo caldo
+                    verde), salteados com alho e azeite, omeletes, ou trituradas em pesto,
+                    desde que sejam de plantas saudáveis e de produção biológica.
+                </li>
+                <li>
+                    <strong>Tapas e patés:</strong> fatias finas de rabanete sobre pão com
+                    manteiga, queijos moles, húmus ou patés vegetais, ao estilo de algumas
+                    tapas e petiscos mediterrânicos.
+                </li>
+            </ul>
+            <p class="nota">
+                O sabor picante do rabanete deve-se a compostos de enxofre (glucosinolatos e
+                seus derivados). Se for demasiado intenso, pode-se suavizar mergulhando as
+                fatias em água fria com gelo durante alguns minutos ou usando um tempero
+                ácido (limão, vinagre).
+            </p>
+        </section>
+
+        <section id="receitas">
+            <h3>4. Receitas e preparados (Top 10)</h3>
+            <p>
+                Sugestões de receitas em português (Portugal, Brasil e outros países lusófonos)
+                que utilizam <strong>rabanete fresco</strong>, raiz e, em alguns casos, folhas.
+                Pelo menos cinco referências são em língua portuguesa.
+            </p>
+            <ol>
+                <li>
+                    <strong>Salada com maçã, pepino e rabanete</strong> – receita do Pingo Doce,
+                    com rabanete em fatias finas, pepino, maçã e sementes, ideal como entrada
+                    fresca. <strong>[R1]</strong>
+                </li>
+                <li>
+                    <strong>Picles de rabanete</strong> – receita do Pingo Doce, com rabanete
+                    fatiado, vinagre de maçã, água, mel, sal, pimenta e especiarias.
+                    <strong>[R2]</strong>
+                </li>
+                <li>
+                    <strong>Rabanetes assados</strong> – rabanetes inteiros ou em metades
+                    assados no forno com azeite, sal, pimenta e acompanhados de requeijão ou
+                    outro queijo fresco. Receita do Pingo Doce. <strong>[R3]</strong>
+                </li>
+                <li>
+                    <strong>Canapés de rabanete e pepino</strong> – receita do Pingo Doce, com
+                    rodelas de pepino e rabanete, iogurte, limão e cebolinho.
+                    <strong>[R4]</strong>
+                </li>
+                <li>
+                    <strong>Patê de queijo fresco e rabanete</strong> – receita do Continente
+                    (Feed), com rabanete picado, queijo fresco tipo cream cheese ou requeijão e
+                    cebolinho. <strong>[R5]</strong>
+                </li>
+                <li>
+                    <strong>Salada de rabanetes com couves</strong> – receita Ribapeixe, em que
+                    rabanetes são combinados com couve para caldo verde, alho, vinagre
+                    balsâmico e azeite. <strong>[R6]</strong>
+                </li>
+                <li>
+                    <strong>Salada de ovos e rabanetes</strong> – receita do Celeiro, com alface,
+                    ovos cozidos, rabanetes fatiados e molho simples de limão e gordura vegetal.
+                    <strong>[R7]</strong>
+                </li>
+                <li>
+                    <strong>Salada de rabanete simples</strong> – receita do TudoGostoso, com
+                    rabanete fatiado, alface, tomate e limão; existem várias versões com queijo
+                    minas e ervas frescas. <strong>[R8]</strong>
+                </li>
+                <li>
+                    <strong>Rabanetes para churrasco</strong> – receita do TudoGostoso, em que
+                    os rabanetes são pré-escaldados, temperados e grelhados, resultando num
+                    acompanhamento diferente. <strong>[R9]</strong>
+                </li>
+                <li>
+                    <strong>Saladas de rabanete variadas</strong> – seleção de 20 receitas de
+                    saladas com rabanete no PetitChef, incluindo combinações com cuscuz, abóbora,
+                    batata, rúcula e queijo feta. <strong>[R10]</strong>
+                </li>
+            </ol>
+            <p class="nota">
+                Em todas estas receitas faz sentido usar <strong>rabanete biológico</strong>,
+                sobretudo quando é consumido cru com casca e quando se utilizam também as
+                folhas, reduzindo a exposição a resíduos de pesticidas e aproveitando o
+                potencial nutricional completo da planta.
+            </p>
+        </section>
+
+        <section id="beneficios">
+            <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+            <p>
+                O rabanete é uma raiz com baixo valor energético, mas rica em compostos
+                bioativos característicos das crucíferas. Revisões recentes analisaram a sua
+                <strong>composição fitoquímica</strong> e o potencial em várias áreas de saúde.
+            </p>
+            <ul>
+                <li>
+                    <strong>Vitamina C e antioxidantes</strong> – 100&nbsp;g de rabanete cru
+                    fornecem cerca de 15–20&nbsp;mg de vitamina C, além de compostos fenólicos
+                    e, em variedades de cor intensa, antocianinas. Estudos analíticos mostram
+                    que a combinação de vitamina C, polifenóis e outros antioxidantes contribui
+                    para a capacidade de neutralizar radicais livres em extratos de rabanete.
+                </li>
+                <li>
+                    <strong>Glucosinolatos e isotiocianatos</strong> – tal como outras crucíferas,
+                    o rabanete contém glucosinolatos que, quando a planta é cortada ou mastigada,
+                    são convertidos em isotiocianatos. Revisões sobre o potencial nutracêutico
+                    do rabanete indicam atividade antioxidante, anti-inflamatória e efeitos
+                    promissores em modelos de cancro, doenças metabólicas e proteção hepática,
+                    ainda que a maior parte da evidência venha de estudos em animais e modelos
+                    celulares, e não de grandes ensaios clínicos. [M1, M2, M3]
+                </li>
+                <li>
+                    <strong>Compostos de enxofre e função hepática</strong> – alguns autores
+                    destacam a capacidade dos compostos de enxofre presentes no rabanete para
+                    modular enzimas de detoxificação hepática em modelos experimentais.
+                    Isto ajuda a explicar a associação tradicional do rabanete a "limpeza do
+                    fígado", embora sejam necessárias mais evidências em humanos. [M1, M2]
+                </li>
+                <li>
+                    <strong>Raiz, folhas, sementes e rebentos</strong> – estudos recentes mostram
+                    que não só a raiz, mas também as folhas, sementes e rebentos de rabanete
+                    possuem elevado teor de fitoquímicos, por vezes até superior ao da raiz.
+                    Isto reforça a ideia de aproveitar melhor a planta em receitas que usem
+                    diferentes partes (por exemplo, folhas em sopas ou salteados). [M4, M5]
+                </li>
+                <li>
+                    <strong>Densidade energética baixa e fibra</strong> – com cerca de 16–19&nbsp;kcal
+                    e 1,5–2&nbsp;g de fibra por 100&nbsp;g, o rabanete aumenta o volume das
+                    refeições com poucas calorias, o que é útil em estratégias de controlo de
+                    peso e de melhoria da saciedade quando incluído num padrão alimentar rico
+                    em hortícolas.
+                </li>
+                <li>
+                    <strong>Raiz biológica e carga de contaminantes</strong> – ao mesmo tempo que
+                    fornece estes compostos benéficos, o rabanete, como raiz, pode acumular
+                    também elementos indesejáveis se estes estiverem presentes no solo (por
+                    exemplo, pesticidas persistentes e metais pesados). Estudos de avaliação de
+                    risco em hortícolas de raiz mostram que resíduos de pesticidas e elementos
+                    potencialmente tóxicos podem concentrar-se em raízes comestíveis de culturas
+                    como cenoura, batata e rabanete, reforçando a importância da qualidade do
+                    solo e da redução do uso de químicos sintéticos. [B1–B4]
+                </li>
+            </ul>
+            <p class="nota">
+                Em síntese, o rabanete reúne vários argumentos interessantes (vitamina C,
+                compostos de enxofre, polifenóis) e tem um papel positivo numa alimentação
+                rica em vegetais. No entanto, deve ser visto como parte de um <strong>padrão
+                alimentar globalmente saudável</strong> (tipo Mediterrânico), e não como
+                "remédio" isolado.
+            </p>
+        </section>
+
+        <section id="nutricao">
+            <h3>6. Propriedades nutricionais</h3>
+            <p>
+                Valores aproximados por 100&nbsp;g de parte comestível de <strong>rabanete</strong>
+                (raiz), com base em tabelas internacionais (USDA / FoodData Central, MyFoodData,
+                Verywell Fit, Signos). Os valores variam com a variedade, o grau de maturação,
+                o solo e as práticas de produção (incluindo biológica).
+            </p>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Nutriente</th>
+                    <th>Rabanete cru<br>(100&nbsp;g, raiz)</th>
+                    <th>Rabanete cozido em água<br>(100&nbsp;g, escorrido, sem sal)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Energia</td>
+                    <td>≈ 16–19&nbsp;kcal</td>
+                    <td>≈ 12–18&nbsp;kcal</td>
+                </tr>
+                <tr>
+                    <td>Água</td>
+                    <td>≈ 94&nbsp;g</td>
+                    <td>≈ 94&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Proteína</td>
+                    <td>≈ 0,7–0,8&nbsp;g</td>
+                    <td>≈ 0,7–0,9&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Hidratos de carbono totais</td>
+                    <td>≈ 3,4–3,9&nbsp;g</td>
+                    <td>≈ 3–3,5&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Açúcares</td>
+                    <td>≈ 2,0–2,3&nbsp;g</td>
+                    <td>≈ 1,8–2,2&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Fibra alimentar</td>
+                    <td>≈ 1,5–2,0&nbsp;g</td>
+                    <td>≈ 1,3–1,8&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Lípidos totais</td>
+                    <td>≈ 0,1–0,2&nbsp;g</td>
+                    <td>≈ 0,1–0,2&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Vitamina C</td>
+                    <td>≈ 15–20&nbsp;mg</td>
+                    <td>Reduz-se com a cozedura (parte perdida na água e pelo calor)</td>
+                </tr>
+                <tr>
+                    <td>Folato (vit. B9)</td>
+                    <td>≈ 25–30&nbsp;µg</td>
+                    <td>Ligeira redução com a cozedura</td>
+                </tr>
+                <tr>
+                    <td>Potássio</td>
+                    <td>≈ 230–240&nbsp;mg</td>
+                    <td>≈ 220–230&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Cálcio</td>
+                    <td>≈ 25–30&nbsp;mg</td>
+                    <td>≈ 25–30&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Índice glicémico (IG)</td>
+                    <td>Muito baixo (aprox. 15)</td>
+                    <td>Muito baixo, desde que não se adicionem açúcares</td>
+                </tr>
+                </tbody>
+            </table>
+            <p class="nota">
+                As folhas de rabanete têm, em geral, teor superior de alguns minerais e
+                antioxidantes, mas também podem acumular contaminantes se o solo estiver poluído.
+                Em produção biológica, o risco tende a ser menor, embora continue a ser
+                importante manter uma boa rotação e evitar áreas com histórico de contaminação.
+            </p>
+        </section>
+
+        <section id="utilidades">
+            <h3>7. Utilidades e aplicações (não apenas alimentares)</h3>
+            <ul>
+                <li>
+                    <strong>Cultura de ciclo rápido para "preencher espaços":</strong> o rabanete
+                    é ideal para ocupar espaços entre culturas mais lentas (ex.: cenoura,
+                    couves), sendo colhido antes destas necessitarem de todo o espaço.
+                </li>
+                <li>
+                    <strong>"Marcador de linhas":</strong> devido à germinação rápida, é usado em
+                    consociação com cenoura ou outras culturas de semente pequena para marcar a
+                    linha de sementeira e facilitar as mondas.
+                </li>
+                <li>
+                    <strong>Estruturação superficial do solo:</strong> as pequenas raízes ajudam
+                    a criar canais na camada superficial, facilitando a infiltração de água e a
+                    circulação de ar; raízes que ficam no solo após a colheita funcionam como
+                    "bio-furadores" em pequena escala.
+                </li>
+                <li>
+                    <strong>Fonte de biomassa para compostagem:</strong> folhas e raízes que não
+                    são consumidas (por exemplo, por excesso de picância ou tamanho) podem ser
+                    devolvidas ao solo via compostagem, contribuindo para o ciclo de nutrientes.
+                </li>
+                <li>
+                    <strong>Valor educativo:</strong> pela rapidez com que germina e cresce, o
+                    rabanete é excelente para projetos de hortas escolares e familiares, dando
+                    um retorno muito rápido a quem está a aprender.
+                </li>
+            </ul>
+        </section>
+
+        <section id="permacultura">
+            <h3>8. Grau de funcionalidade em permacultura</h3>
+            <p><strong>Classificação proposta: 8/10</strong></p>
+            <ul class="lista-permacultura">
+                <li>
+                    <strong>Funções principais:</strong> produção rápida de hortícola de raiz
+                    fresco, melhoria da estrutura superficial do solo, cobertura parcial do
+                    solo, consociação com outras espécies, utilização das folhas em cozinha e
+                    compostagem.
+                </li>
+                <li>
+                    <strong>Vantagens em sistemas biológicos:</strong> ciclo curto, fácil de
+                    integrar em rotações e consociações, boa aceitação culinária, permite
+                    colher alimento num curto espaço de tempo após iniciar uma nova parcela.
+                </li>
+                <li>
+                    <strong>Limitações:</strong> raiz pouco profunda (não explora camadas
+                    profundas de solo), sensível ao calor excessivo e ao stress hídrico, pode
+                    ser atacado por alticas (pequenos escaravelhos que fazem buracos nas folhas)
+                    e outras pragas típicas de crucíferas.
+                </li>
+            </ul>
+            <p class="nota">
+                Em permacultura, o rabanete é um elemento muito útil pela velocidade, múltiplas
+                utilizações e capacidade de se encaixar em quase todos os desenhos de horta
+                biológica, sobretudo nas estações mais frescas.
+            </p>
+        </section>
+
+        <section id="referencias">
+            <h3>9. Referências</h3>
+
+            <div class="referencias-subsecao">9.1. Apresentação / contexto</div>
+            <ul class="referencias-lista">
+                <li><strong>D1</strong> – Wikipedia (EN). "Radish" – descrição botânica de <em>Raphanus sativus</em>, variedades e usos. Disponível em: <a href="https://en.wikipedia.org/wiki/Radish" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Radish</a></li>
+                <li><strong>D2</strong> – Verywell Fit. "Radish Nutrition Facts and Health Benefits." (atualizado em 2024). Disponível em: <a href="https://www.verywellfit.com/radish-nutrition-calories-2241817" target="_blank" rel="noopener">https://www.verywellfit.com/radish-nutrition-calories-2241817</a></li>
+                <li><strong>D3</strong> – WebMD. "Radish: Health Benefits, Nutrition and Medicinal Uses." Disponível em: <a href="https://www.webmd.com/diet/health-benefits-radish" target="_blank" rel="noopener">https://www.webmd.com/diet/health-benefits-radish</a></li>
+                <li><strong>D4</strong> – TudoGostoso. "Rabanete: conheça seus benefícios e como adicionar essa delícia nas receitas." Disponível em: <a href="https://www.tudogostoso.com.br/noticias/rabanete-conheca-seus-beneficios-e-como-adicionar-essa-delicia-nas-receitas-a697.htm" target="_blank" rel="noopener">https://www.tudogostoso.com.br/.../rabanete-conheca-seus-beneficios...</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.2. Sazonalidade e cultivo (Portugal / clima semelhante)</div>
+            <ul class="referencias-lista">
+                <li><strong>S1</strong> – Revista Jardins. "Rabanete: ficha de cultivo." Disponível em: <a href="https://revistajardins.pt/plantas/horticolas/rabanete-ficha-cultivo/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/horticolas/rabanete-ficha-cultivo/</a></li>
+                <li><strong>S2</strong> – Revista Jardins / Agrobio. "Hortícola do mês: Rabanete – uma excelente opção para dietas." Inclui notas sobre cultivo e época. Disponível em: <a href="https://revistajardins.pt/plantas/horticolas/rabanete-uma-excelente-opcao-para-dietas/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/horticolas/rabanete-uma-excelente-opcao-para-dietas/</a></li>
+                <li><strong>S3</strong> – Feed Continente. "Rabanete: fonte de minerais e vitamina C." (inclui informação geral sobre consumo cru/cozinhado). Disponível em: <a href="https://feed.continente.pt/alimentacao/rabanete-fonte-de-minerais-e-vitamina-c" target="_blank" rel="noopener">https://feed.continente.pt/alimentacao/rabanete-fonte-de-minerais-e-vitamina-c</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.3. Propriedades nutricionais</div>
+            <ul class="referencias-lista">
+                <li><strong>N1</strong> – USDA FoodData Central. "Radishes, raw." Base de dados oficial de composição por 100&nbsp;g. Disponível em: <a href="https://fdc.nal.usda.gov" target="_blank" rel="noopener">https://fdc.nal.usda.gov</a> (pesquisa por "radishes, raw").</li>
+                <li><strong>N2</strong> – MyFoodData. "Nutrition Facts for Raw Radishes." Disponível em: <a href="https://tools.myfooddata.com/nutrition-facts/169276/wt1" target="_blank" rel="noopener">https://tools.myfooddata.com/nutrition-facts/169276/wt1</a></li>
+                <li><strong>N3</strong> – Signos. "Radish Glycemic Index: Nutritional Facts." Disponível em: <a href="https://www.signos.com/foods/radish-glycemic-index" target="_blank" rel="noopener">https://www.signos.com/foods/radish-glycemic-index</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.4. Benefícios para a saúde e propriedades medicinais</div>
+            <ul class="referencias-lista">
+                <li><strong>M1</strong> – Manivannan A. et al. "Deciphering the Nutraceutical Potential of Raphanus sativus – A Comprehensive Overview." <em>Plants</em>, 2019. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6412475/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6412475/</a></li>
+                <li><strong>M2</strong> – Gamba M. et al. "Nutritional and phytochemical characterization of radish (<em>Raphanus sativus</em> L.)." <em>Postharvest Biology and Technology</em>, 2021. Resumo em: <a href="https://www.sciencedirect.com/science/article/pii/S0924224421003058" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S0924224421003058</a></li>
+                <li><strong>M3</strong> – Geng X. et al. "Nutritional and Phytochemical Characterization of Radish and Its Potential Health Benefits." <em>Foods</em>, 2025. Disponível em: <a href="https://www.mdpi.com/2304-8158/14/18/3270" target="_blank" rel="noopener">https://www.mdpi.com/2304-8158/14/18/3270</a></li>
+                <li><strong>M4</strong> – ACS / Journal of Agricultural and Food Chemistry. "Bioactive Compounds and Health Benefits of Radish Greens." 2025. Disponível em: <a href="https://pubs.acs.org/doi/10.1021/acs.jafc.5c08263" target="_blank" rel="noopener">https://pubs.acs.org/doi/10.1021/acs.jafc.5c08263</a></li>
+                <li><strong>M5</strong> – Guo C. et al. "Comparative analysis of phytochemicals and antioxidant capacity in radish seeds and sprouts." <em>Frontiers in Plant Science</em>, 2025. Disponível em: <a href="https://www.frontiersin.org/articles/10.3389/fpls.2025.1531570/full" target="_blank" rel="noopener">https://www.frontiersin.org/articles/10.3389/fpls.2025.1531570/full</a></li>
+                <li><strong>M6</strong> – Dale Pinnock. "The health benefits of radishes." Artigo de síntese em linguagem acessível, com referências a estudos sobre glucosinolatos e isotiocianatos. Disponível em: <a href="https://www.dalepinnock.com/blog/the-health-benefits-of-radishes" target="_blank" rel="noopener">https://www.dalepinnock.com/blog/the-health-benefits-of-radishes</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.5. Produção biológica, culturas de raiz e contaminantes do solo</div>
+            <ul class="referencias-lista">
+                <li><strong>B1</strong> – Knez E. et al. "Root Vegetables—Composition, Health Effects, and Contaminants." <em>International Journal of Environmental Research and Public Health</em>, 2022. Disponível em: <a href="https://www.mdpi.com/1660-4601/19/23/15531" target="_blank" rel="noopener">https://www.mdpi.com/1660-4601/19/23/15531</a></li>
+                <li><strong>B2</strong> – Hwang J.I. et al. "Bioconcentration factor-based management of soil pesticide residues: Endosulfan uptake by carrot and potato plants." <em>Science of the Total Environment</em>, 2018. Resumo em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0048969718302493" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S0048969718302493</a></li>
+                <li><strong>B3</strong> – Saito T. et al. "A comparison of dieldrin residues in various soils and crops." <em>Soil Science and Plant Nutrition</em>, 2012 – mostra acumulação de pesticida em raízes de cenoura, rabanete japonês e batata. Disponível em: <a href="https://www.tandfonline.com/doi/full/10.1080/00380768.2012.694802" target="_blank" rel="noopener">https://www.tandfonline.com/doi/full/10.1080/00380768.2012.694802</a></li>
+                <li><strong>B4</strong> – Karimi P. et al. "Global evaluation of potentially harmful elements (PHEs) in vegetables irrigated with contaminated water." <em>Environmental Health Engineering and Management Journal</em>, 2021 – discute bioacumulação de metais pesados em raízes e outros órgãos. PDF em: <a href="https://ehemj.com/article-1-834-en.pdf" target="_blank" rel="noopener">https://ehemj.com/article-1-834-en.pdf</a></li>
+                <li><strong>B5</strong> – Vigar V. et al. "A Systematic Review of Organic Versus Conventional Food Consumption: Is There a Measurable Benefit on Human Health?" <em>Nutrients</em>, 2019 – inclui síntese sobre níveis de pesticidas em dietas orgânicas vs. convencionais. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7019963/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7019963/</a></li>
+                <li><strong>B6</strong> – Rahman A. et al. "Evaluating Nutritional Value and Impact on Human Health of Organic Versus Conventional Foods." <em>Foods</em>, 2024 – discute diferenças em nutrientes, cádmio e resíduos de pesticidas, com destaque para reduções médias em alimentos biológicos. Disponível em: <a href="https://www.mdpi.com/2304-8158/13/2/208" target="_blank" rel="noopener">https://www.mdpi.com/2304-8158/13/2/208</a></li>
+                <li><strong>B7</strong> – Matt D. et al. "Quality of Organic vs. Conventional Food and Effects on Health." Relatório de revisão (2011) – conclui que matérias-primas vegetais biológicas apresentam níveis significativamente mais baixos de resíduos de pesticidas. PDF em: <a href="https://orgprints.org/19504/1/Report_2011_%281%29.pdf" target="_blank" rel="noopener">https://orgprints.org/19504/1/Report_2011_(1).pdf</a></li>
+                <li><strong>B8</strong> – Bansal O.P. "Pesticide residues in vegetables and fruits: A review." <em>International Journal of Current Science Research and Review</em>, 2025. PDF em: <a href="https://ijcsrr.org/wp-content/uploads/2025/04/18-1404-2025.pdf" target="_blank" rel="noopener">https://ijcsrr.org/wp-content/uploads/2025/04/18-1404-2025.pdf</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.6. Receitas (Top 10)</div>
+            <ul class="referencias-lista">
+                <li><strong>R1</strong> – Pingo Doce. "Salada com maçã, pepino e rabanete." Disponível em: <a href="https://www.pingodoce.pt/receitas/salada-com-maca-pepino-e-rabanete/" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/salada-com-maca-pepino-e-rabanete/</a></li>
+                <li><strong>R2</strong> – Pingo Doce. "Picles de rabanete." Disponível em: <a href="https://www.pingodoce.pt/receitas/picles-de-rabanete/" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/picles-de-rabanete/</a></li>
+                <li><strong>R3</strong> – Pingo Doce. "Rabanetes assados." Disponível em: <a href="https://www.pingodoce.pt/receitas/rabanetes-assados/" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/rabanetes-assados/</a></li>
+                <li><strong>R4</strong> – Pingo Doce. "Canapés de rabanete e pepino." Disponível em: <a href="https://www.pingodoce.pt/receitas/canapes-de-rabanete-e-pepino/" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/canapes-de-rabanete-e-pepino/</a></li>
+                <li><strong>R5</strong> – Feed Continente. "Patê de queijo fresco e rabanete Yämmi." Disponível em: <a href="https://feed.continente.pt/receitas/pate-de-queijo-fresco-e-rabanete" target="_blank" rel="noopener">https://feed.continente.pt/receitas/pate-de-queijo-fresco-e-rabanete</a></li>
+                <li><strong>R6</strong> – Ribapeixe. "Salada de Rabanetes com Couves." Disponível em: <a href="https://www.ribapeixe.pt/receitas/salada-de-rabanetes-com-couves" target="_blank" rel="noopener">https://www.ribapeixe.pt/receitas/salada-de-rabanetes-com-couves</a></li>
+                <li><strong>R7</strong> – Celeiro. "Salada de Ovos e Rabanetes." Disponível em: <a href="https://www.celeiro.pt/receitas/salada-de-ovos-e-rabanetes" target="_blank" rel="noopener">https://www.celeiro.pt/receitas/salada-de-ovos-e-rabanetes</a></li>
+                <li><strong>R8</strong> – TudoGostoso. "Salada de Rabanete." Exemplo: <a href="https://www.tudogostoso.com.br/receita/123628-salada-de-rabanete.html" target="_blank" rel="noopener">https://www.tudogostoso.com.br/receita/123628-salada-de-rabanete.html</a></li>
+                <li><strong>R9</strong> – TudoGostoso. "Rabanetes para churrasco." Disponível em: <a href="https://www.tudogostoso.com.br/receita/109844-rabanetes-para-churrasco.html" target="_blank" rel="noopener">https://www.tudogostoso.com.br/receita/109844-rabanetes-para-churrasco.html</a></li>
+                <li><strong>R10</strong> – PetitChef. "Receitas de salada de rabanete (20 receitas)." Disponível em: <a href="https://pt.petitchef.com/receitas/receitas-de-salada-de-rabanete" target="_blank" rel="noopener">https://pt.petitchef.com/receitas/receitas-de-salada-de-rabanete</a></li>
+            </ul>
+
+            <p class="nota">
+                Procurou-se privilegiar fontes relativamente estáveis (artigos com DOI, revistas
+                científicas, grandes portais de receitas). Ainda assim, é natural que alguns
+                links mudem ao longo do tempo.
+            </p>
+        </section>
+
+        <div class="topo-link">
+            <a href="#topo">Voltar ao topo ▲</a>
+        </div>
+    </article>
+</main>
+</body>
+</html>

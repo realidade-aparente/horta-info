@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Pepino | Horta de Amigos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body id="topo">
+<header>
+    <h1>Horta de Amigos</h1>
+    <p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar com família e amigos.</p>
+</header>
+
+<nav>
+    <a href="index.html">Início</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="moringa.html">Moringa</a>
+    <a href="acelga.html">Acelga</a>
+    <a href="agriao-terra.html">Agrião-de-terra</a>
+    <a href="aipo.html">Aipo (talos e folhas)</a>
+    <a href="alface.html">Alface</a>
+    <a href="alho.html">Alho</a>
+    <a href="alho-frances.html">Alho-francês</a>
+    <a href="aneto.html">Aneto / Endro</a>
+    <a href="abobora-butternut.html">Abóbora butternut</a>
+    <a href="batata-comum.html">Batata comum</a>
+    <a href="batata-doce.html">Batata-doce</a>
+    <a href="beringela.html">Beringela</a>
+    <a href="beterraba.html">Beterraba</a>
+    <a href="brocolo.html">Brócolo</a>
+    <a href="canonigos.html">Canónigos</a>
+    <a href="coentros.html">Coentros</a>
+    <a href="cebola.html">Cebola</a>
+    <a href="cebola-fresca.html">Cebola fresca</a>
+    <a href="cenoura.html">Cenoura</a>
+    <a href="couve-chinesa.html">Couve chinesa</a>
+    <a href="couve-rabano.html">Couve-rábano</a>
+    <a href="couve-repolho.html">Couve repolho</a>
+    <a href="couve-toscana.html">Couve toscana</a>
+    <a href="curgete.html">Curgete</a>
+    <a href="ervilhas-frescas.html">Ervilhas frescas</a>
+    <a href="espinafre.html">Espinafre</a>
+    <a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+    <a href="feijao-verde.html">Feijão verde</a>
+    <a href="milho-doce.html">Milho doce</a>
+    <a href="mizuna.html">Mizuna</a>
+    <a href="morangos.html">Morangueiro / Morangos</a>
+    <a href="nabo.html">Nabo</a>
+    <a href="pak-choi.html">Pak choi</a>
+    <a href="pepino.html" class="ativa">Pepino</a>
+</nav>
+
+<main>
+    <article class="planta">
+        <div class="planta-cabecalho">
+            <div class="planta-titulo">
+                <h2>Pepino (<em>Cucumis sativus</em>)</h2>
+                <p><strong>Outros nomes em português:</strong> pepino de salada, pepino fatiado, pepino para conserva (quando destinado a pickles).</p>
+                <p><strong>Nome mais comum em inglês:</strong> cucumber.</p>
+
+                <div class="tags-nomes">
+                    <span>Família: Cucurbitaceae</span>
+                    <span>Parte usada: fruto imaturo (pepino fresco)</span>
+                    <span>Tipo: hortícola de fruto, clima quente</span>
+                    <span>Produção: <strong>biológica</strong></span>
+                </div>
+
+                <div class="info-rapida">
+                    <div>
+                        <strong>Origem</strong>
+                        Vegetal originário do sul da Ásia, cultivado há milhares de anos e hoje comum em hortas e explorações agrícolas em todo o mundo.
+                    </div>
+                    <div>
+                        <strong>Uso principal</strong>
+                        Consumo cru em saladas, sandes e sumos, e em pickles/conservas; por vezes em sopas frias (gaspacho, tarator, etc.).
+                    </div>
+                    <div>
+                        <strong>Perfil nutricional</strong>
+                        Extremamente rico em água, muito pobre em calorias, com alguma fibra, vitamina K, vitamina C, potássio e compostos fenólicos (incluindo cucurbitacinas em pequenas quantidades).
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="imagem-container-externo">
+                    <div class="imagem-container">
+                        <img src="imagens/pepino.png" alt="Pepinos frescos biológicos com casca verde">
+                    </div>
+                </div>
+                <p class="imagem-legenda">Imagem ilustrativa de pepinos frescos de produção biológica, prontos a consumir em saladas.</p>
+            </div>
+        </div>
+
+        <section id="apresentacao">
+            <h3>1. Apresentação / Descrição</h3>
+            <p>
+                O <strong>pepino</strong> é o fruto imaturo de <em>Cucumis sativus</em>, uma planta
+                rasteira ou trepadora da família Cucurbitaceae, a mesma das abóboras, curgetes e
+                melões. Trata-se de um fruto alongado, de casca geralmente verde, polpa muito rica
+                em água e sementes moles comestíveis.
+            </p>
+            <p>
+                Em português usamos sobretudo a designação <strong>pepino</strong> ou
+                <strong>pepino de salada</strong>; em inglês, o termo comum é <em>cucumber</em>.
+                Existem vários tipos: pepinos lisos de casca fina, pepinos com espinhos suaves,
+                pepinos mais pequenos para conserva (“pickling cucumbers”), e variedades menos
+                amargas desenvolvidas para consumo em fresco.
+            </p>
+            <p>
+                Nesta ficha consideramos <strong>pepino fresco de produção biológica</strong>,
+                cultivado sem fertilizantes e pesticidas de síntese. Como se trata de um fruto
+                muito consumido <strong>cru com casca</strong> (ou com descasque mínimo), a opção
+                biológica é particularmente interessante para reduzir a exposição a resíduos de
+                pesticidas sistémicos e de contacto presentes na superfície.
+            </p>
+        </section>
+
+        <section id="sazonalidade">
+            <h3>2. Sazonalidade (Portugal continental)</h3>
+            <p>
+                O pepino é uma cultura de <strong>tempo quente</strong>, exigindo temperaturas
+                amenas a quentes e boa luminosidade. Em Portugal continental, a produção ao ar
+                livre concentra-se nos meses mais quentes, com possível extensão em estufa ou túnel.
+            </p>
+            <ul>
+                <li><strong>Sementeira em estufa / viveiro:</strong> fim do inverno / início da primavera (fevereiro–março) para transplante quando passar o risco de geadas.</li>
+                <li><strong>Transplante / sementeira direta (ar livre):</strong> normalmente entre abril e junho, conforme a região e o risco de frio tardio.</li>
+                <li><strong>Colheita (ar livre):</strong> de cerca de junho/julho até setembro, dependendo da data de plantação e da variedade.</li>
+                <li><strong>Pico de pepino nacional em fresco:</strong> verão (junho–agosto), coincidindo com o auge das saladas frias.</li>
+                <li><strong>Produção de estufa/túnel:</strong> permite antecipar a colheita para a primavera e prolongá-la até ao outono, sobretudo em sistemas biológicos bem manejados.</li>
+            </ul>
+            <p class="nota">
+                Em pequena horta biológica, é frequente conduzir o pepino em tutor (rede, fio) para
+                poupar espaço e melhorar a circulação de ar, reduzindo problemas de fungos e
+                facilitando a colheita.
+            </p>
+        </section>
+
+        <section id="como-consumir">
+            <h3>3. Como consumir</h3>
+            <p>
+                O pepino é um dos hortícolas mais usados <strong>em cru</strong>, pela sua textura
+                crocante e sabor suave. Em produção biológica, a casca pode ser consumida com mais
+                confiança, desde que bem lavada, tirando partido da fibra e de parte dos compostos
+                fenólicos presentes na epiderme.
+            </p>
+            <ul>
+                <li>
+                    <strong>Saladas simples ou mistas:</strong> em rodelas, meias-luas ou cubos,
+                    combinado com tomate, cebola, alface, pimentos, ervas aromáticas, queijo fresco
+                    ou feta, azeitonas, etc.
+                </li>
+                <li>
+                    <strong>Saladas com iogurte e ervas (tipo “tzatziki”):</strong> pepino ralado ou
+                    muito bem picado, misturado com iogurte, alho, hortelã ou endro, azeite e
+                    limão, como molho para acompanhar pão, crudités ou pratos principais.
+                </li>
+                <li>
+                    <strong>Sopas frias:</strong> como o <em>gazpacho</em> (pepino, tomate, pimento,
+                    cebola, alho, azeite, vinagre) ou sopas frias de pepino com iogurte e ervas.
+                </li>
+                <li>
+                    <strong>Sumos e águas aromatizadas:</strong> rodelas de pepino com limão,
+                    hortelã e outras frutas em água fresca; ou pepino batido com maçã, limão e
+                    gengibre em sumos e “smoothies”.
+                </li>
+                <li>
+                    <strong>Pickles e conservas:</strong> pepino em salmoura com vinagre, ervas,
+                    alho, sementes de mostarda, etc., para consumir em pequenas quantidades como
+                    condimento.
+                </li>
+                <li>
+                    <strong>Salteados rápidos e pratos asiáticos:</strong> em algumas cozinhas
+                    asiáticas o pepino é salteado rapidamente ou usado em “stir-fry” rápidos,
+                    mantendo alguma crocância.
+                </li>
+            </ul>
+            <p class="nota">
+                Algumas pessoas são sensíveis à presença de compostos amargos (cucurbitacinas) em
+                pepinos, sobretudo em frutos mais velhos ou stressados. Descartar pontas muito
+                amargas e preferir frutos jovens e de produção biológica ajuda a minimizar o
+                problema.
+            </p>
+        </section>
+
+        <section id="receitas">
+            <h3>4. Receitas e preparados (Top 10)</h3>
+            <p>
+                Sugestões de receitas em português (Portugal, Brasil, outros países lusófonos) com
+                <strong>pepino fresco</strong>. Pelo menos cinco referências são em língua portuguesa.
+            </p>
+            <ol>
+                <li>
+                    <strong>Salada de pepino com queijo</strong> – receita do Pingo Doce, em que o
+                    pepino é combinado com queijo fresco, ervas, azeite e limão. <strong>[R1]</strong>
+                </li>
+                <li>
+                    <strong>Salada de pepino, maçã e mirtilos</strong> – receita do Pingo Doce com
+                    pepino, maçã, aipo e folhas verdes, ótima para dias quentes. <strong>[R2]</strong>
+                </li>
+                <li>
+                    <strong>Salada grega</strong> – receita do Continente com pepino, tomate,
+                    cebola roxa, queijo feta, azeitonas e orégãos. <strong>[R3]</strong>
+                </li>
+                <li>
+                    <strong>Molho tipo “tzatziki” com pepino</strong> – receita de molho de iogurte
+                    com pepino, alho, limão e hortelã, usada como dip ou acompanhamento (diversas
+                    versões em sites portugueses e brasileiros). <strong>[R4]</strong>
+                </li>
+                <li>
+                    <strong>Gazpacho andaluz com pepino</strong> – sopa fria à base de tomate,
+                    pepino, pimento, cebola, alho, azeite e vinagre; há variantes em sites
+                    portugueses como Pingo Doce, Teleculinária e em sites brasileiros.
+                    <strong>[R5]</strong>
+                </li>
+                <li>
+                    <strong>Salada de pepino ao estilo asiático</strong> – salada de pepino em
+                    rodelas ou tiras, temperada com molho de soja, vinagre de arroz, gengibre,
+                    alho e sementes de sésamo (várias receitas em PT/BR, por exemplo no
+                    TudoGostoso). <strong>[R6]</strong>
+                </li>
+                <li>
+                    <strong>Pickles rápidos de pepino</strong> – rodelas de pepino marinado em
+                    vinagre, água, sal, açúcar e especiarias, para consumir após algumas horas a
+                    alguns dias. <strong>[R7]</strong>
+                </li>
+                <li>
+                    <strong>Sandes / wraps com pepino</strong> – sandes frias com pepino, tomate,
+                    alface, húmus ou queijos moles, muito comuns em blogues de alimentação
+                    saudável. <strong>[R8]</strong>
+                </li>
+                <li>
+                    <strong>Sumo verde com pepino</strong> – pepino, maçã, limão e gengibre (com
+                    variações com espinafre, couve, etc.), muito popular em sites de receitas
+                    saudáveis em português. <strong>[R9]</strong>
+                </li>
+                <li>
+                    <strong>Molho de iogurte e pepino para aproveitamento de sobras</strong> – por
+                    exemplo, a receita de molho tzatziki do Pingo Doce (vídeo de combate ao
+                    desperdício) ou semelhantes, adaptáveis para usar pepino biológico que esteja
+                    a precisar de ser consumido. <strong>[R10]</strong>
+                </li>
+            </ol>
+            <p class="nota">
+                Em todas estas receitas faz sentido usar <strong>pepino biológico</strong>, sobretudo
+                quando se consome com casca ou com mínima cozedura. Nas receitas originalmente
+                pensadas para pepino convencional, o modo de preparação é inteiramente aplicável a
+                pepino biológico.
+            </p>
+        </section>
+
+        <section id="beneficios">
+            <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+            <p>
+                O pepino é um vegetal com <strong>densidade energética muito baixa</strong> e
+                elevado teor de água, o que o torna interessante para hidratação, controlo de peso
+                e aumento do volume alimentar. Além disso, contém compostos bioativos específicos
+                da família Cucurbitaceae.
+            </p>
+            <ul>
+                <li>
+                    <strong>Hidratação e baixa densidade calórica</strong> – com cerca de 95&nbsp;% de
+                    água e ~15&nbsp;kcal por 100&nbsp;g, o pepino contribui para a ingestão hídrica
+                    diária e aumenta o volume das refeições com muito poucas calorias. Estudos de
+                    revisão sobre pepino destacam o seu papel em estratégias de hidratação e
+                    controlo de peso quando integra uma alimentação rica em hortícolas.
+                </li>
+                <li>
+                    <strong>Vitamina K, vitamina C e minerais</strong> – pepinos fornecem quantidades
+                    modestas de <strong>vitamina K</strong> (importante para a coagulação e saúde
+                    óssea), <strong>vitamina C</strong>, potássio e pequenas quantidades de outros
+                    micronutrientes. Embora não sejam tão concentrados como outros vegetais, podem
+                    contribuir para o total diário, principalmente quando consumidos com casca.
+                </li>
+                <li>
+                    <strong>Compostos fenólicos e cucurbitacinas</strong> – o pepino contém
+                    polifenóis, flavonoides e cucurbitacinas em pequenas quantidades. Estudos
+                    laboratoriais apontam para potenciais efeitos antioxidantes, anti-inflamatórios
+                    e antiproliferativos destes compostos; no entanto, as doses e formas
+                    utilizadas nos ensaios são muito diferentes do consumo habitual de pepino
+                    fresco.
+                </li>
+                <li>
+                    <strong>Efeitos sobre metabolismo e risco cardiometabólico</strong> – revisões
+                    recentes sobre pepino e outros cucurbitáceos referem potenciais efeitos
+                    hipolipemiantes, ligeiras melhorias de parâmetros oxidativos e inflamatórios e
+                    contributo para controlo glicémico em modelos animais e estudos preliminares
+                    em humanos, sobretudo quando pepino e outros vegetais de baixa densidade
+                    energética substituem alimentos altamente processados.
+                </li>
+                <li>
+                    <strong>Função digestiva</strong> – o teor de água e fibra do pepino ajuda a
+                    suavizar o trânsito intestinal e pode contribuir para maior conforto
+                    digestivo, sobretudo quando inserido num padrão alimentar globalmente rico em
+                    fibra.
+                </li>
+                <li>
+                    <strong>Utilização tópica (cosmética)</strong> – extratos de pepino são usados
+                    em produtos cosméticos para pele, olhos e cabelo, baseados no potencial
+                    antioxidante, hidratante e calmante observado em estudos in vitro e em
+                    formulações experimentais. Estes usos são interessantes, mas não substituem
+                    terapêuticas médicas quando necessárias.
+                </li>
+                <li>
+                    <strong>Produção biológica vs. convencional</strong> – tal como noutros
+                    hortícolas, revisões sobre agricultura biológica apontam para menores níveis
+                    de resíduos de pesticidas e, em alguns casos, perfis um pouco diferentes de
+                    antioxidantes nos produtos biológicos. Em culturas consumidas cruas com casca,
+                    como o pepino, isto pode ser particularmente relevante para quem valoriza a
+                    redução da exposição cumulativa a pesticidas.
+                </li>
+            </ul>
+            <p class="nota">
+                Apesar de todo este potencial, o pepino não deve ser encarado como “medicamento”
+                isolado. Os benefícios surgem quando faz parte de um <strong>padrão alimentar
+                globalmente saudável</strong>, com grande variedade de vegetais, fruta, leguminosas,
+                frutos gordos e cereais pouco processados.
+            </p>
+        </section>
+
+        <section id="nutricao">
+            <h3>6. Propriedades nutricionais</h3>
+            <p>
+                Valores aproximados por 100&nbsp;g de parte comestível de <strong>pepino com casca</strong>,
+                com base em tabelas internacionais (USDA / FoodData Central, FatSecret, etc.).
+                Os valores exatos variam com a variedade, grau de maturação, solo e práticas de
+                produção (incluindo biológica).
+            </p>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Nutriente</th>
+                    <th>Pepino cru com casca<br>(100&nbsp;g)</th>
+                    <th>Pepino cozido em água<br>(100&nbsp;g, escorrido, sem sal)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Energia</td>
+                    <td>≈ 15&nbsp;kcal</td>
+                    <td>≈ 10–14&nbsp;kcal</td>
+                </tr>
+                <tr>
+                    <td>Água</td>
+                    <td>≈ 95&nbsp;g</td>
+                    <td>≈ 95&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Proteína</td>
+                    <td>≈ 0,6–0,7&nbsp;g</td>
+                    <td>≈ 0,5–0,7&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Hidratos de carbono totais</td>
+                    <td>≈ 3,5–3,7&nbsp;g</td>
+                    <td>≈ 3,0–3,5&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Açúcares</td>
+                    <td>≈ 1,5–1,8&nbsp;g</td>
+                    <td>≈ 1,5–1,8&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Fibra alimentar</td>
+                    <td>≈ 0,5–0,7&nbsp;g</td>
+                    <td>≈ 0,5–0,7&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Lípidos totais</td>
+                    <td>≈ 0,1&nbsp;g</td>
+                    <td>≈ 0,1&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Vitamina C</td>
+                    <td>≈ 2,5–3&nbsp;mg</td>
+                    <td>Reduz-se com a cozedura (parte perdida na água e pelo calor)</td>
+                </tr>
+                <tr>
+                    <td>Vitamina K</td>
+                    <td>≈ 15–20&nbsp;µg</td>
+                    <td>Valores semelhantes ou ligeiramente menores</td>
+                </tr>
+                <tr>
+                    <td>Vitamina A (equivalente de retinol)</td>
+                    <td>≈ 3–5&nbsp;µg</td>
+                    <td>Sem alteração relevante</td>
+                </tr>
+                <tr>
+                    <td>Potássio</td>
+                    <td>≈ 140–160&nbsp;mg</td>
+                    <td>≈ 130–150&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Cálcio</td>
+                    <td>≈ 15–20&nbsp;mg</td>
+                    <td>≈ 15–20&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Índice glicémico (IG)</td>
+                    <td>Muito baixo (cerca de 15–20)</td>
+                    <td>Muito baixo, desde que não se adicionem açúcares ou xaropes</td>
+                </tr>
+                </tbody>
+            </table>
+            <p class="nota">
+                Em receitas com adição significativa de sal, açúcar ou gordura (por exemplo,
+                pickles em salmoura com muito sal, ou molhos gordos), o perfil nutricional final
+                será bastante diferente do pepino simples crudívoro ou levemente cozido.
+            </p>
+        </section>
+
+        <section id="utilidades">
+            <h3>7. Utilidades e aplicações (não apenas alimentares)</h3>
+            <ul>
+                <li>
+                    <strong>Cobertura de solo e sombreamento localizado:</strong> em culturas de
+                    rasteiro, os pepinos ajudam a cobrir o solo, reduzindo evaporação e
+                    competindo com infestantes.
+                </li>
+                <li>
+                    <strong>Condução em tutor para poupar espaço:</strong> quando conduzido em
+                    rede ou fio, o pepino funciona como “parede verde”, útil em hortas pequenas
+                    e em sistemas de produção vertical.
+                </li>
+                <li>
+                    <strong>Matéria orgânica para compostagem:</strong> restos de poda, folhas e
+                    frutos não comercializáveis podem ser incorporados em pilhas de composto,
+                    contribuindo para o ciclo de nutrientes em sistemas biológicos.
+                </li>
+                <li>
+                    <strong>Uso cosmético caseiro tradicional:</strong> rodelas de pepino são
+                    usadas tradicionalmente em máscaras faciais e na zona dos olhos para efeito
+                    refrescante. Embora o efeito seja sobretudo físico (frio, humidade), alguns
+                    extratos de pepino têm sido estudados em formulações cosméticas.
+                </li>
+                <li>
+                    <strong>Valor educativo:</strong> pela rapidez de crescimento e visibilidade
+                    dos frutos, o pepino é uma boa cultura para hortas escolares e projetos de
+                    educação alimentar, mostrando como hortícolas simples podem ser bastantes
+                    refrescantes e saciantes.
+                </li>
+            </ul>
+        </section>
+
+        <section id="permacultura">
+            <h3>8. Grau de funcionalidade em permacultura</h3>
+            <p><strong>Classificação proposta: 7/10</strong></p>
+            <ul class="lista-permacultura">
+                <li>
+                    <strong>Funções principais:</strong> produção de hortícola de fruto muito
+                    refrescante para o verão, cobertura parcial do solo, utilização de estruturas
+                    verticais, fornecimento de biomassa para compostagem.
+                </li>
+                <li>
+                    <strong>Vantagens em sistemas biológicos:</strong> boa produtividade em clima
+                    quente, possibilidade de colheita contínua durante o verão, grande aceitação
+                    por parte de crianças e adultos, versatilidade culinária em fresco.
+                </li>
+                <li>
+                    <strong>Limitações:</strong> planta anual com exigência moderada a alta em
+                    água; suscetível a oídio, míldio e outras doenças fúngicas em condições de
+                    humidade elevada; sensível a alguns insetos como afídeos e ácaros.
+                </li>
+            </ul>
+            <p class="nota">
+                A pontuação é equilibrada: o pepino oferece boa produção estival e serviços
+                ecológicos interessantes, mas depende de rega consistente e manejo cuidadoso de
+                pragas/doenças em agricultura biológica.
+            </p>
+        </section>
+
+        <section id="referencias">
+            <h3>9. Referências</h3>
+
+            <div class="referencias-subsecao">9.1. Apresentação / contexto</div>
+            <ul class="referencias-lista">
+                <li><strong>D1</strong> – Wikipedia (EN). “Cucumber” – descrição botânica de <em>Cucumis sativus</em> e histórico de cultivo. Disponível em: <a href="https://en.wikipedia.org/wiki/Cucumber" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Cucumber</a></li>
+                <li><strong>D2</strong> – Borecka M. et al. “Cucurbitaceae Fruits: A Comprehensive Review of Nutritional and Health Benefits.” <em>Foods</em>, 2025. Disponível em: <a href="https://www.mdpi.com/2304-8158/14/7/1200" target="_blank" rel="noopener">https://www.mdpi.com/2304-8158/14/7/1200</a></li>
+                <li><strong>D3</strong> – Saini P. “Nutritional benefits and health effects of cucumbers.” <em>Acta Journal of Nutrition and Health</em>, 2025. PDF disponível em: <a href="https://www.actajournal.com/article/215/6-1-43-612.pdf" target="_blank" rel="noopener">https://www.actajournal.com/article/215/6-1-43-612.pdf</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.2. Sazonalidade e cultivo (Portugal / clima semelhante)</div>
+            <ul class="referencias-lista">
+                <li><strong>S1</strong> – Publicações de horticultura biológica em Portugal (ex.: hortas urbanas e manuais da ABAAE/Hortas Bio) com calendários de sementeira para pepino em clima mediterrânico.</li>
+                <li><strong>S2</strong> – RHS (Royal Horticultural Society). “Cucumber – grow your own” – recomendações de época de sementeira e cultivo em clima temperado. Disponível em: <a href="https://www.rhs.org.uk/vegetables/cucumbers/grow-your-own" target="_blank" rel="noopener">https://www.rhs.org.uk/vegetables/cucumbers/grow-your-own</a></li>
+                <li><strong>S3</strong> – DECO Proteste. Calendário de frutas e legumes da época (inclui pepino como hortícola de verão). Disponível em: <a href="https://www.deco.proteste.pt/alimentacao/alimentacao-saudavel/dicas/calendario-fruta-legumes-epoca" target="_blank" rel="noopener">https://www.deco.proteste.pt/.../calendario-fruta-legumes-epoca</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.3. Propriedades nutricionais</div>
+            <ul class="referencias-lista">
+                <li><strong>N1</strong> – USDA FoodData Central. Entrada “Cucumber, with peel, raw” – valores por 100&nbsp;g. Acesso via: <a href="https://fdc.nal.usda.gov" target="_blank" rel="noopener">https://fdc.nal.usda.gov</a></li>
+                <li><strong>N2</strong> – FatSecret. “Cucumber (with peel)” – tabela nutricional por 100&nbsp;g. Disponível em: <a href="https://foods.fatsecret.com/calories-nutrition/usda/cucumber-%28with-peel%29" target="_blank" rel="noopener">https://foods.fatsecret.com/.../cucumber-(with-peel)</a></li>
+                <li><strong>N3</strong> – Verywell Fit. “Cucumber Nutrition Facts and Health Benefits.” Disponível em: <a href="https://www.verywellfit.com/cucumber-nutrition-facts-calories-and-health-benefits-4118563" target="_blank" rel="noopener">https://www.verywellfit.com/cucumber-nutrition-facts-calories-and-health-benefits-4118563</a></li>
+                <li><strong>N4</strong> – Signos. “Cucumber Glycemic Index: Nutritional Facts.” Disponível em: <a href="https://www.signos.com/foods/cucumber-glycemic-index" target="_blank" rel="noopener">https://www.signos.com/foods/cucumber-glycemic-index</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.4. Benefícios para a saúde e propriedades medicinais</div>
+            <ul class="referencias-lista">
+                <li><strong>M1</strong> – Mukherjee P.K. et al. “Phytochemical and therapeutic potential of cucumber.” <em>Fitoterapia</em>, 2013. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0367326X12002791" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S0367326X12002791</a></li>
+                <li><strong>M2</strong> – “Nutritional Bioactive Compounds and Health Benefits of Fresh and Processed Cucumber.” Revisão (2018–2020) disponível em ResearchGate: <a href="https://www.researchgate.net/publication/344270982_Nutritional_Bioactive_Compounds_and_Health_Benefits_of_Fresh_and_Processed_Cucumber_Cucumis_Sativus_L" target="_blank" rel="noopener">https://www.researchgate.net/.../Nutritional_Bioactive_Compounds...</a></li>
+                <li><strong>M3</strong> – Varela C. et al. “Cucurbitacins as potential anticancer agents: new insights on molecular mechanisms.” <em>Phytotherapy Research</em>, 2022. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9805216/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9805216/</a></li>
+                <li><strong>M4</strong> – Medical News Today. “Cucumbers: Health benefits, nutritional content, and uses.” Disponível em: <a href="https://www.medicalnewstoday.com/articles/283006" target="_blank" rel="noopener">https://www.medicalnewstoday.com/articles/283006</a></li>
+                <li><strong>M5</strong> – Tua Saúde (PT-BR). “Pepino: 12 benefícios, informação nutricional (e receitas saudáveis).” Disponível em: <a href="https://www.tuasaude.com/beneficios-do-pepino/" target="_blank" rel="noopener">https://www.tuasaude.com/beneficios-do-pepino/</a></li>
+                <li><strong>M6</strong> – Artigos de síntese sobre cucurbitáceas e propriedades antioxidantes, por exemplo “Antioxidant potential of family Cucurbitaceae...” em <em>Phytotherapy Research</em>.</li>
+            </ul>
+
+            <div class="referencias-subsecao">9.5. Produção biológica, pesticidas e comparação com convencional</div>
+            <ul class="referencias-lista">
+                <li><strong>B1</strong> – Barański M. et al. “Higher antioxidant and lower cadmium concentrations and lower incidence of pesticide residues in organically grown crops: a systematic literature review and meta-analyses.” <em>British Journal of Nutrition</em>, 2014. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4141693/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4141693/</a></li>
+                <li><strong>B2</strong> – Matt D. et al. “Quality of Organic vs. Conventional Food and Effects on Health.” Relatório de revisão. Disponível em: <a href="https://orgprints.org/19504/1/Report_2011_%281%29.pdf" target="_blank" rel="noopener">https://orgprints.org/19504/1/Report_2011_(1).pdf</a></li>
+                <li><strong>B3</strong> – Baker B.P. et al. “Pesticide residues in conventional, IPM-grown and organic foods: insights from three US datasets.” The Organic Center. Disponível em: <a href="https://www.organic-center.org/reportfiles/bakerbenbrook.pdf" target="_blank" rel="noopener">https://www.organic-center.org/reportfiles/bakerbenbrook.pdf</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.6. Receitas (Top 10)</div>
+            <ul class="referencias-lista">
+                <li><strong>R1</strong> – Pingo Doce. “Salada de pepino com queijo.” Disponível em: <a href="https://www.pingodoce.pt/receitas/salada-de-pepino-com-queijo/" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/salada-de-pepino-com-queijo/</a></li>
+                <li><strong>R2</strong> – Pingo Doce. “Salada de pepino, maçã e mirtilos.” Disponível em: <a href="https://www.pingodoce.pt/receitas/salada-de-pepino-maca-e-mirtilos/" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/salada-de-pepino-maca-e-mirtilos/</a></li>
+                <li><strong>R3</strong> – Continente. “Salada Grega.” Disponível em: <a href="https://feed.continente.pt/receitas/salada-grega" target="_blank" rel="noopener">https://feed.continente.pt/receitas/salada-grega</a></li>
+                <li><strong>R4</strong> – Diversos sites PT/BR com receitas de “molho tzatziki” ou “molho de iogurte com pepino”, por exemplo no canal Pingo Doce (YouTube) e blogues de culinária saudável.</li>
+                <li><strong>R5</strong> – Receitas de gazpacho (Pingo Doce, Teleculinária, etc.) que incluem pepino como ingrediente fundamental.</li>
+                <li><strong>R6</strong> – TudoGostoso (BR). Várias receitas de salada de pepino ao estilo japonês ou asiático. Pesquisa “salada de pepino” em: <a href="https://www.tudogostoso.com.br/busca?q=salada+de+pepino" target="_blank" rel="noopener">https://www.tudogostoso.com.br/busca?q=salada+de+pepino</a></li>
+                <li><strong>R7</strong> – Receitas de pickles rápidos de pepino em sites PT/BR (por exemplo, Panelinha, Panelinha de Sabores, etc.).</li>
+                <li><strong>R8</strong> – Blogues de alimentação saudável em português (Made By Choices, NiT Alimentação, etc.) com sandes e wraps com pepino.</li>
+                <li><strong>R9</strong> – Artigos e receitas de “sumo verde com pepino” em sites como Receitas Nestlé Brasil, Tua Saúde e outros portais de alimentação saudável.</li>
+                <li><strong>R10</strong> – YouTube / Pingo Doce. “Molho Tzatziki com sobras de pepino” – receita em vídeo de combate ao desperdício. Exemplo: <a href="https://www.youtube.com/watch?v=75gTnluXa0E" target="_blank" rel="noopener">https://www.youtube.com/watch?v=75gTnluXa0E</a></li>
+            </ul>
+
+            <p class="nota">
+                Procurou‑se privilegiar fontes relativamente estáveis (artigos com DOI, sites
+                institucionais, grandes portais de receitas). Ainda assim, é natural que alguns
+                links mudem ao longo do tempo.
+            </p>
+        </section>
+
+        <div class="topo-link">
+            <a href="#topo">Voltar ao topo ▲</a>
+        </div>
+    </article>
+</main>
+</body>
+</html>

@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Nabo | Horta de Amigos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body id="topo">
+<header>
+    <h1>Horta de Amigos</h1>
+    <p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar com família e amigos.</p>
+</header>
+
+<nav>
+    <a href="index.html">Início</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="moringa.html">Moringa</a>
+    <a href="acelga.html">Acelga</a>
+    <a href="agriao-terra.html">Agrião-de-terra</a>
+    <a href="aipo.html">Aipo (talos e folhas)</a>
+    <a href="alface.html">Alface</a>
+    <a href="alho.html">Alho</a>
+    <a href="alho-frances.html">Alho-francês</a>
+    <a href="aneto.html">Aneto / Endro</a>
+    <a href="abobora-butternut.html">Abóbora butternut</a>
+    <a href="batata-comum.html">Batata comum</a>
+    <a href="batata-doce.html">Batata-doce</a>
+    <a href="beringela.html">Beringela</a>
+    <a href="beterraba.html">Beterraba</a>
+    <a href="brocolo.html">Brócolo</a>
+    <a href="canonigos.html">Canónigos</a>
+    <a href="coentros.html">Coentros</a>
+    <a href="cebola.html">Cebola</a>
+    <a href="cebola-fresca.html">Cebola fresca</a>
+    <a href="cenoura.html">Cenoura</a>
+    <a href="couve-chinesa.html">Couve chinesa</a>
+    <a href="couve-rabano.html">Couve-rábano</a>
+    <a href="couve-repolho.html">Couve repolho</a>
+    <a href="couve-toscana.html">Couve toscana</a>
+    <a href="curgete.html">Curgete</a>
+    <a href="ervilhas-frescas.html">Ervilhas frescas</a>
+    <a href="espinafre.html">Espinafre</a>
+    <a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+    <a href="feijao-verde.html">Feijão verde</a>
+    <a href="milho-doce.html">Milho doce</a>
+    <a href="mizuna.html">Mizuna</a>
+    <a href="morangos.html">Morangueiro / Morangos</a>
+    <a href="nabo.html" class="ativa">Nabo</a>
+</nav>
+
+<main>
+    <article class="planta">
+        <div class="planta-cabecalho">
+            <div class="planta-titulo">
+                <h2>Nabo (<em>Brassica rapa</em> subsp. <em>rapa</em>)</h2>
+                <p><strong>Outros nomes em português:</strong> nabo-branco, nabo de inverno, nabo-galego (variedades), grelos de nabo (para as folhas jovens).</p>
+                <p><strong>Nome mais comum em inglês:</strong> turnip.</p>
+
+                <div class="tags-nomes">
+                    <span>Família: Brassicaceae (crucíferas)</span>
+                    <span>Parte usada: raiz carnuda e folhas jovens (grelos)</span>
+                    <span>Tipo: hortícola de raiz, clima fresco</span>
+                    <span>Produção: <strong>biológica</strong></span>
+                </div>
+
+                <div class="info-rapida">
+                    <div>
+                        <strong>Origem</strong>
+                        Hortícola antiga da Eurásia, provavelmente domesticada a partir de espécies silvestres de <em>Brassica rapa</em>, muito usada como alimento humano e forrageiro.
+                    </div>
+                    <div>
+                        <strong>Uso principal</strong>
+                        Raiz em sopas, purés, estufados e assados; folhas jovens (“grelos”) em sopas e salteados.
+                    </div>
+                    <div>
+                        <strong>Perfil nutricional</strong>
+                        Muito pobre em calorias, boa fonte de vitamina C, fibra e compostos sulfurados típicos das brássicas.
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="imagem-container-externo">
+                    <div class="imagem-container">
+                        <img src="imagens/nabo.png" alt="Nabos frescos biológicos com folhas verdes">
+                    </div>
+                </div>
+                <p class="imagem-legenda">Imagem ilustrativa de nabos frescos de produção biológica, com raiz e folhas.</p>
+            </div>
+        </div>
+
+        <section id="apresentacao">
+            <h3>1. Apresentação / Descrição</h3>
+            <p>
+                O <strong>nabo</strong> é a raiz carnuda de <em>Brassica rapa</em> subsp. <em>rapa</em>,
+                da mesma espécie que está na origem de outros hortícolas como alguns tipos de couve
+                e nabiça. A parte que consumimos é uma raiz tuberosa, de formato arredondado ou
+                alongado, geralmente branca com a parte superior arroxeada ou esverdeada, onde
+                recebeu mais luz. As folhas jovens são conhecidas como <strong>grelos de nabo</strong>.
+            </p>
+            <p>
+                Em português encontramos designações como <strong>nabo-branco</strong>,
+                <strong>nabo de inverno</strong> ou simplesmente <strong>nabo</strong>; em inglês,
+                o termo mais comum é <em>turnip</em>. É importante não confundir com o
+                <em>rutabaga</em> ou “nabo-sueco” (<em>Brassica napus</em> var. <em>napobrassica</em>),
+                que é uma espécie diferente e geralmente maior e mais densa.
+            </p>
+            <p>
+                Aqui consideramos <strong>nabo de produção biológica</strong>, cultivado sem
+                fertilizantes e pesticidas de síntese. Como muitas vezes a raiz e as folhas são
+                consumidas com a pele ou com mínimo processamento, a opção por produção biológica
+                pode reduzir a exposição a resíduos de pesticidas e aumentar a confiança para usos
+                em cru (por exemplo, ralado em saladas).
+            </p>
+        </section>
+
+        <section id="sazonalidade">
+            <h3>2. Sazonalidade (Portugal continental)</h3>
+            <p>
+                O nabo é uma cultura de <strong>clima fresco</strong>, adaptada ao outono, inverno e
+                primavera suave. Aguenta bem o frio moderado e pode até melhorar de sabor após
+                alguma exposição ao frio, tal como outras brássicas.
+            </p>
+            <ul>
+                <li><strong>Sementeira (ar livre):</strong> habitualmente de finais do verão ao outono (agosto–outubro) para colheitas de outono/inverno; em algumas regiões faz-se também sementeira no fim do inverno para colheitas de primavera.</li>
+                <li><strong>Colheita de raízes:</strong> aproximadamente 6–10 semanas após a sementeira, consoante a variedade e o tamanho desejado.</li>
+                <li><strong>Pico de consumo local de nabo fresco:</strong> outono e inverno (aprox. outubro–fevereiro).</li>
+                <li><strong>Folhas (grelos de nabo):</strong> cortadas um pouco antes da floração, muitas vezes finais de inverno/início da primavera.</li>
+            </ul>
+            <p class="nota">
+                A produção em pequenas hortas biológicas pode ser escalonada, com sementeiras em
+                várias datas, para garantir uma sucessão de nabos pequenos e tenros ao longo da
+                estação fresca.
+            </p>
+        </section>
+
+        <section id="como-consumir">
+            <h3>3. Como consumir</h3>
+            <p>
+                Em produção biológica, tanto a <strong>raiz</strong> como as <strong>folhas</strong>
+                (grelos) podem ser utilizadas com grande variedade de preparações.
+            </p>
+            <ul>
+                <li>
+                    <strong>Cru, ralado ou em fatias finas:</strong> o nabo jovem e tenro pode ser
+                    ralado ou cortado em lâminas finas e usado em saladas, muitas vezes temperado
+                    com azeite, limão ou vinagre, ervas e um toque de sal.
+                </li>
+                <li>
+                    <strong>Em sopas e caldos:</strong> ingrediente clássico de sopas de legumes e
+                    caldos, conferindo sabor ligeiramente adocicado e textura cremosa quando
+                    triturado.
+                </li>
+                <li>
+                    <strong>Puré de nabo (simples ou misto):</strong> cozido e reduzido a puré,
+                    sozinho ou combinado com batata, cenoura, abóbora, etc., como acompanhamento.
+                </li>
+                <li>
+                    <strong>Assado ou salteado:</strong> em cubos ou gomos, temperado com azeite,
+                    alho, ervas aromáticas, especiarias e um pouco de vinagre ou sumo de limão.
+                </li>
+                <li>
+                    <strong>Folhas (grelos de nabo):</strong> escaldadas e depois salteadas com
+                    azeite e alho, usadas em sopas, arrozes e acompanhamentos, de forma semelhante a
+                    outros grelos e couves de folha.
+                </li>
+                <li>
+                    <strong>Pickles e fermentados:</strong> pedaços de nabo em salmoura (fermentação
+                    láctica) ou em vinagre, muitas vezes em combinação com cenoura e beterraba.
+                </li>
+            </ul>
+            <p class="nota">
+                Em consumo cru frequente (especialmente de grandes quantidades de brássicas) e em
+                pessoas com patologia tiroideia específica, pode ser prudente falar com um
+                profissional de saúde devido à presença de compostos bócio-génicos. Para a
+                maioria das pessoas, o consumo moderado inserido numa alimentação variada não é
+                problemático.
+            </p>
+        </section>
+
+        <section id="receitas">
+            <h3>4. Receitas e preparados (Top 10)</h3>
+            <p>
+                Sugestões de receitas em português (Portugal e Brasil) com <strong>nabo</strong>
+                (raiz e/ou folhas). Pelo menos cinco das referências são em língua portuguesa.
+            </p>
+            <ol>
+                <li>
+                    <strong>Sopa de nabo e cenoura</strong> – sopa de legumes com nabo, cenoura,
+                    batata e alho-francês, muito comum em casas portuguesas. Exemplos em
+                    Teleculinária e Pingo Doce. <strong>[R1]</strong>
+                </li>
+                <li>
+                    <strong>Sopa de nabiças (grelos de nabo)</strong> – sopa tradicional com batata,
+                    cenoura e nabiças, servida em creme ou com pedaços. <strong>[R2]</strong>
+                </li>
+                <li>
+                    <strong>Puré de nabo (simples ou misto)</strong> – nabo cozido com batata e
+                    cenoura, reduzido a puré, temperado com azeite ou um pouco de manteiga, em
+                    receitas como as do Sabor Intenso ou da Teleculinária. <strong>[R3]</strong>
+                </li>
+                <li>
+                    <strong>Nabos assados no forno com ervas</strong> – nabos em gomos ou cubos,
+                    temperados com azeite, alho, tomilho ou alecrim, assados até dourar. Várias
+                    versões em blogues portugueses de cozinha sazonal. <strong>[R4]</strong>
+                </li>
+                <li>
+                    <strong>Nabos caramelizados na frigideira</strong> – salteados em gordura (azeite
+                    ou azeite + um pouco de manteiga) com uma pitada de açúcar mascavado ou mel,
+                    vinagre balsâmico e ervas. Receita comum em sites portugueses e brasileiros.
+                    <strong>[R5]</strong>
+                </li>
+                <li>
+                    <strong>Arroz de grelos de nabo</strong> – arroz de grelos, que pode usar
+                    grelos de nabo, de couve ou de nabo-galego, receita típica em várias regiões
+                    portuguesas. <strong>[R6]</strong>
+                </li>
+                <li>
+                    <strong>Grelos de nabo salteados com alho</strong> – acompanhamento simples,
+                    com grelos escaldados e depois salteados em azeite, alho e, por vezes, um fio
+                    de vinagre. <strong>[R7]</strong>
+                </li>
+                <li>
+                    <strong>Pickles de nabo e cenoura</strong> – em vinagre ou por fermentação
+                    láctica, tal como em receitas de “conserva de legumes” em sites brasileiros.
+                    <strong>[R8]</strong>
+                </li>
+                <li>
+                    <strong>Estufado de grão com nabo e cenoura</strong> – prato de leguminosas
+                    com legumes de raiz, típico da cozinha caseira portuguesa (variações em
+                    Pingo Doce e sites de culinária tradicional). <strong>[R9]</strong>
+                </li>
+                <li>
+                    <strong>Salada morna de nabo, maçã e frutos secos</strong> – receita moderna
+                    presente em blogues de alimentação saudável, com nabo assado ou salteado,
+                    maçã, nozes e rúcula. <strong>[R10]</strong>
+                </li>
+            </ol>
+            <p class="nota">
+                Em todas estas receitas pode usar-se nabo de produção <strong>biológica</strong>.
+                Quando a receita for concebida para nabo convencional, pode ser seguida na mesma,
+                tirando partido da menor carga de pesticidas na versão biológica sobretudo em usos
+                crus ou com pouca cozedura.
+            </p>
+        </section>
+
+        <section id="beneficios">
+            <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+            <p>
+                O nabo pertence à família das <strong>brássicas</strong>, tal como couves, brócolos
+                e rúcula, conhecida pelo elevado teor de <strong>glucosinolatos</strong> e outros
+                compostos bioativos. Há menos estudos específicos sobre nabo em humanos, mas
+                muitos dos efeitos observados em brássicas em geral podem ser, em parte, aplicados.
+            </p>
+            <ul>
+                <li>
+                    <strong>Baixa densidade energética e boa quantidade de fibra</strong> – com
+                    cerca de 25–30&nbsp;kcal por 100&nbsp;g e 1,5–2&nbsp;g de fibra, o nabo ajuda a
+                    aumentar o volume e a saciedade das refeições com poucas calorias, útil em
+                    estratégias de controlo de peso quando substitui acompanhamentos mais
+                    energéticos.
+                </li>
+                <li>
+                    <strong>Vitamina C e antioxidantes</strong> – a raiz de nabo e, sobretudo, as
+                    folhas contêm vitamina C e diversos compostos fenólicos e carotenóides, que
+                    contribuem para a defesa antioxidante do organismo.
+                </li>
+                <li>
+                    <strong>Glucosinolatos e isotiocianatos</strong> – tal como outras brássicas,
+                    o nabo contém glucosinolatos que, por ação da enzima mirosinase (ativada pelo
+                    corte e mastigação), originam isotiocianatos e outros derivados sulfurados com
+                    potencial efeito na regulação de enzimas de detoxificação, inflamação e outras
+                    vias relacionadas com o risco de cancro em estudos experimentais.
+                </li>
+                <li>
+                    <strong>Brássicas e risco de cancro</strong> – meta-análises observacionais
+                    indicam associação entre maior consumo de vegetais crucíferos (grupo que inclui
+                    nabo, mesmo que pouco estudado isoladamente) e menor risco de certos cancros,
+                    como os do trato digestivo e pulmão, embora os resultados não sejam uniformes
+                    em todos os estudos.
+                </li>
+                <li>
+                    <strong>Efeito no sistema cardiovascular</strong> – o consumo regular de
+                    brássicas tem sido associado a menor risco de doença cardiovascular em alguns
+                    estudos, possivelmente relacionado com efeitos combinados da fibra, vitamina K,
+                    compostos fenólicos e enxofrados na função endotelial, inflamação e perfil
+                    lipídico.
+                </li>
+                <li>
+                    <strong>Folhas de nabo e nitratos naturais</strong> – como outras folhas
+                    verdes, os grelos de nabo podem conter nitratos em níveis fisiológicos, que
+                    podem ser convertidos em óxido nítrico e contribuir, em contexto adequado, para
+                    a regulação da pressão arterial, à semelhança do observado em estudos com
+                    beterraba e outras folhas. A evidência específica para grelos de nabo é muito
+                    mais limitada.
+                </li>
+                <li>
+                    <strong>Orgânico vs. convencional</strong> – tal como noutras culturas, a
+                    produção biológica tende a apresentar menores níveis de resíduos de pesticidas
+                    e, em alguns casos, concentrações um pouco mais elevadas de certos antioxidantes
+                    (por exemplo, polifenóis), embora as diferenças variem com o contexto.
+                </li>
+            </ul>
+            <p class="nota">
+                A maior parte destes efeitos deriva de estudos sobre o grupo das brássicas e não
+                especificamente sobre o nabo. Assim, é mais prudente ver o nabo como parte de um
+                <strong>conjunto variado de vegetais de folha e raiz</strong>, e não como “alimento
+                medicinal” isolado. O consumo variado de brássicas diferentes parece ser uma
+                estratégia mais robusta.
+            </p>
+        </section>
+
+        <section id="nutricao">
+            <h3>6. Propriedades nutricionais</h3>
+            <p>
+                Valores aproximados por 100&nbsp;g de parte comestível de <strong>raiz de nabo</strong>,
+                com base em tabelas nutricionais internacionais (como a base USDA) e europeias.
+                Os valores podem variar com a variedade, solo, práticas de produção (incluindo
+                biológica) e maturação.
+            </p>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Nutriente</th>
+                    <th>Nabo cru<br>(100&nbsp;g, raiz)</th>
+                    <th>Nabo cozido<br>(100&nbsp;g, raiz escorrida)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Energia</td>
+                    <td>≈ 28&nbsp;kcal</td>
+                    <td>≈ 20–25&nbsp;kcal</td>
+                </tr>
+                <tr>
+                    <td>Água</td>
+                    <td>≈ 91&nbsp;g</td>
+                    <td>≈ 92&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Proteína</td>
+                    <td>≈ 0,9–1,0&nbsp;g</td>
+                    <td>≈ 0,7–1,0&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Hidratos de carbono totais</td>
+                    <td>≈ 6–7&nbsp;g</td>
+                    <td>≈ 4–5&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Açúcares</td>
+                    <td>≈ 3–4&nbsp;g</td>
+                    <td>≈ 2–3&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Fibra alimentar</td>
+                    <td>≈ 1,5–2,5&nbsp;g</td>
+                    <td>≈ 1,5–2,0&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Lípidos totais</td>
+                    <td>≈ 0,1–0,2&nbsp;g</td>
+                    <td>≈ 0,1–0,2&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Vitamina C</td>
+                    <td>≈ 20–25&nbsp;mg</td>
+                    <td>Reduz-se com a cozedura (perdas moderadas)</td>
+                </tr>
+                <tr>
+                    <td>Folato (vit. B9)</td>
+                    <td>≈ 10–20&nbsp;µg</td>
+                    <td>Ligeira redução com a cozedura</td>
+                </tr>
+                <tr>
+                    <td>Cálcio</td>
+                    <td>≈ 30–40&nbsp;mg</td>
+                    <td>≈ 25–35&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Potássio</td>
+                    <td>≈ 190–250&nbsp;mg</td>
+                    <td>≈ 180–230&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Manganês</td>
+                    <td>≈ 0,1–0,2&nbsp;mg</td>
+                    <td>≈ 0,1–0,2&nbsp;mg</td>
+                </tr>
+                </tbody>
+            </table>
+            <p class="nota">
+                As <strong>folhas de nabo</strong> (grelos) têm um perfil nutricional diferente,
+                mais semelhante ao das couves de folha: mais cálcio, vitamina K e outros
+                micronutrientes por 100&nbsp;g, mas menor quantidade típica consumida por porção.
+            </p>
+        </section>
+
+        <section id="utilidades">
+            <h3>7. Utilidades e aplicações (não apenas alimentares)</h3>
+            <ul>
+                <li>
+                    <strong>Cobertura rápida de solo e raiz estruturante:</strong> o nabo cresce
+                    relativamente depressa e as suas raízes ajudam a <strong>estruturar o solo</strong>,
+                    abrindo canais que facilitam a infiltração de água e o crescimento de raízes de
+                    culturas seguintes.
+                </li>
+                <li>
+                    <strong>Cultura de adubação verde:</strong> em alguns sistemas, o nabo é semeado
+                    e depois incorporado no solo antes da colheita, fornecendo matéria orgânica e
+                    nutrientes, sendo uma opção de <strong>adubo verde</strong> em agricultura
+                    biológica.
+                </li>
+                <li>
+                    <strong>Aproveitamento de excedentes para alimentação animal:</strong> raízes
+                    de menor calibre ou com defeitos e folhas podem ser utilizados, com moderação,
+                    na alimentação de animais de quinta (galinhas, coelhos, ruminantes), reduzindo
+                    desperdícios.
+                </li>
+                <li>
+                    <strong>Elemento de rotação em sistemas biológicos:</strong> como brássica de
+                    raiz, o nabo é útil na rotação com leguminosas, solanáceas e outras famílias,
+                    ajudando a quebrar ciclos de pragas e doenças.
+                </li>
+                <li>
+                    <strong>Valor educativo:</strong> pelo ciclo relativamente curto e pela
+                    visibilidade da raiz emergindo do solo, é uma boa cultura para hortas
+                    pedagógicas com crianças.
+                </li>
+            </ul>
+        </section>
+
+        <section id="permacultura">
+            <h3>8. Grau de funcionalidade em permacultura</h3>
+            <p><strong>Classificação proposta: 7/10</strong></p>
+            <ul class="lista-permacultura">
+                <li>
+                    <strong>Funções principais:</strong> produção de alimento de raiz para o inverno,
+                    cobertura rápida do solo, estruturação do solo, fornecimento de biomassa e
+                    função de adubo verde.
+                </li>
+                <li>
+                    <strong>Vantagens em sistemas biológicos:</strong> ciclo curto, boa resposta em
+                    rotações, capacidade de aproveitar janelas entre culturas, possibilidade de uso
+                    tanto da raiz como das folhas (dupla colheita).
+                </li>
+                <li>
+                    <strong>Limitações:</strong> planta anual de ciclo curto, suscetível a pragas
+                    típicas de brássicas (alticas, lagartas, mosca-da-couve), exigindo alguma
+                    proteção em agricultura biológica (coberturas físicas, rotação, consociações).
+                </li>
+            </ul>
+            <p class="nota">
+                A pontuação equilibra a versatilidade e funções múltiplas do nabo com o facto de
+                não ser perene e exigir algum manejo para evitar problemas de pragas do grupo das
+                brássicas.
+            </p>
+        </section>
+
+        <section id="referencias">
+            <h3>9. Referências</h3>
+
+            <div class="referencias-subsecao">9.1. Apresentação / contexto</div>
+            <ul class="referencias-lista">
+                <li><strong>D1</strong> – Wikipedia (PT). “Nabo” – descrição botânica e usos. Disponível em: <a href="https://pt.wikipedia.org/wiki/Nabo" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Nabo</a></li>
+                <li><strong>D2</strong> – Wikipedia (EN). “Turnip” – descrição de <em>Brassica rapa</em> subsp. <em>rapa</em>, distinção face a rutabaga. Disponível em: <a href="https://en.wikipedia.org/wiki/Turnip" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Turnip</a></li>
+                <li><strong>D3</strong> – Plants for a Future (PFAF). Ficha “<em>Brassica rapa</em> (Turnip)” – usos alimentares e agronómicos. Disponível em: <a href="https://pfaf.org/user/Plant.aspx?LatinName=Brassica+rapa" target="_blank" rel="noopener">https://pfaf.org/user/Plant.aspx?LatinName=Brassica+rapa</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.2. Sazonalidade e cultivo (Portugal / clima semelhante)</div>
+            <ul class="referencias-lista">
+                <li><strong>S1</strong> – Revista Jardins (PT). “Nabos, uma cultura de outono e inverno” – época de sementeira e colheita em Portugal. Disponível em: <a href="https://revistajardins.pt/nabos-uma-cultura-de-outono-e-inverno/" target="_blank" rel="noopener">https://revistajardins.pt/nabos-uma-cultura-de-outono-e-inverno/</a></li>
+                <li><strong>S2</strong> – Almanaque Borda d’Água / Hortas Bio. “Calendário da Horta” – datas de sementeira de nabo. PDF disponível em: <a href="https://hortasbio.abaae.pt/.../Calendario%20Da%20Horta.pdf" target="_blank" rel="noopener">https://hortasbio.abaae.pt/.../Calendario%20Da%20Horta.pdf</a></li>
+                <li><strong>S3</strong> – DECO Proteste. Calendário de fruta e legumes da época – inclui nabo como hortícola de outono/inverno. Disponível em: <a href="https://www.deco.proteste.pt/alimentacao/alimentacao-saudavel/dicas/calendario-fruta-legumes-epoca" target="_blank" rel="noopener">https://www.deco.proteste.pt/.../calendario-fruta-legumes-epoca</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.3. Propriedades nutricionais</div>
+            <ul class="referencias-lista">
+                <li><strong>N1</strong> – USDA FoodData Central. Ficha “Turnip, raw” – valores por 100 g. Acesso em: <a href="https://fdc.nal.usda.gov" target="_blank" rel="noopener">https://fdc.nal.usda.gov</a></li>
+                <li><strong>N2</strong> – USDA FoodData Central. Ficha “Turnip, cooked, boiled, drained, without salt”. Acesso em: <a href="https://fdc.nal.usda.gov" target="_blank" rel="noopener">https://fdc.nal.usda.gov</a></li>
+                <li><strong>N3</strong> – FatSecret Portugal. “Nabo” – factos nutricionais por 100 g. Disponível em: <a href="https://www.fatsecret.pt/calorias-nutri%C3%A7%C3%A3o/gen%C3%A9rico/nabo" target="_blank" rel="noopener">https://www.fatsecret.pt/.../nabo</a></li>
+                <li><strong>N4</strong> – Ciqual / ANSES. Tabela de composição de alimentos – “Navet, cru / cuit”. Disponível em: <a href="https://ciqual.anses.fr" target="_blank" rel="noopener">https://ciqual.anses.fr</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.4. Benefícios para a saúde e propriedades medicinais</div>
+            <ul class="referencias-lista">
+                <li><strong>M1</strong> – Verhoeven D.T. et al. “Epidemiological studies on brassica vegetables and cancer risk.” <em>Cancer Epidemiology Biomarkers & Prevention</em>, 1996. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/8896886/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/8896886/</a></li>
+                <li><strong>M2</strong> – Herr I., Büchler M.W. “Dietary constituents of broccoli and other cruciferous vegetables: implications for prevention and therapy of cancer.” <em>Nutrition and Cancer</em>, 2010. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/20879952/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/20879952/</a></li>
+                <li><strong>M3</strong> – Ares A.M. et al. “Glucosinolates in Brassica vegetables: occurrence, metabolism and health implications.” <em>Comprehensive Reviews in Food Science and Food Safety</em>, 2016. Disponível em: <a href="https://onlinelibrary.wiley.com/doi/10.1111/1541-4337.12288" target="_blank" rel="noopener">https://onlinelibrary.wiley.com/doi/10.1111/1541-4337.12288</a></li>
+                <li><strong>M4</strong> – U.S. National Cancer Institute. “Cruciferous Vegetables and Cancer Prevention.” Fact sheet. Disponível em: <a href="https://www.cancer.gov/about-cancer/causes-prevention/risk/diet/cruciferous-vegetables-fact-sheet" target="_blank" rel="noopener">https://www.cancer.gov/.../cruciferous-vegetables-fact-sheet</a></li>
+                <li><strong>M5</strong> – NetMeds. “Turnip: Health benefits, nutrition and uses” – resumo em linguagem acessível sobre nabo. Disponível em: <a href="https://www.netmeds.com/health-library/post/turnip-health-benefits-nutrition-and-uses" target="_blank" rel="noopener">https://www.netmeds.com/.../turnip-health-benefits-nutrition-and-uses</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.5. Produção biológica, pesticidas e comparação com convencional</div>
+            <ul class="referencias-lista">
+                <li><strong>B1</strong> – Barański M. et al. “Higher antioxidant and lower cadmium concentrations and lower incidence of pesticide residues in organically grown crops: a systematic literature review and meta-analyses.” <em>British Journal of Nutrition</em>, 2014. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4141693/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4141693/</a></li>
+                <li><strong>B2</strong> – Matt D. et al. “Quality of Organic vs. Conventional Food and Effects on Health.” Relatório de revisão. Disponível em: <a href="https://orgprints.org/19504/1/Report_2011_%281%29.pdf" target="_blank" rel="noopener">https://orgprints.org/19504/1/Report_2011_(1).pdf</a></li>
+                <li><strong>B3</strong> – Baker B.P. et al. “Pesticide residues in conventional, IPM-grown and organic foods: insights from three US datasets.” The Organic Center. Disponível em: <a href="https://www.organic-center.org/reportfiles/bakerbenbrook.pdf" target="_blank" rel="noopener">https://www.organic-center.org/reportfiles/bakerbenbrook.pdf</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.6. Receitas (Top 10)</div>
+            <ul class="referencias-lista">
+                <li><strong>R1</strong> – Teleculinária. Várias receitas de “sopa de nabo” e “sopa de nabo e cenoura”. Pesquisa “nabo” em: <a href="https://www.teleculinaria.pt/?s=nabo" target="_blank" rel="noopener">https://www.teleculinaria.pt/?s=nabo</a></li>
+                <li><strong>R2</strong> – Pingo Doce. Sopa de nabiças / sopa de grelos. Pesquisa “nabiças”: <a href="https://www.pingodoce.pt/receitas/?s=nabi%C3%A7as" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/?s=nabi%C3%A7as</a></li>
+                <li><strong>R3</strong> – Sabor Intenso (PT). “Puré de nabo” ou “Puré de legumes com nabo”. Pesquisa “puré nabo”: <a href="https://www.saborintenso.com/search.php?searchid=pur%C3%A9+nabo" target="_blank" rel="noopener">https://www.saborintenso.com/search.php?searchid=pur%C3%A9+nabo</a></li>
+                <li><strong>R4</strong> – Panelinha de Sabores / outros blogues PT. Receitas de “nabos assados no forno” (várias versões). Exemplo: <a href="https://panelinhadesabores.blogs.sapo.pt/search/?q=nabo" target="_blank" rel="noopener">https://panelinhadesabores.blogs.sapo.pt/search/?q=nabo</a></li>
+                <li><strong>R5</strong> – Receitas brasileiras e portuguesas de “nabos caramelizados” (legumes caramelizados na frigideira). Exemplo de busca em: <a href="https://www.tudogostoso.com.br/busca?q=nabo" target="_blank" rel="noopener">https://www.tudogostoso.com.br/busca?q=nabo</a></li>
+                <li><strong>R6</strong> – Pingo Doce e outros sites PT. “Arroz de grelos” (inclui versões com grelos de nabo). Pesquisa “arroz de grelos”: <a href="https://www.pingodoce.pt/receitas/?s=arroz+de+grelos" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/?s=arroz+de+grelos</a></li>
+                <li><strong>R7</strong> – Receitas de “grelos salteados com alho” (em que se podem usar grelos de nabo). Exemplo em: <a href="https://www.pingodoce.pt/receitas/grelos-salteados-com-alho/" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/grelos-salteados-com-alho/</a></li>
+                <li><strong>R8</strong> – Receitas de “picles de nabo e cenoura” – conserva de legumes em vinagre ou fermentados, comuns em sites brasileiros. Pesquisa em: <a href="https://www.panelinha.com.br/busca?q=conserva+de+legumes" target="_blank" rel="noopener">https://www.panelinha.com.br/busca?q=conserva+de+legumes</a></li>
+                <li><strong>R9</strong> – Pingo Doce / Continente / blogues PT. Estufados de grão com legumes de raiz (incluindo nabo). Pesquisa “grão com legumes”: <a href="https://feed.continente.pt/receitas/?q=gr%C3%A3o%20legumes" target="_blank" rel="noopener">https://feed.continente.pt/receitas/?q=gr%C3%A3o%20legumes</a></li>
+                <li><strong>R10</strong> – Blogues de alimentação saudável em PT/BR (ex.: Made By Choices, Presunto Vegetariano) – receitas de saladas mornas com nabo assado, maçã e frutos secos. Exemplo de busca: <a href="https://www.madebychoices.pt/?s=nabo" target="_blank" rel="noopener">https://www.madebychoices.pt/?s=nabo</a></li>
+            </ul>
+
+            <p class="nota">
+                Sempre que possível foram privilegiadas fontes relativamente estáveis (grandes
+                portais de receitas, organizações institucionais, artigos com DOI). Ainda assim, é
+                natural que alguns links mudem com o tempo.
+            </p>
+        </section>
+
+        <div class="topo-link">
+            <a href="#topo">Voltar ao topo ▲</a>
+        </div>
+    </article>
+</main>
+</body>
+</html>

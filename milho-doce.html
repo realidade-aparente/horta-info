@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Milho doce (maçaroca fresca) | Horta de Amigos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body id="topo">
+<header>
+    <h1>Horta de Amigos</h1>
+    <p>Informação prática sobre plantas hortícolas biológicas – para partilhar com família e amigos.</p>
+</header>
+
+<nav>
+    <a href="index.html">Início</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="moringa.html">Moringa</a>
+    <a href="acelga.html">Acelga</a>
+    <a href="agriao-terra.html">Agrião-de-terra</a>
+    <a href="aipo.html">Aipo (talos e folhas)</a>
+    <a href="alface.html">Alface</a>
+    <a href="alho.html">Alho</a>
+    <a href="alho-frances.html">Alho-francês</a>
+    <a href="aneto.html">Aneto / Endro</a>
+    <a href="abobora-butternut.html">Abóbora butternut</a>
+    <a href="batata-comum.html">Batata comum</a>
+    <a href="batata-doce.html">Batata-doce</a>
+    <a href="beringela.html">Beringela</a>
+    <a href="beterraba.html">Beterraba</a>
+    <a href="brocolo.html">Brócolo</a>
+    <a href="canonigos.html">Canónigos</a>
+    <a href="coentros.html">Coentros</a>
+    <a href="cebola.html">Cebola</a>
+    <a href="cebola-fresca.html">Cebola fresca</a>
+    <a href="cenoura.html">Cenoura</a>
+    <a href="couve-chinesa.html">Couve chinesa</a>
+    <a href="couve-rabano.html">Couve-rábano</a>
+    <a href="couve-repolho.html">Couve repolho</a>
+    <a href="couve-toscana.html">Couve toscana</a>
+    <a href="curgete.html">Curgete</a>
+    <a href="ervilhas-frescas.html">Ervilhas frescas</a>
+    <a href="espinafre.html">Espinafre</a>
+    <a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+    <a href="feijao-verde.html">Feijão verde</a>
+    <a href="milho-doce.html" class="ativa">Milho doce</a>
+</nav>
+
+<main>
+    <article class="planta">
+        <div class="planta-cabecalho">
+            <div class="planta-titulo">
+                <h2>Milho doce – maçaroca fresca (<em>Zea mays</em> convar. <em>saccharata</em>)</h2>
+                <p><strong>Outros nomes em português:</strong> milho doce, milho-verde, maçaroca, espiga de milho.</p>
+                <p><strong>Nome mais comum em inglês:</strong> sweet corn, corn on the cob.</p>
+
+                <div class="tags-nomes">
+                    <span>Família: Poaceae (gramíneas)</span>
+                    <span>Parte usada: grãos na maçaroca imatura</span>
+                    <span>Tipo: cereal hortícola de estação quente</span>
+                    <span>Produção: <strong>biológica</strong></span>
+                </div>
+
+                <div class="info-rapida">
+                    <div>
+                        <strong>Origem</strong>
+                        Espécie domesticada nas Américas; variedades de milho doce resultam de mutações que mantêm mais açúcar no grão. Hoje é cultivado em muitos países de clima temperado e subtropical.
+                    </div>
+                    <div>
+                        <strong>Uso principal</strong>
+                        Maçaroca fresca cozida ou grelhada, grãos em sopas, saladas, salteados e bolos tradicionais (especialmente no Brasil).
+                    </div>
+                    <div>
+                        <strong>Perfil nutricional</strong>
+                        Cereal naturalmente sem glúten, fonte de hidratos de carbono complexos, fibra, folato e carotenóides (luteína e zeaxantina).
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="imagem-container-externo">
+                    <div class="imagem-container">
+                        <img src="imagens/milho-doce.png" alt="Maçarocas frescas de milho doce biológico">
+                    </div>
+                </div>
+                <p class="imagem-legenda">Imagem ilustrativa de maçarocas frescas de milho doce biológico.</p>
+            </div>
+        </div>
+
+        <section id="apresentacao">
+            <h3>1. Apresentação / Descrição</h3>
+            <p>
+                O <strong>milho doce</strong> é uma forma particular de milho (<em>Zea mays</em>) em que,
+                devido a mutações genéticas naturais, parte dos açúcares do grão não é convertida em
+                amido durante a fase de desenvolvimento. O resultado são <strong>grãos mais doces e
+                tenros</strong>, colhidos ainda imaturos (fase “leite”) e consumidos como hortícola,
+                e não como cereal seco. Em português é conhecido como milho doce, milho-verde,
+                maçaroca ou espiga de milho; em inglês fala‑se em <em>sweet corn</em> ou
+                <em>corn on the cob</em>. 
+            </p>
+            <p>
+                Na maçaroca, os grãos dispõem‑se em fileiras ao longo de uma espiga central, coberta
+                por brácteas (a “palha” do milho) e pelos característicos “cabelos” (estigmas das
+                flores femininas). O milho doce é um dos principais tipos de milho cultivados para
+                consumo humano direto, distinto de outros tipos destinados a farinha, ração, pipoca
+                ou usos industriais. 
+            </p>
+            <p>
+                Nesta ficha consideramos <strong>milho doce proveniente de agricultura biológica</strong>,
+                ou seja, cultivado sem fertilizantes de síntese, herbicidas ou inseticidas
+                sintéticos. Em média, alimentos biológicos apresentam <strong>menores níveis de
+                resíduos de pesticidas</strong> e, em alguns casos, <strong>teores ligeiramente
+                superiores de compostos antioxidantes</strong>, embora as diferenças possam variar
+                com o contexto e não signifiquem que os produtos convencionais sejam “inseguros”
+                dentro dos limites legais. 
+            </p>
+        </section>
+
+        <section id="sazonalidade">
+            <h3>2. Sazonalidade (Portugal continental)</h3>
+            <p>
+                O milho doce é uma cultura típica de <strong>estação quente</strong>. Em Portugal, as
+                maçarocas frescas nacionais aparecem sobretudo no <strong>verão</strong>, com alguma
+                disponibilidade no fim da primavera e início do outono:
+            </p>
+            <ul>
+                <li><strong>Sementeira (ar livre):</strong> geralmente entre abril e junho, após o risco de geadas.</li>
+                <li><strong>Colheita:</strong> cerca de 2,5–3 meses depois da sementeira, tipicamente de julho a setembro, podendo estender‑se até outubro em algumas regiões.</li>
+                <li><strong>Pico de consumo de maçaroca fresca nacional:</strong> julho, agosto e setembro.</li>
+                <li><strong>Fora de época:</strong> o milho doce é muitas vezes consumido em forma congelada ou enlatada (grão), vindo de outras origens.</li>
+            </ul>
+            <p class="nota">
+                Vários calendários de sazonalidade em português colocam o <strong>milho doce</strong>
+                como legume de verão, frequentemente em conjunto com outros hortícolas como pepino,
+                pimento, tomate e feijão verde. 
+            </p>
+        </section>
+
+        <section id="como-consumir">
+            <h3>3. Como consumir</h3>
+            <p>
+                A maçaroca de milho doce para consumo em fresco deve ter <strong>palha verde</strong>,
+                cabelos ainda húmidos e grãos cheios, de cor amarela ou bicolor, que libertam um
+                “leite” doce quando ligeiramente pressionados. 
+            </p>
+            <ul>
+                <li>
+                    <strong>Cozido em água:</strong> a forma mais simples e comum. Coze‑se a maçaroca
+                    em água a ferver (com ou sem sal) até os grãos ficarem tenros. Depois serve‑se
+                    inteira, muitas vezes com um pouco de manteiga ou azeite e ervas. 
+                </li>
+                <li>
+                    <strong>Grelhado / churrasco:</strong> pode ser pré‑cozido alguns minutos e
+                    depois grelhado, ou grelhado diretamente com a palha. Dá um sabor mais intenso
+                    e ligeiramente fumado, muito apreciado em churrascos de verão.
+                </li>
+                <li>
+                    <strong>Debulhado (grãos soltos):</strong> depois de cozer ou grelhar, os grãos
+                    podem ser cortados da espiga com uma faca e usados em <strong>saladas</strong>,
+                    salteados rápidos com outros legumes, <strong>arroz</strong>, <strong>sopas</strong>
+                    ou recheios.
+                </li>
+                <li>
+                    <strong>Preparações tradicionais doces (sobretudo Brasil):</strong> com milho
+                    verde fresco triturado fazem‑se <strong>pamonha</strong>, <strong>curau</strong>,
+                    <strong>bolos de milho verde</strong> e outros doces típicos de festas juninas.
+                </li>
+                <li>
+                    <strong>Congelar em casa:</strong> é possível escaldar as maçarocas alguns
+                    minutos, debulhar ou congelar inteiras, e guardar porção em porção, mantendo
+                    boa textura e sabor por vários meses.
+                </li>
+                <li>
+                    <strong>Segurança:</strong> o milho doce é naturalmente <strong>isento de
+                    glúten</strong>, sendo uma alternativa para pessoas com doença celíaca. Porém,
+                    em produtos transformados (ex.: preparados com molho, temperos, etc.) é sempre
+                    necessário verificar a lista de ingredientes.
+                </li>
+            </ul>
+        </section>
+
+        <section id="receitas">
+            <h3>4. Receitas e preparados (Top 10)</h3>
+            <p>
+                Sugestões de receitas em português (Portugal e Brasil) com <strong>milho doce em
+                maçaroca fresca</strong> ou com utilização explícita de milho verde, que pode ser
+                fresco, enlatado ou congelado. Pelo menos cinco são de fontes em português.
+            </p>
+            <ol>
+                <li>
+                    <strong>Milho doce cozido tradicional</strong> – receita simples em português
+                    com maçarocas inteiras cozidas em água com sal, servidas com manteiga ou azeite
+                    (blog “Receitas ao Desafio”). <strong>[R1]</strong>
+                </li>
+                <li>
+                    <strong>Milho doce com manteiga de limão</strong> – maçarocas cozidas e servidas
+                    com uma manteiga aromatizada com limão, sugerida no blogue “Para Cozinhar”
+                    (Portugal). <strong>[R2]</strong>
+                </li>
+                <li>
+                    <strong>Maçaroca de milho grelhada com especiarias (elotes)</strong> – receita
+                    da Kikkoman Portugal em que o milho é pré‑cozido, marinado em molho teriyaki e
+                    depois grelhado. <strong>[R3]</strong>
+                </li>
+                <li>
+                    <strong>Maçaroca de milho grelhada com lima, feta e malagueta</strong> – receita
+                    da Le Creuset Portugal com manteiga de ervas, lima e queijo feta esfarelado por
+                    cima. <strong>[R4]</strong>
+                </li>
+                <li>
+                    <strong>Maçaroca de milho grelhada com aioli de sriracha</strong> – proposta da
+                    Cooking Lovers (Teka), com um molho cremoso e picante para servir por cima das
+                    maçarocas grelhadas. <strong>[R5]</strong>
+                </li>
+                <li>
+                    <strong>Salada de milho grelhado</strong> – receita brasileira (Panelinha / GNT)
+                    em que as maçarocas são grelhadas, debulhadas e misturadas com vegetais e um
+                    molho simples. <strong>[R6]</strong>
+                </li>
+                <li>
+                    <strong>Salada de milho assado com legumes</strong> – proposta de salada com
+                    milho assado, legumes e ervas frescas (Matéria do TudoGostoso sobre “ingrediente
+                    secreto” para saladas). <strong>[R7]</strong>
+                </li>
+                <li>
+                    <strong>Salada de milho‑verde e pequi</strong> – receita da Nestlé Brasil, que
+                    usa milho verde em grão juntamente com folhas verdes, tomate e outros
+                    ingredientes. <strong>[R8]</strong>
+                </li>
+                <li>
+                    <strong>Bolo de milho verde da espiga</strong> – bolo húmido preparado com milho
+                    verde fresco retirado da espiga (TudoGostoso). <strong>[R9]</strong>
+                </li>
+                <li>
+                    <strong>Bolo de milho verde cremoso da fazenda</strong> – receita de bolo de
+                    milho verde de liquidificador, muito comum em festas juninas, no blogue “Na
+                    Cozinha da Helô”. <strong>[R10]</strong>
+                </li>
+            </ol>
+            <p class="nota">
+                Em todas estas receitas é possível usar milho doce <strong>biológico</strong>. Quando
+                forem pensadas para milho enlatado, pode substituir‑se por grão fresco previamente
+                cozido, ajustando a textura e o tempo de cozedura.
+            </p>
+        </section>
+
+        <section id="beneficios">
+            <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+            <p>
+                A maior parte da evidência científica foca‑se em <strong>milho e cereais de milho</strong>
+                em geral (incluindo grão seco) e não só em milho doce fresco. Ainda assim, as
+                maçarocas de milho doce partilham muitos dos nutrientes e compostos bioativos
+                estudados.
+            </p>
+            <ul>
+                <li>
+                    <strong>Fonte de energia e fibra</strong> – 100&nbsp;g de milho doce cozido
+                    fornecem ~95–120&nbsp;kcal, com cerca de 2,5–3&nbsp;g de fibra alimentar por
+                    100&nbsp;g, contribuindo para a saciedade e o funcionamento intestinal. 
+                </li>
+                <li>
+                    <strong>Carotenóides para a visão</strong> – o milho (especialmente amarelo) é
+                    relativamente rico em <strong>luteína</strong> e <strong>zeaxantina</strong>, dois
+                    carotenóides que se acumulam na mácula ocular e têm sido associados a menor
+                    risco de cataratas e degenerescência macular relacionada com a idade. 
+                </li>
+                <li>
+                    <strong>Antioxidantes (ácido ferúlico e outros fenólicos)</strong> – o milho é
+                    uma fonte importante de ácido ferúlico, um composto fenólico com atividade
+                    antioxidante; estudos mostram que a cozedura do milho doce pode aumentar a
+                    disponibilidade de ácido ferúlico, apesar de reduzir alguns nutrientes sensíveis
+                    ao calor (como a vitamina C). 
+                </li>
+                <li>
+                    <strong>Saúde cardiovascular e metabólica</strong> – revisões sobre consumo de
+                    cereais integrais e milho sugerem que, quando utilizados em substituição de
+                    refinados e inseridos numa dieta equilibrada, podem ajudar a melhorar o perfil
+                    de lípidos sanguíneos e a sensibilidade à insulina. O milho doce em maçaroca
+                    conta como uma fonte de hidratos de carbono pouco processados, sobretudo quando
+                    consumido com moderação, acompanhado de legumes e gorduras de boa qualidade.
+                </li>
+                <li>
+                    <strong>Orgânico vs. convencional</strong> – meta‑análises indicam que culturas
+                    biológicas tendem a ter <strong>menores resíduos de pesticidas de síntese</strong>,
+                    ligeiramente maiores teores de alguns antioxidantes e níveis menores de
+                    cádmio, em média, comparando com culturas convencionais. Estudos específicos em
+                    milho/maize sugerem diferenças em perfis de lípidos e compostos fitoquímicos,
+                    embora a relevância clínica destas diferenças ainda esteja a ser estudada.
+                </li>
+            </ul>
+            <p class="nota">
+                Importante: não há evidência robusta de que o milho doce, por si só, “cure” doenças
+                específicas. Os benefícios apontados resultam de o integrar num <strong>padrão
+                alimentar globalmente saudável</strong> (por exemplo, inspirado na dieta
+                mediterrânica ou em abordagens agroecológicas locais), em quantidade moderada e com
+                boa variedade de outros alimentos vegetais.
+            </p>
+        </section>
+
+        <section id="nutricao">
+            <h3>6. Propriedades nutricionais</h3>
+            <p>
+                Valores aproximados por 100&nbsp;g de parte comestível de milho doce amarelo, com
+                base em tabelas nutricionais portuguesas/brasileiras e bases de dados
+                internacionais. Os números podem variar com a variedade, o grau de maturação e o
+                modo de cozedura.
+            </p>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Nutriente</th>
+                    <th>Milho doce cru<br>(100&nbsp;g, grãos)</th>
+                    <th>Milho doce cozido<br>(100&nbsp;g, grãos escorridos)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Energia</td>
+                    <td>≈ 85–90&nbsp;kcal</td>
+                    <td>≈ 95–120&nbsp;kcal</td>
+                </tr>
+                <tr>
+                    <td>Água</td>
+                    <td>≈ 76–78&nbsp;g</td>
+                    <td>≈ 70–75&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Proteína</td>
+                    <td>≈ 3,0–3,5&nbsp;g</td>
+                    <td>≈ 3,0–4,0&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Hidratos de carbono totais</td>
+                    <td>≈ 19–20&nbsp;g</td>
+                    <td>≈ 17–23&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Fibra alimentar</td>
+                    <td>≈ 2,5–3,0&nbsp;g</td>
+                    <td>≈ 2,5–3,4&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Açúcares</td>
+                    <td>≈ 4–6&nbsp;g</td>
+                    <td>≈ 4–6&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Lípidos totais</td>
+                    <td>≈ 1,2–1,5&nbsp;g</td>
+                    <td>≈ 1,3–2,5&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Vitamina C</td>
+                    <td>≈ 6–8&nbsp;mg</td>
+                    <td>Reduz com a cozedura em água</td>
+                </tr>
+                <tr>
+                    <td>Folato (vit. B9)</td>
+                    <td>≈ 40–45&nbsp;µg</td>
+                    <td>Ligeira redução com a cozedura</td>
+                </tr>
+                <tr>
+                    <td>Carotenóides (luteína + zeaxantina)</td>
+                    <td>Presente em quantidades significativas</td>
+                    <td>Estável; cozedura pode aumentar a disponibilidade</td>
+                </tr>
+                <tr>
+                    <td>Potássio</td>
+                    <td>≈ 270–300&nbsp;mg</td>
+                    <td>≈ 250–280&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Magnésio</td>
+                    <td>≈ 30–35&nbsp;mg</td>
+                    <td>≈ 28–32&nbsp;mg</td>
+                </tr>
+                </tbody>
+            </table>
+            <p class="nota">
+                Para consumo habitual conta tanto a forma de confeção (se leva manteiga, sal,
+                molhos, etc.) como a combinação com outros alimentos no prato. Um milho doce
+                biológico cozido apenas em água, servido com um fio de azeite e acompanhado de
+                legumes e leguminosas, é bem diferente de um prato à base de milho ultra‑processado
+                com sal e gordura saturada em excesso.
+            </p>
+        </section>
+
+        <section id="utilidades">
+            <h3>7. Utilidades e aplicações (não apenas alimentares)</h3>
+            <ul>
+                <li>
+                    <strong>Elemento estrutural em consociações</strong> – em muitos sistemas
+                    agroecológicos e de permacultura, o milho é usado como “poste vivo” para feijões
+                    de trepar e outras plantas, integrando clássicas consociações
+                    <em>milho–feijão–abóbora</em>. Em produção biológica, esta associação ajuda a
+                    melhorar a utilização de espaço, luz e nutrientes.
+                </li>
+                <li>
+                    <strong>Biomassa e cobertura morta</strong> – caules e folhas podem ser
+                    triturados e usados como <strong>mulch</strong> (cobertura do solo) ou para
+                    compostagem, devolvendo matéria orgânica ao sistema.
+                </li>
+                <li>
+                    <strong>Aproveitamento em pequena escala para alimentação animal</strong> –
+                    restos de maçarocas já debulhadas, folhas e caules podem ser parcialmente
+                    aproveitados na alimentação de animais de quinta (galinhas, porcos, etc.),
+                    reduzindo desperdícios.
+                </li>
+                <li>
+                    <strong>Valor educativo</strong> – pela altura, desenvolvimento rápido e
+                    estrutura vistosa, o milho doce é excelente em hortas pedagógicas para mostrar
+                    o ciclo de vida de um cereal e o conceito de <strong>“da semente ao prato”</strong>.
+                </li>
+                <li>
+                    <strong>Transformação artesanal</strong> – grão de milho, mesmo de variedades
+                    doces, pode ser seco e usado em experiências de moagem artesanal, tortilhas,
+                    papas, etc., ajudando a compreender o papel dos cereais na alimentação.
+                </li>
+            </ul>
+        </section>
+
+        <section id="permacultura">
+            <h3>8. Grau de funcionalidade em permacultura</h3>
+            <p><strong>Classificação proposta: 8/10</strong></p>
+            <ul class="lista-permacultura">
+                <li>
+                    <strong>Funções principais:</strong> produção de alimento energético (cereal
+                    fresco), suporte vertical para leguminosas trepadoras, criação de microclima e
+                    sombra parcial, fornecimento de biomassa para cobertura do solo e compostagem.
+                </li>
+                <li>
+                    <strong>Vantagens em sistemas biológicos:</strong> adapta‑se bem a rotações com
+                    leguminosas de raiz profunda; em consociação com feijões melhora o aproveitamento
+                    do azoto fixado biologicamente; integra‑se bem em canteiros de alta
+                    produtividade; combina com abóboras ou curgetes para cobrir o solo.
+                </li>
+                <li>
+                    <strong>Limitações:</strong> é uma planta anual, relativamente <strong>exigente
+                    em nutrientes e água</strong>, com forte extração de azoto e potássio; pode
+                    competir por luz com culturas baixas; requer espaço e rotações bem pensadas para
+                    não esgotar o solo.
+                </li>
+            </ul>
+            <p class="nota">
+                A pontuação reflete o equilíbrio entre a elevada utilidade alimentar e estrutural
+                do milho em sistemas diversificados e o facto de ser uma cultura anual exigente. Em
+                contexto de pequena horta biológica, poucas linhas de milho doce, bem integradas em
+                consociações, já trazem boas funções.
+            </p>
+        </section>
+
+        <section id="referencias">
+            <h3>9. Referências</h3>
+
+            <div class="referencias-subsecao">9.1. Apresentação / contexto</div>
+            <ul class="referencias-lista">
+                <li><strong>D1</strong> – Wikipedia (PT). <em>Milho doce</em>. Descrição botânica, genética e utilização do milho doce. Disponível em: <a href="https://pt.wikipedia.org/wiki/Milho_doce" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Milho_doce</a></li>
+                <li><strong>D2</strong> – Revista Jardins (PT). “Tudo sobre o milho” – artigo sobre tipos de milho e usos, incluindo milho doce em maçaroca. Disponível em: <a href="https://revistajardins.pt/plantas/horticolas/tudo-sobre-o-milho/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/horticolas/tudo-sobre-o-milho/</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.2. Sazonalidade e cultivo (Portugal)</div>
+            <ul class="referencias-lista">
+                <li><strong>S1</strong> – Mafalda Rodrigues de Almeida. PDF “Sazonalidade de frutas e legumes” – inclui milho doce como hortícola de verão. Disponível em: <a href="https://www.mafaldarodriguesdealmeida.pt/wordpress/wp-content/uploads/2020/03/Sazonalidade-de-frutas-e-legumes.pdf" target="_blank" rel="noopener">https://www.mafaldarodriguesdealmeida.pt/.../Sazonalidade-de-frutas-e-legumes.pdf</a></li>
+                <li><strong>S2</strong> – Planfor (PT). Ficha de sementes “Milho doce ‘Golden Bantam’” – indica época de colheita ~3 meses após sementeira e recomenda consumo cozido ou grelhado diretamente da maçaroca. Disponível em: <a href="https://www.planfor.pt/comprar,milho-doce-golden-bantam,G018,PO" target="_blank" rel="noopener">https://www.planfor.pt/comprar,milho-doce-golden-bantam,G018,PO</a></li>
+                <li><strong>S3</strong> – Avaliação de produção de milho doce para consumo em fresco em Portugal (relatório académico). Disponível em: <a href="https://core.ac.uk/download/pdf/61440110.pdf" target="_blank" rel="noopener">https://core.ac.uk/download/pdf/61440110.pdf</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.3. Propriedades nutricionais</div>
+            <ul class="referencias-lista">
+                <li><strong>N1</strong> – Nestlé Portugal – Saboreia a Vida. “Milho – milho doce” – tabela com valores para milho doce e milho doce cozido. Disponível em: <a href="https://saboreiaavida.nestle.pt/bem-estar/milho" target="_blank" rel="noopener">https://saboreiaavida.nestle.pt/bem-estar/milho</a></li>
+                <li><strong>N2</strong> – FatSecret Portugal. Ficha “Milho doce amarelo (100 g)” – valores de energia, hidratos de carbono, lípidos e proteína. Disponível em: <a href="https://www.fatsecret.pt/calorias-nutri%C3%A7%C3%A3o/gen%C3%A9rico/milho-doce-amarelo" target="_blank" rel="noopener">https://www.fatsecret.pt/.../milho-doce-amarelo</a></li>
+                <li><strong>N3</strong> – TabNut / EPM Brasil. Ficha “Milho, doce, branco, cozido, sólido, com sal” – dados de energia, macronutrientes e minerais por 100&nbsp;g e por espiga. Disponível em: <a href="https://tabnut.dis.epm.br/alimento/11902/milho-doce-branco-cozido-solido-com-sal" target="_blank" rel="noopener">https://tabnut.dis.epm.br/.../milho-doce-branco-cozido-solido-com-sal</a></li>
+                <li><strong>N4</strong> – Boiled Sweetcorn – calorias e informação nutricional (glycemic-index.net). Disponível em: <a href="https://glycemic-index.net/boiled-sweetcorn/" target="_blank" rel="noopener">https://glycemic-index.net/boiled-sweetcorn/</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.4. Benefícios para a saúde e propriedades medicinais</div>
+            <ul class="referencias-lista">
+                <li><strong>M1</strong> – Healthline. “Is Corn Good for You? Nutrition Facts and More” – artigo de síntese sobre valor nutricional do milho, incluindo luteína/zeaxantina. Disponível em: <a href="https://www.healthline.com/nutrition/is-corn-good-for-you" target="_blank" rel="noopener">https://www.healthline.com/nutrition/is-corn-good-for-you</a></li>
+                <li><strong>M2</strong> – Johns Hopkins Medicine. “Health Benefits of Corn” – descreve fibra, vitaminas, antioxidantes e benefícios para intestino e visão. Disponível em: <a href="https://www.hopkinsmedicine.org/health/wellness-and-prevention/health-benefits-of-corn" target="_blank" rel="noopener">https://www.hopkinsmedicine.org/.../health-benefits-of-corn</a></li>
+                <li><strong>M3</strong> – BBC Good Food. “Is sweetcorn good for you?” – foco em luteína, zeaxantina e saúde ocular. Disponível em: <a href="https://www.bbcgoodfood.com/health/is-sweetcorn-good-for-you" target="_blank" rel="noopener">https://www.bbcgoodfood.com/health/is-sweetcorn-good-for-you</a></li>
+                <li><strong>M4</strong> – Cornell Chronicle (referido em Wikipedia). “Cooking sweet corn boosts its ability to fight cancer and heart disease” – estudo que mostra aumento da disponibilidade de ácido ferúlico com a cozedura. Referenciado em: <a href="https://pt.wikipedia.org/wiki/Milho_doce" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Milho_doce</a></li>
+                <li><strong>M5</strong> – EatingWell. “The #1 Nutrient to Protect Your Vision, According to Dietitians” – destaque para luteína e zeaxantina, com o milho entre as fontes. Disponível em: <a href="https://www.eatingwell.com/best-nutrient-to-protect-your-vision-8773401" target="_blank" rel="noopener">https://www.eatingwell.com/best-nutrient-to-protect-your-vision-8773401</a></li>
+                <li><strong>M6</strong> – Health.com. “What Happens to Your Body When You Eat Corn Regularly” – artigo recente sobre benefícios do milho (fibra, antioxidantes, saúde intestinal e ocular). Disponível em: <a href="https://www.health.com/is-corn-bad-for-you-11829382" target="_blank" rel="noopener">https://www.health.com/is-corn-bad-for-you-11829382</a></li>
+                <li><strong>M7</strong> – Hernández‑Villaseñor LA et al. “Comparison of the Nutritional, Physicochemical, Technological–Functional, and Structural Properties and Antioxidant Compounds of Corn Kernel Flours from Native Mexican Maize Cultivated in Jalisco Highlands.” <em>Crops</em>, 2025. Disponível em: <a href="https://www.mdpi.com/2673-7655/5/3/26" target="_blank" rel="noopener">https://www.mdpi.com/2673-7655/5/3/26</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.5. Produção biológica, pesticidas e comparações orgânico vs. convencional</div>
+            <ul class="referencias-lista">
+                <li><strong>B1</strong> – Barański M. et al. “Higher antioxidant and lower cadmium concentrations and lower incidence of pesticide residues in organically grown crops: a systematic literature review and meta-analyses.” <em>British Journal of Nutrition</em>, 2014. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4141693/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4141693/</a></li>
+                <li><strong>B2</strong> – Baker BP et al. “Pesticide residues in conventional, IPM-grown and organic foods: insights from three US data sets.” Relatório compilado pela The Organic Center. Disponível em: <a href="https://www.organic-center.org/reportfiles/bakerbenbrook.pdf" target="_blank" rel="noopener">https://www.organic-center.org/reportfiles/bakerbenbrook.pdf</a></li>
+                <li><strong>B3</strong> – Matt D. et al. “Quality of Organic vs. Conventional Food and Effects on Health.” Relatório de revisão. Disponível em: <a href="https://orgprints.org/19504/1/Report_2011_%281%29.pdf" target="_blank" rel="noopener">https://orgprints.org/19504/1/Report_2011_(1).pdf</a></li>
+                <li><strong>B4</strong> – Golijan Pantović J. et al. “Nutritional and phytochemical comparative analysis of conventional/organic maize grain before and after subjection to accelerated ageing test – a preliminary study.” Notulae Botanicae Horti Agrobotanici, 2024. (PDF via Universidade de Belgrado). Disponível em: <a href="https://www.notulaebotanicae.ro/index.php/nbha/article/view/13581" target="_blank" rel="noopener">https://www.notulaebotanicae.ro/index.php/nbha/article/view/13581</a></li>
+                <li><strong>B5</strong> – Environmental Working Group (EWG). “Shopper’s Guide to Pesticides in Produce 2025” – inclui milho doce na lista “Clean Fifteen” (baixos resíduos). Sumário geral: <a href="https://www.ewg.org/foodnews/summary.php" target="_blank" rel="noopener">https://www.ewg.org/foodnews/summary.php</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.6. Receitas (Top 10)</div>
+            <ul class="referencias-lista">
+                <li><strong>R1</strong> – Blog “Receitas ao Desafio”. Tradicional Milho Doce Cozido. Disponível em: <a href="https://receitasaodesafio.blogspot.com/2012/08/tradicional-milho-doce-cozido.html" target="_blank" rel="noopener">https://receitasaodesafio.blogspot.com/2012/08/tradicional-milho-doce-cozido.html</a></li>
+                <li><strong>R2</strong> – Blog “Para Cozinhar”. Milho Doce com Manteiga de Limão. Disponível em: <a href="https://paracozinhar.blogspot.com/2007/10/milho-doce-com-manteiga-de-limo.html" target="_blank" rel="noopener">https://paracozinhar.blogspot.com/2007/10/milho-doce-com-manteiga-de-limo.html</a></li>
+                <li><strong>R3</strong> – Kikkoman Portugal. Maçaroca de milho grelhada com especiarias / Elotes. Disponível em: <a href="https://www.kikkoman.pt/receitas/detail/macaroca-de-milho-grelhada-com-especiarias-elotes" target="_blank" rel="noopener">https://www.kikkoman.pt/receitas/detail/macaroca-de-milho-grelhada-com-especiarias-elotes</a></li>
+                <li><strong>R4</strong> – Le Creuset Portugal. Maçaroca de milho grelhada com lima, feta, malagueta e manteiga. Disponível em: <a href="https://www.lecreuset.pt/pt_PT/macaroca-de-milho-grelhada-com-lima--feta--malagueta-e-manteiga-/r0000000001426.html" target="_blank" rel="noopener">https://www.lecreuset.pt/.../macaroca-de-milho-grelhada</a></li>
+                <li><strong>R5</strong> – Cooking Lovers (Teka). Maçaroca de milho grelhado com aioli de sriracha. Disponível em: <a href="https://cookinglovers.teka.com/pt-pt/receita/macaroca-de-milho-grelhado-com-aioli-de-sriracha/" target="_blank" rel="noopener">https://cookinglovers.teka.com/.../macaroca-de-milho-grelhado-com-aioli-de-sriracha</a></li>
+                <li><strong>R6</strong> – Panelinha / GNT. Salada de milho grelhado. Disponível em: <a href="https://panelinha.com.br/receita/salada-milho-grelhado" target="_blank" rel="noopener">https://panelinha.com.br/receita/salada-milho-grelhado</a></li>
+                <li><strong>R7</strong> – TudoGostoso. Artigo sobre “ingrediente secreto” para saladas, com receita que usa milho assado e debulhado em salada de legumes. Disponível em: <a href="https://www.tudogostoso.com.br/noticias/esse-ingrediente-secreto-vai-deixar-suas-saladas-muito-mais-gostosas-a11474.htm" target="_blank" rel="noopener">https://www.tudogostoso.com.br/.../a11474.htm</a></li>
+                <li><strong>R8</strong> – Receitas Nestlé Brasil. Salada de Milho-verde e Pequi. Disponível em: <a href="https://www.receitasnestle.com.br/receitas/salada-de-milho-verde-e-pequi" target="_blank" rel="noopener">https://www.receitasnestle.com.br/receitas/salada-de-milho-verde-e-pequi</a></li>
+                <li><strong>R9</strong> – TudoGostoso. Bolo de milho verde da espiga. Disponível em: <a href="https://www.tudogostoso.com.br/receita/186802-bolo-de-milho-verde-da-espiga.html" target="_blank" rel="noopener">https://www.tudogostoso.com.br/receita/186802-bolo-de-milho-verde-da-espiga.html</a></li>
+                <li><strong>R10</strong> – Na Cozinha da Helô. Bolo de milho verde cremoso da fazenda. Disponível em: <a href="https://www.nacozinhadahelo.com.br/colecoes/receita-de-bolo-de-milho-verde-cremoso" target="_blank" rel="noopener">https://www.nacozinhadahelo.com.br/.../receita-de-bolo-de-milho-verde-cremoso</a></li>
+            </ul>
+
+            <p class="nota">
+                Sempre que possível foram usados sites com maior probabilidade de estabilidade a
+                longo prazo (institucionais, grandes plataformas de receitas ou artigos com DOI).
+            </p>
+        </section>
+
+        <div class="topo-link">
+            <a href="#topo">Voltar ao topo ▲</a>
+        </div>
+    </article>
+</main>
+</body>
+</html>

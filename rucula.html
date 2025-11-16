@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Rúcula | Horta de Amigos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body id="topo">
+<header>
+    <h1>Horta de Amigos</h1>
+    <p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar com família e amigos.</p>
+</header>
+
+<nav>
+    <a href="index.html">Início</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="moringa.html">Moringa</a>
+    <a href="acelga.html">Acelga</a>
+    <a href="agriao-terra.html">Agrião-de-terra</a>
+    <a href="aipo.html">Aipo (talos e folhas)</a>
+    <a href="alface.html">Alface</a>
+    <a href="alho.html">Alho</a>
+    <a href="alho-frances.html">Alho-francês</a>
+    <a href="aneto.html">Aneto / Endro</a>
+    <a href="abobora-butternut.html">Abóbora butternut</a>
+    <a href="batata-comum.html">Batata comum</a>
+    <a href="batata-doce.html">Batata-doce</a>
+    <a href="beringela.html">Beringela</a>
+    <a href="beterraba.html">Beterraba</a>
+    <a href="brocolo.html">Brócolo</a>
+    <a href="canonigos.html">Canónigos</a>
+    <a href="coentros.html">Coentros</a>
+    <a href="cebola.html">Cebola</a>
+    <a href="cebola-fresca.html">Cebola fresca</a>
+    <a href="cenoura.html">Cenoura</a>
+    <a href="couve-chinesa.html">Couve chinesa</a>
+    <a href="couve-rabano.html">Couve-rábano</a>
+    <a href="couve-repolho.html">Couve repolho</a>
+    <a href="couve-toscana.html">Couve toscana</a>
+    <a href="curgete.html">Curgete</a>
+    <a href="ervilhas-frescas.html">Ervilhas frescas</a>
+    <a href="espinafre.html">Espinafre</a>
+    <a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+    <a href="feijao-verde.html">Feijão verde</a>
+    <a href="milho-doce.html">Milho doce</a>
+    <a href="mizuna.html">Mizuna</a>
+    <a href="morangos.html">Morangueiro / Morangos</a>
+    <a href="nabo.html">Nabo</a>
+    <a href="pak-choi.html">Pak choi</a>
+    <a href="pepino.html">Pepino</a>
+    <a href="pimento.html">Pimento</a>
+    <a href="rabanete.html">Rabanete</a>
+    <a href="rabano.html">Rábano / Daikon</a>
+    <a href="rucula.html" class="ativa">Rúcula</a>
+</nav>
+
+<main>
+    <article class="planta">
+        <div class="planta-cabecalho">
+            <div class="planta-titulo">
+                <h2>Rúcula (<em>Eruca vesicaria</em> subsp. <em>sativa</em> / <em>Eruca sativa</em>)</h2>
+                <p><strong>Outros nomes em português:</strong> rúcula, ruca, rúcula selvagem (para algumas variedades espontâneas), pinchuva (regiões específicas do Brasil).</p>
+                <p><strong>Nome mais comum em inglês:</strong> arugula, rocket, salad rocket.</p>
+
+                <div class="tags-nomes">
+                    <span>Família: Brassicaceae (crucíferas)</span>
+                    <span>Parte usada: folhas (e rebentos/brotes)</span>
+                    <span>Tipo: hortícola de folha, ciclo rápido</span>
+                    <span>Produção: <strong>biológica</strong></span>
+                </div>
+
+                <div class="info-rapida">
+                    <div>
+                        <strong>Origem</strong>
+                        Hortícola de folha, de sabor picante e aromático, tradicional no Mediterrâneo e muito usada em saladas e pizzas, hoje comum em hortas biológicas.
+                    </div>
+                    <div>
+                        <strong>Uso principal</strong>
+                        Folhas cruas em saladas, pestos e sandes; também salteada, em sopas leves, massas e pizzas (adicionada no fim).
+                    </div>
+                    <div>
+                        <strong>Perfil nutricional</strong>
+                        Folha verde-escura rica em vitamina K, folato, vitamina C, carotenoides (luteína, β-caroteno) e minerais como cálcio e potássio, com muito poucas calorias.
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="imagem-container-externo">
+                    <div class="imagem-container">
+                        <img src="imagens/rucula.png" alt="Molho de rúcula biológica fresca, de folhas verdes recortadas">
+                    </div>
+                </div>
+                <p class="imagem-legenda">Imagem ilustrativa de rúcula biológica, com folhas tenras e sabor marcante.</p>
+            </div>
+        </div>
+
+        <section id="apresentacao">
+            <h3>1. Apresentação / Descrição</h3>
+            <p>
+                A <strong>rúcula</strong> é uma hortaliça de folha pertencente à família das
+                crucíferas, a mesma das couves, brócolos e rabanetes. As folhas são
+                alongadas, verde-escuras e recortadas, com sabor <strong>picante e ligeiramente
+                amargo</strong>, muito característico. É consumida sobretudo em saladas, mas
+                também em pizzas, massas, pestos e como guarnição aromática. citeturn5search10turn5search22
+            </p>
+            <p>
+                Em português, é conhecida como <strong>rúcula</strong> ou <strong>ruca</strong>,
+                e algumas variedades espontâneas ou mais aromáticas são chamadas de
+                <strong>rúcula selvagem</strong>. Em inglês, é geralmente designada por
+                <em>arugula</em> (EUA) ou <em>rocket</em> / <em>salad rocket</em> (Europa).
+            </p>
+            <p>
+                Como folha verde-escura, a rúcula é uma das verduras mais nutritivas usadas em
+                saladas, sendo fonte de fibras, vitaminas A, C e K, folato e minerais como
+                cálcio, ferro e potássio. Estudos com rúcula fresca, rebentos e microgreens
+                mostram ainda teores interessantes de carotenoides (luteína, β-caroteno) e
+                compostos sulfurados (glucosinolatos e seus derivados). citeturn5search0turn5search3turn5search6turn5search20
+            </p>
+            <p>
+                Sendo uma hortícola de folha, a rúcula está em contacto direto com a água de
+                rega e com o ambiente, podendo reter resíduos de pesticidas na superfície ou
+                absorver nitratos e outros compostos do solo. Revisões sobre vegetais de folha
+                verde-escura e sistemas de produção mostram que produtos de <strong>agricultura
+                biológica</strong> tendem a apresentar, em média, níveis mais baixos de
+                pesticidas de síntese e, por vezes, teores ligeiramente diferentes de alguns
+                nutrientes e fitoquímicos, reforçando o interesse em optar por rúcula de modo
+                biológico, especialmente quando consumida crua com elevada frequência. citeturn5search14
+            </p>
+        </section>
+
+        <section id="sazonalidade">
+            <h3>2. Sazonalidade (Portugal continental)</h3>
+            <p>
+                A rúcula é uma cultura de <strong>ciclo rápido</strong> e prefere temperaturas
+                amenas a frescas. Em clima mediterrânico como o de grande parte de Portugal
+                continental, adapta-se bem a várias sementeiras ao longo do ano, com mais
+                qualidade no outono, inverno e primavera.
+            </p>
+            <ul>
+                <li>
+                    <strong>Sementeira:</strong> em geral de <strong>fevereiro/março a maio</strong>
+                    e de <strong>setembro a novembro</strong>, em linhas ou a lanço, podendo ser
+                    feita também em pequenos vasos e floreiras.
+                </li>
+                <li>
+                    <strong>Colheita:</strong> cerca de 30–45 dias após a sementeira para folhas
+                    jovens (baby leaf); pode ser colhida por corte das folhas exteriores,
+                    permitindo novos rebentos, ou arrancando a planta inteira.
+                </li>
+                <li>
+                    <strong>Clima:</strong> tolera algum frio, mas pode ficar mais picante com
+                    calor excessivo ou stress hídrico. Em verão muito quente, é comum espigar
+                    mais cedo.
+                </li>
+                <li>
+                    <strong>Consociação:</strong> combina bem com alfaces, cenouras,
+                    canónigos e ervilhas, funcionando como componente picante em misturas de
+                    saladas de horta.
+                </li>
+            </ul>
+            <p class="nota">
+                Guias de horticultura em português e brasileiro descrevem a rúcula como uma
+                folha de ciclo curto, ideal para sementeiras escalonadas com colheitas
+                sucessivas ao longo de grande parte do ano, especialmente em sistemas
+                biológicos e de pequena escala. citeturn5search22turn5search10
+            </p>
+        </section>
+
+        <section id="como-consumir">
+            <h3>3. Como consumir</h3>
+            <p>
+                A rúcula é muito versátil: pode ser consumida crua, cozinhada brevemente ou
+                mesmo sob a forma de rebentos (germinados) e microgreens.
+            </p>
+            <ul>
+                <li>
+                    <strong>Saladas cruas:</strong> uso mais comum. Combina bem com tomate,
+                    pepino, cenoura, beterraba, cebola roxa, frutas (pêra, maçã, citrinos),
+                    frutos secos (nozes, amêndoas), queijos (fresco, cabra, parmesão) e
+                    vinagretes simples.
+                </li>
+                <li>
+                    <strong>Como cobertura em pizzas e sandes:</strong> adicionada no final da
+                    cozedura, sobre pizzas, tostas ou sanduíches, para manter a textura fresca
+                    e o sabor picante.
+                </li>
+                <li>
+                    <strong>Pestos e molhos verdes:</strong> triturada com frutos secos (nozes,
+                    amêndoas, cajus), alho, azeite e queijo curado, sozinha ou combinada com
+                    outras ervas, como manjericão ou coentros.
+                </li>
+                <li>
+                    <strong>Salteados rápidos:</strong> adicionada no fim de salteados de
+                    legumes, massa ou grãos (quinoa, arroz integral), apenas o suficiente para
+                    murchar ligeiramente.
+                </li>
+                <li>
+                    <strong>Sopas e cremes:</strong> pode ser usada em sopas verdes ou cremes,
+                    adicionada nos minutos finais para preservar parte dos compostos
+                    sensíveis ao calor.
+                </li>
+                <li>
+                    <strong>Germinados e microgreens:</strong> sementes germinadas ou
+                    microgreens de rúcula concentram sabor e fitoquímicos, podendo ser usados
+                    como topping de saladas, sandes ou pratos quentes. citeturn5search13turn5search3
+                </li>
+            </ul>
+            <p class="nota">
+                Folhas muito grandes e mais antigas tendem a ser mais amargas e fibrosas; em
+                horta biológica, a colheita de folhas jovens, em sucessivas passagens, tende a
+                dar um equilíbrio melhor de sabor e textura.
+            </p>
+        </section>
+
+        <section id="receitas">
+            <h3>4. Receitas e preparados (Top 10)</h3>
+            <p>
+                Sugestões de receitas em português (Portugal, Brasil e outros países
+                lusófonos) que utilizam <strong>rúcula fresca</strong>. Pelo menos cinco
+                referências são em língua portuguesa.
+            </p>
+            <ol>
+                <li>
+                    <strong>Salada de rúcula com abóbora, rabanetes e requeijão</strong> –
+                    receita do Pingo Doce, com rúcula, abóbora assada, rabanete e requeijão,
+                    excelente como prato leve. <strong>[R1]</strong> citeturn6search0
+                </li>
+                <li>
+                    <strong>Salada de macarronete com rúcula e beterraba</strong> – receita do
+                    Pingo Doce, usando rúcula como componente fresco numa salada de massa.
+                    <strong>[R2]</strong> citeturn6search3
+                </li>
+                <li>
+                    <strong>Salada de queijo fresco com rúcula, maçãs e nozes</strong> –
+                    receita do Continente Feed, combinando rúcula com queijo fresco, maçã,
+                    nozes e croutons. <strong>[R3]</strong> citeturn6search4
+                </li>
+                <li>
+                    <strong>Penne com tomate seco, ricotta e rúcula</strong> – receita do
+                    Pingo Doce, onde a rúcula é adicionada no fim, conferindo frescura e
+                    aroma à massa. <strong>[R4]</strong> citeturn6search26
+                </li>
+                <li>
+                    <strong>Pesto de coentros e rúcula selvagem</strong> – receita do
+                    Pingo Doce, alternativa ao pesto clássico, com coentros, rúcula, amêndoas
+                    e parmesão. <strong>[R5]</strong> citeturn6search9
+                </li>
+                <li>
+                    <strong>Pesto de rúcula e noz</strong> – receita no Cookidoo (Thermomix),
+                    um pesto rápido de rúcula, queijos e frutos secos. <strong>[R6]</strong> citeturn6search14
+                </li>
+                <li>
+                    <strong>Carilada de gambas e rúcula Yämmi</strong> – receita do Continente
+                    Feed, que junta rúcula fresca a um caril de gambas. <strong>[R7]</strong> citeturn6search7
+                </li>
+                <li>
+                    <strong>Piadina com tomate-cereja, rúcula e queijo de cabra</strong> –
+                    receita do Continente Feed, tipo sandes quente fina, com rúcula adicionada
+                    no final. <strong>[R8]</strong> citeturn6search10
+                </li>
+                <li>
+                    <strong>Salada de rúcula com pera, nozes e iogurte</strong> – receita do
+                    PetitChef em português, com rúcula, pera, nozes e molho de iogurte.
+                    <strong>[R9]</strong> citeturn6search18
+                </li>
+                <li>
+                    <strong>Pesto de rúcula – receita fácil e rápida</strong> – receita em
+                    português no GZRecipes, com rúcula, frutos secos e queijo.
+                    <strong>[R10]</strong> citeturn6search20
+                </li>
+            </ol>
+            <p class="nota">
+                Há muitas outras receitas que usam rúcula como extra fresco (por exemplo,
+                carpaccio de carne com rúcula, pizzas variadas, sandes e wraps). As receitas
+                acima fornecem uma boa base de ideias para explorar esta folha na cozinha do
+                dia a dia.
+            </p>
+        </section>
+
+        <section id="beneficios">
+            <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+            <p>
+                A rúcula é frequentemente incluída em listas de "verduras verde-escuras"
+                associadas a uma alimentação saudável. A evidência científica foca-se tanto na
+                rúcula em si como no conjunto de hortaliças crucíferas e folhas verdes.
+            </p>
+            <ul>
+                <li>
+                    <strong>Fonte de vitaminas A, C e K, folato e minerais</strong> – 100&nbsp;g
+                    de rúcula crua fornecem cerca de 15&nbsp;mg de vitamina C, quantidades
+                    relevantes de folato, vitamina K (muitas dezenas de µg) e minerais como
+                    cálcio, magnésio e potássio. citeturn5search20turn5search6turn5search0
+                </li>
+                <li>
+                    <strong>Carotenoides e saúde ocular</strong> – estudos mostram que a rúcula
+                    contém luteína e β-caroteno em níveis comparáveis a outras folhas verdes,
+                    o que pode contribuir para proteção da visão e da saúde cardiovascular,
+                    quando consumida regularmente no contexto de um padrão alimentar rico em
+                    vegetais. citeturn5search6turn5search14
+                </li>
+                <li>
+                    <strong>Glucosinolatos e isotiocianatos</strong> – tal como outras
+                    crucíferas, a rúcula é rica em glucosinolatos, que originam isotiocianatos
+                    como a <strong>erucina</strong>, análoga da sulforafano. Revisões sobre
+                    glucosinolatos e saúde sugerem efeitos antioxidantes, anti-inflamatórios e
+                    potenciais benefícios em fatores de risco cardiovascular e metabólico,
+                    embora grande parte dos dados venha de estudos experimentais.
+                    citeturn5search4turn5search7turn5search18turn5search12
+                </li>
+                <li>
+                    <strong>Revisões específicas sobre rúcula</strong> – revisões como "Health
+                    benefits of arugula: a review" e trabalhos recentes sobre composição e
+                    compostos bioativos da rúcula (incluindo rebentos e microgreens) referem
+                    potenciais atividades anti-inflamatórias, antioxidantes, antidiabéticas e
+                    possíveis efeitos na pressão arterial, ainda com necessidade de mais
+                    estudos clínicos robustos em humanos. citeturn5search1turn5search15turn5search3turn5search23turn5search19
+                </li>
+                <li>
+                    <strong>Nitratos dietéticos e função vascular</strong> – folhas verdes como
+                    a rúcula são naturalmente ricas em nitratos, que podem contribuir para a
+                    produção de óxido nítrico e para a regulação da pressão arterial. Sites
+                    de saúde em português citam este mecanismo como um dos motivos pelos quais
+                    a rúcula pode ajudar na saúde cardiovascular e no desempenho físico,
+                    embora as recomendações foquem sempre o <strong>consumo moderado</strong>
+                    dentro de uma dieta variada. citeturn5search2turn5search8turn5search16
+                </li>
+                <li>
+                    <strong>Rúcula germinada e microgreens</strong> – trabalhos recentes destacam
+                    que rebentos e microgreens de rúcula concentram antioxidantes e outros
+                    fitoquímicos, podendo ter potencial interessante como complemento
+                    alimentar, embora os dados em humanos ainda sejam limitados.
+                    citeturn5search3turn5search13turn5search23turn5search24
+                </li>
+            </ul>
+            <p class="nota">
+                Apesar de apresentar vários pontos positivos, não há um "efeito milagroso"
+                da rúcula isoladamente. O benefício real surge quando é incluída, de forma
+                regular, num <strong>padrão alimentar rico em vegetais variados</strong>, com
+                pouco sal, poucos ultraprocessados e bom equilíbrio global de nutrientes.
+            </p>
+        </section>
+
+        <section id="nutricao">
+            <h3>6. Propriedades nutricionais</h3>
+            <p>
+                Valores aproximados por 100&nbsp;g de parte comestível de <strong>rúcula</strong>,
+                com base em dados de tabelas internacionais e estudos específicos
+                (USDA / bases secundárias e artigos de composição). citeturn5search20turn5search0turn5search6turn5search17turn5search25
+            </p>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Nutriente</th>
+                    <th>Rúcula crua<br>(100&nbsp;g, folhas)</th>
+                    <th>Rúcula cozinhada<br>(100&nbsp;g, escorrida, sem sal)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Energia</td>
+                    <td>≈ 25&nbsp;kcal</td>
+                    <td>≈ 20–25&nbsp;kcal</td>
+                </tr>
+                <tr>
+                    <td>Água</td>
+                    <td>≈ 91–92&nbsp;g</td>
+                    <td>≈ 92–93&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Proteína</td>
+                    <td>≈ 2,5–2,6&nbsp;g</td>
+                    <td>≈ 2,5–3,0&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Hidratos de carbono totais</td>
+                    <td>≈ 3,5–4,0&nbsp;g</td>
+                    <td>≈ 3,0–3,8&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Açúcares</td>
+                    <td>≈ 2,0–2,5&nbsp;g</td>
+                    <td>≈ 2,0–2,3&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Fibra alimentar</td>
+                    <td>≈ 1,5–2,0&nbsp;g</td>
+                    <td>≈ 1,5–2,0&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Lípidos totais</td>
+                    <td>≈ 0,7&nbsp;g</td>
+                    <td>≈ 0,7&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Vitamina C</td>
+                    <td>≈ 15&nbsp;mg</td>
+                    <td>Reduz-se com a cozedura (perdas para a água e pelo calor)</td>
+                </tr>
+                <tr>
+                    <td>Folato (vit. B9)</td>
+                    <td>≈ 90–100&nbsp;µg</td>
+                    <td>Ligeira redução com a cozedura</td>
+                </tr>
+                <tr>
+                    <td>Vitamina K</td>
+                    <td>≈ 100–110&nbsp;µg</td>
+                    <td>Relativamente estável, mas com alguma perda</td>
+                </tr>
+                <tr>
+                    <td>Cálcio</td>
+                    <td>≈ 150–170&nbsp;mg</td>
+                    <td>≈ 150–170&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Magnésio</td>
+                    <td>≈ 45–50&nbsp;mg</td>
+                    <td>≈ 45–50&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Potássio</td>
+                    <td>≈ 350–370&nbsp;mg</td>
+                    <td>≈ 340–360&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Carotenoides (luteína + β-caroteno)</td>
+                    <td>Alguns mg/100&nbsp;g (valores variam com variedade e condições)</td>
+                    <td>Parte degradada pelo calor, parte mais disponível</td>
+                </tr>
+                <tr>
+                    <td>Índice glicémico (IG)</td>
+                    <td>Muito baixo</td>
+                    <td>Muito baixo, desde que não se adicionem açúcares</td>
+                </tr>
+                </tbody>
+            </table>
+            <p class="nota">
+                Como em outras folhas, a densidade energética é baixa e o teor de micronutrientes
+                é elevado. Em preparações como pestos, sandes ou pizzas, o valor calórico final
+                vai depender sobretudo dos restantes ingredientes (azeite, queijos, frutos
+                secos, etc.).
+            </p>
+        </section>
+
+        <section id="utilidades">
+            <h3>7. Utilidades e aplicações (não apenas alimentares)</h3>
+            <ul>
+                <li>
+                    <strong>Cobertura rápida do solo:</strong> a rúcula cresce depressa,
+                    cobrindo o solo com folhagem e reduzindo a erosão e o aparecimento de
+                    infestantes.
+                </li>
+                <li>
+                    <strong>Elemento de policultura:</strong> integra bem misturas de saladas
+                    e consociações de horta (por exemplo, com alface, cenoura, alho-francês),
+                    aumentando a diversidade estrutural e funcional do sistema.
+                </li>
+                <li>
+                    <strong>Flor e néctar para insetos úteis:</strong> se deixada florir, a
+                    rúcula produz flores brancas ou amareladas que atraem abelhas,
+                    sirfídeos e outros polinizadores.
+                </li>
+                <li>
+                    <strong>Produção de sementes e rebentos:</strong> as sementes podem ser
+                    usadas para germinação (rebentos de rúcula) e microgreens, ou, em algumas
+                    culturas, para extração de óleo alimentar/condimental.
+                </li>
+                <li>
+                    <strong>Biomassa para compostagem:</strong> excedentes de folhas podem ser
+                    devolvidos ao solo via compostagem, contribuindo para o ciclo de nutrientes
+                    em sistemas biológicos.
+                </li>
+                <li>
+                    <strong>Valor educativo:</strong> por ser de ciclo curto e germinação
+                    rápida, é adequada para hortas escolares e experiências de germinação em
+                    casa.
+                </li>
+            </ul>
+        </section>
+
+        <section id="permacultura">
+            <h3>8. Grau de funcionalidade em permacultura</h3>
+            <p><strong>Classificação proposta: 8/10</strong></p>
+            <ul class="lista-permacultura">
+                <li>
+                    <strong>Funções principais:</strong> produção de folha fresca rica em
+                    micronutrientes, cobertura rápida do solo, atração de polinizadores
+                    (quando se deixa florir), fornecimento de biomassa e sementes para
+                    germinação.
+                </li>
+                <li>
+                    <strong>Vantagens em sistemas biológicos:</strong> fácil de cultivar, ciclo
+                    curto, boa resposta em solos férteis com elevada matéria orgânica,
+                    encaixando bem em rotações e consociações com outras hortícolas.
+                </li>
+                <li>
+                    <strong>Limitações:</strong> pode espigar rapidamente em calor intenso,
+                    tornando as folhas mais amargas; suscetível a pragas de crucíferas
+                    (alticas, lagartas, etc.), embora em sistemas biodiversos e com boa gestão
+                    de solo estas pressões tendam a ser melhor equilibradas.
+                </li>
+            </ul>
+            <p class="nota">
+                Em permacultura, a rúcula contribui como elemento multifuncional: alimento
+                denso em micronutrientes, planta de serviço (cobertura, flores para insetos) e
+                cultura educativa e de fácil integração em pequenas hortas biológicas.
+            </p>
+        </section>
+
+        <section id="referencias">
+            <h3>9. Referências</h3>
+
+            <div class="referencias-subsecao">9.1. Apresentação / contexto</div>
+            <ul class="referencias-lista">
+                <li><strong>D1</strong> – Brasil Escola. "Rúcula: o que é, como usar e benefícios." Disponível em: <a href="https://brasilescola.uol.com.br/saude/rucula.htm" target="_blank" rel="noopener">https://brasilescola.uol.com.br/saude/rucula.htm</a></li>
+                <li><strong>D2</strong> – Mundo Educação / UOL. "Rúcula." Disponível em: <a href="https://mundoeducacao.uol.com.br/saude-bem-estar/rucula.htm" target="_blank" rel="noopener">https://mundoeducacao.uol.com.br/saude-bem-estar/rucula.htm</a></li>
+                <li><strong>D3</strong> – Listonic. "Rúcula — nutrientes, benefícios para a saúde e dicas de compra." (artigo em português). Disponível em: <a href="https://listonic.com/p/pt-br/nutri%C3%A7%C3%A3o/rucula" target="_blank" rel="noopener">https://listonic.com/p/pt-br/nutricao/rucula</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.2. Sazonalidade e cultivo</div>
+            <ul class="referencias-lista">
+                <li><strong>S1</strong> – Artigos de horticultura em português sobre rúcula (Brasil Escola, Mundo Educação), que descrevem a planta como hortaliça de ciclo curto e uso principal em saladas. Ver D1 e D2.</li>
+                <li><strong>S2</strong> – Publicações técnicas sobre verduras de folha em clima temperado/méditerrânico, incluindo rúcula, que a colocam como cultura de outono/primavera com boa adaptação a temperaturas amenas.</li>
+            </ul>
+
+            <div class="referencias-subsecao">9.3. Propriedades nutricionais</div>
+            <ul class="referencias-lista">
+                <li><strong>N1</strong> – NatureClaim. "Arugula Nutrition Facts." Disponível em: <a href="https://natureclaim.com/nutrition/info/arugula/" target="_blank" rel="noopener">https://natureclaim.com/nutrition/info/arugula/</a></li>
+                <li><strong>N2</strong> – Tassi ÉMM et al. "Partial nutrient characterization of arugula (rocket – Eruca sativa L.) and effect of heat treatment on lipoxidase activity." <em>Brazilian Journal of Food Technology</em>, 2018. Disponível em: <a href="https://www.scielo.br/j/bjft/a/XtWK34PQjFvrfGtFVK4Cqmk/" target="_blank" rel="noopener">https://www.scielo.br/j/bjft/a/XtWK34PQjFvrfGtFVK4Cqmk/</a></li>
+                <li><strong>N3</strong> – Dados de composição de rúcula em bases USDA/derivadas, compilados em artigos de revisão sobre folhas verdes e crucíferas (ver também M1, M2).</li>
+            </ul>
+
+            <div class="referencias-subsecao">9.4. Benefícios para a saúde e propriedades medicinais</div>
+            <ul class="referencias-lista">
+                <li><strong>M1</strong> – Bell L. et al. "Rocket science: A review of phytochemical and health-related research in Eruca and Diplotaxis species." <em>Molecular Nutrition & Food Research</em>, 2018. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6690419/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC6690419/</a></li>
+                <li><strong>M2</strong> – Artigo "Health benefits of Arugula: A review." (acesso via ResearchGate/Academia.edu), que sintetiza efeitos potenciais de <em>Eruca sativa</em> em inflamação, metabolismo e risco cardiovascular. Disponível em: <a href="https://www.academia.edu/84856785/Health_benefits_of_Arugula_A_review" target="_blank" rel="noopener">https://www.academia.edu/84856785/Health_benefits_of_Arugula_A_review</a></li>
+                <li><strong>M3</strong> – Viana MMS et al. "Composição fitoquímica e potencial antioxidante de hortaliças folhosas." Inclui dados para rúcula. Disponível em: <a href="https://www.scielo.br/j/hb/a/Tnk3qxCRkz6ZFfJPmnwjCZz/" target="_blank" rel="noopener">https://www.scielo.br/j/hb/a/Tnk3qxCRkz6ZFfJPmnwjCZz/</a></li>
+                <li><strong>M4</strong> – Lobo V da S. et al. "Quantificação de flavonoides totais da <em>Eruca vesicaria</em> (L.) Cav." <em>Revista Fitos</em>, 2021. Disponível em: <a href="https://revistafitos.far.fiocruz.br/index.php/revista-fitos/article/view/1186" target="_blank" rel="noopener">https://revistafitos.far.fiocruz.br/.../1186</a></li>
+                <li><strong>M5</strong> – Frontiers in Pharmacology. "Glucosinolates from cruciferous vegetables and human health." 2021. Disponível em: <a href="https://www.frontiersin.org/articles/10.3389/fphar.2021.767975/epub" target="_blank" rel="noopener">https://www.frontiersin.org/articles/10.3389/fphar.2021.767975/epub</a></li>
+                <li><strong>M6</strong> – Baldelli S. et al. "Glucosinolates in Human Health: Metabolic Pathways and Health Benefits." <em>Foods</em>, 2025. Disponível em: <a href="https://www.mdpi.com/2304-8158/14/6/912" target="_blank" rel="noopener">https://www.mdpi.com/2304-8158/14/6/912</a></li>
+                <li><strong>M7</strong> – Tua Saúde. "Rúcula: 11 benefícios para a saúde e como consumir." Disponível em: <a href="https://www.tuasaude.com/beneficios-da-rucula/" target="_blank" rel="noopener">https://www.tuasaude.com/beneficios-da-rucula/</a></li>
+                <li><strong>M8</strong> – Biovie. "Sementes germinadas de rúcula: energia no seu prato!" (artigo em português). Disponível em: <a href="https://www.biovie.fr/pt/blog/sementes-germinadas-de-rucula-energia-no-seu-prato-n740" target="_blank" rel="noopener">https://www.biovie.fr/pt/blog/sementes-germinadas-de-rucula...</a></li>
+                <li><strong>M9</strong> – Ferwer. "Rúcula como superalimento para a sua vida saudável." Disponível em: <a href="https://www.ferwer.pt/blog/rucula-como-superalimento-para-a-sua-vida-saudavel" target="_blank" rel="noopener">https://www.ferwer.pt/blog/rucula-como-superalimento-para-a-sua-vida-saudavel</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.5. Folhas verdes, nutrição e sistema de produção</div>
+            <ul class="referencias-lista">
+                <li><strong>B1</strong> – Capítulo "Green Leafy Vegetables: A Health Promoting Source" em obra técnica sobre vegetais de folha. Disponível em: <a href="https://www.sciencedirect.com/science/article/pii/B9780128008720000184" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/B9780128008720000184</a></li>
+                <li><strong>B2</strong> – Revisões recentes sobre diferenças entre alimentos biológicos e convencionais (pesticidas, metais pesados e alguns nutrientes), aplicáveis também a hortaliças de folha verde-escura.</li>
+            </ul>
+
+            <div class="referencias-subsecao">9.6. Receitas (Top 10)</div>
+            <ul class="referencias-lista">
+                <li><strong>R1</strong> – Pingo Doce. "Salada de rúcula com abóbora." Disponível em: <a href="https://www.pingodoce.pt/receitas/salada-de-rucula-com-abobora/" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/salada-de-rucula-com-abobora/</a></li>
+                <li><strong>R2</strong> – Pingo Doce. "Salada de macarronete com rúcula e beterraba." Disponível em: <a href="https://www.pingodoce.pt/receitas/macarronete-com-rucula-e-beterraba/" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/macarronete-com-rucula-e-beterraba/</a></li>
+                <li><strong>R3</strong> – Continente Feed. "Salada de queijo fresco com rúcula, maçãs e nozes." Disponível em: <a href="https://feed.continente.pt/receitas/salada-de-queijo-fresco-com-rucula-macas-e-nozes" target="_blank" rel="noopener">https://feed.continente.pt/receitas/salada-de-queijo-fresco-com-rucula-macas-e-nozes</a></li>
+                <li><strong>R4</strong> – Pingo Doce. "Penne com tomate seco, ricotta e rúcula." Disponível em: <a href="https://www.pingodoce.pt/receitas/penne-com-tomate-seco-ricotta-e-rucula/" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/penne-com-tomate-seco-ricotta-e-rucula/</a></li>
+                <li><strong>R5</strong> – Pingo Doce. "Pesto de coentros e rúcula selvagem." Disponível em: <a href="https://www.pingodoce.pt/receitas/pesto-de-coentros-e-rucula-selvagem/" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/pesto-de-coentros-e-rucula-selvagem/</a></li>
+                <li><strong>R6</strong> – Cookidoo. "Pesto de rúcula e noz." Disponível em: <a href="https://cookidoo.pt/recipes/recipe/pt-PT/r117833" target="_blank" rel="noopener">https://cookidoo.pt/recipes/recipe/pt-PT/r117833</a></li>
+                <li><strong>R7</strong> – Continente Feed. "Carilada de gambas e rúcula Yämmi." Disponível em: <a href="https://feed.continente.pt/receitas/carilada-de-gambas-e-rucula" target="_blank" rel="noopener">https://feed.continente.pt/receitas/carilada-de-gambas-e-rucula</a></li>
+                <li><strong>R8</strong> – Continente Feed. "Piadina com tomate-cereja, rúcula e queijo de cabra." Disponível em: <a href="https://feed.continente.pt/receitas/piadina-com-tomate-cereja-rucula-e-queijo-de-cabra" target="_blank" rel="noopener">https://feed.continente.pt/receitas/piadina-com-tomate-cereja-rucula-e-queijo-de-cabra</a></li>
+                <li><strong>R9</strong> – PetitChef. "Salada de rúcula com pera, nozes e iogurte." Disponível em: <a href="https://pt.petitchef.com/receitas/entrada/salada-de-rucula-com-pera-nozes-e-iogurte-fid-618578" target="_blank" rel="noopener">https://pt.petitchef.com/receitas/entrada/salada-de-rucula-com-pera-nozes-e-iogurte-fid-618578</a></li>
+                <li><strong>R10</strong> – GZRecipes. "Pesto de rúcula – receita fácil e rápida." Disponível em: <a href="https://www.gzrecipes.com/pt/atavolacontea/pesto-de-rucula-receita-facil-e-rapida/" target="_blank" rel="noopener">https://www.gzrecipes.com/pt/atavolacontea/pesto-de-rucula-receita-facil-e-rapida/</a></li>
+            </ul>
+
+            <p class="nota">
+                Procurou-se dar preferência a fontes relativamente estáveis (artigos
+                científicos com DOI, revistas indexadas, grandes portais de receitas em
+                português). Ainda assim, é natural que alguns links mudem ao longo do tempo.
+            </p>
+        </section>
+
+        <div class="topo-link">
+            <a href="#topo">Voltar ao topo ▲</a>
+        </div>
+    </article>
+</main>
+</body>
+</html>

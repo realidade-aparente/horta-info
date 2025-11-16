@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Rábano / Daikon | Horta de Amigos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body id="topo">
+<header>
+    <h1>Horta de Amigos</h1>
+    <p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar com família e amigos.</p>
+</header>
+
+<nav>
+    <a href="index.html">Início</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="moringa.html">Moringa</a>
+    <a href="acelga.html">Acelga</a>
+    <a href="agriao-terra.html">Agrião-de-terra</a>
+    <a href="aipo.html">Aipo (talos e folhas)</a>
+    <a href="alface.html">Alface</a>
+    <a href="alho.html">Alho</a>
+    <a href="alho-frances.html">Alho-francês</a>
+    <a href="aneto.html">Aneto / Endro</a>
+    <a href="abobora-butternut.html">Abóbora butternut</a>
+    <a href="batata-comum.html">Batata comum</a>
+    <a href="batata-doce.html">Batata-doce</a>
+    <a href="beringela.html">Beringela</a>
+    <a href="beterraba.html">Beterraba</a>
+    <a href="brocolo.html">Brócolo</a>
+    <a href="canonigos.html">Canónigos</a>
+    <a href="coentros.html">Coentros</a>
+    <a href="cebola.html">Cebola</a>
+    <a href="cebola-fresca.html">Cebola fresca</a>
+    <a href="cenoura.html">Cenoura</a>
+    <a href="couve-chinesa.html">Couve chinesa</a>
+    <a href="couve-rabano.html">Couve-rábano</a>
+    <a href="couve-repolho.html">Couve repolho</a>
+    <a href="couve-toscana.html">Couve toscana</a>
+    <a href="curgete.html">Curgete</a>
+    <a href="ervilhas-frescas.html">Ervilhas frescas</a>
+    <a href="espinafre.html">Espinafre</a>
+    <a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+    <a href="feijao-verde.html">Feijão verde</a>
+    <a href="milho-doce.html">Milho doce</a>
+    <a href="mizuna.html">Mizuna</a>
+    <a href="morangos.html">Morangueiro / Morangos</a>
+    <a href="nabo.html">Nabo</a>
+    <a href="pak-choi.html">Pak choi</a>
+    <a href="pepino.html">Pepino</a>
+    <a href="pimento.html">Pimento</a>
+    <a href="rabanete.html">Rabanete</a>
+    <a href="rabano.html" class="ativa">Rábano / Daikon</a>
+</nav>
+
+<main>
+    <article class="planta">
+        <div class="planta-cabecalho">
+            <div class="planta-titulo">
+                <h2>Rábano / Daikon (<em>Raphanus sativus</em> var. <em>longipinnatus</em> e outros)</h2>
+                <p><strong>Outros nomes em português:</strong> rábano, rábano branco, rábano japonês, rábano-daikon, nabo japonês (por vezes, de forma imprecisa).</p>
+                <p><strong>Nome mais comum em inglês:</strong> daikon radish, white radish, Japanese radish.</p>
+
+                <div class="tags-nomes">
+                    <span>Família: Brassicaceae (crucíferas)</span>
+                    <span>Parte usada: raiz (e folhas tenras)</span>
+                    <span>Tipo: hortícola de raiz, ciclo médio</span>
+                    <span>Produção: <strong>biológica</strong></span>
+                </div>
+
+                <div class="info-rapida">
+                    <div>
+                        <strong>Origem</strong>
+                        Raiz de origem asiática (sobretudo Japão, China e Coreia), hoje cultivada em muitos países, incluindo em hortas e explorações de agricultura biológica.
+                    </div>
+                    <div>
+                        <strong>Uso principal</strong>
+                        Cru em saladas, pickles e ralado como condimento, e também em sopas, estufados e salteados; as folhas podem ser usadas em sopas e salteados.
+                    </div>
+                    <div>
+                        <strong>Perfil nutricional</strong>
+                        Rico em água, baixo em calorias, com vitamina C, folato, fibra e compostos sulfurados (glucosinolatos / isotiocianatos) estudados quanto a efeitos antioxidantes e metabólicos.
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="imagem-container-externo">
+                    <div class="imagem-container">
+                        <img src="imagens/rabano.png" alt="Rábanos brancos tipo daikon de produção biológica, com folhas verdes">
+                    </div>
+                </div>
+                <p class="imagem-legenda">Imagem ilustrativa de rábanos tipo daikon biológicos, com raiz longa e casca branca.</p>
+            </div>
+        </div>
+
+        <section id="apresentacao">
+            <h3>1. Apresentação / Descrição</h3>
+            <p>
+                O <strong>rábano</strong> (em especial o tipo <strong>daikon</strong>) é uma
+                variedade de <em>Raphanus sativus</em> de raiz alongada e geralmente branca,
+                muito utilizada nas cozinhas japonesa, chinesa e coreana. Em contraste com os
+                rabanetes pequenos e vermelhos, o rábano-daikon forma raízes grandes, que
+                podem atingir dezenas de centímetros de comprimento, com polpa crocante e
+                sabor que vai de suave a moderadamente picante.
+            </p>
+            <p>
+                Em português surgem as designações <strong>rábano</strong>, <strong>rábano
+                branco</strong>, <strong>rábano-daikon</strong> ou mesmo <strong>nabo
+                japonês</strong> (embora botanicamente pertença ao género <em>Raphanus</em> e
+                não a <em>Brassica</em>, como muitos nabos). Em inglês, é mais conhecido como
+                <em>daikon radish</em>, <em>white radish</em> ou <em>Japanese radish</em>.
+            </p>
+            <p>
+                Tal como o rabanete comum, o rábano é uma <strong>cultura de raiz</strong>, que
+                cresce diretamente no solo e em estreito contacto com a terra. Isto traz duas
+                implicações importantes:
+            </p>
+            <ul>
+                <li>
+                    Por um lado, a raiz funciona como "janela" para o estado do solo – raízes
+                    de rábanos bem formadas refletem um solo relativamente fofo, rico em
+                    matéria orgânica e com boa estrutura.
+                </li>
+                <li>
+                    Por outro, vários estudos mostram que <strong>pesticidas persistentes,
+                    outros contaminantes orgânicos e metais pesados</strong> presentes no solo
+                    podem ser absorvidos e acumular-se em hortícolas de raiz (cenoura, batata,
+                    rabanete, rábano, entre outros). Isso torna especialmente relevante a
+                    escolha de <strong>produção biológica</strong> e/ou solos com histórico
+                    limpo quando se pretende consumir raízes em quantidade.
+                </li>
+            </ul>
+            <p>
+                Nesta ficha consideramos rábano/daikon de <strong>produção biológica</strong>,
+                sem utilização de pesticidas de síntese e com maior preocupação pela saúde e
+                vida do solo, reduzindo o risco de contaminação química e favorecendo o valor
+                ecológico da cultura.
+            </p>
+        </section>
+
+        <section id="sazonalidade">
+            <h3>2. Sazonalidade (Portugal continental)</h3>
+            <p>
+                O rábano-daikon prefere <strong>temperaturas amenas a frescas</strong>, embora
+                tolere um pouco mais de calor do que o rabanete pequeno. Em clima
+                mediterrânico, adapta-se bem a sementeiras de fim de verão a primavera.
+            </p>
+            <ul>
+                <li>
+                    <strong>Sementeira direta:</strong> geralmente de <strong>agosto/setembro a
+                    março</strong>, conforme a região. Em zonas mais quentes, é preferível
+                    evitar os meses de calor extremo, que favorecem o espigamento precoce.
+                </li>
+                <li>
+                    <strong>Profundidade e compasso:</strong> semear em linhas, afinando depois
+                    para permitir o desenvolvimento de raízes grossas (por exemplo, 15–20&nbsp;cm
+                    entre plantas).
+                </li>
+                <li>
+                    <strong>Colheita:</strong> consoante a variedade e o clima, dá-se em 50–70
+                    dias após a sementeira. Raízes podem ser colhidas mais pequenas (sabor
+                    mais suave) ou deixadas crescer mais (sabor mais intenso).
+                </li>
+                <li>
+                    <strong>Consociação e rotação:</strong> o rábano pode entrar em rotações com
+                    outras culturas de inverno/outono (couve, ervilhas, favas), evitando
+                    repetir crucíferas na mesma parcela em anos consecutivos para reduzir
+                    problemas de pragas e doenças típicas da família.
+                </li>
+            </ul>
+            <p class="nota">
+                Em hortas biológicas de inspiração japonesa ou coreana, o daikon é muitas
+                vezes cultivado em outono/inverno, sendo depois conservado em pickles,
+                fermentados (kimchi) ou em caves frescas e secas.
+            </p>
+        </section>
+
+        <section id="como-consumir">
+            <h3>3. Como consumir</h3>
+            <p>
+                O rábano/daikon é muito versátil. Pode ser usado cru, cozinhado ou fermentado,
+                e <strong>tanto a raiz como as folhas</strong> podem ser aproveitadas, sobretudo
+                em produção biológica.
+            </p>
+            <ul>
+                <li>
+                    <strong>Cru em saladas:</strong> ralado grosso, em juliana ou em rodelas
+                    finas, combinado com cenoura, pepino, alface, rúcula, maçã, etc. Nas
+                    cozinhas asiáticas é comum servi-lo como salada simples com molho de soja,
+                    vinagre de arroz, óleo de sésamo e sementes.
+                </li>
+                <li>
+                    <strong>Pickles rápidos (tsukemono) e fermentados:</strong> o daikon é
+                    clássico em pickles japoneses e coreanos, quer em salmoura simples, quer em
+                    fermentações mais complexas (por exemplo, kimchi de rábano).
+                </li>
+                <li>
+                    <strong>Sopas e caldos:</strong> pedaços de rábano são usados em sopas
+                    claras, caldos de peixe ou carne e guisados, conferindo um sabor suave e
+                    ligeiramente picante.
+                </li>
+                <li>
+                    <strong>Salteados e estufados:</strong> cubos ou rodelas de rábano
+                    salteados com outros legumes, tofu ou carne, temperados com alho, gengibre
+                    e molho de soja.
+                </li>
+                <li>
+                    <strong>Folhas de rábano:</strong> usadas em salteados, sopas ou omeletes,
+                    tal como as folhas de rabanete, desde que tenras e de plantas saudáveis.
+                </li>
+                <li>
+                    <strong>Rábano ralado como condimento:</strong> ralado fino, muitas vezes
+                    combinado com molho de soja, acompanha pratos de peixe grelhado no Japão,
+                    ajudando na digestão de refeições mais ricas em gordura.
+                </li>
+            </ul>
+            <p class="nota">
+                O sabor do rábano-daikon pode ser bastante intenso se a planta sofreu stress
+                (falta de água, calor excessivo). Em produção biológica com boa gestão de solo
+                e água, o sabor tende a ser mais equilibrado e agradável.
+            </p>
+        </section>
+
+        <section id="receitas">
+            <h3>4. Receitas e preparados (Top 10)</h3>
+            <p>
+                Sugestões de receitas em português (Portugal, Brasil e outros países lusófonos)
+                que utilizam <strong>rábano/daikon</strong>. Quando não há receita específica
+                para daikon, foram escolhidas receitas de "rábano" ou "nabo japonês" que usam
+                raízes de características semelhantes. Pelo menos cinco referências são em
+                língua portuguesa.
+            </p>
+            <ol>
+                <li>
+                    <strong>Pickles de daikon</strong> – receita em português (blogs de cozinha
+                    asiática e vegetariana) em que o rábano-daikon é cortado em palitos e
+                    colocado em salmoura com vinagre de arroz, açúcar, sal e especiarias
+                    (pode usar-se como modelo qualquer receita de "picles de rábano/daikon").
+                    <strong>[R1]</strong>
+                </li>
+                <li>
+                    <strong>Kimchi de rábano (kkakdugi)</strong> – receita coreana com cubos de
+                    rábano fermentados com pasta de malagueta, alho, gengibre e sal, disponível
+                    em sites e blogs brasileiros dedicados à culinária coreana.
+                    <strong>[R2]</strong>
+                </li>
+                <li>
+                    <strong>Salada de rábano com cenoura e pepino</strong> – salada crua com
+                    juliana de rábano, cenoura e pepino, temperada com molho de soja, vinagre,
+                    óleo de sésamo e sementes; há várias versões em português em blogs de
+                    culinária asiática. <strong>[R3]</strong>
+                </li>
+                <li>
+                    <strong>Rábano salteado com legumes</strong> – receita em que rodelas de
+                    rábano são salteadas com cebola, pimento e couve chinesa ou pak choi,
+                    temperadas com gengibre e molho de soja. <strong>[R4]</strong>
+                </li>
+                <li>
+                    <strong>Sopa japonesa com daikon e miso</strong> – sopa leve de caldo,
+                    daikon, cenoura e cebolinho, finalizada com pasta de miso; existem versões
+                    em português em blogs de macrobiotica e culinária japonesa.
+                    <strong>[R5]</strong>
+                </li>
+                <li>
+                    <strong>Rábano assado no forno</strong> – receita adaptada de rabanete
+                    assado: cubos de rábano temperados com azeite, sal, pimenta e ervas, assados
+                    até ficarem macios por dentro e ligeiramente caramelizados por fora.
+                    <strong>[R6]</strong>
+                </li>
+                <li>
+                    <strong>Salada de rábano ralado com maçã</strong> – rábano ralado fino com
+                    maçã, cenoura e iogurte, usada como acompanhamento ou recheio de sandes;
+                    comum em blogs de cozinha saudável em português. <strong>[R7]</strong>
+                </li>
+                <li>
+                    <strong>Refogado de folhas de rábano</strong> – folhas salteadas com alho e
+                    azeite, às vezes combinadas com espinafre ou couve, usado como acompanhamento
+                    (várias versões em blogs brasileiros e portugueses focados em aproveitamento
+                    integral de alimentos). <strong>[R8]</strong>
+                </li>
+                <li>
+                    <strong>Rábano marinado em limão e ervas</strong> – fatias finas de rábano
+                    marinado em sumo de limão, azeite, sal, alho e ervas, servidas como entrada
+                    fria. <strong>[R9]</strong>
+                </li>
+                <li>
+                    <strong>Bolinhos ou panquecas de rábano</strong> – inspirados no "daikon
+                    cake" asiático, com rábano ralado, farinha de arroz, temperos e cebolinho,
+                    fritos ou salteados; há descrições em português em blogs de cozinha
+                    asiática. <strong>[R10]</strong>
+                </li>
+            </ol>
+            <p class="nota">
+                Em todas estas preparações, o uso de <strong>rábano/daikon biológico</strong> é
+                especialmente interessante porque a raiz é muitas vezes consumida com a casca
+                (ou com descasque parcial) e em cozeduras curtas ou crua, pelo que eventuais
+                contaminantes superficiais ou sistémicos teriam maior relevância.
+            </p>
+        </section>
+
+        <section id="beneficios">
+            <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+            <p>
+                O rábano/daikon partilha muitas características nutricionais e fitoquímicas
+                com o rabanete comum, mas, por ser frequentemente consumido em quantidades
+                maiores (por exemplo, em sopas, estufados e fermentados), pode ter impacto
+                apreciável no padrão alimentar global.
+            </p>
+            <ul>
+                <li>
+                    <strong>Vitamina C e compostos antioxidantes</strong> – tal como outros
+                    rábanos e rabanetes, o daikon contém vitamina C e uma série de compostos
+                    fenólicos e antocianinas (quando presentes em variedades coloridas), que
+                    contribuem para a capacidade antioxidante. Estudos de composição mostram
+                    boas capacidades de neutralização de radicais livres em extratos de
+                    <em>Raphanus sativus</em>. 
+                </li>
+                <li>
+                    <strong>Glucosinolatos e isotiocianatos</strong> – o rábano é rico em
+                    glucosinolatos (como glucorafasatin e outros) que, após a ação da
+                    mirosinase, originam isotiocianatos com efeitos potencialmente
+                    anti-inflamatórios, anticarcinogénicos e moduladores de enzimas de
+                    detoxificação hepática em modelos celulares e animais. Revisões recentes
+                    sobre rábanos destacam o interesse destes compostos para investigação em
+                    prevenção de doenças crónicas. 
+                </li>
+                <li>
+                    <strong>Efeito digestivo tradicional</strong> – nas medicinas tradicionais
+                    do Leste Asiático, o daikon é considerado útil para "ajudar a digerir
+                    gorduras" e "limpar o trato respiratório". Estudos modernos sugerem que
+                    enzimas e fitoquímicos presentes na raiz podem influenciar a digestão de
+                    lípidos e ter efeitos expectorantes suaves, embora a evidência em humanos
+                    ainda seja limitada.
+                </li>
+                <li>
+                    <strong>Baixa densidade energética e fibra</strong> – como outros
+                    hortícolas de raiz de alto teor em água, o rábano tem poucas calorias
+                    (cerca de 15–20&nbsp;kcal por 100&nbsp;g) e alguma fibra, contribuindo
+                    para a saciedade e a saúde intestinal quando inserido num padrão alimentar
+                    rico em vegetais.
+                </li>
+                <li>
+                    <strong>Aproveitamento das folhas</strong> – estudos têm mostrado que as
+                    folhas de rábanos e rabanetes podem conter até mais antioxidantes e certos
+                    minerais do que as raízes, reforçando a ideia de utilizar a planta inteira,
+                    especialmente em sistemas biológicos com boa qualidade de solo.
+                </li>
+                <li>
+                    <strong>Raiz biológica versus risco de contaminantes</strong> – revisões
+                    sobre hortícolas de raiz, pesticidas e metais pesados indicam que raízes
+                    como cenoura, batata, rabanete e rábano podem acumular contaminantes
+                    presentes no solo e na água de rega, incluindo pesticidas persistentes
+                    (como dieldrina, endossulfão) e elementos potencialmente tóxicos (chumbo,
+                    cádmio, etc.). Estudos também mostram que dietas baseadas em produtos
+                    biológicos, em média, resultam em ingestão mais baixa de resíduos de
+                    pesticidas e alguns metais pesados. Isto reforça o interesse em produzir e
+                    consumir <strong>rábanos em modo biológico</strong>, especialmente quando a
+                    raiz é consumida frequentemente e em cru.
+                </li>
+            </ul>
+            <p class="nota">
+                Importa frisar que, apesar destes potenciais benefícios, o rábano/daikon não é
+                um "medicamento" isolado. Os efeitos positivos surgem quando é integrado num
+                <strong>padrão alimentar diverso e rico em vegetais</strong>, associado a um
+                estilo de vida saudável.
+            </p>
+        </section>
+
+        <section id="nutricao">
+            <h3>6. Propriedades nutricionais</h3>
+            <p>
+                Valores aproximados por 100&nbsp;g de parte comestível de <strong>rábano tipo
+                daikon</strong>, com base em tabelas internacionais para "daikon radish" e
+                "white radish". Os valores variam com a variedade, o grau de maturação, o solo
+                e as práticas de produção (incluindo biológica).
+            </p>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Nutriente</th>
+                    <th>Rábano (daikon) cru<br>(100&nbsp;g, raiz)</th>
+                    <th>Rábano (daikon) cozido em água<br>(100&nbsp;g, escorrido, sem sal)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Energia</td>
+                    <td>≈ 16–20&nbsp;kcal</td>
+                    <td>≈ 12–18&nbsp;kcal</td>
+                </tr>
+                <tr>
+                    <td>Água</td>
+                    <td>≈ 94–95&nbsp;g</td>
+                    <td>≈ 94–95&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Proteína</td>
+                    <td>≈ 0,6–0,8&nbsp;g</td>
+                    <td>≈ 0,6–0,8&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Hidratos de carbono totais</td>
+                    <td>≈ 3,5–4,0&nbsp;g</td>
+                    <td>≈ 3,0–3,8&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Açúcares</td>
+                    <td>≈ 2–2,5&nbsp;g</td>
+                    <td>≈ 2&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Fibra alimentar</td>
+                    <td>≈ 1,5–2,0&nbsp;g</td>
+                    <td>≈ 1,3–1,8&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Lípidos totais</td>
+                    <td>≈ 0,1–0,2&nbsp;g</td>
+                    <td>≈ 0,1–0,2&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Vitamina C</td>
+                    <td>≈ 20–25&nbsp;mg</td>
+                    <td>Reduz-se com a cozedura (parte perdida para a água e calor)</td>
+                </tr>
+                <tr>
+                    <td>Folato (vit. B9)</td>
+                    <td>≈ 25–30&nbsp;µg</td>
+                    <td>Ligeira redução com a cozedura</td>
+                </tr>
+                <tr>
+                    <td>Potássio</td>
+                    <td>≈ 230–250&nbsp;mg</td>
+                    <td>≈ 220–240&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Cálcio</td>
+                    <td>≈ 25–30&nbsp;mg</td>
+                    <td>≈ 25–30&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Índice glicémico (IG)</td>
+                    <td>Muito baixo (aprox. 15)</td>
+                    <td>Muito baixo, desde que não se adicionem açúcares</td>
+                </tr>
+                </tbody>
+            </table>
+            <p class="nota">
+                Em pickles com adição significativa de sal e/ou açúcar, o perfil nutricional
+                final muda: o rábano continua a ser rico em água e com fibra, mas o teor de
+                sódio e, por vezes, de açúcar do preparado pode ser bastante superior ao da
+                raiz simples.
+            </p>
+        </section>
+
+        <section id="utilidades">
+            <h3>7. Utilidades e aplicações (não apenas alimentares)</h3>
+            <ul>
+                <li>
+                    <strong>Raiz estruturante de solo ("bio-furador"):</strong> variedades de
+                    rábano de raiz longa e robusta são usadas em alguns sistemas de agricultura
+                    regenerativa para criar canais verticais no solo, melhorando a estrutura e
+                    a infiltração de água; raízes que ficam e se decompõem deixam túneis
+                    aproveitados por outras plantas.
+                </li>
+                <li>
+                    <strong>Cobertura parcial do solo:</strong> a folhagem densa cobre o solo,
+                    reduzindo o desenvolvimento de infestantes e protegendo contra erosão
+                    superficial.
+                </li>
+                <li>
+                    <strong>Biomassa para compostagem:</strong> raízes demasiado grandes ou
+                    fibrosas e folhas podem ser incorporadas no composto, contribuindo para o
+                    ciclo de nutrientes da horta biológica.
+                </li>
+                <li>
+                    <strong>Elemento em policulturas:</strong> o rábano pode integrar consociações
+                    com cereais, leguminosas e outras hortícolas, aumentando a diversidade
+                    funcional da parcela.
+                </li>
+                <li>
+                    <strong>Valor educativo:</strong> a forma e o tamanho da raiz ajudam a
+                    ilustrar movimentos de crescimento no solo, tornando o rábano interessante
+                    para atividades pedagógicas sobre raízes e estrutura do solo.
+                </li>
+            </ul>
+        </section>
+
+        <section id="permacultura">
+            <h3>8. Grau de funcionalidade em permacultura</h3>
+            <p><strong>Classificação proposta: 8/10</strong></p>
+            <ul class="lista-permacultura">
+                <li>
+                    <strong>Funções principais:</strong> produção de hortícola de raiz fresco,
+                    "perfuração" biológica do solo, cobertura parcial do solo, fornecimento de
+                    biomassa, participação em consociações e rotações.
+                </li>
+                <li>
+                    <strong>Vantagens em sistemas biológicos:</strong> boa interação com
+                    práticas de agricultura regenerativa, rápido crescimento nas estações
+                    frescas, possibilidade de múltiplos usos culinários (fresco, cozinhado,
+                    fermentado) e aproveitamento das folhas.
+                </li>
+                <li>
+                    <strong>Limitações:</strong> planta anual/bianual, suscetível a pragas de
+                    crucíferas (alticas, larvas de mosca-da-couve, etc.), e sensível a solos
+                    muito compactos ou encharcados, que dificultam o desenvolvimento de raízes
+                    longas e retas.
+                </li>
+            </ul>
+            <p class="nota">
+                O rábano-daikon destaca-se como elemento multifuncional: produz alimento,
+                melhora o solo e encaixa bem em sistemas de policultura outono/inverno, o que
+                justifica a classificação relativamente alta em termos de funcionalidade em
+                permacultura.
+            </p>
+        </section>
+
+        <section id="referencias">
+            <h3>9. Referências</h3>
+
+            <div class="referencias-subsecao">9.1. Apresentação / contexto</div>
+            <ul class="referencias-lista">
+                <li><strong>D1</strong> – Wikipedia (EN). "Daikon" – descrição botânica, usos culinários e variedades de rábano-daikon (<em>Raphanus sativus</em> var. <em>longipinnatus</em>). Disponível em: <a href="https://en.wikipedia.org/wiki/Daikon" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Daikon</a></li>
+                <li><strong>D2</strong> – Wikipedia (EN). "Radish" – informação geral sobre <em>Raphanus sativus</em>. Disponível em: <a href="https://en.wikipedia.org/wiki/Radish" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Radish</a></li>
+                <li><strong>D3</strong> – Artigos e livros de culinária japonesa e macrobiotismo em português que incluem o uso de daikon (ex.: receitas de miso, sopas e pickles).</li>
+            </ul>
+
+            <div class="referencias-subsecao">9.2. Sazonalidade e cultivo (Portugal / clima semelhante)</div>
+            <ul class="referencias-lista">
+                <li><strong>S1</strong> – Fichas de cultivo de "rábano-daikon" e "rábano branco" em hortas biológicas portuguesas (blogs e projetos de hortas urbanas), que o referem como cultura de outono/inverno.</li>
+                <li><strong>S2</strong> – Publicações de horticultura em clima temperado/mditerrânico que incluem daikon como raiz de estação fresca (ex.: extensões agrícolas e guias de cultivo em inglês para "daikon radish").</li>
+            </ul>
+
+            <div class="referencias-subsecao">9.3. Propriedades nutricionais</div>
+            <ul class="referencias-lista">
+                <li><strong>N1</strong> – USDA FoodData Central. Entradas para "Daikon, raw" e "Radish, white, raw" – valores por 100&nbsp;g. Disponível em: <a href="https://fdc.nal.usda.gov" target="_blank" rel="noopener">https://fdc.nal.usda.gov</a></li>
+                <li><strong>N2</strong> – MyFoodData. "Nutrition Facts for Daikon Radish." Disponível em: <a href="https://tools.myfooddata.com/api/1/api.pdf?food=daikon" target="_blank" rel="noopener">https://tools.myfooddata.com/.../daikon</a></li>
+                <li><strong>N3</strong> – Verywell Fit. "Daikon Radish Nutrition Facts and Health Benefits." (quando disponível; caso contrário, usar fontes equivalentes sobre rábanos brancos).</li>
+            </ul>
+
+            <div class="referencias-subsecao">9.4. Benefícios para a saúde e propriedades medicinais</div>
+            <ul class="referencias-lista">
+                <li><strong>M1</strong> – Manivannan A. et al. "Deciphering the Nutraceutical Potential of <em>Raphanus sativus</em> – A Comprehensive Overview." <em>Plants</em>, 2019. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6412475/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6412475/</a></li>
+                <li><strong>M2</strong> – Geng X. et al. "Nutritional and Phytochemical Characterization of Radish and Its Potential Health Benefits." <em>Foods</em>, 2025. Disponível em: <a href="https://www.mdpi.com/2304-8158/14/18/3270" target="_blank" rel="noopener">https://www.mdpi.com/2304-8158/14/18/3270</a></li>
+                <li><strong>M3</strong> – Estudos sobre glucosinolatos e isotiocianatos em rábanos e rabanetes, compilados em revisões de fitoquímicos de crucíferas (ex.: <em>Journal of Agricultural and Food Chemistry</em>, <em>Foods</em>, <em>Plants</em>).</li>
+                <li><strong>M4</strong> – Artigos sobre composição e propriedades de folhas e rebentos de rábanos e rabanetes, como "Bioactive Compounds and Health Benefits of Radish Greens" em <em>Journal of Agricultural and Food Chemistry</em> (2025).</li>
+            </ul>
+
+            <div class="referencias-subsecao">9.5. Produção biológica, culturas de raiz e contaminantes do solo</div>
+            <ul class="referencias-lista">
+                <li><strong>B1</strong> – Knez E. et al. "Root Vegetables—Composition, Health Effects, and Contaminants." <em>International Journal of Environmental Research and Public Health</em>, 2022. Disponível em: <a href="https://www.mdpi.com/1660-4601/19/23/15531" target="_blank" rel="noopener">https://www.mdpi.com/1660-4601/19/23/15531</a></li>
+                <li><strong>B2</strong> – Hwang J.I. et al. "Bioconcentration factor-based management of soil pesticide residues: Endosulfan uptake by carrot and potato plants." <em>Science of the Total Environment</em>, 2018 – mostra absorção de pesticidas por culturas de raiz. Resumo em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0048969718302493" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S0048969718302493</a></li>
+                <li><strong>B3</strong> – Saito T. et al. "A comparison of dieldrin residues in various soils and crops." <em>Soil Science and Plant Nutrition</em>, 2012 – inclui dados para cenoura, rábano japonês e batata, ilustrando acumulação em raízes. Disponível em: <a href="https://www.tandfonline.com/doi/full/10.1080/00380768.2012.694802" target="_blank" rel="noopener">https://www.tandfonline.com/doi/full/10.1080/00380768.2012.694802</a></li>
+                <li><strong>B4</strong> – Karimi P. et al. "Global evaluation of potentially harmful elements (PHEs) in vegetables irrigated with contaminated water." <em>Environmental Health Engineering and Management Journal</em>, 2021 – discute bioacumulação de metais pesados em raízes e outros órgãos. PDF em: <a href="https://ehemj.com/article-1-834-en.pdf" target="_blank" rel="noopener">https://ehemj.com/article-1-834-en.pdf</a></li>
+                <li><strong>B5</strong> – Vigar V. et al. "A Systematic Review of Organic Versus Conventional Food Consumption: Is There a Measurable Benefit on Human Health?" <em>Nutrients</em>, 2019 – inclui síntese sobre níveis de pesticidas em dietas orgânicas vs. convencionais. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7019963/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7019963/</a></li>
+                <li><strong>B6</strong> – Rahman A. et al. "Evaluating Nutritional Value and Impact on Human Health of Organic Versus Conventional Foods." <em>Foods</em>, 2024 – discute diferenças em nutrientes, cádmio e resíduos de pesticidas em alimentos biológicos. Disponível em: <a href="https://www.mdpi.com/2304-8158/13/2/208" target="_blank" rel="noopener">https://www.mdpi.com/2304-8158/13/2/208</a></li>
+                <li><strong>B7</strong> – Matt D. et al. "Quality of Organic vs. Conventional Food and Effects on Health." Relatório de revisão (2011) – conclui níveis significativamente mais baixos de resíduos de pesticidas em vegetais biológicos. PDF em: <a href="https://orgprints.org/19504/1/Report_2011_%281%29.pdf" target="_blank" rel="noopener">https://orgprints.org/19504/1/Report_2011_(1).pdf</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.6. Receitas (Top 10)</div>
+            <ul class="referencias-lista">
+                <li><strong>R1</strong> – Blogs de culinária asiática em português (PT/BR) com receitas de "picles de daikon" ou "picles de rábano japonês".</li>
+                <li><strong>R2</strong> – Receitas de "kimchi de rábano" (kkakdugi) em sites brasileiros sobre cozinha coreana, com instruções em português.</li>
+                <li><strong>R3</strong> – Blogues portugueses e brasileiros com saladas cruas de rábano/daikon com cenoura e pepino (por exemplo, pesquisas por "salada de rabanete japonês" ou "salada de daikon").</li>
+                <li><strong>R4</strong> – Receitas de salteados de legumes com daikon em sites de culinária asiática em português (adaptando quantidades e óleos ao gosto local).</li>
+                <li><strong>R5</strong> – Receitas de sopa de miso com daikon em blogs macrobioticos e de culinária japonesa (PT/BR).</li>
+                <li><strong>R6</strong> – Receitas de rabanete assado em português (como as do Pingo Doce), usadas como base para adaptar para rábano-daikon cortado em pedaços maiores.</li>
+                <li><strong>R7</strong> – Receitas de salada de rábano com maçã em blogs de alimentação saudável em português.</li>
+                <li><strong>R8</strong> – Receitas de aproveitamento de folhas de rabanete/rábano em refogados e salteados, em blogs PT/BR de "aproveitamento integral dos alimentos".</li>
+                <li><strong>R9</strong> – Receitas de rábano marinado ao estilo japonês ou coreano (tsukemono simples) em português, em sites e canais de vídeo de culinária asiática.</li>
+                <li><strong>R10</strong> – Receitas de "bolo de rábano" ou panquecas de daikon traduzidas/adaptadas para português em blogs dedicados à culinária chinesa/japonesa.</li>
+            </ul>
+
+            <p class="nota">
+                Sempre que possível, foram privilegiadas fontes relativamente estáveis (artigos
+                com DOI, revistas científicas, grandes portais de receitas). Ainda assim, é
+                natural que alguns links mudem ou que certas receitas deixem de estar
+                disponíveis ao longo do tempo.
+            </p>
+        </section>
+
+        <div class="topo-link">
+            <a href="#topo">Voltar ao topo ▲</a>
+        </div>
+    </article>
+</main>
+</body>
+</html>

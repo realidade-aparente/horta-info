@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Salanova (alface multileaf verde e roxa) | Horta de Amigos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body id="topo">
+<header>
+    <h1>Horta de Amigos</h1>
+    <p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar com família e amigos.</p>
+</header>
+
+<nav>
+    <a href="index.html">Início</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="moringa.html">Moringa</a>
+    <a href="acelga.html">Acelga</a>
+    <a href="agriao-terra.html">Agrião-de-terra</a>
+    <a href="aipo.html">Aipo (talos e folhas)</a>
+    <a href="alface.html">Alface</a>
+    <a href="alho.html">Alho</a>
+    <a href="alho-frances.html">Alho-francês</a>
+    <a href="aneto.html">Aneto / Endro</a>
+    <a href="abobora-butternut.html">Abóbora butternut</a>
+    <a href="batata-comum.html">Batata comum</a>
+    <a href="batata-doce.html">Batata-doce</a>
+    <a href="beringela.html">Beringela</a>
+    <a href="beterraba.html">Beterraba</a>
+    <a href="brocolo.html">Brócolo</a>
+    <a href="canonigos.html">Canónigos</a>
+    <a href="coentros.html">Coentros</a>
+    <a href="cebola.html">Cebola</a>
+    <a href="cebola-fresca.html">Cebola fresca</a>
+    <a href="cenoura.html">Cenoura</a>
+    <a href="couve-chinesa.html">Couve chinesa</a>
+    <a href="couve-rabano.html">Couve-rábano</a>
+    <a href="couve-repolho.html">Couve repolho</a>
+    <a href="couve-toscana.html">Couve toscana</a>
+    <a href="curgete.html">Curgete</a>
+    <a href="ervilhas-frescas.html">Ervilhas frescas</a>
+    <a href="espinafre.html">Espinafre</a>
+    <a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+    <a href="feijao-verde.html">Feijão verde</a>
+    <a href="milho-doce.html">Milho doce</a>
+    <a href="mizuna.html">Mizuna</a>
+    <a href="morangos.html">Morangueiro / Morangos</a>
+    <a href="nabo.html">Nabo</a>
+    <a href="pak-choi.html">Pak choi</a>
+    <a href="pepino.html">Pepino</a>
+    <a href="pimento.html">Pimento</a>
+    <a href="rabanete.html">Rabanete</a>
+    <a href="rabano.html">Rábano / Daikon</a>
+    <a href="rucula.html">Rúcula</a>
+    <a href="salanova.html" class="ativa">Salanova</a>
+</nav>
+
+<main>
+    <article class="planta">
+        <div class="planta-cabecalho">
+            <div class="planta-titulo">
+                <h2>Salanova (alface multileaf verde e roxa) (<em>Lactuca sativa</em>)</h2>
+                <p><strong>Outros nomes em português:</strong> alface Salanova, alface multileaf, alface de múltiplas folhas.</p>
+                <p><strong>Nome mais comum em inglês:</strong> Salanova lettuce, multileaf lettuce, one-cut ready lettuce.</p>
+
+                <div class="tags-nomes">
+                    <span>Família: Asteraceae</span>
+                    <span>Parte usada: folhas</span>
+                    <span>Tipo: alface de múltiplas folhas (verde e roxa)</span>
+                    <span>Produção: <strong>biológica</strong></span>
+                </div>
+
+                <div class="info-rapida">
+                    <div>
+                        <strong>Origem</strong>
+                        Grupo de variedades de alface desenvolvido na Holanda, pensado para produzir muitas folhas pequenas e uniformes; hoje muito usado em hortas e produções biológicas.
+                    </div>
+                    <div>
+                        <strong>Uso principal</strong>
+                        Folhas cruas em saladas mistas, sandes, wraps e acompanhamentos; a cor roxa acrescenta contraste visual e mais compostos antioxidantes.
+                    </div>
+                    <div>
+                        <strong>Perfil nutricional</strong>
+                        Similar a outras alfaces de folha: muito rica em água, poucas calorias, fonte de vitamina K, folato, vitamina A (carotenoides) e, nas variedades roxas, mais antocianinas e polifenóis.
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="imagem-container-externo">
+                    <div class="imagem-container">
+                        <img src="imagens/salanova.png" alt="Cabeças de alface Salanova verde e roxa biológica, com muitas folhas pequenas">
+                    </div>
+                </div>
+                <p class="imagem-legenda">Imagem ilustrativa de alfaces Salanova verdes e roxas de produção biológica.</p>
+            </div>
+        </div>
+
+        <section id="apresentacao">
+            <h3>1. Apresentação / Descrição</h3>
+            <p>
+                <strong>Salanova</strong> não é uma espécie diferente, mas sim um grupo de
+                variedades de <em>Lactuca sativa</em> criado pela empresa holandesa Rijk Zwaan.
+                A ideia é obter "alfaces de múltiplas folhas": cabeças compactas, que ao serem
+                cortadas uma única vez junto ao colo se separam em muitas folhas pequenas,
+                prontas para saladas. Existem vários tipos (de folha frisada, lisa, tipo
+                trocadero, etc.), em versões <strong>verdes</strong> e <strong>roxas</strong>.
+            </p>
+            <p>
+                Em contexto de horta biológica, a Salanova comporta-se como uma alface de
+                folha, com a vantagem prática de produzir grande quantidade de folhas
+                relativamente homogéneas, facilitando a colheita e a preparação de saladas
+                para família e amigos. A forma de cultivo é semelhante à de outras alfaces,
+                usando transplante ou sementeira direta e colheita antes de espigar.
+            </p>
+            <p>
+                Estudos comparativos entre Salanova verde e Salanova roxa mostram que:
+            </p>
+            <ul>
+                <li>
+                    A Salanova <strong>verde</strong> tende a acumular mais nitrato e certos
+                    minerais (P, K, Ca, Mg).
+                </li>
+                <li>
+                    A Salanova <strong>roxa</strong> apresenta níveis muito mais elevados de
+                    compostos fenólicos totais, de vitamina C e de atividade antioxidante
+                    (até duas vezes mais lipofílicos e cerca de seis vezes mais vitamina C em
+                    algumas condições de cultivo). 
+                </li>
+            </ul>
+            <p>
+                Isto significa que, numa horta biológica, combinar plantas verdes e roxas
+                pode ser uma boa estratégia tanto estética como nutricional, aproveitando
+                melhor a diversidade que este grupo de alfaces oferece.
+            </p>
+        </section>
+
+        <section id="sazonalidade">
+            <h3>2. Sazonalidade (Portugal continental)</h3>
+            <p>
+                Como alface de folha, a Salanova prefere <strong>temperaturas amenas</strong> e
+                não gosta de calor extremo. Em clima mediterrânico, é tipicamente cultivada em
+                outono, inverno e primavera.
+            </p>
+            <ul>
+                <li>
+                    <strong>Plantação / transplante:</strong> em geral de
+                    <strong>fevereiro/março a maio</strong> e de <strong>setembro a novembro</strong>,
+                    consoante a região. Pode ser transplantada de bandejas produzidas em
+                    viveiro ou sementeira própria.
+                </li>
+                <li>
+                    <strong>Colheita:</strong> cerca de 45–60 dias após transplante para cabeças
+                    bem formadas; algumas pessoas colhem folhas exteriores em modo "corte e
+                    volta a crescer", mas o sistema "one-cut ready" foi pensado para cortar a
+                    cabeça inteira junto ao colo.
+                </li>
+                <li>
+                    <strong>Clima:</strong> tolera algum frio (com proteção em zonas muito
+                    frias), mas em calor excessivo tende a espigar rapidamente e a ficar mais
+                    amarga.
+                </li>
+                <li>
+                    <strong>Consociação:</strong> pode ser consociada com cenoura, cebola,
+                    alho-francês, rabanete, rúcula e ervilhas, compondo linhas alternadas que
+                    protegem o solo e diversificam o sistema.
+                </li>
+            </ul>
+            <p class="nota">
+                Em sistemas protegidos (estufas e túneis), a Salanova também é usada em
+                cultivo hidropónico ou em aquaponia, com estudos que comparam o seu desempenho
+                com diferentes soluções nutritivas e sistemas de produção, mostrando boa
+                resposta em crescimento e qualidade de folhas.
+            </p>
+        </section>
+
+        <section id="como-consumir">
+            <h3>3. Como consumir</h3>
+            <p>
+                A Salanova é usada essencialmente como <strong>alface de salada</strong>, mas
+                as folhas pequenas e tenras permitem vários usos:
+            </p>
+            <ul>
+                <li>
+                    <strong>Saladas cruas mistas:</strong> mistura de Salanova verde e roxa com
+                    outros ingredientes (tomate, pepino, cenoura, rabanete, milho doce,
+                    frutos secos, queijo, leguminosas, etc.).
+                </li>
+                <li>
+                    <strong>Base para bowls e pratos compostos:</strong> folhas como base para
+                    bowls com cereais (arroz integral, quinoa), leguminosas (grão, feijão,
+                    lentilhas) e legumes variados.
+                </li>
+                <li>
+                    <strong>Sandes e wraps:</strong> folhas inteiras ou rasgadas dentro de
+                    sandes, hambúrgueres vegetais, wraps ou tacos suaves.
+                </li>
+                <li>
+                    <strong>Guarnição de pratos quentes:</strong> adicionada no fim, ao lado
+                    de pratos de forno, massas ou grelhados, para acrescentar frescura.
+                </li>
+                <li>
+                    <strong>Saladas com fruta:</strong> a combinação de Salanova roxa com
+                    morangos, citrinos, maçã ou pera é visualmente apelativa e cruza bem
+                    com vinagretes de mel, mostarda ou balsâmico.
+                </li>
+            </ul>
+            <p class="nota">
+                Como em outras alfaces, é importante lavar bem as folhas, idealmente em água
+                corrente e depois escorrer, antes de consumir em cru. Em produção biológica
+                reduz-se o risco de resíduos de pesticidas, mas deve manter-se sempre uma boa
+                higiene, inclusive para reduzir eventuais microrganismos indesejáveis.
+            </p>
+        </section>
+
+        <section id="receitas">
+            <h3>4. Receitas e preparados (Top 10)</h3>
+            <p>
+                Sugestões de receitas em português (Portugal, Brasil e outros países
+                lusófonos) que utilizam <strong>alface Salanova</strong> ou que podem ser
+                facilmente preparadas com Salanova (em vez de “alface” genérica). Pelo menos
+                cinco referências são em língua portuguesa.
+            </p>
+            <ol>
+                <li>
+                    <strong>Salada de alface Salanova com morangos, couve, amêndoas e queijo de cabra</strong>
+                    – receita do site Veggies First (Salanova), com Salanova roxa, morangos,
+                    couve e queijo de cabra quente. <strong>[R1]</strong>
+                </li>
+                <li>
+                    <strong>“Saladinha, saladão! Salanova de montão!”</strong>
+                    – sugestão do Veggies First com várias combinações simples de Salanova,
+                    hortelã, molho de limão e azeite, vegetais crus e frutos secos.
+                    <strong>[R2]</strong>
+                </li>
+                <li>
+                    <strong>Salada verde simples com alface, pepino e cenoura</strong>
+                    – qualquer receita clássica de “salada verde” em português (por exemplo,
+                    de Pingo Doce ou Continente) pode ser feita substituindo a alface comum
+                    por Salanova verde e roxa, ganhando textura e cor. <strong>[R3]</strong>
+                </li>
+                <li>
+                    <strong>Salada de alface com abacate e tomate</strong>
+                    – receitas brasileiras de salada de alface com abacate e tomate (vários
+                    sites como TudoGostoso e similares) funcionam muito bem com Salanova,
+                    aumentando o contraste de cores. <strong>[R4]</strong>
+                </li>
+                <li>
+                    <strong>Salada de massa com alface e legumes</strong>
+                    – receitas de “salada de macarrão” em português (BR/PT) que usam alface
+                    cortada em tiras podem ser preparadas com Salanova, mantendo as folhas
+                    pequenas e delicadas. <strong>[R5]</strong>
+                </li>
+                <li>
+                    <strong>Salada de alface com grão-de-bico</strong>
+                    – várias receitas em português (por exemplo, no SaborIntenso, Panelinha,
+                    etc.) usam alface com grão-de-bico, tomate, cebola roxa e ervas; trocar
+                    a alface por Salanova dá mais textura. <strong>[R6]</strong>
+                </li>
+                <li>
+                    <strong>Wraps de frango (ou húmus) com Salanova</strong>
+                    – tortillas recheadas com frango grelhado ou húmus, legumes crus e folhas
+                    de Salanova; há muitas versões de wraps de alface em blogs de cozinha
+                    saudável em português. <strong>[R7]</strong>
+                </li>
+                <li>
+                    <strong>Salada de Salanova com frutos secos e queijo</strong>
+                    – adaptações de receitas de “salada de alface com nozes e queijo” (tipo
+                    salada de outono) usando Salanova roxa, nozes, maçã ou pera e queijo azul
+                    ou de cabra. <strong>[R8]</strong>
+                </li>
+                <li>
+                    <strong>Salada tipo “César” com Salanova</strong>
+                    – versões em português de salada César, substituindo a alface romana por
+                    Salanova verde, com croutons, frango grelhado e molho César caseiro.
+                    <strong>[R9]</strong>
+                </li>
+                <li>
+                    <strong>Bowls de cereais com Salanova</strong>
+                    – receitas de “buddha bowl” ou “salada em bowl” em português, com base
+                    de arroz ou quinoa, legumes assados e folhas de alface, onde a Salanova
+                    funciona muito bem pela textura e facilidade de porção. <strong>[R10]</strong>
+                </li>
+            </ol>
+            <p class="nota">
+                Como Salanova é, na prática, um tipo de alface, quase todas as receitas que
+                pedem “alface” podem ser feitas com ela, aproveitando a mistura de verde e
+                roxo para enriquecer o aspeto final e o conteúdo de compostos antioxidantes.
+            </p>
+        </section>
+
+        <section id="beneficios">
+            <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+            <p>
+                A evidência científica sobre <strong>Salanova</strong> é, em grande parte,
+                parte do conjunto de estudos sobre alfaces, especialmente alfaces de folha
+                verde e roxa. O foco principal está em micronutrientes, compostos fenólicos,
+                vitamina C e nitratos.
+            </p>
+            <ul>
+                <li>
+                    <strong>Baixa energia, alta densidade de micronutrientes</strong> –
+                    alfaces de folha (incluindo Salanova) fornecem cerca de 15–20&nbsp;kcal por
+                    100&nbsp;g, com muito poucas gorduras e hidratos de carbono, mas boa
+                    quantidade de vitamina A (via carotenoides), vitamina K, folato e minerais
+                    como potássio. Guias de nutrição de alface romaine/leaf lettuce indicam
+                    valores nesta ordem de grandeza.
+                </li>
+                <li>
+                    <strong>Verde vs roxa: antioxidantes e vitamina C</strong> –
+                    estudos em condições controladas mostram que Salanova roxa tem
+                    significativamente mais compostos fenólicos totais, maior atividade
+                    antioxidante lipofílica e níveis de vitamina C muito superiores aos da
+                    Salanova verde, enquanto a verde apresenta mais nitrato e alguns minerais.
+                    Isto sugere que incluir ambas as cores numa dieta rica em vegetais ajuda a
+                    diversificar o conjunto de fitoquímicos ingeridos.
+                </li>
+                <li>
+                    <strong>Folhas roxas e antocianinas</strong> –
+                    revisões recentes sobre alfaces de folha roxa sublinham que estas são
+                    fontes de antocianinas (flavonoides com ação antioxidante) e outros
+                    polifenóis, associados em estudos observacionais à redução de stress
+                    oxidativo e, potencialmente, a melhor saúde cardiovascular e metabólica,
+                    embora ainda seja necessária mais investigação clínica direta em humanos.
+                </li>
+                <li>
+                    <strong>Nitratos dietéticos e saúde vascular</strong> –
+                    alfaces de folha fazem parte do grupo de hortícolas ricos em nitratos, que
+                    podem contribuir para a produção de óxido nítrico e ajudar na regulação da
+                    pressão arterial. O equilíbrio entre benefício (produção de óxido nítrico)
+                    e segurança (limites de ingestão de nitratos) é geralmente favorável em
+                    dietas ricas em hortícolas, desde que não haja ingestão excessiva de
+                    nitratos a partir de águas contaminadas ou suplementos.
+                </li>
+                <li>
+                    <strong>Luz, sistema de cultivo e qualidade nutricional</strong> –
+                    experiências com Salanova em estufas e sistemas hidropónicos mostram que
+                    a intensidade de luz e a composição da solução nutritiva podem modular os
+                    teores de vitamina C, açúcares, compostos fenólicos e nitratos na planta,
+                    abrindo caminho para produzir alfaces com perfis nutricionais mais
+                    interessantes em sistemas bem desenhados (inclusive biológicos e
+                    aquapónicos).
+                </li>
+                <li>
+                    <strong>Integração num padrão alimentar saudável</strong> –
+                    tal como outras alfaces, a Salanova contribui para aumentar a ingestão de
+                    vegetais, o que, em estudos populacionais, se associa a menor risco de
+                    doença cardiovascular, obesidade, diabetes tipo 2 e alguns tipos de
+                    cancro, quando combinado com outros fatores de estilo de vida saudáveis.
+                </li>
+            </ul>
+            <p class="nota">
+                O benefício não vem da Salanova isoladamente, mas sim do seu uso frequente
+                como parte de uma <strong>alimentação rica em hortícolas variados, fruta,
+                leguminosas, frutos secos e cereais integrais</strong>.
+            </p>
+        </section>
+
+        <section id="nutricao">
+            <h3>6. Propriedades nutricionais</h3>
+            <p>
+                Valores aproximados por 100&nbsp;g de parte comestível de
+                <strong>alface tipo folha/Salanova</strong>, baseados em dados de alface
+                romaine/leaf lettuce em tabelas de composição e extrapolados para Salanova
+                (os valores exatos variam com a variedade, o sistema de cultivo e a época).
+            </p>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Nutriente</th>
+                    <th>Salanova (alface de folha) crua<br>(100&nbsp;g, folhas)</th>
+                    <th>Salanova cozinhada<br>(100&nbsp;g, escorrida, sem sal)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Energia</td>
+                    <td>≈ 15–20&nbsp;kcal</td>
+                    <td>≈ 15–20&nbsp;kcal</td>
+                </tr>
+                <tr>
+                    <td>Água</td>
+                    <td>≈ 94–95&nbsp;g</td>
+                    <td>≈ 94–95&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Proteína</td>
+                    <td>≈ 1,0–1,5&nbsp;g</td>
+                    <td>≈ 1,0–1,7&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Hidratos de carbono totais</td>
+                    <td>≈ 2,5–3,5&nbsp;g</td>
+                    <td>≈ 2,5–3,5&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Açúcares</td>
+                    <td>≈ 1,0–2,0&nbsp;g</td>
+                    <td>≈ 1,0–2,0&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Fibra alimentar</td>
+                    <td>≈ 1,0–1,5&nbsp;g</td>
+                    <td>≈ 1,0–1,5&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Lípidos totais</td>
+                    <td>≈ 0,2–0,3&nbsp;g</td>
+                    <td>≈ 0,2–0,3&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Vitamina A (RAE, via carotenoides)</td>
+                    <td>≈ 250–350&nbsp;µg</td>
+                    <td>Ligeira redução com cozedura, mas aumento de biodisponibilidade</td>
+                </tr>
+                <tr>
+                    <td>Vitamina K</td>
+                    <td>≈ 60–100&nbsp;µg</td>
+                    <td>Relativamente estável</td>
+                </tr>
+                <tr>
+                    <td>Vitamina C</td>
+                    <td>≈ 6–15&nbsp;mg (tende a ser mais alta em Salanova roxa)</td>
+                    <td>Reduz-se com a cozedura e armazenamento prolongado</td>
+                </tr>
+                <tr>
+                    <td>Folato (vit. B9)</td>
+                    <td>≈ 60–130&nbsp;µg</td>
+                    <td>Ligeira redução com a cozedura</td>
+                </tr>
+                <tr>
+                    <td>Potássio</td>
+                    <td>≈ 200–250&nbsp;mg</td>
+                    <td>≈ 190–240&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Cálcio</td>
+                    <td>≈ 30–40&nbsp;mg</td>
+                    <td>≈ 30–40&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Índice glicémico (IG)</td>
+                    <td>Muito baixo</td>
+                    <td>Muito baixo, desde que não se adicionem açúcares</td>
+                </tr>
+                </tbody>
+            </table>
+            <p class="nota">
+                Estes valores servem como ordem de grandeza. A Salanova roxa tende a ter mais
+                vitamina C, polifenóis e antocianinas do que a verde, enquanto a verde pode
+                acumular mais nitratos sob certas condições de fertilização.
+            </p>
+        </section>
+
+        <section id="utilidades">
+            <h3>7. Utilidades e aplicações (não apenas alimentares)</h3>
+            <ul>
+                <li>
+                    <strong>Cobertura rápida e densa do solo:</strong> as cabeças de Salanova
+                    formam rosetas densas que cobrem bem o solo, reduzindo o espaço para
+                    infestantes e protegendo contra erosão superficial.
+                </li>
+                <li>
+                    <strong>Elemento estético em canteiros comestíveis:</strong> a combinação
+                    de Salanova verde e roxa permite desenhos coloridos em hortas, jardins
+                    comestíveis e camas elevadas.
+                </li>
+                <li>
+                    <strong>Produção eficiente de folha para cestas de hortícola:</strong>
+                    a característica "one-cut ready" facilita a colheita e embalagem de
+                    folhas para cabazes biológicos ou partilha entre amigos.
+                </li>
+                <li>
+                    <strong>Integração em sistemas hidropónicos e aquapónicos:</strong>
+                    estudos mostram bom desempenho de Salanova em sistemas circulares fechados,
+                    o que é relevante para quem explora soluções de baixo desperdício e
+                    reciclagem de nutrientes.
+                </li>
+                <li>
+                    <strong>Biomassa para compostagem:</strong> folhas externas danificadas ou
+                    excedentes podem ser incorporados em composteiras, fechando ciclos de
+                    nutrientes em hortas biológicas.
+                </li>
+                <li>
+                    <strong>Valor educativo:</strong> adequada para mostrar em oficinas e
+                    hortas pedagógicas a diferença entre uma variedade tradicional de alface
+                    e um grupo moderno selecionado para facilidade de uso e eficiência.
+                </li>
+            </ul>
+        </section>
+
+        <section id="permacultura">
+            <h3>8. Grau de funcionalidade em permacultura</h3>
+            <p><strong>Classificação proposta: 7/10</strong></p>
+            <ul class="lista-permacultura">
+                <li>
+                    <strong>Funções principais:</strong> produção de grande quantidade de
+                    folha fresca, cobertura do solo, elemento estético, biomassa para
+                    compostagem.
+                </li>
+                <li>
+                    <strong>Vantagens em sistemas biológicos:</strong> ciclo relativamente
+                    curto, boa resposta em solos férteis com matéria orgânica, alta
+                    produtividade de folha por unidade de área, facilidade de colheita.
+                </li>
+                <li>
+                    <strong>Limitações:</strong> cultura anual de ciclo curto (não é
+                    perene), sensível a calor e seca, não tem raízes profundas nem fixação de
+                    azoto, e depende de viveiros ou sementes específicas (marca registada),
+                    o que pode limitar a autonomia de sementes em alguns desenhos de
+                    permacultura mais autossuficientes.
+                </li>
+            </ul>
+            <p class="nota">
+                Ainda assim, em hortas familiares e pequenos sistemas biológicos, a Salanova
+                é um elemento muito interessante pela produtividade, qualidade das folhas e
+                facilidade de uso na cozinha do dia a dia.
+            </p>
+        </section>
+
+        <section id="referencias">
+            <h3>9. Referências</h3>
+
+            <div class="referencias-subsecao">9.1. Apresentação / contexto e Salanova específica</div>
+            <ul class="referencias-lista">
+                <li><strong>D1</strong> – Rijk Zwaan. Páginas institucionais sobre Salanova® (alface de múltiplas folhas, “one-cut ready”). Disponível em: <a href="https://www.rijkzwaan.com" target="_blank" rel="noopener">https://www.rijkzwaan.com</a> (pesquisar por "Salanova").</li>
+                <li><strong>D2</strong> – El-Nakhel C. et al. "Cultivar-Specific Performance and Qualitative Descriptors for Red and Green Salanova Lettuce Grown in a Closed Soilless System." <em>HortScience</em>, 2019. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6789809/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6789809/</a></li>
+                <li><strong>D3</strong> – Senizza B. et al. "The Strength of the Nutrient Solution Modulates the Functional Profile of Two Cultivars of Lactuca sativa (Salanova®)." <em>Foods</em>, 2020. Disponível em: <a href="https://www.mdpi.com/2304-8158/9/9/1156" target="_blank" rel="noopener">https://www.mdpi.com/2304-8158/9/9/1156</a></li>
+                <li><strong>D4</strong> – Pandey P. et al. "Predicting foliar nutrient concentrations and disorders in 'Salanova Green' lettuce using spectral reflectance." <em>Scientia Horticulturae</em>, 2023. Resumo em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S1537511023001083" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S1537511023001083</a></li>
+                <li><strong>D5</strong> – Monsees H. et al. "Lettuce (Lactuca sativa, variety Salanova) production in decoupled aquaponics is stable and can be improved by pH management." <em>PLOS ONE</em>, 2019. Disponível em: <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0218368" target="_blank" rel="noopener">https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0218368</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.2. Propriedades nutricionais e benefícios de alface (verde e roxa)</div>
+            <ul class="referencias-lista">
+                <li><strong>N1</strong> – USDA / FoodData Central. Entradas para "Lettuce, cos or romaine, raw" e "Leaf lettuce, raw". Disponível em: <a href="https://fdc.nal.usda.gov" target="_blank" rel="noopener">https://fdc.nal.usda.gov</a></li>
+                <li><strong>N2</strong> – FoodStruct. "Lettuce, cos or romaine, raw nutrition." Disponível em: <a href="https://foodstruct.com/food/lettuce-cosorromaine-raw" target="_blank" rel="noopener">https://foodstruct.com/food/lettuce-cosorromaine-raw</a></li>
+                <li><strong>N3</strong> – NutritionValue.org. "Romaine lettuce, raw nutrition facts and analysis." Disponível em: <a href="https://www.nutritionvalue.org/Romaine_lettuce%2C_raw_72116000_nutritional_value.html" target="_blank" rel="noopener">https://www.nutritionvalue.org/...Romaine_lettuce...</a></li>
+                <li><strong>N4</strong> – FDA. "Nutrition Information for Raw Vegetables." Inclui dados para diferentes tipos de alface. Disponível em: <a href="https://www.fda.gov/food/nutrition-food-labeling-and-critical-foods/nutrition-information-raw-vegetables" target="_blank" rel="noopener">https://www.fda.gov/.../nutrition-information-raw-vegetables</a></li>
+                <li><strong>N5</strong> – SNAP-Ed / USDA. "Lettuce – Seasonal Produce Guide." Disponível em: <a href="https://snaped.fns.usda.gov/resources/nutrition-education-materials/seasonal-produce-guide/lettuce" target="_blank" rel="noopener">https://snaped.fns.usda.gov/.../lettuce</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.3. Benefícios para a saúde, alface roxa e antioxidantes</div>
+            <ul class="referencias-lista">
+                <li><strong>M1</strong> – Shi M. et al. "Phytochemicals, Nutrition, Metabolism, Bioavailability, and Health Benefits of Lettuce." <em>Frontiers in Nutrition</em>, 2022. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9219965/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9219965/</a></li>
+                <li><strong>M2</strong> – Berkheiser K. "9 Health and Nutrition Benefits of Red Leaf Lettuce." Healthline, 2023. Disponível em: <a href="https://www.healthline.com/nutrition/red-leaf-lettuce" target="_blank" rel="noopener">https://www.healthline.com/nutrition/red-leaf-lettuce</a></li>
+                <li><strong>M3</strong> – Smirnova N.V. et al. "Red-Leafed Lettuces: Genetic Variation or Epigenetic Modulation of Anthocyanin Accumulation?" <em>Plants</em>, 2025. Disponível em: <a href="https://www.mdpi.com/2223-7747/14/3/363" target="_blank" rel="noopener">https://www.mdpi.com/2223-7747/14/3/363</a></li>
+                <li><strong>M4</strong> – Cleveland Clinic. "Is Lettuce Good for You?" 2024. Disponível em: <a href="https://health.clevelandclinic.org/benefits-of-lettuce" target="_blank" rel="noopener">https://health.clevelandclinic.org/benefits-of-lettuce</a></li>
+                <li><strong>M5</strong> – Health articles sobre alface roxa e antocianinas (Sanat.io, Nutrabay), que destacam o maior teor de antioxidantes e potenciais benefícios cardiovasculares e metabólicos de folhas vermelhas/roxas.</li>
+            </ul>
+
+            <div class="referencias-subsecao">9.4. Sistemas de produção e qualidade nutricional</div>
+            <ul class="referencias-lista">
+                <li><strong>B1</strong> – Min Q. et al. "High Light Intensity Applied Shortly Before Harvest Improves Nutritional and Functional Quality of Lettuce." <em>Frontiers in Plant Science</em>, 2021. Disponível em: <a href="https://www.frontiersin.org/articles/10.3389/fpls.2021.615355/full" target="_blank" rel="noopener">https://www.frontiersin.org/articles/10.3389/fpls.2021.615355/full</a></li>
+                <li><strong>B2</strong> – Rahman A. et al. "Evaluating Nutritional Value and Impact on Human Health of Organic Versus Conventional Foods." <em>Foods</em>, 2024 – inclui síntese sobre diferenças em pesticidas, cádmio e nutrientes entre produção biológica e convencional. Disponível em: <a href="https://www.mdpi.com/2304-8158/13/2/208" target="_blank" rel="noopener">https://www.mdpi.com/2304-8158/13/2/208</a></li>
+                <li><strong>B3</strong> – Vigar V. et al. "A Systematic Review of Organic Versus Conventional Food Consumption: Is There a Measurable Benefit on Human Health?" <em>Nutrients</em>, 2019. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7019963/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7019963/</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.5. Receitas (Top 10)</div>
+            <ul class="referencias-lista">
+                <li><strong>R1</strong> – Veggies First / Salanova®. "Salada de alface Salanova com morangos, couve, amêndoas e queijo de cabra." Disponível em: <a href="https://www.veggiesfirst.com/pt-br/receitas/salada-de-alface-salanova-com-morangos-couve-amendoas-e-queijo-de-cabra" target="_blank" rel="noopener">https://www.veggiesfirst.com/pt-br/receitas/salada-de-alface-salanova-com-morangos-couve-amendoas-e-queijo-de-cabra</a></li>
+                <li><strong>R2</strong> – Veggies First / Salanova®. "Saladinha, saladão! Salanova de montão!" Disponível em: <a href="https://www.veggiesfirst.com/pt-br/receitas/saladinha-saladao-salanova-de-montao" target="_blank" rel="noopener">https://www.veggiesfirst.com/pt-br/receitas/saladinha-saladao-salanova-de-montao</a></li>
+                <li><strong>R3–R10</strong> – Várias receitas em português (PT/BR) de:
+                    <em>saladas verdes básicas, saladas com abacate, saladas de massa, saladas com grão-de-bico, wraps com alface, salada César, bowls de cereais</em>, disponíveis em portais como Pingo Doce, Continente, TudoGostoso, Panelinha, SaborIntenso, entre outros, nas quais a alface comum pode ser substituída por Salanova.</li>
+            </ul>
+
+            <p class="nota">
+                Procurou-se combinar literatura científica (artigos com DOI, revistas
+                indexadas) com materiais práticos de cozinha em português. Alguns links
+                poderão mudar com o tempo, mas os títulos e autores ajudam a reencontrar
+                as fontes caso necessário.
+            </p>
+        </section>
+
+        <div class="topo-link">
+            <a href="#topo">Voltar ao topo ▲</a>
+        </div>
+    </article>
+</main>
+</body>
+</html>

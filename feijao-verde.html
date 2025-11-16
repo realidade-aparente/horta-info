@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Feijão verde | Horta de Amigos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p {
+            margin: 0.2rem 0;
+        }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section {
+            margin-bottom: 1.5rem;
+        }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th {
+            background: #f3f4f6;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover {
+            text-decoration: underline;
+        }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body id="topo">
+<header>
+    <h1>Horta de Amigos</h1>
+    <p>Informação prática sobre plantas hortícolas – para partilhar com família e amigos.</p>
+</header>
+
+<nav>
+    <a href="index.html">Início</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="moringa.html">Moringa</a>
+    <a href="acelga.html">Acelga</a>
+    <a href="agriao-terra.html">Agrião‑de‑terra</a>
+    <a href="aipo.html">Aipo (talos e folhas)</a>
+    <a href="alface.html">Alface</a>
+    <a href="alho.html">Alho</a>
+    <a href="alho-frances.html">Alho‑francês</a>
+    <a href="aneto.html">Aneto / Endro</a>
+    <a href="abobora-butternut.html">Abóbora butternut</a>
+    <a href="batata-comum.html">Batata comum</a>
+    <a href="batata-doce.html">Batata‑doce</a>
+    <a href="beringela.html">Beringela</a>
+    <a href="beterraba.html">Beterraba</a>
+    <a href="brocolo.html">Brócolo</a>
+    <a href="canonigos.html">Canónigos</a>
+    <a href="coentros.html">Coentros</a>
+    <a href="cebola.html">Cebola</a>
+    <a href="cebola-fresca.html">Cebola fresca</a>
+    <a href="cenoura.html">Cenoura</a>
+    <a href="couve-chinesa.html">Couve chinesa</a>
+    <a href="couve-rabano.html">Couve‑rábano</a>
+    <a href="couve-repolho.html">Couve repolho</a>
+    <a href="couve-toscana.html">Couve toscana</a>
+    <a href="curgete.html">Curgete</a>
+    <a href="ervilhas-frescas.html">Ervilhas frescas</a>
+    <a href="espinafre.html">Espinafre</a>
+    <a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+    <a href="feijao-verde.html" class="ativa">Feijão verde</a>
+</nav>
+
+<main>
+    <article class="planta">
+        <div class="planta-cabecalho">
+            <div class="planta-titulo">
+                <h2>Feijão verde (Phaseolus vulgaris L.)</h2>
+                <p><strong>Outros nomes em português:</strong> vagem, feijão‑de‑vagem, feijão‑verde‑frade (regional).</p>
+                <p><strong>Nome mais comum em inglês:</strong> green bean, French bean, string bean, snap bean.</p>
+
+                <div class="tags-nomes">
+                    <span>Família: Fabaceae (leguminosas)</span>
+                    <span>Parte usada: vagens imaturas</span>
+                    <span>Tipo: hortícola de estação quente</span>
+                </div>
+
+                <div class="info-rapida">
+                    <div>
+                        <strong>Origem</strong>
+                        América Central e do Sul; difundido para a Europa a partir do século XVI.
+                    </div>
+                    <div>
+                        <strong>Uso principal</strong>
+                        Legume tenro em vagem para sopas, salteados, arrozes, saladas e fritos (peixinhos da horta).
+                    </div>
+                    <div>
+                        <strong>Perfil nutricional</strong>
+                        Muito baixo em calorias, rico em fibra, vitamina C, folato e vitamina K.
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="imagem-container-externo">
+                    <div class="imagem-container">
+                        <img src="imagens/feijao-verde.png" alt="Feijão verde em vagem fresca">
+                    </div>
+                </div>
+                <p class="imagem-legenda">Imagem ilustrativa de vagens de feijão verde frescas.</p>
+            </div>
+        </div>
+
+        <section id="apresentacao">
+            <h3>1. Apresentação / Descrição</h3>
+            <p>
+                O feijão verde é a vagem jovem e ainda tenra de cultivares do feijão comum
+                (<em>Phaseolus vulgaris</em>), colhida antes de as sementes no interior
+                maturarem completamente. Em Portugal é conhecido como feijão‑verde, vagem ou
+                feijão‑de‑vagem; em inglês surgem designações como <em>green bean</em>, 
+                <em>French bean</em>, <em>string bean</em> ou <em>snap bean</em>.citeturn3search1turn3search9turn3search17
+            </p>
+            <p>
+                É uma leguminosa da família Fabaceae, tal como as ervilhas e favas, mas devido ao
+                teor muito elevado de água e ao baixo teor energético, é classificada na Roda da
+                Alimentação Mediterrânica como hortícola e não como leguminosa seca.citeturn0search16turn0search27
+            </p>
+            <p>
+                As vagens podem ser redondas ou achatadas, curtas ou compridas, e de cor verde,
+                amarelada (vagens “manteiga”) ou mesmo arroxeada em algumas variedades, mas em
+                todos os casos são consumidas inteiras, incluindo a vagem, quando ainda estão
+                crocantes e sem fibras duras.citeturn0search16turn3search9
+            </p>
+        </section>
+
+        <section id="sazonalidade">
+            <h3>2. Sazonalidade (Portugal continental)</h3>
+            <p>
+                Em Portugal, o feijão verde é uma cultura típica de tempo quente. A sementeira em
+                ar livre faz‑se sobretudo na primavera e início do verão (aprox. abril–julho),
+                permitindo colheitas contínuas desde o fim da primavera até ao início do outono,
+                se forem feitas sementeiras escalonadas.citeturn5search3turn5search4turn5search5
+            </p>
+            <ul>
+                <li><strong>Pico de produção local:</strong> junho a setembro.</li>
+                <li><strong>Mais fácil encontrar nacional e barato:</strong> verão (junho–agosto).</li>
+                <li><strong>Disponibilidade fora de época:</strong> sobretudo de estufa ou importado; pode ter menor sabor e pegada ecológica maior.</li>
+            </ul>
+            <p class="nota">
+                Estes intervalos são aproximados e podem variar consoante a região, altitude e
+                ano agrícola. O consumo de produto da época tende a garantir melhor sabor, valor
+                nutricional e menor impacto ambiental.
+            </p>
+        </section>
+
+        <section id="como-consumir">
+            <h3>3. Como consumir</h3>
+            <p>
+                As vagens devem ser colhidas tenras, com cor viva e sem sementes demasiado
+                desenvolvidas. Tradicionalmente retiram‑se as extremidades e, nas variedades com
+                “fio”, remove‑se a fibra lateral com a ajuda de uma faca ou descascador.citeturn0search16
+            </p>
+            <ul>
+                <li><strong>Cozido ou ao vapor:</strong> método mais comum; cozer em pouca água ou ao vapor até ficar “<em>al dente</em>” para preservar textura e vitaminas, sobretudo vitamina C e folatos.citeturn0search22turn0search29</li>
+                <li><strong>Salteado:</strong> depois de ligeiramente cozido, pode ser salteado em azeite com alho, cebola, tomate ou outras hortícolas.</li>
+                <li><strong>Em sopas, arrozes e estufados:</strong> utilizado em sopas de legumes, arrozes de feijão verde, jardineiras e acompanhamentos de carne ou peixe.citeturn0search9turn1search1</li>
+                <li><strong>Frito em polme (“peixinhos da horta”):</strong> clássico da cozinha portuguesa, em que as vagens são envolvidas em polme e fritas.citeturn1search6turn1search12</li>
+                <li><strong>Em saladas frias:</strong> previamente escaldado e arrefecido, combina bem com tomate, batata, ovo cozido, leguminosas e cereais.citeturn1search4turn1search7turn1search10</li>
+                <li><strong>Conserva / congelação:</strong> pode ser escaldado e congelado para uso ao longo do ano.</li>
+            </ul>
+            <p class="nota">
+                Tal como em outras leguminosas frescas, o consumo cru em grandes quantidades não é
+                habitual nem bem estudado; a cozedura ligeira reduz fatores antinutricionais e
+                melhora a digestibilidade.citeturn0search22turn0search25
+            </p>
+        </section>
+
+        <section id="receitas">
+            <h3>4. Receitas e preparados (Top 10)</h3>
+            <p>
+                Sugestões de receitas práticas com feijão verde. Pelo menos cinco têm fontes em
+                português, incluindo Portugal e Brasil.
+            </p>
+            <ol>
+                <li>
+                    <strong>Feijão verde salteado com alho e azeite</strong> – acompanhamento muito simples:
+                    cozer o feijão verde e saltear em azeite com alho. Exemplo de receita em
+                    português no Petitchef. <strong>Ref. R1</strong>
+                </li>
+                <li>
+                    <strong>Feijão verde salteado com cebola e manteiga</strong> – versão rica em sabor,
+                    comum em casas portuguesas, com base de cebola e gordura (manteiga/azeite). Exemplo
+                    em Cookpad PT. <strong>Ref. R2</strong>
+                </li>
+                <li>
+                    <strong>Feijão verde salteado com pimentos morrones</strong> – Teleculinária sugere
+                    saltear o feijão verde já cozido com pimentos, obtendo um acompanhamento colorido.
+                    <strong>Ref. R3</strong>
+                </li>
+                <li>
+                    <strong>Feijão verde salteado para bebés/crianças</strong> – receita simples de
+                    feijão verde salteado em azeite e alho, em comidadebebe.pt, adaptada a alimentação
+                    infantil. <strong>Ref. R4</strong>
+                </li>
+                <li>
+                    <strong>Feijão verde salteado com alho e tomate</strong> – sugestão de
+                    <em>donahorta.blogs.sapo.pt</em>, excelente como acompanhamento de pratos de verão.
+                    <strong>Ref. R5</strong>
+                </li>
+                <li>
+                    <strong>Peixinhos da horta (feijão verde panado em polme)</strong> – clássico
+                    português, com várias versões (Pingo Doce, Food From Portugal, Fula, etc.).
+                    <strong>Ref. R6</strong>
+                </li>
+                <li>
+                    <strong>Arroz de feijão verde</strong> – arroz malandro ou solto com feijão verde,
+                    comum como acompanhamento de peixe ou carne (ex.: Cigala, Roteiro Gastronómico de
+                    Portugal, Cinco Quartos de Laranja). <strong>Ref. R7</strong>
+                </li>
+                <li>
+                    <strong>Salada de feijão verde</strong> – versões com ovo cozido, atum, leguminosas
+                    ou requeijão (ex.: Pingo Doce, Continente Feed, Lidl, Cookidoo). <strong>Ref. R8</strong>
+                </li>
+                <li>
+                    <strong>Feijão verde gratinado no forno</strong> – com molho béchamel e queijo,
+                    por exemplo em “Nem acredito que é saudável” ou em receitas brasileiras de
+                    “feijão verde gratinado”. <strong>Ref. R9</strong>
+                </li>
+                <li>
+                    <strong>Salteado asiático de feijão verde</strong> – com molho de soja ou teriyaki,
+                    gengibre e alho (ex.: Kikkoman Portugal). <strong>Ref. R10</strong>
+                </li>
+            </ol>
+            <p class="nota">
+                As receitas indicadas podem servir como base para adaptações com ingredientes locais
+                e preferências pessoais (menos sal, mais hortícolas, etc.).
+            </p>
+        </section>
+
+        <section id="beneficios">
+            <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+            <p>
+                A maior parte dos estudos clínicos e epidemiológicos foca‑se em feijões secos
+                (grão) de <em>Phaseolus vulgaris</em> ou em leguminosas em geral, e não
+                especificamente no feijão verde. Ainda assim, muitos dos compostos bioativos
+                (fibra, folato, polifenóis) estão presentes também nas vagens imaturas, pelo que é
+                razoável considerar que parte dos benefícios se aplica ao consumo regular de feijão
+                verde como hortícola, inserido num padrão alimentar saudável.citeturn0search25turn2search24turn2search11
+            </p>
+            <ul>
+                <li>
+                    <strong>Rico em fibra, com impacto positivo no intestino e na saciedade</strong> –
+                    100&nbsp;g de feijão verde fornecem cerca de 3&nbsp;g de fibra alimentar, ajudando
+                    a regular o trânsito intestinal e a aumentar a sensação de saciedade com poucas
+                    calorias.citeturn0search16turn0search12turn0search20
+                </li>
+                <li>
+                    <strong>Fonte de vitamina C, vitamina K e folato</strong> – as vagens frescas
+                    são uma boa fonte de vitamina C, vitamina K e folato, nutrientes associados a
+                    função imunitária, coagulação sanguínea e metabolismo do homocisteína (importante
+                    para a saúde cardiovascular).citeturn3search9turn0search27turn0search0
+                </li>
+                <li>
+                    <strong>Polifenóis e capacidade antioxidante</strong> – estudos em folhas,
+                    vagens e sementes de feijão comum mostram conteúdo apreciável de flavonoides e
+                    outros polifenóis com atividade antioxidante, anti‑inflamatória e potencial
+                    proteção contra várias doenças crónicas.citeturn0search25turn0search11turn2search24
+                </li>
+                <li>
+                    <strong>Efeito da cozedura na atividade antioxidante</strong> – trabalhos com
+                    diferentes variedades de feijão verde indicam que métodos como cozedura a vapor
+                    podem preservar melhor os polifenóis e a capacidade antioxidante do que
+                    cozeduras prolongadas em água.citeturn0search22turn0search18
+                </li>
+                <li>
+                    <strong>Leguminosas e risco cardiovascular</strong> – revisões sistemáticas e
+                    meta‑análises em adultos sugerem que a ingestão regular de leguminosas (incluindo
+                    feijões) está associada a menor risco de doença cardiovascular e, em alguns
+                    estudos, menor mortalidade por todas as causas.citeturn2search0turn2search18turn2search6turn2search25
+                </li>
+                <li>
+                    <strong>Leguminosas e metabolismo da glicose</strong> – vários estudos de
+                    coorte mostram associação entre maior consumo de leguminosas e menor risco de
+                    desenvolvimento de diabetes tipo&nbsp;2, embora a certeza da evidência varie e
+                    diga respeito ao grupo das leguminosas em geral.citeturn2search5turn2search19turn2search22
+                </li>
+                <li>
+                    <strong>Baixa densidade energética</strong> – com cerca de 30–32&nbsp;kcal por
+                    100&nbsp;g cozidos, o feijão verde é útil em estratégias de gestão de peso quando
+                    substitui acompanhamentos mais calóricos.citeturn0search16turn0search9turn0search24
+                </li>
+            </ul>
+            <p class="nota">
+                <strong>Limitações:</strong> a evidência específica para feijão verde (vagem) é
+                ainda limitada. A maior parte dos dados provém de estudos com feijão seco ou com o
+                grupo das leguminosas como um todo. Os benefícios indicados devem ser entendidos
+                como parte de um padrão alimentar globalmente saudável (por exemplo, dieta
+                mediterrânica) e não como efeitos “mágicos” de um único alimento.citeturn0search27turn2search23
+            </p>
+        </section>
+
+        <section id="nutricao">
+            <h3>6. Propriedades nutricionais</h3>
+            <p>
+                Valores aproximados por 100&nbsp;g de alimento comestível, a partir de tabelas
+                portuguesas/europeias e bases de dados internacionais para feijão verde/vagem.citeturn0search16turn0search20turn0search12turn3search9
+            </p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nutriente</th>
+                        <th>Feijão verde cru<br>(100&nbsp;g)</th>
+                        <th>Feijão verde cozido<br>(100&nbsp;g, escorrido)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Energia</td>
+                        <td>≈ 31&nbsp;kcal</td>
+                        <td>≈ 32&nbsp;kcal</td>
+                    </tr>
+                    <tr>
+                        <td>Água</td>
+                        <td>≈ 90&nbsp;g</td>
+                        <td>≈ 90&nbsp;g</td>
+                    </tr>
+                    <tr>
+                        <td>Proteína</td>
+                        <td>≈ 1,8–2,0&nbsp;g</td>
+                        <td>≈ 1,9&nbsp;g</td>
+                    </tr>
+                    <tr>
+                        <td>Hidratos de carbono totais</td>
+                        <td>≈ 7&nbsp;g</td>
+                        <td>≈ 3,8–6,9&nbsp;g*</td>
+                    </tr>
+                    <tr>
+                        <td>Açúcares</td>
+                        <td>≈ 1–2&nbsp;g</td>
+                        <td>≈ 2,8&nbsp;g</td>
+                    </tr>
+                    <tr>
+                        <td>Fibra alimentar</td>
+                        <td>≈ 3–3,4&nbsp;g</td>
+                        <td>≈ 3&nbsp;g</td>
+                    </tr>
+                    <tr>
+                        <td>Lípidos totais</td>
+                        <td>≈ 0,1&nbsp;g</td>
+                        <td>≈ 0,3&nbsp;g</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina C</td>
+                        <td>≈ 12&nbsp;mg</td>
+                        <td>Ligeira redução com a cozedura</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina K</td>
+                        <td>≈ 14–20&nbsp;µg</td>
+                        <td>Similar ou ligeiramente inferior</td>
+                    </tr>
+                    <tr>
+                        <td>Folato (vit. B9)</td>
+                        <td>≈ 30–40&nbsp;µg</td>
+                        <td>Ligeira redução com a cozedura</td>
+                    </tr>
+                    <tr>
+                        <td>Potássio</td>
+                        <td>≈ 200&nbsp;mg</td>
+                        <td>≈ 200&nbsp;mg</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="nota">
+                *Os valores de hidratos de carbono e energia em feijão verde cozido variam entre
+                fontes consoante o método de cozedura, maturação das vagens e eventual adição de
+                gordura ou sal. Os números apresentados representam uma gama típica para feijão
+                verde cozido simples em água.
+            </p>
+        </section>
+
+        <section id="utilidades">
+            <h3>7. Utilidades e aplicações (para além da alimentação)</h3>
+            <ul>
+                <li>
+                    <strong>Planta de rotação e melhoria do solo:</strong> como leguminosa,
+                    estabelece simbiose com bactérias fixadoras de azoto, contribuindo para
+                    aumentar o azoto disponível no solo e reduzir a necessidade de fertilizantes
+                    azotados na cultura seguinte.citeturn3search4turn3search7turn3search14
+                </li>
+                <li>
+                    <strong>Cobertura rápida de solo e ocupação vertical:</strong> variedades de
+                    trepar ajudam a criar sombra para culturas mais sensíveis ao calor e a ocupar
+                    suportes, aumentando a produtividade por área em sistemas de policultura.
+                </li>
+                <li>
+                    <strong>Importância económica em hortas familiares e pequena escala:</strong>
+                    o feijão verde é cultura de referência em horticultura familiar e
+                    agro‑ecológica, pela produtividade elevada em curto espaço de tempo.citeturn3search7turn3search14
+                </li>
+                <li>
+                    <strong>Uso em alimentação animal em pequena escala:</strong> excedentes de
+                    vagens e partes não comercializáveis podem ser usados, com moderação, na
+                    alimentação de animais de quinta (ex.: galinhas), integrando estratégias de
+                    aproveitamento de restos.citeturn3search4
+                </li>
+                <li>
+                    <strong>Valor educativo:</strong> pela rapidez de germinação e crescimento, é
+                    uma planta muito usada em projetos de hortas escolares para ensinar ciclos de
+                    vida das plantas e princípios básicos de agroecologia.
+                </li>
+            </ul>
+        </section>
+
+        <section id="permacultura">
+            <h3>8. Grau de funcionalidade em permacultura</h3>
+            <p>
+                <strong>Classificação proposta: 7/10</strong>
+            </p>
+            <ul class="lista-permacultura">
+                <li><strong>Funções principais:</strong> produção de alimento fresco de baixa pegada ecológica, fixação biológica de azoto (indiretamente, via raízes/biomassa), cobertura de solo e ocupação de estruturas verticais.</li>
+                <li><strong>Vantagens:</strong> ciclo relativamente curto, fácil de integrar em consociações (ex.: com milho e abóbora, ou com tomates e outras solanáceas), boa produtividade por área, favorece fertilidade do solo e diversidade estrutural.</li>
+                <li><strong>Limitações:</strong> é uma planta anual (ou de ciclo curto), exigente em água nos meses quentes e suscetível a pragas como afídeos e moscas‑minadoras; o contributo para estrutura de longo prazo do sistema é menor do que o de árvores, arbustos perenes ou leguminosas lenhosas.</li>
+            </ul>
+            <p class="nota">
+                Esta classificação é uma síntese prática, não existe ainda uma escala formal e
+                universal de “pontuação em permacultura” para espécies. A avaliação deve ser
+                adaptada ao contexto de cada horta (clima, solo, água, objetivos do sistema).
+            </p>
+        </section>
+
+        <section id="referencias">
+            <h3>9. Referências</h3>
+
+            <div class="referencias-subsecao">9.1. Apresentação / contexto</div>
+            <ul class="referencias-lista">
+                <li><strong>D1</strong> – Wikipedia (PT). Vagem (feijão‑verde). Disponível em: <a href="https://pt.wikipedia.org/wiki/Vagem" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Vagem</a></li>
+                <li><strong>D2</strong> – Bonduelle Portugal. Vagem – denominação e descrição. Disponível em: <a href="https://www.bonduelle.pt/sobre-nos/do-campo-a-mesa/vagem/1420/1420" target="_blank" rel="noopener">https://www.bonduelle.pt/sobre-nos/do-campo-a-mesa/vagem/1420/1420</a></li>
+                <li><strong>D3</strong> – O Prato Certo. Feijão‑verde, um feijão único! Disponível em: <a href="https://www.pratocerto.pt/produtos-e-produtores/calendario-sazonal/feijao-verde" target="_blank" rel="noopener">https://www.pratocerto.pt/produtos-e-produtores/calendario-sazonal/feijao-verde</a></li>
+                <li><strong>D4</strong> – Wikipedia (EN). Green bean – descrição geral e usos. Disponível em: <a href="https://en.wikipedia.org/wiki/Green_bean" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Green_bean</a></li>
+                <li><strong>D5</strong> – Dieta Mediterrânica (Portugal). Feijão verde. Disponível em: <a href="https://www.dietamediterranica.pt/?q=en/node/723" target="_blank" rel="noopener">https://www.dietamediterranica.pt/?q=en/node/723</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.2. Sazonalidade e cultivo (Portugal)</div>
+            <ul class="referencias-lista">
+                <li><strong>S1</strong> – O Prato Certo. Feijão‑verde – informação de uso culinário e enquadramento na Roda da Alimentação Mediterrânica. <a href="https://www.pratocerto.pt/produtos-e-produtores/calendario-sazonal/feijao-verde" target="_blank" rel="noopener">https://www.pratocerto.pt/produtos-e-produtores/calendario-sazonal/feijao-verde</a></li>
+                <li><strong>S2</strong> – Bioterra. Calendário agrícola anual – feijão para consumo em verde. Disponível em: <a href="https://bioterra.blogspot.com/2016/11/calendario-agricola-anual.html" target="_blank" rel="noopener">https://bioterra.blogspot.com/2016/11/calendario-agricola-anual.html</a></li>
+                <li><strong>S3</strong> – Hortas Biológicas / Almanaque Borda d’Água. Calendário da horta – referência a sementeiras de feijão‑verde. PDF disponível em: <a href="https://hortasbio.abaae.pt/outras-edicoes/public/23/112/challenges_2_1/docs/originals/Calendario%20Da%20Horta.pdf" target="_blank" rel="noopener">https://hortasbio.abaae.pt/.../Calendario%20Da%20Horta.pdf</a></li>
+                <li><strong>S4</strong> – DECO Proteste. Calendário de fruta e legumes da época. Disponível em: <a href="https://www.deco.proteste.pt/alimentacao/alimentacao-saudavel/dicas/calendario-fruta-legumes-epoca" target="_blank" rel="noopener">https://www.deco.proteste.pt/.../calendario-fruta-legumes-epoca</a> (inclui feijão‑verde como legume de época).</li>
+            </ul>
+
+            <div class="referencias-subsecao">9.3. Propriedades nutricionais</div>
+            <ul class="referencias-lista">
+                <li><strong>N1</strong> – O Prato Certo. Feijão‑verde – valor nutricional (100&nbsp;g). <a href="https://www.pratocerto.pt/produtos-e-produtores/calendario-sazonal/feijao-verde" target="_blank" rel="noopener">https://www.pratocerto.pt/produtos-e-produtores/calendario-sazonal/feijao-verde</a></li>
+                <li><strong>N2</strong> – FatSecret Portugal. Feijão verde – factos nutricionais por 100 g (cru). Disponível em: <a href="https://www.fatsecret.pt/calorias-nutri%C3%A7%C3%A3o/gen%C3%A9rico/feij%C3%A3o-verde" target="_blank" rel="noopener">https://www.fatsecret.pt/calorias-nutri%C3%A7%C3%A3o/gen%C3%A9rico/feij%C3%A3o-verde</a></li>
+                <li><strong>N3</strong> – Listonic (PT). Feijão‑de‑vagem — nutrientes, benefícios para a saúde e informação nutricional. Disponível em: <a href="https://listonic.com/p/pt/nutricao/feijao-de-vagem" target="_blank" rel="noopener">https://listonic.com/p/pt/nutricao/feijao-de-vagem</a></li>
+                <li><strong>N4</strong> – Wikipedia (EN). Green bean – secção de nutrição. Disponível em: <a href="https://en.wikipedia.org/wiki/Green_bean" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Green_bean</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.4. Benefícios para a saúde e propriedades medicinais</div>
+            <ul class="referencias-lista">
+                <li><strong>M1</strong> – Ha PTT et al. Total phenolic, total flavonoid contents and antioxidant activity of <em>Phaseolus vulgaris</em> leaves, pods and seeds. <em>AIMS Agriculture and Food</em>, 2020. Disponível em: <a href="https://www.aimspress.com/article/10.3934/agrfood.2020.4.635" target="_blank" rel="noopener">https://www.aimspress.com/article/10.3934/agrfood.2020.4.635</a></li>
+                <li><strong>M2</strong> – Effect of steaming and boiling on the antioxidant properties and biogenic amines of green beans. <em>Journal of Food Quality</em>, 2017. Disponível em: <a href="https://www.hindawi.com/journals/jfq/2017/5329070/" target="_blank" rel="noopener">https://www.hindawi.com/journals/jfq/2017/5329070/</a></li>
+                <li><strong>M3</strong> – Sinkovič L et al. How Nutritious Are French Beans (<em>Phaseolus vulgaris</em> L.) from a Citizen Science Experiment? <em>Foods</em>, 2024. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10819379/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC10819379/</a></li>
+                <li><strong>M4</strong> – Ganesan K, Xu B. Polyphenol‑Rich Dry Common Beans (<em>Phaseolus vulgaris</em> L.) and Their Health Benefits. <em>International Journal of Molecular Sciences</em>, 2017. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/29113066/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/29113066/</a></li>
+                <li><strong>M5</strong> – Yang QQ et al. Polyphenols in Common Beans (<em>Phaseolus vulgaris</em> L.): Chemistry, Analysis, and Factors Affecting Composition. Revisão em acesso livre via ResearchGate. Disponível em: <a href="https://www.researchgate.net/publication/328242000" target="_blank" rel="noopener">https://www.researchgate.net/publication/328242000</a></li>
+                <li><strong>M6</strong> – Marventano S et al. Legume consumption and CVD risk: a systematic review and meta‑analysis. <em>Public Health Nutrition</em>, 2017. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/28077199/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/28077199/</a></li>
+                <li><strong>M7</strong> – Zargarzadeh N et al. Legume Consumption and Risk of All‑Cause and Cause‑Specific Mortality: A Systematic Review and Dose–Response Meta‑Analysis. <em>Advances in Nutrition</em>, 2023. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10103007/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10103007/</a></li>
+                <li><strong>M8</strong> – Becerra‑Tomás N et al. Legume consumption is inversely associated with type 2 diabetes incidence in adults. <em>Clinical Nutrition</em>, 2018. Resumo disponível em: <a href="https://www.clinicalnutritionjournal.com/article/S0261-5614(17)30106-1/abstract" target="_blank" rel="noopener">https://www.clinicalnutritionjournal.com/article/S0261-5614(17)30106-1/abstract</a></li>
+                <li><strong>M9</strong> – Vitale M et al. Legume Consumption and Blood Pressure Control in Type 2 Diabetes. <em>Nutrients</em>, 2023. Disponível em: <a href="https://www.mdpi.com/2072-6643/15/13/2895" target="_blank" rel="noopener">https://www.mdpi.com/2072-6643/15/13/2895</a></li>
+                <li><strong>M10</strong> – Continente Feed. Feijão‑verde – amigo do coração. Disponível em: <a href="https://feed.continente.pt/alimentacao/feijao-verde-beneficios" target="_blank" rel="noopener">https://feed.continente.pt/alimentacao/feijao-verde-beneficios</a></li>
+                <li><strong>M11</strong> – Go Vegan Way (PT). Feijão verde: nutrição e benefícios para a saúde. Disponível em: <a href="https://goveganway.com/pt/feijao-verde-nutricao-beneficios-para-saude/" target="_blank" rel="noopener">https://goveganway.com/pt/feijao-verde-nutricao-beneficios-para-saude/</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.5. Utilidades agronómicas e outras aplicações</div>
+            <ul class="referencias-lista">
+                <li><strong>U1</strong> – Feedipedia. Common bean (<em>Phaseolus vulgaris</em>) – datasheet. Disponível em: <a href="https://www.feedipedia.org/node/266" target="_blank" rel="noopener">https://www.feedipedia.org/node/266</a></li>
+                <li><strong>U2</strong> – Agrolink. Feijão‑vagem (<em>Phaseolus vulgaris</em>) – origem e importância agronómica. Disponível em: <a href="https://www.agrolink.com.br/problema/feijao-vagem_3384.html" target="_blank" rel="noopener">https://www.agrolink.com.br/problema/feijao-vagem_3384.html</a></li>
+                <li><strong>U3</strong> – NC State Extension. <em>Phaseolus vulgaris</em> – plant toolbox. Disponível em: <a href="https://plants.ces.ncsu.edu/plants/phaseolus-vulgaris/" target="_blank" rel="noopener">https://plants.ces.ncsu.edu/plants/phaseolus-vulgaris/</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.6. Receitas (Top 10)</div>
+            <ul class="referencias-lista">
+                <li><strong>R1</strong> – Petitchef (PT). Feijão verde salteado. Disponível em: <a href="https://pt.petitchef.com/receitas/outro/feijao-verde-salteado-fid-1491399" target="_blank" rel="noopener">https://pt.petitchef.com/receitas/outro/feijao-verde-salteado-fid-1491399</a></li>
+                <li><strong>R2</strong> – Cookpad (PT). Feijão verde salteado. Disponível em: <a href="https://cookpad.com/pt/receitas/16676348" target="_blank" rel="noopener">https://cookpad.com/pt/receitas/16676348</a></li>
+                <li><strong>R3</strong> – Teleculinária. Feijão‑verde salteado com pimentos morrones. Disponível em: <a href="https://www.teleculinaria.pt/receitas/feijao-verde-salteado-com-pimentos-morrones/" target="_blank" rel="noopener">https://www.teleculinaria.pt/receitas/feijao-verde-salteado-com-pimentos-morrones/</a></li>
+                <li><strong>R4</strong> – Comida de Bebé. Feijão verde salteado. Disponível em: <a href="https://www.comidadebebe.pt/receita/feijao-verde-salteado/" target="_blank" rel="noopener">https://www.comidadebebe.pt/receita/feijao-verde-salteado/</a></li>
+                <li><strong>R5</strong> – Dona Horta (blogs.sapo.pt). Feijão verde salteado com alho e tomate. Disponível em: <a href="https://donahorta.blogs.sapo.pt/semana-37-feijao-verde-salteado-com-112739" target="_blank" rel="noopener">https://donahorta.blogs.sapo.pt/semana-37-feijao-verde-salteado-com-112739</a></li>
+                <li><strong>R6</strong> – Pingo Doce. Peixinhos da horta. Disponível em: <a href="https://www.pingodoce.pt/receitas/peixinhos-da-horta/" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/peixinhos-da-horta/</a></li>
+                <li><strong>R7</strong> – Cigala. Arroz de feijão verde. Disponível em: <a href="https://www.cigala.pt/receitas/arroz-feijao-verde/" target="_blank" rel="noopener">https://www.cigala.pt/receitas/arroz-feijao-verde/</a></li>
+                <li><strong>R8</strong> – Pingo Doce. Salada de feijão‑verde. Disponível em: <a href="https://www.pingodoce.pt/receitas/salada-de-feijao-verde/" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/salada-de-feijao-verde/</a></li>
+                <li><strong>R9</strong> – Nem Acredito que é Saudável. Gratinado de feijão verde e cogumelos. Disponível em: <a href="https://nemacreditoqueesaudavel.com/2014/06/gratinado-de-feijao-verde-e-cogumelos-green-bean-casserole.html" target="_blank" rel="noopener">https://nemacreditoqueesaudavel.com/2014/06/gratinado-de-feijao-verde-e-cogumelos-green-bean-casserole.html</a></li>
+                <li><strong>R10</strong> – Kikkoman Portugal. Feijão‑verde salteado. Disponível em: <a href="https://www.kikkoman.pt/receitas/detail/feijao-verde-salteado" target="_blank" rel="noopener">https://www.kikkoman.pt/receitas/detail/feijao-verde-salteado</a></li>
+            </ul>
+
+            <p class="nota">
+                Alguns links podem, a longo prazo, sofrer alterações pelos respetivos editores.
+                Sempre que possível foram escolhidas fontes institucionais ou sites com histórico
+                de maior estabilidade.
+            </p>
+        </section>
+
+        <div class="topo-link">
+            <a href="#topo">Voltar ao topo ▲</a>
+        </div>
+    </article>
+</main>
+</body>
+</html>

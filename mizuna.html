@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Mizuna (Brassica rapa var. nipposinica) | Horta de Amigos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body id="topo">
+<header>
+    <h1>Horta de Amigos</h1>
+    <p>Informação prática sobre plantas hortícolas biológicas – para partilhar com família e amigos.</p>
+</header>
+
+<nav>
+    <a href="index.html">Início</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="moringa.html">Moringa</a>
+    <a href="acelga.html">Acelga</a>
+    <a href="agriao-terra.html">Agrião-de-terra</a>
+    <a href="aipo.html">Aipo (talos e folhas)</a>
+    <a href="alface.html">Alface</a>
+    <a href="alho.html">Alho</a>
+    <a href="alho-frances.html">Alho-francês</a>
+    <a href="aneto.html">Aneto / Endro</a>
+    <a href="abobora-butternut.html">Abóbora butternut</a>
+    <a href="batata-comum.html">Batata comum</a>
+    <a href="batata-doce.html">Batata-doce</a>
+    <a href="beringela.html">Beringela</a>
+    <a href="beterraba.html">Beterraba</a>
+    <a href="brocolo.html">Brócolo</a>
+    <a href="canonigos.html">Canónigos</a>
+    <a href="coentros.html">Coentros</a>
+    <a href="cebola.html">Cebola</a>
+    <a href="cebola-fresca.html">Cebola fresca</a>
+    <a href="cenoura.html">Cenoura</a>
+    <a href="couve-chinesa.html">Couve chinesa</a>
+    <a href="couve-rabano.html">Couve-rábano</a>
+    <a href="couve-repolho.html">Couve repolho</a>
+    <a href="couve-toscana.html">Couve toscana</a>
+    <a href="curgete.html">Curgete</a>
+    <a href="ervilhas-frescas.html">Ervilhas frescas</a>
+    <a href="espinafre.html">Espinafre</a>
+    <a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+    <a href="feijao-verde.html">Feijão verde</a>
+    <a href="milho-doce.html">Milho doce</a>
+    <a href="mizuna.html" class="ativa">Mizuna</a>
+</nav>
+
+<main>
+    <article class="planta">
+        <div class="planta-cabecalho">
+            <div class="planta-titulo">
+                <h2>Mizuna verde e roxa (<em>Brassica rapa</em> var. <em>nipposinica</em>)</h2>
+                <p><strong>Outros nomes em português:</strong> mizuna, couve mizuna, couve japonesa mizuna, mostarda japonesa.</p>
+                <p><strong>Nome mais comum em inglês:</strong> mizuna, Japanese mustard greens, spider mustard.</p>
+
+                <div class="tags-nomes">
+                    <span>Família: Brassicaceae (crucíferas)</span>
+                    <span>Parte usada: folhas jovens e adultas</span>
+                    <span>Tipo: hortícola de folha, clima fresco</span>
+                    <span>Variedades: verde e roxa</span>
+                    <span>Produção: <strong>biológica</strong></span>
+                </div>
+
+                <div class="info-rapida">
+                    <div>
+                        <strong>Origem</strong>
+                        Hortícola tradicional japonesa, pertencente à espécie <em>Brassica rapa</em>. Muito usada em cozinhas do Japão e de fusão asiática.
+                    </div>
+                    <div>
+                        <strong>Uso principal</strong>
+                        Folhas em saladas cruas, salteados rápidos, sopas (incluindo miso), picles e preparados fermentados.
+                    </div>
+                    <div>
+                        <strong>Perfil nutricional</strong>
+                        Folha de muito baixa energia, rica em vitamina C, vitamina K, beta-caroteno, folato, cálcio e outros minerais.
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="imagem-container-externo">
+                    <div class="imagem-container">
+                        <img src="imagens/mizuna.png" alt="Molhos de mizuna verde e roxa biológica">
+                    </div>
+                </div>
+                <p class="imagem-legenda">Imagem ilustrativa de molhos de mizuna (verde e roxa) provenientes de produção biológica.</p>
+            </div>
+        </div>
+
+        <section id="apresentacao">
+            <h3>1. Apresentação / Descrição</h3>
+            <p>
+                A <strong>mizuna</strong> é uma couve de folha japonesa pertencente à espécie
+                <em>Brassica rapa</em> var. <em>nipposinica</em>, da mesma família das couves,
+                nabos e rúcula. As folhas são finamente recortadas, com um sabor ligeiramente
+                picante e pungente, mas mais suave do que a rúcula. Existem cultivares
+                <strong>verdes</strong> e <strong>roxas</strong>, estas últimas particularmente ricas
+                em pigmentos e compostos antioxidantes.
+            </p>
+            <p>
+                Em português é muitas vezes chamada de <strong>couve mizuna</strong> ou
+                <strong>couve japonesa</strong>, surgindo frequentemente em misturas de “mesclum”
+                de folhas baby. Em inglês é conhecida como <em>mizuna</em>, 
+                <em>Japanese mustard greens</em> ou <em>spider mustard</em>.
+            </p>
+            <p>
+                Nesta ficha consideramos mizuna proveniente de <strong>produção biológica</strong>,
+                sem fertilizantes ou pesticidas de síntese. Isto é especialmente relevante porque a
+                mizuna é muitas vezes consumida crua ou pouco cozinhada, pelo que a redução da
+                exposição a resíduos de pesticidas pode ser um fator importante na escolha do
+                consumidor.
+            </p>
+        </section>
+
+        <section id="sazonalidade">
+            <h3>2. Sazonalidade (Portugal continental)</h3>
+            <p>
+                A mizuna é uma hortícola de <strong>clima fresco</strong>. Tolera bem o frio ligeiro
+                e cresce melhor em temperaturas moderadas (aprox. 7–23&nbsp;ºC), podendo sofrer
+                com o calor intenso do verão, sobretudo em zonas interiores.
+            </p>
+            <ul>
+                <li><strong>Sementeira em ar livre:</strong> geralmente de final do verão a outono (agosto–outubro) e de fim do inverno a primavera (fevereiro–abril).</li>
+                <li><strong>Colheita:</strong> cerca de 30–50 dias após a sementeira, consoante se colham folhas baby ou plantas mais desenvolvidas.</li>
+                <li><strong>Pico de colheita em horta ao ar livre:</strong> outono, inverno suave e primavera (aprox. outubro–maio).</li>
+                <li><strong>Disponibilidade comercial:</strong> em misturas de saladas baby, de estufa ou túnel, a mizuna pode estar disponível quase todo o ano.</li>
+            </ul>
+            <p class="nota">
+                As datas exatas variam com a região, altitude e tipo de abrigo (ar livre vs. estufa).
+                Em climas quentes de verão, é comum privilegiar mizuna como cultura de outono/inverno,
+                enquanto em zonas mais frescas pode ser cultivada quase todo o ano com alguma
+                proteção.
+            </p>
+        </section>
+
+        <section id="como-consumir">
+            <h3>3. Como consumir</h3>
+            <p>
+                A mizuna é muito versátil e pode ser usada desde o estado de
+                <strong>folha baby</strong> até plantas mais desenvolvidas. Em produção biológica,
+                é especialmente interessante para consumo cru, pela menor probabilidade de resíduos
+                de pesticidas.
+            </p>
+            <ul>
+                <li>
+                    <strong>Saladas cruas (folhas baby ou jovens):</strong> lavadas e bem escorridas,
+                    misturadas com outras folhas (alface, rúcula, espinafre, etc.), tomate, pepino,
+                    leguminosas, sementes e frutos secos.
+                </li>
+                <li>
+                    <strong>Salteados rápidos:</strong> as folhas podem ser salteadas em azeite,
+                    óleo de sésamo ou outro, com alho, gengibre, molho de soja ou tamari. A cozedura
+                    deve ser muito breve (1–3 minutos) para manter a textura e cor.
+                </li>
+                <li>
+                    <strong>Sopas e caldos (incluindo miso):</strong> adicionada nos últimos minutos
+                    de cozedura, tal como a couve-galega ou o espinafre. Muito usada em sopas de
+                    miso (missoshiru) com tofu e outros vegetais.
+                </li>
+                <li>
+                    <strong>Picles e fermentados:</strong> a mizuna presta-se bem a pickles ligeiros
+                    com sal, vinagre e especiarias ou a fermentações lácticas (à semelhança de
+                    kimchi e outras couves).
+                </li>
+                <li>
+                    <strong>Pesto e pastas verdes:</strong> pode substituir parcial ou totalmente o
+                    manjericão ou a rúcula em pestos, combinada com frutos secos, alho e azeite.
+                </li>
+                <li>
+                    <strong>Microgreens e rebentos:</strong> as formas de microgreen ou rebento de
+                    mizuna são muito concentradas em compostos bioativos; podem ser usadas como
+                    topping de sopas, saladas e sandes.
+                </li>
+            </ul>
+            <p class="nota">
+                O sabor é ligeiramente picante, mas mais suave do que várias outras brássicas
+                picantes. Folhas mais velhas podem ser um pouco mais firmes e intensas, sendo então
+                mais indicadas para salteados, sopas ou fermentação.
+            </p>
+        </section>
+
+        <section id="receitas">
+            <h3>4. Receitas e preparados (Top 10)</h3>
+            <p>
+                Sugestões de receitas em português (Portugal, Brasil, Angola e outros países
+                lusófonos) com mizuna. Pelo menos cinco das dez referências são em língua
+                portuguesa.
+            </p>
+            <ol>
+                <li>
+                    <strong>Salada pickelada de mizuna</strong> – receita macrobiótica do blogue
+                    Mil Grãos, com mizuna, beterraba e cebola roxa, temperadas com sal e vinagre.
+                    <strong>[R1]</strong>
+                </li>
+                <li>
+                    <strong>Sopa de mizuna e grão</strong> – receita em português (Food With a
+                    Meaning) com mizuna, abóbora, cenoura, batata e grão-de-bico. <strong>[R2]</strong>
+                </li>
+                <li>
+                    <strong>Sopa de couve japonesa mizuna</strong> – receita divulgada pela Fazenda
+                    Girassol (Angola), com mizuna, abóbora, cenoura e grão cozido. 
+                    <strong>[R3]</strong>
+                </li>
+                <li>
+                    <strong>Salada de couve mizuna</strong> – receita brasileira (Ângela Bastos),
+                    com mizuna, cebola roxa, tomate-cereja, azeitonas e molho de laranja, mel e
+                    mostarda. <strong>[R4]</strong>
+                </li>
+                <li>
+                    <strong>Molho pesto de mizuna</strong> – receita “Molho pesto de mizuna” do
+                    blogue “Nem Acredito que é Saudável”, usando mizuna, frutos secos, queijo e
+                    azeite. <strong>[R5]</strong>
+                </li>
+                <li>
+                    <strong>Salada com mizuna, abóbora assada e romã</strong> – sugestão da Ferwer
+                    (em português), combinando mizuna fresca com abóbora hokkaido assada, romã e
+                    queijo de cabra. <strong>[R6]</strong>
+                </li>
+                <li>
+                    <strong>Missoshiru com mizuna</strong> – receita de sopa de miso com mizuna do
+                    site Made in Japan, com dicas de chef. <strong>[R7]</strong>
+                </li>
+                <li>
+                    <strong>Mizuna em salada com frango assado</strong> – receita em português
+                    (tradução/adaptação de um post de receita em Reddit r/recipes, versão PT-BR)
+                    de salada de mizuna com frango, brócolos e molho de limão. <strong>[R8]</strong>
+                </li>
+                <li>
+                    <strong>Salada de mizuna e bardana crocante</strong> – receita de Marisa Ono,
+                    combinando mizuna com bardana frita e molho asiático. <strong>[R9]</strong>
+                </li>
+                <li>
+                    <strong>Sopa miso com microgreens de mizuna</strong> – receita de sopa miso
+                    (Jornal i, Portugal) que sugere microgreens de mizuna entre os verdes
+                    possíveis. <strong>[R10]</strong>
+                </li>
+            </ol>
+            <p class="nota">
+                Em todas estas receitas é possível (e desejável) usar mizuna de origem
+                <strong>biológica</strong>. Quando a receita mencionar apenas “verdes” ou outra
+                folha, pode muitas vezes substituir-se por mizuna, ajustando ao gosto.
+            </p>
+        </section>
+
+        <section id="beneficios">
+            <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+            <p>
+                A mizuna insere-se no grupo das <strong>Brassicaceae</strong>, que inclui couves,
+                brócolos, couve-flor, rúcula, etc. Este grupo é reconhecido por ser rico em
+                <strong>glucosinolatos</strong>, compostos de enxofre que, após hidrólise, originam
+                isotiocianatos e outros metabolitos com potencial bioativo. Também contém
+                quantidades apreciáveis de <strong>vitamina C</strong>, <strong>folato</strong>,
+                <strong>vitamina K</strong>, <strong>carotenóides</strong> (como beta-caroteno,
+                luteína e zeaxantina) e <strong>fenóis</strong>.
+            </p>
+            <ul>
+                <li>
+                    <strong>Densidade nutricional elevada com poucas calorias</strong> – artigos de
+                    síntese sobre mizuna descrevem-na como um alimento de baixa energia (cerca de
+                    20–30&nbsp;kcal/100&nbsp;g) mas rico em vitaminas A, C e K, folato, cálcio,
+                    ferro e outros minerais, tornando-a uma boa forma de aumentar a densidade
+                    nutricional da dieta com poucas calorias.
+                </li>
+                <li>
+                    <strong>Vitamina C, folato e vitamina K</strong> – tal como outros vegetais de
+                    folha, a mizuna contribui para a ingestão de vitamina C (imunidade, síntese de
+                    colagénio), folato (metabolismo do homocisteína, formação de células sanguíneas)
+                    e vitamina K (coagulação sanguínea e saúde óssea).
+                </li>
+                <li>
+                    <strong>Glucosinolatos e compostos sulfurados</strong> – estudos em mizuna (em
+                    forma de folhas, rebentos e microgreens) mostram perfis relevantes de
+                    glucosinolatos e isotiocianatos, com atividade antioxidante e moduladora de
+                    vias associadas à inflamação e detoxificação de xenobióticos. A maior parte
+                    destes trabalhos é laboratorial ou em modelos animais, pelo que não permite
+                    extrapolações diretas para efeitos clínicos humanos, mas reforça o interesse do
+                    consumo regular de brássicas.
+                </li>
+                <li>
+                    <strong>Fenóis e capacidade antioxidante</strong> – tal como outras brássicas,
+                    a mizuna contém diversos compostos fenólicos (ácidos fenólicos, flavonoides),
+                    cuja ingestão tem sido associada em estudos observacionais a menor risco de
+                    várias doenças crónicas quando integrada num padrão alimentar globalmente
+                    saudável.
+                </li>
+                <li>
+                    <strong>Microgreens de mizuna</strong> – trabalhos recentes sobre microgreens e
+                    rebentos de mizuna roxa sugerem conteúdos ainda mais elevados de determinados
+                    glucosinolatos e fenólicos, com elevada capacidade antioxidante. Para uso
+                    doméstico, microgreens de mizuna biológica podem ser uma forma concentrada de
+                    adicionar fitoquímicos à alimentação, desde que bem higienizados.
+                </li>
+                <li>
+                    <strong>Brássicas e redução de risco de doença crónica</strong> – revisões
+                    gerais sobre o grupo das brássicas apontam para uma associação entre consumo
+                    regular destes vegetais e menor risco de certas doenças cardiovasculares e
+                    alguns tipos de cancro, embora a evidência varie consoante o estudo e o tipo de
+                    população analisada.
+                </li>
+            </ul>
+            <p class="nota">
+                A evidência específica para mizuna em humanos ainda é limitada; a maior parte dos
+                dados refere-se ao grupo das brássicas em geral, a estudos de composição e a
+                experiências com rebentos/microgreens. Os benefícios devem ser lidos como parte de
+                um <strong>padrão alimentar vegetal diversificado</strong>, não como propriedades
+                “medicinais” isoladas de uma única planta.
+            </p>
+        </section>
+
+        <section id="nutricao">
+            <h3>6. Propriedades nutricionais</h3>
+            <p>
+                Valores aproximados por 100&nbsp;g de parte comestível, baseados em dados de mizuna
+                crua de fontes japonesas/europeias e em valores de couves semelhantes para a forma
+                cozinhada. Os números podem variar com a variedade (verde vs. roxa), solo, clima,
+                práticas de produção (incluindo biológica) e tempo de armazenamento.
+            </p>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Nutriente</th>
+                    <th>Mizuna crua<br>(100&nbsp;g, folhas)</th>
+                    <th>Mizuna cozida<br>(100&nbsp;g, folhas escorridas)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Energia</td>
+                    <td>≈ 20–30&nbsp;kcal</td>
+                    <td>≈ 20–35&nbsp;kcal</td>
+                </tr>
+                <tr>
+                    <td>Água</td>
+                    <td>≈ 90–92&nbsp;g</td>
+                    <td>≈ 90&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Proteína</td>
+                    <td>≈ 2,5–3,0&nbsp;g</td>
+                    <td>≈ 2,5–3,5&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Hidratos de carbono totais</td>
+                    <td>≈ 3,5–5,0&nbsp;g</td>
+                    <td>≈ 3–5&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Fibra alimentar</td>
+                    <td>≈ 1,5–3,0&nbsp;g</td>
+                    <td>≈ 1,5–3,0&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Lípidos totais</td>
+                    <td>≈ 0,3–0,5&nbsp;g</td>
+                    <td>≈ 0,3–0,6&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Vitamina C</td>
+                    <td>≈ 40–60&nbsp;mg</td>
+                    <td>Redução moderada com a cozedura (parte é perdida para a água)</td>
+                </tr>
+                <tr>
+                    <td>Vitamina K</td>
+                    <td>≈ 100–130&nbsp;µg</td>
+                    <td>Sem grandes alterações (vitamina lipossolúvel relativamente estável)</td>
+                </tr>
+                <tr>
+                    <td>Folato (vit. B9)</td>
+                    <td>≈ 100–150&nbsp;µg</td>
+                    <td>Ligeira redução com a cozedura</td>
+                </tr>
+                <tr>
+                    <td>Beta-caroteno / vitamina A</td>
+                    <td>≈ 1300&nbsp;µg beta-caroteno; ≈ 100–300&nbsp;µg equivalente de retinol</td>
+                    <td>Alguma perda, mas com possível aumento de biodisponibilidade</td>
+                </tr>
+                <tr>
+                    <td>Cálcio</td>
+                    <td>≈ 200–210&nbsp;mg</td>
+                    <td>≈ 190–210&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Ferro</td>
+                    <td>≈ 2,0–2,1&nbsp;mg</td>
+                    <td>≈ 1,8–2,0&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Potássio</td>
+                    <td>≈ 380–480&nbsp;mg</td>
+                    <td>≈ 350–450&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Magnésio</td>
+                    <td>≈ 25–35&nbsp;mg</td>
+                    <td>≈ 25–35&nbsp;mg</td>
+                </tr>
+                </tbody>
+            </table>
+            <p class="nota">
+                Os valores para a forma cozinhada são aproximados, obtidos por extrapolação a
+                partir de couves-mostarda e de literatura sobre perdas de vitaminas hidrossolúveis
+                na cozedura. Na prática, a cozedura breve ao vapor ou salteado tende a preservar
+                melhor a vitamina C e o folato do que cozeduras prolongadas em muita água.
+            </p>
+        </section>
+
+        <section id="utilidades">
+            <h3>7. Utilidades e aplicações (não apenas alimentares)</h3>
+            <ul>
+                <li>
+                    <strong>Cultura de ciclo curto para ocupação de solo:</strong> a mizuna cresce
+                    rapidamente e pode ser usada para encher espaços vazios em canteiros, reduzindo
+                    infestantes e protegendo o solo da erosão e da radiação direta.
+                </li>
+                <li>
+                    <strong>Componente de misturas para corte (“cut-and-come-again”):</strong>
+                    funciona muito bem em sistemas em que se colhem apenas as folhas e a planta
+                    volta a rebentar, aumentando a produtividade ao longo do tempo.
+                </li>
+                <li>
+                    <strong>Planta de consociação:</strong> pode ser combinada com outras folhas,
+                    leguminosas de porte baixo e culturas de raiz, ajudando a diversificar o
+                    sistema e a atrair uma gama maior de insetos benéficos.
+                </li>
+                <li>
+                    <strong>Matéria-prima para compostagem e cobertura:</strong> os restos de colheita
+                    podem ser usados como matéria verde em pilhas de compostagem ou como cobertura
+                    morta (mulch) após ligeira murcha.
+                </li>
+                <li>
+                    <strong>Valor educativo:</strong> devido ao crescimento rápido, é uma excelente
+                    espécie para hortas escolares e projetos de educação alimentar, permitindo ver
+                    rapidamente o ciclo desde a semente até à colheita.
+                </li>
+            </ul>
+        </section>
+
+        <section id="permacultura">
+            <h3>8. Grau de funcionalidade em permacultura</h3>
+            <p><strong>Classificação proposta: 7/10</strong></p>
+            <ul class="lista-permacultura">
+                <li>
+                    <strong>Funções principais:</strong> produção de folhas frescas muito nutritivas,
+                    ocupação rápida do solo, diversidade de texturas e cores em canteiros, fonte de
+                    matéria verde para compostagem.
+                </li>
+                <li>
+                    <strong>Vantagens em sistemas biológicos:</strong> ciclo curto, boa tolerância a
+                    frio ligeiro, apta para consociações intensivas e para produção em pequena
+                    escala; fácil de integrar em rotações com outras brássicas, leguminosas e
+                    raízes.
+                </li>
+                <li>
+                    <strong>Limitações:</strong> planta anual ou bianual de ciclo relativamente curto
+                    (não oferece estrutura perene), suscetível a pragas típicas das brássicas
+                    (altica, lagartas, etc.) e a subida precoce a flor em calor intenso.
+                </li>
+            </ul>
+            <p class="nota">
+                A pontuação equilibra a grande utilidade alimentar e de ocupação de solo da mizuna
+                com o facto de ser uma planta de ciclo curto e relativamente exigente em cuidados
+                (protecção contra pragas e atenção à irrigação) em comparação com espécies mais
+                rústicas ou perenes.
+            </p>
+        </section>
+
+        <section id="referencias">
+            <h3>9. Referências</h3>
+
+            <div class="referencias-subsecao">9.1. Apresentação / contexto</div>
+            <ul class="referencias-lista">
+                <li><strong>D1</strong> – CABI Compendium. <em>Brassica rapa</em> cultivar group Mizuna – descrição botânica e composição geral. Disponível em: <a href="https://www.cabidigitallibrary.org/doi/full/10.1079/cabicompendium.10099" target="_blank" rel="noopener">https://www.cabidigitallibrary.org/doi/full/10.1079/cabicompendium.10099</a></li>
+                <li><strong>D2</strong> – Kikkoman. “Japanese mustard greens (mizuna)” – glossário culinário e descrição de usos. Disponível em: <a href="https://www.kikkoman.com/en/cookbook/glossary/japanesemustardgreensmizuna.html" target="_blank" rel="noopener">https://www.kikkoman.com/.../japanesemustardgreensmizuna.html</a></li>
+                <li><strong>D3</strong> – Deep Green Permaculture. “Mizuna growing guide: cultivation tips and culinary uses”. Disponível em: <a href="https://deepgreenpermaculture.com/2025/05/14/mizuna-growing-guide/" target="_blank" rel="noopener">https://deepgreenpermaculture.com/.../mizuna-growing-guide/</a></li>
+                <li><strong>D4</strong> – Survivalseeds Australia. “Growing Mizuna at home – the ultimate gardening guide”. Disponível em: <a href="https://survivalseeds.com.au/blogs/guides/growing-mizuna" target="_blank" rel="noopener">https://survivalseeds.com.au/blogs/guides/growing-mizuna</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.2. Sazonalidade e cultivo</div>
+            <ul class="referencias-lista">
+                <li><strong>S1</strong> – Cultivers. “Mizuna Cultivation Guide” – janela de sementeira em clima mediterrânico (outono-inverno e início de primavera). Disponível em: <a href="https://cultivers.es/en/mizuna-cultivation-guide/" target="_blank" rel="noopener">https://cultivers.es/en/mizuna-cultivation-guide/</a></li>
+                <li><strong>S2</strong> – Cornell University. “Home gardening – Asian greens” (inclui mizuna entre as folhas de ciclo fresco). Disponível em: <a href="https://www.gardening.cornell.edu/homegardening/scene46c5.html" target="_blank" rel="noopener">https://www.gardening.cornell.edu/homegardening/scene46c5.html</a></li>
+                <li><strong>S3</strong> – GardenersPath. “How to grow mizuna Asian mustard greens in the garden” – tempos de sementeira e colheita. Disponível em: <a href="https://gardenerspath.com/plants/vegetables/grow-mizuna/" target="_blank" rel="noopener">https://gardenerspath.com/plants/vegetables/grow-mizuna/</a></li>
+                <li><strong>S4</strong> – PFAF – Plants for a Future. Ficha “<em>Brassica rapa</em> var. <em>nipposinica</em> Mizuna” – exigências de solo e clima. Disponível em: <a href="https://pfaf.org/user/Plant.aspx?LatinName=Brassica+rapa+nipposinica" target="_blank" rel="noopener">https://pfaf.org/user/Plant.aspx?LatinName=Brassica+rapa+nipposinica</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.3. Propriedades nutricionais</div>
+            <ul class="referencias-lista">
+                <li><strong>N1</strong> – JapanCrops. “Nutrients – Mizuna (per 100g)” – tabela detalhada de vitaminas e minerais. Disponível em: <a href="https://japancrops.com/en/crops/mizuna/nutrients/" target="_blank" rel="noopener">https://japancrops.com/en/crops/mizuna/nutrients/</a></li>
+                <li><strong>N2</strong> – Namayasai (UK). “Mizuna – nutritional information” – valores para 100&nbsp;g de folhas cruas (potássio, cálcio, vitamina C, vitamina K, folato, etc.). Disponível em: <a href="https://www.namayasai.co.uk/Mizuna/mizuna.htm" target="_blank" rel="noopener">https://www.namayasai.co.uk/Mizuna/mizuna.htm</a></li>
+                <li><strong>N3</strong> – NetMeds. “Mizuna: Nutrition, health benefits, uses, recipe and side effects” – destaques de densidade nutricional. Disponível em: <a href="https://www.netmeds.com/c/health-library/post/mizuna-nutrition-health-benefits-uses-recipe-and-side-effects" target="_blank" rel="noopener">https://www.netmeds.com/.../mizuna-nutrition-health-benefits</a></li>
+                <li><strong>N4</strong> – AndraFarm (base USDA). “Mizuna (mustard greens) – nutrition facts per 100g”. Disponível em: <a href="https://m.andrafarm.com/_andra.php?_en=ENGLISH&_i=0-tanaman-kelompok&kelompok=Mizuna&topik=gizi" target="_blank" rel="noopener">https://m.andrafarm.com/...&kelompok=Mizuna</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.4. Benefícios para a saúde e propriedades medicinais</div>
+            <ul class="referencias-lista">
+                <li><strong>M1</strong> – NetMeds. “Mizuna: Nutrition, health benefits, uses, recipe and side effects” – resumo de benefícios de antioxidantes, vitaminas e minerais. Disponível em: <a href="https://www.netmeds.com/c/health-library/post/mizuna-nutrition-health-benefits-uses-recipe-and-side-effects" target="_blank" rel="noopener">https://www.netmeds.com/.../mizuna-nutrition-health-benefits</a></li>
+                <li><strong>M2</strong> – Wisdomlib. “Mizuna (recipes and nutritional information)” – notas sobre vitaminas A, C, K e folato. Disponível em: <a href="https://www.wisdomlib.org/ingredients/mizuna" target="_blank" rel="noopener">https://www.wisdomlib.org/ingredients/mizuna</a></li>
+                <li><strong>M3</strong> – Penn State Extension. “Mizuna: an Asian green” – propriedades nutricionais e usos. Disponível em: <a href="https://extension.psu.edu/mizuna-an-asian-green" target="_blank" rel="noopener">https://extension.psu.edu/mizuna-an-asian-green</a></li>
+                <li><strong>M4</strong> – Park C.H. et al. “Transcriptome Analysis and Metabolic Profiling of Green and Red Mizuna (<em>Brassica rapa</em> L.)” – estudo sobre metabolitos secundários em mizuna verde e roxa. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7466343/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7466343/</a></li>
+                <li><strong>M5</strong> – Soluch A. et al. “The effect of development time on phytochemical profile of health-promoting compounds in red mizuna sprouts” – artigo sobre rebentos de mizuna roxa. Disponível em: <a href="https://journals.iung.pl/index.php/archpja/article/view/247/253" target="_blank" rel="noopener">https://journals.iung.pl/index.php/archpja/article/view/247/253</a></li>
+                <li><strong>M6</strong> – Bafumo R.F. et al. “Enhanced bioaccessibility of encapsulated red mizuna glucosinolates and isothiocyanates using alginate microbeads” (2025). Resumo em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S2212429225004250" target="_blank" rel="noopener">https://www.sciencedirect.com/.../S2212429225004250</a></li>
+                <li><strong>M7</strong> – Zhang X. et al. “Brassica vegetables — an undervalued nutritional goldmine” – revisão sobre o grupo das brássicas. Disponível em: <a href="https://academic.oup.com/hr/article/12/2/uhae302/7849786" target="_blank" rel="noopener">https://academic.oup.com/hr/article/12/2/uhae302/7849786</a></li>
+                <li><strong>M8</strong> – Cartea M.E. et al. “Phenolic compounds in Brassica vegetables” – revisão sobre fenóis e impacto na saúde. Disponível em: <a href="https://www.mdpi.com/1420-3049/16/1/251" target="_blank" rel="noopener">https://www.mdpi.com/1420-3049/16/1/251</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.5. Produção biológica, pesticidas e comparação com convencional</div>
+            <ul class="referencias-lista">
+                <li><strong>B1</strong> – Barański M. et al. “Higher antioxidant and lower cadmium concentrations and lower incidence of pesticide residues in organically grown crops: a systematic literature review and meta-analyses.” <em>British Journal of Nutrition</em>, 2014. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4141693/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4141693/</a></li>
+                <li><strong>B2</strong> – Matt D. et al. “Quality of organic vs. conventional food and effects on health.” Relatório de revisão. Disponível em: <a href="https://orgprints.org/19504/1/Report_2011_%281%29.pdf" target="_blank" rel="noopener">https://orgprints.org/19504/1/Report_2011_(1).pdf</a></li>
+                <li><strong>B3</strong> – Baker B.P. et al. “Pesticide residues in conventional, IPM-grown and organic foods: insights from three US datasets.” The Organic Center. Disponível em: <a href="https://www.organic-center.org/reportfiles/bakerbenbrook.pdf" target="_blank" rel="noopener">https://www.organic-center.org/reportfiles/bakerbenbrook.pdf</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.6. Receitas (Top 10)</div>
+            <ul class="referencias-lista">
+                <li><strong>R1</strong> – Mil Grãos (PT). “Salada pickelada de mizuna”. Disponível em: <a href="https://milgraos.com/salada-pickelada-de-mizuna/" target="_blank" rel="noopener">https://milgraos.com/salada-pickelada-de-mizuna/</a></li>
+                <li><strong>R2</strong> – Food With a Meaning (PT). “Sopa de mizuna e grão”. Disponível em: <a href="https://foodwithameaning.com/2013/03/14/sopa-de-mizuna-e-grao/" target="_blank" rel="noopener">https://foodwithameaning.com/2013/03/14/sopa-de-mizuna-e-grao/</a></li>
+                <li><strong>R3</strong> – Fazenda Girassol (Angola). “Receita: sopa de couve japonesa mizuna”. Disponível em: <a href="https://www.facebook.com/fazendagirassolangola/posts/886183238170756/" target="_blank" rel="noopener">https://www.facebook.com/fazendagirassolangola/posts/886183238170756/</a></li>
+                <li><strong>R4</strong> – Ângela Bastos (BR). “Salada de couve mizuna”. Disponível em: <a href="https://www.angelabastos.com.br/2017/12/salada-de-couve-mizuna.html" target="_blank" rel="noopener">https://www.angelabastos.com.br/2017/12/salada-de-couve-mizuna.html</a></li>
+                <li><strong>R5</strong> – Nem Acredito que é Saudável (PT). “Molho pesto de mizuna (mizuna pesto)”. Disponível em: <a href="https://nemacreditoqueesaudavel.com/2014/07/molho-pesto-de-mizuna-mizuna-pesto.html" target="_blank" rel="noopener">https://nemacreditoqueesaudavel.com/2014/07/molho-pesto-de-mizuna-mizuna-pesto.html</a></li>
+                <li><strong>R6</strong> – Ferwer (PT). “Mizuna é um superalimento que você deve incluir na sua dieta” – inclui receita de salada com mizuna, abóbora assada e romã. Disponível em: <a href="https://www.ferwer.pt/blog/mizuna-e-um-superalimento-que-voc-deve-incluir-na-sua-dieta" target="_blank" rel="noopener">https://www.ferwer.pt/blog/mizuna-e-um-superalimento-que-voc-deve-incluir-na-sua-dieta</a></li>
+                <li><strong>R7</strong> – Made in Japan (BR). “Receita: missoshiru com mizuna”. Disponível em: <a href="https://madeinjapan.com.br/2018/04/18/receita-missoshiru-com-mizuna/" target="_blank" rel="noopener">https://madeinjapan.com.br/2018/04/18/receita-missoshiru-com-mizuna/</a></li>
+                <li><strong>R8</strong> – Reddit r/recipes (post em PT-BR). “Mizuna salad with roasted chicken and lemony dressing”. Disponível em: <a href="https://www.reddit.com/r/recipes/comments/a253mc/mizuna_salad_with_roasted_chicken_and_lemony/" target="_blank" rel="noopener">https://www.reddit.com/r/recipes/comments/a253mc/mizuna_salad_with_roasted_chicken_and_lemony/</a></li>
+                <li><strong>R9</strong> – Marisa Ono (BR). “Salada de mizuna e bardana crocante”. Disponível em: <a href="https://marisaono.com/delicia/2009/08/28/salada-de-mizuna-e-bardana-crocante/" target="_blank" rel="noopener">https://marisaono.com/delicia/2009/08/28/salada-de-mizuna-e-bardana-crocante/</a></li>
+                <li><strong>R10</strong> – Jornal i (PT). “Receita: sopa miso para corpo e alma” – sugere microgreens de mizuna como um dos verdes a usar. Disponível em: <a href="https://ionline.sapo.pt/2021/01/08/receita-sopa-miso-para-corpo-e-alma/" target="_blank" rel="noopener">https://ionline.sapo.pt/2021/01/08/receita-sopa-miso-para-corpo-e-alma/</a></li>
+            </ul>
+
+            <p class="nota">
+                Sempre que possível foram escolhidas fontes relativamente estáveis (artigos com DOI,
+                sites institucionais, grandes portais de receitas ou blogues com histórico de
+                permanência). Ainda assim, é natural que alguns links mudem ao longo dos anos.
+            </p>
+        </section>
+
+        <div class="topo-link">
+            <a href="#topo">Voltar ao topo ▲</a>
+        </div>
+    </article>
+</main>
+</body>
+</html>

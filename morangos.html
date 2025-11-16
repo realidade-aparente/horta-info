@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Morangueiro e morangos frescos | Horta de Amigos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body id="topo">
+<header>
+    <h1>Horta de Amigos</h1>
+    <p>Informação prática sobre plantas hortícolas e frutos de produção biológica – para partilhar com família e amigos.</p>
+</header>
+
+<nav>
+    <a href="index.html">Início</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="moringa.html">Moringa</a>
+    <a href="acelga.html">Acelga</a>
+    <a href="agriao-terra.html">Agrião-de-terra</a>
+    <a href="aipo.html">Aipo (talos e folhas)</a>
+    <a href="alface.html">Alface</a>
+    <a href="alho.html">Alho</a>
+    <a href="alho-frances.html">Alho-francês</a>
+    <a href="aneto.html">Aneto / Endro</a>
+    <a href="abobora-butternut.html">Abóbora butternut</a>
+    <a href="batata-comum.html">Batata comum</a>
+    <a href="batata-doce.html">Batata-doce</a>
+    <a href="beringela.html">Beringela</a>
+    <a href="beterraba.html">Beterraba</a>
+    <a href="brocolo.html">Brócolo</a>
+    <a href="canonigos.html">Canónigos</a>
+    <a href="coentros.html">Coentros</a>
+    <a href="cebola.html">Cebola</a>
+    <a href="cebola-fresca.html">Cebola fresca</a>
+    <a href="cenoura.html">Cenoura</a>
+    <a href="couve-chinesa.html">Couve chinesa</a>
+    <a href="couve-rabano.html">Couve-rábano</a>
+    <a href="couve-repolho.html">Couve repolho</a>
+    <a href="couve-toscana.html">Couve toscana</a>
+    <a href="curgete.html">Curgete</a>
+    <a href="ervilhas-frescas.html">Ervilhas frescas</a>
+    <a href="espinafre.html">Espinafre</a>
+    <a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+    <a href="feijao-verde.html">Feijão verde</a>
+    <a href="milho-doce.html">Milho doce</a>
+    <a href="mizuna.html">Mizuna</a>
+    <a href="morangos.html" class="ativa">Morangueiro / Morangos</a>
+</nav>
+
+<main>
+    <article class="planta">
+        <div class="planta-cabecalho">
+            <div class="planta-titulo">
+                <h2>Morangueiro e morangos frescos (<em>Fragaria × ananassa</em>)</h2>
+                <p><strong>Outros nomes em português:</strong> morango, morangueiro, fragária (designação botânica), morangos de jardim.</p>
+                <p><strong>Nome mais comum em inglês:</strong> strawberry, garden strawberry.</p>
+
+                <div class="tags-nomes">
+                    <span>Família: Rosaceae</span>
+                    <span>Parte usada: fruto (pseudo-fruto) fresco</span>
+                    <span>Tipo: fruto de baga, planta perene</span>
+                    <span>Produção: <strong>biológica</strong></span>
+                </div>
+
+                <div class="info-rapida">
+                    <div>
+                        <strong>Origem</strong>
+                        Híbrido entre espécies americanas de <em>Fragaria</em>, desenvolvido na Europa
+                        no século XVIII. Hoje é um dos frutos mais cultivados globalmente.
+                    </div>
+                    <div>
+                        <strong>Uso principal</strong>
+                        Consumo em fresco, saladas de fruta, sobremesas, compotas, batidos e congelação.
+                    </div>
+                    <div>
+                        <strong>Perfil nutricional</strong>
+                        Fruto muito pobre em calorias, rico em vitamina C, fibra e polifenóis
+                        (antocianinas, ácido elágico, etc.).
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="imagem-container-externo">
+                    <div class="imagem-container">
+                        <img src="imagens/morangos.png" alt="Morangos frescos biológicos ainda no morangueiro">
+                    </div>
+                </div>
+                <p class="imagem-legenda">Imagem ilustrativa de morangos frescos de morangueiro de produção biológica.</p>
+            </div>
+        </div>
+
+        <section id="apresentacao">
+            <h3>1. Apresentação / Descrição</h3>
+            <p>
+                O <strong>morangueiro</strong> é uma planta perene de pequeno porte da família Rosaceae,
+                que se propaga por estolhos (guias) e produz os conhecidos <strong>morangos</strong>.
+                O fruto que comemos é, do ponto de vista botânico, um <em>pseudo-fruto</em>:
+                a parte carnuda vermelha é o receptáculo expandido da flor, enquanto os “pontos” na
+                superfície (aquénios) são os frutos verdadeiros contendo as sementes.
+            </p>
+            <p>
+                A espécie cultivada mais comum é <em>Fragaria × ananassa</em>, um híbrido entre
+                espécies americanas de <em>Fragaria</em>. Em português falamos de
+                <strong>morangos</strong> ou <strong>morangueiro</strong>; em inglês,
+                <em>strawberry</em> ou <em>garden strawberry</em>.
+            </p>
+            <p>
+                Nesta ficha consideramos morangos provenientes de <strong>produção biológica</strong>,
+                sem uso de pesticidas e fertilizantes de síntese. Os morangos estão entre os frutos
+                que, na agricultura convencional, tendem a apresentar níveis mais elevados de
+                resíduos de pesticidas, pelo que a opção por produção biológica é especialmente
+                relevante para quem consome o fruto com frequência.
+            </p>
+        </section>
+
+        <section id="sazonalidade">
+            <h3>2. Sazonalidade (Portugal continental)</h3>
+            <p>
+                Em Portugal, a colheita de morangos em sistemas ao ar livre e/ou sob abrigo baixo
+                concentra-se sobretudo na <strong>primavera</strong> e início do <strong>verão</strong>,
+                embora o recurso a túneis, estufas e variedades remontantes permita alargar a
+                época.
+            </p>
+            <ul>
+                <li><strong>Floração e frutificação principal (ar livre):</strong> aproximadamente de abril a junho.</li>
+                <li><strong>Pico de morango nacional em fresco:</strong> abril, maio e junho.</li>
+                <li><strong>Possível segunda vaga:</strong> em algumas variedades remontantes, pode haver produção também no fim do verão / início de outono.</li>
+                <li><strong>Fora de época:</strong> grande parte dos morangos disponíveis em pleno inverno são importados ou produzidos em estufa aquecida.</li>
+            </ul>
+            <p class="nota">
+                Para reduzir a pegada ecológica e maximizar sabor e valor nutricional, é preferível
+                dar prioridade a <strong>morangos biológicos</strong> produzidos localmente na
+                época natural (primavera/início do verão) e, fora dessa época, recorrer a
+                morangos congelados biológicos para batidos, iogurtes e sobremesas.
+            </p>
+        </section>
+
+        <section id="como-consumir">
+            <h3>3. Como consumir</h3>
+            <p>
+                Os morangos devem ter cor vermelha viva (ou correspondente à variedade), aroma
+                intenso e consistência firme mas suculenta. Em produção biológica, a prioridade é
+                lavar bem para remover terra e partículas, sem a preocupação com resíduos de
+                pesticidas de síntese.
+            </p>
+            <ul>
+                <li>
+                    <strong>Em fresco, ao natural:</strong> lavados em água corrente <em>antes</em>
+                    de retirar o pedúnculo (para reduzir a penetração de água), e consumidos como
+                    snack ou sobremesa.
+                </li>
+                <li>
+                    <strong>Saladas de fruta e saladas mistas:</strong> combinam bem com outras
+                    frutas (banana, maçã, citrinos, kiwi) e também com folhas verdes (espinafre,
+                    rúcula, canónigos), frutos secos e queijos suaves.
+                </li>
+                <li>
+                    <strong>Batidos e “smoothies”:</strong> morangos frescos ou congelados
+                    triturados com água, leite ou bebidas vegetais, iogurte, aveia, sementes,
+                    etc., sem necessidade de adicionar açúcar se os morangos forem bem maduros.
+                </li>
+                <li>
+                    <strong>Compotas e caldas caseiras:</strong> cozinhados suavemente com pouco
+                    açúcar (ou com fruta mais doce, como maçã ou pera, para adoçar), podem ser
+                    usados em pequenas quantidades em pão, panquecas, papas de aveia, etc.
+                </li>
+                <li>
+                    <strong>Congelação em casa:</strong> excelentes para congelar lavados e
+                    arranjados, inteiros ou em pedaços, para uso fora de época em batidos, bolos,
+                    papas, “nice cream”, etc.
+                </li>
+                <li>
+                    <strong>Receitas simples de forno:</strong> morangos podem ser levemente assados
+                    com um pouco de sumo de laranja ou balsâmico e ervas (manjericão, hortelã),
+                    concentrando o sabor.
+                </li>
+            </ul>
+            <p class="nota">
+                Mesmo em produção biológica, é importante refrigerar morangos frescos e consumi-los
+                rapidamente, pois são muito perecíveis. A lavagem deve ser feita apenas pouco
+                antes do consumo para evitar amolecimento excessivo.
+            </p>
+        </section>
+
+        <section id="receitas">
+            <h3>4. Receitas e preparados (Top 10)</h3>
+            <p>
+                Sugestões de receitas em português (Portugal, Brasil, outros países lusófonos) com
+                <strong>morangos frescos</strong>. Pelo menos cinco referências são em língua
+                portuguesa.
+            </p>
+            <ol>
+                <li>
+                    <strong>Salada simples de morangos frescos</strong> – morangos fatiados com
+                    hortelã e sumo de laranja ou limão, por vezes com um toque de mel. Receita
+                    típica em sites portugueses como Pingo Doce e Continente. <strong>[R1]</strong>
+                </li>
+                <li>
+                    <strong>Salada de espinafre com morangos</strong> – combinação de folhas verdes,
+                    morangos, nozes ou amêndoas e queijo fresco, com vinagrete de balsâmico.
+                    Exemplos em português em blogues como Panelinha de Sabores e versões em sites de
+                    supermercados. <strong>[R2]</strong>
+                </li>
+                <li>
+                    <strong>Batido de morango (com ou sem iogurte)</strong> – receita muito comum em
+                    Portugal e Brasil: morangos, leite ou bebida vegetal, e opcionalmente iogurte
+                    natural. Há variações em Pingo Doce, Teleculinária, TudoGostoso, etc.
+                    <strong>[R3]</strong>
+                </li>
+                <li>
+                    <strong>“Overnight oats” com morangos</strong> – flocos de aveia hidratados em
+                    leite ou bebida vegetal, servidos com morangos frescos e sementes. Diversos
+                    blogues de alimentação saudável em português ensinam a versão com fruta fresca.
+                    <strong>[R4]</strong>
+                </li>
+                <li>
+                    <strong>Compota caseira de morango com pouco açúcar</strong> – cozinhando
+                    morangos com uma quantidade reduzida de açúcar ou com maçã ralada como adoçante
+                    natural. Existem versões em Pingo Doce, Sabor Intenso, Cinco Quartos de Laranja
+                    e outros sites portugueses. <strong>[R5]</strong>
+                </li>
+                <li>
+                    <strong>Morango assado com balsâmico</strong> – morangos assados no forno com um
+                    toque de vinagre balsâmico, mel e pimenta, usados como topping para iogurtes ou
+                    sobremesas. Receita em inglês muito popular (BBC Good Food, NYT Cooking), fácil
+                    de adaptar em português. <strong>[R6]</strong>
+                </li>
+                <li>
+                    <strong>Cheesecake de morango</strong> – versão de forno ou sem forno, com
+                    cobertura de morango fresco. Muitos exemplos em português (Pingo Doce, Nestlé,
+                    Sabor Intenso, TudoGostoso). <strong>[R7]</strong>
+                </li>
+                <li>
+                    <strong>Bolo de iogurte com morangos</strong> – bolo simples em que se
+                    incorporam morangos em pedaços na massa ou como cobertura. Receitas frequentes
+                    em sites brasileiros e portugueses de culinária. <strong>[R8]</strong>
+                </li>
+                <li>
+                    <strong>“Nice cream” de banana e morango</strong> – sobremesa gelada feita apenas
+                    com banana e morango congelados, triturados até textura cremosa. Muito usada em
+                    blogues de alimentação saudável em português (ex.: Made By Choices, NiT
+                    Alimentação). <strong>[R9]</strong>
+                </li>
+                <li>
+                    <strong>Chia jam de morango</strong> – “doce rápido” de morango em que as
+                    sementes de chia fazem gelificar o puré de morangos, permitindo reduzir
+                    drasticamente o açúcar adicionado. Receitas em inglês (Minimalist Baker, etc.)
+                    e vários blogues PT/BR adaptados. <strong>[R10]</strong>
+                </li>
+            </ol>
+            <p class="nota">
+                Em todas estas receitas é possível (e desejável) usar <strong>morangos biológicos</strong>.
+                Quando forem pensadas para morango congelado ou enlatado, pode substituir-se por
+                morango fresco biológico (ajustando tempo e textura) ou, em alternativa, congelar
+                morangos biológicos em casa.
+            </p>
+        </section>
+
+        <section id="beneficios">
+            <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+            <p>
+                Os morangos são um dos frutos mais estudados em termos de impacto cardiometabólico
+                e antioxidante, em grande parte devido ao seu teor de <strong>vitamina C</strong>,
+                <strong>ácido elágico</strong> e <strong>antocianinas</strong>.
+            </p>
+            <ul>
+                <li>
+                    <strong>Ricos em vitamina C e antioxidantes</strong> – 100&nbsp;g de morangos
+                    frescos podem fornecer 60–90&nbsp;mg de vitamina C, aproximando-se ou
+                    ultrapassando a dose diária recomendada para adultos. A vitamina C, em conjunto
+                    com outros polifenóis, contribui para a proteção contra stress oxidativo e
+                    suporte da função imunitária.
+                </li>
+                <li>
+                    <strong>Polifenóis (antocianinas e ácido elágico)</strong> – morangos contêm
+                    antocianinas (responsáveis pela cor vermelha) e ácido elágico, ligados a
+                    propriedades antioxidantes, anti-inflamatórias e potenciais efeitos benéficos
+                    na saúde cardiovascular e no metabolismo da glicose, em estudos laboratoriais e
+                    alguns ensaios clínicos com extratos ou morango liofilizado.
+                </li>
+                <li>
+                    <strong>Efeitos cardiometabólicos em ensaios clínicos</strong> – ensaios com
+                    adultos com excesso de peso ou síndrome metabólica que consumiram morangos
+                    (frescos, liofilizados ou em bebidas) mostram, em alguns casos, melhoria de
+                    indicadores como colesterol LDL oxidado, marcadores inflamatórios e resistência
+                    à insulina. A magnitude destes efeitos é modesta e os estudos muitas vezes têm
+                    amostras pequenas, mas apontam para um potencial benefício quando os morangos
+                    substituem snacks menos saudáveis.
+                </li>
+                <li>
+                    <strong>Associação com menor risco de doença cardiovascular</strong> – estudos
+                    de coorte que avaliam consumo de frutos vermelhos (incluindo morangos) sugerem
+                    uma associação entre maior ingestão e menor risco de enfarte do miocárdio em
+                    mulheres, provavelmente relacionada com a ingestão de antocianinas. É uma
+                    associação, não prova de causalidade, mas contribui para a recomendação de
+                    incluir frutos vermelhos numa alimentação saudável.
+                </li>
+                <li>
+                    <strong>Baixo índice glicémico</strong> – apesar de conterem açúcares naturais,
+                    os morangos têm carga glicémica baixa por porção habitual (por ex. 100–150&nbsp;g),
+                    devido ao teor de água e fibra. Quando consumidos em conjunto com fontes de
+                    proteína e gordura saudável, tendem a ter impacto glicémico moderado.
+                </li>
+                <li>
+                    <strong>Orgânicos vs. convencionais</strong> – meta-análises que comparam
+                    alimentos biológicos e convencionais sugerem que, em média, a produção biológica
+                    resulta em menores resíduos de pesticidas e, em alguns casos, maiores teores de
+                    certos antioxidantes. Em culturas como o morangueiro, que requerem proteção
+                    intensiva em sistemas convencionais, a diferença em resíduos pode ser
+                    particularmente relevante para quem consome o fruto com frequência.
+                </li>
+            </ul>
+            <p class="nota">
+                Mesmo com estes dados, morangos não devem ser vistos como “medicamento” isolado.
+                Os benefícios descritos aparecem quando o seu consumo se integra num
+                <strong>padrão alimentar globalmente saudável</strong>, com muita fruta e
+                hortícolas, leguminosas, frutos secos e cereais pouco processados.
+            </p>
+        </section>
+
+        <section id="nutricao">
+            <h3>6. Propriedades nutricionais</h3>
+            <p>
+                Valores aproximados por 100&nbsp;g de parte comestível de morangos, com base em
+                tabelas nutricionais portuguesas/europeias e bases de dados internacionais (como a
+                base USDA). A segunda coluna usa morangos <strong>cozidos em calda simples
+                (sem açúcar adicionado)</strong> como referência para um cenário de ligeira
+                cozedura.
+            </p>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Nutriente</th>
+                    <th>Morangos frescos crus<br>(100&nbsp;g)</th>
+                    <th>Morangos cozidos em calda simples<br>(100&nbsp;g, sem açúcar)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Energia</td>
+                    <td>≈ 32–40&nbsp;kcal</td>
+                    <td>≈ 30–35&nbsp;kcal</td>
+                </tr>
+                <tr>
+                    <td>Água</td>
+                    <td>≈ 90–91&nbsp;g</td>
+                    <td>≈ 88–90&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Proteína</td>
+                    <td>≈ 0,7–1,0&nbsp;g</td>
+                    <td>≈ 0,7–1,0&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Hidratos de carbono totais</td>
+                    <td>≈ 7–8&nbsp;g</td>
+                    <td>≈ 7–8&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Açúcares</td>
+                    <td>≈ 4,5–5,5&nbsp;g</td>
+                    <td>≈ 4,5–5,5&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Fibra alimentar</td>
+                    <td>≈ 2,0&nbsp;g</td>
+                    <td>≈ 1,5–2,0&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Lípidos totais</td>
+                    <td>≈ 0,3&nbsp;g</td>
+                    <td>≈ 0,3&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Vitamina C</td>
+                    <td>≈ 60–90&nbsp;mg</td>
+                    <td>Reduz-se com a cozedura (perdas significativas, por ser sensível ao calor)</td>
+                </tr>
+                <tr>
+                    <td>Folato (vit. B9)</td>
+                    <td>≈ 20–30&nbsp;µg</td>
+                    <td>Ligeira redução com a cozedura</td>
+                </tr>
+                <tr>
+                    <td>Potássio</td>
+                    <td>≈ 150–200&nbsp;mg</td>
+                    <td>≈ 140–190&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Manganês</td>
+                    <td>≈ 0,3–0,4&nbsp;mg</td>
+                    <td>≈ 0,3–0,4&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Índice glicémico (IG)</td>
+                    <td>Baixo (≈ 40)</td>
+                    <td>Sem açúcar adicionado, permanece baixo; se houver açúcar, o IG pode aumentar bastante</td>
+                </tr>
+                </tbody>
+            </table>
+            <p class="nota">
+                Quando os morangos são cozinhados com <strong>muito açúcar</strong> (compota
+                tradicional), o valor energético e o impacto glicémico aumentam significativamente.
+                A coluna de “morangos cozidos” acima assume uma cozedura curta em calda sem açúcar
+                ou com adição mínima de doce.
+            </p>
+        </section>
+
+        <section id="utilidades">
+            <h3>7. Utilidades e aplicações (não apenas alimentares)</h3>
+            <ul>
+                <li>
+                    <strong>Cobertura viva de solo (groundcover):</strong> o morangueiro é uma
+                    excelente planta de cobertura em canteiros e bordaduras, ajudando a reduzir
+                    infestantes, proteger o solo e manter a humidade.
+                </li>
+                <li>
+                    <strong>Atração de polinizadores e fauna útil:</strong> as flores de morangueiro
+                    atraem abelhas e outros polinizadores, enquanto alguns predadores naturais de
+                    pragas beneficiam da estrutura do canteiro e das micro-habitações criadas.
+                </li>
+                <li>
+                    <strong>Horticultura em vasos e jardins comestíveis ornamentais:</strong> o
+                    porte baixo e os frutos vistosos tornam o morangueiro ideal para vasos, floreiras,
+                    jardins verticais e “edible landscaping”.
+                </li>
+                <li>
+                    <strong>Aproveitamento de folhas para infusões:</strong> folhas secas de
+                    morangueiro são por vezes usadas em chás mistos; contêm taninos e devem ser
+                    usadas com moderação. A evidência científica específica é limitada; é mais uma
+                    utilização tradicional do que medicinal bem estabelecida.
+                </li>
+                <li>
+                    <strong>Valor educativo:</strong> por ser uma planta perene de pequeno porte que
+                    dá frutos rapidamente, é excelente para hortas escolares, ajudando crianças a
+                    perceberem o ciclo flor–fruto e a relação com polinizadores.
+                </li>
+            </ul>
+        </section>
+
+        <section id="permacultura">
+            <h3>8. Grau de funcionalidade em permacultura</h3>
+            <p><strong>Classificação proposta: 8/10</strong></p>
+            <ul class="lista-permacultura">
+                <li>
+                    <strong>Funções principais:</strong> produção de fruto fresco muito apreciado,
+                    cobertura viva do solo, atração de polinizadores, componente estético-comestível.
+                </li>
+                <li>
+                    <strong>Vantagens em sistemas biológicos:</strong> planta perene de médio prazo
+                    (vive vários anos), multiplica-se facilmente por estolhos, contribui para
+                    aumentar a matéria orgânica superficial e para reduzir infestantes quando bem
+                    manejada. Integra-se bem em consociações com alho-francês, alfaces, legumes de
+                    raiz e flores comestíveis.
+                </li>
+                <li>
+                    <strong>Limitações:</strong> relativamente sensível à seca e a alguns fungos
+                    (como o oídio e o cinzento) e pragas (caracóis, lesmas, lesmas, ácaros); precisa
+                    de rotação e renovação periódica de plantas para manter a produtividade;
+                    necessitar de proteção contra aves em algumas zonas.
+                </li>
+            </ul>
+            <p class="nota">
+                A pontuação elevada deve-se à combinação de <strong>perenidade relativa</strong>,
+                produção alimentar muito valorizada e função de cobertura viva. Em pequenos espaços,
+                poucos metros quadrados de morangueiro podem cumprir várias funções simultaneamente.
+            </p>
+        </section>
+
+        <section id="referencias">
+            <h3>9. Referências</h3>
+
+            <div class="referencias-subsecao">9.1. Apresentação / contexto</div>
+            <ul class="referencias-lista">
+                <li><strong>D1</strong> – Wikipedia (PT). “Morango” – descrição botânica e histórica. Disponível em: <a href="https://pt.wikipedia.org/wiki/Morango" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Morango</a></li>
+                <li><strong>D2</strong> – Wikipedia (EN). “Garden strawberry” – origem híbrida de <em>Fragaria × ananassa</em> e botânica básica. Disponível em: <a href="https://en.wikipedia.org/wiki/Garden_strawberry" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Garden_strawberry</a></li>
+                <li><strong>D3</strong> – RHS (Royal Horticultural Society). “Strawberries – growing guide”. Disponível em: <a href="https://www.rhs.org.uk/fruit/strawberries/grow-your-own" target="_blank" rel="noopener">https://www.rhs.org.uk/fruit/strawberries/grow-your-own</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.2. Sazonalidade e cultivo (Portugal / clima semelhante)</div>
+            <ul class="referencias-lista">
+                <li><strong>S1</strong> – Revista Jardins (PT). “Morango: como plantar e cuidar” – informações sobre épocas de plantação e colheita em Portugal. Disponível em: <a href="https://revistajardins.pt/morangos-como-plantar-e-cuidar/" target="_blank" rel="noopener">https://revistajardins.pt/morangos-como-plantar-e-cuidar/</a></li>
+                <li><strong>S2</strong> – Associação Portuguesa de Horticultura. Artigos sobre produção de morango em Portugal continental (vários autores; PDFs em congressos disponíveis no site). Ponto de partida: <a href="https://aphorticultura.pt" target="_blank" rel="noopener">https://aphorticultura.pt</a></li>
+                <li><strong>S3</strong> – DECO Proteste. Calendário de fruta e legumes da época – inclui morangos na primavera/início do verão. Disponível em: <a href="https://www.deco.proteste.pt/alimentacao/alimentacao-saudavel/dicas/calendario-fruta-legumes-epoca" target="_blank" rel="noopener">https://www.deco.proteste.pt/.../calendario-fruta-legumes-epoca</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.3. Propriedades nutricionais</div>
+            <ul class="referencias-lista">
+                <li><strong>N1</strong> – Base de dados USDA. “Strawberries, raw” – valores nutricionais por 100 g. Acesso via: <a href="https://fdc.nal.usda.gov/" target="_blank" rel="noopener">https://fdc.nal.usda.gov/</a></li>
+                <li><strong>N2</strong> – FatSecret Portugal. “Morangos” – factos nutricionais por 100 g. Disponível em: <a href="https://www.fatsecret.pt/calorias-nutri%C3%A7%C3%A3o/gen%C3%A9rico/morango" target="_blank" rel="noopener">https://www.fatsecret.pt/.../morango</a></li>
+                <li><strong>N3</strong> – Saboreia a Vida – Nestlé Portugal. “Morango: benefícios e informação nutricional”. Disponível em: <a href="https://saboreiaavida.nestle.pt/bem-estar/morango" target="_blank" rel="noopener">https://saboreiaavida.nestle.pt/bem-estar/morango</a></li>
+                <li><strong>N4</strong> – Ciqual / ANSES (França). Tabela de composição de alimentos – morangos frescos. Disponível em: <a href="https://ciqual.anses.fr" target="_blank" rel="noopener">https://ciqual.anses.fr</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.4. Benefícios para a saúde e propriedades medicinais</div>
+            <ul class="referencias-lista">
+                <li><strong>M1</strong> – Giampieri F. et al. “The Strawberry: Composition, Nutritional Quality, and Impact on Human Health.” <em>Nutrition</em>, 2012; e atualizações posteriores em <em>Journal of Berry Research</em>. Resumo em: <a href="https://pubmed.ncbi.nlm.nih.gov/22254004/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/22254004/</a></li>
+                <li><strong>M2</strong> – Basu A. et al. “Strawberry as a Functional Food: An Evidence-Based Review.” <em>Critical Reviews in Food Science and Nutrition</em>, 2014. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/23457878/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/23457878/</a></li>
+                <li><strong>M3</strong> – Cassidy A. et al. “High anthocyanin intake is associated with a reduced risk of myocardial infarction in young and middle-aged women.” <em>Circulation</em>, 2013. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/23319811/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/23319811/</a></li>
+                <li><strong>M4</strong> – Zunino S.J. “Type 2 diabetes and glycemic response to strawberries.” Vários ensaios com morango e controlo glicémico em adultos. Revisão em: <a href="https://pubmed.ncbi.nlm.nih.gov/29221519/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/29221519/</a></li>
+                <li><strong>M5</strong> – Healthline. “Strawberries 101: Nutrition Facts and Health Benefits.” Síntese para leigos com referências a estudos. Disponível em: <a href="https://www.healthline.com/nutrition/foods/strawberries" target="_blank" rel="noopener">https://www.healthline.com/nutrition/foods/strawberries</a></li>
+                <li><strong>M6</strong> – Harvard T.H. Chan School of Public Health. “Vegetables and Fruits – Berries” – secção sobre frutos vermelhos, incluindo morangos. Disponível em: <a href="https://www.hsph.harvard.edu/nutritionsource/food-features/berries/" target="_blank" rel="noopener">https://www.hsph.harvard.edu/nutritionsource/food-features/berries/</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.5. Produção biológica, pesticidas e comparação com convencional</div>
+            <ul class="referencias-lista">
+                <li><strong>B1</strong> – Barański M. et al. “Higher antioxidant and lower cadmium concentrations and lower incidence of pesticide residues in organically grown crops: a systematic literature review and meta-analyses.” <em>British Journal of Nutrition</em>, 2014. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4141693/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4141693/</a></li>
+                <li><strong>B2</strong> – Baker B.P. et al. “Pesticide residues in conventional, IPM-grown and organic foods.” Relatório da The Organic Center. Disponível em: <a href="https://www.organic-center.org/reportfiles/bakerbenbrook.pdf" target="_blank" rel="noopener">https://www.organic-center.org/reportfiles/bakerbenbrook.pdf</a></li>
+                <li><strong>B3</strong> – Environmental Working Group (EWG). “Shopper’s Guide to Pesticides in Produce” – os morangos surgem frequentemente entre os produtos com mais resíduos em sistemas convencionais. Resumo: <a href="https://www.ewg.org/foodnews/summary.php" target="_blank" rel="noopener">https://www.ewg.org/foodnews/summary.php</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.6. Receitas (Top 10)</div>
+            <ul class="referencias-lista">
+                <li><strong>R1</strong> – Pingo Doce. Diversas receitas com morangos frescos (saladas, sobremesas). Página de pesquisa “morangos”: <a href="https://www.pingodoce.pt/receitas/?s=morango" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/?s=morango</a></li>
+                <li><strong>R2</strong> – Continente. Receitas de salada de espinafre com morangos e frutos secos. Pesquisa “salada morango”: <a href="https://feed.continente.pt/receitas/?q=morango" target="_blank" rel="noopener">https://feed.continente.pt/receitas/?q=morango</a></li>
+                <li><strong>R3</strong> – Teleculinária. “Batido de morango” e “Batido de morango e banana”. Pesquisa “batido de morango”: <a href="https://www.teleculinaria.pt/?s=batido+de+morango" target="_blank" rel="noopener">https://www.teleculinaria.pt/?s=batido+de+morango</a></li>
+                <li><strong>R4</strong> – TudoGostoso (BR). “Overnight oats com morango” (diversas variações). Pesquisa “overnight oats morango”: <a href="https://www.tudogostoso.com.br/busca?q=overnight+oats+morango" target="_blank" rel="noopener">https://www.tudogostoso.com.br/busca?q=overnight+oats+morango</a></li>
+                <li><strong>R5</strong> – Cinco Quartos de Laranja (PT). Compotas de morango com menos açúcar. Pesquisa “compota morango”: <a href="https://www.cincoquartosdelaranja.com/search?q=compota+morango" target="_blank" rel="noopener">https://www.cincoquartosdelaranja.com/search?q=compota+morango</a></li>
+                <li><strong>R6</strong> – BBC Good Food (EN). “Balsamic strawberries” – morango assado com balsâmico. Disponível em: <a href="https://www.bbcgoodfood.com/recipes/balsamic-strawberries" target="_blank" rel="noopener">https://www.bbcgoodfood.com/recipes/balsamic-strawberries</a></li>
+                <li><strong>R7</strong> – Pingo Doce / Nestlé / Sabor Intenso. Várias receitas de “Cheesecake de morango”. Ex.: <a href="https://www.pingodoce.pt/receitas/cheesecake-de-morango/" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/cheesecake-de-morango/</a></li>
+                <li><strong>R8</strong> – TudoGostoso. Diversas receitas de bolo de morango (com fruta fresca na massa ou cobertura). Pesquisa “bolo de morango”: <a href="https://www.tudogostoso.com.br/busca?q=bolo+de+morango" target="_blank" rel="noopener">https://www.tudogostoso.com.br/busca?q=bolo+de+morango</a></li>
+                <li><strong>R9</strong> – Made By Choices (PT). “Gelado saudável de banana e morango” (nice cream). Disponível em: <a href="https://madebychoices.pt/gelado-saudavel-de-banana-e-morango/" target="_blank" rel="noopener">https://madebychoices.pt/gelado-saudavel-de-banana-e-morango/</a></li>
+                <li><strong>R10</strong> – Minimalist Baker (EN). “Easy Chia Seed Jam” – versão com morangos frescos ou congelados. Disponível em: <a href="https://minimalistbaker.com/easy-chia-seed-jam-4-ways/" target="_blank" rel="noopener">https://minimalistbaker.com/easy-chia-seed-jam-4-ways/</a></li>
+            </ul>
+
+            <p class="nota">
+                Sempre que possível foram escolhidas fontes com maior probabilidade de estabilidade
+                (instituições, grandes portais de receitas, artigos com DOI). Ainda assim, é
+                natural que alguns links mudem ao longo dos anos.
+            </p>
+        </section>
+
+        <div class="topo-link">
+            <a href="#topo">Voltar ao topo ▲</a>
+        </div>
+    </article>
+</main>
+</body>
+</html>

@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Nabiça (folhas de nabo) | Horta de Amigos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body id="topo">
+<header>
+    <h1>Horta de Amigos</h1>
+    <p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar com família e amigos.</p>
+</header>
+
+<nav>
+    <a href="index.html">Início</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="moringa.html">Moringa</a>
+    <a href="acelga.html">Acelga</a>
+    <a href="agriao-terra.html">Agrião-de-terra</a>
+    <a href="aipo.html">Aipo (talos e folhas)</a>
+    <a href="alface.html">Alface</a>
+    <a href="alho.html">Alho</a>
+    <a href="alho-frances.html">Alho-francês</a>
+    <a href="aneto.html">Aneto / Endro</a>
+    <a href="abobora-butternut.html">Abóbora butternut</a>
+    <a href="batata-comum.html">Batata comum</a>
+    <a href="batata-doce.html">Batata-doce</a>
+    <a href="beringela.html">Beringela</a>
+    <a href="beterraba.html">Beterraba</a>
+    <a href="brocolo.html">Brócolo</a>
+    <a href="canonigos.html">Canónigos</a>
+    <a href="coentros.html">Coentros</a>
+    <a href="cebola.html">Cebola</a>
+    <a href="cebola-fresca.html">Cebola fresca</a>
+    <a href="cenoura.html">Cenoura</a>
+    <a href="couve-chinesa.html">Couve chinesa</a>
+    <a href="couve-rabano.html">Couve-rábano</a>
+    <a href="couve-repolho.html">Couve repolho</a>
+    <a href="couve-toscana.html">Couve toscana</a>
+    <a href="curgete.html">Curgete</a>
+    <a href="ervilhas-frescas.html">Ervilhas frescas</a>
+    <a href="espinafre.html">Espinafre</a>
+    <a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+    <a href="feijao-verde.html">Feijão verde</a>
+    <a href="milho-doce.html">Milho doce</a>
+    <a href="mizuna.html">Mizuna</a>
+    <a href="morangos.html">Morangueiro / Morangos</a>
+    <a href="nabo.html">Nabo</a>
+    <a href="nabica.html" class="ativa">Nabiça</a>
+    <a href="pak-choi.html">Pak choi</a>
+    <a href="pepino.html">Pepino</a>
+    <a href="pimento.html">Pimento</a>
+    <a href="rabanete.html">Rabanete</a>
+    <a href="rabano.html">Rábano / Daikon</a>
+    <a href="rucula.html">Rúcula</a>
+    <a href="salanova.html">Salanova</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="tomate.html">Tomate (diversas cultivares)</a>
+    <a href="tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+
+<main>
+    <article class="planta">
+        <div class="planta-cabecalho">
+            <div class="planta-titulo">
+                <h2>Nabiça (folhas de nabo) (<em>Brassica rapa</em> subsp. <em>rapa</em>)</h2>
+                <p><strong>Outros nomes em português:</strong> nabiças, folhas de nabo, grelos de nabo (em alguns contextos), folhas de couve-nabo.</p>
+                <p><strong>Nome mais comum em inglês:</strong> turnip greens, turnip tops.</p>
+
+                <div class="tags-nomes">
+                    <span>Família: Brassicaceae (crucíferas)</span>
+                    <span>Parte usada: folhas jovens e caules tenros</span>
+                    <span>Tipo: hortícola de folha</span>
+                    <span>Produção: <strong>biológica</strong></span>
+                </div>
+
+                <div class="info-rapida">
+                    <div>
+                        <strong>Origem</strong>
+                        Folhas da planta do nabo, tradicionalmente consumidas em Portugal, Galiza e outros países como hortícola de inverno/primavera.
+                    </div>
+                    <div>
+                        <strong>Uso principal</strong>
+                        Sopas, esparregados, arrozes, estufados com leguminosas, papas de milho, pestos “verdes”.
+                    </div>
+                    <div>
+                        <strong>Perfil nutricional</strong>
+                        Muito baixa em calorias, rica em vitamina K, vitamina A (carotenoides), vitamina C, folato, cálcio, potássio e compostos sulfurados (glucosinolatos).
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="imagem-container-externo">
+                    <div class="imagem-container">
+                        <img src="imagens/nabica.png" alt="Molho de nabiças biológicas frescas, folhas verdes e caules tenros">
+                    </div>
+                </div>
+                <p class="imagem-legenda">Imagem ilustrativa de nabiças biológicas frescas, prontas a cozinhar.</p>
+            </div>
+        </div>
+
+        <section id="apresentacao">
+            <h3>1. Apresentação / Descrição</h3>
+            <p>
+                As <strong>nabiças</strong> são as <strong>folhas e caules jovens da planta do nabo</strong>
+                (<em>Brassica rapa</em> subsp. <em>rapa</em>), pertencente à família das crucíferas,
+                a mesma das couves, brócolos e rúcula. Em Portugal, são muito usadas em sopas,
+                esparregados, papas de milho e pratos com feijão, sendo um clássico das mesas
+                de inverno e primavera. Em inglês, correspondem a <em>turnip greens</em> ou
+                <em>turnip tops</em>.
+            </p>
+            <p>
+                Em termos botânicos, algumas variedades de nabo são selecionadas sobretudo
+                pela <strong>raiz</strong> (como na página do Nabo) e outras pelas
+                <strong>folhas</strong>, mais tenras e produtivas. Em sistemas tradicionais de
+                horta, o mesmo cultivo pode fornecer primeiro nabiças e, se se deixar a planta
+                prosseguir, raízes para consumo mais tarde.
+            </p>
+            <p>
+                Estudos recentes sobre <em>turnip greens</em> e <em>turnip tops</em> descrevem
+                um alimento com <strong>elevado teor de vitamina C</strong>, ácidos orgânicos
+                e <strong>glucosinolatos</strong>, compostos característicos das crucíferas que
+                têm sido amplamente estudados pelos seus potenciais efeitos protetores em
+                doenças crónicas.
+            </p>
+            <p>
+                Em contexto de produção <strong>biológica</strong>, as nabiças ganham relevância
+                adicional, por serem um alimento de folha que, em agricultura convencional,
+                pode estar mais exposto a resíduos de pesticidas superficiais. Produzir e
+                consumir nabiças biológicas ajuda a reduzir essa exposição.
+            </p>
+        </section>
+
+        <section id="sazonalidade">
+            <h3>2. Sazonalidade (Portugal continental)</h3>
+            <p>
+                As nabiças são típicas de <strong>outono, inverno e início de primavera</strong>,
+                associadas às épocas mais frescas do ano.
+            </p>
+            <ul>
+                <li>
+                    <strong>Sementeira:</strong> habitualmente de <strong>setembro a janeiro</strong>,
+                    em sementeira direta ou em linhas, dependendo da região e da intenção de
+                    colher raízes mais tarde.
+                </li>
+                <li>
+                    <strong>Colheita:</strong> nabiças tenras podem ser colhidas cerca de
+                    30–50 dias após a sementeira, cortando folhas e caules jovens e deixando a
+                    planta rebentar de novo.
+                </li>
+                <li>
+                    <strong>Clima:</strong> preferem clima fresco; podem tolerar algum frio e
+                    geadas ligeiras, mas calor excessivo torna as folhas mais rijas e picantes.
+                </li>
+                <li>
+                    <strong>Consociação:</strong> combinam bem com leguminosas (feijões,
+                    ervilhas), alho, cebola e outras crucíferas, integrando-se em rotações que
+                    evitem excesso de brassicas no mesmo canteiro ano após ano.
+                </li>
+            </ul>
+            <p class="nota">
+                Em hortas biológicas, é comum semear nabiças em linhas densas para colheitas
+                sucessivas de folhas, sem necessariamente esperar pela formação de grandes
+                raízes.
+            </p>
+        </section>
+
+        <section id="como-consumir">
+            <h3>3. Como consumir</h3>
+            <p>
+                As nabiças têm sabor <strong>ligeiramente amargo e picante</strong>, que se
+                suaviza com a cozedura. Algumas formas de consumo:
+            </p>
+            <ul>
+                <li>
+                    <strong>Sopas:</strong> nabiças em sopas de feijão, sopa de legumes, caldo
+                    verde alternativo (substituindo parte da couve), ou outras sopas “verdes”.
+                </li>
+                <li>
+                    <strong>Esparregado:</strong> tal como se faz com espinafre ou outras
+                    folhas, cozendo e depois salteando/pisando com alho, azeite e farinha ou
+                    outros espessantes (incluindo versões mais saudáveis com aveia e frutos secos).
+                </li>
+                <li>
+                    <strong>Arrozes e estufados:</strong> arroz de nabiças, estufados com
+                    feijão frade, grão, lentilhas ou outras leguminosas.
+                </li>
+                <li>
+                    <strong>Papas e migas:</strong> papas de milho com nabiças, migas de
+                    nabiça com pão de milho e feijão.
+                </li>
+                <li>
+                    <strong>Salteadas:</strong> nabiças salteadas em azeite com alho, como
+                    acompanhamento de pratos de peixe ou leguminosas.
+                </li>
+                <li>
+                    <strong>Pesto de nabiça:</strong> versão “portuguesa” de pesto, usando
+                    nabiças escaldadas ou cozidas a vapor, azeite, frutos secos e alho.
+                </li>
+            </ul>
+            <p class="nota">
+                Para reduzir o amargor, pode-se escaldar rapidamente as nabiças em água a
+                ferver e descartar essa primeira água antes da confeção principal.
+            </p>
+        </section>
+
+        <section id="receitas">
+            <h3>4. Receitas e preparados (Top 10)</h3>
+            <p>
+                Sugestões de receitas em português onde a <strong>nabiça</strong> é protagonista.
+                Pelo menos cinco referências estão em português (Portugal).
+            </p>
+            <ol>
+                <li>
+                    <strong>Sopa de feijão com nabiça</strong> – sopa rica em feijão, batata
+                    e nabiça, muito comum em casas portuguesas. Receita descrita no blogue
+                    “Intrusa na Cozinha”. <strong>[R1]</strong>
+                </li>
+                <li>
+                    <strong>Nabiça com feijão frade</strong> – prato tradicional em que a
+                    nabiça é cozida com feijão frade e nabo, com refogado simples de azeite
+                    e alho. Receita no blogue “As Receitas da Tia Gui”. <strong>[R2]</strong>
+                </li>
+                <li>
+                    <strong>Esparregado de nabiça</strong> – receita do projeto PASS Alimentação,
+                    com nabiça, alho, azeite, farinha de milho, leite e vinagre. <strong>[R3]</strong>
+                </li>
+                <li>
+                    <strong>Esparregado de nabiça e caju</strong> – versão mais moderna,
+                    da Aldi Portugal, com nabiça, aveia e caju, sem farinha de trigo.
+                    <strong>[R4]</strong>
+                </li>
+                <li>
+                    <strong>Papas de nabiça</strong> – receita apresentada no programa “Praça
+                    da Alegria” (RTP), com batata, chouriço, feijão branco, nabiça e farinha
+                    de milho. <strong>[R5]</strong>
+                </li>
+                <li>
+                    <strong>Arroz de nabiça</strong> – receita simples com arroz, cebola,
+                    alho, nabiça e louro, publicada em português no PetitChef.
+                    <strong>[R6]</strong>
+                </li>
+                <li>
+                    <strong>Pesto de nabiça</strong> – receita da Loja Rialto, um pesto
+                    “português” com nabiça cozida a vapor, alho e azeite, usado em massas ou
+                    como dip. <strong>[R7]</strong>
+                </li>
+                <li>
+                    <strong>Nabiças salteadas com alho e azeite</strong> – receita muito comum
+                    em blogs lusófonos, usada como acompanhamento de peixe grelhado ou pratos
+                    vegetarianos. <strong>[R8]</strong>
+                </li>
+                <li>
+                    <strong>Quiche ou tarte de nabiça e queijo</strong> – variantes em blogs
+                    e sites de receitas portugueses, usando nabiça salteada como recheio.
+                    <strong>[R9]</strong>
+                </li>
+                <li>
+                    <strong>Frittata/omelete de nabiça com feijão</strong> – receitas em
+                    português que combinam nabiça cozida com ovos e, por vezes, feijão, para
+                    aproveitamento de sobras. <strong>[R10]</strong>
+                </li>
+            </ol>
+        </section>
+
+        <section id="beneficios">
+            <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+            <p>
+                A maior parte da investigação fala em <strong>turnip greens</strong> ou
+                <strong>turnip tops</strong>, termos que englobam as nabiças. Os principais
+                pontos que se destacam são:
+            </p>
+            <ul>
+                <li>
+                    <strong>Ricas em vitamina C e ácidos orgânicos</strong> – estudos analíticos
+                    com folhas de <em>Brassica rapa</em> mostram que as turnip greens têm
+                    teores relevantes de <strong>ácido ascórbico (vitamina C)</strong> e
+                    ácidos orgânicos como o ácido cítrico, ainda que estes diminuam com certos
+                    métodos de cozedura prolongada.
+                </li>
+                <li>
+                    <strong>Glucosinolatos e compostos sulfurados</strong> – nabiças fazem
+                    parte do grupo das crucíferas, ricas em <strong>glucosinolatos</strong> e
+                    nos seus produtos de hidrólise (isotiocianatos), compostos intensamente
+                    estudados pelo potencial em redução de risco de alguns cancros e doenças
+                    cardiovasculares, com efeitos antioxidantes, anti-inflamatórios e na
+                    modulação de enzimas de desintoxicação.
+                </li>
+                <li>
+                    <strong>Densidade nutricional elevada</strong> – tal como outras folhas
+                    verdes escuras, as nabiças fornecem vitamina K, vitamina A (via
+                    carotenoides como a luteína), folato, cálcio e potássio, com baixa carga
+                    calórica.
+                </li>
+                <li>
+                    <strong>Possível proteção cardiovascular e metabólica</strong> – revisões
+                    sobre nabo e seus derivados apontam atividades antioxidantes,
+                    antidiabéticas e de proteção renal em modelos experimentais, atribuídas a
+                    um conjunto de fitoquímicos, incluindo glucosinolatos, compostos fenólicos
+                    e flavonoides.
+                </li>
+                <li>
+                    <strong>Importância da cozedura para quem tem tiroide sensível</strong> –
+                    tal como outras crucíferas, nabiças contêm <strong>goitrógenos</strong>
+                    (compostos que podem interferir com a função tiroideia em grandes quantidades
+                    e em pessoas suscetíveis). Cozinhar e variar a dieta reduz este risco; quem
+                    tem doença da tiroide deve seguir a orientação do seu médico/nutricionista.
+                </li>
+            </ul>
+            <p class="nota">
+                Em quantidades habituais na alimentação, nabiças biológicas inseridas num
+                padrão alimentar variado são consideradas seguras e benéficas para a maioria
+                das pessoas. A cautela aplica-se sobretudo a suplementos concentrados ou
+                consumos muito elevados em contextos específicos de saúde.
+            </p>
+        </section>
+
+        <section id="nutricao">
+            <h3>6. Propriedades nutricionais</h3>
+            <p>
+                Valores aproximados por 100&nbsp;g de <strong>nabiça crua</strong> e
+                <strong>cozinhada</strong> (folhas de nabo), a partir de dados de
+                <em>turnip greens</em> em tabelas de composição e revisões de nutrientes.
+            </p>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Nutriente</th>
+                    <th>Nabiça crua<br>(100&nbsp;g)</th>
+                    <th>Nabiça cozinhada<br>(100&nbsp;g, escorrida, sem sal)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Energia</td>
+                    <td>≈ 20–25&nbsp;kcal</td>
+                    <td>≈ 20–25&nbsp;kcal</td>
+                </tr>
+                <tr>
+                    <td>Água</td>
+                    <td>≈ 92–93&nbsp;g</td>
+                    <td>≈ 92–94&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Proteína</td>
+                    <td>≈ 1,5–2,0&nbsp;g</td>
+                    <td>≈ 2,0–2,5&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Hidratos de carbono totais</td>
+                    <td>≈ 4,0–4,5&nbsp;g</td>
+                    <td>≈ 4,0–5,0&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Açúcares</td>
+                    <td>≈ 1,0–1,5&nbsp;g</td>
+                    <td>≈ 1,0–1,5&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Fibra alimentar</td>
+                    <td>≈ 2,5–3,5&nbsp;g</td>
+                    <td>≈ 2,5–3,5&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Lípidos totais</td>
+                    <td>≈ 0,3–0,5&nbsp;g</td>
+                    <td>≈ 0,3–0,5&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Vitamina C</td>
+                    <td>≈ 35–60&nbsp;mg (varia com cultivar e frescura)</td>
+                    <td>Perdas significativas com cozedura prolongada (podem ultrapassar 50&nbsp;%)</td>
+                </tr>
+                <tr>
+                    <td>Vitamina A (RAE, via carotenoides)</td>
+                    <td>Conteúdos relevantes (folha verde escura)</td>
+                    <td>Ligeira redução, com possível aumento de biodisponibilidade</td>
+                </tr>
+                <tr>
+                    <td>Vitamina K</td>
+                    <td>Muito elevada (folha de crucífera)</td>
+                    <td>Pouco afetada pela cozedura</td>
+                </tr>
+                <tr>
+                    <td>Folato (vit. B9)</td>
+                    <td>Teores significativos</td>
+                    <td>Alguma perda para a água de cozedura</td>
+                </tr>
+                <tr>
+                    <td>Cálcio</td>
+                    <td>≈ 150–200&nbsp;mg</td>
+                    <td>≈ 150–200&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Potássio</td>
+                    <td>≈ 250–300&nbsp;mg</td>
+                    <td>≈ 250–300&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Índice glicémico (IG)</td>
+                    <td>Muito baixo</td>
+                    <td>Muito baixo (desde que não se adicionem farinhas refinadas ou açúcar)</td>
+                </tr>
+                </tbody>
+            </table>
+            <p class="nota">
+                Em Portugal, algumas fontes de divulgação nutricional referem cerca de
+                28–32&nbsp;kcal por 100&nbsp;g de nabiça crua, valores consistentes com estes
+                intervalos para folhas de nabo.
+            </p>
+        </section>
+
+        <section id="utilidades">
+            <h3>7. Utilidades e aplicações (não apenas alimentares)</h3>
+            <ul>
+                <li>
+                    <strong>Aproveitamento integral da planta:</strong> usar nabiças e raízes
+                    de nabo reduz desperdício alimentar e reforça a lógica “da raiz às folhas,
+                    tudo se come”.
+                </li>
+                <li>
+                    <strong>Biomassa e cobertura de solo:</strong> resíduos de nabiça podem
+                    ser compostados ou usados como cobertura verde temporária, ajudando a
+                    proteger e alimentar o solo em sistemas de permacultura.
+                </li>
+                <li>
+                    <strong>Flor e sementes para biodiversidade:</strong> se algumas plantas
+                    forem deixadas para florir, atraem insetos polinizadores e produzem
+                    sementes que podem ser guardadas (quando se usam variedades não híbridas).
+                </li>
+                <li>
+                    <strong>Educação alimentar e sazonalidade:</strong> a nabiça é um bom
+                    exemplo para mostrar como uma mesma espécie (nabo) pode fornecer diferentes
+                    alimentos (folhas e raiz) ao longo do ciclo.
+                </li>
+            </ul>
+        </section>
+
+        <section id="permacultura">
+            <h3>8. Grau de funcionalidade em permacultura</h3>
+            <p><strong>Classificação proposta: 8/10</strong></p>
+            <ul class="lista-permacultura">
+                <li>
+                    <strong>Funções principais:</strong> fornecimento de folhas verdes de
+                    inverno/primavera, elevada densidade de micronutrientes, atração de
+                    polinizadores quando em flor, produção de biomassa e sementes.
+                </li>
+                <li>
+                    <strong>Vantagens em sistemas biológicos:</strong> ciclo relativamente
+                    rápido, boa produção de folhas, possibilidade de colheitas sucessivas,
+                    integração em rotações com leguminosas e outras hortícolas.
+                </li>
+                <li>
+                    <strong>Limitações:</strong> como outras brassicas, pode ser sensível a
+                    pragas (alticas, lagartas) e doenças; exige atenção às rotações para evitar
+                    acumulação de problemas no solo.
+                </li>
+            </ul>
+            <p class="nota">
+                Em hortas de permacultura focadas na soberania alimentar, nabiças e outros
+                “verdes de inverno” são peças-chave para garantir folhas frescas numa época em
+                que muitas culturas de verão já terminaram.
+            </p>
+        </section>
+
+        <section id="referencias">
+            <h3>9. Referências</h3>
+
+            <div class="referencias-subsecao">9.1. Apresentação / contexto</div>
+            <ul class="referencias-lista">
+                <li><strong>D1</strong> – Wikipedia (EN). "Turnip." Informação geral sobre <em>Brassica rapa</em>, incluindo secção sobre turnip greens. Disponível em: <a href="https://en.wikipedia.org/wiki/Turnip" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Turnip</a></li>
+                <li><strong>D2</strong> – Pingo Doce. "Nabo: da raiz às folhas, tudo se come." Disponível em: <a href="https://www.pingodoce.pt/frescos/fruta-e-legumes/nabo-da-raiz-as-folhas-tudo-se-come/" target="_blank" rel="noopener">https://www.pingodoce.pt/frescos/fruta-e-legumes/nabo-da-raiz-as-folhas-tudo-se-come/</a></li>
+                <li><strong>D3</strong> – DGS / PNPAS. "Nabo – Turnip (<em>Brassica rapa</em>)." Disponível em: <a href="https://alimentacaosaudavel.dgs.pt/alimento/nabo/" target="_blank" rel="noopener">https://alimentacaosaudavel.dgs.pt/alimento/nabo/</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.2. Propriedades nutricionais e composição</div>
+            <ul class="referencias-lista">
+                <li><strong>N1</strong> – Wikipedia (EN). "Turnip – Nutrition (turnip greens)." Dados sobre valor energético e macro/micronutrientes das folhas de nabo cozidas. Disponível em: <a href="https://en.wikipedia.org/wiki/Turnip" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Turnip</a></li>
+                <li><strong>N2</strong> – WholisticMatters. "Turnip Greens: The Healthiest Vegetable People Aren’t Eating." 2020. Disponível em: <a href="https://wholisticmatters.com/turnip-greens-the-healthiest-vegetable-people-arent-eating/" target="_blank" rel="noopener">https://wholisticmatters.com/turnip-greens-the-healthiest-vegetable-people-arent-eating/</a></li>
+                <li><strong>N3</strong> – Dr Axe. "Turnip Greens Nutrition, Benefits and How to Cook Them." 2021. Disponível em: <a href="https://draxe.com/nutrition/turnip-greens-nutrition/" target="_blank" rel="noopener">https://draxe.com/nutrition/turnip-greens-nutrition/</a></li>
+                <li><strong>N4</strong> – Horta da Maria. "Nabiça (molho)." Informação nutricional resumida (28–32 kcal/100 g). Disponível em: <a href="https://hortadamaria.com/produto/nabica-molho/" target="_blank" rel="noopener">https://hortadamaria.com/produto/nabica-molho/</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.3. Fitoquímicos, glucosinolatos e estudos em folhas de nabo</div>
+            <ul class="referencias-lista">
+                <li><strong>M1</strong> – Dejanovic GM. et al. "Phytochemical characterization of turnip greens (<em>Brassica rapa</em> L. subsp. <em>rapa</em>)." <em>PLOS ONE</em>, 2021. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7888597/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7888597/</a></li>
+                <li><strong>M2</strong> – Câmara-Martos F. et al. "Glucosinolates, Ca, Se contents, and bioaccessibility in turnip greens." <em>Foods</em>, 2022. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8834489/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8834489/</a></li>
+                <li><strong>M3</strong> – Vieites-Outes C. et al. "Modification of glucosinolates in turnip greens by processing." <em>CyTA – Journal of Food</em>, 2016. Disponível em: <a href="https://www.tandfonline.com/doi/full/10.1080/19476337.2016.1154609" target="_blank" rel="noopener">https://www.tandfonline.com/doi/full/10.1080/19476337.2016.1154609</a></li>
+                <li><strong>M4</strong> – Cao Q. et al. "A Critical Review on Phytochemical Profile and Biological Activities of Turnip (<em>Brassica rapa</em>)." <em>Frontiers in Nutrition</em>, 2021. Disponível em: <a href="https://www.frontiersin.org/articles/10.3389/fnut.2021.721733/full" target="_blank" rel="noopener">https://www.frontiersin.org/articles/10.3389/fnut.2021.721733/full</a></li>
+                <li><strong>M5</strong> – Akram M. et al. "Health benefits of glucosinolate isolated from cruciferous vegetables." In: <em>Glucosinolates: Properties, Recovery, and Applications</em>, 2021. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/B978012820284500006X" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/B978012820284500006X</a></li>
+                <li><strong>M6</strong> – Consumer Reports. "Are Turnips and Turnip Greens Good for You?" 2024. Disponível em: <a href="https://www.consumerreports.org/health/nutrition-healthy-eating/are-turnips-and-turnip-greens-good-for-you-a9701449129/" target="_blank" rel="noopener">https://www.consumerreports.org/health/nutrition-healthy-eating/are-turnips-and-turnip-greens-good-for-you</a></li>
+                <li><strong>M7</strong> – Verywell Health. "What Happens to Your Body When You Eat Turnips." 2025. Disponível em: <a href="https://www.verywellhealth.com/turnips-11832782" target="_blank" rel="noopener">https://www.verywellhealth.com/turnips-11832782</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.4. Produção biológica, pesticidas e saúde (geral)</div>
+            <ul class="referencias-lista">
+                <li><strong>B1</strong> – Rahman A. et al. "Evaluating Nutritional Value and Impact on Human Health of Organic Versus Conventional Foods." <em>Foods</em>, 2024. Disponível em: <a href="https://www.mdpi.com/2304-8158/13/2/208" target="_blank" rel="noopener">https://www.mdpi.com/2304-8158/13/2/208</a></li>
+                <li><strong>B2</strong> – Vigar V. et al. "A Systematic Review of Organic Versus Conventional Food Consumption: Is There a Measurable Benefit on Human Health?" <em>Nutrients</em>, 2019. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7019963/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7019963/</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.5. Receitas (Top 10)</div>
+            <ul class="referencias-lista">
+                <li><strong>R1</strong> – Intrusa na Cozinha. "Sopa de Feijão com Nabiça." Disponível em: <a href="https://intrusanacozinha.blogspot.com/2015/09/sopa-de-feijao-com-nabica.html" target="_blank" rel="noopener">https://intrusanacozinha.blogspot.com/2015/09/sopa-de-feijao-com-nabica.html</a></li>
+                <li><strong>R2</strong> – As Receitas da Tia Gui. "Nabiça com Feijão Frade." Disponível em: <a href="https://asreceitasdatiagui.blogspot.com/2013/03/nabica-com-feijao-frade.html" target="_blank" rel="noopener">https://asreceitasdatiagui.blogspot.com/2013/03/nabica-com-feijao-frade.html</a></li>
+                <li><strong>R3</strong> – PASS Alimentação. "Esparregado de Nabiça." Disponível em: <a href="https://pass-alimentacao.pt/esparregado-de-nabica/" target="_blank" rel="noopener">https://pass-alimentacao.pt/esparregado-de-nabica/</a></li>
+                <li><strong>R4</strong> – Aldi Portugal. "Esparregado de Nabiça e Caju." Disponível em: <a href="https://www.aldi.pt/receitas-aldi/refeicao-completa/petiscos-e-snacks/esparregado-de-nabica-e-caju.html" target="_blank" rel="noopener">https://www.aldi.pt/receitas-aldi/refeicao-completa/petiscos-e-snacks/esparregado-de-nabica-e-caju.html</a></li>
+                <li><strong>R5</strong> – RTP – Praça da Alegria. "Papas de Nabiça – Culinária." Disponível em: <a href="https://media.rtp.pt/praca/rubricas/papas-nabica-culinaria/" target="_blank" rel="noopener">https://media.rtp.pt/praca/rubricas/papas-nabica-culinaria/</a></li>
+                <li><strong>R6</strong> – PetitChef. "Receita de Arroz de Nabiça." Disponível em: <a href="https://pt.petitchef.com/receitas/outro/arroz-de-nabica-fid-238076" target="_blank" rel="noopener">https://pt.petitchef.com/receitas/outro/arroz-de-nabica-fid-238076</a></li>
+                <li><strong>R7</strong> – Loja Rialto. "Pesto de Nabiça." Disponível em: <a href="https://lojarialto.pt/blogs/blogrialto/pesto-de-nabica" target="_blank" rel="noopener">https://lojarialto.pt/blogs/blogrialto/pesto-de-nabica</a></li>
+                <li><strong>R8–R10</strong> – Diversas receitas em português de nabiças salteadas, quiches/tartes com nabiça e omeletes/frittatas com nabiça, disponíveis em blogs e portais de culinária lusófonos (Portugal e Brasil).</li>
+            </ul>
+
+            <p class="nota">
+                Foram privilegiadas fontes científicas (artigos com DOI, revisões recentes),
+                documentos técnicos e portais de nutrição relativamente estáveis, além de
+                receitas em português amplamente acessíveis.
+            </p>
+        </section>
+
+        <div class="topo-link">
+            <a href="#topo">Voltar ao topo ▲</a>
+        </div>
+    </article>
+</main>
+</body>
+</html>
