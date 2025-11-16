@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Couve-flor | Horta de Amigos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body id="topo">
+<header>
+    <h1>Horta de Amigos</h1>
+    <p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar com família e amigos.</p>
+</header>
+
+<nav>
+    <a href="index.html">Início</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="moringa.html">Moringa</a>
+    <a href="acelga.html">Acelga</a>
+    <a href="agriao-terra.html">Agrião-de-terra</a>
+    <a href="aipo.html">Aipo (talos e folhas)</a>
+    <a href="alface.html">Alface</a>
+    <a href="alho.html">Alho</a>
+    <a href="alho-frances.html">Alho-francês</a>
+    <a href="aneto.html">Aneto / Endro</a>
+    <a href="abobora-butternut.html">Abóbora butternut</a>
+    <a href="batata-comum.html">Batata comum</a>
+    <a href="batata-doce.html">Batata-doce</a>
+    <a href="beringela.html">Beringela</a>
+    <a href="beterraba.html">Beterraba</a>
+    <a href="brocolo.html">Brócolo</a>
+    <a href="canonigos.html">Canónigos</a>
+    <a href="coentros.html">Coentros</a>
+    <a href="cebola.html">Cebola</a>
+    <a href="cebola-fresca.html">Cebola fresca</a>
+    <a href="cenoura.html">Cenoura</a>
+    <a href="couve-chinesa.html">Couve chinesa</a>
+    <a href="couve-flor.html" class="ativa">Couve-flor</a>
+    <a href="couve-rabano.html">Couve-rábano</a>
+    <a href="couve-repolho.html">Couve repolho</a>
+    <a href="couve-toscana.html">Couve toscana</a>
+    <a href="curgete.html">Curgete</a>
+    <a href="ervilhas-frescas.html">Ervilhas frescas</a>
+    <a href="espinafre.html">Espinafre</a>
+    <a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+    <a href="feijao-verde.html">Feijão verde</a>
+    <a href="milho-doce.html">Milho doce</a>
+    <a href="mizuna.html">Mizuna</a>
+    <a href="morangos.html">Morangueiro / Morangos</a>
+    <a href="nabo.html">Nabo</a>
+    <a href="nabica.html">Nabiça</a>
+    <a href="pak-choi.html">Pak choi</a>
+    <a href="pepino.html">Pepino</a>
+    <a href="pimento.html">Pimento</a>
+    <a href="rabanete.html">Rabanete</a>
+    <a href="rabano.html">Rábano / Daikon</a>
+    <a href="rucula.html">Rúcula</a>
+    <a href="salanova.html">Salanova</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="tomate.html">Tomate (diversas cultivares)</a>
+    <a href="tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+
+<main>
+    <article class="planta">
+        <div class="planta-cabecalho">
+            <div class="planta-titulo">
+                <h2>Couve-flor (<em>Brassica oleracea</em> var. <em>botrytis</em>)</h2>
+                <p><strong>Outros nomes em português:</strong> couve-flor branca, couve-flor roxa, couve-flor verde (romanesca), flor de couve.</p>
+                <p><strong>Nome mais comum em inglês:</strong> cauliflower.</p>
+
+                <div class="tags-nomes">
+                    <span>Família: Brassicaceae (crucíferas)</span>
+                    <span>Parte usada: inflorescência ("cabeça") e talos</span>
+                    <span>Tipo: hortícola de inflorescência</span>
+                    <span>Produção: <strong>biológica</strong></span>
+                </div>
+
+                <div class="info-rapida">
+                    <div>
+                        <strong>Origem</strong>
+                        Hortícola originária da região mediterrânica, muito cultivada hoje em climas temperados como Portugal, sobretudo em outono–inverno.
+                    </div>
+                    <div>
+                        <strong>Uso principal</strong>
+                        Cozida a vapor, em sopas, gratinados, assada no forno, "arroz" de couve-flor, curries, purés e bases de pizza.
+                    </div>
+                    <div>
+                        <strong>Perfil nutricional</strong>
+                        Baixa em energia, fonte de vitamina C, K, folato, fibra e compostos sulfurados (glucosinolatos) típicos das crucíferas.
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="imagem-container-externo">
+                    <div class="imagem-container">
+                        <img src="imagens/couve-flor.png" alt="Cabeça de couve-flor biológica fresca, branca, com folhas verdes">
+                    </div>
+                </div>
+                <p class="imagem-legenda">Imagem ilustrativa de couve-flor biológica fresca, pronta a cozinhar.</p>
+            </div>
+        </div>
+
+        <section id="apresentacao">
+            <h3>1. Apresentação / Descrição</h3>
+            <p>
+                A <strong>couve-flor</strong> é uma hortaliça da espécie <em>Brassica oleracea</em>, grupo
+                <em>Botrytis</em>, pertencente à família das Brassicaceae (crucíferas), a mesma dos
+                brócolos, couves, nabo e rabanete. A parte comestível principal é a
+                <strong>inflorescência imatura</strong>, conhecida como "cabeça", composta por muitos
+                floretes compactos sobre um caule espesso. Existem cultivares de cor branca (mais
+                comuns em Portugal), mas também roxa, verde e amarela.
+            </p>
+            <p>
+                Em português encontramos designações como <strong>couve-flor branca</strong>,
+                <strong>couve-flor roxa</strong> ou <strong>couve-flor romanesca</strong> (de aspeto
+                fractal), todas dentro do grupo de couves de inflorescência. Em inglês o nome
+                comum é <em>cauliflower</em>. Fontes de divulgação botânica e hortícola descrevem-na
+                como cultura bienal em termos biológicos, mas manejada como <strong>anuais de ciclo
+                fresco</strong> nas hortas, colhida quando a cabeça atinge bom tamanho e antes da
+                abertura das flores.
+            </p>
+            <p>
+                Do ponto de vista nutricional, a couve-flor destaca-se por ser
+                <strong>pouco calórica</strong>, com cerca de 25–30&nbsp;kcal por 100&nbsp;g crus, rica
+                em <strong>vitamina C</strong>, folato, vitamina K, fibra e vários minerais como
+                potássio e cálcio. Tabelas de composição e folhas informativas de entidades de
+                nutrição europeias apontam-na como <strong>vegetal de alta densidade nutricional</strong>
+                dentro da família das crucíferas.
+            </p>
+            <p>
+                Em contexto de <strong>produção biológica</strong>, a couve-flor beneficia da ausência
+                de herbicidas e da limitação rigorosa de pesticidas de síntese, reduzindo o risco
+                de resíduos na superfície da inflorescência e nas folhas, e valorizando práticas
+                de rotação de culturas, fertilização orgânica e conservação do solo.
+            </p>
+        </section>
+
+        <section id="sazonalidade">
+            <h3>2. Sazonalidade (Portugal continental)</h3>
+            <p>
+                A couve-flor é uma cultura de <strong>clima fresco</strong>, típica de outono, inverno
+                e início da primavera em Portugal continental.
+            </p>
+            <ul>
+                <li>
+                    <strong>Instalação:</strong> sementeira em tabuleiros ou alfobre de
+                    <strong>agosto a outubro</strong> (para colheitas outono–inverno) e em algumas
+                    zonas também no final do inverno para colheitas de primavera.
+                </li>
+                <li>
+                    <strong>Transplante:</strong> 3–5 semanas após a sementeira, quando as plantas
+                    têm 4–5 folhas verdadeiras, para canteiros definitivos bem adubados.
+                </li>
+                <li>
+                    <strong>Colheita:</strong> aproximadamente <strong>70–120 dias</strong> após o
+                    transplante, dependendo da variedade e da época. A cabeça deve estar compacta,
+                    branca ou da cor da variedade, sem sinais de abertura ou manchas.
+                </li>
+                <li>
+                    <strong>Clima:</strong> prefere temperaturas moderadas (cerca de 12–20&nbsp;°C).
+                    Calor excessivo e oscilações bruscas podem provocar cabeças pequenas, soltas ou
+                    com descoloração.
+                </li>
+                <li>
+                    <strong>Consociação e rotação:</strong> combina bem com alho, cebola, alface e
+                    leguminosas. Em agricultura biológica, é essencial evitar repetir brassicas
+                    (couve, brócolo, couve-rábano, nabo, etc.) no mesmo talhão em anos consecutivos,
+                    para reduzir doenças de solo.
+                </li>
+            </ul>
+            <p class="nota">
+                Em hortas biológicas de pequena escala, pode-se escalonar sementeiras de finais
+                de verão e outono para garantir cabeças de couve-flor de forma faseada ao longo
+                do inverno e da primavera.
+            </p>
+        </section>
+
+        <section id="como-consumir">
+            <h3>3. Como consumir</h3>
+            <p>
+                A couve-flor tem sabor suave, ligeiramente adocicado e vegetal, que combina bem
+                com especiarias, ervas aromáticas e molhos cremosos. Pode ser consumida:
+            </p>
+            <ul>
+                <li>
+                    <strong>Cozida a vapor ou escaldada:</strong> método que ajuda a preservar
+                    vitaminas e compostos sulfurados sensíveis ao calor prolongado. Pode ser
+                    servida simples com azeite e limão, ou como base de saladas mornas.
+                </li>
+                <li>
+                    <strong>Assada no forno:</strong> em floretes ou cabeça quase inteira,
+                    temperada com azeite, alho, especiarias (pimentão, caril, cominhos, curcuma)
+                    e ervas frescas.
+                </li>
+                <li>
+                    <strong>Gratinada:</strong> clássica "couve-flor gratinada" com molho
+                    bechamel e queijo, ou versões mais leves com molho de iogurte, frutos secos
+                    e pão ralado integral.
+                </li>
+                <li>
+                    <strong>"Arroz" de couve-flor:</strong> a inflorescência é ralada ou
+                    picada finamente para substituir parcialmente ou totalmente o arroz em
+                    salteados e acompanhamentos.
+                </li>
+                <li>
+                    <strong>Sopas e cremes:</strong> couve-flor combina bem com alho-francês,
+                    curgete, nabo, cenoura, especiarias suaves e ervas frescas.
+                </li>
+                <li>
+                    <strong>Curries e caris:</strong> os floretes absorvem muito bem molhos de
+                    caril com tomate, leite de coco, leguminosas (como grão-de-bico) e outras
+                    hortícolas.
+                </li>
+                <li>
+                    <strong>Base de pizza e "bifes" de couve-flor:</strong> couve-flor
+                    triturada e prensada pode servir de base para pizzas ou ser cortada em
+                    fatias grossas para grelhar/assar.
+                </li>
+            </ul>
+            <p class="nota">
+                Tal como outras crucíferas, a couve-flor crua preserva melhor alguns compostos
+                bioativos (como certos glucosinolatos), mas cozeduras suaves a vapor ou salteados
+                rápidos podem melhorar a digestibilidade e a aceitação de sabor, mantendo boa
+                parte dos benefícios.
+            </p>
+        </section>
+
+        <section id="receitas">
+            <h3>4. Receitas e preparados (Top 10)</h3>
+            <p>
+                Sugestões de receitas em português onde a <strong>couve-flor</strong> é protagonista.
+                Procurou-se garantir que pelo menos cinco referências são de sites em português
+                (Portugal ou Brasil).
+            </p>
+            <ol>
+                <li>
+                    <strong>Couve-flor gratinada</strong> – receita clássica portuguesa com
+                    couve-flor, ovo, leite, amido de milho e especiarias, do Pingo Doce.
+                    <strong>[R1]</strong>
+                </li>
+                <li>
+                    <strong>Gratinado de couve-flor</strong> – versão com molho cremoso e
+                    mostarda Dijon, sugerida pelo Continente Feed. <strong>[R2]</strong>
+                </li>
+                <li>
+                    <strong>Couve-flor gratinada com queijo parmesão</strong> – proposta da
+                    Nestlé Portugal, com cozedura ligeira prévia da couve-flor e gratinado
+                    com queijo. <strong>[R3]</strong>
+                </li>
+                <li>
+                    <strong>Sopa de couve-flor</strong> – creme de couve-flor com curgete e
+                    espinafres do Pingo Doce, suave e adequado a toda a família. <strong>[R4]</strong>
+                </li>
+                <li>
+                    <strong>Sopa de couve-flor</strong> (variante) – receita do E.Leclerc
+                    Portugal com couve-flor, curgete, cebola, nabo e alho-francês.
+                    <strong>[R5]</strong>
+                </li>
+                <li>
+                    <strong>Couve-flor assada com manteiga e ervas</strong> – acompanhamento
+                    simples e aromático, do Pingo Doce. <strong>[R6]</strong>
+                </li>
+                <li>
+                    <strong>Couve-flor assada no forno com especiarias</strong> – receita da
+                    Equal Food, onde a couve-flor é temperada com azeite, páprica, alho seco,
+                    cominhos e curcuma. <strong>[R7]</strong>
+                </li>
+                <li>
+                    <strong>Arroz de couve-flor com legumes</strong> – "arroz" de couve-flor
+                    com outros legumes, do Pingo Doce. <strong>[R8]</strong>
+                </li>
+                <li>
+                    <strong>Arroz de couve-flor</strong> – receita saudável do projeto Dieta
+                    3 Passos, usando couve-flor ralada salteada com alho, cebola e coentros.
+                    <strong>[R9]</strong>
+                </li>
+                <li>
+                    <strong>Caril de couve-flor</strong> – várias versões em português, como o
+                    caril de couve-flor vegan do blogue Anita Healthy ou o caril de couve-flor
+                    com grão e leite de coco do Lidl Portugal. <strong>[R10]</strong>
+                </li>
+            </ol>
+        </section>
+
+        <section id="beneficios">
+            <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+            <p>
+                Grande parte da evidência sobre benefícios de saúde da couve-flor vem de
+                estudos sobre <strong>vegetais crucíferos</strong> em geral (brócolos, couves,
+                couve-flor, couve-de-bruxelas, etc.) e revisões sobre os seus
+                <strong>glucosinolatos</strong> e derivados (como isotiocianatos e indóis).
+            </p>
+            <ul>
+                <li>
+                    <strong>Densidade nutricional e baixa carga calórica</strong> – uma chávena
+                    de couve-flor crua fornece cerca de 25–30&nbsp;kcal, 2&nbsp;g de fibra,
+                    2&nbsp;g de proteína e é boa fonte de vitamina C, B6 e folato, com baixo teor
+                    de gordura e hidratos de carbono. Sites de nutrição baseados em dados
+                    de tabelas oficiais destacam-na como alimento de <strong>baixo índice
+                    glicémico</strong> e elevado teor de micronutrientes em relação às calorias.
+                    <strong>[M1]</strong>
+                </li>
+                <li>
+                    <strong>Vitamina C, folato e outros micronutrientes</strong> – fichas
+                    técnicas de entidades como Aprifel e organizações de promoção do consumo
+                    de hortícolas referem a couve-flor como <strong>rica em vitamina C</strong>,
+                    fonte de <strong>folato</strong>, com fibra e algum potássio, cálcio e
+                    magnésio. <strong>[M2]</strong>
+                </li>
+                <li>
+                    <strong>Glucosinolatos, isotiocianatos e sulforafano</strong> – revisões
+                    científicas modernas sobre crucíferas descrevem os glucosinolatos e os seus
+                    produtos de hidrólise (isotiocianatos, como o sulforafano) como compostos
+                    com potencial <strong>anticancerígeno, antioxidante e anti-inflamatório</strong>,
+                    modulando enzimas de desintoxicação, inflamação e vias de defesa celular.
+                    Trabalhos recentes focados na couve-flor reforçam este enquadramento.
+                    <strong>[M3–M7]</strong>
+                </li>
+                <li>
+                    <strong>Impacto em risco de doença crónica</strong> – revisões e umbrella
+                    reviews recentes sugerem que um maior consumo de vegetais crucíferos se
+                    associa a <strong>menor risco de alguns cancros</strong> (como digestivos),
+                    melhoria de marcadores cardiometabólicos e possíveis efeitos benéficos em
+                    vias ligadas à síndrome metabólica, embora nem todos os estudos sejam
+                    consistentes e haja heterogeneidade metodológica. <strong>[M6–M8]</strong>
+                </li>
+                <li>
+                    <strong>Fígado e detoxificação</strong> – textos de divulgação com base em
+                    literatura científica referem que crucíferas como couve-flor e brócolos
+                    ajudam a <strong>ativar enzimas hepáticas de fase II</strong>, envolvidas
+                    na neutralização de alguns carcinogénios e toxinas, graças aos seus
+                    compostos sulfurados. <strong>[M9–M11]</strong>
+                </li>
+                <li>
+                    <strong>Saúde óssea e neurológica</strong> – a couve-flor fornece vitamina K
+                    e colina; análises recentes destacam o papel da colina na saúde do cérebro
+                    e do fígado e da vitamina K na saúde óssea e vascular. <strong>[M1,M12]</strong>
+                </li>
+            </ul>
+            <p class="nota">
+                Em quantidades habituais na alimentação, a couve-flor biológica, integrada num
+                padrão alimentar diverso e baseado em alimentos minimamente processados, é
+                considerada segura e benéfica para a maioria das pessoas. Como em outras
+                crucíferas, pessoas com problemas específicos de tiroide ou que tomem certos
+                medicamentos devem seguir a orientação do seu médico ou nutricionista antes de
+                consumirem grandes quantidades diárias ou suplementos concentrados.
+            </p>
+        </section>
+
+        <section id="nutricao">
+            <h3>6. Propriedades nutricionais</h3>
+            <p>
+                Valores aproximados por 100&nbsp;g de <strong>couve-flor crua</strong> e
+                <strong>cozinhada</strong> (cozida em água e escorrida, sem sal), baseados em
+                tabelas de composição internacionais e fichas de organismos de nutrição.
+            </p>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Nutriente</th>
+                    <th>Couve-flor crua<br>(100&nbsp;g)</th>
+                    <th>Couve-flor cozida<br>(100&nbsp;g, cozida e escorrida)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Energia</td>
+                    <td>≈ 25–30&nbsp;kcal</td>
+                    <td>≈ 20–25&nbsp;kcal</td>
+                </tr>
+                <tr>
+                    <td>Água</td>
+                    <td>≈ 92–93&nbsp;g</td>
+                    <td>≈ 93–95&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Proteína</td>
+                    <td>≈ 1,8–2,1&nbsp;g</td>
+                    <td>≈ 1,7–1,9&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Hidratos de carbono totais</td>
+                    <td>≈ 4,0–5,3&nbsp;g</td>
+                    <td>≈ 4,0–4,2&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Açúcares</td>
+                    <td>≈ 2,0–2,5&nbsp;g</td>
+                    <td>≈ 2,0–2,5&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Fibra alimentar</td>
+                    <td>≈ 2,0–2,7&nbsp;g</td>
+                    <td>≈ 2,0–2,5&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Lípidos totais</td>
+                    <td>≈ 0,1–0,3&nbsp;g</td>
+                    <td>≈ 0,3–0,5&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Vitamina C</td>
+                    <td>≈ 45–55&nbsp;mg</td>
+                    <td>≈ 40–45&nbsp;mg (queda com cozedura prolongada)</td>
+                </tr>
+                <tr>
+                    <td>Vitamina K</td>
+                    <td>≈ 13–15&nbsp;µg</td>
+                    <td>Sem grandes alterações</td>
+                </tr>
+                <tr>
+                    <td>Folato (vit. B9)</td>
+                    <td>≈ 55–60&nbsp;µg</td>
+                    <td>Alguma perda para a água de cozedura</td>
+                </tr>
+                <tr>
+                    <td>Potássio</td>
+                    <td>≈ 250–320&nbsp;mg</td>
+                    <td>≈ 200–260&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Cálcio</td>
+                    <td>≈ 20–25&nbsp;mg</td>
+                    <td>≈ 18–22&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Magnésio</td>
+                    <td>≈ 12–15&nbsp;mg</td>
+                    <td>≈ 10–14&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Índice glicémico (IG)</td>
+                    <td>Muito baixo</td>
+                    <td>Muito baixo (sem adição de farinhas ou açúcares)</td>
+                </tr>
+                </tbody>
+            </table>
+            <p class="nota">
+                Estudos sobre efeitos do método de confeção em crucíferas indicam que
+                <strong>cozer em água</strong> tende a reduzir mais os teores de vitamina C,
+                polifenóis e alguns glucosinolatos, enquanto <strong>cozer a vapor ou saltear
+                levemente</strong> preserva melhor estes compostos, sobretudo quando não se
+                descarta a água de confeção.
+            </p>
+        </section>
+
+        <section id="utilidades">
+            <h3>7. Utilidades e aplicações (não apenas alimentares)</h3>
+            <ul>
+                <li>
+                    <strong>Aproveitamento integral:</strong> para além da inflorescência,
+                    podem ser usados talos e folhas tenras em sopas, salteados e caldos,
+                    reduzindo bastante o desperdício alimentar.
+                </li>
+                <li>
+                    <strong>Biomassa para compostagem:</strong> folhas externas e restos de
+                    colheita são excelentes para compostagem caseira, devolvendo nutrientes e
+                    matéria orgânica ao solo.
+                </li>
+                <li>
+                    <strong>Cobertura do solo e adubação verde:</strong> restos de cultivo de
+                    brassicas podem ser usados como cobertura morta temporária ou incorporados
+                    no solo, contribuindo para estrutura e atividade biológica (com cuidado
+                    para não exagerar em áreas com doenças específicas de brassicas).
+                </li>
+                <li>
+                    <strong>Educação alimentar e culinária:</strong> couve-flor é um bom
+                    exemplo para ensinar a crianças e adultos a diversidade de usos de uma
+                    mesma hortícola (assada, gratinada, em sopas, "arroz", base de pizza,
+                    etc.) e a importância das crucíferas na alimentação saudável.
+                </li>
+                <li>
+                    <strong>Variedades coloridas:</strong> couve-flor roxa, verde e laranja
+                    (mais ricas em pigmentos antioxidantes específicos) permitem trabalhar com
+                    cores no prato, tornando refeições vegetais mais apelativas.
+                </li>
+            </ul>
+        </section>
+
+        <section id="permacultura">
+            <h3>8. Grau de funcionalidade em permacultura</h3>
+            <p><strong>Classificação proposta: 7/10</strong></p>
+            <ul class="lista-permacultura">
+                <li>
+                    <strong>Funções principais:</strong> fornecimento de hortícola de
+                    inflorescência de alto valor culinário e nutricional em época fresca,
+                    produção de biomassa, atração de insetos úteis quando algumas plantas são
+                    deixadas para florir, contribuição para diversidade de brassicas no sistema.
+                </li>
+                <li>
+                    <strong>Vantagens em sistemas biológicos:</strong> há grande diversidade
+                    de cultivares adaptados a diferentes épocas; integra-se bem em rotações com
+                    leguminosas, alliums e hortícolas de raiz; beneficia de solos bem estruturados
+                    e ricamente compostados típicos de sistemas de permacultura.
+                </li>
+                <li>
+                    <strong>Limitações:</strong> relativamente exigente em fertilidade e
+                    água; sensível a pragas (lagartas, afídeos, alticas) e doenças (como
+                    hernias das crucíferas) se não houver boa rotação; cabeças expostas ao
+                    sol intenso podem amarelecer ou manchar.
+                </li>
+            </ul>
+            <p class="nota">
+                Em projetos de permacultura centrados na autonomia alimentar, a couve-flor
+                ocupa sobretudo um papel de <strong>diversificação</strong> dentro das crucíferas,
+                complementando couves de folha e brócolos, mais resilientes em termos de
+                produção de biomassa.
+            </p>
+        </section>
+
+        <section id="referencias">
+            <h3>9. Referências</h3>
+
+            <div class="referencias-subsecao">9.1. Apresentação / contexto</div>
+            <ul class="referencias-lista">
+                <li><strong>D1</strong> – Wikipédia (PT). "Couve-flor." Informação geral sobre <em>Brassica oleracea</em> var. <em>botrytis</em>, origem, botânica e consumo. Disponível em: <a href="https://pt.wikipedia.org/wiki/Couve-flor" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Couve-flor</a></li>
+                <li><strong>D2</strong> – Revista Jardins. "Hortícola do mês: Couve-flor." Caracterização hortícola, origem mediterrânica e épocas de cultivo. Disponível em: <a href="https://revistajardins.pt/plantas/horticolas/brassica-oleracea-var-botrytis-couve-flor/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/horticolas/brassica-oleracea-var-botrytis-couve-flor/</a></li>
+                <li><strong>D3</strong> – Bonduelle Portugal. "A couve-flor, escolha-a correctamente e prepare-a bem." Informação geral, família botânica e parte comestível. Disponível em: <a href="https://www.bonduelle.pt/sobre-nos/do-campo-a-mesa/a-couve-flor-escolha-a-correctamente-e-prepare-a-bem/821/99" target="_blank" rel="noopener">https://www.bonduelle.pt/sobre-nos/do-campo-a-mesa/a-couve-flor-escolha-a-correctamente-e-prepare-a-bem/821/99</a></li>
+                <li><strong>D4</strong> – Wikifarmer (PT/BR). "Informação da planta de couve-flor, histórico e usos." Disponível em: <a href="https://wikifarmer.com/library/pt-br/article/informacao-da-planta-de-couve-flor-historico-e-usos" target="_blank" rel="noopener">https://wikifarmer.com/library/pt-br/article/informacao-da-planta-de-couve-flor-historico-e-usos</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.2. Propriedades nutricionais e composição</div>
+            <ul class="referencias-lista">
+                <li><strong>N1</strong> – MyFoodData. "Nutrition Facts for Raw Cauliflower." Dados detalhados por 100&nbsp;g de couve-flor crua. Disponível em: <a href="https://tools.myfooddata.com/nutrition-facts/169986/wt1" target="_blank" rel="noopener">https://tools.myfooddata.com/nutrition-facts/169986/wt1</a></li>
+                <li><strong>N2</strong> – FoodStruct. "Cauliflower, cooked, boiled, drained, without salt nutrition." Valores por 100&nbsp;g de couve-flor cozida. Disponível em: <a href="https://foodstruct.com/food/cauliflower-cooked-boiled-drained-withoutsalt" target="_blank" rel="noopener">https://foodstruct.com/food/cauliflower-cooked-boiled-drained-withoutsalt</a></li>
+                <li><strong>N3</strong> – Bord Bia (Irlanda). "Cauliflower – Nutritional Value." Valores por 100&nbsp;g de couve-flor crua. Disponível em: <a href="https://www.bordbia.ie/whats-in-season/vegetables/cauliflower/" target="_blank" rel="noopener">https://www.bordbia.ie/whats-in-season/vegetables/cauliflower/</a></li>
+                <li><strong>N4</strong> – Aprifel. "Cauliflower – Nutritional information." Folha informativa sobre couve-flor cozinhada a vapor (vitaminas e minerais). Disponível em: <a href="https://www.aprifel.com/en/nutritional-sheet/cauliflower/" target="_blank" rel="noopener">https://www.aprifel.com/en/nutritional-sheet/cauliflower/</a></li>
+                <li><strong>N5</strong> – California Department of Education. "Cauliflower – Nutrition Facts." Ficha por ½ chávena de couve-flor crua. Disponível em: <a href="https://www.cde.ca.gov/ls/nu/fd/cauliflower.asp" target="_blank" rel="noopener">https://www.cde.ca.gov/ls/nu/fd/cauliflower.asp</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.3. Benefícios de saúde, glucosinolatos e crucíferas</div>
+            <ul class="referencias-lista">
+                <li><strong>M1</strong> – Verywell Fit. "Cauliflower Nutrition Facts and Health Benefits." Atualizado em 2024. Disponível em: <a href="https://www.verywellfit.com/cauliflower-nutrition-facts-calories-and-health-benefits-4115070" target="_blank" rel="noopener">https://www.verywellfit.com/cauliflower-nutrition-facts-calories-and-health-benefits-4115070</a></li>
+                <li><strong>M2</strong> – Best in Season / Bord Bia. "Cauliflower – Nutritional Value and Health Benefits." Disponível em: <a href="https://www.bordbia.ie/whats-in-season/vegetables/cauliflower/" target="_blank" rel="noopener">https://www.bordbia.ie/whats-in-season/vegetables/cauliflower/</a></li>
+                <li><strong>M3</strong> – Esteve M. "Mechanisms Underlying Biological Effects of Cruciferous Glucosinolate Derivatives." <em>Frontiers in Nutrition</em>, 2020. Disponível em: <a href="https://www.frontiersin.org/articles/10.3389/fnut.2020.00111/full" target="_blank" rel="noopener">https://www.frontiersin.org/articles/10.3389/fnut.2020.00111/full</a></li>
+                <li><strong>M4</strong> – Connolly E.L. et al. "Glucosinolates From Cruciferous Vegetables and Their Potential Role in Chronic Disease." <em>Frontiers in Pharmacology</em>, 2021. Disponível em: <a href="https://www.frontiersin.org/articles/10.3389/fphar.2021.767975/full" target="_blank" rel="noopener">https://www.frontiersin.org/articles/10.3389/fphar.2021.767975/full</a></li>
+                <li><strong>M5</strong> – Miękus N. et al. "Health Benefits of Plant-Derived Sulfur Compounds, Glucosinolates, and Isothiocyanates." <em>Molecules</em>, 2020. Disponível em: <a href="https://www.mdpi.com/1420-3049/25/17/3804" target="_blank" rel="noopener">https://www.mdpi.com/1420-3049/25/17/3804</a></li>
+                <li><strong>M6</strong> – Guo C. et al. "Effect of cruciferous vegetable intake on cancer: An umbrella review." <em>Journal of Food Science</em>, 2024. Disponível em: <a href="https://ift.onlinelibrary.wiley.com/doi/10.1111/1750-3841.17300" target="_blank" rel="noopener">https://ift.onlinelibrary.wiley.com/doi/10.1111/1750-3841.17300</a></li>
+                <li><strong>M7</strong> – Baldelli S. et al. "Glucosinolates in Human Health: Metabolic Pathways and Bioactivity." <em>International Journal of Molecular Sciences</em>, 2025. Disponível em: <a href="https://www.mdpi.com/1422-0067/26/1/3804" target="_blank" rel="noopener">https://www.mdpi.com/1422-0067/26/1/3804</a> (ou página equivalente atualizada).</li>
+                <li><strong>M8</strong> – Nartea A. et al. "Glucosinolates and Polyphenols of Colored Cauliflower as Affected by Cooking Methods." <em>Foods</em>, 2022. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9563729/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9563729/</a></li>
+                <li><strong>M9</strong> – Bioself (PT). "Fígado saudável sem detox ou dietas restritivas." Referência a sulforafano e glucosinolatos em brócolos e couve-flor. Disponível em: <a href="https://bioself.pt/blogs/blog-page/figado-saudavel" target="_blank" rel="noopener">https://bioself.pt/blogs/blog-page/figado-saudavel</a></li>
+                <li><strong>M10</strong> – Comunidade Fit. "7 alimentos que limpam o fígado e desintoxicam o corpo." Secção sobre vegetais crucíferos. Disponível em: <a href="https://comunidadefit.com/7-alimentos-que-limpam-o-figado-e-desintoxicam-o-corpo/" target="_blank" rel="noopener">https://comunidadefit.com/7-alimentos-que-limpam-o-figado-e-desintoxicam-o-corpo/</a></li>
+                <li><strong>M11</strong> – Healthtech (BR). "Detoxificação hepática: como fazer e seus benefícios." Secção sobre crucíferas. Disponível em: <a href="https://www.healthtech.com.br/detoxificacao-hepatica" target="_blank" rel="noopener">https://www.healthtech.com.br/detoxificacao-hepatica</a></li>
+                <li><strong>M12</strong> – TGHC Clinic. "Know Your Food Plate: Cauliflower." 2025. Disponível em: <a href="https://www.tghclinic.com/post/know-your-food-plate-cauliflower" target="_blank" rel="noopener">https://www.tghclinic.com/post/know-your-food-plate-cauliflower</a></li>
+                <li><strong>M13</strong> – (Exemplo de revisão específica) "Therapeutic Potential of <em>Brassica oleracea</em> var. <em>botrytis</em>: A Comprehensive Review." (versão de pré-publicação / resumo em plataformas académicas, 2025).</li>
+            </ul>
+
+            <div class="referencias-subsecao">9.4. Produção biológica, pesticidas e saúde (geral)</div>
+            <ul class="referencias-lista">
+                <li><strong>B1</strong> – Rahman A. et al. "Evaluating Nutritional Value and Impact on Human Health of Organic Versus Conventional Foods." <em>Foods</em>, 2024. Disponível em: <a href="https://www.mdpi.com/2304-8158/13/2/208" target="_blank" rel="noopener">https://www.mdpi.com/2304-8158/13/2/208</a></li>
+                <li><strong>B2</strong> – Vigar V. et al. "A Systematic Review of Organic Versus Conventional Food Consumption: Is There a Measurable Benefit on Human Health?" <em>Nutrients</em>, 2019/2020. Disponível em: <a href="https://www.mdpi.com/2072-6643/12/1/7" target="_blank" rel="noopener">https://www.mdpi.com/2072-6643/12/1/7</a></li>
+                <li><strong>B3</strong> – Komati N. et al. "Potential Health Benefits of a Diet Rich in Organic Fruit and Vegetables." <em>Nutrition Reviews</em>, 2024/2025. Disponível em: <a href="https://academic.oup.com/nutritionreviews/article/83/3/e1101/7727467" target="_blank" rel="noopener">https://academic.oup.com/nutritionreviews/article/83/3/e1101/7727467</a></li>
+                <li><strong>B4</strong> – Popa M.E. et al. "Organic foods contribution to nutritional quality and value." <em>Trends in Food Science & Technology</em>, 2019. Disponível em: <a href="https://doi.org/10.1016/j.tifs.2018.01.003" target="_blank" rel="noopener">https://doi.org/10.1016/j.tifs.2018.01.003</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.5. Receitas (Top 10)</div>
+            <ul class="referencias-lista">
+                <li><strong>R1</strong> – Pingo Doce. "Couve-flor gratinada." Disponível em: <a href="https://www.pingodoce.pt/receitas/couve-flor-gratinada/" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/couve-flor-gratinada/</a></li>
+                <li><strong>R2</strong> – Continente Feed. "Gratinado de couve-flor." Disponível em: <a href="https://feed.continente.pt/receitas/gratinado-couve-flor" target="_blank" rel="noopener">https://feed.continente.pt/receitas/gratinado-couve-flor</a></li>
+                <li><strong>R3</strong> – Nestlé Portugal – Saboreia a Vida. "Couve-flor gratinada com queijo parmesão." Disponível em: <a href="https://saboreiaavida.nestle.pt/cozinhar/receita/couve-flor-gratinada-com-queijo-parmesao" target="_blank" rel="noopener">https://saboreiaavida.nestle.pt/cozinhar/receita/couve-flor-gratinada-com-queijo-parmesao</a></li>
+                <li><strong>R4</strong> – Pingo Doce. "Sopa de couve-flor." Disponível em: <a href="https://www.pingodoce.pt/receitas/sopa-de-couve-flor/" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/sopa-de-couve-flor/</a></li>
+                <li><strong>R5</strong> – E.Leclerc Portugal. "Sopa de couve flor." Disponível em: <a href="https://e-leclerc.pt/sopa-de-couve-flor/" target="_blank" rel="noopener">https://e-leclerc.pt/sopa-de-couve-flor/</a></li>
+                <li><strong>R6</strong> – Pingo Doce. "Couve-flor assada com manteiga e ervas." Disponível em: <a href="https://www.pingodoce.pt/receitas/couve-flor-assada-com-manteiga-e-ervas/" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/couve-flor-assada-com-manteiga-e-ervas/</a></li>
+                <li><strong>R7</strong> – Equal Food. "Couve-flor assada no forno." Disponível em: <a href="https://www.equalfood.co/blogs/news/couve-flor-assada-no-forno" target="_blank" rel="noopener">https://www.equalfood.co/blogs/news/couve-flor-assada-no-forno</a></li>
+                <li><strong>R8</strong> – Pingo Doce. "Arroz de couve-flor com legumes." Disponível em: <a href="https://www.pingodoce.pt/receitas/arroz-de-couve-flor-com-legumes/" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/arroz-de-couve-flor-com-legumes/</a></li>
+                <li><strong>R9</strong> – Dieta 3 Passos. "Arroz de couve-flor." Disponível em: <a href="https://www.dieta3passos.pt/receita/vegetariano/arroz-de-couve-flor" target="_blank" rel="noopener">https://www.dieta3passos.pt/receita/vegetariano/arroz-de-couve-flor</a></li>
+                <li><strong>R10</strong> – Anita Healthy. "Caril de couve-flor {vegan}." Disponível em: <a href="https://www.anitahealthy.com/caril-de-couve-flor/" target="_blank" rel="noopener">https://www.anitahealthy.com/caril-de-couve-flor/</a> (ver também variações como o caril de couve-flor com grão e leite de coco do Lidl Portugal).</li>
+            </ul>
+
+            <p class="nota">
+                Sempre que possível, foram privilegiadas fontes científicas (artigos com DOI,
+                revisões recentes), documentos técnicos e portais de nutrição relativamente
+                estáveis, complementadas por sites de receitas em português de fácil acesso.
+            </p>
+        </section>
+
+        <div class="topo-link">
+            <a href="#topo">Voltar ao topo ▲</a>
+        </div>
+    </article>
+</main>
+</body>
+</html>
