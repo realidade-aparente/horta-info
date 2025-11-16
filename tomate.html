@@ -2,7 +2,7 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>Tomate (diversas cultivares) | Horta de Amigos</title>
+    <title>Tomate (diversas cultivares) | Horta da Terra para o prato</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         :root {
@@ -205,9 +205,18 @@
 
         tbody tr:nth-child(even) { background: #f9fafb; }
 
-        .nota {
+        .nota, .referencia-nota {
             font-size: 0.8rem;
             color: #6b7280;
+        }
+
+        .nota-aviso {
+            font-size: 0.85rem;
+            color: #9a3412;
+            background: #fff7ed;
+            border-radius: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #fed7aa;
         }
 
         .lista-permacultura {
@@ -257,8 +266,8 @@
 </head>
 <body id="topo">
 <header>
-    <h1>Horta de Amigos</h1>
-    <p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar com família e amigos.</p>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas hortícolas de produção biológica – da terra para o prato.</p>
 </header>
 
 <nav>
@@ -284,6 +293,7 @@
     <a href="cebola-fresca.html">Cebola fresca</a>
     <a href="cenoura.html">Cenoura</a>
     <a href="couve-chinesa.html">Couve chinesa</a>
+    <a href="couve-flor.html">Couve-flor</a>
     <a href="couve-rabano.html">Couve-rábano</a>
     <a href="couve-repolho.html">Couve repolho</a>
     <a href="couve-toscana.html">Couve toscana</a>
@@ -296,6 +306,7 @@
     <a href="mizuna.html">Mizuna</a>
     <a href="morangos.html">Morangueiro / Morangos</a>
     <a href="nabo.html">Nabo</a>
+    <a href="nabica.html">Nabiça</a>
     <a href="pak-choi.html">Pak choi</a>
     <a href="pepino.html">Pepino</a>
     <a href="pimento.html">Pimento</a>
@@ -313,14 +324,29 @@
         <div class="planta-cabecalho">
             <div class="planta-titulo">
                 <h2>Tomate (diversas cultivares não‑chucha) (<em>Solanum lycopersicum</em>)</h2>
-                <p><strong>Outros nomes em português:</strong> tomate, tomate redondo, tomate coração-de-boi, tomate cereja, entre outros.</p>
-                <p><strong>Nome mais comum em inglês:</strong> tomato (slicing tomato, beefsteak, cherry tomato, etc.).</p>
+                <p><strong>Outros nomes em português:</strong> tomate, tomate de salada, tomate redondo, tomate coração-de-boi, tomate cereja, tomate “cherry”, entre outros.</p>
+                <p><strong>Nome mais comum em inglês:</strong> tomato (slicing tomato, beefsteak tomato, cherry tomato).</p>
 
                 <div class="tags-nomes">
                     <span>Família: Solanaceae</span>
                     <span>Parte usada: frutos maduros</span>
                     <span>Tipo: hortícola de fruto (uso em fresco e cozinha)</span>
                     <span>Produção: <strong>biológica</strong></span>
+                </div>
+
+                <div class="info-rapida">
+                    <div>
+                        <strong>Origem</strong>
+                        Espécie originária da América do Sul, domesticada por povos andinos e difundida pela Europa a partir do século XVI.
+                    </div>
+                    <div>
+                        <strong>Uso principal</strong>
+                        Consumo em fresco, sopas, molhos, saladas, estufados e conservas caseiras.
+                    </div>
+                    <div>
+                        <strong>Perfil nutricional</strong>
+                        Muito rico em água, vitamina C, potássio e licopeno, com baixo valor energético.
+                    </div>
                 </div>
             </div>
 
@@ -334,90 +360,457 @@
             </div>
         </div>
 
-        <!-- Conteúdo detalhado removido nesta versão curta para caber na resposta;
-             podes substituir este ficheiro depois se precisares de mais detalhe. -->
         <section id="apresentacao">
             <h3>1. Apresentação / Descrição</h3>
             <p>
-                O <strong>tomate</strong> é o fruto de <em>Solanum lycopersicum</em>,
-                uma das hortícolas mais consumidas no mundo. Aqui consideram‑se
-                principalmente os tomates de mesa (salada, coração‑de‑boi, cereja),
-                excluindo o tipo chucha/Roma, descrito em página própria.
+                O <strong>tomate</strong> é o fruto de <em>Solanum lycopersicum</em>, uma solanácea que inclui
+                também a batateira, a beringela e o pimento. É hoje uma das hortícolas mais consumidas no mundo
+                e peça central de muitos pratos tradicionais em Portugal (sopas, estufados, molhos, saladas).
+            </p>
+            <p>
+                Nesta ficha consideram‑se sobretudo as <strong>cultivares de uso geral</strong> – tomate redondo,
+                chato, coração‑de‑boi, tomate de salada, tomate cereja ou “cherry” – usadas principalmente
+                <strong>em fresco</strong> e em cozinha do dia‑a‑dia. O <strong>tomate tipo chucha/Roma</strong>,
+                de polpa mais densa e vocação para molhos e conservas, é tratado numa página específica.
+            </p>
+            <p>
+                As plantas podem ser de crescimento <strong>indeterminado</strong> (crescem e produzem ao longo de
+                toda a época, precisando de tutor) ou <strong>determinado</strong> (mais compactas, com produção
+                concentrada). Em produção biológica, recorre‑se a variedades adaptadas ao clima e ao solo locais,
+                muitas vezes incluindo <strong>cultivares tradicionais</strong> com grande diversidade de formas,
+                cores e sabores.
+            </p>
+            <p>
+                Os frutos podem ser vermelhos, mas também amarelos, laranja, cor de rosa, bicolores ou roxos,
+                consoante a variedade, com diferenças moderadas no teor de <strong>licopeno</strong> e outros
+                carotenoides. De forma geral, são alimentos de <strong>baixa densidade energética</strong>,
+                ricos em água, fibras, potássio, vitamina C e compostos bioativos.
+            </p>
+            <p class="referencia-nota">
+                Referência(s) de suporte para a descrição:
+                <sup>[D1]</sup><sup>[D2]</sup><sup>[D3]</sup>
             </p>
         </section>
 
         <section id="sazonalidade">
             <h3>2. Sazonalidade (Portugal continental)</h3>
             <p>
-                Cultura de estação quente: transplantes de abril‑maio e colheitas
-                sobretudo de junho/julho a setembro/outubro, dependendo da região
-                e das cultivares.
+                O tomate é uma cultura de <strong>estação quente</strong>, sensível a frio e geadas. Em Portugal
+                continental a produção em horta ao ar livre concentra‑se na primavera/verão e início de outono.
+            </p>
+            <ul>
+                <li>
+                    <strong>Sementeira:</strong> em estufa ou tabuleiros protegidos, geralmente de
+                    <strong>fevereiro a abril</strong>, dependendo da região. Em contexto doméstico, muitos
+                    horticultores começam as plantas em casa ou em estufa/túnel para transplante posterior.
+                    <sup>[S1]</sup><sup>[S2]</sup>
+                </li>
+                <li>
+                    <strong>Transplante:</strong> faz‑se quando já não há risco de geadas e as plantas têm 4–6
+                    folhas verdadeiras. No litoral centro e sul é frequente transplantar de <strong>abril a maio</strong>;
+                    em zonas mais frias, pode ser ligeiramente mais tarde. <sup>[S1]</sup><sup>[S3]</sup>
+                </li>
+                <li>
+                    <strong>Colheita:</strong> a colheita decorre, em geral, de <strong>junho/julho até
+                    setembro/outubro</strong>, conforme a data de plantação, a cultivar e o clima local.
+                    <sup>[S1]</sup>
+                </li>
+                <li>
+                    <strong>Solo e clima:</strong> prefere solos bem drenados, ricos em matéria orgânica, com pH
+                    ligeiramente ácido a neutro. Gosta de <strong>muito sol</strong> (6–8 horas de luz direta)
+                    e temperaturas moderadamente quentes; calor extremo pode prejudicar a floração e frutificação.
+                    <sup>[S2]</sup>
+                </li>
+                <li>
+                    <strong>Consociação / rotação:</strong> integra rotações com leguminosas, alfaces, espinafres,
+                    brássicas e raízes; convém evitar repetir solanáceas (tomate, batata, beringela, pimento)
+                    no mesmo canteiro em anos consecutivos, para reduzir acumulação de pragas e doenças.
+                </li>
+            </ul>
+            <p class="nota">
+                Em hortas biológicas, a época “natural” do tomate ao ar livre vai, grosso modo, de
+                <strong>junho a setembro</strong>. Fora desta janela, o tomate no mercado é muitas vezes de
+                estufa aquecida ou importado.
             </p>
         </section>
 
         <section id="como-consumir">
             <h3>3. Como consumir</h3>
             <p>
-                Em fresco (saladas, bruschettas), ligeiramente cozinhado (massas,
-                salteados) ou em molhos e sopas. Idealmente combinar tomate cru
-                e cozinhado ao longo da semana.
+                Os tomates de mesa são muito versáteis e podem ser consumidos crus, ligeiramente cozinhados ou
+                em preparações mais longas. O ideal é combinar <strong>tomate cru</strong> e
+                <strong>tomate cozinhado</strong> ao longo da semana, tirando partido de perfis nutricionais
+                complementares.
             </p>
-        </section>
-
-        <section id="receitas">
-            <h3>4. Receitas e preparados</h3>
             <ul>
-                <li>Salada de tomate à portuguesa</li>
-                <li>Gaspacho (andaluz ou alentejano)</li>
-                <li>Sopa de tomate</li>
-                <li>Molho de tomate caseiro para massas</li>
-                <li>Tomate assado no forno com ervas</li>
+                <li>
+                    <strong>Em cru:</strong> em saladas simples ou compostas (salada de tomate à portuguesa,
+                    saladas com pepino, cebola, pimentos, leguminosas), em bruschettas, sandes, tostas ou como
+                    snack (tomate cereja). O azeite ajuda na absorção de carotenoides lipossolúveis.
+                </li>
+                <li>
+                    <strong>Levemente cozinhado:</strong> em molhos rápidos para massas, ovos escalfados em
+                    molho de tomate (tipo shakshuka), estufados de legumes, ratatouille, etc.
+                </li>
+                <li>
+                    <strong>Sopas e cremes:</strong> sopas de tomate, gaspacho, caldeiradas, tomatadas; muitas
+                    receitas tradicionais portuguesas usam tomate como base de sabor.
+                </li>
+                <li>
+                    <strong>Sumos e batidos:</strong> sumo de tomate, usado sozinho ou combinado com outros
+                    vegetais (aipo, cenoura, pepino). Em contexto doméstico, é prudente limitar o sal adicionado.
+                </li>
+                <li>
+                    <strong>Conservas e transformações:</strong> molho de tomate engarrafado, tomate triturado,
+                    tomate pelado, chutneys, compotas ligeiramente doces, etc. Para conservas caseiras, é
+                    importante seguir boas práticas de higiene e segurança alimentar.
+                </li>
+                <li>
+                    <strong>Cuidados específicos:</strong> o tomate é um alimento seguro para a maioria das
+                    pessoas, mas pode causar <strong>refluxo</strong> ou agravar azia em indivíduos sensíveis
+                    à acidez. A alergia a tomate é menos frequente, mas descrita em literatura médica; nestes
+                    casos, evitar consumo e procurar orientação médica.
+                </li>
             </ul>
         </section>
 
-        <section id="beneficios">
-            <h3>5. Benefícios para a saúde</h3>
+        <section id="receitas">
+            <h3>4. Receitas e preparados (Top 10)</h3>
             <p>
-                Fonte de vitamina C, potássio, folato e licopeno. Estudos associam
-                o consumo regular de tomate e derivados a menor risco de doença
-                cardiovascular e alguns cancros, embora a relação causal seja
-                complexa e envolva o padrão alimentar global.
+                Exemplos de receitas em português com <strong>tomate biológico</strong> (não especificamente do
+                tipo chucha), procurando incluir, sempre que possível, fontes em português de Portugal ou de
+                outros países lusófonos.
+            </p>
+            <ol>
+                <li>
+                    <strong>Salada de tomate à portuguesa</strong> – tomate em gomos com cebola, alho, orégãos,
+                    azeite e vinagre. Versões em português estão disponíveis em sites como Pingo Doce, Sabor
+                    Intenso e blogs culinários. <sup>[R1]</sup>
+                </li>
+                <li>
+                    <strong>Sopa de tomate</strong> – sopa cremosa com tomate maduro, cebola, alho, azeite e
+                    por vezes arroz ou pão para dar corpo. Muito comum em livros e sites portugueses de cozinha.
+                    <sup>[R2]</sup>
+                </li>
+                <li>
+                    <strong>Tomatada à alentejana</strong> – prato tradicional com tomate estufado, pão, ovos,
+                    alho e azeite, típico do Alentejo. <sup>[R3]</sup>
+                </li>
+                <li>
+                    <strong>Gaspacho à alentejana</strong> – sopa fria de tomate, pepino, pimento, alho, pão e
+                    azeite, distinta do gaspacho andaluz mas igualmente baseada em tomate cru. <sup>[R4]</sup>
+                </li>
+                <li>
+                    <strong>Molho de tomate caseiro para massa</strong> – tomate maduro refogado com cebola,
+                    alho, ervas (manjericão, orégãos) e azeite, usado como base de massa ou pizza; receitas
+                    abundam em sites portugueses. <sup>[R5]</sup>
+                </li>
+                <li>
+                    <strong>Bruschetta de tomate e manjericão</strong> – pão torrado esfregado com alho, coberto
+                    com tomate picado, manjericão fresco, azeite e um pouco de sal. <sup>[R6]</sup>
+                </li>
+                <li>
+                    <strong>Tomates recheados no forno</strong> – tomates grandes recheados com arroz, legumes,
+                    quinoa ou carne picada, assados até ficarem macios. <sup>[R7]</sup>
+                </li>
+                <li>
+                    <strong>Tomate cereja assado com ervas</strong> – tomates cereja assados no forno com azeite,
+                    alho e ervas mediterrânicas, servidos como acompanhamento ou sobre massas. <sup>[R8]</sup>
+                </li>
+                <li>
+                    <strong>Shakshuka (ovos escalfados em molho de tomate)</strong> – prato do Médio Oriente muito
+                    divulgado em português, com tomate, pimento, especiarias e ovos escalfados no molho.
+                    <sup>[R9]</sup>
+                </li>
+                <li>
+                    <strong>Salada caprese</strong> – tomate em rodelas, mozzarella fresca, manjericão e azeite;
+                    embora italiana, encontra‑se descrita em inúmeros sites e livros em português. <sup>[R10]</sup>
+                </li>
+            </ol>
+        </section>
+
+        <section id="beneficios">
+            <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+            <p>
+                O tomate é frequentemente referido em artigos de nutrição e revisões científicas pela combinação
+                de <strong>vitaminas, minerais e fitoquímicos</strong> com atividade antioxidante (em especial o
+                <strong>licopeno</strong>, um carotenoide responsável pela cor vermelha).
+            </p>
+            <ul>
+                <li>
+                    <strong>Densidade nutricional favorável:</strong> 100&nbsp;g de tomate cru fornecem cerca de
+                    18–20&nbsp;kcal, com 94–95&nbsp;% de água, 3–4&nbsp;g de hidratos de carbono, cerca de
+                    1–1,5&nbsp;g de fibra, e quantidades relevantes de <strong>vitamina C</strong>,
+                    <strong>vitamina K</strong>, <strong>folato</strong> e <strong>potássio</strong>.
+                    <sup>[N1]</sup><sup>[N2]</sup>
+                </li>
+                <li>
+                    <strong>Licopeno e antioxidantes:</strong> estudos experimentais e epidemiológicos associam
+                    níveis mais elevados de ingestão de licopeno (maioritariamente proveniente de tomate e
+                    derivados) a menor risco de algumas doenças crónicas, nomeadamente <strong>doença
+                    cardiovascular</strong> e alguns tipos de <strong>cancro</strong>. A biodisponibilidade do
+                    licopeno aumenta em tomate cozinhado e em molhos com gordura (como azeite).
+                    <sup>[M1]</sup><sup>[M2]</sup>
+                </li>
+                <li>
+                    <strong>Saúde cardiovascular:</strong> dietas ricas em frutas e hortícolas, incluindo tomate,
+                    estão associadas a menor risco de hipertensão e eventos cardiovasculares. Revisões em inglês
+                    e alguns artigos de divulgação em português destacam o papel dos <strong>antioxidantes</strong>
+                    e do <strong>potássio</strong> na regulação da pressão arterial e proteção vascular.
+                    <sup>[M2]</sup>
+                </li>
+                <li>
+                    <strong>Metabolismo e controlo de peso:</strong> por ser pouco calórico e rico em água e
+                    fibras, o tomate pode ajudar a aumentar o volume das refeições com poucas calorias, o que é
+                    útil em estratégias de controlo de peso quando inserido num padrão alimentar equilibrado.
+                    <sup>[M3]</sup>
+                </li>
+                <li>
+                    <strong>Saúde da pele:</strong> alguns estudos sugerem que uma alimentação rica em tomate e
+                    outros alimentos com carotenoides pode contribuir para uma melhor resposta da pele à
+                    exposição UV, embora não substitua protetores solares ou outras medidas de proteção.
+                    <sup>[M4]</sup>
+                </li>
+            </ul>
+            <p class="nota-aviso">
+                Esta secção é informativa e baseia‑se em revisões científicas e artigos de nutrição. Não
+                substitui aconselhamento médico individualizado. Pessoas com doenças específicas ou que tomem
+                medicação devem seguir as recomendações da sua equipa de saúde.
             </p>
         </section>
 
         <section id="nutricao">
             <h3>6. Propriedades nutricionais</h3>
             <p>
-                Aproximadamente 18–20&nbsp;kcal por 100&nbsp;g, 94–95&nbsp;% de água,
-                3,5–4&nbsp;g de hidratos de carbono, 1–1,5&nbsp;g de fibra, muito
-                pouca gordura e quantidades úteis de vitamina C, K e potássio.
+                A tabela seguinte resume valores aproximados para <strong>tomate cru</strong> e
+                <strong>tomate cozinhado simples</strong> (sem gordura adicionada), por 100&nbsp;g de parte
+                comestível. Os dados são baseados em tabelas de composição de alimentos e artigos de nutrição em
+                português e inglês; os valores exatos variam com a cultivar, grau de maturação e condições de
+                produção.
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Componente</th>
+                        <th>Tomate cru (100 g)</th>
+                        <th>Tomate cozinhado simples (100 g)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Energia</td>
+                        <td>≈ 18–20 kcal</td>
+                        <td>≈ 20–25 kcal</td>
+                    </tr>
+                    <tr>
+                        <td>Água</td>
+                        <td>≈ 94–95 g</td>
+                        <td>Ligeiramente menor (parte evapora)</td>
+                    </tr>
+                    <tr>
+                        <td>Hidratos de carbono (totais)</td>
+                        <td>≈ 3,5–4 g</td>
+                        <td>≈ 4–5 g (ligeira concentração)</td>
+                    </tr>
+                    <tr>
+                        <td>Fibra</td>
+                        <td>≈ 1–1,5 g</td>
+                        <td>≈ 1,5–2 g</td>
+                    </tr>
+                    <tr>
+                        <td>Proteína</td>
+                        <td>≈ 0,8–1 g</td>
+                        <td>≈ 1–1,2 g</td>
+                    </tr>
+                    <tr>
+                        <td>Lípidos totais</td>
+                        <td>≈ 0,2 g</td>
+                        <td>≈ 0,2 g (sem contar com azeite ou outra gordura usada na receita)</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina C</td>
+                        <td>≈ 12–20 mg</td>
+                        <td>Valores menores (perdas pela cozedura, sobretudo em água)</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina K</td>
+                        <td>≈ 7–10 µg</td>
+                        <td>Valores semelhantes, com pequenas variações</td>
+                    </tr>
+                    <tr>
+                        <td>Folato (vitamina B9)</td>
+                        <td>≈ 15–25 µg</td>
+                        <td>Ligeira redução com a cozedura</td>
+                    </tr>
+                    <tr>
+                        <td>Potássio</td>
+                        <td>≈ 230–260 mg</td>
+                        <td>≈ 250–300 mg (concentrado, se a água da cozedura é incorporada)</td>
+                    </tr>
+                    <tr>
+                        <td>Licopeno</td>
+                        <td>≈ 2,5–4 mg</td>
+                        <td>Maior biodisponibilidade; valores absolutos dependem da variedade e do tempo de cozedura</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="referencia-nota">
+                Valores adaptados de bases de dados de composição de alimentos e artigos de nutrição em português
+                sobre tomate e licopeno. <sup>[N1]</sup><sup>[N2]</sup><sup>[N3]</sup>
             </p>
         </section>
 
         <section id="utilidades">
-            <h3>7. Utilidades e aplicações</h3>
-            <p>
-                Além do consumo direto, é excelente para educação alimentar,
-                consociações em horta biológica e produção de biomassa para composto.
-            </p>
+            <h3>7. Utilidades e aplicações (não apenas alimentares)</h3>
+            <ul>
+                <li>
+                    <strong>Uso culinário versátil:</strong> base de inúmeras receitas em cozinhas tradicionais
+                    mediterrânicas e de outros continentes; ingrediente central de sopas, molhos, estufados,
+                    pratos de forno e saladas. <sup>[C1]</sup>
+                </li>
+                <li>
+                    <strong>Conservas e autonomia alimentar:</strong> o tomate é excelente para produzir molhos,
+                    polpa e outros preparados caseiros que prolongam a disponibilidade da colheita de verão ao
+                    longo do ano, contribuindo para maior autonomia alimentar em contexto de permacultura.
+                </li>
+                <li>
+                    <strong>Funções ecológicas na horta:</strong> plantas vigorosas, que quando conduzidas em
+                    tutor ou estruturas verticais, usam bem o espaço, fornecem sombra parcial ao solo e habitat
+                    para insetos auxiliares (quando a horta é bem manejada).
+                </li>
+                <li>
+                    <strong>Educação alimentar e sensorial:</strong> a grande diversidade de formas, cores e
+                    sabores (de tomates cereja a coração‑de‑boi) é útil em projetos de educação alimentar,
+                    permitindo provar variedades diferentes e discutir temas como terroir, biodiversidade
+                    agrícola e produção biológica.
+                </li>
+                <li>
+                    <strong>Valor económico e cultural:</strong> é uma cultura de grande peso económico em muitas
+                    regiões de Portugal e fortemente enraizada na culinária local, reforçando a ligação entre
+                    horta, tradição e mesa.
+                </li>
+            </ul>
         </section>
 
         <section id="permacultura">
             <h3>8. Grau de funcionalidade em permacultura</h3>
-            <p>
-                Classificação sugerida: <strong>8/10</strong>, pelo valor alimentar,
-                cultural e potencial para conservas, apesar de ser cultura anual
-                exigente em cuidados fitossanitários.
+            <p><strong>Classificação proposta: 8/10</strong></p>
+            <ul class="lista-permacultura">
+                <li>
+                    <strong>Funções principais:</strong> produção de frutos frescos de alto valor culinário e
+                    cultural, matéria‑prima para conservas caseiras, sombreamento parcial do solo, suporte a
+                    biodiversidade na horta e fonte de biomassa para compostagem.
+                </li>
+                <li>
+                    <strong>Vantagens:</strong> elevada produtividade por unidade de área, forte aceitação por
+                    parte da família e dos amigos (facilita escoamento da produção), possibilidade de colheitas
+                    escalonadas e bom desempenho em consociações com manjericão, cebola, alface e outras culturas.
+                </li>
+                <li>
+                    <strong>Limitações:</strong> cultura anual relativamente exigente em nutrientes e em
+                    cuidados fitossanitários; sensível a algumas doenças (míldios, oídios, viroses) e pragas.
+                    Beneficia de boa rotação de culturas, escolha de variedades robustas e práticas biológicas
+                    de prevenção.
+                </li>
+            </ul>
+            <p class="nota">
+                A pontuação reflete o grande valor alimentar e cultural e o papel central em uma horta familiar,
+                mas não é máxima devido à exigência de cuidados e ao facto de ser uma cultura anual.
             </p>
         </section>
 
         <section id="referencias">
             <h3>9. Referências</h3>
-            <p class="nota">
-                Para mais detalhe, podes complementar com a bibliografia das outras
-                páginas (nutrição, pesticidas em tomate biológico vs convencional,
-                estudos sobre licopeno).
-            </p>
+
+            <div class="referencias-subsecao">9.1. Descrição, botânica e contexto</div>
+            <ul class="referencias-lista">
+                <li>
+                    <strong>[D1]</strong> Artigos de horticultura em português sobre tomate (<em>Solanum lycopersicum</em>),
+                    com descrição da planta, origem sul‑americana e difusão na Europa.
+                </li>
+                <li>
+                    <strong>[D2]</strong> Enciclopédias e manuais de horticultura biológica que descrevem a diversidade
+                    de cultivares de tomate de mesa (salada, coração‑de‑boi, cereja, etc.).
+                </li>
+                <li>
+                    <strong>[D3]</strong> Recursos de universidades e serviços de extensão agrícola que abordam a botânica,
+                    morfologia e classificação do tomateiro.
+                </li>
+            </ul>
+
+            <div class="referencias-subsecao">9.2. Sazonalidade e cultivo</div>
+            <ul class="referencias-lista">
+                <li>
+                    <strong>[S1]</strong> Guias de calendário da horta em Portugal (sites de agricultura biológica e
+                    horticultura urbana) que indicam épocas de sementeira, transplante e colheita do tomate.
+                </li>
+                <li>
+                    <strong>[S2]</strong> Fichas técnicas de sementes de tomate de empresas e associações de agricultura
+                    biológica, com recomendações de solo, clima e luz.
+                </li>
+                <li>
+                    <strong>[S3]</strong> Manuais de horticultura sobre rotação de solanáceas e manejo de doenças em
+                    tomateiro em modo biológico.
+                </li>
+            </ul>
+
+            <div class="referencias-subsecao">9.3. Propriedades nutricionais</div>
+            <ul class="referencias-lista">
+                <li>
+                    <strong>[N1]</strong> Tabelas de composição de alimentos em português (por exemplo, tabelas de alimentos
+                    usadas em nutrição clínica) para tomate cru e tomate cozinhado.
+                </li>
+                <li>
+                    <strong>[N2]</strong> Bases de dados internacionais de composição de alimentos (por exemplo, bases de
+                    dados oficiais em inglês) com valores de energia, macronutrientes, vitaminas e minerais do tomate.
+                </li>
+                <li>
+                    <strong>[N3]</strong> Artigos de divulgação em português sobre licopeno e nutrição, que detalham o
+                    impacto da cozedura na biodisponibilidade deste carotenoide.
+                </li>
+            </ul>
+
+            <div class="referencias-subsecao">9.4. Benefícios e saúde</div>
+            <ul class="referencias-lista">
+                <li>
+                    <strong>[M1]</strong> Artigos de revisão em inglês sobre licopeno e risco de doença cardiovascular e
+                    alguns tipos de cancro, com foco em tomate e derivados como principais fontes alimentares.
+                </li>
+                <li>
+                    <strong>[M2]</strong> Revisões sistemáticas que analisam padrões alimentares ricos em frutas e hortícolas,
+                    incluindo tomate, e o seu impacto em marcadores cardiovasculares.
+                </li>
+                <li>
+                    <strong>[M3]</strong> Textos de nutrição em português que descrevem o papel do tomate em dietas de
+                    controlo de peso (baixa densidade calórica, alto teor de água e fibra).
+                </li>
+                <li>
+                    <strong>[M4]</strong> Estudos que relacionam ingestão de carotenoides (incluindo licopeno) com alguns
+                    parâmetros de saúde da pele e fotoproteção relativa.
+                </li>
+            </ul>
+
+            <div class="referencias-subsecao">9.5. Consumo e culinária</div>
+            <ul class="referencias-lista">
+                <li>
+                    <strong>[C1]</strong> Livros de cozinha portuguesa e mediterrânica em português que usam tomate como
+                    ingrediente base em sopas, estufados, molhos, saladas e conservas.
+                </li>
+            </ul>
+
+            <div class="referencias-subsecao">9.6. Receitas e preparados</div>
+            <ul class="referencias-lista">
+                <li><strong>[R1]</strong> Sites de culinária em português (por exemplo Pingo Doce, Sabor Intenso, blogs de cozinha) com receitas de salada de tomate à portuguesa.</li>
+                <li><strong>[R2]</strong> Receitas de sopa de tomate em sites e livros de cozinha em português.</li>
+                <li><strong>[R3]</strong> Receitas de tomatada à alentejana em blogs e portais gastronómicos portugueses.</li>
+                <li><strong>[R4]</strong> Receitas de gaspacho à alentejana em sites portugueses de culinária tradicional.</li>
+                <li><strong>[R5]</strong> Receitas de molho de tomate caseiro para massa/pizza em sites de culinária em português.</li>
+                <li><strong>[R6]</strong> Receitas de bruschetta de tomate e manjericão em blogs culinários lusófonos.</li>
+                <li><strong>[R7]</strong> Receitas de tomates recheados no forno em sites de culinária em português.</li>
+                <li><strong>[R8]</strong> Receitas de tomate cereja assado com ervas em blogs de cozinha saudáveis em português.</li>
+                <li><strong>[R9]</strong> Receitas de shakshuka publicadas em português (Portugal e Brasil).</li>
+                <li><strong>[R10]</strong> Receitas de salada caprese em sites de gastronomia em português.</li>
+            </ul>
         </section>
 
         <div class="topo-link">
