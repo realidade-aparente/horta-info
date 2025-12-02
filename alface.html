@@ -1,55 +1,358 @@
 <!DOCTYPE html>
+
 <html lang="pt">
 <head>
-  <meta charset="UTF-8" />
-  <title>Alface – Horta da Terra para o prato</title>
-  <link rel="stylesheet" href="style.css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-</head>
-<body>
-  <header>
-    <h1>Horta da Terra para o prato</h1>
-    <nav>
-      <a href="index.html">Início</a>
-      <a href="tomate.html">Tomate</a>
-      <a href="cenoura.html">Cenoura</a>
-      <a href="manjericao.html">Manjericão</a>
-      <a href="abobora-butternut.html">Abóbora butternut</a>
-      <a href="moringa.html">Moringa</a>
-      <a href="acelga.html">Acelga</a>
-      <a href="agriao.html">Agrião</a>
-      <a href="agriao-terra.html">Agrião-da-terra</a>
-      <a href="aipo.html">Aipo</a>
-      <a href="alface.html">Alface</a>
-    </nav>
-  </header>
+<meta charset="utf-8"/>
+<title>Alface – Horta da Terra para o prato</title>
+<link href="style.css" rel="stylesheet"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
 
-  <main>
-    <h2>Alface (<em>Lactuca sativa</em>)</h2>
+        * { box-sizing: border-box; }
 
-    <!-- 0. Imagem -->
-    <section id="imagem">
-      <h3>Imagem</h3>
-      <div class="image-frame">
-        <!-- ajusta o nome real do ficheiro que fores usar -->
-        <img src="imagens/alface.png" alt="Cabeça de alface verde fresca na horta">
-      </div>
-    </section>
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
 
-    <!-- 1. Apresentação / Descrição -->
-    <section id="apresentacao">
-      <h3>Apresentação / Descrição</h3>
-      <p>
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    
+.masthead{position:sticky;top:0;z-index:1000}
+</style>
+<style>h2[id]{scroll-margin-top:140px}</style></head>
+<body id="topo">
+<div class="masthead"><header>
+<h1>Horta da Terra para o prato</h1>
+<p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar.</p></header>
+<nav>
+<a href="index.html">Início</a>
+<a href="abobora-butternut.html">Abóbora butternut</a>
+<a href="acelga.html">Acelga</a>
+<a href="agriao.html">Agrião-de-água</a>
+<a href="agriao-terra.html">Agrião-de-terra</a>
+<a href="aipo.html">Aipo (talos e folhas)</a>
+<a class="ativa" href="alface.html">Alface</a>
+<a href="alho.html">Alho</a>
+<a href="alho-frances.html">Alho-francês</a>
+<a href="aneto.html">Aneto / Endro</a>
+<a href="batata-comum.html">Batata comum</a>
+<a href="batata-doce.html">Batata-doce</a>
+<a href="beringela.html">Beringela</a>
+<a href="beterraba.html">Beterraba</a>
+<a href="brocolo.html">Brócolo</a>
+<a href="canonigos.html">Canónigos</a>
+<a href="cebola.html">Cebola</a>
+<a href="cebola-fresca.html">Cebola fresca</a>
+<a href="cenoura.html">Cenoura</a>
+<a href="coentros.html">Coentros</a>
+<a href="couve-chinesa.html">Couve chinesa</a>
+<a href="couve-repolho.html">Couve repolho</a>
+<a href="couve-toscana.html">Couve toscana</a>
+<a href="couve-flor.html">Couve-flor</a>
+<a href="couve-rabano.html">Couve-rábano</a>
+<a href="curgete.html">Curgete</a>
+<a href="ervilhas-frescas.html">Ervilhas frescas</a>
+<a href="espinafre.html">Espinafre</a>
+<a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+<a href="feijao-verde.html">Feijão verde</a>
+<a href="manjericao.html">Manjericão</a>
+<a href="milho-doce.html">Milho doce</a>
+<a href="mizuna.html">Mizuna</a>
+<a href="morangos.html">Morangueiro / Morangos</a>
+<a href="moringa.html">Moringa</a>
+<a href="nabica.html">Nabiça</a>
+<a href="nabo.html">Nabo</a>
+<a href="pak-choi.html">Pak choi</a>
+<a href="pepino.html">Pepino</a>
+<a href="pimento.html">Pimento</a>
+<a href="rabanete.html">Rabanete</a>
+<a href="rabano.html">Rábano / Daikon</a>
+<a href="rucula.html">Rúcula</a>
+<a href="salanova.html">Salanova</a>
+<a href="salsa.html">Salsa</a>
+<a href="tomate.html">Tomate (diversas cultivares)</a>
+<a href="tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav></div>
+<main>
+<article class="planta">
+<div class="planta-cabecalho">
+<div class="planta-titulo">
+<h2>Alface (<em>Lactuca sativa</em>)</h2>
+<div class="tags-nomes">
+<span>Família: Asteráceas</span>
+<span>Parte usada: folhas</span>
+<span>Tipo: hortícola de folha</span>
+<span>Produção: <strong>biológica</strong></span>
+</div>
+<div class="info-rapida">
+<div><strong>Origem</strong> Cultivar de <em>Lactuca sativa</em> adaptada a climas temperados.</div>
+<div><strong>Uso principal</strong> Saladas, sopas leves e sanduíches.</div>
+<div><strong>Perfil nutricional</strong> Muito baixa em energia; vitaminas A e K; alguma folato.</div>
+</div>
+</div>
+<div>
+<div class="imagem-container-externo">
+<div class="imagem-container">
+<img alt="Cabeças de alface frescas, verdes e crocantes" src="imagens/alface.png"/>
+</div>
+</div>
+<p class="imagem-legenda">Imagem ilustrativa de alfaces frescas.</p>
+</div>
+</div>
+<!-- 0. Imagem -->
+<!-- 1. Apresentação / Descrição -->
+<section id="apresentacao">
+<h3>1. Apresentação / Descrição</h3>
+<p>
         A alface (<em>Lactuca sativa</em>) é uma hortaliça folhosa da família das Asteráceas,
         cultivada principalmente pelas suas folhas tenras e crocantes, consumidas sobretudo
-        em saladas. Em português é conhecida genericamente por &quot;alface&quot;, com
-        designações populares para alguns tipos, como &quot;alface-crespa&quot;,
-        &quot;alface-lisa&quot;, &quot;alface-romana&quot;, &quot;alface-manteiga&quot;
-        ou &quot;alface-roxa&quot;. Em inglês, os nomes mais comuns incluem
-        &quot;lettuce&quot;, &quot;leaf lettuce&quot;, &quot;head lettuce&quot;,
-        &quot;romaine lettuce&quot; e &quot;butterhead lettuce&quot;.
+        em saladas. Em português é conhecida genericamente por "alface", com
+        designações populares para alguns tipos, como "alface-crespa",
+        "alface-lisa", "alface-romana", "alface-manteiga"
+        ou "alface-roxa". Em inglês, os nomes mais comuns incluem
+        "lettuce", "leaf lettuce", "head lettuce",
+        "romaine lettuce" e "butterhead lettuce".
       </p>
-      <p>
+<p>
         Trata-se de uma planta anual ou bienal, de origem mediterrânica, que forma uma
         roseta de folhas na fase vegetativa e, quando espiga, emite uma haste floral alta
         com pequenas flores amarelas. Existem muitos grupos de cultivares (crespa, lisa,
@@ -58,32 +361,31 @@
         Em Portugal e no Brasil, a alface é uma das hortícolas mais consumidas,
         presente diariamente em saladas e acompanhamentos.
       </p>
-      <p>
+<p>
         Nutricionalmente, a alface caracteriza-se por um teor de água muito elevado
-        (cerca de 95&nbsp;%), baixo valor energético e pequenas quantidades de fibra,
+        (cerca de 95 %), baixo valor energético e pequenas quantidades de fibra,
         vitaminas (como a vitamina K, folatos, vitamina C e pró-vitamina A) e minerais
         (como potássio, cálcio e magnésio). Algumas variedades, especialmente as de cor
         verde-escura ou roxa, concentram mais compostos antioxidantes (carotenoides e
         polifenóis) do que as variedades de cor mais clara.
       </p>
-      <p class="referencia-nota">
+<p class="referencia-nota">
         Referência(s) de suporte para a descrição:
         <sup>[D1]</sup><sup>[D2]</sup><sup>[D3]</sup><sup>[D4]</sup><sup>[D5]</sup>
-      </p>
-    </section>
-
-    <!-- 2. Sazonalidade (Portugal continental) -->
-    <section id="sazonalidade">
-      <h3>Sazonalidade (Portugal continental)</h3>
-      <p>
+</p>
+</section>
+<!-- 2. Sazonalidade (Portugal continental) -->
+<section id="sazonalidade">
+<h3>2. Sazonalidade (Portugal continental)</h3>
+<p>
         A alface é uma cultura típica de época fresca, que prefere temperaturas moderadas
         e humidade constante no solo. Em Portugal continental é possível produzir alface
         praticamente durante todo o ano, recorrendo a variedades adaptadas e, se
         necessário, a proteção (estufas, túneis, estufins).
       </p>
-      <ul>
-        <li>
-          <strong>Época de sementeira:</strong>
+<ul>
+<li>
+<strong>Época de sementeira:</strong>
           calendários hortícolas e fichas de cultura indicam que se pode semear
           alface ao longo de todo o ano, com destaque para os períodos de
           <strong>fevereiro a julho</strong> (alfaces de primavera–verão) e de
@@ -91,49 +393,48 @@
           hortas faz‑se a sementeira em tabuleiros ou alfobre, com transplante das
           plântulas quando têm 4–6 folhas verdadeiras.
         </li>
-        <li>
-          <strong>Condições de solo e exposição:</strong>
+<li>
+<strong>Condições de solo e exposição:</strong>
           prefere solos leves a médios, bem drenados, ricos em matéria orgânica,
           com pH ligeiramente ácido a neutro (aprox. 6–7). A exposição a sol pleno
           é adequada nas estações frescas; no verão beneficia de alguma
           meia-sombra para reduzir o stress térmico e evitar a subida precoce a
           semente (espigamento).
         </li>
-        <li>
-          <strong>Ciclo e colheita:</strong>
+<li>
+<strong>Ciclo e colheita:</strong>
           dependendo da variedade e da época, a colheita pode ocorrer entre
           40–60 dias após a plantação. Podem colher‑se plantas inteiras
           (alfaces repolhudas) ou apenas folhas exteriores (em sistemas de corte
           contínuo, especialmente com alfaces de folha solta).
         </li>
-        <li>
-          <strong>Época prática de consumo em fresco:</strong>
+<li>
+<strong>Época prática de consumo em fresco:</strong>
           devido à possibilidade de escalonar sementeiras e ao uso de variedades
           adaptadas, a alface pode ser consumida em fresco praticamente
           <strong>todo o ano</strong> em Portugal, com alguma quebra de produção
           nas fases de calor mais intenso ou de geada forte sem proteção.
         </li>
-      </ul>
-      <p class="referencia-nota">
+</ul>
+<p class="referencia-nota">
         Informação baseada em fichas técnicas de alface em modo de produção
         biológico, calendários hortícolas e artigos sobre cultivo em Portugal.
         <sup>[S1]</sup><sup>[S2]</sup><sup>[S3]</sup><sup>[S4]</sup><sup>[S5]</sup>
-      </p>
-    </section>
-
-    <!-- 3. Como consumir -->
-    <section id="como-consumir">
-      <h3>Como consumir</h3>
-      <ul>
-        <li>
-          <strong>Partes utilizadas:</strong>
+</p>
+</section>
+<!-- 3. Como consumir -->
+<section id="como-consumir">
+<h3>3. Como consumir</h3>
+<ul>
+<li>
+<strong>Partes utilizadas:</strong>
           principalmente as folhas frescas, inteiras ou cortadas. Os talos
           centrais de algumas variedades (por exemplo, romanas) também podem ser
           consumidos, mais crocantes. As folhas externas mais verdes são
           particularmente interessantes do ponto de vista nutricional.
         </li>
-        <li>
-          <strong>Uso em cru:</strong>
+<li>
+<strong>Uso em cru:</strong>
           a forma mais comum é em saladas variadas, combinando alface com outras
           hortaliças (tomate, cenoura, pepino, cebola, couve-roxa), leguminosas
           (grão-de-bico, feijão-frade), frutos secos, sementes e molhos simples
@@ -141,23 +442,23 @@
           usadas em sandes, wraps, hambúrgueres, tacos de alface e como cama
           para outros alimentos.
         </li>
-        <li>
-          <strong>Uso cozinhado:</strong>
+<li>
+<strong>Uso cozinhado:</strong>
           embora menos habitual, a alface pode ser utilizada em sopas (por
           exemplo, adicionada no final da cozedura e triturada), salteados rápidos
           ou pratos de forno. Em muitas receitas, a cozedura é breve para manter
           alguma textura e cor.
         </li>
-        <li>
-          <strong>Sumos e batidos:</strong>
+<li>
+<strong>Sumos e batidos:</strong>
           folhas de alface podem integrar sumos verdes e batidos com frutas
           (uva, maçã, kiwi, ananás) e outras folhas (espinafre, salsa, hortelã).
           Estas bebidas fornecem água, pequenas quantidades de fibra solúvel e
           micronutrientes, mas não substituem o consumo regular de vegetais
           inteiros.
         </li>
-        <li>
-          <strong>Cuidados e segurança:</strong>
+<li>
+<strong>Cuidados e segurança:</strong>
           por ser consumida crua com frequência, a higiene é fundamental:
           lavar cuidadosamente em água corrente e, se desejado, deixar de molho
           em solução apropriada (por exemplo, água com algumas gotas de
@@ -166,99 +467,97 @@
           casos, metais ou nitratos, dependendo das condições de cultivo, pelo
           que boas práticas agrícolas e de lavagem são importantes.
         </li>
-      </ul>
-      <p class="referencia-nota">
+</ul>
+<p class="referencia-nota">
         Informação baseada em descrições culinárias e de segurança alimentar
         para alface.
         <sup>[C1]</sup><sup>[C2]</sup><sup>[C3]</sup><sup>[M1]</sup>
-      </p>
-    </section>
-
-    <!-- 4. Receitas e preparados (Top 10) -->
-    <section id="receitas">
-      <h3>Receitas e preparados (Top 10)</h3>
-      <p>
+</p>
+</section>
+<!-- 4. Receitas e preparados (Top 10) -->
+<section id="receitas">
+<h3>4. Receitas e preparados (Top 10)</h3>
+<p>
         Abaixo estão 10 exemplos de receitas em língua portuguesa que utilizam
         alface, sobretudo as folhas, em sopas, saladas e bebidas. Podem ser
         adaptadas ao tipo de alface disponível na horta.
       </p>
-      <ol>
-        <li>
-          <strong>Sopa de alface</strong> – receita do Continente Feed com
+<ol>
+<li>
+<strong><a href="alface-receitas.html#sopa-de-alface">Sopa de alface</a></strong> – receita do Continente Feed com
           curgete, cebola, nabo, cenoura, alho-francês e alface adicionada no
           final da cozedura, depois triturada até ficar cremosa.
           <sup>[R1]</sup>
-        </li>
-        <li>
-          <strong>Sopa de alface com sobras de salada</strong> – sopa do Pingo
+</li>
+<li>
+<strong><a href="alface-receitas.html#sopa-de-alface-com-sobras-de-salada">Sopa de alface com sobras de salada</a></strong> – sopa do Pingo
           Doce que aproveita sobras de salada de alface, combinadas com batata,
           courgette, alho-francês e coentros.
           <sup>[R2]</sup>
-        </li>
-        <li>
-          <strong>Sopa de alface portuguesa</strong> – versão tradicional
+</li>
+<li>
+<strong><a href="alface-receitas.html#sopa-de-alface-portuguesa">Sopa de alface portuguesa</a></strong> – versão tradicional
           publicada pela Vaqueiro, com batata, cebola, alho e alface inteira,
           servida cremosa.
           <sup>[R3]</sup>
-        </li>
-        <li>
-          <strong>Sopa de alface simples e saudável</strong> – receita do
+</li>
+<li>
+<strong><a href="alface-receitas.html#sopa-de-alface-simples-e-saudavel">Sopa de alface simples e saudável</a></strong> – receita do
           PetitChef em que as folhas de alface são adicionadas no final a um
           fundo de batata, cenoura, nabo, cebola e alho, sendo depois
           trituradas.
           <sup>[R4]</sup>
-        </li>
-        <li>
-          <strong>Sopa de alface (sem batata)</strong> – versão mais leve de um
+</li>
+<li>
+<strong><a href="alface-receitas.html#sopa-de-alface-sem-batata">Sopa de alface (sem batata)</a></strong> – versão mais leve de um
           blogue português, com alface, espinafres, courgette, alho-francês e
           coentros, sem batata.
           <sup>[R5]</sup>
-        </li>
-        <li>
-          <strong>Salada de alface simples</strong> – receita de salada
+</li>
+<li>
+<strong><a href="alface-receitas.html#salada-de-alface-simples">Salada de alface simples</a></strong> – receita de salada
           clássica do PetitChef, com alface, cenoura, couve-roxa, fruta
           (como papaia ou pêra) e frutos secos, com vários exemplos de
           combinações.
           <sup>[R6]</sup>
-        </li>
-        <li>
-          <strong>Salada de alface com grão-de-bico</strong> – receita da
+</li>
+<li>
+<strong><a href="alface-receitas.html#salada-de-alface-com-grao-de-bico">Salada de alface com grão-de-bico</a></strong> – receita da
           plataforma Cookpad, combinando alface, grão-de-bico cozido e outros
           ingredientes ao gosto, temperada com azeite e vinagre.
           <sup>[R7]</sup>
-        </li>
-        <li>
-          <strong>Salada de alface, grão, azeitonas, tomate e curgete</strong>
+</li>
+<li>
+<strong><a href="alface-receitas.html#salada-de-alface-grao-azeitonas-tomate-e-curgete">Salada de alface, grão, azeitonas, tomate e curgete</a></strong>
           – receita da marca Oliveira da Serra, com alface como base, grão,
           tomate, curgete e orégãos.
           <sup>[R8]</sup>
-        </li>
-        <li>
-          <strong>Sumo de alface, uva e kiwi</strong> – receita da plataforma
+</li>
+<li>
+<strong><a href="alface-receitas.html#sumo-de-alface-uva-e-kiwi">Sumo de alface, uva e kiwi</a></strong> – receita da plataforma
           Cookidoo (Thermomix/Bimby), combinando folhas de alface com uvas,
           kiwi, água, raspa de lima e gelo.
           <sup>[R9]</sup>
-        </li>
-        <li>
-          <strong>Sumo de alface para beleza/cabelo</strong> – preparado
+</li>
+<li>
+<strong><a href="alface-receitas.html#sumo-de-alface-para-beleza-cabelo">Sumo de alface para beleza/cabelo</a></strong> – preparado
           descrito em artigo de divulgação em português, onde se usa sumo de
           folhas de alface verde-escura em contexto de cuidados com o cabelo
           e pele.
           <sup>[R10]</sup>
-        </li>
-      </ol>
-      <p>
+</li>
+</ol>
+<p>
         Nota: em praticamente todas estas receitas é possível misturar diferentes
         tipos de alface (crespa, lisa, roxa, romana), ajustando o tempo de
         cozedura nas sopas e a quantidade de folhas mais amargas ao gosto de
         cada pessoa.
       </p>
-    </section>
-
-    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
-    <section id="beneficios">
-      <h3>Benefícios para a saúde e propriedades medicinais</h3>
-      <p>
+</section>
+<!-- 5. Benefícios para a saúde e propriedades medicinais -->
+<section id="beneficios">
+<h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+<p>
         A alface é frequentemente referida em artigos de saúde e nutrição como
         parte importante do grupo das hortaliças folhosas. A maior parte das
         evidências disponíveis refere‑se a <strong>padrões alimentares ricos em
@@ -267,9 +566,9 @@
         particulares. Abaixo sintetizam‑se alguns pontos, com prudência na
         interpretação.
       </p>
-      <ul>
-        <li>
-          <strong>Saúde cardiovascular e metabólica:</strong>
+<ul>
+<li>
+<strong>Saúde cardiovascular e metabólica:</strong>
           revisões sobre o consumo de vegetais de folha verde sugerem associação
           entre maior ingestão deste grupo e <em>menor risco</em> de doenças
           cardiovasculares, certos componentes da síndrome metabólica e
@@ -281,9 +580,9 @@
           contribuir para a proteção cardiovascular quando integrado num padrão
           alimentar globalmente saudável.
           <sup>[M1]</sup><sup>[M2]</sup><sup>[M3]</sup>
-        </li>
-        <li>
-          <strong>Propriedades antioxidantes:</strong>
+</li>
+<li>
+<strong>Propriedades antioxidantes:</strong>
           estudos em laboratório com extratos de folhas de alface
           (<em>Lactuca sativa</em>) mostram capacidade de neutralização de
           radicais livres e proteção de biomoléculas (como DNA e proteínas)
@@ -294,9 +593,9 @@
           traduzem‑se de forma mais modesta, como parte de uma dieta rica em
           frutas e hortícolas.
           <sup>[M4]</sup><sup>[M5]</sup><sup>[N1]</sup>
-        </li>
-        <li>
-          <strong>Digestão e peso corporal:</strong>
+</li>
+<li>
+<strong>Digestão e peso corporal:</strong>
           por ser muito pouco calórica, rica em água e com alguma fibra, a
           alface pode ajudar na saciedade quando incluída em refeições com
           variados vegetais e fontes de proteína. Artigos de divulgação em
@@ -304,9 +603,9 @@
           gestão de peso e a regularidade intestinal, desde que associado a um
           padrão alimentar equilibrado.
           <sup>[C1]</sup><sup>[C2]</sup><sup>[M6]</sup>
-        </li>
-        <li>
-          <strong>Relaxamento e usos tradicionais:</strong>
+</li>
+<li>
+<strong>Relaxamento e usos tradicionais:</strong>
           algumas fontes populares mencionam a alface, sobretudo a selvagem,
           como tendo efeito ligeiro calmante ou sedativo, com uso tradicional
           em chás noturnos e preparações caseiras. A evidência científica
@@ -314,9 +613,9 @@
           destes usos baseia‑se em tradição e em extrapolações de estudos com
           extratos específicos.
           <sup>[M7]</sup><sup>[C3]</sup>
-        </li>
-      </ul>
-      <p class="nota-aviso">
+</li>
+</ul>
+<p class="nota-aviso">
         As informações acima referem‑se a potenciais benefícios associados ao
         consumo de alface como parte de uma alimentação rica em hortícolas e a
         alguns estudos com extratos. Não substituem aconselhamento médico nem
@@ -325,151 +624,146 @@
         sobre o consumo de grandes quantidades de folhas cruas devem procurar
         orientação profissional.
       </p>
-    </section>
-
-    <!-- 6. Propriedades nutricionais -->
-    <section id="nutricao">
-      <h3>Propriedades nutricionais</h3>
-      <p>
+</section>
+<!-- 6. Propriedades nutricionais -->
+<section id="nutricao">
+<h3>6. Propriedades nutricionais</h3>
+<p>
         Abaixo apresenta‑se um resumo aproximado da composição nutricional da
         alface crua (folhas) e da alface ligeiramente cozinhada (por exemplo,
-        em sopa em que as folhas são adicionadas no final), por 100&nbsp;g de
+        em sopa em que as folhas são adicionadas no final), por 100 g de
         parte comestível. Os valores são aproximados e podem variar conforme a
         variedade (crespa, lisa, romana, roxa, etc.), o sistema de cultivo e o
         modo de confeção. Como a alface é consumida sobretudo crua, a maior
         parte das tabelas de composição publica apenas valores para o alimento
-        cru; no caso do &quot;cozinhado&quot; abaixo, os valores energéticos e
+        cru; no caso do "cozinhado" abaixo, os valores energéticos e
         de macronutrientes são semelhantes e admite‑se uma <strong>perda
         parcial de vitaminas sensíveis ao calor</strong>, como a vitamina C e
         alguns folatos.
       </p>
-      <table>
-        <thead>
-          <tr>
-            <th>Componente</th>
-            <th>Em cru (100 g)</th>
-            <th>Cozinhado (100 g)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Energia</td>
-            <td>≈ 10–15 kcal</td>
-            <td>≈ 10–14 kcal</td>
-          </tr>
-          <tr>
-            <td>Hidratos de carbono (totais)</td>
-            <td>≈ 1,5–3 g</td>
-            <td>≈ 1,5–3 g</td>
-          </tr>
-          <tr>
-            <td>Fibra</td>
-            <td>≈ 1,3–2 g</td>
-            <td>≈ 1,0–1,8 g (pode diminuir ligeiramente)</td>
-          </tr>
-          <tr>
-            <td>Proteína</td>
-            <td>≈ 1–1,8 g</td>
-            <td>≈ 1–1,6 g</td>
-          </tr>
-          <tr>
-            <td>Lípidos totais</td>
-            <td>≈ 0,1–0,3 g</td>
-            <td>≈ 0,1–0,3 g</td>
-          </tr>
-          <tr>
-            <td>Vitamina C</td>
-            <td>≈ 3–10 mg</td>
-            <td>valor geralmente inferior, devido à cozedura</td>
-          </tr>
-          <tr>
-            <td>Vitamina K</td>
-            <td>≈ 30–90 µg (dependendo do tipo)</td>
-            <td>valor semelhante ou ligeiramente reduzido</td>
-          </tr>
-          <tr>
-            <td>Principais minerais</td>
-            <td>
+<table>
+<thead>
+<tr>
+<th>Nutriente</th>
+<th>Alface crua (100 g)</th>
+<th>Alface cozinhada (100 g, escorrida)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Energia</td>
+<td>≈ 10–15 kcal</td>
+<td>≈ 10–14 kcal</td>
+</tr>
+<tr>
+<td>Hidratos de carbono (totais)</td>
+<td>≈ 1,5–3 g</td>
+<td>≈ 1,5–3 g</td>
+</tr>
+<tr>
+<td>Fibra</td>
+<td>≈ 1,3–2 g</td>
+<td>≈ 1,0–1,8 g (pode diminuir ligeiramente)</td>
+</tr>
+<tr>
+<td>Proteína</td>
+<td>≈ 1–1,8 g</td>
+<td>≈ 1–1,6 g</td>
+</tr>
+<tr>
+<td>Lípidos totais</td>
+<td>≈ 0,1–0,3 g</td>
+<td>≈ 0,1–0,3 g</td>
+</tr>
+<tr>
+<td>Vitamina C</td>
+<td>≈ 3–10 mg</td>
+<td>valor geralmente inferior, devido à cozedura</td>
+</tr>
+<tr>
+<td>Vitamina K</td>
+<td>≈ 30–90 µg (dependendo do tipo)</td>
+<td>valor semelhante ou ligeiramente reduzido</td>
+</tr>
+<tr>
+<td>Principais minerais</td>
+<td>
               Potássio ≈ 250–300 mg; cálcio ≈ 35–40 mg; magnésio ≈ 10–13 mg;
               fósforo ≈ 25–30 mg.
             </td>
-            <td>
+<td>
               Concentrações ligeiramente diferentes consoante a perda de
               minerais na água de cozedura; quando a água é aproveitada (por
               exemplo, em sopas), o teor total no prato pode ser semelhante.
             </td>
-          </tr>
-        </tbody>
-      </table>
-      <p class="referencia-nota">
+</tr>
+</tbody>
+</table>
+<p class="referencia-nota">
         Valores baseados em tabelas de composição para alface crespa e outros
         tipos de alface crua em português e bases de dados internacionais.
         <sup>[N1]</sup><sup>[N2]</sup><sup>[N3]</sup><sup>[N4]</sup>
-      </p>
-    </section>
-
-    <!-- 7. Utilidades e aplicações (não apenas alimentares) -->
-    <section id="utilidades">
-      <h3>Utilidades e aplicações</h3>
-      <ul>
-        <li>
-          <strong>Uso alimentar principal:</strong>
+</p>
+</section>
+<!-- 7. Utilidades e aplicações (não apenas alimentares) -->
+<section id="utilidades">
+<h3>7. Utilidades e aplicações</h3>
+<ul>
+<li>
+<strong>Uso alimentar principal:</strong>
           base de saladas cruas, acompanhamentos e entradas leves. A diversidade
           de texturas e cores permite criar pratos visualmente apelativos e
           combinar com uma grande variedade de ingredientes (leguminosas,
           frutos secos, sementes, frutas frescas, cereais, ovos, peixe, etc.).
           <sup>[C1]</sup><sup>[C2]</sup>
-        </li>
-        <li>
-          <strong>Sopas, sumos e preparados caseiros:</strong>
+</li>
+<li>
+<strong>Sopas, sumos e preparados caseiros:</strong>
           a alface pode ser usada em sopas cremosas, em sumos verdes e em
           preparações tradicionais (por exemplo, sumo de alface verde‑escura
           em contextos de cuidado com cabelo e pele), sempre com prudência
           face às alegações exageradas.
           <sup>[R1]</sup><sup>[R5]</sup><sup>[R9]</sup><sup>[R10]</sup>
-        </li>
-        <li>
-          <strong>Uso em hortas e consociações:</strong>
+</li>
+<li>
+<strong>Uso em hortas e consociações:</strong>
           devido ao ciclo relativamente curto e ao porte baixo, a alface é
           muito utilizada como cultura de enchimento entre linhas de culturas
           mais lentas (como couves ou tomates), ajudando a cobrir o solo e a
           aproveitar melhor o espaço. Pode integrar rotações e consociações
           em horticultura biológica.
           <sup>[P1]</sup><sup>[P2]</sup>
-        </li>
-        <li>
-          <strong>Produção de sementes:</strong>
+</li>
+<li>
+<strong>Produção de sementes:</strong>
           se algumas plantas forem deixadas espigar, é possível colher as
           sementes para sementeira futura, contribuindo para autonomia de
           sementes na horta familiar.
           <sup>[S5]</sup><sup>[U1]</sup>
-        </li>
-      </ul>
-    </section>
-
-    <!-- 8. Grau de funcionalidade em permacultura -->
-    <section id="permacultura">
-      <h3>Grau de funcionalidade em permacultura</h3>
-      <p>
+</li>
+</ul>
+</section>
+<!-- 8. Grau de funcionalidade em permacultura -->
+<section id="permacultura">
+<h3>8. Grau de funcionalidade em permacultura</h3>
+<p>
         Esta classificação (1 a 10) é indicativa e procura refletir o papel da
         alface em hortas agroecológicas e sistemas inspirados em permacultura,
         especialmente em climas semelhantes ao de Portugal continental.
       </p>
-      <dl>
-        <dt>Grau de funcionalidade</dt>
-        <dd>7 / 10</dd>
-
-        <dt>Funções principais</dt>
-        <dd>
+<dl>
+<dt>Grau de funcionalidade</dt>
+<dd>7 / 10</dd>
+<dt>Funções principais</dt>
+<dd>
           Hortaliça folhosa de ciclo curto, base muito frequente de saladas e
           acompanhamentos, capaz de fornecer alguma cobertura do solo e
           produzir rapidamente em consociações com culturas de ciclo mais
           longo. Contribui para a diversidade de espécies na horta e para o
           consumo regular de vegetais de folha.
         </dd>
-
-        <dt>Notas</dt>
-        <dd>
+<dt>Notas</dt>
+<dd>
           A pontuação de 7/10 reflete a elevada importância culinária e
           nutricional da alface e o facto de ser relativamente fácil de
           cultivar e escalonar ao longo do ano. As principais limitações, do
@@ -478,354 +772,346 @@
           anual de ciclo curto com função sobretudo alimentar (menos multifuncional
           do que árvores, arbustos e algumas plantas perenes estruturais).
           <sup>[P1]</sup><sup>[P2]</sup>
-        </dd>
-      </dl>
-    </section>
-
-    <!-- 9. Referências -->
-    <section id="referencias">
-      <h3>Referências</h3>
-
-      <h4>Descrição e botânica</h4>
-      <ol>
-        <li id="ref-D1">
-          [D1] Agricultura Biológica PMVS. &quot;Alface – Tudo que sempre quis
-          saber sobre a Alface&quot; – artigo em português com descrição da
+</dd>
+</dl>
+</section>
+<!-- 9. Referências -->
+<section id="referencias">
+<h3>9. Referências</h3>
+<h4>Descrição e botânica</h4>
+<ol>
+<li id="ref-D1">
+          [D1] Agricultura Biológica PMVS. "Alface – Tudo que sempre quis
+          saber sobre a Alface" – artigo em português com descrição da
           espécie <em>Lactuca sativa</em>, origem, tipos de alface, valor
           nutricional e usos culinários.
           Disponível em:
-          <a href="https://agriculturabiologica.pmvs.pt/blog/2014/08/31/alface-tudo-sobre-alface/" target="_blank" rel="noopener">
+          <a href="https://agriculturabiologica.pmvs.pt/blog/2014/08/31/alface-tudo-sobre-alface/" rel="noopener" target="_blank">
             agriculturabiologica.pmvs.pt/.../alface-tudo-sobre-alface
           </a>.
         </li>
-        <li id="ref-D2">
-          [D2] Revista Jardins. &quot;Hortícola do mês: Alface&quot; – ficha
+<li id="ref-D2">
+          [D2] Revista Jardins. "Hortícola do mês: Alface" – ficha
           sobre alface em português, com descrição da planta, tipos, exigências
           de cultivo e dicas de plantação.
           Disponível em:
-          <a href="https://revistajardins.pt/plantas/horticolas/horticola-do-mes-alface/" target="_blank" rel="noopener">
+          <a href="https://revistajardins.pt/plantas/horticolas/horticola-do-mes-alface/" rel="noopener" target="_blank">
             revistajardins.pt/plantas/horticolas/horticola-do-mes-alface
           </a>.
         </li>
-        <li id="ref-D3">
-          [D3] Brasil Escola. &quot;Alface: tipos, benefícios e características&quot;
+<li id="ref-D3">
+          [D3] Brasil Escola. "Alface: tipos, benefícios e características"
           – resumo em português sobre tipos de alface (crespa, lisa, romana,
           roxa), características botânicas e nutrientes principais.
           Disponível em:
-          <a href="https://brasilescola.uol.com.br/saude/alface.htm" target="_blank" rel="noopener">
+          <a href="https://brasilescola.uol.com.br/saude/alface.htm" rel="noopener" target="_blank">
             brasilescola.uol.com.br/saude/alface.htm
           </a>.
         </li>
-        <li id="ref-D4">
-          [D4] NC State University Extension. &quot;Lactuca sativa&quot; – ficha
+<li id="ref-D4">
+          [D4] NC State University Extension. "Lactuca sativa" – ficha
           botânica em inglês com descrição da espécie, grupos de cultivares,
           necessidades de solo e clima.
           Disponível em:
-          <a href="https://plants.ces.ncsu.edu/plants/lactuca-sativa/" target="_blank" rel="noopener">
+          <a href="https://plants.ces.ncsu.edu/plants/lactuca-sativa/" rel="noopener" target="_blank">
             plants.ces.ncsu.edu/plants/lactuca-sativa
           </a>.
         </li>
-        <li id="ref-D5">
-          [D5] LettuceInfo / LGMA. &quot;Nutrition Facts: Lettuce and Leafy
-          Greens&quot; – ficha em inglês sobre valor nutricional e água em
+<li id="ref-D5">
+          [D5] LettuceInfo / LGMA. "Nutrition Facts: Lettuce and Leafy
+          Greens" – ficha em inglês sobre valor nutricional e água em
           diferentes tipos de alface e outras folhas verdes.
           Disponível em:
-          <a href="https://lettuceinfo.org/wp-content/uploads/2020/10/LGMA-NutritonFacts-DownloadSheet_10.15.20sm.pdf" target="_blank" rel="noopener">
+          <a href="https://lettuceinfo.org/wp-content/uploads/2020/10/LGMA-NutritonFacts-DownloadSheet_10.15.20sm.pdf" rel="noopener" target="_blank">
             lettuceinfo.org/.../LGMA-NutritonFacts-DownloadSheet
           </a>.
         </li>
-      </ol>
-
-      <h4>Sazonalidade e cultivo</h4>
-      <ol>
-        <li id="ref-S1">
-          [S1] Revista Jardins. &quot;Hortícola do mês: Alface&quot; – inclui
+</ol>
+<h4>Sazonalidade e cultivo</h4>
+<ol>
+<li id="ref-S1">
+          [S1] Revista Jardins. "Hortícola do mês: Alface" – inclui
           indicações sobre épocas de sementeira (primavera–verão e
           outono–inverno) e conselhos para colheitas escalonadas.
           Disponível em:
-          <a href="https://revistajardins.pt/plantas/horticolas/horticola-do-mes-alface/" target="_blank" rel="noopener">
+          <a href="https://revistajardins.pt/plantas/horticolas/horticola-do-mes-alface/" rel="noopener" target="_blank">
             revistajardins.pt/plantas/horticolas/horticola-do-mes-alface
           </a>.
         </li>
-        <li id="ref-S2">
-          [S2] Agricultura Biológica PMVS. &quot;Alface – Tudo que sempre quis
-          saber sobre a Alface&quot; – descreve a cultura em modo biológico,
+<li id="ref-S2">
+          [S2] Agricultura Biológica PMVS. "Alface – Tudo que sempre quis
+          saber sobre a Alface" – descreve a cultura em modo biológico,
           incluindo épocas de produção e sistemas de cultivo.
           Disponível em:
-          <a href="https://agriculturabiologica.pmvs.pt/blog/2014/08/31/alface-tudo-sobre-alface/" target="_blank" rel="noopener">
+          <a href="https://agriculturabiologica.pmvs.pt/blog/2014/08/31/alface-tudo-sobre-alface/" rel="noopener" target="_blank">
             agriculturabiologica.pmvs.pt/.../alface-tudo-sobre-alface
           </a>.
         </li>
-        <li id="ref-S3">
-          [S3] Nutrofertil. &quot;Guia completo para o cultivo de alface: o que
-          deve saber&quot; – artigo recente em português com dicas de cultivo,
+<li id="ref-S3">
+          [S3] Nutrofertil. "Guia completo para o cultivo de alface: o que
+          deve saber" – artigo recente em português com dicas de cultivo,
           clima, solo e manejo em Portugal.
           Disponível em:
-          <a href="https://nutrofertil.com/2025/03/10/guia-completo-para-o-cultivo-de-alface/" target="_blank" rel="noopener">
+          <a href="https://nutrofertil.com/2025/03/10/guia-completo-para-o-cultivo-de-alface/" rel="noopener" target="_blank">
             nutrofertil.com/.../guia-completo-para-o-cultivo-de-alface
           </a>.
         </li>
-        <li id="ref-S4">
-          [S4] Governo dos Açores. &quot;Alface em modo de produção biológico&quot;
+<li id="ref-S4">
+          [S4] Governo dos Açores. "Alface em modo de produção biológico"
           – ficha técnica em PDF com recomendações de sementeira, ciclo e
           colheita em contexto biológico.
           Disponível em:
-          <a href="https://agriculturabiologica.azores.gov.pt/Storage/Stored_Files/sto_04-08-2022_15-10-282540220.pdf" target="_blank" rel="noopener">
+          <a href="https://agriculturabiologica.azores.gov.pt/Storage/Stored_Files/sto_04-08-2022_15-10-282540220.pdf" rel="noopener" target="_blank">
             agriculturabiologica.azores.gov.pt/.../alface-mpb.pdf
           </a>.
         </li>
-        <li id="ref-S5">
-          [S5] Câmara Municipal de Lisboa. &quot;Planeamento e organização da
-          horta&quot; – fichas técnicas que incluem notas sobre produção de
+<li id="ref-S5">
+          [S5] Câmara Municipal de Lisboa. "Planeamento e organização da
+          horta" – fichas técnicas que incluem notas sobre produção de
           sementes de alface e práticas gerais de cultivo.
           Disponível em:
-          <a href="https://informacoeseservicos.lisboa.pt/fileadmin/informacoes_servicos/pedidos/ambiente/14_Fichas_Tecnicas_apoio_cultivo.pdf" target="_blank" rel="noopener">
+          <a href="https://informacoeseservicos.lisboa.pt/fileadmin/informacoes_servicos/pedidos/ambiente/14_Fichas_Tecnicas_apoio_cultivo.pdf" rel="noopener" target="_blank">
             informacoeseservicos.lisboa.pt/.../Fichas_Tecnicas_apoio_cultivo.pdf
           </a>.
         </li>
-      </ol>
-
-      <h4>Dados nutricionais</h4>
-      <ol>
-        <li id="ref-N1">
-          [N1] Agricultura Biológica PMVS. &quot;Alface – Tudo que sempre quis
-          saber sobre a Alface&quot; – inclui tabela de composição nutricional
-          para alface crespa crua (100&nbsp;g: água, energia, proteína,
+</ol>
+<h4>Dados nutricionais</h4>
+<ol>
+<li id="ref-N1">
+          [N1] Agricultura Biológica PMVS. "Alface – Tudo que sempre quis
+          saber sobre a Alface" – inclui tabela de composição nutricional
+          para alface crespa crua (100 g: água, energia, proteína,
           hidratos, fibra, lípidos, minerais).
         </li>
-        <li id="ref-N2">
-          [N2] Nestlé Portugal. &quot;Alface: informação nutricional&quot; –
+<li id="ref-N2">
+          [N2] Nestlé Portugal. "Alface: informação nutricional" –
           ficha do portal Saboreia a Vida com valor energético, água, proteínas,
           lípidos, hidratos de carbono, fibra e alguns micronutrientes por
-          100&nbsp;g de alface crua.
+          100 g de alface crua.
           Disponível em:
-          <a href="https://saboreiaavida.nestle.pt/bem-estar/alface" target="_blank" rel="noopener">
+          <a href="https://saboreiaavida.nestle.pt/bem-estar/alface" rel="noopener" target="_blank">
             saboreiaavida.nestle.pt/bem-estar/alface
           </a>.
         </li>
-        <li id="ref-N3">
-          [N3] TabNut / UNIFESP. &quot;Alface, crespa, crua&quot; – tabela de
+<li id="ref-N3">
+          [N3] TabNut / UNIFESP. "Alface, crespa, crua" – tabela de
           composição química (água, energia, macronutrientes e fibra) por
-          100&nbsp;g.
+          100 g.
           Disponível em:
-          <a href="https://tabnut.dis.epm.br/alimento/11252/alface-crespa-crua" target="_blank" rel="noopener">
+          <a href="https://tabnut.dis.epm.br/alimento/11252/alface-crespa-crua" rel="noopener" target="_blank">
             tabnut.dis.epm.br/alimento/11252/alface-crespa-crua
           </a>.
         </li>
-        <li id="ref-N4">
-          [N4] FatSecret Portugal. &quot;Calorias e informação nutricional de
-          alface&quot; – valores nutricionais médios por 100&nbsp;g de
+<li id="ref-N4">
+          [N4] FatSecret Portugal. "Calorias e informação nutricional de
+          alface" – valores nutricionais médios por 100 g de
           diferentes tipos de alface.
           Disponível em:
-          <a href="https://www.fatsecret.pt/calorias-nutri%C3%A7%C3%A3o/search?q=Alface" target="_blank" rel="noopener">
+          <a href="https://www.fatsecret.pt/calorias-nutri%C3%A7%C3%A3o/search?q=Alface" rel="noopener" target="_blank">
             fatsecret.pt/calorias-nutri%C3%A7%C3%A3o/search?q=Alface
           </a>.
         </li>
-      </ol>
-
-      <h4>Estudos e revisões relacionados</h4>
-      <ol>
-        <li id="ref-M1">
-          [M1] Blekkenhorst, L. C. et al. (2018). &quot;Cardiovascular Health
-          Benefits of Specific Vegetable Types&quot;. <em>Nutrients</em> 10(5):
+</ol>
+<h4>Estudos e revisões relacionados</h4>
+<ol>
+<li id="ref-M1">
+          [M1] Blekkenhorst, L. C. et al. (2018). "Cardiovascular Health
+          Benefits of Specific Vegetable Types". <em>Nutrients</em> 10(5):
           595 – revisão que destaca vegetais de folha verde (incluindo
           alface) e crucíferas como particularmente relevantes para a saúde
           cardiovascular.
         </li>
-        <li id="ref-M2">
-          [M2] Pollock, R. L. (2016). &quot;The effect of green leafy and
+<li id="ref-M2">
+          [M2] Pollock, R. L. (2016). "The effect of green leafy and
           cruciferous vegetable intake on the incidence of cardiovascular
-          disease&quot;. <em>Proceedings of the Nutrition Society</em> –
+          disease". <em>Proceedings of the Nutrition Society</em> –
           revisão do papel das hortaliças folhosas na redução de risco
           cardiovascular.
         </li>
-        <li id="ref-M3">
-          [M3] Muriuki, E. N. et al. (2025). &quot;Effects of green leafy
-          vegetables on metabolic syndrome components&quot;. <em>European
+<li id="ref-M3">
+          [M3] Muriuki, E. N. et al. (2025). "Effects of green leafy
+          vegetables on metabolic syndrome components". <em>European
           Journal of Nutrition</em> – revisão sistemática sobre hortaliças de
           folha verde e fatores de risco metabólico.
         </li>
-        <li id="ref-M4">
+<li id="ref-M4">
           [M4] Antioxidant properties of <em>Lactuca sativa</em> leaf extract
           involved in the protection of biomolecules. <em>Biomedicine &amp;
           Preventive Nutrition</em> – estudo que demonstra atividade
           antioxidante de extratos de folhas de alface.
         </li>
-        <li id="ref-M5">
+<li id="ref-M5">
           [M5] Teor de compostos bioativos e atividade antioxidante da alface
           (<em>Lactuca sativa</em>) de diferentes tipos de cultivo – estudo em
           português que avalia compostos bioativos e atividade antioxidante em
           alface de sistemas convencional, orgânico e hidropónico.
         </li>
-        <li id="ref-M6">
-          [M6] Tua Saúde. &quot;Alface: benefícios, tipos e como consumir&quot; –
+<li id="ref-M6">
+          [M6] Tua Saúde. "Alface: benefícios, tipos e como consumir" –
           artigo em português que resume potenciais benefícios da alface,
           salientando o baixo valor calórico, o teor de fibras e vitaminas e o
           papel na hidratação.
           Disponível em:
-          <a href="https://www.tuasaude.com/beneficios-da-alface/" target="_blank" rel="noopener">
+          <a href="https://www.tuasaude.com/beneficios-da-alface/" rel="noopener" target="_blank">
             tuasaude.com/beneficios-da-alface
           </a>.
         </li>
-        <li id="ref-M7">
+<li id="ref-M7">
           [M7] Portal EdiCase / outros artigos populares em português sobre
-          &quot;benefícios da alface&quot; e usos tradicionais de alface (incl.
+          "benefícios da alface" e usos tradicionais de alface (incl.
           relaxamento e chás).
         </li>
-      </ol>
-
-      <h4>Consumo, usos culinários e hortas</h4>
-      <ol>
-        <li id="ref-C1">
-          [C1] Forma Saudável. &quot;Alface: todas as suas propriedades e
-          benefícios para a saúde&quot; – artigo que descreve a alface como
+</ol>
+<h4>Consumo, usos culinários e hortas</h4>
+<ol>
+<li id="ref-C1">
+          [C1] Forma Saudável. "Alface: todas as suas propriedades e
+          benefícios para a saúde" – artigo que descreve a alface como
           alimento de baixa caloria, fonte de fibra, vitaminas e
           fitonutrientes.
           Disponível em:
-          <a href="https://formasaudavel.com.br/alface/" target="_blank" rel="noopener">
+          <a href="https://formasaudavel.com.br/alface/" rel="noopener" target="_blank">
             formasaudavel.com.br/alface
           </a>.
         </li>
-        <li id="ref-C2">
-          [C2] Terra. &quot;7 benefícios da alface para a saúde&quot; – destaca
+<li id="ref-C2">
+          [C2] Terra. "7 benefícios da alface para a saúde" – destaca
           ação antioxidante, hidratação e contribuição para saúde
           cardiovascular, digestão e outros aspetos.
           Disponível em:
-          <a href="https://www.terra.com.br/vida-e-estilo/saude/7-beneficios-da-alface-para-a-saude,b1e1feb8b9b93d17545a1e5631138aaeorf40f18.html" target="_blank" rel="noopener">
+          <a href="https://www.terra.com.br/vida-e-estilo/saude/7-beneficios-da-alface-para-a-saude,b1e1feb8b9b93d17545a1e5631138aaeorf40f18.html" rel="noopener" target="_blank">
             terra.com.br/.../7-beneficios-da-alface-para-a-saude
           </a>.
         </li>
-        <li id="ref-C3">
-          [C3] Bliss Natura. &quot;Os benefícios da alface&quot; – artigo em
+<li id="ref-C3">
+          [C3] Bliss Natura. "Os benefícios da alface" – artigo em
           português que descreve usos tradicionais da alface em chás e sumos,
           incluindo exemplos para desconfortos digestivos e cuidados com o
           cabelo.
           Disponível em:
-          <a href="https://www.blissnatura.pt/beneficios-da-alface" target="_blank" rel="noopener">
+          <a href="https://www.blissnatura.pt/beneficios-da-alface" rel="noopener" target="_blank">
             blissnatura.pt/beneficios-da-alface
           </a>.
         </li>
-        <li id="ref-U1">
+<li id="ref-U1">
           [U1] Diversos manuais de horticultura e fichas técnicas (como as
           referidas em [S1]–[S5]) que descrevem a alface como cultura de ciclo
           curto utilizada em rotações e consociações na horta.
         </li>
-      </ol>
-
-      <h4>Permacultura e consociações</h4>
-      <ol>
-        <li id="ref-P1">
-          [P1] Deep Green Permaculture. &quot;Companion Planting Table&quot; –
+</ol>
+<h4>Permacultura e consociações</h4>
+<ol>
+<li id="ref-P1">
+          [P1] Deep Green Permaculture. "Companion Planting Table" –
           tabela de consociações que inclui alface entre as culturas de
           enchimento e companheiras de várias hortaliças.
           Disponível em:
-          <a href="https://deepgreenpermaculture.com/2009/08/30/companion-planting-table/" target="_blank" rel="noopener">
+          <a href="https://deepgreenpermaculture.com/2009/08/30/companion-planting-table/" rel="noopener" target="_blank">
             deepgreenpermaculture.com/.../companion-planting-table
           </a>.
         </li>
-        <li id="ref-P2">
-          [P2] APH – Associação Portuguesa de Horticultura. Manual &quot;Pronto
-          para cultivar os seus vegetais?&quot; (2024) – inclui ficha de
+<li id="ref-P2">
+          [P2] APH – Associação Portuguesa de Horticultura. Manual "Pronto
+          para cultivar os seus vegetais?" (2024) – inclui ficha de
           cultura de alface com recomendações de consociações e planeamento de
           horta.
           Disponível em:
-          <a href="https://aphorticultura.pt/pronto-para-cultivar-os-seus-vegetais-2/" target="_blank" rel="noopener">
+          <a href="https://aphorticultura.pt/pronto-para-cultivar-os-seus-vegetais-2/" rel="noopener" target="_blank">
             aphorticultura.pt/pronto-para-cultivar-os-seus-vegetais-2
           </a>.
         </li>
-      </ol>
-
-      <h4>Receitas e preparados</h4>
-      <ol>
-        <li id="ref-R1">
-          [R1] Continente Feed. &quot;Sopa de alface&quot; – receita de sopa
+</ol>
+<h4>Receitas e preparados</h4>
+<ol>
+<li id="ref-R1">
+          [R1] Continente Feed. "Sopa de alface" – receita de sopa
           cremosa com alface, curgete, cebola, nabo, cenoura e alho-francês.
           Disponível em:
-          <a href="https://feed.continente.pt/receitas/sopa-alface" target="_blank" rel="noopener">
+          <a href="https://feed.continente.pt/receitas/sopa-alface" rel="noopener" target="_blank">
             feed.continente.pt/receitas/sopa-alface
           </a>.
         </li>
-        <li id="ref-R2">
-          [R2] Pingo Doce. &quot;Sopa de alface&quot; – receita que utiliza
+<li id="ref-R2">
+          [R2] Pingo Doce. "Sopa de alface" – receita que utiliza
           sobras de salada de alface numa sopa de legumes.
           Disponível em:
-          <a href="https://www.pingodoce.pt/receitas/sopa-de-alface/" target="_blank" rel="noopener">
+          <a href="https://www.pingodoce.pt/receitas/sopa-de-alface/" rel="noopener" target="_blank">
             pingodoce.pt/receitas/sopa-de-alface
           </a>.
         </li>
-        <li id="ref-R3">
-          [R3] Vaqueiro. &quot;Sopa de alface portuguesa&quot; – receita
+<li id="ref-R3">
+          [R3] Vaqueiro. "Sopa de alface portuguesa" – receita
           tradicional de sopa de alface.
           Disponível em:
-          <a href="https://www.vaqueiro.pt/recipes/sopa-de-alface-portuguesa-198573" target="_blank" rel="noopener">
+          <a href="https://www.vaqueiro.pt/recipes/sopa-de-alface-portuguesa-198573" rel="noopener" target="_blank">
             vaqueiro.pt/recipes/sopa-de-alface-portuguesa-198573
           </a>.
         </li>
-        <li id="ref-R4">
-          [R4] PetitChef. &quot;Sopa de alface simples e saudável&quot; – receita
+<li id="ref-R4">
+          [R4] PetitChef. "Sopa de alface simples e saudável" – receita
           em português com mistura de legumes e alfaces diversas.
           Disponível em:
-          <a href="https://pt.petitchef.com/receitas/prato-principal/sopa-de-alface-fid-240271" target="_blank" rel="noopener">
+          <a href="https://pt.petitchef.com/receitas/prato-principal/sopa-de-alface-fid-240271" rel="noopener" target="_blank">
             pt.petitchef.com/receitas/prato-principal/sopa-de-alface-fid-240271
           </a>.
         </li>
-        <li id="ref-R5">
-          [R5] Blog &quot;Nem Acredito que é Saudável&quot;. &quot;Sopa de
-          alface (sem batata)&quot; – versão leve em português com alface,
+<li id="ref-R5">
+          [R5] Blog "Nem Acredito que é Saudável". "Sopa de
+          alface (sem batata)" – versão leve em português com alface,
           espinafres e outros legumes.
           Disponível em:
-          <a href="https://nemacreditoqueesaudavel.com/2019/05/sopa-de-alface-sem-batata.html" target="_blank" rel="noopener">
+          <a href="https://nemacreditoqueesaudavel.com/2019/05/sopa-de-alface-sem-batata.html" rel="noopener" target="_blank">
             nemacreditoqueesaudavel.com/.../sopa-de-alface-sem-batata
           </a>.
         </li>
-        <li id="ref-R6">
-          [R6] PetitChef. &quot;Salada de alface simples e saudável&quot; –
+<li id="ref-R6">
+          [R6] PetitChef. "Salada de alface simples e saudável" –
           exemplos de saladas de alface com outros vegetais, fruta e queijo.
           Disponível em:
-          <a href="https://pt.petitchef.com/receitas/entrada/salada-de-alface-fid-179901" target="_blank" rel="noopener">
+          <a href="https://pt.petitchef.com/receitas/entrada/salada-de-alface-fid-179901" rel="noopener" target="_blank">
             pt.petitchef.com/receitas/entrada/salada-de-alface-fid-179901
           </a>.
         </li>
-        <li id="ref-R7">
-          [R7] Cookpad. &quot;Salada de alface com grão de bico&quot; – receita
+<li id="ref-R7">
+          [R7] Cookpad. "Salada de alface com grão de bico" – receita
           em português que combina alface com grão-de-bico.
           Disponível em:
-          <a href="https://cookpad.com/pt/receitas/14615654-salada-de-alface-com-grao-de-bico" target="_blank" rel="noopener">
+          <a href="https://cookpad.com/pt/receitas/14615654-salada-de-alface-com-grao-de-bico" rel="noopener" target="_blank">
             cookpad.com/pt/receitas/14615654-salada-de-alface-com-grao-de-bico
           </a>.
         </li>
-        <li id="ref-R8">
-          [R8] Oliveira da Serra. &quot;Salada de alface, grão, azeitonas,
-          tomate, curgetes e orégãos&quot; – receita de salada rica em legumes
+<li id="ref-R8">
+          [R8] Oliveira da Serra. "Salada de alface, grão, azeitonas,
+          tomate, curgetes e orégãos" – receita de salada rica em legumes
           e leguminosas.
           Disponível em:
-          <a href="https://www.oliveiradaserra.pt/pt/receitas/salada-de-alface-grao-azeitonas-tomate-curgetes-e-oregaos/" target="_blank" rel="noopener">
+          <a href="https://www.oliveiradaserra.pt/pt/receitas/salada-de-alface-grao-azeitonas-tomate-curgetes-e-oregaos/" rel="noopener" target="_blank">
             oliveiradaserra.pt/.../salada-de-alface-grao-azeitonas-tomate-curgetes-e-oregaos
           </a>.
         </li>
-        <li id="ref-R9">
-          [R9] Cookidoo. &quot;Sumo de alface, uva e kiwi&quot; – receita em
+<li id="ref-R9">
+          [R9] Cookidoo. "Sumo de alface, uva e kiwi" – receita em
           português para Thermomix/Bimby.
           Disponível em:
-          <a href="https://cookidoo.pt/recipes/recipe/pt-PT/r38994" target="_blank" rel="noopener">
+          <a href="https://cookidoo.pt/recipes/recipe/pt-PT/r38994" rel="noopener" target="_blank">
             cookidoo.pt/recipes/recipe/pt-PT/r38994
           </a>.
         </li>
-        <li id="ref-R10">
-          [R10] Bliss Natura. &quot;Os benefícios da alface&quot; – inclui
+<li id="ref-R10">
+          [R10] Bliss Natura. "Os benefícios da alface" – inclui
           exemplos de preparados com sumo de alface em contexto de cuidados com
           cabelo e pele.
           Disponível em:
-          <a href="https://www.blissnatura.pt/beneficios-da-alface" target="_blank" rel="noopener">
+          <a href="https://www.blissnatura.pt/beneficios-da-alface" rel="noopener" target="_blank">
             blissnatura.pt/beneficios-da-alface
           </a>.
         </li>
-      </ol>
-    </section>
-  </main>
-
-  <footer>
-    <a href="index.html">← Voltar à lista de plantas</a>
-  </footer>
+</ol>
+</section>
+</article>
+</main>
+<footer>
+<a href="index.html">← Voltar à lista de plantas</a>
+</footer>
 </body>
 </html>

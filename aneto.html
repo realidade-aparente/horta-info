@@ -1,63 +1,366 @@
 <!DOCTYPE html>
+
 <html lang="pt">
 <head>
-  <meta charset="UTF-8" />
-  <title>Aneto / Endro – Horta da Terra para o prato</title>
-  <link rel="stylesheet" href="style.css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-</head>
-<body>
-  <header>
-    <h1>Horta da Terra para o prato</h1>
-    <nav>
-      <a href="index.html">Início</a>
-      <a href="tomate.html">Tomate</a>
-      <a href="cenoura.html">Cenoura</a>
-      <a href="manjericao.html">Manjericão</a>
-      <a href="abobora-butternut.html">Abóbora butternut</a>
-      <a href="moringa.html">Moringa</a>
-      <a href="acelga.html">Acelga</a>
-      <a href="agriao.html">Agrião</a>
-      <a href="agriao-terra.html">Agrião-da-terra</a>
-      <a href="aipo.html">Aipo</a>
-      <a href="alface.html">Alface</a>
-      <a href="alho.html">Alho</a>
-      <a href="alho-frances.html">Alho-francês</a>
-      <a href="aneto.html">Aneto / Endro</a>
-    </nav>
-  </header>
+<meta charset="utf-8"/>
+<title>Aneto / Endro – Horta da Terra para o prato</title>
+<link href="style.css" rel="stylesheet"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
 
-  <main>
-    <h2>Aneto / Endro (<em>Anethum graveolens</em>)</h2>
+        * { box-sizing: border-box; }
 
-    <!-- 0. Imagem -->
-    <section id="imagem">
-      <h3>Imagem</h3>
-      <div class="image-frame">
-        <!-- ajusta o nome real do ficheiro que fores usar -->
-        <img src="imagens/aneto.png" alt="Ramos frescos de aneto/endro com folhas finas e verdes">
-      </div>
-    </section>
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
 
-    <!-- 1. Apresentação / Descrição -->
-    <section id="apresentacao">
-      <h3>Apresentação / Descrição</h3>
-      <p>
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    
+.masthead{position:sticky;top:0;z-index:1000}
+
+        h2[id] { scroll-margin-top: 140px; }
+</style></head>
+<body id="topo">
+<div class="masthead"><header>
+<h1>Horta da Terra para o prato</h1>
+<p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar.</p></header>
+<nav>
+<a href="index.html">Início</a>
+<a href="abobora-butternut.html">Abóbora butternut</a>
+<a href="acelga.html">Acelga</a>
+<a href="agriao.html">Agrião-de-água</a>
+<a href="agriao-terra.html">Agrião-de-terra</a>
+<a href="aipo.html">Aipo (talos e folhas)</a>
+<a href="alface.html">Alface</a>
+<a href="alho.html">Alho</a>
+<a href="alho-frances.html">Alho-francês</a>
+<a class="ativa" href="aneto.html">Aneto / Endro</a>
+<a href="batata-comum.html">Batata comum</a>
+<a href="batata-doce.html">Batata-doce</a>
+<a href="beringela.html">Beringela</a>
+<a href="beterraba.html">Beterraba</a>
+<a href="brocolo.html">Brócolo</a>
+<a href="canonigos.html">Canónigos</a>
+<a href="cebola.html">Cebola</a>
+<a href="cebola-fresca.html">Cebola fresca</a>
+<a href="cenoura.html">Cenoura</a>
+<a href="coentros.html">Coentros</a>
+<a href="couve-chinesa.html">Couve chinesa</a>
+<a href="couve-repolho.html">Couve repolho</a>
+<a href="couve-toscana.html">Couve toscana</a>
+<a href="couve-flor.html">Couve-flor</a>
+<a href="couve-rabano.html">Couve-rábano</a>
+<a href="curgete.html">Curgete</a>
+<a href="ervilhas-frescas.html">Ervilhas frescas</a>
+<a href="espinafre.html">Espinafre</a>
+<a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+<a href="feijao-verde.html">Feijão verde</a>
+<a href="manjericao.html">Manjericão</a>
+<a href="milho-doce.html">Milho doce</a>
+<a href="mizuna.html">Mizuna</a>
+<a href="morangos.html">Morangueiro / Morangos</a>
+<a href="moringa.html">Moringa</a>
+<a href="nabica.html">Nabiça</a>
+<a href="nabo.html">Nabo</a>
+<a href="pak-choi.html">Pak choi</a>
+<a href="pepino.html">Pepino</a>
+<a href="pimento.html">Pimento</a>
+<a href="rabanete.html">Rabanete</a>
+<a href="rabano.html">Rábano / Daikon</a>
+<a href="rucula.html">Rúcula</a>
+<a href="salanova.html">Salanova</a>
+<a href="salsa.html">Salsa</a>
+<a href="tomate.html">Tomate (diversas cultivares)</a>
+<a href="tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav></div>
+<main><article class="planta">
+<div class="planta-cabecalho">
+<div class="planta-titulo">
+<h2>Aneto / Endro (<em>Anethum graveolens</em>)</h2>
+<div class="tags-nomes">
+<span>Família: Apiáceas</span>
+<span>Parte usada: folhas e sementes</span>
+<span>Tipo: aromática</span>
+<span>Produção: <strong>biológica</strong></span>
+</div>
+<div class="info-rapida">
+<div><strong>Origem</strong> Utilizado desde a Antiguidade na região do Mediterrâneo e do Médio Oriente.</div>
+<div><strong>Uso principal</strong> Temperar peixe, molhos, conservas, pickles, saladas e pratos de batata.</div>
+<div><strong>Perfil nutricional</strong> Muito rico em compostos aromáticos; vitaminas A e C e minerais em quantidades moderadas.</div>
+</div>
+</div>
+<div>
+<div class="imagem-container-externo">
+<div class="imagem-container">
+<img alt="Ramos frescos de aneto/endro com folhas finas e verdes" src="imagens/aneto.png"/>
+</div>
+</div>
+<p class="imagem-legenda">Imagem ilustrativa de ramos de aneto/endro fresco.</p>
+</div>
+</div>
+
+
+<!-- 0. Imagem -->
+
+<!-- 1. Apresentação / Descrição -->
+<section id="apresentacao">
+<h3>1. Apresentação / Descrição</h3>
+<p>
         O aneto ou endro (<em>Anethum graveolens</em>) é uma erva aromática anual da família
         das Apiaceae (a mesma da salsa e da cenoura). Em português, surgem vários nomes
         comuns: <strong>aneto</strong>, <strong>endro</strong>, <strong>endro-cheiroso</strong>
-        e, por vezes, &quot;funcho-bastardo&quot; em literatura botânica mais antiga. Em
+        e, por vezes, "funcho-bastardo" em literatura botânica mais antiga. Em
         inglês é conhecido sobretudo por <strong>dill</strong> ou <strong>dill weed</strong>.
       </p>
-      <p>
-        A planta forma um caule ereto, fino, oco, que pode atingir 40–80&nbsp;cm de altura,
+<p>
+        A planta forma um caule ereto, fino, oco, que pode atingir 40–80 cm de altura,
         com folhas muito recortadas, finas e plumosas de cor verde-azulada, que lembram
         visualmente as folhas de funcho mas com textura e aroma próprios. No topo do caule
         surgem inflorescências em forma de guarda-chuva (umbelas) com muitas flores pequenas,
         amarelas. Após a floração produzem-se sementes achatadas e ovais, muito aromáticas,
         utilizadas também como especiaria.
       </p>
-      <p>
+<p>
         O aneto é originário de regiões entre o Mediterrâneo, o Cáucaso e o Crescente Fértil
         e é amplamente usado em cozinhas do norte e leste da Europa (Escandinávia, Rússia,
         Alemanha, Europa Central), bem como no Médio Oriente, Índia e algumas regiões da
@@ -65,7 +368,7 @@
         peixe (especialmente salmão e outros peixes gordos), saladas de batata, conservas de
         pepino, molhos de iogurte e marinadas suaves.
       </p>
-      <p>
+<p>
         Nutricionalmente, as folhas frescas são pobres em calorias mas relativamente ricas
         em vitamina C, provitamina A, alguns minerais (como cálcio, ferro e potássio) e
         em compostos fenólicos e voláteis (óleos essenciais) que conferem propriedades
@@ -73,40 +376,39 @@
         têm perfil aromático e uso medicinal ligeiramente diferente; nesta página focamo-nos
         sobretudo nas <strong>folhas frescas</strong> utilizadas na horta e na cozinha.
       </p>
-      <p class="referencia-nota">
+<p class="referencia-nota">
         Referência(s) de suporte para a descrição:
         <sup>[D1]</sup><sup>[D2]</sup><sup>[D3]</sup><sup>[D4]</sup><sup>[D5]</sup><sup>[D6]</sup>
-      </p>
-    </section>
-
-    <!-- 2. Sazonalidade (Portugal continental) -->
-    <section id="sazonalidade">
-      <h3>Sazonalidade (Portugal continental)</h3>
-      <p>
+</p>
+</section>
+<!-- 2. Sazonalidade (Portugal continental) -->
+<section id="sazonalidade">
+<h3>2. Sazonalidade (Portugal continental)</h3>
+<p>
         Em Portugal continental, o aneto/endro comporta-se como uma <strong>anual de estação
         fresca a amena</strong>, apreciando clima temperado e evitando calor excessivo e
         seca prolongada, que favorecem a subida precoce a flor. O calendário exato depende
         da região, mas, com base em fichas de sementes e artigos de horticultura, podem
         apontar-se as seguintes linhas gerais:
       </p>
-      <ul>
-        <li>
-          <strong>Época de sementeira:</strong>
+<ul>
+<li>
+<strong>Época de sementeira:</strong>
           produtores de sementes biológicas em Portugal indicam sementeiras diretas
           em local definitivo de cerca de <strong>março a junho</strong>, em solos
           soltos e bem drenados, com boa exposição solar. Em climas muito suaves
           (litoral sul), podem fazer-se sementeiras um pouco mais cedo; em zonas
           mais quentes do interior é preferível evitar o pico do verão.
         </li>
-        <li>
-          <strong>Condições de solo e exposição:</strong>
+<li>
+<strong>Condições de solo e exposição:</strong>
           adapta-se a vários tipos de solo, mas prefere <strong>solos enriquecidos
           com matéria orgânica</strong>, soltos e permeáveis, sem encharcamento.
           Gosta de <strong>sol pleno</strong>, mas em locais de verão muito quente
           beneficia de alguma proteção nas horas de maior calor.
         </li>
-        <li>
-          <strong>Ciclo e colheita:</strong>
+<li>
+<strong>Ciclo e colheita:</strong>
           o ciclo é relativamente rápido. Após a germinação, em 6–8 semanas é
           possível colher folhas jovens, e a floração pode ocorrer a partir de
           2–3 meses, dependendo da época de sementeira. A colheita pode ser
@@ -114,159 +416,153 @@
           rebentar novamente. Se forem deixadas algumas plantas a florir e ir
           a semente, é possível recolher semente própria para o ano seguinte.
         </li>
-        <li>
-          <strong>Época prática de consumo:</strong>
+<li>
+<strong>Época prática de consumo:</strong>
           folhas frescas podem ser colhidas de <strong>primavera até ao início
           do outono</strong>, dependendo da data de sementeira e das condições
           locais. Em estufa ou em locais muito amenos o período pode alargar-se.
         </li>
-      </ul>
-      <p class="referencia-nota">
+</ul>
+<p class="referencia-nota">
         Informação baseada em fichas de sementes biológicas em Portugal, artigos
         de horticultura em português sobre aneto/endro e guias de cultivo em clima
         temperado.
         <sup>[S1]</sup><sup>[S2]</sup><sup>[S3]</sup>
-      </p>
-    </section>
-
-    <!-- 3. Como consumir -->
-    <section id="como-consumir">
-      <h3>Como consumir</h3>
-      <ul>
-        <li>
-          <strong>Partes utilizadas:</strong>
+</p>
+</section>
+<!-- 3. Como consumir -->
+<section id="como-consumir">
+<h3>3. Como consumir</h3>
+<ul>
+<li>
+<strong>Partes utilizadas:</strong>
           usam-se sobretudo as <strong>folhas frescas</strong> (ramos verdes,
           finamente picados) e, em muitos contextos, também as <strong>sementes</strong>
           secas como especiaria. As flores podem ser utilizadas para aromatizar
           conservas. Aqui focamo-nos principalmente nas folhas para uso culinário
           diário e em algumas preparações simples com sementes.
         </li>
-        <li>
-          <strong>Uso em cru:</strong>
+<li>
+<strong>Uso em cru:</strong>
           o aneto é muito utilizado <strong>cru</strong> em saladas (por exemplo
           de pepino, batata ou peixe fumado), molhos de iogurte (à semelhança do
           tzatziki), marinadas suaves para peixe e vinagretes. As folhas picadas
           devem ser adicionadas <strong>no final</strong>, pouco antes de servir,
           para preservar o aroma volátil.
         </li>
-        <li>
-          <strong>Uso cozinhado:</strong>
+<li>
+<strong>Uso cozinhado:</strong>
           pode ser adicionado a sopas, batatas, arroz, legumes salteados ou pratos
           de forno, mas em geral em quantidades moderadas e nos minutos finais da
           cozedura, para evitar perda de aroma. É muito comum em pratos de salmão,
           outros peixes gordos, batata, ovo, iogurte e natas.
         </li>
-        <li>
-          <strong>Conservas e pickles:</strong>
+<li>
+<strong>Conservas e pickles:</strong>
           ramos de endro são clássicos em conservas de pepino e outros legumes,
           conferindo sabor característico a pickles (como em muitas receitas
           nórdicas e da Europa de Leste).
         </li>
-        <li>
-          <strong>Infusões e chás:</strong>
+<li>
+<strong>Infusões e chás:</strong>
           as sementes e, por vezes, as folhas são usadas em chás digestivos
           tradicionais, associados a alívio de gases e cólicas ligeiras; a dose
           e a frequência devem ser moderadas, especialmente em crianças e grávidas,
           e não substituem aconselhamento médico.
         </li>
-        <li>
-          <strong>Cuidados e segurança:</strong>
+<li>
+<strong>Cuidados e segurança:</strong>
           em quantidades culinárias, o aneto é considerado seguro para a maioria
           das pessoas. Algumas fontes sugerem cautela com consumo de preparados
           concentrados (óleos essenciais, extratos alcoólicos) em grávidas,
           lactantes e crianças pequenas, por falta de dados robustos sobre doses
           seguras. Podem ocorrer alergias em pessoas sensíveis à família Apiaceae.
         </li>
-      </ul>
-      <p class="referencia-nota">
+</ul>
+<p class="referencia-nota">
         Informação baseada em glossários de temperos, artigos de nutrição e
         textos de fitoterapia popular sobre endro/aneto.
         <sup>[C1]</sup><sup>[C2]</sup><sup>[C3]</sup>
-      </p>
-    </section>
-
-    <!-- 4. Receitas e preparados (Top 10) -->
-    <section id="receitas">
-      <h3>Receitas e preparados (Top 10)</h3>
-      <p>
+</p>
+</section>
+<!-- 4. Receitas e preparados (Top 10) -->
+<section id="receitas">
+<h3>4. Receitas e preparados (Top 10)</h3>
+<p>
         Abaixo estão 10 exemplos de receitas em língua portuguesa que utilizam
         o aneto/endro (dill) como ingrediente principal ou de destaque. Podem
         inspirar variações com ingredientes disponíveis na horta.
       </p>
-      <ol>
-        <li>
-          <strong>Salada de pepino com iogurte e endro</strong> – receita do
+<ol>
+<li>
+<strong><a href="aneto-receitas.html#salada-de-pepino-com-iogurte-e-endro">Salada de pepino com iogurte e endro</a></strong> – receita do
           Panelinha (BR), com pepino japonês, iogurte natural, azeite e um bom
           ramo de endro picado. Uma forma clássica de usar o aneto em saladas
           frescas.
           <sup>[R1]</sup>
-        </li>
-        <li>
-          <strong>Salmão no forno com molho de iogurte e endro</strong> – receita
+</li>
+<li>
+<strong><a href="aneto-receitas.html#salmao-no-forno-com-molho-de-iogurte-e-endro">Salmão no forno com molho de iogurte e endro</a></strong> – receita
           do blogue Cinco Quartos de Laranja em que o salmão é assado com batatas
           novas e espargos, acompanhado de um molho de iogurte e aneto fresco.
           <sup>[R2]</sup>
-        </li>
-        <li>
-          <strong>Salmão norueguês com molho de endro</strong> – receita de
+</li>
+<li>
+<strong><a href="aneto-receitas.html#salmao-noruegues-com-molho-de-endro">Salmão norueguês com molho de endro</a></strong> – receita de
           blogue em português que combina lombos de salmão cozinhados com um molho
           frio de iogurte, endro, alho e limão.
           <sup>[R3]</sup>
-        </li>
-        <li>
-          <strong>Salmão ao molho de endro</strong> – receita do TudoGostoso
+</li>
+<li>
+<strong><a href="aneto-receitas.html#salmao-ao-molho-de-endro">Salmão ao molho de endro</a></strong> – receita do TudoGostoso
           (BR) em que um molho cremoso com cebola, endro, queijo e cream cheese
           é servido sobre medalhões de salmão grelhado.
           <sup>[R4]</sup>
-        </li>
-        <li>
-          <strong>Tzatziki – molho grego de iogurte, pepino e endro</strong> –
+</li>
+<li><strong><a href="aneto-receitas.html#tzatziki-molho-grego-de-iogurte-pepino-e-endro">Tzatziki – molho grego de iogurte, pepino e endro</a></strong> – –
           receita em português (PT) no site Comida de Bebé, com iogurte, pepino,
-          alho, limão, azeite e endro fresco picado.
-          <sup>[R5]</sup>
-        </li>
-        <li>
-          <strong>Molho de limão e endro para saladas e peixe</strong> – receita
+          alho, limão, azeite e endro fresco picado. [R5] (versão vegan)</li>
+<li>
+<strong><a href="aneto-receitas.html#molho-de-limao-e-endro-para-saladas-e-peixe">Molho de limão e endro para saladas e peixe</a></strong> – receita
           em português de um molho simples com iogurte, limão e endro, ideal para
           acompanhar salmão, legumes cozidos ou saladas variadas.
           <sup>[R6]</sup>
-        </li>
-        <li>
-          <strong>Salada de batata com aneto</strong> – receita do blogue A Cozinha
+</li>
+<li>
+<strong><a href="aneto-receitas.html#salada-de-batata-com-aneto">Salada de batata com aneto</a></strong> – receita do blogue A Cozinha
           da Ovelha Negra, em que batatas cozidas são temperadas com molho e
           polvilhadas com aneto picado antes de servir.
           <sup>[R7]</sup>
-        </li>
-        <li>
-          <strong>Talharim ou massas com salmão fumado e endro</strong> – conjunto
+</li>
+<li>
+<strong><a href="aneto-receitas.html#talharim-ou-massas-com-salmao-fumado-e-endro">Talharim ou massas com salmão fumado e endro</a></strong> – conjunto
           de receitas do PetitChef em português em que massas são combinadas com
           salmão fumado e endro fresco ou seco.
           <sup>[R8]</sup>
-        </li>
-        <li>
-          <strong>Salmão no forno com limão e endro</strong> – receita em vídeo
+</li>
+<li>
+<strong><a href="aneto-receitas.html#salmao-no-forno-com-limao-e-endro">Salmão no forno com limão e endro</a></strong> – receita em vídeo
           ou passo-a-passo (GNT/Receitas Globo) de filetes de salmão no forno
           com limão, gengibre e ramos grandes de endro fresco.
           <sup>[R9]</sup>
-        </li>
-        <li>
-          <strong>Tzatziki – variações com endro</strong> – receita de tzatziki
+</li>
+<li>
+<strong><a href="aneto-receitas.html#tzatziki-variacoes-com-endro">Tzatziki – variações com endro</a></strong> – receita de tzatziki
           da Cozinha Dalbo (BR), que recomenda o uso de dill/endro para dar um
           toque especial ao molho de iogurte e pepino.
           <sup>[R10]</sup>
-        </li>
-      </ol>
-      <p>
+</li>
+</ol>
+<p>
         Nota: muitas destas receitas podem ser adaptadas para versões vegetarianas,
         veganas ou com menos gordura (por exemplo, trocando natas por iogurte natural
         ou bebidas vegetais espessas).
       </p>
-    </section>
-
-    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
-    <section id="beneficios">
-      <h3>Benefícios para a saúde e propriedades medicinais</h3>
-      <p>
+</section>
+<!-- 5. Benefícios para a saúde e propriedades medicinais -->
+<section id="beneficios">
+<h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+<p>
         A maior parte da evidência detalhada sobre benefícios de saúde do aneto/endro
         baseia-se em estudos laboratoriais e em estudos com extratos concentrados
         (particularmente das sementes e do óleo essencial), complementados por uma
@@ -274,50 +570,50 @@
         suave. O consumo culinário de folhas frescas, em pequenas quantidades, é uma
         forma segura de integrar parte desses compostos na alimentação.
       </p>
-      <ul>
-        <li>
-          <strong>Propriedades digestivas e carminativas:</strong>
+<ul>
+<li>
+<strong>Propriedades digestivas e carminativas:</strong>
           fontes de fitoterapia em português descrevem o endro como planta
           tradicionalmente usada para aliviar <strong>gases, cólicas e má digestão</strong>,
           tanto em adultos como, com preparação adequada, em bebés (chá de endro). Os
           efeitos são atribuídos a óleos essenciais (como carvona, limoneno e outros
           terpenos) com ação antiespasmódica suave.
           <sup>[M1]</sup><sup>[M2]</sup><sup>[M3]</sup>
-        </li>
-        <li>
-          <strong>Ação antioxidante e anti-inflamatória:</strong>
+</li>
+<li>
+<strong>Ação antioxidante e anti-inflamatória:</strong>
           artigos de divulgação e fichas técnicas apontam que folhas e sementes contêm
           flavonoides, compostos fenólicos e vitamina C, com atividade antioxidante,
           ajudando a neutralizar radicais livres e contribuindo para proteção celular
           geral quando integrados numa alimentação rica em vegetais.
           <sup>[M2]</sup><sup>[M3]</sup><sup>[N1]</sup>
-        </li>
-        <li>
-          <strong>Potencial antimicrobiano:</strong>
+</li>
+<li>
+<strong>Potencial antimicrobiano:</strong>
           estudos laboratoriais com extratos de endro mostram atividade contra algumas
           bactérias e fungos, sobretudo em concentrações superiores às encontradas no
           uso culinário diário. Esses resultados ajudam a explicar parte do uso
           tradicional da planta em conservas e chás, mas não substituem tratamentos
           médicos convencionais em infeções.
           <sup>[M2]</sup><sup>[M3]</sup>
-        </li>
-        <li>
-          <strong>Efeitos em cólicas infantis e sono:</strong>
+</li>
+<li>
+<strong>Efeitos em cólicas infantis e sono:</strong>
           alguns textos de medicina tradicional sugerem o uso de infusões suaves de
           sementes de endro para aliviar cólicas em bebés e ajudar a relaxar. As
           evidências científicas de alta qualidade são limitadas, pelo que a utilização
           em bebés e crianças deve ser sempre discutida com profissionais de saúde.
           <sup>[M1]</sup><sup>[M4]</sup>
-        </li>
-        <li>
-          <strong>Outros potenciais benefícios:</strong>
+</li>
+<li>
+<strong>Outros potenciais benefícios:</strong>
           artigos de divulgação em português referem ainda possíveis efeitos no alívio
           de sintomas menstruais ligeiros, apoio à digestão de refeições ricas em gordura
           e contribuição geral para uma dieta rica em fitoquímicos benéficos.
           <sup>[M1]</sup><sup>[C2]</sup>
-        </li>
-      </ul>
-      <p class="nota-aviso">
+</li>
+</ul>
+<p class="nota-aviso">
         As informações acima referem-se a dados laboratoriais, observacionais e à tradição
         de uso do aneto/endro em fitoterapia popular. Não substituem diagnóstico ou
         tratamento médico. O consumo culinário moderado é considerado seguro para a
@@ -325,116 +621,114 @@
         ou doses elevadas</strong> deve ser acompanhado por profissionais de saúde,
         especialmente em grávidas, lactantes, crianças pequenas e pessoas medicadas.
       </p>
-    </section>
-
-    <!-- 6. Propriedades nutricionais -->
-    <section id="nutricao">
-      <h3>Propriedades nutricionais</h3>
-      <p>
+</section>
+<!-- 6. Propriedades nutricionais -->
+<section id="nutricao">
+<h3>6. Propriedades nutricionais</h3>
+<p>
         Abaixo apresenta-se um resumo aproximado da composição nutricional das folhas
-        frescas de aneto/endro (<em>dill weed, fresh</em>) por 100&nbsp;g de parte
+        frescas de aneto/endro (<em>dill weed, fresh</em>) por 100 g de parte
         comestível, em <strong>cru</strong> e em <strong>cozinhado</strong>. Na prática,
         as quantidades consumidas por refeição são muito menores (alguns gramas), mas a
         tabela ajuda a perceber a densidade de micronutrientes desta erva aromática.
       </p>
-      <table>
-        <thead>
-          <tr>
-            <th>Componente</th>
-            <th>Em cru (100 g)</th>
-            <th>Cozinhado (100 g)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Energia</td>
-            <td>≈ 40–45 kcal</td>
-            <td>≈ 30–40 kcal (dependendo da água perdida ou absorvida)</td>
-          </tr>
-          <tr>
-            <td>Hidratos de carbono (totais)</td>
-            <td>≈ 7–8 g</td>
-            <td>≈ 6–7 g</td>
-          </tr>
-          <tr>
-            <td>Fibra</td>
-            <td>≈ 2–3 g</td>
-            <td>≈ 2–3 g</td>
-          </tr>
-          <tr>
-            <td>Proteína</td>
-            <td>≈ 3–4 g</td>
-            <td>≈ 2,5–3,5 g</td>
-          </tr>
-          <tr>
-            <td>Lípidos totais</td>
-            <td>≈ 1–1,5 g</td>
-            <td>≈ 1–1,5 g</td>
-          </tr>
-          <tr>
-            <td>Vitamina C</td>
-            <td>≈ 60–100 mg</td>
-            <td>valor reduzido pela cozedura (muitas vezes &lt; 40 mg)</td>
-          </tr>
-          <tr>
-            <td>Vitamina A (provitamina A)</td>
-            <td>≈ 350–400 µg (equivalentes de retinol)</td>
-            <td>ligeira redução com o calor, dependendo do tempo de cozedura</td>
-          </tr>
-          <tr>
-            <td>Principais minerais</td>
-            <td>
+<table>
+<thead>
+<tr>
+<th>Nutriente</th>
+<th>Aneto cru (100 g)</th>
+<th>Aneto cozinhado (100 g, escorrido)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Energia</td>
+<td>≈ 40–45 kcal</td>
+<td>≈ 30–40 kcal (dependendo da água perdida ou absorvida)</td>
+</tr>
+<tr>
+<td>Hidratos de carbono (totais)</td>
+<td>≈ 7–8 g</td>
+<td>≈ 6–7 g</td>
+</tr>
+<tr>
+<td>Fibra</td>
+<td>≈ 2–3 g</td>
+<td>≈ 2–3 g</td>
+</tr>
+<tr>
+<td>Proteína</td>
+<td>≈ 3–4 g</td>
+<td>≈ 2,5–3,5 g</td>
+</tr>
+<tr>
+<td>Lípidos totais</td>
+<td>≈ 1–1,5 g</td>
+<td>≈ 1–1,5 g</td>
+</tr>
+<tr>
+<td>Vitamina C</td>
+<td>≈ 60–100 mg</td>
+<td>valor reduzido pela cozedura (muitas vezes &lt; 40 mg)</td>
+</tr>
+<tr>
+<td>Vitamina A (provitamina A)</td>
+<td>≈ 350–400 µg (equivalentes de retinol)</td>
+<td>ligeira redução com o calor, dependendo do tempo de cozedura</td>
+</tr>
+<tr>
+<td>Principais minerais</td>
+<td>
               Potássio ≈ 700–750 mg; cálcio ≈ 200–210 mg; ferro ≈ 5–7 mg;
               magnésio ≈ 50–60 mg; pequenas quantidades de zinco, manganês
               e outros oligoelementos.
             </td>
-            <td>
+<td>
               Concentrações semelhantes ou ligeiramente inferiores, dependendo da
               perda de minerais para a água de cozedura; quando o caldo é aproveitado
               (por exemplo, em sopas), o teor final no prato aproxima-se do valor cru.
             </td>
-          </tr>
-        </tbody>
-      </table>
-      <p class="referencia-nota">
+</tr>
+</tbody>
+</table>
+<p class="referencia-nota">
         Valores baseados em tabelas de composição para dill fresco (bases de dados
         internacionais) e em estimativas para dill cozinhado. Pequenas diferenças
         existem entre fontes, mas em geral confirmam o perfil de erva aromática com
         baixo valor calórico e elevada densidade de micronutrientes.
         <sup>[N1]</sup><sup>[N2]</sup><sup>[N3]</sup><sup>[N4]</sup><sup>[N5]</sup>
-      </p>
-    </section>
-
-    <!-- 7. Utilidades e aplicações (não apenas alimentares) -->
-    <section id="utilidades">
-      <h3>Utilidades e aplicações</h3>
-      <ul>
-        <li>
-          <strong>Uso alimentar principal:</strong>
+</p>
+</section>
+<!-- 7. Utilidades e aplicações (não apenas alimentares) -->
+<section id="utilidades">
+<h3>7. Utilidades e aplicações</h3>
+<ul>
+<li>
+<strong>Uso alimentar principal:</strong>
           erva aromática muito usada em pratos de <strong>peixe</strong> (especialmente
           salmão), saladas de batata, molhos de iogurte, sopas leves, marinadas,
           conservas de pepino e outros legumes, omeletes, patés e pães aromatizados.
           <sup>[C1]</sup><sup>[C2]</sup><sup>[R1]</sup><sup>[R8]</sup>
-        </li>
-        <li>
-          <strong>Uso medicinal tradicional:</strong>
+</li>
+<li>
+<strong>Uso medicinal tradicional:</strong>
           em fitoterapia popular, o endro é usado como planta digestiva, carminativa
           e calmante suave, em infusões de sementes ou folhas. Também é citado para
           aliviar sintomas de constipações, congestão nasal ligeira e incómodos
           menstruais, embora as evidências científicas robustas ainda sejam limitadas.
           <sup>[M1]</sup><sup>[M3]</sup><sup>[M4]</sup>
-        </li>
-        <li>
-          <strong>Repelente de pragas e apoio à biodiversidade:</strong>
+</li>
+<li>
+<strong>Repelente de pragas e apoio à biodiversidade:</strong>
           o aneto/endro é valorizado na horta por <strong>atrair insetos benéficos</strong>
           (como joaninhas, vespas parasitóides e sirfídeos) que se alimentam de pragas
           como pulgões e lagartas, e por servir de planta companheira para culturas
           como <strong>pepino</strong> e algumas <strong>brássicas</strong> (couve,
           couve-flor) em certos sistemas de consociação.
           <sup>[P1]</sup><sup>[P2]</sup><sup>[P3]</sup><sup>[P4]</sup>
-        </li>
-        <li>
-          <strong>Consociações favoráveis e desfavoráveis:</strong>
+</li>
+<li>
+<strong>Consociações favoráveis e desfavoráveis:</strong>
           tabelas de consociação em português referem o endro como <strong>companheiro
           benéfico</strong> de culturas como <strong>couve, couve-flor, pepino</strong>
           e <strong>coentro</strong>, mas como planta antagónica de <strong>cenoura</strong>
@@ -442,32 +736,30 @@
           destas relações, usando o aneto para apoiar certas culturas e evitando-o
           junto de outras mais sensíveis.
           <sup>[P1]</sup><sup>[P2]</sup><sup>[P3]</sup><sup>[P5]</sup>
-        </li>
-        <li>
-          <strong>Valor paisagístico e ornamental:</strong>
+</li>
+<li>
+<strong>Valor paisagístico e ornamental:</strong>
           as folhas finas e as umbelas floridas amarelas dão um aspeto leve e
-          &quot;aéreo&quot; à horta ou canteiro, tornando o aneto uma boa escolha
+          "aéreo" à horta ou canteiro, tornando o aneto uma boa escolha
           também para bordaduras e jardins comestíveis. As flores cortadas podem ser
           usadas em arranjos.
           <sup>[D3]</sup><sup>[P3]</sup>
-        </li>
-      </ul>
-    </section>
-
-    <!-- 8. Grau de funcionalidade em permacultura -->
-    <section id="permacultura">
-      <h3>Grau de funcionalidade em permacultura</h3>
-      <p>
+</li>
+</ul>
+</section>
+<!-- 8. Grau de funcionalidade em permacultura -->
+<section id="permacultura">
+<h3>8. Grau de funcionalidade em permacultura</h3>
+<p>
         Esta classificação (1 a 10) é indicativa e procura refletir o papel do
         aneto/endro em hortas agroecológicas e sistemas inspirados em permacultura,
         sobretudo em clima semelhante ao de Portugal continental.
       </p>
-      <dl>
-        <dt>Grau de funcionalidade</dt>
-        <dd>8 / 10</dd>
-
-        <dt>Funções principais</dt>
-        <dd>
+<dl>
+<dt>Grau de funcionalidade</dt>
+<dd>8 / 10</dd>
+<dt>Funções principais</dt>
+<dd>
           Erva aromática com forte valor culinário e medicinal tradicional, capaz de
           <strong>atrair insetos benéficos</strong>, apoiar a proteção de culturas
           como pepino e couves, contribuir para consociações diversificadas e, quando
@@ -475,9 +767,8 @@
           sementes para o próprio sistema. A sua presença ajuda a aumentar a
           biodiversidade funcional na horta.
         </dd>
-
-        <dt>Notas</dt>
-        <dd>
+<dt>Notas</dt>
+<dd>
           A pontuação de 8/10 reflete a combinação de <strong>versatilidade culinária</strong>,
           <strong>potencial medicinal tradicional</strong> e <strong>funções ecológicas</strong>
           importantes (atração de auxiliares, consociação com certas culturas). As
@@ -486,361 +777,352 @@
           poder ser antagónico a culturas-chave como a cenoura, exigindo planeamento
           cuidadoso da consociação.
           <sup>[P1]</sup><sup>[P2]</sup><sup>[P3]</sup><sup>[P4]</sup>
-        </dd>
-      </dl>
-    </section>
-
-    <!-- 9. Referências -->
-    <section id="referencias">
-      <h3>Referências</h3>
-
-      <h4>Descrição e botânica</h4>
-      <ol>
-        <li id="ref-D1">
-          [D1] Hortanatural. &quot;Aneto&quot; – ficha de produto para aneto/endro
+</dd>
+</dl>
+</section>
+<!-- 9. Referências -->
+<section id="referencias">
+<h3>9. Referências</h3>
+<h4>Descrição e botânica</h4>
+<ol>
+<li id="ref-D1">
+          [D1] Hortanatural. "Aneto" – ficha de produto para aneto/endro
           (<em>Anethum graveolens</em>) com descrição botânica e usos tradicionais.
           Disponível em:
-          <a href="https://hortanatural.pt/produto/aneto/" target="_blank" rel="noopener">
+          <a href="https://hortanatural.pt/produto/aneto/" rel="noopener" target="_blank">
             hortanatural.pt/produto/aneto
           </a>.
         </li>
-        <li id="ref-D2">
-          [D2] Temperos Finos. &quot;O que é Endro&quot; – glossário em português sobre
+<li id="ref-D2">
+          [D2] Temperos Finos. "O que é Endro" – glossário em português sobre
           endro/aneto, origem mediterrânica, características e uso culinário e medicinal.
           Disponível em:
-          <a href="https://temperosfinos.com.br/glossario/o-que-e-endro/" target="_blank" rel="noopener">
+          <a href="https://temperosfinos.com.br/glossario/o-que-e-endro/" rel="noopener" target="_blank">
             temperosfinos.com.br/glossario/o-que-e-endro
           </a>.
         </li>
-        <li id="ref-D3">
-          [D3] eCycle. &quot;Endro: o que é, benefícios e usos na cozinha&quot; – artigo
+<li id="ref-D3">
+          [D3] eCycle. "Endro: o que é, benefícios e usos na cozinha" – artigo
           em português que descreve o endro, origem, aparência e usos culinários e de saúde.
           Disponível em:
-          <a href="https://www.ecycle.com.br/endro/" target="_blank" rel="noopener">
+          <a href="https://www.ecycle.com.br/endro/" rel="noopener" target="_blank">
             ecycle.com.br/endro
           </a>.
         </li>
-        <li id="ref-D4">
-          [D4] Allnuts. &quot;Pra que serve o Endro?&quot; – texto em português do Brasil
+<li id="ref-D4">
+          [D4] Allnuts. "Pra que serve o Endro?" – texto em português do Brasil
           sobre características, origem e propriedades terapêuticas do endro.
           Disponível em:
-          <a href="https://allnuts.com.br/endro/" target="_blank" rel="noopener">
+          <a href="https://allnuts.com.br/endro/" rel="noopener" target="_blank">
             allnuts.com.br/endro
           </a>.
         </li>
-        <li id="ref-D5">
-          [D5] Adriana Tenchini. &quot;Endro/Dill&quot; – artigo em português que apresenta
+<li id="ref-D5">
+          [D5] Adriana Tenchini. "Endro/Dill" – artigo em português que apresenta
           o endro/dill, nome científico, sinónimos (aneto, endro) e breve contextualização
           de uso na Europa.
           Disponível em:
-          <a href="https://adrianatenchini.com.br/2025/01/30/endro-dill/" target="_blank" rel="noopener">
+          <a href="https://adrianatenchini.com.br/2025/01/30/endro-dill/" rel="noopener" target="_blank">
             adrianatenchini.com.br/2025/01/30/endro-dill
           </a>.
         </li>
-        <li id="ref-D6">
-          [D6] Scribd. &quot;Endro – Anethum graveolens L. – Ervas Medicinais&quot; –
+<li id="ref-D6">
+          [D6] Scribd. "Endro – Anethum graveolens L. – Ervas Medicinais" –
           ficha ilustrada sobre endro/aneto, com notas de sinonímia (funcho-bastardo)
           e família botânica.
           Disponível em:
-          <a href="https://pt.scribd.com/document/188346770/Endro-Anethum-graveolens-L-Ervas-Medicinais-Ficha-Completa-Ilustrada" target="_blank" rel="noopener">
+          <a href="https://pt.scribd.com/document/188346770/Endro-Anethum-graveolens-L-Ervas-Medicinais-Ficha-Completa-Ilustrada" rel="noopener" target="_blank">
             scribd.com/document/188346770/Endro-Anethum-graveolens
           </a>.
         </li>
-      </ol>
-
-      <h4>Sazonalidade e cultivo</h4>
-      <ol>
-        <li id="ref-S1">
-          [S1] Plantar Portugal. &quot;Aneto – Sementes biológicas&quot; – ficha que
+</ol>
+<h4>Sazonalidade e cultivo</h4>
+<ol>
+<li id="ref-S1">
+          [S1] Plantar Portugal. "Aneto – Sementes biológicas" – ficha que
           indica época de sementeira (março a junho), preferências de solo e espaçamentos.
           Disponível em:
-          <a href="https://www.plantarportugal.org/sementes-biologicas/aneto" target="_blank" rel="noopener">
+          <a href="https://www.plantarportugal.org/sementes-biologicas/aneto" rel="noopener" target="_blank">
             plantarportugal.org/sementes-biologicas/aneto
           </a>.
         </li>
-        <li id="ref-S2">
-          [S2] Hortas Biológicas. &quot;Endro | Como cultivar esta aromática na sua horta&quot;
+<li id="ref-S2">
+          [S2] Hortas Biológicas. "Endro | Como cultivar esta aromática na sua horta"
           – artigo em português sobre cultivo de endro em Portugal: clima, solo, pragas,
           doenças e rotação.
           Disponível em:
-          <a href="https://www.hortasbiologicas.pt/como-cultivar-endro-na-horta/" target="_blank" rel="noopener">
+          <a href="https://www.hortasbiologicas.pt/como-cultivar-endro-na-horta/" rel="noopener" target="_blank">
             hortasbiologicas.pt/como-cultivar-endro-na-horta
           </a>.
         </li>
-        <li id="ref-S3">
-          [S3] Horta e Flores. &quot;Cultivo do Aneto – Endro (Anethum graveolens)&quot; –
-          guia em português que detalha clima ideal (6–26&nbsp;ºC), proteção contra vento,
+<li id="ref-S3">
+          [S3] Horta e Flores. "Cultivo do Aneto – Endro (Anethum graveolens)" –
+          guia em português que detalha clima ideal (6–26 ºC), proteção contra vento,
           solo e cuidados gerais.
           Disponível em:
-          <a href="https://www.hortaeflores.com/2015/09/cultivo-do-aneto-endro-anethum.html" target="_blank" rel="noopener">
+          <a href="https://www.hortaeflores.com/2015/09/cultivo-do-aneto-endro-anethum.html" rel="noopener" target="_blank">
             hortaeflores.com/2015/09/cultivo-do-aneto-endro-anethum.html
           </a>.
         </li>
-      </ol>
-
-      <h4>Dados nutricionais</h4>
-      <ol>
-        <li id="ref-N1">
-          [N1] FoodStruct. &quot;Dill nutrition: calories, carbs, protein, fiber, fats&quot;
-          – ficha nutricional para dill fresco por 100&nbsp;g, incluindo macronutrientes,
+</ol>
+<h4>Dados nutricionais</h4>
+<ol>
+<li id="ref-N1">
+          [N1] FoodStruct. "Dill nutrition: calories, carbs, protein, fiber, fats"
+          – ficha nutricional para dill fresco por 100 g, incluindo macronutrientes,
           vitaminas e minerais.
           Disponível em:
-          <a href="https://foodstruct.com/food/dill" target="_blank" rel="noopener">
+          <a href="https://foodstruct.com/food/dill" rel="noopener" target="_blank">
             foodstruct.com/food/dill
           </a>.
         </li>
-        <li id="ref-N2">
-          [N2] FatSecret. &quot;Calories in 100 g of Dill and Nutrition Facts&quot; – dados
-          de energia, hidratos de carbono, proteína e gordura por 100&nbsp;g de dill.
+<li id="ref-N2">
+          [N2] FatSecret. "Calories in 100 g of Dill and Nutrition Facts" – dados
+          de energia, hidratos de carbono, proteína e gordura por 100 g de dill.
           Disponível em:
-          <a href="https://foods.fatsecret.com/calories-nutrition/usda/dill" target="_blank" rel="noopener">
+          <a href="https://foods.fatsecret.com/calories-nutrition/usda/dill" rel="noopener" target="_blank">
             foods.fatsecret.com/calories-nutrition/usda/dill
           </a>.
         </li>
-        <li id="ref-N3">
-          [N3] Australian Food Composition Database. &quot;Dill, fresh, raw&quot; – tabela
-          com energia, água e principais nutrientes por 100&nbsp;g.
+<li id="ref-N3">
+          [N3] Australian Food Composition Database. "Dill, fresh, raw" – tabela
+          com energia, água e principais nutrientes por 100 g.
           Disponível em:
-          <a href="https://afcd.foodstandards.gov.au/fooddetails.aspx?PFKID=F003509" target="_blank" rel="noopener">
+          <a href="https://afcd.foodstandards.gov.au/fooddetails.aspx?PFKID=F003509" rel="noopener" target="_blank">
             afcd.foodstandards.gov.au/fooddetails.aspx?PFKID=F003509
           </a>.
         </li>
-        <li id="ref-N4">
-          [N4] ReciPal. &quot;Dill weed, fresh – nutrition facts&quot; – informação
-          detalhada de macronutrientes por 100&nbsp;g de dill fresco.
+<li id="ref-N4">
+          [N4] ReciPal. "Dill weed, fresh – nutrition facts" – informação
+          detalhada de macronutrientes por 100 g de dill fresco.
           Disponível em:
-          <a href="https://www.recipal.com/ingredients/324-nutrition-facts-calories-protein-carbs-fat-dill-weed-fresh" target="_blank" rel="noopener">
+          <a href="https://www.recipal.com/ingredients/324-nutrition-facts-calories-protein-carbs-fat-dill-weed-fresh" rel="noopener" target="_blank">
             recipal.com/ingredients/324-nutrition-facts-dill-weed-fresh
           </a>.
         </li>
-        <li id="ref-N5">
-          [N5] Delhaize / Open Food Facts. &quot;Dill – Delhaize&quot; – rótulo nutricional
+<li id="ref-N5">
+          [N5] Delhaize / Open Food Facts. "Dill – Delhaize" – rótulo nutricional
           de dill fresco embalado, com valores de gordura, hidratos de carbono e açúcares.
           Disponível em:
-          <a href="https://world.openfoodfacts.org/product/5400112311707/dill-delhaize" target="_blank" rel="noopener">
+          <a href="https://world.openfoodfacts.org/product/5400112311707/dill-delhaize" rel="noopener" target="_blank">
             world.openfoodfacts.org/product/5400112311707/dill-delhaize
           </a>.
         </li>
-      </ol>
-
-      <h4>Estudos e revisões relacionados / uso medicinal</h4>
-      <ol>
-        <li id="ref-M1">
-          [M1] Tua Saúde. &quot;Endro: para que serve e como preparar o chá&quot; – artigo
+</ol>
+<h4>Estudos e revisões relacionados / uso medicinal</h4>
+<ol>
+<li id="ref-M1">
+          [M1] Tua Saúde. "Endro: para que serve e como preparar o chá" – artigo
           em português que descreve propriedades digestivas, carminativas e usos
           tradicionais do endro.
           Disponível em:
-          <a href="https://www.tuasaude.com/endro/" target="_blank" rel="noopener">
+          <a href="https://www.tuasaude.com/endro/" rel="noopener" target="_blank">
             tuasaude.com/endro
           </a>.
         </li>
-        <li id="ref-M2">
-          [M2] eCycle. &quot;Endro: o que é, benefícios e usos na cozinha&quot; – texto que
+<li id="ref-M2">
+          [M2] eCycle. "Endro: o que é, benefícios e usos na cozinha" – texto que
           discute nutrientes, ação antioxidante e outros potenciais benefícios do endro.
           Disponível em:
-          <a href="https://www.ecycle.com.br/endro/" target="_blank" rel="noopener">
+          <a href="https://www.ecycle.com.br/endro/" rel="noopener" target="_blank">
             ecycle.com.br/endro
           </a>.
         </li>
-        <li id="ref-M3">
-          [M3] Allnuts. &quot;Pra que serve o Endro?&quot; – artigo que destaca usos
+<li id="ref-M3">
+          [M3] Allnuts. "Pra que serve o Endro?" – artigo que destaca usos
           medicinais tradicionais (digestivo, para gases, cólicas, náuseas) e perfil de
           nutrientes e compostos bioativos.
           Disponível em:
-          <a href="https://allnuts.com.br/endro/" target="_blank" rel="noopener">
+          <a href="https://allnuts.com.br/endro/" rel="noopener" target="_blank">
             allnuts.com.br/endro
           </a>.
         </li>
-        <li id="ref-M4">
-          [M4] Ficha &quot;Endro – Anethum graveolens L.&quot; em coletâneas de ervas
+<li id="ref-M4">
+          [M4] Ficha "Endro – Anethum graveolens L." em coletâneas de ervas
           medicinais (Scribd) – compila usos tradicionais, precauções e formas de
           preparação de chás e infusões.
           Disponível em:
-          <a href="https://pt.scribd.com/document/188346770/Endro-Anethum-graveolens-L-Ervas-Medicinais-Ficha-Completa-Ilustrada" target="_blank" rel="noopener">
+          <a href="https://pt.scribd.com/document/188346770/Endro-Anethum-graveolens-L-Ervas-Medicinais-Ficha-Completa-Ilustrada" rel="noopener" target="_blank">
             scribd.com/document/188346770/Endro-Anethum-graveolens
           </a>.
         </li>
-      </ol>
-
-      <h4>Consumo, usos culinários e glossários</h4>
-      <ol>
-        <li id="ref-C1">
-          [C1] Bem Afiada. &quot;Dill, endro ou aneto: como usar este tempero&quot; –
+</ol>
+<h4>Consumo, usos culinários e glossários</h4>
+<ol>
+<li id="ref-C1">
+          [C1] Bem Afiada. "Dill, endro ou aneto: como usar este tempero" –
           artigo em português que explica o sabor, usos culinários e substituições
           possíveis para o dill/endro.
           Disponível em:
-          <a href="https://www.bemafiada.com/dill-endro-ou-aneto-como-usar-este-tempero/" target="_blank" rel="noopener">
+          <a href="https://www.bemafiada.com/dill-endro-ou-aneto-como-usar-este-tempero/" rel="noopener" target="_blank">
             bemafiada.com/dill-endro-ou-aneto-como-usar-este-tempero
           </a>.
         </li>
-        <li id="ref-C2">
-          [C2] Up to You Run Team. &quot;Aneto ou Endro ou Dill&quot; – texto em blogue
+<li id="ref-C2">
+          [C2] Up to You Run Team. "Aneto ou Endro ou Dill" – texto em blogue
           que fala do uso do aneto na cozinha, da sua riqueza em minerais e de
           propriedades digestivas.
           Disponível em:
-          <a href="https://its-uptoyou.com/aneto-ou-endro-ou-dill/" target="_blank" rel="noopener">
+          <a href="https://its-uptoyou.com/aneto-ou-endro-ou-dill/" rel="noopener" target="_blank">
             its-uptoyou.com/aneto-ou-endro-ou-dill
           </a>.
         </li>
-        <li id="ref-C3">
-          [C3] Gastronomia Carioca / Zona Sul. &quot;Endro, aneto ou dill?&quot; – artigo
+<li id="ref-C3">
+          [C3] Gastronomia Carioca / Zona Sul. "Endro, aneto ou dill?" – artigo
           que explica o uso do endro em receitas (especialmente com salmão) e dá uma
           receita de tartine de salmão defumado com endro.
           Disponível em:
-          <a href="https://gastronomiacarioca.zonasul.com.br/endro-aneto-ou-dill/" target="_blank" rel="noopener">
+          <a href="https://gastronomiacarioca.zonasul.com.br/endro-aneto-ou-dill/" rel="noopener" target="_blank">
             gastronomiacarioca.zonasul.com.br/endro-aneto-ou-dill
           </a>.
         </li>
-      </ol>
-
-      <h4>Permacultura, consociações e biodiversidade</h4>
-      <ol>
-        <li id="ref-P1">
-          [P1] A Cientista Agrícola. &quot;20 plantas companheiras para a horta: o que
-          plantar junto&quot; – inclui a combinação pepino + endro, destacando a
+</ol>
+<h4>Permacultura, consociações e biodiversidade</h4>
+<ol>
+<li id="ref-P1">
+          [P1] A Cientista Agrícola. "20 plantas companheiras para a horta: o que
+          plantar junto" – inclui a combinação pepino + endro, destacando a
           atração de insetos benéficos (joaninhas) pelo endro.
           Disponível em:
-          <a href="https://acientistaagricola.pt/2024/06/05/20-plantas-companheiras-para-a-horta-o-que-plantar-junto/" target="_blank" rel="noopener">
+          <a href="https://acientistaagricola.pt/2024/06/05/20-plantas-companheiras-para-a-horta-o-que-plantar-junto/" rel="noopener" target="_blank">
             acientistaagricola.pt/.../20-plantas-companheiras-para-a-horta
           </a>.
         </li>
-        <li id="ref-P2">
-          [P2] Hortas Bio / ABAAE. &quot;Consociações de plantas&quot; (PDF) – tabela
+<li id="ref-P2">
+          [P2] Hortas Bio / ABAAE. "Consociações de plantas" (PDF) – tabela
           em português onde o endro/aneto surge como referência em consociações com
           couves e outras culturas.
           Disponível em:
-          <a href="https://hortasbio.abaae.pt/wp-content/uploads/2020/02/consociacoes.pdf" target="_blank" rel="noopener">
+          <a href="https://hortasbio.abaae.pt/wp-content/uploads/2020/02/consociacoes.pdf" rel="noopener" target="_blank">
             hortasbio.abaae.pt/wp-content/uploads/2020/02/consociacoes.pdf
           </a>.
         </li>
-        <li id="ref-P3">
-          [P3] Hortelão de Fim‑de‑Semana. &quot;Plantas companheiras e antagônicas na
-          horta&quot; – artigo em português que menciona o endro/aneto nas relações
+<li id="ref-P3">
+          [P3] Hortelão de Fim‑de‑Semana. "Plantas companheiras e antagônicas na
+          horta" – artigo em português que menciona o endro/aneto nas relações
           com cenoura, couve e outras culturas.
           Disponível em:
-          <a href="https://hortelaofimsemana.blogspot.com/2020/04/consociacao-plantas.html" target="_blank" rel="noopener">
+          <a href="https://hortelaofimsemana.blogspot.com/2020/04/consociacao-plantas.html" rel="noopener" target="_blank">
             hortelaofimsemana.blogspot.com/2020/04/consociacao-plantas.html
           </a>.
         </li>
-        <li id="ref-P4">
-          [P4] MasterClass. &quot;Dill Companion Planting Guide: 5 Plants to Pair With
-          Dill&quot; – guia em inglês que explica como o dill atrai joaninhas, vespas
+<li id="ref-P4">
+          [P4] MasterClass. "Dill Companion Planting Guide: 5 Plants to Pair With
+          Dill" – guia em inglês que explica como o dill atrai joaninhas, vespas
           e outros predadores que ajudam a proteger brássicas.
           Disponível em:
-          <a href="https://www.masterclass.com/articles/dill-companion-planting-guide" target="_blank" rel="noopener">
+          <a href="https://www.masterclass.com/articles/dill-companion-planting-guide" rel="noopener" target="_blank">
             masterclass.com/articles/dill-companion-planting-guide
           </a>.
         </li>
-        <li id="ref-P5">
-          [P5] Agricultura e Mar. &quot;Consociação de culturas favoráveis e desfavoráveis
-          em agricultura biológica&quot; – artigo que inclui o endro como planta
+<li id="ref-P5">
+          [P5] Agricultura e Mar. "Consociação de culturas favoráveis e desfavoráveis
+          em agricultura biológica" – artigo que inclui o endro como planta
           antagónica da cenoura em certos esquemas de consociação.
           Disponível em:
-          <a href="https://agriculturaemar.com/consociacao-de-culturas-favoraveis-e-desfavoraveis-em-agricultura-biologica/" target="_blank" rel="noopener">
+          <a href="https://agriculturaemar.com/consociacao-de-culturas-favoraveis-e-desfavoraveis-em-agricultura-biologica/" rel="noopener" target="_blank">
             agriculturaemar.com/consociacao-de-culturas-favoraveis-e-desfavoraveis-em-agricultura-biologica
           </a>.
         </li>
-        <li id="ref-P6">
-          [P6] Better Homes &amp; Gardens. &quot;Plants that attract beneficial insects&quot;
+<li id="ref-P6">
+          [P6] Better Homes &amp; Gardens. "Plants that attract beneficial insects"
           – artigo em inglês que lista dill entre as plantas que atraem joaninhas,
           hoverflies e outros insetos úteis.
           Disponível em:
-          <a href="https://www.bhg.com/plants-that-attract-beneficial-insects-11754114" target="_blank" rel="noopener">
+          <a href="https://www.bhg.com/plants-that-attract-beneficial-insects-11754114" rel="noopener" target="_blank">
             bhg.com/plants-that-attract-beneficial-insects-11754114
           </a>.
         </li>
-      </ol>
-
-      <h4>Receitas e preparados</h4>
-      <ol>
-        <li id="ref-R1">
-          [R1] Panelinha. &quot;Salada de pepino com iogurte e endro&quot; – receita
+</ol>
+<h4>Receitas e preparados</h4>
+<ol>
+<li id="ref-R1">
+          [R1] Panelinha. "Salada de pepino com iogurte e endro" – receita
           em português do Brasil com pepino, iogurte natural, azeite e endro fresco.
           Disponível em:
-          <a href="https://panelinha.com.br/receita/salada-de-pepino-com-iogurte-e-endro" target="_blank" rel="noopener">
+          <a href="https://panelinha.com.br/receita/salada-de-pepino-com-iogurte-e-endro" rel="noopener" target="_blank">
             panelinha.com.br/receita/salada-de-pepino-com-iogurte-e-endro
           </a>.
         </li>
-        <li id="ref-R2">
-          [R2] Cinco Quartos de Laranja. &quot;Salmão com batatas novas, espargos e
-          molho de iogurte com aneto&quot; – receita em português (PT) com aneto/endro
+<li id="ref-R2">
+          [R2] Cinco Quartos de Laranja. "Salmão com batatas novas, espargos e
+          molho de iogurte com aneto" – receita em português (PT) com aneto/endro
           fresco no molho.
           Disponível em:
-          <a href="https://www.cincoquartosdelaranja.com/2012/07/salmao-com-batatas-novas-espargos-e.html" target="_blank" rel="noopener">
+          <a href="https://www.cincoquartosdelaranja.com/2012/07/salmao-com-batatas-novas-espargos-e.html" rel="noopener" target="_blank">
             cincoquartosdelaranja.com/2012/07/salmao-com-batatas-novas-espargos-e.html
           </a>.
         </li>
-        <li id="ref-R3">
-          [R3] The Travel Light World (blog). &quot;Salmão norueguês com molho de endro&quot;
+<li id="ref-R3">
+          [R3] The Travel Light World (blog). "Salmão norueguês com molho de endro"
           – receita em português com lombos de salmão e molho de iogurte com endro.
           Disponível em:
-          <a href="https://thetravellightworld.blogs.sapo.pt/salmao-noruegues-com-molho-de-endro-441167" target="_blank" rel="noopener">
+          <a href="https://thetravellightworld.blogs.sapo.pt/salmao-noruegues-com-molho-de-endro-441167" rel="noopener" target="_blank">
             thetravellightworld.blogs.sapo.pt/salmao-noruegues-com-molho-de-endro-441167
           </a>.
         </li>
-        <li id="ref-R4">
-          [R4] TudoGostoso. &quot;Medalhão de salmão ao molho de endro&quot; – receita
+<li id="ref-R4">
+          [R4] TudoGostoso. "Medalhão de salmão ao molho de endro" – receita
           em português do Brasil com molho cremoso aromatizado com endro.
           Disponível em:
-          <a href="https://www.tudogostoso.com.br/receita/132029-medalhao-de-salmao-ao-molho-de-endro.html" target="_blank" rel="noopener">
+          <a href="https://www.tudogostoso.com.br/receita/132029-medalhao-de-salmao-ao-molho-de-endro.html" rel="noopener" target="_blank">
             tudogostoso.com.br/receita/132029-medalhao-de-salmao-ao-molho-de-endro.html
           </a>.
         </li>
-        <li id="ref-R5">
-          [R5] Comida de Bebé. &quot;Tzatziki (molho de iogurte e pepino)&quot; – receita
+<li id="ref-R5">
+          [R5] Comida de Bebé. "Tzatziki (molho de iogurte e pepino)" – receita
           em português (PT) que usa iogurte, pepino, alho, limão, azeite e endro.
           Disponível em:
-          <a href="https://www.comidadebebe.pt/receita/tzatziki/" target="_blank" rel="noopener">
+          <a href="https://javeganize.com.br/glossario/o-que-e-tzatziki-vegano/" rel="noopener" target="_blank">
             comidadebebe.pt/receita/tzatziki
           </a>.
         </li>
-        <li id="ref-R6">
-          [R6] Gribiche. &quot;Molho de Limão e Endro&quot; – receita em português de
+<li id="ref-R6">
+          [R6] Gribiche. "Molho de Limão e Endro" – receita em português de
           molho com iogurte, limão, azeite e endro picado.
           Disponível em:
-          <a href="https://gribiche.com/pt/receitas/molho-limao-endro/" target="_blank" rel="noopener">
+          <a href="https://gribiche.com/pt/receitas/molho-limao-endro/" rel="noopener" target="_blank">
             gribiche.com/pt/receitas/molho-limao-endro
           </a>.
         </li>
-        <li id="ref-R7">
-          [R7] A Cozinha da Ovelha Negra. &quot;Salada de Batata (a pouco ortodoxa)&quot;
+<li id="ref-R7">
+          [R7] A Cozinha da Ovelha Negra. "Salada de Batata (a pouco ortodoxa)"
           – receita de salada de batata polvilhada com aneto picado antes de servir.
           Disponível em:
-          <a href="https://acozinhadaovelhanegra.com/2014/09/25/salada-de-batata-pouco-ortodoxa-ha-vida/" target="_blank" rel="noopener">
+          <a href="https://acozinhadaovelhanegra.com/2014/09/25/salada-de-batata-pouco-ortodoxa-ha-vida/" rel="noopener" target="_blank">
             acozinhadaovelhanegra.com/2014/09/25/salada-de-batata-pouco-ortodoxa-ha-vida
           </a>.
         </li>
-        <li id="ref-R8">
-          [R8] PetitChef. &quot;Receita com endro&quot; – página em português com várias
+<li id="ref-R8">
+          [R8] PetitChef. "Receita com endro" – página em português com várias
           receitas, incluindo panini de salmão, massas e bruschettas com endro/aneto.
           Disponível em:
-          <a href="https://pt.petitchef.com/receitas/receita-com-endro" target="_blank" rel="noopener">
+          <a href="https://pt.petitchef.com/receitas/receita-com-endro" rel="noopener" target="_blank">
             pt.petitchef.com/receitas/receita-com-endro
           </a>.
         </li>
-        <li id="ref-R9">
-          [R9] Receitas Globo / GNT. &quot;Filé de salmão no forno com limão e endro&quot;
+<li id="ref-R9">
+          [R9] Receitas Globo / GNT. "Filé de salmão no forno com limão e endro"
           – receita em português com filés de salmão, limão, gengibre e ramos grandes
           de endro fresco.
           Disponível em:
-          <a href="https://receitas.globo.com/receitas-da-tv/alternativa-saude/file-de-salmao-no-forno-com-limao-e-endro-gnt.ghtml" target="_blank" rel="noopener">
+          <a href="https://receitas.globo.com/receitas-da-tv/alternativa-saude/file-de-salmao-no-forno-com-limao-e-endro-gnt.ghtml" rel="noopener" target="_blank">
             receitas.globo.com/.../file-de-salmao-no-forno-com-limao-e-endro-gnt.ghtml
           </a>.
         </li>
-        <li id="ref-R10">
-          [R10] Cozinha Dalbo. &quot;Tzatziki – Molho Grego de Iogurte e Pepino&quot; –
+<li id="ref-R10">
+          [R10] Cozinha Dalbo. "Tzatziki – Molho Grego de Iogurte e Pepino" –
           receita em português do Brasil que comenta o uso de dill/endro no molho.
           Disponível em:
-          <a href="https://cozinhadalbo.com.br/2014/08/tzatziki-molho-grego-de-iogurte-e-pepino/" target="_blank" rel="noopener">
+          <a href="https://cozinhadalbo.com.br/2014/08/tzatziki-molho-grego-de-iogurte-e-pepino/" rel="noopener" target="_blank">
             cozinhadalbo.com.br/2014/08/tzatziki-molho-grego-de-iogurte-e-pepino
           </a>.
         </li>
-      </ol>
-    </section>
-  </main>
-
-  <footer>
-    <a href="index.html">← Voltar à lista de plantas</a>
-  </footer>
+</ol>
+</section>
+</article></main>
+<footer>
+<a href="index.html">← Voltar à lista de plantas</a>
+</footer>
 </body>
 </html>
