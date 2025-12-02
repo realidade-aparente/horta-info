@@ -5,56 +5,345 @@
   <title>Couve toscana – Horta da Terra para o prato</title>
   <link rel="stylesheet" href="style.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    
+.masthead{position:sticky;top:0;z-index:1000}
+</style>
 </head>
-<body>
-  <header>
+<body id="topo">
+  <div class="masthead"><header>
     <h1>Horta da Terra para o prato</h1>
-    <nav>
-      <a href="index.html">Início</a>
-      <a href="tomate.html">Tomate</a>
-      <a href="cenoura.html">Cenoura</a>
-      <a href="manjericao.html">Manjericão</a>
-      <a href="abobora-butternut.html">Abóbora butternut</a>
-      <a href="moringa.html">Moringa</a>
-      <a href="acelga.html">Acelga</a>
-      <a href="agriao.html">Agrião</a>
-      <a href="agriao-terra.html">Agrião-da-terra</a>
-      <a href="aipo.html">Aipo</a>
-      <a href="alface.html">Alface</a>
-      <a href="alho.html">Alho</a>
-      <a href="alho-frances.html">Alho-francês</a>
-      <a href="aneto.html">Aneto / Endro</a>
-      <a href="batata.html">Batata comum</a>
-      <a href="batata-doce.html">Batata-doce</a>
-      <a href="beringela.html">Beringela</a>
-      <a href="beterraba.html">Beterraba</a>
-      <a href="brocolo.html">Brócolo</a>
-      <a href="canonigos.html">Canónigos</a>
-      <a href="coentros.html">Coentros</a>
-      <a href="cebola.html">Cebola</a>
-      <a href="cebola-fresca.html">Cebola fresca / nova</a>
-      <a href="couve-chinesa.html">Couve chinesa</a>
-      <a href="couve-rabano.html">Couve-rábano</a>
-      <a href="couve-repolho.html">Couve repolho</a>
-      <a href="couve-toscana.html">Couve toscana</a>
-    </nav>
-  </header>
+    <p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar.</p></header>
+<nav>
+  <a href="index.html">Início</a>
+  <a href="abobora-butternut.html">Abóbora butternut</a>
+  <a href="acelga.html">Acelga</a>
+  <a href="agriao.html">Agrião-de-água</a>
+  <a href="agriao-terra.html">Agrião-de-terra</a>
+  <a href="aipo.html">Aipo (talos e folhas)</a>
+  <a href="alface.html">Alface</a>
+  <a href="alho.html">Alho</a>
+  <a href="alho-frances.html">Alho-francês</a>
+  <a href="aneto.html">Aneto / Endro</a>
+  <a href="batata-comum.html">Batata comum</a>
+  <a href="batata-doce.html">Batata-doce</a>
+  <a href="beringela.html">Beringela</a>
+  <a href="beterraba.html">Beterraba</a>
+  <a href="brocolo.html">Brócolo</a>
+  <a href="canonigos.html">Canónigos</a>
+  <a href="cebola.html">Cebola</a>
+  <a href="cebola-fresca.html">Cebola fresca</a>
+  <a href="cenoura.html">Cenoura</a>
+  <a href="coentros.html">Coentros</a>
+  <a href="couve-chinesa.html">Couve chinesa</a>
+  <a href="couve-repolho.html">Couve repolho</a>
+  <a href="couve-toscana.html" class="ativa">Couve toscana</a>
+  <a href="couve-flor.html">Couve-flor</a>
+  <a href="couve-rabano.html">Couve-rábano</a>
+  <a href="curgete.html">Curgete</a>
+  <a href="ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="espinafre.html">Espinafre</a>
+  <a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="feijao-verde.html">Feijão verde</a>
+  <a href="manjericao.html">Manjericão</a>
+  <a href="milho-doce.html">Milho doce</a>
+  <a href="mizuna.html">Mizuna</a>
+  <a href="morangos.html">Morangueiro / Morangos</a>
+  <a href="moringa.html">Moringa</a>
+  <a href="nabica.html">Nabiça</a>
+  <a href="nabo.html">Nabo</a>
+  <a href="pak-choi.html">Pak choi</a>
+  <a href="pepino.html">Pepino</a>
+  <a href="pimento.html">Pimento</a>
+  <a href="rabanete.html">Rabanete</a>
+  <a href="rabano.html">Rábano / Daikon</a>
+  <a href="rucula.html">Rúcula</a>
+  <a href="salanova.html">Salanova</a>
+  <a href="salsa.html">Salsa</a>
+  <a href="tomate.html">Tomate (diversas cultivares)</a>
+  <a href="tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav></div>
 
   <main>
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
     <h2>Couve toscana (<em>Brassica oleracea</em> – grupo Acephala, cavolo nero / lacinato kale)</h2>
-
-    <!-- 0. Imagem -->
-    <section id="imagem">
-      <h3>Imagem</h3>
-      <div class="image-frame">
-        <!-- ajusta o nome real do ficheiro que fores usar -->
+    <div class="tags-nomes">
+      <span>Família: Brassicáceas</span>
+      <span>Parte usada: folhas</span>
+      <span>Tipo: hortícola de folha</span>
+      <span>Produção: <strong>biológica</strong></span>
+    </div>
+    <div class="info-rapida">
+      <div><strong>Origem</strong> Variedade tradicional italiana da região da Toscana, do grupo Acephala de <em>Brassica oleracea</em>, cultivada há séculos em hortas camponesas.</div>
+      <div><strong>Uso principal</strong> Sopas espessas, salteados, assados, massas e saladas de folha verde-escura, muitas vezes em alternativa à couve galega ou a outras kales.</div>
+      <div><strong>Perfil nutricional</strong> Folha verde-escura muito rica em vitamina K, A e C, com boa quantidade de fibra e minerais como cálcio, ferro e potássio.</div>
+    </div>
+  </div>
+  <div>
+    <div class="imagem-container-externo">
+      <div class="imagem-container">
         <img src="imagens/couve-toscana.png" alt="Couve toscana com folhas longas, escuras e enrugadas, também conhecida como cavolo nero">
       </div>
-    </section>
+    </div>
+    <p class="imagem-legenda">Imagem ilustrativa de couve toscana (cavolo nero).</p>
+  </div>
+</div>
+
+<h2>Couve toscana (<em>Brassica oleracea</em> – grupo Acephala, cavolo nero / lacinato kale)</h2>
 
     <!-- 1. Apresentação / Descrição -->
     <section id="apresentacao">
-      <h3>Apresentação / Descrição</h3>
+      <h3>1. Apresentação / Descrição</h3>
       <p>
         A <strong>couve toscana</strong> é uma variedade de couve de folha pertencente à espécie
         <em>Brassica oleracea</em>, do <strong>grupo Acephala</strong>, o mesmo grupo que inclui
@@ -96,7 +385,7 @@
 
     <!-- 2. Sazonalidade (Portugal continental) -->
     <section id="sazonalidade">
-      <h3>Sazonalidade (Portugal continental)</h3>
+      <h3>2. Sazonalidade (Portugal continental)</h3>
       <p>
         A couve toscana é uma <strong>couve de folha de estação fresca</strong>, bastante
         <strong>rústica</strong> e resistente ao frio, adaptada ao clima temperado de Portugal
@@ -142,7 +431,7 @@
 
     <!-- 3. Como consumir -->
     <section id="como-consumir">
-      <h3>Como consumir</h3>
+      <h3>3. Como consumir</h3>
       <ul>
         <li>
           <strong>Partes utilizadas:</strong>
@@ -202,72 +491,51 @@
 
     <!-- 4. Receitas e preparados (Top 10) -->
     <section id="receitas">
-      <h3>Receitas e preparados (Top 10)</h3>
+      <h3>4. Receitas e preparados (Top 10)</h3>
       <p>
-        Abaixo estão 10 exemplos de receitas em língua portuguesa que utilizam
-        <strong>couve toscana</strong>, <strong>couve negra da Toscana</strong>,
-        <strong>cavolo nero</strong> ou <strong>couve kale</strong> onde a couve toscana é
-        indicada como opção. Pelo menos cinco são de sites em português de Portugal; as restantes
-        são de plataformas em português de outros países lusófonos.
+        Abaixo estão 10 exemplos de receitas em que a <strong>couve toscana</strong> (cavolo nero,
+        lacinato kale) entra como ingrediente principal ou de destaque: sopas espessas, pratos de
+        massa, saladas e snacks de forno.
       </p>
       <ol>
         <li>
-          <strong>Salada morna de couve toscana</strong> (Da Horta para a Cozinha) – salada morna de
-          folhas de couve toscana salteadas com azeite, alho e cebola, servidas com laranja,
-          arandos e amêndoas.
+          <strong><a href="couve-toscana-receitas.html#sopa-de-feijao-branco-e-couve-toscana">Sopa de feijão branco e couve-toscana</a></strong> – sopa leve mas saciante com base de cebola, cenoura e aipo, enriquecida com tomate, couve-toscana e feijão branco em caldo de legumes, acabada com um toque de limão.
           <sup>[R1]</sup>
         </li>
         <li>
-          <strong>Grão-de-bico com couve (Cinco Soldos)</strong> (Feed Continente) – receita de
-          grão-de-bico estufado com tomate, cebola, alho e <strong>couve toscana ou outra couve
-          escura</strong>, ideal como prato principal vegetariano.
+          <strong><a href="couve-toscana-receitas.html#sopa-rustica-de-couve-toscana-cebola-caramelizada-e-legumes">Sopa rústica de couve-toscana, cebola caramelizada e legumes</a></strong> – sopa tipo &quot;pappa al pomodoro&quot; cruzada com sopa de cebola: cebolas bem caramelizadas, batata-doce, tomate, caldo, couve-toscana, croutons e abóbora assada, num caldo intenso e reconfortante.
           <sup>[R2]</sup>
         </li>
         <li>
-          <strong>Risotto de cogumelos shitake e couve toscana</strong> (Na Cadeira da Papa) –
-          risotto cremoso com cogumelos, couve toscana/kale, vinho branco e queijo ralado.
+          <strong><a href="couve-toscana-receitas.html#sopa-de-cevada-batata-e-couve-toscana">Sopa de cevada, batata e couve-toscana</a></strong> – sopa simples de cevada, batata, tomate e couve-toscana cozidos em caldo de legumes com azeite, resultando num prato nutritivo e de textura cremosa graças aos grãos de cevada.
           <sup>[R3]</sup>
         </li>
         <li>
-          <strong>Couve toscana com batatas no forno</strong> (Manu's Cuisine) – prato em que
-          batatas e pimento vão ao forno e, no final, se junta couve toscana previamente salteada,
-          criando um acompanhamento robusto.
+          <strong><a href="couve-toscana-receitas.html#massa-rapida-de-couve-toscana-e-alho">Massa rápida de couve-toscana e alho</a></strong> – massa salteada com couve-toscana, alho, malagueta, azeite e levedura nutricional, com pinhões tostados por cima; um prato rápido, aromático e muito simples.
           <sup>[R4]</sup>
         </li>
         <li>
-          <strong>Chips de couve no forno</strong> (Casal Mistério) – receita de
-          <strong>chips de couve</strong> em que se recomenda uma mistura de couve toscana e couve
-          frisada, apenas com azeite e flor de sal.
+          <strong><a href="couve-toscana-receitas.html#massa-cremosa-de-couve-toscana-com-tomate-seco">Massa cremosa de couve-toscana com tomate seco</a></strong> – spaghetti com couve-toscana salteada em alho, tomate seco, &quot;natas&quot; vegetais e parmesão vegan, formando um molho rico, envolvente e cheio de sabor.
           <sup>[R5]</sup>
         </li>
         <li>
-          <strong>Couve toscana refogada na frigideira</strong> (GZ Recipes – em português) – couve
-          toscana rapidamente refogada com cenoura, aipo, cebola, azeite e água, servida como
-          acompanhamento.
+          <strong><a href="couve-toscana-receitas.html#pappardelle-com-couve-toscana-e-molho-cremoso-de-nozes">Pappardelle com couve-toscana e molho cremoso de nozes</a></strong> – massa larga servida com um molho espesso de nozes, pão, couve-toscana e bebida vegetal, perfumado com alho e salsa.
           <sup>[R6]</sup>
         </li>
         <li>
-          <strong>Couve salteada com molho de amendoim</strong> (Blog da Spice) – couve kale,
-          portuguesa ou toscana salteada e servida com molho cremoso de amendoim, sugerida como
-          acompanhamento versátil.
+          <strong><a href="couve-toscana-receitas.html#salada-de-couve-toscana-picada-com-molho-de-tahini">Salada de couve-toscana picada com molho de tahini</a></strong> – salada crocante de couve-toscana picada, maçã, cenoura, cebola roxa e arandos secos, tudo envolto num molho cremoso de tahini, vinagre de sidra e limão.
           <sup>[R7]</sup>
         </li>
         <li>
-          <strong>Ribollita toscana</strong> (GZ Recipes – em português) – sopa tradicional toscana
-          de feijão, pão e legumes, onde o <strong>cavolo nero/couve negra da Toscana</strong> é
-          ingrediente central.
+          <strong><a href="couve-toscana-receitas.html#chips-de-couve-toscana-queijo-vegan-no-forno">Chips de couve-toscana “queijo” vegan no forno</a></strong> – folhas de couve-toscana envolvidas num creme de caju, sementes, levedura nutricional e especiarias, assadas até ficarem ultra crocantes, tipo &quot;batatas fritas&quot; de couve.
           <sup>[R8]</sup>
         </li>
         <li>
-          <strong>Como preparar uma sopa toscana tradicional em casa</strong> (Ferwer) – artigo em
-          português que ensina a preparar ribollita com feijão branco, pão e couve negra (cavolo
-          nero).
+          <strong><a href="couve-toscana-receitas.html#salada-de-couve-toscana-com-laranja-abacate-e-sementes-tostadas">Salada de couve-toscana com laranja, abacate e sementes tostadas</a></strong> – salada crua de couve-toscana em tiras finas com gomos de laranja, abacate e sementes de abóbora tostadas, temperada com vinagrete simples de azeite, vinagre e xarope de ácer.
           <sup>[R9]</sup>
         </li>
         <li>
-          <strong>Caldo verde da saudade com cavolo nero</strong> (Sales Saudade) – versão de caldo
-          verde em que a autora substitui a couve-galega por <strong>cavolo nero</strong>, adaptando
-          a receita portuguesa a esta couve italiana.
+          <strong><a href="couve-toscana-receitas.html#grao-de-bico-com-tamarindo-e-couve-toscana-na-frigideira">Grão-de-bico com tamarindo e couve-toscana na frigideira</a></strong> – guisado rápido de grão-de-bico com tamarindo, tomate, açúcar escuro e malagueta, com couve-toscana fatiada, reduzido até formar um molho espesso e brilhante.
           <sup>[R10]</sup>
         </li>
       </ol>
@@ -275,7 +543,7 @@
 
     <!-- 5. Benefícios para a saúde e propriedades medicinais -->
     <section id="beneficios">
-      <h3>Benefícios para a saúde e propriedades medicinais</h3>
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
       <p>
         A couve toscana, tal como outras formas de <strong>couve kale</strong>, é frequentemente
         descrita como um alimento de elevada densidade nutricional e baixo teor energético. Com base
@@ -342,7 +610,7 @@
 
     <!-- 6. Propriedades nutricionais -->
     <section id="nutricao">
-      <h3>Propriedades nutricionais</h3>
+      <h3>6. Propriedades nutricionais</h3>
       <p>
         A tabela seguinte resume valores aproximados para <strong>couve kale/couve toscana crua</strong>
         e <strong>cozinhada simples</strong> (cozida em água ou ao vapor, sem gordura adicionada),
@@ -420,7 +688,7 @@
 
     <!-- 7. Utilidades e aplicações (não apenas alimentares) -->
     <section id="utilidades">
-      <h3>Utilidades e aplicações</h3>
+      <h3>7. Utilidades e aplicações (não apenas alimentares)</h3>
       <ul>
         <li>
           <strong>Uso culinário diversificado:</strong>
@@ -473,7 +741,7 @@
 
     <!-- 8. Grau de funcionalidade em permacultura -->
     <section id="permacultura">
-      <h3>Grau de funcionalidade em permacultura</h3>
+      <h3>8. Grau de funcionalidade em permacultura</h3>
       <p>
         Esta classificação (1 a 10) é indicativa e procura refletir o papel da
         <strong>couve toscana</strong> em hortas agroecológicas e sistemas inspirados em
@@ -498,7 +766,7 @@
           A pontuação de 9/10 reflete a combinação de <strong>alto valor alimentar</strong>,
           <strong>prolongado período de colheita</strong>, <strong>boa adaptação ao frio</strong> e
           papel relevante em <strong>rotações e consociações</strong>. Não recebe 10/10 por ainda
-          ser uma <strong>cultura essencialmente bienal/anuais de ciclo relativamente curto</strong>
+          ser uma <strong>cultura essencialmente bienal/anual de ciclo relativamente curto</strong>
           (não perene de muitos anos), exigente em nutrientes e suscetível a pragas de brássicas,
           exigindo atenção ao desenho de rotação, diversidade de espécies e práticas de manejo como
           coberturas, favorecimento de auxiliares, etc.
@@ -513,7 +781,7 @@
 
     <!-- 9. Referências -->
     <section id="referencias">
-      <h3>Referências</h3>
+      <h3>9. Referências</h3>
 
       <h4>Descrição, botânica e contexto</h4>
       <ol>
@@ -695,88 +963,79 @@
       <h4>Receitas e preparados</h4>
       <ol>
         <li id="ref-R1">
-          [R1] Da Horta para a Cozinha. &quot;Salada morna de couve Toscana&quot; – receita em português de
-          Portugal de salada morna com couve toscana, laranja, arandos e amêndoas.
+          [R1] Vegan Cocotte. &quot;Cannellini Bean and Cavolo Nero Soup&quot; – sopa com feijão branco e cavolo nero.
           Disponível em:
-          <a href="https://dahortaparaacozinha.com/home/2018/11/11/salada-morna-de-couve-toscana" target="_blank" rel="noopener">
-            dahortaparaacozinha.com/.../salada-morna-de-couve-toscana
+          <a href="https://vegancocotte.com/cavolo-nero-soup/" target="_blank" rel="noopener">
+            vegancocotte.com/cavolo-nero-soup
           </a>.
         </li>
         <li id="ref-R2">
-          [R2] Feed Continente. &quot;Grão-de-bico com couve – Cinco Soldos&quot; – receita em português de
-          Portugal onde se sugere couve toscana ou outra couve escura.
+          [R2] Nina Parker. &quot;Zuppa Cavolo Nero Soup&quot; – sopa rústica com cebola caramelizada, abóbora, pão e cavolo nero.
           Disponível em:
-          <a href="https://feed.continente.pt/receitas/grao-de-bico-com-couve-cinco-soldos" target="_blank" rel="noopener">
-            feed.continente.pt/receitas/grao-de-bico-com-couve-cinco-soldos
+          <a href="https://www.ninafood.com/recipes/2021/12/14/zuppa-cavolo-nero-soup" target="_blank" rel="noopener">
+            ninafood.com/.../zuppa-cavolo-nero-soup
           </a>.
         </li>
         <li id="ref-R3">
-          [R3] Na Cadeira da Papa. &quot;Risotto de cogumelos shitake e couve toscana&quot; – receita em
-          português de Portugal.
+          [R3] Jamie Oliver. &quot;Pearl barley and cavolo nero soup&quot; – sopa de cevada e cavolo nero.
           Disponível em:
-          <a href="https://www.nacadeiradapapa.com/2019/05/risotto-de-cogumelos-shitake-e-couve-toscana.html" target="_blank" rel="noopener">
-            nacadeiradapapa.com/.../risotto-de-cogumelos-shitake-e-couve-toscana.html
+          <a href="https://www.jamieoliver.com/recipes/soup/pearl-barley-and-cavolo-nero-soup/" target="_blank" rel="noopener">
+            jamieoliver.com/.../pearl-barley-and-cavolo-nero-soup
           </a>.
         </li>
         <li id="ref-R4">
-          [R4] Manu's Cuisine. &quot;Couve toscana com batatas no forno&quot; – receita em português de
-          Portugal.
+          [R4] The Vegan Larder. &quot;Quick Garlicky Cavolo Nero Pasta&quot; – massa rápida com cavolo nero e alho.
           Disponível em:
-          <a href="https://manuscuisine.pt/couve-toscana-com-batatas-no-forno-%F0%9F%A5%AC%F0%9F%8D%A0/" target="_blank" rel="noopener">
-            manuscuisine.pt/couve-toscana-com-batatas-no-forno
+          <a href="https://theveganlarder.com/quick-garlicky-cavolo-nero-pasta/" target="_blank" rel="noopener">
+            theveganlarder.com/quick-garlicky-cavolo-nero-pasta
           </a>.
         </li>
         <li id="ref-R5">
-          [R5] Casal Mistério. &quot;Chips de couve no forno, um delicioso e saudável aperitivo&quot; – receita
-          em português de Portugal que sugere mistura de couve toscana e couve frisada.
+          [R5] Ooh La La It’s Vegan. &quot;Best Creamy Cavolo Nero Pasta (Tuscan Kale)&quot; – massa cremosa com cavolo nero e tomate seco.
           Disponível em:
-          <a href="https://www.casalmisterio.com/chips-de-couve-no-forno-um-delicioso-e-saudavel-aperitivo-sugerido-por-uma-leitora-fantastica/" target="_blank" rel="noopener">
-            casalmisterio.com/chips-de-couve-no-forno-um-delicioso-e-saudavel-aperitivo
+          <a href="https://oohlalaitsvegan.com/cavolo-nero-pasta/" target="_blank" rel="noopener">
+            oohlalaitsvegan.com/cavolo-nero-pasta
           </a>.
         </li>
         <li id="ref-R6">
-          [R6] GZ Recipes. &quot;Couve toscana refogada na frigideira&quot; – receita em português com couve
-          toscana salteada rapidamente.
+          [R6] The Veg Space. &quot;Pappardelle with Cavolo Nero Walnut Sauce&quot; – pappardelle com molho cremoso de nozes e cavolo nero.
           Disponível em:
-          <a href="https://www.gzrecipes.com/pt/ricettechepassione/couve-toscana-refogada-na-frigideira/" target="_blank" rel="noopener">
-            gzrecipes.com/pt/ricettechepassione/couve-toscana-refogada-na-frigideira
+          <a href="https://www.thevegspace.co.uk/recipe-pappardelle-with-cavolo-nero-walnut-sauce/" target="_blank" rel="noopener">
+            thevegspace.co.uk/.../pappardelle-with-cavolo-nero-walnut-sauce
           </a>.
         </li>
         <li id="ref-R7">
-          [R7] Blog da Spice. &quot;Couve salteada com molho de amendoim&quot; – receita em português onde se
-          podem usar couve kale, portuguesa ou toscana.
+          [R7] It’s a Veg World After All. &quot;Chopped Kale Salad with Tahini Dressing&quot; – salada de kale finamente picada com molho de tahini.
           Disponível em:
-          <a href="https://blogdaspice.com/couve-salteada-com-molho-de-amendoim/" target="_blank" rel="noopener">
-            blogdaspice.com/couve-salteada-com-molho-de-amendoim
+          <a href="https://itsavegworldafterall.com/chopped-kale-salad-with-tahini-dressing/" target="_blank" rel="noopener">
+            itsavegworldafterall.com/chopped-kale-salad-with-tahini-dressing
           </a>.
         </li>
         <li id="ref-R8">
-          [R8] GZ Recipes. &quot;Ribollita toscana&quot; – receita em português de sopa ribollita com cavolo
-          nero (couve negra da Toscana).
+          [R8] Minimalist Baker. &quot;30-Minute Cheesy Kale Chips&quot; – chips de kale com cobertura &quot;cheesy&quot; à base de cajus e levedura nutricional.
           Disponível em:
-          <a href="https://www.gzrecipes.com/pt/vaipinacucina/ribollita-toscana/" target="_blank" rel="noopener">
-            gzrecipes.com/pt/vaipinacucina/ribollita-toscana
+          <a href="https://minimalistbaker.com/30-minute-cheesy-kale-chips/" target="_blank" rel="noopener">
+            minimalistbaker.com/30-minute-cheesy-kale-chips
           </a>.
         </li>
         <li id="ref-R9">
-          [R9] Ferwer. &quot;Como preparar uma sopa toscana tradicional em casa&quot; – artigo com receita de
-          ribollita usando couve negra (cavolo nero).
+          [R9] The New Baguette. &quot;Lacinato Kale Orange Salad with Avocado&quot; – salada de kale com laranja, abacate e sementes tostadas.
           Disponível em:
-          <a href="https://www.ferwer.pt/blog/como-preparar-uma-sopa-toscana-tradicional-em-casa" target="_blank" rel="noopener">
-            ferwer.pt/blog/como-preparar-uma-sopa-toscana-tradicional-em-casa
+          <a href="https://thenewbaguette.com/crunchy-lacinato-kale-salad/" target="_blank" rel="noopener">
+            thenewbaguette.com/crunchy-lacinato-kale-salad
           </a>.
         </li>
         <li id="ref-R10">
-          [R10] Sales Saudade. &quot;Caldo-verde da saudade&quot; – receita em português em que a autora
-          descreve a substituição da couve-galega por cavolo nero.
+          [R10] The Guardian / Rukmini Iyer. &quot;Tamarind chickpeas with cavolo nero and pink pickled onions&quot; – grão-de-bico com tamarindo e cavolo nero.
           Disponível em:
-          <a href="https://www.salesaudade.com/wp/pt/caldo-verde-da-saudade/" target="_blank" rel="noopener">
-            salesaudade.com/wp/pt/caldo-verde-da-saudade
+          <a href="https://www.theguardian.com/food/2025/jan/06/quick-and-easy-tamarind-chickpeas-cavolo-nero-recipe-rukmini-iyer" target="_blank" rel="noopener">
+            theguardian.com/.../tamarind-chickpeas-cavolo-nero
           </a>.
         </li>
       </ol>
     </section>
-  </main>
+  </article>
+</main>
 
   <footer>
     <a href="index.html">← Voltar à lista de plantas</a>
