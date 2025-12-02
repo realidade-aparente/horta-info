@@ -5,55 +5,345 @@
   <title>Couve repolho – Horta da Terra para o prato</title>
   <link rel="stylesheet" href="style.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    
+.masthead{position:sticky;top:0;z-index:1000}
+</style>
 </head>
-<body>
-  <header>
+<body id="topo">
+  <div class="masthead"><header>
     <h1>Horta da Terra para o prato</h1>
-    <nav>
-      <a href="index.html">Início</a>
-      <a href="tomate.html">Tomate</a>
-      <a href="cenoura.html">Cenoura</a>
-      <a href="manjericao.html">Manjericão</a>
-      <a href="abobora-butternut.html">Abóbora butternut</a>
-      <a href="moringa.html">Moringa</a>
-      <a href="acelga.html">Acelga</a>
-      <a href="agriao.html">Agrião</a>
-      <a href="agriao-terra.html">Agrião-da-terra</a>
-      <a href="aipo.html">Aipo</a>
-      <a href="alface.html">Alface</a>
-      <a href="alho.html">Alho</a>
-      <a href="alho-frances.html">Alho-francês</a>
-      <a href="aneto.html">Aneto / Endro</a>
-      <a href="batata.html">Batata comum</a>
-      <a href="batata-doce.html">Batata-doce</a>
-      <a href="beringela.html">Beringela</a>
-      <a href="beterraba.html">Beterraba</a>
-      <a href="brocolo.html">Brócolo</a>
-      <a href="canonigos.html">Canónigos</a>
-      <a href="coentros.html">Coentros</a>
-      <a href="cebola.html">Cebola</a>
-      <a href="cebola-fresca.html">Cebola fresca / nova</a>
-      <a href="couve-chinesa.html">Couve chinesa</a>
-      <a href="couve-rabano.html">Couve-rábano</a>
-      <a href="couve-repolho.html">Couve repolho</a>
-    </nav>
-  </header>
+    <p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar.</p></header>
+<nav>
+  <a href="index.html">Início</a>
+  <a href="abobora-butternut.html">Abóbora butternut</a>
+  <a href="acelga.html">Acelga</a>
+  <a href="agriao.html">Agrião-de-água</a>
+  <a href="agriao-terra.html">Agrião-de-terra</a>
+  <a href="aipo.html">Aipo (talos e folhas)</a>
+  <a href="alface.html">Alface</a>
+  <a href="alho.html">Alho</a>
+  <a href="alho-frances.html">Alho-francês</a>
+  <a href="aneto.html">Aneto / Endro</a>
+  <a href="batata-comum.html">Batata comum</a>
+  <a href="batata-doce.html">Batata-doce</a>
+  <a href="beringela.html">Beringela</a>
+  <a href="beterraba.html">Beterraba</a>
+  <a href="brocolo.html">Brócolo</a>
+  <a href="canonigos.html">Canónigos</a>
+  <a href="cebola.html">Cebola</a>
+  <a href="cebola-fresca.html">Cebola fresca</a>
+  <a href="cenoura.html">Cenoura</a>
+  <a href="coentros.html">Coentros</a>
+  <a href="couve-chinesa.html">Couve chinesa</a>
+  <a href="couve-repolho.html" class="ativa">Couve repolho</a>
+  <a href="couve-toscana.html">Couve toscana</a>
+  <a href="couve-flor.html">Couve-flor</a>
+  <a href="couve-rabano.html">Couve-rábano</a>
+  <a href="curgete.html">Curgete</a>
+  <a href="ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="espinafre.html">Espinafre</a>
+  <a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="feijao-verde.html">Feijão verde</a>
+  <a href="manjericao.html">Manjericão</a>
+  <a href="milho-doce.html">Milho doce</a>
+  <a href="mizuna.html">Mizuna</a>
+  <a href="morangos.html">Morangueiro / Morangos</a>
+  <a href="moringa.html">Moringa</a>
+  <a href="nabica.html">Nabiça</a>
+  <a href="nabo.html">Nabo</a>
+  <a href="pak-choi.html">Pak choi</a>
+  <a href="pepino.html">Pepino</a>
+  <a href="pimento.html">Pimento</a>
+  <a href="rabanete.html">Rabanete</a>
+  <a href="rabano.html">Rábano / Daikon</a>
+  <a href="rucula.html">Rúcula</a>
+  <a href="salanova.html">Salanova</a>
+  <a href="salsa.html">Salsa</a>
+  <a href="tomate.html">Tomate (diversas cultivares)</a>
+  <a href="tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav></div>
 
   <main>
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
     <h2>Couve repolho (<em>Brassica oleracea</em> – grupos Capitata e Sabauda)</h2>
-
-    <!-- 0. Imagem -->
-    <section id="imagem">
-      <h3>Imagem</h3>
-      <div class="image-frame">
-        <!-- ajusta o nome real do ficheiro que fores usar -->
+    <div class="tags-nomes">
+      <span>Família: Brassicáceas</span>
+      <span>Parte usada: folhas (cabeça/repolho)</span>
+      <span>Tipo: hortícola de folha / repolho</span>
+      <span>Produção: <strong>biológica</strong></span>
+    </div>
+    <div class="info-rapida">
+      <div><strong>Origem</strong> Formas cultivadas de <em>Brassica oleracea</em> selecionadas a partir de couves-selvagens mediterrânicas para formar cabeças compactas de folhas.</div>
+      <div><strong>Uso principal</strong> Consumida crua em saladas e &quot;coleslaw&quot;, cozida em sopas, estufados e guisados, em rolinhos recheados e em fermentados como o chucrute.</div>
+      <div><strong>Perfil nutricional</strong> Hortícola de baixo valor energético, com boa densidade de fibra, vitamina C, vitamina K, folato, potássio e compostos sulfurados típicos das crucíferas.</div>
+    </div>
+  </div>
+  <div>
+    <div class="imagem-container-externo">
+      <div class="imagem-container">
         <img src="imagens/couve-repolho.png" alt="Cabeça de couve repolho verde e outra roxa, com folhas compactas em forma de bola">
       </div>
-    </section>
+    </div>
+    <p class="imagem-legenda">Imagem ilustrativa de cabeças de couve repolho verde e roxa.</p>
+  </div>
+</div>
+
+<h2>Couve repolho (<em>Brassica oleracea</em> – grupos Capitata e Sabauda)</h2>
 
     <!-- 1. Apresentação / Descrição -->
     <section id="apresentacao">
-      <h3>Apresentação / Descrição</h3>
+      <h3>1. Apresentação / Descrição</h3>
       <p>
         As chamadas <strong>couvres de repolho</strong> são variedades de <em>Brassica oleracea</em>
         dos grupos <strong>Capitata</strong> (repolhos de cabeça lisa, como a couve-branca, couve
@@ -96,7 +386,7 @@
 
     <!-- 2. Sazonalidade (Portugal continental) -->
     <section id="sazonalidade">
-      <h3>Sazonalidade (Portugal continental)</h3>
+      <h3>2. Sazonalidade (Portugal continental)</h3>
       <p>
         As couves de repolho são culturas de <strong>clima fresco</strong>, bem adaptadas ao clima
         temperado de Portugal continental. Diferentes variedades (coração, lombarda, roxa, etc.)
@@ -138,7 +428,7 @@
 
     <!-- 3. Como consumir -->
     <section id="como-consumir">
-      <h3>Como consumir</h3>
+      <h3>3. Como consumir</h3>
       <ul>
         <li>
           <strong>Partes utilizadas:</strong>
@@ -170,7 +460,7 @@
         <li>
           <strong>Fermentada:</strong>
           em muitas tradições culinárias (especialmente da Europa central), o repolho é fermentado
-          em salmoura dando origem ao <strong>chucrute</strong>. Em casa, podem fazer‑se fermentados
+          em salmoura dando origem ao <strong>chucrute</strong>. Em casa, podem fazer-se fermentados
           com couve branca ou roxa finamente fatiada, sal e especiarias, obtendo um alimento ácido e
           rico em microrganismos vivos.
         </li>
@@ -200,64 +490,65 @@
 
     <!-- 4. Receitas e preparados (Top 10) -->
     <section id="receitas">
-      <h3>Receitas e preparados (Top 10)</h3>
+      <h3>4. Receitas e preparados (Top 10)</h3>
       <p>
-        Abaixo estão 10 exemplos de receitas em língua portuguesa que utilizam <strong>couve
-        repolho</strong> (couve-coração, lombarda, roxa ou repolho em geral). Pelo menos cinco são
-        de sites em português de Portugal; as restantes são de plataformas em português
-        internacional.
+        Abaixo estão 10 exemplos de receitas com <strong>couve repolho</strong> (couve-coração,
+        lombarda, roxa ou repolho em geral), incluindo sopas, saladas, pratos de massa, rolinhos
+        recheados e acompanhamentos salteados. Os detalhes completos de cada receita estão na página
+        específica de receitas.
       </p>
+
       <ol>
         <li>
-          <strong>Couve Coração Estufada</strong> (Cozinha à la Carte) – couve-coração de boi
-          estufada com cenoura, cebola, alho e azeite, servida como acompanhamento simples e
-          reconfortante.
+          <strong><a href="couve-repolho-receitas.html#rolinhos-de-couve-recheados-vegan-no-forno">Rolinhos de couve recheados vegan no forno</a></strong> – folhas de couve escaldadas
+          recheadas com arroz, leguminosas e legumes, cozinhadas em molho de tomate no forno até
+          ficarem macias e douradas.
           <sup>[R1]</sup>
         </li>
         <li>
-          <strong>Couve coração salteada</strong> (Cinco Quartos de Laranja) – receita em português
-          de Portugal de couve-coração salteada com azeite, cebola, alho e vinagre de maçã,
-          excelente como acompanhamento.
+          <strong><a href="couve-repolho-receitas.html#sopa-de-couve-vegan-simples">Sopa de couve vegan simples</a></strong> – sopa robusta de couve com batata, cenoura, aipo
+          e tomate, cozida em caldo de legumes e aromatizada com ervas, económica e saciante.
           <sup>[R2]</sup>
         </li>
         <li>
-          <strong>Couve-coração salteada com alho</strong> (Fruta Feia) – couve-coração escaldada e
-          de seguida salteada com alho e azeite, muito rápida e saborosa.
+          <strong><a href="couve-repolho-receitas.html#sopa-detox-de-couve-na-panela-de-pressao">Sopa detox de couve na panela de pressão</a></strong> – versão de sopa leve e rica em
+          vegetais, preparada de forma rápida em Instant Pot ou outra panela de pressão.
           <sup>[R3]</sup>
         </li>
         <li>
-          <strong>Salada de couve lombarda</strong> (Nestlé &quot;Saboreia a Vida&quot;) – salada de couve
-          lombarda em tiras finas com cenoura e cebola, temperada com molho simples.
+          <strong><a href="couve-repolho-receitas.html#couve-salteada-vegan-na-frigideira">Couve salteada vegan na frigideira</a></strong> – couve em tiras salteada com cebola,
+          pimentos, temperos fumados e manteiga vegetal, um acompanhamento cheio de sabor.
           <sup>[R4]</sup>
         </li>
         <li>
-          <strong>Salada de grão e couve lombarda caramelizada</strong> (Happy Life in the Kitchen)
-          – couve lombarda salteada até caramelizar, servida com grão-de-bico e outros ingredientes.
+          <strong><a href="couve-repolho-receitas.html#salada-asiatica-de-couve-com-molho-de-amendoim">Salada asiática de couve com molho de amendoim</a></strong> – salada crocante de couve
+          roxa e verde com cenoura, edamame e cebolinho, envolvida em molho cremoso de amendoim.
           <sup>[R5]</sup>
         </li>
         <li>
-          <strong>Sopa de couve-lombarda</strong> (Continente Feed) – sopa de legumes em que a couve
-          lombarda entra em tiras, resultando numa sopa nutritiva e económica.
+          <strong><a href="couve-repolho-receitas.html#salada-colorida-de-couve-com-molho-de-sumagre">Salada colorida de couve com molho de sumagre</a></strong> – combinação simples de
+          couve roxa e branca, cenoura e ervas, temperada com azeite, limão e sumagre.
           <sup>[R6]</sup>
         </li>
         <li>
-          <strong>Sopa de couve-coração</strong> (Continente Feed) – sopa leve com couve-coração,
-          batata e outros legumes, adequada ao dia a dia.
+          <strong><a href="couve-repolho-receitas.html#salada-tailandesa-crocante-de-couve-com-molho-de-tahini-e-laranja">Salada tailandesa crocante de couve com molho de tahini e laranja</a></strong> – salada
+          rica em texturas com couve, vegetais crus, ervas e sementes tostadas, servida com molho
+          cremoso de tahini e citrinos.
           <sup>[R7]</sup>
         </li>
         <li>
-          <strong>Salada de cenoura e couve-roxa</strong> (Pingo Doce) – receita em português de
-          Portugal que combina couve-roxa e cenoura ripadas com coentros e tempero simples.
+          <strong><a href="couve-repolho-receitas.html#massa-com-couve-salteada-fried-cabbage-and-noodles">Massa com couve salteada (fried cabbage and noodles)</a></strong> – massa salteada com
+          couve e cebola caramelizada, temperada com paprica, tipo prato de conforto caseiro.
           <sup>[R8]</sup>
         </li>
         <li>
-          <strong>Couve-roxa salteada</strong> (Continente Feed) – couve-roxa em juliana salteada
-          com cebola, vinho tinto, especiarias e maçã, um acompanhamento aromático.
+          <strong><a href="couve-repolho-receitas.html#rolinhos-de-couve-recheados-com-quinoa-e-lentilhas">Rolinhos de couve recheados com quinoa e lentilhas</a></strong> – rolinhos no forno com
+          recheio de quinoa e lentilhas em molho de tomate, muito saciantes.
           <sup>[R9]</sup>
         </li>
         <li>
-          <strong>Repolho guisado com chouriço</strong> (Petitchef) – prato de repolho guisado com
-          chouriço, cebola, alho, tomate e especiarias, típico de cozinha caseira.
+          <strong><a href="couve-repolho-receitas.html#sopa-de-couve-verde-com-batata">Sopa de couve verde com batata</a></strong> – sopa rústica de couve verde, batata e
+          legumes, terminada com ervas frescas, levedura nutricional opcional e um toque de limão.
           <sup>[R10]</sup>
         </li>
       </ol>
@@ -265,7 +556,7 @@
 
     <!-- 5. Benefícios para a saúde e propriedades medicinais -->
     <section id="beneficios">
-      <h3>Benefícios para a saúde e propriedades medicinais</h3>
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
       <p>
         A couve repolho é frequentemente destacada em guias de alimentação saudável como um
         vegetal de <strong>baixo valor calórico</strong>, mas <strong>rico em fibras, vitaminas e
@@ -332,7 +623,7 @@
 
     <!-- 6. Propriedades nutricionais -->
     <section id="nutricao">
-      <h3>Propriedades nutricionais</h3>
+      <h3>6. Propriedades nutricionais</h3>
       <p>
         A tabela seguinte resume valores aproximados para <strong>couve repolho crua</strong> e
         <strong>couve repolho cozida simples</strong> (cozida em água ou ao vapor, sem muita gordura
@@ -411,7 +702,7 @@
 
     <!-- 7. Utilidades e aplicações (não apenas alimentares) -->
     <section id="utilidades">
-      <h3>Utilidades e aplicações</h3>
+      <h3>7. Utilidades e aplicações</h3>
       <ul>
         <li>
           <strong>Uso culinário tradicional e moderno:</strong>
@@ -447,7 +738,7 @@
           <strong>Educação alimentar e hortas pedagógicas:</strong>
           o repolho, pela sua forma e pela variedade de cores (verde, roxo), é excelente para
           projetos de <strong>hortas escolares</strong>, permitindo trabalhar temas como
-          <strong>saude, nutrição, microbiota, fermentação e biodiversidade de cultivares</strong>.
+          <strong>saúde, nutrição, microbiota, fermentação e biodiversidade de cultivares</strong>.
         </li>
       </ul>
       <p class="referencia-nota">
@@ -459,7 +750,7 @@
 
     <!-- 8. Grau de funcionalidade em permacultura -->
     <section id="permacultura">
-      <h3>Grau de funcionalidade em permacultura</h3>
+      <h3>8. Grau de funcionalidade em permacultura</h3>
       <p>
         Esta classificação (1 a 10) é indicativa e procura refletir o papel da
         <strong>couve repolho</strong> em hortas agroecológicas e sistemas inspirados em
@@ -500,7 +791,7 @@
 
     <!-- 9. Referências -->
     <section id="referencias">
-      <h3>Referências</h3>
+      <h3>9. Referências</h3>
 
       <h4>Descrição, botânica e contexto</h4>
       <ol>
@@ -679,82 +970,87 @@
       <h4>Receitas e preparados</h4>
       <ol>
         <li id="ref-R1">
-          [R1] Cozinha à la Carte. &quot;Couve Coração Estufada&quot; – receita em português de Portugal.
+          [R1] Lazy Cat Kitchen. &quot;Baked vegan cabbage rolls (gołąbki)&quot; – receita de rolinhos de
+          couve recheados e assados em molho de tomate.
           Disponível em:
-          <a href="https://cozinhaalacarte.pt/receita/couve-coracao-estufada/" target="_blank" rel="noopener">
-            cozinhaalacarte.pt/receita/couve-coracao-estufada
+          <a href="https://www.lazycatkitchen.com/baked-vegan-cabbage-rolls/" target="_blank" rel="noopener">
+            lazycatkitchen.com/baked-vegan-cabbage-rolls
           </a>.
         </li>
         <li id="ref-R2">
-          [R2] Cinco Quartos de Laranja. &quot;Couve coração salteada&quot; – receita em português de
-          Portugal de couve coração de boi salteada.
+          [R2] Eat Something Vegan. &quot;Cabbage Soup&quot; – receita de sopa de couve simples com legumes.
           Disponível em:
-          <a href="https://www.cincoquartosdelaranja.com/2023/05/couve-coracao-salteada.html" target="_blank" rel="noopener">
-            cincoquartosdelaranja.com/2023/05/couve-coracao-salteada.html
+          <a href="https://eatsomethingvegan.com/cabbage-soup/" target="_blank" rel="noopener">
+            eatsomethingvegan.com/cabbage-soup
           </a>.
         </li>
         <li id="ref-R3">
-          [R3] Fruta Feia. &quot;Couve coração salteada com alho&quot; – receita simples em português.
+          [R3] Allrecipes. &quot;Instant Pot Vegan Cabbage Detox Soup&quot; – sopa de couve tipo &quot;detox&quot;
+          para panela de pressão.
           Disponível em:
-          <a href="https://frutafeia.pt/pt/comunidade/receita/couve-cora%C3%A7%C3%A3o-salteada-com-alho" target="_blank" rel="noopener">
-            frutafeia.pt/.../couve-coracao-salteada-com-alho
+          <a href="https://www.allrecipes.com/recipe/261823/instant-pot-vegan-cabbage-detox-soup/" target="_blank" rel="noopener">
+            allrecipes.com/.../instant-pot-vegan-cabbage-detox-soup
           </a>.
         </li>
         <li id="ref-R4">
-          [R4] Nestlé – Saboreia a Vida. &quot;Salada de couve lombarda&quot; – receita em português de
-          Portugal.
+          [R4] I Can You Can Vegan. &quot;Easy Vegan Fried Cabbage&quot; – couve salteada com temperos
+          ricos em sabor.
           Disponível em:
-          <a href="https://saboreiaavida.nestle.pt/cozinhar/receita/salada-de-couve-lombarda" target="_blank" rel="noopener">
-            saboreiaavida.nestle.pt/cozinhar/receita/salada-de-couve-lombarda
+          <a href="https://www.icanyoucanvegan.com/easy-vegan-fried-cabbage/" target="_blank" rel="noopener">
+            icanyoucanvegan.com/easy-vegan-fried-cabbage
           </a>.
         </li>
         <li id="ref-R5">
-          [R5] Happy Life in the Kitchen. &quot;Salada de grão e couve lombarda caramelizada&quot; – receita
-          em português de Portugal.
+          [R5] Kiipfit. &quot;Vegan Asian Cabbage Salad Slaw&quot; – salada asiática de couve com molho de
+          amendoim.
           Disponível em:
-          <a href="https://happylifeinthekitchen.blogspot.com/2019/04/salada-de-grao-e-couve-lombarda.html" target="_blank" rel="noopener">
-            happylifeinthekitchen.blogspot.com/.../salada-de-grao-e-couve-lombarda.html
+          <a href="https://kiipfit.com/asian-cabbage-salad/" target="_blank" rel="noopener">
+            kiipfit.com/asian-cabbage-salad
           </a>.
         </li>
         <li id="ref-R6">
-          [R6] Continente Feed. &quot;Sopa de couve-lombarda&quot; – receita em português de Portugal.
+          [R6] Cook Veggielicious. &quot;Colourful shredded cabbage salad (sumac dressing)&quot; – salada
+          de couve com molho de sumagre.
           Disponível em:
-          <a href="https://feed.continente.pt/receitas/sopa-de-couve-lombarda" target="_blank" rel="noopener">
-            feed.continente.pt/receitas/sopa-de-couve-lombarda
+          <a href="https://cookveggielicious.com/colourful-shredded-cabbage-salad-sumac-dressing" target="_blank" rel="noopener">
+            cookveggielicious.com/.../colourful-shredded-cabbage-salad-sumac-dressing
           </a>.
         </li>
         <li id="ref-R7">
-          [R7] Continente Feed. &quot;Sopa de couve-coração&quot; – receita em português de Portugal.
+          [R7] Cook Republic. &quot;Crunchy Thai Style Cabbage Salad – Tahini Orange Dressing&quot; – salada
+          tailandesa crocante de couve com molho de tahini e laranja.
           Disponível em:
-          <a href="https://feed.continente.pt/receitas/sopa-de-couve-coracao" target="_blank" rel="noopener">
-            feed.continente.pt/receitas/sopa-de-couve-coracao
+          <a href="https://www.cookrepublic.com/crunchy-thai-style-cabbage-salad-tahini-orange-dressing/" target="_blank" rel="noopener">
+            cookrepublic.com/.../crunchy-thai-style-cabbage-salad-tahini-orange-dressing
           </a>.
         </li>
         <li id="ref-R8">
-          [R8] Pingo Doce. &quot;Salada de cenoura e couve-roxa&quot; – receita em português de Portugal.
+          [R8] Veggie Society. &quot;Fried Cabbage and Noodles&quot; – receita de massa com couve salteada.
           Disponível em:
-          <a href="https://www.pingodoce.pt/receitas/salada-de-cenoura-e-couve-roxa/" target="_blank" rel="noopener">
-            pingodoce.pt/receitas/salada-de-cenoura-e-couve-roxa
+          <a href="https://veggiesociety.com/fried-cabbage-and-noodles-recipe/" target="_blank" rel="noopener">
+            veggiesociety.com/fried-cabbage-and-noodles-recipe
           </a>.
         </li>
         <li id="ref-R9">
-          [R9] Continente Feed. &quot;Couve-roxa salteada&quot; – receita em português de Portugal.
+          [R9] Connoisseurus Veg. &quot;Quinoa &amp; Lentil Stuffed Vegan Cabbage Rolls&quot; – rolinhos de
+          couve recheados com quinoa e lentilhas.
           Disponível em:
-          <a href="https://feed.continente.pt/receitas/couve-roxa-salteada" target="_blank" rel="noopener">
-            feed.continente.pt/receitas/couve-roxa-salteada
+          <a href="https://www.connoisseurusveg.com/quinoa-lentil-stuffed-vegan-cabbage-rolls/" target="_blank" rel="noopener">
+            connoisseurusveg.com/quinoa-lentil-stuffed-vegan-cabbage-rolls
           </a>.
         </li>
         <li id="ref-R10">
-          [R10] Petitchef. &quot;Repolho guisado com chouriço&quot; – receita em português com repolho,
-          chouriço, tomate e especiarias.
+          [R10] Desiree Nielsen. &quot;Vegan Green Cabbage Soup with Potato&quot; – sopa de couve verde com
+          batata.
           Disponível em:
-          <a href="https://pt.petitchef.com/receitas/prato-principal/repolho-guisado-com-chourico-fid-1130050" target="_blank" rel="noopener">
-            pt.petitchef.com/receitas/prato-principal/repolho-guisado-com-chourico-fid-1130050
+          <a href="https://desireerd.com/vegan-green-cabbage-soup-with-potato/" target="_blank" rel="noopener">
+            desireerd.com/vegan-green-cabbage-soup-with-potato
           </a>.
         </li>
       </ol>
     </section>
-  </main>
+  </article>
+</main>
 
   <footer>
     <a href="index.html">← Voltar à lista de plantas</a>
