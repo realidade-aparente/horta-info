@@ -5,59 +5,345 @@
   <title>Espinafre – Horta da Terra para o prato</title>
   <link rel="stylesheet" href="style.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    
+.masthead{position:sticky;top:0;z-index:1000}
+</style>
 </head>
-<body>
-  <header>
+<body id="topo">
+  <div class="masthead"><header>
     <h1>Horta da Terra para o prato</h1>
-    <nav>
-      <a href="index.html">Início</a>
-      <a href="tomate.html">Tomate</a>
-      <a href="cenoura.html">Cenoura</a>
-      <a href="manjericao.html">Manjericão</a>
-      <a href="abobora-butternut.html">Abóbora butternut</a>
-      <a href="moringa.html">Moringa</a>
-      <a href="acelga.html">Acelga</a>
-      <a href="agriao.html">Agrião</a>
-      <a href="agriao-terra.html">Agrião-da-terra</a>
-      <a href="aipo.html">Aipo</a>
-      <a href="alface.html">Alface</a>
-      <a href="alho.html">Alho</a>
-      <a href="alho-frances.html">Alho-francês</a>
-      <a href="aneto.html">Aneto / Endro</a>
-      <a href="batata.html">Batata comum</a>
-      <a href="batata-doce.html">Batata-doce</a>
-      <a href="beringela.html">Beringela</a>
-      <a href="beterraba.html">Beterraba</a>
-      <a href="brocolo.html">Brócolo</a>
-      <a href="canonigos.html">Canónigos</a>
-      <a href="coentros.html">Coentros</a>
-      <a href="cebola.html">Cebola</a>
-      <a href="cebola-fresca.html">Cebola fresca / nova</a>
-      <a href="couve-chinesa.html">Couve chinesa</a>
-      <a href="couve-rabano.html">Couve-rábano</a>
-      <a href="couve-repolho.html">Couve repolho</a>
-      <a href="couve-toscana.html">Couve toscana</a>
-      <a href="curgete.html">Curgete</a>
-      <a href="ervilhas-frescas.html">Ervilhas frescas</a>
-      <a href="espinafre.html">Espinafre</a>
-    </nav>
-  </header>
+    <p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar.</p></header>
+<nav>
+  <a href="index.html">Início</a>
+  <a href="abobora-butternut.html">Abóbora butternut</a>
+  <a href="acelga.html">Acelga</a>
+  <a href="agriao.html">Agrião-de-água</a>
+  <a href="agriao-terra.html">Agrião-de-terra</a>
+  <a href="aipo.html">Aipo (talos e folhas)</a>
+  <a href="alface.html">Alface</a>
+  <a href="alho.html">Alho</a>
+  <a href="alho-frances.html">Alho-francês</a>
+  <a href="aneto.html">Aneto / Endro</a>
+  <a href="batata-comum.html">Batata comum</a>
+  <a href="batata-doce.html">Batata-doce</a>
+  <a href="beringela.html">Beringela</a>
+  <a href="beterraba.html">Beterraba</a>
+  <a href="brocolo.html">Brócolo</a>
+  <a href="canonigos.html">Canónigos</a>
+  <a href="cebola.html">Cebola</a>
+  <a href="cebola-fresca.html">Cebola fresca</a>
+  <a href="cenoura.html">Cenoura</a>
+  <a href="coentros.html">Coentros</a>
+  <a href="couve-chinesa.html">Couve chinesa</a>
+  <a href="couve-repolho.html">Couve repolho</a>
+  <a href="couve-toscana.html">Couve toscana</a>
+  <a href="couve-flor.html">Couve-flor</a>
+  <a href="couve-rabano.html">Couve-rábano</a>
+  <a href="curgete.html">Curgete</a>
+  <a href="ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="espinafre.html" class="ativa">Espinafre</a>
+  <a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="feijao-verde.html">Feijão verde</a>
+  <a href="manjericao.html">Manjericão</a>
+  <a href="milho-doce.html">Milho doce</a>
+  <a href="mizuna.html">Mizuna</a>
+  <a href="morangos.html">Morangueiro / Morangos</a>
+  <a href="moringa.html">Moringa</a>
+  <a href="nabica.html">Nabiça</a>
+  <a href="nabo.html">Nabo</a>
+  <a href="pak-choi.html">Pak choi</a>
+  <a href="pepino.html">Pepino</a>
+  <a href="pimento.html">Pimento</a>
+  <a href="rabanete.html">Rabanete</a>
+  <a href="rabano.html">Rábano / Daikon</a>
+  <a href="rucula.html">Rúcula</a>
+  <a href="salanova.html">Salanova</a>
+  <a href="salsa.html">Salsa</a>
+  <a href="tomate.html">Tomate (diversas cultivares)</a>
+  <a href="tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav></div>
 
   <main>
-    <h2>Espinafre (<em>Spinacia oleracea</em> – espinafres / spinach)</h2>
-
-    <!-- 0. Imagem -->
-    <section id="imagem">
-      <h3>Imagem</h3>
-      <div class="image-frame">
-        <!-- ajusta o nome real do ficheiro que fores usar -->
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Espinafre-comum (<em>Spinacia oleracea</em>)</h2>
+    <div class="tags-nomes">
+      <span>Família: Amarantáceas</span>
+      <span>Parte usada: folhas tenras</span>
+      <span>Tipo: hortícola de folha</span>
+      <span>Produção: <strong>biológica</strong></span>
+    </div>
+    <div class="info-rapida">
+      <div><strong>Origem</strong> Hortícola de clima fresco, amplamente cultivada em regiões temperadas e mediterrânicas como cultura de outono-inverno e início da primavera.</div>
+      <div><strong>Uso principal</strong> Folhas verdes em saladas, sopas, esparregados, pratos de forno, massas, arrozes e salteados rápidos com alho e azeite.</div>
+      <div><strong>Perfil nutricional</strong> Folha verde muito rica em vitamina K, folato, carotenoides, vitamina C e minerais como ferro, cálcio, potássio e magnésio.</div>
+    </div>
+  </div>
+  <div>
+    <div class="imagem-container-externo">
+      <div class="imagem-container">
         <img src="imagens/espinafre.png" alt="Folhas verdes de espinafre fresco, inteiras, sobre fundo neutro">
       </div>
-    </section>
+    </div>
+    <p class="imagem-legenda">Imagem ilustrativa de folhas de espinafre fresco.</p>
+  </div>
+</div>
+
+<h2>Espinafre (<em>Spinacia oleracea</em> – espinafres / spinach)</h2>
 
     <!-- 1. Apresentação / Descrição -->
     <section id="apresentacao">
-      <h3>Apresentação / Descrição</h3>
+      <h3>1. Apresentação / Descrição</h3>
       <p>
         O <strong>espinafre</strong> é uma hortícola de folhas verdes, pertencente à espécie
         <em>Spinacia oleracea</em>, da família das <strong>Amaranthaceae</strong> (antiga família
@@ -97,7 +383,7 @@
 
     <!-- 2. Sazonalidade (Portugal continental) -->
     <section id="sazonalidade">
-      <h3>Sazonalidade (Portugal continental)</h3>
+      <h3>2. Sazonalidade (Portugal continental)</h3>
       <p>
         O espinafre é uma cultura típica de <strong>estação fresca</strong>, que prefere
         temperaturas amenas e não aprecia calor excessivo. Em Portugal continental, guias de
@@ -136,7 +422,7 @@
 
     <!-- 3. Como consumir -->
     <section id="como-consumir">
-      <h3>Como consumir</h3>
+      <h3>3. Como consumir</h3>
       <ul>
         <li>
           <strong>Partes utilizadas:</strong>
@@ -196,62 +482,62 @@
 
     <!-- 4. Receitas e preparados (Top 10) -->
     <section id="receitas">
-      <h3>Receitas e preparados (Top 10)</h3>
+      <h3>4. Receitas e preparados (Top 10)</h3>
       <p>
-        Abaixo estão 10 exemplos de receitas em língua portuguesa que utilizam
-        <strong>espinafres</strong> (frescos ou congelados). Pelo menos cinco são de sites em
-        português de Portugal; as restantes são também em português, incluindo Portugal e Brasil.
+        Abaixo estão 10 exemplos de receitas com <strong>espinafres</strong>, selecionadas de
+        diferentes fontes (blogues e sites de culinária, maioritariamente em inglês), que utilizam
+        espinafres frescos ou congelados em pratos principais, sopas, massas, acompanhamentos e
+        preparações de forno.
       </p>
       <ol>
         <li>
-          <strong>Esparregado de espinafres</strong> (Vaqueiro) – receita clássica portuguesa de
-          <strong>esparregado</strong>, um puré cremoso de espinafres temperado com alho, farinha,
-          leite e azeite (ou Vaqueiro), servido como acompanhamento.
+          <strong><a href="espinafre-receitas.html#caril-espinafres-grao-de-bico">Caril de espinafres com grão-de-bico</a></strong> – caril aromático com leite de coco,
+          especiarias e espinafres frescos, ideal para servir com arroz basmati ou integral.
           <sup>[R1]</sup>
         </li>
         <li>
-          <strong>Esparregado de espinafres</strong> (Pingo Doce) – versão rápida em que se usam
-          espinafres, azeite, alho, farinha e vinagre ou limão, pronta em cerca de 15 minutos.
+          <strong><a href="espinafre-receitas.html#creamed-spinach-vegan">Creamed spinach vegan (espinafres cremosos)</a></strong> – versão vegetal dos espinafres
+          cremosos, feita com molho branco espesso à base de bebida vegetal, sem lacticínios.
           <sup>[R2]</sup>
         </li>
         <li>
-          <strong>Esparregado de espinafres</strong> (Continente Feed) – alternativa simples de
-          esparregado, feita com espinafres, leite, farinha e temperos, pronta em poucos minutos.
+          <strong><a href="espinafre-receitas.html#massa-espinafres-tomate-seco">Massa com espinafres e tomate seco</a></strong> – prato rápido em que o sabor intenso do
+          tomate seco contrasta com a frescura dos espinafres num molho cremoso.
           <sup>[R3]</sup>
         </li>
         <li>
-          <strong>Espinafres salteados com alho e amêndoas</strong> (Continente Feed) – folha de
-          espinafre salteada em azeite com alho, finalizada com amêndoas torradas.
+          <strong><a href="espinafre-receitas.html#sopa-cremosa-espinafre-batata">Sopa cremosa de espinafre e batata</a></strong> – sopa verde aveludada, em que o espinafre
+          junta frescura ao corpo cremoso conferido pelas batatas.
           <sup>[R4]</sup>
         </li>
         <li>
-          <strong>Espinafres salteados com ovo e cogumelos</strong> (Continente Feed) – prato
-          principal simples com espinafres, cogumelos, ovos e queijo, preparado na frigideira.
+          <strong><a href="espinafre-receitas.html#arroz-salteado-espinafres-limao-alho">Arroz salteado com espinafres, limão e alho</a></strong> – acompanhamento leve e cítrico,
+          perfeito para dias quentes ou para servir com tofu, legumes assados ou leguminosas.
           <sup>[R5]</sup>
         </li>
         <li>
-          <strong>Quiche de espinafres e bacon</strong> (Continente Feed) – quiche com massa
-          folhada, espinafres, bacon e recheio cremoso de ovos e natas.
+          <strong><a href="espinafre-receitas.html#tofu-mexido-espinafres">Tofu mexido com espinafres</a></strong> – alternativa vegetal aos ovos mexidos, rica em
+          proteína e ideal para pequenos-almoços, brunch ou refeições leves.
           <sup>[R6]</sup>
         </li>
         <li>
-          <strong>Tarte de espinafres</strong> (Food From Portugal) – tarte salgada de espinafres
-          com ovos, natas e queijo, tipicamente servida como refeição ligeira.
+          <strong><a href="espinafre-receitas.html#lasanha-vegan-espinafres-cogumelos">Lasanha vegan de espinafres e cogumelos</a></strong> – lasanha de forno com camadas de
+          espinafres refogados, cogumelos salteados e béchamel vegetal.
           <sup>[R7]</sup>
         </li>
         <li>
-          <strong>Tarte de espinafres e queijo</strong> (Vaqueiro) – tarte/quiche com espinafres e
-          mistura de queijos, ideal para refeições vegetarianas.
+          <strong><a href="espinafre-receitas.html#sopa-miso-espinafres-tofu">Sopa miso com espinafres e tofu macio</a></strong> – sopa japonesa simples com caldo miso,
+          cubos de tofu e espinafres adicionados no final para preservar a cor e textura.
           <sup>[R8]</sup>
         </li>
         <li>
-          <strong>Sopa de espinafres</strong> (Continente Feed) – sopa simples de espinafres,
-          batata e outros legumes, cremosa e reconfortante.
+          <strong><a href="espinafre-receitas.html#panquecas-verdes-salgadas-espinafre">Panquecas verdes salgadas de espinafre</a></strong> – panquecas finas com massa verde de
+          espinafre, para rechear com legumes, cremes salgados ou tofu marinado.
           <sup>[R9]</sup>
         </li>
         <li>
-          <strong>Sopa de espinafres cremosa</strong> (Made by Choices) – sopa cremosa de
-          espinafres com batata, cenoura e outros legumes, com opção vegan.
+          <strong><a href="espinafre-receitas.html#espinafres-salteados-alho-limao-frigideira">Espinafres salteados com alho e limão na frigideira</a></strong> – acompanhamento muito
+          simples e rápido, pronto em poucos minutos, com alho e limão a realçar o sabor das folhas.
           <sup>[R10]</sup>
         </li>
       </ol>
@@ -259,7 +545,7 @@
 
     <!-- 5. Benefícios para a saúde e propriedades medicinais -->
     <section id="beneficios">
-      <h3>Benefícios para a saúde e propriedades medicinais</h3>
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
       <p>
         Vários artigos de saúde e nutrição em português descrevem o <strong>espinafre</strong> como
         um <strong>alimento denso em micronutrientes</strong> e com propriedades interessantes para
@@ -326,7 +612,7 @@
 
     <!-- 6. Propriedades nutricionais -->
     <section id="nutricao">
-      <h3>Propriedades nutricionais</h3>
+      <h3>6. Propriedades nutricionais</h3>
       <p>
         A tabela seguinte resume valores aproximados para <strong>espinafre cru</strong> e
         <strong>espinafre cozido simples</strong> (cozido em água ou ao vapor, sem muita gordura
@@ -414,7 +700,7 @@
 
     <!-- 7. Utilidades e aplicações (não apenas alimentares) -->
     <section id="utilidades">
-      <h3>Utilidades e aplicações</h3>
+      <h3>7. Utilidades e aplicações</h3>
       <ul>
         <li>
           <strong>Uso culinário versátil:</strong>
@@ -458,7 +744,7 @@
 
     <!-- 8. Grau de funcionalidade em permacultura -->
     <section id="permacultura">
-      <h3>Grau de funcionalidade em permacultura</h3>
+      <h3>8. Grau de funcionalidade em permacultura</h3>
       <p>
         Esta classificação (1 a 10) é indicativa e procura refletir o papel do
         <strong>espinafre</strong> em hortas agroecológicas e sistemas inspirados em permacultura,
@@ -495,7 +781,7 @@
 
     <!-- 9. Referências -->
     <section id="referencias">
-      <h3>Referências</h3>
+      <h3>9. Referências</h3>
 
       <h4>Descrição, botânica e contexto</h4>
       <ol>
@@ -554,7 +840,7 @@
         </li>
         <li id="ref-S3">
           [S3] APN – Associação Portuguesa de Nutrição. &quot;Sazonalidade dos Alimentos&quot; (brochura
-          em PDF) – inclui calendário de produção and disponibilidade de vários hortícolas em
+          em PDF) – inclui calendário de produção e disponibilidade de vários hortícolas em
           Portugal, entre os quais o espinafre.
           Disponível em:
           <a href="https://www.apn.org.pt/documentos/Brochura_Sazonalidade_completo.pdf" target="_blank" rel="noopener">
@@ -567,8 +853,7 @@
       <ol>
         <li id="ref-N1">
           [N1] Tua Saúde. &quot;Espinafre: 11 benefícios e como fazer (com receitas)&quot; – inclui tabela de
-          informação nutricional de 100&nbsp;g de espinafre cru e cozido, com energia, macronutrientes
-          e micronutrientes.
+          informação nutricional de 100&nbsp;g de espinafre cru e cozido.
           Disponível em:
           <a href="https://www.tuasaude.com/beneficios-do-espinafre/" target="_blank" rel="noopener">
             tuasaude.com/beneficios-do-espinafre
@@ -662,85 +947,79 @@
       <h4>Receitas e preparados</h4>
       <ol>
         <li id="ref-R1">
-          [R1] Vaqueiro. &quot;Esparregado de Espinafres&quot; – receita clássica de esparregado de
-          espinafres.
+          [R1] Lazy Cat Kitchen. &quot;Chickpea &amp; spinach curry&quot; – receita de caril de grão-de-bico com espinafres e leite de coco, base para o &quot;Caril de espinafres com grão-de-bico&quot; desta página.
           Disponível em:
-          <a href="https://www.vaqueiro.pt/recipes/esparregado-de-espinafres-199111" target="_blank" rel="noopener">
-            vaqueiro.pt/recipes/esparregado-de-espinafres-199111
+          <a href="https://www.lazycatkitchen.com/chickpea-spinach-curry/" target="_blank" rel="noopener">
+            lazycatkitchen.com/chickpea-spinach-curry
           </a>.
         </li>
         <li id="ref-R2">
-          [R2] Pingo Doce. &quot;Esparregado&quot; – receita de esparregado de espinafres em português de
-          Portugal.
+          [R2] It Doesn’t Taste Like Chicken. &quot;Vegan Creamed Spinach&quot; – espinafres cremosos veganos com molho branco vegetal, base para a receita &quot;Creamed spinach vegan&quot;.
           Disponível em:
-          <a href="https://www.pingodoce.pt/receitas/esparregado/" target="_blank" rel="noopener">
-            pingodoce.pt/receitas/esparregado
+          <a href="https://itdoesnttastelikechicken.com/vegan-creamed-spinach/" target="_blank" rel="noopener">
+            itdoesnttastelikechicken.com/vegan-creamed-spinach
           </a>.
         </li>
         <li id="ref-R3">
-          [R3] Continente Feed. &quot;Esparregado&quot; – receita de esparregado, frequentemente preparada
-          com espinafres.
+          [R3] The Vegan 8. &quot;Vegan Creamy Spinach Pasta&quot; – massa cremosa com espinafres utilizada como referência para a receita &quot;Massa com espinafres e tomate seco&quot;.
           Disponível em:
-          <a href="https://feed.continente.pt/receitas/esparregado" target="_blank" rel="noopener">
-            feed.continente.pt/receitas/esparregado
+          <a href="https://thevegan8.com/vegan-creamy-spinach-pasta/" target="_blank" rel="noopener">
+            thevegan8.com/vegan-creamy-spinach-pasta
           </a>.
         </li>
         <li id="ref-R4">
-          [R4] Continente Feed. &quot;Espinafres salteados com alho e amêndoas&quot; – espinafres salteados
-          com alho e amêndoas torradas.
+          [R4] Simple Veganista. &quot;Creamy Spinach Potato Soup&quot; – sopa cremosa de batata e espinafres que serviu de base à receita &quot;Sopa cremosa de espinafre e batata&quot;.
           Disponível em:
-          <a href="https://feed.continente.pt/receitas/espinafres-salteados-com-alho-e-amendoas" target="_blank" rel="noopener">
-            feed.continente.pt/receitas/espinafres-salteados-com-alho-e-amendoas
+          <a href="https://simple-veganista.com/creamy-spinach-potato-soup/" target="_blank" rel="noopener">
+            simple-veganista.com/creamy-spinach-potato-soup
           </a>.
         </li>
         <li id="ref-R5">
-          [R5] Continente Feed. &quot;Espinafres salteados com ovo e cogumelos&quot; – receita de prato
-          principal com espinafres, ovos e cogumelos.
+          [R5] Cook with Manali. &quot;Lemon Spinach Rice&quot; – arroz com espinafres e limão, inspiração para &quot;Arroz salteado com espinafres, limão e alho&quot;.
           Disponível em:
-          <a href="https://feed.continente.pt/receitas/espinafres-salteados-com-ovo-e-cogumelos" target="_blank" rel="noopener">
-            feed.continente.pt/receitas/espinafres-salteados-com-ovo-e-cogumelos
+          <a href="https://www.cookwithmanali.com/lemon-spinach-rice/" target="_blank" rel="noopener">
+            cookwithmanali.com/lemon-spinach-rice
           </a>.
         </li>
         <li id="ref-R6">
-          [R6] Continente Feed. &quot;Quiche de espinafres e bacon&quot; – quiche com espinafres e bacon.
+          [R6] Simple Veganista. &quot;Tofu Scramble&quot; – receita de tofu mexido que serviu de base à versão com espinafres apresentada nesta página.
           Disponível em:
-          <a href="https://feed.continente.pt/receitas/quiche-espinafres-bacon" target="_blank" rel="noopener">
-            feed.continente.pt/receitas/quiche-espinafres-bacon
+          <a href="https://simple-veganista.com/tofu-scramble/" target="_blank" rel="noopener">
+            simple-veganista.com/tofu-scramble
           </a>.
         </li>
         <li id="ref-R7">
-          [R7] Food From Portugal. &quot;Tarte de espinafres&quot; – tarte salgada de espinafres.
+          [R7] VegFAQs. &quot;Vegan Spinach Mushroom Lasagna&quot; – lasanha vegan de espinafres e cogumelos, referência principal para a receita homónima.
           Disponível em:
-          <a href="https://www.foodfromportugal.com/pt-pt/receitas/tarte-espinafres/" target="_blank" rel="noopener">
-            foodfromportugal.com/pt-pt/receitas/tarte-espinafres
+          <a href="https://vegfaqs.com/vegan-spinach-mushroom-lasagna/" target="_blank" rel="noopener">
+            vegfaqs.com/vegan-spinach-mushroom-lasagna
           </a>.
         </li>
         <li id="ref-R8">
-          [R8] Vaqueiro. &quot;Tarte de Espinafres e Queijo&quot; – receita de tarte de espinafres com
-          queijo.
+          [R8] Just One Cookbook. &quot;Spinach Tofu Miso Soup&quot; – sopa miso com espinafres e tofu, usada como base para a receita &quot;Sopa miso com espinafres e tofu macio&quot;.
           Disponível em:
-          <a href="https://www.vaqueiro.pt/recipes/tarte-de-espinafres-e-queijo-199150" target="_blank" rel="noopener">
-            vaqueiro.pt/recipes/tarte-de-espinafres-e-queijo-199150
+          <a href="https://www.justonecookbook.com/spinach-tofu-miso-soup/" target="_blank" rel="noopener">
+            justonecookbook.com/spinach-tofu-miso-soup
           </a>.
         </li>
         <li id="ref-R9">
-          [R9] Continente Feed. &quot;Sopa de espinafres&quot; – receita de sopa de espinafres.
+          [R9] From My Bowl. &quot;Vegan Spinach Pancakes&quot; – panquecas de espinafre que inspiraram a receita &quot;Panquecas verdes salgadas de espinafre&quot;.
           Disponível em:
-          <a href="https://feed.continente.pt/receitas/sopa-de-espinafres" target="_blank" rel="noopener">
-            feed.continente.pt/receitas/sopa-de-espinafres
+          <a href="https://frommybowl.com/vegan-spinach-pancakes/" target="_blank" rel="noopener">
+            frommybowl.com/vegan-spinach-pancakes
           </a>.
         </li>
         <li id="ref-R10">
-          [R10] Made by Choices. &quot;Sopa de espinafres cremosa&quot; – sopa cremosa de espinafres com
-          opção vegan.
+          [R10] Healthier Steps. &quot;Sauteed Spinach&quot; – receita de espinafres salteados com alho, base para &quot;Espinafres salteados com alho e limão&quot;.
           Disponível em:
-          <a href="https://madebychoices.pt/sopa-de-espinafres-cremosa/" target="_blank" rel="noopener">
-            madebychoices.pt/sopa-de-espinafres-cremosa
+          <a href="https://healthiersteps.com/sauteed-spinach/" target="_blank" rel="noopener">
+            healthiersteps.com/sauteed-spinach
           </a>.
         </li>
       </ol>
     </section>
-  </main>
+  </article>
+</main>
 
   <footer>
     <a href="index.html">← Voltar à lista de plantas</a>
