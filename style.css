@@ -86,7 +86,9 @@ main {
   margin-top: 0;
   font-size: 1.4rem;
   color: #8FBC8F;
-  -webkit-text-stroke: 1px #2F4F4F;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #2F4F4F;
+  /* -webkit-text-stroke: 1px #2F4F4F; */
 }
 
 .intro-cabecalho p {
