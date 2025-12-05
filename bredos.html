@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Bredos (Amaranthus blitum) | Horta da Terra para o prato</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota, .referencia-nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .nota-aviso {
+            font-size: 0.85rem;
+            color: #9a3412;
+            background: #fff7ed;
+            border-radius: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #fed7aa;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body id="topo">
+<header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Plantas espontâneas comestíveis de produção biológica – da terra para o prato.</p>
+</header>
+
+<nav>
+    <a href="index.html">Início</a>
+    <a href="espontaneas.html">Índice</a>
+    <a href="beldroega.html">Beldroega</a>
+    <a href="bredos.html" class="ativa">Bredos</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="quenopodio.html">Quenopódio</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+</nav>
+
+<main>
+    <article class="planta">
+        <div class="planta-cabecalho">
+            <div class="planta-titulo">
+                <h2>Bredos (<em>Amaranthus blitum</em>)</h2>
+                <p><strong>Outros nomes em português:</strong> bredo, bredos de folha, caruru (em vários contextos lusófonos), caruru-de-horta, caruru-de-folha.</p>
+                <p><strong>Nome mais comum em inglês:</strong> purple amaranth, slender amaranth, Guernsey pigweed (grupo de amaranths de folha).</p>
+
+                <div class="tags-nomes">
+                    <span>Família: Amaranthaceae</span>
+                    <span>Parte usada: folhas e rebentos tenros</span>
+                    <span>Tipo: planta espontânea comestível (PANC)</span>
+                    <span>Produção/recoleção: <strong>biológica</strong></span>
+                </div>
+
+                <div class="info-rapida">
+                    <div>
+                        <strong>Origem e status</strong>
+                        Amaranthus blitum é um amaranto anual, muitas vezes considerado “erva daninha”, mas usado como verdura em várias regiões do Mediterrâneo, África e Américas.
+                    </div>
+                    <div>
+                        <strong>Uso principal</strong>
+                        Folhas e rebentos cozinhados como “verdura de tacho”, semelhantes a espinafres: sopas, refogados, guisados, pratos com leite de coco, etc.
+                    </div>
+                    <div>
+                        <strong>Perfil nutricional</strong>
+                        Boa fonte de vitaminas (A, C, folatos), minerais (cálcio, magnésio, ferro) e compostos com atividade antioxidante.
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="imagem-container-externo">
+                    <div class="imagem-container">
+                        <img src="imagens/bredo.png" alt="Bredos (Amaranthus blitum) – folhas verdes espontâneas usadas como verdura de tacho">
+                    </div>
+                </div>
+                <p class="imagem-legenda">Bredos biológicos (Amaranthus blitum), colhidos espontaneamente e usados como verdura semelhante a espinafre.</p>
+            </div>
+        </div>
+
+        <section id="apresentacao">
+            <h3>1. Apresentação / Descrição</h3>
+            <p>
+                Os <strong>Bredos</strong>, neste contexto centrados em <strong><em>Amaranthus blitum</em></strong>,
+                são plantas anuais da família Amaranthaceae. Têm caule ereto ou semi-prostrado, que pode atingir até
+                cerca de 1&nbsp;m de altura, folhas verdes ou esverdeado-arroxeadas, simples, em geral de forma
+                ovada a ligeiramente triangular, e inflorescências em espigas com pequenas flores verde-avermelhadas.
+            </p>
+            <p>
+                Em muitas regiões, espécies de <em>Amaranthus</em> de folha são conhecidas como
+                <strong>caruru</strong> ou <strong>bredo</strong>, sendo colhidas espontaneamente e usadas como
+                hortaliças de folha. Em Portugal, o termo “bredo” surge mais em contextos ligados a tradições
+                afro-brasileiras e culinária brasileira, mas espécies de amaranto espontâneas também aparecem em
+                hortas e terrenos agrícolas como “infestantes” comestíveis, de uso semelhante ao das
+                <strong>verduras de tacho</strong> (espinafre, nabiça, etc.).
+            </p>
+            <p>
+                <em>Amaranthus blitum</em> é descrito em fontes botânicas e agrícolas como uma verdura
+                <strong>produtiva, saborosa e nutritiva</strong>, embora pouco valorizada face às hortaliças
+                convencionais. As folhas tenras e rebentos são colhidos antes de a planta ficar demasiado fibrosa
+                ou emitir muita semente.
+            </p>
+            <p class="referencia-nota">
+                Referência(s) de suporte para a descrição:
+                <a href="https://en.wikipedia.org/wiki/Amaranthus_blitum" target="_blank">[D1]</a>
+                <a href="https://prota4u.org/database/protav8.asp?g=pe&p=Amaranthus+blitum+L." target="_blank">[D2]</a>
+                <a href="https://tropical.theferns.info/viewtropical.php?id=Amaranthus+blitum" target="_blank">[D3]</a>
+                <a href="https://pt.wikipedia.org/wiki/Caruru" target="_blank">[D4]</a>
+                <a href="https://baanacozinha.com.br/bredo-amaranthus-viridis-l/" target="_blank">[D5]</a>
+            </p>
+        </section>
+
+        <section id="sazonalidade">
+            <h3>2. Sazonalidade (Portugal continental)</h3>
+            <p>
+                Tal como outras espécies de amaranto, os bredos preferem <strong>climas quentes</strong> e solos
+                relativamente férteis, surgindo de forma espontânea sobretudo na época primavera-verão.
+            </p>
+            <ul>
+                <li>
+                    <strong>Emergência:</strong> germinam quando o solo aquece, a partir da <strong>primavera</strong>,
+                    com maior expressão a partir de <strong>abril/maio</strong> em zonas mais quentes e ligeiramente
+                    mais tarde em regiões interiores frescas.
+                </li>
+                <li>
+                    <strong>Pico de crescimento:</strong> durante o <strong>verão</strong> (junho a agosto/setembro),
+                    especialmente em solos ricos em matéria orgânica e com alguma humidade (rega ou chuvas de verão).
+                </li>
+                <li>
+                    <strong>Colheita:</strong> colhem-se <strong>folhas e rebentos jovens</strong>, antes de os caules
+                    endurecerem e antes de a planta ir fortemente à semente. A colheita escalonada (cortar rebentos
+                    laterais e deixar rebrotar) permite obter produção durante várias semanas.
+                </li>
+                <li>
+                    <strong>Gestão em horta biológica:</strong> como outras espontâneas comestíveis, pode ser gerida
+                    em manchas controladas, colhendo regularmente para alimentação e evitando que se torne dominante.
+                </li>
+            </ul>
+            <p class="nota">
+                Em Portugal continental, faz sentido considerar os bredos uma verdura de
+                <strong>primavera/verão</strong>, com consumo preferencial de folhas jovens colhidas em locais limpos
+                (longe de contaminações, estradas e solos muito adubados com fertilizantes sintéticos).
+            </p>
+        </section>
+
+        <section id="como-consumir">
+            <h3>3. Como consumir</h3>
+            <p>
+                Na alimentação aproveitam-se sobretudo as <strong>folhas tenras e rebentos jovens</strong>, usados
+                de forma muito semelhante a espinafres, nabiças ou outras verduras de tacho.
+            </p>
+            <ul>
+                <li>
+                    <strong>Salteados e refogados simples:</strong> talvez a forma mais comum, com os bredos
+                    escaldados rapidamente em água a ferver e depois refogados em azeite com alho, cebola
+                    e, nalgumas receitas brasileiras, leite de coco.
+                </li>
+                <li>
+                    <strong>Sopas e cremes:</strong> podem ser adicionados a sopas de legumes e cremes verdes,
+                    combinando com batata, abóbora, cenoura ou feijão.
+                </li>
+                <li>
+                    <strong>Pratos tradicionais com leite de coco:</strong> em várias receitas do Nordeste do Brasil
+                    (por ex. “bredo da Semana Santa”) os bredos são cozinhados com leite de coco, cebola, tomate,
+                    pimento e por vezes acompanhados de peixe ou outros ingredientes típicos.
+                </li>
+                <li>
+                    <strong>Omeletes e tortilhas:</strong> folhas picadas podem ser salteadas e depois envolvidas
+                    em ovos batidos para fazer omeletes de bredo, prato citado em materiais de receitas caseiras.
+                </li>
+                <li>
+                    <strong>Como acompanhamento de leguminosas:</strong> refogados de bredo com ou sem leite de coco
+                    acompanham feijões, grão-de-bico ou lentilhas, enriquecendo o prato em fibra e micronutrientes.
+                </li>
+                <li>
+                    <strong>Em cru (com moderação):</strong> algumas tradições utilizam as folhas muito jovens em
+                    pequenas quantidades em saladas. No entanto, a maior parte das fontes recomenda o consumo
+                    preferencial <strong>cozinhado</strong>, para reduzir potenciais antinutrientes (oxalatos,
+                    nitratos acumulados em solos muito fertilizados, etc.).
+                </li>
+                <li>
+                    <strong>Cuidados especiais:</strong> tal como outros amarantos de folha, quando crescem em solos
+                    com <strong>muito azoto disponível</strong> (especialmente fertilizantes sintéticos) podem acumular
+                    teores elevados de <strong>nitratos</strong> nas folhas. Por isso, é prudente privilegiar colheitas
+                    em contexto de <strong>produção biológica</strong> e evitar folhas de plantas que cresçam em
+                    terrenos suspeitos ou muito adubados quimicamente.
+                </li>
+            </ul>
+        </section>
+
+        <section id="receitas">
+            <h3>4. Receitas e preparados (Top 10)</h3>
+            <p>
+                Exemplos de receitas onde os <strong>bredos</strong> (caruru de folha / amaranto de folha) são usados
+                como verdura principal. Pelo menos 5 referências estão em português (Portugal ou Brasil).
+            </p>
+            <ol>
+                <li>
+                    <strong>Bredo da Semana Santa</strong> – receita tradicional pernambucana em que as folhas de bredo
+                    são cozidas e depois envolvidas num refogado de cebola, alho, tomate, pimento e leite de coco.
+                    <a href="https://www.tudogostoso.com.br/receita/37005-bredo-da-semana-santa.html" target="_blank">[R1]</a>
+                    <a href="https://www.seara.com.br/receita/bredo-da-semana-santa/" target="_blank">[R2]</a>
+                </li>
+                <li>
+                    <strong>Bredo de coco / Caruru de bredo</strong> – variações em que o bredo é cozinhado com leite de
+                    coco, azeite/óleo, cebola, alho, coentros e especiarias. Existem versões em sites de receitas e
+                    blogs como Homem na Cozinha.
+                    <a href="https://pt.petitchef.com/receitas/outro/bredo-de-coco-fid-664293" target="_blank">[R3]</a>
+                    <a href="https://www.homemnacozinha.com/bredo-de-coco/" target="_blank">[R4]</a>
+                </li>
+                <li>
+                    <strong>Bredo refogado simples</strong> – folhas de bredo escaldadas e depois refogadas em azeite
+                    com alho e cebola; há inúmeras versões em canais de vídeo e blogs de receitas.
+                    <a href="https://www.youtube.com/watch?v=xi58r9RQQyU" target="_blank">[R5]</a>
+                    <a href="https://www.youtube.com/watch?v=zHR18Q3b2YU" target="_blank">[R6]</a>
+                </li>
+                <li>
+                    <strong>Bredo com quiabo</strong> – prato em que o bredo é cozinhado com quiabos, muitas vezes
+                    também com leite de coco e temperos típicos da cozinha nordestina.
+                    <a href="https://www.youtube.com/watch?v=HentPuuvMUY" target="_blank">[R7]</a>
+                </li>
+                <li>
+                    <strong>Caruru de bredo / efó</strong> – receitas de caruru de bredo em contexto de cozinha
+                    baiana e de religiões de matriz africana, onde o bredo é preparado com dendê, cebola, camarão
+                    seco e outros ingredientes tradicionais.
+                    <a href="https://doceru.com/doc/x580xvc" target="_blank">[R8]</a>
+                    <a href="https://www4.planalto.gov.br/consea/publicacoes/comportamento-e-cultura-alimentar/escritas-e-narrativas-sobre-alimentacao-e-cultura/2-escritas-e-narrativas-sobre-alimentacao-e-cultura.pdf" target="_blank">[R9]</a>
+                </li>
+                <li>
+                    <strong>Omelete de bredo</strong> – folhas de bredo cozidas e picadas, usadas como recheio de
+                    omelete, em receitas divulgadas em canais de culinária caseira.
+                    <a href="https://m.youtube.com/%40casalveibom10/videos" target="_blank">[R10]</a>
+                    <a href="https://www.facebook.com/groups/receitasfaceisegostosas/posts/5082069211820948/" target="_blank">[R11]</a>
+                </li>
+                <li>
+                    <strong>Bredo em sucos verdes e preparações criativas</strong> – compilado de usos (refogados,
+                    saladas, sucos, omeletes, bolos e tortas salgadas) em material de educação nutricional.
+                    <a href="https://nutritotal.com.br/publico-geral/material/bredo/" target="_blank">[R12]</a>
+                </li>
+                <li>
+                    <strong>Bredo em pratos de festa (Semana Santa)</strong> – descrições etnográficas de caruru de
+                    bredo e outros pratos em textos sobre alimentação e cultura na Bahia.
+                    <a href="https://books.scielo.org/id/9q/pdf/freitas-9788523209148-05.pdf" target="_blank">[R13]</a>
+                    <a href="https://sossegodaflora.blogspot.com/2017/04/semana-santa-na-bahia-festa.html" target="_blank">[R14]</a>
+                </li>
+                <li>
+                    <strong>Caruru / caruru de folha</strong> – materiais sobre caruru em geral (planta e prato) que
+                    incluem o uso de amarantos de folha como bredo.
+                    <a href="https://www.tuasaude.com/caruru/" target="_blank">[R15]</a>
+                </li>
+                <li>
+                    <strong>Receitas tradicionais com bredo em contexto de PANC</strong> – referências em materiais
+                    de PANC e cozinha tradicional, onde bredo aparece como verdura versátil em vários pratos.
+                    <a href="https://youtube.com/watch?v=ovxgvFG10lM" target="_blank">[R16]</a>
+                    <a href="https://www.passeidireto.com/arquivo/102171899/material-de-estudo-cozinha-brasileira" target="_blank">[R17]</a>
+                </li>
+            </ol>
+        </section>
+
+        <section id="beneficios">
+            <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+            <p>
+                A literatura científica sobre <strong><em>Amaranthus blitum</em></strong> e outros amarantos de folha
+                descreve um conjunto de características nutricionais e fitoquímicas que justificam o interesse em
+                incluir estes “verdes” espontâneos na alimentação, sempre integrados num padrão alimentar equilibrado.
+            </p>
+            <ul>
+                <li>
+                    <strong>Densidade nutricional relevante:</strong> estudos indicam que folhas de amarantos como
+                    <em>A. blitum</em> podem apresentar <strong>teores apreciáveis de proteína</strong> para uma
+                    hortaliça de folha (em base de matéria seca), bem como níveis interessantes de
+                    <strong>cálcio, magnésio, ferro, potássio</strong>, vitaminas (nomeadamente vitamina C e folatos)
+                    e compostos antioxidantes.
+                    <a href="https://www.sciencedirect.com/science/article/pii/S2405844024064843" target="_blank">[M1]</a>
+                    <a href="https://www.researchgate.net/figure/Nutrition-composition-per-100gram-of-edible-portion-of-amaranths-spider-plant-and_tbl1_252629449" target="_blank">[M2]</a>
+                    <a href="https://www.nationalacademies.org/read/11763/chapter/3" target="_blank">[M3]</a>
+                </li>
+                <li>
+                    <strong>Compostos bioativos e capacidade antioxidante:</strong> trabalhos recentes avaliando
+                    <em>A. blitum</em> mostram a presença de diversos fitoquímicos (fenóis, flavonoides, pigmentos
+                    como betalaínas) com <strong>atividade antioxidante</strong> significativa in vitro, sugerindo
+                    potencial contributo na neutralização de radicais livres.
+                    <a href="https://www.sciencedirect.com/science/article/pii/S2405844024064843" target="_blank">[M1]</a>
+                    <a href="https://www.mdpi.com/2076-3417/11/15/6879" target="_blank">[M4]</a>
+                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8871380/" target="_blank">[M5]</a>
+                </li>
+                <li>
+                    <strong>Estudos de atividade antimicrobiana e outros efeitos:</strong> análises fitoquímicas e
+                    ensaios in vitro com extratos de folhas de <em>A. blitum</em> mostram atividades antimicrobianas
+                    contra várias estirpes bacterianas, apoiando parcial e indiretamente alguns usos tradicionais.
+                    <a href="https://www.researchgate.net/publication/376595856_QUALITATIVE_PHYTOCHEMICAL_ANALYSIS_AND_IN-VITRO_ANTIMICROBIAL_SCREENING_OF_AMARANTHUS_BLITUM_L_EXTRACTS" target="_blank">[M6]</a>
+                </li>
+                <li>
+                    <strong>Contexto de uso tradicional:</strong> fontes de medicina tradicional (por ex. Ayurveda)
+                    referem o uso de amaranths de folha, incluindo <em>A. blitum</em>, como plantas “refrescantes”,
+                    de apoio à digestão, à saúde do sangue e a inflamações ligeiras, embora estes usos nem sempre
+                    estejam validados por ensaios clínicos robustos.
+                    <a href="https://www.easyayurveda.com/2019/12/06/amaranth/" target="_blank">[M7]</a>
+                    <a href="https://ask-ayurveda.com/wiki/article/135-amaranthus-blitum" target="_blank">[M8]</a>
+                </li>
+                <li>
+                    <strong>Segurança e pontos de atenção:</strong> tal como noutros amarantos, há referência a
+                    possíveis <strong>teores elevados de nitratos</strong> quando cultivados em solos muito ricos em
+                    azoto, especialmente com fertilização química. Também podem conter <strong>oxalatos</strong>. Por
+                    isso, recomenda-se:
+                    <ul>
+                        <li>dar preferência a <strong>produção biológica</strong> e solos não sobre-adubados;</li>
+                        <li>evitar o consumo exagerado e repetido de grandes quantidades em cru;</li>
+                        <li>usar <strong>cozedura e escaldamento</strong> (descartar parte da água) como forma de
+                            reduzir parte de nitratos/oxalatos;</li>
+                        <li>pessoas com litíase renal de oxalato ou outras condições específicas devem seguir
+                            orientação médica individual.</li>
+                    </ul>
+                    <a href="https://pfaf.org/user/Plant.aspx?LatinName=Amaranthus+blitum" target="_blank">[M9]</a>
+                    <a href="https://tropical.theferns.info/viewtropical.php?id=Amaranthus+blitum" target="_blank">[M10]</a>
+                </li>
+            </ul>
+            <p class="nota-aviso">
+                A secção acima resume tendências observadas na literatura científica sobre amaranto de folha,
+                incluindo <em>Amaranthus blitum</em>. Não substitui aconselhamento médico, e os bredos devem ser
+                encarados como <strong>alimento</strong> integrado numa alimentação equilibrada, não como medicamento.
+            </p>
+        </section>
+
+        <section id="nutricao">
+            <h3>6. Propriedades nutricionais</h3>
+            <p>
+                Os valores abaixo são aproximados e baseiam-se em dados de amarantos de folha (incluindo
+                <em>A. blitum</em>) em bases de dados e publicações científicas. A composição real varia com o solo,
+                estádio de colheita, variedade e modo de produção.
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Componente</th>
+                        <th>Bredos frescos (folhas cruas, 100 g)</th>
+                        <th>Bredos cozinhados simples (100 g)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Energia</td>
+                        <td>≈ 20–30 kcal</td>
+                        <td>≈ 25–35 kcal (ligeira concentração após cozedura)</td>
+                    </tr>
+                    <tr>
+                        <td>Água</td>
+                        <td>≈ 90–93 g</td>
+                        <td>Ligeiramente menor (parte evapora na cozedura)</td>
+                    </tr>
+                    <tr>
+                        <td>Hidratos de carbono</td>
+                        <td>≈ 3–4 g</td>
+                        <td>≈ 4–5 g</td>
+                    </tr>
+                    <tr>
+                        <td>Fibra</td>
+                        <td>≈ 2–3 g</td>
+                        <td>≈ 3–4 g</td>
+                    </tr>
+                    <tr>
+                        <td>Proteína</td>
+                        <td>≈ 2–4 g</td>
+                        <td>≈ 3–5 g</td>
+                    </tr>
+                    <tr>
+                        <td>Lípidos totais</td>
+                        <td>&lt; 1 g (principalmente gorduras insaturadas)</td>
+                        <td>&lt; 1 g (sem contar com azeite ou gordura da receita)</td>
+                    </tr>
+                    <tr>
+                        <td>Cálcio</td>
+                        <td>≈ 100–200 mg</td>
+                        <td>≈ 120–230 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Magnésio</td>
+                        <td>≈ 55–80 mg</td>
+                        <td>≈ 60–90 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Ferro</td>
+                        <td>≈ 2–4 mg</td>
+                        <td>≈ 2,5–4,5 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Potássio</td>
+                        <td>≈ 300–500 mg</td>
+                        <td>≈ 350–600 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina C</td>
+                        <td>≈ 20–40 mg</td>
+                        <td>Reduzida com a cozedura (sensível ao calor)</td>
+                    </tr>
+                    <tr>
+                        <td>Folatos (vitamina B9)</td>
+                        <td>Concentrações relevantes (dezenas de µg)</td>
+                        <td>Ligeira redução após cozedura</td>
+                    </tr>
+                    <tr>
+                        <td>Carotenoides (provitamina A)</td>
+                        <td>Quantidades apreciáveis, dependentes da cor e variedade</td>
+                        <td>Podem tornar-se parcialmente mais biodisponíveis com cozedura suave</td>
+                    </tr>
+                    <tr>
+                        <td>Nitratos e oxalatos</td>
+                        <td>Podem ser elevados em solos muito ricos em azoto; consumo moderado é aconselhável</td>
+                        <td>Parte pode ser reduzida por escaldar e descartar a água</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="referencia-nota">
+                Valores aproximados com base em:
+                <a href="https://www.sciencedirect.com/science/article/pii/S2405844024064843" target="_blank">[N1]</a>,
+                <a href="https://www.researchgate.net/figure/Nutrition-composition-per-100gram-of-edible-portion-of-amaranths-spider-plant-and_tbl1_252629449" target="_blank">[N2]</a>,
+                <a href="https://www.nationalacademies.org/read/11763/chapter/3" target="_blank">[N3]</a>,
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8871380/" target="_blank">[N4]</a>.
+            </p>
+        </section>
+
+        <section id="utilidades">
+            <h3>7. Utilidades e aplicações (não apenas alimentares)</h3>
+            <ul>
+                <li>
+                    <strong>Alimentação e PANC:</strong> uso como verdura cozida em sopas, refogados, pratos com leite
+                    de coco, omeletes e acompanhamentos, contribuindo para diversificar a dieta com uma planta muitas
+                    vezes ignorada como simples “erva daninha”.
+                </li>
+                <li>
+                    <strong>Aproveitamento de espontâneas:</strong> integração de bredos em hortas biológicas e
+                    projetos de permacultura permite transformar parte do esforço de monda em colheita comestível, ao
+                    mesmo tempo que se aumenta a resiliência alimentar.
+                </li>
+                <li>
+                    <strong>Educação alimentar e cultural:</strong> exemplos como o “bredo da Semana Santa” ou o
+                    caruru de bredo ajudam a ilustrar a ligação entre biodiversidade agrícola, culturas alimentares
+                    tradicionais e identidade gastronómica.
+                </li>
+                <li>
+                    <strong>Potencial medicinal/tradicional:</strong> usos descritos em sistemas de medicina
+                    tradicional (como Ayurveda) e etnobotânica moderna; a investigação recente explora as suas
+                    propriedades antioxidantes, antimicrobianas e nutracêuticas, embora ainda não existam recomendações
+                    terapêuticas padronizadas.
+                </li>
+                <li>
+                    <strong>Ecologia da horta:</strong> como outras espontâneas de ciclo anual, pode contribuir para
+                    cobrir parcialmente o solo e fornecer biomassa para compostagem, desde que se evite a dispersão
+                    excessiva de sementes quando não se deseja a sua expansão.
+                </li>
+            </ul>
+        </section>
+
+        <section id="permacultura">
+            <h3>8. Grau de funcionalidade em permacultura</h3>
+            <p><strong>Classificação proposta: 9/10</strong></p>
+            <ul class="lista-permacultura">
+                <li>
+                    <strong>Funções principais:</strong> fornecimento de verdura nutritiva, aproveitamento de
+                    espontâneas, incremento da diversidade alimentar, suporte à fertilidade do solo via biomassa.
+                </li>
+                <li>
+                    <strong>Vantagens:</strong> surge espontaneamente, é produtivo em condições quentes, tem usos
+                    culinários variados e bom valor nutricional, contribuindo para autonomia alimentar
+                    sobretudo em sistemas de pequena escala.
+                </li>
+                <li>
+                    <strong>Limitações:</strong> pode competir com culturas se não for manejado; requer conhecimento
+                    botânico para evitar confusões com espécies não comestíveis; a questão dos nitratos/oxalatos
+                    implica alguma prudência em grupos específicos.
+                </li>
+            </ul>
+            <p class="nota">
+                A pontuação alta reflete sobretudo a capacidade dos bredos transformarem uma “infestante”
+                em recurso alimentar de valor, quando integrados conscientemente em sistemas de agricultura
+                biológica e permacultura.
+            </p>
+        </section>
+
+        <section id="referencias">
+            <h3>9. Referências</h3>
+
+            <div class="referencias-subsecao">9.1. Descrição, botânica e contexto</div>
+            <ul class="referencias-lista">
+                <li><strong>[D1]</strong> <a href="https://en.wikipedia.org/wiki/Amaranthus_blitum" target="_blank">Amaranthus blitum – Wikipedia</a></li>
+                <li><strong>[D2]</strong> <a href="https://prota4u.org/database/protav8.asp?g=pe&p=Amaranthus+blitum+L." target="_blank">PROTA – Amaranthus blitum L.</a></li>
+                <li><strong>[D3]</strong> <a href="https://tropical.theferns.info/viewtropical.php?id=Amaranthus+blitum" target="_blank">Useful Tropical Plants – Amaranthus blitum</a></li>
+                <li><strong>[D4]</strong> <a href="https://pt.wikipedia.org/wiki/Caruru" target="_blank">Caruru – Wikipédia (contexto de nomes comuns, incl. bredo)</a></li>
+                <li><strong>[D5]</strong> <a href="https://baanacozinha.com.br/bredo-amaranthus-viridis-l/" target="_blank">Baa na Cozinha – Bredo (Amaranthus viridis) como PANC</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.2. Cultivo, sazonalidade e uso como hortaliça</div>
+            <ul class="referencias-lista">
+                <li><strong>[S1]</strong> <a href="https://prota4u.org/database/protav8.asp?g=pe&p=Amaranthus+blitum+L." target="_blank">PROTA – Ficha de Amaranthus blitum como hortícola de folha</a></li>
+                <li><strong>[S2]</strong> <a href="https://tropical.theferns.info/viewtropical.php?id=Amaranthus+blitum" target="_blank">Useful Tropical Plants – notas sobre cultivo e ambiente</a></li>
+                <li><strong>[S3]</strong> <a href="https://wikifarmer.com/library/en/article/discover-the-versatile-uses-and-benefits-of-amaranth" target="_blank">Wikifarmer – Amaranth: uses and benefits (inclui A. blitum)</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.3. Nutrição e composição</div>
+            <ul class="referencias-lista">
+                <li><strong>[N1]</strong> <a href="https://www.sciencedirect.com/science/article/pii/S2405844024064843" target="_blank">Sarker et al. 2024 – Nutritional and bioactive properties and antioxidant activity of A. blitum</a></li>
+                <li><strong>[N2]</strong> <a href="https://www.researchgate.net/figure/Nutrition-composition-per-100gram-of-edible-portion-of-amaranths-spider-plant-and_tbl1_252629449" target="_blank">Tabela de composição de amarantos de folha (incluindo A. blitum)</a></li>
+                <li><strong>[N3]</strong> <a href="https://www.nationalacademies.org/read/11763/chapter/3" target="_blank">Lost Crops of Africa – Capítulo sobre amarantos de folha</a></li>
+                <li><strong>[N4]</strong> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8871380/" target="_blank">Baraniak &amp; Kania 2022 – The dual nature of amaranth: functional food and nutraceutical</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.4. Benefícios e estudos de saúde</div>
+            <ul class="referencias-lista">
+                <li><strong>[M1]</strong> <a href="https://www.sciencedirect.com/science/article/pii/S2405844024064843" target="_blank">Sarker et al. 2024 – Propriedades bioativas de A. blitum</a></li>
+                <li><strong>[M2]</strong> <a href="https://www.mdpi.com/2076-3417/11/15/6879" target="_blank">Ruth et al. 2021 – Underutilization vs nutritional potential of amaranths</a></li>
+                <li><strong>[M3]</strong> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8871380/" target="_blank">Baraniak &amp; Kania 2022 – Revisão sobre amarantos como alimento funcional</a></li>
+                <li><strong>[M4]</strong> <a href="https://www.researchgate.net/publication/376595856_QUALITATIVE_PHYTOCHEMICAL_ANALYSIS_AND_IN-VITRO_ANTIMICROBIAL_SCREENING_OF_AMARANTHUS_BLITUM_L_EXTRACTS" target="_blank">Estudo fitoquímico e antimicrobiano de extratos de A. blitum</a></li>
+                <li><strong>[M5]</strong> <a href="https://www.easyayurveda.com/2019/12/06/amaranth/" target="_blank">EasyAyurveda – Amaranth: uses, qualities, remedies, research</a></li>
+                <li><strong>[M6]</strong> <a href="https://ask-ayurveda.com/wiki/article/135-amaranthus-blitum" target="_blank">Ask-Ayurveda – Ficha de Amaranthus blitum</a></li>
+                <li><strong>[M7]</strong> <a href="https://pfaf.org/user/Plant.aspx?LatinName=Amaranthus+blitum" target="_blank">PFAF – Amaranthus blitum (inclui nota sobre nitratos)</a></li>
+                <li><strong>[M8]</strong> <a href="https://tropical.theferns.info/viewtropical.php?id=Amaranthus+blitum" target="_blank">Useful Tropical Plants – usos medicinais resumidos</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.5. Informações gerais e nutricionais populares</div>
+            <ul class="referencias-lista">
+                <li><strong>[G1]</strong> <a href="https://nutritotal.com.br/publico-geral/material/bredo/" target="_blank">Nutritotal – Bredo: o que é, como consumir e benefícios</a></li>
+                <li><strong>[G2]</strong> <a href="https://www.tuasaude.com/caruru/" target="_blank">Tua Saúde – Caruru: benefícios e como fazer (inclui bredo/caruru de folha)</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.6. Receitas e preparados</div>
+            <ul class="referencias-lista">
+                <li><strong>[R1]</strong> <a href="https://www.tudogostoso.com.br/receita/37005-bredo-da-semana-santa.html" target="_blank">TudoGostoso – Bredo da Semana Santa</a></li>
+                <li><strong>[R2]</strong> <a href="https://www.seara.com.br/receita/bredo-da-semana-santa/" target="_blank">Seara – Bredo da Semana Santa</a></li>
+                <li><strong>[R3]</strong> <a href="https://pt.petitchef.com/receitas/outro/bredo-de-coco-fid-664293" target="_blank">Petitchef – Bredo de coco</a></li>
+                <li><strong>[R4]</strong> <a href="https://www.homemnacozinha.com/bredo-de-coco/" target="_blank">Homem na Cozinha – Bredo de coco</a></li>
+                <li><strong>[R5]</strong> <a href="https://www.youtube.com/watch?v=xi58r9RQQyU" target="_blank">YouTube – Receita de bredo refogado</a></li>
+                <li><strong>[R6]</strong> <a href="https://www.youtube.com/watch?v=zHR18Q3b2YU" target="_blank">YouTube – Refogado de bredo: receita e benefícios</a></li>
+                <li><strong>[R7]</strong> <a href="https://www.youtube.com/watch?v=HentPuuvMUY" target="_blank">YouTube – Bredo com quiabo</a></li>
+                <li><strong>[R8]</strong> <a href="https://doceru.com/doc/x580xvc" target="_blank">Cartilha “Práticas de Saúde Povo de Axé” – referências a caruru de bredo</a></li>
+                <li><strong>[R9]</strong> <a href="https://www4.planalto.gov.br/consea/publicacoes/comportamento-e-cultura-alimentar/escritas-e-narrativas-sobre-alimentacao-e-cultura/2-escritas-e-narrativas-sobre-alimentacao-e-cultura.pdf" target="_blank">Escritas e narrativas sobre alimentação e cultura – caruru de bredo</a></li>
+                <li><strong>[R10]</strong> <a href="https://nutritotal.com.br/publico-geral/material/bredo/" target="_blank">Nutritotal – Ideias de uso culinário do bredo</a></li>
+                <li><strong>[R11]</strong> <a href="https://www.facebook.com/groups/receitasfaceisegostosas/posts/5082069211820948/" target="_blank">Grupo de receitas – Omelete de bredo</a></li>
+                <li><strong>[R12]</strong> <a href="https://youtube.com/watch?v=ovxgvFG10lM" target="_blank">Vídeo-aula PANC – exemplos com caruru/bredo</a></li>
+                <li><strong>[R13]</strong> <a href="https://www.passeidireto.com/arquivo/102171899/material-de-estudo-cozinha-brasileira" target="_blank">Material de estudo: cozinha brasileira – menções a caruru de bredo</a></li>
+            </ul>
+        </section>
+
+        <div class="topo-link">
+            <a href="#topo">Voltar ao topo ▲</a>
+        </div>
+    </article>
+</main>
+</body>
+</html>

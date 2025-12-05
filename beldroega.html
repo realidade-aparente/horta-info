@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Beldroega (Portulaca oleracea) | Horta da Terra para o prato</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota, .referencia-nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .nota-aviso {
+            font-size: 0.85rem;
+            color: #9a3412;
+            background: #fff7ed;
+            border-radius: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #fed7aa;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body id="topo">
+<header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Plantas espontâneas comestíveis de produção biológica – da terra para o prato.</p>
+</header>
+
+<nav>
+    <a href="index.html">Início</a>
+    <a href="espontaneas.html">Índice</a>
+    <a href="beldroega.html" class="ativa">Beldroega</a>
+    <a href="bredos.html">Bredos</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="quenopodio.html">Quenopódio</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+</nav>
+
+<main>
+    <article class="planta">
+        <div class="planta-cabecalho">
+            <div class="planta-titulo">
+                <h2>Beldroega (<em>Portulaca oleracea</em>)</h2>
+                <p><strong>Outros nomes em português:</strong> beldroega-comum, beldroega-de-comer, baldroega, verdoega, onze-horas (em alguns contextos populares).</p>
+                <p><strong>Nome mais comum em inglês:</strong> purslane, common purslane.</p>
+
+                <div class="tags-nomes">
+                    <span>Família: Portulacaceae</span>
+                    <span>Parte usada: rebentos, folhas, caules tenros</span>
+                    <span>Tipo: planta espontânea comestível (PANC)</span>
+                    <span>Produção/recoleção: <strong>biológica</strong></span>
+                </div>
+
+                <div class="info-rapida">
+                    <div>
+                        <strong>Origem e status</strong>
+                        Espécie subcosmopolita, autóctone em Portugal continental, muito comum como “erva espontânea” em hortas e terrenos revolvidos.
+                    </div>
+                    <div>
+                        <strong>Uso principal</strong>
+                        Sopas, saladas, arrozes, refogados, pestos e outros preparados com folhas e caules jovens.
+                    </div>
+                    <div>
+                        <strong>Perfil nutricional</strong>
+                        Muito rica em água, vitaminas A e C, minerais (potássio, magnésio) e ácidos gordos ómega-3 (ALA).
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="imagem-container-externo">
+                    <div class="imagem-container">
+                        <img src="imagens/beldroega.png" alt="Beldroega (Portulaca oleracea) em crescimento espontâneo na horta">
+                    </div>
+                </div>
+                <p class="imagem-legenda">Beldroega biológica, planta rasteira suculenta muito usada em sopas e saladas no Alentejo.</p>
+            </div>
+        </div>
+
+        <section id="apresentacao">
+            <h3>1. Apresentação / Descrição</h3>
+            <p>
+                A <strong>beldroega</strong> (<em>Portulaca oleracea</em>) é uma planta anual, rasteira e suculenta,
+                pertencente à família Portulacaceae. Forma tapetes baixos de caules carnudos, avermelhados ou
+                esverdeados, com folhas espessas, ovadas, brilhantes, e flores pequenas amareladas. É uma espécie
+                subcosmopolita, amplamente distribuída e considerada espontânea em grande parte de Portugal
+                continental, surgindo sobretudo em solos revolvidos, hortas, pomares e margens de caminhos.
+            </p>
+            <p>
+                Em Portugal, a beldroega é reconhecida tanto como <strong>“erva infestante”</strong> como
+                <strong>hortaliça tradicional</strong>, com grande importância na gastronomia alentejana
+                (sopa de beldroegas, açordas, pratos de colher). É também uma <strong>PANC</strong>
+                (Planta Alimentícia Não Convencional) valorizada em projetos de soberania alimentar e
+                aproveitamento de espontâneas comestíveis.
+            </p>
+            <p>
+                Do ponto de vista nutricional, é frequentemente descrita como uma “erva daninha nutritiva”,
+                com elevado teor de <strong>ácidos gordos ómega-3 (particularmente ácido alfa-linolénico)</strong>,
+                vitaminas antioxidantes e minerais. Tem igualmente longa história de uso em
+                <strong>medicina tradicional</strong> em vários continentes.
+            </p>
+            <p class="referencia-nota">
+                Referência(s) de suporte para a descrição:
+                <a href="https://pt.wikipedia.org/wiki/Portulaca_oleracea" target="_blank">[D1]</a>
+                <a href="https://revistajardins.pt/plantas/herbaceas/como-cultivar-beldroegas/" target="_blank">[D2]</a>
+                <a href="https://www.lusiadas.pt/blog/prevencao-estilo-vida/nutricao-dieta/beldroega-qual-sua-importancia-nutricional" target="_blank">[D3]</a>
+                <a href="https://acientistaagricola.pt/2019/06/04/beldroega-a-infestante-valiosa/" target="_blank">[D4]</a>
+            </p>
+        </section>
+
+        <section id="sazonalidade">
+            <h3>2. Sazonalidade (Portugal continental)</h3>
+            <p>
+                A beldroega gosta de <strong>calor</strong> e de solos revolvidos, aparecendo tipicamente como
+                espontânea de primavera/verão.
+            </p>
+            <ul>
+                <li>
+                    <strong>Emergência:</strong> germina quando o solo aquece, a partir da <strong>primavera</strong>,
+                    sendo comum ver os primeiros tapetes de beldroega a partir de <strong>abril/maio</strong>, dependendo
+                    da região.
+                </li>
+                <li>
+                    <strong>Pico de abundância:</strong> durante o <strong>verão</strong> (junho a setembro), em especial
+                    após regas frequentes ou chuvas de verão em hortas e culturas de regadio.
+                </li>
+                <li>
+                    <strong>Colheita:</strong> podem colher-se <strong>rebentos tenros</strong>, folhas e caules ainda
+                    jovens ao longo de toda a época vegetativa, preferindo plantas em bom estado, longe de fontes de
+                    contaminação (bordas de estradas, locais tratados com herbicidas, etc.).
+                </li>
+                <li>
+                    <strong>Gestão em horta biológica:</strong> é simultaneamente recurso e “concorrente” das culturas.
+                    Em vez de a eliminar completamente, pode ser manejada em <strong>faixas ou manchas controladas</strong>,
+                    colhendo regularmente para consumo e evitando que se torne dominante.
+                </li>
+            </ul>
+            <p class="nota">
+                Em climas suaves e solos expostos, podem surgir rebentos mesmo no início do outono, mas as fases de
+                maior vigor e sabor mais tenro são geralmente no período quente da primavera ao fim do verão.
+            </p>
+        </section>
+
+        <section id="como-consumir">
+            <h3>3. Como consumir</h3>
+            <p>
+                Na alimentação, usam-se sobretudo os <strong>rebentos novos, folhas e caules tenros</strong>. Podem ser
+                consumidos crus ou cozinhados, com sabor ligeiramente ácido e refrescante, por vezes comparado a uma
+                mistura de espinafre com leve nota cítrica.
+            </p>
+            <ul>
+                <li>
+                    <strong>Em cru:</strong> em saladas simples ou mistas, juntando folhas e caules finos bem lavados.
+                    Combina bem com tomate, pepino, cebola, rúcula, citrinos e sementes (girassol, abóbora, etc.).
+                </li>
+                <li>
+                    <strong>Sopas e pratos de colher:</strong> ingrediente central na
+                    <strong>sopa de beldroegas alentejana</strong> e em outras sopas de legumes; é geralmente adicionada
+                    no final da cozedura, para preservar alguma textura.
+                </li>
+                <li>
+                    <strong>Refogados e salteados:</strong> tal como outras folhas verdes, pode ser rapidamente
+                    salteada em azeite com alho e cebola, isolada ou combinada com outras PANC ou hortícolas.
+                </li>
+                <li>
+                    <strong>Arrozes e guisados:</strong> adicionada perto do final em arrozes de legumes, arrozes
+                    “tipo grelos” adaptados à beldroega, e guisados leves.
+                </li>
+                <li>
+                    <strong>Molhos, pestos e patês:</strong> triturada com azeite, frutos secos/sementes e ervas pode
+                    produzir um <strong>pesto de beldroega</strong> para massas ou para barrar em pão.
+                </li>
+                <li>
+                    <strong>Chás e usos tradicionais:</strong> em algumas tradições é usada em chás, cataplasmas e outras
+                    formas não alimentares; nesses casos, é especialmente importante seguir orientações de profissionais
+                    de saúde informados, devido a possíveis interações e à presença de oxalatos.
+                </li>
+                <li>
+                    <strong>Cuidados especiais:</strong> a beldroega é <strong>rica em oxalatos</strong>; pessoas com
+                    historial de <strong>cálculos renais de oxalato de cálcio</strong> ou que sigam dietas com restrição
+                    de oxalato devem discutir o consumo com o profissional de saúde. A colheita deve evitar locais
+                    poluídos (trânsito intenso, descargas, áreas tratadas quimicamente).
+                </li>
+            </ul>
+        </section>
+
+        <section id="receitas">
+            <h3>4. Receitas e preparados (Top 10)</h3>
+            <p>
+                Abaixo uma seleção de <strong>10 ideias de receitas</strong> onde a beldroega (fresca e biológica)
+                pode ser usada, com referências em português sempre que possível.
+            </p>
+            <ol>
+                <li>
+                    <strong>Sopa de beldroegas alentejana tradicional</strong> – sopa de pão alentejano com batata,
+                    beldroegas, ovos escalfados e, por vezes, queijo. A Direção-Geral de Agricultura e Desenvolvimento
+                    Rural descreve a sopa de beldroegas como prato típico alentejano.
+                    <a href="https://tradicional.dgadr.gov.pt/pt/cat/sopa/991-sopa-de-beldroegas" target="_blank">[R1]</a>
+                </li>
+                <li>
+                    <strong>Sopa de beldroegas com queijo de cabra</strong> – versão divulgada pelo Programa Nacional
+                    para a Promoção da Alimentação Saudável (PNPAS).
+                    <a href="https://alimentacaosaudavel.dgs.pt/receitas/sopa-de-beldroegas-com-queijo-de-cabra/" target="_blank">[R2]</a>
+                </li>
+                <li>
+                    <strong>Outras sopas de beldroegas</strong> – várias receitas semelhantes (com ou sem queijo fresco,
+                    com variações de batata, pão, etc.) encontram-se em portais como TeleCulinária e Petitchef.
+                    <a href="https://teleculinaria.pt/receitas/sopa-de-beldroegas/" target="_blank">[R3]</a>
+                    <a href="https://pt.petitchef.com/receitas/prato-principal/sopa-de-beldroegas-fid-1077524" target="_blank">[R4]</a>
+                </li>
+                <li>
+                    <strong>Salada simples de beldroega</strong> – folhas de beldroega cruas temperadas com azeite,
+                    vinagre e aromáticos, como descrito em receitas brasileiras no site TudoGostoso.
+                    <a href="https://www.tudogostoso.com.br/receita/40866-salada-de-beldroega.html" target="_blank">[R5]</a>
+                </li>
+                <li>
+                    <strong>Saladas criativas com beldroega</strong> – combinações com almeirão, tomate, sementes,
+                    frutas (ex. abacaxi) e outras folhas, em várias sugestões compiladas pelo site Receiteria.
+                    <a href="https://www.receiteria.com.br/receitas-com-beldroega/" target="_blank">[R6]</a>
+                </li>
+                <li>
+                    <strong>Beldroega refogada</strong> – beldroega salteada rapidamente com azeite e alho, sozinha
+                    ou com outros legumes; há exemplos em blogs de cozinha saudável e paleo, bem como em sites de
+                    receitas em português.
+                    <a href="https://saopaleodotcom.wordpress.com/2014/07/05/refogado-de-beldroega/" target="_blank">[R7]</a>
+                    <a href="https://www.gzrecipes.com/pt/lappetitovienmangiando/beldroega-refogada-na-frigideira/" target="_blank">[R8]</a>
+                </li>
+                <li>
+                    <strong>Arroz de beldroega</strong> – receitas em materiais sobre PANC e educação alimentar
+                    descrevem arrozes onde a beldroega é adicionada no final da cozedura, de modo semelhante a grelos.
+                    <a href="https://educapes.capes.gov.br/bitstream/capes/642759/1/Cobre%20e%20zinco%20na%20trissomia%20do%2021O%20uso%20de%20PANC%20no%20aporte%20nutricional.pdf" target="_blank">[R9]</a>
+                    <a href="https://pt.scribd.com/document/657726937/PANC-2023" target="_blank">[R10]</a>
+                </li>
+                <li>
+                    <strong>Pesto de beldroega</strong> – versões em português do Brasil descrevem um pesto feito com
+                    beldroega, azeite, alho e frutos secos, inspirado no pesto de manjericão.
+                    <a href="https://www.giallozafferano.com.br/receitas/pesto-de-beldroega.html" target="_blank">[R11]</a>
+                </li>
+                <li>
+                    <strong>Beldroega empanada ou panada</strong> – receitas que empanam ramos de beldroega em ovo e
+                    farinha/fubá antes de fritar, como acompanhamento crocante.
+                    <a href="https://receitas.globo.com/tipos-de-prato/acompanhamentos/beldroega-empanada.ghtml" target="_blank">[R12]</a>
+                </li>
+                <li>
+                    <strong>Sumários com várias formas de uso</strong> – alguns artigos em português sobre PANC e
+                    beldroega compilam sugestões como sumos verdes, guisados e pratos mistos.
+                    <a href="https://www.tuasaude.com/beneficios-da-beldroega/" target="_blank">[R13]</a>
+                    <a href="https://tmc.com.br/lifestyle/beldroega-como-consumir-essa-planta-veja-beneficios/" target="_blank">[R14]</a>
+                </li>
+            </ol>
+        </section>
+
+        <section id="beneficios">
+            <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+            <p>
+                A beldroega tem sido objeto de numerosas revisões e estudos experimentais, sobretudo no âmbito da
+                <strong>nutrição</strong> e da <strong>fitoterapia</strong>. Abaixo resumem-se alguns pontos recorrentes
+                na literatura científica e em revisões recentes.
+            </p>
+            <ul>
+                <li>
+                    <strong>Densidade nutricional interessante:</strong> 100&nbsp;g de beldroega crua fornecem cerca de
+                    20&nbsp;kcal, com 93–95&nbsp;% de água, pequenas quantidades de proteína e hidratos de carbono, e
+                    teores relevantes de <strong>vitamina A (sob a forma de beta-caroteno)</strong>,
+                    <strong>vitamina C</strong>, <strong>vitamina E</strong>, magnésio, potássio, ferro e outros
+                    micronutrientes.
+                    <a href="https://www.healthline.com/nutrition/purslane" target="_blank">[M1]</a>
+                    <a href="https://www.verywellfit.com/purslane-nutrition-facts-4692802" target="_blank">[M2]</a>
+                    <a href="https://edis.ifas.ufl.edu/publication/HS1484" target="_blank">[M3]</a>
+                </li>
+                <li>
+                    <strong>Fonte vegetal de ómega-3:</strong> a beldroega é repetidamente descrita como uma das
+                    melhores fontes de <strong>ácido alfa-linolénico (ALA)</strong> entre as hortaliças de folha,
+                    com valores de ALA por massa fresca superiores aos de muitas outras verduras.
+                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3934766/" target="_blank">[M4]</a>
+                    <a href="https://www.researchgate.net/publication/261222199_Purslane_Weed_Portulaca_oleracea_A_Prospective_Plant_Source_of_Nutrition_Omega-3_Fatty_Acid_and_Antioxidant_Attributes" target="_blank">[M5]</a>
+                </li>
+                <li>
+                    <strong>Atividade antioxidante e anti-inflamatória (estudos pré-clínicos):</strong> revisões
+                    fitoquímicas e farmacológicas indicam que extratos de <em>P. oleracea</em> apresentam compostos com
+                    atividade antioxidante, anti-inflamatória e, em modelos animais, efeitos protetores em órgãos como
+                    fígado, rim e pulmão.
+                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4321094/" target="_blank">[M6]</a>
+                    <a href="https://www.mdpi.com/1420-3049/24/1/139" target="_blank">[M7]</a>
+                    <a href="https://onlinelibrary.wiley.com/doi/abs/10.1155/2023/2075444" target="_blank">[M8]</a>
+                </li>
+                <li>
+                    <strong>Estudos em saúde metabólica e cardiovascular:</strong> algumas revisões e trabalhos em
+                    humanos e modelos animais exploram o possível papel de extratos de beldroega em
+                    <strong>diabetes tipo 2</strong>, <strong>doença hepática gordurosa</strong> e inflamação
+                    cardiovascular, com resultados por vezes promissores mas ainda não conclusivos, exigindo mais
+                    ensaios clínicos controlados.
+                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11317426/" target="_blank">[M9]</a>
+                    <a href="https://www.mdpi.com/1422-0067/25/22/12276" target="_blank">[M10]</a>
+                    <a href="https://www.sciencedirect.com/science/article/pii/S2097382924000398" target="_blank">[M11]</a>
+                </li>
+                <li>
+                    <strong>Outras aplicações estudadas:</strong> há trabalhos a investigar efeitos em
+                    <strong>litíase renal</strong>, stress oxidativo, inflamação crónica e outros contextos,
+                    maioritariamente em modelos animais ou estudos iniciais em humanos.
+                    <a href="https://www.researchgate.net/publication/374563307_The_effects_of_Portulaca_oleracea_extract_on_24-hour_urine_indices_in_patients_with_renal_stone_A_double-blind_randomized_placebo-controlled_clinical_trial" target="_blank">[M12]</a>
+                </li>
+                <li>
+                    <strong>Uso tradicional e evidência em português:</strong> artigos em português sobre beldroega
+                    (incluindo fontes de saúde e nutrição) descrevem usos tradicionais como planta coadjuvante em
+                    diabetes, saúde cardiovascular, inflamação e digestão, sublinhando simultaneamente a necessidade
+                    de mais estudos e a importância de não substituir terapêutica prescrita.
+                    <a href="https://www.tuasaude.com/beneficios-da-beldroega/" target="_blank">[M13]</a>
+                    <a href="https://www.lusiadas.pt/blog/prevencao-estilo-vida/nutricao-dieta/beldroega-qual-sua-importancia-nutricional" target="_blank">[M14]</a>
+                </li>
+            </ul>
+            <p class="nota-aviso">
+                A evidência científica sobre beldroega é em grande parte baseada em estudos laboratoriais e em
+                modelos animais, com número ainda limitado de ensaios clínicos em humanos. O consumo culinário de
+                beldroega fresca, em quantidades habituais de alimento, é geralmente considerado seguro para a
+                maioria das pessoas, mas <strong>não substitui</strong> medicamentos nem dispensa acompanhamento
+                médico em caso de doença.
+            </p>
+        </section>
+
+        <section id="nutricao">
+            <h3>6. Propriedades nutricionais</h3>
+            <p>
+                A tabela seguinte reúne valores aproximados para beldroega crua e para beldroega cozinhada simples
+                (cozida/escaldada em água, depois escorrida), por 100&nbsp;g de parte comestível. Os valores exatos
+                variam com solo, clima, estádio de colheita e método analítico.
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Componente</th>
+                        <th>Beldroega crua (100 g)</th>
+                        <th>Beldroega cozinhada simples (100 g)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Energia</td>
+                        <td>≈ 15–25 kcal</td>
+                        <td>≈ 20–30 kcal (ligeira concentração após cozedura)</td>
+                    </tr>
+                    <tr>
+                        <td>Água</td>
+                        <td>≈ 93–95 g</td>
+                        <td>Ligeiramente menor (parte evapora)</td>
+                    </tr>
+                    <tr>
+                        <td>Hidratos de carbono</td>
+                        <td>≈ 3–4 g</td>
+                        <td>≈ 4–5 g</td>
+                    </tr>
+                    <tr>
+                        <td>Fibra</td>
+                        <td>≈ 1,5–2 g</td>
+                        <td>≈ 2–3 g</td>
+                    </tr>
+                    <tr>
+                        <td>Proteína</td>
+                        <td>≈ 1,5–2 g</td>
+                        <td>≈ 2–3 g</td>
+                    </tr>
+                    <tr>
+                        <td>Lípidos totais</td>
+                        <td>&lt; 0,5 g (com parte como ALA ómega-3)</td>
+                        <td>&lt; 0,5 g (sem contar com azeite da receita)</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina A (equivalentes de beta-caroteno)</td>
+                        <td>≈ 25–30 % VRN</td>
+                        <td>Ligeira redução com cozedura</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina C</td>
+                        <td>≈ 20–35 % VRN</td>
+                        <td>Redução mais marcada (sensível ao calor e à água)</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina E</td>
+                        <td>≈ 60–80 % VRN</td>
+                        <td>Valores semelhantes ou um pouco menores</td>
+                    </tr>
+                    <tr>
+                        <td>Magnésio</td>
+                        <td>≈ 15–20 % VRN</td>
+                        <td>Ligeira concentração (perda de água)</td>
+                    </tr>
+                    <tr>
+                        <td>Potássio</td>
+                        <td>≈ 200–500 mg</td>
+                        <td>≈ 250–600 mg (se a água com lixiviação for incorporada, parte pode perder-se na cozedura)</td>
+                    </tr>
+                    <tr>
+                        <td>Ferro</td>
+                        <td>≈ 1–2 mg</td>
+                        <td>Valores semelhantes ou ligeiramente concentrados</td>
+                    </tr>
+                    <tr>
+                        <td>Ácido oxálico</td>
+                        <td>Níveis relativamente elevados (centenas de mg/100 g de peso fresco, dependendo da fonte)</td>
+                        <td>Parte pode ser reduzida por escaldar e descartar a água de cozedura</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="referencia-nota">
+                Valores aproximados com base em bases de dados de composição e artigos de revisão sobre
+                <em>Portulaca oleracea</em>:
+                <a href="https://en.wikipedia.org/wiki/Portulaca_oleracea" target="_blank">[N1]</a>,
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3934766/" target="_blank">[N2]</a>,
+                <a href="https://journal-of-agroalimentary.ro/admin/articole/49328L4-30.4-MITROI-JAPT20241058-Portulaca-oleracea-DOI-2.34-pp-357-365.pdf" target="_blank">[N3]</a>,
+                <a href="https://www.healthline.com/nutrition/purslane" target="_blank">[N4]</a>,
+                <a href="https://edis.ifas.ufl.edu/publication/HS1484" target="_blank">[N5]</a>.
+            </p>
+        </section>
+
+        <section id="utilidades">
+            <h3>7. Utilidades e aplicações (não apenas alimentares)</h3>
+            <ul>
+                <li>
+                    <strong>Alimentação e PANC:</strong> utilização em sopas, saladas, refogados, arrozes, pestos,
+                    patês e acompanhamentos, ajudando a diversificar a dieta com uma planta muitas vezes vista apenas
+                    como “erva daninha”.
+                </li>
+                <li>
+                    <strong>Aproveitamento de espontâneas:</strong> integração da beldroega em sistemas de horta
+                    biológica e permacultura como forma de transformar “infestantes” em recurso alimentar, reduzindo
+                    desperdícios e trabalho de mondas.
+                </li>
+                <li>
+                    <strong>Educação alimentar e botânica:</strong> excelente exemplo para atividades de educação
+                    alimentar, identificação de plantas silvestres comestíveis e sensibilização para o conceito de PANC.
+                </li>
+                <li>
+                    <strong>Potencial medicinal/tradicional:</strong> usada em diversas tradições medicinais como
+                    planta fresca, em chás ou cataplasmas; a investigação moderna estuda os seus fitoquímicos e possíveis
+                    aplicações, mas ainda não há consenso para recomendações terapêuticas padronizadas.
+                </li>
+                <li>
+                    <strong>Ecologia da horta:</strong> a cobertura baixa de beldroega contribui para cobrir parcialmente
+                    o solo, reduzindo erosão e, em alguns casos, limitando o crescimento de invasoras mais problemáticas;
+                    deve, no entanto, ser manejada para não competir em excesso com culturas principais.
+                </li>
+            </ul>
+        </section>
+
+        <section id="permacultura">
+            <h3>8. Grau de funcionalidade em permacultura</h3>
+            <p><strong>Classificação proposta: 9/10</strong></p>
+            <ul class="lista-permacultura">
+                <li>
+                    <strong>Funções principais:</strong> alimento de elevada densidade nutricional, cobertura parcial
+                    do solo, indicador de solos férteis e revolvidos, recurso para educação alimentar e botânica.
+                </li>
+                <li>
+                    <strong>Vantagens:</strong> surge espontaneamente (não é preciso semear), é muito produtiva em
+                    condições favoráveis, aguenta bem calor e algum stress hídrico, e multiplica-se com facilidade.
+                    Permite transformar “monda” em colheita comestível.
+                </li>
+                <li>
+                    <strong>Limitações:</strong> pode tornar-se dominadora se não for controlada; é anual e
+                    depende da perturbação do solo para se instalar; o teor de oxalatos exige alguma prudência em
+                    grupos específicos (doença renal, planos alimentares especiais).
+                </li>
+            </ul>
+            <p class="nota">
+                A classificação elevada deve-se ao conjunto de funções alimentares, ecológicas e pedagógicas que a
+                beldroega desempenha num sistema de horta/permacultura bem desenhado, sobretudo em contexto de
+                agricultura biológica.
+            </p>
+        </section>
+
+        <section id="referencias">
+            <h3>9. Referências</h3>
+
+            <div class="referencias-subsecao">9.1. Descrição, botânica e contexto</div>
+            <ul class="referencias-lista">
+                <li><strong>[D1]</strong> <a href="https://pt.wikipedia.org/wiki/Portulaca_oleracea" target="_blank">Portulaca oleracea – Wikipédia (PT)</a></li>
+                <li><strong>[D2]</strong> <a href="https://revistajardins.pt/plantas/herbaceas/como-cultivar-beldroegas/" target="_blank">Revista Jardins – Como cultivar beldroegas</a></li>
+                <li><strong>[D3]</strong> <a href="https://www.lusiadas.pt/blog/prevencao-estilo-vida/nutricao-dieta/beldroega-qual-sua-importancia-nutricional" target="_blank">Lusíadas – Beldroega: qual a sua importância nutricional?</a></li>
+                <li><strong>[D4]</strong> <a href="https://acientistaagricola.pt/2019/06/04/beldroega-a-infestante-valiosa/" target="_blank">A Cientista Agrícola – Beldroega, a infestante valiosa</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.2. Cultivo, sazonalidade e PANC</div>
+            <ul class="referencias-lista">
+                <li><strong>[S1]</strong> <a href="https://www.reformaagraria.pt/plantas/planta/beldroega/" target="_blank">Reforma Agrária – Ficha da beldroega</a></li>
+                <li><strong>[S2]</strong> <a href="https://www.lusiadas.pt/blog/prevencao-estilo-vida/nutricao-dieta/beldroega-qual-sua-importancia-nutricional" target="_blank">Lusíadas – Beldroega (contexto em Portugal)</a></li>
+                <li><strong>[S3]</strong> <a href="https://pt.scribd.com/document/657726937/PANC-2023" target="_blank">Documento sobre PANC com referências a beldroega</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.3. Nutrição e composição</div>
+            <ul class="referencias-lista">
+                <li><strong>[N1]</strong> <a href="https://en.wikipedia.org/wiki/Portulaca_oleracea" target="_blank">Portulaca oleracea – secção Nutrition</a></li>
+                <li><strong>[N2]</strong> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3934766/" target="_blank">Uddin et al. 2014 – Purslane Weed: A prospective plant source of nutrition…</a></li>
+                <li><strong>[N3]</strong> <a href="https://journal-of-agroalimentary.ro/admin/articole/49328L4-30.4-MITROI-JAPT20241058-Portulaca-oleracea-DOI-2.34-pp-357-365.pdf" target="_blank">Mitroi et al. – Nutritional value and food uses of purslane</a></li>
+                <li><strong>[N4]</strong> <a href="https://www.healthline.com/nutrition/purslane" target="_blank">Healthline – Purslane: A tasty weed loaded with nutrients</a></li>
+                <li><strong>[N5]</strong> <a href="https://edis.ifas.ufl.edu/publication/HS1484" target="_blank">UF/IFAS – Purslane: the reigning champion of vitamins A and E</a></li>
+                <li><strong>[N6]</strong> <a href="https://www.verywellfit.com/purslane-nutrition-facts-4692802" target="_blank">Verywell Fit – Purslane nutrition facts</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.4. Benefícios e estudos de saúde</div>
+            <ul class="referencias-lista">
+                <li><strong>[M1]</strong> <a href="https://www.healthline.com/nutrition/purslane" target="_blank">Healthline – Revisão geral de benefícios</a></li>
+                <li><strong>[M2]</strong> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4321094/" target="_blank">Zhou et al. 2015 – Review of phytochemistry and pharmacological effects</a></li>
+                <li><strong>[M3]</strong> <a href="https://www.sciencedirect.com/science/article/pii/S2097382924000398" target="_blank">Obukohwo et al. 2024 – Nutraceutical health benefit and safety utility of Portulaca oleracea</a></li>
+                <li><strong>[M4]</strong> <a href="https://onlinelibrary.wiley.com/doi/abs/10.1155/2023/2075444" target="_blank">Ghorani et al. 2023 – Phytochemical characteristics and anti-inflammatory effects</a></li>
+                <li><strong>[M5]</strong> <a href="https://www.mdpi.com/1420-3049/24/1/139" target="_blank">Baradaran Rahimi et al. 2019 – Anti-inflammatory and antioxidant activity (modelo animal)</a></li>
+                <li><strong>[M6]</strong> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11317426/" target="_blank">Milkarizi et al. 2024 – Ensaios com Portulaca oleracea em fígado gorduroso</a></li>
+                <li><strong>[M7]</strong> <a href="https://www.mdpi.com/1422-0067/25/22/12276" target="_blank">Nkhumeleni et al. 2024 – Purslane, inflamação e stress oxidativo em diabetes tipo 2</a></li>
+                <li><strong>[M8]</strong> <a href="https://www.researchgate.net/publication/374563307_The_effects_of_Portulaca_oleracea_extract_on_24-hour_urine_indices_in_patients_with_renal_stone_A_double-blind_randomized_placebo-controlled_clinical_trial" target="_blank">Estudo sobre beldroega e litíase renal</a></li>
+                <li><strong>[M9]</strong> <a href="https://www.tuasaude.com/beneficios-da-beldroega/" target="_blank">Tua Saúde – 8 benefícios da beldroega (com referências a estudos)</a></li>
+                <li><strong>[M10]</strong> <a href="https://tmc.com.br/lifestyle/beldroega-como-consumir-essa-planta-veja-beneficios/" target="_blank">TMC – Beldroega: como consumir essa planta, veja benefícios</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.5. Culinária e usos tradicionais</div>
+            <ul class="referencias-lista">
+                <li><strong>[C1]</strong> <a href="https://tradicional.dgadr.gov.pt/pt/cat/sopa/991-sopa-de-beldroegas" target="_blank">DGADR – Sopa de beldroegas (Produtos Tradicionais Portugueses)</a></li>
+                <li><strong>[C2]</strong> <a href="https://alimentacaosaudavel.dgs.pt/receitas/sopa-de-beldroegas-com-queijo-de-cabra/" target="_blank">PNPAS – Sopa de beldroegas com queijo de cabra</a></li>
+                <li><strong>[C3]</strong> <a href="https://www.lusiadas.pt/blog/prevencao-estilo-vida/nutricao-dieta/beldroega-qual-sua-importancia-nutricional" target="_blank">Lusíadas – Beldroega na gastronomia portuguesa</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.6. Receitas e preparados</div>
+            <ul class="referencias-lista">
+                <li><strong>[R1]</strong> <a href="https://tradicional.dgadr.gov.pt/pt/cat/sopa/991-sopa-de-beldroegas" target="_blank">DGADR – Sopa de beldroegas</a></li>
+                <li><strong>[R2]</strong> <a href="https://alimentacaosaudavel.dgs.pt/receitas/sopa-de-beldroegas-com-queijo-de-cabra/" target="_blank">PNPAS – Sopa de beldroegas com queijo de cabra</a></li>
+                <li><strong>[R3]</strong> <a href="https://teleculinaria.pt/receitas/sopa-de-beldroegas/" target="_blank">TeleCulinária – Sopa de beldroegas</a></li>
+                <li><strong>[R4]</strong> <a href="https://pt.petitchef.com/receitas/prato-principal/sopa-de-beldroegas-fid-1077524" target="_blank">Petitchef – Sopa de beldroegas</a></li>
+                <li><strong>[R5]</strong> <a href="https://www.tudogostoso.com.br/receita/40866-salada-de-beldroega.html" target="_blank">TudoGostoso – Salada de beldroega</a></li>
+                <li><strong>[R6]</strong> <a href="https://www.receiteria.com.br/receitas-com-beldroega/" target="_blank">Receiteria – 10 receitas com beldroega</a></li>
+                <li><strong>[R7]</strong> <a href="https://saopaleodotcom.wordpress.com/2014/07/05/refogado-de-beldroega/" target="_blank">Blog São Paleo – Refogado de beldroega</a></li>
+                <li><strong>[R8]</strong> <a href="https://www.gzrecipes.com/pt/lappetitovienmangiando/beldroega-refogada-na-frigideira/" target="_blank">GZ Recipes – Beldroega refogada na frigideira</a></li>
+                <li><strong>[R9]</strong> <a href="https://educapes.capes.gov.br/bitstream/capes/642759/1/Cobre%20e%20zinco%20na%20trissomia%20do%2021O%20uso%20de%20PANC%20no%20aporte%20nutricional.pdf" target="_blank">EduCAPES – Arroz de beldroega (PANC)</a></li>
+                <li><strong>[R10]</strong> <a href="https://pt.scribd.com/document/657726937/PANC-2023" target="_blank">Documento PANC 2023 – receitas com beldroega</a></li>
+                <li><strong>[R11]</strong> <a href="https://www.giallozafferano.com.br/receitas/pesto-de-beldroega.html" target="_blank">Giallo Zafferano Brasil – Pesto de beldroega</a></li>
+                <li><strong>[R12]</strong> <a href="https://receitas.globo.com/tipos-de-prato/acompanhamentos/beldroega-empanada.ghtml" target="_blank">Receitas Globo – Beldroega empanada</a></li>
+                <li><strong>[R13]</strong> <a href="https://www.tuasaude.com/beneficios-da-beldroega/" target="_blank">Tua Saúde – Benefícios e formas de uso (inclui receitas)</a></li>
+                <li><strong>[R14]</strong> <a href="https://tmc.com.br/lifestyle/beldroega-como-consumir-essa-planta-veja-beneficios/" target="_blank">TMC – Beldroega: como consumir essa planta (com receitas)</a></li>
+            </ul>
+        </section>
+
+        <div class="topo-link">
+            <a href="#topo">Voltar ao topo ▲</a>
+        </div>
+    </article>
+</main>
+</body>
+</html>

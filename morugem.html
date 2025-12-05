@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Morugem (Stellaria media) | Horta da Terra para o prato</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota, .referencia-nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .nota-aviso {
+            font-size: 0.85rem;
+            color: #9a3412;
+            background: #fff7ed;
+            border-radius: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #fed7aa;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body id="topo">
+<header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Plantas espontâneas comestíveis de produção biológica – da terra para o prato.</p>
+</header>
+
+<nav>
+    <a href="index.html">Início</a>
+    <a href="espontaneas.html">Índice</a>
+    <a href="beldroega.html">Beldroega</a>
+    <a href="bredo.html">Bredo</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="morugem.html" class="ativa">Morugem</a>
+    <a href="quenopodio.html">Quenopódio</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+</nav>
+
+<main>
+    <article class="planta">
+        <div class="planta-cabecalho">
+            <div class="planta-titulo">
+                <h2>Morugem (<em>Stellaria media</em>)</h2>
+                <p><strong>Outros nomes em português:</strong> morugem-branca, morugem-vulgar, morugem-verdadeira, erva-estrela, erva-dos-passarinhos, erva-moleira, erva-canária, olho-de-toupeira, orelha-de-toupeira, merugem, marujas (designações locais).</p>
+                <p><strong>Nome mais comum em inglês:</strong> chickweed, common chickweed.</p>
+
+                <div class="tags-nomes">
+                    <span>Família: Caryophyllaceae</span>
+                    <span>Parte usada: rebentos, folhas e caules tenros</span>
+                    <span>Tipo: planta espontânea comestível (PANC)</span>
+                    <span>Produção/recoleção: <strong>biológica</strong></span>
+                </div>
+
+                <div class="info-rapida">
+                    <div>
+                        <strong>Origem e status</strong>
+                        Planta anual ou vivaz, nativa da Eurásia, hoje cosmopolita, muito comum em hortas, prados e jardins como “erva espontânea”.
+                    </div>
+                    <div>
+                        <strong>Uso principal</strong>
+                        Folha verde tenra para saladas, sopas, esparregados, refogados, “green soups” e outros pratos de colher.
+                    </div>
+                    <div>
+                        <strong>Perfil nutricional</strong>
+                        Verdura muito rica em vitamina C, outras vitaminas (A, B), minerais (cálcio, ferro, magnésio) e compostos antioxidantes.
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="imagem-container-externo">
+                    <div class="imagem-container">
+                        <img src="imagens/morugem.png" alt="Morugem (Stellaria media) em tapete espontâneo">
+                    </div>
+                </div>
+                <p class="imagem-legenda">
+                    Morugem biológica em tapete denso, típica de solos húmidos e férteis em hortas e jardins.
+                </p>
+            </div>
+        </div>
+
+        <section id="apresentacao">
+            <h3>1. Apresentação / Descrição</h3>
+            <p>
+                A <strong>morugem</strong> (<em>Stellaria media</em>), também conhecida como <strong>erva-estrela</strong>
+                ou <strong>chickweed</strong>, é uma planta herbácea baixa que forma tapetes de rebentos finos, com
+                caules delicados, verdes, marcados por uma <strong>fiada única de pêlos</strong> que alterna de nó em nó,
+                e pequenas flores brancas em forma de estrela. As folhas são opostas, ovadas, tenras e de cor verde viva.
+            </p>
+            <p>
+                Está presente em praticamente todas as regiões de Portugal, preferindo solos húmidos e férteis em hortas,
+                pomares, jardins e terrenos agrícolas, onde é muitas vezes classificada como “erva daninha”. Ao mesmo
+                tempo, é uma <strong>verdura comestível</strong> muito versátil, usada em saladas, sopas e outros pratos,
+                e considerada <strong>PANC</strong> (Planta Alimentícia Não Convencional) em vários materiais de educação
+                alimentar e etnobotânica.
+            </p>
+            <p>
+                Tem longa história de uso na alimentação humana e animal, sendo também apreciada por aves (daí nomes como
+                “erva-dos-passarinhos”). Na gastronomia e medicina tradicional europeia e asiática, é utilizada como
+                <strong>verdura tenra</strong> e como planta calmante para a pele, respiratória e digestiva, embora
+                muitas dessas aplicações tradicionais ainda não tenham confirmação robusta em ensaios clínicos.
+            </p>
+            <p class="referencia-nota">
+                Referência(s) de suporte para a descrição:
+                <a href="https://pt.wikipedia.org/wiki/Morugem" target="_blank">[D1]</a>
+                <a href="https://en.wikipedia.org/wiki/Stellaria_media" target="_blank">[D2]</a>
+                <a href="https://casacaseira.wordpress.com/2015/01/24/morugem-erva-estrela/" target="_blank">[D3]</a>
+                <a href="https://revistajardins.pt/plantas/herbaceas/morugem-planta-combate-obesidade/" target="_blank">[D4]</a>
+                <a href="https://www.hortasbiologicas.pt/ervas-daninhas-morugem/" target="_blank">[D5]</a>
+                <a href="https://www.compo.pt/guia/cuidar-das-plantas/ervas-aromaticas-frutas-e-legumes/ervas-daninhas-comestiveis" target="_blank">[D6]</a>
+            </p>
+        </section>
+
+        <section id="sazonalidade">
+            <h3>2. Sazonalidade (Portugal continental)</h3>
+            <p>
+                A morugem é uma planta de clima fresco que aproveita sobretudo os <strong>meses mais amenos e húmidos</strong>,
+                mas que pode estar presente grande parte do ano em locais com alguma humidade.
+            </p>
+            <ul>
+                <li>
+                    <strong>Emergência:</strong> germina a partir do outono e no início da primavera, aproveitando
+                    temperaturas suaves e solos húmidos.
+                </li>
+                <li>
+                    <strong>Pico de abundância:</strong> do <strong>outono ao fim da primavera</strong>, sendo frequente
+                    ver tapetes de morugem em canteiros e entre culturas; em zonas de inverno suave pode manter-se ativa
+                    ao longo de todo o ano.
+                </li>
+                <li>
+                    <strong>Floração e sementeira:</strong> as flores e cápsulas de sementes surgem de forma muito
+                    prolongada, permitindo à planta semear-se continuamente e reaparecer em ciclos sucessivos.
+                </li>
+                <li>
+                    <strong>Colheita:</strong> para consumo, preferem-se <strong>rebentos e partes tenras</strong>,
+                    colhidos regularmente antes de ficarem fibrosos. Em contexto de produção biológica, é importante
+                    colher longe de zonas tratadas com herbicidas ou sujeitos a contaminação.
+                </li>
+                <li>
+                    <strong>Gestão em horta biológica:</strong> pode ser encarada simultaneamente como “indicadora de solo
+                    fértil” e como <strong>verdura de valor</strong>. Em vez de a eliminar totalmente, pode ser manejada
+                    colhendo-a para consumo e evitando que cubra culturas mais delicadas.
+                </li>
+            </ul>
+            <p class="nota">
+                Em hortas biológicas com rega regular, podem existir rebentos frescos de morugem em quase qualquer altura
+                do ano, mas o sabor e textura mais agradáveis tendem a ocorrer em períodos de <strong>temperatura moderada</strong>
+                e boa disponibilidade de água.
+            </p>
+        </section>
+
+        <section id="como-consumir">
+            <h3>3. Como consumir</h3>
+            <p>
+                Usam-se sobretudo as <strong>partes aéreas tenras</strong> (rebentos, folhas e caules finos). O sabor é
+                suave, ligeiramente herbáceo e fresco, muitas vezes comparado a uma mistura de espinafre com alface ou a
+                “milho verde” em algumas descrições populares.
+            </p>
+            <ul>
+                <li>
+                    <strong>Em cru (saladas):</strong> pode ser misturada com outras folhas (alface, rúcula, agrião,
+                    acelga baby, etc.). Devido ao sabor ligeiramente mais “selvagem”, é comum usá-la em mistura, não
+                    como única verdura da salada.
+                </li>
+                <li>
+                    <strong>Sopas e cremes verdes:</strong> é muito usada em sopas simples ou em <em>“green soups”</em>,
+                    sendo adicionada no final da cozedura ou triturada em conjunto com batata, outros verdes e caldo.
+                </li>
+                <li>
+                    <strong>Esparregados e acompanhamentos:</strong> pode substituir parcialmente o espinafre em
+                    esparregados, espargos de vegetais, ou como acompanhamento em pratos de carne ou leguminosas.
+                </li>
+                <li>
+                    <strong>Salteados e omeletes:</strong> salteada rapidamente em azeite com alho e cebola, ou
+                    incorporada em omeletes, tortilhas, tartes salgadas e recheios de crepes.
+                </li>
+                <li>
+                    <strong>Pestos e patês verdes:</strong> triturada com azeite, frutos secos ou sementes, alho e outras
+                    ervas, pode dar origem a um <strong>pesto de morugem</strong> para massas ou para barrar em pão.
+                </li>
+                <li>
+                    <strong>Infusões e preparados tradicionais:</strong> em algumas fontes é indicada para infusões
+                    internas ou uso externo (banhos, cataplasmas, vinagres macerados) sobretudo para pele e tendões;
+                    essas utilizações entram já no domínio medicinal/tradicional e exigem cautela e acompanhamento
+                    profissional.
+                </li>
+                <li>
+                    <strong>Identificação e segurança:</strong> é crucial garantir a <strong>identificação correta</strong>,
+                    pois existem plantas semelhantes, algumas tóxicas (por exemplo, certas <em>Euphorbia</em> com seiva
+                    leitosa). Se houver dúvida, não consumir e procurar apoio de alguém experiente ou de guias de campo
+                    fiáveis.
+                </li>
+                <li>
+                    <strong>Precauções especiais:</strong> a morugem contém <strong>saponinas</strong> e possivelmente
+                    níveis relevantes de nitratos quando cresce em solos muito adubados; recomenda-se não consumir em
+                    quantidades exageradas e ter atenção particular em <strong>gravidez, amamentação</strong> e em
+                    pessoas sensíveis a plantas ricas em saponinas ou oxalatos.
+                </li>
+            </ul>
+        </section>
+
+        <section id="receitas">
+            <h3>4. Receitas e preparados (Top 10)</h3>
+            <p>
+                Abaixo, uma seleção de <strong>10 ideias de receitas</strong> em que a morugem (fresca, de colheita
+                biológica e corretamente identificada) pode ser usada. Procurou-se incluir pelo menos 5 fontes em
+                português.
+            </p>
+            <ol>
+                <li>
+                    <strong>Salada mista com morugem</strong> – salada de mistura de verdes em que a morugem é adicionada
+                    a alface, rúcula, outras folhas e legumes crus, como descrito no artigo
+                    “Ervas daninhas comestíveis: morugem ou erva-estrela”.
+                    <a href="https://casacaseira.wordpress.com/2015/01/24/morugem-erva-estrela/" target="_blank">[R1]</a>
+                </li>
+                <li>
+                    <strong>Morugem como “alimento gourmet”</strong> – sugestões de uso em saladas, sopas e como verdura
+                    levemente cozida em pratos simples no texto “Erva-estrela: de erva daninha a alimento gourmet!”.
+                    <a href="https://receitasedicasparasi.blogspot.com/2015/12/erva-estrela-de-erva-daminha-alimento.html" target="_blank">[R2]</a>
+                </li>
+                <li>
+                    <strong>Sopa verde de morugem (base chickweed)</strong> – receitas de sopa de morugem (chickweed
+                    soup) em inglês, em que a planta é usada como base verde principal.
+                    <a href="https://ciaranthegardener.com/2013/01/07/the-first-weeds-are-the-first-harvest-chickweed-soup-recipe/" target="_blank">[R3]</a>
+                    <a href="https://www.atasteoffreedom.pt/plants/chickweed/" target="_blank">[R4]</a>
+                </li>
+                <li>
+                    <strong>“Green soup” de forrageio com morugem</strong> – sopas verdes de forrageio em que a morugem
+                    entra como uma das principais verduras tenras.
+                    <a href="https://www.backdoorsurvival.com/green-soup-guide-an-easy-recipe-for-foragers/" target="_blank">[R5]</a>
+                    <a href="https://foragersyear.wordpress.com/2012/07/25/seven-hot-wild-greens-in-a-winter-soup/" target="_blank">[R6]</a>
+                </li>
+                <li>
+                    <strong>Pesto de morugem</strong> – receitas em português do Brasil de pesto feito com morugem,
+                    frutos secos ou castanhas, alho e azeite (PANC mania).
+                    <a href="https://www.facebook.com/pancmania/posts/pesto-de-morugemstellaria-mediareceita12-x%C3%ADcara-de-nozes-castanhas-de-caju-ou-pi/2026597130922884/" target="_blank">[R7]</a>
+                </li>
+                <li>
+                    <strong>Ravioli recheado com morugem</strong> – massa fresca recheada com morugem, acompanhada de
+                    molho de alho-francês (PANC mania).
+                    <a href="https://www.facebook.com/pancmania/posts/ravioli-de-morugemstellaria-mediaao-molho-de-alho-por%C3%B3receita-cedida-pela-gastro/1888050721444193/" target="_blank">[R8]</a>
+                </li>
+                <li>
+                    <strong>Morugem em esparregados e acompanhamentos</strong> – uso em esparregados, acompanhamentos
+                    de carne ou pratos vegetarianos, tal como sugerido em artigos sobre “comida selvagem” e ervas
+                    daninhas comestíveis.
+                    <a href="https://plantura.garden/uk/herbs/chickweed/chickweed-overview" target="_blank">[R9]</a>
+                    <a href="https://www.eatweeds.co.uk/chickweed-stellaria-media" target="_blank">[R10]</a>
+                </li>
+                <li>
+                    <strong>Morugem em omeletes, tartes e recheios</strong> – adicionada picada a omeletes, quiches,
+                    tartes salgadas e recheios, como indicado em guias de forrageio e culinária com chickweed.
+                    <a href="https://foragerchef.com/chickweed/" target="_blank">[R11]</a>
+                    <a href="https://britishlocalfood.com/chickweed/" target="_blank">[R12]</a>
+                </li>
+                <li>
+                    <strong>Manteiga de ervas com morugem</strong> – o artigo da COMPO sobre ervas daninhas comestíveis
+                    menciona morugem em sopas, saladas e <strong>manteiga de ervas</strong> para barrar pão.
+                    <a href="https://www.compo.pt/guia/cuidar-das-plantas/ervas-aromaticas-frutas-e-legumes/ervas-daninhas-comestiveis" target="_blank">[R13]</a>
+                </li>
+                <li>
+                    <strong>Infusão de morugem</strong> – como chá de uso tradicional (por exemplo, mencionado em
+                    artigos sobre remédios caseiros para tendinite), devendo ser encarado como uso medicinal e não apenas
+                    culinário, exigindo prudência e eventual aconselhamento profissional.
+                    <a href="https://www.educarsaude.com/remedios-caseiros-para-tendinite/" target="_blank">[R14]</a>
+                </li>
+            </ol>
+        </section>
+
+        <section id="beneficios">
+            <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+            <p>
+                A morugem é tema de várias <strong>revisões fitoquímicas e farmacológicas</strong>, que analisam tanto
+                o uso tradicional como estudos laboratoriais e em modelos animais. Abaixo resume-se parte da evidência,
+                sem substituir a leitura das fontes originais nem o aconselhamento médico.
+            </p>
+            <ul>
+                <li>
+                    <strong>Composição nutricional interessante:</strong> revisões recentes indicam que
+                    <em>Stellaria media</em> contém proteína, fibra, vitaminas (A, C, complexo B), minerais (cálcio,
+                    ferro, magnésio, potássio, zinco) e uma variedade de compostos bioativos (flavonoides, saponinas,
+                    ácidos fenólicos, triterpenos, etc.).
+                    <a href="https://herbmedpharmacol.com/Article/jhp-42384" target="_blank">[M1]</a>
+                    <a href="https://www.allstudyjournal.com/article/1253/6-8-15-200.pdf" target="_blank">[M2]</a>
+                    <a href="https://www.atasteoffreedom.pt/plants/chickweed/" target="_blank">[M3]</a>
+                </li>
+                <li>
+                    <strong>Revisões fitoquímicas e farmacológicas:</strong> artigos de revisão de 2020 e 2022
+                    sintetizam estudos sobre os <strong>efeitos anti-inflamatórios, antioxidantes, anti-obesidade,
+                    anti-diabéticos, antibacterianos, antifúngicos</strong> e outros potenciais efeitos farmacológicos
+                    de extratos de morugem.
+                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7284062/" target="_blank">[M4]</a>
+                    <a href="https://www.sciencedirect.com/science/article/pii/S2405844020309944" target="_blank">[M5]</a>
+                    <a href="https://herbmedpharmacol.com/Article/jhp-42384" target="_blank">[M6]</a>
+                </li>
+                <li>
+                    <strong>Atividade antioxidante e enzimática (pré-clínica):</strong> estudos in vitro mostram que
+                    extratos de morugem apresentam capacidade de neutralizar espécies reativas de oxigénio e inibir
+                    determinadas enzimas associadas ao metabolismo de lípidos e hidratos de carbono.
+                    <a href="https://www.sciencedirect.com/science/article/abs/pii/S0926669016308895" target="_blank">[M7]</a>
+                </li>
+                <li>
+                    <strong>Estudos em obesidade e metabolismo:</strong> um estudo em ratos, com dieta rica em gordura,
+                    sugeriu que extratos de <em>Stellaria media</em> podem <strong>reduzir o acúmulo de gordura</strong>
+                    por inibição da absorção intestinal de lípidos e hidratos de carbono, via inibição de enzimas
+                    digestivas. São resultados promissores, mas ainda experimentais.
+                    <a href="https://bmccomplementmedtherapies.biomedcentral.com/articles/10.1186/1472-6882-12-145" target="_blank">[M8]</a>
+                </li>
+                <li>
+                    <strong>Propriedades cicatrizantes e para a pele:</strong> em modelos in vitro e animais,
+                    extratos de morugem mostraram potencial <strong>cicatrizante, antioxidante e antimicrobiano</strong>,
+                    reforçando parte da tradição de uso tópico em problemas de pele.
+                    <a href="https://www.mdpi.com/2076-3417/11/23/11526" target="_blank">[M9]</a>
+                </li>
+                <li>
+                    <strong>Estudos recentes em modelos de doença metabólica:</strong> trabalhos mais recentes exploram
+                    a utilização de extratos de <em>Stellaria media</em> em modelos pré-clínicos de <strong>diabetes e
+                    disfunção cardíaca associada</strong>, com resultados encorajadores mas ainda longe de permitir
+                    recomendações clínicas padronizadas.
+                    <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/fsn3.4505" target="_blank">[M10]</a>
+                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11606822/" target="_blank">[M11]</a>
+                </li>
+                <li>
+                    <strong>Uso tradicional em fitoterapia:</strong> fontes etnobotânicas e de fitoterapia tradicional
+                    referem a morugem como planta calmante da pele (eczema, irritações), coadjuvante em problemas
+                    respiratórios e reumáticos, e como leve diurético e laxante, embora nem todas estas indicações
+                    tenham sido validadas por ensaios clínicos.
+                    <a href="https://pt.wikipedia.org/wiki/Morugem" target="_blank">[M12]</a>
+                    <a href="https://www.permaculture.co.uk/articles/foraging-for-wild-food-and-medicinal-plants-chickweed-plant-profile/" target="_blank">[M13]</a>
+                    <a href="https://asenhoradomonte.com/2021/10/09/beneficios-da-morugem/" target="_blank">[M14]</a>
+                </li>
+                <li>
+                    <strong>Saponinas, segurança e limites:</strong> a planta contém <strong>saponinas triterpenoides</strong>.
+                    Revisões e bases de dados indicam que, em doses alimentares, são em geral pouco absorvidas e em
+                    princípio bem toleradas, mas em grandes quantidades podem causar desconforto gastrointestinal em
+                    humanos e toxicidade em alguns animais. A literatura recomenda <strong>evitar o consumo exagerado
+                    e ter particular prudência em grávidas e mulheres a amamentar</strong>.
+                    <a href="https://pfaf.org/user/plant.aspx?LatinName=Stellaria+media" target="_blank">[M15]</a>
+                    <a href="https://en.wikipedia.org/wiki/Stellaria_media" target="_blank">[M16]</a>
+                    <a href="https://temperate.theferns.info/plant/Stellaria+media" target="_blank">[M17]</a>
+                </li>
+            </ul>
+            <p class="nota-aviso">
+                A maior parte destes resultados provém de estudos laboratoriais e em modelos animais. O consumo culinário
+                de morugem fresca em quantidades habituais, corretamente identificada e colhida em ambiente limpo e
+                biológico, é em geral considerado seguro para a população em geral. Não deve, porém, substituir
+                terapêuticas prescritas, nem ser usada em doses concentradas (extratos, cápsulas, chás fortes) sem
+                acompanhamento profissional adequado.
+            </p>
+        </section>
+
+        <section id="nutricao">
+            <h3>6. Propriedades nutricionais</h3>
+            <p>
+                A tabela seguinte apresenta valores aproximados por 100&nbsp;g de parte comestível (peso fresco) para
+                morugem crua e morugem cozinhada simples (escaldada/cozida em água e escorrida). Os valores variam com
+                o solo, o clima, o estádio de colheita e o método analítico, pelo que devem ser entendidos como gama
+                indicativa e não como valores exatos.
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Componente</th>
+                        <th>Morugem crua (100 g)</th>
+                        <th>Morugem cozinhada simples (100 g)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Energia</td>
+                        <td>≈ 20–30 kcal</td>
+                        <td>≈ 25–35 kcal (ligeira concentração após cozedura)</td>
+                    </tr>
+                    <tr>
+                        <td>Água</td>
+                        <td>≈ 90–93 g</td>
+                        <td>Ligeiramente menor (parte evapora)</td>
+                    </tr>
+                    <tr>
+                        <td>Hidratos de carbono</td>
+                        <td>≈ 3–5 g</td>
+                        <td>≈ 4–6 g</td>
+                    </tr>
+                    <tr>
+                        <td>Fibra</td>
+                        <td>≈ 1,5–3 g</td>
+                        <td>≈ 2–3,5 g</td>
+                    </tr>
+                    <tr>
+                        <td>Proteína</td>
+                        <td>≈ 1,5–3 g</td>
+                        <td>≈ 2–3,5 g</td>
+                    </tr>
+                    <tr>
+                        <td>Lípidos totais</td>
+                        <td>&lt; 1 g (com fracção de ácidos gordos essenciais)</td>
+                        <td>&lt; 1 g (sem contar com azeite da receita)</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina C</td>
+                        <td>Boa fonte (valores na ordem dos 15–30 mg)</td>
+                        <td>Redução importante (sensível ao calor e à água)</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina A (carotenos)</td>
+                        <td>Presente em quantidades moderadas</td>
+                        <td>Ligeira redução com cozedura</td>
+                    </tr>
+                    <tr>
+                        <td>Complexo B</td>
+                        <td>Pequenas quantidades (tiamina, riboflavina, niacina, folatos)</td>
+                        <td>Alguma perda térmica, sobretudo se a água de cozedura for descartada</td>
+                    </tr>
+                    <tr>
+                        <td>Cálcio</td>
+                        <td>Pode atingir ≈ 150–180 mg (valores reportados em folhas secas sugerem boa densidade)</td>
+                        <td>Valores semelhantes ou ligeiramente concentrados</td>
+                    </tr>
+                    <tr>
+                        <td>Ferro</td>
+                        <td>≈ 2–4 mg</td>
+                        <td>Semelhante ou ligeiramente mais concentrado</td>
+                    </tr>
+                    <tr>
+                        <td>Magnésio / Potássio</td>
+                        <td>Boas quantidades (magnésio e potássio relevantes para a dieta)</td>
+                        <td>Leve concentração se parte da água evaporar (mas pode haver lixiviação se a água é descartada)</td>
+                    </tr>
+                    <tr>
+                        <td>Outros compostos</td>
+                        <td>Flavonoides, saponinas, ácidos fenólicos, etc., com atividade antioxidante e outros efeitos biológicos estudados</td>
+                        <td>Perfil alterado pela cozedura; algumas perdas e transformações químicas</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="referencia-nota">
+                Síntese baseada em revisões e estudos específicos de composição de <em>Stellaria media</em>:
+                <a href="https://herbmedpharmacol.com/Article/jhp-42384" target="_blank">[N1]</a>,
+                <a href="https://www.allstudyjournal.com/article/1253/6-8-15-200.pdf" target="_blank">[N2]</a>,
+                <a href="https://himalayanwildfoodplants.com/2019/03/stellaria-media_padyaala/" target="_blank">[N3]</a>,
+                <a href="https://www.atasteoffreedom.pt/plants/chickweed/" target="_blank">[N4]</a>,
+                <a href="https://www.wildabundance.net/blog/the-glories-of-chickweed/" target="_blank">[N5]</a>.
+            </p>
+        </section>
+
+        <section id="utilidades">
+            <h3>7. Utilidades e aplicações (não apenas alimentares)</h3>
+            <ul>
+                <li>
+                    <strong>Alimentação e PANC:</strong> verdura macia e abundante, útil para enriquecer saladas,
+                    sopas e acompanhamentos em hortas biológicas, reduzindo a dependência de hortícolas compradas.
+                </li>
+                <li>
+                    <strong>Aproveitamento de “ervas daninhas”:</strong> a morugem é um excelente exemplo de como
+                    transformar uma “erva indesejada” em <strong>recurso alimentar e pedagógico</strong>, incentivando
+                    uma visão mais integrada da biodiversidade em hortas.
+                </li>
+                <li>
+                    <strong>Educação ambiental e etnobotânica:</strong> pode ser usada em oficinas de identificação de
+                    plantas espontâneas comestíveis, aprendizagem de PANC e resgate de saberes tradicionais.
+                </li>
+                <li>
+                    <strong>Uso medicinal tradicional:</strong> é referida em pomadas, cataplasmas, vinagres herbais,
+                    infusões e outros preparados para problemas de pele e queixas leves; estas aplicações devem ser sempre
+                    contextualizadas como <strong>complementares</strong> e não como substitutas de cuidados médicos.
+                </li>
+                <li>
+                    <strong>Ecologia da horta:</strong> como cobertura baixa, ajuda a proteger o solo da erosão e do
+                    impacto direto da chuva, mantendo alguma humidade. Por outro lado, pode competir com culturas
+                    jovens, pelo que o manejo (colher para comer em vez de arrancar e descartar) é essencial.
+                </li>
+                <li>
+                    <strong>Alimentação animal:</strong> as sementes e partes da planta são apreciadas por aves,
+                    podendo servir como complemento alimentar para aves domésticas, desde que colhidas em contexto
+                    limpo e sem tratamentos químicos.
+                </li>
+            </ul>
+        </section>
+
+        <section id="permacultura">
+            <h3>8. Grau de funcionalidade em permacultura</h3>
+            <p><strong>Classificação proposta: 8/10</strong></p>
+            <ul class="lista-permacultura">
+                <li>
+                    <strong>Funções principais:</strong> alimento humano e animal, cobertura parcial do solo,
+                    indicador de solos férteis e ricos em azoto, recurso educativo sobre PANC.
+                </li>
+                <li>
+                    <strong>Vantagens:</strong> surge espontaneamente, é produtiva em solos férteis e húmidos, tolera
+                    temperaturas baixas e permite colheitas quase todo o ano. A textura macia e o sabor suave tornam-na
+                    versátil na cozinha.
+                </li>
+                <li>
+                    <strong>Limitações:</strong> pode ser muito competitiva com plântulas de culturas hortícolas; contém
+                    saponinas e pode acumular nitratos em solos fortemente adubados, o que exige moderação no consumo e
+                    atenção em contextos de pecuária.
+                </li>
+            </ul>
+            <p class="nota">
+                A morugem é menos “estrutural” na paisagem do que arbustos, árvores de fruto ou perenes profundas, mas
+                destaca-se como <strong>verdura espontânea de elevada funcionalidade</strong> em sistemas de horta e
+                agroecologia, sobretudo quando se valoriza o aproveitamento integral da biodiversidade comestível.
+            </p>
+        </section>
+
+        <section id="referencias">
+            <h3>9. Referências</h3>
+
+            <div class="referencias-subsecao">9.1. Descrição, botânica e contexto</div>
+            <ul class="referencias-lista">
+                <li><strong>[D1]</strong> <a href="https://pt.wikipedia.org/wiki/Morugem" target="_blank">Morugem – Wikipédia (PT)</a></li>
+                <li><strong>[D2]</strong> <a href="https://en.wikipedia.org/wiki/Stellaria_media" target="_blank">Stellaria media – Wikipédia (EN)</a></li>
+                <li><strong>[D3]</strong> <a href="https://casacaseira.wordpress.com/2015/01/24/morugem-erva-estrela/" target="_blank">Casa Caseira – Ervas daninhas comestíveis: morugem ou erva-estrela</a></li>
+                <li><strong>[D4]</strong> <a href="https://revistajardins.pt/plantas/herbaceas/morugem-planta-combate-obesidade/" target="_blank">Revista Jardins – Morugem, uma planta aliada no combate à obesidade</a></li>
+                <li><strong>[D5]</strong> <a href="https://www.hortasbiologicas.pt/ervas-daninhas-morugem/" target="_blank">Hortas Biológicas – Morugem</a></li>
+                <li><strong>[D6]</strong> <a href="https://www.compo.pt/guia/cuidar-das-plantas/ervas-aromaticas-frutas-e-legumes/ervas-daninhas-comestiveis" target="_blank">COMPO – Ervas daninhas comestíveis (morugem-branca)</a></li>
+                <li><strong>[D7]</strong> <a href="https://www.syngenta.pt/dicotiledoneas-anuais/morugem-branca" target="_blank">Syngenta – Morugem-branca (descrição agronómica e nomes comuns)</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.2. Cultivo, sazonalidade e PANC</div>
+            <ul class="referencias-lista">
+                <li><strong>[S1]</strong> <a href="https://www.hortasbiologicas.pt/ervas-daninhas-morugem/" target="_blank">Hortas Biológicas – Morugem (presença em Portugal, ecologia)</a></li>
+                <li><strong>[S2]</strong> <a href="https://asenhoradomonte.com/2021/10/09/beneficios-da-morugem/" target="_blank">A Senhora do Monte – Benefícios da morugem</a></li>
+                <li><strong>[S3]</strong> <a href="https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/1174179/1/Livro-PANCs-06-12-2024.pdf" target="_blank">Embrapa – Plantas Alimentícias Não Convencionais (referências a <em>Stellaria media</em>)</a></li>
+                <li><strong>[S4]</strong> <a href="https://ndpublisher.in/admin/issues/IJFFTv13n1d.pdf" target="_blank">Nutraceutical Potential of Khakhra Prepared by Chickweed Leaves Powder</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.3. Nutrição e composição</div>
+            <ul class="referencias-lista">
+                <li><strong>[N1]</strong> <a href="https://herbmedpharmacol.com/Article/jhp-42384" target="_blank">Singh et al. 2022 – Stellaria media Linn.: A comprehensive review…</a></li>
+                <li><strong>[N2]</strong> <a href="https://www.allstudyjournal.com/article/1253/6-8-15-200.pdf" target="_blank">Nutraceutical properties of Stellaria media (L.) chickweed</a></li>
+                <li><strong>[N3]</strong> <a href="https://himalayanwildfoodplants.com/2019/03/stellaria-media_padyaala/" target="_blank">Stellaria media – Padyaala (composição proximal)</a></li>
+                <li><strong>[N4]</strong> <a href="https://www.atasteoffreedom.pt/plants/chickweed/" target="_blank">A Taste of Freedom – Chickweed plant profile</a></li>
+                <li><strong>[N5]</strong> <a href="https://www.wildabundance.net/blog/the-glories-of-chickweed/" target="_blank">Wild Abundance – The glories of chickweed</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.4. Benefícios e estudos de saúde</div>
+            <ul class="referencias-lista">
+                <li><strong>[M1]</strong> <a href="https://herbmedpharmacol.com/Article/jhp-42384" target="_blank">Singh et al. 2022 – Review (nutrição, fitoquímica e farmacologia)</a></li>
+                <li><strong>[M2]</strong> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7284062/" target="_blank">Oladeji et al. 2020 – Stellaria media: phytochemistry and pharmacology (Heliyon)</a></li>
+                <li><strong>[M3]</strong> <a href="https://www.sciencedirect.com/science/article/pii/S2405844020309944" target="_blank">Oladeji et al. 2020 – Versão no ScienceDirect</a></li>
+                <li><strong>[M4]</strong> <a href="https://www.sciencedirect.com/science/article/abs/pii/S0926669016308895" target="_blank">Rogowska et al. 2017 – Chemical composition, antioxidative and enzyme inhibition properties</a></li>
+                <li><strong>[M5]</strong> <a href="https://bmccomplementmedtherapies.biomedcentral.com/articles/10.1186/1472-6882-12-145" target="_blank">Chaudhary et al. 2012 – Anti-obesity activity of Stellaria media</a></li>
+                <li><strong>[M6]</strong> <a href="https://www.mdpi.com/2076-3417/11/23/11526" target="_blank">Miere et al. 2021 – Wound-healing potential and antioxidant activity</a></li>
+                <li><strong>[M7]</strong> <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/fsn3.4505" target="_blank">Cusumano et al. 2024 – Revisão sobre plantas com efeitos cardiometabólicos (inclui S. media)</a></li>
+                <li><strong>[M8]</strong> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11606822/" target="_blank">Cusumano et al. 2024 – In vitro, in silico and network pharmacology approaches (S. media)</a></li>
+                <li><strong>[M9]</strong> <a href="https://www.permaculture.co.uk/articles/foraging-for-wild-food-and-medicinal-plants-chickweed-plant-profile/" target="_blank">Permaculture Magazine – Chickweed plant profile</a></li>
+                <li><strong>[M10]</strong> <a href="https://asenhoradomonte.com/2021/10/09/beneficios-da-morugem/" target="_blank">A Senhora do Monte – Benefícios da morugem (síntese em português)</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.5. Culinária, forrageio e usos tradicionais</div>
+            <ul class="referencias-lista">
+                <li><strong>[C1]</strong> <a href="https://casacaseira.wordpress.com/2015/01/24/morugem-erva-estrela/" target="_blank">Casa Caseira – Utilização em saladas, sopas e remédios caseiros</a></li>
+                <li><strong>[C2]</strong> <a href="https://receitasedicasparasi.blogspot.com/2015/12/erva-estrela-de-erva-daminha-alimento.html" target="_blank">Receitas e Dicas – Erva-estrela: de erva daninha a alimento gourmet</a></li>
+                <li><strong>[C3]</strong> <a href="https://plantura.garden/uk/herbs/chickweed/chickweed-overview" target="_blank">Plantura – Chickweed overview (usos alimentares e ecológicos)</a></li>
+                <li><strong>[C4]</strong> <a href="https://www.eatweeds.co.uk/chickweed-stellaria-media" target="_blank">Eatweeds – Chickweed (usos culinários e medicinais tradicionais)</a></li>
+                <li><strong>[C5]</strong> <a href="https://foragerchef.com/chickweed/" target="_blank">Forager Chef – How to harvest and cook with chickweed</a></li>
+                <li><strong>[C6]</strong> <a href="https://britishlocalfood.com/chickweed/" target="_blank">British Local Food – Chickweed: foraging for culinary and medicinal use</a></li>
+                <li><strong>[C7]</strong> <a href="https://totallywilduk.co.uk/2020/04/28/identify-chickweed/" target="_blank">Totally Wild UK – Identification, usos e alertas de toxicidade</a></li>
+                <li><strong>[C8]</strong> <a href="https://www.diegobonetto.com/blog/on-the-wonderful-chickweed-and-the-poisonous-lookalike" target="_blank">Diego Bonetto – Chickweed and poisonous lookalike (identificação e segurança)</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.6. Receitas e preparados</div>
+            <ul class="referencias-lista">
+                <li><strong>[R1]</strong> <a href="https://casacaseira.wordpress.com/2015/01/24/morugem-erva-estrela/" target="_blank">Casa Caseira – Salada com morugem</a></li>
+                <li><strong>[R2]</strong> <a href="https://receitasedicasparasi.blogspot.com/2015/12/erva-estrela-de-erva-daminha-alimento.html" target="_blank">Receitas e Dicas – Sugestões de saladas e sopas com morugem</a></li>
+                <li><strong>[R3]</strong> <a href="https://ciaranthegardener.com/2013/01/07/the-first-weeds-are-the-first-harvest-chickweed-soup-recipe/" target="_blank">Ciaran the Gardener – Chickweed soup recipe</a></li>
+                <li><strong>[R4]</strong> <a href="https://www.atasteoffreedom.pt/plants/chickweed/" target="_blank">A Taste of Freedom – Chickweed soup (exemplo de receita)</a></li>
+                <li><strong>[R5]</strong> <a href="https://www.backdoorsurvival.com/green-soup-guide-an-easy-recipe-for-foragers/" target="_blank">Backdoor Survival – Green soup guide (inclui chickweed)</a></li>
+                <li><strong>[R6]</strong> <a href="https://foragersyear.wordpress.com/2012/07/25/seven-hot-wild-greens-in-a-winter-soup/" target="_blank">Forager’s Year – Seven hot wild greens (inclui chickweed)</a></li>
+                <li><strong>[R7]</strong> <a href="https://www.facebook.com/pancmania/posts/pesto-de-morugemstellaria-mediareceita12-x%C3%ADcara-de-nozes-castanhas-de-caju-ou-pi/2026597130922884/" target="_blank">PANC Mania – Pesto de morugem</a></li>
+                <li><strong>[R8]</strong> <a href="https://www.facebook.com/pancmania/posts/ravioli-de-morugemstellaria-mediaao-molho-de-alho-por%C3%B3receita-cedida-pela-gastro/1888050721444193/" target="_blank">PANC Mania – Ravioli de morugem</a></li>
+                <li><strong>[R9]</strong> <a href="https://www.compo.pt/guia/cuidar-das-plantas/ervas-aromaticas-frutas-e-legumes/ervas-daninhas-comestiveis" target="_blank">COMPO – Referência a sopas, saladas e manteiga de ervas com morugem</a></li>
+                <li><strong>[R10]</strong> <a href="https://www.educarsaude.com/remedios-caseiros-para-tendinite/" target="_blank">Educar Saúde – Infusão de morugem (uso tradicional como chá)</a></li>
+            </ul>
+        </section>
+
+        <div class="topo-link">
+            <a href="#topo">Voltar ao topo ▲</a>
+        </div>
+    </article>
+</main>
+</body>
+</html>

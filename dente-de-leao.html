@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Dente-de-leão (Taraxacum officinale) | Horta da Terra para o prato</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota, .referencia-nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .nota-aviso {
+            font-size: 0.85rem;
+            color: #9a3412;
+            background: #fff7ed;
+            border-radius: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #fed7aa;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body id="topo">
+<header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Plantas espontâneas comestíveis de produção biológica – da terra para o prato.</p>
+</header>
+
+<nav>
+    <a href="index.html">Início</a>
+    <a href="espontaneas.html">Índice</a>
+    <a href="beldroega.html">Beldroega</a>
+    <a href="bredos.html">Bredos</a>
+    <a href="dente-de-leao.html" class="ativa">Dente-de-leão</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="quenopodio.html">Quenopódio</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+</nav>
+
+<main>
+    <article class="planta">
+        <div class="planta-cabecalho">
+            <div class="planta-titulo">
+                <h2>Dente-de-leão (<em>Taraxacum officinale</em>)</h2>
+                <p>
+                    <strong>Outros nomes em português:</strong>
+                    taráxaco, coroa-de-monge, quartilho, amor-de-homem, papai-careca, vovô-careca,
+                    alface-de-cão (entre outros, dependendo da região lusófona).
+                </p>
+                <p>
+                    <strong>Nome mais comum em inglês:</strong> dandelion (common dandelion).
+                </p>
+
+                <div class="tags-nomes">
+                    <span>Família: Asteraceae</span>
+                    <span>Parte usada: folhas jovens, flores, raízes (em menor escala)</span>
+                    <span>Tipo: planta espontânea comestível (PANC)</span>
+                    <span>Produção/recoleção: <strong>biológica</strong></span>
+                </div>
+
+                <div class="info-rapida">
+                    <div>
+                        <strong>Origem e status</strong>
+                        Planta perene herbácea, originária da Europa e Ásia, hoje naturalizada em grande parte do
+                        mundo temperado, incluindo Portugal, frequentemente vista como “erva daninha” em relvados
+                        e campos.
+                    </div>
+                    <div>
+                        <strong>Uso principal</strong>
+                        Folhas jovens em saladas e pratos cozinhados, flores para saladas, xaropes e geleias,
+                        raízes torradas como substituto de café ou em misturas para infusões.
+                    </div>
+                    <div>
+                        <strong>Perfil nutricional</strong>
+                        Folhas ricas em vitaminas A, C e K, com bons níveis de cálcio, ferro, potássio e diversos
+                        compostos antioxidantes.
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="imagem-container-externo">
+                    <div class="imagem-container">
+                        <img src="imagens/dente-de-leao.png" alt="Dente-de-leão (Taraxacum officinale) em flor, típico de prados e relvados.">
+                    </div>
+                </div>
+                <p class="imagem-legenda">
+                    Dente-de-leão biológico (<em>Taraxacum officinale</em>) – planta espontânea, perene,
+                    com folhas em roseta basal e flores amarelas em capítulos.
+                </p>
+            </div>
+        </div>
+
+        <!-- 1. Apresentação / Descrição -->
+        <section id="apresentacao">
+            <h3>1. Apresentação / Descrição</h3>
+            <p>
+                O <strong>dente-de-leão comum</strong>, <strong><em>Taraxacum officinale</em></strong>, é uma
+                planta perene da família Asteraceae. Forma uma <strong>roseta de folhas basais</strong>, profundamente
+                recortadas, de onde surgem hastes ocadas que terminam em capitulescências amarelas que depois se
+                transformam nas típicas “esferas” brancas de sementes levadas pelo vento.
+            </p>
+            <p>
+                Em português, “dente-de-leão” pode referir-se a várias espécies do género
+                <em>Taraxacum</em>, mas a mais comum e amplamente referenciada é precisamente
+                <em>Taraxacum officinale</em>. Em Portugal ocorrem diversas espécies e subespécies espontâneas do
+                género, incluindo táxons endémicos, mas do ponto de vista alimentar a referência prática recai na
+                utilização das <strong>folhas, flores e raízes</strong> do dente-de-leão comum.
+            </p>
+            <p>
+                As folhas jovens são tradicionalmente consumidas como verdura de salada ou de tacho,
+                com sabor marcadamente <strong>amargo</strong>, sobretudo quando colhidas mais tarde na estação.
+                A planta é conhecida e utilizada há séculos como <strong>planta medicinal</strong> e alimentar em
+                várias cozinhas tradicionais europeias e asiáticas.
+            </p>
+            <p class="referencia-nota">
+                Referência(s) de suporte para a descrição:
+                <a href="https://pt.wikipedia.org/wiki/Taraxacum_officinale" target="_blank">[D1]</a>
+                <a href="https://pt.wikipedia.org/wiki/Taraxacum" target="_blank">[D2]</a>
+                <a href="https://pt.wikipedia.org/wiki/Dente-de-le%C3%A3o" target="_blank">[D3]</a>
+                <a href="https://en.wikipedia.org/wiki/Taraxacum_officinale" target="_blank">[D4]</a>
+            </p>
+        </section>
+
+        <!-- 2. Sazonalidade -->
+        <section id="sazonalidade">
+            <h3>2. Sazonalidade (Portugal continental)</h3>
+            <p>
+                Em Portugal continental, o dente-de-leão aparece em <strong>prados, relvados,
+                bermas e terrenos agrícolas</strong>, desde zonas costeiras até ao interior, preferindo solos
+                razoavelmente húmidos e áreas abertas.
+            </p>
+            <ul>
+                <li>
+                    <strong>Folhas:</strong> presença quase todo o ano em zonas de clima mais ameno; a
+                    <strong>melhor fase para consumo cru</strong> são normalmente as folhas tenras de
+                    <strong>final de inverno e início da primavera</strong>, quando o sabor amargo é menos intenso.
+                </li>
+                <li>
+                    <strong>Flores:</strong> as inflorescências amarelas surgem sobretudo na
+                    <strong>primavera</strong> (março–maio), com floração que se pode prolongar até ao verão
+                    conforme a altitude e a humidade do local.
+                </li>
+                <li>
+                    <strong>Raiz:</strong> pode ser colhida em várias épocas do ano, sendo por vezes
+                    preferida no outono para secagem e torrefação (substituto de café) ou para uso em preparados
+                    medicinais tradicionais.
+                </li>
+                <li>
+                    <strong>Gestão em horta biológica:</strong> em contexto de permacultura e agricultura biológica,
+                    pode ser tolerado em determinadas zonas como fonte de verdura e para atração de insetos, desde
+                    que não interfira com outras culturas.
+                </li>
+            </ul>
+            <p class="nota">
+                Em termos práticos, para folhas frescas destinadas à alimentação, faz sentido considerar
+                o dente-de-leão uma verdura principalmente de <strong>outono–primavera</strong>, com colheita
+                preferencial de folhas jovens em locais limpos e sem tratamentos químicos.
+            </p>
+        </section>
+
+        <!-- 3. Como consumir -->
+        <section id="como-consumir">
+            <h3>3. Como consumir</h3>
+            <p>
+                Todas as partes do dente-de-leão são teoricamente comestíveis (folhas, flores, botões florais, raízes),
+                mas nesta ficha foca-se sobretudo o uso das <strong>folhas frescas</strong>, em contexto de
+                <strong>produção biológica</strong>.
+            </p>
+            <ul>
+                <li>
+                    <strong>Folhas cruas em saladas:</strong> as folhas mais jovens podem ser usadas cruas, em
+                    pequena quantidade, misturadas com outras folhas mais suaves, para reduzir o amargo. Muitos
+                    autores recomendam colher as folhas antes da floração e, se necessário, demolhar brevemente
+                    em água para suavizar o sabor.
+                </li>
+                <li>
+                    <strong>Folhas cozinhadas:</strong> as folhas podem ser escaldadas e depois usadas em sopas,
+                    salteados, refogados, pratos com batata e queijo, ou acompanhadas de bacon/ovos em receitas
+                    tradicionais de vários países.
+                </li>
+                <li>
+                    <strong>Flores:</strong> as flores frescas podem ser usadas em saladas, panquecas, bolinhos
+                    ou para fazer <strong>xaropes e geleias</strong>. Há receitas tradicionais de “mel” de
+                    dente-de-leão obtido a partir das flores em infusão com açúcar.
+                </li>
+                <li>
+                    <strong>Raízes:</strong> as raízes podem ser secas, tostadas e moídas para produzir um
+                    “<em>café</em> de dente-de-leão” sem cafeína. Também são usadas em extratos e chás com fins
+                    digestivos e hepatobiliares na medicina tradicional.
+                </li>
+                <li>
+                    <strong>Sumos e batidos:</strong> folhas jovens podem ser usadas em sumos verdes, combinadas
+                    com frutas ou água de coco, em pequenas quantidades, para evitar amargor excessivo.
+                </li>
+                <li>
+                    <strong>Cuidados importantes:</strong>
+                    <ul>
+                        <li>Colher apenas em <strong>locais limpos</strong>, afastados de estradas, zonas tratadas
+                            com herbicidas ou fertilizantes sintéticos e áreas de forte presença de animais.</li>
+                        <li>Confirmar a <strong>identificação botânica</strong> (género <em>Taraxacum</em>), pois o
+                            nome vulgar “dente-de-leão” pode ser usado para outras espécies.</li>
+                        <li>Pessoas com <strong>problemas da vesícula biliar</strong>, alergias a Asteraceae ou
+                            medicação específica (diuréticos, anticoagulantes devido ao teor de vitamina K, lítio,
+                            etc.) devem obter aconselhamento profissional antes de consumir em quantidades
+                            significativas ou em forma concentrada.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 4. Receitas -->
+        <section id="receitas">
+            <h3>4. Receitas e preparados (Top 10)</h3>
+            <p>
+                Exemplos de receitas em que o dente-de-leão (principalmente as folhas) é ingrediente relevante.
+                Pelo menos 5 das referências abaixo estão em português (Portugal, Brasil ou outros contextos
+                lusófonos).
+            </p>
+            <ol>
+                <li>
+                    <strong>Sopa de urtigas e dente-de-leão</strong> – receita portuguesa com batata, cebola,
+                    urtigas e folhas de dente-de-leão, reduzida a creme.
+                    <a href="https://receitasdomenuverde.blogspot.com/2012/05/sopa-de-urtigas-e-dente-de-leao-wild.html" target="_blank">[R1]</a>
+                </li>
+                <li>
+                    <strong>Dente-de-leão refogado</strong> – prato simples com folhas de dente-de-leão salteadas
+                    em azeite com cebola, alho, tomate seco e sal.
+                    <a href="https://www.santolegume.com.br/dente-de-leao-refogado/" target="_blank">[R2]</a>
+                </li>
+                <li>
+                    <strong>Requeijão com dente-de-leão</strong> – pasta para barrar com requeijão, folhas de
+                    dente-de-leão picadas, azeite e temperos.
+                    <a href="https://citymagazine.si/pt/receitas-com-pratos-leao-ligeiramente-diferentes-mas-deliciosos/" target="_blank">[R3]</a>
+                </li>
+                <li>
+                    <strong>Dente-de-leão com batatas e queijo</strong> – prato em que as folhas são cozinhadas
+                    com batata, chalotas e queijo ralado.
+                    <a href="https://citymagazine.si/pt/receitas-com-pratos-leao-ligeiramente-diferentes-mas-deliciosos/" target="_blank">[R4]</a>
+                </li>
+                <li>
+                    <strong>Sopa de dente-de-leão</strong> – sopa de folhas de dente-de-leão com caldo de legumes,
+                    alho, amêndoas e especiarias.
+                    <a href="https://citymagazine.si/pt/receitas-com-pratos-leao-ligeiramente-diferentes-mas-deliciosos/" target="_blank">[R5]</a>
+                </li>
+                <li>
+                    <strong>Pesto de folhas de dente-de-leão</strong> – pesto preparado com folhas de dente-de-leão,
+                    alho, parmesão, pinhões e azeite, para servir com massa ou pão.
+                    <a href="https://cruciblecookware.com/pt/blogs/recipes/dandelion-leaf-pesto" target="_blank">[R6]</a>
+                </li>
+                <li>
+                    <strong>Salada de dente-de-leão</strong> – folhas cruas com tomate, pepino, cebola roxa, queijo
+                    feta opcional, temperadas com azeite e vinagre de maçã.
+                    <a href="https://www.endora.net.br/dente-de-leao-salada/" target="_blank">[R7]</a>
+                </li>
+                <li>
+                    <strong>Suco de dente-de-leão</strong> – sumo verde com folhas novas de dente-de-leão e água de
+                    coco, usado em contexto de nutrição funcional.
+                    <a href="https://www.tuasaude.com/dente-de-leao/" target="_blank">[R8]</a>
+                </li>
+                <li>
+                    <strong>Pakoras de dente-de-leão</strong> – folhas inteiras passadas em polme de farinha de grão
+                    e especiarias, depois fritas, num registo de cozinha criativa.
+                    <a href="https://pgl.gal/pakoras-de-dente-de-leom/" target="_blank">[R9]</a>
+                </li>
+                <li>
+                    <strong>Dandelion salad (salada de dente-de-leão com legumes)</strong> – receita em inglês com
+                    folhas jovens, cebola, tomate e ervas aromáticas.
+                    <a href="https://www.allrecipes.com/recipe/49713/dandelion-salad/" target="_blank">[R10]</a>
+                </li>
+            </ol>
+        </section>
+
+        <!-- 5. Benefícios para a saúde -->
+        <section id="beneficios">
+            <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+            <p>
+                O dente-de-leão é amplamente estudado como <strong>planta medicinal e alimentícia</strong>.
+                Abaixo sintetizam-se tendências observadas na literatura científica recente e em fontes
+                técnicas, sempre com a ressalva de que muitas evidências são ainda <strong>pré-clínicas</strong>
+                (in vitro e em animais) e não substituem aconselhamento médico individual.
+            </p>
+            <ul>
+                <li>
+                    <strong>Fonte de compostos bioativos:</strong> revisões recentes descrevem o dente-de-leão
+                    como rico em flavonoides, ácidos fenólicos, triterpenos, sesquiterpenos e outros compostos
+                    com potencial antioxidante e anti-inflamatório.
+                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9498421/" target="_blank">[M1]</a>
+                    <a href="https://www.sciencedirect.com/science/article/pii/S1756464619302683" target="_blank">[M2]</a>
+                    <a href="https://www.researchgate.net/publication/352265796_A_comprehensive_review_of_the_benefits_of_Taraxacum_officinale_on_human_health" target="_blank">[M3]</a>
+                </li>
+                <li>
+                    <strong>Atividade antioxidante e anti-inflamatória:</strong> estudos com extratos de folhas,
+                    flores e raízes mostram capacidade de neutralizar radicais livres e modular vias inflamatórias
+                    em modelos celulares e animais, o que está na base de potenciais efeitos hepatoprotetores,
+                    cardiometabólicos e imunomoduladores.
+                    <a href="https://downloads.editoracientifica.com.br/articles/201102213.pdf" target="_blank">[M4]</a>
+                    <a href="https://revista.uergs.edu.br/index.php/revuergs/article/view/3200" target="_blank">[M5]</a>
+                    <a href="https://www.mdpi.com/1424-8247/18/7/990" target="_blank">[M6]</a>
+                </li>
+                <li>
+                    <strong>Fígado e metabolismo:</strong> revisões narrativas e experimentais descrevem
+                    efeitos hepatoprotetores em modelos animais de lesão hepática, associados ao aumento de
+                    produção de bile, redução de acumulação de gordura no fígado, diminuição de marcadores
+                    inflamatórios e melhoria do metabolismo de lípidos e glicose.
+                    <a href="https://journals.lww.com/aptb/fulltext/2020/10010/hepatoprotection_by_dandelion__taraxacum.1.aspx" target="_blank">[M7]</a>
+                    <a href="https://www.mdpi.com/1424-8247/18/7/990" target="_blank">[M6]</a>
+                    <a href="https://www.healthline.com/nutrition/dandelion-benefits" target="_blank">[M8]</a>
+                </li>
+                <li>
+                    <strong>Função digestiva e prebiótica:</strong> as raízes contêm inulina e outros
+                    oligofrutanos com potencial efeito prebiótico; o uso tradicional inclui ação colagoga,
+                    colerética, digestiva suave e diurética.
+                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9498421/" target="_blank">[M1]</a>
+                    <a href="https://www.saude.df.gov.br/documents/37101/1118391/FOLHETO-DENTE-DE-LE%C3%83O.pdf/eff4c11c-8b04-c92a-4bd9-7e4480d787d6" target="_blank">[M9]</a>
+                </li>
+                <li>
+                    <strong>Usos tradicionais em medicina popular:</strong> materiais de saúde pública e
+                    medicina tradicional referem o dente-de-leão como suporte em casos de má digestão,
+                    retenção de líquidos, problemas hepáticos ligeiros, gota, hipertensão leve, entre outros,
+                    embora estes usos nem sempre tenham confirmação robusta em ensaios clínicos controlados.
+                    <a href="https://www.saude.df.gov.br/documents/37101/1118391/FOLHETO-DENTE-DE-LE%C3%83O.pdf/eff4c11c-8b04-c92a-4bd9-7e4480d787d6" target="_blank">[M9]</a>
+                    <a href="https://acientistaagricola.pt/2023/08/09/beneficios-dente-leao/" target="_blank">[M10]</a>
+                    <a href="https://www.tuasaude.com/dente-de-leao/" target="_blank">[M11]</a>
+                </li>
+                <li>
+                    <strong>Cuidados e contra-indicações:</strong>
+                    <ul>
+                        <li>Pode atuar como <strong>diurético suave</strong>, interagindo com medicamentos
+                            diuréticos ou com lítio.</li>
+                        <li>O elevado teor de <strong>vitamina K</strong> nas folhas pode interferir com
+                            anticoagulantes orais (ex.: varfarina) se houver grandes variações de consumo.</li>
+                        <li>Podem ocorrer <strong>reações alérgicas</strong> em pessoas sensíveis a plantas
+                            da família Asteraceae.</li>
+                        <li>Pessoas com <strong>obstrução dos ductos biliares ou cálculos na vesícula</strong>
+                            devem ter especial cuidado com produtos concentrados que estimulem a secreção biliar.</li>
+                    </ul>
+                    <a href="https://www.healthline.com/nutrition/dandelion-benefits" target="_blank">[M8]</a>
+                    <a href="https://www.tuasaude.com/dente-de-leao/" target="_blank">[M11]</a>
+                    <a href="https://gardentime-pt.decorexpro.com/zagotovki/vtorye-blyuda/salat-iz-oduvanchikov-polza-i-vred.html" target="_blank">[M12]</a>
+                </li>
+            </ul>
+            <p class="nota-aviso">
+                A secção acima resume potenciais benefícios observados em estudos e usos tradicionais.
+                O dente-de-leão deve ser encarado como <strong>alimento</strong> (e eventualmente
+                fitoterápico sob supervisão) integrado numa alimentação equilibrada, e não como substituto
+                de tratamento médico.
+            </p>
+        </section>
+
+        <!-- 6. Propriedades nutricionais -->
+        <section id="nutricao">
+            <h3>6. Propriedades nutricionais</h3>
+            <p>
+                Os valores seguintes referem-se a <strong>folhas de dente-de-leão</strong> (dandelion greens),
+                cruas e cozinhadas, por 100&nbsp;g, com base em dados de bases de dados nutricionais e revisões
+                (valores aproximados; podem variar com solo, estádio de colheita, variedade e modo de produção).
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Componente</th>
+                        <th>Folhas cruas (100 g)</th>
+                        <th>Folhas cozinhadas, cozidas e escorridas (100 g)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Energia</td>
+                        <td>≈ 45 kcal</td>
+                        <td>≈ 33 kcal</td>
+                    </tr>
+                    <tr>
+                        <td>Água</td>
+                        <td>≈ 86 g</td>
+                        <td>Ligeiramente inferior (concentração após cozedura)</td>
+                    </tr>
+                    <tr>
+                        <td>Hidratos de carbono</td>
+                        <td>≈ 9,0–9,2 g</td>
+                        <td>≈ 6 g</td>
+                    </tr>
+                    <tr>
+                        <td>Fibra</td>
+                        <td>≈ 3,5 g</td>
+                        <td>≈ 3 g</td>
+                    </tr>
+                    <tr>
+                        <td>Proteína</td>
+                        <td>≈ 2,7–3 g</td>
+                        <td>≈ 2 g</td>
+                    </tr>
+                    <tr>
+                        <td>Lípidos totais</td>
+                        <td>≈ 0,7 g</td>
+                        <td>≈ 1 g</td>
+                    </tr>
+                    <tr>
+                        <td>Cálcio</td>
+                        <td>≈ 180–190 mg</td>
+                        <td>≈ 140 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Ferro</td>
+                        <td>≈ 2,5–3,1 mg</td>
+                        <td>≈ 2 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Magnésio</td>
+                        <td>≈ 30–40 mg</td>
+                        <td>≈ 20–25 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Potássio</td>
+                        <td>≈ 350–400 mg</td>
+                        <td>≈ 230 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina C</td>
+                        <td>≈ 19–35 mg</td>
+                        <td>≈ 18 mg (parte destruída pela cozedura)</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina A (equiv. retinol)</td>
+                        <td>≈ 500–700 µg (valores muito elevados)</td>
+                        <td>também muito elevada (&gt; 700 µg/100 g em algumas tabelas)</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina K</td>
+                        <td>Muito elevada (&gt; 400–900 µg/100 g, dependendo da fonte)</td>
+                        <td>Também muito elevada (&gt; 300 µg/100 g)</td>
+                    </tr>
+                    <tr>
+                        <td>Outros</td>
+                        <td>Presença de folatos, vitamina E, carotenoides (luteína, beta-caroteno) e compostos fenólicos</td>
+                        <td>Compostos hidrossolúveis tendem a reduzir; alguns carotenoides podem ficar mais biodisponíveis</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="referencia-nota">
+                Baseado em:
+                <a href="https://tools.myfooddata.com/nutrition-facts/169226/wt1" target="_blank">[N1]</a>,
+                <a href="https://foodstruct.com/food/dandelion-greens" target="_blank">[N2]</a>,
+                <a href="https://calories24.com/int/calories-in/dandelion-greens" target="_blank">[N3]</a>,
+                <a href="https://andrafarm.com/_andra.php?_en=ENGLISH&_i=daftar-usda&kmakan=11207" target="_blank">[N4]</a>,
+                <a href="https://en.wikipedia.org/wiki/Taraxacum#Nutrition" target="_blank">[N5]</a>,
+                <a href="https://downloads.editoracientifica.com.br/articles/201102213.pdf" target="_blank">[N6]</a>.
+            </p>
+        </section>
+
+        <!-- 7. Utilidades e aplicações -->
+        <section id="utilidades">
+            <h3>7. Utilidades e aplicações (não apenas alimentares)</h3>
+            <ul>
+                <li>
+                    <strong>Alimentação humana:</strong> folhas como verdura crua ou cozinhada, flores em saladas,
+                    xaropes e geleias, raízes como substituto de café e em chás e misturas digestivas.
+                </li>
+                <li>
+                    <strong>Fitoterapia tradicional:</strong> uso como diurético suave, colagogo/colerético, apoio
+                    digestivo e hepático, entre outros, em várias tradições médicas e etnobotânicas europeias e
+                    asiáticas.
+                </li>
+                <li>
+                    <strong>Matéria-prima nutracêutica:</strong> alguns estudos exploram o uso de farinha de
+                    dente-de-leão e extratos padronizados em formulações com alegadas propriedades antioxidantes
+                    e funcionais.
+                </li>
+                <li>
+                    <strong>Ecologia e solo:</strong> a raiz pivotante ajuda a descompactar o solo e a trazer
+                    nutrientes das camadas mais profundas; a planta floresce cedo na primavera, fornecendo néctar
+                    e pólen a polinizadores.
+                </li>
+                <li>
+                    <strong>Educação alimentar:</strong> é um exemplo clássico de como uma “erva daninha” pode
+                    ser revalorizada como <strong>PANC</strong> (planta alimentícia não convencional), incentivando
+                    o aproveitamento da biodiversidade espontânea em sistemas de produção biológica.
+                </li>
+            </ul>
+        </section>
+
+        <!-- 8. Permacultura -->
+        <section id="permacultura">
+            <h3>8. Grau de funcionalidade em permacultura</h3>
+            <p><strong>Classificação proposta: 8/10</strong></p>
+            <ul class="lista-permacultura">
+                <li>
+                    <strong>Funções principais:</strong> fonte precoce de alimento para polinizadores, verdura
+                    comestível, raiz que estrutura o solo, acumulação de nutrientes.
+                </li>
+                <li>
+                    <strong>Vantagens:</strong> perene, resiliente, adaptada a diferentes solos; oferece alimento
+                    humano e suporte ecológico; quase não requer cuidados, apenas gestão de presença.
+                </li>
+                <li>
+                    <strong>Limitações:</strong> pode tornar-se invasivo em relvados e canteiros se não for
+                    controlado; sabor amargo limita o consumo em cru para alguns paladares; exige atenção a
+                    potenciais interações com medicamentos em usos mais intensivos ou concentrados.
+                </li>
+            </ul>
+            <p class="nota">
+                A pontuação reflete um bom equilíbrio entre <strong>serviços ecológicos</strong> e
+                <strong>utilização alimentar/medicinal</strong>, com a ressalva de que o manejo em zonas
+                cultivadas precisa de algum controlo para evitar competição excessiva com outras culturas.
+            </p>
+        </section>
+
+        <!-- 9. Referências -->
+        <section id="referencias">
+            <h3>9. Referências</h3>
+
+            <div class="referencias-subsecao">9.1. Descrição, botânica e contexto</div>
+            <ul class="referencias-lista">
+                <li><strong>[D1]</strong> <a href="https://pt.wikipedia.org/wiki/Taraxacum_officinale" target="_blank">Taraxacum officinale – Wikipédia (PT)</a></li>
+                <li><strong>[D2]</strong> <a href="https://pt.wikipedia.org/wiki/Taraxacum" target="_blank">Taraxacum – Wikipédia (PT)</a></li>
+                <li><strong>[D3]</strong> <a href="https://pt.wikipedia.org/wiki/Dente-de-le%C3%A3o" target="_blank">Dente-de-leão – Wikipédia (PT)</a></li>
+                <li><strong>[D4]</strong> <a href="https://en.wikipedia.org/wiki/Taraxacum_officinale" target="_blank">Taraxacum officinale – Wikipedia (EN)</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.2. Sazonalidade, uso alimentar e contexto prático</div>
+            <ul class="referencias-lista">
+                <li><strong>[S1]</strong> <a href="https://en.wikipedia.org/wiki/Taraxacum#In_food" target="_blank">Taraxacum – secção “In food”</a></li>
+                <li><strong>[S2]</strong> <a href="https://citymagazine.si/pt/receitas-com-pratos-leao-ligeiramente-diferentes-mas-deliciosos/" target="_blank">City Magazine – Receitas com dente-de-leão</a></li>
+                <li><strong>[S3]</strong> <a href="https://acientistaagricola.pt/2023/08/09/beneficios-dente-leao/" target="_blank">A Cientista Agrícola – Benefícios do dente-de-leão</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.3. Nutrição e composição</div>
+            <ul class="referencias-lista">
+                <li><strong>[N1]</strong> <a href="https://tools.myfooddata.com/nutrition-facts/169226/wt1" target="_blank">MyFoodData – Raw dandelion greens</a></li>
+                <li><strong>[N2]</strong> <a href="https://foodstruct.com/food/dandelion-greens" target="_blank">FoodStruct – Dandelion greens nutrition</a></li>
+                <li><strong>[N3]</strong> <a href="https://calories24.com/int/calories-in/dandelion-greens" target="_blank">Calories24 – Dandelion greens</a></li>
+                <li><strong>[N4]</strong> <a href="https://andrafarm.com/_andra.php?_en=ENGLISH&_i=daftar-usda&kmakan=11207" target="_blank">AndraFarm – dados USDA para dandelion greens</a></li>
+                <li><strong>[N5]</strong> <a href="https://en.wikipedia.org/wiki/Taraxacum#Nutrition" target="_blank">Taraxacum – secção “Nutrition”</a></li>
+                <li><strong>[N6]</strong> <a href="https://downloads.editoracientifica.com.br/articles/201102213.pdf" target="_blank">Ferenz et al. – Composição nutricional de Taraxacum officinale</a></li>
+                <li><strong>[N7]</strong> <a href="https://revista.uergs.edu.br/index.php/revuergs/article/view/3200" target="_blank">Colussi et al. – Farinha de dente-de-leão</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.4. Benefícios para a saúde e propriedades medicinais</div>
+            <ul class="referencias-lista">
+                <li><strong>[M1]</strong> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9498421/" target="_blank">Kania-Dobrowolska et al. 2022 – Dandelion as a source of biologically active compounds</a></li>
+                <li><strong>[M2]</strong> <a href="https://www.sciencedirect.com/science/article/pii/S1756464619302683" target="_blank">Lis et al. 2019 – Pro-health activity of dandelion</a></li>
+                <li><strong>[M3]</strong> <a href="https://www.researchgate.net/publication/352265796_A_comprehensive_review_of_the_benefits_of_Taraxacum_officinale_on_human_health" target="_blank">Napoli &amp; Zucchetti 2021 – Review of benefits of T. officinale</a></li>
+                <li><strong>[M4]</strong> <a href="https://downloads.editoracientifica.com.br/articles/201102213.pdf" target="_blank">Ferenz et al. – Atividade antioxidante de T. officinale</a></li>
+                <li><strong>[M5]</strong> <a href="https://revista.uergs.edu.br/index.php/revuergs/article/view/3200" target="_blank">Colussi et al. – Compostos fenólicos em farinha de dente-de-leão</a></li>
+                <li><strong>[M6]</strong> <a href="https://www.mdpi.com/1424-8247/18/7/990" target="_blank">Herrera Vielma et al. 2025 – Role of dandelion in liver diseases</a></li>
+                <li><strong>[M7]</strong> <a href="https://journals.lww.com/aptb/fulltext/2020/10010/hepatoprotection_by_dandelion__taraxacum.1.aspx" target="_blank">Mahboubi 2020 – Hepatoprotection by dandelion</a></li>
+                <li><strong>[M8]</strong> <a href="https://www.healthline.com/nutrition/dandelion-benefits" target="_blank">Healthline – Dandelion: Potential health benefits and side effects</a></li>
+                <li><strong>[M9]</strong> <a href="https://www.saude.df.gov.br/documents/37101/1118391/FOLHETO-DENTE-DE-LE%C3%83O.pdf/eff4c11c-8b04-c92a-4bd9-7e4480d787d6" target="_blank">Secretaria de Saúde DF – Folheto Dente-de-leão</a></li>
+                <li><strong>[M10]</strong> <a href="https://acientistaagricola.pt/2023/08/09/beneficios-dente-leao/" target="_blank">A Cientista Agrícola – Dente-de-leão: benefícios e propriedades</a></li>
+                <li><strong>[M11]</strong> <a href="https://www.tuasaude.com/dente-de-leao/" target="_blank">Tua Saúde – Dente-de-leão: para que serve, como usar</a></li>
+                <li><strong>[M12]</strong> <a href="https://gardentime-pt.decorexpro.com/zagotovki/vtorye-blyuda/salat-iz-oduvanchikov-polza-i-vred.html" target="_blank">GardenTime – Salada de dente-de-leão: benefícios e contra-indicações</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.5. Informações gerais e populares</div>
+            <ul class="referencias-lista">
+                <li><strong>[G1]</strong> <a href="https://www.tuasaude.com/dente-de-leao/" target="_blank">Tua Saúde – Dente-de-leão</a></li>
+                <li><strong>[G2]</strong> <a href="https://acientistaagricola.pt/2023/08/09/beneficios-dente-leao/" target="_blank">A Cientista Agrícola – Benefícios do dente-de-leão</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.6. Receitas e preparados</div>
+            <ul class="referencias-lista">
+                <li><strong>[R1]</strong> <a href="https://receitasdomenuverde.blogspot.com/2012/05/sopa-de-urtigas-e-dente-de-leao-wild.html" target="_blank">Receitas do Menu Verde – Sopa de urtigas e dente-de-leão</a></li>
+                <li><strong>[R2]</strong> <a href="https://www.santolegume.com.br/dente-de-leao-refogado/" target="_blank">Santo Legume – Dente-de-leão refogado</a></li>
+                <li><strong>[R3]</strong> <a href="https://citymagazine.si/pt/receitas-com-pratos-leao-ligeiramente-diferentes-mas-deliciosos/" target="_blank">City Magazine – Requeijão com dente-de-leão</a></li>
+                <li><strong>[R4]</strong> <a href="https://citymagazine.si/pt/receitas-com-pratos-leao-ligeiramente-diferentes-mas-deliciosos/" target="_blank">City Magazine – Dente-de-leão com batatas e queijo</a></li>
+                <li><strong>[R5]</strong> <a href="https://citymagazine.si/pt/receitas-com-pratos-leao-ligeiramente-diferentes-mas-deliciosos/" target="_blank">City Magazine – Sopa de dente-de-leão</a></li>
+                <li><strong>[R6]</strong> <a href="https://cruciblecookware.com/pt/blogs/recipes/dandelion-leaf-pesto" target="_blank">Crucible Cookware – Pesto de folha de dente-de-leão</a></li>
+                <li><strong>[R7]</strong> <a href="https://www.endora.net.br/dente-de-leao-salada/" target="_blank">Endora – Salada de dente-de-leão</a></li>
+                <li><strong>[R8]</strong> <a href="https://www.tuasaude.com/dente-de-leao/" target="_blank">Tua Saúde – Suco de dente-de-leão</a></li>
+                <li><strong>[R9]</strong> <a href="https://pgl.gal/pakoras-de-dente-de-leom/" target="_blank">PGL – Pakoras de dente-de-leão</a></li>
+                <li><strong>[R10]</strong> <a href="https://www.allrecipes.com/recipe/49713/dandelion-salad/" target="_blank">Allrecipes – Dandelion salad</a></li>
+            </ul>
+        </section>
+
+        <div class="topo-link">
+            <a href="#topo">Voltar ao topo ▲</a>
+        </div>
+    </article>
+</main>
+</body>
+</html>

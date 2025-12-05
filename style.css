@@ -85,7 +85,8 @@ main {
 .intro-cabecalho h2 {
   margin-top: 0;
   font-size: 1.4rem;
-  color: var(--cor-secundaria);
+  color: #8FBC8F;
+  -webkit-text-stroke: 1px #2F4F4F;
 }
 
 .intro-cabecalho p {

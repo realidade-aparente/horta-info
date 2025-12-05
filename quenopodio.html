@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Quenopódio (Chenopodium album / C. giganteum) | Horta da Terra para o prato</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota, .referencia-nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .nota-aviso {
+            font-size: 0.85rem;
+            color: #9a3412;
+            background: #fff7ed;
+            border-radius: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #fed7aa;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body id="topo">
+<header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Plantas espontâneas comestíveis de produção biológica – da terra para o prato.</p>
+</header>
+
+<nav>
+    <a href="index.html">Início</a>
+    <a href="espontaneas.html">Índice</a>
+    <a href="beldroega.html">Beldroega</a>
+    <a href="bredo.html">Bredo</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="quenopodio.html" class="ativa">Quenopódio</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+</nav>
+
+<main>
+    <article class="planta">
+        <div class="planta-cabecalho">
+            <div class="planta-titulo">
+                <h2>Quenopódio (<em>Chenopodium album</em> e <em>Chenopodium giganteum</em>)</h2>
+                <p>
+                    <strong>Outros nomes em português (sobretudo para <em>C. album</em>):</strong>
+                    espinafre selvagem, ansarina-branca, catassol, quenopódio-branco, sincho, erva-couvinha,
+                    falsa erva-de-Santa-Maria (em algumas fontes).
+                </p>
+                <p>
+                    <strong>Nomes mais comuns em inglês:</strong>
+                    common lamb’s quarters, lambsquarters, fat-hen, goosefoot, wild spinach, bathua (na Índia);
+                    para <em>C. giganteum</em>: tree spinach, magenta spreen.
+                </p>
+
+                <div class="tags-nomes">
+                    <span>Género: <em>Chenopodium</em> (família Amaranthaceae)</span>
+                    <span>Parte usada: folhas e rebentos jovens</span>
+                    <span>Tipo: planta espontânea comestível (PANC)</span>
+                    <span>Produção/recolha: <strong>biológica</strong></span>
+                </div>
+
+                <div class="info-rapida">
+                    <div>
+                        <strong>Estado em Portugal</strong>
+                        <em>Chenopodium album</em> é espontâneo e comum em Portugal continental; surge em hortas,
+                        pomares e terrenos revolvidos.
+                    </div>
+                    <div>
+                        <strong>Uso principal</strong>
+                        Folhas usadas como “espinafre selvagem”: salteadas, em sopas, estufados, bolos salgados,
+                        pratos indianos (saag, parathas, raita), etc.
+                    </div>
+                    <div>
+                        <strong>Perfil nutricional</strong>
+                        Folhas densas em micronutrientes, destacando-se vitamina A, vitamina C, cálcio, ferro,
+                        manganês e bom teor proteico para uma verdura.
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="imagem-container-externo">
+                    <div class="imagem-container">
+                        <img src="imagens/quenopodio.png" alt="Quenopódio (Chenopodium album) espontâneo junto à horta">
+                    </div>
+                </div>
+                <p class="imagem-legenda">
+                    Quenopódio (espinafre selvagem) em crescimento espontâneo, com folhas usadas como hortaliça de folha.
+                </p>
+            </div>
+        </div>
+
+        <section id="apresentacao">
+            <h3>1. Apresentação / Descrição</h3>
+            <p>
+                Sob o nome genérico <strong>quenopódio</strong> agrupam-se aqui duas espécies com uso semelhante:
+                <strong><em>Chenopodium album</em></strong>, espontâneo em Portugal, e
+                <strong><em>Chenopodium giganteum</em></strong>, por vezes cultivado como hortaliça e planta ornamental.
+            </p>
+            <p>
+                <em>Chenopodium album</em> é uma planta anual, de 30 a 80&nbsp;cm (por vezes mais), com caules eretos,
+                esbranquiçados ou esverdeados, folhas alternas de forma variável (ovadas a romboidais) com aspecto
+                algo farináceo em certas partes, e inflorescências em panículas densas. É muito frequente em solos
+                ricos em azoto, margens de campos e hortas, sendo por isso muitas vezes tratada como “erva daninha”,
+                apesar do seu valor alimentar e medicinal.
+            </p>
+            <p>
+                <em>Chenopodium giganteum</em>, conhecido como <strong>tree spinach</strong> ou
+                <strong>magenta spreen</strong>, é também anual, mas atinge facilmente 1,5–3&nbsp;m de altura, com
+                folhas grandes, muitas vezes com tonalidades magenta nas folhas jovens. É cultivado como hortaliça de
+                folha e planta ornamental, com uso culinário semelhante ao de <em>C. album</em> e dos espinafres.
+            </p>
+            <p>
+                Em vários contextos de permacultura e PANC, estas espécies são valorizadas como
+                <strong>“espinafres selvagens”</strong>, capazes de fornecer grandes quantidades de folhas comestíveis
+                em solos férteis, sobretudo na primavera e início do verão.
+            </p>
+            <p class="referencia-nota">
+                Referência(s) de suporte para a descrição:
+                <a href="https://pt.wikipedia.org/wiki/Chenopodium_album" target="_blank">[D1]</a>
+                <a href="https://jb.utad.pt/especie/Chenopodium_album_var_album" target="_blank">[D2]</a>
+                <a href="https://asenhoradomonte.wordpress.com/2015/02/04/chenopodium-album-propriedades-e-indicacoes-terapeuticas/" target="_blank">[D3]</a>
+                <a href="https://en.wikipedia.org/wiki/Chenopodium_album" target="_blank">[D4]</a>
+                <a href="https://en.wikipedia.org/wiki/Chenopodium_giganteum" target="_blank">[D5]</a>
+                <a href="https://tropical.theferns.info/viewtropical.php?id=Chenopodium+giganteum" target="_blank">[D6]</a>
+            </p>
+        </section>
+
+        <section id="sazonalidade">
+            <h3>2. Sazonalidade (Portugal continental)</h3>
+            <p>
+                Em Portugal continental, o <strong>quenopódio</strong> surge sobretudo como planta espontânea em solos
+                ricos, revolvidos e com boa disponibilidade de humidade, associado a culturas anuais e áreas de horta.
+            </p>
+            <ul>
+                <li>
+                    <strong>Emergência:</strong> a partir da <strong>primavera</strong>, quando o solo aquece; sementes
+                    presentes no banco de sementes do solo germinam após mobilização (lavoura, cava, sementeira) e
+                    com a presença de humidade adequada.
+                </li>
+                <li>
+                    <strong>Pico de abundância:</strong> do <strong>final da primavera ao verão</strong>, em especial
+                    em hortas de regadio e margens de culturas, onde pode formar manchas densas se não for controlado.
+                </li>
+                <li>
+                    <strong>Colheita:</strong> colhem-se as <strong>folhas e rebentos jovens</strong>, preferindo
+                    exemplares ainda tenros, antes de florescerem. A colheita pode fazer-se sucessivamente, cortando
+                    as pontas dos rebentos e deixando a planta rebrotar.
+                </li>
+                <li>
+                    <strong>Gestão em horta biológica:</strong> aproveita-se o quenopódio como hortaliça ao mesmo tempo
+                    que se controla a sua expansão, evitando que domine sobre culturas principais. Pode ser mantido em
+                    faixas ou zonas marginais como recurso alimentar.
+                </li>
+                <li>
+                    <strong>Clima e solo:</strong> prefere solos férteis, ricos em matéria orgânica e azoto, expostos
+                    ao sol; tolera bem uma gama ampla de condições, o que ajuda a explicar a sua dispersão global.
+                </li>
+            </ul>
+            <p class="nota">
+                <strong>Nota de segurança:</strong> tal como muitas folhas verdes (espinafres, acelgas, beterraba),
+                quenopódios podem acumular <strong>oxalatos e nitratos</strong>. Em hortas biológicas, a ausência de
+                adubação azotada excessiva ajuda a reduzir este risco.
+            </p>
+        </section>
+
+        <section id="como-consumir">
+            <h3>3. Como consumir</h3>
+            <p>
+                Tal como outros “espinafres selvagens”, usam-se principalmente as <strong>folhas e rebentos
+                tenros</strong>, bem lavados. Podem ser consumidos crus em pequenas quantidades ou, de forma mais
+                segura, cozinhados (salteados, escaldados, em sopas, etc.).
+            </p>
+            <ul>
+                <li>
+                    <strong>Em cru (com moderação):</strong> folhas muito jovens podem ser adicionadas, em pequena
+                    proporção, a saladas mistas ou como guarnição. Devido ao teor de oxalatos e saponinas, é preferível
+                    não exagerar no consumo cru frequente.
+                </li>
+                <li>
+                    <strong>Escaldado / cozido:</strong> tal como os espinafres, podem ser escaldados rapidamente em
+                    água a ferver e depois usados em <strong>salteados, omeletes, tartes salgadas, lasanhas, recheios
+                    de massas, etc.</strong>.
+                </li>
+                <li>
+                    <strong>Sopas e estufados:</strong> funcionam muito bem em sopas de legumes, sopas “silvestres”
+                    (misturadas com urtigas, serralhas, etc.) e em guisados de inverno com leguminosas.
+                </li>
+                <li>
+                    <strong>Culinária indiana (bathua):</strong> em vários estados da Índia, as folhas de
+                    <em>Chenopodium album</em>, conhecidas como <strong>bathua</strong>, são usadas em pratos como
+                    <em>saag</em>, <em>parathas</em>, <em>raita</em> e caris de inverno.
+                </li>
+                <li>
+                    <strong><em>Chenopodium giganteum</em> (tree spinach):</strong> as folhas podem ser usadas tal como
+                    espinafre, sendo aconselhado cozinhar (ferver alguns minutos, saltear, estufar) para reduzir
+                    saponinas e oxalatos.
+                </li>
+                <li>
+                    <strong>Cuidados de colheita:</strong> colher longe de estradas movimentadas, zonas tratadas com
+                    herbicidas/pesticidas e áreas potencialmente contaminadas. Em hortas biológicas, privilegiar
+                    plantas que não tenham sinais de doenças ou contaminação animal evidente.
+                </li>
+                <li>
+                    <strong>Cuidados de saúde:</strong> pessoas com <strong>história de cálculos renais de oxalato</strong>
+                    ou sob dietas de restrição de oxalato devem discutir o consumo com o profissional de saúde; evitar
+                    o consumo excessivo cru e preferir confeções cozinhadas.
+                </li>
+            </ul>
+        </section>
+
+        <section id="receitas">
+            <h3>4. Receitas e preparados (Top 10)</h3>
+            <p>
+                Algumas receitas e ideias em que o quenopódio (espinafre selvagem / bathua / tree spinach) pode ser
+                usado. Várias referências estão em português (Portugal ou Brasil), outras em inglês mas facilmente
+                adaptáveis.
+            </p>
+            <ol>
+                <li>
+                    <strong>Spanakopita de espinafre selvagem</strong> – receita em português (Portugal) que usa
+                    explicitamente <em>Chenopodium album</em> como recheio de tarte grega (spanakopita) em massa filo,
+                    com cebola, alho-francês, funcho e queijo feta.
+                    <a href="https://www.bloomsativum.com/post/2014/08/30/spanakopita-de-espinafre-selvagem" target="_blank">[R1]</a>
+                </li>
+                <li>
+                    <strong>Sopa silvestre com ansarina-branca</strong> – artigo sobre “comida bravia” nas margens do
+                    Rio Neiva descreve uma sopa silvestre com urtigas, serralhas, ansarina-branca (<em>Chenopodium
+                    album</em>) e funcho, ilustrando a integração deste “espinafre selvagem” em sopas de campo.
+                    <a href="https://revistajardins.pt/lifestyle/verde-adentro-comida-bravia-nas-margens-do-rio-neiva/" target="_blank">[R2]</a>
+                </li>
+                <li>
+                    <strong>Salteado de espinafre selvagem</strong> – em vários textos e posts sobre
+                    <em>Chenopodium album</em> (espinafre selvagem / quenopódio), é recomendado saltear as folhas em
+                    azeite com alho, de modo semelhante ao salteado de espinafre.
+                    <a href="https://asenhoradomonte.wordpress.com/2015/02/04/chenopodium-album-propriedades-e-indicacoes-terapeuticas/" target="_blank">[R3]</a>
+                </li>
+                <li>
+                    <strong>Saag de bathua</strong> – pratos indianos do tipo <em>saag</em> (mistura de folhas verdes
+                    cozinhadas e temperadas com especiarias) frequentemente incluem bathua; há receitas em português
+                    que descrevem <em>sarson ka saag</em> e variações com bathua em sites de viagem/gastronomia.
+                    <a href="https://creativelyyours.creative.travel/pt-pt/receita-de-sarson-ka-saag-aur-makki-ki-roti/" target="_blank">[R4]</a>
+                </li>
+                <li>
+                    <strong>Bathua paratha</strong> – pães achatados (parathas) recheados ou aromatizados com folhas de
+                    bathua, com explicações em português (Brasil) em posts e receitas partilhadas em comunidades online.
+                    <a href="https://www.reddit.com/r/vegetarianrecipes/comments/1fsnk30/bathua_paratha_recipe_indian_healthy_winter_recipe/?tl=pt-br" target="_blank">[R5]</a>
+                    <a href="https://cookpad.com/pt/usuarios/19043712" target="_blank">[R6]</a>
+                </li>
+                <li>
+                    <strong>Bathua raita</strong> – raita (preparado à base de iogurte) com folhas de bathua cozidas e
+                    picadas, muito comum em receitas indianas, com descrições e legendas em português em alguns bancos
+                    de imagens/receitas.
+                    <a href="https://br.freepik.com/fotos-premium/bathua-raita-uma-receita-saudavel-e-refrescante-feita-de-bathua-folhas-de-chenopodium-e-requeijao-temperado-com-especiarias-suaves-uma-receita-de-coalhada-leve-e-deliciosa-combinada-com-os-beneficios-de-bathua-para-a-saude_19831801.htm" target="_blank">[R7]</a>
+                </li>
+                <li>
+                    <strong>Kadhi com folhas de bathua</strong> – variantes regionais do prato indiano
+                    <em>kadhi</em> (molho à base de iogurte e farinha de grão) podem incluir folhas de bathua; descritas
+                    em português num artigo sobre <em>Punjabi kadhi</em>.
+                    <a href="https://www.gzrecipes.com/pt/viaggiandomangiando/punjabi-kadhi-india/" target="_blank">[R8]</a>
+                </li>
+                <li>
+                    <strong>Tree spinach salteado / salada de folhas jovens</strong> – <em>C. giganteum</em> (tree
+                    spinach / magenta spreen) é frequentemente usado em saladas (folhas jovens) ou salteado como
+                    espinafre, conforme descrito em fontes de horticultura e blogs de “edible weeds”.
+                    <a href="https://plantura.garden/uk/vegetables/tree-spinach/tree-spinach-overview" target="_blank">[R9]</a>
+                    <a href="https://juliasedibleweeds.com/recipes/magenta-spreen/" target="_blank">[R10]</a>
+                </li>
+                <li>
+                    <strong>Pratos criativos de espinafre selvagem</strong> – artigos e posts em português sobre
+                    “espinafre selvagem” e PANC sugerem o uso de <em>Chenopodium album</em> em tartes, omeletes,
+                    pestos, sumos verdes e acompanhamentos, de forma semelhante a outras folhas verdes.
+                    <a href="https://www.instagram.com/p/C9CVGSxNj5F/?hl=en" target="_blank">[R11]</a>
+                    <a href="https://truquesjardim.com/category/jardiminterno/page/12/" target="_blank">[R12]</a>
+                </li>
+            </ol>
+        </section>
+
+        <section id="beneficios">
+            <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+            <p>
+                A literatura científica sobre <strong><em>Chenopodium album</em></strong> (e, em menor grau,
+                <strong><em>C. giganteum</em></strong>) é relativamente extensa, sobretudo na Índia e noutros países
+                onde o “bathua” é consumido como hortaliça. Abaixo um resumo de pontos-chave, com base em revisões e
+                estudos experimentais.
+            </p>
+            <ul>
+                <li>
+                    <strong>Densidade nutricional elevada:</strong> revisões sobre <em>Chenopodium album</em> destacam
+                    o alto teor de <strong>proteína</strong> para uma folha (cerca de 4&nbsp;g/100&nbsp;g), boa
+                    disponibilidade de <strong>aminoácidos essenciais</strong>, bem como níveis relevantes de
+                    <strong>vitamina A (beta-caroteno)</strong>, <strong>vitamina C</strong>, <strong>cálcio</strong>,
+                    <strong>ferro</strong> e oligoelementos.
+                    <a href="https://link.springer.com/article/10.1007/s13197-014-1553-x" target="_blank">[M1]</a>
+                    <a href="https://www.sciencedirect.com/science/article/abs/pii/S0023643804001719" target="_blank">[M2]</a>
+                    <a href="https://ijpjournal.com/?action=download_pdf&postid=1377" target="_blank">[M3]</a>
+                </li>
+                <li>
+                    <strong>Propriedades antioxidantes e anti-inflamatórias:</strong> revisões farmacológicas
+                    descrevem compostos bioativos com atividade antioxidante (fenóis, flavonoides) e efeitos
+                    anti-inflamatórios demonstrados em modelos animais.
+                    <a href="https://www.researchgate.net/publication/348371841_A_PHARMACOLOGICAL_COMPREHENSIVE_REVIEW_ON_CHENOPODIUM_ALBUM_L" target="_blank">[M4]</a>
+                    <a href="https://www.informaticsjournals.co.in/index.php/jnr/article/download/46360/32783/107839" target="_blank">[M5]</a>
+                    <a href="https://www.sciencedirect.com/science/article/abs/pii/S2212429225008004" target="_blank">[M6]</a>
+                </li>
+                <li>
+                    <strong>Efeitos gastroprotetores, hepatoprotetores e anthelmínticos (estudos pré-clínicos):</strong>
+                    várias experiências em animais e estudos laboratoriais relatam efeitos benéficos de extratos de
+                    <em>C. album</em> em modelos de úlcera gástrica, toxicidade hepática, infeções helmínticas e
+                    inflamação intestinal.
+                    <a href="https://www.emergentresearch.org/uploads/38/7338_pdf.pdf" target="_blank">[M7]</a>
+                    <a href="https://www.researchgate.net/publication/348371841_A_PHARMACOLOGICAL_COMPREHENSIVE_REVIEW_ON_CHENOPODIUM_ALBUM_L" target="_blank">[M4]</a>
+                </li>
+                <li>
+                    <strong>Saúde metabólica:</strong> alguns trabalhos indicam possíveis efeitos em parâmetros da
+                    diabetes tipo 2, lípidos sanguíneos e stress oxidativo, embora a evidência em humanos ainda seja
+                    limitada e necessite de mais ensaios clínicos.
+                    <a href="https://www.informaticsjournals.co.in/index.php/jnr/article/download/46360/32783/107839" target="_blank">[M5]</a>
+                </li>
+                <li>
+                    <strong>Interesse em segurança e antinutrientes:</strong> tal como outras Amaranthaceae,
+                    <em>Chenopodium</em> contém <strong>oxalatos</strong> e <strong>saponinas</strong>, que em excesso
+                    podem ser problemáticos (por ex. risco acrescido de cálculos renais em pessoas predispostas,
+                    irritação gastrointestinal se consumido cru em grandes quantidades). A maior parte das recomendações
+                    sugere o consumo sobretudo <strong>cozinhado</strong>, escaldando e descartando a água de cozedura
+                    quando se pretende reduzir oxalato.
+                    <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/cbdv.202403456" target="_blank">[M8]</a>
+                    <a href="https://www.sciencedirect.com/science/article/pii/S1878450X06000919" target="_blank">[M9]</a>
+                </li>
+                <li>
+                    <strong>Fontes em português:</strong> textos de divulgação em português descrevem o “espinafre
+                    selvagem” (<em>Chenopodium album</em>) como fonte interessante de nutrientes, com uso tradicional em
+                    problemas digestivos, reumáticos e de pele, sempre com a ressalva de que não substitui terapêutica
+                    médica.
+                    <a href="https://asenhoradomonte.wordpress.com/2015/02/04/chenopodium-album-propriedades-e-indicacoes-terapeuticas/" target="_blank">[M10]</a>
+                    <a href="https://cursosextensao.usp.br/pluginfile.php/772923/mod_book/intro/PANC.pdf" target="_blank">[M11]</a>
+                </li>
+            </ul>
+            <p class="nota-aviso">
+                A maior parte dos efeitos benéficos descritos vem de estudos laboratoriais e em modelos animais, com
+                menos dados robustos em humanos. O consumo culinário de quenopódio como hortaliça, em quantidades
+                moderadas e preferencialmente cozinhado, é em geral considerado seguro para a maioria das pessoas, mas
+                <strong>não</strong> substitui avaliação médica nem terapêutica prescrita.
+            </p>
+        </section>
+
+        <section id="nutricao">
+            <h3>6. Propriedades nutricionais</h3>
+            <p>
+                A tabela abaixo apresenta valores aproximados por 100&nbsp;g de folhas de
+                <strong><em>Chenopodium album</em> cruas</strong> e de <strong>folhas cozinhadas simples</strong>
+                (cozidas em água e escorridas). Os valores são baseados em revisões e tabelas de composição;
+                <em>Chenopodium giganteum</em> apresenta composição semelhante, embora menos estudada.
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Componente</th>
+                        <th>Quenopódio (C. album) cru – 100 g</th>
+                        <th>Quenopódio cozinhado simples – 100 g</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Energia</td>
+                        <td>≈ 40–45 kcal</td>
+                        <td>≈ 30–40 kcal (com parte de solutos lixiviados na água)</td>
+                    </tr>
+                    <tr>
+                        <td>Água</td>
+                        <td>≈ 84 g</td>
+                        <td>Ligeiramente inferior (parte evapora, parte lixivia)</td>
+                    </tr>
+                    <tr>
+                        <td>Hidratos de carbono</td>
+                        <td>≈ 7–8 g</td>
+                        <td>≈ 5–7 g</td>
+                    </tr>
+                    <tr>
+                        <td>Fibra</td>
+                        <td>≈ 2 g</td>
+                        <td>≈ 2–3 g</td>
+                    </tr>
+                    <tr>
+                        <td>Proteína</td>
+                        <td>≈ 4–4,5 g</td>
+                        <td>≈ 3,5–4,5 g</td>
+                    </tr>
+                    <tr>
+                        <td>Lípidos totais</td>
+                        <td>≈ 0,8 g</td>
+                        <td>≈ 0,8–1 g (sem contar com azeite da receita)</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina A (equivalentes de retinol)</td>
+                        <td>≈ 70–100 % VRN</td>
+                        <td>Redução parcial com cozedura, mas ainda relevante</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina C</td>
+                        <td>≈ 80–100 mg (≈ 90–110 % VRN)</td>
+                        <td>Redução significativa (sensível ao calor e à água)</td>
+                    </tr>
+                    <tr>
+                        <td>Riboflavina (B2)</td>
+                        <td>≈ 0,3–0,4 mg</td>
+                        <td>Ligeira redução</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina B6</td>
+                        <td>≈ 0,2 mg</td>
+                        <td>Valores semelhantes ou ligeiramente menores</td>
+                    </tr>
+                    <tr>
+                        <td>Cálcio</td>
+                        <td>≈ 250–300 mg</td>
+                        <td>Concentração relativa ligeiramente maior, mas parte pode ser perdida na água de cozedura</td>
+                    </tr>
+                    <tr>
+                        <td>Ferro</td>
+                        <td>≈ 5–6 mg</td>
+                        <td>Valores semelhantes, com pequenas perdas</td>
+                    </tr>
+                    <tr>
+                        <td>Manganês</td>
+                        <td>≈ 1–1,5 mg</td>
+                        <td>Valores semelhantes</td>
+                    </tr>
+                    <tr>
+                        <td>Oxalatos</td>
+                        <td>Níveis moderados a elevados (dependem do solo e estádio da planta)</td>
+                        <td>Reduzidos se escaldar e descartar água de cozedura</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="referencia-nota">
+                Dados aproximados compilados de:
+                <a href="https://en.wikipedia.org/wiki/Chenopodium_album" target="_blank">[N1]</a>,
+                <a href="https://ijpjournal.com/?action=download_pdf&postid=1377" target="_blank">[N2]</a>,
+                <a href="https://www.sciencedirect.com/science/article/abs/pii/S0023643804001719" target="_blank">[N3]</a>,
+                <a href="https://link.springer.com/article/10.1007/s13197-014-1553-x" target="_blank">[N4]</a>.
+            </p>
+        </section>
+
+        <section id="utilidades">
+            <h3>7. Utilidades e aplicações (não apenas alimentares)</h3>
+            <ul>
+                <li>
+                    <strong>Alimentação e PANC:</strong> hortaliça de folha muito produtiva, alternativa ou complemento
+                    ao espinafre cultivado, integrando a lista de <strong>plantas alimentícias não convencionais
+                    (PANC)</strong> em materiais de extensão universitária.
+                </li>
+                <li>
+                    <strong>Soberania e segurança alimentar:</strong> por surgir espontaneamente em solos férteis, o
+                    quenopódio pode ajudar a aumentar a <strong>resiliência alimentar</strong>, fornecendo verdura
+                    mesmo quando outras culturas falham.
+                </li>
+                <li>
+                    <strong>Educação ambiental:</strong> ótimo exemplo para mostrar que “ervas daninhas” podem ser
+                    recursos valiosos; útil em oficinas de identificação de plantas silvestres comestíveis.
+                </li>
+                <li>
+                    <strong>Forragem e uso animal:</strong> em algumas regiões, partes da planta são utilizadas como
+                    forragem (em quantidades controladas), embora seja sempre importante considerar o conteúdo de
+                    antinutrientes.
+                </li>
+                <li>
+                    <strong>Ornamental e biomassa:</strong> <em>C. giganteum</em> (tree spinach / magenta spreen) é
+                    também ornamental, pela coloração magenta das folhas jovens, fornecendo ainda biomassa para
+                    compostagem.
+                </li>
+            </ul>
+        </section>
+
+        <section id="permacultura">
+            <h3>8. Grau de funcionalidade em permacultura</h3>
+            <p><strong>Classificação proposta: 8/10</strong></p>
+            <ul class="lista-permacultura">
+                <li>
+                    <strong>Funções principais:</strong> produção de verdura de elevada densidade nutricional,
+                    aproveitamento de espontâneas, redução de trabalho de sementeira, educação sobre PANC, contributo
+                    para diversidade de espécies.
+                </li>
+                <li>
+                    <strong>Vantagens:</strong> cresce facilmente em solos férteis, surge sem necessidade de semear,
+                    produz muita matéria verde, tolera uma amplitude razoável de condições e integra-se bem em
+                    “sopas silvestres”, saag e outras preparações.
+                </li>
+                <li>
+                    <strong>Limitações:</strong> pode competir com culturas principais se não for manejado; precisa de
+                    algum cuidado devido ao teor de oxalatos e saponinas (especialmente em uso regular e cru); é
+                    anual e depende de perturbações do solo.
+                </li>
+            </ul>
+            <p class="nota">
+                A pontuação elevada deve-se sobretudo à combinação de <strong>alto valor alimentar</strong> com
+                <strong>abundância espontânea</strong> em sistemas de horta biológica e permacultura bem geridos.
+            </p>
+        </section>
+
+        <section id="referencias">
+            <h3>9. Referências</h3>
+
+            <div class="referencias-subsecao">9.1. Descrição, botânica e distribuição</div>
+            <ul class="referencias-lista">
+                <li><strong>[D1]</strong> <a href="https://pt.wikipedia.org/wiki/Chenopodium_album" target="_blank">Chenopodium album – Wikipédia (PT)</a></li>
+                <li><strong>[D2]</strong> <a href="https://jb.utad.pt/especie/Chenopodium_album_var_album" target="_blank">Flora Digital de Portugal – Chenopodium album var. album</a></li>
+                <li><strong>[D3]</strong> <a href="https://asenhoradomonte.wordpress.com/2015/02/04/chenopodium-album-propriedades-e-indicacoes-terapeuticas/" target="_blank">A Senhora do Monte – Espinafre selvagem (Chenopodium album)</a></li>
+                <li><strong>[D4]</strong> <a href="https://en.wikipedia.org/wiki/Chenopodium_album" target="_blank">Chenopodium album – Wikipedia (EN)</a></li>
+                <li><strong>[D5]</strong> <a href="https://en.wikipedia.org/wiki/Chenopodium_giganteum" target="_blank">Chenopodium giganteum – Wikipedia</a></li>
+                <li><strong>[D6]</strong> <a href="https://tropical.theferns.info/viewtropical.php?id=Chenopodium+giganteum" target="_blank">Useful Tropical Plants – Chenopodium giganteum</a></li>
+                <li><strong>[D7]</strong> <a href="https://cursosextensao.usp.br/pluginfile.php/772923/mod_book/intro/PANC.pdf" target="_blank">USP – PANC, com referências a Chenopodium spp.</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.2. Cultivo, sazonalidade e uso em hortas</div>
+            <ul class="referencias-lista">
+                <li><strong>[S1]</strong> <a href="https://revistajardins.pt/lifestyle/verde-adentro-comida-bravia-nas-margens-do-rio-neiva/" target="_blank">Revista Jardins – Verde adentro: comida bravia nas margens do Rio Neiva</a></li>
+                <li><strong>[S2]</strong> <a href="https://plantura.garden/uk/vegetables/tree-spinach/tree-spinach-overview" target="_blank">Plantura Garden – Tree spinach overview</a></li>
+                <li><strong>[S3]</strong> <a href="https://truquesjardim.com/category/jardiminterno/page/12/" target="_blank">Truques Jardim – Menções a lamb’s quarters / espinafre selvagem</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.3. Nutrição e composição</div>
+            <ul class="referencias-lista">
+                <li><strong>[N1]</strong> <a href="https://en.wikipedia.org/wiki/Chenopodium_album" target="_blank">Chenopodium album – secção Nutrition</a></li>
+                <li><strong>[N2]</strong> <a href="https://ijpjournal.com/?action=download_pdf&postid=1377" target="_blank">Choudhary &amp; Sharma – Nutritional composition of Chenopodium album leaves</a></li>
+                <li><strong>[N3]</strong> <a href="https://www.sciencedirect.com/science/article/abs/pii/S0023643804001719" target="_blank">Gupta et al. 2005 – Nutrient and antinutrient content of underutilized green leafy vegetables</a></li>
+                <li><strong>[N4]</strong> <a href="https://link.springer.com/article/10.1007/s13197-014-1553-x" target="_blank">Poonia &amp; Upadhayay 2015 – Review of nutritive value and biological properties</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.4. Benefícios de saúde e propriedades medicinais</div>
+            <ul class="referencias-lista">
+                <li><strong>[M1]</strong> <a href="https://link.springer.com/article/10.1007/s13197-014-1553-x" target="_blank">Poonia &amp; Upadhayay 2015 – Chenopodium album Linn: review</a></li>
+                <li><strong>[M2]</strong> <a href="https://www.sciencedirect.com/science/article/abs/pii/S0023643804001719" target="_blank">Gupta et al. – Nutrient and antinutrient content…</a></li>
+                <li><strong>[M3]</strong> <a href="https://ijpjournal.com/?action=download_pdf&postid=1377" target="_blank">Choudhary &amp; Sharma – Chenopodium album (IJP)</a></li>
+                <li><strong>[M4]</strong> <a href="https://www.researchgate.net/publication/348371841_A_PHARMACOLOGICAL_COMPREHENSIVE_REVIEW_ON_CHENOPODIUM_ALBUM_L" target="_blank">Revisão farmacológica sobre C. album</a></li>
+                <li><strong>[M5]</strong> <a href="https://www.informaticsjournals.co.in/index.php/jnr/article/download/46360/32783/107839" target="_blank">Chenopodium album as a treasure of therapeutic and nutritional values</a></li>
+                <li><strong>[M6]</strong> <a href="https://www.sciencedirect.com/science/article/abs/pii/S2212429225008004" target="_blank">Abd El-Hack et al. – Nutritional value and therapeutic applications…</a></li>
+                <li><strong>[M7]</strong> <a href="https://www.emergentresearch.org/uploads/38/7338_pdf.pdf" target="_blank">Saini et al. – Weed cum medicinal plant (C. album)</a></li>
+                <li><strong>[M8]</strong> <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/cbdv.202403456" target="_blank">Chemical diversity and health-promoting attributes of C. album</a></li>
+                <li><strong>[M9]</strong> <a href="https://www.sciencedirect.com/science/article/pii/S1878450X06000919" target="_blank">Siener et al. – Oxalate contents in Chenopodiaceae</a></li>
+                <li><strong>[M10]</strong> <a href="https://asenhoradomonte.wordpress.com/2015/02/04/chenopodium-album-propriedades-e-indicacoes-terapeuticas/" target="_blank">A Senhora do Monte – Propriedades e indicações terapêuticas</a></li>
+                <li><strong>[M11]</strong> <a href="https://cursosextensao.usp.br/pluginfile.php/772923/mod_book/intro/PANC.pdf" target="_blank">USP – PANC (contexto de uso alimentar e potencial medicinal)</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.5. Culinária e usos tradicionais</div>
+            <ul class="referencias-lista">
+                <li><strong>[C1]</strong> <a href="https://revistajardins.pt/lifestyle/verde-adentro-comida-bravia-nas-margens-do-rio-neiva/" target="_blank">Revista Jardins – Comida bravia nas margens do Rio Neiva</a></li>
+                <li><strong>[C2]</strong> <a href="https://asenhoradomonte.wordpress.com/2015/02/04/chenopodium-album-propriedades-e-indicacoes-terapeuticas/" target="_blank">A Senhora do Monte – Formas de consumo</a></li>
+                <li><strong>[C3]</strong> <a href="https://juliasedibleweeds.com/recipes/magenta-spreen/" target="_blank">Julia’s Edible Weeds – Magenta spreen (tree spinach)</a></li>
+                <li><strong>[C4]</strong> <a href="https://plantura.garden/uk/vegetables/tree-spinach/tree-spinach-overview" target="_blank">Plantura – Tree spinach (uses and safety)</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.6. Receitas e preparados</div>
+            <ul class="referencias-lista">
+                <li><strong>[R1]</strong> <a href="https://www.bloomsativum.com/post/2014/08/30/spanakopita-de-espinafre-selvagem" target="_blank">Bloomsativum – Spanakopita de espinafre selvagem (C. album)</a></li>
+                <li><strong>[R2]</strong> <a href="https://revistajardins.pt/lifestyle/verde-adentro-comida-bravia-nas-margens-do-rio-neiva/" target="_blank">Revista Jardins – Sopa silvestre com ansarina-branca</a></li>
+                <li><strong>[R3]</strong> <a href="https://asenhoradomonte.wordpress.com/2015/02/04/chenopodium-album-propriedades-e-indicacoes-terapeuticas/" target="_blank">A Senhora do Monte – Sugestões de uso culinário</a></li>
+                <li><strong>[R4]</strong> <a href="https://creativelyyours.creative.travel/pt-pt/receita-de-sarson-ka-saag-aur-makki-ki-roti/" target="_blank">Creatively Yours – Sarson ka saag (com bathua)</a></li>
+                <li><strong>[R5]</strong> <a href="https://www.reddit.com/r/vegetarianrecipes/comments/1fsnk30/bathua_paratha_recipe_indian_healthy_winter_recipe/?tl=pt-br" target="_blank">Reddit /vegetarianrecipes – Bathua paratha (PT-BR)</a></li>
+                <li><strong>[R6]</strong> <a href="https://cookpad.com/pt/usuarios/19043712" target="_blank">Cookpad (PT) – Receitas com bathua/bathue</a></li>
+                <li><strong>[R7]</strong> <a href="https://br.freepik.com/fotos-premium/bathua-raita-uma-receita-saudavel-e-refrescante-feita-de-bathua-folhas-de-chenopodium-e-requeijao-temperado-com-especiarias-suaves-uma-receita-de-coalhada-leve-e-deliciosa-combinada-com-os-beneficios-de-bathua-para-a-saude_19831801.htm" target="_blank">Freepik – Bathua raita (descrição em PT)</a></li>
+                <li><strong>[R8]</strong> <a href="https://www.gzrecipes.com/pt/viaggiandomangiando/punjabi-kadhi-india/" target="_blank">GZRecipes – Punjabi kadhi (com folhas de bathua)</a></li>
+                <li><strong>[R9]</strong> <a href="https://juliasedibleweeds.com/recipes/magenta-spreen/" target="_blank">Julia’s Edible Weeds – Receita com magenta spreen</a></li>
+                <li><strong>[R10]</strong> <a href="https://www.instagram.com/p/C9CVGSxNj5F/?hl=en" target="_blank">Instagram (Terras do Gorjão) – Ideias de uso de espinafre selvagem</a></li>
+            </ul>
+        </section>
+
+        <div class="topo-link">
+            <a href="#topo">Voltar ao topo ▲</a>
+        </div>
+    </article>
+</main>
+</body>
+</html>
