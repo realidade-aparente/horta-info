@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Serralha (Sonchus oleraceus) | Horta da Terra para o prato</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota, .referencia-nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .nota-aviso {
+            font-size: 0.85rem;
+            color: #9a3412;
+            background: #fff7ed;
+            border-radius: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #fed7aa;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body id="topo">
+<header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Plantas espontâneas comestíveis de produção biológica – da terra para o prato.</p>
+</header>
+
+<nav>
+    <a href="index.html">Início</a>
+    <a href="beldroega.html">Beldroega</a>
+    <a href="bredo.html">Bredo</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="quenopodio.html">Quenopódio</a>
+    <a href="serralha.html" class="ativa">Serralha</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+</nav>
+
+<main>
+    <article class="planta">
+        <div class="planta-cabecalho">
+            <div class="planta-titulo">
+                <h2>Serralha (<em>Sonchus oleraceus</em>)</h2>
+                <p><strong>Outros nomes em português:</strong> serralha-comum, serralha-mole, serralha-de-folha-tenra; em alguns locais confundida com “leituga” ou “alface-brava”.</p>
+                <p><strong>Nome mais comum em inglês:</strong> common sowthistle, smooth sowthistle.</p>
+
+                <div class="tags-nomes">
+                    <span>Família: Asteraceae</span>
+                    <span>Parte usada: folhas jovens, rebentos, caules tenros</span>
+                    <span>Tipo: planta espontânea comestível (PANC)</span>
+                    <span>Produção/recoleção: <strong>biológica</strong></span>
+                </div>
+
+                <div class="info-rapida">
+                    <div>
+                        <strong>Origem e status</strong>
+                        Espécie cosmopolita, nativa da Europa, muito comum em Portugal em terrenos agrícolas, hortas e baldios.
+                    </div>
+                    <div>
+                        <strong>Uso principal</strong>
+                        Folha verde de sabor ligeiramente amargo, usada em sopas, salteados, omeletes, recheios e pratos de colher.
+                    </div>
+                    <div>
+                        <strong>Perfil nutricional</strong>
+                        Baixo valor energético, boa fonte de vitaminas (A, C, K) e minerais (cálcio, ferro), além de compostos antioxidantes.
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="imagem-container-externo">
+                    <div class="imagem-container">
+                        <img src="imagens/serralha.png" alt="Serralha (Sonchus oleraceus) em crescimento espontâneo na horta">
+                    </div>
+                </div>
+                <p class="imagem-legenda">
+                    Serralha biológica, colhida jovem antes da floração, usada como verdura em sopas e salteados.
+                </p>
+            </div>
+        </div>
+
+        <section id="apresentacao">
+            <h3>1. Apresentação / Descrição</h3>
+            <p>
+                A <strong>serralha</strong> (<em>Sonchus oleraceus</em>) é uma planta anual da família Asteraceae,
+                com folhas verdes recortadas, látex branco (quando partida) e inflorescências amarelas semelhantes às
+                do dente-de-leão. Surge espontaneamente em solos ricos em azoto, hortas, culturas de regadio, taludes
+                e bermas, muitas vezes tratada apenas como “erva daninha”.
+            </p>
+            <p>
+                Em vários países mediterrânicos, e também no Brasil, é reconhecida como <strong>verdura comestível</strong>,
+                consumida cozinhada ou em saladas jovens, desempenhando um papel importante na dieta tradicional de
+                primaveras e invernos húmidos. Revisões etnobotânicas referem o seu uso antigo como alimento e
+                planta medicinal em diferentes culturas. 
+            </p>
+            <p>
+                É frequente a <strong>confusão visual com o dente-de-leão</strong> (<em>Taraxacum officinale</em>)
+                ou com outras “alfaces-bravas”; por isso, em contexto de recolha de plantas espontâneas para consumo
+                é fundamental uma identificação cuidadosa, usando múltiplas características (forma da folha, inserção
+                no caule, tipo de inflorescência, porte da planta).
+            </p>
+            <p>
+                Como outras PANC, a serralha contribui para diversificar a dieta e valorizar recursos que já existem
+                no agroecossistema, reduzindo desperdícios e trabalho de monda em hortas biológicas.
+            </p>
+            <p class="referencia-nota">
+                Referência(s) de suporte para a descrição:
+                <a href="https://en.wikipedia.org/wiki/Sonchus_oleraceus" target="_blank">[D1]</a>
+                <a href="https://pubmed.ncbi.nlm.nih.gov/38305867/" target="_blank">[D2]</a>
+                <a href="https://www.mdpi.com/2311-7524/11/8/893" target="_blank">[D3]</a>
+                <a href="https://www.saude.df.gov.br/documents/37101/1118391/FOLHETO-SERRALHA.pdf" target="_blank">[D4]</a>
+            </p>
+        </section>
+
+        <section id="sazonalidade">
+            <h3>2. Sazonalidade (Portugal continental)</h3>
+            <p>
+                A serralha é uma <strong>espontânea típica de tempo húmido e fresco</strong>, embora possa persistir
+                grande parte do ano em zonas amenizadas.
+            </p>
+            <ul>
+                <li>
+                    <strong>Emergência:</strong> surge sobretudo do <strong>outono ao início da primavera</strong>,
+                    em solos revolvidos e férteis (hortas recém-trabalhadas, zonas adubadas, pomares).
+                </li>
+                <li>
+                    <strong>Pico de abundância:</strong> em muitas regiões de Portugal, as folhas mais tenras e
+                    abundantes podem ser colhidas de <strong>fim de inverno até final da primavera</strong>,
+                    antes da floração abundante.
+                </li>
+                <li>
+                    <strong>Colheita:</strong> preferem-se <strong>plantas jovens</strong>, de 10–30 cm de altura,
+                    com folhas tenras e caules ainda pouco fibrosos. Após o início da floração as folhas tendem a ficar
+                    mais amargas e duras.
+                </li>
+                <li>
+                    <strong>Gestão em horta biológica:</strong> pode ser manejada como <strong>cultura oportunista</strong>,
+                    colhendo-se em manchas e mantendo-se algumas plantas para produção de sementes, em vez de a eliminar
+                    totalmente. Evitar colheita em locais sujeitos a herbicidas, tráfego intenso ou outras fontes de
+                    contaminação.
+                </li>
+            </ul>
+            <p class="nota">
+                A serralha é especialmente valiosa como “verdura de entressafra” em épocas em que outras hortaliças
+                estão mais escassas, desde que a recolha seja feita com boa identificação e longe de fontes de poluição.
+            </p>
+        </section>
+
+        <section id="como-consumir">
+            <h3>3. Como consumir</h3>
+            <p>
+                Utilizam-se principalmente as <strong>folhas jovens e rebentos tenros</strong>, depois de bem lavados.
+                O sabor é ligeiramente amargo, lembrando uma mistura de alface-brava com chicória ou alguns grelos.
+            </p>
+            <ul>
+                <li>
+                    <strong>Em cru:</strong> as folhas mais novas podem ser usadas em saladas mistas, combinadas com
+                    outros verdes e um bom tempero (azeite, vinagre, sumo de limão) para equilibrar o amargo. Várias
+                    fontes brasileiras de alimentação saudável recomendam o uso moderado em saladas.
+                    <a href="https://vitat.com.br/serralha/" target="_blank">[C1]</a>
+                    <a href="https://receitasde.com.br/glossario/o-que-e-serralha-beneficios-e-usos/" target="_blank">[C2]</a>
+                </li>
+                <li>
+                    <strong>Salteados e refogados:</strong> talvez a forma mais simples e comum de consumo: serralha
+                    refogada com azeite e alho, sozinha ou misturada com outras verduras.
+                    <a href="https://www.ceasacampinas.com.br/dicas/serralha" target="_blank">[C3]</a>
+                    <a href="https://receitasdetodososdias.blogspot.com/2017/05/serralha-refogada-uma-delicia.html" target="_blank">[C4]</a>
+                </li>
+                <li>
+                    <strong>Sopas e caldos:</strong> pode entrar em sopas de legumes, sopas verdes e caldos de carne,
+                    adicionada perto do fim da cozedura, tal como nabiças ou grelos.
+                    <a href="https://receitasde.com.br/glossario/o-que-e-serralha-beneficios-e-usos/" target="_blank">[C5]</a>
+                </li>
+                <li>
+                    <strong>Omeletes e ovos mexidos:</strong> receitas com omelete de serralha são comuns em materiais
+                    educativos sobre PANC, misturando as folhas picadas com ovos batidos.
+                    <a href="https://cearaselvagem.com/pancs-serralha/" target="_blank">[C6]</a>
+                    <a href="https://editorascienza.com.br/ebook/panc.pdf" target="_blank">[C7]</a>
+                </li>
+                <li>
+                    <strong>Pratos tradicionais com carne:</strong> no Brasil, há pratos como <em>suã de porco com serralha</em>,
+                    em que a verdura é utilizada em refogado com pedaços de carne suína.
+                    <a href="https://pt.wikibooks.org/wiki/Livro_de_receitas/Su%C3%A3_de_porco_e_serralha" target="_blank">[C8]</a>
+                    <a href="https://pt.petitchef.com/receitas/prato-principal/sua-de-porco-e-serralha-fid-304802" target="_blank">[C9]</a>
+                </li>
+                <li>
+                    <strong>Preparados tradicionais (chás, cataplasmas, etc.):</strong> alguns artigos descrevem usos
+                    da serralha em chás digestivos, diuréticos e cataplasmas para pele, sobretudo na medicina popular.
+                    <a href="https://www.tuasaude.com/serralha/" target="_blank">[C10]</a>
+                    <a href="https://www.greenme.com.br/consumir/usos-beneficios/67790-serralha-a-planta-medicinal-comestivel-veja-os-beneficios-e-como-plantar/" target="_blank">[C11]</a>
+                </li>
+                <li>
+                    <strong>Cuidados especiais:</strong> como qualquer planta espontânea, deve ser colhida longe de
+                    estradas movimentadas, zonas potencialmente contaminadas e áreas tratadas com químicos. Pessoas
+                    com doenças crónicas, grávidas ou em amamentação devem discutir o uso medicinal com o profissional
+                    de saúde.
+                </li>
+            </ul>
+        </section>
+
+        <section id="receitas">
+            <h3>4. Receitas e preparados (Top 10)</h3>
+            <p>
+                Ideias de utilização da <strong>serralha biológica</strong>, com referências maioritariamente em português
+                (Portugal e Brasil). Em muitas receitas, basta substituir parte de outras verduras por serralha jovem.
+            </p>
+            <ol>
+                <li>
+                    <strong>Serralha refogada simples</strong> – folhas de serralha rapidamente refogadas em azeite com
+                    alho; versões descritas em materiais de educação alimentar e em sites brasileiros e portugueses.
+                    <a href="https://www.ceasacampinas.com.br/dicas/serralha" target="_blank">[R1]</a>
+                    <a href="https://cearaselvagem.com/pancs-serralha/" target="_blank">[R2]</a>
+                    <a href="https://receitasdetodososdias.blogspot.com/2017/05/serralha-refogada-uma-delicia.html" target="_blank">[R3]</a>
+                </li>
+                <li>
+                    <strong>Salada de serralha com tomate e cebola</strong> – salada crua com folhas jovens de serralha,
+                    temperadas com azeite, vinagre ou limão, tal como proposto em textos de glossário de alimentos.
+                    <a href="https://receitasde.com.br/glossario/o-que-e-serralha-beneficios-e-usos/" target="_blank">[R4]</a>
+                </li>
+                <li>
+                    <strong>Sopa de serralha com batata e cenoura</strong> – sopa de legumes onde a serralha entra como
+                    verdura principal ou combinada com outras folhas.
+                    <a href="https://receitasde.com.br/glossario/o-que-e-serralha-beneficios-e-usos/" target="_blank">[R5]</a>
+                </li>
+                <li>
+                    <strong>Omelete de serralha</strong> – folhas refogadas rapidamente e incorporadas em ovos batidos,
+                    com receitas descritas em blogs e e-books sobre PANC.
+                    <a href="https://cearaselvagem.com/pancs-serralha/" target="_blank">[R6]</a>
+                    <a href="https://editorascienza.com.br/ebook/panc.pdf" target="_blank">[R7]</a>
+                </li>
+                <li>
+                    <strong>Suã de porco com serralha</strong> – prato tradicional com suã (cortes de porco) e grande
+                    quantidade de serralha, refogada em molho bem temperado.
+                    <a href="https://pt.wikibooks.org/wiki/Livro_de_receitas/Su%C3%A3_de_porco_e_serralha" target="_blank">[R8]</a>
+                    <a href="https://pt.petitchef.com/receitas/prato-principal/sua-de-porco-e-serralha-fid-304802" target="_blank">[R9]</a>
+                </li>
+                <li>
+                    <strong>Arroz com serralha</strong> – arroz de legumes ou “tipo grelos” em que a serralha é
+                    adicionada no final, à semelhança de receitas com outras PANC.
+                    <a href="https://cearaselvagem.com/pancs-serralha/" target="_blank">[R10]</a>
+                </li>
+                <li>
+                    <strong>Tortilha / frittata de serralha e batata</strong> – adaptação de receitas de tortilla de
+                    batata, incorporando folhas de serralha rapidamente salteadas.
+                    <a href="https://cearaselvagem.com/pancs-serralha/" target="_blank">[R11]</a>
+                </li>
+                <li>
+                    <strong>Chá de serralha</strong> – infusão de folhas, descrita em textos de medicina popular
+                    como digestiva, diurética e depurativa.
+                    <a href="https://www.tuasaude.com/serralha/" target="_blank">[R12]</a>
+                    <a href="https://www.greenme.com.br/consumir/usos-beneficios/67790-serralha-a-planta-medicinal-comestivel-veja-os-beneficios-e-como-plantar/" target="_blank">[R13]</a>
+                </li>
+                <li>
+                    <strong>Cataplasma de serralha</strong> – uso externo de folhas trituradas, em preparações
+                    tradicionais para pele e articulações.
+                    <a href="https://www.greenme.com.br/consumir/usos-beneficios/67790-serralha-a-planta-medicinal-comestivel-veja-os-beneficios-e-como-plantar/" target="_blank">[R14]</a>
+                    <a href="https://ciencia.ufla.br/reportagens/saude/745-pesquisa-busca-provar-a-eficiencia-da-serralha-no-tratamento-de-doencas-de-pele" target="_blank">[R15]</a>
+                </li>
+                <li>
+                    <strong>Preparações variadas com PANC</strong> – coleções de receitas com serralha (refogados,
+                    bolinhos, recheios) em materiais educativos sobre plantas alimentícias não convencionais.
+                    <a href="https://editorascienza.com.br/ebook/panc.pdf" target="_blank">[R16]</a>
+                </li>
+            </ol>
+        </section>
+
+        <section id="beneficios">
+            <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+            <p>
+                A serralha é estudada tanto como <strong>alimento funcional</strong> (verdura rica em nutrientes e
+                fitoquímicos) como planta de interesse <strong>fitoterápico</strong>. A evidência inclui análises
+                de composição, estudos in vitro, ensaios em modelos animais e algumas investigações iniciais em humanos.
+            </p>
+            <ul>
+                <li>
+                    <strong>Nutrientes importantes:</strong> trabalhos recentes indicam que <em>Sonchus oleraceus</em>
+                    apresenta teores relevantes de vitaminas A, C e K, bem como minerais como cálcio, ferro e magnésio,
+                    justificando o uso tradicional como “verdura fortificante”.
+                    <a href="https://www.mdpi.com/2311-7524/11/8/893" target="_blank">[M1]</a>
+                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8913140/" target="_blank">[M2]</a>
+                    <a href="https://www.ceasacampinas.com.br/dicas/serralha" target="_blank">[M3]</a>
+                </li>
+                <li>
+                    <strong>Compostos bioativos e antioxidantes:</strong> revisões fitoquímicas mostram a presença de
+                    flavonoides (como quercetina, apigenina, derivados de ácido cafeico) e outros compostos com
+                    atividade antioxidante significativa, o que pode contribuir para efeitos protetores ao nível
+                    celular.
+                    <a href="https://ballisticsjournal.com/index.php/journal/article/download/194/169/370" target="_blank">[M4]</a>
+                    <a href="https://www.plantarchives.org/20-2/9714-9720.pdf" target="_blank">[M5]</a>
+                    <a href="https://rpbs.journals.ekb.eg/article_74418_5232b7a422ea83e6b4975aa5b1f2eb80.pdf" target="_blank">[M6]</a>
+                </li>
+                <li>
+                    <strong>Revisões etnomedicinais e farmacológicas:</strong> revisões integrativas recentes
+                    compilaram o uso de serralha em múltiplas tradições para problemas digestivos, hepáticos,
+                    inflamatórios e cutâneos, e descrevem atividades antioxidantes, anti-inflamatórias e
+                    antidiabéticas em modelos experimentais.
+                    <a href="https://pubmed.ncbi.nlm.nih.gov/38305867/" target="_blank">[M7]</a>
+                    <a href="https://www.academia.edu/42994954/A_REVIEW_ON_ETHNOMEDICINAL_PHARMACOLOGICAL_AND_PHYTOCHEMICAL_ASPECTS_OF_SONCHUS_OLERACEUS_LINN_ASTERACEAE" target="_blank">[M8]</a>
+                    <a href="https://journals.lww.com/aptb/fulltext/2025/05000/antimicrobial_properties_of_sonchus_species__a.1.aspx" target="_blank">[M9]</a>
+                </li>
+                <li>
+                    <strong>Estudos recentes sobre antioxidante, antidiabético e antiglicante:</strong> trabalhos
+                    laboratoriais investigam extratos de serralha em contextos de stress oxidativo, metabolismo da
+                    glicose e glicação proteica, sugerindo potencial interesse, ainda em fase de investigação.
+                    <a href="https://www.sciencedirect.com/science/article/pii/S2772753X25000280" target="_blank">[M10]</a>
+                </li>
+                <li>
+                    <strong>Investigação em doenças de pele:</strong> notícias de centros de investigação relatam
+                    estudos com extractos de serralha para apoio ao tratamento de vitiligo e outras alterações cutâneas,
+                    baseando-se em propriedades anti-inflamatórias e moduladoras da pigmentação.
+                    <a href="https://ciencia.ufla.br/reportagens/saude/745-pesquisa-busca-provar-a-eficiencia-da-serralha-no-tratamento-de-doencas-de-pele" target="_blank">[M11]</a>
+                </li>
+                <li>
+                    <strong>Fontes em português para uso popular:</strong> sites de saúde em português (Portugal e
+                    Brasil) descrevem a serralha como planta com potencial para apoiar digestão, função hepática e
+                    bem-estar geral, sempre salientando que não deve substituir tratamento médico.
+                    <a href="https://www.tuasaude.com/serralha/" target="_blank">[M12]</a>
+                    <a href="https://vitat.com.br/serralha/" target="_blank">[M13]</a>
+                    <a href="https://www.greenme.com.br/consumir/usos-beneficios/67790-serralha-a-planta-medicinal-comestivel-veja-os-beneficios-e-como-plantar/" target="_blank">[M14]</a>
+                </li>
+            </ul>
+            <p class="nota-aviso">
+                Apesar da longa história de uso alimentar e medicinal, a maior parte da evidência mais forte diz
+                respeito a estudos laboratoriais e em animais. O uso culinário em quantidades moderadas, como
+                verdura, é geralmente aceite como seguro em pessoas saudáveis, mas qualquer utilização com fins
+                terapêuticos deve ser discutida com profissionais de saúde.
+            </p>
+        </section>
+
+        <section id="nutricao">
+            <h3>6. Propriedades nutricionais</h3>
+            <p>
+                A tabela seguinte apresenta valores aproximados por 100&nbsp;g de serralha crua e por 100&nbsp;g de
+                serralha cozinhada simples (cozida ou escaldada e escorrida). Os valores variam com o tipo de solo,
+                estádio de colheita e método de preparação.
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Componente</th>
+                        <th>Serralha crua (100 g)</th>
+                        <th>Serralha cozinhada simples (100 g)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Energia</td>
+                        <td>≈ 25–35 kcal</td>
+                        <td>≈ 30–40 kcal (ligeira concentração após cozedura)</td>
+                    </tr>
+                    <tr>
+                        <td>Água</td>
+                        <td>≈ 90–93 g</td>
+                        <td>Um pouco menor (parte evapora)</td>
+                    </tr>
+                    <tr>
+                        <td>Hidratos de carbono</td>
+                        <td>≈ 2–4 g</td>
+                        <td>≈ 3–5 g</td>
+                    </tr>
+                    <tr>
+                        <td>Fibra</td>
+                        <td>≈ 3–4 g</td>
+                        <td>≈ 3–5 g</td>
+                    </tr>
+                    <tr>
+                        <td>Proteína</td>
+                        <td>≈ 2–3 g</td>
+                        <td>≈ 2,5–3,5 g</td>
+                    </tr>
+                    <tr>
+                        <td>Lípidos totais</td>
+                        <td>≈ 0,3 g</td>
+                        <td>≈ 0,3–0,4 g (sem contar com azeite da receita)</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina C</td>
+                        <td>≈ 30–40 mg</td>
+                        <td>Redução significativa (sensível ao calor e à água)</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina A (equivalentes de beta-caroteno)</td>
+                        <td>Valores relevantes, contribuindo de forma apreciável para a VRN</td>
+                        <td>Ligeira redução com cozedura</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina K</td>
+                        <td>Presente em quantidades relevantes</td>
+                        <td>Valores semelhantes ou ligeiramente concentrados</td>
+                    </tr>
+                    <tr>
+                        <td>Cálcio</td>
+                        <td>≈ 120–150 mg</td>
+                        <td>≈ 130–170 mg (se não houver grande perda pela água de cozedura)</td>
+                    </tr>
+                    <tr>
+                        <td>Ferro</td>
+                        <td>≈ 1–2 mg</td>
+                        <td>≈ 1,5–2,5 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Outros minerais</td>
+                        <td>Magnésio, potássio, manganês, entre outros, em teores úteis</td>
+                        <td>Concentração moderada, dependendo da água descartada</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="referencia-nota">
+                Dados aproximados com base em análises de serralha e outras <em>Sonchus</em> como verdura:
+                <a href="https://www.ceasacampinas.com.br/dicas/serralha" target="_blank">[N1]</a>,
+                <a href="https://www.eattheweeds.com/sonchus-sow-thistle-in-a-pigs-eye-2/" target="_blank">[N2]</a>,
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8913140/" target="_blank">[N3]</a>,
+                <a href="https://www.mdpi.com/2311-7524/11/8/893" target="_blank">[N4]</a>.
+            </p>
+        </section>
+
+        <section id="utilidades">
+            <h3>7. Utilidades e aplicações (não apenas alimentares)</h3>
+            <ul>
+                <li>
+                    <strong>Alimentação variada e PANC:</strong> amplifica a diversidade de folhas verdes disponíveis
+                    em hortas e terrenos, reduzindo a dependência de poucas espécies cultivadas e aproveitando melhor a
+                    oferta espontânea.
+                </li>
+                <li>
+                    <strong>Indicador ecológico:</strong> a presença abundante de serralha costuma indicar solos férteis
+                    e ricos em azoto; a sua dinâmica pode ajudar a perceber como o sistema está a responder à adubação
+                    e à perturbação do solo.
+                </li>
+                <li>
+                    <strong>Educação e soberania alimentar:</strong> é excelente exemplo de planta que passa de “erva
+                    daninha” a recurso estratégico, servindo em ações de educação alimentar, identificação de PANC e
+                    resgate de receitas tradicionais.
+                </li>
+                <li>
+                    <strong>Potencial fitoterápico:</strong> tal como a literatura destaca, o conjunto de compostos
+                    bioativos da serralha suscitou investigação em áreas como inflamação, metabolismo da glicose e
+                    saúde hepática, ainda em desenvolvimento.
+                </li>
+                <li>
+                    <strong>Biomassa e cobertura do solo:</strong> se manejada com critério, contribui com biomassa para
+                    compostagem e ajuda a cobrir parcialmente o solo, reduzindo erosão e mantendo alguma humidade.
+                </li>
+            </ul>
+        </section>
+
+        <section id="permacultura">
+            <h3>8. Grau de funcionalidade em permacultura</h3>
+            <p><strong>Classificação proposta: 9/10</strong></p>
+            <ul class="lista-permacultura">
+                <li>
+                    <strong>Funções principais:</strong> alimento verde de época fresca, indicador de fertilidade, fonte
+                    de biomassa, elemento educativo (PANC), ligação com medicina tradicional.
+                </li>
+                <li>
+                    <strong>Vantagens:</strong> auto-semeia-se com facilidade, não requer sementeira deliberada,
+                    produz bem em solos férteis, é resiliente e colhe-se em estádios jovens sem grandes inputs.
+                </li>
+                <li>
+                    <strong>Limitações:</strong> se não for manejada pode competir com culturas hortícolas; o sabor
+                    amargo exige habituação; é indispensável uma boa identificação para evitar confusões com outras
+                    espécies menos desejáveis.
+                </li>
+            </ul>
+            <p class="nota">
+                A pontuação elevada reflete o conjunto de funções ecológicas, alimentares e culturais que a serralha
+                pode desempenhar num sistema de permacultura bem desenhado em contexto de agricultura biológica.
+            </p>
+        </section>
+
+        <section id="referencias">
+            <h3>9. Referências</h3>
+
+            <div class="referencias-subsecao">9.1. Descrição, botânica e contexto</div>
+            <ul class="referencias-lista">
+                <li><strong>[D1]</strong> <a href="https://en.wikipedia.org/wiki/Sonchus_oleraceus" target="_blank">Sonchus oleraceus – Wikipédia (EN)</a></li>
+                <li><strong>[D2]</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/38305867/" target="_blank">Sánchez-Aguirre OA et al. – Sonchus oleraceus L.: ethnomedical, phytochemical and pharmacological aspects</a></li>
+                <li><strong>[D3]</strong> <a href="https://www.mdpi.com/2311-7524/11/8/893" target="_blank">Ruiz-Rocamora A et al. – Sonchus species of the Mediterranean Region: From Wild Edible Plants to Crops</a></li>
+                <li><strong>[D4]</strong> <a href="https://www.saude.df.gov.br/documents/37101/1118391/FOLHETO-SERRALHA.pdf" target="_blank">Secretaria de Saúde DF – Folheto informativo sobre serralha (PT-BR)</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.2. Nutrição e composição</div>
+            <ul class="referencias-lista">
+                <li><strong>[N1]</strong> <a href="https://www.ceasacampinas.com.br/dicas/serralha" target="_blank">CEASA Campinas – Serralha: informações nutricionais e receita refogada</a></li>
+                <li><strong>[N2]</strong> <a href="https://www.eattheweeds.com/sonchus-sow-thistle-in-a-pigs-eye-2/" target="_blank">Eattheweeds – Sonchus (sow thistle) as edible wild green</a></li>
+                <li><strong>[N3]</strong> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8913140/" target="_blank">de Paula Filho GX et al. – Chemical composition and nutritional value of three unconventional edible plants</a></li>
+                <li><strong>[N4]</strong> <a href="https://www.mdpi.com/2311-7524/11/8/893" target="_blank">Ruiz-Rocamora A et al. – Sonchus species… (secção de valor nutricional)</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.3. Benefícios e saúde</div>
+            <ul class="referencias-lista">
+                <li><strong>[M1]</strong> <a href="https://www.mdpi.com/2311-7524/11/8/893" target="_blank">Ruiz-Rocamora A et al. – Sonchus species of the Mediterranean Region</a></li>
+                <li><strong>[M2]</strong> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8913140/" target="_blank">de Paula Filho GX et al. – Nutritional and antioxidant profile</a></li>
+                <li><strong>[M3]</strong> <a href="https://ballisticsjournal.com/index.php/journal/article/download/194/169/370" target="_blank">Phytochemistry and Pharmacological Activities of Sonchus species</a></li>
+                <li><strong>[M4]</strong> <a href="https://www.plantarchives.org/20-2/9714-9720.pdf" target="_blank">Mohasib RMM et al. – Identification of bioactive ingredients in Sonchus oleraceus</a></li>
+                <li><strong>[M5]</strong> <a href="https://rpbs.journals.ekb.eg/article_74418_5232b7a422ea83e6b4975aa5b1f2eb80.pdf" target="_blank">Phytochemistry and pharmacological effects of plants in Asteraceae (incluindo Sonchus)</a></li>
+                <li><strong>[M6]</strong> <a href="https://www.sciencedirect.com/science/article/pii/S2772753X25000280" target="_blank">Laabar A et al. – Antioxidant, antidiabetic and antiglycation activities of S. oleraceus</a></li>
+                <li><strong>[M7]</strong> <a href="https://journals.lww.com/aptb/fulltext/2025/05000/antimicrobial_properties_of_sonchus_species__a.1.aspx" target="_blank">Zulkefle NN et al. – Antimicrobial properties of Sonchus species</a></li>
+                <li><strong>[M8]</strong> <a href="https://www.academia.edu/42994954/A_REVIEW_ON_ETHNOMEDICINAL_PHARMACOLOGICAL_AND_PHYTOCHEMICAL_ASPECTS_OF_SONCHUS_OLERACEUS_LINN_ASTERACEAE" target="_blank">Puri V et al. – Review on ethnomedicinal, pharmacological and phytochemical aspects</a></li>
+                <li><strong>[M9]</strong> <a href="https://ciencia.ufla.br/reportagens/saude/745-pesquisa-busca-provar-a-eficiencia-da-serralha-no-tratamento-de-doencas-de-pele" target="_blank">UFLA – Pesquisa sobre serralha no tratamento de doenças de pele</a></li>
+                <li><strong>[M10]</strong> <a href="https://www.tuasaude.com/serralha/" target="_blank">Tua Saúde – Serralha: para que serve e como usar</a></li>
+                <li><strong>[M11]</strong> <a href="https://vitat.com.br/serralha/" target="_blank">Vitat – Serralha: o que é, benefícios e como consumir</a></li>
+                <li><strong>[M12]</strong> <a href="https://www.greenme.com.br/consumir/usos-beneficios/67790-serralha-a-planta-medicinal-comestivel-veja-os-beneficios-e-como-plantar/" target="_blank">GreenMe – Serralha: planta medicinal comestível</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.4. Culinária e usos tradicionais</div>
+            <ul class="referencias-lista">
+                <li><strong>[C1]</strong> <a href="https://vitat.com.br/serralha/" target="_blank">Vitat – formas de consumo</a></li>
+                <li><strong>[C2]</strong> <a href="https://receitasde.com.br/glossario/o-que-e-serralha-beneficios-e-usos/" target="_blank">Receitasde – O que é serralha: benefícios e usos</a></li>
+                <li><strong>[C3]</strong> <a href="https://www.ceasacampinas.com.br/dicas/serralha" target="_blank">CEASA Campinas – Serralha refogada (receita)</a></li>
+                <li><strong>[C4]</strong> <a href="https://receitasdetodososdias.blogspot.com/2017/05/serralha-refogada-uma-delicia.html" target="_blank">Blog Receitas de Todos os Dias – Serralha refogada “Uma delícia”</a></li>
+                <li><strong>[C5]</strong> <a href="https://cearaselvagem.com/pancs-serralha/" target="_blank">Ceará Selvagem – PANCs: serralha</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.5. Receitas e preparados</div>
+            <ul class="referencias-lista">
+                <li><strong>[R1]</strong> <a href="https://www.ceasacampinas.com.br/dicas/serralha" target="_blank">CEASA Campinas – Serralha refogada</a></li>
+                <li><strong>[R2]</strong> <a href="https://cearaselvagem.com/pancs-serralha/" target="_blank">Ceará Selvagem – Serralha refogada, omelete e outras ideias</a></li>
+                <li><strong>[R3]</strong> <a href="https://receitasdetodososdias.blogspot.com/2017/05/serralha-refogada-uma-delicia.html" target="_blank">Receitas de Todos os Dias – Serralha refogada</a></li>
+                <li><strong>[R4]</strong> <a href="https://receitasde.com.br/glossario/o-que-e-serralha-beneficios-e-usos/" target="_blank">Receitasde – Salada e sopa de serralha</a></li>
+                <li><strong>[R5]</strong> <a href="https://cearaselvagem.com/pancs-serralha/" target="_blank">Ceará Selvagem – Omelete de serralha</a></li>
+                <li><strong>[R6]</strong> <a href="https://editorascienza.com.br/ebook/panc.pdf" target="_blank">E-book “PANC nas receitas da vovó” – receitas com serralha</a></li>
+                <li><strong>[R7]</strong> <a href="https://pt.wikibooks.org/wiki/Livro_de_receitas/Su%C3%A3_de_porco_e_serralha" target="_blank">Wikibooks – Suã de porco e serralha</a></li>
+                <li><strong>[R8]</strong> <a href="https://pt.petitchef.com/receitas/prato-principal/sua-de-porco-e-serralha-fid-304802" target="_blank">Petitchef – Suã de porco e serralha</a></li>
+                <li><strong>[R9]</strong> <a href="https://www.tuasaude.com/serralha/" target="_blank">Tua Saúde – Chá de serralha e formas de uso</a></li>
+                <li><strong>[R10]</strong> <a href="https://www.greenme.com.br/consumir/usos-beneficios/67790-serralha-a-planta-medicinal-comestivel-veja-os-beneficios-e-como-plantar/" target="_blank">GreenMe – Preparos internos e externos com serralha</a></li>
+            </ul>
+        </section>
+
+        <div class="topo-link">
+            <a href="#topo">Voltar ao topo ▲</a>
+        </div>
+    </article>
+</main>
+</body>
+</html>

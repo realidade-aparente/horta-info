@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Umbigo-de-vénus (Umbilicus rupestris) | Horta da Terra para o prato</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota, .referencia-nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .nota-aviso {
+            font-size: 0.85rem;
+            color: #9a3412;
+            background: #fff7ed;
+            border-radius: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #fed7aa;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body id="topo">
+<header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Plantas espontâneas comestíveis de produção biológica – da terra para o prato.</p>
+</header>
+
+<nav>
+    <a href="index.html">Início</a>
+    <a href="beldroega.html">Beldroega</a>
+    <a href="bredo.html">Bredo</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="quenopodio.html">Quenopódio</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="umbigo-de-venus.html" class="ativa">Umbigo-de-vénus</a>
+</nav>
+
+<main>
+    <article class="planta">
+        <div class="planta-cabecalho">
+            <div class="planta-titulo">
+                <h2>Umbigo-de-vénus / Umbigo-de-dama (<em>Umbilicus rupestris</em>)</h2>
+                <p><strong>Outros nomes em português:</strong> umbigo-rupestre, bacelos, bifes, cachilro/cochilro, chapéus-de-parede, chapéu-dos-telhados, cauxilhos, conchelos, copilas, couxilgos, orelha-de-monge, sombreirinho-dos-telhados.</p>
+                <p><strong>Nome mais comum em inglês:</strong> navelwort, wall pennywort, penny pies.</p>
+
+                <div class="tags-nomes">
+                    <span>Família: Crassulaceae</span>
+                    <span>Parte usada: folhas jovens e, pontualmente, inflorescências</span>
+                    <span>Tipo: planta espontânea comestível (PANC)</span>
+                    <span>Habitat: muros, rochedos, troncos, fendas húmidas</span>
+                    <span>Produção/recoleção: <strong>biológica</strong> / em locais limpos</span>
+                </div>
+
+                <div class="info-rapida">
+                    <div>
+                        <strong>Origem e distribuição</strong>
+                        Espécie nativa da Europa meridional e ocidental e região mediterrânica; muito frequente em Portugal continental, Madeira e Açores, sobretudo em muros, paredes e rochas húmidas.
+                    </div>
+                    <div>
+                        <strong>Uso principal</strong>
+                        Folhas suculentas consumidas cruas em saladas, sandes, batidos, ou levemente cozinhadas em omeletas, quiches e sopas.
+                    </div>
+                    <div>
+                        <strong>Perfil nutricional</strong>
+                        Folhas ricas em água, vitamina C, minerais (cálcio, potássio, ferro), compostos fenólicos, flavonoides e ácidos gordos ómega-3, segundo estudos recentes.
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="imagem-container-externo">
+                    <div class="imagem-container">
+                        <img src="imagens/umbigo-de-venus.png" alt="Umbigo-de-vénus (Umbilicus rupestris) em parede de pedra">
+                    </div>
+                </div>
+                <p class="imagem-legenda">
+                    Umbigo-de-vénus biológico a crescer em fendas de parede. As folhas peltadas formam uma “covinha”
+                    central que lembra um umbigo.
+                </p>
+            </div>
+        </div>
+
+        <section id="apresentacao">
+            <h3>1. Apresentação / Descrição</h3>
+            <p>
+                O <strong>umbigo-de-vénus</strong> (<em>Umbilicus rupestris</em>) é uma planta suculenta, perene e
+                herbácea, da família Crassulaceae. Apresenta folhas basais <strong>carnudas, arredondadas e peltadas</strong>,
+                com uma depressão central que lembra um umbigo – origem do nome comum e do género <em>Umbilicus</em>.
+                Desenvolve-se em rosetas em muros, rochedos, paredes antigas, telhados, fendas húmidas e, por vezes,
+                em troncos de árvores, formando colónias características de sombras húmidas. 
+            </p>
+            <p>
+                A haste floral pode atingir cerca de 15–30&nbsp;cm (pontualmente até ~60&nbsp;cm), com um racemo
+                denso de pequenas flores campanuladas, verde-esbranquiçadas a rosadas, que surgem em geral entre
+                <strong>fevereiro e julho</strong> em Portugal continental. Os frutos são pequenos folículos com muitas
+                sementes, responsáveis pela grande capacidade de dispersão e colonização de paredes e rochedos.
+                
+            </p>
+            <p>
+                Na tradição popular portuguesa, além de planta comestível, o umbigo-de-vénus foi muitas vezes usado
+                como <strong>planta vulnerária</strong> (para pequenas feridas, calosidades, picadas de insetos, etc.),
+                aplicado topicamente sob forma de folha esmagada ou suco. 
+            </p>
+            <p class="referencia-nota">
+                Referência(s) de suporte para a descrição e nomes:
+                <a href="https://pt.wikipedia.org/wiki/Umbilicus_rupestris" target="_blank">[D1]</a>
+                <a href="https://wilder.pt/diversoes/o-que-procurar-no-inverno-umbigo-de-venus" target="_blank">[D2]</a>
+                <a href="https://ecologicaquem.blogspot.com/2014/03/umbigo-de-venus.html" target="_blank">[D3]</a>
+                <a href="https://www.eatweeds.co.uk/navelwort-umbilicus-rupestris" target="_blank">[D4]</a>
+            </p>
+        </section>
+
+        <section id="sazonalidade">
+            <h3>2. Sazonalidade (Portugal continental)</h3>
+            <p>
+                Em Portugal, o umbigo-de-vénus ocorre de norte a sul do território continental, bem como nos arquipélagos
+                da Madeira e Açores, preferindo paredes, muros, escarpas e rochedos húmidos ou sombrios. 
+            </p>
+            <ul>
+                <li>
+                    <strong>Folhas:</strong> a planta mantém folhas durante grande parte do ano, sendo possível encontrá-las
+                    mesmo no inverno em locais húmidos e abrigados. As folhas jovens de inverno/início de primavera
+                    tendem a ser <strong>mais tenras e de sabor mais suave</strong>. 
+                </li>
+                <li>
+                    <strong>Floração:</strong> em Portugal continental, a floração é referida entre <strong>fevereiro e julho</strong>,
+                    com variações regionais; nos Açores e Madeira o pico tende a ser primavera-início de verão. 
+                </li>
+                <li>
+                    <strong>Época ideal de colheita alimentar:</strong> sobretudo <strong>inverno e primavera</strong>,
+                    quando as folhas estão mais suculentas e pouco amargas. No verão, as folhas podem tornar-se mais
+                    espessas e amargas devido à acumulação de ácidos orgânicos e taninos. 
+                </li>
+                <li>
+                    <strong>Cuidados de colheita em contexto biológico:</strong> evitar paredes e taludes expostos a
+                    <strong>poluição urbana, trânsito intenso, fachadas pintadas com tintas antigas, chaminés</strong> ou
+                    possíveis fontes de metais pesados. Há referências explícitas a que a planta pode acumular
+                    <strong>metais pesados</strong>, pelo que a recolha deve ser feita apenas em locais limpos.
+                    
+                </li>
+            </ul>
+        </section>
+
+        <section id="como-consumir">
+            <h3>3. Como consumir</h3>
+            <p>
+                Utilizam-se principalmente as <strong>folhas jovens e suculentas</strong>, e em menor grau as
+                inflorescências ainda tenras. O sabor é suave, fresco e ligeiramente ácido, por vezes descrito como
+                uma mistura entre alface crocante e um toque cítrico.
+            </p>
+            <ul>
+                <li>
+                    <strong>Saladas cruas:</strong> as folhas inteiras ou cortadas podem ser adicionadas a saladas
+                    simples ou mistas, juntamente com alfaces, ervas aromáticas e outras folhas silvestres, em
+                    receitas de <em>salada de ervas silvestres</em>. 
+                </li>
+                <li>
+                    <strong>Sandes e wraps:</strong> folhas inteiras colocadas em sandes, tostas ou wraps, em substituição
+                    parcial de folhas de alface ou rúcula. 
+                </li>
+                <li>
+                    <strong>Batidos e sumos verdes:</strong> folhas frescas, em pequena quantidade, podem ser adicionadas
+                    a batidos de fruta ou sumos verdes, em conjunto com maçã, citrinos, espinafre, etc. 
+                </li>
+                <li>
+                    <strong>Omeletas, quiches e tartes salgadas:</strong> tal como outras folhas verdes, pode ser
+                    picada e usada em omeletas, quiches/“tartes verdes” e frittatas, juntando-se habitualmente o umbigo-de-vénus
+                    <strong>no fim do salteado</strong> para manter alguma textura. 
+                </li>
+                <li>
+                    <strong>Sopas e cremes:</strong> folhas adicionadas no final de sopas de legumes ou cremes verdes,
+                    de forma semelhante ao espinafre, acelga ou outras PANC de folha.
+                </li>
+                <li>
+                    <strong>Pestos e patês verdes:</strong> combinando umbigo-de-vénus com outras silvestres (malvas,
+                    funcho, urtiga) em pestos com azeite, alho e frutos secos/sementes, como em receitas de
+                    <em>pesto silvestre</em>. 
+                </li>
+                <li>
+                    <strong>Usos tradicionais não alimentares:</strong> folhas esmagadas usadas em cataplasmas para
+                    pequenas feridas, calosidades, inflamações cutâneas ou picadas de insetos; e usos populares em
+                    contexto de cálculos renais ou “pedras”. Estas aplicações são <strong>tradicionais</strong> e não
+                    substituem avaliação clínica. 
+                </li>
+                <li>
+                    <strong>Segurança e cautelas:</strong> além de evitar locais contaminados, a ingestão deve ser
+                    moderada e integrada numa dieta variada. A evidência clínica sobre doses seguras em consumo
+                    concentrado (extratos, sumos diários em grande quantidade) ainda é limitada, sendo prudente que
+                    pessoas com doenças crónicas, grávidas ou a amamentar conversem com profissionais de saúde
+                    antes de recorrer a usos intensivos.
+                </li>
+            </ul>
+        </section>
+
+        <section id="receitas">
+            <h3>4. Receitas e preparados (Top 10)</h3>
+            <p>
+                Seguem <strong>10 ideias de receitas</strong> onde o umbigo-de-vénus (folhas frescas, preferencialmente
+                de locais limpos e em contexto biológico) pode ser usado, com pelo menos cinco referências em
+                português.
+            </p>
+            <ol>
+                <li>
+                    <strong>Salada de ervas silvestres com umbigo-de-vénus</strong> – combina várias plantas
+                    silvestres (malvas, umbigo-de-vénus, funcho, etc.) com azeite, alho e sal para fazer uma salada
+                    ou base de pesto/salada morna.
+                    <a href="https://simplyflow.pt/plantas-silvestres-comestiveis/" target="_blank">[R1]</a>
+                </li>
+                <li>
+                    <strong>Pesto silvestre com umbigo-de-vénus</strong> – receita em português em que se recolhem
+                    plantas silvestres comestíveis, incluindo umbigo-de-vénus, para preparar um pesto com azeite,
+                    alho e sal.
+                    <a href="https://simplyflow.pt/plantas-silvestres-comestiveis/" target="_blank">[R2]</a>
+                </li>
+                <li>
+                    <strong>Salada bio de ervas silvestres (incluindo umbigo-de-vénus)</strong> – refeição proposta
+                    pelo Montado do Freixo do Meio, que inclui umbigo-de-vénus entre as plantas silvestres usadas em
+                    saladas biológicas.
+                    <a href="https://freixodomeio.pt/alimento/producao/agrofloresta-do-montado/cogumelos-e-plantas-silvestres/" target="_blank">[R3]</a>
+                </li>
+                <li>
+                    <strong>Saladas cruas com umbigo-de-vénus</strong> – várias fontes em português (blogues de
+                    natureza, fotografia e etnobotânica) mencionam explicitamente o uso em saladas.
+                    <a href="https://ecologicaquem.blogspot.com/2014/03/umbigo-de-venus.html" target="_blank">[R4]</a>
+                    <a href="https://descobrircomalma.wordpress.com/2021/01/15/umbigo-de-venus/" target="_blank">[R5]</a>
+                </li>
+                <li>
+                    <strong>Salada de umbigo-de-vénus e legumes</strong> – receitas partilhadas em redes sociais
+                    (vídeos e posts) onde o umbigo-de-vénus é usado como base de salada fresca.
+                    <a href="https://www.facebook.com/passadicosdopaiva.pt/posts/597459079582214/" target="_blank">[R6]</a>
+                    <a href="https://www.facebook.com/aloeveralrportugal/videos/salada-umbigo-de-venus-planta-selvagem-medicinalacompanhada-a-sobremesa-concentr/273255414777890/" target="_blank">[R7]</a>
+                </li>
+                <li>
+                    <strong>Burmese style navelwort salad</strong> – receita em inglês em que a salada tradicional
+                    birmanesa de pennywort é adaptada usando o umbigo-de-vénus nativo.
+                    <a href="https://www.eatweeds.co.uk/burmese-style-navelwort-salad" target="_blank">[R8]</a>
+                </li>
+                <li>
+                    <strong>Wild green tartlets (tartes verdes silvestres)</strong> – tartes salgadas de folhas
+                    silvestres em que o navelwort/umbilicus rupestris é uma das opções.
+                    <a href="https://www.eatweeds.co.uk/navelwort-umbilicus-rupestris" target="_blank">[R9]</a>
+                </li>
+                <li>
+                    <strong>Salada de inverno com umbigo-de-vénus</strong> – ideias de saladas de inverno com folhas
+                    crocantes de umbigo-de-vénus, referidas em blogs de foraging.
+                    <a href="https://growingthingsandmakingthings.blogspot.com/2013/02/foraged-food-friday-navelwort.html" target="_blank">[R10]</a>
+                </li>
+                <li>
+                    <strong>Omelete ou quiche de umbigo-de-vénus</strong> – várias fontes portuguesas referem o uso
+                    da planta em omeletas e quiches, em combinação com outros ingredientes.
+                    <a href="https://wilder.pt/diversoes/o-que-procurar-no-inverno-umbigo-de-venus" target="_blank">[R11]</a>
+                    <a href="https://descobrircomalma.wordpress.com/2021/01/15/umbigo-de-venus/" target="_blank">[R12]</a>
+                </li>
+                <li>
+                    <strong>Batidos verdes com umbigo-de-vénus</strong> – sugestões de batidos e sumos em que a
+                    planta entra em pequena proporção para acrescentar frescura e micronutrientes.
+                    <a href="https://wilder.pt/diversoes/o-que-procurar-no-inverno-umbigo-de-venus" target="_blank">[R13]</a>
+                    <a href="https://descobrircomalma.wordpress.com/2021/01/15/umbigo-de-venus/" target="_blank">[R14]</a>
+                </li>
+            </ol>
+        </section>
+
+        <section id="beneficios">
+            <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+            <p>
+                O umbigo-de-vénus é uma <strong>planta espontânea comestível</strong> que recentemente começou a ser
+                estudada de forma mais sistemática, sobretudo por equipas de investigação portuguesas, no contexto de
+                <strong>plantas silvestres comestíveis mediterrânicas</strong>. Destaca-se:
+            </p>
+            <ul>
+                <li>
+                    <strong>Nutrientes e compostos bioativos:</strong> estudo detalhado de composição e bioatividade
+                    das folhas de <em>U. rupestris</em> identificou:
+                    <ul>
+                        <li>conteúdo de humidade muito elevado (&gt;90&nbsp;g/100&nbsp;g, típico de suculentas);</li>
+                        <li>presença de <strong>ácidos gordos polinsaturados ómega-3</strong> (incluindo ALA);</li>
+                        <li><strong>tocofenóis (vitamina E)</strong> e outros antioxidantes lipossolúveis;</li>
+                        <li>polifenóis, incluindo vários <strong>flavonoides e ácidos fenólicos</strong> identificados
+                            pela primeira vez nesta espécie; </li>
+                        <li>atividade antioxidante relevante em extratos aquosos e hidroetanólicos. </li>
+                    </ul>
+                    <a href="http://hdl.handle.net/10198/20239" target="_blank">[M1]</a>
+                    <a href="https://pubmed.ncbi.nlm.nih.gov/31174767/" target="_blank">[M2]</a>
+                </li>
+                <li>
+                    <strong>Valorização como planta silvestre comestível mediterrânica:</strong> revisões sobre plantas
+                    silvestres comestíveis referem o umbigo-de-vénus como <em>“underexploited edible wild plant”</em>
+                    com potencial interesse nutricional e económico, destacando o contributo em proteína, fibra,
+                    minerais e fitoquímicos antioxidantes quando integrado em misturas de folhas.
+                    <a href="https://www.mdpi.com/2304-8158/12/5/1012" target="_blank">[M3]</a>
+                    <a href="https://www.mdpi.com/2071-1050/11/2/456" target="_blank">[M4]</a>
+                </li>
+                <li>
+                    <strong>Atividade antioxidante e anti-inflamatória (pré-clínico):</strong> artigos que analisam
+                    extratos de <em>U. rupestris</em> descrevem capacidade neutralizadora de radicais livres e efeitos
+                    anti-inflamatórios in vitro, em linha com o perfil fenólico observado. 
+                </li>
+                <li>
+                    <strong>Uso tradicional em medicina popular:</strong> fontes etnobotânicas na Europa referem o uso
+                    do umbigo-de-vénus como planta vulnerária e diurética, aplicado externamente para pequenas feridas,
+                    queimaduras ligeiras, calosidades, inflamações cutâneas, picadas de insetos e, ocasionalmente, para
+                    “pedras” (rins/bexiga). Estas indicações são baseadas em <strong>tradição</strong> e não em ensaios
+                    clínicos robustos.
+                    <a href="https://pfaf.org/user/plant.aspx?latinname=Umbilicus+rupestris" target="_blank">[M5]</a>
+                    <a href="https://www.eatweeds.co.uk/navelwort-umbilicus-rupestris" target="_blank">[M6]</a>
+                    <a href="https://flordegiesta.com/2020/07/04/notas-do-herbalista-139-umbigo-de-venus/" target="_blank">[M7]</a>
+                </li>
+                <li>
+                    <strong>Informação em português sobre nutrientes e possíveis usos coadjuvantes:</strong> alguns
+                    artigos de divulgação (Portugal e Brasil) referem que a planta contém cálcio, potássio, silício,
+                    ferro, vitamina C, polifenóis, taninos e outros compostos, sugerindo potencial interesse em
+                    contextos como saúde da pele, inflamação leve e suporte de micronutrientes. 
+                </li>
+            </ul>
+            <p class="nota-aviso">
+                Até ao momento, a maior parte da evidência disponível diz respeito a
+                <strong>composição química</strong>, <strong>atividade antioxidante</strong> in vitro e usos
+                tradicionais. Existem poucos ensaios clínicos controlados especificamente com <em>Umbilicus rupestris</em>.
+                Por isso, o consumo culinário de folhas frescas, em quantidades habituais de alimento, é a forma mais
+                prudente de aproveitar a planta; o uso de extratos concentrados ou aplicações medicinais deve ser
+                discutido com profissionais de saúde.
+            </p>
+        </section>
+
+        <section id="nutricao">
+            <h3>6. Propriedades nutricionais</h3>
+            <p>
+                Existem relativamente poucos dados de composição de rotina (tabelas tipo “base de dados nacional”)
+                para o umbigo-de-vénus, mas o estudo de Iyda et&nbsp;al. (2019) e revisões sobre plantas silvestres
+                mediterrânicas fornecem uma ideia geral do perfil das folhas. De forma simplificada, por 100&nbsp;g
+                de folhas frescas:
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Componente</th>
+                        <th>Umbigo-de-vénus cru (100 g)</th>
+                        <th>Umbigo-de-vénus cozinhado simples (100 g)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Energia</td>
+                        <td>≈ 20–30 kcal (baixa densidade energética)</td>
+                        <td>≈ 25–35 kcal (ligeira concentração por perda de água)</td>
+                    </tr>
+                    <tr>
+                        <td>Água</td>
+                        <td>≈ 90–93 g</td>
+                        <td>Um pouco menor (parte evapora na cozedura)</td>
+                    </tr>
+                    <tr>
+                        <td>Hidratos de carbono</td>
+                        <td>≈ 3–5 g</td>
+                        <td>≈ 4–6 g (concentrados por perda de água)</td>
+                    </tr>
+                    <tr>
+                        <td>Fibra</td>
+                        <td>≈ 1–3 g (dependendo da maturidade)</td>
+                        <td>≈ 2–3 g</td>
+                    </tr>
+                    <tr>
+                        <td>Proteína</td>
+                        <td>≈ 1–2 g</td>
+                        <td>≈ 1,5–3 g</td>
+                    </tr>
+                    <tr>
+                        <td>Lípidos totais</td>
+                        <td>&lt; 1 g (com fração de ácidos gordos ómega-3)</td>
+                        <td>&lt; 1 g (sem contar com gorduras adicionadas na receita)</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina C</td>
+                        <td>Fonte relevante (várias fontes referem teores apreciáveis por 100 g)</td>
+                        <td>Redução significativa com cozedura em água</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina E (tocofenóis)</td>
+                        <td>Presente em quantidades relevantes segundo Iyda et&nbsp;al., contribuindo para atividade antioxidante</td>
+                        <td>Mantém-se em grande parte, dado ser lipossolúvel, embora possa degradar com aquecimento prolongado</td>
+                    </tr>
+                    <tr>
+                        <td>Minerais (Ca, K, Fe, etc.)</td>
+                        <td>Folhas descritas como fonte de cálcio, potássio, ferro e silício</td>
+                        <td>Concentração relativa pode aumentar; mas parte pode perder-se se a água de cozedura for descartada</td>
+                    </tr>
+                    <tr>
+                        <td>Compostos fenólicos</td>
+                        <td>Vários flavonoides e ácidos fenólicos identificados em extratos aquosos/hidroetanólicos</td>
+                        <td>Parte é extraída para o caldo de cozedura se este for aproveitado (ex. sopas)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="referencia-nota">
+                Valores aproximados, baseados em:
+                <a href="http://hdl.handle.net/10198/20239" target="_blank">[N1]</a>
+                <a href="https://pubmed.ncbi.nlm.nih.gov/31174767/" target="_blank">[N2]</a>
+                <a href="https://www.mdpi.com/2304-8158/12/5/1012" target="_blank">[N3]</a>.
+                Por se tratar de uma planta silvestre, os teores variam com habitat, solo, clima e estádio de colheita.
+            </p>
+        </section>
+
+        <section id="utilidades">
+            <h3>7. Utilidades e aplicações (não apenas alimentares)</h3>
+            <ul>
+                <li>
+                    <strong>Alimentação e gastronomia local:</strong> consumo em saladas, sandes, omeletas, quiches,
+                    sopas, pestos e batidos, sobretudo em abordagens de cozinha silvestre e de proximidade.
+                    
+                </li>
+                <li>
+                    <strong>Valorização de muros e espaços “improdutivos”:</strong> o umbigo-de-vénus transforma
+                    muros, taludes e pedras em <em>micro-hortas verticais</em> naturais, fornecendo alimento e
+                    biodiversidade sem ocupar área de solo agrícola.
+                </li>
+                <li>
+                    <strong>Educação ambiental e botânica:</strong> excelente espécie para atividades de identificação
+                    de flora autóctone, PANC e plantas silvestres comestíveis, ligando etnobotânica, culinária e
+                    ecologia.
+                </li>
+                <li>
+                    <strong>Uso tradicional como planta medicinal tópica:</strong> folhas esmagadas aplicadas em
+                    pequenas feridas, calos, inflamações cutâneas leves, etc., conforme descrito em fontes de medicina
+                    popular europeia. 
+                </li>
+                <li>
+                    <strong>Potencial económico:</strong> estudos sobre plantas silvestres comestíveis referem
+                    <em>Umbilicus rupestris</em> como uma das espécies que já começam a entrar em nichos de restauração
+                    de qualidade e mercado de produtos silvestres, em saladas gourmet e pratos criativos.
+                    <a href="https://www.mdpi.com/2071-1050/11/2/456" target="_blank">[U1]</a>
+                </li>
+            </ul>
+        </section>
+
+        <section id="permacultura">
+            <h3>8. Grau de funcionalidade em permacultura</h3>
+            <p><strong>Classificação proposta: 8/10</strong></p>
+            <ul class="lista-permacultura">
+                <li>
+                    <strong>Funções principais:</strong> alimento de baixo impacto (colhido em estruturas já existentes),
+                    biodiversidade em muros e rochedos, cobertura viva que protege micro-habitats húmidos, recurso para
+                    educação ambiental e ligação com flora autóctone.
+                </li>
+                <li>
+                    <strong>Vantagens:</strong> planta perene, resistente e adaptada a condições difíceis (fendas,
+                    rochedos, muros antigos). Não compete diretamente com culturas de solo e pode ser combinada com
+                    outras espécies de paredes vivas.
+                </li>
+                <li>
+                    <strong>Limitações:</strong> produção por planta é relativamente pequena, exigindo recolha
+                    dispersa; sensível à poluição e acumulação de metais pesados – é crucial selecionar bem o local de
+                    colheita. Aplicações medicinais carecem de mais evidência clínica.
+                </li>
+            </ul>
+            <p class="nota">
+                A pontuação elevada reflete sobretudo o contributo para diversidade alimentar, aproveitamento de
+                espaços verticais “improdutivos” e integração de plantas silvestres comestíveis em sistemas de
+                permacultura de inspiração mediterrânica, sempre em contexto de <strong>produção biológica ou
+                recolha responsável em ambientes limpos</strong>.
+            </p>
+        </section>
+
+        <section id="referencias">
+            <h3>9. Referências</h3>
+
+            <div class="referencias-subsecao">9.1. Descrição, nomes e distribuição</div>
+            <ul class="referencias-lista">
+                <li><strong>[D1]</strong> <a href="https://pt.wikipedia.org/wiki/Umbilicus_rupestris" target="_blank">Umbilicus rupestris – Wikipédia (PT)</a></li>
+                <li><strong>[D2]</strong> <a href="https://wilder.pt/diversoes/o-que-procurar-no-inverno-umbigo-de-venus" target="_blank">Wilder – O que procurar no Inverno: o umbigo-de-vénus</a></li>
+                <li><strong>[D3]</strong> <a href="https://ecologicaquem.blogspot.com/2014/03/umbigo-de-venus.html" target="_blank">Ecologica Quem – Umbigo de Vénus</a></li>
+                <li><strong>[D4]</strong> <a href="https://www.eatweeds.co.uk/navelwort-umbilicus-rupestris" target="_blank">Eatweeds – Navelwort (Umbilicus rupestris)</a></li>
+                <li><strong>[D5]</strong> <a href="https://en.wikipedia.org/wiki/Umbilicus_rupestris" target="_blank">Umbilicus rupestris – Wikipedia (EN)</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.2. Sazonalidade, habitat e PANC</div>
+            <ul class="referencias-lista">
+                <li><strong>[S1]</strong> <a href="https://wilder.pt/diversoes/o-que-procurar-no-inverno-umbigo-de-venus" target="_blank">Wilder – descrição ecológica e sazonalidade</a></li>
+                <li><strong>[S2]</strong> <a href="https://www.homekeyportugal.com/en/detail/wild-plants-beira-baixa-edible-plants-medicinal-herbs-foraging-tips-culinary-uses-wild-plants/82167" target="_blank">HomeKey Portugal – Wild plants of Beira Baixa (conchelos/Umbilicus rupestris)</a></li>
+                <li><strong>[S3]</strong> <a href="https://freixodomeio.pt/alimento/producao/agrofloresta-do-montado/cogumelos-e-plantas-silvestres/" target="_blank">Montado do Freixo do Meio – Cogumelos e plantas silvestres (inclui umbigo-de-vénus)</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.3. Nutrição e composição</div>
+            <ul class="referencias-lista">
+                <li><strong>[N1]</strong> <a href="http://hdl.handle.net/10198/20239" target="_blank">Iyda JH et al. 2019 – Nutritional composition and bioactivity of Umbilicus rupestris (Food Chemistry)</a></li>
+                <li><strong>[N2]</strong> <a href="https://pubmed.ncbi.nlm.nih.gov/31174767/" target="_blank">PubMed – Nutritional composition and bioactivity of Umbilicus rupestris</a></li>
+                <li><strong>[N3]</strong> <a href="https://www.mdpi.com/2304-8158/12/5/1012" target="_blank">Clemente-Villalba J. et al. 2023 – Valorization of Wild Edible Plants as Food Ingredients</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.4. Benefícios, bioatividade e etnobotânica</div>
+            <ul class="referencias-lista">
+                <li><strong>[M1]</strong> <a href="http://hdl.handle.net/10198/20239" target="_blank">Iyda JH et al. 2019 – Nutritional composition and bioactivity of Umbilicus rupestris</a></li>
+                <li><strong>[M2]</strong> <a href="https://www.mdpi.com/2071-1050/11/2/456" target="_blank">Blanco-Salas J. et al. 2019 – Wild taxa utilized as vegetables in Sicily</a></li>
+                <li><strong>[M3]</strong> <a href="https://www.mdpi.com/2304-8158/12/5/1012" target="_blank">Clemente-Villalba J. et al. 2023 – WEPs: composition e valor económico</a></li>
+                <li><strong>[M4]</strong> <a href="https://pfaf.org/user/plant.aspx?latinname=Umbilicus+rupestris" target="_blank">PFAF – Umbilicus rupestris (medicinal uses tradicionais)</a></li>
+                <li><strong>[M5]</strong> <a href="https://flordegiesta.com/2020/07/04/notas-do-herbalista-139-umbigo-de-venus/" target="_blank">Flor de Giesta – Notas do Herbalista 139: Umbigo-de-vénus</a></li>
+                <li><strong>[M6]</strong> <a href="https://www.picturethisai.com/pt/benefits/Umbilicus_rupestris.html" target="_blank">PictureThis – Benefícios de Umbigo-de-vénus (síntese popular)</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.5. Culinária e cozinha silvestre</div>
+            <ul class="referencias-lista">
+                <li><strong>[C1]</strong> <a href="https://simplyflow.pt/plantas-silvestres-comestiveis/" target="_blank">Simply Flow / Daniela Ricardo – Plantas silvestres comestíveis (inclui umbigo-de-vénus)</a></li>
+                <li><strong>[C2]</strong> <a href="https://freixodomeio.pt/alimento/producao/agrofloresta-do-montado/cogumelos-e-plantas-silvestres/" target="_blank">Montado do Freixo do Meio – Plantas silvestres (umbrella recipes)</a></li>
+                <li><strong>[C3]</strong> <a href="https://descobrircomalma.wordpress.com/2021/01/15/umbigo-de-venus/" target="_blank">Descobrir com Alma – Umbigo de Vénus (saladas, sandes, omeletas, batidos)</a></li>
+                <li><strong>[C4]</strong> <a href="https://www.eatweeds.co.uk/navelwort-umbilicus-rupestris" target="_blank">Eatweeds – Food uses e receitas base</a></li>
+                <li><strong>[C5]</strong> <a href="https://growingthingsandmakingthings.blogspot.com/2013/02/foraged-food-friday-navelwort.html" target="_blank">Foraged Food Friday – Navelwort (salada de inverno)</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.6. Receitas específicas (Top 10)</div>
+            <ul class="referencias-lista">
+                <li><strong>[R1]</strong> <a href="https://simplyflow.pt/plantas-silvestres-comestiveis/" target="_blank">Pesto silvestre com umbigo-de-vénus – Simply Flow</a></li>
+                <li><strong>[R2]</strong> <a href="https://simplyflow.pt/plantas-silvestres-comestiveis/" target="_blank">Saladas e usos com malvas, umbigo-de-vénus e funcho – Simply Flow</a></li>
+                <li><strong>[R3]</strong> <a href="https://freixodomeio.pt/alimento/producao/agrofloresta-do-montado/cogumelos-e-plantas-silvestres/" target="_blank">Salada Bio de Ervas Silvestres – Montado do Freixo do Meio</a></li>
+                <li><strong>[R4]</strong> <a href="https://ecologicaquem.blogspot.com/2014/03/umbigo-de-venus.html" target="_blank">Ecologica Quem – utilização em saladas</a></li>
+                <li><strong>[R5]</strong> <a href="https://descobrircomalma.wordpress.com/2021/01/15/umbigo-de-venus/" target="_blank">Descobrir com Alma – saladas, sandes, omeletas e batidos</a></li>
+                <li><strong>[R6]</strong> <a href="https://www.facebook.com/passadicosdopaiva.pt/posts/597459079582214/" target="_blank">Passadiços do Paiva – saladas e batidos com umbigo-de-vénus</a></li>
+                <li><strong>[R7]</strong> <a href="https://www.facebook.com/aloeveralrportugal/videos/salada-umbigo-de-venus-planta-selvagem-medicinalacompanhada-a-sobremesa-concentr/273255414777890/" target="_blank">Vídeo – Salada de umbigo-de-vénus</a></li>
+                <li><strong>[R8]</strong> <a href="https://www.eatweeds.co.uk/burmese-style-navelwort-salad" target="_blank">Burmese Style Navelwort Salad – Eatweeds</a></li>
+                <li><strong>[R9]</strong> <a href="https://www.eatweeds.co.uk/navelwort-umbilicus-rupestris" target="_blank">Wild Green Tartlets – Eatweeds</a></li>
+                <li><strong>[R10]</strong> <a href="https://growingthingsandmakingthings.blogspot.com/2013/02/foraged-food-friday-navelwort.html" target="_blank">Foraged Food Friday – ideias de salada com navelwort</a></li>
+            </ul>
+        </section>
+
+        <div class="topo-link">
+            <a href="#topo">Voltar ao topo ▲</a>
+        </div>
+    </article>
+</main>
+</body>
+</html>
