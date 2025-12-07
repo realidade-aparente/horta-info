@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Urtiga (Urtica dioica / Urtica urens) | Horta da Terra para o prato</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota, .referencia-nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .nota-aviso {
+            font-size: 0.85rem;
+            color: #9a3412;
+            background: #fff7ed;
+            border-radius: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #fed7aa;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body id="topo">
+<header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Plantas espontâneas comestíveis de produção biológica – da terra para o prato.</p>
+</header>
+
+<nav>
+    <a href="index.html">Início</a>
+    <a href="beldroega.html">Beldroega</a>
+    <a href="bredo.html">Bredo</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="quenopodio.html">Quenopódio</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html" class="ativa">Urtiga</a>
+</nav>
+
+<main>
+    <article class="planta">
+        <div class="planta-cabecalho">
+            <div class="planta-titulo">
+                <h2>Urtiga (Urtica dioica / Urtica urens)</h2>
+                <p><strong>Outros nomes em português:</strong> urtiga-comum, urtiga-maior, urtiga-menor, ortiga, erva-urtiga.</p>
+                <p><strong>Nome mais comum em inglês:</strong> stinging nettle.</p>
+
+                <div class="tags-nomes">
+                    <span>Género: Urtica</span>
+                    <span>Família: Urticaceae</span>
+                    <span>Partes usadas: rebentos e folhas jovens</span>
+                    <span>Tipo: planta espontânea comestível (PANC)</span>
+                    <span>Origem: Europa / regiões temperadas</span>
+                    <span>Produção/recoleção: <strong>biológica</strong></span>
+                </div>
+
+                <div class="info-rapida">
+                    <div>
+                        <strong>Origem e status</strong>
+                        Espécie perene (U. dioica) ou anual (U. urens), abundante em solos férteis e húmidos em Portugal, muitas vezes vista como erva invasora.
+                    </div>
+                    <div>
+                        <strong>Uso principal</strong>
+                        Sopas, cremes, refogados, omeletas, pestos e pães enriquecidos com folhas de urtiga escaldadas.
+                    </div>
+                    <div>
+                        <strong>Perfil nutricional</strong>
+                        Folhas muito ricas em minerais (cálcio, ferro, magnésio), vitamina C, carotenoides e outros compostos bioativos.
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="imagem-container-externo">
+                    <div class="imagem-container">
+                        <img src="imagens/urtiga.png" alt="Urtiga (Urtica dioica / Urtica urens) em crescimento espontâneo">
+                    </div>
+                </div>
+                <p class="imagem-legenda">
+                    Urtiga biológica em rebento jovem – colhida com luvas e utilizada após escaldar, para sopas, cremes e outros pratos.
+                </p>
+            </div>
+        </div>
+
+        <section id="apresentacao">
+            <h3>1. Apresentação / Descrição</h3>
+            <p>
+                A <strong>urtiga</strong> é o nome comum dado principalmente a duas espécies do género
+                <em>Urtica</em> – <strong>Urtica dioica</strong> (urtiga-comum ou urtiga-maior, perene) e
+                <strong>Urtica urens</strong> (urtiga-menor, anual) – pertencentes à família Urticaceae.
+                São plantas herbáceas com caules quadrangulares e folhas opostas, serradas, cobertas por
+                <strong>pelos urticantes</strong> (tricomas) que injetam histamina e outras substâncias ao
+                contacto, causando sensação de queimadura.
+            </p>
+            <p>
+                Em Portugal continental, a urtiga é espontânea em <strong>valas, sebes, margens de cursos de água,
+                terrenos húmidos, solos ricos em matéria orgânica e junto a construções rurais</strong>. Apesar da
+                má fama, é há séculos utilizada como <strong>alimento</strong> (sobretudo as folhas jovens),
+                <strong>planta medicinal</strong>, fonte de fibras têxteis, corante natural e matéria-prima para
+                preparados agrícolas (macerados e chorumes usados como bioestimulantes e repelentes).
+            </p>
+            <p>
+                Na alimentação, usam-se sobretudo os <strong>rebentos tenros e folhas jovens</strong>, sempre
+                manuseados com luvas e posteriormente <strong>escaldados ou cozinhados</strong>, o que destrói o
+                efeito urticante dos pelos. Do ponto de vista taxonómico e ecológico, a urtiga é considerada uma
+                planta rústica, associada a solos férteis e muitas vezes tomada como “indicadora” de riqueza em
+                azoto e matéria orgânica.
+            </p>
+            <p class="referencia-nota">
+                Referência(s) de suporte para a descrição:
+                <a href="https://pt.wikipedia.org/wiki/Urtica_dioica" target="_blank">[D1]</a>
+                <a href="https://pt.wikipedia.org/wiki/Urtica" target="_blank">[D2]</a>
+                <a href="https://www.darwin-nutrition.fr/pt/alimentos-beneficos/urtiga/" target="_blank">[D3]</a>
+                <a href="https://are.cm-porto.pt/sites/default/files/sites/default/files/documentos/Dica%20Nutritiva%20n%C2%BA%20174.pdf" target="_blank">[D4]</a>
+            </p>
+        </section>
+
+        <section id="sazonalidade">
+            <h3>2. Sazonalidade (Portugal continental)</h3>
+            <p>
+                A urtiga prefere <strong>solos húmidos, profundos e ricos em azoto</strong>, sendo típica de vales,
+                linhas de água, margens de campos e terrenos sombreados.
+            </p>
+            <ul>
+                <li>
+                    <strong>Emergência e rebentos jovens:</strong> os <strong>rebentos tenros</strong> surgem
+                    geralmente desde o <strong>final do inverno e início da primavera</strong> (fevereiro–março),
+                    com grande vigor na primavera e início do verão.
+                </li>
+                <li>
+                    <strong>Período de colheita ideal:</strong> para consumo alimentar, preferem-se as
+                    <strong>pontas e folhas novas</strong>, antes da floração plena, normalmente entre
+                    <strong>março e junho</strong>, dependendo da região e da altitude.
+                </li>
+                <li>
+                    <strong>Cortes sucessivos:</strong> em povoamentos bem instalados (sobretudo de
+                    <em>U. dioica</em>), podem fazer-se vários cortes ao longo da estação, deixando parte da planta
+                    para se regenerar.
+                </li>
+                <li>
+                    <strong>Outono:</strong> em locais de clima suave e humidade suficiente podem surgir novos
+                    rebentos no outono, mas o período clássico de “verdura de urtiga” é a primavera.
+                </li>
+                <li>
+                    <strong>Colheita em contexto biológico:</strong> para uso alimentar, é essencial colher em
+                    <strong>zonas limpas</strong>, longe de estradas, descargas, lixo e áreas tratadas com
+                    herbicidas, pesticidas ou adubos sintéticos.
+                </li>
+            </ul>
+        </section>
+
+        <section id="como-consumir">
+            <h3>3. Como consumir</h3>
+            <p>
+                A urtiga é consumida sobretudo na forma de <strong>folhas e rebentos jovens escaldados ou cozidos</strong>,
+                de forma semelhante a espinafres, bem como em chás, infusões e preparados tradicionais. O primeiro
+                passo é sempre colher com <strong>luvas</strong>, selecionar apenas plantas saudáveis e tenras e,
+                em seguida, <strong>escaldar ou cozinhar</strong> para neutralizar os pelos urticantes.
+            </p>
+            <ul>
+                <li>
+                    <strong>Escaldar para uso culinário:</strong> mergulhar as folhas e pontas em água a ferver
+                    durante 1–2&nbsp;minutos, escorrer e, se desejado, passar por água fria. Depois de escaldadas,
+                    as urtigas deixam de picar e podem ser usadas em sopas, refogados, omeletas, etc.
+                </li>
+                <li>
+                    <strong>Sopas e cremes:</strong> a forma mais tradicional de consumo é em <strong>sopa de urtigas</strong>,
+                    juntando as folhas escaldadas a uma base de batata, cenoura, alho-francês, cebola, curgete e outros
+                    legumes – muito comum em receitas portuguesas e de outros países europeus.
+                </li>
+                <li>
+                    <strong>Refogados e salteados:</strong> depois de escaldadas, podem ser rapidamente salteadas
+                    com azeite, alho e cebola, usadas como acompanhamento ou base para tartes, quiches e recheios.
+                </li>
+                <li>
+                    <strong>Ovos, panquecas e massas:</strong> adicionadas a omeletas, ovos mexidos, panquecas salgadas,
+                    massas frescas e recheios de raviolis ou lasanhas, desempenhando um papel semelhante ao dos espinafres.
+                </li>
+                <li>
+                    <strong>Pestos e patês:</strong> trituradas com azeite, frutos secos, alho e queijo (ou versões
+                    veganas), dão origem a <strong>pesto de urtiga</strong>, usado em massas, tostas e sanduíches.
+                </li>
+                <li>
+                    <strong>Pães, bolos e massas de forno:</strong> farinhas ou purés de urtiga têm sido usados para
+                    enriquecer <strong>pães, bolos e massas</strong>, explorados em projetos de investigação e gastronomia
+                    criativa em Portugal (por exemplo, pães e bolos de urtiga em Fornos de Algodres).
+                </li>
+                <li>
+                    <strong>Chás e infusões:</strong> as folhas secas são usadas em <strong>chás de urtiga</strong>,
+                    muitas vezes apontados a fins “depurativos” ou remineralizantes em medicina tradicional. A utilização
+                    prolongada ou em doses concentradas deve ser discutida com um profissional de saúde, sobretudo em
+                    caso de doença crónica, medicação regular ou gravidez.
+                </li>
+                <li>
+                    <strong>Cuidados especiais:</strong> pessoas com <strong>doença renal, problemas de coagulação,
+                    necessidade de controlo estrito da pressão arterial ou toma de medicamentos diuréticos, anti-hipertensores,
+                    anticoagulantes ou antidiabéticos</strong> devem discutir o uso de urtiga (especialmente em extratos
+                    concentrados) com o médico ou nutricionista. Em consumo alimentar moderado, a urtiga é, em geral,
+                    bem tolerada.
+                </li>
+            </ul>
+        </section>
+
+        <section id="receitas">
+            <h3>4. Receitas e preparados (Top 10)</h3>
+            <p>
+                Seguem <strong>10 ideias de receitas</strong> com urtiga, privilegiando fontes em português sempre que
+                possível, complementadas com algumas referências em inglês para inspiração adicional.
+            </p>
+            <ol>
+                <li>
+                    <strong>Sopa de urtigas (receita simples em português)</strong> – base de batata, alho-francês,
+                    cebola e caldo de legumes, com folhas de urtiga bem lavadas e escaldadas.
+                    <a href="https://pt.petitchef.com/receitas/prato-principal/sopa-de-urtigas-fid-245923" target="_blank">[R1]</a>
+                </li>
+                <li>
+                    <strong>Sopa de urtigas da RTP</strong> – receita apresentada no programa “Praça”, com passos para
+                    separar folhas tenras, lavar com cuidado e cozinhar com vários legumes.
+                    <a href="https://media.rtp.pt/praca/rubricas/culinaria/sopa-de-urtigas/" target="_blank">[R2]</a>
+                </li>
+                <li>
+                    <strong>Sopa de urtigas de Mértola</strong> – receita alentejana divulgada pela associação
+                    Frescos de Mértola, integrando urtigas na gastronomia local.
+                    <a href="https://www.frescosdemertola.pt/receitas-alentejanas/sopa-de-urtigas/" target="_blank">[R3]</a>
+                </li>
+                <li>
+                    <strong>Sopa de urtigas em modo “Cookeo”</strong> – versão adaptada à panela elétrica, da Moulinex
+                    Portugal.
+                    <a href="https://www.moulinex.pt/receitas/detail/PRO/sopa-de-urtigas/1242246" target="_blank">[R4]</a>
+                </li>
+                <li>
+                    <strong>10 receitas vegetarianas com urtigas</strong> – artigo em português com várias propostas,
+                    incluindo creme de urtigas, arroz de urtigas e pestos.
+                    <a href="https://theuniplanet.com/2017/03/10-receitas-vegetarianas-com-urtigas/" target="_blank">[R5]</a>
+                </li>
+                <li>
+                    <strong>Omeleta de urtigas</strong> – receita em português com instruções claras para escaldar as
+                    folhas e integrá-las numa omeleta simples.
+                    <a href="https://amodadoflavio.pt/2017/02/omeleta-de-urtigas/" target="_blank">[R6]</a>
+                </li>
+                <li>
+                    <strong>Pesto de urtiga</strong> – receitas em português de Portugal e Brasil que usam urtigas
+                    escaldadas em substituição parcial ou total de outras ervas.
+                    <a href="https://cruciblecookware.com/pt/blogs/receitas/nettle-pesto" target="_blank">[R7]</a>
+                    <a href="https://www.papacapim.org/2014/08/28/pesto-de-urtiga/" target="_blank">[R8]</a>
+                </li>
+                <li>
+                    <strong>Pão de urtiga</strong> – receitas de pão enriquecido com puré ou folhas de urtiga em blogs
+                    portugueses e projetos de alimentação sustentável.
+                    <a href="https://cozinhasaudavel.pt/pao/pao-de-urtiga/" target="_blank">[R9]</a>
+                    <a href="https://forum.pt/redescobrir-a-terra/estudante-da-utad-analisa-caracteristicas-do-pao-de-bolota-e-de-urtiga" target="_blank">[R10]</a>
+                </li>
+                <li>
+                    <strong>Bolo de urtiga</strong> – várias receitas em português (incluindo versões Bimby e low-carb)
+                    usam urtigas escaldadas em bolos húmidos e de cor verde.
+                    <a href="https://www.mundodereceitasbimby.com.pt/bolos-e-biscoitos-receitas/bolo-de-urtiga/yiw1uz9v-17d62-768409-cfcd2-z0q543j0" target="_blank">[R11]</a>
+                    <a href="https://receitaslowcarbpor.wixsite.com/receitaslowcarbpt/post/bolo-de-urtiga" target="_blank">[R12]</a>
+                </li>
+                <li>
+                    <strong>Inspiração internacional com urtigas</strong> – várias receitas em inglês (sopas, quiches,
+                    chips, etc.) compiladas em guias dedicados a urtigas comestíveis.
+                    <a href="https://www.almanac.com/stinging-nettle-plant-thousand-uses" target="_blank">[R13]</a>
+                    <a href="https://simplybeyondherbs.com/eating-nettles/" target="_blank">[R14]</a>
+                </li>
+            </ol>
+        </section>
+
+        <section id="beneficios">
+            <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+            <p>
+                A urtiga (sobretudo <em>U. dioica</em>) é uma das plantas mais estudadas em fitoterapia, com
+                <strong>literatura extensa</strong> sobre composição, atividade biológica e possíveis usos em saúde.
+                É importante distinguir entre o <strong>uso culinário de folhas frescas/cozinhadas</strong> e o uso
+                de <strong>extratos concentrados</strong> de folhas ou raízes.
+            </p>
+            <ul>
+                <li>
+                    <strong>Densidade nutricional e compostos bioativos:</strong> folhas de urtiga apresentam teores
+                    elevados de <strong>vitamina C, carotenoides (provitamina&nbsp;A), vitamina K, minerais
+                    (cálcio, ferro, magnésio, potássio)</strong> e compostos fenólicos, justificando o interesse
+                    como alimento remineralizante.
+                    <a href="https://are.cm-porto.pt/sites/default/files/sites/default/files/documentos/Dica%20Nutritiva%20n%C2%BA%20174.pdf" target="_blank">[M1]</a>
+                    <a href="https://bibliotecadigital.ipb.pt/bitstream/10198/14596/1/Silva_Jacqueline.pdf" target="_blank">[M2]</a>
+                    <a href="https://www.darwin-nutrition.fr/pt/alimentos-beneficos/urtiga/" target="_blank">[M3]</a>
+                    <a href="https://www.sciencedirect.com/science/article/pii/S2405844022010052" target="_blank">[M4]</a>
+                </li>
+                <li>
+                    <strong>Atividade antioxidante e anti-inflamatória (estudos pré-clínicos):</strong> revisões
+                    e estudos em animais indicam que extratos de urtiga exibem propriedades antioxidantes e
+                    anti-inflamatórias relevantes.
+                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6100552/" target="_blank">[M5]</a>
+                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8894011/" target="_blank">[M6]</a>
+                    <a href="https://www.sciencedirect.com/science/article/pii/S2210803324000927" target="_blank">[M7]</a>
+                    <a href="https://link.springer.com/article/10.1007/s11101-024-09980-6" target="_blank">[M8]</a>
+                    <a href="https://globalresearchonline.net/ijpsrr/v85-3/04.pdf" target="_blank">[M9]</a>
+                </li>
+                <li>
+                    <strong>Metabolismo, glicemia e saúde cardiovascular:</strong> vários trabalhos investigam o
+                    impacto de extratos de urtiga em <strong>marcadores glicémicos, perfil lipídico e inflamação</strong>,
+                    sugerindo efeitos potencialmente benéficos, mas ainda com necessidade de mais ensaios clínicos
+                    robustos e padronizados.
+                    <a href="https://www.sciencedirect.com/science/article/pii/S2405844022010052" target="_blank">[M4]</a>
+                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8894011/" target="_blank">[M6]</a>
+                </li>
+                <li>
+                    <strong>Próstata (HBP):</strong> a raiz de <em>U. dioica</em> é utilizada em fitoterapia para
+                    <strong>hiperplasia benigna da próstata</strong>, existindo preparações padronizadas estudadas em
+                    ensaios clínicos. Em Portugal e Brasil, fontes de saúde explicam este uso, mas sublinham que não
+                    deve substituir terapêutica prescrita.
+                    <a href="https://www.tuasaude.com/urtiga/" target="_blank">[M10]</a>
+                    <a href="https://chasdomundo.pt/pt/chas-medicinais/cha-de-raiz-urtiga-urtica-dioica" target="_blank">[M11]</a>
+                </li>
+                <li>
+                    <strong>Outros usos tradicionais:</strong> a urtiga é tradicionalmente associada ao alívio de
+                    dores articulares, reumatismo, alergias, problemas de pele e como “tónico geral”.
+                    Revisões fitoquímicas listam atividades <strong>analgésica, diurética, antimicrobiana,
+                    antiviral, imunomoduladora e potencialmente antitumoral</strong>, maioritariamente com base em
+                    estudos laboratoriais e modelos animais.
+                    <a href="https://journaljpri.com/index.php/JPRI/article/view/4506" target="_blank">[M12]</a>
+                    <a href="https://globalresearchonline.net/ijpsrr/v85-3/04.pdf" target="_blank">[M9]</a>
+                </li>
+                <li>
+                    <strong>Fontes em português com referências científicas:</strong> artigos em português de Portugal
+                    e Brasil (por exemplo, Tua Saúde, Darwin Nutrition, documentos académicos) compilam benefícios
+                    e riscos da urtiga, apresentando listas de estudos que suportam parte destes usos, mas reforçando
+                    a necessidade de acompanhamento profissional.
+                    <a href="https://www.tuasaude.com/urtiga/" target="_blank">[M10]</a>
+                    <a href="https://www.darwin-nutrition.fr/pt/ativos/urtiga-urticante/" target="_blank">[M13]</a>
+                    <a href="https://are.cm-porto.pt/sites/default/files/sites/default/files/documentos/Dica%20Nutritiva%20n%C2%BA%20174.pdf" target="_blank">[M1]</a>
+                </li>
+            </ul>
+            <p class="nota-aviso">
+                Apesar da longa história de uso, a <strong>evidência clínica em humanos ainda é limitada</strong>
+                para muitas das indicações populares. A urtiga, em forma de alimento fresco e em quantidades
+                culinárias, é geralmente considerada segura para a maioria das pessoas. Já extratos concentrados,
+                chás medicinais de uso prolongado ou combinações com fármacos exigem <strong>aconselhamento
+                profissional individualizado</strong>.
+            </p>
+        </section>
+
+        <section id="nutricao">
+            <h3>6. Propriedades nutricionais</h3>
+            <p>
+                A composição da urtiga varia com a espécie, o local de crescimento, o estádio de colheita e o método
+                de análise. A tabela abaixo resume valores aproximados para <strong>folhas jovens de urtiga</strong>
+                (sobretudo <em>U. dioica</em>), em cru e após cozedura simples, por 100&nbsp;g de parte comestível.
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Componente</th>
+                        <th>Urtiga fresca crua (100 g)</th>
+                        <th>Urtiga cozinhada simples (100 g)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Energia</td>
+                        <td>≈ 40–60 kcal</td>
+                        <td>≈ 45–65 kcal (ligeira concentração após cozedura)</td>
+                    </tr>
+                    <tr>
+                        <td>Água</td>
+                        <td>≈ 80–85 g</td>
+                        <td>Ligeiramente menor (parte evapora na cozedura)</td>
+                    </tr>
+                    <tr>
+                        <td>Hidratos de carbono</td>
+                        <td>≈ 7–9 g</td>
+                        <td>≈ 7–10 g</td>
+                    </tr>
+                    <tr>
+                        <td>Fibra</td>
+                        <td>≈ 5–7 g</td>
+                        <td>≈ 6–8 g</td>
+                    </tr>
+                    <tr>
+                        <td>Proteína</td>
+                        <td>≈ 3–5 g (folha fresca)</td>
+                        <td>≈ 4–7 g (concentração relativa)</td>
+                    </tr>
+                    <tr>
+                        <td>Lípidos totais</td>
+                        <td>≈ 0,5–1 g</td>
+                        <td>≈ 0,5–1 g (sem contar com gordura da receita)</td>
+                    </tr>
+                    <tr>
+                        <td>Cálcio</td>
+                        <td>≈ 300–500 mg</td>
+                        <td>Valor semelhante ou ligeiramente inferior se parte for lixiviada</td>
+                    </tr>
+                    <tr>
+                        <td>Ferro</td>
+                        <td>≈ 2–4 mg</td>
+                        <td>≈ 2–4 mg (a biodisponibilidade depende de outros fatores da refeição)</td>
+                    </tr>
+                    <tr>
+                        <td>Magnésio</td>
+                        <td>≈ 50–80 mg</td>
+                        <td>≈ 60–90 mg</td>
+                    </tr>
+                    <tr>
+                        <td>Potássio</td>
+                        <td>≈ 300–500 mg</td>
+                        <td>≈ 350–600 mg (se a água de cozedura não for descartada, parte do potássio é mantida)</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina C</td>
+                        <td>Pode ultrapassar 50–100 mg</td>
+                        <td>Reduzida pela cozedura e contacto com a água; parte é perdida no processo</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina A (equivalentes de beta-caroteno)</td>
+                        <td>Valores elevados, podendo cobrir grande parte da VRN diária</td>
+                        <td>Ligeira redução com cozedura, mas permanece relevante</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina K</td>
+                        <td>Teores muito altos (centenas de µg)</td>
+                        <td>Permanece elevada após cozedura (vitamina relativamente estável)</td>
+                    </tr>
+                    <tr>
+                        <td>Outros</td>
+                        <td>Polifenóis, clorofila, carotenóides, ácidos orgânicos</td>
+                        <td>Parte é mantida; parte pode ser extraída para o caldo</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="referencia-nota">
+                Valores aproximados com base em:
+                <a href="https://bibliotecadigital.ipb.pt/bitstream/10198/14596/1/Silva_Jacqueline.pdf" target="_blank">[N1]</a>,
+                <a href="https://www.sciencedirect.com/science/article/pii/S2405844022010052" target="_blank">[N2]</a>,
+                <a href="https://www.mdpi.com/1420-3049/27/16/5219" target="_blank">[N3]</a>,
+                <a href="https://are.cm-porto.pt/sites/default/files/sites/default/files/documentos/Dica%20Nutritiva%20n%C2%BA%20174.pdf" target="_blank">[N4]</a>,
+                <a href="https://www.darwin-nutrition.fr/pt/alimentos-beneficos/urtiga/" target="_blank">[N5]</a>.
+            </p>
+        </section>
+
+        <section id="utilidades">
+            <h3>7. Utilidades e aplicações (não apenas alimentares)</h3>
+            <ul>
+                <li>
+                    <strong>Alimentação humana:</strong> uso de folhas e rebentos jovens em sopas, cremes, refogados,
+                    pestos, pães e bolos, integrando a urtiga como verdura rica em micronutrientes em cozinhas de
+                    inspiração tradicional e contemporânea.
+                </li>
+                <li>
+                    <strong>Chás e preparados tradicionais:</strong> utilização de folhas secas e raízes em infusões
+                    e macerações, no contexto de medicinas tradicionais europeias e asiáticas, sempre com cautela
+                    quanto a doses e duração.
+                </li>
+                <li>
+                    <strong>Uso agrícola (extratos de urtiga):</strong> macerados e “chorumes” de urtiga são usados em
+                    agricultura biológica e permacultura como <strong>bioestimulantes</strong> e auxiliares no
+                    controlo de pragas, graças ao teor de minerais e compostos bioativos.
+                </li>
+                <li>
+                    <strong>Fibra têxtil:</strong> a urtiga foi historicamente usada como fonte de fibras têxteis em
+                    diversas regiões, como alternativa ao linho e ao cânhamo.
+                </li>
+                <li>
+                    <strong>Corantes e tinturaria:</strong> folhas e caules podem fornecer pigmentos verdes para
+                    tingir têxteis e outros materiais.
+                </li>
+                <li>
+                    <strong>Ecologia de ecossistemas agrícolas:</strong> manchas de urtiga proporcionam abrigo e
+                    alimento a insetos, incluindo alguns auxiliares; funcionam também como indicadores de solos ricos
+                    em azoto, ajudando na leitura do terreno em práticas de agricultura ecológica.
+                </li>
+            </ul>
+        </section>
+
+        <section id="permacultura">
+            <h3>8. Grau de funcionalidade em permacultura</h3>
+            <p><strong>Classificação proposta: 9/10</strong></p>
+            <ul class="lista-permacultura">
+                <li>
+                    <strong>Funções principais:</strong> verdura nutritiva, fonte de chá e preparados fitoterapêuticos,
+                    matéria-prima para extratos agrícolas, fibra têxtil e planta de suporte ecológico (habitat,
+                    sombra parcial, indicador de fertilidade).
+                </li>
+                <li>
+                    <strong>Vantagens:</strong> planta muito rústica, perene (em <em>U. dioica</em>), com grande
+                    capacidade de rebrote, elevada produtividade foliar e forte densidade nutricional. Permite
+                    transformar uma “erva incómoda” em <strong>recurso multifuncional</strong>.
+                </li>
+                <li>
+                    <strong>Limitações:</strong> os pelos urticantes exigem <strong>cuidados de manuseio</strong>
+                    (luvas e técnica de colheita); a planta pode tornar-se invasora se não for controlada, e o uso
+                    medicinal concentrado requer prudência e acompanhamento de profissionais de saúde.
+                </li>
+            </ul>
+            <p class="nota">
+                A pontuação elevada reflete o número de funções desempenhadas pela urtiga em sistemas agrícolas e
+                de permacultura bem desenhados, sobretudo quando a colheita é feita em <strong>contexto biológico</strong>
+                e com gestão cuidadosa das manchas espontâneas.
+            </p>
+        </section>
+
+        <section id="referencias">
+            <h3>9. Referências</h3>
+
+            <div class="referencias-subsecao">9.1. Descrição, botânica e contexto</div>
+            <ul class="referencias-lista">
+                <li><strong>[D1]</strong> <a href="https://pt.wikipedia.org/wiki/Urtica_dioica" target="_blank">Urtica dioica – Wikipédia (PT)</a></li>
+                <li><strong>[D2]</strong> <a href="https://pt.wikipedia.org/wiki/Urtica" target="_blank">Urtica (género) – Wikipédia (PT)</a></li>
+                <li><strong>[D3]</strong> <a href="https://www.darwin-nutrition.fr/pt/alimentos-beneficos/urtiga/" target="_blank">Darwin Nutrition – Urtiga, a planta nutritiva inesperada</a></li>
+                <li><strong>[D4]</strong> <a href="https://are.cm-porto.pt/sites/default/files/sites/default/files/documentos/Dica%20Nutritiva%20n%C2%BA%20174.pdf" target="_blank">ARE Porto – Dica Nutritiva n.º 174 – Urtiga</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.2. Cultivo, sazonalidade e forragem alimentar</div>
+            <ul class="referencias-lista">
+                <li><strong>[S1]</strong> <a href="https://www.almanac.com/stinging-nettle-plant-thousand-uses" target="_blank">The Old Farmer’s Almanac – Stinging nettle: plant of a thousand uses</a></li>
+                <li><strong>[S2]</strong> <a href="https://www.foreadventure.co.uk/adventure/nettle-soup-recipe-foraging/" target="_blank">ForeAdventure – Nettle soup foraging recipe (inclui notas de colheita)</a></li>
+                <li><strong>[S3]</strong> <a href="https://simplybeyondherbs.com/eating-nettles/" target="_blank">Simply Beyond Herbs – Eating nettles: foraging and recipes</a></li>
+                <li><strong>[S4]</strong> <a href="https://theuniplanet.com/2017/03/10-receitas-vegetarianas-com-urtigas/" target="_blank">UniPlanet – 10 receitas vegetarianas com urtigas (contexto em PT)</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.3. Nutrição e composição</div>
+            <ul class="referencias-lista">
+                <li><strong>[N1]</strong> <a href="https://bibliotecadigital.ipb.pt/bitstream/10198/14596/1/Silva_Jacqueline.pdf" target="_blank">Silva J. – Caracterização nutricional e atividade biológica de urtiga (U. dioica)</a></li>
+                <li><strong>[N2]</strong> <a href="https://www.sciencedirect.com/science/article/pii/S2405844022010052" target="_blank">Bhusal K. et al. 2022 – Nutritional and anti-nutritional profiling of stinging nettle</a></li>
+                <li><strong>[N3]</strong> <a href="https://www.mdpi.com/1420-3049/27/16/5219" target="_blank">Devkota H.P. et al. 2022 – Stinging Nettle (Urtica dioica L.): Nutritional Composition…</a></li>
+                <li><strong>[N4]</strong> <a href="https://are.cm-porto.pt/sites/default/files/sites/default/files/documentos/Dica%20Nutritiva%20n%C2%BA%20174.pdf" target="_blank">ARE Porto – Dica Nutritiva n.º 174 – Urtiga</a></li>
+                <li><strong>[N5]</strong> <a href="https://www.darwin-nutrition.fr/pt/alimentos-beneficos/urtiga/" target="_blank">Darwin Nutrition – Urtiga, a planta nutritiva inesperada</a></li>
+                <li><strong>[N6]</strong> <a href="https://forum.pt/redescobrir-a-terra/estudante-da-utad-analisa-caracteristicas-do-pao-de-bolota-e-de-urtiga" target="_blank">Forum.pt – Pão de bolota e de urtiga (referências a composição)</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.4. Benefícios e estudos de saúde</div>
+            <ul class="referencias-lista">
+                <li><strong>[M1]</strong> <a href="https://are.cm-porto.pt/sites/default/files/sites/default/files/documentos/Dica%20Nutritiva%20n%C2%BA%20174.pdf" target="_blank">ARE Porto – Dica Nutritiva n.º 174 – Urtiga</a></li>
+                <li><strong>[M2]</strong> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6100552/" target="_blank">Kregiel D. et al. 2018 – Urtica spp.: Ordinary plants with extraordinary properties</a></li>
+                <li><strong>[M3]</strong> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8894011/" target="_blank">Taheri Y. et al. 2022 – Urtica dioica-Derived Phytochemicals…</a></li>
+                <li><strong>[M4]</strong> <a href="https://www.sciencedirect.com/science/article/pii/S2210803324000927" target="_blank">Alimoddin M. et al. 2024 – Pharmacological applications of Urtica dioica</a></li>
+                <li><strong>[M5]</strong> <a href="https://globalresearchonline.net/ijpsrr/v85-3/04.pdf" target="_blank">Phytopharmacological Review of Urtica dioica (2025)</a></li>
+                <li><strong>[M6]</strong> <a href="https://journaljpri.com/index.php/JPRI/article/view/4506" target="_blank">A literature review on Urtica dioica – JPRI</a></li>
+                <li><strong>[M7]</strong> <a href="https://www.tuasaude.com/urtiga/" target="_blank">Tua Saúde – Urtiga: para que serve e como fazer o chá (com referências)</a></li>
+                <li><strong>[M8]</strong> <a href="https://www.darwin-nutrition.fr/pt/ativos/urtiga-urticante/" target="_blank">Darwin Nutrition – Urtiga urticante: benefícios, posologia, contraindicações</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.5. Culinária e usos tradicionais</div>
+            <ul class="referencias-lista">
+                <li><strong>[C1]</strong> <a href="https://www.almanac.com/stinging-nettle-plant-thousand-uses" target="_blank">The Old Farmer’s Almanac – Stinging nettle: plant of a thousand uses</a></li>
+                <li><strong>[C2]</strong> <a href="https://simplybeyondherbs.com/eating-nettles/" target="_blank">Simply Beyond Herbs – Eating nettles: recipes and tips</a></li>
+                <li><strong>[C3]</strong> <a href="https://casarosada-algarve.blogspot.com/2012/03/urtigas-putting-spring-in-your-step.html" target="_blank">Casa Rosada Algarve – Urtigas: putting spring in your step</a></li>
+                <li><strong>[C4]</strong> <a href="https://theuniplanet.com/2017/03/10-receitas-vegetarianas-com-urtigas/" target="_blank">UniPlanet – 10 receitas vegetarianas com urtigas</a></li>
+            </ul>
+
+            <div class="referencias-subsecao">9.6. Receitas e preparados</div>
+            <ul class="referencias-lista">
+                <li><strong>[R1]</strong> <a href="https://pt.petitchef.com/receitas/prato-principal/sopa-de-urtigas-fid-245923" target="_blank">PetitChef – Sopa de urtigas</a></li>
+                <li><strong>[R2]</strong> <a href="https://media.rtp.pt/praca/rubricas/culinaria/sopa-de-urtigas/" target="_blank">RTP Praça – Sopa de urtigas</a></li>
+                <li><strong>[R3]</strong> <a href="https://www.frescosdemertola.pt/receitas-alentejanas/sopa-de-urtigas/" target="_blank">Frescos de Mértola – Sopa de urtigas</a></li>
+                <li><strong>[R4]</strong> <a href="https://www.moulinex.pt/receitas/detail/PRO/sopa-de-urtigas/1242246" target="_blank">Moulinex Portugal – Sopa de urtigas (Cookeo)</a></li>
+                <li><strong>[R5]</strong> <a href="https://theuniplanet.com/2017/03/10-receitas-vegetarianas-com-urtigas/" target="_blank">UniPlanet – Creme, sopa, arroz e pesto de urtiga</a></li>
+                <li><strong>[R6]</strong> <a href="https://amodadoflavio.pt/2017/02/omeleta-de-urtigas/" target="_blank">À Moda do Flávio – Omeleta de urtigas</a></li>
+                <li><strong>[R7]</strong> <a href="https://cruciblecookware.com/pt/blogs/receitas/nettle-pesto" target="_blank">Crucible Cookware – Pesto de urtiga</a></li>
+                <li><strong>[R8]</strong> <a href="https://www.papacapim.org/2014/08/28/pesto-de-urtiga/" target="_blank">Papacapim – Pesto de urtiga</a></li>
+                <li><strong>[R9]</strong> <a href="https://cozinhasaudavel.pt/pao/pao-de-urtiga/" target="_blank">Cozinha Saudável – Pão de urtiga</a></li>
+                <li><strong>[R10]</strong> <a href="https://forum.pt/redescobrir-a-terra/estudante-da-utad-analisa-caracteristicas-do-pao-de-bolota-e-de-urtiga" target="_blank">Forum.pt – Pão de bolota e de urtiga</a></li>
+                <li><strong>[R11]</strong> <a href="https://www.mundodereceitasbimby.com.pt/bolos-e-biscoitos-receitas/bolo-de-urtiga/yiw1uz9v-17d62-768409-cfcd2-z0q543j0" target="_blank">Mundo de Receitas Bimby – Bolo de urtiga</a></li>
+                <li><strong>[R12]</strong> <a href="https://receitaslowcarbpor.wixsite.com/receitaslowcarbpt/post/bolo-de-urtiga" target="_blank">Receitas Low Carb Portugal – Bolo de urtiga (versão low-carb)</a></li>
+            </ul>
+        </section>
+
+        <div class="topo-link">
+            <a href="#topo">Voltar ao topo ▲</a>
+        </div>
+    </article>
+</main>
+</body>
+</html>
