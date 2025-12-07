@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Abóbora butternut – Horta da Terra para o prato</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    
+.masthead{position:sticky;top:0;z-index:1000}
+</style>
+</head>
+<body id="topo">
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar.</p></header>
+<nav>
+    <a href="index.html">Início</a>
+	<a href="espontaneas.html">Plantas espontâneas comestíveis</a>
+	<a href="abobora-butternut.html" class="ativa">Abóbora butternut</a>
+	<a href="abobora-grande.html">Abóbora grande</a>
+    <a href="acelga.html">Acelga</a>
+    <a href="agriao.html">Agrião-de-água</a>
+    <a href="agriao-terra.html">Agrião-de-terra</a>
+    <a href="aipo.html">Aipo (talos e folhas)</a>
+    <a href="alface.html">Alface</a>
+    <a href="alho.html">Alho</a>
+    <a href="alho-frances.html">Alho-francês</a>
+    <a href="aneto.html">Aneto / Endro</a>
+    <a href="batata-comum.html">Batata comum</a>
+    <a href="batata-doce.html">Batata-doce</a>
+    <a href="beringela.html">Beringela</a>
+    <a href="beterraba.html">Beterraba</a>
+    <a href="brocolo.html">Brócolo</a>
+    <a href="canonigos.html">Canónigos</a>
+    <a href="coentros.html">Coentros</a>
+    <a href="cebola.html">Cebola</a>
+    <a href="cebola-fresca.html">Cebola fresca</a>
+    <a href="cenoura.html">Cenoura</a>
+    <a href="couve-chinesa.html">Couve chinesa</a>
+    <a href="couve-flor.html">Couve-flor</a>
+    <a href="couve-rabano.html">Couve-rábano</a>
+    <a href="couve-repolho.html">Couve repolho</a>
+    <a href="couve-toscana.html">Couve toscana</a>
+    <a href="curgete.html">Curgete</a>
+    <a href="ervilhas-frescas.html">Ervilhas frescas</a>
+    <a href="espinafre.html">Espinafre</a>
+    <a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+    <a href="feijao-verde.html">Feijão verde</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="milho-doce.html">Milho doce</a>
+    <a href="mizuna.html">Mizuna</a>
+    <a href="morangos.html">Morangueiro / Morangos</a>
+    <a href="moringa.html">Moringa</a>
+    <a href="nabo.html">Nabo</a>
+    <a href="nabica.html">Nabiça</a>
+    <a href="pak-choi.html">Pak choi</a>
+    <a href="pepino.html">Pepino</a>
+    <a href="pimento.html">Pimento</a>
+    <a href="rabanete.html">Rabanete</a>
+    <a href="rabano.html">Rábano / Daikon</a>
+    <a href="rucula.html">Rúcula</a>
+    <a href="salanova.html">Salanova</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="tomate.html">Tomate (genérico)</a>
+    <a href="tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+  </header></div>
+
+  <main>
+    
+<article class="planta">
+<div class="planta-cabecalho">  <div class="planta-titulo">
+<h2>Abóbora butternut (<em>Cucurbita moschata</em>)</h2>        <div class="tags-nomes">      <span>Família: Cucurbitaceae</span>      <span>Parte usada: polpa e sementes</span>      <span>Tipo: abóbora de inverno</span>      <span>Produção: <strong>biológica</strong></span>    </div>    <div class="info-rapida"><div><strong>Origem</strong> Variedade de abóbora de inverno; polpa doce e densa.</div><div><strong>Uso principal</strong> Sopas/cremes, assados, purés, risotos, recheios.</div><div><strong>Perfil nutricional</strong> Baixa energia; carotenos (vit. A), vit. C, potássio, fibra.</div></div>  </div>  <div><div class="imagem-container-externo">  <div class="imagem-container">    <img src="imagens/abobora-butternut.png" alt="Abóbora butternut inteira e em cortes">  </div></div><p class="imagem-legenda">Imagem ilustrativa de abóbora butternut biológica (inteira e em cortes).</p></div></div>
+
+
+
+    
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>Apresentação / Descrição</h3>
+      <p>
+        A abóbora butternut é uma variedade de abóbora de inverno da espécie
+        <em>Cucurbita moschata</em>, de tamanho médio, forma de pêra (mais
+        larga na base e estreita no pescoço), casca lisa de tonalidade
+        avelã-clara e polpa firme de cor laranja, de sabor doce e ligeiramente
+        aveludado. Em português é muitas vezes designada por
+        &quot;abóbora butternut&quot; ou &quot;abóbora manteiga&quot;, e em
+        algumas regiões é incluída no grupo das chamadas &quot;abóboras
+        violino&quot;. Em inglês, o nome comum é
+        &quot;butternut squash&quot;. Trata-se de um fruto comestível de
+        longa conservação, típico das abóboras de inverno, muito usado em
+        sopas, assados, purés, pratos de forno e preparações doces e salgadas.
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        <sup>[D1]</sup><sup>[D2]</sup><sup>[D3]</sup>
+      </p>
+    </section>
+
+    <!-- 1a. Sazonalidade -->
+    <section id="sazonalidade">
+      <h3>Sazonalidade</h3>
+      <p>
+        A informação seguinte refere-se a condições típicas de clima
+        temperado-mediterrânico, como o de Portugal continental; em zonas
+        mais frias ou mais quentes, as datas podem variar algumas semanas.
+      </p>
+      <ul>
+        <li>
+          <strong>Sementeira em interior/estufa (Portugal continental):</strong>
+          de finais do inverno ao início da primavera (cerca de fevereiro a
+          abril), em pequenos vasos ou tabuleiros protegidos, 2–3 semanas
+          antes da última geada prevista.
+        </li>
+        <li>
+          <strong>Sementeira direta no exterior:</strong>
+          possível em zonas sem geadas tardias, quando o solo já está
+          aquecido (primavera), normalmente de abril a maio.
+        </li>
+        <li>
+          <strong>Transplante para o exterior:</strong>
+          após o risco de geadas ter passado, quando as plantas têm algumas
+          folhas verdadeiras e o solo está quente; em grande parte de Portugal
+          continental isto corresponde, em média, à primavera tardia.
+        </li>
+        <li>
+          <strong>Período de crescimento e colheita:</strong>
+          a butternut necessita, em geral, de 100–120 dias desde a
+          sementeira até à colheita. Em condições típicas, as colheitas
+          principais decorrem do fim do verão e outono até ao início da
+          primavera seguinte, sendo comum encontrar abóbora butternut/ manteiga
+          nacional no mercado de setembro a março.
+        </li>
+        <li>
+          <strong>Conservação pós-colheita:</strong>
+          os frutos bem curados e armazenados em local fresco, seco e
+          ventilado podem conservar-se durante vários meses, mantendo-se
+          adequados para consumo até ao fim do inverno.
+        </li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em guias de cultivo de abóbora butternut e de
+        abóboras de inverno em clima temperado, incluindo calendários de
+        sementeira em Portugal.<sup>[S1]</sup><sup>[S2]</sup><sup>[S3]</sup>
+      </p>
+    </section>
+
+    <!-- 2. Propriedades nutricionais -->
+    <section id="nutricao">
+      <h3>Propriedades nutricionais</h3>
+      <p>
+        Os valores abaixo referem-se a aproximadamente 100&nbsp;g de abóbora
+        butternut crua (sem casca nem sementes). Diferentes bases de dados
+        apresentam pequenas variações, pelo que os números devem ser lidos
+        como valores médios aproximados.
+      </p>
+      
+
+<p class="referencia-nota">
+        Fonte(s) de dados nutricionais:
+        <sup>[N1]</sup><sup>[N2]</sup>
+      </p>
+    <table>
+                <thead>
+                <tr>
+                    <th>Nutriente</th>
+                    <th>Butternut crua<br>(100&nbsp;g)</th>
+                    <th>Butternut cozida<br>(100&nbsp;g, cozida e escorrida)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Energia</td>
+                    <td>≈ 40–50&nbsp;kcal</td>
+                    <td>≈ 35–45&nbsp;kcal</td>
+                </tr>
+                <tr>
+                    <td>Água</td>
+                    <td>≈ 86–89&nbsp;g</td>
+                    <td>≈ 88–91&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Proteína</td>
+                    <td>≈ 0,9–1,2&nbsp;g</td>
+                    <td>≈ 0,7–1,0&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Hidratos de carbono totais</td>
+                    <td>≈ 10–12&nbsp;g</td>
+                    <td>≈ 8,5–10,5&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Açúcares</td>
+                    <td>≈ 2,0–4,0&nbsp;g</td>
+                    <td>≈ 2,0–3,5&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Fibra alimentar</td>
+                    <td>≈ 1,8–2,5&nbsp;g</td>
+                    <td>≈ 1,5–2,3&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Lípidos totais</td>
+                    <td>≈ 0,1–0,3&nbsp;g</td>
+                    <td>≈ 0,1–0,2&nbsp;g</td>
+                </tr>
+                <tr>
+                    <td>Vitamina A (eq. retinol, de carotenoides)</td>
+                    <td>≈ 300–500&nbsp;µg RAE</td>
+                    <td>Bioacessibilidade ↑ com confeção em gordura leve</td>
+                </tr>
+                <tr>
+                    <td>Vitamina C</td>
+                    <td>≈ 7–15&nbsp;mg</td>
+                    <td>Reduz com cozedura em água</td>
+                </tr>
+                <tr>
+                    <td>Folato (vit. B9)</td>
+                    <td>≈ 35–50&nbsp;µg</td>
+                    <td>Alguma perda para a água de cozedura</td>
+                </tr>
+                <tr>
+                    <td>Potássio</td>
+                    <td>≈ 300–400&nbsp;mg</td>
+                    <td>≈ 260–340&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Magnésio</td>
+                    <td>≈ 20–35&nbsp;mg</td>
+                    <td>≈ 18–30&nbsp;mg</td>
+                </tr>
+                <tr>
+                    <td>Índice glicémico (IG)</td>
+                    <td>Baixo</td>
+                    <td>Baixo (sem adição de farinhas ou açúcares)</td>
+                </tr>
+                </tbody>
+            </table>
+</section>
+
+    <!-- 3. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        A abóbora butternut é um alimento de baixa densidade energética e rico
+        em nutrientes (vitaminas, minerais, fibra e compostos bioativos como
+        carotenoides e polifenóis). Estudos em laboratório, em modelos animais
+        e alguns trabalhos em humanos sugerem diversos efeitos benéficos
+        potenciais, embora ainda sejam necessárias mais evidências clínicas
+        robustas para confirmar benefícios específicos na prevenção ou
+        tratamento de doenças.
+      </p>
+      <ul>
+        <li>
+          <strong>Fonte de carotenoides (pró-vitamina A):</strong>
+          a polpa alaranjada é rica em beta-caroteno e outros carotenoides,
+          compostos com ação antioxidante que o organismo pode converter em
+          vitamina A, importante para a visão, pele e sistema imunitário.
+          Revisões sobre abóboras (<em>Cucurbita</em> spp.) e artigos de
+          síntese destacam este perfil em <em>C. moschata</em> (grupo onde se
+          insere a butternut).<sup>[M1]</sup><sup>[M2]</sup>
+        </li>
+        <li>
+          <strong>Compostos fenólicos e antioxidantes:</strong>
+          estudos recentes em butternut squash descrevem a presença de
+          polifenóis e outros compostos bioativos, bem como a sua
+          bioacessibilidade após processamento (por exemplo, congelação),
+          o que reforça o potencial antioxidante deste alimento na dieta.
+          <sup>[M3]</sup>
+        </li>
+        <li>
+          <strong>Sementes como fonte de nutrientes:</strong>
+          trabalhos sobre sementes e subprodutos de processamento de
+          abóbora butternut sugerem que estas podem ser fontes interessantes
+          de antioxidantes, minerais (ferro, zinco, magnésio) e gorduras
+          insaturadas, com potencial para aproveitamento alimentar.
+          <sup>[M4]</sup><sup>[M5]</sup>
+        </li>
+        <li>
+          <strong>Estudos em populações específicas:</strong>
+          um ensaio em crianças pré-escolares avaliou o uso de pasta de
+          sementes de <em>Cucurbita moschata</em> na melhoria do estado de
+          zinco e ferro, sugerindo benefícios potenciais, embora os resultados
+          sejam específicos daquele contexto e não devam ser generalizados
+          sem cautela.<sup>[M5]</sup>
+        </li>
+      </ul>
+      <p class="nota-aviso">
+        Esta secção é apenas informativa e não substitui aconselhamento
+        médico, diagnóstico ou tratamento profissional. A abóbora butternut
+        é um alimento interessante numa alimentação equilibrada, mas não deve
+        ser encarada como tratamento único para qualquer condição de saúde.
+      </p>
+    </section>
+
+    <!-- 4. Utilidades e aplicações (não apenas alimentares) -->
+    <section id="utilidades">
+      <h3>Utilidades e aplicações</h3>
+      <ul>
+        <li>
+          <strong>Uso alimentar principal:</strong> consumida cozinhada em
+          sopas, cremes, purés, assados no forno, estufados, caris, guisados,
+          risotos, recheios de tartes e preparados doces (bolos, muffins,
+          pães enriquecidos, compotas).
+        </li>
+        <li>
+          <strong>Preparados para bebé:</strong> devido à textura cremosa
+          e ao sabor suave, é um ingrediente comum em purés para bebés e
+          crianças pequenas, muitas vezes combinado com outros legumes ou
+          cereais.<sup>[U1]</sup>
+        </li>
+        <li>
+          <strong>Sementes:</strong> as sementes podem ser lavadas, secas
+          e tostadas, consumidas como snack ou adicionadas a saladas,
+          granolas e pães; são ricas em gordura insaturada, proteína e
+          minerais.<sup>[M4]</sup><sup>[M5]</sup>
+        </li>
+        <li>
+          <strong>Aplicações em permacultura e horticultura ecológica:</strong>
+          como abóbora de inverno rasteira, pode ser usada como cobertura
+          viva do solo (sombra, redução da evaporação, limitação de infestantes)
+          e como cultura de armazenamento de longa duração em sistemas de
+          policultura.<sup>[P1]</sup><sup>[P2]</sup>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 5. Como consumir -->
+    <section id="como-consumir">
+      <h3>Como consumir</h3>
+      <ul>
+        <li>
+          <strong>Partes utilizadas:</strong> principalmente a polpa; a casca
+          pode ser consumida em algumas preparações (por exemplo, assada) se
+          bem cozinhada, e as sementes são comestíveis após tostagem.
+        </li>
+        <li>
+          <strong>Formas comuns de consumo:</strong> assada em cubos ou metades,
+          em sopas e cremes, em puré como acompanhamento, em pratos de forno,
+          caris, risotos, saladas mornas, tartes salgadas ou doces, e em
+          bolos e muffins de inspiração &quot;pumpkin&quot;.
+        </li>
+        <li>
+          <strong>Combinações típicas:</strong> liga bem com especiarias
+          (noz-moscada, cominhos, paprika, canela, caril), com natas ou
+          bebidas vegetais, citrinos, maçã, queijo de cabra, frutos secos
+          e leguminosas (por exemplo, grão-de-bico).
+        </li>
+        <li>
+          <strong>Cuidados práticos:</strong> a casca é dura e requer faca
+          afiada e superfícies estáveis para cortar em segurança; uma opção
+          é assar a abóbora em metades e só depois retirar a polpa já
+          cozinhada.
+        </li>
+        <li>
+          <strong>Segurança e moderação:</strong> para a maioria das pessoas,
+          o consumo moderado de abóbora butternut é considerado seguro. Quem
+          tem de controlar o aporte de potássio (por exemplo, certas situações
+          de doença renal) deve discutir com o profissional de saúde a
+          quantidade adequada de vegetais ricos em potássio, incluindo
+          abóbora.<sup>[C1]</sup>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 6. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>Grau de funcionalidade em permacultura</h3>
+      <p>
+        Classificação indicativa (1 a 10) baseada nas múltiplas funções que a
+        abóbora butternut pode desempenhar num sistema de permacultura ou
+        horta ecológica diversificada. Não é uma medida científica, mas uma
+        síntese prática.
+      </p>
+      <dl>
+        <dt>Grau de funcionalidade</dt>
+        <dd>9 / 10</dd>
+
+        <dt>Funções principais</dt>
+        <dd>
+          Cultura alimentar de alta densidade energética e boa conservação;
+          cobertura viva do solo (folhagem rasteira que protege o solo,
+          reduz ervas competidoras e conserva humidade); produção de biomassa
+          (folhas e caules) para compostagem; fonte de alimento para pessoas
+          (polpa e sementes) e, em alguns contextos, para animais; integração
+          em consociações com milho, feijão e outras culturas anuais.
+        </dd>
+
+        <dt>Notas</dt>
+        <dd>
+          A pontuação elevada reflete o papel da abóbora butternut como
+          alimento de base de armazenamento (abóbora de inverno) em climas
+          temperados, aliando produção relativamente elevada, boa
+          conservabilidade, valor nutricional interessante e benefícios
+          para o solo quando cultivada em sistemas de policultura. A
+          classificação baseia-se em literatura de horticultura ecológica
+          e permacultura, bem como em prática de campo, e pode ser ajustada
+          a contextos específicos.<sup>[P1]</sup><sup>[P2]</sup>
+        </dd>
+      </dl>
+    </section>
+
+    <!-- 7. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>Receitas e preparados (Top 10)</h3>
+      <p>
+        Exemplos de preparações populares com abóbora butternut / manteiga.
+        As receitas completas podem ser consultadas nas fontes indicadas nas
+        referências.
+      </p>
+
+      <ol>
+        <li><strong><a href="data/refeicoes/vegetarianas/abobora-butternut-receitas.html#creme-de-abobora-butternut">Creme de abóbora butternut</a></strong> – sopa cremosa de abóbora
+          butternut, frequentemente combinada com cebola, alho, batata ou
+          batata-doce e aromatizada com especiarias suaves; muito comum como
+          prato de outono/inverno.<sup>[R1]</sup>
+        </li>
+        <li><strong><a href="data/refeicoes/vegetarianas/abobora-butternut-receitas.html#abobora-butternut-assada-no-forno">Abóbora butternut assada no forno</a></strong> – cubos ou metades
+          de abóbora assados com azeite, sal, pimenta e ervas (por exemplo,
+          alecrim ou salva), servidos como acompanhamento ou usados em saladas
+          e bowls.<sup>[R2]</sup
+        </li>
+        <li><strong><a href="data/refeicoes/vegetarianas/abobora-butternut-receitas.html#risoto-de-abobora-butternut">Risoto de abóbora butternut</a></strong> – risoto cremoso onde
+          a abóbora é incorporada em puré ou em cubos assados, muitas vezes
+          combinada com salva, parmesão e vinho branco.<sup>[R3]</sup>
+        </li>
+        <li><strong><a href="data/refeicoes/vegetarianas/abobora-butternut-receitas.html#caril-de-abobora-e-grao-de-bico">Caril de abóbora e grão-de-bico</a></strong> – caril
+          vegetariano/vegano com cubos de abóbora, leguminosas (como
+          grão-de-bico) e especiarias de inspiração indiana ou tailandesa,
+          servido com arroz ou outros cereais.<sup>[R4]</sup>
+        </li>
+        <li><strong><a href="data/refeicoes/vegetarianas/abobora-butternut-receitas.html#pure-de-abobora-butternut">Puré de abóbora butternut</a></strong> – puré simples, usado
+          como acompanhamento, base de outros pratos ou ingrediente para
+          preparações doces como bolos e muffins.<sup>[R5]</sup>
+        </li>
+        <li><strong><a href="data/refeicoes/vegetarianas/abobora-butternut-receitas.html#lasanha-ou-gratinados-com-abobora">Lasanha ou gratinados com abóbora</a></strong> – camadas de
+          abóbora assada ou estufada em pratos de forno (lasanha vegetariana,
+          gratinados com queijo, natas ou alternativas vegetais).
+          <sup>[R6]</sup>
+        </li>
+        <li><strong><a href="data/refeicoes/vegetarianas/abobora-butternut-receitas.html#muffins-pao-e-bolos-de-abobora">Muffins, pão e bolos de abóbora</a></strong> – massa doce
+          enriquecida com puré de abóbora, especiarias como canela e
+          noz-moscada e, por vezes, frutos secos ou chocolate.
+          <sup>[R7]</sup>
+        </li>
+        <li><strong><a href="data/refeicoes/vegetarianas/abobora-butternut-receitas.html#saladas-mornas-com-abobora-assada">Saladas mornas com abóbora assada</a></strong> – cubos de
+          abóbora assada combinados com folhas verdes, cereais (por exemplo,
+          trigo-sarraceno, bulgur ou farro), queijo de cabra ou feta e
+          sementes tostadas.<sup>[R8]</sup>
+        </li>
+        <li><strong><a href="data/refeicoes/vegetarianas/abobora-butternut-receitas.html#abobora-recheada-e-assada">Abóbora recheada e assada</a></strong> – frutos de butternut
+          cortados longitudinalmente, parcialmente escavados e recheados com
+          mistura de cereais, leguminosas, legumes e frutos secos, depois
+          assados no forno.<sup>[R9]</sup>
+        </li>
+        <li><strong><a href="data/refeicoes/vegetarianas/abobora-butternut-receitas.html#papinhas-e-pures-para-bebes">Papinhas e purés para bebés</a></strong> – puré simples de
+          abóbora butternut, muitas vezes combinado com cenoura, batata-doce
+          ou outros legumes, usado em alimentação complementar infantil.
+          <sup>[U1]</sup><sup>[R10]</sup>
+        </li>
+      </ol>
+    </section>
+
+    <!-- 8. Referências -->
+    <section id="referencias">
+      <h3>Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+        <li id="ref-D1">
+          [D1] Artigo &quot;Butternut squash&quot; na Wikipédia (versão
+          inglesa), secções de descrição, cultivo e uso.
+          Disponível em:
+          <a href="https://en.wikipedia.org/wiki/Butternut_squash" target="_blank" rel="noopener">
+            en.wikipedia.org
+          </a>.
+        </li>
+        <li id="ref-D2">
+          [D2] Plantar Portugal. Abóbora Butternut – sementes biológicas
+          (descrição da variedade &quot;abóbora butternut&quot; também
+          conhecida por &quot;abóbora manteiga&quot;).
+          Disponível em:
+          <a href="https://www.plantarportugal.org/sementes-biologicas/abobora-butternut" target="_blank" rel="noopener">
+            plantarportugal.org
+          </a>.
+        </li>
+        <li id="ref-D3">
+          [D3] Bagacentro. Abóbora Butternut (descrição da forma de pêra,
+          casca lisa cor de avelã clara e polpa laranja ligeiramente
+          açucarada).
+          Disponível em:
+          <a href="https://bagacentro.pt/abobora-butternut/" target="_blank" rel="noopener">
+            bagacentro.pt
+          </a>.
+        </li>
+      </ol>
+
+      <h4>Dados nutricionais</h4>
+      <ol>
+        <li id="ref-N1">
+          [N1] Recipal. Squash, winter, butternut, raw – Nutrition Facts.
+          Disponível em:
+          <a href="https://www.recipal.com/ingredients/3225-nutrition-facts-calories-protein-carbs-fat-squash-winter-butternut-raw" target="_blank" rel="noopener">
+            recipal.com
+          </a>.
+        </li>
+        <li id="ref-N2">
+          [N2] Healthline. Butternut Squash: Nutrition, Benefits, and Uses.
+          Disponível em:
+          <a href="https://www.healthline.com/nutrition/butternut-squash" target="_blank" rel="noopener">
+            healthline.com
+          </a>.
+        </li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+        <li id="ref-S1">
+          [S1] Plantar Portugal. Abóbora Butternut – sementeira (calendário
+          com meses de sementeira em Portugal).
+          Disponível em:
+          <a href="https://www.plantarportugal.org/sementes-biologicas/abobora-butternut" target="_blank" rel="noopener">
+            plantarportugal.org
+          </a>.
+        </li>
+        <li id="ref-S2">
+          [S2] Royal Horticultural Society. How to grow squashes.
+          Disponível em:
+          <a href="https://www.rhs.org.uk/vegetables/squash/grow-your-own" target="_blank" rel="noopener">
+            rhs.org.uk
+          </a>.
+        </li>
+        <li id="ref-S3">
+          [S3] Frutas Classe. Abóbora Butternut – informação sobre época de
+          comercialização (setembro a março).
+          Disponível em:
+          <a href="https://frutasclasse.pt/produtos/butternut" target="_blank" rel="noopener">
+            frutasclasse.pt
+          </a>.
+        </li>
+      </ol>
+
+      <h4>Estudos científicos (benefícios e propriedades)</h4>
+      <ol>
+        <li id="ref-M1">
+          [M1] Alqahtani N.K. et al. (2025). Bioactive compounds and nutritional
+          composition of squashes (Cucurbita spp.) – revisão de benefícios
+          nutricionais e funcionais. Disponível em:
+          <a href="https://www.sciencedirect.com/science/article/pii/S2772566925000400" target="_blank" rel="noopener">
+            sciencedirect.com
+          </a>.
+        </li>
+        <li id="ref-M2">
+          [M2] Armesto J. et al. (2020). Nutritional characterization of
+          Butternut squash (Cucurbita moschata). Disponível em:
+          <a href="https://pubmed.ncbi.nlm.nih.gov/32331650/" target="_blank" rel="noopener">
+            pubmed.ncbi.nlm.nih.gov
+          </a>.
+        </li>
+        <li id="ref-M3">
+          [M3] Kamiloglu S. et al. (2024). Bioaccessibility of Carotenoids and
+          Polyphenols in Organic Butternut Squash: Impact of Industrial
+          Freezing Process. <em>Foods</em> 13(2):239.
+          Disponível em:
+          <a href="https://www.mdpi.com/2304-8158/13/2/239" target="_blank" rel="noopener">
+            mdpi.com
+          </a>.
+        </li>
+        <li id="ref-M4">
+          [M4] Li H. et al. (2020). Evaluation of bioactivity of butternut squash
+          (<em>Cucurbita moschata</em>) seeds and skin. Disponível em:
+          <a href="https://onlinelibrary.wiley.com/doi/10.1002/fsn3.1602" target="_blank" rel="noopener">
+            onlinelibrary.wiley.com
+          </a>.
+        </li>
+        <li id="ref-M5">
+          [M5] Motadi S.A. et al. (2024). Effects of Cucurbita moschata squash
+          (Butternut) seed paste on iron and zinc status in preschool children.
+          <em>PLOS ONE</em>. Disponível em:
+          <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0300845" target="_blank" rel="noopener">
+            journals.plos.org
+          </a>.
+        </li>
+      </ol>
+
+      <h4>Utilidades, usos tradicionais e permacultura</h4>
+      <ol>
+        <li id="ref-U1">
+          [U1] Artigos de nutrição e parentalidade que referem o uso de abóbora
+          butternut em purés para bebés e alimentação complementar (por exemplo,
+          guias de alimentação infantil com base em vegetais ricos em
+          carotenoides).
+        </li>
+        <li id="ref-P1">
+          [P1] MOFGA – Growing Winter Squash (orientações para cultivo,
+          colheita e armazenamento de abóboras de inverno em horticultura
+          ecológica). Disponível em:
+          <a href="https://www.mofga.org/resources/gardening/growing-winter-squash/" target="_blank" rel="noopener">
+            mofga.org
+          </a>.
+        </li>
+        <li id="ref-P2">
+          [P2] Diversos autores de permacultura e horticultura ecológica que
+          descrevem o uso de abóboras rasteiras como cobertura de solo,
+          cultura de armazenamento e componente de policulturas (por exemplo,
+          sistemas do tipo &quot;milho-feijão-abóbora&quot;).
+        </li>
+      </ol>
+
+      <h4>Cuidados, consumo e segurança</h4>
+      <ol>
+        <li id="ref-C1">
+          [C1] Guias gerais de nutrição clínica e dietas controladas em
+          potássio, que recomendam ajustar o consumo de vegetais ricos em
+          potássio (incluindo alguns tipos de abóbora) em determinadas
+          situações de doença renal crónica.
+        </li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+        <li id="ref-R1">
+          [R1] PetitChef. Creme de abóbora manteiga/butternut.
+          Disponível em:
+          <a href="https://pt.petitchef.com/receitas/prato-principal/creme-de-abobora-manteigabutternut-fid-1569860" target="_blank" rel="noopener">
+            pt.petitchef.com
+          </a>.
+        </li>
+        <li id="ref-R2">
+          [R2] GZ Recipes. Creme de abóbora e batata-doce (com abóbora
+          violino / butternut). Disponível em:
+          <a href="https://www.gzrecipes.com/pt/dadcook/creme-de-abobora-e-batata-doce/" target="_blank" rel="noopener">
+            gzrecipes.com
+          </a>.
+        </li>
+        <li id="ref-R3">
+          [R3] Love &amp; Lemons. Roasted Butternut Squash.
+          Disponível em:
+          <a href="https://www.loveandlemons.com/roasted-butternut-squash/" target="_blank" rel="noopener">
+            loveandlemons.com
+          </a>.
+        </li>
+        <li id="ref-R4">
+          [R4] Allrecipes. Simple Roasted Butternut Squash.
+          Disponível em:
+          <a href="https://www.allrecipes.com/recipe/229733/simple-roasted-butternut-squash/" target="_blank" rel="noopener">
+            allrecipes.com
+          </a>.
+        </li>
+        <li id="ref-R5">
+          [R5] BBC Good Food. Butternut squash &amp; sage risotto.
+          Disponível em:
+          <a href="https://www.bbcgoodfood.com/recipes/butternut-squash-sage-risotto" target="_blank" rel="noopener">
+            bbcgoodfood.com
+          </a>.
+        </li>
+        <li id="ref-R6">
+          [R6] BBC Good Food. Indian butternut squash curry.
+          Disponível em:
+          <a href="https://www.bbcgoodfood.com/recipes/indian-butternut-squash-curry" target="_blank" rel="noopener">
+            bbcgoodfood.com
+          </a>.
+        </li>
+        <li id="ref-R7">
+          [R7] Cupful of Kale. Roasted Butternut Squash and Chickpea Curry.
+          Disponível em:
+          <a href="https://cupfulofkale.com/vegan-roasted-butternut-squash-and-chickpea-curry/" target="_blank" rel="noopener">
+            cupfulofkale.com
+          </a>.
+        </li>
+        <li id="ref-R8">
+          [R8] Love &amp; Lemons. Butternut Squash Soup.
+          Disponível em:
+          <a href="https://www.loveandlemons.com/butternut-squash-soup/" target="_blank" rel="noopener">
+            loveandlemons.com
+          </a>.
+        </li>
+        <li id="ref-R9">
+          [R9] Diversas receitas de lasanha, gratinados e abóbora recheada com
+          abóbora butternut em livros e sites de culinária (secções de pratos
+          de forno com abóbora).
+        </li>
+        <li id="ref-R10">
+          [R10] Receitas de muffins, pães e bolos de abóbora em livros e
+          blogs de pastelaria sazonal com abóbora de inverno.
+        </li>
+        <li id="ref-R11">
+          [R11] Artigos e receitas de saladas de outono/inverno com abóbora
+          assada, cereais integrais, folhas verdes e queijo, como por exemplo
+          saladas com butternut e beterraba assadas.
+        </li>
+      </ol>
+    </section>
+  </article>
+</main>
+
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+</body>
+</html>
