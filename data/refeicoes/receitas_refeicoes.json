@@ -1,0 +1,937 @@
+[
+  {
+    "id": 1,
+    "nome": "Abóbora Assada com Molho de Sésamo e Gengibre",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "abobora-grande_receitas.txt",
+    "link": "refeicoes/vegetariana/abobora-grande_receitas.html",
+    "ingredientes": [
+      "abóbora grande",
+      "alho",
+      "cebolinho",
+      "gengibre fresco",
+      "molho de soja",
+      "pimenta preta",
+      "sal marinho",
+      "sementes de sésamo",
+      "sumo de limão",
+      "vinagre de arroz",
+      "xarope de ácer",
+      "água",
+      "óleo de sésamo",
+      "óleo neutro"
+    ]
+  },
+  {
+    "id": 2,
+    "nome": "Ensopado Marroquino de Abóbora e Grão-de-Bico",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "abobora-grande_receitas.txt",
+    "link": "refeicoes/vegetariana/abobora-grande_receitas.html",
+    "ingredientes": [
+      "abóbora grande",
+      "alho",
+      "azeite",
+      "açafrão-da-índia",
+      "caldo de legumes",
+      "canela em pó",
+      "cebola",
+      "cenoura",
+      "coentros em pó",
+      "coentros frescos",
+      "cominhos",
+      "grão-de-bico",
+      "limão",
+      "paprika",
+      "pimenta preta",
+      "piripíri",
+      "polpa de tomate",
+      "sultanas"
+    ]
+  },
+  {
+    "id": 3,
+    "nome": "Caril Tailandês de Abóbora com Grão-de-Bico e Coco",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "abobora-grande_receitas.txt",
+    "link": "refeicoes/vegetariana/abobora-grande_receitas.html",
+    "ingredientes": [
+      "abóbora grande",
+      "alho",
+      "arroz",
+      "açúcar mascavado",
+      "caldo de legumes",
+      "cebola",
+      "coentros frescos",
+      "gengibre fresco",
+      "grão-de-bico",
+      "leite de coco",
+      "limão",
+      "molho de soja",
+      "pasta de caril",
+      "sal",
+      "óleo"
+    ]
+  },
+  {
+    "id": 4,
+    "nome": "Massa Cremosa de Abóbora com Cogumelos Salteados",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "abobora-grande_receitas.txt",
+    "link": "refeicoes/vegetariana/abobora-grande_receitas.html",
+    "ingredientes": [
+      "abóbora grande",
+      "alecrim",
+      "alho",
+      "azeite",
+      "caldo de legumes",
+      "levedura nutricional",
+      "massa",
+      "pimenta preta",
+      "portobello",
+      "salsa",
+      "sumo de limão",
+      "tomilho"
+    ]
+  },
+  {
+    "id": 5,
+    "nome": "Sopa Cremosa de Abóbora Assada com Leite de Coco",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "abobora-grande_receitas.txt",
+    "link": "refeicoes/vegetariana/abobora-grande_receitas.html",
+    "ingredientes": [
+      "abóbora grande",
+      "alho",
+      "azeite",
+      "caldo de legumes",
+      "cebola",
+      "coentros em pó",
+      "cominhos",
+      "leite de coco",
+      "limão",
+      "noz-moscada",
+      "paprika",
+      "pimenta preta",
+      "sementes de abóbora"
+    ]
+  },
+  {
+    "id": 6,
+    "nome": "Salada Morna de Abóbora Assada, Lentilhas e Couve-kale",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "abobora-grande_receitas.txt",
+    "link": "refeicoes/vegetariana/abobora-grande_receitas.html",
+    "ingredientes": [
+      "abóbora grande",
+      "alho",
+      "amêndoas",
+      "azeite",
+      "couve-kale",
+      "folha de louro",
+      "lentilhas verdes",
+      "maca",
+      "pimenta preta",
+      "sumo de limão",
+      "tahini",
+      "xarope de ácer",
+      "água"
+    ]
+  },
+  {
+    "id": 7,
+    "nome": "Húmus Cremoso de Abóbora e Tahini",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "abobora-grande_receitas.txt",
+    "link": "refeicoes/vegetariana/abobora-grande_receitas.html",
+    "ingredientes": [
+      "abóbora grande",
+      "alho",
+      "cominhos",
+      "grão-de-bico",
+      "paprika",
+      "pimenta preta",
+      "sementes de sésamo",
+      "sumo de limão",
+      "tahini",
+      "água"
+    ]
+  },
+  {
+    "id": 8,
+    "nome": "Pão Rústico de Abóbora e Especiarias (Vegan)",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "abobora-grande_receitas.txt",
+    "link": "refeicoes/vegetariana/abobora-grande_receitas.html",
+    "ingredientes": [
+      "abóbora",
+      "aveia",
+      "açúcar",
+      "açúcar mascavado",
+      "bicarbonato de sódio",
+      "extrato de baunilha",
+      "farinha de trigo",
+      "fermento em pó",
+      "noz-moscada",
+      "nozes",
+      "sal",
+      "óleo de coco"
+    ]
+  },
+  {
+    "id": 9,
+    "nome": "Abóbora Assada Recheada com Arroz Selvagem, Nozes e Arandos",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "abobora-grande_receitas.txt",
+    "link": "refeicoes/vegetariana/abobora-grande_receitas.html",
+    "ingredientes": [
+      "abóbora grande",
+      "aipo",
+      "alho",
+      "arandos secos",
+      "arroz",
+      "azeite",
+      "caldo de legumes",
+      "cebola",
+      "nozes",
+      "pimenta preta",
+      "sal",
+      "tomilho"
+    ]
+  },
+  {
+    "id": 10,
+    "nome": "Casserole de Arroz com Abóbora Salgada no Forno",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "abobora-grande_receitas.txt",
+    "link": "refeicoes/vegetariana/abobora-grande_receitas.html",
+    "ingredientes": [
+      "abóbora",
+      "alho",
+      "arroz",
+      "azeite",
+      "caldo de legumes",
+      "cebola",
+      "ervilhas congeladas",
+      "levedura nutricional",
+      "milho",
+      "oregãos",
+      "paprika",
+      "pimenta preta",
+      "pimento vermelho",
+      "pão ralado",
+      "queijo vegan ralado",
+      "tomilho"
+    ]
+  },
+  {
+    "id": 11,
+    "nome": "Sopa cremosa de cebola-fresca (Vegan Spring Onion Soup)",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "cebola-fresca_receitas.txt",
+    "link": "refeicoes/vegetariana/cebola-fresca_receitas.html",
+    "ingredientes": [
+      "alho",
+      "azeite",
+      "batata",
+      "caldo de legumes",
+      "cebola-fresca",
+      "limão",
+      "pimenta",
+      "óleo"
+    ]
+  },
+  {
+    "id": 12,
+    "nome": "Tofu com gengibre e cebola-fresca salteado",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "cebola-fresca_receitas.txt",
+    "link": "refeicoes/vegetariana/cebola-fresca_receitas.html",
+    "ingredientes": [
+      "alho",
+      "caldo de legumes",
+      "cogumelos",
+      "farinha",
+      "gengibre fresco",
+      "molho de soja",
+      "pimento verde",
+      "tofu",
+      "vinagre de arroz",
+      "óleo de sésamo"
+    ]
+  },
+  {
+    "id": 13,
+    "nome": "Massas rápidas com “spring onion oil” (noodles de cebola-fresca)",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "cebola-fresca_receitas.txt",
+    "link": "refeicoes/vegetariana/cebola-fresca_receitas.html",
+    "ingredientes": [
+      "brócolos",
+      "molho de soja",
+      "Molho picante",
+      "noodles",
+      "vinagre de arroz",
+      "xarope de ácer",
+      "óleo vegetal"
+    ]
+  },
+  {
+    "id": 14,
+    "nome": "Pasta cremosa com ervilhas e cebola-fresca (Pea & Spring Onion Pasta)",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "cebola-fresca_receitas.txt",
+    "link": "refeicoes/vegetariana/cebola-fresca_receitas.html",
+    "ingredientes": [
+      "alho",
+      "açúcar",
+      "ervilhas-frescas",
+      "levedura nutricional",
+      "massa",
+      "pimenta",
+      "pimenta preta",
+      "sal",
+      "óleo vegetal"
+    ]
+  },
+  {
+    "id": 15,
+    "nome": "“Spring onion dip” – patê vegano de cebola-fresca e caju",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "cebola-fresca_receitas.txt",
+    "link": "refeicoes/vegetariana/cebola-fresca_receitas.html",
+    "ingredientes": [
+      "alho",
+      "caju",
+      "pimenta",
+      "sumo de limão",
+      "água",
+      "óleo vegetal"
+    ]
+  },
+  {
+    "id": 16,
+    "nome": "Noodles de alho e cebola-fresca salteados (Garlic & Spring Onion Noodles)",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "cebola-fresca_receitas.txt",
+    "link": "refeicoes/vegetariana/cebola-fresca_receitas.html",
+    "ingredientes": [
+      "alho",
+      "cebola-fresca",
+      "molho de soja",
+      "Molho picante",
+      "noodles",
+      "pimenta preta",
+      "sementes de sésamo",
+      "tomate",
+      "vinagre",
+      "óleo de sésamo"
+    ]
+  },
+  {
+    "id": 17,
+    "nome": "Verduras salteadas com cebola-fresca e limão",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "cebola-fresca_receitas.txt",
+    "link": "refeicoes/vegetariana/cebola-fresca_receitas.html",
+    "ingredientes": [
+      "alho",
+      "espinafres",
+      "limão",
+      "pimenta",
+      "óleo vegetal"
+    ]
+  },
+  {
+    "id": 18,
+    "nome": "Bifinhos de tofu crocante com molho e cebola-fresca",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "cebola-fresca_receitas.txt",
+    "link": "refeicoes/vegetariana/cebola-fresca_receitas.html",
+    "ingredientes": [
+      "caldo vegetal",
+      "molho de soja",
+      "tofu",
+      "vinagre de arroz",
+      "óleo de sésamo",
+      "óleo vegetal"
+    ]
+  },
+  {
+    "id": 19,
+    "nome": "Salada de feijão-manteiga, tomate, verduras e cebola-fresca",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "cebola-fresca_receitas.txt",
+    "link": "refeicoes/vegetariana/cebola-fresca_receitas.html",
+    "ingredientes": [
+      "abóbora",
+      "alface",
+      "azeite",
+      "pimenta",
+      "tomate",
+      "vinagre",
+      "água"
+    ]
+  },
+  {
+    "id": 20,
+    "nome": "Panquecas asiáticas de “spring onion pancake” (salgadas)",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "cebola-fresca_receitas.txt",
+    "link": "refeicoes/vegetariana/cebola-fresca_receitas.html",
+    "ingredientes": [
+      "farinha de trigo",
+      "massa",
+      "sal",
+      "óleo vegetal"
+    ]
+  },
+  {
+    "id": 21,
+    "nome": "Sopa cremosa de curgete (3 ingredientes principais)",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "curgete_receitas.txt",
+    "link": "refeicoes/vegetariana/curgete_receitas.html",
+    "ingredientes": [
+      "azeite",
+      "caldo de legumes",
+      "cebola",
+      "curgete",
+      "pimenta",
+      "sumo de limão",
+      "água"
+    ]
+  },
+  {
+    "id": 22,
+    "nome": "Sopa de curgete com feijão branco",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "curgete_receitas.txt",
+    "link": "refeicoes/vegetariana/curgete_receitas.html",
+    "ingredientes": [
+      "alho",
+      "azeite",
+      "caldo de legumes",
+      "cebola",
+      "cebolinho",
+      "curgetes",
+      "feijão branco",
+      "manjericão",
+      "pimenta"
+    ]
+  },
+  {
+    "id": 23,
+    "nome": "Curgete recheada com lentilhas (barquinhas vegan)",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "curgete_receitas.txt",
+    "link": "refeicoes/vegetariana/curgete_receitas.html",
+    "ingredientes": [
+      "alho",
+      "azeite",
+      "cebola",
+      "curgetes",
+      "lentilhas",
+      "levedura nutricional",
+      "manjericão",
+      "oregãos",
+      "pimenta",
+      "pimento vermelho",
+      "tomate"
+    ]
+  },
+  {
+    "id": 24,
+    "nome": "Bolinhos de curgete no forno (pataniscas veganas)",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "curgete_receitas.txt",
+    "link": "refeicoes/vegetariana/curgete_receitas.html",
+    "ingredientes": [
+      "alho",
+      "azeite",
+      "cebola",
+      "cebolinho",
+      "curgete",
+      "farinha de grão-de-bico",
+      "farinha de trigo",
+      "fermento em pó",
+      "levedura nutricional",
+      "pimenta preta",
+      "sal"
+    ]
+  },
+  {
+    "id": 25,
+    "nome": "Massa com molho cremoso de curgete",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "curgete_receitas.txt",
+    "link": "refeicoes/vegetariana/curgete_receitas.html",
+    "ingredientes": [
+      "alho",
+      "azeite",
+      "caldo de legumes",
+      "cebola",
+      "curgetes",
+      "levedura nutricional",
+      "manjericão",
+      "massa",
+      "pimenta preta",
+      "sumo de limão",
+      "vinho branco"
+    ]
+  },
+  {
+    "id": 26,
+    "nome": "Massa leve de curgete com limão e ervas",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "curgete_receitas.txt",
+    "link": "refeicoes/vegetariana/curgete_receitas.html",
+    "ingredientes": [
+      "alho",
+      "azeite",
+      "curgetes",
+      "levedura nutricional",
+      "manjericão",
+      "massa",
+      "pimenta preta",
+      "sal",
+      "sumo de limão"
+    ]
+  },
+  {
+    "id": 27,
+    "nome": "Assado de batata e curgete no forno",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "curgete_receitas.txt",
+    "link": "refeicoes/vegetariana/curgete_receitas.html",
+    "ingredientes": [
+      "alho",
+      "amêndoas",
+      "azeite",
+      "batata",
+      "cebola",
+      "curgetes",
+      "levedura nutricional",
+      "oregãos",
+      "pimenta preta",
+      "pão ralado",
+      "sal"
+    ]
+  },
+  {
+    "id": 28,
+    "nome": "Pão doce de curgete (zucchini bread) vegan",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "curgete_receitas.txt",
+    "link": "refeicoes/vegetariana/curgete_receitas.html",
+    "ingredientes": [
+      "aveia",
+      "açúcar",
+      "bicarbonato de sódio",
+      "canela em pó",
+      "curgete",
+      "extrato de baunilha",
+      "farinha de trigo",
+      "fermento em pó",
+      "nozes",
+      "sal",
+      "óleo de coco"
+    ]
+  },
+  {
+    "id": 29,
+    "nome": "Curgete grelhada com limão e ervas italianas",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "curgete_receitas.txt",
+    "link": "refeicoes/vegetariana/curgete_receitas.html",
+    "ingredientes": [
+      "alho",
+      "azeite",
+      "curgetes",
+      "manjericão",
+      "pimenta preta",
+      "sal",
+      "sumo de limão"
+    ]
+  },
+  {
+    "id": 30,
+    "nome": "Salada de curgete marinada com grão-de-bico",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "curgete_receitas.txt",
+    "link": "refeicoes/vegetariana/curgete_receitas.html",
+    "ingredientes": [
+      "azeite",
+      "cebola",
+      "curgetes",
+      "grão-de-bico",
+      "mostarda dijon",
+      "pimenta preta",
+      "salsa",
+      "sumo de limão",
+      "vinho branco",
+      "xarope de ácer"
+    ]
+  },
+  {
+    "id": 31,
+    "nome": "Caril de espinafres com grão-de-bico",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "espinafre_receitas.txt",
+    "link": "refeicoes/vegetariana/espinafre_receitas.html",
+    "ingredientes": [
+      "alho",
+      "cebola",
+      "coentros frescos",
+      "espinafres frescos",
+      "gengibre fresco",
+      "grão-de-bico",
+      "leite de coco",
+      "pasta de caril",
+      "tomate pelado"
+    ]
+  },
+  {
+    "id": 32,
+    "nome": "Creamed spinach vegan",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "espinafre_receitas.txt",
+    "link": "refeicoes/vegetariana/espinafre_receitas.html",
+    "ingredientes": [
+      "cebola",
+      "espinafres frescos",
+      "farinha",
+      "leite vegetal",
+      "levedura nutricional",
+      "noz-moscada"
+    ]
+  },
+  {
+    "id": 33,
+    "nome": "Massa com espinafres e tomate seco",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "espinafre_receitas.txt",
+    "link": "refeicoes/vegetariana/espinafre_receitas.html",
+    "ingredientes": [
+      "alho",
+      "espinafres",
+      "massa",
+      "natas vegetais",
+      "pimenta",
+      "tomate"
+    ]
+  },
+  {
+    "id": 34,
+    "nome": "Sopa cremosa de espinafre e batata",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "espinafre_receitas.txt",
+    "link": "refeicoes/vegetariana/espinafre_receitas.html",
+    "ingredientes": [
+      "azeite",
+      "batata",
+      "caldo de legumes",
+      "cebola",
+      "espinafres frescos",
+      "pimenta"
+    ]
+  },
+  {
+    "id": 35,
+    "nome": "Arroz salteado com espinafres, limão e alho",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "espinafre_receitas.txt",
+    "link": "refeicoes/vegetariana/espinafre_receitas.html",
+    "ingredientes": [
+      "alho",
+      "arroz",
+      "espinafres",
+      "pimenta",
+      "sumo de limão"
+    ]
+  },
+  {
+    "id": 36,
+    "nome": "Tofu mexido com espinafres",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "espinafre_receitas.txt",
+    "link": "refeicoes/vegetariana/espinafre_receitas.html",
+    "ingredientes": [
+      "açafrão",
+      "espinafres",
+      "levedura nutricional",
+      "pimenta",
+      "tofu"
+    ]
+  },
+  {
+    "id": 37,
+    "nome": "Lasanha vegan de espinafres e cogumelos",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "espinafre_receitas.txt",
+    "link": "refeicoes/vegetariana/espinafre_receitas.html",
+    "ingredientes": [
+      "azeite",
+      "béchamel vegan",
+      "cogumelos",
+      "espinafres",
+      "folhas de lasanha"
+    ]
+  },
+  {
+    "id": 38,
+    "nome": "Sopa miso com espinafres e tofu macio",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "espinafre_receitas.txt",
+    "link": "refeicoes/vegetariana/espinafre_receitas.html",
+    "ingredientes": [
+      "cebolinho",
+      "espinafres frescos",
+      "tofu",
+      "água"
+    ]
+  },
+  {
+    "id": 39,
+    "nome": "Panquecas verdes salgadas de espinafre",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "espinafre_receitas.txt",
+    "link": "refeicoes/vegetariana/espinafre_receitas.html",
+    "ingredientes": [
+      "azeite",
+      "espinafres",
+      "farinha",
+      "leite vegetal"
+    ]
+  },
+  {
+    "id": 40,
+    "nome": "Espinafres salteados com alho e limão",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "espinafre_receitas.txt",
+    "link": "refeicoes/vegetariana/espinafre_receitas.html",
+    "ingredientes": [
+      "alho",
+      "azeite",
+      "espinafres frescos",
+      "pimenta",
+      "sumo de limão"
+    ]
+  },
+  {
+    "id": 41,
+    "nome": "Sopa cremosa de nabo e batata",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "nabo_receitas.txt",
+    "link": "refeicoes/vegetariana/nabo_receitas.html",
+    "ingredientes": [
+      "alho",
+      "azeite",
+      "batata",
+      "caldo de legumes",
+      "cebola",
+      "cebolinho",
+      "nabo",
+      "noz-moscada",
+      "pimenta"
+    ]
+  },
+  {
+    "id": 42,
+    "nome": "Guisado de grão-de-bico com nabo e especiarias etíopes",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "nabo_receitas.txt",
+    "link": "refeicoes/vegetariana/nabo_receitas.html",
+    "ingredientes": [
+      "alho francês",
+      "caldo de legumes",
+      "cebola",
+      "cenoura",
+      "gengibre fresco",
+      "grão-de-bico",
+      "leite vegetal",
+      "nabos",
+      "pimenta",
+      "sal"
+    ]
+  },
+  {
+    "id": 43,
+    "nome": "Sopa cremosa de lentilhas e nabo com limão",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "nabo_receitas.txt",
+    "link": "refeicoes/vegetariana/nabo_receitas.html",
+    "ingredientes": [
+      "aipo",
+      "alho",
+      "azeite",
+      "caldo de legumes",
+      "cebola",
+      "lentilhas vermelhas",
+      "limão",
+      "nabo",
+      "pimenta"
+    ]
+  },
+  {
+    "id": 44,
+    "nome": "Ensopado de nabo cremoso com vegetais (estilo “stew”)",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "nabo_receitas.txt",
+    "link": "refeicoes/vegetariana/nabo_receitas.html",
+    "ingredientes": [
+      "azeite",
+      "caldo de legumes",
+      "cebola",
+      "cenoura",
+      "farinha de trigo",
+      "feijão branco",
+      "nabo",
+      "natas vegetais",
+      "pimenta"
+    ]
+  },
+  {
+    "id": 45,
+    "nome": "Sopa assada de nabo com feijão branco",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "nabo_receitas.txt",
+    "link": "refeicoes/vegetariana/nabo_receitas.html",
+    "ingredientes": [
+      "alho",
+      "azeite",
+      "caldo de legumes",
+      "cebola",
+      "feijão branco",
+      "nabos",
+      "pimenta"
+    ]
+  },
+  {
+    "id": 46,
+    "nome": "Sopa rústica de nabo, cenoura e legumes",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "nabo_receitas.txt",
+    "link": "refeicoes/vegetariana/nabo_receitas.html",
+    "ingredientes": [
+      "azeite",
+      "caldo de legumes",
+      "cebola",
+      "cenoura",
+      "louro",
+      "nabos",
+      "pimenta",
+      "tomilho"
+    ]
+  },
+  {
+    "id": 47,
+    "nome": "Nabo e cenoura salteados com cebolinha (side dish)",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "nabo_receitas.txt",
+    "link": "refeicoes/vegetariana/nabo_receitas.html",
+    "ingredientes": [
+      "azeite",
+      "cebola",
+      "cenoura",
+      "nabos",
+      "pimenta",
+      "tomilho"
+    ]
+  },
+  {
+    "id": 48,
+    "nome": "Chips de nabo assadas (lâminas estaladiças)",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "nabo_receitas.txt",
+    "link": "refeicoes/vegetariana/nabo_receitas.html",
+    "ingredientes": [
+      "azeite",
+      "nabos",
+      "pimenta preta",
+      "sal"
+    ]
+  },
+  {
+    "id": 49,
+    "nome": "Nabo assado simples com ervas e azeite",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "nabo_receitas.txt",
+    "link": "refeicoes/vegetariana/nabo_receitas.html",
+    "ingredientes": [
+      "alecrim",
+      "alho",
+      "azeite",
+      "nabos",
+      "pimenta",
+      "tomilho"
+    ]
+  },
+  {
+    "id": 50,
+    "nome": "Nabo gratinado vegan com puré cremoso (batata + nabo)",
+    "tipo": "refeicoes",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "nabo_receitas.txt",
+    "link": "refeicoes/vegetariana/nabo_receitas.html",
+    "ingredientes": [
+      "alho",
+      "aveia",
+      "azeite",
+      "batata",
+      "cebola",
+      "levedura nutricional",
+      "nabo",
+      "noz-moscada"
+    ]
+  }
+]
