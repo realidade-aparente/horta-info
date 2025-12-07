@@ -168,3 +168,193 @@ footer {
   display: block;
   object-fit: contain;
 }
+
+/* Estilo base dos cartões de receita */
+.card-receita {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+
+  /* Para ajudar a destacar */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.botoes-acoes {
+  display: flex;
+  gap: 1rem;
+  margin: 0.5rem 0;
+}
+
+.botoes-acoes button {
+  padding: 0.3rem 1rem;
+  cursor: pointer;
+}
+
+/* Zona das checkboxes de ingredientes: GRID + CAIXA + SCROLL */
+.lista-ingredientes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+
+  /* Caixa delimitada */
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #ffffff;
+
+  /* Scroll interno para muitos ingredientes */
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+/* Cada ingrediente como “tag” clicável */
+.ingrediente-opcao {
+  border: 1px solid #ccc;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  background: #f9f9f9;
+  cursor: pointer;
+  font-size: 0.9rem;
+
+  display: flex;
+  align-items: center;
+}
+
+.ingrediente-opcao input {
+  margin-right: 0.3rem;
+}
+
+/* Opcional: em ecrãs pequenos, dá um bocadinho mais de altura à caixa */
+@media (max-width: 600px) {
+  .lista-ingredientes {
+    max-height: 320px;
+  }
+}
+
+/* Cores alternadas de fundo dentro da lista de resultados */
+#resultados .card-receita:nth-child(odd) {
+  background: #f9f9ff;  /* um tom claro (ex.: azulado) */
+}
+
+#resultados .card-receita:nth-child(even) {
+  background: #f5fff5;  /* outro tom claro (ex.: esverdeado) */
+  
+}
+#resultados {
+  margin-top: 1rem;
+}
+}
+}
+/* Banners por tipo de página */
+.banner {
+  padding: 2rem 1rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+
+.banner .banner-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.banner-refeicoes {
+  background: linear-gradient(135deg, #4caf50, #2e7d32); /* verdes */
+}
+
+.banner-sumos {
+  background: linear-gradient(135deg, #ff9800, #f57c00); /* laranja, tipo sumos */
+}
+
+.banner-smoothies {
+  background: linear-gradient(135deg, #9c27b0, #6a1b9a); /* roxos, tipo frutos vermelhos */
+}
+
+/* Filtros de dieta */
+.filtros-dieta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.filtros-dieta label {
+  border: 1px solid #ccc;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  background: #f9f9f9;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.filtros-dieta input {
+  margin-right: 0.3rem;
+}
+
+/* Cartões de receita (já tinhas algo parecido, junta/ajusta como quiseres) */
+.card-receita {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+/* Alternância de fundo para melhor leitura */
+#resultados .card-receita:nth-child(odd) {
+  background: #f9f9ff;
+}
+
+#resultados .card-receita:nth-child(even) {
+  background: #f5fff5;
+}
+
+/* Zona das caixas de ingredientes (combo grid + scroll que combinámos) */
+.lista-ingredientes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.ingrediente-opcao {
+  border: 1px solid #ccc;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  background: #f9f9f9;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
+.ingrediente-opcao input {
+  margin-right: 0.3rem;
+}
+
+@media (max-width: 600px) {
+  .lista-ingredientes {
+    max-height: 320px;
+  }
+}
+
+/* Botões de ação */
+.botoes-acoes {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.botoes-acoes button {
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+}

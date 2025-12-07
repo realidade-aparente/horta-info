@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Abóbora grande de polpa densa (Cucurbita maxima) | Horta da Terra para o prato</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        /* Header + nav fixos ao topo */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.10);
+        }
+
+        .header-top {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+        }
+
+        .header-top h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        .header-top p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.4rem 1rem 0.5rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p {
+            margin: 0.2rem 0;
+        }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section {
+            margin-bottom: 1.5rem;
+        }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th {
+            background: #f3f4f6;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        .nota, .referencia-nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .nota-aviso {
+            font-size: 0.85rem;
+            color: #9a3412;
+            background: #fff7ed;
+            border-radius: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #fed7aa;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.25rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover {
+            text-decoration: underline;
+        }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body id="topo">
+<header class="site-header">
+    <div class="header-top">
+        <h1>Horta da Terra para o prato</h1>
+        <p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar.</p>
+    </div>
+    <nav>
+    <a href="index.html">Início</a>
+	<a href="espontaneas.html">Plantas espontâneas comestíveis</a>
+	<a href="abobora-butternut.html">Abóbora butternut</a>
+	<a href="abobora-grande.html" class="ativa">Abóbora grande</a>
+    <a href="acelga.html">Acelga</a>
+    <a href="agriao.html">Agrião-de-água</a>
+    <a href="agriao-terra.html">Agrião-de-terra</a>
+    <a href="aipo.html">Aipo (talos e folhas)</a>
+    <a href="alface.html">Alface</a>
+    <a href="alho.html">Alho</a>
+    <a href="alho-frances.html">Alho-francês</a>
+    <a href="aneto.html">Aneto / Endro</a>
+    <a href="batata-comum.html">Batata comum</a>
+    <a href="batata-doce.html">Batata-doce</a>
+    <a href="beringela.html">Beringela</a>
+    <a href="beterraba.html">Beterraba</a>
+    <a href="brocolo.html">Brócolo</a>
+    <a href="canonigos.html">Canónigos</a>
+    <a href="coentros.html">Coentros</a>
+    <a href="cebola.html">Cebola</a>
+    <a href="cebola-fresca.html">Cebola fresca</a>
+    <a href="cenoura.html">Cenoura</a>
+    <a href="couve-chinesa.html">Couve chinesa</a>
+    <a href="couve-flor.html">Couve-flor</a>
+    <a href="couve-rabano.html">Couve-rábano</a>
+    <a href="couve-repolho.html">Couve repolho</a>
+    <a href="couve-toscana.html">Couve toscana</a>
+    <a href="curgete.html">Curgete</a>
+    <a href="ervilhas-frescas.html">Ervilhas frescas</a>
+    <a href="espinafre.html">Espinafre</a>
+    <a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+    <a href="feijao-verde.html">Feijão verde</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="milho-doce.html">Milho doce</a>
+    <a href="mizuna.html">Mizuna</a>
+    <a href="morangos.html">Morangueiro / Morangos</a>
+    <a href="moringa.html">Moringa</a>
+    <a href="nabo.html">Nabo</a>
+    <a href="nabica.html">Nabiça</a>
+    <a href="pak-choi.html">Pak choi</a>
+    <a href="pepino.html">Pepino</a>
+    <a href="pimento.html">Pimento</a>
+    <a href="rabanete.html">Rabanete</a>
+    <a href="rabano.html">Rábano / Daikon</a>
+    <a href="rucula.html">Rúcula</a>
+    <a href="salanova.html">Salanova</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="tomate.html">Tomate (genérico)</a>
+    <a href="tomate-chucha.html">Tomate tipo chucha / Roma</a>
+    </nav>
+</header>
+
+<main>
+    <article class="planta">
+        <div class="planta-cabecalho">
+            <div class="planta-titulo">
+                <h2>Abóbora grande de polpa densa (<em>Cucurbita maxima</em>)</h2>
+                <p><strong>Outros nomes em português:</strong> abóbora de inverno, abóbora-menina (algumas cultivares), abóbora Hokkaido/potimarron, abóbora de serra (regiões), abóbora de carne laranja.</p>
+                <p><strong>Nome mais comum em inglês:</strong> pumpkin, winter squash (Hubbard, kabocha, red kuri, etc.).</p>
+
+                <div class="tags-nomes">
+                    <span>Família: Cucurbitaceae</span>
+                    <span>Parte usada: frutos maduros (polpa)</span>
+                    <span>Tipo: abóbora de inverno, polpa densa</span>
+                    <span>Produção: <strong>biológica</strong></span>
+                </div>
+
+                <div class="info-rapida">
+                    <div>
+                        <strong>Origem</strong>
+                        Espécie originária das Américas, domesticada e selecionada em numerosas variedades de abóboras de inverno de grande porte e boa conservação.
+                    </div>
+                    <div>
+                        <strong>Uso principal</strong>
+                        Sopas, assados, purés, estufados e doces/tradicionais. Excelente para armazenar e usar no outono-inverno.
+                    </div>
+                    <div>
+                        <strong>Perfil nutricional</strong>
+                        Muito baixo valor energético, rica em carotenóides (provitamina A), vitamina C e fibra alimentar. <sup>[N1]</sup><sup>[N2]</sup><sup>[N3]</sup>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="imagem-container-externo">
+                    <div class="imagem-container">
+                        <img src="imagens/abobora-maxima.png" alt="Abóbora grande de inverno biológica, de polpa laranja densa">
+                    </div>
+                </div>
+                <p class="imagem-legenda">Imagem ilustrativa de abóbora grande de inverno (<em>Cucurbita maxima</em>) biológica, com polpa laranja densa.</p>
+            </div>
+        </div>
+
+        <section id="apresentacao">
+            <h3>1. Apresentação / Descrição</h3>
+            <p>
+                A <strong>abóbora grande de polpa densa</strong> deste guia corresponde, de forma geral, a variedades de
+                <strong><em>Cucurbita maxima</em></strong> com frutos médios a grandes, casca relativamente espessa e
+                firme, polpa laranja ou amarelo-alaranjada e textura <strong>carnuda e pouco fibrosa</strong>. São as
+                chamadas <em>winter squash</em>, abóboras de inverno que se colhem bem maduras e podem ser armazenadas
+                durante vários meses em boas condições. :contentReference[oaicite:0]{index=0}
+            </p>
+            <p>
+                Esta espécie inclui cultivares como as abóboras do tipo <em>Hubbard</em>, <em>kabocha</em>,
+                <em>red kuri</em> (potimarron) e outras formas regionais de abóbora de guarda. Em Portugal, muitas
+                abóboras de casca espessa e carne densa usadas em <strong>sobremesas, sopas ricas e purés</strong>
+                pertencem maioritariamente a este grupo, por vezes designadas por abóbora-menina, abóbora de serra ou
+                simplesmente “abóbora grande” em contexto tradicional.
+            </p>
+            <p>
+                As plantas são anuais, vigorosas, com <strong>ramos rasteiros longos</strong> que ocupam bastante
+                espaço na horta, folhas grandes e flores amarelas. Os frutos de <em>C. maxima</em> tendem a ter pedúnculo
+                mais espesso, cilíndrico, por vezes esponjoso, e casca menos lenhificada do que algumas abóboras
+                decorativas, mas suficientemente resistente para assegurar conservação prolongada. :contentReference[oaicite:1]{index=1}
+            </p>
+            <p>
+                Do ponto de vista nutricional, a polpa apresenta <strong>teor moderado de hidratos de carbono e fibra</strong>,
+                e é especialmente rica em <strong>carotenóides</strong> (provitamina A) e outros compostos bioactivos
+                como fenólicos e flavonóides, com potencial antioxidante e funcional. :contentReference[oaicite:2]{index=2}
+            </p>
+            <p class="referencia-nota">
+                Referência(s) de suporte para a descrição:
+                <sup>[D1]</sup><sup>[D2]</sup><sup>[D3]</sup>
+            </p>
+        </section>
+
+        <section id="sazonalidade">
+            <h3>2. Sazonalidade (Portugal continental)</h3>
+            <p>
+                A abóbora de inverno (<em>Cucurbita maxima</em>) é tipicamente uma cultura de <strong>primavera-verão</strong>,
+                cuja colheita se faz no <strong>final do verão e outono</strong>, sendo depois armazenada e consumida ao
+                longo do outono e inverno.
+            </p>
+            <ul>
+                <li>
+                    <strong>Sementeira:</strong> em geral de <strong>março a abril</strong>, em tabuleiros ou estufa fria,
+                    ou diretamente no local a partir de abril/maio, quando o solo já aqueceu e não há risco de geadas.
+                    :contentReference[oaicite:3]{index=3}
+                </li>
+                <li>
+                    <strong>Transplante:</strong> quando as plântulas têm 3–4 folhas verdadeiras e as temperaturas mínimas
+                    já são amenas (fim da primavera). Mantém-se espaçamentos generosos (1,5–2&nbsp;m) devido ao porte
+                    da planta.
+                </li>
+                <li>
+                    <strong>Colheita:</strong> de <strong>fim de verão até outono</strong> (aprox. agosto–outubro),
+                    quando a casca está endurecida, a cor bem desenvolvida e o pedúnculo começa a secar. Em sistemas
+                    tradicionais, deixa-se maturar no campo e depois cura-se em local seco e ventilado.
+                    :contentReference[oaicite:4]{index=4}
+                </li>
+                <li>
+                    <strong>Disponibilidade sazonal:</strong> graças à boa capacidade de conservação em local fresco,
+                    seco e escuro, a abóbora pode manter-se consumível por <strong>5–6 meses</strong>, sendo um clássico
+                    hortícola de outono-inverno em Portugal. :contentReference[oaicite:5]{index=5}
+                </li>
+                <li>
+                    <strong>Consociação / rotação:</strong> planta exigente em espaço e nutrientes; adapta-se bem a
+                    bordaduras de talhões, consociada com milho e leguminosas (sistema “três irmãs” adaptado), e deve
+                    evitar-se a sucessão direta com outras cucurbitáceas (curgete, pepino) para reduzir pressão de
+                    doenças do solo.
+                </li>
+            </ul>
+            <p class="nota">
+                Em modo biológico em Portugal, é frequente consumir abóbora fresca sobretudo de
+                <strong>outubro a fevereiro</strong>, ainda que possam existir frutos bem conservados para além desse
+                período.
+            </p>
+        </section>
+
+        <section id="como-consumir">
+            <h3>3. Como consumir</h3>
+            <p>
+                A abóbora grande de polpa densa é extremamente versátil. A polpa pode ser consumida <strong>cozida,
+                assada, estufada</strong> ou usada em <strong>doces tradicionais</strong>. Também se pode usar crua, em
+                pequenas quantidades, ralada em saladas ou salteados rápidos.
+            </p>
+            <ul>
+                <li>
+                    <strong>Sopas e cremes:</strong> talvez o uso mais típico em Portugal – sopas e cremes de abóbora,
+                    muitas vezes combinada com cenoura, alho-francês, batata-doce ou leguminosas.
+                </li>
+                <li>
+                    <strong>Assada no forno:</strong> em cubos ou fatias, com azeite e ervas aromáticas (alecrim, tomilho,
+                    salva). A textura densa permite assados em travessa, acompanhamentos ou base de saladas mornas.
+                </li>
+                <li>
+                    <strong>Puré e guarnições:</strong> puré de abóbora como acompanhamento, misturado com batata ou
+                    outras raízes, ou usado para enriquecer massas, arrozes e recheios de tartes salgadas.
+                </li>
+                <li>
+                    <strong>Pratos de tacho e caris:</strong> cubos de abóbora em guisados, caris vegetarianos, pratos de
+                    leguminosas (feijão, grão, lentilhas) e estufados de inspiração asiática ou mediterrânica.
+                </li>
+                <li>
+                    <strong>Doces e sobremesas:</strong> doce de abóbora tradicional, tartes, bolos húmidos e pudins
+                    aproveitam o sabor doce natural da polpa. :contentReference[oaicite:6]{index=6}
+                </li>
+                <li>
+                    <strong>Consumo cru (em pequenas quantidades):</strong> polpa ralada pode ser usada em saladas,
+                    salteados rápidos ou como base de “saladas cruas” de outono, mas a textura é geralmente mais
+                    apreciada cozinhada.
+                </li>
+                <li>
+                    <strong>Cuidados gerais:</strong> tal como outras cucurbitáceas, abóboras cultivadas em contexto
+                    doméstico devem evitar cruzamentos com variedades ornamentais amargas; frutos com sabor
+                    acentuadamente amargo não devem ser consumidos (possível presença de cucurbitacinas em excesso).
+                </li>
+            </ul>
+        </section>
+
+        <section id="receitas">
+            <h3>4. Receitas e preparados (Top 10)</h3>
+            <p>
+                Exemplos de receitas em português onde a abóbora de polpa densa (<em>C. maxima</em>) funciona
+                particularmente bem. Pelo menos cinco têm referência explícita em português (Portugal ou Brasil).
+            </p>
+            <ol>
+                <li>
+                    <strong>Sopa de abóbora (versão saudável PNPS/DGS)</strong> – sopa cremosa de abóbora promovida
+                    pelo Programa Nacional para a Promoção da Alimentação Saudável, com foco em baixo teor de sal e
+                    aproveitamento de hortícolas. :contentReference[oaicite:7]{index=7}
+                </li>
+                <li>
+                    <strong>Sopa de abóbora cremosa</strong> – receita vegetariana em blog português de alimentação
+                    saudável, com abóbora, especiarias e opção de congelação. :contentReference[oaicite:8]{index=8}
+                </li>
+                <li>
+                    <strong>Sopa de abóbora com laranja</strong> – combinação típica de outono, com toque cítrico,
+                    proposta pelo projeto Prato Certo. :contentReference[oaicite:9]{index=9}
+                </li>
+                <li>
+                    <strong>Abóbora assada no forno com cebola roxa e queijo feta</strong> – receita em português com
+                    abóbora assada, azeite e feta, ótima como acompanhamento ou prato vegetariano. :contentReference[oaicite:10]{index=10}
+                </li>
+                <li>
+                    <strong>Abóbora assada no forno simples</strong> – versões portuguesas e brasileiras de abóbora
+                    assada em cubos com azeite e especiarias, a usar como acompanhamento, em saladas ou para sopas.
+                    :contentReference[oaicite:11]{index=11}
+                </li>
+                <li>
+                    <strong>Caril de abóbora</strong> – receitas portuguesas de caril de abóbora (por exemplo com
+                    espinafres, feijão-manteiga ou grão-de-bico) que usam cubos de abóbora de polpa densa como base.
+                    :contentReference[oaicite:12]{index=12}
+                </li>
+                <li>
+                    <strong>Doce de abóbora tradicional</strong> – versões de doce de abóbora caseiro (Portugal),
+                    incluindo combinações com laranja e frutos secos, ideais para conservar em frascos.
+                    :contentReference[oaicite:13]{index=13}
+                </li>
+                <li>
+                    <strong>Abóbora assada com queijo</strong> – abóbora assada no forno com queijo creme e queijos
+                    derretidos, em travessa para partilhar. :contentReference[oaicite:14]{index=14}
+                </li>
+                <li>
+                    <strong>Puré de abóbora</strong> – muitas das receitas de sopa ou abóbora assada podem ser
+                    simplificadas para produzir puré de abóbora, usado depois em tartes, bolos, panquecas e pão
+                    enriquecido (mesmo quando a receita fala em “pumpkin puree” em inglês).
+                </li>
+                <li>
+                    <strong>Abóbora em risotto ou massas</strong> – receitas (sobretudo em blogs brasileiros ou
+                    portugueses) usam abóbora assada ou salteada em risottos ou massas, onde a polpa densa é uma
+                    excelente base cremosa.
+                </li>
+            </ol>
+        </section>
+
+        <section id="beneficios">
+            <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+            <p>
+                A abóbora de inverno (<em>Cucurbita maxima</em>) tem sido estudada pela sua composição rica em
+                <strong>carotenóides</strong> (β-caroteno, α-caroteno, luteína, zeaxantina), compostos fenólicos,
+                fibras e minerais, que contribuem para o interesse nutricional e funcional. :contentReference[oaicite:15]{index=15}
+            </p>
+            <ul>
+                <li>
+                    <strong>Baixo valor energético e densidade nutricional:</strong> a polpa apresenta poucas calorias
+                    por 100&nbsp;g, com quantidades relevantes de fibra, potássio, vitamina C e, sobretudo, provitamina
+                    A (carotenóides). Guias portugueses confirmam a abóbora como alimento de baixo valor energético e
+                    boa fonte de vitamina A e carotenos. :contentReference[oaicite:16]{index=16}
+                </li>
+                <li>
+                    <strong>Carotenóides e saúde ocular / imunitária:</strong> revisões sobre abóbora e suas frações
+                    destacam o papel dos carotenóides (β-caroteno, luteína, zeaxantina) na proteção da visão, função
+                    imunitária e defesa antioxidante. :contentReference[oaicite:17]{index=17}
+                </li>
+                <li>
+                    <strong>Potencial cardiometabólico:</strong> alguns estudos em modelos animais e in vitro sugerem
+                    que extratos de polpa e sementes de abóbora podem ter efeitos <strong>antihiperglicémicos e
+                    antihiperlipidémicos</strong>, ajudando a modular glicémia e lípidos sanguíneos. :contentReference[oaicite:18]{index=18}
+                </li>
+                <li>
+                    <strong>Fibra e saciedade:</strong> o teor de fibra, ainda que moderado, contribui para a sensação
+                    de saciedade, o controlo do trânsito intestinal e o suporte a um padrão alimentar saudável, sobretudo
+                    quando a abóbora é usada em sopas e pratos ricos em hortícolas.
+                </li>
+                <li>
+                    <strong>Outros compostos bioactivos:</strong> revisões recentes realçam que diferentes partes da
+                    abóbora (casca, polpa, sementes) são ricas em compostos fenólicos, com potencial antioxidante e
+                    anti-inflamatório, o que sustenta o interesse da abóbora como alimento funcional. :contentReference[oaicite:19]{index=19}
+                </li>
+            </ul>
+            <p class="nota-aviso">
+                Esta secção resume evidência científica disponível, mas não substitui aconselhamento médico
+                individual. Pessoas com doenças específicas, alergias ou medicação crónica devem seguir as orientações
+                do(a) seu/sua profissional de saúde.
+            </p>
+        </section>
+
+        <section id="nutricao">
+            <h3>6. Propriedades nutricionais</h3>
+            <p>
+                Os valores variam entre cultivares de abóbora (<em>C. maxima</em>) e métodos de análise, mas diferentes
+                tabelas de composição e guias nutricionais apontam para um perfil semelhante ao da abóbora crua e
+                cozida em geral: muito baixo valor energético, hidratos de carbono moderados, alguma fibra e teor
+                relevante de carotenóides. :contentReference[oaicite:20]{index=20}
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Componente</th>
+                        <th>Abóbora (<em>C. maxima</em>) crua (100 g)</th>
+                        <th>Abóbora cozida/assada simples (100 g)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Energia</td>
+                        <td>≈ 20–30 kcal</td>
+                        <td>≈ 25–40 kcal (dependendo do teor de água e concentração)</td>
+                    </tr>
+                    <tr>
+                        <td>Água</td>
+                        <td>≈ 90–93 g</td>
+                        <td>Ligeiramente menor (perda de água na cozedura/assado)</td>
+                    </tr>
+                    <tr>
+                        <td>Hidratos de carbono (totais)</td>
+                        <td>≈ 4–7 g</td>
+                        <td>≈ 5–8 g</td>
+                    </tr>
+                    <tr>
+                        <td>Fibra</td>
+                        <td>≈ 1,5–3 g</td>
+                        <td>≈ 2–3 g</td>
+                    </tr>
+                    <tr>
+                        <td>Proteína</td>
+                        <td>≈ 1–2 g</td>
+                        <td>≈ 1–2 g</td>
+                    </tr>
+                    <tr>
+                        <td>Lípidos totais</td>
+                        <td>≈ 0,1–0,5 g</td>
+                        <td>≈ 0,1–0,5 g (sem contar com gordura adicionada na receita)</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina A (equivalentes de retinol)</td>
+                        <td>Fonte importante de provitamina A (centenas de µg/100 g)</td>
+                        <td>Teor semelhante ou ligeiramente mais disponível após cozedura</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina C</td>
+                        <td>≈ 8–15 mg</td>
+                        <td>Ligeira diminuição com a cozedura, dependendo do tempo/temperatura</td>
+                    </tr>
+                    <tr>
+                        <td>Potássio</td>
+                        <td>≈ 200–300 mg</td>
+                        <td>Valores semelhantes ou um pouco mais concentrados</td>
+                    </tr>
+                    <tr>
+                        <td>Carotenóides totais</td>
+                        <td>Concentração relevante; valores variam amplamente entre cultivares</td>
+                        <td>Muitas vezes com <strong>boa estabilidade</strong> em assados e secagem moderada</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="referencia-nota">
+                Valores aproximados, adaptados de tabelas de composição de alimentos e estudos sobre abóboras de inverno.
+                <sup>[N1]</sup><sup>[N2]</sup><sup>[N3]</sup>
+            </p>
+        </section>
+
+        <section id="utilidades">
+            <h3>7. Utilidades e aplicações (não apenas alimentares)</h3>
+            <ul>
+                <li>
+                    <strong>Alimentação humana:</strong> base importante de sopas e pratos de inverno; ingrediente-chave
+                    em doces, conservas e pratos tradicionais de diversas regiões.
+                </li>
+                <li>
+                    <strong>Autonomia alimentar e armazenamento:</strong> por conservar-se bem durante meses, a abóbora de
+                    inverno é excelente em sistemas que procuram reduzir dependência de compras frequentes e aproveitar
+                    a abundância sazonal.
+                </li>
+                <li>
+                    <strong>Aproveitamento integral:</strong> além da polpa, casca (em algumas receitas) e sementes podem
+                    ser aproveitadas na alimentação ou para produção de óleo, quando se faz extração artesanal.
+                </li>
+                <li>
+                    <strong>Biomassa e compostagem:</strong> gera grande quantidade de restos (casca, fibras, raízes,
+                    folhas), úteis para compostagem, devolvendo matéria orgânica ao solo.
+                </li>
+                <li>
+                    <strong>Função educativa:</strong> é uma cultura excelente para ensinar sobre ciclos sazonais, curas
+                    pós-colheita e técnicas de conservação em projetos educativos ou hortas comunitárias.
+                </li>
+            </ul>
+        </section>
+
+        <section id="permacultura">
+            <h3>8. Grau de funcionalidade em permacultura</h3>
+            <p><strong>Classificação proposta: 9/10</strong></p>
+            <ul class="lista-permacultura">
+                <li>
+                    <strong>Funções principais:</strong> produção abundante de alimento denso, de boa conservação;
+                    grande volume de biomassa; proteção do solo (cobertura viva) quando conduzida em rasteiro.
+                </li>
+                <li>
+                    <strong>Vantagens:</strong> elevada produtividade por planta, boa armazenagem sem necessidade de
+                    frio (em condições adequadas), ligação forte à alimentação de outono-inverno e a pratos reconfortantes
+                    e nutritivos.
+                </li>
+                <li>
+                    <strong>Limitações:</strong> ocupa muito espaço e pode ser exigente em nutrientes; em espaços
+                    pequenos, pode competir com outras culturas; exige boa gestão de rotações para evitar acumulação de
+                    pragas/doenças em cucurbitáceas.
+                </li>
+            </ul>
+            <p class="nota">
+                A pontuação elevada reflete a combinação de <strong>produção abundante</strong>, 
+                <strong>capacidade de armazenamento</strong> e <strong>integração em sistemas regenerativos</strong>
+                onde a biomassa e a cobertura do solo são valorizadas.
+            </p>
+        </section>
+
+        <section id="referencias">
+            <h3>9. Referências</h3>
+
+            <div class="referencias-subsecao">9.1. Descrição, botânica e contexto</div>
+            <ul class="referencias-lista">
+                <li>
+                    <strong>[D1]</strong> Gardenia. &quot;<em>Cucurbita maxima</em> – Winter Squash&quot; – descrição de
+                    abóboras de inverno, origens, necessidades de cultivo e usos. Disponível em:
+                    <a href="https://www.gardenia.net/plant/cucurbita-maxima-winter-squash" target="_blank" rel="noopener">
+                        https://www.gardenia.net/plant/cucurbita-maxima-winter-squash
+                    </a>.
+                </li>
+                <li>
+                    <strong>[D2]</strong> Le Monde (2024). &quot;From pumpkin to zucchini, squash is winter's culinary star&quot; –
+                    artigo de divulgação (em inglês) sobre abóboras e abobrinhas, com referência às principais espécies
+                    cultivadas (<em>C. maxima</em>, <em>C. pepo</em>, <em>C. moschata</em>). Disponível em:
+                    <a href="https://www.lemonde.fr/en/lifestyle/article/2024/12/12/from-pumpkin-to-zucchini-squash-is-winter-s-culinary-star_6735997_37.html" target="_blank" rel="noopener">
+                        https://www.lemonde.fr/en/lifestyle/article/2024/12/12/from-pumpkin-to-zucchini-squash-is-winter-s-culinary-star_6735997_37.html
+                    </a>.
+                </li>
+                <li>
+                    <strong>[D3]</strong> Revisões sobre a composição e desenvolvimento do fruto de abóbora e abóboras
+                    de inverno, como:
+                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6766813/" target="_blank" rel="noopener">
+                        https://pmc.ncbi.nlm.nih.gov/articles/PMC6766813/
+                    </a>.
+                </li>
+            </ul>
+
+            <div class="referencias-subsecao">9.2. Sazonalidade e cultivo</div>
+            <ul class="referencias-lista">
+                <li>
+                    <strong>[S1]</strong> Prato Certo. &quot;Calendário sazonal – Abóbora&quot; – informação sobre época de
+                    colheita e conservação de abóboras em Portugal. Disponível em:
+                    <a href="https://www.pratocerto.pt/produtos-e-produtores/calendario-sazonal/abobora" target="_blank" rel="noopener">
+                        https://www.pratocerto.pt/produtos-e-produtores/calendario-sazonal/abobora
+                    </a>.
+                </li>
+                <li>
+                    <strong>[S2]</strong> Prato Certo. &quot;Calendário sazonal&quot; (geral) – visão global de hortícolas e frutas
+                    de época em Portugal. Disponível em:
+                    <a href="https://www.pratocerto.pt/produtos-e-produtores/calendario-sazonal" target="_blank" rel="noopener">
+                        https://www.pratocerto.pt/produtos-e-produtores/calendario-sazonal
+                    </a>.
+                </li>
+                <li>
+                    <strong>[S3]</strong> Associação Portuguesa de Nutrição / APN. &quot;Sazonalidade – Inverno&quot; e outras
+                    brochuras sobre sazonalidade de hortícolas em Portugal. Exemplo:
+                    <a href="https://www.apn.org.pt/documentos/marcadores_e_folhetos/Brochura_calendarios_producao_nacional.pdf" target="_blank" rel="noopener">
+                        https://www.apn.org.pt/documentos/marcadores_e_folhetos/Brochura_calendarios_producao_nacional.pdf
+                    </a>.
+                </li>
+                <li>
+                    <strong>[S4]</strong> Fontes de divulgação agrícola portuguesas (Agroportal, ADL, etc.) com calendários
+                    de frutas e legumes da época. Exemplo:
+                    <a href="https://www.agroportal.pt/calendario-de-frutas-e-legumes-na-epoca-certa/" target="_blank" rel="noopener">
+                        https://www.agroportal.pt/calendario-de-frutas-e-legumes-na-epoca-certa/
+                    </a>.
+                </li>
+            </ul>
+
+            <div class="referencias-subsecao">9.3. Propriedades nutricionais</div>
+            <ul class="referencias-lista">
+                <li>
+                    <strong>[N1]</strong> INSA. &quot;Tabela da Composição de Alimentos&quot; (PortFIR) – valores para abóbora crua
+                    e cozida em Portugal. Acesso geral em:
+                    <a href="https://portfir-insa.min-saude.pt/foodcomp/" target="_blank" rel="noopener">
+                        https://portfir-insa.min-saude.pt/foodcomp/
+                    </a>.
+                </li>
+                <li>
+                    <strong>[N2]</strong> Associação Portuguesa de Nutrição (APN). &quot;Abóbora à lupa&quot; – guia nutricional
+                    sobre abóbora, com dados de energia, fibra, vitaminas e minerais. Disponível em:
+                    <a href="https://www.apn.org.pt/documentos/Guias_APN/Guia_Abobora_a_lupa.pdf" target="_blank" rel="noopener">
+                        https://www.apn.org.pt/documentos/Guias_APN/Guia_Abobora_a_lupa.pdf
+                    </a>.
+                </li>
+                <li>
+                    <strong>[N3]</strong> Estudos de composição de abóboras e abóboras de inverno, por exemplo:
+                    <a href="https://www.2000kcal.cz/lang/en/values/hubbard-squash-964" target="_blank" rel="noopener">
+                        https://www.2000kcal.cz/lang/en/values/hubbard-squash-964
+                    </a> e
+                    <a href="https://www.researchgate.net/publication/286533968_Nutritive_value_of_some_varieties_of_pumpkin_and_winter_squash_grown_in_Germany" target="_blank" rel="noopener">
+                        https://www.researchgate.net/publication/286533968_Nutritive_value_of_some_varieties_of_pumpkin_and_winter_squash_grown_in_Germany
+                    </a>.
+                </li>
+            </ul>
+
+            <div class="referencias-subsecao">9.4. Benefícios e saúde</div>
+            <ul class="referencias-lista">
+                <li>
+                    <strong>[M1]</strong> Kulczyński B. et al. &quot;The Profile of Carotenoids and Other Bioactive Molecules in
+                    Pumpkin Fruits (<em>Cucurbita maxima</em> Duchesne) and Their Therapeutic Implications&quot;,
+                    <em>Molecules</em>, 2019. Disponível em:
+                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6766813/" target="_blank" rel="noopener">
+                        https://pmc.ncbi.nlm.nih.gov/articles/PMC6766813/
+                    </a>.
+                </li>
+                <li>
+                    <strong>[M2]</strong> Men X. et al. &quot;Physicochemical, nutritional and functional properties of pumpkin
+                    (<em>Cucurbita</em> spp.)&quot;, revisão sobre composição e propriedades funcionais da abóbora.
+                    Disponível em:
+                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7914307/" target="_blank" rel="noopener">
+                        https://pmc.ncbi.nlm.nih.gov/articles/PMC7914307/
+                    </a>.
+                </li>
+                <li>
+                    <strong>[M3]</strong> Hussain A. et al. &quot;A comprehensive review of functional ingredients from pumpkin&quot; –
+                    revisão sobre compostos bioactivos em abóbora e seus possíveis efeitos na saúde. Disponível em:
+                    <a href="https://www.sciencedirect.com/science/article/pii/S2772753X22000557" target="_blank" rel="noopener">
+                        https://www.sciencedirect.com/science/article/pii/S2772753X22000557
+                    </a>.
+                </li>
+                <li>
+                    <strong>[M4]</strong> Trabalhos recentes sobre conteúdo de carotenoides, fenólicos e minerais em
+                    abóbora <em>C. maxima</em>, como por exemplo:
+                    <a href="https://agrifoodscience.com/index.php/TURJAF/article/view/5129" target="_blank" rel="noopener">
+                        https://agrifoodscience.com/index.php/TURJAF/article/view/5129
+                    </a> e
+                    <a href="https://www.journal.ubb.ac.id/aquatropica/article/download/6363/2709" target="_blank" rel="noopener">
+                        https://www.journal.ubb.ac.id/aquatropica/article/download/6363/2709
+                    </a>.
+                </li>
+            </ul>
+
+            <div class="referencias-subsecao">9.5. Consumo e culinária</div>
+            <ul class="referencias-lista">
+                <li>
+                    <strong>[C1]</strong> Diversos livros e blogs de culinária em português e inglês que incluem capítulos
+                    sobre abóbora e abóboras de inverno, destacando usos em sopas, assados, doces e pratos de forno.
+                </li>
+            </ul>
+
+            <div class="referencias-subsecao">9.6. Receitas e preparados</div>
+            <ul class="referencias-lista">
+                <li><strong>[R1]</strong> DGS / PNPS. &quot;Sopa de abóbora&quot; – <a href="https://alimentacaosaudavel.dgs.pt/receitas/sopa-de-abobora/" target="_blank" rel="noopener">https://alimentacaosaudavel.dgs.pt/receitas/sopa-de-abobora/</a></li>
+                <li><strong>[R2]</strong> Made by Choices. &quot;Sopa de abóbora cremosa&quot; – <a href="https://madebychoices.pt/sopa-de-abobora-cremosa/" target="_blank" rel="noopener">https://madebychoices.pt/sopa-de-abobora-cremosa/</a></li>
+                <li><strong>[R3]</strong> Prato Certo. &quot;Sopa de abóbora com laranja&quot; – <a href="https://www.pratocerto.pt/ca-em-casa/receitas/sopa-de-abobora-com-laranja" target="_blank" rel="noopener">https://www.pratocerto.pt/ca-em-casa/receitas/sopa-de-abobora-com-laranja</a></li>
+                <li><strong>[R4]</strong> Oliveira da Serra. &quot;Sopa de abóbora&quot; – <a href="https://www.oliveiradaserra.pt/pt/receitas/sopa-de-abobora/" target="_blank" rel="noopener">https://www.oliveiradaserra.pt/pt/receitas/sopa-de-abobora/</a></li>
+                <li><strong>[R5]</strong> Gallo. &quot;Abóbora assada no forno com cebola roxa e queijo feta&quot; – <a href="https://www.galloportugal.com/receita/abobora-assada-no-forno-com-cebola-roxa-e-queijo-feta/" target="_blank" rel="noopener">https://www.galloportugal.com/receita/abobora-assada-no-forno-com-cebola-roxa-e-queijo-feta/</a></li>
+                <li><strong>[R6]</strong> A Moda do Flávio. &quot;Receita de abóbora assada no forno com queijo&quot; – <a href="https://amodadoflavio.pt/2017/05/receita-de-abobora-assada/" target="_blank" rel="noopener">https://amodadoflavio.pt/2017/05/receita-de-abobora-assada/</a></li>
+                <li><strong>[R7]</strong> Food From Portugal. &quot;Doce de abóbora caseiro&quot; – <a href="https://www.foodfromportugal.com/pt-pt/receitas/doce-abobora/" target="_blank" rel="noopener">https://www.foodfromportugal.com/pt-pt/receitas/doce-abobora/</a></li>
+                <li><strong>[R8]</strong> Continente. &quot;Doce de abóbora, laranja e amêndoas&quot; – <a href="https://feed.continente.pt/receitas/doce-de-abobora-laranja-e-amendoas" target="_blank" rel="noopener">https://feed.continente.pt/receitas/doce-de-abobora-laranja-e-amendoas</a></li>
+                <li><strong>[R9]</strong> Parmalat. &quot;Caril de abóbora e grão com especiarias&quot; – <a href="https://parmalat.pt/receita/caril-de-abobora-e-grao-com-especiarias/" target="_blank" rel="noopener">https://parmalat.pt/receita/caril-de-abobora-e-grao-com-especiarias/</a></li>
+                <li><strong>[R10]</strong> The Therapist. &quot;Caril de abóbora e espinafres&quot; – <a href="https://thetherapist.pt/blogs/receitas/receitas-saudaveis-e-simples-caril-de-abobora-e-espinafres" target="_blank" rel="noopener">https://thetherapist.pt/blogs/receitas/receitas-saudaveis-e-simples-caril-de-abobora-e-espinafres</a></li>
+            </ul>
+        </section>
+
+        <div class="topo-link">
+            <a href="#topo">Voltar ao topo ▲</a>
+        </div>
+    </article>
+</main>
+</body>
+</html>
