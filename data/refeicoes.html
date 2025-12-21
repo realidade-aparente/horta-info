@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <title>Receitas de refeições com [Ingredientes selecionados]</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="page-refeicoes">
+  <header class="site-header">
+    <h1>Refeições com [Ingredientes selecionados]</h1>
+    <nav>
+      <a href="../index.html">Início</a>
+      <a href="refeicoes.html">Refeições</a>
+	  <a href="">Sumos (brevemente)</a>
+      <a href="">Smoothies (brevemente)</a>
+    </nav>
+  </header>
+
+  <section class="banner banner-refeicoes">
+    <div class="banner-content">
+      <h2>Receitas de refeições</h2>
+      <p>Descobre receitas de refeições completas, filtradas pelos ingredientes que tens em casa.</p>
+    </div>
+  </section>
+
+  <main class="conteudo">
+    <section>
+      <h2>Filtros de dieta</h2>
+      <div id="filtros-dieta" class="filtros-dieta">
+        <label>
+			<input type="checkbox" id="chk-vegetariana">
+			Vegetariana
+		</label>
+
+		<label>
+			<input type="checkbox" id="chk-vegan">
+			Vegan
+		</label>
+
+		<label>
+			<input type="checkbox" id="chk-raw-vegan">
+			Raw vegan
+		</label>
+      
+    
+    
+    
+
+
+        <label><input type="checkbox" id="filtro-sem-gluten"> Sem glúten</label>
+        <label><input type="checkbox" id="filtro-sem-lactose"> Sem lactose</label>
+        <label><input type="checkbox" id="filtro-sem-soja"> Sem soja</label>
+
+</div>
+    </section>
+
+    <section>
+      <h2>Escolhe os ingredientes</h2>
+      <p>Marca os ingredientes que tens em casa e vê as receitas possíveis.
+	  <div id="contador-ingredientes" class="contador-ingredientes">(0 ingredientes disponíveis)</div></p>
+      
+	  <div id="lista-ingredientes" class="lista-ingredientes">
+      </div>
+
+      <div class="botoes-acoes">
+        <button id="btn-procurar">Procurar receitas</button>
+        <button id="btn-limpar" type="button">Limpar seleções</button>
+      
+    
+    
+    
+
+</div>
+    </section>
+
+    <section>
+      <h2>Resultados</h2>
+      <p id="contador-resultados">(0 receitas encontradas)</p>
+      <div id="resultados">
+    
+    
+    
+
+</div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 – Receitas com [Plantas]</p>
+  </footer>
+
+  <script>
+    const RECIPE_JSON_URL = "refeicoes/receitas_refeicoes.json";
+  </script>
+  <script src="../receitas_com_contador_e_link_v2.js"></script>
+</body>
+</html>
