@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Abóbora Grande – Receitas Vegetarianas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header{position:static;z-index:60;background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria));color:#fff;padding:1rem 1rem;box-shadow:0 2px 4px rgba(0,0,0,.12)}
+main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+<header>
+  <h1>Abóbora Grande — Receitas Vegetarianas</h1>
+  <p>Preparações vegetarianas com abóbora de polpa densa, com quantidades e todos os passos incluídos</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../espontaneas.html">Plantas espontâneas comestíveis</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html" class="ativa">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-de-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+
+<main>
+<article>
+
+<p><strong>FICHEIRO — Abóbora Grande de Polpa Densa (Cucurbita maxima) — Receitas Vegetarianas<br>
+(versão com quantidades e todos os passos incluídos)</strong></p>
+
+<a id="1-indice-rapido"></a>
+<h2> 1) Índice rápido</h2>
+
+<p>SECÇÃO 1 — ÍNDICE (R1–R10)</p>
+
+<div class="links-dieta">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegan/abobora-grande_receitas_vegan.html">(Vegan)</a>
+    <a href="/data/refeicoes/raw-vegan/abobora-grande_receitas_raw-vegan.html">(Comida Viva)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+<strong>Nomes das Receitas:</strong>
+<ol>
+<li><a href="#r1">R1. Abóbora recheada no forno</a></li>
+<li><a href="#r2">R2. Abóbora japonesa assada em cubos com ricota</a></li>
+<li><a href="#r3">R3. Abóbora refogada com tomate e salsa</a></li>
+<li><a href="#r4">R4. Abóbora com ovo na frigideira</a></li>
+<li><a href="#r5">R5. Purê de abóbora cabotiá com manteiga</a></li>
+<li><a href="#r6">R6. Tacos de abóbora kabocha assada com queijo</a></li>
+<li><a href="#r7">R7. Abóbora kabocha com manteiga dourada, amendoim e lima</a></li>
+<li><a href="#r8">R8. Chilli vegetariano de abóbora assada e feijão preto</a></li>
+<li><a href="#r9">R9. Abóbora estufada com feijão preto fermentado</a></li>
+<li><a href="#r10">R10. Nhoque de abóbora japonesa com manteiga e sálvia</a></li>
+</ol>
+</div>
+
+<a id="2-resumo-das-receitas"></a>
+<h2> 2) Resumo das Receitas</h2>
+
+<p>SECÇÃO 2 — RESUMO DAS RECEITAS</p>
+
+<a id="abobora-recheada-no-forno"></a>
+<h4>R1. Abóbora recheada no forno</h4>
+<p>Abóbora inteira assada e recheada com legumes salteados e queijo.</p>
+
+<a id="abobora-japonesa-assada-em-cubos-com-ricota"></a>
+<h4>R2. Abóbora japonesa assada em cubos com ricota</h4>
+<p>Cubos tostados no forno, temperados com alho e alecrim, servidos com ricota fresca.</p>
+
+<a id="abobora-refogada-com-tomate-e-salsa"></a>
+<h4>R3. Abóbora refogada com tomate e salsa</h4>
+<p>Refogado simples e caseiro com tomate, cebola e ervas.</p>
+
+<a id="abobora-com-ovo-na-frigideira"></a>
+<h4>R4. Abóbora com ovo na frigideira</h4>
+<p>Cozinhada rapidamente na frigideira com ovos mexidos ou inteiros.</p>
+
+<a id="pure-de-abobora-cabotia-com-manteiga"></a>
+<h4>R5. Purê de abóbora cabotiá com manteiga</h4>
+<p>Purê cremoso com manteiga e noz-moscada.</p>
+
+<a id="tacos-de-abobora-kabocha-assada-com-queijo"></a>
+<h4>R6. Tacos de abóbora kabocha assada com queijo</h4>
+<p>Tacos recheados com abóbora assada, queijo e especiarias.</p>
+
+<a id="abobora-kabocha-com-manteiga-dourada-amendoim-e-lima"></a>
+<h4>R7. Abóbora kabocha com manteiga dourada, amendoim e lima</h4>
+<p>Abóbora assada com especiarias, servida com iogurte, amendoim e manteiga aromática.</p>
+
+<a id="chilli-vegetariano-de-abobora-assada-e-feijao-preto"></a>
+<h4>R8. Chilli vegetariano de abóbora assada e feijão preto</h4>
+<p>Chilli profundo e rico em sabor com chocolate negro.</p>
+
+<a id="abobora-estufada-com-feijao-preto-fermentado"></a>
+<h4>R9. Abóbora estufada com feijão preto fermentado</h4>
+<p>Prato chinês aromático com molho salgado e profundo.</p>
+
+<a id="nhoque-de-abobora-japonesa-com-manteiga-e-salvia"></a>
+<h4>R10. Nhoque de abóbora japonesa com manteiga e sálvia</h4>
+<p>Nhoques macios servidos com manteiga e folhas crocantes de sálvia.</p>
+
+<a id="3-receitas-completas"></a>
+<h2> 3) Receitas completas</h2>
+
+<p>SECÇÃO 3 — RECEITAS COMPLETAS</p>
+
+<hr>
+<h3 id="r1">R1 — Abóbora recheada no forno</h3>
+<hr>
+
+<a id="1-introducao"></a>
+<h4>1) Introdução</h4>
+<p>Uma forma bonita e nutritiva de servir abóbora inteira como prato principal.</p>
+
+<a id="2-ingredientes"></a>
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>1 abóbora média (≈ 1,5 kg)</li>
+  <li>2 colheres de sopa de azeite</li>
+  <li>1 cebola média picada</li>
+  <li>2 dentes de alho picados</li>
+  <li>1 curgete média em cubos</li>
+  <li>1 cenoura média ralada</li>
+  <li>150 g de cogumelos laminados</li>
+  <li>150 g de queijo ralado</li>
+  <li>1 colher de chá de sal</li>
+  <li>½ colher de chá de pimenta</li>
+</ul>
+
+<a id="3-preparacao"></a>
+<h4>3) Preparação</h4>
+<ol>
+  <li>Cortar uma tampa na abóbora, retirar sementes e fibras.</li>
+  <li>Regar o interior com azeite e uma pitada de sal.</li>
+  <li>Assar a 180 ºC durante 30 minutos.</li>
+  <li>Refogar cebola e alho em azeite até dourar.</li>
+  <li>Juntar curgete, cenoura e cogumelos e cozinhar 8–10 min.</li>
+  <li>Temperar com sal e pimenta.</li>
+  <li>Rechear a abóbora pré-assada com o salteado.</li>
+  <li>Cobrir com queijo e levar ao forno mais 15–20 min.</li>
+  <li>Servir quente.</li>
+</ol>
+
+<a id="4-fonte"></a>
+<h4>4) Fonte</h4>
+<p>https://www.anitahealthy.com/abobora-recheada-no-forno/</p>
+
+<hr>
+<h3 id="r2">R2 — Abóbora japonesa assada em cubos com ricota</h3>
+<hr>
+
+<h4>1) Introdução</h4>
+<p>Acompanhamento simples que realça o sabor natural da abóbora.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>1 kg de abóbora japonesa em cubos</li>
+  <li>3 dentes de alho esmagados</li>
+  <li>2 ramos de alecrim</li>
+  <li>3 colheres de sopa de azeite</li>
+  <li>1 colher de chá de sal</li>
+  <li>½ colher de chá de pimenta</li>
+  <li>150 g de ricota fresca</li>
+</ul>
+
+<h4>3) Preparação</h4>
+<ol>
+  <li>Pré-aquecer o forno a 200 ºC.</li>
+  <li>Misturar a abóbora com azeite, alho, alecrim, sal e pimenta.</li>
+  <li>Espalhar num tabuleiro largo.</li>
+  <li>Assar 35–40 minutos, mexendo a meio.</li>
+  <li>Servir quente com ricota por cima.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>https://panelinha.com.br/receita/abobora-assada-em-cubos</p>
+
+<hr>
+<h3 id="r3">R3 — Abóbora refogada com tomate e salsa</h3>
+<hr>
+
+<h4>1) Introdução</h4>
+<p>Prato leve, simples e muito rápido.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>600 g de abóbora em cubos</li>
+  <li>1 colher de sopa de margarina</li>
+  <li>1 cebola pequena</li>
+  <li>2 dentes de alho</li>
+  <li>2 tomates maduros picados</li>
+  <li>2 colheres de sopa de salsa picada</li>
+  <li>1 colher de chá de sal</li>
+  <li>½ colher de chá de pimenta</li>
+</ul>
+
+<h4>3) Preparação</h4>
+<ol>
+  <li>Derreter a margarina numa panela e refogar a cebola.</li>
+  <li>Juntar o alho e cozinhar 1 min.</li>
+  <li>Adicionar a abóbora e envolver.</li>
+  <li>Juntar os tomates e metade da salsa.</li>
+  <li>Cozinhar tapado 15–20 min, mexendo.</li>
+  <li>Ajustar sal e pimenta.</li>
+  <li>Finalizar com salsa fresca.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>https://receitas.globo.com/tipos-de-prato/legumes-e-verduras/abobora-refogada-4ce3d6311c360e2fed000008.ghtml</p>
+
+<hr>
+<h3 id="r4">R4 — Abóbora com ovo na frigideira</h3>
+<hr>
+
+<h4>1) Introdução</h4>
+<p>Prato económico e rápido.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>500 g de abóbora em cubos</li>
+  <li>2 dentes de alho</li>
+  <li>½ cebola média</li>
+  <li>2 colheres de sopa de óleo</li>
+  <li>3 ovos</li>
+  <li>1 colher de chá de sal</li>
+</ul>
+
+<h4>3) Preparação</h4>
+<ol>
+  <li>Aquecer o óleo e refogar alho e cebola.</li>
+  <li>Juntar a abóbora e cozinhar 10–12 min até ficar macia.</li>
+  <li>Abrir espaço no centro e adicionar os ovos.</li>
+  <li>Mexer ligeiramente ou deixar escalfar.</li>
+  <li>Ajustar sal e servir.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>https://www.tudogostoso.com.br/receita/124490-abobora-com-ovo.html</p>
+
+<hr>
+<h3 id="r5">R5 — Purê de abóbora cabotiá com manteiga</h3>
+<hr>
+
+<h4>1) Introdução</h4>
+<p>Purê cremoso e aromático, ideal para acompanhar pratos principais.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>1 kg de abóbora cabotiá</li>
+  <li>1,5 L de água</li>
+  <li>2 colheres de sopa de manteiga</li>
+  <li>1 colher de chá de sal</li>
+  <li>¼ colher de chá de noz-moscada</li>
+  <li>½ colher de chá de pimenta</li>
+</ul>
+
+<h4>3) Preparação</h4>
+<ol>
+  <li>Cozinhar a abóbora em água até ficar bem macia.</li>
+  <li>Escorrer e esmagar ainda quente.</li>
+  <li>Juntar manteiga, sal, pimenta e noz-moscada.</li>
+  <li>Mexer até ficar homogéneo.</li>
+  <li>Servir quente.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>https://receitas.globo.com/tipos-de-prato/acompanhamentos/pure-de-abobora-cabotia-541089574d38852cf9000052.ghtml</p>
+
+<hr>
+<h3 id="r6">R6 — Tacos de abóbora kabocha assada com queijo</h3>
+<hr>
+
+<h4>1) Introdução</h4>
+<p>Receita muito saborosa de tacos vegetarianos.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>600 g de abóbora kabocha</li>
+  <li>8 tortilhas de milho</li>
+  <li>200 g de queijo mozzarella ou Oaxaca</li>
+  <li>1 colher de sopa de pimentão doce</li>
+  <li>½ colher de chá de cominhos</li>
+  <li>1 pepino médio, fatiado</li>
+  <li>1 lima, em gomos</li>
+</ul>
+
+<h4>3) Preparação</h4>
+<ol>
+  <li>Cortar a abóbora em fatias finas.</li>
+  <li>Misturar com azeite, pimentão e cominhos.</li>
+  <li>Assar a 200 ºC durante 25–30 min.</li>
+  <li>Aquecer as tortilhas.</li>
+  <li>Rechear com abóbora, queijo e pepino.</li>
+  <li>Servir com lima.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>https://www.bonappetit.com/recipe/roasted-squash-vampiro-tacos</p>
+
+<hr>
+<h3 id="r7">R7 — Abóbora kabocha com manteiga dourada, amendoim e lima</h3>
+<hr>
+
+<h4>1) Introdução</h4>
+<p>Sabor profundo e aromático com contraste entre crocante e cremoso.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>800 g de abóbora kabocha</li>
+  <li>3 colheres de sopa de manteiga</li>
+  <li>50 g de amendoim torrado</li>
+  <li>200 g de iogurte natural</li>
+  <li>1 colher de sopa de especiarias berbere</li>
+  <li>1 lima</li>
+</ul>
+
+<h4>3) Preparação</h4>
+<ol>
+  <li>Assar a abóbora em fatias 30–35 min a 190 ºC.</li>
+  <li>Derreter a manteiga numa frigideira até dourar.</li>
+  <li>Misturar iogurte com lima.</li>
+  <li>Servir a abóbora com o molho de iogurte, manteiga dourada e amendoim.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>https://www.bonappetit.com/recipe/berbere-kabocha-squash-brown-butter-peanuts-lime</p>
+
+<hr>
+<h3 id="r8">R8 — Chilli vegetariano de abóbora assada e feijão preto</h3>
+<hr>
+
+<h4>1) Introdução</h4>
+<p>Chilli profundo, com riqueza de especiarias e toque de chocolate.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>700 g de abóbora em cubos</li>
+  <li>2 latas de feijão preto (800 g escorrido)</li>
+  <li>1 cebola grande picada</li>
+  <li>3 dentes de alho</li>
+  <li>400 g de tomate pelado</li>
+  <li>1 colher de chá de cominhos</li>
+  <li>½ colher de chá de canela</li>
+  <li>20 g de chocolate negro</li>
+</ul>
+
+<h4>3) Preparação</h4>
+<ol>
+  <li>Assar a abóbora 25 min a 200 ºC.</li>
+  <li>Refogar cebola e alho.</li>
+  <li>Juntar feijão, tomate, especiarias e abóbora.</li>
+  <li>Cozinhar 20–30 min em lume brando.</li>
+  <li>Juntar chocolate no final.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>https://www.theguardian.com/food/2020/jan/20/thomasina-miers-recipe-for-vegetarian-chilli-with-roasted-squash-and-black-beans</p>
+
+<hr>
+<h3 id="r9">R9 — Abóbora estufada com feijão preto fermentado</h3>
+<hr>
+
+<h4>1) Introdução</h4>
+<p>Prato de inspiração chinesa com sabor intenso e salgado.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>600 g de abóbora kabocha em cubos</li>
+  <li>2 colheres de sopa de feijão preto fermentado</li>
+  <li>2 dentes de alho picados</li>
+  <li>1 colher de chá de gengibre ralado</li>
+  <li>2 colheres de sopa de óleo</li>
+  <li>300 ml de água</li>
+</ul>
+
+<h4>3) Preparação</h4>
+<ol>
+  <li>Aquecer o óleo e saltear alho e gengibre.</li>
+  <li>Juntar a abóbora e envolver bem.</li>
+  <li>Adicionar o feijão fermentado.</li>
+  <li>Juntar água e estufar 15–20 min.</li>
+  <li>Cozinhar até o molho reduzir ligeiramente.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>https://www.epicurious.com/recipes/food/views/braised-winter-squash-with-fermented-black-beans</p>
+
+<hr>
+<h3 id="r10">R10 — Nhoque de abóbora japonesa com manteiga e sálvia</h3>
+<hr>
+
+<h4>1) Introdução</h4>
+<p>Nhoque macio e aromático com manteiga e sálvia crocante.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>600 g de abóbora japonesa cozida e esmagada</li>
+  <li>1 ovo</li>
+  <li>200 g de farinha de trigo</li>
+  <li>60 g de parmesão ralado</li>
+  <li>3 colheres de sopa de manteiga</li>
+  <li>12 folhas de sálvia</li>
+  <li>1 colher de chá de sal</li>
+</ul>
+
+<h4>3) Preparação</h4>
+<ol>
+  <li>Misturar a abóbora com o ovo, farinha e parmesão até formar massa.</li>
+  <li>Moldar cilindros e cortar nhoques.</li>
+  <li>Cozer em água a ferver até subirem.</li>
+  <li>Aquecer manteiga com sálvia até ficar aromática.</li>
+  <li>Misturar os nhoques na manteiga.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>https://www.terra.com.br/vida-e-estilo/degusta/receitas/5-receitas-surpreendentes-com-abobora-para-o-almoco,68b17affaacae29184f7cb584ea6c2eaqxymtdee.html</p>
+
+</article>
+</main>
+</body>
+</html>
