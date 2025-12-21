@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt"><head><style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header{position:static;z-index:60;background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria));color:#fff;padding:1rem 1rem;box-shadow:0 2px 4px rgba(0,0,0,.12)}
+main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base like main pages */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+/* ensure masthead paints behind nav+header */
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+/* horizontal scroll for nav */
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+/* safer anchor offset for sticky masthead (approx header+nav height) */
+h2[id]{scroll-margin-top: 140px}
+</style></head><body id="topo"><div class="masthead"><header>
+<h1>Agrião-da-terra – Receitas completas (Top 10)</h1>
+</header><nav>
+<a href="index.html">Início</a>
+<a href="abobora-butternut.html">Abóbora butternut</a>
+<a href="acelga.html">Acelga</a>
+<a href="agriao.html">Agrião-de-água</a>
+<a href="agriao-terra.html" class="ativa">Agrião-de-terra</a>
+<a href="aipo.html">Aipo (talos e folhas)</a>
+<a href="alface.html">Alface</a>
+<a href="alho.html">Alho</a>
+<a href="alho-frances.html">Alho-francês</a>
+<a href="aneto.html">Aneto / Endro</a>
+<a href="batata-comum.html">Batata comum</a>
+<a href="batata-doce.html">Batata-doce</a>
+<a href="beringela.html">Beringela</a>
+<a href="beterraba.html">Beterraba</a>
+<a href="brocolo.html">Brócolo</a>
+<a href="canonigos.html">Canónigos</a>
+<a href="cebola.html">Cebola</a>
+<a href="cebola-fresca.html">Cebola fresca</a>
+<a href="cenoura.html">Cenoura</a>
+<a href="coentros.html">Coentros</a>
+<a href="couve-chinesa.html">Couve chinesa</a>
+<a href="couve-repolho.html">Couve repolho</a>
+<a href="couve-toscana.html">Couve toscana</a>
+<a href="couve-flor.html">Couve-flor</a>
+<a href="couve-rabano.html">Couve-rábano</a>
+<a href="curgete.html">Curgete</a>
+<a href="ervilhas-frescas.html">Ervilhas frescas</a>
+<a href="espinafre.html">Espinafre</a>
+<a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+<a href="feijao-verde.html">Feijão verde</a>
+<a href="manjericao.html">Manjericão</a>
+<a href="milho-doce.html">Milho doce</a>
+<a href="mizuna.html">Mizuna</a>
+<a href="morangos.html">Morangueiro / Morangos</a>
+<a href="moringa.html">Moringa</a>
+<a href="nabica.html">Nabiça</a>
+<a href="nabo.html">Nabo</a>
+<a href="pak-choi.html">Pak choi</a>
+<a href="pepino.html">Pepino</a>
+<a href="pimento.html">Pimento</a>
+<a href="rabanete.html">Rabanete</a>
+<a href="rabano.html">Rábano / Daikon</a>
+<a href="rucula.html">Rúcula</a>
+<a href="salanova.html">Salanova</a>
+<a href="salsa.html">Salsa</a>
+<a href="tomate.html">Tomate (diversas cultivares)</a>
+<a href="tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav></div><main><article class="planta">
+<div class="planta-cabecalho">
+<div class="planta-titulo">
+<a id="receitas-agriao-da-terra"></a>
+<h2>Receitas — Agrião-da-terra</h2>
+<div class="info-rapida">
+<div><strong>Formato</strong> Texto completo de cada receita em PT‑PT.</div>
+<div><strong>Âncoras</strong> Cada título tem um id para links diretos.</div>
+<div><strong>Navegação</strong> Topo fixo com offset anti‑sticky.</div>
+</div>
+</div>
+</div>
+<div class="index"><h3>Índice das 10 receitas</h3><ol><li><a href="#sopa-de-agriao-cremosa">Sopa de agrião cremosa</a></li><li><a href="#sopa-de-agriao-com-ovos">Sopa de agrião com ovos</a></li><li><a href="#sopa-de-agriao-caseira-varias-versoes">Sopa de agrião caseira (várias versões)</a></li><li><a href="#sopa-de-agriao-e-feijao-manteiga">Sopa de agrião e feijão-manteiga</a></li><li><a href="#salada-de-agriao-com-maca">Salada de agrião com maçã</a></li><li><a href="#salada-de-agriao-com-queijo-fresco">Salada de agrião com queijo fresco</a></li><li><a href="#salada-de-agriao-requeijao-e-nozes">Salada de agrião, requeijão e nozes</a></li><li><a href="#salada-fresca-de-agriao-com-rabanetes">Salada fresca de agrião com rabanetes</a></li><li><a href="#sumo-de-agriao-com-laranja-e-maca">Sumo de agrião com laranja e maçã</a></li><li><a href="#sopa-de-agriao-com-batata-brasil">Sopa de agrião com batata (Brasil)</a></li></ol></div><section><h2 id="sopa-de-agriao-cremosa">Sopa de agrião cremosa</h2><h3>Ingredientes</h3><ul><li>1 molho de agrião (folhas e pontas tenras)</li><li>3 batatas</li><li>1 cenoura</li><li>1 cebola</li><li>1 alho‑francês</li><li>1 dente de alho</li><li>2 c. sopa de azeite</li><li>sal e pimenta</li><li>água q.b.</li></ul><h3>Preparação</h3><ol><li>Suar cebola, alho e alho‑francês no azeite.</li><li>Juntar batata e cenoura em cubos, cobrir com água, temperar e cozer até macio.</li><li>Triturar até creme. Acrescentar o agrião, mexer 1–2 minutos só para murchar e acertar temperos.</li></ol><p class="source">Fonte: <a href="https://www.foodfromportugal.com/pt-pt/receitas/sopa-agriao/" rel="noopener" target="_blank">https://www.foodfromportugal.com/pt-pt/receitas/sopa-agriao/</a></p></section><section><h2 id="sopa-de-agriao-com-ovos">Sopa de agrião com ovos</h2><h3>Ingredientes</h3><ul><li>125 g de agrião (só folhas)</li><li>500 g batata</li><li>250 g alho‑francês</li><li>1 cebola</li><li>2 ovos cozidos</li><li>1 L água</li><li>azeite e sal</li></ul><h3>Preparação</h3><ol><li>Cozer batata, alho‑francês e cebola em água com sal; triturar até ficar cremoso.</li><li>Envolver o agrião e um fio de azeite.</li><li>Servir com ovo cozido picado por cima.</li></ol><p class="source">Fonte: <a href="https://feed.continente.pt/receitas/sopa-agriao" rel="noopener" target="_blank">https://feed.continente.pt/receitas/sopa-agriao</a></p></section><section><h2 id="sopa-de-agriao-caseira-varias-versoes">Sopa de agrião caseira (várias versões)</h2><h3>Ingredientes</h3><ul><li>Agrião</li><li>batata</li><li>cenoura</li><li>abóbora</li><li>alho‑francês</li><li>cebola</li><li>azeite</li><li>sal; água q.b.</li></ul><h3>Preparação</h3><ol><li>Refogar a base (cebola, alho‑francês) em azeite.</li><li>Juntar os restantes legumes e água; cozer até macios.</li><li>Triturar. Colocar o agrião no final para manter a cor viva.</li></ol><p class="source">Fonte: <a href="https://gracatruquesdicas.pt/2024/02/sopa-de-agriao-3/" rel="noopener" target="_blank">https://gracatruquesdicas.pt/2024/02/sopa-de-agriao-3/</a></p></section><section><h2 id="sopa-de-agriao-e-feijao-manteiga">Sopa de agrião e feijão-manteiga</h2><h3>Ingredientes</h3><ul><li>1 molho de agrião</li><li>1 lata cha de feijão‑manteiga cozido</li><li>batata</li><li>cenoura</li><li>cebola</li><li>azeite</li><li>sal</li><li>água</li></ul><h3>Preparação</h3><ol><li>Fazer um creme com batata, cenoura e cebola; triturar.</li><li>Juntar o feijão‑manteiga e ferver 2–3 minutos.</li><li>Desligar e envolver o agrião grosseiramente cortado, só para murchar.</li></ol><p class="source">Fonte: <a href="https://papinhasdaxica.pt/sopa-de-agriao-e-feijao-manteiga/" rel="noopener" target="_blank">https://papinhasdaxica.pt/sopa-de-agriao-e-feijao-manteiga/</a></p></section><section><h2 id="salada-de-agriao-com-maca">Salada de agrião com maçã</h2><h3>Ingredientes</h3><ul><li>Agrião</li><li>1–2 maçãs em lâminas (tipo Granny Smith)</li><li>nozes ou amêndoas (opcional)</li><li>azeite</li><li>vinagre de maçã</li><li>sal e pimenta</li></ul><h3>Preparação</h3><ol><li>Lavar e secar o agrião; laminar a maçã.</li><li>Envolver com um vinagrete simples de azeite e vinagre; temperar e servir.</li></ol><p class="source">Fonte: <a href="https://www.pingodoce.pt/receitas/salada-de-agriao-com-maca/" rel="noopener" target="_blank">https://www.pingodoce.pt/receitas/salada-de-agriao-com-maca/</a></p></section><section><h2 id="salada-de-agriao-com-queijo-fresco">Salada de agrião com queijo fresco</h2><h3>Ingredientes</h3><ul><li>1 molho de agrião</li><li>1 queijo fresco (≈250 g)</li><li>4–5 dentes de alho</li><li>0,5 dl de azeite virgem extra</li><li>sal e pimenta</li></ul><h3>Preparação</h3><ol><li>Dourar o alho no azeite.</li><li>Dispor o agrião na travessa; salpicar com sal.</li><li>Juntar o queijo em rodelas e temperar com pimenta; regar com o azeite com alho.</li></ol><p class="source">Fonte: <a href="https://www.vaqueiro.pt/recipes/salada-de-agriao-com-queijo-fresco-197897" rel="noopener" target="_blank">https://www.vaqueiro.pt/recipes/salada-de-agriao-com-queijo-fresco-197897</a></p></section><section><h2 id="salada-de-agriao-requeijao-e-nozes">Salada de agrião, requeijão e nozes</h2><h3>Ingredientes</h3><ul><li>Agrião</li><li>requeijão</li><li>nozes</li><li>molho de iogurte ou maionese leve</li><li>sumo de limão</li><li>sal e pimenta</li></ul><h3>Preparação</h3><ol><li>Dispor o agrião, esfarelar o requeijão e juntar nozes.</li><li>Envolver com molho (iogurte + limão; ou maionese leve), sal e pimenta.</li></ol><p class="source">Fonte: <a href="https://saboreiaavida.nestle.pt/cozinhar/receita/salada-de-agriao-requeijao-e-nozes" rel="noopener" target="_blank">https://saboreiaavida.nestle.pt/cozinhar/receita/salada-de-agriao-requeijao-e-nozes</a></p></section><section><h2 id="salada-fresca-de-agriao-com-rabanetes">Salada fresca de agrião com rabanetes</h2><h3>Ingredientes</h3><ul><li>250 g agrião</li><li>1 lata pequena de milho</li><li>100 g tomates‑cereja</li><li>100 g rabanetes</li><li>azeite e vinagre (para temperar)</li></ul><h3>Preparação</h3><ol><li>Preparar os ingredientes: agrião tenro; milho escorrido; tomates ao meio; rabanetes em rodelas.</li><li>Dispor na saladeira e servir temperado a gosto.</li></ol><p class="source">Fonte: <a href="https://www.teleculinaria.pt/receitas/entradas-e-petiscos/salada-fresca-de-agriao-com-rabanetes/" rel="noopener" target="_blank">https://www.teleculinaria.pt/receitas/entradas-e-petiscos/salada-fresca-de-agriao-com-rabanetes/</a></p></section><section><h2 id="sumo-de-agriao-com-laranja-e-maca">Sumo de agrião com laranja e maçã</h2><h3>Ingredientes</h3><ul><li>1 laranja (sumo)</li><li>1/2 maçã</li><li>1 mão cheia de agrião</li><li>100–150 ml de água</li><li>mel/açúcar (opcional)</li></ul><h3>Preparação</h3><ol><li>Liquidificar maçã com o sumo de laranja; à parte, bater o agrião com a água.</li><li>Juntar os dois, coar se necessário e adoçar a gosto.</li></ol><p class="source">Fonte: <a href="https://anamariabraga.globo.com/receita/suco-de-laranja-agriao-e-maca/" rel="noopener" target="_blank">https://anamariabraga.globo.com/receita/suco-de-laranja-agriao-e-maca/</a></p></section><section><h2 id="sopa-de-agriao-com-batata-brasil">Sopa de agrião com batata (Brasil)</h2><h3>Ingredientes</h3><ul><li>1 molho de agrião</li><li>400 g batatas</li><li>1 cebola pequena ou alho‑francês</li><li>2 c. sopa manteiga</li><li>1/2 L água/caldo</li><li>1 copo de leite</li><li>sal e pimenta</li></ul><h3>Preparação</h3><ol><li>Refogar batata e cebola na manteiga; juntar água/caldo e cozer.</li><li>Esmagar a batata no caldo; juntar leite e o agrião picado; ferver brevemente e ajustar temperos.</li></ol><p class="source">Fonte: <a href="https://www.tudogostoso.com.br/receita/10018-sopa-de-agriao-com-batata.html" rel="noopener" target="_blank">https://www.tudogostoso.com.br/receita/10018-sopa-de-agriao-com-batata.html</a></p></section></article></main><style>h2[id]{scroll-margin-top:140px}</style></body></html>
