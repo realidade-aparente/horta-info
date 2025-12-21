@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Alface – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+<div class="masthead">
+  <header>
+    <h1>Alface – Receitas de Comida Viva</h1>
+    <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+  </header>
+
+  <nav>
+    <a href="../../../index.html">Início</a>
+    <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+    <a href="../../../abobora-grande.html">Abóbora grande</a>
+    <a href="../../../acelga.html">Acelga</a>
+    <a href="../../../agriao.html">Agrião-de-água</a>
+    <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+    <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+    <a href="../../../alface.html" class="ativa">Alface</a>
+    <a href="../../../alho.html">Alho</a>
+    <a href="../../../alho-frances.html">Alho-francês</a>
+    <a href="../../../aneto.html">Aneto / Endro</a>
+    <a href="../../../batata-comum.html">Batata comum</a>
+    <a href="../../../batata-doce.html">Batata-doce</a>
+    <a href="../../../beringela.html">Beringela</a>
+    <a href="../../../beterraba.html">Beterraba</a>
+    <a href="../../../brocolo.html">Brócolo</a>
+    <a href="../../../canonigos.html">Canónigos</a>
+    <a href="../../../cebola.html">Cebola</a>
+    <a href="../../../cebola-fresca.html">Cebola fresca</a>
+    <a href="../../../cenoura.html">Cenoura</a>
+    <a href="../../../coentros.html">Coentros</a>
+    <a href="../../../couve-chinesa.html">Couve chinesa</a>
+    <a href="../../../couve-flor.html">Couve-flor</a>
+    <a href="../../../couve-rabano.html">Couve-rábano</a>
+    <a href="../../../couve-repolho.html">Couve repolho</a>
+    <a href="../../../couve-toscana.html">Couve toscana</a>
+    <a href="../../../curgete.html">Curgete</a>
+    <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+    <a href="../../../espinafre.html">Espinafre</a>
+    <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+    <a href="../../../feijao-verde.html">Feijão verde</a>
+    <a href="../../../manjericao.html">Manjericão</a>
+    <a href="../../../milho-doce.html">Milho doce</a>
+    <a href="../../../mizuna.html">Mizuna</a>
+    <a href="../../../morangos.html">Morangueiro / Morangos</a>
+    <a href="../../../moringa.html">Moringa</a>
+    <a href="../../../nabica.html">Nabiça</a>
+    <a href="../../../nabo.html">Nabo</a>
+    <a href="../../../pak-choi.html">Pak choi</a>
+    <a href="../../../pepino.html">Pepino</a>
+    <a href="../../../pimento.html">Pimento</a>
+    <a href="../../../rabanete.html">Rabanete</a>
+    <a href="../../../rabano.html">Rábano / Daikon</a>
+    <a href="../../../rucula.html">Rúcula</a>
+    <a href="../../../salanova.html">Salanova</a>
+    <a href="../../../salsa.html">Salsa</a>
+    <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+    <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+  </nav>
+</div>
+
+<main>
+<article>
+
+<h2 id="receitas-preparados">Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/alface_receitas_vegetariana.html">(Vegetariana)</a>
+    <a href="/data/refeicoes/vegan/alface_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+  <ol>
+    <li><a href="#r1">R1 – Sopa crua refrescante de alface com noz e limão</a> <span class="source">[R1]</span></li>
+    <li><a href="#r2">R2 – Sopa crua de alface, abacate e miso</a> <span class="source">[R2]</span></li>
+    <li><a href="#r3">R3 – Wraps crus de alface com molho de sésamo</a> <span class="source">[R3]</span></li>
+    <li><a href="#r4">R4 – Wraps crus tailandeses de alface com molho cremoso de amendoim</a> <span class="source">[R4]</span></li>
+    <li><a href="#r5">R5 – Salada viva de alface com legumes crus e molho cítrico</a> <span class="source">[R5]</span></li>
+    <li><a href="#r6">R6 – Chips crus de alface no desidratador</a> <span class="source">[R6]</span></li>
+    <li><a href="#r7">R7 – Alface fermentada viva (probiótica)</a> <span class="source">[R7]</span></li>
+    <li><a href="#r8">R8 – Paté cru de sementes servido em folhas de alface</a> <span class="source">[R8]</span></li>
+  </ol>
+</div>
+
+<h2 id="resumo">Resumo das receitas (R1–R8)</h2>
+
+<h4>R1 – Sopa crua refrescante de alface com noz e limão</h4>
+<p>Sopa fria, leve, muito hidratante, feita apenas com alface, nozes, limão e água, triturada no blender.</p>
+
+<h4>R2 – Sopa crua de alface, abacate e miso</h4>
+<p>Versão mais cremosa de sopa crua de alface, com gordura boa do abacate e fermentado vivo do miso.</p>
+
+<h4>R3 – Wraps crus de alface com molho de sésamo</h4>
+<p>Folhas grandes de alface recheadas com legumes crus crocantes e molho raw de sésamo.</p>
+
+<h4>R4 – Wraps crus tailandeses de alface com molho cremoso de amendoim</h4>
+<p>Wraps aromáticos com nozes cruas, cenoura e molho vivo agridoce.</p>
+
+<h4>R5 – Salada viva de alface com legumes crus e molho cítrico</h4>
+<p>Salada plenamente viva com alface como base estrutural, servido com molho cru ácido-doce.</p>
+
+<h4>R6 – Chips crus de alface no desidratador</h4>
+<p>Folhas de alface temperadas e desidratadas a baixa temperatura até ficarem crocantes.</p>
+
+<h4>R7 – Alface fermentada viva (probiótica)</h4>
+<p>Fermentação natural de alface em salmoura com produção de probióticos.</p>
+
+<h4>R8 – Paté cru de sementes servido em folhas de alface</h4>
+<p>Paté raw de sementes de girassol servido como finger food vivo em folhas de alface.</p>
+
+<h2 id="receitas-completas">Receitas completas</h2>
+
+<hr>
+<h2 id="r1">R1 – Sopa crua refrescante de alface com noz e limão <span class="source">[R1]</span></h2>
+
+<h4>3.1 Introdução</h4>
+<p>Esta é uma das formas mais puras de consumir alface crua em formato líquido, altamente remineralizante, hidratante e leve.</p>
+
+<h4>3.2 Ingredientes</h4>
+<ul>
+  <li>1 cabeça grande de alface lavada</li>
+  <li>½ chávena de nozes cruas</li>
+  <li>Sumo de 1 limão</li>
+  <li>250–350 ml de água filtrada</li>
+  <li>Sal marinho q.b.</li>
+</ul>
+
+<h4>3.3 Preparação</h4>
+<ol>
+  <li>Colocar todos os ingredientes no liquidificador.</li>
+  <li>Triturar até obter uma sopa totalmente lisa.</li>
+  <li>Ajustar textura com água.</li>
+  <li>Servir fria.</li>
+</ol>
+
+<h4>3.4 Fonte</h4>
+<p>
+Joy of Blending – Raw Lettuce Soup<br>
+<a href="https://joyofblending.com/raw-lettuce-soup/" target="_blank" rel="noopener">https://joyofblending.com/raw-lettuce-soup/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<hr>
+<h2 id="r2">R2 – Sopa crua de alface, abacate e miso <span class="source">[R2]</span></h2>
+
+<h4>3.1 Introdução</h4>
+<p>Versão bio-regenerativa de sopa crua com fermentado vivo, excelente para recuperação intestinal.</p>
+
+<h4>3.2 Ingredientes</h4>
+<ul>
+  <li>1 alface</li>
+  <li>1 abacate maduro</li>
+  <li>1 colher de chá de miso não pasteurizado</li>
+  <li>1 colher de sopa de azeite</li>
+  <li>1 colher de chá de vinagre de maçã</li>
+  <li>250 ml de água</li>
+</ul>
+
+<h4>3.3 Preparação</h4>
+<ol>
+  <li>Triturar todos os ingredientes no blender.</li>
+  <li>Servir fria ou levemente amornada (&lt;45 °C).</li>
+</ol>
+
+<h4>3.4 Fonte</h4>
+<p>
+BioVie – Raw Lettuce Soup<br>
+<a href="https://www.biovie.fr/en/blog/dairy-raw-soup-n32" target="_blank" rel="noopener">https://www.biovie.fr/en/blog/dairy-raw-soup-n32</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<hr>
+<h2 id="r3">R3 – Wraps crus de alface com molho de sésamo <span class="source">[R3]</span></h2>
+
+<h4>3.1 Introdução</h4>
+<p>Alternativa totalmente crua aos rolinhos primavera.</p>
+
+<h4>3.2 Ingredientes</h4>
+<ul>
+  <li>Folhas grandes de alface</li>
+  <li>Cenoura em juliana</li>
+  <li>Manga em tiras</li>
+  <li>Coentros frescos</li>
+</ul>
+
+<h4>Molho:</h4>
+<ul>
+  <li>Tahini</li>
+  <li>Limão</li>
+  <li>Água</li>
+  <li>Tamari</li>
+</ul>
+
+<h4>3.3 Preparação</h4>
+<ol>
+  <li>Montar os vegetais no centro da folha.</li>
+  <li>Regar com o molho.</li>
+  <li>Enrolar e servir.</li>
+</ol>
+
+<h4>3.4 Fonte</h4>
+<p>
+Gourmande in the Kitchen – Raw Vegetable Summer Rolls<br>
+<a href="https://gourmandeinthekitchen.com/raw-vegetable-summer-rolls-with-triple-sesame-dipping-sauce/" target="_blank" rel="noopener">https://gourmandeinthekitchen.com/raw-vegetable-summer-rolls-with-triple-sesame-dipping-sauce/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<hr>
+<h2 id="r4">R4 – Wraps crus tailandeses de alface com molho cremoso de amendoim <span class="source">[R4]</span></h2>
+
+<h4>3.1 Introdução</h4>
+<p>Wraps vivos, aromáticos, proteicos e totalmente crus.</p>
+
+<h4>3.2 Ingredientes</h4>
+<ul>
+  <li>Folhas de butter lettuce</li>
+  <li>Nozes cruas</li>
+  <li>Cenoura ralada</li>
+  <li>Malagueta</li>
+</ul>
+
+<h4>Molho:</h4>
+<ul>
+  <li>Amendoim cru</li>
+  <li>Limão</li>
+  <li>Tâmara</li>
+  <li>Água</li>
+</ul>
+
+<h4>3.3 Preparação</h4>
+<ol>
+  <li>Triturar o molho.</li>
+  <li>Montar o recheio.</li>
+  <li>Servir imediato.</li>
+</ol>
+
+<h4>3.4 Fonte</h4>
+<p>
+Healthy Vegan – Raw Thai Lettuce Wraps<br>
+<a href="https://www.healthyvegan.com/2023/4/raw-thai-lettuce-wraps-with-creamy-peanut-sauce" target="_blank" rel="noopener">https://www.healthyvegan.com/2023/4/raw-thai-lettuce-wraps-with-creamy-peanut-sauce</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<hr>
+<h2 id="r5">R5 – Salada viva de alface com legumes crus e molho cítrico <span class="source">[R5]</span></h2>
+
+<h4>3.1 Introdução</h4>
+<p>Refeição viva completa com base estrutural de alface.</p>
+
+<h4>3.2 Ingredientes</h4>
+<ul>
+  <li>Alface variada</li>
+  <li>Pepino</li>
+  <li>Tomate cru</li>
+  <li>Rebentos germinados</li>
+</ul>
+
+<h4>Molho:</h4>
+<ul>
+  <li>Limão</li>
+  <li>Azeite</li>
+  <li>Mostarda crua</li>
+</ul>
+
+<h4>3.3 Preparação</h4>
+<p>Misturar tudo e servir.</p>
+
+<h4>3.4 Fonte</h4>
+<p>
+Simple Veganista – Fresh Vegan Lettuce Wraps<br>
+<a href="https://simple-veganista.com/garden-salad-lettuce-wraps/" target="_blank" rel="noopener">https://simple-veganista.com/garden-salad-lettuce-wraps/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<hr>
+<h2 id="r6">R6 – Chips crus de alface no desidratador <span class="source">[R6]</span></h2>
+
+<h4>3.1 Introdução</h4>
+<p>Snack vivo crocante feito apenas com folhas desidratadas.</p>
+
+<h4>3.2 Ingredientes</h4>
+<ul>
+  <li>Folhas de alface</li>
+  <li>Azeite</li>
+  <li>Sal marinho</li>
+</ul>
+
+<h4>3.3 Preparação</h4>
+<ol>
+  <li>Temperar folhas.</li>
+  <li>Desidratar a 42 °C por 6–8h.</li>
+  <li>Arrefecer e servir.</li>
+</ol>
+
+<h4>3.4 Fonte</h4>
+<p>
+The Rawtarian – Dehydrated Raw Chips<br>
+<a href="https://www.therawtarian.com/dehydrated-raw-chips" target="_blank" rel="noopener">https://www.therawtarian.com/dehydrated-raw-chips</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<hr>
+<h2 id="r7">R7 – Alface fermentada viva (probiótica) <span class="source">[R7]</span></h2>
+
+<h4>3.1 Introdução</h4>
+<p>Transformação da alface num alimento probiótico vivo.</p>
+
+<h4>3.2 Ingredientes</h4>
+<ul>
+  <li>Alface</li>
+  <li>Água</li>
+  <li>Sal marinho</li>
+</ul>
+
+<h4>3.3 Preparação</h4>
+<ol>
+  <li>Cortar a alface.</li>
+  <li>Submergir em salmoura.</li>
+  <li>Fermentar 3–5 dias.</li>
+</ol>
+
+<h4>3.4 Fonte</h4>
+<p>
+Fermented Lettuce Recipe – YouTube<br>
+<a href="https://www.youtube.com/watch?v=JMBO6zBpnE8" target="_blank" rel="noopener">https://www.youtube.com/watch?v=JMBO6zBpnE8</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<hr>
+<h2 id="r8">R8 – Paté cru de sementes servido em folhas de alface <span class="source">[R8]</span></h2>
+
+<h4>3.1 Introdução</h4>
+<p>Finger food vivo, com gordura boa e proteína vegetal.</p>
+
+<h4>3.2 Ingredientes</h4>
+<ul>
+  <li>Sementes de girassol demolhadas</li>
+  <li>Limão</li>
+  <li>Alho</li>
+  <li>Coentros</li>
+  <li>Alface para servir</li>
+</ul>
+
+<h4>3.3 Preparação</h4>
+<ol>
+  <li>Triturar o paté.</li>
+  <li>Servir sobre folhas de alface.</li>
+</ol>
+
+<h4>3.4 Fonte</h4>
+<p>
+UnchainedTV – Vegan Sunflower Pate<br>
+<a href="https://unchainedtv.com/2020/11/04/vegan-sunflower-pate-recipe/" target="_blank" rel="noopener">https://unchainedtv.com/2020/11/04/vegan-sunflower-pate-recipe/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Couve repolho – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+ <div class="masthead">
+<header>
+  <h1>Couve repolho – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html" class="ativa">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+</div>
+
+<main>
+<article>
+
+<h2>Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/couve-repolho_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/couve-repolho_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+<ol>
+<li><a href="#r1">Rolos de repolho raw-vegan com “arroz” de couve-flor e molho de tomate</a> <span class="source">[R1]</span></li> 
+<li><a href="#r2">Chips raw de couve lombarda (sabauda) com creme de caju e wasabi (desidratador)</a> <span class="source">[R2]</span></li>
+<li><a href="#r3">Salada crua de couve lombarda e couve roxa com maçã, cenoura e arandos</a> <span class="source">[R3]</span></li>
+<li><a href="#r4">Coleslaw cru e picante com “maionese” raw (macadâmia+caju) e tahini</a> <span class="source">[R4]</span></li>
+<li><a href="#r5">Tacos raw-vegan em folhas de repolho com “carne” de sementes, salsa de curgete e molho cremoso de coentros</a> <span class="source">[R5]</span></li>
+<li><a href="#r6">Sopa raw tipo borscht com beterraba, repolho e abacate</a> <span class="source">[R6]</span></li>
+<li><a href="#r7">Kimchi raw-vegan (fermentado) com repolho branco ou couve sabauda</a> <span class="source">[R7]</span></li>
+<li><a href="#r8">Chucrute cru clássico (fermentação em frasco)</a> <span class="source">[R8]</span></li>
+<li><a href="#r9">Chucrute cru com curcuma e gengibre (fermentado)</a> <span class="source">[R9]</span></li>
+<li><a href="#r10">Crackers raw de chucrute com trigo-sarraceno germinado (desidratador)</a> <span class="source">[R10]</span></li>
+</ol>
+</div>
+
+<h2> Resumo das Receitas</h2>
+
+<h4>R1 — Rolos de repolho raw com textura “cozinhada” (folhas amolecidas por congelação), recheados com mistura de noz + “arroz” de couve-flor e cobertos com molho de tomate, limão e tâmaras.</h4>
+
+<h4>R2 — “Chips” de couve lombarda untados com um creme de caju e especiarias, desidratados até ficarem bem crocantes (snack salgado).</h4>
+
+<h4>R3 — Salada muito fresca e crocante: duas couves (sabauda e roxa) com maçã e cenoura finas, arandos/passas, vinagre e azeite.</h4>
+
+<h4>R4 — Coleslaw grande e bem cremoso, com um molho tipo maionese 100% raw (macadâmia+caju) e dressing com tahini, vinagre, xarope de ácer e sementes.</h4>
+
+<h4>R5 — Tacos sem fogão: folhas de repolho como “tortilha”, recheio granulado de sementes temperadas, salsa crua de curgete e tomate, e molho de caju com coentros e lima.</h4>
+
+<h4>R6 — Borscht cru: base batida de beterraba/abacate/sumo de limão (e opcionais aminos), vertida sobre repolho e cebola picados.</h4>
+
+<h4>R7 — Kimchi raw-vegan com opção explícita de usar repolho branco ou couve sabauda; tempero com alho, gengibre, malaguetas e tamari; fermenta alguns dias.</h4>
+
+<h4>R8 — Chucrute cru básico: repolho + sal, massagem para formar salmoura, compactar e fermentar 3–7 dias, depois frigorífico.</h4>
+
+<h4>R9 — Variante aromática do chucrute com curcuma e gengibre (fresco), alho, sementes e cenoura; fermentação curta (indicada) e guarda a frio.</h4>
+
+<h4>R10 — Crackers desidratados feitos com chucrute (inclui opção de repolho roxo), trigo-sarraceno germinado e amêndoa moída/polpa de amêndoa; desidrata até ficar estaladiço.</h4>
+
+
+<h2> Receitas completas</h2>
+
+<a id="rolos-de-repolho-raw-vegan-com-arroz-de-couve-flor-e-molho-de-tomate"></a>
+<h3 id="r1">R1 — Rolos de repolho raw-vegan com “arroz” de couve-flor e molho de tomate</h3>
+
+<h4>Introdução</h4>
+<p>Uma versão raw que tenta imitar o “conforto” dos rolos de repolho tradicionais: folhas muito maleáveis (truque de congelar), recheio com textura “carne” (noz) e “arroz” (couve-flor), e um molho de tomate espesso e ligeiramente doce.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>1 repolho verde grande (ou 2 médios)</li>
+<li>1 couve-flor média (aprox. 920 g)</li>
+<li>1 colher de chá de salsa (seca ou fresca picada)</li>
+<li>1 colher de chá de endro/dill (seco ou fresco picado)</li>
+<li>1/2 chávena de tomate seco (mais, se quiser)</li>
+<li>6 tomates (aprox. 690 g)</li>
+<li>3/4 chávena de cebolinho picado</li>
+<li>1 chávena de nozes</li>
+<li>1 limão</li>
+<li>2 tâmaras (sem caroço)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>(Opcional, mas recomendado) Congele o repolho inteiro pelo menos 12–16 horas. No dia de fazer, deixe descongelar; as folhas ficam mais macias e “cozinhadas”.</li>
+<li>Triture a couve-flor até ficar em grão (“arroz”). (No método original, congela-se esse “arroz” 6–8 horas e depois descongela-se.)</li>
+<li>Triture/pique as nozes até ficarem em migalhas. Cubra com água e deixe de molho 4–12 horas; escorra antes de usar.</li>
+<li>Esprema o “arroz” de couve-flor (num saco de leite vegetal/pano limpo) para retirar excesso de líquido.</li>
+<li>Misture a couve-flor espremida com as nozes escorridas. Junte parte do cebolinho (aprox. 1/3–1/2 chávena, a gosto) e envolva.</li>
+<li>No liquidificador, bata tomates + limão + tâmaras + tomate seco até ficar liso e espesso.</li>
+<li>Junte o restante cebolinho e as ervas (salsa/endro) e pulse apenas para misturar, mantendo alguma textura.</li>
+<li>Separe cuidadosamente 12–18 folhas grandes de repolho (ajude com água quente no lava-loiça se precisar). Corte/retire a parte grossa do talo na base de cada folha (para enrolar melhor).</li>
+<li>Misture 1/2 a 2/3 do molho no recheio (até ficar bem “ligado”).</li>
+<li>Recheie cada folha com 1–3 colheradas, dobre a base, depois as laterais e enrole. Disponha com a “emenda” virada para baixo.</li>
+<li>Cubra por cima com o molho restante.</li>
+<li>Opcional: amorne/desidrate em desidratador 2–6 horas (para secar ligeiramente o topo e servir morno, mantendo raw).</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The Raw Advantage —
+<a href="https://therawadvantage.com/raw-vegan-cabbage-rolls-recipe/" target="_blank" rel="noopener">
+https://therawadvantage.com/raw-vegan-cabbage-rolls-recipe/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="chips-raw-de-couve-lombarda-sabauda-com-creme-de-caju-e-wasabi-desidratador"></a>
+<h3 id="r2">R2 — Chips raw de couve lombarda (sabauda) com creme de caju e wasabi (desidratador)</h3>
+
+<h4>Introdução</h4>
+<p>Snack crocante feito em desidratador: tiras de couve lombarda barradas com um creme de caju e especiarias, desidratadas até estalarem.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>1 couve lombarda (sabauda)</li>
+<li>1 chávena de cajus crus</li>
+<li>1/2 chávena de azeite</li>
+<li>1 colher de sopa de alho em pó</li>
+<li>1 colher de chá de wasabi em pó</li>
+<li>1 colher de chá de sal marinho</li>
+<li>1 colher de chá de paprika</li>
+<li>1 colher de chá de mostarda em pó</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Retire folhas exteriores estragadas. Corte as folhas em tiras, evitando a nervura/talo muito duro.</li>
+<li>Num processador, triture cajus + azeite + alho em pó + wasabi + sal + paprika + mostarda até obter um creme espesso.</li>
+<li>Barre as tiras de couve com uma camada fina do creme (o método original refere que menos creme pode resultar em maior crocância).</li>
+<li>Disponha no desidratador. Desidrate cerca de 3 horas em “alto” (ou ajuste conforme o seu equipamento), verificando regularmente e retirando as que já estejam crocantes.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The Creative Caveman —
+<a href="https://thecreativecaveman.com/2025/recipe/cabbage-chips/" target="_blank" rel="noopener">
+https://thecreativecaveman.com/2025/recipe/cabbage-chips/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-crua-de-couve-lombarda-e-couve-roxa-com-maca-cenoura-e-arandos"></a>
+<h3 id="r3">R3 — Salada crua de couve lombarda e couve roxa com maçã, cenoura e arandos</h3>
+
+<h4>Introdução</h4>
+<p>Uma salada simples e muito “viva”: couves finamente cortadas, cenoura em lâminas, maçã em cubinhos e um tempero ácido (vinagre) com azeite.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>100 g de couve lombarda (sabauda)</li>
+<li>230 g de couve roxa</li>
+<li>150 g de cenouras</li>
+<li>20 g de salsa (folha lisa)</li>
+<li>1 maçã</li>
+<li>1 punhado de arandos secos (ou passas)</li>
+<li>1–2 colheres de sopa de azeite</li>
+<li>4 colheres de sopa de vinagre de sidra (ou vinagre de vinho branco)</li>
+<li>1 pitada de sal</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Lave couves, salsa, cenoura e maçã.</li>
+<li>Pique a couve e a salsa bem fininhas.</li>
+<li>Faça a cenoura em lâminas finas (descascador) e pique a maçã em pedaços pequenos (retirando o caroço).</li>
+<li>Junte arandos/passas.</li>
+<li>Tempere com azeite, vinagre e sal. Misture muito bem e sirva.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The Little Plantation —
+<a href="https://thelittleplantation.co.uk/blog/cabbage-and-apple-salad" target="_blank" rel="noopener">
+https://thelittleplantation.co.uk/blog/cabbage-and-apple-salad
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="coleslaw-cru-e-picante-com-maionese-raw-macadamia-caju-e-tahini"></a>
+<h3 id="r4">R4 — Coleslaw cru e picante com “maionese” raw (macadâmia+caju) e tahini</h3>
+
+<h4>Introdução</h4>
+<p>Um coleslaw cremoso “à séria”, mas raw: primeiro faz-se uma maionese raw de frutos secos; depois um dressing com tahini, vinagre e xarope de ácer; por fim envolve-se com repolho e cenoura.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>2 chávenas de nozes de macadâmia cruas</li>
+<li>1/3 chávena de azeite</li>
+<li>1 colher de sopa de vinagre de sidra (raw)</li>
+<li>2/3 chávena de água filtrada</li>
+<li>1 colher de sopa de sumo de limão (espremido na hora)</li>
+<li>2/3 chávena de cajus crus</li>
+<li>1/4 colher de chá de sal marinho</li>
+<li>5 lb (cerca de 2,27 kg) de repolho verde, finamente fatiado/ralado</li>
+<li>5 lb (cerca de 2,27 kg) de cenouras, raladas</li>
+<li>1/3 chávena de tahini cru</li>
+<li>1/3 chávena de xarope de ácer (grade A)</li>
+<li>1/3 chávena de vinagre de sidra (raw)</li>
+<li>1/3 chávena de “maionese” raw (da receita acima)</li>
+<li>1/3 chávena de sementes de abóbora cruas</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Coloque todos os ingredientes da maionese num processador/liquidificador potente e bata até ficar bem cremoso.</li>
+<li>Transfira para um recipiente e guarde no frigorífico enquanto prepara o resto.</li>
+<li>Numa taça grande, misture repolho e cenoura.</li>
+<li>Bata no processador/liquidificador: tahini + xarope de ácer + vinagre + maionese raw + sementes de abóbora, até ficar liso.</li>
+<li>Envolva a quantidade desejada de dressing no slaw.</li>
+<li>Sirva de imediato ou refrigere algumas horas para intensificar sabores. (O método original refere que sobra aguenta até 3 dias no frio.)</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Dherbs —
+<a href="https://www.dherbs.com/recipes/recipe/tangy-vegan-coleslaw-recipe-for-heart-health/" target="_blank" rel="noopener">
+https://www.dherbs.com/recipes/recipe/tangy-vegan-coleslaw-recipe-for-heart-health/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="tacos-raw-vegan-em-folhas-de-repolho-com-carne-de-sementes-salsa-de-curgete-e-molho-cremoso-de-coentros"></a>
+<h3 id="r5">R5 — Tacos raw-vegan em folhas de repolho com “carne” de sementes, salsa de curgete e molho cremoso de coentros</h3>
+
+<h4>Introdução</h4>
+<p>Tacos totalmente sem fogão: folhas de repolho fazem de “tortilha”, recheadas com um granulado de sementes temperado, salsa fresca com curgete e tomate, e um molho cremoso de caju com coentros e lima.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>1/2 chávena (56 g) de cajus, demolhados (1 h em água morna ou durante a noite em água fria), escorridos</li>
+<li>1 colher de sopa (15 ml) de azeite virgem extra</li>
+<li>1 colher de chá de sumo de lima</li>
+<li>1/4 chávena de coentros frescos bem compactados</li>
+<li>3 colheres de sopa (45 ml) de água filtrada</li>
+<li>1 chávena (112 g) de sementes de girassol e de abóbora cruas (ou germinadas)</li>
+<li>2 colheres de chá (10 ml) de coconut aminos</li>
+<li>1 dente de alho pequeno</li>
+<li>1 colher de chá de cominhos em pó</li>
+<li>1/4 colher de chá de coentros (semente) em pó</li>
+<li>1/4 colher de chá de paprika</li>
+<li>1/4 colher de chá de cayenne/piri-piri em pó</li>
+<li>1/4 colher de chá de sal marinho</li>
+<li>2 colheres de chá (10 ml) de azeite virgem extra</li>
+<li>1 chávena de tomate-cereja, picado</li>
+<li>1 curgete média, picada</li>
+<li>2 colheres de sopa de coentros picados</li>
+<li>1 cebolinho/cebola verde pequena, picada</li>
+<li>1 malagueta serrano, finamente fatiada</li>
+<li>1 colher de chá de sumo de lima</li>
+<li>1 colher de chá de azeite virgem extra</li>
+<li>1 pitada de sal marinho</li>
+<li>Folhas de repolho (verde ou roxo), inteiras e crocantes</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Triture/bata cajus demolhados + azeite + sumo de lima + coentros + água até ficar cremoso. Reserve no frio.</li>
+<li>No processador, pulse sementes + coconut aminos + alho + especiarias + sal + azeite só até ficar granulado (não transforme em pasta oleosa).</li>
+<li>Numa taça, misture tomate + curgete + coentros + cebola verde + serrano + sumo de lima + azeite + sal.</li>
+<li>Coloque uma boa porção de “carne” em cada folha de repolho, por cima a salsa, e finalize com o molho de coentros.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Gourmande in the Kitchen —
+<a href="https://gourmandeinthekitchen.com/raw-tacos-with-spicy-zucchini-salsa-and-creamy-cilantro-sauce/" target="_blank" rel="noopener">
+https://gourmandeinthekitchen.com/raw-tacos-with-spicy-zucchini-salsa-and-creamy-cilantro-sauce/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-raw-tipo-borscht-com-beterraba-repolho-e-abacate"></a>
+<h3 id="r6">R6 — Sopa raw tipo borscht com beterraba, repolho e abacate</h3>
+
+<h4>Introdução</h4>
+<p>Uma sopa crua, intensa e cor-de-rubi: a base é batida (beterraba, abacate, aipo, tomilho e limão) e depois mistura-se com repolho e cebola picados para dar textura.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>1 chávena de repolho verde ralado/fatiado fino</li>
+<li>1/2 chávena de cebola roxa em cubinhos finos</li>
+<li>2,75 chávenas de beterraba vermelha, picada</li>
+<li>1/2 chávena de cebola roxa, picada (para bater)</li>
+<li>1/2 abacate</li>
+<li>1 talo de aipo, picado grosso</li>
+<li>1/2 colher de chá de tomilho fresco picado</li>
+<li>2 chávenas de água</li>
+<li>1 1/2 colheres de sopa de sumo de limão</li>
+<li>Opcional: 1 1/2 colheres de chá de Bragg Liquid Aminos ou nama shoyu</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Numa taça, misture o repolho ralado com a cebola em cubinhos. Reserve.</li>
+<li>No liquidificador, bata beterraba + cebola (para bater) + abacate + aipo + tomilho + água + sumo de limão (e os aminos, se usar) até ficar bem liso. Ajuste sal/ácido a gosto (dentro do que os ingredientes permitem).</li>
+<li>Verta a base batida sobre o repolho/cebola reservados e misture bem. Sirva.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Hippocrates Wellness —
+<a href="https://hippocrateswellness.org/borscht-raw-vegan-soup" target="_blank" rel="noopener">
+https://hippocrateswellness.org/borscht-raw-vegan-soup
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="kimchi-raw-vegan-fermentado-com-repolho-branco-ou-couve-sabauda"></a>
+<h3 id="r7">R7 — Kimchi raw-vegan (fermentado) com repolho branco ou couve sabauda</h3>
+
+<h4>Introdução</h4>
+<p>Kimchi cru, vegan e sem ingredientes difíceis: pode ser feito com repolho branco ou couve lombarda (sabauda). Come-se “fresco” como salada, ou fermenta-se alguns dias para acidez e probióticos.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>500 g de repolho (pode ser repolho branco ou couve sabauda), cortado em tiras de 2–5 cm</li>
+<li>5 g de sal marinho (aprox. 1 colher de chá rasa)</li>
+<li>4 colheres de sopa de molho tamari</li>
+<li>5–6 dentes de alho</li>
+<li>1 pedaço de gengibre (cerca de 1 inch / 2–3 cm)</li>
+<li>1 colher de chá de açúcar</li>
+<li>1–5 malaguetas vermelhas (conforme o picante desejado) OU 50–75 g de gochugaru</li>
+<li>1 pimento vermelho, picado e sem sementes (apenas se NÃO usar gochugaru)</li>
+<li>300 g de rabanete tipo mooli/daikon (ou rabanetes comuns), em lâminas finas ou palitos</li>
+<li>1 cenoura média, ralada</li>
+<li>4 cebolinhos/cebolas novas, em pedaços de ~1 cm</li>
+<li>30–50 ml adicionais de tamari/soja (conforme necessidade do método)</li>
+<li>1/2 cebola pequena</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Corte o repolho em tiras. Coloque numa taça e junte o sal.</li>
+<li>Massageie o repolho com as mãos limpas, apertando e “amassando”, por 10–15 minutos, até ficar mole e libertar líquido. Escorra esse líquido (o método original diz que manter pode deixar o kimchi “aguado”). O repolho deve ficar ligeiramente salgado.</li>
+<li>Junte rabanete + cenoura + cebolinho.</li>
+<li>Num processador, faça uma pasta com alho + gengibre + malaguetas (e pimento, se usar) + açúcar.</li>
+<li>Misture a pasta no repolho e nos restantes vegetais até ficar tudo bem envolvido.</li>
+<li>Compacte tudo num frasco limpo, pressionando para eliminar bolsas de ar e para ficar submerso no próprio líquido. Deixe ~2 cm de espaço no topo (para não transbordar durante a fermentação).</li>
+<li>Feche com a tampa “sem apertar totalmente” e coloque o frasco num prato (pode verter). Guarde fora de sol direto.</li>
+<li>Pode comer logo (sem fermentar) ou fermentar à temperatura ambiente 3–4 dias e depois refrigerar. O método original refere que, se usar repolho branco/sabauda, deixe fermentar cerca de 7 dias para melhor resultado.</li>
+<li>Durante a fermentação, verifique de poucos em poucos dias: liberte gases e pressione o kimchi para o manter submerso.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Wild Cultures —
+<a href="https://wildcultures.co.uk/recipes/olivias-kimchi/" target="_blank" rel="noopener">
+https://wildcultures.co.uk/recipes/olivias-kimchi/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="chucrute-cru-classico-fermentacao-em-frasco"></a>
+<h3 id="r8">R8 — Chucrute cru clássico (fermentação em frasco)</h3>
+
+<h4>Introdução</h4>
+<p>O básico dos básicos do repolho fermentado: só repolho, sal e (se necessário) água. O segredo é massajar, compactar e manter tudo submerso para fermentar bem.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>1 cabeça de repolho (verde ou roxo)</li>
+<li>2 colheres de sopa de sal marinho</li>
+<li>Água de nascente ou destilada, se necessário (para completar a salmoura)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Higienize bem o frasco e utensílios (o método original sugere escaldar com água a ferver).</li>
+<li>Lave o repolho e retire as folhas exteriores. Reserve algumas folhas grandes e inteiras para “tapar” por cima mais tarde.</li>
+<li>Fatie/ralhe o repolho fino e coloque numa taça grande.</li>
+<li>Junte o sal e massaje (com mãos limpas) até o repolho amolecer, reduzir de volume e largar bastante líquido.</li>
+<li>Transfira para o frasco muito bem limpo e compacte com força, eliminando espaços de ar.</li>
+<li>Garanta que o nível de líquido fica ACIMA do repolho. Se necessário, junte um pouco de água de nascente/destilada.</li>
+<li>Cubra a superfície com as folhas inteiras reservadas, pressionando para manter o repolho submerso. Se precisar de peso extra, use um saco com água salgada bem fechado por cima (o método original descreve esta solução).</li>
+<li>Feche o frasco e deixe fermentar 3–7 dias (o método original sugere começar a provar após 3 dias). Verifique ocasionalmente se continua submerso.</li>
+<li>Quando estiver ácido ao seu gosto, retire o peso/folhas de cobertura e guarde no frigorífico.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Detoxinista —
+<a href="https://detoxinista.com/how-to-make-raw-sauerkraut/" target="_blank" rel="noopener">
+https://detoxinista.com/how-to-make-raw-sauerkraut/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="chucrute-cru-com-curcuma-e-gengibre-fermentado"></a>
+<h3 id="r9">R9 — Chucrute cru com curcuma e gengibre (fermentado)</h3>
+
+<h4>Introdução</h4>
+<p>Uma versão aromática e “aquecida” no sabor (sem cozinhar): curcuma e gengibre trazem pungência, com alho, cenoura e sementes de especiarias para profundidade.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>1 repolho médio (aprox. 1 kg), branco ou roxo</li>
+<li>3 dentes de alho, lavados e esmagados</li>
+<li>1 “nó” (pedaço) de gengibre fresco</li>
+<li>1 “nó” (pedaço) de curcuma fresca (ou equivalente em pó, conforme preferência do método)</li>
+<li>15 g de sal (sal de conserva/pickling; não iodado)</li>
+<li>1/2 colher de chá de sementes de mostarda</li>
+<li>1 cenoura grande</li>
+<li>1/4 colher de chá de sementes de cominhos</li>
+<li>1/4 colher de chá de sementes de feno-grego (fenugreek)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Lave e escalde (com água a ferver) utensílios e frascos; lave bem as mãos.</li>
+<li>Retire folhas estragadas do repolho, corte em quartos, retire o miolo duro e fatie/ralhe o repolho (fino ou mais grosso, como preferir).</li>
+<li>Rale a cenoura. Prepare gengibre e curcuma (ralados/picados) e esmague o alho.</li>
+<li>Misture repolho + sal e (se desejar, seguindo o método) massaje para ajudar a formar líquido/salmoura e libertar sucos.</li>
+<li>Junte cenoura, alho, gengibre, curcuma e as sementes (mostarda, cominhos, feno-grego). Misture para distribuir.</li>
+<li>Coloque no frasco e compacte bem para retirar ar e fazer subir líquido. Deixe espaço no topo para expansão.</li>
+<li>Fermente em local escuro a temperatura amena (o método refere cerca de 18–23 ºC) durante alguns dias; prove para decidir o ponto e depois passe para o frigorífico.</li>
+<li>Durante os primeiros dias, o método sugere atenção aos gases/expansão (não selar a tampa de forma excessiva) e manter o conteúdo bem compactado.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Ramona’s Cuisine —
+<a href="https://www.ramonascuisine.com/raw-sauerkraut-with-turmeric/" target="_blank" rel="noopener">
+https://www.ramonascuisine.com/raw-sauerkraut-with-turmeric/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="crackers-raw-de-chucrute-com-trigo-sarraceno-germinado-desidratador"></a>
+<h3 id="r10">R10 — Crackers raw de chucrute com trigo-sarraceno germinado (desidratador)</h3>
+
+<h4>Introdução</h4>
+<p>Crackers desidratados com sabor acidulado do chucrute e textura crocante: usa trigo-sarraceno germinado (para “liga”) e chucrute pronto. Bom para servir com patês e “queijos” de caju.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>1 lote de chucrute pronto (pode ser de repolho branco ou roxo; com salmoura disponível)</li>
+<li>Trigo-sarraceno germinado (sprouted buckwheat)</li>
+<li>Amêndoa moída (“ground almond”) OU polpa de amêndoa (alternativa mencionada no método)</li>
+<li>Sal (se necessário, dependendo do quão salgado está o seu chucrute)</li>
+<li>Salmoura do chucrute (ou água) para ajustar textura no processador</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Garanta que tem chucrute pronto, com alguma salmoura. (O método indica que usar salmoura é melhor do ponto de vista “bactérias/probióticos”.)</li>
+<li>Germine o trigo-sarraceno com antecedência (o método refere 2–3 dias como orientação geral, dependendo da temperatura).</li>
+<li>No processador, triture tudo junto (chucrute + trigo-sarraceno germinado + amêndoa moída/polpa + salmoura/água) até obter uma massa/pasta homogénea e espessa.</li>
+<li>Prove e ajuste o sal: ao desidratar, o sabor fica mais concentrado.</li>
+<li>Espalhe a massa numa folha antiaderente do desidratador (camada uniforme).</li>
+<li>Desidrate cerca de 2 horas (no método, a ideia é secar o suficiente para marcar/“pontilhar” as linhas dos crackers).</li>
+<li>Retire a folha antiaderente, marque/corte em quadrados, e vire para uma grelha (para circular ar). Continue a desidratar até ficar completamente seco e crocante (o método refere mais ~12 horas, como orientação).</li>
+<li>Guarde em recipiente bem fechado à temperatura ambiente.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The Raw Chef —
+<a href="https://www.therawchef.com/sauerkraut-crackers/" target="_blank" rel="noopener">
+https://www.therawchef.com/sauerkraut-crackers/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

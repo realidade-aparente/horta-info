@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Cebola fresca – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header{
+  background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria));
+  color:#fff;
+  padding:1.2rem 1rem .8rem;
+  box-shadow:0 2px 4px rgba(0,0,0,0.12);
+}
+header h1{margin:0 0 .25rem;font-size:1.7rem}
+header p{margin:0;opacity:.9}
+main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top:calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky;top:0;z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria));color:#fff;box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top:140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+<div class="masthead">
+  <header>
+    <h1>Cebola fresca – Receitas de Comida Viva</h1>
+    <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+  </header>
+
+  <nav>
+    <a href="../../../index.html">Início</a>
+    <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+    <a href="../../../abobora-grande.html">Abóbora grande</a>
+    <a href="../../../acelga.html">Acelga</a>
+    <a href="../../../agriao.html">Agrião-de-água</a>
+    <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+    <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+    <a href="../../../alface.html">Alface</a>
+    <a href="../../../alho.html">Alho</a>
+    <a href="../../../alho-frances.html">Alho-francês</a>
+    <a href="../../../aneto.html">Aneto / Endro</a>
+    <a href="../../../batata-comum.html">Batata comum</a>
+    <a href="../../../batata-doce.html">Batata-doce</a>
+    <a href="../../../beringela.html">Beringela</a>
+    <a href="../../../beterraba.html">Beterraba</a>
+    <a href="../../../brocolo.html">Brócolo</a>
+    <a href="../../../canonigos.html">Canónigos</a>
+    <a href="../../../cebola.html">Cebola</a>
+    <a href="../../../cebola-fresca.html" class="ativa">Cebola fresca</a>
+    <a href="../../../cenoura.html">Cenoura</a>
+    <a href="../../../coentros.html">Coentros</a>
+    <a href="../../../couve-chinesa.html">Couve chinesa</a>
+    <a href="../../../couve-flor.html">Couve-flor</a>
+    <a href="../../../couve-rabano.html">Couve-rábano</a>
+    <a href="../../../couve-repolho.html">Couve repolho</a>
+    <a href="../../../couve-toscana.html">Couve toscana</a>
+    <a href="../../../curgete.html">Curgete</a>
+    <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+    <a href="../../../espinafre.html">Espinafre</a>
+    <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+    <a href="../../../feijao-verde.html">Feijão verde</a>
+    <a href="../../../manjericao.html">Manjericão</a>
+    <a href="../../../milho-doce.html">Milho doce</a>
+    <a href="../../../mizuna.html">Mizuna</a>
+    <a href="../../../morangos.html">Morangueiro / Morangos</a>
+    <a href="../../../moringa.html">Moringa</a>
+    <a href="../../../nabica.html">Nabiça</a>
+    <a href="../../../nabo.html">Nabo</a>
+    <a href="../../../pak-choi.html">Pak choi</a>
+    <a href="../../../pepino.html">Pepino</a>
+    <a href="../../../pimento.html">Pimento</a>
+    <a href="../../../rabanete.html">Rabanete</a>
+    <a href="../../../rabano.html">Rábano / Daikon</a>
+    <a href="../../../rucula.html">Rúcula</a>
+    <a href="../../../salanova.html">Salanova</a>
+    <a href="../../../salsa.html">Salsa</a>
+    <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+    <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+  </nav>
+</div>
+
+<main>
+<article>
+
+<h2 id="receitas-preparados">Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/cebola-fresca_receitas_vegetariana.html">(Vegetariana)</a>
+    <a href="/data/refeicoes/vegan/cebola-fresca_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+  <ol>
+    <li><a href="#molho-cremoso-cru-de-cebolinha-cebola-verde-com-caju-e-limao">Molho cremoso cru de cebolinha/cebola verde com caju e limão</a></li>
+    <li><a href="#queijo-cru-de-cebolinha-cebola-verde-caju-sementes-para-barrar">“Queijo” cru de cebolinha/cebola verde (caju + sementes) para barrar</a></li>
+    <li><a href="#kimchi-vegan-de-cebolinha-cebola-verde-pa-kimchi-fermentado">Kimchi vegan de cebolinha/cebola verde (Pa-kimchi) fermentado</a></li>
+    <li><a href="#salada-de-primavera-com-molho-cru-de-cebolinha-cebola-verde">Salada de primavera com molho cru de cebolinha/cebola verde</a></li>
+    <li><a href="#pao-cru-de-multiplas-cebolas-com-alho-frances-e-cebolinha-desidratador">Pão cru de “múltiplas cebolas” com alho-francês e cebolinha (desidratador)</a></li>
+    <li><a href="#crackers-crus-de-tupinambo-e-sesamo-com-cebolinha-desidratador">Crackers crus de tupinambo e sésamo com cebolinha (desidratador)</a></li>
+    <li><a href="#pate-cru-tipo-salmao-com-cenoura-e-cebolinha-cebola-verde">Patê cru “tipo salmão” com cenoura e cebolinha/cebola verde</a></li>
+    <li><a href="#rolinhos-crus-de-pepino-com-lox-vegetal-e-queijo-de-cebolinha">Rolinhos crus de pepino com “lox” vegetal e queijo de cebolinha</a></li>
+    <li><a href="#sopa-crua-corny-com-milho-e-cebolinha-cebola-verde">Sopa crua “Corny” com milho e cebolinha/cebola verde</a></li>
+    <li><a href="#molho-ranch-cru-estilo-ervas-com-cebolinha-cebola-verde">Molho ranch cru (estilo ervas) com cebolinha/cebola verde</a></li>
+  </ol>
+</div>
+
+<h2 id="resumo">Resumo das receitas (R1–R10)</h2>
+
+<h4>R1. Molho cremoso cru de cebolinha/cebola verde com caju e limão</h4>
+<p>Um molho cru, espesso e versátil feito no liquidificador com cajus demolhados e uma boa quantidade de cebolinha/cebola verde, com acidez de limão e um toque de vinagre. Serve como molho para saladas, topping de bowls ou dip.</p>
+
+<h4>R2. “Queijo” cru de cebolinha/cebola verde (caju + sementes) para barrar</h4>
+<p>Um “cream cheese” cru e vegan, feito com caju e sementes (demolhados), levedura nutricional e vegetais aromáticos, onde a cebolinha/cebola verde dá o perfil fresco e “cebólico”. Ideal para tostas cruas, wraps e crudités.</p>
+
+<h4>R3. Kimchi vegan de cebolinha/cebola verde (Pa-kimchi) fermentado</h4>
+<p>Kimchi de cebolinha/cebola verde com pasta picante (gochugaru, alho, gengibre, adoçante e um elemento salgado/umami vegan), fermentado por poucos dias até ganhar acidez. A cebolinha é a estrela: crocante, aromática e intensa.</p>
+
+<h4>R4. Salada de primavera com molho cru de cebolinha/cebola verde</h4>
+<p>Uma salada crua que usa um molho/vinagrete “verde” à base de cebolinha/cebola verde como elemento principal de sabor, combinando com vegetais de primavera (rabanetes, pepino, folhas, ervilhas, etc.).</p>
+
+<h4>R5. Pão cru de “múltiplas cebolas” com alho-francês e cebolinha (desidratador)</h4>
+<p>Um “pão” raw vegan desidratado, muito aromático, feito com alho-francês e cebolinha/cebola verde em quantidade, ligado com sementes e/ou frutos secos. Ótimo para sanduíches crus e como base de patês.</p>
+
+<h4>R6. Crackers crus de tupinambo e sésamo com cebolinha (desidratador)</h4>
+<p>Crackers finos, crocantes e totalmente crus, feitos com tupinambo (topinambur), sementes de sésamo e cânhamo, temperados com malagueta e cebolinha/cebola verde. Snack perfeito para dips crus.</p>
+
+<h4>R7. Patê cru “tipo salmão” com cenoura e cebolinha/cebola verde</h4>
+<p>Um patê cru de inspiração “lox”, onde a cenoura dá cor e doçura e a cebolinha/cebola verde entra como aromático central. Vai bem com pepino, folhas, crackers crus e wraps.</p>
+
+<h4>R8. Rolinhos crus de pepino com “lox” vegetal e queijo de cebolinha</h4>
+<p>Rolinhos de pepino recheados com um “lox” vegetal (base de cenoura) e um queijo cru de caju com cebolinha. Visualmente bonito, ótimo para entradas e finger food.</p>
+
+<h4>R9. Sopa crua “Corny” com milho e cebolinha/cebola verde</h4>
+<p>Sopa crua com base de vegetais (curgete, tomate, etc.) e milho, temperada com miso e ervas, onde a cebolinha/cebola verde aparece como componente aromático importante. Pode ser servida fria ou levemente amornada (&lt;45 ºC).</p>
+
+<h4>R10. Molho ranch cru (estilo ervas) com cebolinha/cebola verde</h4>
+<p>Versão crua de “ranch”: frutos secos demolhados, pepino, ervas frescas e um pedaço de cebola verde (parte branca), criando um molho espesso para saladas e dips, com perfil herbáceo e fresco.</p>
+
+<!-- RECEITAS COMPLETAS -->
+
+<a id="molho-cremoso-cru-de-cebolinha-cebola-verde-com-caju-e-limao-r1"></a>
+<h2 id="molho-cremoso-cru-de-cebolinha-cebola-verde-com-caju-e-limao">Molho cremoso cru de cebolinha/cebola verde com caju e limão <span class="source">[R1]</span></h2>
+<h4>Introdução</h4>
+<p>Um molho cru onde a cebolinha/cebola verde é protagonista: entra em quantidade para dar aroma e “punch”, equilibrada por caju (cremosidade) e limão/vinagre (acidez). Serve em saladas, bowls e como dip.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Cajus crus sem sal (demolhados e escorridos)</li>
+  <li>Cebolinha/cebola verde em pedaços (quantidade generosa)</li>
+  <li>Água filtrada (para ajustar textura)</li>
+  <li>Sumo de limão</li>
+  <li>Vinagre (destilado ou outro suave)</li>
+  <li>Sal</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Demolha os cajus (o tempo indicado na fonte) e escorre bem.</li>
+  <li>No liquidificador, junta cajus, cebolinha/cebola verde, sumo de limão, vinagre e sal.</li>
+  <li>Tritura adicionando água aos poucos até ficar um creme liso.</li>
+  <li>Prova e ajusta acidez/sal e a espessura (mais água para molho, menos para dip).</li>
+  <li>Guarda no frio e usa em 3–5 dias.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Eating by Elaine — <a href="https://www.eatingbyelaine.com/easy-green-onion-cashew-sauce-vegan-paleo/" target="_blank" rel="noopener">https://www.eatingbyelaine.com/easy-green-onion-cashew-sauce-vegan-paleo/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="queijo-cru-de-cebolinha-cebola-verde-caju-sementes-para-barrar-r2"></a>
+<h2 id="queijo-cru-de-cebolinha-cebola-verde-caju-sementes-para-barrar">“Queijo” cru de cebolinha/cebola verde (caju + sementes) para barrar <span class="source">[R2]</span></h2>
+<h4>Introdução</h4>
+<p>Este “queijo” cru e vegan combina caju e sementes demolhadas com levedura nutricional e aromáticos, e a cebolinha/cebola verde define o sabor final. Fica ótimo em wraps crus, pepino, aipo e crackers.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Cajus crus (demolhados)</li>
+  <li>Sementes de girassol sem sal (demolhadas)</li>
+  <li>Levedura nutricional</li>
+  <li>Aipo (incluindo partes com folhas, se quiseres)</li>
+  <li>Cebolinha/cebola verde picada</li>
+  <li>Água filtrada (para ajustar textura)</li>
+  <li>Sal (e opcionalmente pimenta)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Demolha e escorre cajus e sementes.</li>
+  <li>Tritura no processador com levedura nutricional, aipo e um pouco de água até formar um creme espesso.</li>
+  <li>Ajusta sal e textura.</li>
+  <li>Envolve a cebolinha/cebola verde no fim (para ficar mais “fresca” e visível) ou tritura parcialmente, conforme preferires.</li>
+  <li>Leva ao frio para firmar e apurar.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>City Life Eats — <a href="https://www.citylifeeats.com/2012/01/28/scallion-cashew-vegan-cheese/" target="_blank" rel="noopener">https://www.citylifeeats.com/2012/01/28/scallion-cashew-vegan-cheese/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="kimchi-vegan-de-cebolinha-cebola-verde-pa-kimchi-fermentado-r3"></a>
+<h2 id="kimchi-vegan-de-cebolinha-cebola-verde-pa-kimchi-fermentado">Kimchi vegan de cebolinha/cebola verde (Pa-kimchi) fermentado <span class="source">[R3]</span></h2>
+<h4>Introdução</h4>
+<p>Pa-kimchi é kimchi centrado em cebolinha/cebola verde. Nesta versão vegan, a pasta picante e salgada é feita sem ingredientes animais e a fermentação dá acidez e profundidade. Ótimo como acompanhamento e para dar “umami” a pratos crus/vegans.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Cebolinha/cebola verde inteira (branca e verde), lavada e bem escorrida</li>
+  <li>Sal (para pré-salgar/temperar, conforme a receita)</li>
+  <li>Gochugaru (flocos de malagueta coreana)</li>
+  <li>Alho</li>
+  <li>Gengibre</li>
+  <li>Adoçante (ex.: açúcar, xarope, ou equivalente indicado)</li>
+  <li>Um elemento salgado/umami vegan (ex.: molho de soja/tamari ou ingrediente equivalente indicado)</li>
+  <li>Água (se necessário para a pasta)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Lava a cebolinha, seca e prepara (cortar em comprimentos práticos ou manter inteira, como indicado).</li>
+  <li>Faz a pasta: mistura gochugaru, alho, gengibre, adoçante e o componente umami vegan até virar uma pasta espalhável.</li>
+  <li>Envolve bem a cebolinha na pasta, garantindo cobertura uniforme.</li>
+  <li>Coloca em frasco limpo, compactando para reduzir bolsas de ar.</li>
+  <li>Fermenta à temperatura ambiente pelo tempo indicado (observando bolhas/cheiro ácido) e depois refrigera para abrandar a fermentação.</li>
+  <li>Serve quando atingir o nível de acidez desejado.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Veganese Tokyo — <a href="https://veganese-tokyo.com/scallion-kimchi/" target="_blank" rel="noopener">https://veganese-tokyo.com/scallion-kimchi/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="salada-de-primavera-com-molho-cru-de-cebolinha-cebola-verde-r4"></a>
+<h2 id="salada-de-primavera-com-molho-cru-de-cebolinha-cebola-verde">Salada de primavera com molho cru de cebolinha/cebola verde <span class="source">[R4]</span></h2>
+<h4>Introdução</h4>
+<p>Aqui a cebolinha/cebola verde aparece no molho como ingrediente-chave: dá impacto e frescura, combinando muito bem com rabanetes, pepino, folhas e outros vegetais crocantes.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Vegetais crus de primavera (ex.: folhas, pepino, rabanete, etc., conforme a receita)</li>
+  <li>Cebolinha/cebola verde (para o molho)</li>
+  <li>Azeite</li>
+  <li>Ácido (limão ou vinagre, conforme a receita)</li>
+  <li>Sal e pimenta</li>
+  <li>Opcional: sementes/nozes para finalizar</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Lava e prepara os vegetais (fatiar, laminar, rasgar folhas).</li>
+  <li>Faz o molho: pica/esmaga ou tritura a cebolinha/cebola verde com azeite e ácido até obter um vinagrete aromático.</li>
+  <li>Tempera a salada no momento de servir e finaliza com sementes/nozes se indicado.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Lazy Cat Kitchen — <a href="https://www.lazycatkitchen.com/spring-salad-scallion-dressing/" target="_blank" rel="noopener">https://www.lazycatkitchen.com/spring-salad-scallion-dressing/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="pao-cru-de-multiplas-cebolas-com-alho-frances-e-cebolinha-desidratador-r5"></a>
+<h2 id="pao-cru-de-multiplas-cebolas-com-alho-frances-e-cebolinha-desidratador">Pão cru de “múltiplas cebolas” com alho-francês e cebolinha (desidratador) <span class="source">[R5]</span></h2>
+<h4>Introdução</h4>
+<p>Um pão cru e desidratado, com foco forte em alliums: alho-francês e cebolinha/cebola verde entram em destaque, criando um “pão” muito aromático para sanduíches crus, patês e tábuas.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Alho-francês fatiado fino (parte branca + um pouco de verde)</li>
+  <li>Cebolinha/cebola verde (quantidade generosa)</li>
+  <li>Base de ligação típica de pão cru (sementes demolhadas/moídas e/ou farinha de sementes, conforme a receita)</li>
+  <li>Temperos secos (sal, ervas)</li>
+  <li>Água (para ajustar massa)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Mistura os ingredientes (processando quando indicado) até obter massa espessa e moldável.</li>
+  <li>Espalha em folhas antiaderentes do desidratador, formando uma camada uniforme.</li>
+  <li>Marca/corta em porções enquanto ainda está maleável.</li>
+  <li>Desidrata a baixa temperatura até ficar firme, virando a meio para secar ambos os lados.</li>
+  <li>Guarda em recipiente hermético (frio ajuda a manter).</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Practically Raw Woman — <a href="https://practicallyrawwoman.com/2020/03/04/multiple-o-onion-bread/" target="_blank" rel="noopener">https://practicallyrawwoman.com/2020/03/04/multiple-o-onion-bread/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="crackers-crus-de-tupinambo-e-sesamo-com-cebolinha-desidratador-r6"></a>
+<h2 id="crackers-crus-de-tupinambo-e-sesamo-com-cebolinha-desidratador">Crackers crus de tupinambo e sésamo com cebolinha (desidratador) <span class="source">[R6]</span></h2>
+<h4>Introdução</h4>
+<p>Crackers crus com cebolinha/cebola verde para sabor e aroma, combinados com sementes (sésamo, cânhamo) e tupinambo. São ótimos com patês e “queijos” crus.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Tupinambo (sunchoke/topinambur)</li>
+  <li>Sementes de sésamo</li>
+  <li>Sementes de cânhamo</li>
+  <li>Cebolinha/cebola verde picada</li>
+  <li>Sal</li>
+  <li>Flocos de malagueta (opcional)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Tritura/processa os ingredientes até obter uma massa espalhável.</li>
+  <li>Espalha fino em folhas do desidratador.</li>
+  <li>Desidrata até conseguir virar sem partir; vira e termina até ficar crocante.</li>
+  <li>Parte em crackers e guarda bem fechado.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Amanda Nicole Smith — <a href="https://amandanicolesmith.com/sunchoke-sesame-seed-crackers/" target="_blank" rel="noopener">https://amandanicolesmith.com/sunchoke-sesame-seed-crackers/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="pate-cru-tipo-salmao-com-cenoura-e-cebolinha-cebola-verde-r7"></a>
+<h2 id="pate-cru-tipo-salmao-com-cenoura-e-cebolinha-cebola-verde">Patê cru “tipo salmão” com cenoura e cebolinha/cebola verde <span class="source">[R7]</span></h2>
+<h4>Introdução</h4>
+<p>Um patê cru inspirado em “salmão”: usa cenoura para cor e doçura, e cebolinha/cebola verde para dar perfil fresco e pungente. Serve como patê de entrada com vegetais e crackers crus.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Cenoura crua em cubos</li>
+  <li>Cajus ou outra base de frutos secos/sementes (demolhados)</li>
+  <li>Pimento vermelho (para cor/sabor, se indicado)</li>
+  <li>Cebolinha/cebola verde picada</li>
+  <li>Limão (sumo)</li>
+  <li>Sal</li>
+  <li>Opcional: algas (nori/dulse) se indicado na receita</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Tritura a base (caju/sementes) até ficar cremosa.</li>
+  <li>Junta cenoura e restantes ingredientes e processa até obter textura de patê (lisa ou com grão, conforme preferires).</li>
+  <li>Ajusta sal e limão.</li>
+  <li>Guarda no frio para apurar.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Kitchentravels — <a href="https://www.kitchentravels.com/kitchen-rawvegan-mock-salmon-p%C3%A2t%C3%A9" target="_blank" rel="noopener">https://www.kitchentravels.com/kitchen-rawvegan-mock-salmon-p%C3%A2t%C3%A9</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="rolinhos-crus-de-pepino-com-lox-vegetal-e-queijo-de-cebolinha-r8"></a>
+<h2 id="rolinhos-crus-de-pepino-com-lox-vegetal-e-queijo-de-cebolinha">Rolinhos crus de pepino com “lox” vegetal e queijo de cebolinha <span class="source">[R8]</span></h2>
+<h4>Introdução</h4>
+<p>Entrada crua elegante: pepino em tiras faz de “wrap”, recheado com um “lox” vegetal e um queijo cru aromatizado com cebolinha/cebola verde. Fresco, leve e muito apresentável.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Pepino (para laminar em tiras e enrolar)</li>
+  <li>Base “lox” vegetal (geralmente cenoura e temperos, conforme a receita)</li>
+  <li>“Queijo” de caju com cebolinha/cebola verde (tipo cream cheese cru)</li>
+  <li>Limão, sal e especiarias conforme indicado</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Lamina o pepino em tiras compridas (mandolina ajuda).</li>
+  <li>Prepara o “lox” vegetal e o queijo de cebolinha conforme indicado na fonte.</li>
+  <li>Unta cada tira de pepino com queijo de cebolinha, coloca um pouco do “lox” por cima e enrola.</li>
+  <li>Refrigera alguns minutos antes de servir para firmar.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>TasteSpace — <a href="https://tastespace.wordpress.com/2013/01/06/raw-vegan-smoked-salmon-and-scallion-cashew-cheese-cucumber-rolls-aux-vivres-raw-vege-lox/" target="_blank" rel="noopener">https://tastespace.wordpress.com/2013/01/06/raw-vegan-smoked-salmon-and-scallion-cashew-cheese-cucumber-rolls-aux-vivres-raw-vege-lox/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="sopa-crua-corny-com-milho-e-cebolinha-cebola-verde-r9"></a>
+<h2 id="sopa-crua-corny-com-milho-e-cebolinha-cebola-verde">Sopa crua “Corny” com milho e cebolinha/cebola verde <span class="source">[R9]</span></h2>
+<h4>Introdução</h4>
+<p>Sopa crua com milho para doçura e corpo, vegetais para frescura e cebolinha/cebola verde para “levantar” o sabor. Pode ser servida fria ou amornada no liquidificador (mantendo &lt;45 ºC).</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Milho (cru, se disponível; ou conforme indicado)</li>
+  <li>Curgete</li>
+  <li>Tomate</li>
+  <li>Miso branco (ou equivalente indicado)</li>
+  <li>Alho</li>
+  <li>Endro/erva-doce (dill) e/ou salsa</li>
+  <li>Cebolinha/cebola verde</li>
+  <li>Malagueta (opcional)</li>
+  <li>Opcional: molho cremoso à base de nozes/sementes, conforme indicado</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Processa vegetais, miso, alho, ervas e cebolinha até formar base de sopa.</li>
+  <li>Junta o milho e pulsa para manter alguma textura.</li>
+  <li>Se a receita tiver “creme” separado de nozes/sementes, tritura à parte e adiciona ao servir.</li>
+  <li>Para amornar mantendo cru: deixa bater mais tempo no liquidificador e controla para não ultrapassar ~45 ºC.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Marisa’s Healthy Kitchen — <a href="https://marisashealthykitchen.com/2009/04/20/raw-corny-soup/" target="_blank" rel="noopener">https://marisashealthykitchen.com/2009/04/20/raw-corny-soup/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="molho-ranch-cru-estilo-ervas-com-cebolinha-cebola-verde-r10"></a>
+<h2 id="molho-ranch-cru-estilo-ervas-com-cebolinha-cebola-verde">Molho ranch cru (estilo ervas) com cebolinha/cebola verde <span class="source">[R10]</span></h2>
+<h4>Introdução</h4>
+<p>Um ranch cru para saladas e dips, onde a parte branca da cebola verde entra como base aromática, junto com ervas frescas. Fica cremoso graças a frutos secos demolhados.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Frutos secos crus (demolhados), conforme indicado (ex.: macadâmia)</li>
+  <li>Pepino (para frescura e textura)</li>
+  <li>Um segmento da parte branca da cebola verde (spring onion)</li>
+  <li>Alho (pequena quantidade)</li>
+  <li>Óleo (azeite/abacate, conforme indicado)</li>
+  <li>Vinagre de sidra</li>
+  <li>Sal</li>
+  <li>Ervas frescas (endro, manjericão, salsa, cebolinho, etc., conforme indicado)</li>
+  <li>Água (para ajustar consistência)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Escorre os frutos secos demolhados.</li>
+  <li>Tritura tudo no liquidificador até obter um molho liso.</li>
+  <li>Ajusta a espessura com água e a acidez com vinagre/limão (se necessário).</li>
+  <li>Usa imediatamente ou guarda no frio alguns dias.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Hope4Cancer — <a href="https://hope4cancer.com/recipe-raw-vegan-ranch-dressing/" target="_blank" rel="noopener">https://hope4cancer.com/recipe-raw-vegan-ranch-dressing/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

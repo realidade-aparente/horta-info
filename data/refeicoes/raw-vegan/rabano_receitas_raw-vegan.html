@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Rábano – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+ <div class="masthead">
+<header>
+  <h1>Rábano – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html" class="ativa">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+  </header></div>
+<main>
+<article>
+
+<h2>Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/rabano_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/rabano_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+<ol>
+<li><a href="#r1">Salada raw de rabanete com molho de caju e mostarda</a> <span class="source">[R1]</span></li> 
+<li><a href="#r2">Kkakdugi — kimchi vegan de rabanete em cubos (fermentado)</a> <span class="source">[R2]</span></li>
+<li><a href="#r3">Kimchi vegan de daikon (fermentado)</a> <span class="source">[R3]</span></li>
+<li><a href="#r4">Rolos de daikon com pesto de coentros e sementes de abóbora</a> <span class="source">[R4]</span></li>
+<li><a href="#r5">“Spring rolls” raw vegan com “wrap” de daikon e molho de amêndoa</a> <span class="source">[R5]</span></li>
+<li><a href="#r6">Noodles de daikon (base para pratos crudívoros)</a> <span class="source">[R6]</span></li>
+<li><a href="#r7">Coleslaw raw vegan de daikon picante</a> <span class="source">[R7]</span></li>
+<li><a href="#r8">Sopa raw probiótica de noodles de daikon (fermentada, servida fria)</a> <span class="source">[R8]</span></li>
+<li><a href="#r9">Pad Thai raw vegan com noodles de daikon e molho de amêndoa-gengibre</a> <span class="source">[R9]</span></li>
+<li><a href="#r10">Taça tailandesa “high-raw” com noodles de daikon e molho Thai</a> <span class="source">[R10]</span></li>
+</ol>
+</div>
+
+<h2> Resumo das Receitas</h2>
+
+<h4>R1. Salada raw de rabanete com molho de caju e mostarda</h4>
+<p>Rabanete branco (daikon/“white radish”) e folhas de rabanete em salada, com um molho cremoso de caju, limão e mostarda. Leve, fresca e bem centrada no rabanete.</p>
+
+<h4>R2. Kkakdugi — kimchi vegan de rabanete em cubos (fermentado)</h4>
+<p>Rabanete (daikon/rábano coreano) em cubos, envolvido em pasta picante com alho, gengibre e malagueta, fermentado poucos dias para ganhar acidez e probióticos.</p>
+
+<h4>R3. Kimchi vegan de daikon (fermentado)</h4>
+<p>Daikon fatiado (ou em tiras) fermentado com sal, miso, alho, gengibre e malagueta coreana, resultando num fermentado vegan e simples, ótimo para acompanhar refeições.</p>
+
+<h4>R4. Rolos de daikon com pesto de coentros e sementes de abóbora</h4>
+<p>Lâminas finas de daikon usadas como “folhas” para enrolar pepino, abacate e rebentos, untadas com pesto de coentros e sementes de abóbora (sem cozinhar).</p>
+
+<h4>R5. “Spring rolls” raw vegan com “wrap” de daikon e molho de amêndoa</h4>
+<p>Rolos crus sem folha de arroz: o daikon faz de “massa”, recheado com vegetais e servido com molho cremoso de amêndoa.</p>
+
+<h4>R6. Noodles de daikon (base para pratos crudívoros)</h4>
+<p>Daikon transformado em noodles crocantes (espiralizador/juliana) para substituir massa, ótimo em pratos asiáticos raw, bowls e saladas.</p>
+
+<h4>R7. Coleslaw raw vegan de daikon picante</h4>
+<p>“Slaw” de daikon em tiras finas com vinagrete picante e ácido que suaviza o sabor do rabanete, perfeito para piqueniques e acompanhamentos crus.</p>
+
+<h4>R8. Sopa raw probiótica de noodles de daikon (fermentada, servida fria)</h4>
+<p>Noodles de daikon fermentados rapidamente e depois servidos em “caldo” frio com elementos fermentados/cultivados, criando uma sopa crua, viva e refrescante.</p>
+
+<h4>R9. Pad Thai raw vegan com noodles de daikon e molho de amêndoa-gengibre</h4>
+<p>Versão crudívora do Pad Thai usando noodles de daikon e um molho cremoso de amêndoa com gengibre e toque picante, com toppings típicos (coentros, rebentos, lima).</p>
+
+<h4>R10. Taça tailandesa “high-raw” com noodles de daikon e molho Thai</h4>
+<p>Bowl com “massa” de legumes (inclui daikon), tofu marinado (com opção high-raw), verduras e um molho Thai, para uma apresentação tipo “bowl” completa e colorida.</p>
+
+<h2> Receitas completas</h2>
+
+<a id="salada-raw-de-rabanete-com-molho-de-caju-e-mostarda"></a>
+<h3 id="r1">R1 — Salada raw de rabanete com molho de caju e mostarda</h3>
+
+<h4>1) Introdução</h4>
+<p>Uma salada totalmente crua e vegan centrada no rabanete branco (daikon/white radish) e nas folhas de rabanete. O molho de caju e mostarda dá corpo e suaviza o picante natural do rabanete.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+<li>3 rabanetes brancos grandes (daikon/white radish), descascados (se necessário) e fatiados muito finos ou em tiras</li>
+<li>2 chávenas de folhas de rabanete (radish tops/greens), lavadas e bem secas</li>
+<li>6 colheres de sopa de cajus (idealmente demolhados 30 min a 2 h)</li>
+<li>2 colheres de sopa de sumo de limão</li>
+<li>2 colheres de chá de mostarda Dijon (ou mostarda em grão, conforme a receita)</li>
+<li>1 colher de chá de xarope de ácer (ou adoçante vegetal semelhante)</li>
+<li>Sal e pimenta q.b.</li>
+<li>Água q.b. (só se precisares para ajustar textura do molho)</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+<li>Cortar o rabanete: faz lâminas muito finas (mandolina ajuda) ou tiras tipo juliana e coloca numa taça.</li>
+<li>Preparar as folhas: corta grosseiramente as folhas de rabanete e junta à taça.</li>
+<li>Fazer o molho: tritura cajus com limão, mostarda, xarope de ácer, sal e pimenta. Adiciona um pouco de água apenas se necessário para ficar cremoso e fluido.</li>
+<li>Envolver: junta o molho à salada e mistura bem.</li>
+<li>Ajustar: prova e corrige acidez/sal/pimenta. Serve de imediato ou após 10 minutos para amaciar ligeiramente.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Food.com — Radish Salad With Cashew Mustard Dressing (Raw Vegan) — 
+<a href="https://www.food.com/recipe/radish-salad-with-cashew-mustard-dressing-raw-vegan-516865" target="_blank" rel="noopener">
+https://www.food.com/recipe/radish-salad-with-cashew-mustard-dressing-raw-vegan-516865
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="kkakdugi-kimchi-vegan-de-rabanete-em-cubos-fermentado"></a>
+<h2 id="r2">R2 — Kkakdugi — kimchi vegan de rabanete em cubos (fermentado)</h2>
+
+<h4>1) Introdução</h4>
+<p>Kkakdugi é um kimchi de rabanete em cubos. Esta versão é explicitamente vegan e fermentada: crocante, picante e ácida, ótima como acompanhamento e para dar “punch” a bowls e arroz.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+<li>1 rabanete coreano ou daikon grande, em cubos (≈ 1,5–2 cm)</li>
+<li>Sal (para salgar/amaciar o rabanete)</li>
+<li>Alho</li>
+<li>Gengibre</li>
+<li>Cebolinho/cebola verde</li>
+<li>Malagueta coreana em flocos (gochugaru) ou alternativa indicada na receita</li>
+<li>Um elemento umami vegan indicado na receita (ex.: molho de soja/tamari, miso, etc.)</li>
+<li>Opcional: açúcar/adoçante (para ajudar a fermentar e arredondar o sabor)</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+<li>Salgar: mistura os cubos de rabanete com sal e deixa repousar até libertarem líquido e ficarem ligeiramente mais macios. Escorre (e guarda um pouco do líquido, se a receita usar).</li>
+<li>Pasta: tritura ou mistura alho, gengibre, gochugaru e o componente umami vegan até formar uma pasta espessa.</li>
+<li>Misturar: envolve o rabanete na pasta e junta a cebola verde.</li>
+<li>Fermentar: coloca num frasco limpo, pressiona para eliminar bolsas de ar e mantém o rabanete submerso no próprio líquido/pasta. Deixa fermentar alguns dias à temperatura ambiente (conforme instruções da receita), depois refrigera.</li>
+<li>Servir: usa como acompanhamento; o sabor intensifica com o tempo no frigorífico.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Cinnamon Snail — Kkakdugi (Vegan Radish Kimchi Recipe) — 
+<a href="https://cinnamonsnail.com/kkakdugi-vegan-radish-kimchi/" target="_blank" rel="noopener">
+https://cinnamonsnail.com/kkakdugi-vegan-radish-kimchi/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="kimchi-vegan-de-daikon-fermentado"></a>
+<h2 id="r3">R3 — Kimchi vegan de daikon (fermentado)</h2>
+
+<h4>1) Introdução</h4>
+<p>Um kimchi vegan simples de daikon, fermentado com sal, miso e temperos clássicos. Bom para quem quer um fermentado “direto ao ponto”, com ingredientes relativamente fáceis de encontrar.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+<li>1 kg de daikon (aprox.), descascado e cortado (fatias/tiras conforme receita)</li>
+<li>Sal</li>
+<li>Miso branco</li>
+<li>Flocos de malagueta (idealmente gochugaru)</li>
+<li>Cebola verde</li>
+<li>Alho</li>
+<li>Gengibre</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+<li>Salgar: envolve o daikon com sal e deixa repousar para libertar água e amaciar ligeiramente.</li>
+<li>Mistura: prepara uma pasta/tempero com miso, alho, gengibre e malagueta.</li>
+<li>Envolver: mistura o daikon com o tempero e junta a cebola verde.</li>
+<li>Fermentar: coloca em frasco, comprime bem e deixa fermentar pelo tempo indicado. Depois, refrigera.</li>
+<li>Consumir: serve como acompanhamento; o sabor evolui ao longo dos dias.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The Awesome Green — Daikon Kimchi (vegan Kkakdugi recipe) — 
+<a href="https://www.theawesomegreen.com/daikon-kimchi/" target="_blank" rel="noopener">
+https://www.theawesomegreen.com/daikon-kimchi/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="rolos-de-daikon-com-pesto-de-coentros-e-sementes-de-abobora"></a>
+<h2 id="r4">R4 — Rolos de daikon com pesto de coentros e sementes de abóbora</h2>
+
+<h4>1) Introdução</h4>
+<p>Daikon fatiado finíssimo vira “folha” para rolinhos crus. O pesto de coentros e sementes de abóbora dá gordura boa e liga tudo, enquanto pepino/abacate/rebentos trazem frescura.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+<li>1 daikon grande</li>
+<li>Pepino em tiras finas</li>
+<li>Abacate em tiras</li>
+<li>Rebentos/germinados (alfafa, rabanete, etc.)</li>
+<li>Para o pesto: coentros frescos, sementes de abóbora, azeite (ou outro indicado), limão e sal</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+<li>“Folhas” de daikon: corta o daikon em lâminas muito finas (mandolina).</li>
+<li>Pesto: tritura coentros + sementes de abóbora + gordura (azeite/indicado) + limão + sal até ficar cremoso.</li>
+<li>Montar: espalha uma camada fina de pesto numa lâmina, adiciona pepino, abacate e rebentos e enrola.</li>
+<li>Servir: faz vários rolinhos e serve como snack/entrada, com mais pesto ao lado.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Gourmande in the Kitchen — Daikon Rolls with Cilantro Pumpkin Seed Pesto — 
+<a href="https://gourmandeinthekitchen.com/daikon-rolls-cilantro-pumpkin-seed-pesto/" target="_blank" rel="noopener">
+https://gourmandeinthekitchen.com/daikon-rolls-cilantro-pumpkin-seed-pesto/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="spring-rolls-raw-vegan-com-wrap-de-daikon-e-molho-de-amendoa"></a>
+<h2 id="r5">R5 — “Spring rolls” raw vegan com “wrap” de daikon e molho de amêndoa</h2>
+
+<h4>1) Introdução</h4>
+<p>Rolinhos estilo spring roll 100% crus: o “invólucro” é daikon laminado e o recheio é só de vegetais. O molho de amêndoa faz o papel do “dip” cremoso.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+<li>1 daikon grande (para laminar muito fino)</li>
+<li>Vegetais para recheio (ex.: pepino, cenoura, pimento, couve roxa) em palitos</li>
+<li>Ervas frescas (ex.: coentros, hortelã)</li>
+<li>Para o molho: manteiga/creme de amêndoa, limão/lima, tamari, alho/gengibre (conforme receita), água para ajustar</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+<li>Laminar daikon: corta lâminas finíssimas (mandolina).</li>
+<li>Organizar recheio: prepara todos os vegetais em palitos finos.</li>
+<li>Enrolar: põe recheio na ponta da lâmina de daikon e enrola apertado.</li>
+<li>Molho: mistura os ingredientes do molho até ficar cremoso.</li>
+<li>Servir: dispõe os rolos num prato e serve com o molho.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Rachel Carr (Plant Craft) — Raw Vegan Daikon Spring Roll — 
+<a href="https://www.rachelcarr.com/raw-vegan-daikon-spring-roll/" target="_blank" rel="noopener">
+https://www.rachelcarr.com/raw-vegan-daikon-spring-roll/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="noodles-de-daikon-base-para-pratos-crudivoros"></a>
+<h2 id="r6">R6 — Noodles de daikon (base para pratos crudívoros)</h2>
+
+<h4>1) Introdução</h4>
+<p>Uma “receita base”: transformar daikon em noodles crocantes para usar como massa crua. A partir daqui, dá para fazer bowls, sopas frias, pad thai, saladas e “ramen” raw.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+<li>1 daikon grande</li>
+<li>Opcional: sal fino (para “amaciar” ligeiramente)</li>
+<li>Opcional: água com gelo (para deixar extra crocante)</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+<li>Preparar: descasca o daikon se a pele estiver muito grossa.</li>
+<li>Cortar em noodles: usa espiralizador ou cortador juliana (ou mandolina com lâmina apropriada).</li>
+<li>Crocância (opcional): põe os noodles em água com gelo por 10 minutos e escorre bem.</li>
+<li>Amaciar (opcional): uma pitada mínima de sal, massajar 30 segundos e depois enxaguar/escorrer se necessário.</li>
+<li>Usar: aplica em pratos crus com molhos, pestos, “caldos” frios, etc.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Nouvelle Raw — Daikon Radish Noodles (raw, vegan, gluten-free) — 
+<a href="https://nouveauraw.com/noodle-making-alternatives/daikon-radish-noodles/" target="_blank" rel="noopener">
+https://nouveauraw.com/noodle-making-alternatives/daikon-radish-noodles/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="coleslaw-raw-vegan-de-daikon-picante"></a>
+<h2 id="r7">R7 — Coleslaw raw vegan de daikon picante</h2>
+
+<h4>1) Introdução</h4>
+<p>Um “slaw” centrado no daikon, com um vinagrete que suaviza e arredonda o sabor. Ótimo para acompanhar pratos crus, wraps e bowls.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+<li>Daikon em tiras muito finas (mandolina/juliana)</li>
+<li>Elementos de tempero do vinagrete (ex.: vinagre/limão, azeite, sal)</li>
+<li>Picante (ex.: malagueta, pimenta, ou equivalente indicado)</li>
+<li>Extras típicos de slaw conforme a fonte (ervas, sementes, etc.)</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+<li>Fatiar: corta o daikon bem fino para textura “coleslaw”.</li>
+<li>Molho: mistura os ingredientes do vinagrete até emulsionar.</li>
+<li>Envolver: junta o molho ao daikon e mistura bem.</li>
+<li>Descansar: deixa repousar 10–20 minutos para “macerar” e suavizar o sabor.</li>
+<li>Servir: finaliza com ervas/sementes (se a receita usar).</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Raw at 50 — Spicy Raw Vegan Daikon Slaw Recipe — 
+<a href="https://rawat50.com/food/recipes/raw-vegan-daikon-slaw/" target="_blank" rel="noopener">
+https://rawat50.com/food/recipes/raw-vegan-daikon-slaw/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-raw-probiotica-de-noodles-de-daikon-fermentada-servida-fria"></a>
+<h2 id="r8">R8 — Sopa raw probiótica de noodles de daikon (fermentada, servida fria)</h2>
+
+<h4>1) Introdução</h4>
+<p>Uma sopa crua e “viva”: os noodles de daikon são fermentados rapidamente e depois servidos num caldo frio com elementos que reforçam o perfil probiótico. Refrescante e diferente.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+<li>Daikon em noodles (espiralizado)</li>
+<li>Água filtrada e sal (para fermentação rápida/curta, conforme receita)</li>
+<li>Ingredientes do “caldo” frio indicados na fonte (incluindo componentes fermentados/cultivados)</li>
+<li>Extras: cebolinho, algas, sementes, etc. conforme receita</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+<li>Noodles: faz noodles de daikon e coloca num frasco limpo.</li>
+<li>Fermentação curta: adiciona água/sal conforme indicado e deixa fermentar pelo período da receita.</li>
+<li>Preparar o caldo: mistura os ingredientes do “caldo” frio (normalmente em taça ou liquidificador).</li>
+<li>Montar: escorre/ajusta os noodles fermentados e verte o caldo frio por cima.</li>
+<li>Servir: consome fresco, mantendo a sopa refrigerada.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The Global Girl — Healing Raw Probiotic Noodle Soup — 
+<a href="https://theglobalgirl.com/raw-chilled-noodle-soup-daikon-healing-probiotic-gluten-free-fermented-cultured-raw-vegan-food-recipes-dairy-free/" target="_blank" rel="noopener">
+https://theglobalgirl.com/raw-chilled-noodle-soup-daikon-healing-probiotic-gluten-free-fermented-cultured-raw-vegan-food-recipes-dairy-free/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pad-thai-raw-vegan-com-noodles-de-daikon-e-molho-de-amendoa-gengibre"></a>
+<h2 id="r9">R9 — Pad Thai raw vegan com noodles de daikon e molho de amêndoa-gengibre</h2>
+
+<h4>1) Introdução</h4>
+<p>Uma versão crudívora do Pad Thai: noodles de daikon + molho cremoso de amêndoa e gengibre, com ervas, lima e toppings crocantes. Muito bom para variar além de “saladas”.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+<li>Daikon em noodles</li>
+<li>Vegetais/crus típicos de pad thai (ex.: cenoura, pimento, cebolo, rebentos)</li>
+<li>Para o molho: manteiga/creme de amêndoa, gengibre, lima/limão, tamari, malagueta (conforme receita)</li>
+<li>Toppings: coentros, amendoim (ou sementes), etc. conforme receita</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+<li>Noodles: prepara os noodles de daikon e reserva.</li>
+<li>Molho: mistura os ingredientes do molho até ficar cremoso (ajusta com água se preciso).</li>
+<li>Misturar: envolve noodles + vegetais no molho.</li>
+<li>Finalizar: adiciona ervas e toppings e serve de imediato.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The Global Girl — Raw Vegan Pad Thai with Daikon Noodles — 
+<a href="https://theglobalgirl.com/raw-vegan-recipe-low-fat-pad-thai-with-daikon-noodles-and-spicy-almond-ginger-sauce/" target="_blank" rel="noopener">
+https://theglobalgirl.com/raw-vegan-recipe-low-fat-pad-thai-with-daikon-noodles-and-spicy-almond-ginger-sauce/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="taca-tailandesa-high-raw-com-noodles-de-daikon-e-molho-thai"></a>
+<h2 id="r10">R10 — Taça tailandesa “high-raw” com noodles de daikon e molho Thai</h2>
+
+<h4>1) Introdução</h4>
+<p>Uma bowl completa com noodles de vegetais (inclui daikon/rabanete), verdes frescos e molho Thai. A receita é apresentada como “high-raw”, mantendo a identidade raw muito dominante no prato e com apresentação de bowl.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+<li>Daikon (e outros vegetais) em noodles/fitas</li>
+<li>Verdes para bowl (ex.: couve, coentros, etc.)</li>
+<li>Elementos de proteína conforme a fonte (inclui tofu marinado; a receita enquadra-se como high-raw)</li>
+<li>Para o molho Thai: ingredientes indicados (geralmente ácido, salgado e ligeiramente doce)</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+<li>Preparar noodles: espiraliza daikon e outros vegetais, reserva.</li>
+<li>Marinar/proporcionar proteína conforme a receita (se aplicável).</li>
+<li>Molho: mistura os ingredientes do molho Thai até ficar homogéneo.</li>
+<li>Montar bowl: coloca noodles no fundo, adiciona verdes e toppings, finaliza com o molho.</li>
+<li>Servir: consome de imediato para manter crocância e frescura.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Vitacost Blog — High-Raw Vegan Thai Daikon Noodle Bowl — 
+<a href="https://www.vitacost.com/blog/thai-tofu-daikon-noodle-bowl/" target="_blank" rel="noopener">
+https://www.vitacost.com/blog/thai-tofu-daikon-noodle-bowl/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

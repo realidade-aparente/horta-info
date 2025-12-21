@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Salanova – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+ <div class="masthead">
+<header>
+  <h1>Salanova – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html" class="ativa">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+  </header></div>
+<main>
+<article>
+
+<h2>Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/salanova_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/salanova_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+<ol>
+<li><a href="#r1">Salada Sudoeste Raw-Vegan com Molho de Caju e Chipotle</a> <span class="source">[R1]</span></li> 
+<li><a href="#r2">Salada de Laranja e Romã com Molho de Chia</a> <span class="source">[R2]</span></li>
+<li><a href="#r3">Salada de Pêra, Noz e Romã com Molho Maple-Dijon</a> <span class="source">[R3]</span></li>
+<li><a href="#r4">Salada Tacos Raw-Vegan com “Carne” de Caju</a> <span class="source">[R4]</span></li>
+<li><a href="#r5">Salada Grega Raw-Vegan com Ricotta de Caju</a> <span class="source">[R5]</span></li>
+</ol>
+</div>
+
+<h2> Resumo das Receitas</h2>
+
+<h4>R1 — Salada Sudoeste Raw-Vegan com Molho de Caju e Chipotle</h4>
+<p>Salada grande e crocante com alface, milho cru, manga, tomate, abacate e sementes, ligada por um molho raw de caju, tâmaras e chipotle.</p>
+
+<h4>R2 — Salada de Laranja e Romã com Molho de Chia</h4>
+<p>Salada simples e fresca com alface, gomos de laranja, romã e nozes pecan, temperada com um molho cru de sumo de laranja e sementes de chia.</p>
+
+<h4>R3 — Salada de Pêra, Noz e Romã com Molho Maple-Dijon</h4>
+<p>Salada de inspiração outonal com alface, pêra crua, romã e nozes, envolvida num molho raw cremoso de caju, mostarda e xarope de ácer.</p>
+
+<h4>R4 — Salada Tacos Raw-Vegan com “Carne” de Caju</h4>
+<p>Salada em taça com alface e vegetais crus, coberta por uma mistura de caju cru temperado que imita a textura e sabor de “taco meat”.</p>
+
+<h4>R5 — Salada Grega Raw-Vegan com Ricotta de Caju</h4>
+<p>Versão crua da salada grega: alface, pepino, tomate, pimento e ervas, acompanhados por uma ricotta raw feita de caju.</p>
+
+
+<h2> Receitas completas</h2>
+
+<a id="salada-sudoeste-raw-vegan-com-molho-de-caju-e-chipotle"></a>
+<h3 id="r1">R1 — Salada Sudoeste Raw-Vegan com Molho de Caju e Chipotle</h3>
+
+<h4>Introdução</h4>
+<p>Esta salada raw-vegan é inspirada nos sabores do sudoeste/mexicano, usando apenas ingredientes crus. A base é uma alface crocante (compatível com Salanova), complementada por fruta, legumes e sementes, com um molho cremoso de caju e chipotle adoçado com tâmaras.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li><strong>Salada:</strong></li>
+<li>Alface (romaine ou multifolhas tipo Salanova), rasgada</li>
+<li>Milho cru (retirado da espiga)</li>
+<li>Manga em cubos</li>
+<li>Tomate cherry, cortado ao meio</li>
+<li>Abacate em cubos</li>
+<li>Cebola roxa em cubos pequenos</li>
+<li>Sementes de abóbora cruas</li>
+<li>Coentros frescos picados</li>
+<li>Sal e pimenta preta q.b.</li>
+</ul>
+
+<ul>
+<li><strong>Molho:</strong></li>
+<li>Cajus crus demolhados</li>
+<li>Água</li>
+<li>Tâmaras sem caroço</li>
+<li>Sumo de lima</li>
+<li>Chipotle em pó</li>
+<li>Alho cru</li>
+<li>Sal e pimenta</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Colocar todos os ingredientes da salada numa taça grande e misturar suavemente.</li>
+<li>Triturar todos os ingredientes do molho até obter uma textura lisa e cremosa.</li>
+<li>Ajustar sal, acidez e picante a gosto.</li>
+<li>Verter o molho sobre a salada e envolver bem antes de servir.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Rawmazing — 
+<a href="https://rawmazing.com/recipe/summer-southwest-salad/" target="_blank" rel="noopener">
+https://rawmazing.com/recipe/summer-southwest-salad/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-de-laranja-e-roma-com-molho-de-chia"></a>
+<h2 id="r2">R2 — Salada de Laranja e Romã com Molho de Chia</h2>
+
+<h3>Introdução</h3>
+<p>Uma salada crua, leve e visualmente elegante, ideal para entradas ou refeições leves. A chia espessa naturalmente o molho sem necessidade de emulsificação ou calor.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Alface (romaine ou Salanova), rasgada</li>
+<li>Laranjas, descascadas e segmentadas</li>
+<li>Sementes de romã</li>
+<li>Nozes pecan cruas, picadas</li>
+</ul>
+
+<ul>
+<li><strong>Molho:</strong></li>
+<li>Sumo de laranja fresco</li>
+<li>Sementes de chia</li>
+<li>Xarope de ácer (maple syrup)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Dispor a alface numa taça ou prato largo.</li>
+<li>Distribuir os gomos de laranja e a romã por cima.</li>
+<li>Polvilhar com as nozes pecan.</li>
+<li>Misturar o sumo de laranja com a chia e o xarope de ácer e deixar repousar alguns minutos até espessar.</li>
+<li>Regar a salada com o molho e servir.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Rawmazing —  
+<a href="https://rawmazing.com/recipe/orange-pomegranate-salad/" target="_blank" rel="noopener">
+https://rawmazing.com/recipe/orange-pomegranate-salad/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-de-pera-noz-e-roma-com-molho-maple-dijon"></a>
+<h2 id="r3">R3 — Salada de Pêra, Noz e Romã com Molho Maple-Dijon</h2>
+
+<h3>Introdução</h3>
+<p>Uma salada raw-vegan rica e saciante, ideal para épocas mais frias, combinando fruta, frutos secos e um molho cremoso de caju com mostarda.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li><strong>Salada:</strong></li>
+<li>Alface (romaine ou Salanova)</li>
+<li>Pêras maduras mas firmes, em cubos</li>
+<li>Sementes de romã</li>
+<li>Nozes cruas, picadas</li>
+</ul>
+
+<ul>
+<li><strong>Molho:</strong></li>
+<li>Cajus crus demolhados</li>
+<li>Água</li>
+<li>Sumo de limão</li>
+<li>Xarope de ácer</li>
+<li>Mostarda Dijon</li>
+<li>Vinagre de sidra</li>
+<li>Chalota crua picada</li>
+<li>Sal e pimenta</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Triturar todos os ingredientes do molho (exceto a chalota) até obter um creme liso.</li>
+<li>Envolver a chalota no molho no final.</li>
+<li>Misturar a alface com parte do molho.</li>
+<li>Adicionar pêra, nozes e romã.</li>
+<li>Ajustar temperos e servir.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Rawmazing —  
+<a href="https://rawmazing.com/recipe/pear-walnut-pomegranate-salad-with-maple-dijon-dressing/" target="_blank" rel="noopener">
+https://rawmazing.com/recipe/pear-walnut-pomegranate-salad-with-maple-dijon-dressing/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-tacos-raw-vegan-com-carne-de-caju"></a>
+<h2 id="r4">R4 — Salada Tacos Raw-Vegan com “Carne” de Caju</h2>
+
+<h3>Introdução</h3>
+<p>Esta salada usa uma preparação clássica da cozinha raw: caju cru triturado e temperado para simular a textura de carne picada, servido sobre alface e legumes frescos.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Alface (romaine ou Salanova)</li>
+<li>Abacate em cubos</li>
+<li>Tomate em cubos</li>
+<li>Cebola roxa picada</li>
+</ul>
+
+<ul>
+<li><strong>“Carne” de caju:</strong></li>
+<li>Cajus crus demolhados</li>
+<li>Sumo de lima</li>
+<li>Cominhos em pó</li>
+<li>Chili em pó</li>
+<li>Alho em pó</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Triturar ligeiramente os cajus com o sumo de lima até obter textura granulada.</li>
+<li>Misturar os temperos até ficar bem distribuído.</li>
+<li>Dispor a alface numa taça e adicionar os vegetais.</li>
+<li>Colocar a “carne” de caju por cima e servir.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The Sensible Vegan —  
+<a href="https://www.thesensiblevegan.com/veganrecipes/raw-vegan-taco-salad" target="_blank" rel="noopener">
+https://www.thesensiblevegan.com/veganrecipes/raw-vegan-taco-salad
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-grega-raw-vegan-com-ricotta-de-caju"></a>
+<h2 id="r5">R5 — Salada Grega Raw-Vegan com Ricotta de Caju</h2>
+
+<h3>Introdução</h3>
+<p>Versão crua e vegetal da salada grega, mantendo frescura e complexidade através de ervas, vegetais crus e um queijo vegetal de caju.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Alface (romaine ou Salanova)</li>
+<li>Pepino em rodelas</li>
+<li>Tomate em cubos</li>
+<li>Pimento em tiras</li>
+<li>Aipo picado</li>
+<li>Alcaparras</li>
+<li>Endro fresco</li>
+</ul>
+
+<ul>
+<li><strong>Ricotta de caju:</strong></li>
+<li>Cajus crus demolhados</li>
+<li>Água</li>
+<li>Sumo de limão</li>
+<li>Sal</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Triturar os ingredientes da ricotta até obter um creme espesso.</li>
+<li>Dispor a alface numa taça e adicionar os vegetais.</li>
+<li>Colocar colheradas de ricotta por cima.</li>
+<li>Finalizar com endro, sal e pimenta.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Rachel Carr / Plant Craft —  
+<a href="https://www.rachelcarr.com/easy-raw-vegan-greek-salad/" target="_blank" rel="noopener">
+https://www.rachelcarr.com/easy-raw-vegan-greek-salad/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

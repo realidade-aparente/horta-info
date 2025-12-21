@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Espinafre da Nova Zelândia – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+ <div class="masthead">
+<header>
+  <h1>Espinafre da Nova Zelândia – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html" class="ativa">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+  </header></div>
+<main>
+<article>
+
+<h2>Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/espinafre-nova-zelandia_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/espinafre-nova-zelandia_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+<ol>
+<li><a href="#r1">Húmus de tetragónia (warrigal greens) e sementes de girassol (sem cozimento)</a> <span class="source">[R1]</span></li> 
+<li><a href="#r2">Pesto vegan sem cozimento de tetragónia (warrigal greens), azedas e escapos de alho</a> <span class="source">[R2]</span></li>
+</ol>
+</div>
+
+<h2> Resumo das Receitas</h2>
+<h4>R1 — Húmus de tetragónia (warrigal greens) e sementes de girassol (sem cozimento)</h4>
+<p>Húmus cremoso baseado em sementes de girassol demolhadas, com tahini e limão, enriquecido com tetragónia para dar sabor “verde”. Ótimo para tostas, wraps, crudités e bowls.</p>
+
+<h4>R2 — Pesto vegan sem cozimento de tetragónia (warrigal greens), azedas e escapos de alho</h4>
+<p>Pesto cru e aromático que combina tetragónia (idealmente folhas jovens), sorrel (azedas) e escapos de alho, com frutos secos e azeite. Muito versátil: molhos, massas (inclusive de vegetais), saladas e sanduíches.</p>
+
+
+<h2> Receitas completas</h2>
+<a id="humus-de-tetragonia-warrigal-greens-e-sementes-de-girassol-sem-cozimento"></a>
+<h3 id="r1">R1 — Húmus de tetragónia (warrigal greens) e sementes de girassol (sem cozimento)</h3>
+
+<h4>Introdução breve</h4>
+<p>Esta versão de húmus usa sementes de girassol demolhadas como base (em vez de depender de grão-de-bico cozido), ficando naturalmente cremosa e adequada para uma alimentação sem cozimento. A tetragónia entra para acrescentar frescura vegetal e um perfil mais “verde”.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>1 1/2 chávena de sementes de girassol (demolhadas ~3 horas)</li>
+<li>Tahini</li>
+<li>Sumo de limão</li>
+<li>Sal</li>
+<li>Pimenta cayenne (ou outra pimenta)</li>
+<li>1/2 a 3/4 chávena de água filtrada (ajuste conforme textura desejada)</li>
+<li>Levedura nutricional</li>
+<li>1 ramo/molho de tetragónia (warrigal greens)</li>
+<li>Azeite para servir (opcional)</li>
+<li>Sementes de girassol para servir (opcional)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Demolhar as sementes: coloca as sementes de girassol numa taça, cobre com água e deixa cerca de 3 horas.</li>
+<li>Escorrer e lavar: escorre bem e passa por água corrente para remover o excesso de amido/enzimas libertadas.</li>
+<li>Triturar a base: num processador ou liquidificador, junta sementes escorridas, tahini, sumo de limão, sal, cayenne e levedura nutricional.</li>
+<li>Ajustar cremosidade: adiciona água aos poucos enquanto trituras até obteres a textura de húmus (espessa mas cremosa).</li>
+<li>Incorporar a tetragónia: adiciona as folhas de tetragónia e volta a triturar até ficar homogéneo (podes manter ligeira textura, se preferires).</li>
+<li>Ajustar sabor: prova e corrige limão/sal/picante.</li>
+<li>Servir: coloca numa taça, rega com um fio de azeite (opcional) e polvilha com sementes (opcional).</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Fonte: VeetKaren (Veets) — 
+<a href="https://www.veets.com.au/blog/warrigal-greens-and-sunflower-seed-hummus" target="_blank" rel="noopener">
+https://www.veets.com.au/blog/warrigal-greens-and-sunflower-seed-hummus
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pesto-vegan-sem-cozimento-de-tetragonia-warrigal-greens-azedas-e-escapos-de-alho"></a>
+<h2 id="r2">R2 — Pesto vegan sem cozimento de tetragónia (warrigal greens), azedas e escapos de alho</h2>
+
+<h3>Introdução breve</h3>
+<p>Um pesto cru com perfil ácido e muito aromático. Para cumprir o critério “sem cozimento”, usa folhas jovens de tetragónia (mais tenras), azedas (sorrel) e escapos de alho. Fica excelente em noodles de courgete, saladas, wraps, ou como molho para legumes crus.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>75–80 g (ou 1 chávena bem cheia) de folhas de sorrel (azedas)</li>
+<li>75–80 g (ou 1 chávena bem cheia) de folhas jovens de tetragónia (warrigal greens)</li>
+<li>100–120 g de frutos secos (mistura de pinhões e nozes; usar crus para manter “sem cozimento”)</li>
+<li>1 grande punhado de escapos de alho (ou alternativa: alho/cebolo, a gosto)</li>
+<li>1 colher de sopa de sumo de lima</li>
+<li>160 ml de azeite</li>
+<li>1 1/2 a 2 colheres de chá de mistura “peppersalt” (ou sal + pimenta a gosto)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Preparação das folhas: lava bem e seca muito bem a sorrel e a tetragónia. Separa folhas jovens e tenras (evita talos grossos).</li>
+<li>Triturar: coloca no processador as folhas, os frutos secos, os escapos de alho, o sumo de lima e metade do azeite. Tritura até começar a formar pasta.</li>
+<li>Ajustar textura: com o processador a trabalhar, adiciona o azeite restante em fio até obter a consistência desejada (mais espessa ou mais fluida).</li>
+<li>Temperar: adiciona o peppersalt (ou sal e pimenta) e pulsa mais alguns segundos.</li>
+<li>Provar e corrigir: ajusta acidez (mais lima), sal ou azeite.</li>
+<li>Usar e conservar: usa de imediato. Para guardar, coloca num frasco limpo e cobre a superfície com uma fina camada de azeite para reduzir oxidação. Conserva no frio.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Fonte: CookingBites —  
+<a href="https://www.cookingbites.com/threads/vegan-warrigal-greens-sorrel-garlic-scapes-pesto.26098/" target="_blank" rel="noopener">
+https://www.cookingbites.com/threads/vegan-warrigal-greens-sorrel-garlic-scapes-pesto.26098/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

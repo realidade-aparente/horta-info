@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Feijão-verde – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+ <div class="masthead">
+<header>
+  <h1>Feijão-verde – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html" class="ativa">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+  </header></div>
+<main>
+<article>
+
+<h2>Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/feijao-verde_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/feijao-verde_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+<ol>
+<li><a href="#r1">Salada fresca de feijão-verde</a> <span class="source">[R1]</span></li> 
+<li><a href="#r2">Salada tradicional de feijão-verde</a> <span class="source">[R2]</span></li>
+<li><a href="#r3">Salada de feijão-verde (com molho cremoso de miso)</a> <span class="source">[R3]</span></li>
+<li><a href="#r4">Casserole crua de feijão-verde (tipo gratinado raw)</a> <span class="source">[R4]</span></li>
+<li><a href="#r5">Casserole morna de feijão-verde com crumble “manteigado” de nozes</a> <span class="source">[R5]</span></li>
+<li><a href="#r6">Casserole de feijão-verde (versão crua comunitária)</a> <span class="source">[R6]</span></li>
+<li><a href="#r7">Feijão-verde desidratado com gengibre e ume (snack/guarnição)</a> <span class="source">[R7]</span></li>
+<li><a href="#r8">Feijão-verde fermentado (lactofermentado)</a> <span class="source">[R8]</span></li>
+<li><a href="#r9">Feijão-verde lactofermentado (receita base de vegetal cultivado cru)</a> <span class="source">[R9]</span></li>
+<li><a href="#r10">Salada Som Tam vegan (salada de papaia verde com feijão comprido)</a> <span class="source">[R10]</span></li>
+</ol>
+</div>
+
+<p class="nota">Nota curta de segurança alimentar (raw): algumas pessoas relatam desconforto digestivo ao comer feijão-verde cru em grandes quantidades. Se não estás habituado(a), começa com porções pequenas, usa feijão-verde muito tenro e/ou amacia por marinação, massagem com sal/ácido, ou desidratação a baixa temperatura.</p>
+
+<h2> Resumo das Receitas</h2>
+
+<h4>R1. Salada fresca de feijão-verde</h4>
+<p>Salada crua e crocante de feijão-verde com perfil asiático (sésamo, shoyu/tamari, gengibre e alho). Excelente como entrada fresca e rápida.</p>
+
+<h4>R2. Salada tradicional de feijão-verde</h4>
+<p>Salada “tradicional” em versão raw: feijão-verde fininho com tomate, amêndoa e tempero ácido (limão/vinagre). Pode ser feita totalmente crua (o próprio autor indica essa opção).</p>
+
+<h4>R3. Salada de feijão-verde (com molho cremoso de miso)</h4>
+<p>Salada crua “tudo-em-um” com feijão-verde, cenoura, milho, pimento e brócolos, com molho cremoso de miso, shoyu, gengibre e alho.</p>
+
+<h4>R4. Casserole crua de feijão-verde (tipo gratinado raw)</h4>
+<p>Casserole cru com “creme” (tipo sopa cremosa) à base de caju e cogumelos, montado com feijão-verde cru e finalizado com topping para dar textura.</p>
+
+<h4>R5. Casserole morna de feijão-verde com crumble “manteigado” de nozes</h4>
+<p>Casserole cru pensado para ser servido amornado (desidratador), com “creme de cogumelos” e crumble de nozes/pistáchios por cima.</p>
+
+<h4>R6. Casserole de feijão-verde (versão crua comunitária)</h4>
+<p>Outra abordagem crua de casserole: feijão-verde muito fresco em tiras, misturado com “sopa de cogumelos” crua e finalizado com tiras de “pão de cebola” desidratado (ou alternativa semelhante).</p>
+
+<h4>R7. Feijão-verde desidratado com gengibre e ume (snack/guarnição)</h4>
+<p>Feijão-verde marinado com ume (ume-boshi/ume vinegar) e gengibre e depois desidratado para ficar mais tenro e intenso: ótimo snack/guarnição.</p>
+
+<h4>R8. Feijão-verde fermentado (lactofermentado)</h4>
+<p>Fermentação láctica simples (salmoura) para feijão-verde: crocante, ácido e estável no frigorífico, para comer como snack, side ou em saladas.</p>
+
+<h4>R9. Feijão-verde lactofermentado (receita base de vegetal cultivado cru)</h4>
+<p>Versão “base” e didática de feijão-verde fermentado em salmoura, com foco em técnica raw (sem calor) e orientação clara de tempos e sinais de fermentação.</p>
+
+<h4>R10. Salada Som Tam vegan (salada de papaia verde com feijão comprido)</h4>
+<p>Som tam (salada tailandesa/laosiana) em versão vegan e raw: feijão-verde comprido (yardlong) ou feijão-verde normal + papaia verde e molho agridoce-picante.</p>
+
+<h2> Receitas completas</h2>
+
+<h2 id="r1">R1 — Salada fresca de feijão-verde <span class="source">[R1]</span></h2>
+<h4>Introdução (breve)</h4>
+<p>Uma salada crua, leve e muito aromática. O feijão-verde mantém o “snap” e ganha profundidade com sésamo, shoyu/tamari, gengibre e alho. Ideal como prato frio em dias quentes.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>300–350 g de feijão-verde (vagem) muito tenro, pontas retiradas</li>
+<li>1–2 c. sopa de sementes de sésamo (brancas, pretas ou mistura)</li>
+<li>2 c. sopa de tamari ou shoyu (ajusta ao sal)</li>
+<li>1–2 c. sopa de sumo de limão (ou lima)</li>
+<li>1 c. sopa de óleo de sésamo (ou menos, a gosto)</li>
+<li>1–2 c. chá de gengibre fresco ralado</li>
+<li>1 dente de alho (ralado ou muito picado)</li>
+<li>1 c. chá de xarope de ácer (opcional, para equilibrar)</li>
+<li>Flocos de malagueta (opcional)</li>
+<li>Cebolinho ou cebolinha (opcional), picado</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Lava e seca bem o feijão-verde. Corta em fatias diagonais finas (ou em tiras/“juliana” para ficar mais macio).</li>
+<li>Numa taça grande, mistura tamari/shoyu, sumo de limão, gengibre, alho e (se usares) xarope de ácer e malagueta.</li>
+<li>Junta o feijão-verde e envolve muito bem. Deixa marinar 10–20 min para amaciar ligeiramente.</li>
+<li>Finaliza com sementes de sésamo e (se quiseres) cebolinho/cebolinha. Serve frio.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Nouveau Raw — 
+<a href="https://nouveauraw.com/raw-recipes/main-dishes/fresh-green-bean-salad/" target="_blank" rel="noopener">
+https://nouveauraw.com/raw-recipes/main-dishes/fresh-green-bean-salad/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<h2 id="r2">R2 — Salada tradicional de feijão-verde <span class="source">[R2]</span></h2>
+<h4>Introdução (breve)</h4>
+<p>Salada crua (com opção de manter o feijão totalmente cru) onde o feijão-verde é o protagonista, equilibrado por tomate, ervas e frutos secos. Boa para preparar e comer em 1–2 dias.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>300–450 g de feijão-verde fino, cru, cortado em pedaços pequenos</li>
+<li>1 tomate médio (ou 8–10 tomates cereja), em cubos/metades</li>
+<li>2 c. sopa de amêndoas laminadas (ou picadas)</li>
+<li>2–3 c. sopa de azeite (opcional, ajusta)</li>
+<li>1–2 c. sopa de sumo de limão (ou vinagre suave)</li>
+<li>1 dente de alho pequeno (opcional), muito picado</li>
+<li>Sal e pimenta preta a gosto</li>
+<li>Ervas frescas (salsa/cebolinho/manjericão), a gosto</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Lava e seca o feijão-verde. Corta em rodelas pequenas (quanto mais fino, mais “macia” a experiência raw).</li>
+<li>Numa taça, junta feijão, tomate e ervas.</li>
+<li>Noutra taça pequena, mistura azeite, limão/vinagre, alho (se usares), sal e pimenta.</li>
+<li>Verte o molho sobre a salada, envolve e deixa repousar 15–30 min para o feijão absorver o tempero.</li>
+<li>Finaliza com amêndoas por cima e serve.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Road to Living Whole — 
+<a href="https://www.roadtolivingwhole.com/traditional-green-bean-salad/" target="_blank" rel="noopener">
+https://www.roadtolivingwhole.com/traditional-green-bean-salad/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<h2 id="r3">R3 — Salada de feijão-verde (com molho cremoso de miso) <span class="source">[R3]</span></h2>
+<h4>Introdução (breve)</h4>
+<p>Salada crua robusta e colorida, com um molho cremoso e “umami” (miso + shoyu). Ótima para marmita porque o molho “amassa” ligeiramente os vegetais com o tempo.</p>
+
+<h4>Ingredientes</h4>
+<p><strong>Base da salada:</strong></p>
+<ul>
+<li>3 chávenas de feijão-verde cru, em pedaços de ~2–3 cm</li>
+<li>3 cenouras, em cubos pequenos ou meia-lua fina</li>
+<li>Grãos de 2 espigas de milho (cru) OU milho doce já cozido (se quiseres manter 100% raw, usa milho cru)</li>
+<li>1 pimento vermelho, em cubos</li>
+<li>1 chávena de floretes de brócolo, bem pequenos</li>
+</ul>
+
+<p><strong>Molho:</strong></p>
+<ul>
+<li>1 pedaço de gengibre fresco, picado</li>
+<li>3 dentes de alho, picados</li>
+<li>1/3 chávena de nama shoyu (ou tamari)</li>
+<li>1/3 chávena de azeite prensado a frio</li>
+<li>Xarope de ácer, a gosto (começa com 1 c. chá e ajusta)</li>
+<li>2 c. sopa de miso (idealmente miso suave)</li>
+<li>Um fio de óleo de sésamo (opcional)</li>
+<li>Picante opcional: pimenta caiena/flocos/chilli</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Coloca feijão-verde, cenoura, milho, pimento e brócolos numa taça grande.</li>
+<li>No liquidificador, tritura gengibre, alho, shoyu/tamari, azeite, miso, xarope de ácer e (se usares) picante e óleo de sésamo até ficar liso.</li>
+<li>Junta o molho aos vegetais, mexe bem e ajusta tempero.</li>
+<li>Leva ao frigorífico 1–2 horas para apurar. Serve frio.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The Rawtarian (Receita da comunidade) — 
+<a href="https://www.therawtarian.com/community/recipe/green-bean-salad" target="_blank" rel="noopener">
+https://www.therawtarian.com/community/recipe/green-bean-salad
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<h2 id="r4">R4 — Casserole crua de feijão-verde (tipo gratinado raw) <span class="source">[R4]</span></h2>
+<h4>Introdução (breve)</h4>
+<p>Uma casserole crua ao estilo “comfort food”, feita com feijão-verde cru e um “creme” (tipo sopa) de cajus e cogumelos. Fica ótima depois de repousar para ganhar corpo.</p>
+
+<h4>Ingredientes</h4>
+<p><strong>Camada principal:</strong></p>
+<ul>
+<li>450–700 g de feijão-verde cru, aparado (inteiro ou cortado)</li>
+<li>1/2 cebola roxa ou cebola doce (opcional), em fatias finas</li>
+</ul>
+
+<p><strong>“Creme” (tipo sopa cremosa):</strong></p>
+<ul>
+<li>1 chávena de cajus demolhados (2–4 h)</li>
+<li>1–2 chávenas de cogumelos crus (frescos), fatiados</li>
+<li>1–2 c. sopa de sumo de limão</li>
+<li>1–2 c. sopa de tamari/shoyu (ajusta ao sal)</li>
+<li>1 c. chá de alho em pó (ou 1 dente de alho)</li>
+<li>1 c. chá de cebola em pó (opcional)</li>
+<li>Pimenta preta a gosto</li>
+<li>Água q.b. (para bater até cremoso)</li>
+</ul>
+
+<p><strong>Topping (varia por gosto, mantendo raw):</strong></p>
+<ul>
+<li>Cebola desidratada/“crumb” cru, ou frutos secos triturados com temperos</li>
+<li>Ervas secas (tomilho, etc.), opcional</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Lava o feijão-verde e corta (se quiseres) em pedaços para comer mais facilmente.</li>
+<li>Escorre os cajus demolhados. No liquidificador, bate cajus + cogumelos + limão + tamari/shoyu + temperos, adicionando água aos poucos até ficar um creme espesso.</li>
+<li>Numa travessa, mistura feijão-verde com parte do creme e alisa por cima.</li>
+<li>Adiciona topping (cebola desidratada/crumb ou mistura de frutos secos).</li>
+<li>Deixa repousar 30–60 min (ou amorna em desidratador a baixa temperatura, se a fonte indicar essa possibilidade).</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Live Simply Natural — 
+<a href="https://livesimplynatural.com/raw-vegan-green-bean-casserole/" target="_blank" rel="noopener">
+https://livesimplynatural.com/raw-vegan-green-bean-casserole/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<h2 id="r5">R5 — Casserole morna de feijão-verde com crumble “manteigado” de nozes <span class="source">[R5]</span></h2>
+<h4>Introdução (breve)</h4>
+<p>Casserole crua para servir amornada: o feijão-verde fica mais tenro após horas no desidratador (sem ultrapassar temperaturas típicas de raw). O crumble dá o “croc” final.</p>
+
+<h4>Ingredientes</h4>
+<p>Rendimento: travessa ~23 cm (9")</p>
+
+<p><strong>“Creme de cogumelos”:</strong></p>
+<ul>
+<li>1/4 chávena de água</li>
+<li>2 c. sopa de sumo de limão</li>
+<li>1 c. chá de xarope de ácer</li>
+<li>1 c. sopa de coconut aminos (ou tamari, ajustando)</li>
+<li>1 c. chá de cebola em pó</li>
+<li>1 c. chá de alho em pó</li>
+<li>1 c. chá de tomilho seco</li>
+<li>1/2 c. chá de pimenta preta</li>
+<li>1/4 c. chá de sal de aipo (opcional)</li>
+<li>1 chávena de cajus crus, demolhados (mín. 2 h)</li>
+<li>2 chávenas de cogumelos crus em cubos</li>
+</ul>
+
+<p><strong>Mistura manual:</strong></p>
+<ul>
+<li>1 lb (~450 g) de feijão-verde cru, cortado</li>
+<li>1/4 chávena de cebolinha/cebola verde (parte branca e verde)</li>
+<li>1/4 chávena de cranberries secas (divididas; usa sem açúcar se possível)</li>
+</ul>
+
+<p><strong>Crumble:</strong></p>
+<ul>
+<li>1/2 chávena de nozes (demolhadas e desidratadas, se possível)</li>
+<li>2 c. sopa de pistáchios (demolhados e desidratados, se possível)</li>
+<li>1/2 c. chá de cebola em pó</li>
+<li>1/4 c. chá de sal (ex.: Himalaya)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Creme: no liquidificador, bate água + limão + ácer + aminos/tamari + temperos + cajus até ficar liso e cremoso.</li>
+<li>Junta os cogumelos e volta a bater até ficar homogéneo.</li>
+<li>Mistura manual: corta o feijão-verde, junta com cebolinha e 2 c. sopa de cranberries numa taça e envolve.</li>
+<li>Coloca a mistura numa travessa compatível com o desidratador.</li>
+<li>Crumble: coloca nozes + pistáchios + cebola em pó + sal num saco e esmaga com rolo até virar “migalhas”.</li>
+<li>Montagem: espalha o creme sobre o feijão-verde; polvilha com o crumble; junta o resto das cranberries.</li>
+<li>Cobre (sem tocar na comida) e amorna no desidratador a 115°F (~46°C) durante a noite.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Nouveau Raw — 
+<a href="https://nouveauraw.com/main-dishes/warm-green-bean-casserole-with-buttery-walnut-crumble/" target="_blank" rel="noopener">
+https://nouveauraw.com/main-dishes/warm-green-bean-casserole-with-buttery-walnut-crumble/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<h2 id="r6">R6 — Casserole de feijão-verde (versão crua comunitária) <span class="source">[R6]</span></h2>
+<h4>Introdução (breve)</h4>
+<p>Casserole cru comunitário pensado para “Thanksgiving raw”: feijão-verde em tiras (tipo french cut), creme de cogumelos cru e topping de cebola desidratada para simular a versão clássica.</p>
+
+<h4>Ingredientes</h4>
+<p><strong>Base:</strong></p>
+<ul>
+<li>Feijão-verde muito fresco e fino (quantidade a gosto; tipicamente 450–700 g), cortado em tiras finas (“french cut”)</li>
+</ul>
+
+<p><strong>Mistura:</strong></p>
+<ul>
+<li>Cebola (crua), picada (a gosto)</li>
+<li>Cogumelos crus fatiados (a gosto)</li>
+<li>“Sopa”/creme de cogumelos cru (base indicada pela fonte; prepara à parte)</li>
+</ul>
+
+<p><strong>Topping:</strong></p>
+<ul>
+<li>Tiras de “onion bread” desidratado (ou topping crocante raw semelhante), para finalizar</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Corta o feijão-verde em tiras finas. Se quiseres amaciar, desidrata algumas horas (baixa temperatura) ou usa o truque de congelar (conforme comentário citado na página).</li>
+<li>Prepara uma “sopa de cogumelos” crua cremosa (blender), reduzindo a água para ficar mais espessa, se necessário.</li>
+<li>Mistura feijão-verde + cebola + cogumelos + creme até envolver tudo.</li>
+<li>Coloca numa travessa e finaliza com tiras de “onion bread” desidratado por cima.</li>
+<li>Opcional: amornar no desidratador antes de servir.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The Rawtarian (Receita da comunidade) — 
+<a href="https://www.therawtarian.com/community/recipe/green-bean-casserole" target="_blank" rel="noopener">
+https://www.therawtarian.com/community/recipe/green-bean-casserole
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<h2 id="r7">R7 — Feijão-verde desidratado com gengibre e ume (snack/guarnição) <span class="source">[R7]</span></h2>
+<h4>Introdução (breve)</h4>
+<p>Um “snack”/acompanhamento cru: feijão-verde marinado com ume e gengibre e depois desidratado para concentrar sabor e tornar a textura mais agradável em alimentação viva.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>Feijão-verde (vagem), lavado e aparado (ex.: 300–500 g)</li>
+<li>Ume vinegar (ou ume-su; vinagre/tempero de umeboshi), q.b.</li>
+<li>Gengibre fresco ralado, q.b.</li>
+<li>(Opcional) Tamari/shoyu (pouco), para profundidade</li>
+<li>(Opcional) Sementes de sésamo, para servir</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Corta o feijão-verde (inteiro ou em pedaços) e coloca numa taça.</li>
+<li>Temperra com ume vinegar e gengibre (e, se quiseres, umas gotas de tamari). Mistura bem para revestir.</li>
+<li>Deixa marinar 15–30 min.</li>
+<li>Espalha em tabuleiros de desidratador (uma só camada).</li>
+<li>Desidrata a baixa temperatura (raw) até ficar mais seco e “mastigável”, mas ainda verde (o tempo varia por equipamento e espessura).</li>
+<li>Serve como snack, topping de saladas ou acompanhamento.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Practically Raw Woman — 
+<a href="https://practicallyrawwoman.com/2021/01/05/ginger-ume-dried-string-beans/" target="_blank" rel="noopener">
+https://practicallyrawwoman.com/2021/01/05/ginger-ume-dried-string-beans/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<h2 id="r8">R8 — Feijão-verde fermentado (lactofermentado) <span class="source">[R8]</span></h2>
+<h4>Introdução (breve)</h4>
+<p>Feijão-verde fermentado em salmoura (lacto-fermentação): simples, crocante e ácido. Excelente para quem quer raw com técnica tradicional de conservação.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>Feijão-verde fresco, lavado e aparado (quantidade a gosto)</li>
+<li>Água sem cloro (filtrada, idealmente)</li>
+<li>Sal (não iodado, idealmente), para salmoura</li>
+<li>(Opcional) Aromáticos: alho, endro/dill, folhas (ex.: videira), pimenta em grão, etc.</li>
+<li>Frasco de vidro e peso/forma de manter o feijão submerso</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Prepara uma salmoura dissolvendo sal na água (proporção típica de fermentação; ajusta ao teu método/hábito).</li>
+<li>Coloca o feijão-verde em pé no frasco, bem “apertado” para não flutuar com facilidade.</li>
+<li>Junta aromáticos (se usares).</li>
+<li>Cobre com a salmoura, garantindo que tudo fica totalmente submerso.</li>
+<li>Mantém submerso com peso/folha/fermenting weight.</li>
+<li>Fermenta à temperatura ambiente até atingir acidez/crocância desejadas; depois guarda no frigorífico.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Renata Collective — 
+<a href="https://renatacollective.com/collective/fermented-green-beans-fnz73" target="_blank" rel="noopener">
+https://renatacollective.com/collective/fermented-green-beans-fnz73
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<h2 id="r9">R9 — Feijão-verde lactofermentado (receita base de vegetal cultivado cru) <span class="source">[R9]</span></h2>
+<h4>Introdução (breve)</h4>
+<p>Receita “base” de feijão-verde fermentado sem calor: um método raw, clássico e consistente. Ótimo para criar variações (alho, malagueta, endro, etc.).</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>Feijão-verde fresco, lavado e aparado</li>
+<li>Água (idealmente sem cloro)</li>
+<li>Sal (para preparar a salmoura)</li>
+<li>Frasco de vidro e método para manter tudo submerso (peso/folha/tampa própria)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Prepara a salmoura (água + sal) até dissolver completamente.</li>
+<li>Coloca o feijão-verde no frasco (inteiro ou em pedaços), compactando.</li>
+<li>Adiciona salmoura até cobrir totalmente.</li>
+<li>Garante que nada fica acima do líquido (usa peso).</li>
+<li>Deixa fermentar à temperatura ambiente, verificando periodicamente (bolhas/cheiro ácido agradável).</li>
+<li>Quando estiver ao teu gosto, transfere para frigorífico para abrandar a fermentação.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Superfood Evolution — 
+<a href="https://www.superfoodevolution.com/lacto-fermented-green-beans.html" target="_blank" rel="noopener">
+https://www.superfoodevolution.com/lacto-fermented-green-beans.html
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<h2 id="r10">R10 — Salada Som Tam vegan (salada de papaia verde com feijão comprido) <span class="source">[R10]</span></h2>
+<h4>Introdução (breve)</h4>
+<p>Uma salada raw icónica do Sudeste Asiático em versão vegan: combina feijão-verde (yardlong/“feijão comprido” ou feijão-verde normal) com papaia verde e um molho ácido, salgado, doce e picante.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>Papaia verde ralada (quantidade a gosto)</li>
+<li>Feijão-verde comprido (yardlong) OU feijão-verde normal, em pedaços pequenos</li>
+<li>Tomate (ex.: cereja), partido</li>
+<li>Alho</li>
+<li>Malagueta (a gosto)</li>
+<li>Sumo de lima/limão</li>
+<li>Molho de soja/tamari (substitui o elemento salgado/umami)</li>
+<li>Açúcar de coco, açúcar mascavado ou adoçante equivalente (a gosto)</li>
+<li>Amendoim (opcional), para finalizar</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Prepara os vegetais: rala a papaia verde e corta o feijão em pedaços pequenos.</li>
+<li>Num almofariz (ou taça), esmaga alho e malagueta até formar uma pasta.</li>
+<li>Junta sumo de lima/limão, molho de soja/tamari e adoçante; mistura para dissolver e equilibrar.</li>
+<li>Adiciona feijão e tomate e “amassa”/macerar ligeiramente para absorver molho.</li>
+<li>Junta a papaia ralada, envolve bem e prova: ajusta acidez, sal e doce.</li>
+<li>Finaliza com amendoim e serve imediatamente.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Diet and Health — 
+<a href="https://www.diet-health.info/en/recipes/re/kvblj408-vegan-som-tam-salad-green-papaya-salad-with-yardlong-beans" target="_blank" rel="noopener">
+https://www.diet-health.info/en/recipes/re/kvblj408-vegan-som-tam-salad-green-papaya-salad-with-yardlong-beans
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

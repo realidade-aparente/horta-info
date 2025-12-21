@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Beringela – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+ <div class="masthead">
+<header>
+  <h1>Beringela – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html" class="ativa">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+  </header></div>
+<main>
+<article>
+
+<h2>Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/beringela_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/beringela_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+<ol>
+<li><a href="#r1">Lasanha crua de beringela com creme de caju</a> <span class="source">[R1]</span></li> 
+<li><a href="#r2">Bacon cru de beringela no desidratador</a> <span class="source">[R2]</span></li>
+<li><a href="#r3">Rolinhos crus de beringela com recheio mediterrânico</a> <span class="source">[R3]</span></li>
+<li><a href="#r4">Carpaccio cru de beringela com vinagrete cítrico</a> <span class="source">[R4]</span></li>
+<li><a href="#r5">Pâté cru de beringela e nozes</a> <span class="source">[R5]</span></li>
+<li><a href="#r6">Moussaka crua de beringela</a> <span class="source">[R6]</span></li>
+<li><a href="#r7">Wraps crus de beringela marinada</a> <span class="source">[R7]</span></li>
+</ol>
+</div>
+
+<h2> Resumo das Receitas</h2>
+
+<h4>R1 – Lasanha crua de beringela com creme de caju</h4>
+<p>Fatias finíssimas de beringela marinadas servem como “placas” de lasanha, intercaladas com molho de tomate cru e um creme de caju aveludado.</p>
+
+<h4>R2 – Bacon cru de beringela no desidratador</h4>
+<p>Fatias muito finas de beringela marinadas em molho fumado e depois desidratadas até ficarem crocantes e intensas em sabor.</p>
+
+<h4>R3 – Rolinhos crus de beringela com recheio mediterrânico</h4>
+<p>Lâminas marinadas de beringela recheadas com creme de sementes, tomate seco e ervas frescas.</p>
+
+<h4>R4 – Carpaccio cru de beringela com vinagrete cítrico</h4>
+<p>Beringela crua cortada em lâminas translúcidas, levemente marinada em limão, azeite e ervas.</p>
+
+<h4>R5 – Pâté cru de beringela e nozes</h4>
+<p>Pasta cremosa de beringela crua, nozes e alho, ótima para barrar em crackers crus.</p>
+
+<h4>R6 – Moussaka crua de beringela</h4>
+<p>Versão crudívora da moussaka clássica: camadas de beringela marinada, creme de caju e molho de tomate cru.</p>
+
+<h4>R7 – Wraps crus de beringela marinada</h4>
+<p>Fatias finas e flexíveis de beringela marinada usadas como “wraps” crus com recheio vegetal.</p>
+
+<h2> Receitas completas</h2>
+
+<a id="lasanha-crua-de-beringela-com-creme-de-caju"></a>
+<h3 id="r1">R1 — Lasanha crua de beringela com creme de caju</h3>
+
+<h4>Introdução</h4>
+<p>A beringela substitui a massa nesta lasanha crudívora, ganhando textura flexível após a marinada. O recheio é feito com molho de tomate cru e um creme de caju estruturante.</p>
+
+<h4>Ingredientes</h4>
+<p><strong>Beringela:</strong></p>
+<ul>
+<li>2 beringelas grandes cortadas longitudinalmente em fatias muito finas</li>
+<li>Sumo de 1 limão</li>
+<li>Sal marinho q.b.</li>
+</ul>
+
+<p><strong>Creme de caju:</strong></p>
+<ul>
+<li>1 chávena de cajus demolhados 2 h</li>
+<li>½ chávena de água</li>
+<li>1 dente de alho</li>
+<li>Sumo de ½ limão</li>
+<li>Sal q.b.</li>
+</ul>
+
+<p><strong>Molho:</strong></p>
+<ul>
+<li>2 chávenas de tomate maduro</li>
+<li>Tâmaras q.b.</li>
+<li>Manjericão, azeite, sal</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Marinar as fatias de beringela em limão e sal por 40 min.</li>
+<li>Triturar os ingredientes do creme até ficar espesso.</li>
+<li>Triturar os ingredientes do molho.</li>
+<li>Alternar camadas de beringela, creme e molho.</li>
+<li>Refrigerar 1 h antes de servir.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The Rawtarian — Raw Eggplant Lasagna<br>
+<a href="https://www.therawtarian.com/raw-eggplant-lasagna-recipe" target="_blank" rel="noopener">
+https://www.therawtarian.com/raw-eggplant-lasagna-recipe
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="bacon-cru-de-beringela-no-desidratador"></a>
+<h2 id="r2">R2 — Bacon cru de beringela no desidratador</h2>
+
+<h3>Introdução</h3>
+<p>Uma das receitas mais populares da beringela crua: transforma-se num “bacon” fumado e crocante através da desidratação.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 beringela grande</li>
+<li>Tamari, fumo líquido, páprica fumada</li>
+<li>Xarope de ácer</li>
+<li>Alho em pó</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Cortar a beringela em fatias muito finas.</li>
+<li>Marinar no molho por 30 min.</li>
+<li>Desidratar a 42–45 ºC até crocante.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The Rawtarian — Raw Eggplant Bacon<br>
+<a href="https://www.therawtarian.com/raw-eggplant-bacon-recipe" target="_blank" rel="noopener">
+https://www.therawtarian.com/raw-eggplant-bacon-recipe
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="rolinhos-crus-de-beringela-com-recheio-mediterranico"></a>
+<h2 id="r3">R3 — Rolinhos crus de beringela com recheio mediterrânico</h2>
+
+<h3>Introdução</h3>
+<p>Beringela marinada torna-se flexível e ideal para rolinhos recheados.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Beringela em lâminas</li>
+<li>Tomate seco hidratado</li>
+<li>Sementes de girassol demolhadas</li>
+<li>Alho, azeite, orégãos</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Marinar as fatias de beringela.</li>
+<li>Triturar o recheio.</li>
+<li>Enrolar e refrigerar.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Rawmazing — Raw Eggplant Rollups<br>
+<a href="https://rawmazing.com/raw-eggplant-rollups/" target="_blank" rel="noopener">
+https://rawmazing.com/raw-eggplant-rollups/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="carpaccio-cru-de-beringela-com-vinagrete-citrico"></a>
+<h2 id="r4">R4 — Carpaccio cru de beringela com vinagrete cítrico</h2>
+
+<h3>Introdução</h3>
+<p>Preparação minimalista onde a beringela aparece em total pureza.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Beringela em rodelas muito finas</li>
+<li>Limão, azeite, sal, pimenta, ervas</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Marinar a beringela 20 min.</li>
+<li>Dispor em prato e servir.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Gourmande in the Kitchen — Raw Eggplant Carpaccio<br>
+<a href="https://gourmandeinthekitchen.com/raw-eggplant-carpaccio/" target="_blank" rel="noopener">
+https://gourmandeinthekitchen.com/raw-eggplant-carpaccio/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pate-cru-de-beringela-e-nozes"></a>
+<h2 id="r5">R5 — Pâté cru de beringela e nozes</h2>
+
+<h3>Introdução</h3>
+<p>Uma pasta vegetal intensa, ótima para entradas raw.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Beringela crua em cubos</li>
+<li>Nozes</li>
+<li>Alho</li>
+<li>Limão e azeite</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Triturar tudo até cremoso.</li>
+<li>Refrigerar 1 h.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Raw Food Chef — Raw Eggplant Pâté<br>
+<a href="https://www.rawfoodchef.com/raw-eggplant-pate/" target="_blank" rel="noopener">
+https://www.rawfoodchef.com/raw-eggplant-pate/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="moussaka-crua-de-beringela"></a>
+<h2 id="r6">R6 — Moussaka crua de beringela</h2>
+
+<p>(estrutura idêntica à R1, com camadas adicionais de “batata” de courgette crua)</p>
+
+<p><h4>Fonte:</h4>
+The Rawtarian — Raw Eggplant Moussaka<br>
+<a href="https://www.therawtarian.com/raw-eggplant-moussaka-recipe" target="_blank" rel="noopener">
+https://www.therawtarian.com/raw-eggplant-moussaka-recipe
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="wraps-crus-de-beringela-marinada"></a>
+<h2 id="r7">R7 — Wraps crus de beringela marinada</h2>
+
+<p><h4>Fonte:</h4>
+Rawmazing — Raw Marinated Eggplant Wraps<br>
+<a href="https://rawmazing.com/raw-marinated-eggplant-wraps/" target="_blank" rel="noopener">
+https://rawmazing.com/raw-marinated-eggplant-wraps/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

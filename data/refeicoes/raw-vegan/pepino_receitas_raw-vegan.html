@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Pepino – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+ <div class="masthead">
+<header>
+  <h1>Pepino – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html" class="ativa">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+  </header></div>
+<main>
+<article>
+
+<h2>Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/pepino_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/pepino_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+<ol>
+<li><a href="#r1">Sopa crua e fria de pepino com abacate (3 ingredientes)</a> <span class="source">[R1]</span></li> 
+<li><a href="#r2">Gazpacho cru cremoso de pepino com pesto de manjericão e miso</a> <span class="source">[R2]</span></li>
+<li><a href="#r3">Sopa crua de pepino (estilo “cold cucumber soup”) com lima e ervas</a> <span class="source">[R3]</span></li>
+<li><a href="#r4">Molho tzatziki cru (raw) à base de pepino e caju</a> <span class="source">[R4]</span></li>
+<li><a href="#r5">Noodles crus de pepino com “creme” de manjericão, tomate e pinhões</a> <span class="source">[R5]</span></li>
+<li><a href="#r6">“Sushi” cru de pepino e abacate em rolinhos (sem arroz)</a> <span class="source">[R6]</span></li>
+<li><a href="#r7">Sushi cru vegan em folhas de nori com legumes (inclui pepino)</a> <span class="source">[R7]</span></li>
+<li><a href="#r8">Pickles crus fermentados de pepino (lactofermentados)</a> <span class="source">[R8]</span></li>
+<li><a href="#r9">Kimchi cru de pepino (rápido)</a> <span class="source">[R9]</span></li>
+<li><a href="#r10">Chips de pepino em desidratador (BBQ)</a> <span class="source">[R10]</span></li>
+</ol>
+</div>
+
+<h2> Resumo das Receitas</h2>
+
+<h4>R1. Sopa crua e fria de pepino com abacate (3 ingredientes)</h4>
+<p>Uma sopa gelada ultra simples feita no liquidificador: pepino + abacate + lima/limão (e temperos). Fica cremosa, fresca e hidratante.</p>
+
+<h4>R2. Gazpacho cru cremoso de pepino com pesto de manjericão e miso</h4>
+<p>Gazpacho verde cru, muito aveludado, com pepino como base e um perfil “umami” (miso) e herbal (pesto). Pronto em minutos.</p>
+
+<h4>R3. Sopa crua de pepino (estilo “cold cucumber soup”) com lima e ervas</h4>
+<p>Sopa fria batida no liquidificador, com pepino, um elemento cremoso vegetal e ervas, ótima para dias quentes e para servir como entrada.</p>
+
+<h4>R4. Molho tzatziki cru (raw) à base de pepino e caju</h4>
+<p>Versão raw de tzatziki: creme de caju com limão, alho e endro/salsa, misturado com pepino ralado e bem escorrido. Serve como dip, molho ou acompanhamento.</p>
+
+<h4>R5. Noodles crus de pepino com “creme” de manjericão, tomate e pinhões</h4>
+<p>Pepino em espiral (tipo massa), servido com um molho cremoso de caju e manjericão, com tomate fresco e pinhões para textura.</p>
+
+<h4>R6. “Sushi” cru de pepino e abacate em rolinhos (sem arroz)</h4>
+<p>Rolinhos crus usando pepino como elemento central, com abacate e temperos. Baixo em hidratos, muito fresco e rápido.</p>
+
+<h4>R7. Sushi cru vegan em folhas de nori com legumes (inclui pepino)</h4>
+<p>Sushi raw em nori com vegetais crocantes (pepino incluído), ligados com um molho simples de miso. Ideal para variar apresentações.</p>
+
+<h4>R8. Pickles crus fermentados de pepino (lactofermentados)</h4>
+<p>Pepinos fermentados em salmoura (sem vinagre), para obter acidez natural e probióticos. Excelente como acompanhamento e conservação.</p>
+
+<h4>R9. Kimchi cru de pepino (rápido)</h4>
+<p>Pepino fatiado com temperos coreanos (gochugaru, alho, gengibre, tamari) e repouso para apurar — picante, ácido e estaladiço.</p>
+
+<h4>R10. Chips de pepino em desidratador (BBQ)</h4>
+<p>Rodelas finas de pepino temperadas com mistura BBQ e desidratadas a baixa temperatura até ficarem crocantes, um snack raw viciante.</p>
+
+
+<h2> Receitas completas</h2>
+
+<a id="sopa-crua-e-fria-de-pepino-com-abacate-3-ingredientes"></a>
+<h3 id="r1">R1 — Sopa crua e fria de pepino com abacate (3 ingredientes)</h3>
+
+<h4>1) Introdução</h4>
+<p>Quando queres algo muito fresco e rápido, esta sopa crua resolve: hidrata, sacia e fica cremosa sem lácteos, só com abacate. Perfeita para servir bem fria.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+<li>2 pepinos médios (ou 1 pepino grande), lavados (podes descascar parcialmente se quiseres)</li>
+<li>1 abacate maduro</li>
+<li>Sumo de 1 lima (ou limão)</li>
+<li>Sal marinho fino q.b.</li>
+<li>Pimenta preta q.b. (opcional)</li>
+<li>Água fria q.b. (para ajustar textura)</li>
+<li>Opcional para servir: tomate picado, coentros, sementes de cânhamo</li>
+</ul>
+
+<h3>3) Passos de preparação</h3>
+<ol>
+<li>Corta o pepino em pedaços (retira sementes se forem muito grandes).</li>
+<li>No liquidificador, junta pepino, polpa do abacate e sumo de lima.</li>
+<li>Tempera com sal (e pimenta se usares) e tritura até ficar liso.</li>
+<li>Ajusta a consistência com um pouco de água fria, aos poucos.</li>
+<li>Leva ao frigorífico 30–60 minutos e serve bem gelado, com toppings se quiseres.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Pickles &amp; Honey — Chilled Cucumber Avocado Soup — 
+<a href="https://picklesnhoney.com/chilled-cucumber-avocado-soup/" target="_blank" rel="noopener">
+https://picklesnhoney.com/chilled-cucumber-avocado-soup/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="gazpacho-cru-cremoso-de-pepino-com-pesto-de-manjericao-e-miso"></a>
+<h2 id="r2">R2 — Gazpacho cru cremoso de pepino com pesto de manjericão e miso</h2>
+
+<h3>1) Introdução</h3>
+<p>Um gazpacho verde cru e “luxuoso”: pepino dá frescura, coco dá cremosidade e miso/pesto dão profundidade. Excelente como entrada elegante ou almoço leve.</p>
+
+<h3>2) Ingredientes</h3>
+<ul>
+<li>Pepino (quantidade equivalente a ~3 chávenas em pedaços)</li>
+<li>1 abacate (opcional, para mais corpo, dependendo da versão)</li>
+<li>Leite de coco (ou outra base cremosa raw usada na receita)</li>
+<li>1–2 colheres de sopa de miso</li>
+<li>Pesto de manjericão (ou manjericão + azeite/ingredientes indicados na fonte)</li>
+<li>Sumo de limão q.b.</li>
+<li>Sal e pimenta q.b.</li>
+<li>Opcional: alho, cebolinho, manjericão extra para servir</li>
+</ul>
+
+<h3>3) Passos de preparação</h3>
+<ol>
+<li>Coloca no liquidificador o pepino em pedaços e os restantes ingredientes da base.</li>
+<li>Tritura até ficar completamente liso e cremoso.</li>
+<li>Ajusta acidez (limão), sal e textura (com um pouco de água fria se necessário).</li>
+<li>Arrefece no frigorífico antes de servir.</li>
+<li>Serve com folhas de manjericão/pesto extra por cima.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Full of Plants — Creamy Cucumber Gazpacho (Raw!) — 
+<a href="https://fullofplants.com/creamy-cucumber-gazpacho/" target="_blank" rel="noopener">
+https://fullofplants.com/creamy-cucumber-gazpacho/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-crua-de-pepino-estilo-cold-cucumber-soup-com-lima-e-ervas"></a>
+<h2 id="r3">R3 — Sopa crua de pepino (estilo “cold cucumber soup”) com lima e ervas</h2>
+
+<h3>1) Introdução</h3>
+<p>Uma sopa fria de pepino é um clássico de verão: rápida, leve e muito refrescante. Esta versão mantém-se crua (sem cozedura) e ganha perfume com ervas.</p>
+
+<h3>2) Ingredientes</h3>
+<ul>
+<li>Pepinos (o suficiente para ~4 porções)</li>
+<li>Um elemento cremoso vegetal (conforme a fonte: abacate ou alternativa)</li>
+<li>Sumo de lima/limão</li>
+<li>Ervas frescas (ex.: endro, hortelã, manjericão ou coentros)</li>
+<li>Sal q.b.</li>
+<li>Água fria q.b. para ajustar textura</li>
+<li>Opcional: alho, cebolinho, pimenta</li>
+</ul>
+
+<h3>3) Passos de preparação</h3>
+<ol>
+<li>Corta os pepinos em pedaços e junta ao liquidificador.</li>
+<li>Adiciona o ingrediente cremoso, sumo de lima/limão, ervas e sal.</li>
+<li>Tritura até ficar liso. Ajusta com água fria.</li>
+<li>Arrefece bem antes de servir.</li>
+<li>Serve com ervas por cima e um fio de azeite (opcional, se a fonte usar).</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Veggie Inspired — Cold Cucumber Soup (Dairy Free, Gluten Free, Vegan) — 
+<a href="https://www.veggieinspired.com/cold-cucumber-soup/" target="_blank" rel="noopener">
+https://www.veggieinspired.com/cold-cucumber-soup/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="molho-tzatziki-cru-raw-a-base-de-pepino-e-caju"></a>
+<h2 id="r4">R4 — Molho tzatziki cru (raw) à base de pepino e caju</h2>
+
+<h3>1) Introdução</h3>
+<p>Tzatziki em versão raw: base cremosa de caju batido e pepino ralado bem espremido. Serve como dip, molho para noodles de pepino, “wraps” em folhas, ou topping de bowls.</p>
+
+<h3>2) Ingredientes</h3>
+<ul>
+<li>Cajus crus (demolhados)</li>
+<li>Água q.b. para bater</li>
+<li>Sumo de limão</li>
+<li>1 dente de alho (ou a gosto)</li>
+<li>Endro fresco (ou mistura de ervas frescas)</li>
+<li>Pepino ralado</li>
+<li>Sal marinho q.b.</li>
+<li>Pimenta q.b. (opcional)</li>
+</ul>
+
+<h3>3) Passos de preparação</h3>
+<ol>
+<li>Demolha os cajus até ficarem macios; escorre.</li>
+<li>Tritura cajus + água + limão + alho + sal até obter um creme liso.</li>
+<li>Rala o pepino e espreme/escorre bem a água (passador + pressão).</li>
+<li>Envolve pepino no creme e adiciona endro/ervas.</li>
+<li>Prova e ajusta sal/limão/alho. Leva ao frio antes de servir.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Good Girl Gone Green — Raw Tzatziki Sauce — 
+<a href="https://www.goodgirlgonegreen.com/raw-vegan-tzatziki-sauce/" target="_blank" rel="noopener">
+https://www.goodgirlgonegreen.com/raw-vegan-tzatziki-sauce/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="noodles-crus-de-pepino-com-creme-de-manjericao-tomate-e-pinhoes"></a>
+<h2 id="r5">R5 — Noodles crus de pepino com “creme” de manjericão, tomate e pinhões</h2>
+
+<h3>1) Introdução</h3>
+<p>Uma “massa” 100% crua: pepino espiralizado dá crocância e frescura, e o molho de caju com manjericão torna o prato realmente saciante.</p>
+
+<h3>2) Ingredientes</h3>
+<ul>
+<li>Pepinos (para espiralizar em noodles)</li>
+<li>Tomate em cubinhos</li>
+<li>Cajus crus (para o creme)</li>
+<li>Manjericão fresco</li>
+<li>Alho (opcional)</li>
+<li>Limão (sumo)</li>
+<li>Sal q.b.</li>
+<li>Pinhões (para finalizar)</li>
+<li>Água q.b. para bater o creme</li>
+</ul>
+
+<h3>3) Passos de preparação</h3>
+<ol>
+<li>Espiraliza os pepinos e coloca-os num escorredor 5–10 min para largarem excesso de água.</li>
+<li>Faz o “creme” no liquidificador: cajus + água + manjericão + limão + sal (e alho se usares) até ficar sedoso.</li>
+<li>Mistura o creme com os noodles de pepino.</li>
+<li>Junta tomate em cubos e envolve.</li>
+<li>Finaliza com pinhões e serve imediatamente.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Rawmazing — Easy Cucumber Noodles with a Vegan Basil Cream, Tomatoes and Pine Nuts — 
+<a href="https://rawmazing.com/recipe/easy-cucumber-noodles-with-a-vegan-basil-cream-tomatoes-and-pine-nuts/" target="_blank" rel="noopener">
+https://rawmazing.com/recipe/easy-cucumber-noodles-with-a-vegan-basil-cream-tomatoes-and-pine-nuts/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sushi-cru-de-pepino-e-abacate-em-rolinhos-sem-arroz"></a>
+<h2 id="r6">R6 — “Sushi” cru de pepino e abacate em rolinhos (sem arroz)</h2>
+
+<h3>1) Introdução</h3>
+<p>Uma apresentação divertida: rolinhos crus com pepino e abacate, fáceis de montar e ótimos para entradas. Aqui o pepino é o protagonista e dá a estrutura e a frescura.</p>
+
+<h3>2) Ingredientes</h3>
+<ul>
+<li>1 pepino inglês (ou pepino comprido)</li>
+<li>1 abacate maduro</li>
+<li>Sumo de limão/lima</li>
+<li>Sal q.b.</li>
+<li>Opcional: sementes de sésamo, nori em tiras finas, molho tamari para servir, ervas frescas</li>
+</ul>
+
+<h3>3) Passos de preparação</h3>
+<ol>
+<li>Corta o pepino em fitas largas e finas (mandolina/descascador) para usar como “folha” de enrolar.</li>
+<li>Esmaga o abacate com um garfo, tempera com limão e sal.</li>
+<li>Coloca um pouco do abacate na ponta de cada fita de pepino e enrola.</li>
+<li>Repete até acabar. Finaliza com sésamo e serve com tamari, se quiseres.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The Blender Girl — Raw Avocado Cucumber “Sushi” Rolls — 
+<a href="https://www.theblendergirl.com/recipe/raw-avocado-cucumber-sushi-rolls/" target="_blank" rel="noopener">
+https://www.theblendergirl.com/recipe/raw-avocado-cucumber-sushi-rolls/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sushi-cru-vegan-em-folhas-de-nori-com-legumes-inclui-pepino"></a>
+<h2 id="r7">R7 — Sushi cru vegan em folhas de nori com legumes (inclui pepino)</h2>
+
+<h3>1) Introdução</h3>
+<p>Sushi raw em nori é uma forma excelente de variar texturas e apresentação mantendo tudo cru. O pepino entra como um dos elementos crocantes centrais.</p>
+
+<h3>2) Ingredientes</h3>
+<ul>
+<li>Folhas de nori</li>
+<li>Pepino em tiras finas</li>
+<li>Outros vegetais crus (ex.: cenoura, pimento, abacate, rebentos)</li>
+<li>Um “molho”/ligação à base de miso (como na fonte)</li>
+<li>Sementes (ex.: cânhamo) opcionais</li>
+<li>Tamari para servir (opcional)</li>
+</ul>
+
+<h3>3) Passos de preparação</h3>
+<ol>
+<li>Prepara todos os legumes em tiras finas (inclui pepino).</li>
+<li>Faz o molho de miso indicado na fonte (para barrar/ligar).</li>
+<li>Coloca nori numa tábua, barra uma camada fina do molho e dispõe os legumes em linha.</li>
+<li>Enrola firmemente, como sushi, e corta em pedaços.</li>
+<li>Serve com tamari e, se quiseres, sementes por cima.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The Simple Veganista — Raw Vegan Sushi Rolls — 
+<a href="https://simple-veganista.com/vegan-sushi-rolls/" target="_blank" rel="noopener">
+https://simple-veganista.com/vegan-sushi-rolls/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pickles-crus-fermentados-de-pepino-lactofermentados"></a>
+<h2 id="r8">R8 — Pickles crus fermentados de pepino (lactofermentados)</h2>
+
+<h3>1) Introdução</h3>
+<p>Pickles fermentados são conservação “viva”: só pepino, salmoura e aromáticos. Sem vinagre e sem calor, a fermentação cria acidez natural e pode desenvolver probióticos.</p>
+
+<h3>2) Ingredientes</h3>
+<ul>
+<li>Pepinos próprios para conserva (pequenos/firmes)</li>
+<li>Sal marinho fino (para salmoura)</li>
+<li>Água filtrada</li>
+<li>Aromáticos opcionais: alho, endro, grãos de pimenta, folhas (conforme a fonte)</li>
+<li>Frasco limpo e peso/forma de manter pepinos submersos</li>
+</ul>
+
+<h3>3) Passos de preparação</h3>
+<ol>
+<li>Lava bem os pepinos e prepara os aromáticos.</li>
+<li>Faz a salmoura: dissolve o sal na água (proporção conforme a fonte).</li>
+<li>Coloca pepinos e aromáticos no frasco e cobre totalmente com salmoura.</li>
+<li>Garante que tudo fica submerso (usa peso/folha).</li>
+<li>Fermenta à temperatura ambiente por alguns dias, provando até atingir acidez desejada.</li>
+<li>Quando estiver ao teu gosto, transfere para o frigorífico para abrandar a fermentação.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Baked Greens — Raw Fermented Homemade Pickles — 
+<a href="https://www.bakedgreens.com/raw-fermented-homemade-pickles/" target="_blank" rel="noopener">
+https://www.bakedgreens.com/raw-fermented-homemade-pickles/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="kimchi-cru-de-pepino-rapido"></a>
+<h2 id="r9">R9 — Kimchi cru de pepino (rápido)</h2>
+
+<h3>1) Introdução</h3>
+<p>Um “kimchi” de pepino é uma forma rápida de ter um acompanhamento picante e fresco. Esta versão mantém tudo cru e aposta em gochugaru, alho, gengibre e um toque doce.</p>
+
+<h3>2) Ingredientes</h3>
+<ul>
+<li>Pepinos (tipo Persian/Kirby ou firmes), fatiados</li>
+<li>Sal marinho</li>
+<li>Gochugaru (flocos de malagueta coreana)</li>
+<li>Alho picado</li>
+<li>Gengibre ralado</li>
+<li>Açúcar de coco (ou outro adoçante indicado)</li>
+<li>Vinagre de arroz</li>
+<li>Tamari/soja</li>
+<li>Cebolinho/cebola verde</li>
+<li>Cenoura em juliana (opcional)</li>
+</ul>
+
+<h3>3) Passos de preparação</h3>
+<ol>
+<li>Corta os pepinos, salga e deixa repousar para largarem água; escorre.</li>
+<li>Mistura gochugaru, alho, gengibre, adoçante, vinagre de arroz e tamari para formar um “molho” espesso.</li>
+<li>Envolve os pepinos no molho e junta cebolinho e cenoura.</li>
+<li>Deixa repousar para apurar (podes servir logo ou deixar mais tempo no frio).</li>
+<li>Guarda refrigerado e consome nos dias seguintes.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Parsley Vegan — Raw Cucumber Kimchi — 
+<a href="https://parsleyvegan.com/raw-cucumber-kimchi/" target="_blank" rel="noopener">
+https://parsleyvegan.com/raw-cucumber-kimchi/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="chips-de-pepino-em-desidratador-bbq"></a>
+<h2 id="r10">R10 — Chips de pepino em desidratador (BBQ)</h2>
+
+<h3>1) Introdução</h3>
+<p>Um snack raw clássico do desidratador: pepino em rodelas finíssimas + tempero BBQ, desidratado a baixa temperatura até ficar crocante. Ótimo para variar “texturas” numa alimentação viva.</p>
+
+<h3>2) Ingredientes</h3>
+<ul>
+<li>Pepinos, cortados em rodelas muito finas</li>
+<li>Mistura de especiarias BBQ (sem ingredientes de origem animal)</li>
+<li>Sal q.b. (se necessário)</li>
+</ul>
+
+<h3>3) Passos de preparação</h3>
+<ol>
+<li>Lava e seca os pepinos. Corta em rodelas muito finas (quanto mais finas, mais crocantes).</li>
+<li>Dispõe as rodelas nas grelhas do desidratador sem sobrepor.</li>
+<li>Polvilha uniformemente com o tempero BBQ (e sal, se precisares).</li>
+<li>Desidrata a baixa temperatura (conforme a fonte) até estarem secos e estaladiços; o tempo varia com espessura e humidade.</li>
+<li>Deixa arrefecer totalmente antes de guardar em recipiente bem fechado.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+In Johnna’s Kitchen — Barbeque Cucumber Chips — 
+<a href="https://injohnnaskitchen.com/2013/01/barbeque-cucumber-chips/" target="_blank" rel="noopener">
+https://injohnnaskitchen.com/2013/01/barbeque-cucumber-chips/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

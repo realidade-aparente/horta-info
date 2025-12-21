@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Couve-rábano – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+ <div class="masthead">
+<header>
+  <h1>Couve-rábano – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html" class="ativa">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+  </header></div>
+<main>
+<article>
+
+<h2>Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/couve-rabano_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/couve-rabano_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+<ol>
+<li><a href="#r1">Coleslaw asiática doce e ácida com couve-rábano</a> <span class="source">[R1]</span></li> 
+<li><a href="#r2">Coleslaw de couve-rábano com coentros, jalapeño e lima (vinagrete cítrico)</a> <span class="source">[R2]</span></li>
+<li><a href="#r3">Salada de couve-rábano laminada com microverdes e pistáchios (limão e azeite)</a> <span class="source">[R3]</span></li>
+<li><a href="#r4">“Fries” raw de couve-rábano com molho picante (soja, vinagre e alho)</a> <span class="source">[R4]</span></li>
+<li><a href="#r5">Chips de couve-rábano “sal e vinagre” no desidratador</a> <span class="source">[R5]</span></li>
+<li><a href="#r6">Carpaccio de couve-rábano com pesto de folhas de capuchinha e alho</a> <span class="source">[R6]</span></li>
+<li><a href="#r7">“Pappardelle” raw de couve-rábano com pesto de beldroegas</a> <span class="source">[R7]</span></li>
+<li><a href="#r8">Sopa fria raw de couve-rábano com hortelã e lima</a> <span class="source">[R8]</span></li>
+<li><a href="#r9">Coleslaw leve (oil-free) de couve-rábano com molho de linhaça e sementes de aipo</a> <span class="source">[R9]</span></li>
+<li><a href="#r10">Coleslaw crua de couve-rábano com maçã e cenoura (vinagrete simples)</a> <span class="source">[R10]</span></li>
+</ol>
+</div>
+
+<h2> Resumo das Receitas</h2>
+
+<h4>R1. Coleslaw asiática doce e ácida com couve-rábano</h4>
+<p>Resumo: Slaw crua com couve-rábano, cenoura, maçã e couve-roxa, com molho “asiático” equilibrado (doce/salgado/ácido/picante).</p>
+
+<h4>R2. Coleslaw de couve-rábano com coentros, jalapeño e lima (vinagrete cítrico)</h4>
+<p>Resumo: Couve-rábano em palitos finos com coentros, cebolinho/cebola-verde, raspas cítricas e vinagrete de laranja e lima; refrescante e com toque picante.</p>
+
+<h4>R3. Salada de couve-rábano laminada com microverdes e pistáchios (limão e azeite)</h4>
+<p>Resumo: Couve-rábano finamente laminada (mandolina), “montada” em prato com microverdes e pistáchios, finalizada com molho simples de limão e azeite.</p>
+
+<h4>R4. “Fries” raw de couve-rábano com molho picante (soja, vinagre e alho)</h4>
+<p>Resumo: Couve-rábano cortada em “batatas fritas” e amaciada com sal; depois envolve-se num molho intenso (soja, vinagre, chili/garlic) e serve-se de imediato.</p>
+
+<h4>R5. Chips de couve-rábano “sal e vinagre” no desidratador</h4>
+<p>Resumo: Lâminas finas marinadas em vinagre de sidra e sal e depois desidratadas até ficarem estaladiças (snack cru).</p>
+
+<h4>R6. Carpaccio de couve-rábano com pesto de folhas de capuchinha e alho</h4>
+<p>Resumo: Lâminas muito finas de couve-rábano com pesto verde (capuchinha, alho, pistáchio cru, lima e azeite) — prato fresco e aromático.</p>
+
+<h4>R7. “Pappardelle” raw de couve-rábano com pesto de beldroegas</h4>
+<p>Resumo: Fitas largas de couve-rábano (tipo massa) com pesto cru de beldroegas, limão, alho e pistáchio — textura de “pasta” sem cozedura.</p>
+
+<h4>R8. Sopa fria raw de couve-rábano com hortelã e lima</h4>
+<p>Resumo: Sopa cremosa e crua (sem aquecimento), baseada em couve-rábano e caju, aromatizada com hortelã, lima e um toque de chili.</p>
+
+<h4>R9. Coleslaw leve (oil-free) de couve-rábano com molho de linhaça e sementes de aipo</h4>
+<p>Resumo: Slaw muito leve com molho sem óleo (linhaça + água + vinagre + mostarda), com couve-rábano em palitos e cenoura.</p>
+
+<h4>R10. Coleslaw crua de couve-rábano com maçã e cenoura (vinagrete simples)</h4>
+<p>Resumo: Slaw rápida e crua (método “raw”), com maçã e cenoura, ligada com vinagre, mostarda e adoçante vegano (opção com xarope de ácer).</p>
+
+
+<h2> Receitas completas</h2>
+
+<a id="coleslaw-asiatica-doce-e-acida-com-couve-rabano"></a>
+<h3 id="r1">R1 — Coleslaw asiática doce e ácida com couve-rábano</h3>
+
+<h4>Introdução</h4>
+<p>Uma salada crua crocante e muito aromática. A couve-rábano entra como “crunch” principal, equilibrada por maçã e cenoura, e um molho asiático que junta ácido, salgado, doce e picante.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>Molho:</li>
+<li>- 1/4 chávena (≈60 ml) de azeite</li>
+<li>- 2 colheres de sopa de vinagre de arroz</li>
+<li>- 1 1/2 colheres de sopa de molho de soja sem glúten (tamari) (ou molho de soja)</li>
+<li>- 2 colheres de chá de óleo de sésamo</li>
+<li>- 2 colheres de chá de açúcar sucanat (ou açúcar mascavado fino)</li>
+<li>- 1 dente de alho</li>
+<li>- 1 colher de sopa de gengibre picado</li>
+<li>- 1/4 colher de chá de flocos de malagueta (ajustar a gosto)</li>
+<li>Legumes/verduras:</li>
+<li>- 1 cenoura grande (ou 2 médias), em palitos finos</li>
+<li>- 1/2 couve-rábano médio, em palitos finos</li>
+<li>- 1 maçã Granny Smith média, em palitos finos</li>
+<li>- 3 cebolinhos/cebola-verde, fatiados</li>
+<li>- 1 1/2 chávena de couve-roxa (repolho roxo) triturada/ralada</li>
+<li>- 1/4 chávena de coentros (folhas), soltos (coentro/cilantro)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Num frasco com tampa, junte azeite, vinagre de arroz, soja/tamari, óleo de sésamo, sucanat, alho, gengibre e flocos de malagueta. Agite bem até emulsionar.</li>
+<li>Corte cenoura, couve-rábano e maçã em palitos finos (tipo juliana/matchsticks). Junte numa taça grande.</li>
+<li>Adicione cebolinho, couve-roxa e coentros.</li>
+<li>Regue com o molho e envolva muito bem. Ajuste picante e acidez a gosto.</li>
+<li>Sirva de imediato (mais crocante) ou deixe repousar 10–15 minutos para “amaciar” ligeiramente.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Darn Good Veggies — 
+<a href="https://www.darngoodveggies.com/sweet-tangy-asian-slaw/" target="_blank" rel="noopener">
+https://www.darngoodveggies.com/sweet-tangy-asian-slaw/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="coleslaw-de-couve-rabano-com-coentros-jalapeno-e-lima-vinagrete-citrico"></a>
+<h2 id="r2">R2 — Coleslaw de couve-rábano com coentros, jalapeño e lima (vinagrete cítrico)</h2>
+
+<h3>Introdução</h3>
+<p>Uma slaw crua, fresca e cítrica: raspas e sumos de laranja e lima perfumam a couve-rábano, enquanto o jalapeño dá um calor discreto. Excelente como acompanhamento ou recheio de wraps.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Base:</li>
+<li>- 6 chávenas de couve-rábano em palitos finos (matchsticks) (≈ 3 bolbos grandes; a receita indica “três bolbos de 4 inch”)</li>
+<li>- 1/2 chávena de coentros picados (1 molho pequeno)</li>
+<li>- 1/2 jalapeño, muito bem picado</li>
+<li>- 1/4 chávena de cebolinho/cebola-verde picado</li>
+<li>- Raspa e sumo de 1 laranja</li>
+<li>- Raspa e sumo de 1 lima</li>
+<li>Molho cítrico:</li>
+<li>- 1/4 chávena (≈60 ml) de azeite</li>
+<li>- 1/4 chávena (≈60 ml) de sumo de laranja fresco (de 1 laranja)</li>
+<li>- 1/8 chávena (≈30 ml) de sumo de lima + 1 colher de sopa (≈15 ml) (de 1 lima grande), ajustar a gosto</li>
+<li>- 1/4 chávena de xarope de agave (a fonte dá “honey ou agave”; aqui usar agave)</li>
+<li>- 1/2 colher de chá de sal (kosher ou equivalente)</li>
+<li>- 1 colher de sopa de vinagre de arroz</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Descasque bem a couve-rábano (a casca é espessa). Corte em palitos finos.</li>
+<li>Numa taça grande, junte couve-rábano, coentros, cebolinho, jalapeño e as raspas de lima e laranja.</li>
+<li>À parte, bata/“whisk” os ingredientes do molho até ligar.</li>
+<li>Envolva a slaw com o molho. Leve ao frio até servir (fica ótima no dia seguinte).</li>
+<li>Ajuste sal, acidez e picante a gosto e finalize com mais raspa e coentros.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Feasting At Home —  
+<a href="https://www.feastingathome.com/kohlrabi-salad-with-cilantro-and-lime/" target="_blank" rel="noopener">
+https://www.feastingathome.com/kohlrabi-salad-with-cilantro-and-lime/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-de-couve-rabano-laminada-com-microverdes-e-pistachios-limao-e-azeite"></a>
+<h2 id="r3">R3 — Salada de couve-rábano laminada com microverdes e pistáchios (limão e azeite)</h2>
+
+<h3>Introdução</h3>
+<p>Uma apresentação simples, elegante e crua: lâminas finas de couve-rábano fazem “camadas” no prato, com microverdes e pistáchios para textura. Molho minimalista de limão e azeite.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>- 1 couve-rábano, descascada</li>
+<li>- 2 grandes punhados de microverdes (mais extra para finalizar)</li>
+<li>- 1/2 chávena de pistáchios (mais a gosto)</li>
+<li>- 3 colheres de sopa de azeite virgem extra</li>
+<li>- Sumo de 1 limão</li>
+<li>- Sal marinho e pimenta preta moída, a gosto</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Com mandolina (ou faca bem afiada), lamine a couve-rábano em fatias muito finas.</li>
+<li>Disponha as lâminas em pequenos pratos (em “escamas”/camadas).</li>
+<li>Cubra com microverdes e polvilhe com pistáchios.</li>
+<li>Misture azeite, sumo de limão, sal e pimenta; regue por cima.</li>
+<li>Sirva frio ou à temperatura ambiente.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+It's a Veg World After All —  
+<a href="https://itsavegworldafterall.com/shaved-kohlrabi-salad/" target="_blank" rel="noopener">
+https://itsavegworldafterall.com/shaved-kohlrabi-salad/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="fries-raw-de-couve-rabano-com-molho-picante-soja-vinagre-e-alho"></a>
+<h2 id="r4">R4 — “Fries” raw de couve-rábano com molho picante (soja, vinagre e alho)</h2>
+
+<h3>Introdução</h3>
+<p>Esta receita usa sal para puxar água e “amaciar” a couve-rábano, criando uma textura mais próxima de “batata frita” marinada. O molho é intenso e viciante.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>- 2 couves-rábanos, limpas e descascadas</li>
+<li>- 1/4 chávena de sal (para a etapa de desidratar/amolecer)</li>
+<li>Para o molho:</li>
+<li>- 2–3 colheres de sopa de chili garlic sauce (molho de chili e alho)</li>
+<li>- 2–3 colheres de sopa de vinagre de arroz (rice wine vinegar)</li>
+<li>- 2–3 colheres de sopa de molho de soja</li>
+<li>- “Uns pingos” de óleo de sésamo, a gosto</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Corte a couve-rábano em rodelas de ~0,5 cm e depois em tiras tipo “fries”.</li>
+<li>Coloque numa taça e polvilhe com o sal. Deixe repousar 30 minutos (vai largar bastante água).</li>
+<li>Entretanto, misture numa taça os ingredientes do molho.</li>
+<li>Escorra a água libertada; passe por água para retirar excesso de sal e escorra bem.</li>
+<li>Envolva as “fries” no molho e sirva imediatamente.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Richmond Food Co-op —  
+<a href="https://richmondfoodcoop.blogspot.com/2013/07/raw-vegan-kohlrabi-fries.html" target="_blank" rel="noopener">
+https://richmondfoodcoop.blogspot.com/2013/07/raw-vegan-kohlrabi-fries.html
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="chips-de-couve-rabano-sal-e-vinagre-no-desidratador"></a>
+<h2 id="r5">R5 — Chips de couve-rábano “sal e vinagre” no desidratador</h2>
+
+<h3>Introdução</h3>
+<p>Um snack cru, muito estaladiço, feito com lâminas finas de couve-rábano marinadas em vinagre de sidra e sal, e depois desidratadas até ficarem tipo “batata frita”.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>- 1 couve-rábano médio</li>
+<li>- 1/2 chávena de vinagre de sidra (apple cider vinegar)</li>
+<li>- 1 colher de chá de sal marinho</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Fatie a couve-rábano com ~3 mm (≈1/8 inch), o mais uniforme possível.</li>
+<li>Espalhe as fatias num tabuleiro e verta o vinagre por cima; polvilhe com o sal.</li>
+<li>Deixe “de molho” cerca de 2 horas (até ficarem mais moles e translúcidas).</li>
+<li>Disponha as fatias numa folha/tabuleiro próprio para desidratador e desidrate até ficar totalmente crocante (pode demorar até 48 horas, conforme humidade/espessura).</li>
+<li>Guarde num recipiente bem fechado.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Amanda Nicole Smith —  
+<a href="https://amandanicolesmith.com/sea-salt-vinegar-kohlrabi-chips/" target="_blank" rel="noopener">
+https://amandanicolesmith.com/sea-salt-vinegar-kohlrabi-chips/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="carpaccio-de-couve-rabano-com-pesto-de-folhas-de-capuchinha-e-alho"></a>
+<h2 id="r6">R6 — Carpaccio de couve-rábano com pesto de folhas de capuchinha e alho</h2>
+
+<h3>Introdução</h3>
+<p>Carpaccio cru e aromático: couve-rábano em lâminas finíssimas com pesto verde (capuchinha + alho + pistáchio) e acidez de lima. Visualmente lindo e muito fresco.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Para o “carpaccio”:</li>
+<li>- 1 couve-rábano por pessoa (para prato individual)</li>
+<li>Para o pesto:</li>
+<li>- 1 1/2 chávena de folhas jovens de capuchinha (nasturtium), bem cheias</li>
+<li>- 5–6 dentes de alho jovens</li>
+<li>- 1/3 chávena de pistáchios crus</li>
+<li>- 1/4 chávena de azeite virgem (a fonte usa “virgin olive oil”)</li>
+<li>- Sumo de 1 lima (espremida na hora)</li>
+<li>- 1 pitada de sal marinho (tipo “Celtic sea salt”), a gosto</li>
+<li>Para finalizar:</li>
+<li>- Algumas folhas e flores de capuchinha (opcional), para guarnecer</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Lave e descasque a couve-rábano. Corte em lâminas muito finas e reserve.</li>
+<li>No processador/blender, triture folhas de capuchinha, alho e pistáchios.</li>
+<li>Junte azeite, sumo de lima e sal; pulse até ficar em pesto.</li>
+<li>Monte: disponha as lâminas de couve-rábano no prato e coloque o pesto por cima.</li>
+<li>Guarneça com folhas/flores e sirva.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Passionately Raw! —  
+<a href="https://passionaltelyraw.blogspot.com/2020/08/kohlrabi-carpaccio-with-garlicky.html" target="_blank" rel="noopener">
+https://passionaltelyraw.blogspot.com/2020/08/kohlrabi-carpaccio-with-garlicky.html
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pappardelle-raw-de-couve-rabano-com-pesto-de-beldroegas"></a>
+<h2 id="r7">R7 — “Pappardelle” raw de couve-rábano com pesto de beldroegas</h2>
+
+<h3>Introdução</h3>
+<p>Uma forma muito interessante de usar couve-rábano: em fitas largas, como “massa”. O pesto cru de beldroegas dá um sabor verde, limonado e levemente alhoado.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Para a “massa”:</li>
+<li>- 2 couves-rábanos médias (o suficiente para cortar em fitas largas tipo pappardelle)</li>
+<li>Para o pesto de beldroegas (purslane):</li>
+<li>- 1 chávena de beldroegas (folhas), bem cheias</li>
+<li>- 1/4 chávena de pistáchios crus</li>
+<li>- 2 dentes grandes de alho jovem</li>
+<li>- Sumo de 1 limão médio/grande</li>
+<li>- Sal a gosto</li>
+<li>- (Se necessário) um fio de azeite ou um pouco de água para ajustar textura (a fonte trabalha com ingredientes crus e liga o pesto; use o mínimo necessário)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Descasque a couve-rábano e, com descascador de legumes/mandolina, corte fitas largas (pappardelle).</li>
+<li>Para o pesto: triture beldroegas, pistáchios, alho e sumo de limão até obter um molho espesso. Ajuste sal e a textura com um pouco de água/azeite, se preciso.</li>
+<li>Envolva as fitas de couve-rábano no pesto.</li>
+<li>Sirva de imediato, ou deixe repousar 5–10 minutos para “amolecer” ligeiramente.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Passionately Raw! —  
+<a href="https://passionaltelyraw.blogspot.com/2017/04/raw-vegan-kohlrabi-pappardelle-with.html" target="_blank" rel="noopener">
+https://passionaltelyraw.blogspot.com/2017/04/raw-vegan-kohlrabi-pappardelle-with.html
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-fria-raw-de-couve-rabano-com-hortela-e-lima"></a>
+<h2 id="r8">R8 — Sopa fria raw de couve-rábano com hortelã e lima</h2>
+
+<h3>Introdução</h3>
+<p>Sopa crua, cremosa e refrescante: a base é couve-rábano + caju demolhado, com hortelã, lima e um toque de chili. Serve-se bem fria.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Para a sopa:</li>
+<li>- 3 1/2 oz (≈100 g) de cajus crus</li>
+<li>- 11 oz (≈312 g) de couve-rábano crua</li>
+<li>- 1 chalota (≈20 g)</li>
+<li>- 1 lima (raspa e sumo)</li>
+<li>- 350 ml de água</li>
+<li>- 1/4 colher de chá de sal</li>
+<li>- 1 colher de sopa de xarope de agave</li>
+<li>- 2 colheres de sopa de azeite</li>
+<li>- 8 folhas de hortelã marroquina (ou hortelã comum)</li>
+<li>- 1/4 de malagueta/chili vermelho</li>
+<li>Tempero final:</li>
+<li>- 1 pitada de sal</li>
+<li>- 1 pitada de pimenta preta</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Na véspera, demolhe o caju durante a noite e escorra.</li>
+<li>Raspe e esprema a lima. Descasque a couve-rábano e corte em cubos. Pique finamente a chalota.</li>
+<li>Triture todos os ingredientes no blender (ou varinha mágica) até ficar bem cremoso.</li>
+<li>Tempere com sal e pimenta; leve ao frigorífico.</li>
+<li>Sirva bem fria.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Diet and Health (Foundation G+E) —  
+<a href="https://www.diet-health.info/en/recipes/re/rvbpj166-raw-vegan-chilled-kohlrabi-soup-with-mint-and-lime" target="_blank" rel="noopener">
+https://www.diet-health.info/en/recipes/re/rvbpj166-raw-vegan-chilled-kohlrabi-soup-with-mint-and-lime
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="coleslaw-leve-oil-free-de-couve-rabano-com-molho-de-linhaca-e-sementes-de-aipo"></a>
+<h2 id="r9">R9 — Coleslaw leve (oil-free) de couve-rábano com molho de linhaça e sementes de aipo</h2>
+
+<h3>Introdução</h3>
+<p>Uma slaw crua e muito leve, com molho sem óleo: a linhaça engrossa com água (“egg-like”), e o vinagre + mostarda dão acidez e corpo.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Molho (Oil-Free Celery Seed Dressing):</li>
+<li>- 1 colher de sopa de linhaça moída (ground flaxseed meal)</li>
+<li>- 1/2 colher de sopa de sementes de aipo (celery seed)</li>
+<li>- 2 colheres de chá de mostarda integral picante (spicy whole grain mustard)</li>
+<li>- 2 colheres de chá de vinagre “Champagne” (ou um vinagre suave, mantendo o perfil)</li>
+<li>- 3 colheres de sopa de água morna</li>
+<li>- Sal e pimenta, a gosto</li>
+<li>Slaw:</li>
+<li>- 1 bolbo de couve-rábano</li>
+<li>- 2 talos de aipo (celery) finamente fatiados</li>
+<li>- 1 chávena de cenoura ralada</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Numa taça, misture linhaça moída, sementes de aipo, mostarda, vinagre e água morna. Deixe repousar pelo menos 5 minutos para engrossar.</li>
+<li>Descasque a couve-rábano (retire bem a pele fibrosa). Fatie muito fino e depois corte em palitos finos.</li>
+<li>Junte couve-rábano, aipo fatiado e cenoura ralada numa taça grande.</li>
+<li>Adicione o molho, tempere com sal e pimenta e envolva bem.</li>
+<li>Sirva de imediato ou deixe repousar 10 minutos.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Plants-Rule —  
+<a href="https://plants-rule.com/easy-light-kohlrabi-slaw/" target="_blank" rel="noopener">
+https://plants-rule.com/easy-light-kohlrabi-slaw/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="coleslaw-crua-de-couve-rabano-com-maca-e-cenoura-vinagrete-simples"></a>
+<h2 id="r10">R10 — Coleslaw crua de couve-rábano com maçã e cenoura (vinagrete simples)</h2>
+
+<h3>Introdução</h3>
+<p>Uma coleslaw crua e muito rápida (0 min de cozedura), com maçã e cenoura para doçura e frescura. O molho usa vinagre, mostarda e adoçante vegano (xarope de ácer), mantendo o prato raw.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>- 3 chávenas de couve-rábano (≈ 340 g), descascada e cortada em palitos (matchsticks)</li>
+<li>- 1 chávena de cenoura (≈ 2 cenouras grandes), em juliana ou ralada</li>
+<li>- 1 maçã doce-ácida, em palitos (ex.: Pink Lady, Honeycrisp, Granny Smith)</li>
+<li>- 2 cebolinhos/cebola-verde, fatiados finos</li>
+<li>- 2 colheres de sopa de salsa picada</li>
+<li>Molho:</li>
+<li>- 2 colheres de sopa de azeite</li>
+<li>- 1 colher de sopa de vinagre de vinho branco</li>
+<li>- 1 colher de sopa de xarope de ácer (a fonte dá alternativas; aqui usar ácer)</li>
+<li>- 1/2 colher de sopa de mostarda Dijon</li>
+<li>- 1/2 colher de chá de sal (kosher ou equivalente)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Prepare a couve-rábano, cenoura, maçã, cebolinho e salsa conforme descrito.</li>
+<li>Numa taça, misture tudo.</li>
+<li>Junte azeite, vinagre, xarope de ácer, Dijon e sal e envolva até ficar bem ligado.</li>
+<li>Sirva de imediato ou guarde no frio (1–2 dias).</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+A Couple Cooks —  
+<a href="https://www.acouplecooks.com/kohlrabi-slaw/" target="_blank" rel="noopener">
+https://www.acouplecooks.com/kohlrabi-slaw/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

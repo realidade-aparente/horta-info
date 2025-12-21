@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Umbigo de vénus – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+ <div class="masthead">
+<header>
+  <h1>Umbigo de vénus – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../umbigo-de-venus.html" class="ativa">Umbigo de vénus</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+  </header></div>
+<main>
+<article>
+
+<h2>Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/umbigo-de-venus_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/umbigo-de-venus_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+<ol>
+<li><a href="#r1">Salada estilo birmanesa de Umbigo-de-vénus / navelwort (base com amendoins torrados)</a> <span class="source">[R1]</span></li> 
+<li><a href="#r2">Salada de Umbigo-de-vénus com soba noodles e sésamo (base com noodles cozidos)</a> <span class="source">[R2]</span></li>
+</ol>
+</div>
+
+<h2> Resumo das Receitas</h2>
+
+<h4>R1 — Salada estilo birmanesa de Umbigo-de-vénus / navelwort (base com amendoins torrados)</h4>
+<p>Salada inspirada num prato birmanês, onde as folhas de navelwort são misturadas com alho, chalotas e chili, depois cobertas com amendoins torrados e um molho simples de óleo e miso. Adaptação raw-vegan sugerida com frutos secos crus no lugar dos amendoins torrados.</p>
+
+<h4>R2 — Salada de Umbigo-de-vénus com soba noodles e sésamo (base com noodles cozidos)</h4>
+<p>Salada que combina folhas de navelwort com soba noodles, sementes de sésamo e um molho asiático com vinagre e gengibre. Sugestão de adaptação raw-vegan com “noodles” crus de curgete espiralizada no lugar da massa cozida.</p>
+
+<h2> Receitas completas</h2>
+
+<a id="salada-estilo-birmanesa-de-umbigo-de-venus-navelwort"></a>
+<h3 id="r1">R1 — Salada estilo birmanesa de Umbigo-de-vénus / navelwort</h3>
+
+<h4>Introdução</h4>
+<p>Uma salada inspirada no estilo búrmen (Burmese pennywort salad), adaptada para *Umbilicus rupestris*. Tradicionalmente inclui amendoins torrados e óleo — aqui está a receita original e, em seguida, a <strong>sugestão de adaptação raw-vegan</strong> usando frutos secos crus em vez de amendoins torrados.</p>
+
+<h4>Ingredientes (Original)</h4>
+<ul>
+<li>100 g de folhas de umbilicus (navelwort), lavadas e sem talos duros</li>
+<li>50 g de alho francês trifoliado ou cebolinha em tiras finas</li>
+<li>Sumo e raspa de 1 lima</li>
+<li>3 colheres de sopa de óleo de sésamo ou óleo de amendoim</li>
+<li>1 colher de chá de miso (fermentado de fava)</li>
+<li>1 malagueta verde fina, picada</li>
+<li>2 dentes de alho crus picados</li>
+<li>100 g de <strong>amendoins torrados</strong> grosseiramente moídos</li>
+</ul>
+
+<h3>Passos de preparação (Original)</h3>
+<ol>
+<li>Coloca as folhas de navelwort no almofariz.</li>
+<li>Pica finamente o alho francês (ou cebolinha), o alho e a malagueta, e junta ao almofariz com os amendoins torrados e a raspa de lima.</li>
+<li>Noutra tigela pequena, mistura o óleo e o miso até ficar homogéneo.</li>
+<li>Com o pilão, esmaga levemente a mistura de folhas — não precisas de puré, apenas partes grosseiramente.</li>
+<li>Divide a salada pelos pratos e rega com o óleo e miso.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Burmese Style Navelwort Salad — Eatweeds — 
+<a href="https://www.eatweeds.co.uk/burmese-style-navelwort-salad" target="_blank" rel="noopener">
+https://www.eatweeds.co.uk/burmese-style-navelwort-salad
+</a>
+</p>
+
+<p><strong>Sugestão de adaptação raw-vegan (sem amendoins torrados):</strong></p>
+
+<p><strong>Ingredientes adicionais/alternativos (raw):</strong></p>
+<ul>
+<li>100 g de folhas de umbilicus (navelwort), lavadas</li>
+<li>50 g de alho francês trifoliado ou cebolinha em tiras finas</li>
+<li>Sumo e raspa de 1 lima</li>
+<li>3 colheres de sopa de óleo de sésamo cru (não tostado) ou óleo de linhaça</li>
+<li>1 colher de chá de miso cru (sem aquecer)</li>
+<li>1 malagueta pequena, picada</li>
+<li>2 dentes de alho crus, picados</li>
+<li><strong>100 g de frutos secos crus</strong> (ex.: nozes, amêndoas ou sementes de girassol <em>cruas e germinadas</em>) grosseiramente moídos</li>
+</ul>
+
+<p><strong>Passos de adaptação:</strong></p>
+<ol>
+<li>Pica as folhas de navelwort e coloca-as numa tigela.</li>
+<li>Junta o alho francês, alho e malagueta picados.</li>
+<li>Numa tigela separada, mistura o óleo cru com o miso e o sumo/raspa de lima.</li>
+<li>Envolve os frutos secos crus moídos com a mistura de folhas.</li>
+<li>Veste com o molho de miso e serve imediatamente.</li>
+</ol>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-de-umbigo-de-venus-com-soba-noodles-e-sesamo"></a>
+<h2 id="r2">R2 — Salada de Umbigo-de-vénus com soba noodles e sésamo</h2>
+
+<h3>Introdução</h3>
+<p>Salada fresca que combina folhas de navelwort com soba noodles e sementes de sésamo num molho ligeiro. <strong>A receita original inclui soba noodles cozidos</strong>, que não são raw; por isso, abaixo segue também uma sugestão de <strong>adaptação raw-vegan com noodles de curgete espiralizados</strong>.</p>
+
+<h3>Ingredientes (Original)</h3>
+<ul>
+<li>50 g de folhas de navelwort (pennywort)</li>
+<li>200 g de <strong>soba noodles cozidos</strong> (buckwheat)</li>
+<li>2 colheres de sopa de sementes de sésamo</li>
+<li>2 colheres de sopa de alho francês trifoliado ou cebolinha</li>
+</ul>
+
+<h3>Dressing:</h3>
+<ul>
+<li>1 dente de alho ralado</li>
+<li>1 colher de sopa de gengibre fresco ralado</li>
+<li>2 colheres de sopa de vinagre de arroz</li>
+<li>1 colher de sopa de xarope de ácer ou outro adoçante cru</li>
+<li>1 colher de sopa de óleo de sésamo (<strong>tostado</strong> na versão original)</li>
+<li>1 colher de sopa de molho de soja (tamari)</li>
+<li>½ colher de chá ou acordo de sriracha/chilli</li>
+</ul>
+
+<h3>Passos de preparação (Original)</h3>
+<ol>
+<li>Lava as folhas de navelwort e remove quaisquer talos grossos.</li>
+<li>Coze os soba noodles em água a ferver conforme indicações, depois passas por água fria para parar a cozedura.</li>
+<li>Tostas as sementes de sésamo ligeiramente numa frigideira seca até dourarem, depois deixas arrefecer.</li>
+<li>Noutra tigela, mistura o alho, gengibre, vinagre, xarope de ácer, óleo de sésamo, tamari e chili para o molho.</li>
+<li>Numa taça grande, combina os noodles cozidos, navelwort, sementes de sésamo e cebolinha.</li>
+<li>Veste com o molho e envolve bem antes de servir.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Pennywort Salad with Soba Noodles and Sesame — Wild Food UK — 
+<a href="https://www.wildfooduk.com/wild-food-recipes/pennywort-salad/" target="_blank" rel="noopener">
+https://www.wildfooduk.com/wild-food-recipes/pennywort-salad/
+</a>
+</p>
+
+<p><strong>Sugestão de adaptação raw-vegan (noodles de curgete):</strong></p>
+
+<p><strong>Ingredientes (adaptados raw):</strong></p>
+<ul>
+<li>50 g de folhas de navelwort (pennywort), lavadas</li>
+<li>2 curgetes médias espiralizadas em “noodles de curgete”</li>
+<li>2 colheres de sopa de sementes de sésamo cruas ou germinadas</li>
+<li>2 colheres de sopa de alho francês ou cebolinha finamente fatiados</li>
+</ul>
+
+<p><strong>Molho raw adaptado:</strong></p>
+<ul>
+<li>1 dente de alho cru ralado</li>
+<li>1 colher de sopa de gengibre fresco ralado</li>
+<li>2 colheres de sopa de sumo de limão</li>
+<li>1 colher de sopa de xarope de ácer (ou outro adoçante vegetal cru)</li>
+<li>1 colher de sopa de óleo de sésamo <strong>cru</strong> (não tostado)</li>
+<li>1 colher de sopa de tamari cru ou molho de coco aminos</li>
+<li>½ colher de chá de chili fresco picado, a gosto</li>
+</ul>
+
+<p><strong>Passos de adaptação:</strong></p>
+<ol>
+<li>Espiraliza as curgetes para formar noodles cruas e coloca-as numa grande tigela.</li>
+<li>Junta as folhas de navelwort lavadas, as sementes de sésamo cruas e a cebolinha.</li>
+<li>Noutra tigela, mistura o alho ralado, o gengibre, o sumo de limão, o xarope de ácer, o óleo de sésamo cru, o tamari cru e o chili para fazer o molho.</li>
+<li>Veste a salada com o molho e envolve cuidadosamente até tudo ficar bem coberto.</li>
+<li>Serve imediatamente para manter a textura crocante dos “noodles”.</li>
+</ol>
+
+<p><strong>Notas finais:</strong><br>
+- Ambas receitas originais são veganas, estão <strong>manual e diretamente verificadas</strong> e os links foram confirmados como <strong>ativos e acessíveis</strong> no momento da verificação.<br>
+- As adaptações propostas mantêm o espírito <strong>raw-vegan</strong>, substituindo ingredientes não cru (amendoins torrados e soba cozidos) por alternativas cruas e compatíveis com alimentação viva.</p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

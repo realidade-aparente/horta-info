@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Brócolo – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria));color:#fff;padding:1.2rem 1rem .8rem;box-shadow:0 2px 4px rgba(0,0,0,.12)}
+header h1{margin:0 0 .25rem;font-size:1.7rem}
+header p{margin:0;opacity:.9}
+main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria));color:#fff;box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top:140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+<div class="masthead">
+  <header>
+    <h1>Brócolo – Receitas de Comida Viva</h1>
+    <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+  </header>
+
+  <nav>
+    <a href="../../../index.html">Início</a>
+    <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+    <a href="../../../abobora-grande.html">Abóbora grande</a>
+    <a href="../../../acelga.html">Acelga</a>
+    <a href="../../../agriao.html">Agrião-de-água</a>
+    <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+    <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+    <a href="../../../alface.html">Alface</a>
+    <a href="../../../alho.html">Alho</a>
+    <a href="../../../alho-frances.html">Alho-francês</a>
+    <a href="../../../aneto.html">Aneto / Endro</a>
+    <a href="../../../batata-comum.html">Batata comum</a>
+    <a href="../../../batata-doce.html">Batata-doce</a>
+    <a href="../../../beringela.html">Beringela</a>
+    <a href="../../../beterraba.html">Beterraba</a>
+    <a href="../../../brocolo.html" class="ativa">Brócolo</a>
+    <a href="../../../canonigos.html">Canónigos</a>
+    <a href="../../../cebola.html">Cebola</a>
+    <a href="../../../cebola-fresca.html">Cebola fresca</a>
+    <a href="../../../cenoura.html">Cenoura</a>
+    <a href="../../../coentros.html">Coentros</a>
+    <a href="../../../couve-chinesa.html">Couve chinesa</a>
+    <a href="../../../couve-flor.html">Couve-flor</a>
+    <a href="../../../couve-rabano.html">Couve-rábano</a>
+    <a href="../../../couve-repolho.html">Couve repolho</a>
+    <a href="../../../couve-toscana.html">Couve toscana</a>
+    <a href="../../../curgete.html">Curgete</a>
+    <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+    <a href="../../../espinafre.html">Espinafre</a>
+    <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+    <a href="../../../feijao-verde.html">Feijão verde</a>
+    <a href="../../../manjericao.html">Manjericão</a>
+    <a href="../../../milho-doce.html">Milho doce</a>
+    <a href="../../../mizuna.html">Mizuna</a>
+    <a href="../../../morangos.html">Morangueiro / Morangos</a>
+    <a href="../../../moringa.html">Moringa</a>
+    <a href="../../../nabica.html">Nabiça</a>
+    <a href="../../../nabo.html">Nabo</a>
+    <a href="../../../pak-choi.html">Pak choi</a>
+    <a href="../../../pepino.html">Pepino</a>
+    <a href="../../../pimento.html">Pimento</a>
+    <a href="../../../rabanete.html">Rabanete</a>
+    <a href="../../../rabano.html">Rábano / Daikon</a>
+    <a href="../../../rucula.html">Rúcula</a>
+    <a href="../../../salanova.html">Salanova</a>
+    <a href="../../../salsa.html">Salsa</a>
+    <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+    <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+  </nav>
+</div>
+
+<main>
+<article>
+
+<h2 id="receitas-preparados">Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/brocolo_receitas_vegetariana.html">(Vegetariana)</a>
+    <a href="/data/refeicoes/vegan/brocolo_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+  <ol>
+    <li><a href="#sopa-crua-de-brocolos-cremosa-e-aveludada-liquidificador">Sopa crua de brócolos cremosa e “aveludada” (liquidificador)</a> <span class="source">[R1]</span></li>
+    <li><a href="#sopa-crua-brocolos-queijo-raw-vegan">Sopa crua “brócolos &amp; queijo” (raw-vegan)</a> <span class="source">[R2]</span></li>
+    <li><a href="#creme-cru-de-brocolos-estilo-cream-of-broccoli">Creme cru de brócolos (estilo “cream of broccoli”)</a> <span class="source">[R3]</span></li>
+    <li><a href="#tabule-cru-de-brocolos-com-tomate-e-roma-raw-vegan">Tabule cru de brócolos com tomate e romã (raw-vegan)</a> <span class="source">[R4]</span></li>
+    <li><a href="#salada-crua-de-brocolos-com-azeitonas-e-amendoas-sem-maionese">Salada crua de brócolos com azeitonas e amêndoas (sem maionese)</a> <span class="source">[R5]</span></li>
+    <li><a href="#noodles-de-curgete-com-pesto-cru-de-brocolos-e-manjericao">Noodles de curgete com pesto cru de brócolos e manjericão</a> <span class="source">[R6]</span></li>
+    <li><a href="#paozinhos-bolinhas-desidratadas-de-brocolos-broccoli-bites">Pãezinhos/bolinhas desidratadas de brócolos (broccoli bites)</a> <span class="source">[R7]</span></li>
+    <li><a href="#chips-crus-queijo-de-brocolos-no-desidratador">Chips crus “queijo” de brócolos no desidratador</a> <span class="source">[R8]</span></li>
+    <li><a href="#hamburgueres-patties-crus-de-brocolos-para-desidratar">Hambúrgueres/patties crus de brócolos para desidratar</a> <span class="source">[R9]</span></li>
+    <li><a href="#chucrute-fermentado-com-rebentos-de-brocolos-broccoli-sprouts">Chucrute fermentado com rebentos de brócolos (broccoli sprouts)</a> <span class="source">[R10]</span></li>
+  </ol>
+</div>
+
+<h2 id="resumo">Resumo das receitas (R1–R10)</h2>
+<ul>
+  <li><strong>R1. Sopa crua de brócolos cremosa e “aveludada” (liquidificador)</strong> – Sopa crua muito cremosa com base de frutos secos demolhados, brócolos e temperos, batida no liquidificador; pode ser servida fria ou amornada (abaixo de 45 ºC).</li>
+  <li><strong>R2. Sopa crua “brócolos &amp; queijo” (raw-vegan)</strong> – Sopa crua com sabor “queijoso” graças à levedura nutricional e cajus/abacate, com brócolos como ingrediente central.</li>
+  <li><strong>R3. Creme cru de brócolos (estilo “cream of broccoli”)</strong> – Versão raw-vegan de um creme clássico: brócolos + caju demolhado + limão + temperos, batidos até ficar sedoso.</li>
+  <li><strong>R4. Tabule cru de brócolos com tomate e romã (raw-vegan)</strong> – Brócolos “arrozado”/picado fino no processador substitui o trigo: muita salsa, hortelã, tomate e romã, com tempero cítrico.</li>
+  <li><strong>R5. Salada crua de brócolos com azeitonas e amêndoas (sem maionese)</strong> – Salada crua rápida: brócolos picados marinados em azeite e vinagre, com azeitonas, amêndoas tostadas e salsa.</li>
+  <li><strong>R6. Noodles de curgete com pesto cru de brócolos e manjericão</strong> – Pesto cru (brócolos + manjericão + frutos secos/sementes) servido sobre curgete espiralizada; prato principal leve e muito aromático.</li>
+  <li><strong>R7. Pãezinhos/bolinhas desidratadas de brócolos (broccoli bites)</strong> – “Bites” crus de brócolos com molho “queijoso” (caju + levedura nutricional), moldados e desidratados até ficarem crocantes por fora.</li>
+  <li><strong>R8. Chips crus “queijo” de brócolos no desidratador</strong> – Floretes de brócolos envolvidos num creme “cheezy” e desidratados longamente, criando chips crocantes e fáceis de guardar.</li>
+  <li><strong>R9. Hambúrgueres/patties crus de brócolos para desidratar</strong> – Patties crus com brócolos picados, sementes e temperos, moldados e desidratados; ótimos em folhas de alface, com molhos crus.</li>
+  <li><strong>R10. Chucrute fermentado com rebentos de brócolos (broccoli sprouts)</strong> – Fermentado vivo: chucrute clássico enriquecido com rebentos de brócolos, para um acompanhamento ácido, probiótico e totalmente cru.</li>
+</ul>
+
+<h2 id="receitas-completas">Receitas completas</h2>
+
+<a id="sopa-crua-de-brocolos-cremosa-e-aveludada-liquidificador-r1"></a>
+<h2 id="sopa-crua-de-brocolos-cremosa-e-aveludada-liquidificador">Sopa crua de brócolos cremosa e “aveludada” (liquidificador) <span class="source">[R1]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma sopa crua pensada para ter textura de “creme” sem cozinhar. Para servir amornada (alimentação viva), basta bater mais tempo no liquidificador e/ou usar água morna, garantindo que fica abaixo de ~45 ºC.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>2–3 chávenas de brócolos (floretes e talos tenros), cortados</li>
+  <li>½ chávena de cajus crus, demolhados e escorridos</li>
+  <li>1–1½ chávenas de água (ou água morna para versão amornada)</li>
+  <li>1–2 colheres de sopa de sumo de limão</li>
+  <li>1 dente de alho pequeno (opcional)</li>
+  <li>2–3 colheres de sopa de levedura nutricional (opcional, para sabor mais “queijoso”)</li>
+  <li>1 colher de sopa de azeite (opcional)</li>
+  <li>Sal marinho e pimenta preta q.b.</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Demolha os cajus (idealmente 2–4 h; ou 30–60 min em água morna), escorre e passa por água.</li>
+  <li>Coloca no liquidificador: água, cajus, limão, sal/pimenta e (se usares) alho e levedura nutricional. Bate até ficar muito liso.</li>
+  <li>Junta os brócolos e volta a bater até obter um creme verde homogéneo. Ajusta a água para a espessura desejada.</li>
+  <li>Prova e corrige acidez (limão) e sal.</li>
+  <li>Para servir amornado (&lt;45 ºC): usa água morna e/ou deixa o liquidificador trabalhar mais tempo até aquecer ligeiramente.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Nutrition Refined — <a href="https://nutritionrefined.com/raw-broccoli-soup/" target="_blank" rel="noopener">https://nutritionrefined.com/raw-broccoli-soup/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="sopa-crua-brocolos-queijo-raw-vegan-r2"></a>
+<h2 id="sopa-crua-brocolos-queijo-raw-vegan">Sopa crua “brócolos &amp; queijo” (raw-vegan) <span class="source">[R2]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma sopa crua com perfil de “broccoli cheese soup”, usando levedura nutricional e frutos secos/abacate para a cremosidade — sem cozedura.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 cabeça grande de brócolos (mais talos tenros), em pedaços</li>
+  <li>½ pimento vermelho, em pedaços</li>
+  <li>2 cenouras, em pedaços</li>
+  <li>½ abacate</li>
+  <li>½ chávena de cajus crus, demolhados e escorridos</li>
+  <li>2 colheres de sopa de levedura nutricional</li>
+  <li>2–3 chávenas de água (ajustar consistência)</li>
+  <li>1 dente de alho</li>
+  <li>Sal q.b.</li>
+  <li>Cominhos em pó (opcional)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Demolha e escorre os cajus.</li>
+  <li>No liquidificador, bate a água com os cajus, a levedura nutricional, o alho, o sal e (se usares) cominhos, até ficar bem cremoso.</li>
+  <li>Junta o brócolo, o pimento, a cenoura e o abacate; bate até ficar liso.</li>
+  <li>Ajusta a água e o tempero.</li>
+  <li>Serve fria ou ligeiramente amornada (batendo mais tempo).</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Live Simply Natural — <a href="https://livesimplynatural.com/raw-vegan-broccoli-cheese-soup/" target="_blank" rel="noopener">https://livesimplynatural.com/raw-vegan-broccoli-cheese-soup/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="creme-cru-de-brocolos-estilo-cream-of-broccoli-r3"></a>
+<h2 id="creme-cru-de-brocolos-estilo-cream-of-broccoli">Creme cru de brócolos (estilo “cream of broccoli”) <span class="source">[R3]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma receita muito direta e rápida (5 minutos), pensada para “parecer” uma sopa tradicional sem cozinhar, com caju a fazer de base cremosa.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>2 chávenas de brócolos em pedaços (incluindo talos tenros)</li>
+  <li>½ chávena de cajus crus demolhados e escorridos</li>
+  <li>1–1½ chávenas de água (ou água morna para amornar)</li>
+  <li>1–2 colheres de sopa de sumo de limão</li>
+  <li>Sal e pimenta q.b.</li>
+  <li>Ervas secas a gosto (opcional)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Demolha e escorre os cajus.</li>
+  <li>Bate no liquidificador: água + cajus + limão + sal/pimenta até ficar muito liso.</li>
+  <li>Junta o brócolo e bate até ficar cremoso; ajusta água e tempero.</li>
+  <li>Serve imediatamente (fria) ou amornada (&lt;45 ºC) usando água morna e batendo mais tempo.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+The Rawtarian — <a href="https://www.therawtarian.com/raw-broccoli-soup-recipe" target="_blank" rel="noopener">https://www.therawtarian.com/raw-broccoli-soup-recipe</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="tabule-cru-de-brocolos-com-tomate-e-roma-raw-vegan-r4"></a>
+<h2 id="tabule-cru-de-brocolos-com-tomate-e-roma-raw-vegan">Tabule cru de brócolos com tomate e romã (raw-vegan) <span class="source">[R4]</span></h2>
+
+<h4>Introdução</h4>
+<p>Um tabule crudívoro em que o brócolo picado fino faz de “cuscuz”, com muitas ervas frescas, tomate e romã. Muito bom para marmitas.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1–2 cabeças de brócolos (floretes e talos tenros), em pedaços</li>
+  <li>2 tomates maduros, em cubos pequenos</li>
+  <li>½ chávena de bagos de romã</li>
+  <li>1 bom molho de salsa (muita), picada</li>
+  <li>Hortelã fresca (opcional), picada</li>
+  <li>1 cebola roxa pequena (opcional), em cubos muito pequenos</li>
+  <li>Sumo de 1 limão</li>
+  <li>2–3 colheres de sopa de azeite virgem extra</li>
+  <li>Sal e pimenta q.b.</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>No processador, tritura o brócolo em pulsos até ficar tipo “grão”/cuscuz (sem virar puré).</li>
+  <li>Transfere para uma taça e junta tomate, romã, salsa, hortelã e cebola roxa.</li>
+  <li>Tempera com limão, azeite, sal e pimenta.</li>
+  <li>Envolve bem e deixa repousar 5–10 minutos para o brócolo amaciar ligeiramente.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Cook Republic — <a href="https://www.cookrepublic.com/vegan-raw-broccoli-tabouli/" target="_blank" rel="noopener">https://www.cookrepublic.com/vegan-raw-broccoli-tabouli/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="salada-crua-de-brocolos-com-azeitonas-e-amendoas-sem-maionese-r5"></a>
+<h2 id="salada-crua-de-brocolos-com-azeitonas-e-amendoas-sem-maionese">Salada crua de brócolos com azeitonas e amêndoas (sem maionese) <span class="source">[R5]</span></h2>
+
+<h4>Introdução</h4>
+<p>Salada crua muito simples: a marinada (azeite + vinagre) “cozinha” ligeiramente o brócolo por maceração, mantendo crocância.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>3 chávenas de brócolos picados grosseiramente</li>
+  <li>½ cebola roxa em meias-luas finas</li>
+  <li>½ chávena de azeitonas (ex.: kalamata), cortadas</li>
+  <li>¼ chávena de amêndoas laminadas (tostadas ou não, conforme preferires em raw estrito)</li>
+  <li>¼ chávena de salsa picada</li>
+  <li>1 dente de alho pequeno, ralado ou muito picado</li>
+  <li>3 colheres de sopa de vinagre balsâmico</li>
+  <li>3 colheres de sopa de azeite virgem extra</li>
+  <li>1 colher de sopa de mostarda Dijon</li>
+  <li>1 colher de chá de xarope de ácer</li>
+  <li>Sal q.b.</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Numa taça grande, junta brócolos, cebola, azeitonas, amêndoas e salsa.</li>
+  <li>Mistura à parte: alho + vinagre + azeite + mostarda + xarope de ácer + sal.</li>
+  <li>Verte o molho na salada e envolve bem.</li>
+  <li>Deixa repousar 10–15 minutos antes de servir.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+The New Baguette — <a href="https://thenewbaguette.com/raw-broccoli-salad/" target="_blank" rel="noopener">https://thenewbaguette.com/raw-broccoli-salad/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="noodles-de-curgete-com-pesto-cru-de-brocolos-e-manjericao-r6"></a>
+<h2 id="noodles-de-curgete-com-pesto-cru-de-brocolos-e-manjericao">Noodles de curgete com pesto cru de brócolos e manjericão <span class="source">[R6]</span></h2>
+
+<h4>Introdução</h4>
+<p>Um prato de “massa” crudívora: noodles de curgete + pesto cru onde o brócolo entra como protagonista verde, com manjericão e frutos secos.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>2–3 curgetes para espiralizar</li>
+  <li>2 chávenas de brócolos crus picados</li>
+  <li>1 chávena de manjericão fresco</li>
+  <li>½ chávena de nozes (ou outra opção indicada na receita)</li>
+  <li>1–2 dentes de alho (opcional)</li>
+  <li>Sumo de limão q.b.</li>
+  <li>Azeite q.b.</li>
+  <li>Sal e pimenta q.b.</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Espiraliza a curgete e reserva (podes salgar ligeiramente e escorrer 5–10 min se quiseres menos água).</li>
+  <li>No processador, tritura brócolos, manjericão, nozes, alho, limão, azeite, sal e pimenta até virar pesto.</li>
+  <li>Envolve o pesto nos noodles de curgete.</li>
+  <li>Serve de imediato.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+The Blender Girl — <a href="https://www.theblendergirl.com/recipe/raw-broccoli-pesto-with-zucchini-noodles/" target="_blank" rel="noopener">https://www.theblendergirl.com/recipe/raw-broccoli-pesto-with-zucchini-noodles/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="paozinhos-bolinhas-desidratadas-de-brocolos-broccoli-bites-r7"></a>
+<h2 id="paozinhos-bolinhas-desidratadas-de-brocolos-broccoli-bites">Pãezinhos/bolinhas desidratadas de brócolos (broccoli bites) <span class="source">[R7]</span></h2>
+
+<h4>Introdução</h4>
+<p>Snack cru tipo “bolinhas”/“bites”: brócolos envolvidos num creme “cheezy” e desidratados até ficarem crocantes por fora e mais macios por dentro.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Brócolos (floretes pequenos)</li>
+  <li>Cajus crus demolhados (para o creme)</li>
+  <li>Levedura nutricional (para sabor “queijo”)</li>
+  <li>Limão (sumo)</li>
+  <li>Alho (opcional)</li>
+  <li>Sal e especiarias a gosto (ex.: paprica, pimenta)</li>
+  <li>Água q.b. (para ajustar o creme)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Demolha os cajus e escorre.</li>
+  <li>Faz um creme no liquidificador: cajus + levedura nutricional + limão + sal + água (até ficar espesso e “aderente”).</li>
+  <li>Envolve os floretes de brócolo no creme (como “panar”).</li>
+  <li>Distribui no desidratador em camada única.</li>
+  <li>Desidrata até ficarem firmes/crocantes (o tempo varia com o equipamento e humidade).</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Love Thy Carrot — <a href="https://www.lovethycarrot.com/home/2016/10/28/broccoli-bites-vegan-and-raw-the-best-thing-since-potato-chips-really" target="_blank" rel="noopener">https://www.lovethycarrot.com/home/2016/10/28/broccoli-bites-vegan-and-raw-the-best-thing-since-potato-chips-really</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="chips-crus-queijo-de-brocolos-no-desidratador-r8"></a>
+<h2 id="chips-crus-queijo-de-brocolos-no-desidratador">Chips crus “queijo” de brócolos no desidratador <span class="source">[R8]</span></h2>
+
+<h4>Introdução</h4>
+<p>Chips crus em que os floretes são “revestidos” por um molho salgado/queijoso e desidratados longamente, criando um snack muito crocante.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Brócolos (floretes pequenos)</li>
+  <li>Cajus crus demolhados (ou base indicada na receita)</li>
+  <li>Levedura nutricional</li>
+  <li>Limão (sumo) ou vinagre suave</li>
+  <li>Sal e especiarias a gosto</li>
+  <li>Água q.b. para bater o molho</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Prepara o molho “cheezy” batendo no liquidificador a base cremosa + levedura nutricional + acidez + sal/temperos.</li>
+  <li>Envolve os floretes de brócolo no molho.</li>
+  <li>Espalha no desidratador em camada única.</li>
+  <li>Desidrata até ficarem bem secos e crocantes; deixa arrefecer antes de guardar.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Sprouting Zen — <a href="https://sproutingzen.com/dehydrated-raw-vegan-cheezy-broccoli-chips/" target="_blank" rel="noopener">https://sproutingzen.com/dehydrated-raw-vegan-cheezy-broccoli-chips/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="hamburgueres-patties-crus-de-brocolos-para-desidratar-r9"></a>
+<h2 id="hamburgueres-patties-crus-de-brocolos-para-desidratar">Hambúrgueres/patties crus de brócolos para desidratar <span class="source">[R9]</span></h2>
+
+<h4>Introdução</h4>
+<p>Patties crus (tipo mini-hambúrguer) feitos com brócolos, cenoura e temperos, ligados com sementes moídas e desidratados para ganhar estrutura.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 cabeça média de brócolos</li>
+  <li>1 cenoura</li>
+  <li>Alho e gengibre (fresco)</li>
+  <li>Sementes moídas (ex.: sésamo moído)</li>
+  <li>Cominhos em pó</li>
+  <li>Sal q.b.</li>
+  <li>Outros ingredientes indicados na receita (opcionais na versão original)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Tritura brócolos, cenoura, alho e gengibre até ficar uma “massa” granulada.</li>
+  <li>Junta sementes moídas e temperos; mistura bem até ficar moldável.</li>
+  <li>Molda patties e coloca no desidratador.</li>
+  <li>Desidrata algumas horas até firmarem por fora, mantendo interior mais húmido se preferires.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+The Rawtarian — <a href="https://www.therawtarian.com/community/recipe/broccoli-patties" target="_blank" rel="noopener">https://www.therawtarian.com/community/recipe/broccoli-patties</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="chucrute-fermentado-com-rebentos-de-brocolos-broccoli-sprouts-r10"></a>
+<h2 id="chucrute-fermentado-com-rebentos-de-brocolos-broccoli-sprouts">Chucrute fermentado com rebentos de brócolos (broccoli sprouts) <span class="source">[R10]</span></h2>
+
+<h4>Introdução</h4>
+<p>Fermentação láctica (comida viva) que combina chucrute tradicional com rebentos de brócolos. Fica ácido, crocante e probiótico — ótimo para acompanhar saladas, bowls e pratos crus.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Couve (repolho) fatiada muito fina (base de chucrute)</li>
+  <li>Sal marinho (quantidade típica de fermentação por peso, conforme receita)</li>
+  <li>Rebentos de brócolos (broccoli sprouts)</li>
+  <li>Opcional: alho, sementes de cominhos, etc. (conforme receita)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Mistura a couve fatiada com o sal e massaja até libertar bastante líquido.</li>
+  <li>Junta os rebentos de brócolos e envolve.</li>
+  <li>Coloca tudo num frasco de fermentação, pressionando para ficar submerso no próprio líquido.</li>
+  <li>Mantém a couve submersa (peso de fermentação) e fecha conforme o teu sistema (tampa/airlock).</li>
+  <li>Fermenta à temperatura ambiente por vários dias, provando até atingir a acidez desejada.</li>
+  <li>Quando estiver no ponto, guarda no frigorífico para abrandar a fermentação.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Cultured Guru — <a href="https://cultured.guru/blog/fermented-broccoli-sprouts" target="_blank" rel="noopener">https://cultured.guru/blog/fermented-broccoli-sprouts</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

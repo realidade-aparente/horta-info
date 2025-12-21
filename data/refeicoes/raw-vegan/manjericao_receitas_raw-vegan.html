@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Manjericão – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+ <div class="masthead">
+<header>
+  <h1>Manjericão – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html" class="ativa">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+  </header></div>
+<main>
+<article>
+
+<h2>Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/manjericao_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/manjericao_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+<ol>
+<li><a href="#r1">Pesto cru de manjericão (com cânhamo e espinafre)</a> <span class="source">[R1]</span></li> 
+<li><a href="#r2">“Zoodles” crus com pesto de manjericão (pasta crua de curgete)</a> <span class="source">[R2]</span></li>
+<li><a href="#r3">Massa crua de curgete com molho de tomate-manjericão e tâmaras</a> <span class="source">[R3]</span></li>
+<li><a href="#r4">Sopa crua “tomate assado” com manjericão (amornada/desidratada)</a> <span class="source">[R4]</span></li>
+<li><a href="#r5">Crackers italianos crus com manjericão, tomate seco e trigo-mourisco germinado</a> <span class="source">[R5]</span></li>
+<li><a href="#r6">Crackers crus de alecrim e manjericão (desidratador)</a> <span class="source">[R6]</span></li>
+<li><a href="#r7">Crackers crus de linhaça, tomate e manjericão (com nori)</a> <span class="source">[R7]</span></li>
+<li><a href="#r8">“Queijo” creme cru de caju e manjericão (tipo cream cheese)</a> <span class="source">[R8]</span></li>
+<li><a href="#r9">Molho cremoso cru de manjericão (doce-ácido)</a> <span class="source">[R9]</span></li>
+<li><a href="#r10">Molho cru balsâmico de manjericão e sementes de cânhamo</a> <span class="source">[R10]</span></li>
+</ol>
+</div>
+
+<h2> Resumo das Receitas</h2>
+
+<h4>R1 — Pesto cru de manjericão (com cânhamo e espinafre)</h4>
+<p>Pesto cru muito verde e intenso: manjericão + espinafre + sementes de cânhamo + levedura nutricional + limão. Ótimo para “massas” cruas, wraps, bowls e molhos rápidos.</p>
+
+<h4>R2 — “Zoodles” crus com pesto de manjericão (pasta crua de curgete)</h4>
+<p>Curgete espiralizada (tipo esparguete) coberta por pesto cru de manjericão com nozes, cânhamo e limão, finalizada com tomate-cereja. Um prato principal cru, leve e fresco.</p>
+
+<h4>R3 — Massa crua de curgete com molho de tomate-manjericão e tâmaras</h4>
+<p>Molho cru “tipo marinara” adocicado naturalmente (tâmaras + tomate) com manjericão, servido sobre curgete em noodles, previamente “amolecida” com lima e sal.</p>
+
+<h4>R4 — Sopa crua “tomate assado” com manjericão (amornada/desidratada)</h4>
+<p>Tomate é desidratado para concentrar sabor e criar um efeito “assado” sem cozedura; depois mistura-se com leite de noz-do-brasil e manjericão para uma sopa crua intensa, servida morna ou à temperatura ambiente.</p>
+
+<h4>R5 — Crackers italianos crus com manjericão, tomate seco e trigo-mourisco germinado</h4>
+<p>Crackers de desidratador com sabor mediterrânico (tomate, manjericão, alho) e estrutura com linhaça + trigo-mourisco germinado + sementes. Crocantes, ótimos com patês e sopas cruas.</p>
+
+<h4>R6 — Crackers crus de alecrim e manjericão (desidratador)</h4>
+<p>Crackers robustos com base de sementes (linhaça, girassol, sésamo), temperados com alho em pó, alecrim e manjericão seco. Textura firme e “snackable”.</p>
+
+<h4>R7 — Crackers crus de linhaça, tomate e manjericão (com nori)</h4>
+<p>Crackers cru-vegan bem completos: mistura de sementes e frutos secos, pimento e tomate, manjericão, verduras picadas e montagem com folhas de nori, tudo desidratado.</p>
+
+<h4>R8 — “Queijo” creme cru de caju e manjericão (tipo cream cheese)</h4>
+<p>Creme de caju cru com muito manjericão, montado por demolha + trituração + repouso no frio. Ideal para barrar, rechear wraps/crêpes crus ou servir com crackers.</p>
+
+<h4>R9 — Molho cremoso cru de manjericão (doce-ácido)</h4>
+<p>Molho cru, cremoso e levemente doce: caju demolhado + manjericão + vinagre + limão + alho. Funciona como molho de salada, dip e “molho de tigela”.</p>
+
+<h4>R10 — Molho cru balsâmico de manjericão e sementes de cânhamo</h4>
+<p>Molho muito rápido no liquidificador: manjericão + sementes de cânhamo + balsâmico + água. Fica espesso, com notas herbais e umami suave, ótimo para saladas e bowls.</p>
+
+<h2> Receitas completas</h2>
+
+<a id="pesto-cru-de-manjericao-com-canhamo-e-espinafre"></a>
+<h3 id="r1">R1 — Pesto cru de manjericão (com cânhamo e espinafre)</h3>
+
+<h4>Introdução</h4>
+<p>Pesto cru pensado para ser rápido (“juntar e triturar”) e muito verde. O manjericão é a estrela, com reforço de espinafre para volume e suavidade. Fica excelente como molho, dip ou base de bowls.</p>
+
+<h4>Ingredientes (rende ~300 g)</h4>
+<ul>
+<li>90 g de manjericão fresco (folhas)</li>
+<li>60 g de espinafre fresco (bem compactado)</li>
+<li>50 g de sementes de cânhamo (hemp hearts)</li>
+<li>25 g de óleo de cânhamo (ou azeite suave, se preferires manter a textura; a fonte usa óleo de cânhamo)</li>
+<li>2 dentes de alho</li>
+<li>20 g de levedura nutricional em flocos</li>
+<li>80 g de sumo de limão</li>
+<li>3/4 colher de chá de sal</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Lavar e secar bem o manjericão e o espinafre.</li>
+<li>Colocar todos os ingredientes num liquidificador/processador.</li>
+<li>Triturar até ficar liso (ou ao ponto desejado).</li>
+<li>Provar e ajustar sal/limão.</li>
+<li>Usar de imediato ou guardar em frasco no frio.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Eating Vibrantly — 
+<a href="https://eatingvibrantly.com/recipes/raw-vegan-pesto/" target="_blank" rel="noopener">
+https://eatingvibrantly.com/recipes/raw-vegan-pesto/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="zoodles-crus-com-pesto-de-manjericao"></a>
+<h2 id="r2">R2 — “Zoodles” crus com pesto de manjericão</h2>
+
+<h3>Introdução</h3>
+<p>Um prato cru que “imita” massa: curgete em noodles e pesto cremoso com manjericão. O manjericão aqui é central (2 chávenas), trazendo aroma e frescura.</p>
+
+<h3>Ingredientes (2 doses)</h3>
+<ul>
+<li>3 curgetes médias (para espiralizar)</li>
+<li>2 chávenas (bem cheias) de folhas de manjericão (ou mistura com verdes, mas mantendo o manjericão como base principal)</li>
+<li>1/4 chávena de sementes de cânhamo</li>
+<li>1/4 chávena de nozes</li>
+<li>1 colher de chá de azeite (a receita é crua; este passo não envolve calor)</li>
+<li>1 tâmara (sem caroço)</li>
+<li>2 dentes de alho médios</li>
+<li>1/4 colher de chá de sal (Himalaia ou marinho)</li>
+<li>Sumo de 1 limão</li>
+<li>60 ml de água (ajustar)</li>
+<li>2 chávenas de tomate-cereja, cortado ao meio</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Espiralizar as curgetes e reservar numa taça.</li>
+<li>No liquidificador, triturar: manjericão, cânhamo, nozes, azeite, tâmara, alho, sal, limão e água até ficar cremoso.</li>
+<li>Verter o pesto sobre os zoodles e envolver bem.</li>
+<li>Finalizar com tomate-cereja e servir.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Veggie Primer —  
+<a href="https://veggieprimer.com/raw-pesto-zoodles/" target="_blank" rel="noopener">
+https://veggieprimer.com/raw-pesto-zoodles/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="massa-crua-de-curgete-com-molho-de-tomate-manjericao-e-tamaras"></a>
+<h2 id="r3">R3 — Massa crua de curgete com molho de tomate-manjericão e tâmaras</h2>
+
+<h3>Introdução</h3>
+<p>Molho cru de tomate com doçura natural (tâmaras) e manjericão para perfume. A curgete é “amaciada” com lima e uma pitada de sal.</p>
+
+<h3>Ingredientes (2 doses)</h3>
+<ul>
+<li><strong>Para a “massa”:</strong></li>
+<li>~450 g de curgete (cerca de 3 pequenas), para espiralizar</li>
+<li>Sumo de 1/2 lima</li>
+<li>1 pitada de sal</li>
+</ul>
+<ul>
+<li><strong>Para o molho:</strong></li>
+<li>8 tomates-cereja bem maduros</li>
+<li>2 tâmaras (sem caroço)</li>
+<li>5 folhas de manjericão (ou mais, a gosto)</li>
+<li>1 colher de sopa de cebolinho picado fino</li>
+<li>1 dente de alho (ou alho em pó para sabor mais suave)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Espiralizar a curgete.</li>
+<li>Misturar os zoodles com o sumo de lima e a pitada de sal. Reservar 5–10 min para libertar água e amaciar.</li>
+<li>Triturar no liquidificador: tomate, tâmaras, manjericão, cebolinho e alho até obter um molho liso.</li>
+<li>Servir os zoodles e cobrir com o molho.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Mary’s Test Kitchen —  
+<a href="https://www.marystestkitchen.com/raw-vegan-zucchini-pasta-with-tomato-basil-date-sauce/" target="_blank" rel="noopener">
+https://www.marystestkitchen.com/raw-vegan-zucchini-pasta-with-tomato-basil-date-sauce/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-crua-tomate-assado-com-manjericao-amornada-desidratada"></a>
+<h2 id="r4">R4 — Sopa crua “tomate assado” com manjericão (amornada/desidratada)</h2>
+
+<h3>Introdução</h3>
+<p>Para criar sabor “assado” sem cozer, os tomates são desidratados. Depois batem-se com leite de noz-do-brasil e ervas (inclui manjericão) para uma sopa crua profunda e aromática.</p>
+
+<h3>Ingredientes (1 receita grande)</h3>
+<ul>
+<li><strong>Para os tomates desidratados:</strong></li>
+<li>Tomates picados (quantidade conforme a fonte; usa-se tomate + cebola + óleo + manjericão + orégãos + sal + pimenta)</li>
+</ul>
+<ul>
+<li><strong>Para o “leite”:</strong></li>
+<li>1 chávena de nozes-do-brasil</li>
+<li>4 chávenas de água (para triturar e coar)</li>
+</ul>
+<ul>
+<li><strong>Temperos e finalização:</strong></li>
+<li>Manjericão fresco (na mistura dos tomates)</li>
+<li>Orégãos, sal, pimenta</li>
+<li>Azeite/óleo (como na fonte)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Preparar mistura dos tomates: misturar tomate picado, cebola, óleo, manjericão, orégãos, sal e pimenta. Repousar 30 min e escorrer o líquido.</li>
+<li>Desidratar: colocar em folhas antiaderentes e desidratar (a fonte usa uma fase curta mais alta e depois baixa) até concentrar sabor.</li>
+<li>Leite de noz-do-brasil: demolhar 6 h, triturar com água e coar em saco/leite vegetal.</li>
+<li>Triturar a sopa: juntar tomate desidratado + leite de noz + temperos e bater até cremoso.</li>
+<li>Servir à temperatura ambiente ou levemente amornada (mantendo abaixo de ~45 ºC, se for esse o teu critério).</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Rawmazing —  
+<a href="https://rawmazing.com/recipe/raw-food-roasted-tomato-basil-soup/" target="_blank" rel="noopener">
+https://rawmazing.com/recipe/raw-food-roasted-tomato-basil-soup/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="crackers-italianos-crus-com-manjericao-tomate-seco-e-trigo-mourisco-germinado"></a>
+<h2 id="r5">R5 — Crackers italianos crus com manjericão, tomate seco e trigo-mourisco germinado</h2>
+
+<h3>Introdução</h3>
+<p>Crackers de desidratador com perfil italiano: tomate + manjericão + alho. Leva trigo-mourisco germinado, o que encaixa bem no teu pedido de preparações com germinados.</p>
+
+<h3>Ingredientes (rende ~1,5 tabuleiros Excalibur)</h3>
+<ul>
+<li>2 pimentos vermelhos, picados</li>
+<li>2 tomates, picados</li>
+<li>1/2 chávena de tomate seco, demolhado e picado</li>
+<li>1/2 chávena da água da demolha do tomate seco</li>
+<li>2 raminhos de manjericão fresco</li>
+<li>2 dentes de alho</li>
+<li>1/2 chávena de linhaça inteira</li>
+<li>1/2 chávena de linhaça moída</li>
+<li>1/2 chávena de trigo-mourisco germinado por 1–2 dias (e desidratado, se tiveres desidratador)</li>
+<li>1/2 chávena de sementes de cânhamo (ou mais trigo-mourisco se não houver cânhamo)</li>
+<li>1 colher de sopa de sementes de chia</li>
+<li>1 colher de chá de sal</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>No liquidificador, bater pimentos, tomates (frescos + secos demolhados), manjericão, alho e a água da demolha.</li>
+<li>Adicionar os restantes ingredientes e misturar até ficar bem combinado.</li>
+<li>Espalhar em folhas do desidratador em camada uniforme.</li>
+<li>Desidratar cerca de 4 h a ~42 ºC.</li>
+<li>Virar para a rede, marcar/cortar em quadrados e continuar 4–5 h (ou até crocante).</li>
+<li>Guardar em recipiente hermético.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+ROHTOPIA —  
+<a href="https://rohtopia.com/how-to-make-raw-vegan-italian-crackers-with-basil-sun-dried-tomatoes-and-garlic/" target="_blank" rel="noopener">
+https://rohtopia.com/how-to-make-raw-vegan-italian-crackers-with-basil-sun-dried-tomatoes-and-garlic/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="crackers-crus-de-alecrim-e-manjericao-desidratador"></a>
+<h2 id="r6">R6 — Crackers crus de alecrim e manjericão (desidratador)</h2>
+
+<h3>Introdução</h3>
+<p>Crackers de sementes bem firmes e “de pão”, com alecrim e manjericão seco. Ficam ótimos com patês crus e “queijos” de caju.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 chávena de sementes de linhaça cruas</li>
+<li>4 chávenas de sementes de girassol cruas</li>
+<li>1/4 chávena de sementes de sésamo cruas</li>
+<li>1 colher de sopa de alho em pó</li>
+<li>1 colher de sopa de alecrim seco</li>
+<li>1 colher de sopa de manjericão seco</li>
+<li>1 colher de chá de sal marinho</li>
+<li>Pimenta preta a gosto</li>
+<li>Água (para demolhar e para bater/processar, conforme necessário)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Demolhar as sementes de linhaça (e/ou seguir o método indicado na fonte para hidratar e criar “liga”).</li>
+<li>Triturar/processar as sementes de girassol e misturar com sésamo, temperos e a mistura de linhaça hidratada.</li>
+<li>Espalhar em tabuleiros do desidratador, em camada fina.</li>
+<li>Desidratar até firmar; virar e continuar até ficar crocante (a fonte indica 7–8 h, dependendo do equipamento).</li>
+<li>Partir/cortar em crackers e armazenar seco.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Sunbeam —  
+<a href="https://www.sunbeam.co.nz/blog/post/rosemary-and-basil-crackers" target="_blank" rel="noopener">
+https://www.sunbeam.co.nz/blog/post/rosemary-and-basil-crackers
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="crackers-crus-de-linhaca-tomate-e-manjericao-com-nori"></a>
+<h2 id="r7">R7 — Crackers crus de linhaça, tomate e manjericão (com nori)</h2>
+
+<h3>Introdução</h3>
+<p>Um “projecto” completo de desidratador: massa de crackers com sementes, frutos secos, pimento, tomate e manjericão; montagem com nori para um snack salgado e rico em textura.</p>
+
+<h3>Ingredientes (base da receita)</h3>
+<ul>
+<li>1 chávena de linhaça (moída opcional), demolhada em 2 1/2 chávenas de água</li>
+<li>1/4 chávena de chia, demolhada em 1 1/4 chávenas de água</li>
+<li>1/2 chávena de amêndoas cruas</li>
+<li>1 1/2 chávenas de cajus crus</li>
+<li>1 chávena de sementes de girassol cruas</li>
+<li>1/2 chávena de sementes de abóbora cruas</li>
+<li>1–2 pimentos vermelhos, em cubos grandes</li>
+<li>1 cebola roxa média (metade grosseira + metade em cubos pequenos)</li>
+<li>2–3 dentes de alho</li>
+<li>Sumo de 1 limão grande</li>
+<li>4 colheres de sopa de levedura nutricional</li>
+<li>1 colher de sopa de vinagre de sidra</li>
+<li>1 colher de chá de sal</li>
+<li>1 molho de folhas verdes (picadas finas)</li>
+<li>10–15 folhas grandes de manjericão (picadas)</li>
+<li>1 chávena de tomate em cubos médios</li>
+<li>3 cebolinhas em cubos pequenos</li>
+<li>7–10 folhas de nori (para montagem)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Demolhar linhaça e chia separadamente; depois juntar e reservar (vai formar gel/“cola”).</li>
+<li>No processador: triturar pimento, metade da cebola (grosseira) e alho; juntar cajus, limão, vinagre, levedura nutricional e sal e processar até quase liso.</li>
+<li>Misturar numa taça: gel de sementes + mistura do processador + restantes sementes/frutos secos e envolver.</li>
+<li>Incorporar: folhas verdes picadas, manjericão picado, tomate, cebola em cubos pequenos e cebolinha.</li>
+<li>Montar sobre tabuleiros (e nori, se fizeres o formato tipo “rolos/placas” como na fonte).</li>
+<li>Desidratar até firme; virar/cortar e continuar até crocante.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Instructables —  
+<a href="https://www.instructables.com/Raw-Flax-Crackers-Tomato-Basil/" target="_blank" rel="noopener">
+https://www.instructables.com/Raw-Flax-Crackers-Tomato-Basil/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="queijo-creme-cru-de-caju-e-manjericao-tipo-cream-cheese"></a>
+<h2 id="r8">R8 — “Queijo” creme cru de caju e manjericão (tipo cream cheese)</h2>
+
+<h3>Introdução</h3>
+<p>Um cream cheese cru de caju com manjericão fresco, feito apenas com demolha + trituração + repouso no frio. O manjericão aparece com força, trazendo perfume e frescura.</p>
+
+<h3>Ingredientes (base do creme)</h3>
+<ul>
+<li>Cajus crus (demolhados)</li>
+<li>Manjericão fresco (folhas)</li>
+<li>Limão (sumo)</li>
+<li>Alho (quantidade pequena, a gosto)</li>
+<li>Sal e pimenta (a gosto)</li>
+<li>Água (apenas o necessário para ajustar textura na trituração)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Demolhar os cajus (idealmente 4–8 h) e escorrer.</li>
+<li>Triturar cajus + manjericão + sumo de limão + alho + sal/pimenta, adicionando um pouco de água até ficar cremoso.</li>
+<li>Provar e ajustar acidez/sal.</li>
+<li>Guardar no frigorífico (a fonte sugere repouso/overnight) para ganhar corpo e infusão do manjericão.</li>
+<li>Servir para barrar ou como dip.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Soulfully Tasty —  
+<a href="https://www.soulfullytasty.com/recipes/raw-vegan-basil-cashew-cream-cheese-with-figs-walnuts-and-toast" target="_blank" rel="noopener">
+https://www.soulfullytasty.com/recipes/raw-vegan-basil-cashew-cream-cheese-with-figs-walnuts-and-toast
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="molho-cremoso-cru-de-manjericao-doce-acido"></a>
+<h2 id="r9">R9 — Molho cremoso cru de manjericão (doce-ácido)</h2>
+
+<h3>Introdução</h3>
+<p>Molho cru e aveludado: caju + manjericão + vinagre + limão + alho. Fica excelente em saladas, bowls, legumes crus e até como “molho de massa” crua.</p>
+
+<h3>Ingredientes (1 frasco)</h3>
+<ul>
+<li>Cajus crus, demolhados (e depois escorridos)</li>
+<li>Água</li>
+<li>Vinagre (a fonte usa vinagre + limão)</li>
+<li>Folhas de manjericão</li>
+<li>Cebola (ou cebola em pó, conforme preferência)</li>
+<li>Adoçante (pequena quantidade, conforme a fonte)</li>
+<li>Sumo de limão</li>
+<li>Sal</li>
+<li>Alho</li>
+<li>Pimenta preta</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Depois de demolhar, escorrer e passar os cajus por água (não usar a água da demolha).</li>
+<li>No liquidificador potente, juntar: água, vinagre, manjericão, cebola/tempero, adoçante, limão, sal, alho, pimenta e cajus.</li>
+<li>Triturar até ficar totalmente cremoso (sem grãos).</li>
+<li>Guardar em frasco no frio.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Nouveau Raw —  
+<a href="https://nouveauraw.com/raw-recipes/dressings-dips/creamy-sweet-basil-dressing/" target="_blank" rel="noopener">
+https://nouveauraw.com/raw-recipes/dressings-dips/creamy-sweet-basil-dressing/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="molho-cru-balsamico-de-manjericao-e-sementes-de-canhamo"></a>
+<h2 id="r10">R10 — Molho cru balsâmico de manjericão e sementes de cânhamo</h2>
+
+<h3>Introdução</h3>
+<p>Molho cru muito simples e “alto em manjericão”: folhas de manjericão batidas com sementes de cânhamo e vinagre balsâmico. Fica espesso e ótimo para saladas robustas.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 chávena de folhas de manjericão fresco</li>
+<li>1/2 chávena de sementes de cânhamo (hemp hearts)</li>
+<li>3 colheres de sopa de vinagre balsâmico</li>
+<li>2 colheres de chá de cebola em pó</li>
+<li>~1/2 chávena de água (ajustar à textura desejada)</li>
+<li>Sal e pimenta a gosto</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Colocar todos os ingredientes no liquidificador.</li>
+<li>Triturar até ficar liso e cremoso.</li>
+<li>Ajustar a água para mais fluidez (ou menos para mais “dip”).</li>
+<li>Provar e ajustar sal/pimenta.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Run Plant Based —  
+<a href="https://runplantbased.com/2015/07/super-balsamic-basil-dressing/" target="_blank" rel="noopener">
+https://runplantbased.com/2015/07/super-balsamic-basil-dressing/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

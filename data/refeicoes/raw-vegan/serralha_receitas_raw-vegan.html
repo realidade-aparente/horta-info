@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Serralha – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+ <div class="masthead">
+<header>
+  <h1>Serralha – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../serralha.html" class="ativa">Serralha</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+  </header></div>
+<main>
+<article>
+
+<h2>Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/serralha_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/serralha_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+<ol>
+<li><a href="#r1">Salada de serralhas do Porto Santo</a> <span class="source">[R1]</span></li> 
+<li><a href="#r2">Batido energético de pūhā (Puwha Energy Smoothie)</a> <span class="source">[R2]</span></li>
+<li><a href="#r3">Smoothie de pūhā do Haki Porima</a> <span class="source">[R3]</span></li>
+</ol>
+</div>
+
+<h2> Resumo das Receitas</h2>
+
+<h4>R1 — Salada de serralhas do Porto Santo</h4>
+<p>Uma salada tradicional: folhas de serralha lavadas, cortadas e “esfregadas” para ficarem menos ásperas; tempero simples com vinagre, azeite, alho e sal.</p>
+
+<h4>R2 — Batido energético de pūhā (Puwha Energy Smoothie)</h4>
+<p>Smoothie cru com fruta (morangos, banana e opcionalmente nectarina), um punhado de pūhā/serralha e amêndoas (demolhadas ou escaldadas conforme a fonte), batido com bebida vegetal ou água.</p>
+
+<h4>R3 — Smoothie de pūhā do Haki Porima</h4>
+<p>Smoothie cru para 4 pessoas, com fruta (laranja, pêra/maçã, abacate, banana), passas opcionais, pūhā como verde principal, salsa, couve kale, gengibre, chia e água (ou água de coco opcional).</p>
+
+<h2> Receitas completas</h2>
+
+<a id="salada-de-serralhas-do-porto-santo"></a>
+<h3 id="r1">R1 — Salada de serralhas do Porto Santo</h3>
+
+<h4>Introdução</h4>
+<p>Preparação tradicional onde a serralha é consumida crua em salada. O passo de “esfregar” as folhas ajuda a suavizar a textura e o amargor.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>Folhas de serralha (Sonchus oleraceus)</li>
+<li>Vinagre</li>
+<li>Azeite</li>
+<li>Alho</li>
+<li>Sal</li>
+</ul>
+
+<h3>Passos de preparação</h3>
+<ol>
+<li>Lave as folhas de serralha com água.</li>
+<li>Corte as folhas como se faz à alface.</li>
+<li>Esfregue as folhas para se tornarem menos ásperas.</li>
+<li>Tempere com vinagre, azeite, alho e sal.</li>
+<li>Sirva de imediato.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Fonte: Porto Santo - Reserva da Biosfera — Gastronomia — 
+<a href="https://portosantobiosfera.madeira.gov.pt/pt/patrimoniocultural/patrimonio-imaterial/gastronomia.html" target="_blank" rel="noopener">
+https://portosantobiosfera.madeira.gov.pt/pt/patrimoniocultural/patrimonio-imaterial/gastronomia.html
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="batido-energetico-de-puha-puwha-energy-smoothie"></a>
+<h2 id="r2">R2 — Batido energético de pūhā (Puwha Energy Smoothie)</h2>
+
+<h3>Introdução</h3>
+<p>Um smoothie cru centrado em pūhā/serralha, adoçado com fruta e enriquecido com amêndoas para dar corpo e cremosidade.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1/2 chávena de morangos</li>
+<li>1 nectarina (opcional)</li>
+<li>1 banana</li>
+<li>1 punhado de pūhā (puwha/puha — Sonchus spp.)</li>
+<li>1/4 chávena de amêndoas escaldadas (blanched) ou demolhadas (soaked)</li>
+<li>1 pitada de estévia para adoçar (opcional)</li>
+<li>Bebida vegetal de frutos secos ou de soja (ou água; “as amêndoas tornam-se o leite quando são batidas”)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Coloque todos os ingredientes no liquidificador.</li>
+<li>Bata até ficar suave e cremoso.</li>
+<li>Sirva de imediato.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Fonte: Wild Picnic — Puwha / Puha (Sonchus species) —  
+<a href="https://wildpicnic.blogspot.com/2009/05/puwha-puha-sonchus-oleraceus-and.html" target="_blank" rel="noopener">
+https://wildpicnic.blogspot.com/2009/05/puwha-puha-sonchus-oleraceus-and.html
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="smoothie-de-puha-do-haki-porima"></a>
+<h2 id="r3">R3 — Smoothie de pūhā do Haki Porima</h2>
+
+<h3>Introdução</h3>
+<p>Smoothie cru com pūhā como verde principal, combinado com fruta e sementes para uma textura densa e bebida.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 laranja, descascada e cortada em pedaços</li>
+<li>1 pêra, ou maçã, sem caroço e cortada em cubos</li>
+<li>1 abacate, sem caroço e descascado</li>
+<li>1 banana, congelada ou fresca, cortada em pedaços (usar bananas bem maduras)</li>
+<li>1/3 chávena de sultanas ou passas, demolhadas (opcional)</li>
+<li>1 molho de pūhā, picado (Main)</li>
+<li>1 molho de salsa, picada</li>
+<li>1 molho de folhas de couve kale, picadas</li>
+<li>1 cm de gengibre fresco, em fatias</li>
+<li>1 colher de sopa de sementes de chia</li>
+<li>1 chávena de água (ou água de coco “baby” filtrada, opcional), conforme a consistência desejada</li>
+<li>1 medida de spirulina (opcional)</li>
+</ul>
+
+<h3>Passos de preparação</h3>
+<ol>
+<li>Bata os ingredientes no liquidificador até ficar homogéneo.</li>
+<li>Coloque os pedaços de fruta fresca mais perto do fundo do copo para gerar líquido suficiente e ajudar a bater a banana congelada.</li>
+<li>Bata e sirva num copo alto.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Fonte: NZ Herald — Haki Porima's Puha Smoothie — 
+<a href="https://www.nzherald.co.nz/eatwell/recipes/haki-porimas-puha-smoothie/ODXJHGK44RCW66UFXCWWMWI7TU/" target="_blank" rel="noopener">
+https://www.nzherald.co.nz/eatwell/recipes/haki-porimas-puha-smoothie/ODXJHGK44RCW66UFXCWWMWI7TU/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

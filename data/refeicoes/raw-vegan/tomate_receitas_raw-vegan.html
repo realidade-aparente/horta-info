@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Tomate – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+ <div class="masthead">
+<header>
+  <h1>Tomate – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html" class="ativa">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+  </header></div>
+<main>
+<article>
+
+<h2>Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/tomate_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/tomate_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+<ol>
+<li><a href="#r1">Sopa cremosa crua de tomate (raw-vegan)</a> <span class="source">[R1]</span></li> 
+<li><a href="#r2">Sopa crua de tomate (cremosa, com caju)</a> <span class="source">[R2]</span></li>
+<li><a href="#r3">Sopa crua mexicana de tomate (raw)</a> <span class="source">[R3]</span></li>
+<li><a href="#r4">Gazpacho cru vegan (tomate)</a> <span class="source">[R4]</span></li>
+<li><a href="#r5">Molho cru de “esparguete” (tomate, pimento e tomate seco)</a> <span class="source">[R5]</span></li>
+<li><a href="#r6">Molho cru de tomate (rápido, em processador)</a> <span class="source">[R6]</span></li>
+<li><a href="#r7">Marinara crua de tomate-cereja (para zoodles)</a> <span class="source">[R7]</span></li>
+<li><a href="#r8">Salsa crua de tomate em pedaços (chunky)</a> <span class="source">[R8]</span></li>
+<li><a href="#r9">Tomates-cereja fermentados (o fermento mais fácil)</a> <span class="source">[R9]</span></li>
+<li><a href="#r10">Molho de massa de tomate cru fermentado (lactofermentado)</a> <span class="source">[R10]</span></li>
+</ol>
+</div>
+
+<h2> Resumo das Receitas</h2>
+
+<h4>R1. Sopa cremosa crua de tomate (raw-vegan)</h4>
+<p>Sopa fria/temperada feita no liquidificador com tomate, pimento vermelho, tomate seco e caju, muito cremosa e intensa.</p>
+
+<h4>R2. Sopa crua de tomate (cremosa, com caju)</h4>
+<p>Sopa crua simples e rápida, com parte do tomate triturado e parte em cubos para textura. Pode ser levemente “amornada” pela fricção do liquidificador.</p>
+
+<h4>R3. Sopa crua mexicana de tomate (raw)</h4>
+<p>Sopa crua com perfil mexicano: tomate, pimento, lima/limão, malagueta, ervas frescas e toque adocicado de tâmaras.</p>
+
+<h4>R4. Gazpacho cru vegan (tomate)</h4>
+<p>Gazpacho cru de tomate com pepino, pimento, alho, chalota/cebola e vinagre — refrescante e pronto em poucos minutos.</p>
+
+<h4>R5. Molho cru de “esparguete” (tomate, pimento e tomate seco)</h4>
+<p>Molho cru encorpado para “massas” de legumes (ex.: curgete espiralizada), com tomate, tomate seco, pimento e ervas.</p>
+
+<h4>R6. Molho cru de tomate (rápido, em processador)</h4>
+<p>Molho cru muito rápido e minimalista: tomate fresco + tomate seco + azeite + ervas, pronto em minutos.</p>
+
+<h4>R7. Marinara crua de tomate-cereja (para zoodles)</h4>
+<p>Marinara crua com tomate-cereja e tomate seco reidratado, temperada com orégãos/manjericão e ligeiro dulçor (agave), pensada para noodles de curgete.</p>
+
+<h4>R8. Salsa crua de tomate em pedaços (chunky)</h4>
+<p>Salsa crua em cubos, com lima, cebola, coentros e especiarias — ótima para dips, bowls e pratos crus.</p>
+
+<h4>R9. Tomates-cereja fermentados (o fermento mais fácil)</h4>
+<p>Fermentação em salmoura: tomates inteiros no frasco com sal e água (opcionais: alho e manjericão). Ficam ácidos, efervescentes e conservam-se meses no frio.</p>
+
+<h4>R10. Molho de massa de tomate cru fermentado (lactofermentado)</h4>
+<p>Molho cru de tomate fermentado (tipo “pasta sauce”) com salmoura e tempo: conserva tomate e cria acidez/umami sem cozinhar.</p>
+
+<h2> Receitas completas</h2>
+
+<a id="sopa-cremosa-crua-de-tomate-raw-vegan"></a>
+<h3 id="r1">R1 — Sopa cremosa crua de tomate (raw-vegan)</h3>
+
+<h4>Introdução</h4>
+<p>Uma sopa crua muito cremosa e intensa, feita no liquidificador. O tomate seco concentra sabor, o caju dá corpo e o pimento reforça doçura e cor. Pode ser servida fria ou ligeiramente morna (sem cozinhar), consoante o tempo de trituração.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>5 tomates grandes</li>
+<li>1 pimento vermelho grande</li>
+<li>6–8 tomates secos (sun-dried), conforme a fonte</li>
+<li>2 dentes de alho</li>
+<li>1/3 chávena de cajus</li>
+<li>3 colheres de sopa de tempero italiano (Italian seasoning)</li>
+<li>2 colheres de chá de cebola em pó</li>
+<li>1 colher de chá de paprika</li>
+<li>1 colher de chá de sal (tipo “Himalayan sea salt”, conforme a fonte)</li>
+<li>1/4 colher de chá de chili em pó</li>
+<li>1/4 colher de chá de pimenta-preta</li>
+<li>1/4 de abacate (opcional)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Lavar os tomates e o pimento. Cortar em pedaços para facilitar a trituração.</li>
+<li>Se os tomates secos estiverem muito duros, reidratar conforme indicado na receita (se necessário).</li>
+<li>Colocar no liquidificador: tomates, pimento, tomates secos, alho, cajus e todos os temperos.</li>
+<li>Triturar até ficar completamente cremoso. Ajustar a textura com pequenas quantidades de água se precisares (apenas se a receita indicar/permitir).</li>
+<li>Provar e ajustar sal/pimenta/picante ao teu gosto (sem alterar a base da receita).</li>
+<li>Servir de imediato; opcionalmente, finalizar com 1/4 de abacate.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Live Simply Natural — 
+<a href="https://livesimplynatural.com/raw-vegan-creamy-tomato-soup/" target="_blank" rel="noopener">
+https://livesimplynatural.com/raw-vegan-creamy-tomato-soup/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-crua-de-tomate-cremosa-com-caju"></a>
+<h2 id="r2">R2 — Sopa crua de tomate (cremosa, com caju)</h2>
+
+<h3>Introdução</h3>
+<p>Sopa crua muito simples, com uma parte do tomate triturada e outra parte adicionada em cubos no fim. A receita sugere que a fricção do liquidificador pode aquecer levemente a sopa, mantendo-a sem cozedura.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 chávena de tomate (picado)</li>
+<li>1/4 chávena de cajus</li>
+<li>1/2 chávena de água</li>
+<li>1/2 colher de chá de sal marinho</li>
+<li>1 dente de alho pequeno</li>
+<li>1/2 chávena adicional de tomate em cubos (reservar — não triturar)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Colocar no liquidificador: 1 chávena de tomate picado, cajus, água, sal e alho.</li>
+<li>Triturar até ficar liso e cremoso. Se quiseres “amornar” sem cozinhar, triturar um pouco mais (como indicado na receita).</li>
+<li>Verter para uma taça.</li>
+<li>Juntar a 1/2 chávena de tomate em cubos reservada e envolver com colher.</li>
+<li>Servir de imediato.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The Rawtarian —  
+<a href="https://www.therawtarian.com/raw-tomato-soup-recipe" target="_blank" rel="noopener">
+https://www.therawtarian.com/raw-tomato-soup-recipe
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-crua-mexicana-de-tomate-raw"></a>
+<h2 id="r3">R3 — Sopa crua mexicana de tomate (raw)</h2>
+
+<h3>Introdução</h3>
+<p>Sopa crua com sabores mexicanos: tomate como base, com malagueta, ervas frescas e um toque de doçura de tâmaras. É servida com guarnições (ex.: abacate, cebolinho/cebolas novas, coentros, chili).</p>
+
+<h3>Ingredientes</h3>
+<p>(Ingredientes conforme lista completa na página da receita; manter exatamente os itens e quantidades indicadas.)</p>
+
+<h3>Preparação</h3>
+<ol>
+<li>Preparar e lavar todos os ingredientes frescos.</li>
+<li>Colocar no liquidificador os ingredientes principais indicados na receita e triturar até obter sopa homogénea.</li>
+<li>Se a receita indicar reservar ervas para adicionar no fim (para cor/sabor), fazê-lo conforme instruções.</li>
+<li>Ajustar consistência conforme indicado (sem cozinhar).</li>
+<li>Servir e guarnecer com os toppings sugeridos na receita (abacate, coentros, etc.).</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The Raw Chef —  
+<a href="https://www.therawchef.com/raw-mexican-tomato-soup/" target="_blank" rel="noopener">
+https://www.therawchef.com/raw-mexican-tomato-soup/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="gazpacho-cru-vegan-tomate"></a>
+<h2 id="r4">R4 — Gazpacho cru vegan (tomate)</h2>
+
+<h3>Introdução</h3>
+<p>Gazpacho cru (sem pão), feito com tomate, pepino, pimento, alho e temperos. A receita usa uma etapa de maceração para o tomate libertar sucos e aprofundar sabor antes de triturar.</p>
+
+<h3>Ingredientes</h3>
+<p>(Ingredientes conforme lista completa na página da receita; manter exatamente os itens e quantidades indicadas.)</p>
+
+<h3>Preparação</h3>
+<ol>
+<li>Picar tomates, pimento e pepino conforme indicado.</li>
+<li>Juntar numa taça com sal, pimenta e manjericão (ou erva indicada) e deixar repousar o tempo recomendado para macerar.</li>
+<li>Transferir para liquidificador e adicionar os restantes ingredientes (alho, chalotas/cebola, paprika fumada, vinagre, azeite, açúcar — conforme indicado).</li>
+<li>Triturar até obter a textura desejada.</li>
+<li>Refrigerar e servir frio, com toppings opcionais se a receita sugerir.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Tomato Blues —  
+<a href="https://www.tomatoblues.com/raw-vegan-gazpacho/" target="_blank" rel="noopener">
+https://www.tomatoblues.com/raw-vegan-gazpacho/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="molho-cru-de-esparguete-tomate-pimento-e-tomate-seco"></a>
+<h2 id="r5">R5 — Molho cru de “esparguete” (tomate, pimento e tomate seco)</h2>
+
+<h3>Introdução</h3>
+<p>Um molho cru pensado para “massas” de legumes (zoodles/espirais), com tomate fresco e tomate seco para intensidade. A receita inclui também pimento e beterraba para profundidade de cor/sabor.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>2 lb (cerca de 900 g) de tomates-cereja OU 4 tomates grandes</li>
+<li>1 pimento vermelho grande</li>
+<li>1 chávena de tomates secos (picados)</li>
+<li>2 dentes de alho</li>
+<li>1/4 de beterraba</li>
+<li>1 colher de sopa de azeite (opcional)</li>
+<li>1 colher de chá de sal (tipo “Himalayan sea salt”, conforme a fonte)</li>
+<li>1 colher de sopa de tempero italiano</li>
+<li>1 colher de sopa de manjericão seco</li>
+<li>1 pequeno molho de manjericão fresco</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Preparar tomates, pimento e beterraba: lavar, cortar em pedaços.</li>
+<li>Se necessário, amaciar/reidratar tomates secos conforme indicado na receita.</li>
+<li>Colocar todos os ingredientes no liquidificador/processador.</li>
+<li>Triturar até obter um molho liso ou ligeiramente rústico (como preferires, desde que dentro do indicado).</li>
+<li>Provar e ajustar sal/ervas dentro do perfil da receita.</li>
+<li>Servir sobre noodles de vegetais crus.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Live Simply Natural —  
+<a href="https://livesimplynatural.com/simple-raw-vegan-spaghetti-sauce/" target="_blank" rel="noopener">
+https://livesimplynatural.com/simple-raw-vegan-spaghetti-sauce/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="molho-cru-de-tomate-rapido-em-processador"></a>
+<h2 id="r6">R6 — Molho cru de tomate (rápido, em processador)</h2>
+
+<h3>Introdução</h3>
+<p>Molho cru minimalista e muito rápido, com tomate fresco + tomate seco para intensidade. Fica ótimo como molho, base de pizza crua ou para “massas” cruas.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1/2 chávena de tomate fresco</li>
+<li>1/2 chávena de tomates secos (picados e previamente amolecidos/“soaked” em azeite, conforme indicado)</li>
+<li>1 1/2 colheres de sopa de azeite</li>
+<li>1 1/2 colheres de chá de manjericão seco (ou orégãos secos)</li>
+<li>1/2 dente de alho (bem picado)</li>
+<li>1/4 colher de chá de sal marinho</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Colocar todos os ingredientes no processador de alimentos.</li>
+<li>Pulsar brevemente para incorporar, sem triturar demasiado (a receita sugere manter textura).</li>
+<li>Servir de imediato.</li>
+<li>Guardar o excedente no frigorífico, conforme indicado.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The Rawtarian —  
+<a href="https://www.therawtarian.com/raw-tomato-sauce-recipe" target="_blank" rel="noopener">
+https://www.therawtarian.com/raw-tomato-sauce-recipe
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="marinara-crua-de-tomate-cereja-para-zoodles"></a>
+<h2 id="r7">R7 — Marinara crua de tomate-cereja (para zoodles)</h2>
+
+<h3>Introdução</h3>
+<p>Marinara crua com tomate-cereja, tomate seco reidratado e ervas secas. A receita inclui um toque de adoçante (agave) para equilibrar a acidez, e sugere servir com noodles de curgete.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>2 1/2 chávenas de tomates-cereja</li>
+<li>1/2 chávena de tomates secos, demolhados</li>
+<li>2 colheres de sopa de azeite prensado a frio</li>
+<li>1 dente de alho</li>
+<li>2 colheres de chá de orégãos secos</li>
+<li>2 colheres de chá de manjericão seco</li>
+<li>2 colheres de chá de xarope de agave (ou equivalente indicado)</li>
+<li>1 colher de chá de sal rosa dos Himalaias</li>
+<li>2 a 3 curgetes grandes (para espiralizar em noodles), conforme indicado</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Se os tomates secos estiverem muito duros, demolhar em água morna o suficiente para reidratar; escorrer e espremer o excesso de água, como indicado.</li>
+<li>No processador: juntar tomates-cereja, tomates secos, azeite, alho, orégãos, manjericão, agave e sal.</li>
+<li>Processar até à textura desejada (mais rústica ou mais lisa).</li>
+<li>Espiralizar a curgete em noodles.</li>
+<li>Misturar noodles com a marinara e servir.</li>
+<li>Guardar molho no frigorífico pelo período indicado.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Nouveau Raw —  
+<a href="https://nouveauraw.com/dressings-dips/cherry-tomato-marinara-sauce/" target="_blank" rel="noopener">
+https://nouveauraw.com/dressings-dips/cherry-tomato-marinara-sauce/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salsa-crua-de-tomate-em-pedacos-chunky"></a>
+<h2 id="r8">R8 — Salsa crua de tomate em pedaços (chunky)</h2>
+
+<h3>Introdução</h3>
+<p>Salsa crua em cubos, com acidez de lima, aromáticos e especiarias. Excelente para acompanhar vegetais crus, crackers crus, bowls, ou para dar vida a pratos crus.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>2 chávenas (400 g) de tomate em cubos</li>
+<li>1/2 chávena (68 g) de cebola roxa ou amarela em cubos</li>
+<li>1/4 a 1/2 chávena de coentros picados</li>
+<li>2 colheres de sopa de sumo de lima</li>
+<li>1 colher de sopa de vinagre de coco cru</li>
+<li>1 colher de chá de sriracha</li>
+<li>1 colher de chá de xarope de ácer (maple)</li>
+<li>1/2 jalapeño (aprox. 12 g)</li>
+<li>2 dentes pequenos de alho picados</li>
+<li>1/2 colher de chá de sal (tipo Himalayan)</li>
+<li>1/2 colher de chá de cominhos moídos</li>
+<li>1 colher de chá de chili em pó</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Cortar o tomate, cebola e jalapeño em cubos pequenos. Picar alho e coentros.</li>
+<li>Numa taça, juntar todos os ingredientes.</li>
+<li>Misturar muito bem para distribuir temperos e líquidos.</li>
+<li>Provar e ajustar sal/picante conforme indicado na lógica da receita.</li>
+<li>Servir de imediato ou deixar repousar alguns minutos para os sabores integrarem.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Nouveau Raw —  
+<a href="https://nouveauraw.com/raw-recipes/dressings-dips/chunky-tomato-salsa/" target="_blank" rel="noopener">
+https://nouveauraw.com/raw-recipes/dressings-dips/chunky-tomato-salsa/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="tomates-cereja-fermentados-o-fermento-mais-facil"></a>
+<h2 id="r9">R9 — Tomates-cereja fermentados (o fermento mais fácil)</h2>
+
+<h3>Introdução</h3>
+<p>Fermentação simples em salmoura: tomates-cereja inteiros num frasco com água e sal (e opcionais aromáticos). Ao fim de alguns dias, ficam ácidos, efervescentes e conservam-se no frio por meses.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>2 chávenas de tomates-cereja, lavados</li>
+<li>2 chávenas de água</li>
+<li>1 1/2 colheres de sopa de sal</li>
+<li>5 dentes de alho descascados (opcional)</li>
+<li>8 folhas de manjericão fresco (opcional)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Colocar os tomates-cereja num frasco limpo (capacidade mínima ~4 chávenas), com alho e manjericão se usares.</li>
+<li>Fazer a salmoura: dissolver o sal na água.</li>
+<li>Verter a salmoura sobre os tomates, cobrindo totalmente.</li>
+<li>Para manter os tomates submersos, colocar um peso limpo dentro do frasco (ex.: um pequeno copo/frasco de vidro).</li>
+<li>Fechar o frasco e colocar num prato (pode borbulhar e libertar salmoura).</li>
+<li>Deixar à temperatura ambiente cerca de 5 dias (ou até estarem tangy/efervescentes, como descrito).</li>
+<li>Quando prontos, transferir para o frigorífico.</li>
+<li>A receita sugere reutilizar a salmoura para novos lotes, que fermentam mais rápido.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Zero-Waste Chef —  
+<a href="https://zerowastechef.com/2022/07/12/the-easiest-ferment-cherry-tomatoes/" target="_blank" rel="noopener">
+https://zerowastechef.com/2022/07/12/the-easiest-ferment-cherry-tomatoes/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="molho-de-massa-de-tomate-cru-fermentado-lactofermentado"></a>
+<h2 id="r10">R10 — Molho de massa de tomate cru fermentado (lactofermentado)</h2>
+
+<h3>Introdução</h3>
+<p>Molho de tomate cru fermentado, pensado para usar em “pasta sauce” sem cozinhar. A fermentação cria acidez e complexidade, e ajuda a prolongar o uso de tomates frescos.</p>
+
+<h3>Ingredientes</h3>
+<p>(Ingredientes conforme lista completa na página da receita; manter exatamente os itens e quantidades indicadas.)</p>
+
+<h3>Preparação</h3>
+<ol>
+<li>Preparar os tomates e restantes ingredientes conforme indicado.</li>
+<li>Misturar e colocar em recipiente/frasco adequado à fermentação, mantendo as condições descritas na receita.</li>
+<li>Fermentar pelo tempo recomendado, observando sinais normais de lactofermentação (conforme orientações da fonte).</li>
+<li>Quando atingir o ponto indicado, transferir para o frio e usar como molho cru para massa/vegetais.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Revolution Fermentation —  
+<a href="https://revolutionfermentation.com/en/blogs/fermented-vegetables/raw-fermented-tomato-pasta-sauce-recipe/" target="_blank" rel="noopener">
+https://revolutionfermentation.com/en/blogs/fermented-vegetables/raw-fermented-tomato-pasta-sauce-recipe/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

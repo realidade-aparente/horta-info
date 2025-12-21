@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Rabanete – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+ <div class="masthead">
+<header>
+  <h1>Rabanete – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html" class="ativa">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+  </header></div>
+<main>
+<article>
+
+<h2>Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/rabanete_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/rabanete_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+<ol>
+<li><a href="#r1">Salada de rabanete com endro e cebolinho</a> <span class="source">[R1]</span></li> 
+<li><a href="#r2">Salada crua de rabanete, pepino e maçã</a> <span class="source">[R2]</span></li>
+<li><a href="#r3">Rabanetes esmagados marinados</a> <span class="source">[R3]</span></li>
+<li><a href="#r4">Pickles crus de rabanete no frigorífico</a> <span class="source">[R4]</span></li>
+<li><a href="#r5">Rabanetes fermentados com pimenta e malagueta</a> <span class="source">[R5]</span></li>
+<li><a href="#r6">Fatias de rabanete fermentadas (salmoura simples)</a> <span class="source">[R6]</span></li>
+<li><a href="#r7">Dip cru de rabanete com caju</a> <span class="source">[R7]</span></li>
+<li><a href="#r8">Pesto vegan de folhas de rabanete</a> <span class="source">[R8]</span></li>
+<li><a href="#r9">Carpaccio de rabanete com pesto de verdes</a> <span class="source">[R9]</span></li>
+<li><a href="#r10">Salada crua de pepino, cenoura e rabanete com coentros</a> <span class="source">[R10]</span></li>
+</ol>
+</div>
+
+<h2> Resumo das Receitas</h2>
+
+<h4>R1 — Salada crocante e ácida com vinagre e ervas frescas, muito direta.</h4>
+
+<h4>R2 — Salada crua refrescante que equilibra o picante do rabanete com maçã e pepino.</h4>
+
+<h4>R3 — Rabanetes ligeiramente esmagados para absorver melhor uma marinada aromática.</h4>
+
+<h4>R4 — Pickle rápido e cru, feito apenas no frigorífico.</h4>
+
+<h4>R5 — Rabanetes lactofermentados, crocantes e naturalmente probióticos.</h4>
+
+<h4>R6 — Fermentação simples em salmoura, ideal para iniciantes.</h4>
+
+<h4>R7 — Dip cru, picante e cremoso à base de rabanete e caju.</h4>
+
+<h4>R8 — Pesto cru feito com as folhas do rabanete (aproveitamento integral).</h4>
+
+<h4>R9 — Carpaccio cru elegante de rabanete com pesto de ervas.</h4>
+
+<h4>R10 — Salada crua colorida e fresca de pepino, cenoura e rabanete com coentros.</h4>
+
+
+<h2> Receitas completas</h2>
+
+<a id="salada-de-rabanete-com-endro-e-cebolinho"></a>
+<h3 id="r1">R1 — Salada de rabanete com endro e cebolinho</h3>
+
+<h4>Introdução</h4>
+<p>Salada simples e tradicional, muito comum em cozinhas do leste europeu, que destaca a crocância e o picante natural do rabanete.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>Rabanetes pequenos, fatiados finos</li>
+<li>Aipo fatiado fino</li>
+<li>Cebolinho fatiado</li>
+<li>Endro fresco picado</li>
+<li>Vinagre branco</li>
+<li>Sal</li>
+<li>Sementes de girassol cruas</li>
+</ul>
+
+<h3>Preparação</h3>
+<p>Misturar tudo numa taça, ajustar sal e vinagre e servir de imediato.</p>
+
+<p><h4>Fonte:</h4>
+Ugly Vegan Kitchen  
+<a href="https://uglyvegankitchen.com/2020/12/31/radish-salad-recipe/" target="_blank" rel="noopener">
+https://uglyvegankitchen.com/2020/12/31/radish-salad-recipe/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-crua-de-rabanete-pepino-e-maca"></a>
+<h2 id="r2">R2 — Salada crua de rabanete, pepino e maçã</h2>
+
+<h3>Introdução</h3>
+<p>Salada crua e muito refrescante, com contraste entre doce, ácido e picante.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Maçã fatiada fina</li>
+<li>Rabanete fatiado fino</li>
+<li>Pepino fatiado fino</li>
+<li>Tomate-cereja</li>
+<li>Azeite</li>
+<li>Vinagre de sidra</li>
+<li>Mostarda</li>
+<li>Alho</li>
+<li>Sal e pimenta</li>
+</ul>
+
+<h3>Preparação</h3>
+<p>Fatiar os vegetais, misturar o molho e envolver tudo. Refrigerar antes de servir.</p>
+
+<p><h4>Fonte:</h4>
+Nouveau Raw  
+<a href="https://nouveauraw.com/raw-recipes/salads/radish-cucumber-apple-salad/" target="_blank" rel="noopener">
+https://nouveauraw.com/raw-recipes/salads/radish-cucumber-apple-salad/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="rabanetes-esmagados-marinados"></a>
+<h2 id="r3">R3 — Rabanetes esmagados marinados</h2>
+
+<h3>Introdução</h3>
+<p>Esmagar ligeiramente os rabanetes permite que absorvam melhor a marinada, resultando num prato mais suculento.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Rabanetes frescos</li>
+<li>Alho</li>
+<li>Endro fresco</li>
+<li>Cebolinho</li>
+<li>Vinagre de sidra</li>
+<li>Azeite</li>
+<li>Sal e açúcar</li>
+</ul>
+
+<h3>Preparação</h3>
+<p>Esmagar os rabanetes, misturar com a marinada e deixar repousar antes de servir.</p>
+
+<p><h4>Fonte:</h4>
+Tasty Simply Vegan  
+<a href="https://tastysimplyvegan.com/marinated-smashed-radishes/" target="_blank" rel="noopener">
+https://tastysimplyvegan.com/marinated-smashed-radishes/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pickles-crus-de-rabanete-no-frigorifico"></a>
+<h2 id="r4">R4 — Pickles crus de rabanete no frigorífico</h2>
+
+<h3>Introdução</h3>
+<p>Pickles rápidos e crus, feitos apenas com vinagre e frio.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Rabanetes fatiados</li>
+<li>Alho</li>
+<li>Vinagre de sidra</li>
+<li>Sal</li>
+<li>Açúcar</li>
+<li>Pimenta em grão</li>
+</ul>
+
+<h3>Preparação</h3>
+<p>Misturar tudo num frasco e guardar no frigorífico por vários dias antes de usar.</p>
+
+<p><h4>Fonte:</h4>
+Extra Happy Theory  
+<a href="https://extrahappytheory.blogspot.com/2012/08/quick-hits-pickled-radishes.html" target="_blank" rel="noopener">
+https://extrahappytheory.blogspot.com/2012/08/quick-hits-pickled-radishes.html
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="rabanetes-fermentados-com-pimenta-e-malagueta"></a>
+<h2 id="r5">R5 — Rabanetes fermentados com pimenta e malagueta</h2>
+
+<h3>Introdução</h3>
+<p>Fermentação natural em salmoura que transforma o rabanete num alimento probiótico.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Rabanetes</li>
+<li>Água</li>
+<li>Sal</li>
+<li>Pimenta em grão</li>
+<li>Flocos de malagueta (opcional)</li>
+</ul>
+
+<h3>Preparação</h3>
+<p>Fermentar os rabanetes submersos em salmoura durante vários dias.</p>
+
+<p><h4>Fonte:</h4>
+West Coast Kitchen Garden (Sabrina Currie)  
+<a href="https://sabrinacurrie.com/fermented-radishes/" target="_blank" rel="noopener">
+https://sabrinacurrie.com/fermented-radishes/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="fatias-de-rabanete-fermentadas-salmoura-simples"></a>
+<h2 id="r6">R6 — Fatias de rabanete fermentadas (salmoura simples)</h2>
+
+<h3>Introdução</h3>
+<p>Versão muito básica de fermentação, ideal para iniciantes.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Rabanetes fatiados</li>
+<li>Água</li>
+<li>Sal</li>
+</ul>
+
+<h3>Preparação</h3>
+<p>Cobrir com salmoura, manter submerso e fermentar até atingir a acidez desejada.</p>
+
+<p><h4>Fonte:</h4>
+Serious Eats  
+<a href="https://www.seriouseats.com/fermented-radish-slices-recipe" target="_blank" rel="noopener">
+https://www.seriouseats.com/fermented-radish-slices-recipe
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="dip-cru-de-rabanete-com-caju"></a>
+<h2 id="r7">R7 — Dip cru de rabanete com caju</h2>
+
+<h3>Introdução</h3>
+<p>Dip cru, picante e cremoso, servido com vegetais crus.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Cajus crus</li>
+<li>Rabanetes</li>
+<li>Água (se necessário)</li>
+<li>Sal</li>
+</ul>
+
+<h3>Preparação</h3>
+<p>Triturar tudo até ficar cremoso e ajustar a intensidade com mais rabanete.</p>
+
+<p><h4>Fonte:</h4>
+The Vegan Monster  
+<a href="https://theveganmonster.de/en/rohkoestlicher-radieschen-dip-sauce-vegan-glutenfrei/" target="_blank" rel="noopener">
+https://theveganmonster.de/en/rohkoestlicher-radieschen-dip-sauce-vegan-glutenfrei/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pesto-vegan-de-folhas-de-rabanete"></a>
+<h2 id="r8">R8 — Pesto vegan de folhas de rabanete</h2>
+
+<h3>Introdução</h3>
+<p>Receita de aproveitamento integral da planta.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Folhas de rabanete</li>
+<li>Sementes de abóbora</li>
+<li>Azeite</li>
+<li>Limão</li>
+<li>Alho</li>
+<li>Sal</li>
+</ul>
+
+<h3>Preparação</h3>
+<p>Triturar tudo até obter um pesto cru homogéneo.</p>
+
+<p><h4>Fonte:</h4>
+A Clean Bake  
+<a href="https://acleanbake.com/radish-greens-pesto/" target="_blank" rel="noopener">
+https://acleanbake.com/radish-greens-pesto/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="carpaccio-de-rabanete-com-pesto-de-verdes"></a>
+<h2 id="r9">R9 — Carpaccio de rabanete com pesto de verdes</h2>
+
+<h3>Introdução</h3>
+<p>Entrada crua elegante com rabanetes laminados e pesto cru.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Rabanetes fatiados muito finos</li>
+</ul>
+
+<h3>Para o pesto:</h3>
+<ul>
+<li>Verdes (ex.: barba di frate/agretti ou ervas)</li>
+<li>Pinhões</li>
+<li>Alho</li>
+<li>Limão</li>
+<li>Azeite</li>
+<li>Sal</li>
+</ul>
+
+<h3>Preparação</h3>
+<p>Montar camadas de rabanete e pesto e servir imediatamente.</p>
+
+<p><h4>Fonte:</h4>
+Passionately Raw!  
+<a href="https://passionaltelyraw.blogspot.com/2024/04/radish-carpaccio-with-barba-di-frate-or.html" target="_blank" rel="noopener">
+https://passionaltelyraw.blogspot.com/2024/04/radish-carpaccio-with-barba-di-frate-or.html
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-crua-de-pepino-cenoura-e-rabanete-com-coentros"></a>
+<h2 id="r10">R10 — Salada crua de pepino, cenoura e rabanete com coentros</h2>
+
+<h3>Introdução</h3>
+<p>Salada crua, leve e crocante, com sabores frescos e cítricos.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Pepino fatiado fino</li>
+<li>Cenoura em juliana</li>
+<li>Rabanetes fatiados</li>
+<li>Coentros frescos</li>
+<li>Sumo de lima ou limão</li>
+<li>Azeite</li>
+<li>Sal e pimenta</li>
+</ul>
+
+<h3>Preparação</h3>
+<p>Misturar todos os ingredientes e servir imediatamente.</p>
+
+<p><h4>Fonte:</h4>
+Veggie Fun Kitchen  
+<a href="https://veggiefunkitchen.com/cucumber-carrot-salad-with-radishes-and-cilantro/" target="_blank" rel="noopener">
+https://veggiefunkitchen.com/cucumber-carrot-salad-with-radishes-and-cilantro/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

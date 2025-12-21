@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Coentros – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+  background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+  color: #fff;
+  padding: 1.2rem 1rem 0.8rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+}
+header h1{margin:0 0 0.25rem;font-size:1.7rem}
+header p{margin:0;opacity:0.9}
+main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+<div class="masthead">
+  <header>
+    <h1>Coentros – Receitas de Comida Viva</h1>
+    <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+  </header>
+
+  <nav>
+    <a href="../../../index.html">Início</a>
+    <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+    <a href="../../../abobora-grande.html">Abóbora grande</a>
+    <a href="../../../acelga.html">Acelga</a>
+    <a href="../../../agriao.html">Agrião-de-água</a>
+    <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+    <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+    <a href="../../../alface.html">Alface</a>
+    <a href="../../../alho.html">Alho</a>
+    <a href="../../../alho-frances.html">Alho-francês</a>
+    <a href="../../../aneto.html">Aneto / Endro</a>
+    <a href="../../../batata-comum.html">Batata comum</a>
+    <a href="../../../batata-doce.html">Batata-doce</a>
+    <a href="../../../beringela.html">Beringela</a>
+    <a href="../../../beterraba.html">Beterraba</a>
+    <a href="../../../brocolo.html">Brócolo</a>
+    <a href="../../../canonigos.html">Canónigos</a>
+    <a href="../../../cebola.html">Cebola</a>
+    <a href="../../../cebola-fresca.html">Cebola fresca</a>
+    <a href="../../../cenoura.html">Cenoura</a>
+    <a href="../../../coentros.html" class="ativa">Coentros</a>
+    <a href="../../../couve-chinesa.html">Couve chinesa</a>
+    <a href="../../../couve-flor.html">Couve-flor</a>
+    <a href="../../../couve-rabano.html">Couve-rábano</a>
+    <a href="../../../couve-repolho.html">Couve repolho</a>
+    <a href="../../../couve-toscana.html">Couve toscana</a>
+    <a href="../../../curgete.html">Curgete</a>
+    <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+    <a href="../../../espinafre.html">Espinafre</a>
+    <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+    <a href="../../../feijao-verde.html">Feijão verde</a>
+    <a href="../../../manjericao.html">Manjericão</a>
+    <a href="../../../milho-doce.html">Milho doce</a>
+    <a href="../../../mizuna.html">Mizuna</a>
+    <a href="../../../morangos.html">Morangueiro / Morangos</a>
+    <a href="../../../moringa.html">Moringa</a>
+    <a href="../../../nabica.html">Nabiça</a>
+    <a href="../../../nabo.html">Nabo</a>
+    <a href="../../../pak-choi.html">Pak choi</a>
+    <a href="../../../pepino.html">Pepino</a>
+    <a href="../../../pimento.html">Pimento</a>
+    <a href="../../../rabanete.html">Rabanete</a>
+    <a href="../../../rabano.html">Rábano / Daikon</a>
+    <a href="../../../rucula.html">Rúcula</a>
+    <a href="../../../salanova.html">Salanova</a>
+    <a href="../../../salsa.html">Salsa</a>
+    <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+    <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+  </nav>
+</div>
+
+<main>
+<article>
+
+<h2 id="receitas-preparados">Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/coentros_receitas_vegetariana.html">(Vegetariana)</a>
+    <a href="/data/refeicoes/vegan/coentros_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+  <ol>
+    <li><a href="#pesto-cru-de-coentros-e-salsa-raw">Pesto cru de coentros e salsa (raw)</a> <span class="source">[R1]</span></li>
+    <li><a href="#pesto-cru-de-coentros-sem-oleo-com-caju">Pesto cru de coentros sem óleo (com caju)</a> <span class="source">[R2]</span></li>
+    <li><a href="#chutney-cru-de-coentros-e-lima-raw">Chutney cru de coentros e lima (raw)</a> <span class="source">[R3]</span></li>
+    <li><a href="#sopa-crua-de-abacate-e-coentros">Sopa crua de abacate e coentros</a> <span class="source">[R4]</span></li>
+    <li><a href="#sopa-crua-de-cenoura-gengibre-e-coentros-sumo-de-cenoura">Sopa crua de cenoura, gengibre e coentros (sumo de cenoura)</a> <span class="source">[R5]</span></li>
+    <li><a href="#molho-cru-de-coentros-e-lima-cremoso-de-caju">Molho cru de coentros e lima (cremoso de caju)</a> <span class="source">[R6]</span></li>
+    <li><a href="#zhoug-cru-molho-picante-de-coentros">Zhoug cru (molho picante de coentros)</a> <span class="source">[R7]</span></li>
+    <li><a href="#chimichurri-fermentado-de-coentros-cru-probiotico">Chimichurri fermentado de coentros (cru, probiótico)</a> <span class="source">[R8]</span></li>
+    <li><a href="#pasta-de-coentros-lacto-fermentada-conserva-viva">Pasta de coentros lacto-fermentada (conserva viva)</a> <span class="source">[R9]</span></li>
+    <li><a href="#crackers-crus-de-linhaca-tomate-e-coentros-desidratador">Crackers crus de linhaça, tomate e coentros (desidratador)</a> <span class="source">[R10]</span></li>
+  </ol>
+</div>
+
+<h2 id="resumo">Resumo das receitas (R1–R10)</h2>
+
+<h4>R1. Pesto cru de coentros e salsa (raw)</h4>
+<p>Molho cru e muito verde, com coentros + salsa como base, frutos secos/sementes para corpo e limão para brilho. Funciona como molho, dip, topping e “pasta” de ervas.</p>
+
+<h4>R2. Pesto cru de coentros sem óleo (com caju)</h4>
+<p>Versão raw e sem óleo: coentros em destaque, cremosidade do caju, acidez de limão/lima e sal. Ótimo para wraps, saladas e noodles de legumes.</p>
+
+<h4>R3. Chutney cru de coentros e lima (raw)</h4>
+<p>Chutney verde cru, intenso e cítrico, com coentros, jalapeño, gengibre e coco. Ideal para “dar vida” a saladas, legumes crus ou pratos indianos raw.</p>
+
+<h4>R4. Sopa crua de abacate e coentros</h4>
+<p>Sopa cremosa crua (tipo “creme frio”), com abacate e coentros como protagonistas. Fresca, suave e pronta em minutos no liquidificador.</p>
+
+<h4>R5. Sopa crua de cenoura, gengibre e coentros (sumo de cenoura)</h4>
+<p>Sopa raw batida com base de sumo de cenoura, gengibre e bastante coentro. Pode ser servida fria ou ligeiramente amornada (mantendo &lt;45 ºC).</p>
+
+<h4>R6. Molho cru de coentros e lima (cremoso de caju)</h4>
+<p>Molho/dressing cru e vegan, de textura cremosa, feito no liquidificador com caju, coentros e lima. Perfeito para saladas e bowls.</p>
+
+<h4>R7. Zhoug cru (molho picante de coentros)</h4>
+<p>Molho verde picante do Iémen, centrado em coentros, malagueta, alho e especiarias. Sem cozedura, só triturar e repousar.</p>
+
+<h4>R8. Chimichurri fermentado de coentros (cru, probiótico)</h4>
+<p>Chimichurri verde fermentado (com coentros) que ganha acidez e complexidade. Excelente como molho para legumes, saladas e “tábuas” raw.</p>
+
+<h4>R9. Pasta de coentros lacto-fermentada (conserva viva)</h4>
+<p>Coentros fermentados para conservar aroma e criar uma pasta ácida e concentrada. Usa-se em pequenas quantidades para temperar tudo.</p>
+
+<h4>R10. Crackers crus de linhaça, tomate e coentros (desidratador)</h4>
+<p>Crackers raw de linhaça com tomate e coentros, desidratados a baixa temperatura. Ficam crocantes e ótimos para patês e dips.</p>
+
+<h2 id="receitas-completas">Receitas completas</h2>
+
+<a id="pesto-cru-de-coentros-e-salsa-raw-r1"></a>
+<h2 id="pesto-cru-de-coentros-e-salsa-raw">Pesto cru de coentros e salsa (raw) <span class="source">[R1]</span></h2>
+
+<h4>Introdução</h4>
+<p>Este pesto é uma forma muito “raw” de usar grandes quantidades de coentros sem os cozinhar. Fica brilhante, herbáceo e versátil: serve para noodles de curgete, saladas, wraps, ou como molho para “bolas”/patties crus.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 molho grande de coentros (folhas e talos mais tenros)</li>
+  <li>1 molho pequeno de salsa</li>
+  <li>1–2 dentes de alho (a gosto)</li>
+  <li>1/3 a 1/2 chávena de sementes ou frutos secos crus (ex.: sementes de cânhamo, girassol, amêndoa ou noz)</li>
+  <li>2–3 colheres de sopa de sumo de limão (ou lima)</li>
+  <li>3–6 colheres de sopa de água (para ajustar textura)</li>
+  <li>Sal marinho q.b.</li>
+  <li>Pimenta preta q.b. (opcional)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Lavar e secar bem os coentros e a salsa.</li>
+  <li>Colocar coentros, salsa, alho, sementes/frutos secos e sumo de limão num processador ou liquidificador.</li>
+  <li>Triturar, adicionando água aos poucos até obter um pesto cremoso (mais espesso para dip, mais fluido para molho).</li>
+  <li>Temperar com sal (e pimenta, se usar).</li>
+  <li>Guardar no frio em frasco bem fechado.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Desiree Nielsen — 
+<a href="https://desireerd.com/vegan-cilantro-and-parsley-pesto/" target="_blank" rel="noopener">https://desireerd.com/vegan-cilantro-and-parsley-pesto/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pesto-cru-de-coentros-sem-oleo-com-caju-r2"></a>
+<h2 id="pesto-cru-de-coentros-sem-oleo-com-caju">Pesto cru de coentros sem óleo (com caju) <span class="source">[R2]</span></h2>
+
+<h4>Introdução</h4>
+<p>Um pesto cru pensado para quem quer evitar óleo: o caju dá a cremosidade e os coentros ficam mesmo no centro do sabor. É excelente como molho rápido para legumes espiralizados ou como “creme” para sanduíches raw.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>2 chávenas bem cheias de coentros frescos</li>
+  <li>1/2 chávena de cajus crus (idealmente demolhados 30–60 min e escorridos)</li>
+  <li>1 dente de alho</li>
+  <li>2–3 colheres de sopa de sumo de limão</li>
+  <li>2–6 colheres de sopa de água (para ajustar)</li>
+  <li>Sal q.b.</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Se possível, demolhar o caju para ficar mais cremoso; escorrer.</li>
+  <li>Triturar no liquidificador: caju, coentros, alho e sumo de limão.</li>
+  <li>Adicionar água aos poucos até à textura desejada.</li>
+  <li>Temperar com sal e triturar mais alguns segundos.</li>
+  <li>Refrigerar e usar em 3–4 dias.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Salad Therapy — 
+<a href="https://saladtherapy.com/oil-free-vegan-cilantro-pesto/" target="_blank" rel="noopener">https://saladtherapy.com/oil-free-vegan-cilantro-pesto/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="chutney-cru-de-coentros-e-lima-raw-r3"></a>
+<h2 id="chutney-cru-de-coentros-e-lima-raw">Chutney cru de coentros e lima (raw) <span class="source">[R3]</span></h2>
+
+<h4>Introdução</h4>
+<p>Chutney verde cru, intenso e cítrico, com coentros como base. É um molho “vivo” e muito aromático, tradicionalmente servido em refeições de inspiração indiana.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>2 molhos de coentros (folhas e talos tenros)</li>
+  <li>2 jalapeños (ou outra malagueta verde), sem cabo (e sem sementes se quiser menos picante)</li>
+  <li>~5 cm de gengibre fresco, descascado</li>
+  <li>4 dentes de alho</li>
+  <li>1/2 colher de chá de sal marinho</li>
+  <li>1/2 chávena de coco ralado sem açúcar</li>
+  <li>Sumo de 1–2 limas (ajustar a gosto)</li>
+  <li>Água q.b. (apenas se necessário para bater)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Lavar e secar bem os coentros.</li>
+  <li>No liquidificador/processador: coentros, jalapeños, gengibre, alho, sal, coco e sumo de lima.</li>
+  <li>Triturar até ficar um molho homogéneo. Se necessário, juntar 1–2 colheres de sopa de água para ajudar a bater.</li>
+  <li>Provar e ajustar: mais lima para acidez, mais coco para suavizar, mais sal se necessário.</li>
+  <li>Guardar no frio em frasco bem fechado.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Nourishing Meals — 
+<a href="https://nourishingmeals.com/2009/07/raw-cilantro-lime-chutney" target="_blank" rel="noopener">https://nourishingmeals.com/2009/07/raw-cilantro-lime-chutney</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-crua-de-abacate-e-coentros-r4"></a>
+<h2 id="sopa-crua-de-abacate-e-coentros">Sopa crua de abacate e coentros <span class="source">[R4]</span></h2>
+
+<h4>Introdução</h4>
+<p>Sopa crua rápida e cremosa, com coentros e abacate. Ideal para dias quentes ou como entrada leve. Fica ótima com um topping de malagueta e mais coentros por cima.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1–2 abacates maduros</li>
+  <li>1 mão grande de coentros (mais extra para servir)</li>
+  <li>1 pepino pequeno (opcional, para frescura)</li>
+  <li>1 dente de alho pequeno (opcional)</li>
+  <li>Sumo de 1 lima (ou limão)</li>
+  <li>1/2 a 1 chávena de água filtrada (ou água de coco, se a receita usar)</li>
+  <li>Sal q.b.</li>
+  <li>Malagueta picada para servir (opcional)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Colocar abacate, coentros, pepino (se usar), alho (se usar), sumo de lima, sal e água no liquidificador.</li>
+  <li>Triturar até ficar completamente liso e cremoso.</li>
+  <li>Ajustar a espessura com mais água, se necessário.</li>
+  <li>Servir de imediato, com coentros extra e malagueta por cima.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Dana James — 
+<a href="https://danajames.com/blog/recipes/in-the-kitchen-raw-avocado-and-cilantro-soup/" target="_blank" rel="noopener">https://danajames.com/blog/recipes/in-the-kitchen-raw-avocado-and-cilantro-soup/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-crua-de-cenoura-gengibre-e-coentros-sumo-de-cenoura-r5"></a>
+<h2 id="sopa-crua-de-cenoura-gengibre-e-coentros-sumo-de-cenoura">Sopa crua de cenoura, gengibre e coentros (sumo de cenoura) <span class="source">[R5]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma sopa raw de sabor “solar”: base de sumo de cenoura, gordura boa do abacate e um grande volume de coentros e salsa. Pode ser servida fria ou amornada (sem passar de ~45 ºC).</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>2 chávenas de sumo de cenoura fresco</li>
+  <li>2 colheres de chá de gengibre fresco picado/ralado</li>
+  <li>1 abacate maduro</li>
+  <li>1/2 chávena de coentros (bem soltos/cheios)</li>
+  <li>1/4 chávena de salsa (opcional)</li>
+  <li>2 colheres de chá de sementes de coentros moídas na hora (opcional, se a receita indicar)</li>
+  <li>1–2 colheres de sopa de shoyu cru/nama shoyu (se a receita usar)</li>
+  <li>Sal e pimenta q.b.</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>No liquidificador, juntar sumo de cenoura, gengibre e abacate.</li>
+  <li>Adicionar coentros e salsa e triturar até ficar liso.</li>
+  <li>Juntar temperos (semente de coentros moída, nama shoyu, sal/pimenta) e voltar a triturar brevemente.</li>
+  <li>Para servir amornada: deixar o liquidificador a trabalhar um pouco mais (o atrito aquece), monitorizando para manter “morno” (não quente).</li>
+  <li>Servir de imediato.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Renee Loux — 
+<a href="https://www.reneeloux.com/203/carrot-ginger-coriander-soup-%28raw%29-%28video%29" target="_blank" rel="noopener">https://www.reneeloux.com/203/carrot-ginger-coriander-soup-%28raw%29-%28video%29</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="molho-cru-de-coentros-e-lima-cremoso-de-caju-r6"></a>
+<h2 id="molho-cru-de-coentros-e-lima-cremoso-de-caju">Molho cru de coentros e lima (cremoso de caju) <span class="source">[R6]</span></h2>
+
+<h4>Introdução</h4>
+<p>Molho cru e vegan muito prático: coentros como estrela, acidez da lima e corpo do caju. Fica ótimo em saladas, tacos raw (folhas), bowls e como dip.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1/2 chávena de cajus crus</li>
+  <li>2/3 chávena de água</li>
+  <li>1 dente de alho</li>
+  <li>1 colher de sopa de sumo de lima</li>
+  <li>1/4 a 1/2 colher de chá de sal (a gosto)</li>
+  <li>1/2 chávena de coentros frescos</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Colocar todos os ingredientes no liquidificador.</li>
+  <li>Triturar até ficar completamente cremoso.</li>
+  <li>Ajustar sal e acidez (mais lima) e, se necessário, a textura (mais água).</li>
+  <li>Guardar no frio e servir fresco.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Healthier Steps — 
+<a href="https://healthiersteps.com/vegan-cilantro-lime-dressing/" target="_blank" rel="noopener">https://healthiersteps.com/vegan-cilantro-lime-dressing/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="zhoug-cru-molho-picante-de-coentros-r7"></a>
+<h2 id="zhoug-cru-molho-picante-de-coentros">Zhoug cru (molho picante de coentros) <span class="source">[R7]</span></h2>
+
+<h4>Introdução</h4>
+<p>Zhoug/zhug é um molho verde picante muito aromático em que os coentros são o elemento central. É cru por natureza: faz-se num processador e fica melhor após repousar um pouco.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>2 chávenas bem cheias de coentros</li>
+  <li>1–3 malaguetas verdes (a gosto), sem cabo</li>
+  <li>2–4 dentes de alho</li>
+  <li>1 colher de chá de cominhos moídos</li>
+  <li>1/2 colher de chá de cardamomo moído (se a receita usar)</li>
+  <li>1/2 colher de chá de sementes de coentros moídas (opcional)</li>
+  <li>Sal q.b.</li>
+  <li>1/4 a 1/2 chávena de azeite (conforme a receita)</li>
+  <li>1–2 colheres de sopa de sumo de limão (opcional, se a receita indicar)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Lavar e secar bem os coentros (evitar excesso de água no molho).</li>
+  <li>No processador, triturar coentros, malagueta e alho.</li>
+  <li>Juntar especiarias e sal e triturar novamente.</li>
+  <li>Com a máquina a trabalhar, adicionar o azeite em fio até obter a textura desejada.</li>
+  <li>Provar e ajustar sal/picante.</li>
+  <li>Repousar no frio 30–60 minutos para apurar.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Serious Eats — 
+<a href="https://www.seriouseats.com/schug-zhug-srug-yemenite-israeli-hot-sauce-recipe" target="_blank" rel="noopener">https://www.seriouseats.com/schug-zhug-srug-yemenite-israeli-hot-sauce-recipe</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="chimichurri-fermentado-de-coentros-cru-probiotico-r8"></a>
+<h2 id="chimichurri-fermentado-de-coentros-cru-probiotico">Chimichurri fermentado de coentros (cru, probiótico) <span class="source">[R8]</span></h2>
+
+<h4>Introdução</h4>
+<p>Um chimichurri “vivo”: coentros, ervas e aromáticos fermentados em salmoura, criando um molho ácido, complexo e probiótico. Continua a ser usado como molho cru, em pequenas quantidades.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 molho de salsa (folhas)</li>
+  <li>1 molho de coentros (folhas)</li>
+  <li>Manjericão e/ou orégãos (conforme a receita)</li>
+  <li>1/2 cebola (ou parte)</li>
+  <li>1 jalapeño (opcional)</li>
+  <li>3–4 dentes de alho</li>
+  <li>Sumo de 1/2 limão ou lima</li>
+  <li>Sal (para salmoura) e água (para salmoura)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Preparar uma salmoura: dissolver o sal na água (conforme a receita).</li>
+  <li>Picar grosseiramente ervas e aromáticos.</li>
+  <li>Misturar tudo num frasco limpo e cobrir com a salmoura, garantindo que fica submerso.</li>
+  <li>Fermentar à temperatura ambiente por alguns dias (até ficar ácido ao gosto), mantendo sempre submerso.</li>
+  <li>No fim, triturar até obter molho (ou deixar mais rústico).</li>
+  <li>Guardar no frigorífico e usar como molho.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Cultures for Health — 
+<a href="https://culturesforhealth.com/blogs/recipes/lacto-fermented-chimichurri" target="_blank" rel="noopener">https://culturesforhealth.com/blogs/recipes/lacto-fermented-chimichurri</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pasta-de-coentros-lacto-fermentada-conserva-viva-r9"></a>
+<h2 id="pasta-de-coentros-lacto-fermentada-conserva-viva">Pasta de coentros lacto-fermentada (conserva viva) <span class="source">[R9]</span></h2>
+
+<h4>Introdução</h4>
+<p>Fermentar coentros é uma forma inteligente de preservar o aroma e criar uma pasta concentrada, ácida e “viva”. Usa-se como tempero em pequenas quantidades (tal como uma pasta de ervas fermentada).</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Coentros frescos (incluindo folhas e talos tenros)</li>
+  <li>Sal (quantidade conforme a receita)</li>
+  <li>Opcional: sementes verdes de coentros (quando disponíveis)</li>
+  <li>Opcional: água/salmoura, conforme a técnica escolhida</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Lavar e secar bem os coentros (reduzir água extra ajuda na fermentação controlada).</li>
+  <li>Picar ou triturar grosseiramente para formar uma pasta.</li>
+  <li>Misturar com sal na proporção indicada (ou cobrir com salmoura, conforme o método descrito).</li>
+  <li>Colocar num frasco limpo, pressionar para retirar bolsas de ar e manter a pasta abaixo do nível de líquido (se formar).</li>
+  <li>Fermentar à temperatura ambiente por um período curto, observando aroma e acidez.</li>
+  <li>Depois, guardar no frigorífico e usar como pasta de tempero.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Ferment.works — 
+<a href="https://ferment.works/blog/2012/8/31/lacto-fermented-cilantro" target="_blank" rel="noopener">https://ferment.works/blog/2012/8/31/lacto-fermented-cilantro</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="crackers-crus-de-linhaca-tomate-e-coentros-desidratador-r10"></a>
+<h2 id="crackers-crus-de-linhaca-tomate-e-coentros-desidratador">Crackers crus de linhaça, tomate e coentros (desidratador) <span class="source">[R10]</span></h2>
+
+<h4>Introdução</h4>
+<p>Crackers raw feitos no desidratador, com linhaça como base (liga naturalmente), tomate para sabor e coentros para perfume verde. Ficam ótimos para patês, guacamole ou chutneys crus.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Linhaça (sementes) + água (para gelificar)</li>
+  <li>Tomate seco (demolhado) e/ou tomate (conforme a receita)</li>
+  <li>Coentros frescos picados</li>
+  <li>Temperos a gosto (sal, alho, cebola, etc., conforme a receita)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Demolhar a linhaça em água até formar um gel espesso.</li>
+  <li>Triturar os restantes ingredientes (tomate/temperos) num processador até obter uma pasta.</li>
+  <li>Misturar a pasta com o gel de linhaça e envolver os coentros.</li>
+  <li>Espalhar a massa em camada fina sobre folhas antiaderentes do desidratador.</li>
+  <li>Desidratar a baixa temperatura, marcar/riscar para facilitar partir e virar a meio do processo.</li>
+  <li>Desidratar até ficar bem crocante e deixar arrefecer antes de guardar.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+The Rawtarian — 
+<a href="https://www.therawtarian.com/community/recipe/tomato-cilantro-flax-cracker" target="_blank" rel="noopener">https://www.therawtarian.com/community/recipe/tomato-cilantro-flax-cracker</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

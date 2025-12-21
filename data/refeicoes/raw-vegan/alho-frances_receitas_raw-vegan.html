@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Alho-francês – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header{
+  background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria));
+  color:#fff;
+  padding:1.2rem 1rem .8rem;
+  box-shadow:0 2px 4px rgba(0,0,0,.12);
+}
+header h1{margin:0 0 .25rem;font-size:1.7rem}
+header p{margin:0;opacity:.9}
+main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id],h3[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id],h3[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+<div class="masthead">
+  <header>
+    <h1>Alho-francês – Receitas de Comida Viva</h1>
+    <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+  </header>
+
+  <nav>
+    <a href="../../../index.html">Início</a>
+    <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+    <a href="../../../abobora-grande.html">Abóbora grande</a>
+    <a href="../../../acelga.html">Acelga</a>
+    <a href="../../../agriao.html">Agrião-de-água</a>
+    <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+    <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+    <a href="../../../alface.html">Alface</a>
+    <a href="../../../alho.html">Alho</a>
+    <a href="../../../alho-frances.html" class="ativa">Alho-francês</a>
+    <a href="../../../aneto.html">Aneto / Endro</a>
+    <a href="../../../batata-comum.html">Batata comum</a>
+    <a href="../../../batata-doce.html">Batata-doce</a>
+    <a href="../../../beringela.html">Beringela</a>
+    <a href="../../../beterraba.html">Beterraba</a>
+    <a href="../../../brocolo.html">Brócolo</a>
+    <a href="../../../canonigos.html">Canónigos</a>
+    <a href="../../../cebola.html">Cebola</a>
+    <a href="../../../cebola-fresca.html">Cebola fresca</a>
+    <a href="../../../cenoura.html">Cenoura</a>
+    <a href="../../../coentros.html">Coentros</a>
+    <a href="../../../couve-chinesa.html">Couve chinesa</a>
+    <a href="../../../couve-flor.html">Couve-flor</a>
+    <a href="../../../couve-rabano.html">Couve-rábano</a>
+    <a href="../../../couve-repolho.html">Couve repolho</a>
+    <a href="../../../couve-toscana.html">Couve toscana</a>
+    <a href="../../../curgete.html">Curgete</a>
+    <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+    <a href="../../../espinafre.html">Espinafre</a>
+    <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+    <a href="../../../feijao-verde.html">Feijão verde</a>
+    <a href="../../../manjericao.html">Manjericão</a>
+    <a href="../../../milho-doce.html">Milho doce</a>
+    <a href="../../../mizuna.html">Mizuna</a>
+    <a href="../../../morangos.html">Morangueiro / Morangos</a>
+    <a href="../../../moringa.html">Moringa</a>
+    <a href="../../../nabica.html">Nabiça</a>
+    <a href="../../../nabo.html">Nabo</a>
+    <a href="../../../pak-choi.html">Pak choi</a>
+    <a href="../../../pepino.html">Pepino</a>
+    <a href="../../../pimento.html">Pimento</a>
+    <a href="../../../rabanete.html">Rabanete</a>
+    <a href="../../../rabano.html">Rábano / Daikon</a>
+    <a href="../../../rucula.html">Rúcula</a>
+    <a href="../../../salanova.html">Salanova</a>
+    <a href="../../../salsa.html">Salsa</a>
+    <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+    <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+  </nav>
+</div>
+
+<main>
+<article>
+
+<h2 id="receitas-preparados">Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/alho-frances_receitas_vegetariana.html">(Vegetariana)</a>
+    <a href="/data/refeicoes/vegan/alho-frances_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+  <ol>
+    <li><a href="#salada-crua-de-alho-frances-com-azeitonas-e-rabanetes">Salada crua de alho-francês com azeitonas e rabanetes</a> <span class="source">[R1]</span></li>
+    <li><a href="#salada-crua-de-alho-frances-com-maca-estilo-europeu">Salada crua de alho-francês com maçã (estilo europeu)</a> <span class="source">[R2]</span></li>
+    <li><a href="#barquinhas-de-caril-cru-com-alho-frances">Barquinhas de caril cru com alho-francês</a> <span class="source">[R3]</span></li>
+    <li><a href="#queijo-cru-vegan-de-alho-frances-e-ervas">Queijo cru vegan de alho-francês e ervas</a> <span class="source">[R4]</span></li>
+    <li><a href="#alho-frances-fermentado-em-salmoura-folhas-verdes">Alho-francês fermentado em salmoura (folhas verdes)</a> <span class="source">[R5]</span></li>
+    <li><a href="#alho-frances-lactofermentado-classico">Alho-francês lactofermentado clássico</a> <span class="source">[R6]</span></li>
+    <li><a href="#leekchi-kimchi-fermentado-de-alho-frances">Leekchi – “kimchi” fermentado de alho-francês</a> <span class="source">[R7]</span></li>
+    <li><a href="#carpaccio-cru-de-legumes-com-alho-frances-laminado">Carpaccio cru de legumes com alho-francês laminado</a> <span class="source">[R8]</span></li>
+  </ol>
+</div>
+
+<h2 id="resumo">Resumo das receitas (R1–R8)</h2>
+
+<h4>R1 – Salada crua de alho-francês com azeitonas e rabanetes</h4>
+<p>Salada crocante de alho-francês cru laminado, rabanetes finos e azeitonas, marinada rapidamente em limão e azeite. Muito aromática e digestiva.</p>
+
+<h4>R2 – Salada crua de alho-francês com maçã (estilo europeu)</h4>
+<p>Salada tradicional crua de alho-francês com maçã doce-ácida e molho cremoso frio, típica do centro da Europa, totalmente sem cozedura.</p>
+
+<h4>R3 – Barquinhas de caril cru com alho-francês</h4>
+<p>Barquinhas de couve recheadas com creme cru de coco, cenoura e alho-francês em caril, servidas frias.</p>
+
+<h4>R4 – Queijo cru vegan de alho-francês e ervas</h4>
+<p>Creme fermentável de caju, alho-francês e ervas aromáticas, usado como queijo para barrar totalmente cru.</p>
+
+<h4>R5 – Alho-francês fermentado em salmoura (folhas verdes)</h4>
+<p>Fermentação clássica de folhas verdes de alho-francês em água e sal para conservação probiótica.</p>
+
+<h4>R6 – Alho-francês lactofermentado clássico</h4>
+<p>Conserva fermentada de alho-francês inteiro ou em rodelas, rica em enzimas e bactérias benéficas.</p>
+
+<h4>R7 – Leekchi – “kimchi” fermentado de alho-francês</h4>
+<p>Versão fermentada coreana de alho-francês com gengibre, alho e malagueta.</p>
+
+<h4>R8 – Carpaccio cru de legumes com alho-francês laminado</h4>
+<p>Entrée crua em lâminas finíssimas de alho-francês e curgete em vinagrete de limão.</p>
+
+<h2 id="receitas-completas">Receitas completas</h2>
+
+<a id="salada-crua-de-alho-frances-com-azeitonas-e-rabanetes-r1"></a>
+<h2 id="salada-crua-de-alho-frances-com-azeitonas-e-rabanetes">Salada crua de alho-francês com azeitonas e rabanetes <span class="source">[R1]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma salada crua de intensidade aromática elevada, onde o alho-francês substitui a cebola tradicional.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>3 chávenas de alho-francês cru, parte branca e verde clara, laminado muito fino</li>
+  <li>1 molho de rabanetes fatiados</li>
+  <li>1/2 chávena de azeitonas pretas fatiadas</li>
+  <li>2 colheres de sopa de azeite virgem extra</li>
+  <li>Sumo de 1/2 limão</li>
+  <li>Sal marinho fino q.b.</li>
+</ul>
+
+<h4>Preparação</h4>
+<p>Mistura todos os ingredientes numa taça. Massaja por 1 minuto até o alho-francês amaciar. Deixa marinar 15 minutos antes de servir.</p>
+
+<h4>Fonte</h4>
+<p>
+Serene Earth Recipes – Raw Leek Salad with Olives and Radishes<br>
+<a href="https://sereneearthrecipes.com/raw-vegan-recipes/rawmarkable-salads/raw-leek-salad-with-olives-and-radishes/" target="_blank" rel="noopener">
+https://sereneearthrecipes.com/raw-vegan-recipes/rawmarkable-salads/raw-leek-salad-with-olives-and-radishes/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-crua-de-alho-frances-com-maca-estilo-europeu-r2"></a>
+<h2 id="salada-crua-de-alho-frances-com-maca-estilo-europeu">Salada crua de alho-francês com maçã (estilo europeu) <span class="source">[R2]</span></h2>
+
+<h4>Introdução</h4>
+<p>Versão crua da salada clássica centro-europeia de alho-francês e maçã.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>2 talos grandes de alho-francês cru, laminados finos</li>
+  <li>2 maçãs em tiras finas</li>
+  <li>Sumo de 1 limão</li>
+  <li>2 colheres de sopa de molho frio vegetal</li>
+  <li>Sal marinho q.b.</li>
+</ul>
+
+<h4>Preparação</h4>
+<p>Mistura tudo numa taça e deixa repousar 10 minutos antes de servir.</p>
+
+<h4>Fonte</h4>
+<p>
+Food for the Soul – Raw Leek Apple Salad<br>
+<a href="https://foodforthesoul.de/en/raw-leek-salad-recipe-with-apple/" target="_blank" rel="noopener">
+https://foodforthesoul.de/en/raw-leek-salad-recipe-with-apple/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="barquinhas-de-caril-cru-com-alho-frances-r3"></a>
+<h2 id="barquinhas-de-caril-cru-com-alho-frances">Barquinhas de caril cru com alho-francês <span class="source">[R3]</span></h2>
+
+<h4>Introdução</h4>
+<p>Entrada crua portuguesa em folhas de couve recheadas.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Folhas de couve coração</li>
+  <li>1/4 chávena de alho-francês cru picado</li>
+  <li>1 chávena de cenoura ralada</li>
+  <li>1/2 chávena de coco ralado fresco</li>
+  <li>1 colher de café de caril</li>
+</ul>
+
+<h4>Preparação</h4>
+<p>Mistura tudo e recheia as folhas. Serve frio.</p>
+
+<h4>Fonte</h4>
+<p>
+Centro Vegetariano – Barquinhas de Caril Cruas<br>
+<a href="https://www.centrovegetariano.org/receitas/Cat-134-Receitas-Crud-voras.html" target="_blank" rel="noopener">
+https://www.centrovegetariano.org/receitas/Cat-134-Receitas-Crud-voras.html
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="queijo-cru-vegan-de-alho-frances-e-ervas-r4"></a>
+<h2 id="queijo-cru-vegan-de-alho-frances-e-ervas">Queijo cru vegan de alho-francês e ervas <span class="source">[R4]</span></h2>
+
+<h4>Introdução</h4>
+<p>Queijo funcional cru de caju fermentável.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 chávena de cajus demolhados</li>
+  <li>1/4 chávena de alho-francês cru picado</li>
+  <li>Tahini, alho, limão, sal</li>
+</ul>
+
+<h4>Preparação</h4>
+<p>Tritura tudo num blender até ficar cremoso.</p>
+
+<h4>Fonte</h4>
+<p>
+Nouveau Raw – Vegan Leek &amp; Herb Cheese<br>
+<a href="https://nouveauraw.com/raw-recipes/spreads-cheeses/vegan-leek-herb-cheese/" target="_blank" rel="noopener">
+https://nouveauraw.com/raw-recipes/spreads-cheeses/vegan-leek-herb-cheese/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="alho-frances-fermentado-em-salmoura-folhas-verdes-r5"></a>
+<h2 id="alho-frances-fermentado-em-salmoura-folhas-verdes">Alho-francês fermentado em salmoura (folhas verdes) <span class="source">[R5]</span></h2>
+
+<h4>Introdução</h4>
+<p>Fermentação funcional probiótica.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Folhas de alho-francês</li>
+  <li>Água</li>
+  <li>Sal marinho</li>
+</ul>
+
+<h4>Preparação</h4>
+<p>Fermentar submerso por 5 a 7 dias.</p>
+
+<h4>Fonte</h4>
+<p>
+Cultured Guru – Fermented Leek Tops<br>
+<a href="https://cultured.guru/blog/fermented-leeks-how-to-ferment-leek-tops" target="_blank" rel="noopener">
+https://cultured.guru/blog/fermented-leeks-how-to-ferment-leek-tops
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="alho-frances-lactofermentado-classico-r6"></a>
+<h2 id="alho-frances-lactofermentado-classico">Alho-francês lactofermentado clássico <span class="source">[R6]</span></h2>
+
+<h4>Introdução</h4>
+<p>Conserva fermentada básica de alho-francês.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Alho-francês em rodelas</li>
+  <li>Água</li>
+  <li>Sal</li>
+</ul>
+
+<h4>Preparação</h4>
+<p>Fermentar 4 a 7 dias.</p>
+
+<h4>Fonte</h4>
+<p>
+Life Around The Table – Lacto Fermented Leeks<br>
+<a href="https://lifearoundthetable.ca/lacto-fermented-leeks/" target="_blank" rel="noopener">
+https://lifearoundthetable.ca/lacto-fermented-leeks/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="leekchi-kimchi-fermentado-de-alho-frances-r7"></a>
+<h2 id="leekchi-kimchi-fermentado-de-alho-frances">Leekchi – “kimchi” fermentado de alho-francês <span class="source">[R7]</span></h2>
+
+<h4>Introdução</h4>
+<p>Versão coreana fermentada de alho-francês com gengibre, alho e malagueta.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Alho-francês</li>
+  <li>Gengibre</li>
+  <li>Alho</li>
+  <li>Malagueta</li>
+  <li>Sal</li>
+  <li>Açúcar</li>
+</ul>
+
+<h4>Preparação</h4>
+<p>Massagear, encerrar em frasco e fermentar 5 dias.</p>
+
+<h4>Fonte</h4>
+<p>
+Le Parfait – Leekchi<br>
+<a href="https://www.leparfait.com/en-pt/blogs/recipes/leekchi-lactofermented-leeks" target="_blank" rel="noopener">
+https://www.leparfait.com/en-pt/blogs/recipes/leekchi-lactofermented-leeks
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="carpaccio-cru-de-legumes-com-alho-frances-laminado-r8"></a>
+<h2 id="carpaccio-cru-de-legumes-com-alho-frances-laminado">Carpaccio cru de legumes com alho-francês laminado <span class="source">[R8]</span></h2>
+
+<h4>Introdução</h4>
+<p>Entrée crua gourmet em lâminas vegetais.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 alho-francês laminado</li>
+  <li>2 curgetes laminadas</li>
+  <li>Limão</li>
+  <li>Azeite</li>
+  <li>Hortelã</li>
+</ul>
+
+<h4>Preparação</h4>
+<p>Dispor em prato, temperar e servir.</p>
+
+<h4>Fonte</h4>
+<p>
+Rancho La Puerta – Vegetarian Carpaccio<br>
+<a href="https://rancholapuerta.com/2024/04/18/vegetarian-carpaccio-with-lemon-vinaigrette/" target="_blank" rel="noopener">
+https://rancholapuerta.com/2024/04/18/vegetarian-carpaccio-with-lemon-vinaigrette/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

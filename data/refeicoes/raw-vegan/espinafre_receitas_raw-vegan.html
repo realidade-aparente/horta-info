@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Espinafre comum – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+ <div class="masthead">
+<header>
+  <h1>Espinafre comum – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html" class="ativa">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+  </header></div>
+<main>
+<article>
+
+<h2>Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/espinafre-comum_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/espinafre-comum_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+<ol>
+<li><a href="#r1">Sopa de espinafres crudivegana (tomate, laranja e abacate)</a> <span class="source">[R1]</span></li> 
+<li><a href="#r2">Sopa crua de espinafre e abacate (cremosa)</a> <span class="source">[R2]</span></li>
+<li><a href="#r3">Sopa crua de espinafre com caju, gengibre e lima (pode ser amornada &lt;45 ºC)</a> <span class="source">[R3]</span></li>
+<li><a href="#r4">Tortilha / wrap de espinafre (3 ingredientes, desidratador)</a> <span class="source">[R4]</span></li>
+<li><a href="#r5">Wraps de espinafre no desidratador (folhas flexíveis)</a> <span class="source">[R5]</span></li>
+<li><a href="#r6">Dip cru de espinafre (tipo “creme” para vegetais e crackers raw)</a> <span class="source">[R6]</span></li>
+<li><a href="#r7">Pesto cru com espinafre e sementes de cânhamo (sem frutos secos)</a> <span class="source">[R7]</span></li>
+<li><a href="#r8">Quiche crudívora de espinafre com “rawcotta” (desidratador)</a> <span class="source">[R8]</span></li>
+<li><a href="#r9">Ravioli cru de espinafre com “queijo” de sementes de girassol</a> <span class="source">[R9]</span></li>
+<li><a href="#r10">Espinafre lacto-fermentado com limão (fermentado simples)</a> <span class="source">[R10]</span></li>
+</ol>
+</div>
+
+<h2> Resumo das Receitas</h2>
+<h4>R1. Sopa de espinafres crudivegana (tomate, laranja e abacate)</h4>
+<p>Sopa crua batida no liquidificador: tomate + espinafre + aipo + alho + laranja + abacate. Fica cremosa, doce-ácida e muito verde.</p>
+
+<h4>R2. Sopa crua de espinafre e abacate (cremosa)</h4>
+<p>Sopa fria e sedosa de espinafre e abacate, batida com água e temperos simples. Ótima para entrada leve.</p>
+
+<h4>R3. Sopa crua de espinafre com caju, gengibre e lima (pode ser amornada &lt;45 ºC)</h4>
+<p>Sopa crua rápida: espinafre + caju + lima/limão + alho + gengibre. Pode ser servida fria ou “morna” (aquecida apenas pela fricção do blender).</p>
+
+<h4>R4. Tortilha / wrap de espinafre (3 ingredientes, desidratador)</h4>
+<p>“Folha” de wrap feita de puré de espinafre + linhaça moída + limão, desidratada até ficar flexível.</p>
+
+<h4>R5. Wraps de espinafre no desidratador (folhas flexíveis)</h4>
+<p>Wraps verdes desidratados (massa líquida espalhada fina), pensados para enrolar recheios crus (saladas, patês, germinados).</p>
+
+<h4>R6. Dip cru de espinafre (tipo “creme” para vegetais e crackers raw)</h4>
+<p>Dip grande e cremoso com espinafre e um molho de caju com limão, alho e azeite. Ideal para snacks e tábuas crudívoras.</p>
+
+<h4>R7. Pesto cru com espinafre e sementes de cânhamo (sem frutos secos)</h4>
+<p>Pesto raw rápido com manjericão + espinafre + sementes de cânhamo + limão. Serve para noodles de vegetais, saladas e wraps.</p>
+
+<h4>R8. Quiche crudívora de espinafre com “rawcotta” (desidratador)</h4>
+<p>Quiche crua montada em base raw, recheio cremoso (“rawcotta”) e espinafre, aquecida suavemente no desidratador.</p>
+
+<h4>R9. Ravioli cru de espinafre com “queijo” de sementes de girassol</h4>
+<p>Ravioli raw com recheio tipo ricotta/queijo de sementes de girassol e espinafre, servido com elementos crus (molhos/pesto).</p>
+
+<h4>R10. Espinafre lacto-fermentado com limão (fermentado simples)</h4>
+<p>Folhas de espinafre fermentadas em salmoura com limão, criando um acompanhamento ácido-salgado, probiótico e muito simples.</p>
+
+
+
+
+<h2> Receitas completas</h2>
+<a id="sopa-de-espinafres-crudivegana-tomate-laranja-e-abacate"></a>
+<h3 id="r1">R1 — Sopa de espinafres crudivegana (tomate, laranja e abacate)</h3>
+
+<h4>Introdução</h4>
+<p>Uma sopa crua batida no liquidificador, muito prática para começar a explorar “alimento vivo”. A doçura do tomate e da laranja equilibra o verde do espinafre, e o abacate dá cremosidade.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>3 tomates-pêra (ou tomate maduro)</li>
+<li>200 g de espinafres (a fonte usa brotes/baby spinach)</li>
+<li>1 talo de aipo</li>
+<li>1 dente de alho pequeno</li>
+<li>Sumo de 1 laranja</li>
+<li>Algumas folhas de manjericão fresco OU coentros frescos</li>
+<li>1/2 abacate grande (ou 1 pequeno)</li>
+<li>1 pitada de sal marinho integral fino</li>
+<li>Opcional para decorar: tiras de pimento/pepino, cenoura ralada, curgete espiralizada, frutos secos picados ou sementes</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Lava os espinafres e o aipo.</li>
+<li>Corta os tomates em pedaços.</li>
+<li>No liquidificador, junta tomate, espinafre, aipo, alho, sumo de laranja, ervas e o abacate.</li>
+<li>Tritura até ficar totalmente cremoso. Se necessário, pára e baixa os ingredientes com uma espátula.</li>
+<li>Ajusta sal e, se quiseres, junta mais sumo de laranja para acidez/doçura.</li>
+<li>Serve imediatamente e decora a gosto (curgete espiralizada, sementes, etc.).</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+BioNutriLove — 
+<a href="https://bionutrilove.home.blog/2019/06/29/sopa-de-espinafres-crudivegana/" target="_blank" rel="noopener">
+https://bionutrilove.home.blog/2019/06/29/sopa-de-espinafres-crudivegana/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-crua-de-espinafre-e-abacate-cremosa"></a>
+<h2 id="r2">R2 — Sopa crua de espinafre e abacate (cremosa)</h2>
+
+<h3>Introdução</h3>
+<p>Sopa crua, cremosa e rápida, excelente para dias quentes (ou para servir em copinhos como entrada). Pode ser feita com água fria, ou com água morna para ficar apenas “amornada” sem cozinhar.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>2–3 chávenas de espinafre (bem cheio)</li>
+<li>1 abacate maduro</li>
+<li>1–2 colheres de sopa de sumo de limão (a gosto)</li>
+<li>1–2 colheres de sopa de azeite (opcional, para enriquecer)</li>
+<li>1/2 chávena a 1 chávena de água (ajustar textura)</li>
+<li>Sal marinho e pimenta preta q.b.</li>
+<li>Opcional: ervas frescas (manjericão, coentros, etc.)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Coloca no liquidificador o espinafre, o abacate, o limão, o azeite (se usar) e metade da água.</li>
+<li>Tritura até ficar liso. Adiciona mais água até obter consistência de sopa.</li>
+<li>Tempera com sal e pimenta.</li>
+<li>Serve fria, ou usa água ligeiramente morna para a deixar apenas “amornada”.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The Rawtarian —  
+<a href="https://www.therawtarian.com/raw-spinach-avocado-soup-recipe" target="_blank" rel="noopener">
+https://www.therawtarian.com/raw-spinach-avocado-soup-recipe
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-crua-de-espinafre-com-caju-gengibre-e-lima-pode-ser-amornada-45-c"></a>
+<h2 id="r3">R3 — Sopa crua de espinafre com caju, gengibre e lima (pode ser amornada &lt;45 ºC)</h2>
+
+<h3>Introdução</h3>
+<p>Sopa crua verde com “corpo” de caju e o punch fresco de gengibre e lima/limão. A própria receita indica uma preparação muito rápida, ideal para quem quer algo simples e nutritivo.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Espinafre fresco (quantidade generosa; usa o suficiente para ficar bem verde)</li>
+<li>Água (para bater)</li>
+<li>Sumo de lima OU de meio limão</li>
+<li>1–2 dentes de alho (a gosto)</li>
+<li>Gengibre fresco ralado (a gosto)</li>
+<li>Opcional para topping: salicórnia, agrião, rebentos/germinados</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Coloca no liquidificador espinafre, água e sumo de lima/limão.</li>
+<li>Junta alho e gengibre (começa com pouco e ajusta).</li>
+<li>Tritura até ficar bem liso e cremoso. Ajusta a água conforme a consistência desejada.</li>
+<li>Para “amornar” sem cozinhar: deixa o blender a trabalhar mais tempo (a fricção aquece) e pára quando estiver apenas morna ao toque (abaixo de 45 ºC).</li>
+<li>Serve com toppings verdes (salicórnia, agrião, rebentos).</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Cook Me Free —  
+<a href="https://www.cookmefree.com/raw-spinach-soup-with-samphire-and-cress/" target="_blank" rel="noopener">
+https://www.cookmefree.com/raw-spinach-soup-with-samphire-and-cress/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="tortilha-wrap-de-espinafre-3-ingredientes-desidratador"></a>
+<h2 id="r4">R4 — Tortilha / wrap de espinafre (3 ingredientes, desidratador)</h2>
+
+<h3>Introdução</h3>
+<p>Uma “tortilha” raw minimalista feita com puré de espinafre e linhaça moída como ligante. O resultado é uma folha flexível para wraps (ou, se desidratares mais, vira cracker).</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>200 a 250 g de espinafre fresco</li>
+<li>1 colher de sopa de sementes de linhaça (cerca de 10 g), moídas em farinha fina</li>
+<li>1 colher de sopa de sumo de limão</li>
+<li>1/4 colher de chá de sal marinho (opcional)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Moer a linhaça até virar farinha fina.</li>
+<li>Triturar o espinafre com o sumo de limão (e sal, se usar) até obter um puré liso.</li>
+<li>Juntar a farinha de linhaça e bater só para incorporar.</li>
+<li>Espalhar a mistura numa folha antiaderente (tipo teflex) sobre a bandeja do desidratador, numa camada uniforme.</li>
+<li>Desidratar a 42 ºC até ficar suficientemente firme para descolar e virar; continuar a desidratar do outro lado até ficar seca mas ainda maleável.</li>
+<li>Usa para enrolar recheios crus; se ficar demasiado seca e quebradiça, humedece ligeiramente com água para recuperar flexibilidade.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+RAW Food Recipes etc —  
+<a href="https://rawfoodetc.wordpress.com/2012/09/06/raw-vegan-gluten-free-spinach-tortilla-3-ingredients/" target="_blank" rel="noopener">
+https://rawfoodetc.wordpress.com/2012/09/06/raw-vegan-gluten-free-spinach-tortilla-3-ingredients/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="wraps-de-espinafre-no-desidratador-folhas-flexiveis"></a>
+<h2 id="r5">R5 — Wraps de espinafre no desidratador (folhas flexíveis)</h2>
+
+<h3>Introdução</h3>
+<p>Wraps verdes desidratados pensados para “embrulhar” saladas, patês, germinados e legumes crus. São práticos para marmitas e para variar do uso de folhas inteiras.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Espinafre (quantidade generosa)</li>
+<li>Ingredientes líquidos/ligantes raw da receita (ex.: sementes demolhadas/moídas, limão, temperos)</li>
+<li>Água q.b. para bater até ficar uma massa espalhável</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Tritura os ingredientes no liquidificador até obter uma massa verde homogénea e fácil de espalhar.</li>
+<li>Espalha em camada fina e uniforme sobre folhas antiaderentes nas bandejas do desidratador.</li>
+<li>Desidrata até o topo ficar seco ao toque e seja possível virar sem partir.</li>
+<li>Vira e termina a desidratação até ficar flexível, não quebradiço.</li>
+<li>Recheia (saladas, patês, legumes, germinados) e enrola.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Feasting on Fruit —  
+<a href="https://feastingonfruit.com/spinach-wraps-2/" target="_blank" rel="noopener">
+https://feastingonfruit.com/spinach-wraps-2/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="dip-cru-de-espinafre-tipo-creme-para-vegetais-e-crackers-raw"></a>
+<h2 id="r6">R6 — Dip cru de espinafre (tipo “creme” para vegetais e crackers raw)</h2>
+
+<h3>Introdução</h3>
+<p>Um dip grande e muito cremoso onde o espinafre é a estrela, ligado por um molho de caju com limão e alho. É ótimo para snacks, tábuas crudívoras e para barrar em wraps.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>8 chávenas bem cheias de espinafre (aprox. 263 g)</li>
+<li>1/2 cebola roxa, em cubos (aprox. 3/4 chávena / 90 g)</li>
+<li>1 chávena de água (aprox. 195 g)</li>
+<li>1/3 chávena de sumo de limão espremido (aprox. 70 g)</li>
+<li>2 chávenas de cajus crus, demolhados 2+ horas (aprox. 279 g)</li>
+<li>2 colheres de sopa de levedura nutricional</li>
+<li>2 a 4 dentes de alho (a gosto)</li>
+<li>1/2 a 1 colher de chá de sal rosa do Himalaia (ou sal marinho)</li>
+<li>2 a 4 colheres de sopa de azeite virgem extra (a gosto)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Escorre bem os cajus demolhados.</li>
+<li>Faz o molho: no liquidificador, bate água + sumo de limão + cajus + levedura nutricional + alho + sal + azeite até ficar completamente cremoso.</li>
+<li>Numa taça grande, pica o espinafre e a cebola roxa em pedacinhos (ou usa processador com pulsos curtos para não virar puré).</li>
+<li>Junta o molho ao espinafre e mistura bem.</li>
+<li>Ajusta sal, limão e alho.</li>
+<li>Serve com legumes crus, crackers raw ou como “spread” em folhas/wraps.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Nouveau Raw —  
+<a href="https://nouveauraw.com/dressings-dips/spinach-dip/" target="_blank" rel="noopener">
+https://nouveauraw.com/dressings-dips/spinach-dip/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pesto-cru-com-espinafre-e-sementes-de-canhamo-sem-frutos-secos"></a>
+<h2 id="r7">R7 — Pesto cru com espinafre e sementes de cânhamo (sem frutos secos)</h2>
+
+<h3>Introdução</h3>
+<p>Pesto raw rápido e versátil, com espinafre para suavizar e aumentar volume, e sementes de cânhamo para “corpo” sem recorrer a frutos secos. Perfeito para noodles de curgete, pepino, ou como molho de salada.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Manjericão fresco (quantidade generosa)</li>
+<li>Espinafre fresco</li>
+<li>1–2 dentes de alho (a gosto)</li>
+<li>Sementes de cânhamo (hemp hearts)</li>
+<li>Levedura nutricional (yeast flakes), conforme a receita</li>
+<li>Sumo de limão</li>
+<li>Sal e pimenta q.b.</li>
+<li>Azeite (se indicado) ou água q.b. para ajustar textura</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Lava e seca o manjericão e o espinafre.</li>
+<li>No processador, coloca manjericão, espinafre, alho, sementes de cânhamo, levedura nutricional e sumo de limão.</li>
+<li>Tritura e vai ajustando a textura com o líquido indicado (azeite e/ou água, conforme preferires e conforme a receita).</li>
+<li>Prova e ajusta sal, pimenta e limão.</li>
+<li>Usa imediatamente ou guarda no frio bem fechado.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Eating Vibrantly —  
+<a href="https://eatingvibrantly.com/recipes/raw-vegan-pesto/" target="_blank" rel="noopener">
+https://eatingvibrantly.com/recipes/raw-vegan-pesto/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="quiche-crudivora-de-espinafre-com-rawcotta-desidratador"></a>
+<h2 id="r8">R8 — Quiche crudívora de espinafre com “rawcotta” (desidratador)</h2>
+
+<h3>Introdução</h3>
+<p>Uma quiche raw que combina base + recheio cremoso (rawcotta) e espinafre, aquecida suavemente no desidratador (a 42 ºC) para dar sensação de “conforto” sem cozinhar.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Base/crusta raw (mistura de frutos secos/sementes moídos, temperos e líquido q.b. para ligar)</li>
+<li>Recheio cremoso tipo “rawcotta” (base de frutos secos/sementes, limão, sal e temperos)</li>
+<li>Espinafre fresco picado</li>
+<li>Toppings opcionais indicados: cogumelos “caramelizados”, tomates-cereja, cebola caramelizada, tomate seco, queijo raw</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Prepara a base raw e prensa numa forma de tarte, criando fundo e laterais uniformes. Leva ao frio para firmar.</li>
+<li>Prepara o creme/rawcotta conforme a receita e mistura com o espinafre picado.</li>
+<li>Coloca o recheio na base e adiciona os toppings que preferires.</li>
+<li>Leva ao desidratador por cerca de 1 hora a 42 ºC para aquecer suavemente e firmar.</li>
+<li>Serve de imediato (morna ao toque) ou à temperatura ambiente.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Raw Mama Nature —  
+<a href="https://rawmamanature.net/2018/10/spinach-quiche-with-rawcotta/" target="_blank" rel="noopener">
+https://rawmamanature.net/2018/10/spinach-quiche-with-rawcotta/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="ravioli-cru-de-espinafre-com-queijo-de-sementes-de-girassol"></a>
+<h2 id="r9">R9 — Ravioli cru de espinafre com “queijo” de sementes de girassol</h2>
+
+<h3>Introdução</h3>
+<p>Ravioli raw de apresentação elegante: recheio cremoso tipo “queijo” com espinafre, montado em “massa” crua (a receita usa uma massa fina de coco). Pode ser servido com pesto ou molho cru de tomate.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Espinafre fresco (picado/dobrado no “queijo” de sementes)</li>
+<li>Sementes de girassol (para o “queijo”, demolhadas e/ou desidratadas conforme indicado)</li>
+<li>Ingredientes de ligação e tempero do “queijo” (limão, sal, alho, etc., conforme a receita)</li>
+<li>“Massa” fina de coco para formar os ravioli (conforme a receita)</li>
+<li>Opcional: pesto de tomate seco, vinagre de coco, ervas italianas, cebola roxa, manjericão (a receita também sugere “meatballs” raw como extra)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Prepara o “queijo” de sementes de girassol conforme a receita, até ficar cremoso.</li>
+<li>Incorpora o espinafre fresco picado no “queijo” (para ficar bem verde e aromático).</li>
+<li>Prepara a massa fina (coco) e corta/forma as peças para ravioli.</li>
+<li>Recheia cada unidade com o “queijo” de espinafre e fecha/selas as bordas.</li>
+<li>Serve com molho cru (pesto, marinara crua, etc.) e ervas frescas.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Nouveau Raw —  
+<a href="https://nouveauraw.com/italian-cuisine/spinach-sunflower-cheese-ravioli-and-meatballs/" target="_blank" rel="noopener">
+https://nouveauraw.com/italian-cuisine/spinach-sunflower-cheese-ravioli-and-meatballs/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="espinafre-lacto-fermentado-com-limao-fermentado-simples"></a>
+<h2 id="r10">R10 — Espinafre lacto-fermentado com limão (fermentado simples)</h2>
+
+<h3>Introdução</h3>
+<p>Fermentar espinafre altera o sabor (menos “verde cru”, mais ácido-salgado), e cria um acompanhamento interessante para bowls, saladas e wraps. É um fermentado simples, de poucos minutos de preparação.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Espinafre fresco (quantidade para encher um frasco)</li>
+<li>Sal (para salmoura/fermentação, conforme a receita)</li>
+<li>Limão (para adicionar frescura/ácido, conforme a receita)</li>
+<li>Água (se a receita usar salmoura líquida)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Lava e seca bem o espinafre.</li>
+<li>Prepara a salmoura/tempero com sal conforme indicado e adiciona limão conforme a receita.</li>
+<li>Coloca o espinafre no frasco, prensando para reduzir bolsas de ar e manter o espinafre submerso na salmoura (se aplicável).</li>
+<li>Fermenta à temperatura ambiente pelo tempo indicado, vigiando diariamente.</li>
+<li>Quando o sabor estiver do teu agrado (mais ou menos ácido), guarda no frigorífico para abrandar a fermentação.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Cultures for Health —  
+<a href="https://culturesforhealth.com/blogs/recipes/fermentation-recipe-lacto-fermented-spinach" target="_blank" rel="noopener">
+https://culturesforhealth.com/blogs/recipes/fermentation-recipe-lacto-fermented-spinach
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

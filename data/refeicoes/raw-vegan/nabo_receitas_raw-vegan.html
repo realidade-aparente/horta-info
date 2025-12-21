@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Nabo – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+ <div class="masthead">
+<header>
+  <h1>Nabo – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html" class="ativa">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+  </header></div>
+<main>
+<article>
+
+<h2>Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/nabo_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/nabo_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+<ol>
+<li><a href="#r1">Salada crua de nabo ralado, cenoura, salsa e sementes de abóbora</a> <span class="source">[R1]</span></li> 
+<li><a href="#r2">Salada de cenoura e abacate com nabo cru e romã</a> <span class="source">[R2]</span></li>
+<li><a href="#r3">Ravioli cru de nabo com recheio de “queijo” de caju e molho de tomate seco</a> <span class="source">[R3]</span></li>
+<li><a href="#r4">Ravioli cru de nabo (fatias finas) com paté de nozes e ervas</a> <span class="source">[R4]</span></li>
+<li><a href="#r5">Kimchi rápido de nabo (pickle picante ao estilo coreano)</a> <span class="source">[R5]</span></li>
+<li><a href="#r6">Pickles de nabo cor-de-rosa (estilo palestiniano, em frasco)</a> <span class="source">[R6]</span></li>
+<li><a href="#r7">Gazpacho cru com nabo (base de sumo de tomate)</a> <span class="source">[R7]</span></li>
+<li><a href="#r8">“Batatas fritas” de nabo com molho chili-cheese (desidratador)</a> <span class="source">[R8]</span></li>
+<li><a href="#r9">Carpaccio cru de nabos novos com azeite e limão</a> <span class="source">[R9]</span></li>
+<li><a href="#r10">Salada de nabo, pepino e microgreens (com germinação simples)</a> <span class="source">[R10]</span></li>
+</ol>
+</div>
+
+<h2> Resumo das Receitas</h2>
+
+<h4>R1 — Salada crua de nabo ralado, cenoura, salsa e sementes de abóbora</h4>
+<p>Uma salada muito rápida: nabo e cenoura ralados com salsa, sementes de abóbora e um tempero simples de limão e azeite.</p>
+
+<h4>R2 — Salada de cenoura e abacate com nabo cru e romã</h4>
+<p>Salada fresca e “mediterrânica”: nabo laminado cru com cenoura, abacate e romã, finalizada com azeite e vinagre balsâmico.</p>
+
+<h4>R3 — Ravioli cru de nabo com recheio de “queijo” de caju e molho de tomate seco</h4>
+<p>“Ravioli” sem massa: fatias finas de nabo marinadas viram “discos” para rechear com creme de caju; por cima, um molho de tomate seco.</p>
+
+<h4>R4 — Ravioli cru de nabo (fatias finas) com paté de nozes e ervas</h4>
+<p>Versão de ravioli cru centrada no nabo: fatias finíssimas fazem de “massa” e levam um paté/creme de nozes e ervas.</p>
+
+<h4>R5 — Kimchi rápido de nabo (pickle picante ao estilo coreano)</h4>
+<p>Fermentado/pickle rápido: nabo em palitos curado em sal e depois envolvido numa pasta picante com alho, gengibre e cebolinho de alho.</p>
+
+<h4>R6 — Pickles de nabo cor-de-rosa (estilo palestiniano, em frasco)</h4>
+<p>Pickles clássicos do Médio Oriente: nabo e beterraba criam cor rosa; cura em salmoura com vinagre e um toque de açúcar, a fermentar alguns dias.</p>
+
+<h4>R7 — Gazpacho cru com nabo (base de sumo de tomate)</h4>
+<p>Sopa fria crua: legumes picados e sumo de tomate batidos muito rapidamente; o nabo entra cru para textura e “punch” vegetal.</p>
+
+<h4>R8 — “Batatas fritas” de nabo com molho chili-cheese (desidratador)</h4>
+<p>Snack “junk food” cru: palitos de nabo temperados e desidratados; servem-se com um molho cremoso tipo “chili-cheese” raw.</p>
+
+<h4>R9 — Carpaccio cru de nabos novos com azeite e limão</h4>
+<p>Entradinha minimalista: nabos novos muito finos, marinados (azeite/limão), para servir como carpaccio vegetal.</p>
+
+<h4>R10 — Salada de nabo, pepino e microgreens (com germinação simples)</h4>
+<p>Salada viva com germinados/microgreens: pepino e nabo crus, misturados e finalizados com limão, sal e ervas secas.</p>
+
+
+<h2> Receitas completas</h2>
+
+<a id="salada-crua-de-nabo-ralado-cenoura-salsa-e-sementes-de-abobora"></a>
+<h3 id="r1">R1 — Salada crua de nabo ralado, cenoura, salsa e sementes de abóbora</h3>
+
+<h4>Introdução</h4>
+<p>Uma base perfeita para “acompanhar tudo”: leve, crocante e muito rápida. O nabo cru fica suave quando ralado e bem temperado.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>3 nabos médios, descascados e ralados</li>
+<li>3 cenouras médias, descascadas e raladas</li>
+<li>1/2 chávena de salsa picada</li>
+<li>1 chávena de sementes de abóbora (cruas; opcionalmente tostadas, se não estiveres em regime 100% cru)</li>
+<li>Sumo de 1/2 limão (ou a gosto)</li>
+<li>2 colheres de sopa de azeite</li>
+<li>Sal marinho, a gosto</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Descasca os nabos e as cenouras e rala (ralador, mandolina com lâmina de ralar, ou processador).</li>
+<li>Numa taça grande, junta nabo, cenoura, salsa e sementes de abóbora.</li>
+<li>Tempera com sumo de limão e azeite. Adiciona sal a gosto.</li>
+<li>Envolve bem e serve de imediato (ou guarda no frio até 48 h; a cor do nabo pode amarelecer ligeiramente).</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+MariaUshakova.com — 
+<a href="https://www.mariaushakova.com/2015/03/raw-turnip-salad-recipe/" target="_blank" rel="noopener">
+https://www.mariaushakova.com/2015/03/raw-turnip-salad-recipe/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-de-cenoura-e-abacate-com-nabo-cru-e-roma"></a>
+<h2 id="r2">R2 — Salada de cenoura e abacate com nabo cru e romã</h2>
+
+<h3>Introdução</h3>
+<p>Uma salada “anti-rotina”: o nabo cru entra laminado, dá crocância e um toque picante tipo rabanete, equilibrado pelo abacate e pela romã.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Agrião ou canónigos (quantidade a gosto)</li>
+<li>1 nabo (cru), laminado fino</li>
+<li>1 cenoura (crua), preparada (ex.: ralada ou em fitas)</li>
+<li>1 abacate</li>
+<li>Romã (bagos), a gosto</li>
+<li>Azeite, a gosto</li>
+<li>Vinagre balsâmico, a gosto</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Prepara o agrião ou canónigos e a cenoura.</li>
+<li>Lamina o nabo cru bem fino.</li>
+<li>Numa taça, junta os verdes, a cenoura, o nabo, o abacate e os bagos de romã.</li>
+<li>Tempera com azeite e vinagre balsâmico. Mistura e serve.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Casal Mistério —  
+<a href="https://www.casalmisterio.com/salada-de-cenoura-e-abacate-com-nabo-cru-uma-receita-milagrosa/" target="_blank" rel="noopener">
+https://www.casalmisterio.com/salada-de-cenoura-e-abacate-com-nabo-cru-uma-receita-milagrosa/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="ravioli-cru-de-nabo-com-recheio-de-queijo-de-caju-e-molho-de-tomate-seco"></a>
+<h2 id="r3">R3 — Ravioli cru de nabo com recheio de “queijo” de caju e molho de tomate seco</h2>
+
+<h3>Introdução</h3>
+<p>Um clássico “raw”: o nabo, cortado em discos muito finos, fica com textura de massa quando marinado. O recheio cremoso e o molho de tomate seco fecham o prato.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>RAW VEGAN RAVIOLI</li>
+<li>3 nabos médios, cortados em fatias muito finas (idealmente em mandolina)</li>
+<li>1 colher de sopa de sumo de limão</li>
+<li>1 colher de sopa de azeite virgem extra</li>
+<li>Sal e pimenta, a gosto</li>
+</ul>
+
+<ul>
+<li>RECHEIO (Cashew Cheese)</li>
+<li>1 chávena de cajus</li>
+<li>2 colheres de chá de levedura nutricional</li>
+<li>1 dente de alho grande, fatiado</li>
+<li>1 chalota pequena, fatiada</li>
+<li>1 cebolinho verde, fatiado</li>
+<li>2 colheres de sopa de sumo de limão</li>
+<li>Sal e pimenta, a gosto</li>
+</ul>
+
+<ul>
+<li>MOLHO DE TOMATE SECO</li>
+<li>1/2 chávena de tomate seco em óleo</li>
+<li>1/2 chávena de manjericão fresco</li>
+<li>1/2 chávena de nozes</li>
+<li>1 dente de alho</li>
+<li>1 colher de sopa de sumo de limão</li>
+<li>1/4 chávena de azeite virgem extra</li>
+<li>1/4 a 2 chávenas de água (ajustar consistência)</li>
+<li>Sal e pimenta, a gosto</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>A) Recheio (creme de caju)</li>
+<li>1. Demolha os cajus pelo menos algumas horas para ficar mais cremoso.</li>
+<li>2. Tritura (liquidificador) com levedura nutricional, alho, chalota, cebolinho e sumo de limão até textura tipo ricotta/pasta.</li>
+<li>3. Ajusta sal e pimenta.</li>
+<li>B) “Massa” de nabo</li>
+<li>1. Mistura as fatias finas de nabo com sumo de limão, azeite, sal e pimenta.</li>
+<li>2. Deixa marinar para ganhar textura (o tempo exato varia; o suficiente para amaciar ligeiramente).</li>
+<li>C) Montagem</li>
+<li>1. Coloca uma fatia de nabo no prato.</li>
+<li>2. Põe uma colherada do recheio por cima.</li>
+<li>3. Tapa com outra fatia de nabo e repete até terminar.</li>
+<li>D) Molho</li>
+<li>1. Tritura tomate seco, manjericão, nozes, alho, sumo de limão, sal e pimenta.</li>
+<li>2. Com a máquina a trabalhar, verte o azeite.</li>
+<li>3. Adiciona água aos poucos até à consistência desejada.</li>
+<li>4. Serve o molho por cima do ravioli.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Shrimp Salad Circus —  
+<a href="https://www.shrimpsaladcircus.com/raw-ravioli-with-sun-dried-tomato-sauce/" target="_blank" rel="noopener">
+https://www.shrimpsaladcircus.com/raw-ravioli-with-sun-dried-tomato-sauce/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="ravioli-cru-de-nabo-fatias-finas-com-pate-de-nozes-e-ervas"></a>
+<h2 id="r4">R4 — Ravioli cru de nabo (fatias finas) com paté de nozes e ervas</h2>
+
+<h3>Introdução</h3>
+<p>Outra leitura do “ravioli de nabo”: elegante e simples, ótimo para entrada em pequenas porções.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Nabos, cortados em rodelas muito finas (para fazer “discos”)</li>
+<li>Recheio tipo paté/creme de nozes e ervas (como descrito na receita)</li>
+<li>Temperos e ervas (conforme a receita)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Corta o nabo em rodelas muito finas para servirem de “massa”.</li>
+<li>Prepara o paté/creme (base de nozes e ervas, conforme indicado).</li>
+<li>Monta: disco de nabo + uma porção de recheio + outro disco de nabo.</li>
+<li>Serve como entrada (podes finalizar com ervas e/ou um fio de azeite, conforme a proposta da receita).</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Heather Shelves —  
+<a href="https://heathershelves.com/writing/3463" target="_blank" rel="noopener">
+https://heathershelves.com/writing/3463
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="kimchi-rapido-de-nabo-pickle-picante-ao-estilo-coreano"></a>
+<h2 id="r5">R5 — Kimchi rápido de nabo (pickle picante ao estilo coreano)</h2>
+
+<h3>Introdução</h3>
+<p>Uma versão muito direta e prática: cura-se o nabo em sal durante a noite e, no dia seguinte, envolve-se numa pasta picante “a gosto”. Vai ao frio e aguenta bem algum tempo.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Nabo branco (ou rabanete/turnip), quantidade a gosto</li>
+<li>Sal (referência: 1 colher de sopa por 300 g de vegetal)</li>
+<li>Malagueta em pó (chilli powder)</li>
+<li>Gengibre ralado</li>
+<li>Alho esmagado</li>
+<li>Cebolinho de alho (garlic chives)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Lava e descasca os nabos. Corta em pequenos palitos (batons).</li>
+<li>Polvilha com sal (1 colher de sopa por 300 g de vegetal) e mistura bem.</li>
+<li>Cobre de forma leve e deixa a repousar/curar durante a noite.</li>
+<li>No dia seguinte, passa por água para remover o excesso de sal.</li>
+<li>Faz uma pasta picante “a gosto” com chilli powder, gengibre ralado, alho esmagado e cebolinho de alho, e envolve nos palitos de nabo.</li>
+<li>Deixa “maturar” mais algumas horas antes de servir.</li>
+<li>Conserva no frigorífico (a receita refere que se mantém bem por uma semana ou duas).</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Kitchen Garden Recipes —  
+<a href="https://kitchengardenrecipes.wordpress.com/2009/09/30/turnip-kimchi/" target="_blank" rel="noopener">
+https://kitchengardenrecipes.wordpress.com/2009/09/30/turnip-kimchi/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pickles-de-nabo-cor-de-rosa-estilo-palestiniano-em-frasco"></a>
+<h2 id="r6">R6 — Pickles de nabo cor-de-rosa (estilo palestiniano, em frasco)</h2>
+
+<h3>Introdução</h3>
+<p>Pickles clássicos para sanduíches e mezze: o nabo cura primeiro em sal, depois vai para frasco com beterraba e salmoura com vinagre. O resultado fica rosa e estaladiço.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>5 nabos médios</li>
+<li>1 a 2 beterrabas médias</li>
+<li>3 a 4 chávenas de água</li>
+<li>3 a 4 colheres de sopa de sal marinho</li>
+<li>3 colheres de sopa de vinagre branco (1 colher de sopa por frasco)</li>
+<li>3 colheres de chá de açúcar (1 colher de chá por frasco)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Lava os nabos, corta os talos e descasca.</li>
+<li>Corta em palitos do tamanho aproximado de um dedo (ou a gosto).</li>
+<li>Coloca os palitos numa taça e polvilha com 1–2 colheres de sopa de sal; mistura e deixa repousar 2–4 horas.</li>
+<li>Descasca e corta a beterraba em peças semelhantes.</li>
+<li>Passa os nabos por água para remover o excesso de sal e escorre.</li>
+<li>Enfrasca, alternando camadas de nabo e beterraba.</li>
+<li>Faz a salmoura: dissolve 1 colher de sopa de sal em 1,5 chávenas de água.</li>
+<li>Cobre os vegetais com a salmoura (devem ficar submersos).</li>
+<li>Em cada frasco, adiciona por cima 1 colher de sopa de vinagre e 1 colher de chá de açúcar.</li>
+<li>Fecha bem e agita para integrar.</li>
+<li>Deixa à temperatura ambiente 3–5 dias (até a cor rosar e “estar pronto”).</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Palestine In A Dish —  
+<a href="https://palestineinadish.com/recipes/pickled-turnips-recipe/" target="_blank" rel="noopener">
+https://palestineinadish.com/recipes/pickled-turnips-recipe/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="gazpacho-cru-com-nabo-base-de-sumo-de-tomate"></a>
+<h2 id="r7">R7 — Gazpacho cru com nabo (base de sumo de tomate)</h2>
+
+<h3>Introdução</h3>
+<p>Sopa crua, rápida e fresca: processa-se muito brevemente para ficar com textura (não é um creme totalmente liso). O nabo entra cru em pequena quantidade.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>2 chávenas de sumo V-8 com baixo teor de sal</li>
+<li>1/4 chávena de nabo cru</li>
+<li>1/2 chávena de pepino descascado, sem sementes e picado</li>
+<li>1/4 chávena de aipo picado</li>
+<li>1/4 chávena de pimento amarelo picado</li>
+<li>1/4 chávena de cebola doce picada</li>
+<li>1/4 chávena de cenoura picada</li>
+<li>Pimenta preta moída na hora, a gosto</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Coloca o sumo e os legumes no liquidificador.</li>
+<li>Tritura/processa muito brevemente (para manter alguma textura).</li>
+<li>Tempera com pimenta preta a gosto.</li>
+<li>Serve bem fresco.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Dr. Howard Murad —  
+<a href="https://drhowardmurad.com/summer-time-recipes/" target="_blank" rel="noopener">
+https://drhowardmurad.com/summer-time-recipes/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="batatas-fritas-de-nabo-com-molho-chili-cheese-desidratador"></a>
+<h2 id="r8">R8 — “Batatas fritas” de nabo com molho chili-cheese (desidratador)</h2>
+
+<h3>Introdução</h3>
+<p>Uma receita raw-vegan pensada como “snack de conforto”: palitos de nabo vão ao desidratador e são servidos com um molho cremoso, picante e com levedura nutricional.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>MOLHO CHILI-CHEESE</li>
+<li>1 chávena de curgete (zucchini), descascada e cortada grosseiramente</li>
+<li>3/4 chávena de pimento vermelho, cortado grosseiramente</li>
+<li>3/4 chávena de sementes de girassol</li>
+<li>2 1/2 colheres de sopa de levedura nutricional</li>
+<li>2 colheres de sopa de sumo de limão</li>
+<li>1 colher de sopa bem cheia de tahini</li>
+<li>1 colher de chá de pasta de tâmaras (ou outro adoçante, conforme indicado)</li>
+<li>1/2 colher de chá de sal (Himalayan/sea salt)</li>
+<li>1/4 colher de chá de curcuma</li>
+<li>1/8 colher de chá de chilli em pó</li>
+</ul>
+
+<ul>
+<li>“FRIES” DE NABO</li>
+<li>2 chávenas de nabo, descascado e cortado em palitos</li>
+<li>1 colher de sopa de levedura nutricional</li>
+<li>2 colheres de chá de sumo de lima</li>
+<li>1 colher de chá de paprika</li>
+<li>1/8 colher de chá de sal (Himalayan/sea salt)</li>
+<li>1/8 colher de chá de chilli em pó</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>A) Molho</li>
+<li>1. No liquidificador, tritura: curgete, pimento vermelho, sementes de girassol, levedura nutricional, limão, tahini, pasta de tâmaras, sal, curcuma e chilli até ficar liso.</li>
+<li>B) Palitos de nabo</li>
+<li>1. Corta o nabo em palitos finos.</li>
+<li>2. Numa taça, mistura os palitos com levedura nutricional, sumo de lima, paprika, sal e chilli.</li>
+<li>3. Espalha nos tabuleiros do desidratador (idealmente com folha tipo Teflex).</li>
+<li>4. Desidrata a 115°F por 3 horas (ou mais tempo, conforme a textura desejada).</li>
+<li>5. Serve com o molho por cima e, se quiseres, finaliza com paprika e cebolinho picado.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Julie’s Lifestyle —  
+<a href="https://www.julieslifestyle.com/en/blog/detail/chili-cheese-turnip-fries" target="_blank" rel="noopener">
+https://www.julieslifestyle.com/en/blog/detail/chili-cheese-turnip-fries
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="carpaccio-cru-de-nabos-novos-com-azeite-e-limao"></a>
+<h2 id="r9">R9 — Carpaccio cru de nabos novos com azeite e limão</h2>
+
+<h3>Introdução</h3>
+<p>Carpaccio vegetal e cru: fatias extremamente finas de nabo, marinadas e servidas como entrada leve, elegante e muito fresca.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Nabos novos (pequenos), bem lavados</li>
+<li>Azeite virgem extra</li>
+<li>Sumo de limão (ou outro ácido indicado na receita)</li>
+<li>Sal e pimenta (se indicado)</li>
+<li>Ervas frescas (se indicado)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Corta os nabos em lâminas muito finas (mandolina ajuda).</li>
+<li>Dispõe num prato em camada única (ou ligeiramente sobreposto).</li>
+<li>Tempera/marina com azeite e limão (e restantes temperos/ervas conforme indicado).</li>
+<li>Deixa repousar um pouco para ganhar sabor e serve.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Aime Mange —  
+<a href="https://aime-mange.com/carppaccio-de-navos-novos/" target="_blank" rel="noopener">
+https://aime-mange.com/carppaccio-de-navos-novos/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-de-nabo-pepino-e-microgreens-com-germinacao-simples"></a>
+<h2 id="r10">R10 — Salada de nabo, pepino e microgreens (com germinação simples)</h2>
+
+<h3>Introdução</h3>
+<p>Salada “viva” e minimalista: combina nabo e pepino com microgreens. A receita inclui uma forma simples de deixar microgreens a iniciar germinação antes de usar.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 nabo</li>
+<li>1 pepino</li>
+<li>1 colher (de servir) de microgreens</li>
+<li>1 malagueta verde (green chilli)</li>
+<li>1/2 colher de chá de sumo de limão</li>
+<li>Sal</li>
+<li>1/2 colher de chá de ervas italianas / “pizza mix”</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>(Microgreens) Coloca os microgreens de molho em água; depois de absorverem água, escorre e espalha num recipiente largo para “sproutar”. A receita indica que leva cerca de 1 dia (dependendo do clima).</li>
+<li>Corta os vegetais (nabo e pepino) e junta os restantes ingredientes.</li>
+<li>Mistura bem, adiciona o sumo de limão, mexe ligeiramente e serve.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Cookpad —  
+<a href="https://cookpad.com/eng/recipes/16947715" target="_blank" rel="noopener">
+https://cookpad.com/eng/recipes/16947715
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

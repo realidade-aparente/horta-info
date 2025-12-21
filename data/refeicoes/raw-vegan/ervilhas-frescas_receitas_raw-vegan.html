@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Ervilhas frescas – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+ <div class="masthead">
+<header>
+  <h1>Ervilhas frescas – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html" class="ativa">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+  </header></div>
+<main>
+<article>
+
+<h2>Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/ervilhas-frescas_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/ervilhas-frescas_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+<ol>
+<li><a href="#r1">Sopa crua de ervilhas e espinafre com hortelã</a> <span class="source">[R1]</span></li> 
+<li><a href="#r2">Sopa crua de ervilhas verdes com abacate, limão e ervas</a> <span class="source">[R2]</span></li>
+<li><a href="#r3">Sopa crua de ervilhas-doces com tomilho-limão</a> <span class="source">[R3]</span></li>
+<li><a href="#r4">Sopa crua “tipo split pea” (ervilhas verdes) com milho e cominhos</a> <span class="source">[R4]</span></li>
+<li><a href="#r5">Húmus cru de ervilha com pesto (ervilha + couve-flor + manjericão)</a> <span class="source">[R5]</span></li>
+<li><a href="#r6">Dip cru de ervilha, ervas e sementes de girassol</a> <span class="source">[R6]</span></li>
+<li><a href="#r7">Guacamole cru de ervilhas-doces</a> <span class="source">[R7]</span></li>
+<li><a href="#r8">Salada crua de ervilhas-tortas e rabanete com vinagrete de ervas e limão</a> <span class="source">[R8]</span></li>
+<li><a href="#r9">Ervilhas-tortas fermentadas com alho e pimenta-preta</a> <span class="source">[R9]</span></li>
+<li><a href="#r10">“Noodles” de curgete com ervilhas-de-vagem (snow peas) e molho de tahini-limão</a> <span class="source">[R10]</span></li>
+</ol>
+</div>
+
+<h2> Resumo das Receitas</h2>
+<h4>R1 — Sopa verde brilhante batida no liquidificador: ervilhas, espinafre e hortelã para um perfil fresco e primaveril.</h4>
+<p></p>
+
+<h4>R2 — Versão “sopa/smoothie salgado”: ervilhas com abacate, limão e um trio de ervas (endro, hortelã e manjericão).</h4>
+<p></p>
+
+<h4>R3 — Sopa simples e perfumada com tomilho-limão; pode ser servida fria ou apenas amornada (raw-friendly).</h4>
+<p></p>
+
+<h4>R4 — Inspirada na sopa de ervilhas-partidas, mas crua: base cremosa de ervilhas com a doçura do milho e toque de cominhos.</h4>
+<p></p>
+
+<h4>R5 — “Húmus” raw sem grão cozido: couve-flor + ervilhas + abacate e nozes com manjericão (pesto) para mergulhar vegetais.</h4>
+<p></p>
+
+<h4>R6 — Dip cremoso com sementes de girassol (base “tipo láctea”), ervilhas e ervas; funciona como dip ou como “molho” de salada.</h4>
+<p></p>
+
+<h4>R7 — Guacamole com ervilhas: mantém a ideia clássica do abacate, mas ganha doçura e textura extra das ervilhas.</h4>
+<p></p>
+
+<h4>R8 — Salada crocante e rápida: ervilhas-tortas e rabanete com vinagrete de manjericão e endro, equilibrado com limão e mostarda.</h4>
+<p></p>
+
+<h4>R9 — Fermentado em salmoura: ervilhas-tortas ganham acidez, notas de alho e pimenta, e um “crunch” probiótico.</h4>
+<p></p>
+
+<h4>R10 — Prato “raw noodle bowl”: curgete em espiral + ervilhas-de-vagem + rebentos, com molho de tahini e limão (leve e saciante).</h4>
+<p></p>
+
+<h2> Receitas completas</h2>
+
+<a id="sopa-crua-de-ervilhas-e-espinafre-com-hortela"></a>
+<h3 id="r1">R1 — Sopa crua de ervilhas e espinafre com hortelã</h3>
+
+<h4>Introdução</h4>
+<p>Uma sopa crua (estilo smoothie salgado) que fica espessa e cremosa sem cozinhar: a doçura das ervilhas equilibra o espinafre e a hortelã dá frescura. Ideal para servir bem fria.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>1 chávena (240 ml) de água</li>
+<li>1/4 chávena de cajus crus (≈ 30 g) OU 1/4 de abacate (para quem não usa frutos secos)</li>
+<li>1 dente de alho, descascado</li>
+<li>340 g de ervilhas verdes (a fonte usa ervilhas congeladas; para “mais cru”, usa ervilhas frescas)</li>
+<li>2 chávenas de espinafre bebé fresco (bem cheias)</li>
+<li>1 colher de sopa de sumo de limão</li>
+<li>1 colher de sopa de hortelã fresca picada</li>
+<li>Pimenta-preta moída na hora, a gosto</li>
+<li>Sal, a gosto</li>
+<li>Gomos de limão, para servir</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>No liquidificador, tritura a água + cajus (ou abacate) + alho até ficar totalmente liso.</li>
+<li>Junta as ervilhas, o espinafre, o sumo de limão e a hortelã. Tritura em alta rotação até ficar cremoso e espesso.</li>
+<li>Prova e ajusta sal, pimenta e (se quiseres) mais limão.</li>
+<li>Serve frio, com gomos de limão para espremer por cima.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+FatFree Vegan Kitchen — 
+<a href="https://blog.fatfreevegan.com/2013/03/minty-raw-pea-and-spinach-soup.html" target="_blank" rel="noopener">
+https://blog.fatfreevegan.com/2013/03/minty-raw-pea-and-spinach-soup.html
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-crua-de-ervilhas-verdes-com-abacate-limao-e-ervas"></a>
+<h2 id="r2">R2 — Sopa crua de ervilhas verdes com abacate, limão e ervas</h2>
+
+<h3>Introdução</h3>
+<p>Uma sopa crua “refrescante” com base de ervilhas e abacate. As ervas (endro, hortelã e manjericão) dão um perfil aromático bem completo.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1/2 chávena (120 ml) de água</li>
+<li>16 oz / 454 g de ervilhas verdes (a fonte admite congeladas; para cru “estrito”, usa frescas)</li>
+<li>1 dente de alho</li>
+<li>Sumo de 1 limão</li>
+<li>1 (ou mais) abacate(s) maduro(s)</li>
+<li>Endro (dill), a gosto</li>
+<li>Hortelã, a gosto</li>
+<li>Manjericão, a gosto</li>
+<li>(Opcional da fonte) “Finger lime” para guarnição</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Coloca no liquidificador todos os ingredientes (exceto a água) e começa a triturar do lento ao rápido.</li>
+<li>Adiciona a água e volta a triturar, do lento ao rápido, até ficar bem liso.</li>
+<li>Serve e guarnece com mais ervas e/ou limão a gosto.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Producers Market —  
+<a href="https://producersmarket.com/blog/raw-vegan-green-pea-soup-recipe/" target="_blank" rel="noopener">
+https://producersmarket.com/blog/raw-vegan-green-pea-soup-recipe/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-crua-de-ervilhas-doces-com-tomilho-limao"></a>
+<h2 id="r3">R3 — Sopa crua de ervilhas-doces com tomilho-limão</h2>
+
+<h3>Introdução</h3>
+<p>Receita minimalista: ervilhas, tomilho-limão e alho para uma sopa muito simples e perfumada. Pode ser servida fria; para versão “amornada raw”, usa água morna (abaixo de 45ºC).</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 embalagem de ervilhas-doces verdes (a fonte usa congeladas; ervilha fresca funciona muito bem)</li>
+<li>Água quente o suficiente para bater até à consistência desejada (para raw, usa água morna &lt; 45ºC)</li>
+<li>Sal e pimenta, a gosto</li>
+<li>Uma pitada de alho fresco ou em pó (a gosto)</li>
+<li>Um pequeno punhado de tomilho-limão fresco</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Coloca as ervilhas no liquidificador.</li>
+<li>Junta água (ajustando aos poucos) para ajudar a bater até ficar uma sopa cremosa.</li>
+<li>Tempera com sal, pimenta, alho e o tomilho-limão.</li>
+<li>Tritura até ficar liso. Serve frio (ou apenas morno, se usares água &lt; 45ºC) e decora com um raminho de tomilho-limão.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Kelli’s Vegan Kitchen —  
+<a href="https://kellisvegankitchen.com/2012/07/31/raw-lemon-thyme-sweet-pea-soup/" target="_blank" rel="noopener">
+https://kellisvegankitchen.com/2012/07/31/raw-lemon-thyme-sweet-pea-soup/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-crua-tipo-split-pea-ervilhas-verdes-com-milho-e-cominhos"></a>
+<h2 id="r4">R4 — Sopa crua “tipo split pea” (ervilhas verdes) com milho e cominhos</h2>
+
+<h3>Introdução</h3>
+<p>Uma “sopa de ervilhas” crua que tenta replicar o conforto da versão cozinhada: cremosa, com cominhos e um componente de milho para textura e doçura.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>2 chávenas de ervilhas pequenas (fresh ou congeladas descongeladas)</li>
+<li>1 chávena de aipo picado</li>
+<li>2 colheres de sopa de cebola picada</li>
+<li>2 dentes de alho pequenos</li>
+<li>1 colher de sopa de azeite virgem extra</li>
+<li>2 colheres de sopa de sumo de limão espremido na hora</li>
+<li>1 colher de chá de cominhos moídos</li>
+<li>1 chávena de água filtrada</li>
+<li>1 colher de chá de sal marinho (ajustar a gosto)</li>
+<li>1 pitada de pimenta-caiena</li>
+<li>Grãos de 1 espiga média de milho</li>
+<li>1 colher de sopa de salsa fresca OU coentros, picados (para finalizar)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>No liquidificador, tritura até ficar liso: ervilhas + aipo + cebola + alho + azeite + sumo de limão + cominhos + água + sal + caiena.</li>
+<li>Divide metade do milho por 2 taças (reservando um pouco para decorar).</li>
+<li>Verte metade da sopa em cada taça e envolve com uma colher, misturando com o milho.</li>
+<li>Finaliza com o milho reservado e salsa ou coentros.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Foods For Long Life —  
+<a href="https://foodsforlonglife.blogspot.com/2009/05/raw-vegan-split-pea-soup.html" target="_blank" rel="noopener">
+https://foodsforlonglife.blogspot.com/2009/05/raw-vegan-split-pea-soup.html
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="humus-cru-de-ervilha-com-pesto-ervilha-couve-flor-manjericao"></a>
+<h2 id="r5">R5 — Húmus cru de ervilha com pesto (ervilha + couve-flor + manjericão)</h2>
+
+<h3>Introdução</h3>
+<p>“Húmus” raw sem grão cozido: a base é couve-flor e ervilhas, com abacate e nozes para cremosidade e manjericão para o lado “pesto”. Pode virar sopa adicionando mais líquido.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 cabeça de couve-flor</li>
+<li>2 chávenas de ervilhas</li>
+<li>1 abacate</li>
+<li>1/2 chávena de nozes + extra para topping</li>
+<li>1/2 chávena de manjericão fresco</li>
+<li>4 colheres de sopa de levedura nutricional</li>
+<li>2 dentes de alho</li>
+<li>1 colher de chá de pasta de miso</li>
+<li>1/4 chávena de bebida vegetal crua (a fonte usou amêndoa)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Pica grosseiramente todos os ingredientes.</li>
+<li>Coloca tudo no liquidificador (ou processador potente) e tritura até ficar cremoso.</li>
+<li>Serve com “crackers” raw-vegan e/ou legumes crus (pepino, cenoura, aipo, etc.). Finaliza com nozes por cima, se quiseres.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The All Natural Vegan —  
+<a href="https://theallnaturalvegan.com/raw-vegan-pea-pesto-hummus/" target="_blank" rel="noopener">
+https://theallnaturalvegan.com/raw-vegan-pea-pesto-hummus/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="dip-cru-de-ervilha-ervas-e-sementes-de-girassol"></a>
+<h2 id="r6">R6 — Dip cru de ervilha, ervas e sementes de girassol</h2>
+
+<h3>Introdução</h3>
+<p>Dip raw, vegan e sem glúten: sementes de girassol fazem a base cremosa, as ervilhas dão doçura, e as ervas trazem um perfil verde e fresco. Também funciona como “molho” (mais líquido).</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 3/4 chávena de ervilhas (a fonte usa congeladas, descongeladas)</li>
+<li>1 chávena de sementes de girassol (demolhadas e desidratadas)</li>
+<li>1 chávena de curgete, descascada e aos pedaços</li>
+<li>1 chávena de ervas bem cheias (a fonte usou salsa e coentros)</li>
+<li>1/4 chávena de sumo de limão</li>
+<li>1/4 chávena de água filtrada</li>
+<li>1 colher de sopa de miso de grão-de-bico</li>
+<li>1 colher de chá de cebola em pó</li>
+<li>1 colher de chá de sal dos Himalaias (ou sal marinho)</li>
+<li>1 dente de alho</li>
+<li>1 colher de chá de gengibre ralado</li>
+<li>1/2 chávena de salsa, picada fina (para envolver no fim)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Tritura no liquidificador todos os ingredientes, exceto a salsa picada, até ficar totalmente liso.</li>
+<li>Transfere para uma taça e envolve a salsa picada.</li>
+<li>Guarda no frigorífico e serve com legumes crus ou crackers raw.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Crystal Dawn Culinary —  
+<a href="https://crystaldawnculinary.com/pea-herb-sunflower-dip/" target="_blank" rel="noopener">
+https://crystaldawnculinary.com/pea-herb-sunflower-dip/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="guacamole-cru-de-ervilhas-doces"></a>
+<h2 id="r7">R7 — Guacamole cru de ervilhas-doces</h2>
+
+<h3>Introdução</h3>
+<p>Guacamole raw com uma reviravolta: ervilhas-doces aumentam a doçura e o “chunk”. Funciona como dip e também como spread.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 abacate médio, maduro, descascado e sem caroço</li>
+<li>2 colheres de sopa de sumo de lima</li>
+<li>1 dente de alho grande</li>
+<li>1 colher de chá de cominhos moídos</li>
+<li>1/2 colher de chá de sal rosa dos Himalaias (ou sal marinho)</li>
+<li>1 chávena de ervilhas “English peas” (frescas; a fonte admite congeladas descongeladas)</li>
+<li>1/4 chávena de cebola roxa finamente picada</li>
+<li>1 chávena de tomate picado</li>
+<li>2 colheres de sopa de coentros picados</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>No processador, tritura até cremoso: abacate + sumo de lima + alho + cominhos + sal.</li>
+<li>Junta as ervilhas, a cebola roxa e os coentros. Faz “pulse” ~5 vezes (para manter textura rústica).</li>
+<li>Guarda no frigorífico e consome em até 2 dias.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Nouveau Raw (AmieSue.com) —  
+<a href="https://nouveauraw.com/dressings-dips/sweet-pea-guacamole/" target="_blank" rel="noopener">
+https://nouveauraw.com/dressings-dips/sweet-pea-guacamole/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-crua-de-ervilhas-tortas-e-rabanete-com-vinagrete-de-ervas-e-limao"></a>
+<h2 id="r8">R8 — Salada crua de ervilhas-tortas e rabanete com vinagrete de ervas e limão</h2>
+
+<h3>Introdução</h3>
+<p>Salada rápida e muito crocante: ervilhas-tortas e rabanetes com um vinagrete verde (manjericão + endro) que aguenta bem no frigorífico sem amolecer.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 lb (≈ 450 g) de ervilhas-tortas frescas (sugar snap peas), aparadas e cortadas ao meio (≈ 4 chávenas)</li>
+<li>1 molho de rabanetes, aparados e cortados finos (fatiados ou em juliana)</li>
+<li>1 chávena de manjericão fresco bem comprimido</li>
+<li>3/4 chávena de endro (dill) fresco bem comprimido</li>
+<li>3 dentes de alho pequenos</li>
+<li>1 colher de sopa de mostarda Dijon</li>
+<li>1/4 chávena de sumo de limão (1–2 limões)</li>
+<li>1/2 chávena de azeite</li>
+<li>1/2 colher de chá de sal marinho</li>
+<li>1/4 colher de chá de pimenta moída na hora</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Lava e prepara as ervilhas-tortas (retira fio e pontas) e corta-as ao meio.</li>
+<li>Lava os rabanetes e corta fino (ou em juliana).</li>
+<li>Vinagrete: coloca todos os ingredientes do vinagrete no processador/liquidificador e tritura bem. Prova e ajusta sal e pimenta.</li>
+<li>Numa taça, junta ervilhas-tortas + rabanete. Verte metade do vinagrete e envolve bem; adiciona mais conforme necessário.</li>
+<li>Guarda no frigorífico; a fonte indica que a salada temperada aguenta até 5 dias.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Debra Klein —  
+<a href="https://debraklein.com/raw-sugar-snap-pea-salad/" target="_blank" rel="noopener">
+https://debraklein.com/raw-sugar-snap-pea-salad/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="ervilhas-tortas-fermentadas-com-alho-e-pimenta-preta"></a>
+<h2 id="r9">R9 — Ervilhas-tortas fermentadas com alho e pimenta-preta</h2>
+
+<h3>Introdução</h3>
+<p>Fermentação natural em frasco: salmoura, alho e pimenta-preta transformam ervilhas-de-vagem (snow peas) num pickle probiótico. Excelente para bowls e saladas.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>370 g de ervilhas-de-vagem (snow peas)</li>
+<li>420 g de água</li>
+<li>10 g de grãos de pimenta-preta (peppercorns)</li>
+<li>20 g de alho picado</li>
+<li>28 g de sal marinho</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Lava todo o equipamento de fermentação (frasco, peso, tampa).</li>
+<li>Lava as ervilhas em água fria.</li>
+<li>Pesa (em gramas) as ervilhas, o alho e a pimenta.</li>
+<li>Coloca no frasco: ervilhas + alho + pimenta + água.</li>
+<li>Pesa o sal e adiciona ao frasco.</li>
+<li>Fecha com a tampa e agita vigorosamente por 2 minutos para dissolver o sal.</li>
+<li>Abre, coloca um peso de fermentação para manter tudo submerso, e volta a fechar.</li>
+<li>Deixa fermentar à temperatura ambiente por ~14 dias (a fonte indica 2–3 semanas para “tastar e ajustar”), abrindo para “arrotar” (burp) quando houver muita produção de gás.</li>
+<li>Quando o cheiro e sabor estiverem agradavelmente ácidos, transfere para o frigorífico.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Cultured Guru —  
+<a href="https://cultured.guru/blog/naturally-fermented-snow-peas-with-garlic-and-black-pepper" target="_blank" rel="noopener">
+https://cultured.guru/blog/naturally-fermented-snow-peas-with-garlic-and-black-pepper
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="noodles-de-curgete-com-ervilhas-de-vagem-snow-peas-e-molho-de-tahini-limao"></a>
+<h2 id="r10">R10 — “Noodles” de curgete com ervilhas-de-vagem (snow peas) e molho de tahini-limão</h2>
+
+<h3>Introdução</h3>
+<p>Um prato raw “muito verde”: curgete em espiral, ervilhas-de-vagem crocantes e rebentos, tudo ligado com molho de tahini e limão. (A fonte menciona opção de escaldar as ervilhas, mas aqui mantemos cru.)</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>2 colheres de sopa bem cheias de tahini</li>
+<li>Sumo de 1/2 limão (ou lima) (≈ 2 colheres de sopa), ou a gosto</li>
+<li>2 colheres de chá de agave ou xarope de ácer</li>
+<li>(Se necessário) um pouco de água para ajustar consistência do tahini</li>
+<li>2 curgetes médias, com as pontas aparadas</li>
+<li>~2 chávenas de ervilhas-de-vagem (snow peas), aparadas</li>
+<li>~1 chávena de rebentos verdes (ex.: rebentos de ervilha ou de brócolo)</li>
+<li>1/4 chávena de coentros OU salsa, picados</li>
+<li>2 cebolinhos (scallions), em rodelas finas</li>
+<li>Sal e pimenta, a gosto</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Molho: numa taça pequena, mistura/vara o tahini com sumo de limão e agave/ácer; junta água aos poucos se precisares (pouca!) para ficar vertível.</li>
+<li>Faz “noodles” de curgete com espiralizador. (Sem espiralizador: usa um descascador para fazer “fitas” largas.)</li>
+<li>Junta as ervilhas-de-vagem cruas ao recipiente com a curgete.</li>
+<li>Adiciona rebentos, coentros/salsa e cebolinho; envolve.</li>
+<li>Verte o molho e mistura. Deixa repousar pelo menos 30 minutos.</li>
+<li>Ajusta a gosto (mais limão, mais tahini, mais doce) e tempera com sal e pimenta.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+VegKitchen —  
+<a href="https://www.vegkitchen.com/sesame-zucchini-noodles-with-snow-peas/" target="_blank" rel="noopener">
+https://www.vegkitchen.com/sesame-zucchini-noodles-with-snow-peas/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

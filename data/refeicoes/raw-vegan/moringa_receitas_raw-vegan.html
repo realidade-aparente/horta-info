@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Moringa – folhas frescas – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+ <div class="masthead">
+<header>
+  <h1>Moringa – folhas frescas – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html" class="ativa">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+  </header></div>
+<main>
+<article>
+
+<h2>Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/moringa-folhas-frescas_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/moringa-folhas-frescas_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+<ol>
+<li><a href="#r1">Sumos de folhas frescas de moringa (Sumo de Moringa “puro”)</a> <span class="source">[R1]</span></li> 
+<li><a href="#r2">Smoothie raw-vegan de moringa com maracujá e kiwi</a> <span class="source">[R2]</span></li>
+<li><a href="#r3">Smoothie vegan de moringa com banana, ananás e sementes de cânhamo</a> <span class="source">[R3]</span></li>
+<li><a href="#r4">Smoothie de moringa (banana + ananás + leite vegetal)</a> <span class="source">[R4]</span></li>
+<li><a href="#r5">Pesto raw-vegan de folhas frescas de moringa</a> <span class="source">[R5]</span></li>
+<li><a href="#r6">Mini cheesecakes raw-vegan de moringa e limão com maracujá</a> <span class="source">[R6]</span></li>
+<li><a href="#r7">Moringa No-Bake Energy Balls (aveia + cacau)</a> <span class="source">[R7]</span></li>
+<li><a href="#r8">No-Bake Moringa Energy Balls com chia e manteiga de amendoim</a> <span class="source">[R8]</span></li>
+<li><a href="#r9">Moringa Bliss Balls (nozes + tâmaras + coco)</a> <span class="source">[R9]</span></li>
+<li><a href="#r10">Raw Moringa Bites (amêndoa, coco e chia)</a> <span class="source">[R10]</span></li>
+</ol>
+</div>
+
+<h2> Resumo das Receitas</h2>
+<h4>R1 – Sumo cru de moringa em água, simples ou base para outras bebidas frescas.</h4>
+<p>Sumo cru de moringa em água, simples ou base para outras bebidas frescas.</p>
+
+<h4>R2 – Smoothie refrescante de moringa com kiwi e maracujá.</h4>
+<p>Smoothie refrescante de moringa com kiwi e maracujá.</p>
+
+<h4>R3 – Smoothie nutritivo de moringa com banana, ananás e sementes de cânhamo.</h4>
+<p>Smoothie nutritivo de moringa com banana, ananás e sementes de cânhamo.</p>
+
+<h4>R4 – Smoothie verde cru com moringa, banana e ananás.</h4>
+<p>Smoothie verde cru com moringa, banana e ananás.</p>
+
+<h4>R5 – Pesto cru de moringa em folhas para saladas ou “massas” cruas.</h4>
+<p>Pesto cru de moringa em folhas para saladas ou “massas” cruas.</p>
+
+<h4>R6 – Mini cheesecakes raw sem forno com moringa, limão e maracujá.</h4>
+<p>Mini cheesecakes raw sem forno com moringa, limão e maracujá.</p>
+
+<h4>R7 – Energy balls sem aquecimento com moringa, aveia, cacau e tâmaras.</h4>
+<p>Energy balls sem aquecimento com moringa, aveia, cacau e tâmaras.</p>
+
+<h4>R8 – Variedade de energy balls sem forno com moringa em pó, chia e manteiga de amendoim.</h4>
+<p>Variedade de energy balls sem forno com moringa em pó, chia e manteiga de amendoim.</p>
+
+<h4>R9 – Moringa Bliss Balls cruas com tâmaras, nozes e coco.</h4>
+<p>Moringa Bliss Balls cruas com tâmaras, nozes e coco.</p>
+
+<h4>R10 – Raw Moringa Bites com manteiga de amêndoa, coco e chia.</h4>
+<p>Raw Moringa Bites com manteiga de amêndoa, coco e chia.</p>
+
+
+<h2> Receitas completas</h2>
+
+<a id="sumos-de-folhas-frescas-de-moringa-sumo-de-moringa-puro"></a>
+<h3 id="r1">R1 — Sumos de folhas frescas de moringa (Sumo de Moringa “puro”)</h3>
+
+<h4>Introdução</h4>
+<p>Um sumo cru simples e nutritivo concentrado em moringa fresca batida com água.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>1 mão-cheia de folhas frescas de moringa, bem lavadas</li>
+<li>250–500 ml de água filtrada</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Lavar e escorrer as folhas de moringa.</li>
+<li>Colocar as folhas no liquidificador com a água.</li>
+<li>Triturar até ficar totalmente homogéneo.</li>
+<li>Coar (opcional) e servir imediatamente.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Moringa Education — 
+<a href="https://moringaeducation.org/recipes/pure-moringa-juice-recipe/" target="_blank" rel="noopener">
+https://moringaeducation.org/recipes/pure-moringa-juice-recipe/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="smoothie-raw-vegan-de-moringa-com-maracuja-e-kiwi"></a>
+<h2 id="r2">R2 — Smoothie raw-vegan de moringa com maracujá e kiwi</h2>
+
+<h3>Introdução</h3>
+<p>Smoothie leve e tropical cru enriquecido com folhas frescas de moringa.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1/2 chávena de folhas frescas de moringa</li>
+<li>1 kiwi (descascado)</li>
+<li>Polpa de 1 maracujá</li>
+<li>250 ml de água de coco</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Lavar e retirar caules rígidos das folhas.</li>
+<li>Bater tudo no liquidificador até ficar liso.</li>
+<li>Ajustar a textura com mais água de coco, se necessário. Servir frio.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Foundation G+E – Diet and Health —  
+<a href="https://www.diet-health.info/en/recipes/re/rvpmh259-raw-vegan-moringa-smoothie-with-passion-fruit-and-kiwi" target="_blank" rel="noopener">
+https://www.diet-health.info/en/recipes/re/rvpmh259-raw-vegan-moringa-smoothie-with-passion-fruit-and-kiwi
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="smoothie-vegan-de-moringa-com-banana-ananas-e-sementes-de-canhamo"></a>
+<h2 id="r3">R3 — Smoothie vegan de moringa com banana, ananás e sementes de cânhamo</h2>
+
+<h3>Introdução</h3>
+<p>Smoothie cru cremoso, ideal para pequeno-almoço ou snack nutritivo.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 chávena de leite vegetal (amêndoa/aveia)</li>
+<li>1 banana congelada</li>
+<li>1/2 chávena de ananás congelado</li>
+<li>1/2 chávena de folhas frescas de moringa</li>
+<li>1 colher de sopa de sementes de cânhamo</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Colocar tudo no liquidificador e bater até ficar uniforme; servir de imediato.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Clean Eating Kitchen —  
+<a href="https://www.cleaneatingkitchen.com/moringa-smoothie/" target="_blank" rel="noopener">
+https://www.cleaneatingkitchen.com/moringa-smoothie/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="smoothie-de-moringa-banana-ananas-leite-vegetal"></a>
+<h2 id="r4">R4 — Smoothie de moringa (banana + ananás + leite vegetal)</h2>
+
+<h3>Introdução</h3>
+<p>Versão básica e cremosa de smoothie verde cru com moringa.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Folhas frescas de moringa (a gosto)</li>
+<li>1 banana</li>
+<li>Ananás a gosto</li>
+<li>Leite vegetal q.b.</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Bater todos os ingredientes no liquidificador e servir imediatamente.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Healthier Steps —  
+<a href="https://healthiersteps.com/moringa-smoothie-recipe/" target="_blank" rel="noopener">
+https://healthiersteps.com/moringa-smoothie-recipe/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pesto-raw-vegan-de-folhas-frescas-de-moringa"></a>
+<h2 id="r5">R5 — Pesto raw-vegan de folhas frescas de moringa</h2>
+
+<h3>Introdução</h3>
+<p>Pesto cru versátil para usar como molho ou dip.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Folhas frescas de moringa</li>
+<li>Frutos secos ou sementes cruas (ex.: sementes de abóbora/cânhamo)</li>
+<li>Sumo de limão</li>
+<li>Alho cru (opcional)</li>
+<li>Sal e azeite ou um pouco de água</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>No processador, triturar todos os ingredientes até formar um pesto; ajustar ao gosto.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Foundation G+E – Diet and Health —  
+<a href="https://www.diet-health.info/en/recipes/ingredients/in/rl3205-moringa-tree-moringa-leaves-raw" target="_blank" rel="noopener">
+https://www.diet-health.info/en/recipes/ingredients/in/rl3205-moringa-tree-moringa-leaves-raw
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="mini-cheesecakes-raw-vegan-de-moringa-e-limao-com-maracuja"></a>
+<h2 id="r6">R6 — Mini cheesecakes raw-vegan de moringa e limão com maracujá</h2>
+
+<h3>Introdução</h3>
+<p>Tarteletes cruas com base de tâmaras/frutos secos e creme de cajus com moringa e frutas.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Conforme a receita da fonte (cajus demolhados, tâmaras, folhas de moringa, limão, maracujá, kiwi, óleo de coco cru, xarope de ácer, água).</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Demolhar cajus; fazer base; bater o creme com moringa e fruta; montar nas forminhas; congelar para firmar.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Foundation G+E – Diet and Health —  
+<a href="https://www.diet-health.info/en/recipes/re/rvptb264-raw-vegan-raw-moringa-leaf-lemon-cheesecake-with-passion-fruit" target="_blank" rel="noopener">
+https://www.diet-health.info/en/recipes/re/rvptb264-raw-vegan-raw-moringa-leaf-lemon-cheesecake-with-passion-fruit
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="moringa-no-bake-energy-balls-aveia-cacau"></a>
+<h2 id="r7">R7 — Moringa No-Bake Energy Balls (aveia + cacau)</h2>
+
+<h3>Introdução</h3>
+<p>Snacks raw-vegan sem forno com moringa em pó, aveia e cacau.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 ½ chávenas de aveia crua</li>
+<li>½ chávena de pó de moringa</li>
+<li>1 colher de sopa de sementes de cânhamo</li>
+<li>½ colher de chá de canela</li>
+<li>1 colher de sopa de cacau em pó</li>
+<li>⅔ chávena de manteiga de caju</li>
+<li>2 colheres de sopa de mel cru ou xarope de ácer</li>
+<li>6 tâmaras sem caroço</li>
+<li>1 colher de chá de extracto de baunilha</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>No processador, combinar aveia, moringa, cânhamo, canela e cacau.</li>
+<li>Adicionar manteiga de caju, mel/xarope, tâmaras e baunilha.</li>
+<li>Triturar até formar massa moldável.</li>
+<li>Formar bolas e refrigerar 30 min para firmar.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Moringa No-Bake Energy Balls —  
+<a href="https://sarahkoszyk.com/moringa-no-bake-energy-balls/" target="_blank" rel="noopener">
+https://sarahkoszyk.com/moringa-no-bake-energy-balls/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="no-bake-moringa-energy-balls-com-chia-e-manteiga-de-amendoim"></a>
+<h2 id="r8">R8 — No-Bake Moringa Energy Balls com chia e manteiga de amendoim</h2>
+
+<h3>Introdução</h3>
+<p>Variante de energy balls com moringa, chia e manteiga de amendoim, sem forno.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 ½ chávenas de aveia crua</li>
+<li>½ chávena de pó de moringa</li>
+<li>½ colher de chá de canela</li>
+<li>1 colher de sopa de sementes de chia</li>
+<li>½ chávena de manteiga de amendoim natural crua</li>
+<li>3 colheres de sopa de mel cru ou xarope de ácer</li>
+<li>1 colher de chá de extracto de baunilha</li>
+<li>Opcional: passas ou gotas de chocolate cru</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Misturar tudo até homogeneizar e formar bolas; refrigerar para firmar.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+No-Bake Moringa Energy Balls —  
+<a href="https://www.miracletree.org/blogs/recipes/no-bake-moringa-energy-balls-for-on-the-go-snacking" target="_blank" rel="noopener">
+https://www.miracletree.org/blogs/recipes/no-bake-moringa-energy-balls-for-on-the-go-snacking
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="moringa-bliss-balls-nozes-tamaras-coco"></a>
+<h2 id="r9">R9 — Moringa Bliss Balls (nozes + tâmaras + coco)</h2>
+
+<h3>Introdução</h3>
+<p>Bliss balls cru com moringa em pó, tâmaras e nozes, enroladas em coco.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 ½ chávenas de nozes cruas</li>
+<li>1 ½ chávenas de tâmaras sem caroço</li>
+<li>3 g de pó de moringa (ou conforme o teu paladar)</li>
+<li>1 colher de sopa de óleo de coco cru</li>
+<li>1 colher de sopa de mel cru ou xarope de ácer</li>
+<li>1 chávena de coco ralado (para enrolar)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Processar nozes + tâmaras + moringa até formar massa; enrolar em coco; refrigerar até firmar.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Moringa Bliss Balls —  
+<a href="https://www.organicindia.com.au/blogs/recipes/recipe-moringa-bliss-balls" target="_blank" rel="noopener">
+https://www.organicindia.com.au/blogs/recipes/recipe-moringa-bliss-balls
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="raw-moringa-bites-amendoa-coco-e-chia"></a>
+<h2 id="r10">R10 — Raw Moringa Bites (amêndoa, coco e chia)</h2>
+
+<h3>Introdução</h3>
+<p>Bolinhas cruas com manteiga de amêndoa, coco e moringa em pó, rápidas e sem forno.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1/3 chávena de manteiga de amêndoa</li>
+<li>1 chávena de coco ralado</li>
+<li>2 colheres de sopa de sementes de chia</li>
+<li>2 colheres de sopa de pó de moringa</li>
+<li>2 colheres de chá de xarope de ácer</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Misturar todos os ingredientes no processador; formar bolinhas; refrigerar para firmar.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Raw Moringa Bites —  
+<a href="https://omgsuperfoods.com/blogs/recipes-blogposts/recipe-moringa-bites" target="_blank" rel="noopener">
+https://omgsuperfoods.com/blogs/recipes-blogposts/recipe-moringa-bites
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

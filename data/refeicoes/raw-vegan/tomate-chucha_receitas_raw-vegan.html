@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Tomate tipo chucha / Roma – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+ <div class="masthead">
+<header>
+  <h1>Tomate tipo chucha / Roma – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../tomate-chucha.html" class="ativa">Tomate tipo chucha / Roma</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+  </header></div>
+<main>
+<article>
+
+<h2>Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/tomate-chucha_roma_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/tomate-chucha_roma_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+<ol>
+<li><a href="#r1">R1 — Gaspacho Cru em “Taças” de Pimento (com tomate Roma)</a> <span class="source">[R1]</span></li> 
+<li><a href="#r2">R2 — Sopa Crua “Dream of Tomato” (tomate Roma, pimento, manjericão e cânhamo)</a> <span class="source">[R2]</span></li>
+<li><a href="#r3">R3 — Sopa Crua Picante e Cremosa de Tomate (tomate Roma)</a> <span class="source">[R3]</span></li>
+<li><a href="#r4">R4 — Marinara Crua de Tomate Seco (com tomate Roma) — Renée Loux</a> <span class="source">[R4]</span></li>
+<li><a href="#r5">R5 — “Lasagna Viva” (raw) com Marinara de Tomate Roma</a> <span class="source">[R5]</span></li>
+<li><a href="#r6">R6 — Tabule Cru (Raw Vegan Tabbouleh) com Tomate Roma</a> <span class="source">[R6]</span></li>
+<li><a href="#r7">R7 — Tomates Secos Caseiros (Raw Vegan) com Tomate Roma (desidratador)</a> <span class="source">[R7]</span></li>
+<li><a href="#r8">R8 — Crackers Básicos de Linhaça com Tomate Roma (desidratador a 115°F/46°C)</a> <span class="source">[R8]</span></li>
+<li><a href="#r9">R9 — Salsa Fermentada (lactofermentada) com Tomate Roma</a> <span class="source">[R9]</span></li>
+<li><a href="#r10">R10 — Salada Taco Raw-Vegan com Tomate Roma (e “carne” de nozes)</a> <span class="source">[R10]</span></li>
+</ol>
+</div>
+
+<h2> Resumo das Receitas</h2>
+
+<h4>R1 — Gaspacho Cru em “Taças” de Pimento (com tomate Roma)</h4>
+<p>Resumo: Gaspacho rápido batido a frio, servido dentro de metades de pimento. Leva tomate Roma como base e fica refrescante e leve.</p>
+
+<h4>R2 — Sopa Crua “Dream of Tomato” (tomate Roma, pimento, manjericão e cânhamo)</h4>
+<p>Resumo: Sopa de tomate crua (pode ficar morna só pelo calor do blender), cremosa graças às sementes de cânhamo e intensa com tomate seco em pó.</p>
+
+<h4>R3 — Sopa Crua Picante e Cremosa de Tomate (tomate Roma)</h4>
+<p>Resumo: “Creme de tomate” cru com toque picante e textura cremosa (sem cozedura), centrado em tomate Roma.</p>
+
+<h4>R4 — Marinara Crua de Tomate Seco (com tomate Roma) — Renée Loux</h4>
+<p>Resumo: Molho marinara cru com tomate Roma em cubos e tomate seco hidratado para dar corpo. Serve para “massa” crua de curgete, legumes ou como dip.</p>
+
+<h4>R5 — “Lasagna Viva” (raw) com Marinara de Tomate Roma</h4>
+<p>Resumo: Lasanha crua em camadas (curgete laminada, marinara de tomate Roma, cogumelos marinados, espinafres e “ricotta” de amêndoa). Pode ser aquecida suavemente em desidratador.</p>
+
+<h4>R6 — Tabule Cru (Raw Vegan Tabbouleh) com Tomate Roma</h4>
+<p>Resumo: Salada tipo tabule sem bulgur, baseada em salsa, hortelã e tomate Roma. Recomenda-se marinar no frio durante a noite.</p>
+
+<h4>R7 — Tomates Secos Caseiros (Raw Vegan) com Tomate Roma (desidratador)</h4>
+<p>Resumo: Técnica completa para fazer tomate Roma seco em casa, com apenas sal, usando desidratador (sem forno).</p>
+
+<h4>R8 — Crackers Básicos de Linhaça com Tomate Roma (desidratador a 115°F/46°C)</h4>
+<p>Resumo: Crackers crus feitos com linhaça hidratada e tomate Roma (mais tomate fatiado), desidratados até ficarem secos e firmes.</p>
+
+<h4>R9 — Salsa Fermentada (lactofermentada) com Tomate Roma</h4>
+<p>Resumo: Salsa crua que fermenta 2–4 dias em salmoura, ganhando acidez e complexidade. Leva tomate Roma, cebola, pimento, jalapeño e alho.</p>
+
+<h4>R10 — Salada Taco Raw-Vegan com Tomate Roma (e “carne” de nozes)</h4>
+<p>Resumo: Salada raw com alface, ervas e tomate Roma, com “carne” de nozes temperada, “sour cream” de caju e guacamole — tudo cru.</p>
+
+<h2> Receitas completas</h2>
+
+<a id="gaspacho-cru-em-tacas-de-pimento-com-tomate-roma"></a>
+<h2 id="r1">R1 — Gaspacho Cru em “Taças” de Pimento (com tomate Roma)</h2>
+
+<h4>Introdução</h4>
+<p>Um gaspacho cru e rápido, servido dentro de pimentos cortados ao meio, ideal para dias quentes e para uma apresentação diferente sem cozedura.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>8 tomates Roma (cerca de 2 lb / ~900 g), cortados</li>
+<li>1 pepino grande, descascado e cortado</li>
+<li>1 pimento vermelho, cortado (mais 2 pimentos para servir como “taças”, se quiser)</li>
+<li>1 cebola roxa pequena, cortada</li>
+<li>1 dente de alho</li>
+<li>2 colheres (sopa) de sumo de limão</li>
+<li>2 colheres (sopa) de vinagre (ex.: de vinho tinto)</li>
+<li>2 colheres (sopa) de azeite</li>
+<li>Sal e pimenta preta q.b.</li>
+<li>Opcional para servir: folhas de manjericão / salsa, pepino em cubos</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Lave e prepare todos os vegetais.</li>
+<li>Coloque no liquidificador: tomate Roma, pepino, pimento, cebola e alho.</li>
+<li>Junte sumo de limão, vinagre e azeite. Tempere com sal e pimenta.</li>
+<li>Triture até ficar liso (ou com a textura desejada).</li>
+<li>Prove e ajuste sal/ácido (limão/vinagre).</li>
+<li>Leve ao frio para ficar bem gelado.</li>
+<li>Sirva em taças ou dentro de metades de pimento (as “taças”); finalize com ervas frescas.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Carrots and Flowers — 
+<a href="https://carrotsandflowers.com/10-minute-raw-gazpacho-recipe/" target="_blank" rel="noopener">
+https://carrotsandflowers.com/10-minute-raw-gazpacho-recipe/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-crua-dream-of-tomato-tomate-roma-pimento-manjericao-e-canhamo"></a>
+<h2 id="r2">R2 — Sopa Crua “Dream of Tomato” (tomate Roma, pimento, manjericão e cânhamo)</h2>
+
+<h3>Introdução</h3>
+<p>Uma sopa crua de tomate com textura cremosa (cânhamo) e sabor “tipo creme de tomate” sem cozedura. A própria fonte refere que um blender potente pode aquecer ligeiramente a sopa.</p>
+
+<h3>Ingredientes (serve 2)</h3>
+<ul>
+<li>1 lb (≈450 g) de tomates Roma</li>
+<li>2 pimentos vermelhos (ou 4 talos de aipo)</li>
+<li>1 dente de alho</li>
+<li>10 folhas de manjericão</li>
+<li>Sumo de 1 limão</li>
+<li>2 colheres (sopa) de pó de tomate seco, OU 5–6 tomates secos duros (não em óleo)</li>
+<li>1/4 colher (chá) de chipotle em pó</li>
+<li>1/2 chávena de sementes de cânhamo (hemp seeds)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Se usar tomates secos duros: triture-os primeiro para virar pó (ou use pó pronto).</li>
+<li>Coloque todos os ingredientes no blender.</li>
+<li>Triture até ficar completamente liso e cremoso.</li>
+<li>Se quiser “amornar” mantendo cru: use apenas o aquecimento natural do blender (a fonte alerta que acima de 104°F/40°C já não é raw).</li>
+<li>Sirva de imediato.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Sweet Science Nutrition — 
+<a href="https://sweetsci.com/blog-recipes/raw-vegan-dream-of-tomato-soup" target="_blank" rel="noopener">
+https://sweetsci.com/blog-recipes/raw-vegan-dream-of-tomato-soup
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-crua-picante-e-cremosa-de-tomate-tomate-roma"></a>
+<h2 id="r3">R3 — Sopa Crua Picante e Cremosa de Tomate (tomate Roma)</h2>
+
+<h3>Introdução</h3>
+<p>Uma versão crua e vegan de “creme de tomate” com picante. Tudo é triturado a frio, sem cozedura, e o tomate Roma é a base.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 lb (≈450 g) de tomates Roma</li>
+<li>1 pimento vermelho</li>
+<li>1/2 chávena de tomate seco (hidratado, se necessário)</li>
+<li>1 dente de alho</li>
+<li>1/2–1 abacate (para cremosidade)</li>
+<li>Sumo de limão q.b. (conforme a receita)</li>
+<li>Sal q.b.</li>
+<li>Pimenta/cayenne/jalapeño q.b. (para o picante, conforme a receita)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Prepare os ingredientes: lave, corte e, se necessário, hidrate o tomate seco.</li>
+<li>Coloque tudo no blender/robot de cozinha.</li>
+<li>Triture até ficar bem cremoso.</li>
+<li>Ajuste sal, limão e picante a gosto.</li>
+<li>Sirva de imediato (pode também arrefecer no frigorífico antes).</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Don't Fear the Vegan — 
+<a href="https://dontfearthevegan.com/2012/04/12/spicy-cream-of-tomato-raw-soup/" target="_blank" rel="noopener">
+https://dontfearthevegan.com/2012/04/12/spicy-cream-of-tomato-raw-soup/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="marinara-crua-de-tomate-seco-com-tomate-roma-renee-loux"></a>
+<h2 id="r4">R4 — Marinara Crua de Tomate Seco (com tomate Roma) — Renée Loux</h2>
+
+<h3>Introdução</h3>
+<p>Marinara crua de textura “em camadas”: tomate Roma em cubos dá suculência e o tomate seco hidratado dá corpo e profundidade.</p>
+
+<h3>Ingredientes (rende ~5 chávenas)</h3>
+<ul>
+<li>1 1/2 chávenaTrigger de tomates secos</li>
+<li>6 tomates Roma (ou 4 tomates heirloom grandes), sem sementes e em cubos (≈4 1/2 chávenas)</li>
+<li>1 dente de alho, bem picado</li>
+<li>2 cebolinhos/cebolas verdes, picados</li>
+<li>1 chávena de folhas de manjericão fresco</li>
+<li>1/2 chávena de folhas de salsa (italiana) fresca</li>
+<li>1/4 a 1/2 colher (chá) de flocos de chili (opcional)</li>
+<li>1 colher (sopa) de folhas de orégãos frescos (ou 1 colher (chá) de orégãos secos)</li>
+<li>2 colheres (sopa) de azeite</li>
+<li>2–3 colheres (chá) de agave OU xarope de ácer (a receita também lista mel, mas para manter vegan escolha agave/ácer, que estão na própria fonte)</li>
+<li>1 colher (chá) de vinagre de sidra OU sumo de limão</li>
+<li>Sal marinho q.b.</li>
+<li>Pimenta preta q.b.</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Corte os tomates secos e deixe de molho em água só até cobrir, 10–20 min (até amolecerem).</li>
+<li>Corte os tomates Roma ao meio, retire as sementes e corte em cubos.</li>
+<li>No processador: pique alho, cebolinhos e ervas finamente.</li>
+<li>Adicione tomates secos escorridos, azeite, adoçante (agave/ácer) e vinagre/sumo de limão. Pulse (não é para ficar totalmente liso).</li>
+<li>Adicione o tomate Roma em cubos e pulse poucas vezes só para incorporar.</li>
+<li>Tempere com sal e pimenta. Sirva.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Renée Loux — 
+<a href="https://www.reneeloux.com/245/sun-dried-tomato-marinara-%28raw%29" target="_blank" rel="noopener">
+https://www.reneeloux.com/245/sun-dried-tomato-marinara-%28raw%29
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="lasagna-viva-raw-com-marinara-de-tomate-roma"></a>
+<h2 id="r5">R5 — “Lasagna Viva” (raw) com Marinara de Tomate Roma</h2>
+
+<h3>Introdução</h3>
+<p>Lasanha crua em camadas com “noodles” de curgete, marinara de tomate Roma, cogumelos marinados, espinafre “massageado” e “ricotta” de amêndoa. A fonte indica que pode ser aquecida suavemente num desidratador.</p>
+
+<h3>Ingredientes (rende 1 tabuleiro 7x7" / 4–6 porções)</h3>
+<p><strong>Camada “Ricotta” (amêndoa):</strong></p>
+<ul>
+<li>1 chávena de “almond cheese” (queijo de amêndoa da própria autora)</li>
+<li>2 colheres (sopa) de miso branco cru</li>
+<li>1 1/2 colheres (sopa) de cebola roxa, picada fina</li>
+<li>2 colheres (chá) de levedura nutricional</li>
+<li>1/2 colher (chá) de alho esmagado</li>
+<li>Pitada de noz-moscada</li>
+<li>Pitada de pimenta branca</li>
+</ul>
+
+<p><strong>Marinara:</strong></p>
+<ul>
+<li>6 tomates Roma, sem sementes e picados (≈6 chávenas)</li>
+<li>1/2 chávena de pó de tomate seco</li>
+<li>1 1/2 colheres (sopa) de cebola finamente picada</li>
+<li>1 1/2 colheres (chá) de alho esmagado</li>
+<li>1 1/2 colheres (sopa) de manjericão fresco picado</li>
+<li>1 1/2 colheres (sopa) de orégãos frescos picados</li>
+<li>1/2 colher (chá) de sal rosa (Himalaya) (ou similar)</li>
+<li>Pitada de pimenta</li>
+</ul>
+
+<p><strong>“Noodles”:</strong></p>
+<ul>
+<li>2 curgetes grandes, laminadas no sentido do comprimento muito finas (≈1/16")</li>
+<li>Sal marinho q.b.</li>
+</ul>
+
+<p><strong>Espinafre:</strong></p>
+<ul>
+<li>1/2 lb (≈225 g) de espinafre, lavado e bem seco</li>
+</ul>
+
+<p><strong>Camada de cogumelos:</strong></p>
+<ul>
+<li>16 oz (≈450 g) de cogumelos, lavados e fatiados</li>
+<li>2 colheres (sopa) de tamari</li>
+<li>2 colheres (sopa) de azeite prensado a frio</li>
+<li>Pitada de pimenta</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li><strong>Ricotta:</strong> Numa taça, misture “almond cheese”, miso, cebola, levedura nutricional, alho, noz-moscada e pimenta branca. Reserve.</li>
+<li><strong>Marinara:</strong> (Conforme a receita) Prepare a marinara combinando tomates Roma (sem sementes) com os restantes ingredientes da marinara, ajustando sal/pimenta.</li>
+<li><strong>Curgete:</strong> Lamine a curgete muito fina.</li>
+<li>Salpique ligeiramente e deixe “suar” para amolecer; depois remova o excesso de líquido.</li>
+<li><strong>Cogumelos:</strong> Misture cogumelos com tamari, azeite e pimenta; deixe marinar.</li>
+<li><strong>Montagem:</strong> Faça camadas alternadas: curgete (noodles) + marinara + espinafre + cogumelos + ricotta, repetindo até terminar.</li>
+<li>(Opcional, conforme a fonte) Aqueça suavemente no desidratador para servir morno, mantendo o conceito “raw”.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Nouveau Raw — 
+<a href="https://nouveauraw.com/italian-cuisine/living-lasagna/" target="_blank" rel="noopener">
+https://nouveauraw.com/italian-cuisine/living-lasagna/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="tabule-cru-raw-vegan-tabbouleh-com-tomate-roma"></a>
+<h2 id="r6">R6 — Tabule Cru (Raw Vegan Tabbouleh) com Tomate Roma</h2>
+
+<h3>Introdução</h3>
+<p>Tabule cru centrado em ervas (salsa e hortelã) com tomate Roma. A fonte recomenda marinar no frigorífico durante a noite para amaciar e integrar sabores.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>5 chávenas de salsa (preferencialmente italiana/folha lisa) picada</li>
+<li>1/4 chávena de hortelã em tiras finas</li>
+<li>1/4 chávena de azeite virgem extra</li>
+<li>3 tomates Roma pequenos, picados</li>
+<li>1/2 cebola grande, picada média</li>
+<li>Sumo de 2 limões</li>
+<li>1/2 colher (chá) de sal marinho</li>
+<li>Pimenta moída q.b.</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Junte tudo numa taça grande e misture bem para envolver.</li>
+<li>Cubra e guarde no frigorífico durante a noite (ou pelo menos 8–12 horas).</li>
+<li>Sirva frio.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Feed Your Skull — 
+<a href="https://feedyourskull.com/2012/02/01/raw-vegan-tabouli-salad/" target="_blank" rel="noopener">
+https://feedyourskull.com/2012/02/01/raw-vegan-tabouli-salad/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="tomates-secos-caseiros-raw-vegan-com-tomate-roma-desidratador"></a>
+<h2 id="r7">R7 — Tomates Secos Caseiros (Raw Vegan) com Tomate Roma (desidratador)</h2>
+
+<h3>Introdução</h3>
+<p>Receita/técnica para fazer tomate Roma seco em casa com desidratador, apenas com sal, para guardar e usar em pratos raw.</p>
+
+<h3>Ingredientes (rende ~1 chávena)</h3>
+<ul>
+<li>2 lb (≈900 g) de tomates Roma (ou outros de pele grossa)</li>
+<li>1 colher (chá) de sal</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Lave os tomates e seque.</li>
+<li>Corte-os (conforme indicado na receita) para desidratar uniformemente.</li>
+<li>Disponha nos tabuleiros do desidratador.</li>
+<li>Polvilhe com sal.</li>
+<li>Desidrate até ficarem “leathery” (tipo fruta seca), ainda maleáveis, mas sem humidade superficial (a fonte alerta para risco de bolor se ficar húmido).</li>
+<li>Guarde em recipiente hermético num local fresco e escuro (a fonte refere até ~6 meses). Se endurecerem, hidrate em água antes de usar.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Mariko Sakata — 
+<a href="https://marikosakata.com/homemade-sun-dried-tomatoes/" target="_blank" rel="noopener">
+https://marikosakata.com/homemade-sun-dried-tomatoes/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="crackers-basicos-de-linhaca-com-tomate-roma-desidratador-a-115f-46c"></a>
+<h2 id="r8">R8 — Crackers Básicos de Linhaça com Tomate Roma (desidratador a 115°F/46°C)</h2>
+
+<h3>Introdução</h3>
+<p>Crackers crus de linhaça com tomate Roma: mistura-se linhaça hidratada com um “puré” de tomate e temperos, adiciona-se tomate fatiado e desidrata-se.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>4 chávenas de sementes de linhaça (flax) demolhadas (soaked) — demolhar 4 horas</li>
+<li>2 tomates Roma inteiros</li>
+<li>2 colheres (sopa) de manjericão seco</li>
+<li>1 dente de alho</li>
+<li>1 colher (sopa) de sal marinho</li>
+<li>2 chávenas de tomate fatiado</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Demolhe a linhaça durante 4 horas até ficar “pegajosa”.</li>
+<li>Num blender, triture: tomate Roma, sal, manjericão e alho.</li>
+<li>Misture esse puré com a linhaça demolhada e com o tomate fatiado, envolvendo até formar uma mistura espessa.</li>
+<li>Espalhe com espátula no tabuleiro do desidratador (espessura desejada 1/4" a 1/2").</li>
+<li>Desidrate a 115°F (46°C) por ~14 horas, até secar completamente.</li>
+<li>Pode virar a meio para acelerar. Guarda-se em recipiente hermético.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Home Depot (PDF) — 
+<a href="https://images.thdstatic.com/catalog/pdfImages/51/51d2cad9-73d8-4b32-ac66-73a49bf429f2.pdf" target="_blank" rel="noopener">
+https://images.thdstatic.com/catalog/pdfImages/51/51d2cad9-73d8-4b32-ac66-73a49bf429f2.pdf
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salsa-fermentada-lactofermentada-com-tomate-roma"></a>
+<h2 id="r9">R9 — Salsa Fermentada (lactofermentada) com Tomate Roma</h2>
+
+<h3>Introdução</h3>
+<p>Salsa crua que fermenta em salmoura e desenvolve acidez e gás naturalmente. É ajustável no picante e pode ser fermentada 2–4 dias (provando diariamente).</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>8 a 10 tomates Roma</li>
+<li>2 cebolas roxas médias</li>
+<li>2 pimentos vermelhos</li>
+<li>2 a 4 jalapeños (a gosto)</li>
+<li>4 a 6 dentes de alho</li>
+<li>2 colheres (sopa) de sal (divididas)</li>
+<li>2 chávenas de água (à temperatura ambiente)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Lave o recipiente de fermentação com água quente e detergente, enxague e seque.</li>
+<li>Pique grosseiramente 8–10 tomates Roma e envolva com 1 colher (sopa) de sal numa taça.</li>
+<li>Pique cebolas, pimentos, jalapeños e alho; misture tudo.</li>
+<li>Transfira para 1 frasco de meia-galão (ou 2 frascos de 1 quart).</li>
+<li>Dissolva 1 colher (sopa) de sal em 2 chávenas de água.</li>
+<li>Cubra os ingredientes com a salmoura (tudo deve ficar submerso).</li>
+<li>Use um peso para manter submerso e feche.</li>
+<li>Deixe à temperatura ambiente (fora de sol direto). Se não usar airlock, “arrote” abrindo diariamente.</li>
+<li>Fermente 2–4 dias, provando diariamente até atingir o sabor desejado.</li>
+<li>Para parar/abrandar: leve ao frigorífico (a fonte recomenda frio para evitar “explosões” de gás e para conservar).</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Crave The Good — 
+<a href="https://www.cravethegood.com/fermented-salsa/" target="_blank" rel="noopener">
+https://www.cravethegood.com/fermented-salsa/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-taco-raw-vegan-com-tomate-roma-e-carne-de-nozes"></a>
+<h2 id="r10">R10 — Salada Taco Raw-Vegan com Tomate Roma (e “carne” de nozes)</h2>
+
+<h3>Introdução</h3>
+<p>Salada taco 100% crua: base de alface e ervas, tomate Roma, “carne” de nozes temperada, “sour cream” de caju e guacamole — tudo preparado sem cozedura.</p>
+
+<h3>Ingredientes</h3>
+<p><strong>Base da salada:</strong></p>
+<ul>
+<li>1/2 cabeça de alface iceberg, picada</li>
+<li>1 chávena de coentros/cilantro, picados</li>
+<li>1 chávena de cebolinho/cebola verde, picada</li>
+<li>1 chávena de tomate “on-the-vine” ou tomate Roma, picado</li>
+<li>“Nut meat” a gosto (ver abaixo)</li>
+<li>“Sour cream” a gosto (ver abaixo)</li>
+<li>Guacamole “chunky” a gosto (ver abaixo)</li>
+<li>Opcional: molho picante fermentado, para finalizar</li>
+</ul>
+
+<p><strong>“Nut meat” (carne de nozes):</strong></p>
+<ul>
+<li>1 chávena de nozes (walnuts) ou amêndoas</li>
+<li>1 colher (chá) de coconut aminos</li>
+<li>1 colher (chá) de chili em pó</li>
+<li>1/2 colher (chá) de cebola em pó</li>
+<li>1/2 colher (chá) de alho em pó</li>
+<li>1/4 colher (chá) de pimenta (ou a gosto)</li>
+<li>1/4 colher (chá) de sal (ou a gosto)</li>
+<li>1/8 colher (chá) de paprika</li>
+<li>1/8 colher (chá) de cayenne</li>
+</ul>
+
+<p><strong>“Sour cream”:</strong></p>
+<ul>
+<li>1 1/2 chávena de cajus demolhados</li>
+<li>2 colheres (chá) de vinagre de sidra</li>
+<li>Sumo de 2 limões pequenos</li>
+<li>1/2 colher (chá) de sal (Himalaya ou marinho)</li>
+<li>3/4 chávena de água</li>
+<li>Cebolinho (chives) para guarnecer (opcional)</li>
+</ul>
+
+<p><strong>Guacamole “chunky”:</strong></p>
+<ul>
+<li>2 abacates maduros</li>
+<li>1–2 punhados de coentros/cilantro, picados</li>
+<li>5–10 tomates uva/cherry, fatiados ou em cubos</li>
+<li>1/2 cebola roxa pequena</li>
+<li>Sal (Himalaya ou marinho) q.b.</li>
+<li>Pimenta preta q.b.</li>
+<li>Cayenne q.b. (opcional)</li>
+<li>Mais folhas de coentros para finalizar (opcional)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Lave e pique a alface; pique coentros, cebola verde e tomate.</li>
+<li>Junte numa taça grande.</li>
+<li>Prepare o “nut meat”: triture/processe as nozes/amêndoas e envolva com os temperos listados.</li>
+<li>Prepare a “sour cream”: bata no blender os cajus demolhados com vinagre, limão, sal e água até ficar cremoso.</li>
+<li>Prepare o guacamole: esmague abacate e misture os restantes ingredientes.</li>
+<li>Junte as quantidades desejadas de “nut meat”, “sour cream” e guacamole à salada.</li>
+<li>Misture e finalize (opcional) com molho picante fermentado.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Blooming Raw — 
+<a href="https://www.bloomingraw.com/blog/recipes%2Ftaco-salad" target="_blank" rel="noopener">
+https://www.bloomingraw.com/blog/recipes%2Ftaco-salad
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

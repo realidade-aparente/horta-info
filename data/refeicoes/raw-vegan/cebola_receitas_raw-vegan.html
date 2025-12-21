@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Cebola – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header{
+  background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria));
+  color:#fff;padding:1.2rem 1rem .8rem;box-shadow:0 2px 4px rgba(0,0,0,0.12)
+}
+header h1{margin:0 0 .25rem;font-size:1.7rem}
+header p{margin:0;opacity:.9}
+main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+<div class="masthead">
+  <header>
+    <h1>Cebola – Receitas de Comida Viva</h1>
+    <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+  </header>
+
+  <nav>
+    <a href="../../../index.html">Início</a>
+    <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+    <a href="../../../abobora-grande.html">Abóbora grande</a>
+    <a href="../../../acelga.html">Acelga</a>
+    <a href="../../../agriao.html">Agrião-de-água</a>
+    <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+    <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+    <a href="../../../alface.html">Alface</a>
+    <a href="../../../alho.html">Alho</a>
+    <a href="../../../alho-frances.html">Alho-francês</a>
+    <a href="../../../aneto.html">Aneto / Endro</a>
+    <a href="../../../batata-comum.html">Batata comum</a>
+    <a href="../../../batata-doce.html">Batata-doce</a>
+    <a href="../../../beringela.html">Beringela</a>
+    <a href="../../../beterraba.html">Beterraba</a>
+    <a href="../../../brocolo.html">Brócolo</a>
+    <a href="../../../canonigos.html">Canónigos</a>
+    <a href="../../../cebola.html" class="ativa">Cebola</a>
+    <a href="../../../cebola-fresca.html">Cebola fresca</a>
+    <a href="../../../cenoura.html">Cenoura</a>
+    <a href="../../../coentros.html">Coentros</a>
+    <a href="../../../couve-chinesa.html">Couve chinesa</a>
+    <a href="../../../couve-flor.html">Couve-flor</a>
+    <a href="../../../couve-rabano.html">Couve-rábano</a>
+    <a href="../../../couve-repolho.html">Couve repolho</a>
+    <a href="../../../couve-toscana.html">Couve toscana</a>
+    <a href="../../../curgete.html">Curgete</a>
+    <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+    <a href="../../../espinafre.html">Espinafre</a>
+    <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+    <a href="../../../feijao-verde.html">Feijão verde</a>
+    <a href="../../../manjericao.html">Manjericão</a>
+    <a href="../../../milho-doce.html">Milho doce</a>
+    <a href="../../../mizuna.html">Mizuna</a>
+    <a href="../../../morangos.html">Morangueiro / Morangos</a>
+    <a href="../../../moringa.html">Moringa</a>
+    <a href="../../../nabica.html">Nabiça</a>
+    <a href="../../../nabo.html">Nabo</a>
+    <a href="../../../pak-choi.html">Pak choi</a>
+    <a href="../../../pepino.html">Pepino</a>
+    <a href="../../../pimento.html">Pimento</a>
+    <a href="../../../rabanete.html">Rabanete</a>
+    <a href="../../../rabano.html">Rábano / Daikon</a>
+    <a href="../../../rucula.html">Rúcula</a>
+    <a href="../../../salanova.html">Salanova</a>
+    <a href="../../../salsa.html">Salsa</a>
+    <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+    <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+  </nav>
+</div>
+
+<main>
+<article>
+
+<h2 id="receitas-preparados">Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/cebola_receitas_vegetariana.html">(Vegetariana)</a>
+    <a href="/data/refeicoes/vegan/cebola_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+  <ol>
+    <li><a href="#aneis-de-cebola-raw-crocantes-no-desidratador-nutritional-yeast-sesamo">Anéis de cebola raw crocantes no desidratador (nutritional yeast &amp; sésamo)</a></li>
+    <li><a href="#aneis-de-cebola-raw-picantes-tres-dredges-no-desidratador">Anéis de cebola raw picantes (três “dredges”) no desidratador</a></li>
+    <li><a href="#pao-raw-de-cebola-tipo-wrap-com-linhaca-e-sementes-de-girassol">Pão raw de cebola tipo wrap (com linhaça e sementes de girassol)</a></li>
+    <li><a href="#crackers-pao-de-cebola-raw-base-de-cebola-linhaca-e-girassol">Crackers/Pão de cebola raw (base de cebola, linhaça e girassol)</a></li>
+    <li><a href="#sopa-raw-french-onion-cremosa-com-cebola-balsamica-caramelizada">Sopa raw “French onion” cremosa com cebola balsâmica “caramelizada”</a></li>
+    <li><a href="#cebola-caramelizada-raw-opcao-desidratador">Cebola “caramelizada” raw (opção desidratador)</a></li>
+    <li><a href="#cebola-balsamica-caramelizada-raw-marinada-24h-desidratador">Cebola balsâmica “caramelizada” raw (marinada 24h + desidratador)</a></li>
+    <li><a href="#pate-raw-de-noz-e-cebola-com-feta-de-amendoa">Paté raw de noz e cebola (com “feta” de amêndoa)</a></li>
+    <li><a href="#dip-raw-de-endro-e-cebola-estilo-ranch-sem-desidratar">Dip raw de endro e “cebola” (estilo ranch, sem desidratar)</a></li>
+    <li><a href="#cebola-fermentada-lactofermentacao-em-salmoura-2">Cebola fermentada (lactofermentação em salmoura 2%)</a></li>
+  </ol>
+</div>
+
+<h2 id="resumo">Resumo das receitas (R1–R10)</h2>
+<ul>
+  <li><strong>R1. Anéis de cebola raw crocantes no desidratador (nutritional yeast &amp; sésamo)</strong> — Anéis de cebola bem finos, envolvidos em azeite e numa cobertura de levedura nutricional e sésamo. Vai ao desidratador até ficar mesmo crocante.</li>
+  <li><strong>R2. Anéis de cebola raw picantes (três “dredges”) no desidratador</strong> — Versão mais “frita” no aspeto: passa por três estações (farinha fina, “leite” vegetal e mistura seca com linhaça/caju e especiarias) e desidrata até estalar.</li>
+  <li><strong>R3. Pão raw de cebola tipo wrap (com linhaça e sementes de girassol)</strong> — Massa rápida de cebola triturada com sementes e linhaça. Desidrata e corta em folhas flexíveis para wraps/sanduíches.</li>
+  <li><strong>R4. Crackers/Pão de cebola raw (base de cebola, linhaça e girassol)</strong> — Uma base muito “cebola” com aminos de coco e azeite. Pode ficar como cracker fino e estaladiço ou como pão mais maleável, conforme o tempo.</li>
+  <li><strong>R5. Sopa raw “French onion” cremosa com cebola balsâmica “caramelizada”</strong> — Sopa cremosa de “leite” de amêndoa, miso e tomilho, enriquecida com cebola balsâmica desidratada (com textura e doçura de “caramelizada”). Dá para servir crua ou apenas amornada (&lt;45ºC).</li>
+  <li><strong>R6. Cebola “caramelizada” raw (opção desidratador)</strong> — Cebola branca marinada com azeite, água, tamari/aminos e adoçante (agave), depois desidratada para ganhar cor e doçura tipo “caramelizada”.</li>
+  <li><strong>R7. Cebola balsâmica “caramelizada” raw (marinada 24h + desidratador)</strong> — Cebola em rodelas marinada com azeite e vinagre balsâmico por 24h e depois desidratada até ficar macia e com aspeto “cozinhado”.</li>
+  <li><strong>R8. Paté raw de noz e cebola (com “feta” de amêndoa)</strong> — Paté denso e bem saciante, com cebola crua, nozes, aveia e um “feta” de amêndoa caseiro. Excelente para barrar ou rechear folhas/wraps.</li>
+  <li><strong>R9. Dip raw de endro e “cebola” (estilo ranch, sem desidratar)</strong> — Molho/dip cremoso com caju demolhado, vinagre de sidra, limão, endro e “cebola” (em flocos e pó). Fica ótimo com crudités.</li>
+  <li><strong>R10. Cebola fermentada (lactofermentação em salmoura 2%)</strong> — Cebola fatiada fermentada em salmoura calculada por peso (2%). Fica menos “picante”, ácida e com perfil probiótico — ótima como condimento.</li>
+</ul>
+
+<!-- RECEITAS COMPLETAS -->
+
+<h2 id="aneis-de-cebola-raw-crocantes-no-desidratador-nutritional-yeast-sesamo">Anéis de cebola raw crocantes no desidratador (nutritional yeast &amp; sésamo) <span class="source">[R1]</span></h2>
+<h4>Introdução</h4>
+<p>Estes anéis ficam com crocância real, mas sem fritura. A cobertura com levedura nutricional e sésamo cria um “empanado” aromático que aguenta bem o desidratador.</p>
+<h4>Ingredientes</h4>
+<ul>
+  <li>3 cebolas, fatiadas finas e separadas em anéis</li>
+  <li>1/4 chávena de azeite</li>
+  <li><strong>Cobertura:</strong></li>
+  <li>1 chávena de levedura nutricional</li>
+  <li>1/2 chávena de sementes de sésamo</li>
+  <li>1 colher de sopa de flocos de alho (garlic flakes)</li>
+  <li>Sal e pimenta q.b.</li>
+</ul>
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Coloca os anéis de cebola numa taça grande e separa-os bem (evita “bolos” de anéis colados).</li>
+  <li>Rega com o azeite e envolve com cuidado para não partir os anéis.</li>
+  <li>Noutra taça, mistura bem os ingredientes da cobertura.</li>
+  <li>Trabalhando por punhados, passa os anéis na cobertura, garantindo que ficam bem envolvidos.</li>
+  <li>Dispõe nos tabuleiros do desidratador (sobreposição leve é aceitável).</li>
+  <li>Desidrata a 105°F (≈40,5ºC) por cerca de 48 horas, até ficarem crocantes.</li>
+</ol>
+<h4>Fonte</h4>
+<p>Fonte: Down to Earth — <a href="https://www.downtoearth.org/recipes/appetizers-and-sides/raw-onion-rings" target="_blank" rel="noopener">https://www.downtoearth.org/recipes/appetizers-and-sides/raw-onion-rings</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<h2 id="aneis-de-cebola-raw-picantes-tres-dredges-no-desidratador">Anéis de cebola raw picantes (três “dredges”) no desidratador <span class="source">[R2]</span></h2>
+<h4>Introdução</h4>
+<p>Uma versão “snack de festa” com picante e um empanado mais espesso. O segredo aqui é o esquema de três estações (seco → húmido → seco), para formar uma crosta.</p>
+<h4>Ingredientes</h4>
+<ul>
+  <li>(Lista combinada das estações, conforme a fonte)</li>
+  <li>1/2 a 1 chávena de farinha de mesquite</li>
+  <li>1/2 chávena de “leite” de amêndoa cru OU “leite” de coco</li>
+  <li>2 chávenas de linhaça dourada moída</li>
+  <li>1 chávena de caju cru moído</li>
+  <li>4 colheres de sopa de chili em pó</li>
+  <li>2 colheres de chá de cominhos moídos</li>
+  <li>1/2 colher de chá de pimenta-caiena</li>
+  <li>1/2 colher de chá de sal rosa dos Himalaias</li>
+  <li>3+ cebolas grandes, fatiadas com ~1/4” (≈6 mm)</li>
+</ul>
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Organiza uma “linha” de 3 taças (estações).</li>
+  <li>Estação 1 (seco fino): coloca parte da farinha de mesquite (cerca de 1/2 chávena) numa taça para uma primeira passagem.</li>
+  <li>Estação 2 (húmido): coloca o leite vegetal numa taça.</li>
+  <li>Estação 3 (seco temperado): mistura linhaça moída + caju moído + chili + cominhos + caiena + sal.</li>
+  <li>Passa cada anel: Estação 1 → Estação 2 → Estação 3 (podes repetir húmido+seco para crosta mais grossa, se necessário).</li>
+  <li>Dispõe nos tabuleiros do desidratador e desidrata até ficarem secos por fora e com “mordida” (a fonte descreve o método detalhado de estações e secagem; ajusta o tempo ao teu equipamento mantendo temperaturas raw).</li>
+</ol>
+<h4>Fonte</h4>
+<p>Fonte: Nouveau Raw — <a href="https://nouveauraw.com/savory-treats/spicy-onion-rings/" target="_blank" rel="noopener">https://nouveauraw.com/savory-treats/spicy-onion-rings/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<h2 id="pao-raw-de-cebola-tipo-wrap-com-linhaca-e-sementes-de-girassol">Pão raw de cebola tipo wrap (com linhaça e sementes de girassol) <span class="source">[R3]</span></h2>
+<h4>Introdução</h4>
+<p>Isto é “pão” raw em modo prático: faz folhas que dobram, perfeitas para wraps. A cebola dá doçura e elasticidade quando desidratada corretamente.</p>
+<h4>Ingredientes</h4>
+<ul>
+  <li>5 chávenas de cebola branca doce (sweet onions)</li>
+  <li>1 chávena de sementes de girassol</li>
+  <li>1 chávena de linhaça moída</li>
+  <li>1/3 chávena de azeite</li>
+  <li>3 1/2 colheres de sopa de molho de soja cru / tamari / nama shoyu</li>
+</ul>
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Tritura as sementes de girassol num processador até virarem farinha grossa; reserva.</li>
+  <li>Pica/processa a cebola no processador (pequena, mas sem virar puré líquido).</li>
+  <li>Numa taça grande, mistura cebola + “farinha” de girassol + linhaça moída + azeite + tamari/nama shoyu.</li>
+  <li>Espalha em folhas finas sobre folhas antiaderentes (tipo teflex/papel próprio para desidratar).</li>
+  <li>Desidrata 1 hora a 120°F (≈49ºC) e depois baixa para 105°F (≈40,5ºC) por ~6 horas (até ficar firme e dobrável). Corta/“marca” no tamanho desejado quando começar a segurar a forma.</li>
+</ol>
+<h4>Fonte</h4>
+<p>Fonte: The Rawtarian — <a href="https://www.therawtarian.com/raw-onion-bread-recipe" target="_blank" rel="noopener">https://www.therawtarian.com/raw-onion-bread-recipe</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<h2 id="crackers-pao-de-cebola-raw-base-de-cebola-linhaca-e-girassol">Crackers/Pão de cebola raw (base de cebola, linhaça e girassol) <span class="source">[R4]</span></h2>
+<h4>Introdução</h4>
+<p>Uma massa de cebola bem intensa (mesmo “cebola a sério”). Podes desidratar até ficar cracker ou retirar antes para ficar como pão maleável.</p>
+<h4>Ingredientes</h4>
+<ul>
+  <li>2 1/2 lb (≈1,13 kg) de cebolas doces, descascadas</li>
+  <li>1 chávena (120 g) de sementes de girassol cruas moídas</li>
+  <li>1 chávena (130 g) de linhaça dourada moída</li>
+  <li>1/2 chávena (100 g) de azeite virgem extra (prensagem a frio)</li>
+  <li>6 colheres de sopa (150 g) de aminos de coco</li>
+</ul>
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Tritura/processa as cebolas até virarem uma base cremosa (sem necessidade de cozer).</li>
+  <li>Junta as sementes de girassol moídas, a linhaça moída, o azeite e os aminos de coco. Mistura bem.</li>
+  <li>Espalha fino em folhas do desidratador.</li>
+  <li>Para crackers: desidrata até ficar bem seco e estaladiço; vira a meio para secar dos dois lados.</li>
+  <li>Para pão: marca em quadrados maiores e retira quando estiver firme, mas ainda maleável.</li>
+</ol>
+<h4>Fonte</h4>
+<p>Fonte: Nouveau Raw — <a href="https://nouveauraw.com/crackers/onion-bread-cracker/" target="_blank" rel="noopener">https://nouveauraw.com/crackers/onion-bread-cracker/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<h2 id="sopa-raw-french-onion-cremosa-com-cebola-balsamica-caramelizada">Sopa raw “French onion” cremosa com cebola balsâmica “caramelizada” <span class="source">[R5]</span></h2>
+<h4>Introdução</h4>
+<p>Uma sopa inspirada na French onion, mas em versão raw: cremosa, com tomilho, miso e profundidade de cebola balsâmica desidratada. Serve fria ou amornada (sem passar ~45ºC).</p>
+<h4>Ingredientes</h4>
+<ul>
+  <li>(rende ~5 chávenas)</li>
+  <li>3 3/4 chávenas de “leite” de amêndoa</li>
+  <li>2 colheres de sopa de sumo de limão</li>
+  <li>1 colher de sopa de miso de grão-de-bico (chickpea miso)</li>
+  <li>1/4 chávena de aminos de coco</li>
+  <li>1/2 colher de chá de tomilho seco</li>
+  <li>1/2 colher de chá de pimenta-preta moída na hora</li>
+  <li>2 chávenas de cebola balsâmica “caramelizada” (dividida: 1 chávena picada + 1 chávena em tiras/inteira)</li>
+  <li>2 colheres de sopa de azeite</li>
+</ul>
+<h4>Passos de preparação</h4>
+<ol>
+  <li>No liquidificador, junta leite de amêndoa, limão, miso, aminos de coco, tomilho, pimenta e azeite.</li>
+  <li>Bate até ficar bem cremoso.</li>
+  <li>Envolve 1 chávena da cebola balsâmica “caramelizada” picada na sopa (para corpo e sabor).</li>
+  <li>Serve em taças e finaliza por cima com a cebola “caramelizada” restante (em tiras/inteira) para textura.</li>
+  <li>Para versão amornada: aquece apenas pelo atrito do liquidificador (batendo mais tempo) ou coloca a taça em banho-maria morno, controlando para não ultrapassar ~45ºC.</li>
+</ol>
+<h4>Fonte</h4>
+<p>Fonte: Nouveau Raw — <a href="https://nouveauraw.com/raw-recipes/soup/creamy-caramelized-french-onion-soup/" target="_blank" rel="noopener">https://nouveauraw.com/raw-recipes/soup/creamy-caramelized-french-onion-soup/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<h2 id="cebola-caramelizada-raw-opcao-desidratador">Cebola “caramelizada” raw (opção desidratador) <span class="source">[R6]</span></h2>
+<h4>Introdução</h4>
+<p>Isto não é “caramelizar” no fogão — é criar doçura, cor e textura tipo cozinhado por marinada + desidratação, mantendo o perfil raw.</p>
+<h4>Ingredientes</h4>
+<ul>
+  <li>(rende ~1 2/3 chávena)</li>
+  <li>1 lb (≈5 cebolas grandes) de cebola branca</li>
+  <li>1/4 chávena de azeite</li>
+  <li>1/4 chávena de água</li>
+  <li>1/4 chávena de tamari OU Bragg’s aminos</li>
+  <li>1/4 chávena de agave cru (ou mel cru, se for aceitável para ti; raw-vegan normalmente usa agave)</li>
+</ul>
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Fatia a cebola e envolve bem com azeite, água, tamari/aminos e agave.</li>
+  <li>Espalha nos tabuleiros (idealmente em folha antiaderente).</li>
+  <li>Desidrata até ganhar aspeto “cozinhado” e textura macia, mexendo/virando quando necessário para secagem uniforme (mantendo temperaturas raw do teu desidratador).</li>
+</ol>
+<h4>Fonte</h4>
+<p>Fonte: Nouveau Raw — <a href="https://nouveauraw.com/raw-recipes/main-dishes/caramelized-onions/" target="_blank" rel="noopener">https://nouveauraw.com/raw-recipes/main-dishes/caramelized-onions/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<h2 id="cebola-balsamica-caramelizada-raw-marinada-24h-desidratador">Cebola balsâmica “caramelizada” raw (marinada 24h + desidratador) <span class="source">[R7]</span></h2>
+<h4>Introdução</h4>
+<p>Uma “cebola balsâmica” bem rica, ótima como topping de saladas, wraps e bowls. O passo da marinada longa concentra sabor antes da desidratação.</p>
+<h4>Ingredientes</h4>
+<ul>
+  <li>(rende ~5 chávenas)</li>
+  <li>3 lb (≈1,36 kg) de cebola branca</li>
+  <li>3/4 chávena de azeite</li>
+  <li>3/4 chávena de vinagre balsâmico</li>
+</ul>
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Corta as cebolas em fatias de ~1/4” (≈6 mm).</li>
+  <li>Mistura o azeite com o vinagre balsâmico.</li>
+  <li>Envolve bem as cebolas na marinada.</li>
+  <li>Cobre e deixa no frigorífico por 24 horas.</li>
+  <li>Escorre a marinada (num coador de malha por cima de uma taça).</li>
+  <li>Espalha as cebolas em folhas (teflex) e desidrata: 1 hora a 145°F (≈63ºC) e depois baixa para 115°F (≈46ºC) por 4–6 horas, ou até ficarem macias e com aspeto “caramelizado”.</li>
+</ol>
+<h4>Fonte</h4>
+<p>Fonte: Nouveau Raw — <a href="https://nouveauraw.com/main-dishes/balsamic-caramelized-onions/" target="_blank" rel="noopener">https://nouveauraw.com/main-dishes/balsamic-caramelized-onions/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<h2 id="pate-raw-de-noz-e-cebola-com-feta-de-amendoa">Paté raw de noz e cebola (com “feta” de amêndoa) <span class="source">[R8]</span></h2>
+<h4>Introdução</h4>
+<p>Um paté robusto onde a cebola crua é mesmo protagonista (tang e aroma), equilibrada por nozes, aveia e um “feta” de amêndoa caseiro.</p>
+<h4>Ingredientes</h4>
+<ul>
+  <li><strong>Parte A — “Feta” de amêndoa</strong></li>
+  <li>2/3 chávena de amêndoas inteiras</li>
+  <li>2 colheres de sopa de sumo de limão</li>
+  <li>5 colheres de chá de azeite</li>
+  <li>2 dentes de alho</li>
+  <li>1/2 colher de chá de sal + 1/8 colher de chá</li>
+  <li>5 colheres de chá de água (ou 1/4 chávena se não demolhares as amêndoas)</li>
+  <li><strong>Parte B — Paté de noz e cebola</strong></li>
+  <li>1/8 chávena de farinha de linhaça (linseed/flax meal)</li>
+  <li>1/4 chávena de água</li>
+  <li>1 cebola castanha grande (aprox. 200 g)</li>
+  <li>2 colheres de sopa de salsa fresca</li>
+  <li>1 chávena de nozes</li>
+  <li>200 g do “feta” de amêndoa (feito acima)</li>
+  <li>1 colher de sopa de Bragg’s / tamari / molho de soja</li>
+  <li>2 chávenas de flocos de aveia</li>
+  <li>1 colher de chá de levedura nutricional</li>
+</ul>
+<h4>Passos de preparação</h4>
+<ol>
+  <li>(Opcional recomendado) Demolha as amêndoas de um dia para o outro.</li>
+  <li>Faz o “feta”: tritura tudo da Parte A até ficar um creme liso.</li>
+  <li>Numa taça pequena, mistura a linhaça (Parte B) com a água e deixa engrossar.</li>
+  <li>No processador, pica cebola + salsa + nozes até ficar com textura.</li>
+  <li>Junta o “feta”, Bragg’s/tamari, aveia, levedura nutricional e a mistura de linhaça já espessada; processa até virar um paté coeso.</li>
+  <li>Leva ao frigorífico 1–2 horas para firmar antes de servir.</li>
+</ol>
+<h4>Fonte</h4>
+<p>Fonte: Eating Vibrantly — <a href="https://eatingvibrantly.com/recipes/raw-walnut-onion-pate/" target="_blank" rel="noopener">https://eatingvibrantly.com/recipes/raw-walnut-onion-pate/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<h2 id="dip-raw-de-endro-e-cebola-estilo-ranch-sem-desidratar">Dip raw de endro e “cebola” (estilo ranch, sem desidratar) <span class="source">[R9]</span></h2>
+<h4>Introdução</h4>
+<p>Um dip/molho super versátil: serve como dip, espalha em wraps, ou dilui com um pouco de água para virar dressing. O sabor “cebola e endro” é o centro.</p>
+<h4>Ingredientes</h4>
+<ul>
+  <li>(rende ~3 chávenas)</li>
+  <li>2 chávenas de cajus (demolhados 2 horas)</li>
+  <li>1 1/2 chávena de água</li>
+  <li>2 1/2 colheres de sopa de vinagre de sidra cru</li>
+  <li>2 colheres de sopa de sumo de limão</li>
+  <li>2 colheres de sopa de flocos de cebola desidratada</li>
+  <li>1 colher de chá de cebola em pó</li>
+  <li>1/2 chávena (bem cheia) de endro fresco picado</li>
+  <li>2 colheres de chá de pimenta-preta</li>
+  <li>1/2 a 1 colher de chá de sal rosa (a gosto)</li>
+</ul>
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Escorre os cajus demolhados.</li>
+  <li>Bate no liquidificador: cajus + água + vinagre + limão + flocos/pó de cebola + endro + pimenta + sal.</li>
+  <li>Ajusta a textura com um pouco mais de água (se quiseres mais “molho” e menos “dip”).</li>
+  <li>Serve de imediato ou guarda 1 dia no frio (o sabor costuma apurar).</li>
+</ol>
+<h4>Fonte</h4>
+<p>Fonte: Nouveau Raw — <a href="https://nouveauraw.com/dressings-dips/seriously-o-m-g-dill-and-onion-dip/" target="_blank" rel="noopener">https://nouveauraw.com/dressings-dips/seriously-o-m-g-dill-and-onion-dip/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<h2 id="cebola-fermentada-lactofermentacao-em-salmoura-2">Cebola fermentada (lactofermentação em salmoura 2%) <span class="source">[R10]</span></h2>
+<h4>Introdução</h4>
+<p>Fermentar cebola deixa-a mais suave e dá acidez “viva”. A fonte usa um método por peso: calcula o sal como 2% do peso combinado (cebola + água).</p>
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 cebola grande</li>
+  <li>Água destilada (quantidade suficiente para cobrir; o peso é “a determinar”)</li>
+  <li>Sal marinho ou sal de conserva (quantidade “a determinar” pelo método 2%)</li>
+</ul>
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Escolhe um frasco (tipo mason jar) do tamanho certo para a cebola fatiada.</li>
+  <li>Coloca o frasco numa balança e faz tara.</li>
+  <li>Enche com a cebola fatiada e adiciona água até cobrir. Anota o peso total (cebola + água).</li>
+  <li>Calcula o sal: peso_total_em_gramas × 0,02.<br>Exemplo da fonte: 800 g × 0,02 = 16 g de sal.</li>
+  <li>Adiciona o sal (em gramas) e agita para dissolver.</li>
+  <li>Mantém a cebola totalmente submersa (peso de fermentação ou saco com água).</li>
+  <li>Fermenta à temperatura ambiente, longe do sol, por 4–7 dias. Verifica diariamente se está submersa e “arrotar” o frasco (abrir ligeiramente) para libertar pressão.</li>
+  <li>Quando o sabor estiver como gostas, guarda no frigorífico.</li>
+</ol>
+<h4>Fonte</h4>
+<p>Fonte: Life Around The Table — <a href="https://lifearoundthetable.ca/lacto-fermented-onions/" target="_blank" rel="noopener">https://lifearoundthetable.ca/lacto-fermented-onions/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

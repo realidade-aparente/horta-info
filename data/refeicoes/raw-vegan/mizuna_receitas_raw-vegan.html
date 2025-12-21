@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Mizuna – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+ <div class="masthead">
+<header>
+  <h1>Mizuna – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html" class="ativa">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+  </header></div>
+<main>
+<article>
+
+<h2>Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/mizuna_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/mizuna_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+<ol>
+<li><a href="#r1">Salada Raw de Mizuna com Amendoins</a> <span class="source">[R1]</span></li> 
+<li><a href="#r2">Salada Raw Mediterrânica de Mizuna com Tomate Seco e Pistáchios</a> <span class="source">[R2]</span></li>
+<li><a href="#r3">Pesto Raw de Mizuna com Manjericão</a> <span class="source">[R3]</span></li>
+<li><a href="#r4">Salada Raw de Mizuna Massageada com Limão e Tahini</a> <span class="source">[R4]</span></li>
+<li><a href="#r5">Wraps Raw de Mizuna com Patê de Cogumelos</a> <span class="source">[R5]</span></li>
+<li><a href="#r6">Sopa Raw Verde de Mizuna, Pepino e Abacate</a> <span class="source">[R6]</span></li>
+<li><a href="#r7">Salada Raw de Mizuna com Molho Cítrico de Kabosu</a> <span class="source">[R7]</span></li>
+<li><a href="#r8">Salada Raw Cítrica de Mizuna com Abacate e Jícama</a> <span class="source">[R8]</span></li>
+<li><a href="#r9">Salada Japonesa Raw de Algas sobre Cama de Mizuna</a> <span class="source">[R9]</span></li>
+<li><a href="#r10">Mizuna Fermentada Estilo Kimchi Raw</a> <span class="source">[R10]</span></li>
+</ol>
+</div>
+
+<h2> Resumo das Receitas</h2>
+<h4>R1. Salada Raw de Mizuna com Amendoins</h4>
+<p>Salada crua crocante onde a mizuna é combinada com pepino e amendoins, ligada por um molho simples agridoce.</p>
+
+<h4>R2. Salada Raw Mediterrânica de Mizuna com Tomate Seco e Pistáchios</h4>
+<p>Salada raw de inspiração mediterrânica com mizuna, tomate seco, azeitonas e pistáchios, rica em textura e umami vegetal.</p>
+
+<h4>R3. Pesto Raw de Mizuna com Manjericão</h4>
+<p>Pesto cru de mizuna e manjericão, versátil para massas de vegetais, wraps ou bowls raw.</p>
+
+<h4>R4. Salada Raw de Mizuna Massageada com Limão e Tahini</h4>
+<p>Mizuna massageada com limão e tahini, técnica clássica raw para amaciar folhas sem calor.</p>
+
+<h4>R5. Wraps Raw de Mizuna com Patê de Cogumelos</h4>
+<p>Wraps crus usando folhas de mizuna como “tortilha”, recheadas com patê raw de cogumelos e nozes.</p>
+
+<h4>R6. Sopa Raw Verde de Mizuna, Pepino e Abacate</h4>
+<p>Sopa verde crua, cremosa e refrescante, preparada no liquidificador e servida fria ou levemente amornada.</p>
+
+<h4>R7. Salada Raw de Mizuna com Molho Cítrico de Kabosu</h4>
+<p>Salada crua leve com mizuna, tomate, pepino e citrinos japoneses, focada na acidez e frescura.</p>
+
+<h4>R8. Salada Raw Cítrica de Mizuna com Abacate e Jícama</h4>
+<p>Salada crua elegante com mizuna, citrinos, jícama crocante e abacate cremoso.</p>
+
+<h4>R9. Salada Japonesa Raw de Algas sobre Cama de Mizuna</h4>
+<p>Salada raw japonesa com algas reidratadas, mizuna fresca e molho de missô e sésamo cru.</p>
+
+<h4>R10. Mizuna Fermentada Estilo Kimchi Raw</h4>
+<p>Mizuna fermentada crua, estilo kimchi, rica em probióticos e conservação natural.</p>
+
+
+
+<h2> Receitas completas</h2>
+<a id="salada-raw-de-mizuna-com-amendoins"></a>
+<h3 id="r1">R1 — Salada Raw de Mizuna com Amendoins</h3>
+
+<h4>Introdução</h4>
+<p>Uma salada simples e rápida que valoriza o sabor picante suave da mizuna, contrastando com a gordura e crocância do amendoim.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>1 molho grande de mizuna, lavada e seca</li>
+<li>1 pepino médio em rodelas finas</li>
+<li>2 colheres de sopa de amendoins crus ou ativados</li>
+<li>1 colher de sopa de azeite virgem extra</li>
+<li>1 colher de sopa de vinagre de arroz</li>
+<li>1 colher de chá de xarope de ácer</li>
+<li>Sal marinho q.b.</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>1. Cortar a mizuna grosseiramente.</li>
+<li>2. Juntar o pepino e os amendoins.</li>
+<li>3. Misturar azeite, vinagre e xarope.</li>
+<li>4. Envolver tudo, ajustar sal e servir.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Healthy Seasonal Recipes — 
+<a href="https://www.healthyseasonalrecipes.com/mizuna-salad-with-peanuts/" target="_blank" rel="noopener">
+https://www.healthyseasonalrecipes.com/mizuna-salad-with-peanuts/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-raw-mediterranica-de-mizuna-com-tomate-seco-e-pistachios"></a>
+<h2 id="r2">R2 — Salada Raw Mediterrânica de Mizuna com Tomate Seco e Pistáchios</h2>
+
+<h3>Introdução</h3>
+<p>Uma salada crua rica em sabor, onde a mizuna substitui a alface e suporta ingredientes mais intensos.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 molho de mizuna</li>
+<li>6 tomates secos (raw, demolhados) em tiras</li>
+<li>10 azeitonas pretas fatiadas</li>
+<li>2 colheres de sopa de pistáchios crus</li>
+<li>1 colher de sopa de azeite</li>
+<li>1 colher de sopa de sumo de limão</li>
+<li>Orégãos secos q.b.</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>1. Cortar a mizuna e colocar numa taça.</li>
+<li>2. Juntar tomate seco, azeitonas e pistáchios.</li>
+<li>3. Temperar com azeite, limão e orégãos.</li>
+<li>4. Misturar e servir.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Sharon Palmer —  
+<a href="https://sharonpalmer.com/greek-mizuna-salad-with-sun-dried-tomatoes-and-pistachios/" target="_blank" rel="noopener">
+https://sharonpalmer.com/greek-mizuna-salad-with-sun-dried-tomatoes-and-pistachios/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pesto-raw-de-mizuna-com-manjericao"></a>
+<h2 id="r3">R3 — Pesto Raw de Mizuna com Manjericão</h2>
+
+<h3>Introdução</h3>
+<p>Um pesto cru vibrante, ideal para massas de curgete ou wraps vivos.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 chávena de mizuna</li>
+<li>1 chávena de manjericão</li>
+<li>½ chávena de nozes ou macadâmias</li>
+<li>2 colheres de sopa de levedura nutricional</li>
+<li>1 dente de alho pequeno</li>
+<li>4 colheres de sopa de azeite</li>
+<li>Sumo de ½ limão</li>
+<li>Sal q.b.</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>1. Triturar todos os ingredientes até obter um creme.</li>
+<li>2. Ajustar azeite e sal.</li>
+<li>3. Usar imediatamente ou refrigerar.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Down to Earth —  
+<a href="https://www.downtoearth.org/recipes/entrees/mizuna-pesto" target="_blank" rel="noopener">
+https://www.downtoearth.org/recipes/entrees/mizuna-pesto
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-raw-de-mizuna-massageada-com-limao-e-tahini"></a>
+<h2 id="r4">R4 — Salada Raw de Mizuna Massageada com Limão e Tahini</h2>
+
+<h3>Introdução</h3>
+<p>A massagem ativa enzimas e amacia folhas sem calor.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 molho de mizuna</li>
+<li>1 colher de sopa de tahini cru</li>
+<li>1 colher de sopa de sumo de limão</li>
+<li>1 colher de sopa de azeite</li>
+<li>Sal q.b.</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>1. Colocar tudo numa taça.</li>
+<li>2. Massagear com as mãos 1–2 minutos.</li>
+<li>3. Servir de imediato.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Rawmazing —  
+<a href="https://www.rawmazing.com/massaged-greens-salad/" target="_blank" rel="noopener">
+https://www.rawmazing.com/massaged-greens-salad/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="wraps-raw-de-mizuna-com-pate-de-cogumelos"></a>
+<h2 id="r5">R5 — Wraps Raw de Mizuna com Patê de Cogumelos</h2>
+
+<h3>Introdução</h3>
+<p>As folhas de mizuna funcionam como wraps vivos e digestivos.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Folhas grandes de mizuna</li>
+<li>1 chávena de cogumelos crus</li>
+<li>½ chávena de nozes demolhadas</li>
+<li>1 colher de sopa de azeite</li>
+<li>Sumo de limão q.b.</li>
+<li>Sal q.b.</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>1. Triturar cogumelos, nozes, azeite e limão.</li>
+<li>2. Ajustar sal.</li>
+<li>3. Rechear folhas e enrolar.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The Rawtarian —  
+<a href="https://www.therawtarian.com/raw-vegan-wraps-recipe" target="_blank" rel="noopener">
+https://www.therawtarian.com/raw-vegan-wraps-recipe
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-raw-verde-de-mizuna-pepino-e-abacate"></a>
+<h2 id="r6">R6 — Sopa Raw Verde de Mizuna, Pepino e Abacate</h2>
+
+<h3>Introdução</h3>
+<p>Sopa viva, alcalinizante e refrescante.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 chávena de mizuna</li>
+<li>1 pepino</li>
+<li>1 abacate</li>
+<li>1 talo de aipo</li>
+<li>Água filtrada q.b.</li>
+<li>Sal q.b.</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>1. Triturar tudo até ficar liso.</li>
+<li>2. Ajustar textura com água.</li>
+<li>3. Servir fria ou morna (&lt;45&nbsp;°C).</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Raw Food Recipes —  
+<a href="https://www.rawfoodrecipes.com/raw-green-soup/" target="_blank" rel="noopener">
+https://www.rawfoodrecipes.com/raw-green-soup/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-raw-de-mizuna-com-molho-citrico-de-kabosu"></a>
+<h2 id="r7">R7 — Salada Raw de Mizuna com Molho Cítrico de Kabosu</h2>
+
+<h3>Introdução</h3>
+<p>Salada japonesa simples e aromática.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 molho de mizuna</li>
+<li>1 pepino</li>
+<li>1 tomate</li>
+<li>1 toranja</li>
+<li>2 colheres de sopa de azeite</li>
+<li>Sumo de kabosu q.b.</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>1. Cortar os vegetais.</li>
+<li>2. Misturar o molho.</li>
+<li>3. Envolver e servir.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Cookpad —  
+<a href="https://cookpad.com/eng/recipes/148322" target="_blank" rel="noopener">
+https://cookpad.com/eng/recipes/148322
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-raw-citrica-de-mizuna-com-abacate-e-jicama"></a>
+<h2 id="r8">R8 — Salada Raw Cítrica de Mizuna com Abacate e Jícama</h2>
+
+<h3>Introdução</h3>
+<p>Contraste perfeito entre crocante, ácido e cremoso.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>4 chávenas de mizuna</li>
+<li>½ toranja</li>
+<li>1 tangerina</li>
+<li>¼ chávena de jícama</li>
+<li>1 abacate</li>
+<li>Azeite e limão q.b.</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>1. Preparar todos os ingredientes.</li>
+<li>2. Misturar suavemente.</li>
+<li>3. Servir fresco.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Recipe Fiction —  
+<a href="https://www.recipefiction.com/2018/03/mizuna-citrus-salad-w-avocado-jicama.html" target="_blank" rel="noopener">
+https://www.recipefiction.com/2018/03/mizuna-citrus-salad-w-avocado-jicama.html
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-japonesa-raw-de-algas-sobre-cama-de-mizuna"></a>
+<h2 id="r9">R9 — Salada Japonesa Raw de Algas sobre Cama de Mizuna</h2>
+
+<h3>Introdução</h3>
+<p>Salada probiótica e mineral.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Mizuna fresca</li>
+<li>Algas reidratadas</li>
+<li>Pasta de missô cru</li>
+<li>Óleo de sésamo cru</li>
+<li>Limão q.b.</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>1. Misturar os ingredientes do molho.</li>
+<li>2. Dispor mizuna e algas.</li>
+<li>3. Regar e servir.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Mrs. Lin’s Kitchen —  
+<a href="https://site.mrslinskitchen.com/recipes/index.php/recipe/recipe/japanese-seaweed-salad-sesame-miso-dressing/" target="_blank" rel="noopener">
+https://site.mrslinskitchen.com/recipes/index.php/recipe/recipe/japanese-seaweed-salad-sesame-miso-dressing/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="mizuna-fermentada-estilo-kimchi-raw"></a>
+<h2 id="r10">R10 — Mizuna Fermentada Estilo Kimchi Raw</h2>
+
+<h3>Introdução</h3>
+<p>Fermentação natural que preserva enzimas e cria probióticos.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>2 molhos de mizuna</li>
+<li>1 colher de sopa de sal marinho</li>
+<li>1 colher de sopa de gengibre ralado</li>
+<li>1 dente de alho</li>
+<li>Chili cru q.b.</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>1. Massagear a mizuna com sal.</li>
+<li>2. Misturar gengibre, alho e chili.</li>
+<li>3. Fermentar 3–5 dias em frasco fechado.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Cultures for Health —  
+<a href="https://www.culturesforhealth.com/learn/recipe/vegetable-recipes/fermented-greens/" target="_blank" rel="noopener">
+https://www.culturesforhealth.com/learn/recipe/vegetable-recipes/fermented-greens/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

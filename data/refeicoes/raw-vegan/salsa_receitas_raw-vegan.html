@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Salsa – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+ <div class="masthead">
+<header>
+  <h1>Salsa – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html" class="ativa">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+  </header></div>
+
+<main>
+<article>
+
+<h2>Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/salsa_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/salsa_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+<ol>
+<li><a href="#r1">Pesto cru de coentros e salsa com nozes, cânhamo e limão</a> <span class="source">[R1]</span></li>
+<li><a href="#r2">Pesto cru de salsa com nozes (5 minutos)</a> <span class="source">[R2]</span></li>
+<li><a href="#r3">Pesto cru de salsa com miso suave e frutos secos (Chef Kirsten Gum)</a> <span class="source">[R3]</span></li>
+<li><a href="#r4">Tabule crudívoro (tabbouleh) de salsa com tomate e limão</a> <span class="source">[R4]</span></li>
+<li><a href="#r5">Molho Green Goddess cru com salsa e tahini (Renée Loux)</a> <span class="source">[R5]</span></li>
+<li><a href="#r6">Molho/Dip mediterrânico cru de salsa e abacate (com alho verde)</a> <span class="source">[R6]</span></li>
+<li><a href="#r7">Chimichurri vegano cru (com vinagre de vinho tinto e cominhos)</a> <span class="source">[R7]</span></li>
+<li><a href="#r8">Chimichurri cru “clean eating” (raw) com salsa e coentros</a> <span class="source">[R8]</span></li>
+<li><a href="#r9">Molho cru de abacate e salsa com miso e vinagre de sidra</a> <span class="source">[R9]</span></li>
+<li><a href="#r10">Pesto picante cru de salsa com jalapeño e nozes</a> <span class="source">[R10]</span></li>
+</ol>
+</div>
+
+<h2> Resumo das Receitas</h2>
+
+<h4>R1 — Pesto cru de coentros e salsa com nozes, cânhamo e limão</h4>
+<p>Resumo: Um pesto rápido e intenso, com salsa e coentros em partes semelhantes, enriquecido com nozes, levedura nutricional e corações de cânhamo; ideal para usar como molho, “spread” ou tempero.</p>
+
+<h4>R2 — Pesto cru de salsa com nozes (5 minutos)</h4>
+<p>Resumo: Pesto minimalista e muito verde, centrado em salsa, com nozes cruas, limão e azeite; fica pronto em minutos no processador.</p>
+
+<h4>R3 — Pesto cru de salsa com miso suave e frutos secos (Chef Kirsten Gum)</h4>
+<p>Resumo: Versão “raw/vegan” com miso suave e levedura nutricional para um sabor mais “queijoso”; usa frutos secos (pinhões, nozes do Brasil ou nozes).</p>
+
+<h4>R4 — Tabule crudívoro (tabbouleh) de salsa com tomate e limão</h4>
+<p>Resumo: Salada clássica em versão totalmente crua, com grande volume de salsa, hortelã, tomate, cebola e limão; repousa no frigorífico para apurar.</p>
+
+<h4>R5 — Molho Green Goddess cru com salsa e tahini (Renée Loux)</h4>
+<p>Resumo: Molho cremoso e herbáceo com base de abacate e tahini, carregado de ervas (com ênfase em salsa) e equilibrado com acidez e umami.</p>
+
+<h4>R6 — Molho/Dip mediterrânico cru de salsa e abacate (com alho verde)</h4>
+<p>Resumo: Dip/sauce muito centrado em salsa (2 chávenas), com abacate e alho verde; fica cremoso no liquidificador e serve-se imediatamente.</p>
+
+<h4>R7 — Chimichurri vegano cru (com vinagre de vinho tinto e cominhos)</h4>
+<p>Resumo: Chimichurri cru com salsa como ingrediente principal, apoiada por coentros, vinagre, alho e especiarias; processado até ficar bem picado.</p>
+
+<h4>R8 — Chimichurri cru “clean eating” (raw) com salsa e coentros</h4>
+<p>Resumo: Molho cru e rápido (menos de 5 minutos), com salsa em maior proporção, coentros, alho, azeite e vinagre de sidra; textura lisa de liquidificador.</p>
+
+<h4>R9 — Molho cru de abacate e salsa com miso e vinagre de sidra</h4>
+<p>Resumo: Molho cremoso de abacate com bastante salsa picada, vinagre de sidra e miso; feito no liquidificador, pensado para temperar e “avivar” pratos crus.</p>
+
+<h4>R10 — Pesto picante cru de salsa com jalapeño e nozes</h4>
+<p>Resumo: Pesto cru com picante ajustável (jalapeño), muita salsa e nozes cruas; processado em 2 etapas para controlar textura e intensidade.</p>
+
+
+<h2> Receitas completas</h2>
+
+<a id="pesto-cru-de-coentros-e-salsa-com-nozes-canhamo-e-limao"></a>
+<h3 id="r1">R1 — Pesto cru de coentros e salsa com nozes, cânhamo e limão</h3>
+
+<h4>Parte 1 — Introdução (breve)</h4>
+<p>Um pesto raw-vegan muito aromático, com salsa e coentros, onde o limão (com casca) dá frescura e profundidade. Fica ótimo como molho para pratos crus, “spread” ou para envolver em preparações frias.</p>
+
+<h4>Parte 2 — Ingredientes</h4>
+<ul>
+<li>1 chávena de salsa frisada (folhas e talos tenros), ligeiramente cheia</li>
+<li>1 chávena de coentros (folhas e talos tenros), ligeiramente cheia</li>
+<li>1/4 chávena de metades de noz</li>
+<li>1/4 de um limão grande, com casca, sem sementes</li>
+<li>2 colheres de sopa de corações de cânhamo</li>
+<li>1 colher de sopa de levedura nutricional</li>
+<li>2 dentes de alho, descascados</li>
+<li>1/2 colher de chá de sal</li>
+<li>1/4 chávena de azeite virgem extra</li>
+</ul>
+
+<h4>Parte 3 — Passos de preparação</h4>
+<ol>
+<li>Num processador pequeno (ou num recipiente alto para varinha-mágica), coloque: salsa, coentros, nozes, limão, corações de cânhamo, levedura nutricional, alho e sal. Triture em pulsos até ficar bem picado e uniforme (ou triture mais se estiver a usar varinha-mágica).</li>
+<li>Depois, vá regando com o azeite enquanto pulsa para emulsionar. (Com varinha-mágica, a consistência tende a ficar mais cremosa.)</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Fonte: Desiree Nielsen RD —
+<a href="https://desireerd.com/vegan-cilantro-and-parsley-pesto/" target="_blank" rel="noopener">
+https://desireerd.com/vegan-cilantro-and-parsley-pesto/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pesto-cru-de-salsa-com-nozes-5-minutos"></a>
+<h3 id="r2">R2 — Pesto cru de salsa com nozes (5 minutos)</h3>
+
+<h4>Parte 1 — Introdução (breve)</h4>
+<p>Um pesto cru muito simples, em que a salsa é a estrela. A combinação de nozes cruas, limão e azeite dá corpo e brilho sem necessidade de qualquer confeção.</p>
+
+<h4>Parte 2 — Ingredientes</h4>
+<ul>
+<li>2 chávenas de folhas de salsa fresca bem compactadas</li>
+<li>1/2 chávena de nozes cruas</li>
+<li>1/2 chávena de azeite virgem extra</li>
+<li>1 dente de alho</li>
+<li>sumo de 1 limão</li>
+<li>1/4 colher de chá de sal fino</li>
+</ul>
+
+<h4>Parte 3 — Passos de preparação</h4>
+<ol>
+<li>Junte todos os ingredientes no copo/base do seu processador de alimentos.</li>
+<li>Processe em velocidade alta até obter uma consistência lisa, mas fluida, com os ingredientes uniformemente triturados.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Fonte: Roots and Radishes —
+<a href="https://www.rootsandradishes.com/parsley-walnut-pesto/" target="_blank" rel="noopener">
+https://www.rootsandradishes.com/parsley-walnut-pesto/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pesto-cru-de-salsa-com-miso-suave-e-frutos-secos-chef-kirsten-gum"></a>
+<h3 id="r3">R3 — Pesto cru de salsa com miso suave e frutos secos (Chef Kirsten Gum)</h3>
+
+<h4>Parte 1 — Introdução (breve)</h4>
+<p>Este pesto é pensado para dar um perfil mais “queijoso” dentro do raw-vegan, usando levedura nutricional e miso suave. A textura é propositadamente mais “chunky”.</p>
+
+<h4>Parte 2 — Ingredientes</h4>
+<ul>
+<li>2 chávenas de salsa fresca</li>
+<li>4 colheres de sopa de azeite</li>
+<li>2 colheres de chá de miso suave (light miso)</li>
+<li>2 dentes de alho esmagados</li>
+<li>1 colher de chá de levedura nutricional</li>
+<li>1 colher de chá de sal</li>
+<li>1/2 chávena de pinhões, ou nozes do Brasil, ou nozes</li>
+</ul>
+
+<h4>Parte 3 — Passos de preparação</h4>
+<ol>
+<li>Combine todos os ingredientes, exceto os frutos secos escolhidos, num processador com lâmina “S” e pulse algumas vezes para começar a picar a salsa.</li>
+<li>Adicione os frutos secos e processe até atingir a consistência desejada.</li>
+<li>Não processe em excesso: o óleo dos frutos secos pode separar e a mistura ficar demasiado oleosa. Use “pulse”, não mistura contínua. O pesto deve ficar com alguma textura.</li>
+<li>Guarde num recipiente fechado no frigorífico até 4 dias.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Fonte: Botanical PaperWorks (Recipe Card, Chef Kirsten Gum) —
+<a href="https://botanicalpaperworks.com/wp-content/uploads/legacy/recipe_card_parsley_pesto.pdf" target="_blank" rel="noopener">
+https://botanicalpaperworks.com/wp-content/uploads/legacy/recipe_card_parsley_pesto.pdf
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="tabule-crudivoro-tabbouleh-de-salsa-com-tomate-e-limao"></a>
+<h3 id="r4">R4 — Tabule crudívoro (tabbouleh) de salsa com tomate e limão</h3>
+
+<h4>Parte 1 — Introdução (breve)</h4>
+<p>Uma salada crua muito centrada em salsa (5 chávenas), com hortelã e uma marinada simples de limão e azeite. O repouso longo no frio ajuda a “curar” e apurar sabores.</p>
+
+<h4>Parte 2 — Ingredientes</h4>
+<ul>
+<li>5 chávenas de salsa italiana (folha lisa) picada (aprox. 1 molho grande; remover os ~5 cm inferiores do caule)</li>
+<li>1/4 chávena de hortelã em fatias finas</li>
+<li>1/4 chávena de azeite virgem extra</li>
+<li>3 tomates Roma pequenos, picados</li>
+<li>1/2 cebola grande, picada média</li>
+<li>sumo de 2 limões</li>
+<li>1/2 colher de chá de sal marinho</li>
+<li>pimenta moída a gosto</li>
+</ul>
+
+<h4>Parte 3 — Passos de preparação</h4>
+<ol>
+<li>Adicione os ingredientes a uma taça grande e misture para envolver tudo.</li>
+<li>Cubra e guarde no frigorífico durante a noite ou, no mínimo, 8–12 horas.</li>
+<li>Sirva e desfrute.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Fonte: Feed Your Skull —
+<a href="https://feedyourskull.com/2012/02/01/raw-vegan-tabouli-salad/" target="_blank" rel="noopener">
+https://feedyourskull.com/2012/02/01/raw-vegan-tabouli-salad/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="molho-green-goddess-cru-com-salsa-e-tahini-renee-loux"></a>
+<h3 id="r5">R5 — Molho Green Goddess cru com salsa e tahini (Renée Loux)</h3>
+
+<h4>Parte 1 — Introdução (breve)</h4>
+<p>Uma interpretação raw do “Green Goddess”: base cremosa (abacate + tahini), bastante salsa e outras ervas para um molho cheio de camadas, pensado para saladas.</p>
+
+<h4>Parte 2 — Ingredientes</h4>
+<ul>
+<li>1/2 abacate</li>
+<li>3 colheres de sopa de tahini</li>
+<li>4 colheres de sopa de azeite</li>
+<li>1 colher de sopa + 1 colher de chá de sumo de limão</li>
+<li>1 colher de sopa + 1 colher de chá de vinagre de sidra</li>
+<li>1 colher de sopa + 1 colher de chá de vinagre balsâmico envelhecido</li>
+<li>1 colher de sopa + 1 colher de chá de nama shoyu</li>
+<li>1 colher de chá de miso branco</li>
+<li>1 dente de alho pequeno (opcional)</li>
+<li>1/2 chávena de água filtrada, ou a necessária</li>
+<li>1 chávena de folhas de salsa italiana bem compactadas</li>
+<li>3 colheres de sopa de cebolinho picado</li>
+<li>2 colheres de sopa de cerefólio picado</li>
+<li>1 colher de sopa de coentros picados</li>
+<li>1 colher de sopa de endro (dill) picado</li>
+<li>1 colher de sopa de estragão picado</li>
+<li>sal marinho</li>
+<li>pimenta preta moída na hora</li>
+<li>folhas verdes para salada (ex.: mesclun, alface romana picada, alface-manteiga ou rúcula)</li>
+</ul>
+
+<h4>Parte 3 — Passos de preparação</h4>
+<ol>
+<li>No liquidificador, coloque: abacate, tahini, azeite, sumo de limão, vinagre de sidra, vinagre balsâmico envelhecido, nama shoyu, miso, alho e água (comece com 1/4 a 1/3 chávena e ajuste para ajudar a triturar até à consistência desejada).</li>
+<li>Adicione salsa, cebolinho, cerefólio, coentros, endro e estragão e triture em pulsos até incorporar bem, mantendo “pintas”/flecks de ervas visíveis.</li>
+<li>Tempere a gosto com sal e pimenta.</li>
+<li>Use para envolver folhas de salada.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Fonte: Renée Loux —
+<a href="https://www.reneeloux.com/243/raw-vegan-green-goddess-dressing" target="_blank" rel="noopener">
+https://www.reneeloux.com/243/raw-vegan-green-goddess-dressing
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="molho-dip-mediterranico-cru-de-salsa-e-abacate-com-alho-verde"></a>
+<h3 id="r6">R6 — Molho/Dip mediterrânico cru de salsa e abacate (com alho verde)</h3>
+
+<h4>Parte 1 — Introdução (breve)</h4>
+<p>Um dip/sauce cru muito “verde”, rápido (5 minutos) e fortemente centrado em salsa. O alho verde dá frescura e um toque mais suave do que alho seco.</p>
+
+<h4>Parte 2 — Ingredientes</h4>
+<ul>
+<li>2 chávenas de salsa fresca de folha lisa, picada</li>
+<li>1 abacate, descascado</li>
+<li>3 hastes de alho verde (spring/green garlic), picadas</li>
+<li>2 colheres de sopa de sumo de limão espremido na hora</li>
+<li>1 colher de sopa de azeite virgem extra</li>
+<li>1/2 chávena de água</li>
+<li>sal, pimenta preta moída e flocos de paprika/pimentão, a gosto</li>
+</ul>
+
+<h4>Parte 3 — Passos de preparação</h4>
+<ol>
+<li>Reúna os ingredientes. Lave bem a salsa em água corrente. Faça o mesmo com o abacate, o alho verde e o limão.</li>
+<li>Esprema o limão e meça 2 colheres de sopa de sumo.</li>
+<li>Junte todos os ingredientes num liquidificador ou processador e triture até ficar liso e cremoso.</li>
+<li>Prove e ajuste temperos (mais sal, se necessário).</li>
+<li>Sirva imediatamente ou guarde no frigorífico por 1–2 dias.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Fonte: Go Eat Green —
+<a href="https://www.goeatgreen.com/parsley-avocado-dipping-sauce/" target="_blank" rel="noopener">
+https://www.goeatgreen.com/parsley-avocado-dipping-sauce/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="chimichurri-vegano-cru-com-vinagre-de-vinho-tinto-e-cominhos"></a>
+<h3 id="r7">R7 — Chimichurri vegano cru (com vinagre de vinho tinto e cominhos)</h3>
+
+<h4>Parte 1 — Introdução (breve)</h4>
+<p>Chimichurri cru e perfumado, com salsa em destaque e especiarias que dão profundidade. Fica melhor após repousar um pouco para a acidez e o alho assentarem.</p>
+
+<h4>Parte 2 — Ingredientes</h4>
+<ul>
+<li>30 g de salsa fresca</li>
+<li>15 g de coentros frescos</li>
+<li>3 colheres de sopa de vinagre de vinho tinto “raw”</li>
+<li>2 dentes de alho, picados</li>
+<li>1 colher de chá de orégãos</li>
+<li>1/4 colher de chá de cominhos moídos</li>
+<li>1/2 colher de chá de flocos de chili</li>
+<li>120 ml de azeite virgem extra grego “raw”</li>
+<li>1/2 colher de chá de sal marinho</li>
+</ul>
+
+<h4>Parte 3 — Passos de preparação</h4>
+<ol>
+<li>Num processador de alimentos, adicione salsa, coentros, vinagre, alho, orégãos e cominhos. Processe até ficar finamente picado.</li>
+<li>Incorpore em “pulse” os flocos de chili e o azeite e tempere com sal. Transfira para uma taça.</li>
+<li>Guarde no frigorífico até 5 dias. Antes de servir, deixe repousar 20 minutos para voltar à temperatura ambiente.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Fonte: Raw Vibrant Living —
+<a href="https://www.rawvibrantliving.co.uk/recipes/vegan-chimichurri/" target="_blank" rel="noopener">
+https://www.rawvibrantliving.co.uk/recipes/vegan-chimichurri/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="chimichurri-cru-clean-eating-raw-com-salsa-e-coentros"></a>
+<h3 id="r8">R8 — Chimichurri cru “clean eating” (raw) com salsa e coentros</h3>
+
+<h4>Parte 1 — Introdução (breve)</h4>
+<p>Uma versão crua e muito rápida, feita no liquidificador, com salsa como ingrediente principal. Bom como molho, dip ou tempero para pratos frios.</p>
+
+<h4>Parte 2 — Ingredientes</h4>
+<ul>
+<li>2 chávenas de salsa fresca orgânica</li>
+<li>1 chávena de coentros frescos orgânicos</li>
+<li>3 dentes de alho orgânicos</li>
+<li>1/4 chávena + 1 colher de sopa de azeite virgem extra orgânico</li>
+<li>2 colheres de sopa de vinagre de sidra orgânico</li>
+<li>1 colher de chá de flocos de pimenta vermelha (red pepper flakes)</li>
+<li>1/2 colher de chá de pimenta preta orgânica</li>
+<li>1/4 colher de chá de sal rosa dos Himalaias</li>
+</ul>
+
+<h4>Parte 3 — Passos de preparação</h4>
+<ol>
+<li>Adicione todos os ingredientes a um Vitamix (ou liquidificador potente) e triture até ficar bem misturado e liso, usando o “tamper” se necessário.</li>
+<li>Ajuste temperos ao seu gosto.</li>
+<li>Guarde num recipiente hermético (sem BPA) no frigorífico.</li>
+<li>Desfrute.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Fonte: The Healthy Family and Home —
+<a href="https://thehealthyfamilyandhome.com/clean-eating-vegan-chimichurri-sauce/" target="_blank" rel="noopener">
+https://thehealthyfamilyandhome.com/clean-eating-vegan-chimichurri-sauce/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="molho-cru-de-abacate-e-salsa-com-miso-e-vinagre-de-sidra"></a>
+<h3 id="r9">R9 — Molho cru de abacate e salsa com miso e vinagre de sidra</h3>
+
+<h4>Parte 1 — Introdução (breve)</h4>
+<p>Um molho cru cremoso, onde a salsa dá o lado herbáceo e o miso acrescenta salinidade/umami. Feito para bater e usar imediatamente.</p>
+
+<h4>Parte 2 — Ingredientes</h4>
+<ul>
+<li>1 abacate pequeno/médio, sem caroço e retirado da casca</li>
+<li>1 dente de alho</li>
+<li>3 colheres de sopa de vinagre de sidra</li>
+<li>1/2 chávena de salsa fresca picada</li>
+<li>2 colheres de sopa de pasta de miso</li>
+<li>1/2 chávena de água, conforme necessário</li>
+<li>pimenta a gosto</li>
+</ul>
+
+<h4>Parte 3 — Passos de preparação</h4>
+<ol>
+<li>Coloque todos os ingredientes num liquidificador de alta velocidade.</li>
+<li>Triture até obter uma textura suave e cremosa.</li>
+<li>Sirva e desfrute (rende 4 porções).</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Fonte: Run Plant Based —
+<a href="https://runplantbased.com/2017/03/avocado-parsley-dressing/" target="_blank" rel="noopener">
+https://runplantbased.com/2017/03/avocado-parsley-dressing/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pesto-picante-cru-de-salsa-com-jalapeno-e-nozes"></a>
+<h3 id="r10">R10 — Pesto picante cru de salsa com jalapeño e nozes</h3>
+
+<h4>Parte 1 — Introdução (breve)</h4>
+<p>Um pesto cru com picante ajustável: pode retirar mais ou menos sementes do jalapeño para controlar a intensidade. A salsa (com muitos talos) dá volume e frescura.</p>
+
+<h4>Parte 2 — Ingredientes</h4>
+<ul>
+<li>1 molho grande de salsa de folha lisa (cerca de 1,5 chávena bem compactada), pontas aparadas e grosseiramente picada — incluir a maioria dos talos</li>
+<li>1 a 2 jalapeños grandes (foram usados 2, com a maior parte das sementes removidas)</li>
+<li>1/2 chávena de metades de noz cruas</li>
+<li>3 dentes de alho</li>
+<li>3 colheres de sopa de sumo de limão (aprox. 1 limão grande)</li>
+<li>pouco menos de 1/2 colher de chá de sal fino, a gosto</li>
+<li>até 1/4 chávena de azeite virgem extra</li>
+</ul>
+
+<h4>Parte 3 — Passos de preparação</h4>
+<ol>
+<li>Prepare os jalapeños: retire mais ou menos sementes conforme o nível de picante pretendido. Pode guardar algumas sementes para ajustar no fim, se quiser.</li>
+<li>No processador, junte jalapeños, alho e nozes. Processe até ficar em “migalha” pegajosa.</li>
+<li>Adicione salsa, sumo de limão e sal e processe até incorporar completamente.</li>
+<li>Com o processador a trabalhar, verta em fio 3 a 4 colheres de sopa de azeite. Prove e ajuste sal/picante. Transfira para um recipiente e refrigere até usar.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Fonte: My Quiet Kitchen —
+<a href="https://myquietkitchen.com/spicy-parsley-pesto/" target="_blank" rel="noopener">
+https://myquietkitchen.com/spicy-parsley-pesto/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

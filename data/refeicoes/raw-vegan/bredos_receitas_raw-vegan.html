@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Bredos – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+ <div class="masthead">
+<header>
+  <h1>Bredos – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../bredos.html" class="ativa">Bredos</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+  </header></div>
+<main>
+<article>
+
+<h2>Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/bredos_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/bredos_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+<ol>
+<li><a href="#r1">Batido cru de amaranto e framboesa</a> <span class="source">[R1]</span></li> 
+<li><a href="#r2">“Sumo” cru no liquidificador de microgreens de amaranto (uvas, pepino e lima)</a> <span class="source">[R2]</span></li>
+<li><a href="#r3">Salada arco-íris crua com microgreens de amaranto (azeite e balsâmico)</a> <span class="source">[R3]</span></li>
+</ol>
+</div>
+
+<h2> Resumo das Receitas</h2>
+<h4>R1. Batido cru de amaranto e framboesa</h4>
+<p>Batido verde cru em que o amaranto (folhas/caules) entra como verde principal, com framboesas e outros verdes. É uma forma simples de consumir folhas jovens de amaranto cruas, em textura suave.</p>
+
+<h4>R2. “Sumo” cru no liquidificador de microgreens de amaranto (uvas, pepino e lima)</h4>
+<p>Bebida crua tipo “blender juice”: microgreens de amaranto com uvas, pepino, água, gelo e lima/limão. Leve, refrescante, e centrada em microgreens.</p>
+ 
+<h4>R3. Salada arco-íris crua com microgreens de amaranto (azeite e balsâmico)</h4>
+<p>Salada crua rápida em que os microgreens de amaranto são ingrediente destacado, com salada mista, cenoura e tomate, finalizada com azeite e vinagre balsâmico.</p>
+
+
+
+
+<h2> Receitas completas</h2>
+<a id="batido-cru-de-amaranto-e-framboesa"></a>
+<h3 id="r1">R1 — Batido cru de amaranto e framboesa</h3>
+
+<h4>Introdução</h4>
+<p>Um batido cru onde as folhas/caules jovens de amaranto entram como verde do dia, combinados com framboesas e outros verdes, resultando num batido nutritivo e fácil de beber. Mantém-se totalmente cru e vegan.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>Vários caules de folhas de cenoura (carrot greens)</li>
+<li>6 caules de amaranto (amaranth)</li>
+<li>2 caules de couve-kale (kale)</li>
+<li>2 caules de galinsoga (planta comestível; ver nota na fonte original)</li>
+<li>1 punhado de framboesas</li>
+<li>Água, q.b. (conforme necessário para bater)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Lavar bem todos os verdes (folhas de cenoura, amaranto, kale e galinsoga).</li>
+<li>Colocar os verdes no liquidificador.</li>
+<li>Adicionar as framboesas.</li>
+<li>Juntar um pouco de água e bater.</li>
+<li>Ajustar a água até obter a textura desejada e bater novamente até ficar homogéneo.</li>
+<li>Servir imediatamente.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Julia’s Edible Weeds — 
+<a href="https://juliasedibleweeds.com/recipes/amaranth-raspberry-smoothie/" target="_blank" rel="noopener">
+https://juliasedibleweeds.com/recipes/amaranth-raspberry-smoothie/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sumo-cru-no-liquidificador-de-microgreens-de-amaranto-uvas-pepino-e-lima"></a>
+<h2 id="r2">R2 — “Sumo” cru no liquidificador de microgreens de amaranto (uvas, pepino e lima)</h2>
+
+<h3>Introdução</h3>
+<p>Receita crua pensada como “blender juice” (menos espesso do que um batido). O foco são os microgreens de amaranto, com fruta e pepino para suavizar o sabor e tornar a bebida refrescante.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1/2 chávena de uvas (podem ser uvas congeladas)</li>
+<li>1 pepino pequeno (cerca de 3/4 de chávena, grosseiramente picado)</li>
+<li>1/3 de tabuleiro de microgreens de amaranto vermelho (red amaranth microgreens)</li>
+<li>Sumo de 1 lima ou 1/2 limão</li>
+<li>240 ml (8 oz) de água (ajustar a gosto)</li>
+<li>Gelo, cerca de um punhado</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Colocar no liquidificador: uvas, pepino, microgreens de amaranto, sumo de lima/limão, água e gelo.</li>
+<li>Triturar até ficar muito bem liso.</li>
+<li>Nota: a bebida pode separar; beber de imediato ou mexer antes de voltar a beber.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Quantum Microgreens —  
+<a href="https://quantummicrogreens.com/amaranth-microgreens-blender-juice/" target="_blank" rel="noopener">
+https://quantummicrogreens.com/amaranth-microgreens-blender-juice/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="salada-arco-iris-crua-com-microgreens-de-amaranto-azeite-e-balsamico"></a>
+<h2 id="r3">R3 — Salada arco-íris crua com microgreens de amaranto (azeite e balsâmico)</h2>
+
+<h3>Introdução</h3>
+<p>Salada crua simples, rápida e centrada nos microgreens de amaranto como ingrediente “destaque”. É uma montagem direta, sem cozinhar, com tempero mínimo (azeite + balsâmico).</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 pacote de “Super Micro Salad” (mistura de folhas/microgreens)</li>
+<li>1/2 chávena de cenoura ralada</li>
+<li>1/2 chávena de tomate-cereja, cortado ao meio</li>
+<li>1/4 chávena de microgreens de amaranto (Amaranth Microgreens)</li>
+<li>2 colheres de sopa de azeite</li>
+<li>1 colher de sopa de vinagre balsâmico</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Numa taça, juntar a mistura de folhas, a cenoura ralada, o tomate-cereja e os microgreens de amaranto.</li>
+<li>Regar com azeite e vinagre balsâmico.</li>
+<li>Envolver levemente e servir fresco.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+UNS Farms —  
+<a href="https://www.unsfarms.com/blogs/recipe/uns-amaranth-microgreens-rainbow-salad?srsltid=AfmBOopKzsYMBEvizqQCp4b7S4oe2eGOFOwEDKz79C6VHYVo6Ci0LiNf" target="_blank" rel="noopener">
+https://www.unsfarms.com/blogs/recipe/uns-amaranth-microgreens-rainbow-salad?srsltid=AfmBOopKzsYMBEvizqQCp4b7S4oe2eGOFOwEDKz79C6VHYVo6Ci0LiNf
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

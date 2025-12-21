@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Acelga – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria));color:#fff;padding:1.2rem 1rem 0.8rem;box-shadow:0 2px 4px rgba(0,0,0,0.12)}
+header h1{margin:0 0 .25rem;font-size:1.7rem}
+header p{margin:0;opacity:.9}
+main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+<div class="masthead">
+<header>
+  <h1>Acelga – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html" class="ativa">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+</div>
+
+<main>
+<article>
+
+<h2 id="receitas-preparados">Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/acelga_receitas_vegetariana.html">(Vegetariana)</a>
+    <a href="/data/refeicoes/vegan/acelga_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+  <ol>
+    <li><a href="#r1">Salada crua de acelga com maçã, pera e nozes</a> <span class="source">[R1]</span></li>
+    <li><a href="#r2">Salada crua de acelga massajada com sementes de linhaça e abóbora</a> <span class="source">[R2]</span></li>
+    <li><a href="#r3">Salada de acelga com tomate, cebola roxa e pinhões ao limão</a> <span class="source">[R3]</span></li>
+    <li><a href="#r4">Wraps crus de acelga ao estilo asiático</a> <span class="source">[R4]</span></li>
+    <li><a href="#r5">Wraps crus de acelga com creme de lima e cayenne</a> <span class="source">[R5]</span></li>
+    <li><a href="#r6">Chips crus de acelga em desidratador</a> <span class="source">[R6]</span></li>
+    <li><a href="#r7">Rolinhos crudívoros de acelga com pasta de caju e tabule de brócolos</a> <span class="source">[R7]</span></li>
+    <li><a href="#r8">Conserva fermentada de acelga e cenoura (tipo kimchi simples)</a> <span class="source">[R8]</span></li>
+    <li><a href="#r9">Salada proteica de acelga com brotos de trevo</a> <span class="source">[R9]</span></li>
+    <li><a href="#r10">Batido “Pureza pela manhã” com acelga, maçã, coentros e gengibre</a> <span class="source">[R10]</span></li>
+  </ol>
+</div>
+
+<h2 id="resumo">Resumo das receitas (R1–R10)</h2>
+
+<h4>R1 – Salada crua de acelga com maçã, pera e nozes</h4>
+<p>Salada outonal crua em que a acelga é laminada finamente e envolvida com maçã, pera e nozes, num vinagrete suave de vinagre branco ou de maçã, mostarda suave e um toque de adoçante natural. Fresca, ligeiramente doce e crocante.</p>
+
+<h4>R2 – Salada crua de acelga massajada com sementes de linhaça e abóbora</h4>
+<p>Folhas de acelga são massajadas com um molho cremoso simples e depois envolvidas com sementes de linhaça e de abóbora, mais passas douradas. Fica uma salada bem consistente, rica em gorduras boas e fibra.</p>
+
+<h4>R3 – Salada de acelga com tomate, cebola roxa e pinhões ao limão</h4>
+<p>Acelga crua finamente fatiada é combinada com tomate maduro, cebola roxa e pinhões, tudo ligado por um molho de limão e azeite. Uma salada rápida, leve e naturalmente vegana.</p>
+
+<h4>R4 – Wraps crus de acelga ao estilo asiático</h4>
+<p>Folhas grandes de acelga servem de “tortilha” e são recheadas com legumes ralados, abacate e um molho de inspiração asiática à base de tamari, gengibre e sumo de lima. Refeição crua, fresca e saciante.</p>
+
+<h4>R5 – Wraps crus de acelga com creme de lima e cayenne</h4>
+<p>Wraps crus inspirados em receitas de alimentação viva, com folhas de acelga recheadas com legumes coloridos e um creme espesso de sementes oleaginosas, lima e pimenta cayenne. Ótimos como prato principal ou para piqueniques.</p>
+
+<h4>R6 – Chips crus de acelga em desidratador</h4>
+<p>Folhas de acelga são envolvidas em molho temperado e desidratadas a baixa temperatura até ficarem estaladiças. Alternativa raw-vegan às batatas fritas, perfeita para snacks.</p>
+
+<h4>R7 – Rolinhos crudívoros de acelga com pasta de caju e tabule de brócolos</h4>
+<p>Folhas de acelga são usadas como base para rolinhos recheados com uma pasta cremosa de caju ao limão e um “tabule” cru de brócolos e ervas frescas. Receita típica de culinária viva.</p>
+
+<h4>R8 – Conserva fermentada de acelga e cenoura (tipo kimchi simples)</h4>
+<p>Tiras de acelga e cenoura são massajadas com sal e especiarias e deixadas fermentar num frasco. O resultado é uma conserva viva, ácida e ligeiramente picante, que acompanha muito bem saladas e pratos crus.</p>
+
+<h4>R9 – Salada proteica de acelga com brotos de trevo</h4>
+<p>Salada crua que combina acelga fatiada com sementes de abóbora, gersal e brotos (germinados) de trevo, finalizada com azeite. Nutritiva, rica em proteína vegetal e clorofila.</p>
+
+<h4>R10 – Batido “Pureza pela manhã” com acelga, maçã, coentros e gengibre</h4>
+<p>Batido verde crudívoro em que a acelga (ou espinafre) é batida com maçã, coentros, gengibre, limão e tâmaras. Fica um batido cremoso, aromático e muito refrescante para pequeno-almoço ou lanche.</p>
+
+<h2 id="receitas-completas">Receitas completas</h2>
+
+<!-- R1 -->
+<a id="r1"></a>
+<h2>R1 – Salada crua de acelga com maçã, pera e nozes <span class="source">[R1]</span></h2>
+
+<h4>(1) Introdução</h4>
+<p>Inspirada numa receita vegana de salada crua outonal de acelga com fruta e frutos secos, esta versão usa maçã, pera e nozes para equilibrar o sabor ligeiramente terroso da acelga. O molho simples de vinagre, mostarda e adoçante cria um contraste doce-ácido que funciona bem como entrada ou acompanhamento.</p>
+
+<h4>(2) Ingredientes (2–3 porções)</h4>
+<ul>
+  <li>1 molho de acelga (folhas jovens, de preferência), lavadas e bem secas</li>
+  <li>1 maçã média, de sabor ácido, em fatias finas</li>
+  <li>1 pera média, madura mas firme, em fatias finas</li>
+  <li>1 mão cheia de nozes, grosseiramente picadas</li>
+  <li>1 dente de alho pequeno, picado finamente (opcional)</li>
+  <li>2 colheres de sopa de vinagre branco suave ou vinagre de maçã</li>
+  <li>1 colher de chá de mostarda suave (tipo Dijon suave ou similar)</li>
+  <li>1 colher de chá de xarope de ácer, agave ou outro adoçante líquido cru</li>
+  <li>2–3 colheres de sopa de azeite virgem extra</li>
+  <li>Sal marinho fino, q.b.</li>
+  <li>Pimenta-preta moída na hora, q.b.</li>
+</ul>
+
+<h4>(3) Passos de preparação</h4>
+<ol>
+  <li>Preparar a acelga: remover os talos mais grossos (podem ser guardados para outra receita) e fatiar as folhas em tiras muito finas.</li>
+  <li>Colocar a acelga numa taça grande com uma pitada de sal e massajar ligeiramente com as mãos durante 1–2 minutos, até ficar um pouco mais macia.</li>
+  <li>Noutra taça pequena, preparar o molho: misturar o vinagre, a mostarda, o adoçante, o alho picado (se usar) e o azeite. Bater com um garfo até emulsionar. Ajustar sal e pimenta a gosto.</li>
+  <li>Verter parte do molho sobre a acelga e envolver bem. Se necessário, adicionar mais molho até que as folhas fiquem bem revestidas mas sem nadar em líquido.</li>
+  <li>Juntar a maçã e a pera fatiadas, bem como as nozes picadas. Envolver delicadamente para não partir demasiado a fruta.</li>
+  <li>Provar e ajustar temperos: mais sal, pimenta, vinagre ou adoçante, conforme o equilíbrio desejado.</li>
+  <li>Servir de imediato ou deixar repousar 5–10 minutos para os sabores se integrarem. A salada aguenta bem alguma antecedência, porque a acelga é mais resistente do que a alface.</li>
+</ol>
+
+<h4>(4) Fonte</h4>
+<p>
+Ernährung &amp; Gesundheit (diet-health.info) – 
+<a href="https://www.diet-health.info/en/recipes/ingredients/in/ic3149-swiss-chard" target="_blank" rel="noopener">https://www.diet-health.info/en/recipes/ingredients/in/ic3149-swiss-chard</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<!-- R2 -->
+<a id="r2"></a>
+<h2>R2 – Salada crua de acelga massajada com sementes de linhaça e abóbora <span class="source">[R2]</span></h2>
+
+<h4>(1) Introdução</h4>
+<p>Baseada numa salada de acelga crua massajada com um molho cremoso e enriquecida com sementes e frutos secos, esta versão junta sementes de linhaça e de abóbora, além de passas douradas, criando uma salada mais “rica” e energética, típica de alimentação viva.</p>
+
+<h4>(2) Ingredientes (2–3 porções)</h4>
+<ul>
+  <li>1 molho generoso de acelga, folhas lavadas e secas</li>
+  <li>2 colheres de sopa de sementes de linhaça moídas na hora</li>
+  <li>2 colheres de sopa de sementes de abóbora cruas</li>
+  <li>2 colheres de sopa de passas douradas ou sultanas</li>
+  <li>2 colheres de sopa de azeite virgem extra</li>
+  <li>1–2 colheres de sopa de sumo de limão</li>
+  <li>1 colher de chá de mostarda suave</li>
+  <li>1 colher de chá de xarope de ácer ou agave</li>
+  <li>1 pitada de sal marinho fino</li>
+  <li>Pimenta-preta moída, q.b.</li>
+  <li>Água, apenas se precisar de afinar a textura do molho</li>
+</ul>
+
+<h4>(3) Passos de preparação</h4>
+<ol>
+  <li>Cortar a acelga: separar talos muito grossos, se existirem, e fatiar as folhas em tiras finas. Colocar numa taça grande.</li>
+  <li>Preparar o molho: numa tigela pequena, misturar o azeite, o sumo de limão, a mostarda, o adoçante, o sal e a pimenta. Se ficar demasiado espesso, juntar 1–2 colheres de sopa de água e bater até ficar cremoso.</li>
+  <li>Massajar a acelga: verter o molho sobre a acelga e, com as mãos limpas, massajar durante 2–3 minutos, até a folha perder parte do volume e ficar mais macia e brilhante.</li>
+  <li>Juntar as sementes de linhaça moídas, as sementes de abóbora e as passas. Envolver bem para distribuir de forma uniforme.</li>
+  <li>Provar e ajustar temperos: mais limão para acidez, mais adoçante para equilíbrio doce-ácido, ou mais sal se necessário.</li>
+  <li>Deixar repousar 5–10 minutos para que a linhaça hidrate e o molho se fixe melhor às folhas.</li>
+  <li>Servir como salada principal ou acompanhamento de outros pratos crus.</li>
+</ol>
+
+<h4>(4) Fonte</h4>
+<p>
+Very Vegan Val – 
+<a href="https://veryveganval.com/2018/07/22/massaged-chard-salad-with-flax-pumpkin-seeds-and-golden-raisins/" target="_blank" rel="noopener">https://veryveganval.com/2018/07/22/massaged-chard-salad-with-flax-pumpkin-seeds-and-golden-raisins/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<!-- R3 -->
+<a id="r3"></a>
+<h2>R3 – Salada de acelga com tomate, cebola roxa e pinhões ao limão <span class="source">[R3]</span></h2>
+
+<h4>(1) Introdução</h4>
+<p>Inspirada numa salada simples de acelga crua com tomate e pinhões, esta receita mostra como a acelga pode ser usada tal como a couve ou a couve-kale em saladas. O molho de limão e azeite é muito rápido e deixa os sabores dos vegetais em destaque.</p>
+
+<h4>(2) Ingredientes (2–3 porções)</h4>
+<ul>
+  <li>1 molho de acelga, apenas as folhas, fatiadas finamente</li>
+  <li>2 tomates médios, maduros mas firmes, em cubos pequenos</li>
+  <li>1/2 cebola roxa pequena, em meias-luas finas</li>
+  <li>3 colheres de sopa de pinhões ou, em alternativa, amêndoas laminadas</li>
+  <li>2–3 colheres de sopa de azeite virgem extra</li>
+  <li>1–2 colheres de sopa de sumo de limão fresco</li>
+  <li>1 dente de alho pequeno, finamente picado (opcional)</li>
+  <li>Sal marinho fino, q.b.</li>
+  <li>Pimenta-preta moída, q.b.</li>
+</ul>
+
+<h4>(3) Passos de preparação</h4>
+<ol>
+  <li>Fatiar a acelga em tiras finas e colocar numa taça grande.</li>
+  <li>Adicionar uma pitada de sal e massajar ligeiramente com as mãos, apenas até começar a amolecer um pouco.</li>
+  <li>Juntar o tomate em cubos e a cebola roxa fatiada.</li>
+  <li>Tostar ligeiramente os pinhões numa frigideira seca, em lume muito baixo, apenas até libertarem aroma (podes saltar este passo se quiseres tudo 100% cru). Deixar arrefecer e juntar à salada.</li>
+  <li>Preparar o molho: numa taça pequena, misturar azeite, sumo de limão, alho picado (se usar), sal e pimenta. Bater com um garfo até emulsionar.</li>
+  <li>Verter o molho sobre a salada e envolver bem. Ajustar temperos a gosto.</li>
+  <li>Servir de imediato, ou deixar repousar alguns minutos para que a cebola e a acelga fiquem mais suaves.</li>
+</ol>
+
+<h4>(4) Fonte</h4>
+<p>
+Vegan On Board – 
+<a href="https://veganonboard.com/chard-salad/" target="_blank" rel="noopener">https://veganonboard.com/chard-salad/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<!-- R4 -->
+<a id="r4"></a>
+<h2>R4 – Wraps crus de acelga ao estilo asiático <span class="source">[R4]</span></h2>
+
+<h4>(1) Introdução</h4>
+<p>Baseados numa receita de wraps crus de acelga com inspiração asiática, estes rolinhos usam folhas grandes de acelga como “tortilha” para envolver legumes crocantes e um molho com tamari, gengibre e lima. São uma ótima alternativa a wraps de trigo, totalmente crus e sem glúten.</p>
+
+<h4>(2) Ingredientes (cerca de 4 wraps grandes)</h4>
+<p>Para os wraps:</p>
+<ul>
+  <li>4 folhas grandes de acelga, bem lavadas e secas</li>
+  <li>1 cenoura média, ralada em fios finos</li>
+  <li>1/2 pepino pequeno, em tiras finas</li>
+  <li>1/2 pimento vermelho, em tiras finas</li>
+  <li>1/2 abacate, em fatias</li>
+  <li>2 colheres de sopa de coentros frescos picados</li>
+  <li>2 colheres de sopa de cebolinho picado (opcional)</li>
+  <li>Sementes de sésamo, q.b. (opcional)</li>
+</ul>
+
+<p>Para o molho ao estilo asiático:</p>
+<ul>
+  <li>2 colheres de sopa de tamari ou shoyu sem pasteurização (cru, se disponível)</li>
+  <li>1 colher de sopa de sumo de lima</li>
+  <li>1 colher de chá de gengibre fresco ralado</li>
+  <li>1 colher de chá de óleo de sésamo tostado (se quiseres 100% cru, omite ou substitui por azeite)</li>
+  <li>1 colher de chá de xarope de ácer ou agave</li>
+  <li>1 dente de alho pequeno, ralado</li>
+  <li>Uma pitada de pimenta cayenne ou malagueta picada, a gosto</li>
+</ul>
+
+<h4>(3) Passos de preparação</h4>
+<ol>
+  <li>Preparar o molho: numa taça pequena, misturar o tamari, sumo de lima, gengibre ralado, óleo, adoçante, alho ralado e pimenta cayenne. Provar e ajustar ao teu gosto (mais ácido, mais picante, mais doce, etc.).</li>
+  <li>Preparar os vegetais de recheio: ralar a cenoura, cortar o pepino e o pimento em tiras finas, fatiar o abacate e picar os coentros e o cebolinho.</li>
+  <li>Preparar as folhas de acelga: se o talo central for muito espesso, afinar com uma faca, cortando uma “cunha” para que a folha fique mais maleável.</li>
+  <li>Montar cada wrap: colocar uma folha de acelga na tábua, com a parte mais larga voltada para ti.</li>
+  <li>Dispor no centro um pouco de cenoura, pepino, pimento, abacate e ervas frescas. Regar com 1–2 colheres de chá do molho.</li>
+  <li>Dobrar as laterais da folha sobre o recheio e depois enrolar de baixo para cima, formando um rolo firme, como um burrito.</li>
+  <li>Repetir com as restantes folhas. Se quiseres, corta cada rolo ao meio na diagonal para servir.</li>
+  <li>Servir com o molho restante à parte, para mergulhar.</li>
+</ol>
+
+<h4>(4) Fonte</h4>
+<p>
+Jessica in the Kitchen – 
+<a href="https://jessicainthekitchen.com/vegan-asian-swiss-chard-wraps/" target="_blank" rel="noopener">https://jessicainthekitchen.com/vegan-asian-swiss-chard-wraps/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<!-- R5 -->
+<a id="r5"></a>
+<h2>R5 – Wraps crus de acelga com creme de lima e cayenne <span class="source">[R5]</span></h2>
+
+<h4>(1) Introdução</h4>
+<p>Inspirados em wraps crus de acelga com molho cremoso de lima e cayenne, estes rolinhos juntam folhas de acelga com um recheio de legumes e um creme espesso de frutos secos e especiarias. São ideais para refeições raw-vegan mais substanciais.</p>
+
+<h4>(2) Ingredientes (4–6 wraps)</h4>
+<p>Para o creme de lima e cayenne:</p>
+<ul>
+  <li>1/2 chávena de cajus crus demolhados 4–6 h (ou amêndoas sem pele)</li>
+  <li>3–4 colheres de sopa de água (para ajustar a textura)</li>
+  <li>Sumo de 1 lima</li>
+  <li>1 colher de sopa de azeite virgem extra</li>
+  <li>1 dente de alho pequeno</li>
+  <li>1/4 a 1/2 colher de chá de pimenta cayenne (ajustar ao gosto)</li>
+  <li>1/2 colher de chá de sal marinho fino</li>
+  <li>1 colher de chá de xarope de ácer ou agave (opcional, para equilibrar a acidez)</li>
+</ul>
+
+<p>Para os wraps:</p>
+<ul>
+  <li>6 folhas grandes de acelga</li>
+  <li>1 cenoura média, ralada</li>
+  <li>1/2 courgette pequena, em tiras finas ou espiralizada</li>
+  <li>1/2 pimento amarelo ou vermelho, em tiras</li>
+  <li>1/2 abacate em fatias</li>
+  <li>2 colheres de sopa de salsa ou coentros frescos picados</li>
+</ul>
+
+<h4>(3) Passos de preparação</h4>
+<ol>
+  <li>Preparar o creme: escorrer os cajus demolhados e colocá-los no liquidificador com o sumo de lima, azeite, alho, cayenne, sal e 2 colheres de sopa de água. Triturar até ficar bem cremoso, adicionando mais água, colher a colher, até obter uma textura de creme espesso que se possa espalhar. Ajustar sal, picante e acidez.</li>
+  <li>Preparar as folhas de acelga: lavar e secar bem. Se o talo central for muito grosso, afinar com a faca para facilitar o enrolar.</li>
+  <li>Preparar os vegetais: ralar a cenoura, cortar a courgette e o pimento em tiras, fatiar o abacate e picar as ervas frescas.</li>
+  <li>Montar cada wrap: colocar uma folha de acelga na tábua, com a parte de dentro para cima. Barrar o centro da folha com 1–2 colheres de sopa do creme de lima e cayenne.</li>
+  <li>Dispor por cima um pouco de cenoura, courgette, pimento, abacate e ervas.</li>
+  <li>Dobrar as laterais para dentro e depois enrolar de baixo para cima, formando um rolo firme.</li>
+  <li>Repetir com as restantes folhas.</li>
+  <li>Servir de imediato ou guardar no frio por algumas horas. O creme também pode ser servido como molho à parte.</li>
+</ol>
+
+<h4>(4) Fonte</h4>
+<p>
+Rawmazing – 
+<a href="https://rawmazing.com/easy-raw-swiss-chard-wraps/" target="_blank" rel="noopener">https://rawmazing.com/easy-raw-swiss-chard-wraps/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<!-- R6 -->
+<a id="r6"></a>
+<h2>R6 – Chips crus de acelga em desidratador <span class="source">[R6]</span></h2>
+
+<h4>(1) Introdução</h4>
+<p>Chips crus de acelga são uma variação das conhecidas “kale chips”, usando acelga temperada e desidratada a baixa temperatura até ficar estaladiça. São um snack raw-vegan, muito leve e com sabor intenso.</p>
+
+<h4>(2) Ingredientes (1 tabuleiro grande de chips)</h4>
+<ul>
+  <li>1 molho grande de acelga (folhas largas)</li>
+  <li>2 colheres de sopa de azeite virgem extra</li>
+  <li>1–2 colheres de sopa de sumo de limão</li>
+  <li>2 colheres de sopa de levedura nutricional em flocos (opcional, para sabor “queijo”)</li>
+  <li>1/2 colher de chá de sal marinho fino</li>
+  <li>1/4 colher de chá de pimenta-preta moída</li>
+  <li>1/4 colher de chá de pimentão fumado ou doce (opcional)</li>
+  <li>1 pitada de alho em pó (opcional)</li>
+</ul>
+
+<h4>(3) Passos de preparação</h4>
+<ol>
+  <li>Lavar bem as folhas de acelga e secar completamente com um pano ou centrifugadora de saladas. A humidade em excesso atrasa a desidratação.</li>
+  <li>Retirar os talos grossos e cortar as folhas em pedaços de tamanho semelhante, tendo em conta que encolhem durante a desidratação.</li>
+  <li>Numa taça grande, misturar o azeite, o sumo de limão, a levedura nutricional, o sal, a pimenta, o pimentão e o alho em pó, até formar uma pasta fluida.</li>
+  <li>Juntar os pedaços de acelga e envolver bem com as mãos, massajando para que cada folha fique coberta de molho.</li>
+  <li>Dispor as folhas temperadas em tabuleiros de desidratador, numa só camada, sem sobreposição.</li>
+  <li>Desidratar a cerca de 42–46 ºC durante 8–12 horas, até as folhas ficarem completamente secas e estaladiças.</li>
+  <li>Deixar arrefecer e guardar num frasco hermético em local seco. Se amolecerem com o tempo, podem voltar ao desidratador por 1–2 horas para recuperar a crocância.</li>
+</ol>
+
+<h4>(4) Fonte</h4>
+<p>
+Slow Club Cookery – 
+<a href="https://slowclubcookery.blogspot.com/2013/06/raw-chard-chips.html" target="_blank" rel="noopener">https://slowclubcookery.blogspot.com/2013/06/raw-chard-chips.html</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<!-- R7 -->
+<a id="r7"></a>
+<h2>R7 – Rolinhos crudívoros de acelga com pasta de caju e tabule de brócolos <span class="source">[R7]</span></h2>
+
+<h4>(1) Introdução</h4>
+<p>Esta receita segue a lógica de rolinhos de alimentação viva onde folhas de acelga servem de envoltório para uma pasta cremosa de caju e um “tabule” cru de brócolos e ervas. É um prato completo, com boa combinação de gordura, proteína vegetal e muitas verduras cruas.</p>
+
+<h4>(2) Ingredientes (cerca de 6 rolinhos)</h4>
+<p>Para a pasta de caju:</p>
+<ul>
+  <li>1 chávena de cajus crus demolhados 4–6 h</li>
+  <li>Sumo de 1 limão pequeno</li>
+  <li>1 dente de alho pequeno</li>
+  <li>2–3 colheres de sopa de água (para ajustar textura)</li>
+  <li>1 colher de sopa de azeite virgem extra (opcional)</li>
+  <li>1/2 colher de chá de sal marinho fino</li>
+</ul>
+
+<p>Para o “tabule” cru de brócolos:</p>
+<ul>
+  <li>1 cabeça pequena de brócolos (apenas floretes)</li>
+  <li>1 tomate pequeno, em cubinhos</li>
+  <li>2 colheres de sopa de cebola roxa bem picada</li>
+  <li>2 colheres de sopa de salsa ou coentros picados</li>
+  <li>1–2 colheres de sopa de sumo de limão</li>
+  <li>1–2 colheres de sopa de azeite</li>
+  <li>Sal e pimenta-preta, q.b.</li>
+</ul>
+
+<p>Para montar:</p>
+<ul>
+  <li>6 folhas grandes de acelga</li>
+  <li>Folhas de hortelã ou salsa extra, q.b. (opcional)</li>
+</ul>
+
+<h4>(3) Passos de preparação</h4>
+<ol>
+  <li>Pasta de caju: escorrer os cajus demolhados e colocá-los no copo do liquidificador com o sumo de limão, alho, sal, azeite (se usar) e 2 colheres de sopa de água. Triturar até obter um creme liso e espesso, juntando mais água aos poucos se necessário. Reservar.</li>
+  <li>Tabule cru de brócolos: picar finamente os floretes de brócolos com faca ou processador, até ficarem com textura de “cuscuz”. Colocar numa taça.</li>
+  <li>Juntar o tomate em cubinhos, a cebola picada e as ervas frescas ao brócolo. Temperar com sumo de limão, azeite, sal e pimenta. Envolver bem e provar, ajustando temperos.</li>
+  <li>Preparar as folhas de acelga: lavar, secar e, se necessário, afinar o talo central com uma faca para permitir que a folha enrole sem rasgar.</li>
+  <li>Montagem: colocar uma folha de acelga na tábua com a parte interna voltada para cima. Espalhar uma camada de pasta de caju no centro da folha, deixando margens livres.</li>
+  <li>Colocar por cima algumas colheres de tabule cru de brócolos. Opcionalmente, adicionar uma folha de hortelã ou mais salsa.</li>
+  <li>Dobrar as laterais sobre o recheio e depois enrolar de baixo para cima, formando um rolinho firme.</li>
+  <li>Repetir com as restantes folhas.</li>
+  <li>Servir de imediato ou guardar no frio durante algumas horas. Não precisa de cozedura.</li>
+</ol>
+
+<h4>(4) Fonte</h4>
+<p>
+Urantia Gaia – 
+<a href="https://www.urantiagaia.org/vital/crulinaria/receitas_culinaria_viva.html" target="_blank" rel="noopener">https://www.urantiagaia.org/vital/crulinaria/receitas_culinaria_viva.html</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<!-- R8 -->
+<a id="r8"></a>
+<h2>R8 – Conserva fermentada de acelga e cenoura (tipo kimchi simples) <span class="source">[R8]</span></h2>
+
+<h4>(1) Introdução</h4>
+<p>Inspirada numa conserva fermentada de acelga e cenoura da culinária viva, esta receita usa sal e especiarias para ativar a fermentação natural dos vegetais. O resultado é uma conserva acidulada, ligeiramente picante e crocante, rica em probióticos.</p>
+
+<h4>(2) Ingredientes (1 frasco de cerca de 750 ml)</h4>
+<ul>
+  <li>1 porção de acelga (cerca de 300–350 g), cortada em tiras</li>
+  <li>1 porção de cenouras (cerca de 2 cenouras médias), em palitos finos</li>
+  <li>2–3 dentes de alho, esmagados ou fatiados</li>
+  <li>1 colher de chá de curry em pó</li>
+  <li>1/4 a 1/2 colher de chá de pimenta cayenne em pó (ajustar ao gosto)</li>
+  <li>2–2,5% de sal em relação ao peso dos vegetais (cerca de 10–12 g de sal por 500 g de vegetais)</li>
+  <li>Água filtrada apenas se for necessário completar líquido</li>
+</ul>
+
+<h4>(3) Passos de preparação</h4>
+<ol>
+  <li>Pesar a acelga já cortada e as cenouras em palitos para calcular a quantidade de sal (cerca de 2–2,5% do peso total).</li>
+  <li>Colocar a acelga, a cenoura, o alho, o curry e a pimenta cayenne numa taça grande.</li>
+  <li>Juntar o sal e massajar com as mãos durante 5–10 minutos, até que os vegetais comecem a soltar bastante líquido.</li>
+  <li>Transferir a mistura para um frasco de vidro bem limpo, pressionando com as mãos ou com um pilão para eliminar bolsas de ar. O líquido libertado deve cobrir totalmente os vegetais; se necessário, adicionar um pouco de água filtrada apenas até cobrir.</li>
+  <li>Deixar pelo menos 2–3 cm de espaço livre no topo do frasco. Manter os vegetais submersos (pode usar um peso de fermentação ou uma folha dobrada por cima).</li>
+  <li>Fechar o frasco (tampa não completamente apertada ou tampa de fermentação) e deixar fermentar à temperatura ambiente, ao abrigo da luz direta, durante 3–7 dias, dependendo da temperatura e do grau de acidez desejado.</li>
+  <li>Provar ao fim de 3 dias; quando estiver suficientemente ácido e saboroso, guardar no frigorífico, onde continua a fermentar lentamente e se mantém por várias semanas.</li>
+  <li>Servir como acompanhamento de saladas, bowls crus ou wraps.</li>
+</ol>
+
+<h4>(4) Fonte</h4>
+<p>
+Cruda – 
+<a href="https://cruda.com.br/blog/eu-amo-fermentar-vida-receita-de-conserva-de-acelga-e-cenoura" target="_blank" rel="noopener">https://cruda.com.br/blog/eu-amo-fermentar-vida-receita-de-conserva-de-acelga-e-cenoura</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<!-- R9 -->
+<a id="r9"></a>
+<h2>R9 – Salada proteica de acelga com brotos de trevo <span class="source">[R9]</span></h2>
+
+<h4>(1) Introdução</h4>
+<p>Esta salada foi inspirada numa receita de alimentação viva que combina acelga com brotos de trevo e sementes de abóbora, temperada com gersal e azeite. Rica em proteína vegetal e minerais, é uma excelente base para uma refeição crudívora leve.</p>
+
+<h4>(2) Ingredientes (2 porções)</h4>
+<ul>
+  <li>1 chávena bem cheia de acelga crua fatiada em tiras finas</li>
+  <li>1/4 chávena de sementes de abóbora cruas</li>
+  <li>1/2 chávena de brotos (germinados) de trevo ou outros brotos suaves</li>
+  <li>1–2 colheres de chá de gersal (mistura de sésamo e sal) ou, em alternativa, sal marinho e sementes de sésamo</li>
+  <li>2 colheres de sopa de azeite virgem extra</li>
+  <li>1 colher de sopa de sumo de limão (opcional)</li>
+</ul>
+
+<h4>(3) Passos de preparação</h4>
+<ol>
+  <li>Cortar a acelga em tiras finas e colocar numa taça de salada.</li>
+  <li>Juntar as sementes de abóbora e o gersal (ou sal + sementes de sésamo), envolvendo bem com as mãos.</li>
+  <li>Adicionar os brotos de trevo por cima, distribuindo de forma uniforme.</li>
+  <li>Regar com azeite e, se desejar um toque ácido, com o sumo de limão.</li>
+  <li>Envolver delicadamente para não esmagar os brotos.</li>
+  <li>Provar e ajustar: mais gersal/sal ou mais limão conforme o gosto.</li>
+  <li>Servir de imediato. Fica muito bem acompanhada de outros pratos crus, como rolinhos ou crackers desidratados.</li>
+</ol>
+
+<h4>(4) Fonte</h4>
+<p>
+Broto Fácil – 
+<a href="https://www.brotofacil.com.br/blog/17_salada-proteica-de-acelga-com-brotos-de-trevo" target="_blank" rel="noopener">https://www.brotofacil.com.br/blog/17_salada-proteica-de-acelga-com-brotos-de-trevo</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<!-- R10 -->
+<a id="r10"></a>
+<h2>R10 – Batido “Pureza pela manhã” com acelga, maçã, coentros e gengibre <span class="source">[R10]</span></h2>
+
+<h4>(1) Introdução</h4>
+<p>Adaptado de uma receita de batido crudívoro onde se pode usar espinafre ou acelga, este batido verde junta folha verde, maçã, coentros, gengibre, limão e tâmaras. É um batido simples, rápido e muito aromático, típico de alimentação viva para começar o dia.</p>
+
+<h4>(2) Ingredientes (1 grande ou 2 pequenos)</h4>
+<ul>
+  <li>1 mão cheia grande de folhas de acelga (ou mistura de acelga com outra folha verde)</li>
+  <li>2 maçãs médias, em pedaços (podes deixar a casca se forem biológicas)</li>
+  <li>1 molho pequeno de coentros frescos (um punhado)</li>
+  <li>1 pedacinho de gengibre fresco (1–2 cm), sem casca se preferires</li>
+  <li>Sumo de 1/2 limão</li>
+  <li>2 tâmaras medjool ou 3 tâmaras mais pequenas, sem caroço (demolhadas se estiverem muito secas)</li>
+  <li>1–1,5 chávenas de água filtrada ou água de coco, ajustando à textura desejada</li>
+  <li>Gelo, opcional</li>
+</ul>
+
+<h4>(3) Passos de preparação</h4>
+<ol>
+  <li>Lavar bem as folhas de acelga, as maçãs e os coentros.</li>
+  <li>Cortar as maçãs em pedaços, descartando o caroço.</li>
+  <li>Colocar no liquidificador a água (ou água de coco), a acelga, os coentros, o gengibre, o sumo de limão e as tâmaras.</li>
+  <li>Juntar os pedaços de maçã e triturar tudo até obter um batido bem homogéneo e cremoso. Se o liquidificador tiver dificuldade, começar apenas com as folhas, água e tâmaras, e ir adicionando a maçã aos poucos.</li>
+  <li>Ajustar a textura com mais água se necessário. Provar e, se quiseres mais doce, adicionar outra metade de tâmara ou um pouco de fruta extra.</li>
+  <li>Servir imediatamente, com gelo se desejado. Para manter o máximo de nutrientes, é ideal consumir pouco tempo depois de preparado.</li>
+</ol>
+
+<h4>(4) Fonte</h4>
+<p>
+Scribd – Receitas Crudivorismo (“Batido Pureza pela manhã”) – 
+<a href="https://pt.scribd.com/document/391798606/receitas-crudivorismo" target="_blank" rel="noopener">https://pt.scribd.com/document/391798606/receitas-crudivorismo</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+
+</body>
+</html>

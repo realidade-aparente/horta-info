@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Abóbora Grande – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header{position:static;z-index:60;background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria));color:#fff;padding:1rem 1rem;box-shadow:0 2px 4px rgba(0,0,0,.12)}
+main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id], h3[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+<header>
+  <h1>Abóbora Grande — Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../espontaneas.html">Plantas espontâneas comestíveis</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html" class="ativa">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-de-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+
+<main>
+<article>
+
+<p><strong>PLANTA: ABÓBORA-GRANDE (Cucurbita maxima)<br>
+TIPO DE RECEITAS: RAW-VEGAN / CRUDÍVORAS</strong></p>
+
+<h2>1) Índice rápido</h2>
+
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/abobora-grande_receitas_vegetariana.html">(Vegetariana)</a>
+    <a href="/data/refeicoes/vegan/abobora-grande_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+<strong>Nomes das Receitas:</strong>
+<ol>
+  <li><a href="#r1">R1 – Salada crua de abóbora-grande com romã e ervas frescas</a></li>
+  <li><a href="#r2">R2 – Salada crua de abóbora-grande com maçã, aipo e nozes</a></li>
+  <li><a href="#r3">R3 – Sopa crua cremosa de abóbora-grande com caril</a></li>
+  <li><a href="#r4">R4 – Sopa crua de abóbora-grande com milho e gengibre</a></li>
+  <li><a href="#r5">R5 – Sopa crua morna de abóbora-grande com caju e endro</a></li>
+  <li><a href="#r6">R6 – Crackers desidratados de abóbora-grande com alecrim</a></li>
+  <li><a href="#r7">R7 – Hambúrgueres crus de abóbora-grande com shiitake</a></li>
+  <li><a href="#r8">R8 – Kimchi cru de abóbora-grande, couve e pêra</a></li>
+  <li><a href="#r9">R9 – Tarte crua de abóbora-grande ao estilo pumpkin pie</a></li>
+  <li><a href="#r10">R10 – Cheesecake cru de abóbora-grande com caramelo de tâmaras</a></li>
+</ol>
+</div>
+
+<h2>2) Títulos e Resumos</h2>
+
+<p><strong>R1 – Salada crua de abóbora-grande com romã e ervas frescas</strong><br>
+Dados em cubos pequenos, a abóbora-grande é marinada numa vinagrete leve de romã, óleo e ácido suave, e misturada com romã, ervas aromáticas frescas e frutos secos. Resulta numa salada crua colorida e aromática, perfeita como entrada ou acompanhada de folhas verdes.</p>
+
+<p><strong>R2 – Salada crua de abóbora-grande com maçã, aipo e nozes</strong><br>
+Abóbora crua em cubinhos finos junta-se a maçã, aipo, nozes e passas, tudo ligado por um molho cremoso à base de “maionese” vegetal. É uma salada outonal, rica em textura (crocrante, macia e cremosa) e muito saciante, ideal como refeição leve.</p>
+
+<p><strong>R3 – Sopa crua cremosa de abóbora-grande com caril</strong><br>
+Uma sopa crua simples em que a abóbora-grande é triturada com tomate-cereja, água, alho e caril. O resultado é uma sopa sedosa, que pode ser ligeiramente aquecida no próprio liquidificador (sem ultrapassar ~42–45 ºC), e finalizada com endro fresco, amêndoas picadas e pimenta.</p>
+
+<p><strong>R4 – Sopa crua de abóbora-grande com milho e gengibre</strong><br>
+Baseada em sumo de maçã, esta sopa crua combina abóbora, milho, pimento vermelho, alho, gengibre e abacate, tudo triturado até ficar bem cremoso. É naturalmente doce, ligeiramente picante e muito nutritiva, podendo ser servida fresca ou apenas morna (ainda dentro do intervalo raw).</p>
+
+<p><strong>R5 – Sopa crua morna de abóbora-grande com caju e endro</strong><br>
+Uma sopa de abóbora crua enriquecida com caju, água, endro e caril, pensada para ser “amornadinha” através do tempo de batimento no liquidificador. É bastante aconchegante, com textura aveludada e notas herbáceas.</p>
+
+<p><strong>R6 – Crackers desidratados de abóbora-grande com alecrim</strong><br>
+Massa crua à base de abóbora, curgete, cebola e linhaça, temperada com alecrim, tomilho, alho e tamari/coconut aminos. É espalhada fina em tabuleiros e desidratada a baixa temperatura até obter crackers secos e crocantes, ideais para patês raw, húmus de sementes ou queijos de caju.</p>
+
+<p><strong>R7 – Hambúrgueres crus de abóbora-grande com shiitake</strong><br>
+Abóbora ralada é combinada com cogumelos shiitake, nozes, sementes de linhaça e tomate seco para formar hambúrgueres crus. Podem ser servidos logo após a moldagem ou desidratados para ganhar firmeza extra, e acompanham-se com alface e um molho cru de tomate seco e coco.</p>
+
+<p><strong>R8 – Kimchi cru de abóbora-grande, couve e pêra</strong><br>
+Versão vegetal de kimchi em que se usa couve, nabo, cenoura e pêra, ligados por uma pasta crua de abóbora, miso e pasta de malagueta (gochujang vegan). Fermenta-se tudo em frasco alguns dias à temperatura ambiente, obtendo um kimchi cru e vivo, com notas fumadas e picantes.</p>
+
+<p><strong>R9 – Tarte crua de abóbora-grande ao estilo pumpkin pie</strong><br>
+Uma tarte crudívora que usa abóbora ralada crua, tâmaras, frutos secos e especiarias (canela, noz-moscada, gengibre) numa base de frutos secos e tâmaras. Não vai ao forno: a textura é húmida, doce e aromática, evocando a clássica pumpkin pie, mas toda crua.</p>
+
+<p><strong>R10 – Cheesecake cru de abóbora-grande com caramelo de tâmaras</strong><br>
+Cheesecake raw com base de pecãs e tâmaras, recheio cremoso de caju e puré de abóbora, aromatizado com especiarias de abóbora e baunilha, estabilizado com óleo de coco e lecitina. É finalizado com um molho de “caramelo” cru feito de manteiga de amêndoa, tâmaras e xarope de ácer.</p>
+
+<h2>3) Receitas completas</h2>
+
+<hr>
+<a id="salada-crua-de-abobora-grande-com-roma-e-ervas-frescas"></a>
+<h3 id="r1">R1 – Salada crua de abóbora-grande com romã e ervas frescas<br>
+<span class="source">(Baseada em Fall Pomegranate Pumpkin Salad, Crystal Dawn Culinary)</span></h3>
+
+<a id="1-introducao"></a>
+<h4>1) Introdução</h4>
+<p>Esta salada crua utiliza abóbora-grande (tipo abóbora de inverno de polpa laranja) cortada em cubos pequenos e deixada a marinar, como se fosse “legume em conserva rápida”. A romã traz acidez e doçura, as ervas frescas (coentros e hortelã) dão um aroma intenso e as nozes acrescentam gordura boa e crocância.</p>
+
+<a id="2-ingredientes"></a>
+<h4>2) Ingredientes</h4>
+<p><strong>Para a salada</strong><br>
+- 3 chávenas de abóbora-grande crua, descascada, sem sementes e cortada em cubos muito pequenos (tipo “sugar pumpkin” ou abóbora de casca dura de outono)<br>
+- Sementes de 1/2 romã média<br>
+- 1/3 de chávena de coentros frescos picados<br>
+- 1/4 de chávena de hortelã fresca picada<br>
+- 1/4 de chávena de nozes picadas grosseiramente<br>
+- 1/4 de chávena de cebola roxa em cubos pequenos<br>
+- 2 colheres de sopa de arandos secos ou mirtilos secos (sem açúcar, se possível)</p>
+
+<p><strong>Para o molho de romã</strong><br>
+- 1 colher de sopa de azeite virgem extra<br>
+- 1 colher de sopa de vinagre de sidra<br>
+- 1 colher de sopa de néctar de coco ou xarope de ácer<br>
+- 1 colher de sopa de sumo de romã (de preferência 100% puro)<br>
+- 1/4 de colher de chá de sal marinho ou sal dos Himalaias<br>
+- Pimenta-preta moída na hora, a gosto</p>
+
+<h4>3) Preparação</h4>
+<ol>
+  <li><strong>Preparar a abóbora</strong><br>
+      - Descasca a abóbora-grande, remove sementes e filamentos.<br>
+      - Corta a polpa em cubos pequenos (0,5–1 cm) para que marinem rapidamente e fiquem agradáveis de mastigar crus.</li>
+  <li><strong>Preparar a salada</strong><br>
+      - Coloca a abóbora em cubos numa taça grande.<br>
+      - Junta as sementes de romã, os coentros, a hortelã, as nozes, a cebola roxa e os frutos secos. Reserva.</li>
+  <li><strong>Preparar o molho</strong><br>
+      - Numa tacinha, mistura o azeite, o vinagre de sidra, o néctar de coco (ou ácer), o sumo de romã, o sal e a pimenta.<br>
+      - Bate com um garfo ou vara pequena até o molho emulsionar ligeiramente.</li>
+  <li><strong>Marinar e servir</strong><br>
+      - Vê se a abóbora está bem solta; se necessário, solta os cubos com as mãos.<br>
+      - Verte o molho sobre a mistura de abóbora e envolve bem, garantindo que todos os cubos ficam cobertos.<br>
+      - Deixa repousar 20–30 minutos à temperatura ambiente para que a abóbora amoleça ligeiramente e absorva a marinada.<br>
+      - Prova e ajusta sal e pimenta.<br>
+      - Serve em pratos individuais ou numa travessa, podendo acompanhar com folhas verdes (rúcula, alface, etc.).</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>Crystal Dawn Culinary – https://crystaldawnculinary.com/fall-pomegranate-pumpkin-salad/</p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<hr>
+<a id="salada-crua-de-abobora-grande-com-maca-aipo-e-nozes"></a>
+<h3 id="r2">R2 – Salada crua de abóbora-grande com maçã, aipo e nozes<br>
+<span class="source">(Baseada em Faye’s Raw Pumpkin Salad, My Hallelujah Diet)</span></h3>
+
+<h4>1) Introdução</h4>
+<p>Esta salada combina abóbora crua finamente picada com maçã, aipo, nozes e passas, ligados por um molho cremoso feito com um substituto vegetal de maionese. É uma salada de inspiração norte-americana, muito associada ao outono, que funciona como prato principal leve ou acompanhamento.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>1/2 chávena de “Veganaise” ou outra maionese vegetal de boa qualidade</li>
+  <li>1 colher de sopa de sumo de limão</li>
+  <li>340 g de abóbora-grande crua (cerca de 12 oz), descascada e finamente picada em cubinhos</li>
+  <li>2 maçãs médias, descaroçadas e cortadas em cubos</li>
+  <li>4 talos de aipo, fatiados finamente</li>
+  <li>1/4 de chávena de nozes ou outros frutos secos picados</li>
+  <li>1/2 chávena de passas, demolhadas em água filtrada (15–20 minutos)</li>
+  <li>1–2 colheres de sopa do líquido de demolha das passas</li>
+  <li>Opcional: pitada de canela, noz-moscada e/ou cardamomo em pó para polvilhar antes de servir</li>
+</ul>
+
+<h4>3) Preparação</h4>
+<ol>
+  <li><strong>Preparar os ingredientes</strong><br>
+      - Descasca a abóbora, retira sementes e filamentos e pica em cubos bem pequenos.<br>
+      - Corta as maçãs em cubos (podes deixar a casca se forem biológicas).<br>
+      - Corta o aipo em fatias finas.<br>
+      - Pica grosseiramente as nozes.<br>
+      - Demolha as passas em água filtrada 15–20 minutos e reserva também o líquido.</li>
+  <li><strong>Fazer o molho cremoso</strong><br>
+      - Numa taça média, junta a maionese vegetal, o sumo de limão e 1–2 colheres de sopa do líquido das passas.<br>
+      - Bate com uma vara de arames ou garfo até obter um molho homogéneo e ligeiramente fluido (se estiver muito espesso, acrescenta 1 colher de sopa extra do líquido das passas ou um fio de água).</li>
+  <li><strong>Montar a salada</strong><br>
+      - Numa taça grande de servir, junta a abóbora picada, a maçã, o aipo, as nozes e as passas escorridas.<br>
+      - Verte o molho cremoso por cima.<br>
+      - Envolve cuidadosamente até todos os ingredientes ficarem cobertos.</li>
+  <li><strong>Repouso e serviço</strong><br>
+      - Cobre e leva ao frigorífico pelo menos 30 minutos para a salada ganhar sabor e a abóbora amaciar ligeiramente.<br>
+      - Antes de servir, prova e ajusta o ácido (mais limão) ou doçura (umas passas extra).<br>
+      - Se quiseres uma nota mais de “sobremesa”, polvilha com uma pitada de canela, noz-moscada e cardamomo.<br>
+      - Serve sobre uma cama de folhas verdes ou em taças individuais.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>My Hallelujah Diet – https://myhdiet.com/blogs/recipes/fayes-raw-pumpkin-salad</p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<hr>
+<a id="sopa-crua-cremosa-de-abobora-grande-com-caril"></a>
+<h3 id="r3">R3 – Sopa crua cremosa de abóbora-grande com caril<br>
+<span class="source">(Baseada em Easy Creamy Pumpkin Soup (Raw + Vegan), Olivia Budgen)</span></h3>
+
+<h4>1) Introdução</h4>
+<p>Esta sopa é uma recriação crudívora da sopa de abóbora com caril. Usa abóbora crua, tomate-cereja e água, aromatizada com caril, alho e endro, e ganha textura com amêndoas picadas. Ao bater mais tempo em liquidificador potente, a sopa aquece ligeiramente sem deixar de ser considerada raw.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>2 chávenas de abóbora-grande crua, descascada e cortada em cubos</li>
+  <li>1 punhado generoso de tomate-cereja</li>
+  <li>1/2 colher de chá de caril em pó (ou mais, a gosto)</li>
+  <li>1 dente de alho pequeno</li>
+  <li>1 chávena de água filtrada ou de nascente</li>
+  <li>1 punhado de endro fresco</li>
+  <li>1 punhado de amêndoas cruas picadas grosseiramente (para servir)</li>
+  <li>Sal marinho ou sal dos Himalaias, a gosto (opcional, não aparece na receita original mas ajusta o paladar)</li>
+  <li>Pimenta-preta moída na hora, a gosto</li>
+</ul>
+
+<h4>3) Preparação</h4>
+<ol>
+  <li><strong>Preparar os ingredientes</strong><br>
+      - Descasca e corta a abóbora em cubos.<br>
+      - Lava os tomates-cereja.<br>
+      - Descasca o dente de alho.</li>
+  <li><strong>Triturar a base da sopa</strong><br>
+      - No copo de um liquidificador de alta potência, coloca a abóbora, os tomates, o caril, o alho e a água.<br>
+      - Bate em potência alta até obter uma sopa bem cremosa e homogénea (cerca de 30 segundos a 1 minuto).</li>
+  <li><strong>Ajustar temperatura e temperos</strong><br>
+      - Se quiseres a sopa mais morna (sem ultrapassar ~42–45 ºC), continua a bater 2–3 minutos, verificando com o toque da mão no copo.<br>
+      - Junta sal e pimenta a gosto e volta a bater alguns segundos.</li>
+  <li><strong>Servir</strong><br>
+      - Verte a sopa em taças.<br>
+      - Pica o endro fresco e distribui por cima.<br>
+      - Finaliza com as amêndoas picadas e, se quiseres, um fiozinho extra de água ou de sumo de limão para ajustar a consistência e o frescor.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>Olivia Budgen – https://oliviabudgen.com/creamy-curried-pumpkin-soup-raw-vegan/</p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<hr>
+<a id="sopa-crua-de-abobora-grande-com-milho-e-gengibre"></a>
+<h3 id="r4">R4 – Sopa crua de abóbora-grande com milho e gengibre<br>
+<span class="source">(Baseada em Raw Vegan Pumpkin Soup, Foods For Long Life)</span></h3>
+
+<h4>1) Introdução</h4>
+<p>Uma sopa crua doce e aromática em que a abóbora-grande é combinada com milho cru, pimento vermelho, sumo de maçã, gengibre e alho. O abacate dá cremosidade e gordura saudável. É uma sopa bastante nutritiva, rica em vitamina A e C, e pode ser servida fresca ou apenas ligeiramente aquecida no liquidificador.</p>
+
+<h4>2) Ingredientes  (4 doses aproximadas)</h4>
+<ul>
+  <li>3 chávenas de abóbora-grande crua ou outra abóbora de inverno, descascada e cortada em cubos</li>
+  <li>1 1/2 chávenas de milho amarelo cru (fresco ou congelado e descongelado)</li>
+  <li>3/4 de chávena de pimento vermelho em cubos</li>
+  <li>2 1/2 chávenas de sumo de maçã natural (de preferência fresco)</li>
+  <li>2 1/2 colheres de chá de gengibre fresco ralado ou muito bem picado</li>
+  <li>2 1/2 colheres de chá de alho fresco picado</li>
+  <li>1/2–1 colher de chá de sal marinho, a gosto</li>
+  <li>1/2 chávena de abacate maduro amassado</li>
+  <li>2 colheres de chá de sementes de abóbora cruas para guarnição</li>
+  <li>1 colher de chá de tomilho fresco picado (ou seco) para guarnição</li>
+</ul>
+
+<h4>3) Preparação</h4>
+<ol>
+  <li><strong>Preparar a base</strong><br>
+      - Coloca no liquidificador a abóbora, o milho, o pimento vermelho, o sumo de maçã, o gengibre, o alho, o sal e o abacate.</li>
+  <li><strong>Triturar</strong><br>
+      - Bate em velocidade alta até obter uma textura cremosa e lisa.<br>
+      - Se estiver demasiado espessa, acrescenta um pouco mais de sumo de maçã ou água filtrada até atingir a consistência desejada.</li>
+  <li><strong>Ajustar sabor e temperatura</strong><br>
+      - Prova e corrige o sal e o gengibre (podes aumentar se quiseres mais picante).<br>
+      - Se quiseres servir morna dentro do conceito raw, deixa bater mais 2–3 minutos observando que o copo não aquece demasiado ao toque (idealmente abaixo de 42–45 ºC).</li>
+  <li><strong>Servir</strong><br>
+      - Divide a sopa por 4 taças.<br>
+      - Salpica com sementes de abóbora cruas e tomilho fresco picado.<br>
+      - Serve de imediato.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>Foods For Long Life – https://foodsforlonglife.blogspot.com/2009/11/raw-vegan-pumpkin-soup.html</p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<hr>
+<a id="sopa-crua-morna-de-abobora-grande-com-caju-e-endro"></a>
+<h3 id="r5">R5 – Sopa crua morna de abóbora-grande com caju e endro<br>
+<span class="source">(Baseada em Raw Vegan Pumpkin Soup, Dherbs)</span></h3>
+
+<h4>1) Introdução</h4>
+<p>Uma sopa crua e muito simples, que combina abóbora crua em cubos com caju, água, endro e caril. A técnica consiste em bater a sopa o suficiente para a aquecer suavemente, sem ultrapassar a faixa de temperatura da alimentação viva. É uma opção saciante e aromática para dias mais frescos.</p>
+
+<h4>2) Ingredientes  (2 doses)</h4>
+<ul>
+  <li>4 chávenas de abóbora-grande crua (tipo abóbora pequena de inverno), descascada, sem sementes e cortada em cubos</li>
+  <li>2 chávenas de água</li>
+  <li>1/2 chávena de cajus crus (idealmente demolhados 2–4 horas e escorridos)</li>
+  <li>1/8 de chávena de endro fresco picado</li>
+  <li>1 colher de chá de caril em pó</li>
+  <li>1 1/2 colher de chá de sal marinho ou dos Himalaias</li>
+  <li>1 dente de alho picado</li>
+</ul>
+
+<h4>3) Preparação</h4>
+<ol>
+  <li><strong>Colocar no liquidificador</strong><br>
+      - Adiciona ao copo do liquidificador a abóbora, a água, os cajus, o endro, o caril, o sal e o alho.</li>
+  <li><strong>Triturar</strong><br>
+      - Bate em alta velocidade até a sopa ficar completamente cremosa.<br>
+      - Deixa bater pelo menos 5 minutos, se o teu equipamento aguentar, para que a fricção aqueça ligeiramente a sopa (vai verificando a temperatura com a mão na lateral do copo).</li>
+  <li><strong>Ajustar e servir</strong><br>
+      - Prova e corrige o sal ou o caril, se necessário.<br>
+      - Serve em duas taças, decorando com um pouco de endro extra picado, se quiseres.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>Dherbs – https://www.dherbs.com/recipes/recipe/raw-vegan-pumpkin-soup/</p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<hr>
+<a id="crackers-desidratados-de-abobora-grande-com-alecrim-baseada-em-pumpkin-rosemary-crackers-raw-vegan-crystal-dawn-culinary"></a>
+<h3 id="r6">R6 – Crackers desidratados de abóbora-grande com alecrim<br>
+<span class="source">(Baseada em Pumpkin Rosemary Crackers {Raw, Vegan}, Crystal Dawn Culinary)</span></h3>
+
+<h4>1) Introdução</h4>
+<p>Crackers crudívoros, leves e crocantes, feitos com abóbora-grande, curgete, cebola e linhaça, temperados com alecrim e tomilho. A massa é espalhada fina e desidratada a baixa temperatura, resultando em bolachas salgadas ricas em fibra e gorduras boas, ideais para acompanhar patês, pastas de sementes ou queijos de caju.</p>
+
+<h4>2) Ingredientes  (rende cerca de 2 tabuleiros)</h4>
+<ul>
+  <li>1 chávena de curgete descascada e picada</li>
+  <li>1 chávena de abóbora-grande crua, descascada, sem sementes e picada</li>
+  <li>1 chávena de cebola branca picada</li>
+  <li>1/2 chávena de água filtrada</li>
+  <li>2 colheres de sopa de sumo de limão</li>
+  <li>2 colheres de sopa de coconut aminos ou tamari (sem glúten)</li>
+  <li>2 dentes de alho descascados</li>
+  <li>1 colher de chá de pó de cebola</li>
+  <li>1 colher de chá de sal dos Himalaias ou sal marinho</li>
+  <li>2 colheres de sopa de alecrim fresco picado</li>
+  <li>2 colheres de chá de tomilho seco</li>
+  <li>1 1/4 chávena de sementes de linhaça douradas inteiras</li>
+  <li>3/4 de chávena de sementes de linhaça douradas moídas</li>
+</ul>
+
+<h4>3) Preparação</h4>
+<ol>
+  <li><strong>Triturar a base</strong><br>
+      - No copo de um liquidificador potente, coloca a curgete, a abóbora, a cebola, a água, o sumo de limão, o coconut aminos/tamari, o alho, o pó de cebola e o sal.<br>
+      - Bate até obter um creme homogéneo.</li>
+  <li><strong>Misturar com as sementes e ervas</strong><br>
+      - Verte o creme para uma taça grande.<br>
+      - Adiciona o alecrim, o tomilho, a linhaça inteira e a linhaça moída.<br>
+      - Envolve muito bem até obter uma massa espessa e pegajosa. Deixa repousar 5–10 minutos para a linhaça começar a gelificar e engrossar a mistura.</li>
+  <li><strong>Formar os crackers</strong><br>
+      - Forra os tabuleiros do desidratador com folhas antiaderentes (Teflex ou equivalente).<br>
+      - Espalha a massa em camada fina (3–4 mm), alisando com espátula.<br>
+      - Com uma faca ou espátula, marca linhas em quadrados ou rectângulos para facilitar partir depois.</li>
+  <li><strong>Desidratar</strong><br>
+      - Leva a desidratador a ~46 ºC (115 ºF).<br>
+      - Desidrata 4–6 horas, até a superfície estar seca ao toque.<br>
+      - Vira a folha ao contrário sobre um tabuleiro com grelha, retira a folha Teflex e continua a desidratar mais 16–18 horas, até os crackers estiverem completamente secos e crocantes.</li>
+  <li><strong>Armazenar</strong><br>
+      - Deixa arrefecer totalmente.<br>
+      - Parte ao longo das marcas e guarda em frasco bem fechado, de preferência no congelador, onde se mantêm crocantes até 3 meses.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>Crystal Dawn Culinary – https://crystaldawnculinary.com/rosemary-pumpkin-crackers/</p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<hr>
+<a id="hamburgueres-crus-de-abobora-grande-com-shiitake"></a>
+<h3 id="r7">R7 – Hambúrgueres crus de abóbora-grande com shiitake<br>
+<span class="source">(Baseada em Pumpkin Burger Recipe With Mushroom Sauce – Fully Raw, Vegan, Rawsomehealthy)</span></h3>
+
+<h4>1) Introdução</h4>
+<p>Estes hambúrgueres crus usam abóbora crua ralada como base, combinada com cogumelos shiitake, nozes, sementes de linhaça e tomate seco. A textura final, especialmente após desidratar, lembra um hambúrguer firme mas húmido. São servidos sobre uma cama de alface, com um molho cremoso de cogumelo e tomate seco.</p>
+
+<h4>2) Ingredientes  (3–4 hambúrgueres)</h4>
+
+<p><strong>Para os hambúrgueres</strong><br>
+- 2 chávenas de abóbora-grande crua, ralada finamente (ou outra abóbora de inverno)<br>
+- 2 chávenas de cogumelos shiitake frescos, picados (divididos: 1 chávena para a massa, 1 chávena para o molho)<br>
+- 1/4 de chávena de nozes<br>
+- 1 colher de sopa de sementes de linhaça moídas<br>
+- 1 chávena de tomate seco ao sol (idealmente sem óleo), dividido: 1/2 chávena para a massa, 1/2 chávena para o molho<br>
+- 1/2 chávena de água de coco (fresca ou engarrafada sem aditivos)<br>
+- 1/2 colher de chá de cominhos em pó<br>
+- 1/2 colher de chá de tomilho seco<br>
+- 1/2 colher de chá de salva (sage) seca<br>
+- 1 colher de sopa de cebolinho ou cebola verde picada</p>
+
+<p><strong>Para servir</strong><br>
+- 1 cabeça de alface (folhas inteiras para “prato” ou “wrap”)</p>
+
+<h4>3) Preparação</h4>
+<ol>
+  <li><strong>Preparar abóbora e cogumelos</strong><br>
+      - Rala a abóbora em ralador fino ou processador.<br>
+      - Pica grosseiramente os cogumelos shiitake e reserva 1 chávena para a massa e 1 chávena para o molho.</li>
+  <li><strong>Fazer a mistura de hambúrguer</strong><br>
+      - No processador, coloca 1 chávena de shiitake, as nozes, as sementes de linhaça, 1/2 chávena de tomate seco, os cominhos e o cebolinho.<br>
+      - Processa até formar uma pasta densa.<br>
+      - Transfere para uma taça e junta a abóbora ralada.<br>
+      - Mistura com as mãos até obter uma massa uniforme que se molde facilmente (se estiver demasiado húmida, acrescenta uma colher extra de linhaça moída; se estiver seca, um salpico de água de coco).</li>
+  <li><strong>Moldar os hambúrgueres</strong><br>
+      - Divide a massa em 3–4 porções e molda discos com cerca de 1,5–2 cm de espessura.</li>
+  <li><strong>Opção crua sem desidratar</strong><br>
+      - Os hambúrgueres podem ser consumidos logo após moldados, servidos sobre folhas de alface com o molho por cima.</li>
+  <li><strong>Opção desidratada</strong><br>
+      - Coloca os discos em tabuleiros do desidratador forrados.<br>
+      - Desidrata a 40–46 ºC (104–115 ºF) durante cerca de 4 horas.<br>
+      - Vira os hambúrgueres e desidrata mais 4 horas, ou até estarem firmes mas ainda húmidos no interior.</li>
+  <li><strong>Preparar o molho de cogumelo e tomate seco</strong><br>
+      - No copo do liquidificador ou processador, junta a água de coco, 1/2 chávena de tomate seco e 1 chávena de shiitake.<br>
+      - Acrescenta o tomilho e a salva.<br>
+      - Bate até obter um molho cremoso, ajustando a espessura com um pouco mais de água de coco se necessário.</li>
+  <li><strong>Servir</strong><br>
+      - Corta a alface em tiras ou deixa as folhas inteiras.<br>
+      - Coloca uma cama de alface no prato, dispõe os hambúrgueres por cima e rega generosamente com o molho de cogumelo e tomate seco.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>Rawsomehealthy – https://www.rawsomehealthy.com/pumpkin-burger-recipe/</p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<hr>
+<a id="kimchi-cru-de-abobora-grande-couve-e-pera"></a>
+<h3 id="r8">R8 – Kimchi cru de abóbora-grande, couve e pêra<br>
+<span class="source">(Baseada em Pumpkin Kimchi, Food Savvy)</span></h3>
+
+<h4>1) Introdução</h4>
+<p>Este kimchi de inspiração coreana usa couve, nabo, cenoura e pêra como base, e incorpora abóbora crua na pasta fermentada, misturada com miso e pasta de malagueta (gochujang) para um resultado fumado, picante e complexo. É totalmente vegetal e fermenta em frasco fechado alguns dias à temperatura ambiente.</p>
+
+<h4>2) Ingredientes  (rende cerca de 2 litros)</h4>
+<ul>
+  <li>500 g de couve (tipo napa/chinesa ou outra), finamente fatiada, reservando 1 folha externa inteira e o “coração”</li>
+  <li>200 g de nabo, em cubos de 0,5 cm</li>
+  <li>200 g de cenoura, em palitos finos (juliana)</li>
+  <li>23 g de sal (aprox. 1 colher de sopa bem cheia)</li>
+  <li>5 cebolinhas ou cebolas-verdes, grosseiramente picadas</li>
+  <li>40 g de gengibre com casca, em cubinhos</li>
+  <li>5 dentes de alho, fatiados</li>
+  <li>2 peras grandes firmes (cerca de 300 g), em pedaços</li>
+  <li>1 colher de sopa de flocos de malagueta chipotle (ou outra malagueta seca, a gosto)</li>
+  <li>1 colher de chá de açúcar (pode ser mascavado ou de coco)</li>
+  <li>150–200 g de abóbora-grande crua (a “parte de dentro” e aparas, sem sementes), fatiada</li>
+  <li>1 1/2 colher de sopa de miso (de arroz ou cevada, sem ingredientes animais)</li>
+  <li>5 colheres de sopa de pasta de malagueta coreana (gochujang) 100% vegetal</li>
+</ul>
+
+<h4>3) Preparação</h4>
+<ol>
+  <li><strong>Salgar os vegetais</strong><br>
+      - Numa taça grande, junta a couve fatiada, o nabo e a cenoura.<br>
+      - Polvilha com o sal e massaja com as mãos alguns minutos, até começares a ver líquido (salmoira) a formar-se no fundo.<br>
+      - Deixa repousar enquanto preparas o resto.</li>
+  <li><strong>Juntar aromáticos</strong><br>
+      - Acrescenta à taça as cebolinhas, o gengibre, o alho e a pêra em pedaços.<br>
+      - Massaja mais um pouco até tudo ficar bem misturado e mais líquido se formar.</li>
+  <li><strong>Preparar a pasta de abóbora</strong><br>
+      - No copo de um liquidificador potente, coloca a abóbora fatiada, o miso e a pasta de malagueta.<br>
+      - Tritura até obter um creme liso e espesso.</li>
+  <li><strong>Misturar</strong><br>
+      - Verte a pasta de abóbora sobre os vegetais na taça.<br>
+      - Adiciona os flocos de malagueta e o açúcar.<br>
+      - Envolve bem com as mãos (usa luvas se a malagueta for muito forte) até todos os vegetais ficarem cobertos pela pasta.</li>
+  <li><strong>Enfrascar e prensar</strong><br>
+      - Transfere a mistura para um frasco grande de 2 litros, de boca larga.<br>
+      - Vai apertando bem com o punho ou com um pilão para retirar bolsas de ar, deixando a salmoura subir.<br>
+      - Tenta deixar 3–4 cm de espaço livre no topo do frasco.<br>
+      - Cobre a superfície com a folha de couve inteira reservada e coloca por cima o “coração” da couve como peso para manter tudo submerso.</li>
+  <li><strong>Fermentar</strong><br>
+      - Fecha o frasco (tipo “clip-top”) e deixa fermentar à temperatura ambiente, fora de luz direta.<br>
+      - Abre a tampa 1–2 vezes por dia para libertar gases (“arrotar” o frasco).<br>
+      - Ao fim de 5 dias, prova: deve estar ácido, picante e ainda crocante. Se quiseres um sabor mais intenso, deixa fermentar mais 1–2 dias.</li>
+  <li><strong>Guardar</strong><br>
+      - Quando estiver no ponto, transfere para frascos menores se quiseres e guarda no frigorífico.<br>
+      - Consumir em alguns meses, usando sempre utensílios limpos para retirar o kimchi.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>Food Savvy – https://www.foodsavvy.org.uk/cook/pumpkin-kimchi</p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<hr>
+<a id="tarte-crua-de-abobora-grande-ao-estilo-pumpkin-pie"></a>
+<h3 id="r9">R9 – Tarte crua de abóbora-grande ao estilo pumpkin pie<br>
+<span class="source">(Baseada em Raw Vegan Pumpkin Pie, FatFreeVegan)</span></h3>
+
+<h4>1) Introdução</h4>
+<p>Esta tarte é totalmente crua: a base é feita de frutos secos e tâmaras, e o recheio leva abóbora ralada crua, tâmaras, nozes e especiarias. A textura final é húmida e densa, com as notas clássicas de canela, noz-moscada e gengibre associadas à pumpkin pie, mas sem forno nem ingredientes de origem animal.</p>
+
+<h4>2) Ingredientes</h4>
+
+<p><strong>Para o recheio</strong><br>
+- 2 chávenas de abóbora-grande crua, ralada (de preferência abóbora de “tarte”, de polpa densa)<br>
+- 1 chávena de tâmaras medjool frescas, sem caroço<br>
+- 1/2 chávena de nozes cruas<br>
+- 1/2 colher de chá de sal marinho<br>
+- 1/2 colher de chá de canela em pau recém-moída (ou em pó)<br>
+- 1/4 de colher de chá de noz-moscada ralada<br>
+- 1/4 de colher de chá de gengibre fresco ralado (ou gengibre em pó, em menor quantidade, a gosto)</p>
+
+<p><strong>Para a base</strong><br>
+- 1 chávena de nozes ou pecãs cruas<br>
+- 1 chávena de amêndoas cruas<br>
+- 1/2 chávena de tâmaras frescas, sem caroço<br>
+- Pitada de sal marinho</p>
+
+<h4>3) Preparação</h4>
+<ol>
+  <li><strong>Recheio</strong><br>
+      - Coloca a abóbora ralada, as tâmaras (1 chávena), as nozes (1/2 chávena), o sal, a canela, a noz-moscada e o gengibre no processador de alimentos.<br>
+      - Usa a função “pulse” algumas vezes para começar a triturar e depois processa continuamente até obter um creme espesso, liso e homogéneo (5–7 minutos, parando para raspar as laterais quando necessário).<br>
+      - Reserva o recheio numa taça, num local morno/à temperatura ambiente.</li>
+  <li><strong>Base</strong><br>
+      - Sem necessidade de lavar o processador (se não estiver demasiado húmido), adiciona as nozes/pecãs, as amêndoas, as tâmaras (1/2 chávena) e uma pitada de sal.<br>
+      - Faz alguns “pulses” e depois processa até a mistura ficar uniforme e pegajosa, mas ainda com alguma textura de frutos secos (cerca de 40–60 segundos).<br>
+      - Verifica apertando um pouco da massa entre os dedos: deve manter a forma. Pára antes de virar manteiga de frutos secos.</li>
+  <li><strong>Montar a tarte</strong><br>
+      - Transfere a base para uma tarteira de fundo removível ou prato de tarte.<br>
+      - Pressiona com os dedos ou com o fundo de um copo para forrar o fundo (e, se quiseres, as laterais) de forma uniforme.<br>
+      - Espalha o recheio de abóbora sobre a base, alisando com uma espátula.</li>
+  <li><strong>Arrefecer e servir</strong><br>
+      - Leva ao frigorífico ou congelador até firmar (pelo menos algumas horas).<br>
+      - Serve bem fresca, com possibilidade de decorar com frutos secos picados ou rodelas finas de fruta.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>FatFreeVegan – https://fatfreevegan.com/blog/2010/07/26/raw-vegan-pumpkin-pie/</p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<hr>
+<a id="cheesecake-cru-de-abobora-grande-com-caramelo-de-tamaras"></a>
+<h3 id="r10">R10 – Cheesecake cru de abóbora-grande com caramelo de tâmaras<br>
+<span class="source">(Baseada em The Great Raw Pumpkin Cheesecake, NouveauRaw)</span></h3>
+
+<h4>1) Introdução</h4>
+<p>Este cheesecake crudívoro tem base de pecãs e tâmaras, recheio cremoso de caju com puré de abóbora e especiarias, e é coberto com um “caramelo” cru de tâmaras e manteiga de amêndoa. O óleo de coco e a lecitina ajudam a firmar o recheio no frio, criando fatias definidas sem qualquer cozedura.</p>
+
+<h4>2) Ingredientes</h4>
+
+<p><strong>Base (para tarteira de 23 cm / 9")</strong><br>
+- 2 1/4 chávenas de pecãs cruas, demolhadas e desidratadas (ou bem secas)<br>
+- 1 1/4 chávenas de tâmaras medjool, bem compactadas e sem caroço<br>
+- 1/4 de colher de chá de sal dos Himalaias</p>
+
+<p><strong>Recheio de abóbora</strong><br>
+- 3 chávenas de cajus crus, demolhados pelo menos 2 horas e escorridos<br>
+- 3/4 de chávena de xarope de ácer<br>
+- 1 chávena de puré de abóbora-grande (crua passada em puré ou, se preferires seguir a receita, puré simples de abóbora, sem açúcar)<br>
+- 3/4 de chávena de água<br>
+- 1 colher de sopa de extracto de baunilha<br>
+- 2 colheres de chá de mistura de especiarias para pumpkin pie (canela, noz-moscada, gengibre, cravinho, etc.)<br>
+- 1/2 colher de chá de stevia líquida (opcional, pode ser omitida ou ajustada)<br>
+- 1/4 de colher de chá de sal dos Himalaias<br>
+- 1 chávena de óleo de coco virgem, prensado a frio, derretido em banho-maria suave (abaixo de 45 ºC)<br>
+- 3 colheres de sopa de lecitina em pó</p>
+
+<p><strong>Molho “caramelo” de pecã</strong><br>
+- 1/2 chávena de manteiga de amêndoa crua<br>
+- 1/2 chávena de xarope de ácer<br>
+- 1/2 chávena de pasta de tâmaras (tâmaras demolhadas e trituradas)<br>
+- 2 colheres de chá de extracto de baunilha<br>
+- 1/8 de colher de chá de sal dos Himalaias<br>
+- 1/4 de chávena de água</p>
+
+<h4>3) Preparação</h4>
+<ol>
+  <li><strong>Preparar a forma</strong><br>
+      - Monta uma forma de aro amovível (springform) de 23 cm com o fundo ao contrário (para facilitar desenformar).<br>
+      - Opcional: forra a base com película aderente.</li>
+  <li><strong>Base</strong><br>
+      - No processador de alimentos com lâmina em “S”, coloca as pecãs e faz “pulse” até ficarem em pedaços pequenos.<br>
+      - Junta o sal e pulsa para distribuir.<br>
+      - Adiciona as tâmaras e processa até a massa ficar pegajosa e compactável.<br>
+      - Transfere para a forma e pressiona uniformemente no fundo (e, se quiseres, um pouco pelas laterais), sem calcar demasiado para não ficar colada em excesso. Reserva.</li>
+  <li><strong>Recheio de abóbora</strong><br>
+      - Escorre bem os cajus demolhados.<br>
+      - Num liquidificador potente, junta cajus, xarope de ácer, puré de abóbora, água, baunilha, mistura de especiarias, stevia (se usares) e sal.<br>
+      - Bate em alta velocidade até obter um creme completamente liso, sem grumos.<br>
+      - Com o liquidificador em funcionamento e a formar um “vórtice”, verte lentamente o óleo de coco derretido e acrescenta a lecitina.<br>
+      - Bate apenas até incorporar; o creme começará a engrossar.<br>
+      - Verte o recheio sobre a base na forma, alisa a superfície e dá algumas pancadinhas com a forma na bancada para libertar bolhas de ar.</li>
+  <li><strong>Firmar o cheesecake</strong><br>
+      - Leva ao congelador 4–6 horas (ou durante a noite) até ficar firme.<br>
+      - Depois, transfere para o frigorífico por mais algumas horas para estabilizar antes de servir.</li>
+  <li><strong>Molho de “caramelo”</strong><br>
+      - No liquidificador, junta a manteiga de amêndoa, o xarope de ácer, a pasta de tâmaras, a baunilha, o sal e a água.<br>
+      - Bate até obter um caramelo liso e brilhante, ajustando a espessura com um pouco mais de água se necessário.</li>
+  <li><strong>Acabamento e serviço</strong><br>
+      - Quando o cheesecake estiver firme, desenforma com cuidado.<br>
+      - Verte o molho de caramelo por cima, deixando escorrer pelas laterais, e decora com pecãs inteiras ou picadas, se quiseres.<br>
+      - Conserva no frigorífico (3–5 dias) ou congela em fatias (até cerca de 3 meses).</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>NouveauRaw – https://nouveauraw.com/cheesecakes/the-great-raw-pumpkin-cheesecake/</p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+</body>
+</html>

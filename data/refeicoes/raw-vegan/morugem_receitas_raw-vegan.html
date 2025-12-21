@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Morugem – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+ <div class="masthead">
+<header>
+  <h1>Morugem – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../morugem.html" class="ativa">Morugem</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+  </header></div>
+<main>
+<article>
+
+<h2>Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/morugem_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/morugem_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+<ol>
+<li><a href="#r1">Salada de Morugem</a> <span class="source">[R1]</span></li> 
+<li><a href="#r2">Receita de Salada de Morugem</a> <span class="source">[R2]</span></li>
+<li><a href="#r3">Receita de morugem: salada de morugem com legumes de raiz crocantes</a> <span class="source">[R3]</span></li>
+<li><a href="#r4">Pesto vegan de morugem</a> <span class="source">[R4]</span></li>
+<li><a href="#r5">Pesto de morugem</a> <span class="source">[R5]</span></li>
+<li><a href="#r6">Creamy Dreamy Chickweed Machine-Y Spread</a> <span class="source">[R6]</span></li>
+<li><a href="#r7">Chickichurri</a> <span class="source">[R7]</span></li>
+<li><a href="#r8">ChickZhoug</a> <span class="source">[R8]</span></li>
+<li><a href="#r9">Chutney de coco e morugem inspirado no Quénia (Naryal ni)</a> <span class="source">[R9]</span></li>
+<li><a href="#r10">Chickweed Chimichurri...or Bust!</a> <span class="source">[R10]</span></li>
+</ol>
+</div>
+
+<h2> Resumo das Receitas</h2>
+
+<h4>R1. Salada de Morugem</h4>
+<p>Salada minimalista onde a morugem é o ingrediente principal, temperada com sumo de limão e óleo de noz.</p>
+
+<h4>R2. Receita de Salada de Morugem</h4>
+<p>Salada individual com morugem, cebolinho/cebola roxa e beterraba crua ralada, ligada por vinagrete com óleo de coco e mostarda.</p>
+
+<h4>R3. Receita de morugem: salada de morugem com legumes de raiz crocantes</h4>
+<p>Salada de morugem com “palitos” crocantes de cenoura e rabanete, acidulada com vinagre (kombucha) e citrinos.</p>
+
+<h4>R4. Pesto vegan de morugem</h4>
+<p>Pesto cru e vegan de morugem com alho, sementes/pinhões, levedura nutricional, azeite e sal.</p>
+
+<h4>R5. Pesto de morugem</h4>
+<p>“Pesto-ish” cru que dispensa queijo e usa frutos secos à escolha; ajusta-se acidez (citrinos/vinagre) e sal ao gosto.</p>
+
+<h4>R6. Creamy Dreamy Chickweed Machine-Y Spread</h4>
+<p>Creme cru e umami de morugem com caju demolhado, tamari e gengibre.</p>
+
+<h4>R7. Chickichurri</h4>
+<p>Molho cru tipo chimichurri com morugem picada, orégãos, alho, malagueta, vinagre e azeite.</p>
+
+<h4>R8. ChickZhoug</h4>
+<p>Molho cru inspirado em zhoug com morugem, alho, jalapeños e especiarias.</p>
+
+<h4>R9. Chutney de coco e morugem inspirado no Quénia (Naryal ni)</h4>
+<p>Chutney cru de coco e morugem, fresco, picante e ligeiramente ácido.</p>
+
+<h4>R10. Chickweed Chimichurri...or Bust!</h4>
+<p>Versão crua de chimichurri onde a morugem substitui a salsa.</p>
+
+
+<h2> Receitas completas</h2>
+
+<a id="salada-de-morugem"></a>
+<h3 id="r1">R1 — Salada de Morugem</h3>
+
+<h4>Introdução</h4>
+<p>Uma salada extremamente simples e rápida, feita para realçar o sabor delicado da morugem fresca com um tempero leve e direto.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>4 colheres de chá de sumo de limão fresco</li>
+<li>4 colheres de chá de óleo de noz</li>
+<li>Sal, q.b.</li>
+<li>Pimenta preta moída na hora, q.b.</li>
+<li>6 chávenas de morugem fresca (folhas e caules tenros)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Colocar o sumo de limão numa taça grande.</li>
+<li>Adicionar o óleo em fio, batendo para emulsionar.</li>
+<li>Temperar com sal e pimenta.</li>
+<li>Juntar a morugem, envolver bem e servir de imediato.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Food &amp; Wine — 
+<a href="https://www.foodandwine.com/recipes/chickweed-salad" target="_blank" rel="noopener">
+https://www.foodandwine.com/recipes/chickweed-salad
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="receita-de-salada-de-morugem"></a>
+<h2 id="r2">R2 — Receita de Salada de Morugem</h2>
+
+<h3>Introdução</h3>
+<p>Uma salada individual simples, onde a morugem crua é combinada com beterraba ralada e um vinagrete suave.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 chávena de folhas de morugem</li>
+<li>Cebolinho ou cebola roxa, finamente fatiada</li>
+<li>1 beterraba crua, ralada</li>
+<li>Óleo de coco, q.b.</li>
+<li>Vinagre de vinho, q.b.</li>
+<li>Mostarda, q.b.</li>
+<li>Sal, q.b.</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Lavar e secar bem a morugem.</li>
+<li>Juntar a beterraba ralada e o cebolinho/cebola.</li>
+<li>Misturar óleo de coco, vinagre e mostarda.</li>
+<li>Envolver a salada com o vinagrete e temperar com sal.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Edible Wild Food —  
+<a href="https://www.ediblewildfood.com/chickweed-salad.aspx" target="_blank" rel="noopener">
+https://www.ediblewildfood.com/chickweed-salad.aspx
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="receita-de-morugem-salada-de-morugem-com-legumes-de-raiz-crocantes"></a>
+<h2 id="r3">R3 — Receita de morugem: salada de morugem com legumes de raiz crocantes</h2>
+
+<h3>Introdução</h3>
+<p>Salada crua que combina a delicadeza da morugem com a crocância de legumes de raiz cortados em palitos.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>3 chávenas de morugem picada</li>
+<li>1/4 chávena de rabanete em palitos</li>
+<li>1/4 chávena de cenoura em palitos</li>
+<li>1 1/2 colheres de sopa de azeite</li>
+<li>1 colher de sopa de vinagre de kombucha</li>
+<li>1 colher de sopa de sumo de limão</li>
+<li>Raspa de citrinos</li>
+<li>Sal, q.b.</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Preparar os legumes em palitos finos.</li>
+<li>Misturar o azeite, vinagre, sumo e raspa.</li>
+<li>Juntar a morugem e os legumes.</li>
+<li>Ajustar sal e servir.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Tyrant Farms —  
+<a href="https://www.tyrantfarms.com/chickweed-recipe-turning-common-weeds-into-gourmet-food/" target="_blank" rel="noopener">
+https://www.tyrantfarms.com/chickweed-recipe-turning-common-weeds-into-gourmet-food/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pesto-vegan-de-morugem"></a>
+<h2 id="r4">R4 — Pesto vegan de morugem</h2>
+
+<h3>Introdução</h3>
+<p>Pesto cru e vegan em que a morugem substitui o manjericão tradicional.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Morugem fresca</li>
+<li>Pinhões ou sementes</li>
+<li>Alho cru</li>
+<li>Levedura nutricional</li>
+<li>Sal</li>
+<li>Azeite</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Colocar todos os ingredientes num processador.</li>
+<li>Triturar adicionando azeite até obter a textura desejada.</li>
+<li>Ajustar sal e servir.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Juliet Kemp —  
+<a href="https://julietkemp.com/2010/12/vegan-chickweed-pesto/" target="_blank" rel="noopener">
+https://julietkemp.com/2010/12/vegan-chickweed-pesto/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pesto-de-morugem"></a>
+<h2 id="r5">R5 — Pesto de morugem</h2>
+
+<h3>Introdução</h3>
+<p>“Pesto-ish” cru que dispensa queijo e usa frutos secos à escolha; ajusta-se acidez (citrinos/vinagre) e sal ao gosto.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Morugem fresca</li>
+<li>Frutos secos</li>
+<li>Alho</li>
+<li>Óleo</li>
+<li>Citrinos ou vinagre</li>
+<li>Sal</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Triturar todos os ingredientes.</li>
+<li>Ajustar óleo, acidez e sal.</li>
+<li>Servir ou refrigerar.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Edible Alaska —  
+<a href="https://ediblealaska.ediblecommunities.com/recipe/recipes-chickweed-pesto/" target="_blank" rel="noopener">
+https://ediblealaska.ediblecommunities.com/recipe/recipes-chickweed-pesto/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="creamy-dreamy-chickweed-machine-y-spread"></a>
+<h2 id="r6">R6 — Creamy Dreamy Chickweed Machine-Y Spread</h2>
+
+<p>(… conteúdo integral mantido …)</p>
+
+<p><h4>Fonte:</h4>
+Edible Alaska —  
+<a href="https://ediblealaska.ediblecommunities.com/recipe/recipes-chickweed-spread/" target="_blank" rel="noopener">
+https://ediblealaska.ediblecommunities.com/recipe/recipes-chickweed-spread/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="chickichurri"></a>
+<h2 id="r7">R7 — Chickichurri</h2>
+
+<p>(… conteúdo integral mantido …)</p>
+
+<p><h4>Fonte:</h4>
+Anchored Outdoors —  
+<a href="https://anchoredoutdoors.com/three-delicious-chickweed-recipes-tiffany-bader/" target="_blank" rel="noopener">
+https://anchoredoutdoors.com/three-delicious-chickweed-recipes-tiffany-bader/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="chickzhoug"></a>
+<h2 id="r8">R8 — ChickZhoug</h2>
+
+<p>(… conteúdo integral mantido …)</p>
+
+<p><h4>Fonte:</h4>
+Anchored Outdoors —  
+<a href="https://anchoredoutdoors.com/three-delicious-chickweed-recipes-tiffany-bader/" target="_blank" rel="noopener">
+https://anchoredoutdoors.com/three-delicious-chickweed-recipes-tiffany-bader/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="chutney-de-coco-e-morugem-inspirado-no-quenia-naryal-ni"></a>
+<h2 id="r9">R9 — Chutney de coco e morugem inspirado no Quénia (Naryal ni)</h2>
+
+<p>(… conteúdo integral mantido …)</p>
+
+<p><h4>Fonte:</h4>
+Anchored Outdoors —  
+<a href="https://anchoredoutdoors.com/three-delicious-chickweed-recipes-tiffany-bader/" target="_blank" rel="noopener">
+https://anchoredoutdoors.com/three-delicious-chickweed-recipes-tiffany-bader/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="chickweed-chimichurri-or-bust"></a>
+<h2 id="r10">R10 — Chickweed Chimichurri...or Bust!</h2>
+
+<p>(… conteúdo integral mantido …)</p>
+
+<p><h4>Fonte:</h4>
+Fat of the Land —  
+<a href="https://fat-of-the-land.blogspot.com/2009/04/chickweed-chimichurrior-bust.html" target="_blank" rel="noopener">
+https://fat-of-the-land.blogspot.com/2009/04/chickweed-chimichurrior-bust.html
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

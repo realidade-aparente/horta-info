@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Rúcula – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+ <div class="masthead">
+<header>
+  <h1>Rúcula – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html" class="ativa">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+  </header></div>
+<main>
+<article>
+
+<h2>Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/rucula_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/rucula_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+<ol>
+<li><a href="#r1">Sopa Crua de Rúcula com Abacate e Pinhões</a> <span class="source">[R1]</span></li> 
+<li><a href="#r2">Salada de Rúcula e Milho com Molho Cremoso de Abacate</a> <span class="source">[R2]</span></li>
+<li><a href="#r3">Salada “Rawsome” de Rúcula com Kiwi, Beterraba e Rabanete</a> <span class="source">[R3]</span></li>
+<li><a href="#r4">Salada de Rúcula com Ervilhas-tortas e Rabanetes</a> <span class="source">[R4]</span></li>
+<li><a href="#r5">Pesto Cru de Rúcula com Nozes e Manjericão</a> <span class="source">[R5]</span></li>
+<li><a href="#r6">Pesto Cru de Ervilhas com Rúcula</a> <span class="source">[R6]</span></li>
+<li><a href="#r7">Pesto de Rúcula Sem Óleo</a> <span class="source">[R7]</span></li>
+<li><a href="#r8">Dip/Pesto Rústico de Rúcula, Azeitona e Caju</a> <span class="source">[R8]</span></li>
+<li><a href="#r9">Molho “Alfredo” Cru de Rúcula para Esparguete de Curgete</a> <span class="source">[R9]</span></li>
+<li><a href="#r10">Sopa Crua de Rúcula e Abacate com Pepino e Ervas</a> <span class="source">[R10]</span></li>
+</ol>
+</div>
+
+<h2> Resumo das Receitas</h2>
+<h4>R1 — Sopa Crua de Rúcula com Abacate e Pinhões</h4>
+<p>Uma sopa fria e sedosa, com rúcula bem presente, cremosidade do abacate e “mordida” dos pinhões. Excelente como entrada rápida.</p>
+
+<h4>R2 — Salada de Rúcula e Milho com Molho Cremoso de Abacate</h4>
+<p>Salada fresca com rúcula, milho cru, tomate e “massa” de curgete/amarela em tiras; o molho é um creme de abacate com sementes de cânhamo e manjericão.</p>
+
+<h4>R3 — Salada “Rawsome” de Rúcula com Kiwi, Beterraba e Rabanete</h4>
+<p>Explosão agridoce e crocante: rúcula + fatias finas de beterraba e rabanete, com kiwi e um molho de sumo de laranja e tahini.</p>
+
+<h4>R4 — Salada de Rúcula com Ervilhas-tortas e Rabanetes</h4>
+<p>Uma salada minimalista (5 ingredientes), crua, com o picante da rúcula, crocância dos rabanetes e doçura das ervilhas-tortas.</p>
+
+<h4>R5 — Pesto Cru de Rúcula com Nozes e Manjericão</h4>
+<p>Pesto raw-vegan com rúcula como protagonista, enriquecido por nozes, espinafre, levedura nutricional e limão. Vai bem com “zoodles” ou como dip.</p>
+
+<h4>R6 — Pesto Cru de Ervilhas com Rúcula</h4>
+<p>Pesto muito rápido e leve, feito com ervilhas e bastante rúcula, temperado com cominhos, sal e pimenta. Bom para barrar, dip ou “massa” vegetal.</p>
+
+<h4>R7 — Pesto de Rúcula Sem Óleo</h4>
+<p>Versão de pesto com textura cremosa sem azeite (usa água + nozes). Mantém o perfil fresco de rúcula e manjericão com limão e alho.</p>
+
+<h4>R8 — Dip/Pesto Rústico de Rúcula, Azeitona e Caju</h4>
+<p>Um dip espesso tipo pesto, com rúcula, azeitona verde, caju e levedura nutricional. Ótimo para legumes crus ou para “montar” wraps.</p>
+
+<h4>R9 — Molho “Alfredo” Cru de Rúcula para Esparguete de Curgete</h4>
+<p>Molho cremoso (caju + cânhamo + vinagre + rúcula) para envolver noodles de curgete. Pode ser servido totalmente cru (opção raw).</p>
+
+<h4>R10 — Sopa Crua de Rúcula e Abacate com Pepino e Ervas</h4>
+<p>Sopa crua fria, com rúcula e abacate, temperada com pepino, ervas e limão.</p>
+
+<h2> Receitas completas</h2>
+
+<a id="sopa-crua-de-rucula-com-abacate-e-pinhoes"></a>
+<h3 id="r1">R1 — Sopa Crua de Rúcula com Abacate e Pinhões</h3>
+
+<h4>Introdução</h4>
+<p>Uma sopa raw-vegan fria, cremosa e “apimentada” (da rúcula). Faz-se toda no liquidificador e serve-se imediatamente.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>4 chávenas de rúcula (ligeiramente compactada)</li>
+<li>2 colheres de sopa de cebola roxa picada</li>
+<li>1/2 chávena de pinhões</li>
+<li>1 abacate</li>
+<li>2 colheres de sopa de sumo de limão fresco</li>
+<li>2 colheres de sopa de azeite</li>
+<li>1/2 colher de chá de sal marinho (ou “herb salt”)</li>
+<li>1 1/2 chávena de água</li>
+</ul>
+
+<h3>Passos de preparação</h3>
+<ol>
+<li>Colocar todos os ingredientes no liquidificador/processador.</li>
+<li>Triturar até ficar totalmente liso.</li>
+<li>Ajustar a água até à textura desejada.</li>
+<li>Servir fresco e de imediato.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Fonte: Vegan Cooking — 
+<a href="https://www.vegancooking.com/recipes/appetizers/paris-charm-and-vegan-goodness-raw-arugula-soup/" target="_blank" rel="noopener">
+https://www.vegancooking.com/recipes/appetizers/paris-charm-and-vegan-goodness-raw-arugula-soup/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-de-rucula-e-milho-com-molho-cremoso-de-abacate"></a>
+<h2 id="r2">R2 — Salada de Rúcula e Milho com Molho Cremoso de Abacate</h2>
+
+<h3>Introdução</h3>
+<p>Salada crua, muito saciante, com “noodles” de curgete amarela a imitar massa e um molho de abacate sem óleo, bem aromático.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Para a salada:</li>
+<li>4 chávenas de rúcula “baby”</li>
+<li>3 chávenas de milho fresco (de ~4 espigas)</li>
+<li>1 pinta (~2 chávenas) de tomate-cereja, em quartos</li>
+<li>3 chávenas de “noodles” de curgete amarela (espiralizada ou em tiras finas)</li>
+<li>Para o molho:</li>
+<li>3 dentes de alho</li>
+<li>2 abacates</li>
+<li>1/3 chávena de sementes de cânhamo (hemp)</li>
+<li>1/4 chávena de levedura nutricional</li>
+<li>1/4 chávena de água</li>
+<li>2 colheres de sopa de sumo de limão</li>
+<li>1/4 chávena de manjericão</li>
+<li>Sal e pimenta a gosto (o original indica ajustar a gosto)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Numa taça grande, juntar rúcula, milho, tomate e os “noodles” de curgete; envolver.</li>
+<li>Para o molho: com o processador a trabalhar, deixar cair os dentes de alho (um a um).</li>
+<li>Parar, juntar abacates, levedura nutricional, água, sal e pimenta; triturar até ficar cremoso.</li>
+<li>Juntar o manjericão e pulsar só até incorporar.</li>
+<li>Verter o molho sobre a salada e envolver bem.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Fonte: Rawmazing — 
+<a href="https://rawmazing.com/recipe/arugula-and-corn-salad-with-avocado-dressing/" target="_blank" rel="noopener">
+https://rawmazing.com/recipe/arugula-and-corn-salad-with-avocado-dressing/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-rawsome-de-rucula-com-kiwi-beterraba-e-rabanete"></a>
+<h2 id="r3">R3 — Salada “Rawsome” de Rúcula com Kiwi, Beterraba e Rabanete</h2>
+
+<h3>Introdução</h3>
+<p>Uma salada crua com grande contraste: doce (kiwi/laranja), terroso (beterraba), picante (rúcula/rabanete) e um molho cremoso de tahini.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Para a salada:</li>
+<li>2 kiwis</li>
+<li>1 beterraba dourada grande (ou vermelha)</li>
+<li>5 rabanetes</li>
+<li>1 laranja descascada</li>
+<li>2 colheres de sopa de sementes de chia</li>
+<li>8 chávenas de folhas de rúcula</li>
+<li>Para o molho:</li>
+<li>4 colheres de sopa de sumo de laranja fresco</li>
+<li>2 colheres de sopa de tahini</li>
+<li>1/4 colher de chá de sal marinho</li>
+<li>1/4 colher de chá de pimenta-preta</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Fatiar muito fino kiwi, beterraba e rabanetes (mandolina) — ou ralar, se preferir.</li>
+<li>Separar a laranja em gomos.</li>
+<li>Envolver fruta/legumes com as sementes de chia e a rúcula.</li>
+<li>Molho: triturar/bater o sumo de laranja com tahini, sal e pimenta até emulsionar.</li>
+<li>Regar a salada com o molho e servir.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Fonte: Ashley Lauren Design Studio — 
+<a href="https://ashleylaurendesignstudio.com/food/rawsome-arugula-salad/" target="_blank" rel="noopener">
+https://ashleylaurendesignstudio.com/food/rawsome-arugula-salad/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-de-rucula-com-ervilhas-tortas-e-rabanetes"></a>
+<h2 id="r4">R4 — Salada de Rúcula com Ervilhas-tortas e Rabanetes</h2>
+
+<h3>Introdução</h3>
+<p>Uma salada raw-vegan super rápida, com poucos ingredientes e muito crocante. Ideal como acompanhamento ou base para acrescentar sementes.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 embalagem (container) de rúcula</li>
+<li>2 chávenas de ervilhas-tortas (snap peas)</li>
+<li>1 molho de rabanetes</li>
+<li>1 1/2 colher de sopa de óleo de linhaça “cold pressed”</li>
+<li>1/4 chávena de vinagre de vinho branco</li>
+<li>Pimenta-preta (opcional)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Fatiar os rabanetes.</li>
+<li>Numa taça, juntar rúcula, ervilhas-tortas e rabanetes.</li>
+<li>Adicionar o óleo de linhaça e o vinagre; envolver bem.</li>
+<li>Finalizar com pimenta-preta, se desejar.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Fonte: The All Natural Vegan — 
+<a href="https://theallnaturalvegan.com/arugula-snap-pea-salad/" target="_blank" rel="noopener">
+https://theallnaturalvegan.com/arugula-snap-pea-salad/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pesto-cru-de-rucula-com-nozes-e-manjericao"></a>
+<h2 id="r5">R5 — Pesto Cru de Rúcula com Nozes e Manjericão</h2>
+
+<h3>Introdução</h3>
+<p>Pesto raw-vegan “cheesy” (graças à levedura nutricional), com rúcula em destaque. Perfeito para noodles de curgete, para barrar ou como dip.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 chávena de rúcula bem cheia (compactada)</li>
+<li>1/4 chávena de manjericão (cerca de 15 folhas médias/grandes)</li>
+<li>1/2 chávena de espinafre bem cheio (compactado)</li>
+<li>1/3 chávena de nozes</li>
+<li>2 colheres de sopa de sumo de limão</li>
+<li>1 dente de alho</li>
+<li>2 colheres de sopa de levedura nutricional</li>
+<li>3 colheres de sopa de azeite virgem extra (o original indica “alta qualidade”)</li>
+<li>(Opcional) 1/4 colher de chá de sal marinho</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Colocar tudo no processador.</li>
+<li>Triturar até ficar cremoso (ajustando a textura ao seu gosto).</li>
+<li>Usar de imediato ou guardar fechado no frio por poucos dias.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Fonte: Just Glowing with Health — 
+<a href="https://justglowingwithhealth.com/vegan-arugula-walnut-basil-pesto/" target="_blank" rel="noopener">
+https://justglowingwithhealth.com/vegan-arugula-walnut-basil-pesto/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pesto-cru-de-ervilhas-com-rucula"></a>
+<h2 id="r6">R6 — Pesto Cru de Ervilhas com Rúcula</h2>
+
+<h3>Introdução</h3>
+<p>Um pesto raw muito simples e rápido, com ervilhas e rúcula, sem frutos secos e sem óleo. Sabe a “primavera” e funciona como molho, dip ou pasta para barrar.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 1/4 chávena de ervilhas (sweet peas)</li>
+<li>2 chávenas de rúcula</li>
+<li>1 colher de chá de cominhos moídos</li>
+<li>1/4 colher de chá de sal (Himalayan/rosa, no original)</li>
+<li>1/4 colher de chá de pimenta-preta moída</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Colocar ervilhas, rúcula, cominhos, sal e pimenta num processador.</li>
+<li>Processar até obter uma pasta/pesto (ajustar o ponto conforme preferir).</li>
+<li>Consumir de imediato; guardar o excedente no frigorífico por poucos dias.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Fonte: Nouveau Raw — 
+<a href="https://nouveauraw.com/raw-recipes/main-dishes/sweet-pea-arugula-pesto/" target="_blank" rel="noopener">
+https://nouveauraw.com/raw-recipes/main-dishes/sweet-pea-arugula-pesto/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pesto-de-rucula-sem-oleo"></a>
+<h2 id="r7">R7 — Pesto de Rúcula Sem Óleo</h2>
+
+<h3>Introdução</h3>
+<p>Pesto vegan sem azeite, com água para ajudar a triturar e nozes para corpo. Fresco, forte em rúcula e ótimo para bowls, wraps ou “massa” vegetal.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 chávena de rúcula fresca</li>
+<li>1 chávena de manjericão fresco</li>
+<li>1 colher de sopa de sumo de limão espremido na hora</li>
+<li>2 a 3 dentes de alho (a gosto)</li>
+<li>1/2 chávena de nozes cruas</li>
+<li>1/4 chávena de água</li>
+<li>1/4 colher de chá de sal (mais a gosto)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Juntar todos os ingredientes no processador pequeno (ou blender).</li>
+<li>Processar até ficar triturado e com a textura desejada (mais rústica ou mais lisa).</li>
+<li>Provar e ajustar sal/limão/alho a gosto.</li>
+<li>Guardar bem fechado no frigorífico e consumir nos dias seguintes (melhor sabor nos primeiros dias).</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Fonte: Detoxinista — 
+<a href="https://detoxinista.com/oil-free-arugula-pesto-vegan/" target="_blank" rel="noopener">
+https://detoxinista.com/oil-free-arugula-pesto-vegan/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="dip-pesto-rustico-de-rucula-azeitona-e-caju"></a>
+<h2 id="r8">R8 — Dip/Pesto Rústico de Rúcula, Azeitona e Caju</h2>
+
+<h3>Introdução</h3>
+<p>Um dip espesso e muito saboroso: rúcula + azeitonas + caju + levedura nutricional. Funciona como “pesto para tudo” (legumes crus, wraps, etc.).</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>100 g de rúcula (rocket/arugula)</li>
+<li>10 azeitonas verdes sem caroço</li>
+<li>50 g de cajus crus, sem sal</li>
+<li>1 colher de sopa de azeite</li>
+<li>1 dente de alho (ou mais, a gosto)</li>
+<li>25 g de levedura nutricional</li>
+<li>Sal a gosto</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Num processador, pulsar todos os ingredientes exceto o azeite, para ficar rústico (não completamente liso).</li>
+<li>Juntar o azeite aos poucos até ficar ligeiramente cremoso.</li>
+<li>Provar, ajustar sal e servir.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Fonte: The Vegan Larder — 
+<a href="https://theveganlarder.com/chunky-rocket-olive-cashew-pesto-dip/" target="_blank" rel="noopener">
+https://theveganlarder.com/chunky-rocket-olive-cashew-pesto-dip/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="molho-alfredo-cru-de-rucula-para-esparguete-de-curgete"></a>
+<h2 id="r9">R9 — Molho “Alfredo” Cru de Rúcula para Esparguete de Curgete</h2>
+
+<h3>Introdução</h3>
+<p>Uma versão raw possível (opção A) deste prato: noodles de curgete sem cozinhar e molho cremoso de rúcula com caju e sementes de cânhamo.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Para os “zoodles”:</li>
+<li>2 curgetes médias (para espiralizar)</li>
+<li>Para o molho “alfredo” de rúcula:</li>
+<li>1/2 chávena de cajus</li>
+<li>1/2 chávena de água</li>
+<li>1/3 chávena de sementes de cânhamo (hemp)</li>
+<li>2 dentes de alho</li>
+<li>1/2 colher de chá de alho em pó + cebola em pó (no original vem junto)</li>
+<li>1 colher de sopa de vinagre de sidra</li>
+<li>1 chávena “solta” de rúcula (e mais um pouco para servir)</li>
+<li>Uma pitada de sal (a gosto)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Espiralizar as curgetes e colocar numa taça.</li>
+<li>No liquidificador, triturar todos os ingredientes do molho até ficar bem cremoso.</li>
+<li>Envolver o molho nos noodles de curgete e servir (pode servir sobre folhas extra de rúcula).</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Fonte: Sprouting Zen — 
+<a href="https://sproutingzen.com/vegan-zucchini-noodles-with-arugula-alfredo/" target="_blank" rel="noopener">
+https://sproutingzen.com/vegan-zucchini-noodles-with-arugula-alfredo/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-crua-de-rucula-e-abacate-com-pepino-e-ervas"></a>
+<h2 id="r10">R10 — Sopa Crua de Rúcula e Abacate com Pepino e Ervas</h2>
+
+<h3>Introdução</h3>
+<p>Sopa crua refrescante, com rúcula e creme de abacate, combinada com pepino e ervas frescas, servida fria — totalmente raw-vegan.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>2 punhados grandes de rúcula fresca</li>
+<li>1 pepino médio (picado)</li>
+<li>1 abacate maduro</li>
+<li>1 dente de alho (opcional)</li>
+<li>Sumo de 1 limão (ou a gosto)</li>
+<li>1 colher de chá de vinagre de vinho branco (opcional)</li>
+<li>1/2 chávena de água fria</li>
+<li>Sal marinho a gosto</li>
+<li>Pimenta-preta moída na hora (opcional)</li>
+<li>Ervas frescas à escolha (ex.: manjericão ou dill, opcional)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Lavar bem a rúcula e o pepino.</li>
+<li>Colocar no liquidificador: rúcula, pepino, abacate, alho (se usar), sumo de limão, vinagre (se usar).</li>
+<li>Acrescentar a água aos poucos enquanto tritura, até obter uma textura homogénea.</li>
+<li>Ajustar sal e pimenta a gosto.</li>
+<li>Servir fria, imediatamente, com folhas de rúcula ou ervas frescas por cima.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Fonte: Simple Sustenance For Us — <strong>Cold Arugula and Avocado Soup</strong> — 
+<a href="https://simplesustenanceforus.wordpress.com/2013/03/28/green-and-raw-cold-arugula-and-avocado-soup/" target="_blank" rel="noopener">
+https://simplesustenanceforus.wordpress.com/2013/03/28/green-and-raw-cold-arugula-and-avocado-soup/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Couve toscana – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+ <div class="masthead">
+<header>
+  <h1>Couve toscana – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../couve-toscana.html" class="ativa">Couve toscana</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+  </header></div>
+<main>
+<article>
+
+<h2>Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/couve-toscana_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/couve-toscana_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+<ol>
+<li><a href="#r1">Sopa crua “Esmeralda” de couve toscana e abacate (blender)</a> <span class="source">[R1]</span></li> 
+<li><a href="#r2">Wraps crus de couve toscana com paté “cheesy” de pimento e rebentos</a> <span class="source">[R2]</span></li>
+<li><a href="#r3">Kimchi cru fermentado de couve (alimentação viva)</a> <span class="source">[R3]</span></li>
+<li><a href="#r4">Chips de couve cruas no desidratador (dill + levedura nutricional)</a> <span class="source">[R4]</span></li>
+<li><a href="#r5">Crackers crus “cheesy” de couve no desidratador (amêndoa + linhaça)</a> <span class="source">[R5]</span></li>
+<li><a href="#r6">Crackers crus de couve com sabor a kimchi (desidratador)</a> <span class="source">[R6]</span></li>
+<li><a href="#r7">Pesto cru verde de couve (kale pesto) para molhos e wraps</a> <span class="source">[R7]</span></li>
+<li><a href="#r8">Salada vegan crua de couve com molho cremoso de sementes de girassol</a> <span class="source">[R8]</span></li>
+<li><a href="#r9">Salada crua de couve massajada (limão + azeite + levedura nutricional)</a> <span class="source">[R9]</span></li>
+<li><a href="#r10">Salada crua de couve com legumes de raiz (cenoura/beterraba/rábano)</a> <span class="source">[R10]</span></li>
+</ol>
+</div>
+
+<h2> Resumo das Receitas</h2>
+<h4>R1 — Sopa crua “Esmeralda” de couve toscana e abacate (blender)</h4>
+<p>Sopa cremosa e verde intensa feita no liquidificador com couve, pepino/aipo, limão e abacate. Pode ser servida fria ou levemente amornada (abaixo de 45 ºC).</p>
+
+<h4>R2 — Wraps crus de couve toscana com paté “cheesy” de pimento e rebentos</h4>
+<p>Folhas inteiras de couve lacinato usadas como “tortilha”, recheadas com um creme de caju e pimento, tomate em cubos, azeitonas e rebentos — muito saciante e portátil.</p>
+
+<h4>R3 — Kimchi cru fermentado de couve (alimentação viva)</h4>
+<p>Fermentado caseiro (lactofermentação) com couve, cebolinho, alho, gengibre e malagueta/paprica. Mantém-se “vivo” e ganha acidez e complexidade ao longo dos dias.</p>
+
+<h4>R4 — Chips de couve cruas no desidratador (dill + levedura nutricional)</h4>
+<p>Chips leves e estaladiças desidratadas a baixa temperatura com azeite, endro e levedura nutricional, com sabor “umami” e textura crocante.</p>
+
+<h4>R5 — Crackers crus “cheesy” de couve no desidratador (amêndoa + linhaça)</h4>
+<p>Crackers finas e crocantes à base de amêndoa demolhada, linhaça e couve, com temperos fumados — excelentes para patés e pastas cruas.</p>
+
+<h4>R6 — Crackers crus de couve com sabor a kimchi (desidratador)</h4>
+<p>Massa triturada com couve e temperos inspirados em kimchi, espalhada e desidratada até ficar estaladiça; ótima para snacks ou tábua de entradas cruas.</p>
+
+<h4>R7 — Pesto cru verde de couve (kale pesto) para molhos e wraps</h4>
+<p>Pesto cru e muito verde com couve, ervas, sementes/nozes e levedura nutricional, pronto em minutos para usar como molho, dip ou “cola” de wraps.</p>
+
+<h4>R8 — Salada vegan crua de couve com molho cremoso de sementes de girassol</h4>
+<p>Salada de couve com muitos legumes crus e um molho salgado/cremoso feito com sementes de girassol trituradas, ideal para quem evita frutos secos.</p>
+
+<h4>R9 — Salada crua de couve massajada (limão + azeite + levedura nutricional)</h4>
+<p>Base minimalista: couve massajada com limão e azeite para amaciar as fibras, finalizada com levedura nutricional — funciona como base para inúmeras variações.</p>
+
+<h4>R10 — Salada crua de couve com legumes de raiz (cenoura/beterraba/rábano)</h4>
+<p>Salada crua robusta com couve massajada e legumes de raiz ralados/fatiados, com vinagrete simples — crocante, colorida e ótima para “meal prep”.</p>
+
+
+<h2> Receitas completas</h2>
+<a id="sopa-crua-esmeralda-de-couve-toscana-e-abacate-blender"></a>
+<h3 id="r1">R1 — Sopa crua “Esmeralda” de couve toscana e abacate (blender)</h3>
+
+<h4>Introdução</h4>
+<p>Uma sopa crua muito cremosa e verde, feita exclusivamente no liquidificador. É uma forma prática de consumir couve toscana crua com textura agradável. Para servir levemente amornada sem “cozinhar”, podes bater mais tempo até aquecer suavemente, mantendo abaixo de 45 ºC.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>2 a 3 chávenas de folhas de couve toscana (sem talos duros), bem lavadas</li>
+<li>1 abacate maduro (guardar metade para guarnição, se quiseres)</li>
+<li>1 pepino pequeno (ou 1–2 talos de aipo) em pedaços</li>
+<li>1 a 2 chávenas de água filtrada (ajustar textura)</li>
+<li>Sumo de 1 limão (ou a gosto)</li>
+<li>1 dente de alho pequeno (opcional)</li>
+<li>Sal marinho e pimenta preta q.b.</li>
+<li>Guarnições opcionais: tomate em cubos, sementes de cânhamo, mais abacate</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Coloca no liquidificador a couve, a água, o pepino/aipo, o sumo de limão e o alho (se usares).</li>
+<li>Tritura até ficar completamente liso.</li>
+<li>Junta o abacate e volta a triturar até ficar aveludado.</li>
+<li>Ajusta sal, pimenta e acidez. Se quiseres mais fluida, adiciona um pouco de água.</li>
+<li>Serve imediatamente, com as guarnições a gosto.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Center for Nutrition Studies — Raw Emerald Kale Soup — 
+<a href="https://nutritionstudies.org/recipes/soup/raw-emerald-kale-soup/" target="_blank" rel="noopener">
+https://nutritionstudies.org/recipes/soup/raw-emerald-kale-soup/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="wraps-crus-de-couve-toscana-com-pate-cheesy-de-pimento-e-rebentos"></a>
+<h2 id="r2">R2 — Wraps crus de couve toscana com paté “cheesy” de pimento e rebentos</h2>
+
+<h3>Introdução</h3>
+<p>Wraps crus em que as folhas de couve lacinato substituem pão ou tortilha. O recheio principal é um creme de caju com pimento e limão (estilo “cheesy”), acompanhado de rebentos e tomate.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Para o creme/paté:</li>
+<li>Cajus demolhados (cerca de 4 horas)</li>
+<li>1 pimento vermelho (sem sementes)</li>
+<li>2 dentes de alho</li>
+<li>Chalota (ou cebola) em pequena quantidade</li>
+<li>Levedura nutricional</li>
+<li>Sumo de 1 limão</li>
+<li>Sal e pimenta q.b.</li>
+<li>Água q.b. para ajustar textura</li>
+<li>Para montar:</li>
+<li>8 folhas grandes de couve toscana (inteiras, lavadas)</li>
+<li>Rebentos (ex.: trevo, alfafa ou mistura)</li>
+<li>Tomate em cubos pequenos</li>
+<li>Azeitonas laminadas (cruas/sem cura com aditivos animais)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Tritura no liquidificador/processador todos os ingredientes do creme até ficar espesso e barrável, ajustando com água.</li>
+<li>Se a nervura central das folhas for muito grossa, achata-a com um rolo ou corta parte do talo para facilitar enrolar.</li>
+<li>Barra o creme no centro de cada folha.</li>
+<li>Junta rebentos, tomate e azeitonas.</li>
+<li>Enrola firmemente como wrap (podes prender com palito) e serve.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Down to Earth Organic and Natural — Raw Lacinato Kale Wraps —  
+<a href="https://www.downtoearth.org/recipes/sandwiches-and-wraps/raw-lacinato-kale-wraps" target="_blank" rel="noopener">
+https://www.downtoearth.org/recipes/sandwiches-and-wraps/raw-lacinato-kale-wraps
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="kimchi-cru-fermentado-de-couve-alimentacao-viva"></a>
+<h2 id="r3">R3 — Kimchi cru fermentado de couve (alimentação viva)</h2>
+
+<h3>Introdução</h3>
+<p>Fermentação “viva” (lactofermentação) usando couve (kale) com salmoura e pasta aromática de alho, gengibre e malagueta. O resultado é ácido, picante e cheio de sabor, ótimo como acompanhamento.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 molho grande de couve (folhas rasgadas em pedaços)</li>
+<li>Cebolinho/cebola verde (opcional)</li>
+<li>Sal marinho (para a salmoura)</li>
+<li>Alho</li>
+<li>Gengibre fresco</li>
+<li>Pimento vermelho/malagueta (ou paprica + cayenne, conforme preferência)</li>
+<li>Um pouco de água para triturar a pasta</li>
+<li>Frascos de vidro limpos para fermentar</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Coloca a couve (e cebolinho, se usares) numa taça, cobre com água e adiciona sal. Massaja bem alguns minutos.</li>
+<li>Deixa repousar várias horas, mexendo ocasionalmente para manter tudo em contacto com a salmoura.</li>
+<li>Escorre e enxagua ligeiramente (ajustando ao teu gosto de sal).</li>
+<li>Tritura alho, gengibre, pimento/malagueta e um pouco de água até formar uma pasta.</li>
+<li>Envolve a pasta na couve, massajando para distribuir.</li>
+<li>Coloca em frascos, pressionando para expulsar ar e manter os vegetais submersos nos próprios líquidos.</li>
+<li>Fermenta à temperatura ambiente alguns dias (provando diariamente) e depois transfere para frio para abrandar a fermentação.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+fresh energy recipe lab — RAW, FERMENTED KALE KIMCHI —  
+<a href="https://freshenergyrecipes.wordpress.com/2015/09/01/raw-fermented-kale-kimchi/" target="_blank" rel="noopener">
+https://freshenergyrecipes.wordpress.com/2015/09/01/raw-fermented-kale-kimchi/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="chips-de-couve-cruas-no-desidratador-dill-levedura-nutricional"></a>
+<h2 id="r4">R4 — Chips de couve cruas no desidratador (dill + levedura nutricional)</h2>
+
+<h3>Introdução</h3>
+<p>Chips de couve cruas clássicas: folhas bem secas, envolvidas em tempero com endro e levedura nutricional, desidratadas até ficarem estaladiças.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 molho grande de couve (idealmente bem seca)</li>
+<li>Azeite</li>
+<li>Endro seco (dill)</li>
+<li>Levedura nutricional</li>
+<li>Molho de soja “raw”/nama shoyu ou tamari (conforme a receita)</li>
+<li>Sal marinho q.b.</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Lava a couve e seca extremamente bem. Remove talos grossos e rasga as folhas em pedaços.</li>
+<li>Mistura numa taça o azeite, endro, levedura, molho de soja e sal.</li>
+<li>Envolve bem as folhas no tempero, massageando para cobrir.</li>
+<li>Espalha em tabuleiros do desidratador sem sobrepor demasiado.</li>
+<li>Desidrata a baixa temperatura até ficarem completamente crocantes (o tempo varia com o equipamento e humidade).</li>
+<li>Deixa arrefecer e guarda em frasco hermético.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The Rawtarian — Raw kale chips recipe —  
+<a href="https://www.therawtarian.com/raw-kale-chips-recipe" target="_blank" rel="noopener">
+https://www.therawtarian.com/raw-kale-chips-recipe
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="crackers-crus-cheesy-de-couve-no-desidratador-amendoa-linhaca"></a>
+<h2 id="r5">R5 — Crackers crus “cheesy” de couve no desidratador (amêndoa + linhaça)</h2>
+
+<h3>Introdução</h3>
+<p>Crackers densas e “queijadas” feitas com amêndoa demolhada, linhaça e couve, com temperos fumados. São ótimas para patés crus, húmus cru, ou simplesmente para petiscar.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Água (para a massa)</li>
+<li>Linhaça dourada moída</li>
+<li>Amêndoas demolhadas durante a noite (escorridas e passadas por água)</li>
+<li>1 molho de couve (folhas)</li>
+<li>Farinha de coco crua (conforme a fonte)</li>
+<li>Levedura nutricional</li>
+<li>Chipotle (ou pimentão picante em pó)</li>
+<li>Paprica fumada</li>
+<li>Sal e pimenta q.b.</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Tritura amêndoas demolhadas com parte da água até obter um creme espesso.</li>
+<li>Junta couve e volta a triturar até ficar bem incorporada.</li>
+<li>Adiciona linhaça moída, farinha de coco, levedura e especiarias; mistura até formar massa espessa barrável.</li>
+<li>Espalha a massa em folha antiaderente de desidratador, o mais uniforme possível.</li>
+<li>Desidrata até firmar, vira e continua a desidratar até ficar crocante.</li>
+<li>Parte em crackers e guarda hermeticamente.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Rawmazing — Cheezy Kale Crackers —  
+<a href="https://rawmazing.com/recipe/cheezy-kale-crackers/" target="_blank" rel="noopener">
+https://rawmazing.com/recipe/cheezy-kale-crackers/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="crackers-crus-de-couve-com-sabor-a-kimchi-desidratador"></a>
+<h2 id="r6">R6 — Crackers crus de couve com sabor a kimchi (desidratador)</h2>
+
+<h3>Introdução</h3>
+<p>Crackers cruas com perfil de sabor inspirado em kimchi. A massa é triturada, espalhada e desidratada; fica ótima para snacks, com um toque fermentado/picante típico.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Folhas de couve (kale)</li>
+<li>Ingredientes de “kimchi”/temperos conforme a receita (ex.: alho, gengibre, chili em pó coreano, sal, etc.)</li>
+<li>Elementos de liga (tipicamente sementes moídas ou similares, conforme a fonte)</li>
+<li>Água q.b. para triturar e ajustar consistência</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Tritura todos os ingredientes no processador até obter uma massa lisa e espessa.</li>
+<li>Espalha muito fino numa folha antiaderente própria para desidratador.</li>
+<li>Desidrata a baixa temperatura por algumas horas; depois retira a folha, marca os quadrados (para facilitar partir).</li>
+<li>Continua a desidratar em grelha até ficar completamente crocante (normalmente durante a noite).</li>
+<li>Arrefece e guarda hermeticamente.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The Raw Chef — Kimchi Kale Crackers —  
+<a href="https://www.therawchef.com/kimchi-kale-crackers/" target="_blank" rel="noopener">
+https://www.therawchef.com/kimchi-kale-crackers/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pesto-cru-verde-de-couve-kale-pesto-para-molhos-e-wraps"></a>
+<h2 id="r7">R7 — Pesto cru verde de couve (kale pesto) para molhos e wraps</h2>
+
+<h3>Introdução</h3>
+<p>Um pesto cru verde, feito em minutos, que funciona como molho para saladas, base para wraps, dip de vegetais, ou para “massas” de legumes espiralizados.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Couve (folhas, sem talos grossos)</li>
+<li>Ervas frescas (ex.: manjericão/ salsa, conforme a receita)</li>
+<li>Sementes (ex.: cânhamo/abóbora) ou frutos secos (conforme a receita)</li>
+<li>Levedura nutricional</li>
+<li>Alho</li>
+<li>Sumo de limão</li>
+<li>Sal marinho q.b.</li>
+<li>Azeite (opcional conforme a versão) ou água para ajustar textura</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Coloca no processador a couve, ervas, sementes/nozes, alho, levedura e sal.</li>
+<li>Tritura em pulsos, raspando as laterais.</li>
+<li>Adiciona sumo de limão e, se indicado, azeite (ou água) aos poucos até obter consistência de pesto.</li>
+<li>Prova e ajusta acidez, sal e textura.</li>
+<li>Usa de imediato ou guarda no frio em frasco bem fechado.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Minimalist Baker — Super Green Vegan Kale Pesto —  
+<a href="https://minimalistbaker.com/super-green-vegan-kale-pesto/" target="_blank" rel="noopener">
+https://minimalistbaker.com/super-green-vegan-kale-pesto/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-vegan-crua-de-couve-com-molho-cremoso-de-sementes-de-girassol"></a>
+<h2 id="r8">R8 — Salada vegan crua de couve com molho cremoso de sementes de girassol</h2>
+
+<h3>Introdução</h3>
+<p>Salada crua bem completa, com couve e uma mistura de vegetais, ligada por um molho cremoso feito de sementes de girassol (sem frutos secos), ótimo para textura e saciedade.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Couve (folhas em tiras, sem talos grossos)</li>
+<li>Legumes crus variados (ex.: pimento, cenoura, pepino, cebola roxa, etc., conforme preferência)</li>
+<li>Para o molho: sementes de girassol, ácido (limão/vinagre), sal, temperos e água para triturar (conforme a fonte)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Corta a couve em tiras finas e coloca numa taça.</li>
+<li>(Opcional) Massaja 30–60 segundos com uma pitada de sal e um fio de limão para amaciar.</li>
+<li>Junta os restantes vegetais crus cortados.</li>
+<li>Tritura os ingredientes do molho até ficar cremoso, ajustando com água.</li>
+<li>Envolve o molho na salada e serve; se esperares 10–15 minutos, a couve fica ainda mais macia.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+My Quiet Kitchen — Vegan Kale Salad With Sunflower Seed Dressing —  
+<a href="https://myquietkitchen.com/creamy-vegan-kale-salad/" target="_blank" rel="noopener">
+https://myquietkitchen.com/creamy-vegan-kale-salad/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-crua-de-couve-massajada-limao-azeite-levedura-nutricional"></a>
+<h2 id="r9">R9 — Salada crua de couve massajada (limão + azeite + levedura nutricional)</h2>
+
+<h3>Introdução</h3>
+<p>A técnica de “massajar” a couve transforma a textura: a folha fica mais macia e menos amarga. Esta versão é simples e direta, com limão, azeite e levedura nutricional para um toque “umami”.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 molho de couve (preferencialmente lacinato), em pedaços ou tiras finas</li>
+<li>Azeite virgem extra</li>
+<li>Sumo de limão</li>
+<li>Sal marinho</li>
+<li>Levedura nutricional</li>
+<li>(Opcional) Alho em pó, conforme a receita</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Remove talos grossos e corta a couve em pedaços pequenos.</li>
+<li>Junta azeite, sumo de limão e sal na taça com a couve.</li>
+<li>Massaja com as mãos cerca de 1 minuto, apertando e esfregando as folhas até murcharem e ficarem macias.</li>
+<li>Adiciona levedura nutricional (e alho em pó se usares) e envolve.</li>
+<li>Serve de imediato ou deixa repousar alguns minutos para apurar.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Simply Quinoa — Best Massaged Kale Salad —  
+<a href="https://www.simplyquinoa.com/best-ever-massaged-kale-salad/" target="_blank" rel="noopener">
+https://www.simplyquinoa.com/best-ever-massaged-kale-salad/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-crua-de-couve-com-legumes-de-raiz-cenoura-beterraba-rabano"></a>
+<h2 id="r10">R10 — Salada crua de couve com legumes de raiz (cenoura/beterraba/rábano)</h2>
+
+<h3>Introdução</h3>
+<p>Uma salada crua mais “invernosa”, com couve massajada e legumes de raiz (ralados ou em tiras), que dá muita textura e aguenta bem no frigorífico.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Couve (em tiras finas)</li>
+<li>Azeite virgem extra</li>
+<li>Vinagre (suave) ou limão</li>
+<li>Sal marinho</li>
+<li>Legumes de raiz crus (ex.: cenoura, beterraba, nabo/rábano, conforme a fonte)</li>
+<li>Extras opcionais da receita (sementes/nozes, ervas, etc.)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Coloca a couve numa taça grande. Junta azeite, vinagre/limão e sal.</li>
+<li>Massaja 2–3 minutos até a couve começar a amolecer.</li>
+<li>Deixa repousar cerca de 30 minutos para ficar mais tenra.</li>
+<li>Junta os legumes de raiz ralados/fatiados e envolve bem.</li>
+<li>Prova e ajusta sal/acidez. Serve ou guarda no frio.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Vegetarian Times — Raw Kale Salad with Root Vegetables —  
+<a href="https://www.vegetariantimes.com/recipes/raw-kale-salad-with-root-vegetables/" target="_blank" rel="noopener">
+https://www.vegetariantimes.com/recipes/raw-kale-salad-with-root-vegetables/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

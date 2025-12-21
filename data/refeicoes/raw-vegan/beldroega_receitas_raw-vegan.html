@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Beldroega – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+ <div class="masthead">
+<header>
+  <h1>Beldroega – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../beldroega.html" class="ativa">Beldroega</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+  </header></div>
+<main>
+<article>
+
+<h2>Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/beldroega_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/beldroega_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+<ol>
+<li><a href="#r1">Salada Siciliana de Beldroega (Purslane)</a> <span class="source">[R1]</span></li>
+<li><a href="#r2">Salada de Beldroega e Pepino (com iogurte de soja e endro)</a> <span class="source">[R2]</span></li>
+<li><a href="#r3">Salada Crua de Beldroega com “Iogurte” Rápido de Frutos Secos</a> <span class="source">[R3]</span></li>
+<li><a href="#r4">Salada de Beldroega, Pepino e Abacate</a> <span class="source">[R4]</span></li>
+<li><a href="#r5">Salada Picante de Beldroega Selvagem</a> <span class="source">[R5]</span></li>
+<li><a href="#r6">“Pappardelle” de Couve-Rábano Crua com Pesto de Beldroega</a> <span class="source">[R6]</span></li>
+<li><a href="#r7">Smoothie de Beldroega (Receita 1/3)</a> <span class="source">[R7]</span></li>
+<li><a href="#r8">Salada de Beldroega (Receita 2/3)</a> <span class="source">[R8]</span></li>
+<li><a href="#r9">Beldroega em Conserva (Pickles) (Receita 3/3)</a> <span class="source">[R9]</span></li>
+<li><a href="#r10">Pesto de Beldroega com Microverdes de Ervilha</a> <span class="source">[R10]</span></li>
+</ol>
+</div>
+
+<h2> Resumo das Receitas</h2>
+
+<h4>R1 — Salada Siciliana de Beldroega (Purslane)</h4>
+<p>Resumo: Salada mediterrânica simples com beldroega, folhas verdes, tomate, azeitonas e alcaparras, temperada com azeite e vinagre balsâmico.</p>
+
+<h4>R2 — Salada de Beldroega e Pepino (com iogurte de soja e endro)</h4>
+<p>Resumo: Salada fresca e crocante com beldroega e pepino laminado, finalizada com iogurte de soja, endro e azeite.</p>
+
+<h4>R3 — Salada Crua de Beldroega com “Iogurte” Rápido de Frutos Secos</h4>
+<p>Resumo: Interpretação crua de um meze turco: beldroega envolvida num creme tipo iogurte feito de frutos secos demolhados, limão e alho, com sumagre.</p>
+
+<h4>R4 — Salada de Beldroega, Pepino e Abacate</h4>
+<p>Resumo: Salada inspirada em sabores latino-americanos, com beldroega, pepino e abacate, aromatizada com coentros (ou endro/hortelã) e citrinos.</p>
+
+<h4>R5 — Salada Picante de Beldroega Selvagem</h4>
+<p>Resumo: Salada rápida e vibrante com beldroega, tomate, malaguetas e hortelã, temperada com limão/lima e azeite.</p>
+
+<h4>R6 — “Pappardelle” de Couve-Rábano Crua com Pesto de Beldroega</h4>
+<p>Resumo: “Massa” crua feita com lâminas de couve-rábano e pesto de beldroega com pistáchios, alho, limão e azeite; finaliza com cebola roxa.</p>
+
+<h4>R7 — Smoothie de Beldroega (Receita 1/3)</h4>
+<p>Resumo: Smoothie verde e frutado com beldroega, ervas, fruta e leite de coco; batido em duas fases para melhor textura.</p>
+
+<h4>R8 — Salada de Beldroega (Receita 2/3)</h4>
+<p>Resumo: Salada “de apanha” (mistura de folhas) com beldroega, tomate cereja e rebentos de alfafa, com molho simples de limão e azeite.</p>
+
+<h4>R9 — Beldroega em Conserva (Pickles) (Receita 3/3)</h4>
+<p>Resumo: Conserva crua em vinagre de sidra: talos de beldroega picados em frasco e cobertos com vinagre, para prolongar o uso no inverno.</p>
+
+<h4>R10 — Pesto de Beldroega com Microverdes de Ervilha</h4>
+<p>Resumo: Pesto tipo chimichurri com beldroega e microverdes de ervilha, salsa, alho, vinagre e azeite; tudo triturado e pronto a usar.</p>
+
+
+<h2> Receitas completas</h2>
+
+<a id="salada-siciliana-de-beldroega-purslane"></a>
+<h3 id="r1">R1 — Salada Siciliana de Beldroega (Purslane)</h3>
+
+<h4>Introdução</h4>
+<p>Uma salada vegan de inspiração mediterrânica (estilo siciliano), muito rápida, onde a beldroega entra como verde principal, com azeitonas e alcaparras para profundidade salina.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>2 chávenas de folhas verdes baby variadas</li>
+<li>1 pequeno molho de beldroega (cerca de 2 chávenas)</li>
+<li>1 chávena de tomate cereja, cortado ao meio (ou 1 tomate grande, fatiado)</li>
+<li>1 chávena de azeitonas (gregas, sicilianas ou italianas)</li>
+<li>2 colheres de sopa de alcaparras, passadas por água e escorridas</li>
+<li>1 colher de sopa de azeite virgem extra</li>
+<li>1 colher de sopa de vinagre balsâmico</li>
+<li>Sal marinho e pimenta preta moída na hora, a gosto</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Colocar as folhas verdes numa saladeira ou travessa.</li>
+<li>Lavar a beldroega, retirar/selecionar as folhas e adicionar às folhas verdes.</li>
+<li>Juntar tomate, azeitonas e alcaparras e envolver delicadamente.</li>
+<li>Regar com azeite e vinagre balsâmico. Temperar com sal e pimenta a gosto.</li>
+<li>Servir imediatamente.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The Plant-Powered Dietitian — <a href="https://sharonpalmer.com/2014-08-25-sicilian-purslane-salad/" target="_blank" rel="noopener">https://sharonpalmer.com/2014-08-25-sicilian-purslane-salad/</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-de-beldroega-e-pepino-com-iogurte-de-soja-e-endro"></a>
+<h2 id="r2">R2 — Salada de Beldroega e Pepino (com iogurte de soja e endro)</h2>
+
+<h3>Introdução</h3>
+<p>Uma salada muito simples e fresca: beldroega e pepino finíssimo com um “toque” cremoso (iogurte de soja) e endro.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>beldroega</li>
+<li>pepino</li>
+<li>iogurte de soja</li>
+<li>endro fresco ou seco</li>
+<li>azeite virgem extra</li>
+<li>sal marinho não refinado</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Preparar a beldroega: cortar as raízes com uma faca e partir a beldroega em pedaços com aprox. 5 cm. Retirar caules grossos, mantendo as folhas e caules tenros. Lavar bem para remover terra/resíduos.</li>
+<li>Descascar o pepino e fatiar muito fino (idealmente com mandolina).</li>
+<li>Colocar a beldroega num prato e dispor as fatias de pepino por cima.</li>
+<li>Colocar o iogurte por cima da beldroega e do pepino. Polvilhar o endro sobre o iogurte.</li>
+<li>Regar com azeite e temperar com sal. Servir de imediato.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Vegan Hot Stuff — <a href="https://veganhotstuff.com/purslane-and-cucumber-salad/" target="_blank" rel="noopener">https://veganhotstuff.com/purslane-and-cucumber-salad/</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-crua-de-beldroega-com-iogurte-rapido-de-frutos-secos"></a>
+<h2 id="r3">R3 — Salada Crua de Beldroega com “Iogurte” Rápido de Frutos Secos</h2>
+
+<h3>Introdução</h3>
+<p>Meze cru inspirado na cozinha turca: beldroega com um creme tipo iogurte feito em liquidificador a partir de frutos secos demolhados, limão e alho, finalizado com sumagre.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 molho de beldroega fresca (300 g)</li>
+<li>100 g de cajus “fair trade” ou macadâmias (também pode usar amêndoas peladas; nesse caso, adicionar 1–2 colheres de sopa de azeite, por terem menos gordura)</li>
+<li>1/2 chávena de água filtrada</li>
+<li>sumo de 1 limão inteiro</li>
+<li>1/2 colher de chá de sal rosa do Himalaia</li>
+<li>1 dente de alho grande, picado</li>
+<li>1 colher de sopa de sumagre, para servir</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Cortar as raízes do molho de beldroega, lavar e escorrer muito bem para garantir que não fica terra nas folhas. Usar centrifugadora de saladas para retirar excesso de água. Picar grosseiramente a beldroega e transferir para uma taça.</li>
+<li>Demolhar os frutos secos 5 horas em água morna. Coar e secar. Colocar no liquidificador. Adicionar sumo de limão, alho, água e sal. Triturar até ficar muito cremoso.</li>
+<li>Adicionar a beldroega à mistura tipo iogurte e envolver até as folhas ficarem cobertas.</li>
+<li>Transferir para um prato de servir, regar com azeite se desejar, e guarnecer com sumagre.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Gurme Vegan — <a href="https://www.gurmevegan.com/raw-purslane-salad-with-quick-yogurt/" target="_blank" rel="noopener">https://www.gurmevegan.com/raw-purslane-salad-with-quick-yogurt/</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-de-beldroega-pepino-e-abacate"></a>
+<h2 id="r4">R4 — Salada de Beldroega, Pepino e Abacate</h2>
+
+<h3>Introdução</h3>
+<p>Uma salada rápida, sem cozinhar, onde a beldroega entra cortada em pedaços curtos, com pepino e abacate. Tempera-se “a olho” com azeite, citrinos, sal, pimenta e ervas.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>3 oz (cerca de 85 g) de beldroega lavada e seca (aprox. 1,5 chávena), cortada em pedaços de 2–3 cm, removendo caules duros maiores (ver nota na fonte)</li>
+<li>1/2 pepino grande</li>
+<li>1 abacate grande</li>
+<li>pequeno punhado de coentros fatiados (ou endro, ou hortelã), a gosto</li>
+<li>sal a gosto</li>
+<li>azeite virgem extra a gosto</li>
+<li>sumo de lima ou limão a gosto</li>
+<li>pimenta preta moída na hora a gosto</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Cortar o pepino em quartos no sentido do comprimento e retirar as sementes com uma faca; cortar novamente e depois cortar em segmentos de cerca de 2–3 cm.</li>
+<li>Cortar o abacate em cubos de cerca de 1–1,5 cm.</li>
+<li>Juntar todos os ingredientes e temperar a gosto.</li>
+<li>Provar e corrigir o tempero (citrinos, ervas e sal) e servir frio.</li>
+<li>Nota da receita: a salada começa a “murchar” ao fim de ~15 minutos.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Forager | Chef — <a href="https://foragerchef.com/purslane-avocado-and-cucumber-salad/" target="_blank" rel="noopener">https://foragerchef.com/purslane-avocado-and-cucumber-salad/</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-picante-de-beldroega-selvagem"></a>
+<h2 id="r5">R5 — Salada Picante de Beldroega Selvagem</h2>
+
+<h3>Introdução</h3>
+<p>Salada crua muito simples, com perfil fresco-picante: beldroega, tomate, malagueta e hortelã, temperados com citrinos e azeite.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 chávena de beldroega, lavada e bem seca</li>
+<li>2 a 4 tomates, pequenos a médios</li>
+<li>1 a 2 malaguetas (jalapeño ou serrano)</li>
+<li>1/2 chávena de hortelã fresca</li>
+<li>sumo de meio limão ou 1 lima</li>
+<li>3 a 4 colheres de sopa de azeite virgem extra</li>
+<li>sal e pimenta</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Picar grosseiramente a beldroega, os tomates e a hortelã.</li>
+<li>Picar finamente as malaguetas.</li>
+<li>Juntar tudo numa taça grande e temperar com o sumo de limão/lima e o azeite.</li>
+<li>Ajustar sal e pimenta a gosto.</li>
+<li>Comer de imediato, enquanto está tudo bem fresco e crocante.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Abeer Najjar — <a href="https://abeernajjar.com/2014/08/21/wild-purslane-salad/" target="_blank" rel="noopener">https://abeernajjar.com/2014/08/21/wild-purslane-salad/</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pappardelle-de-couve-rabano-crua-com-pesto-de-beldroega"></a>
+<h2 id="r6">R6 — “Pappardelle” de Couve-Rábano Crua com Pesto de Beldroega</h2>
+
+<h3>Introdução</h3>
+<p>Prato cru em que a “massa” são lâminas largas de couve-rábano. O pesto de beldroega é triturado apenas o suficiente para manter textura. Serve-se logo após envolver.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li><strong>Para a “massa”</strong></li>
+<li>2 couves-rábano médias/grandes</li>
+</ul>
+<ul>
+<li><strong>Para o pesto</strong></li>
+<li>1 chávena de beldroega bem compactada</li>
+<li>1/4 chávena de pistáchios crus</li>
+<li>2 dentes de alho jovens grandes</li>
+<li>sumo de 1 limão médio/grande</li>
+<li>1/4 chávena de azeite virgem</li>
+<li>1/3 colher de chá de sal marinho (Celtic sea salt)</li>
+</ul>
+<ul>
+<li><strong>Para guarnecer</strong></li>
+<li>1 cebola roxa pequena, picada fino</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Lavar e descascar a couve-rábano. Usar um descascador de legumes ou mandolina para fazer folhas/lâminas grandes tipo “pappardelle”. Colocar numa taça, juntar uma pitada de sal e envolver suavemente. Reservar.</li>
+<li>Num processador, pulsar/triturar todos os ingredientes do pesto. Não processar em excesso.</li>
+<li>Transferir o pesto para a taça com a “massa” de couve-rábano e envolver com cuidado.</li>
+<li>Guarnecer com cebola roxa picada e servir imediatamente.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Passionately Raw! — <a href="https://passionaltelyraw.blogspot.com/2017/04/raw-vegan-kohlrabi-pappardelle-with.html" target="_blank" rel="noopener">https://passionaltelyraw.blogspot.com/2017/04/raw-vegan-kohlrabi-pappardelle-with.html</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="smoothie-de-beldroega-receita-1-3"></a>
+<h2 id="r7">R7 — Smoothie de Beldroega (Receita 1/3)</h2>
+
+<h3>Introdução</h3>
+<p>Smoothie verde com beldroega e outras ervas/plantas, enriquecido com fruta e leite de coco. É batido primeiro com os líquidos e verdes, e depois com a fruta.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>pequeno molho de beldroega (o da foto no site está à esquerda)</li>
+<li>pequeno molho de morugem/chickweed (ao centro)</li>
+<li>4 hastes de salsa</li>
+<li>4 raminhos de hortelã fresca</li>
+<li>4 ameixas bem maduras</li>
+<li>1 banana</li>
+<li>1 chávena de mirtilos</li>
+<li>1/2 chávena de leite de coco</li>
+<li>1 chávena de água</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Triturar/bater as folhas verdes no leite de coco e na água.</li>
+<li>Adicionar a fruta e bater novamente até ficar liso.</li>
+<li>(Rendimento indicado na fonte: 1 litro.)</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Julia’s Edible Weeds — <a href="https://juliasedibleweeds.com/recipes/purslane-hugely-nutritious/" target="_blank" rel="noopener">https://juliasedibleweeds.com/recipes/purslane-hugely-nutritious/</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-de-beldroega-receita-2-3"></a>
+<h2 id="r8">R8 — Salada de Beldroega (Receita 2/3)</h2>
+
+<h3>Introdução</h3>
+<p>Uma sugestão de salada crua baseada em “folhas que houver”: mistura de verdes + beldroega + tomate cereja + rebentos, com molho simples.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>folhas verdes variadas (exemplos na fonte: alface, mizuna, rúcula, morugem/chickweed, salsa)</li>
+<li>beldroega, em pedaços picados</li>
+<li>tomate cereja</li>
+<li>rebentos de alfafa</li>
+<li>(decoração opcional referida na fonte: flores de amor-perfeito/heartsease pansy e pétalas de calêndula)</li>
+<li>para temperar: sumo de limão, azeite e sal</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Recolher folhas verdes e rasgar as folhas para uma saladeira.</li>
+<li>Adicionar pedaços picados de beldroega, tomate cereja e rebentos de alfafa.</li>
+<li>Decorar com flores/pétalas comestíveis (opcional).</li>
+<li>Servir com um molho de sumo de limão, azeite e sal.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Julia’s Edible Weeds — <a href="https://juliasedibleweeds.com/recipes/purslane-hugely-nutritious/" target="_blank" rel="noopener">https://juliasedibleweeds.com/recipes/purslane-hugely-nutritious/</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="beldroega-em-conserva-pickles-receita-3-3"></a>
+<h2 id="r9">R9 — Beldroega em Conserva (Pickles) (Receita 3/3)</h2>
+
+<h3>Introdução</h3>
+<p>Conserva crua para prolongar o uso da beldroega: enche-se um frasco com talos picados e cobre-se com vinagre de sidra cru.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>beldroega (talos) picada</li>
+<li>vinagre de sidra de maçã cru (raw apple cider vinegar)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Encher um frasco com pedaços picados de talos de beldroega.</li>
+<li>Encher o frasco com vinagre de sidra cru até acima.</li>
+<li>Deixar assentar e/ou “picar” com um pauzinho (tipo hashi) para libertar bolhas de ar.</li>
+<li>Fechar com a tampa; a fonte sugere colocar película aderente (ou um pedaço de saco plástico) entre a tampa e o frasco para evitar que o vinagre dissolva o metal da tampa e altere os pickles.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Julia’s Edible Weeds — <a href="https://juliasedibleweeds.com/recipes/purslane-hugely-nutritious/" target="_blank" rel="noopener">https://juliasedibleweeds.com/recipes/purslane-hugely-nutritious/</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pesto-de-beldroega-com-microverdes-de-ervilha"></a>
+<h2 id="r10">R10 — Pesto de Beldroega com Microverdes de Ervilha</h2>
+
+<h3>Introdução</h3>
+<p>Pesto cru (com notas de chimichurri) feito no processador/liquidificador: beldroega + microverdes de ervilha + ervas e alho, equilibrado com vinagre e azeite.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 chávena de microverdes de ervilha picados (picar antes de medir)</li>
+<li>1 chávena de talos e folhas de beldroega picados (picar antes de medir)</li>
+<li>2 colheres de sopa de manjerona fresca (ou 1 colher de sopa de orégãos frescos)</li>
+<li>1/4 chávena de salsa fresca</li>
+<li>3 dentes de alho</li>
+<li>1/4 chávena de azeite virgem extra</li>
+<li>2 colheres de sopa de vinagre de vinho tinto</li>
+<li>1/4 colher de chá de sal</li>
+<li>pimenta a gosto</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Juntar todos os ingredientes num processador de alimentos ou liquidificador.</li>
+<li>Processar/triturar até ficar homogéneo/liso.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The Mighty Microgreen — <a href="https://themightymicrogreen.com/purslane-pea-microgreen-pesto/" target="_blank" rel="noopener">https://themightymicrogreen.com/purslane-pea-microgreen-pesto/</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

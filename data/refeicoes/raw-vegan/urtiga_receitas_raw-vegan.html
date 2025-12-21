@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Urtiga – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+ <div class="masthead">
+<header>
+  <h1>Urtiga – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../urtiga.html" class="ativa">Urtiga</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+  </header></div>
+<main>
+<article>
+
+<h2>Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/urtiga_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/urtiga_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+<ol>
+<li><a href="#r1">Pesto cru de urtiga e manjericão</a> <span class="source">[R1]</span></li>
+<li><a href="#r2">Pesto cru “superfood” de urtiga (com coentros e manjericão)</a> <span class="source">[R2]</span></li>
+<li><a href="#r3">Pesto cru de urtiga (ou espinafre) económico</a> <span class="source">[R3]</span></li>
+<li><a href="#r4">Sopa crua de urtiga (tipo gazpacho/pesto)</a> <span class="source">[R4]</span></li>
+<li><a href="#r5">Salada de laranja e urtiga com molho de amêndoa</a> <span class="source">[R5]</span></li>
+<li><a href="#r6">Sumo de urtiga com ananás, curgete e lima (extrator/slow juicer)</a> <span class="source">[R6]</span></li>
+<li><a href="#r7">Sumo cru de urtiga, pepino e limão (cold-press)</a> <span class="source">[R7]</span></li>
+<li><a href="#r8">“Sumo” cru de urtiga no liquidificador (coado), com maçã e gengibre</a> <span class="source">[R8]</span></li>
+<li><a href="#r9">Sumo detox cru de melão cantalupo (honeydew) e urtiga</a> <span class="source">[R9]</span></li>
+<li><a href="#r10">Batido cru de urtiga, banana e cerejas (com bebida de arroz)</a> <span class="source">[R10]</span></li>
+</ol>
+</div>
+
+<h2> Resumo das Receitas</h2>
+
+<h4>R1. Pesto cru de urtiga e manjericão</h4>
+<p>Um pesto rápido, vibrante e totalmente cru, ótimo para barrar, servir com legumes crus ou usar como “molho” para noodles de curgete.</p>
+
+<h4>R2. Pesto cru “superfood” de urtiga (com coentros e manjericão)</h4>
+<p>Versão crua com três verdes (urtiga, coentros e manjericão), sementes e um toque opcional de chlorella para reforço nutricional.</p>
+
+<h4>R3. Pesto cru de urtiga (ou espinafre) económico</h4>
+<p>Pesto simples, sem complicações e com ingredientes baratos e flexíveis (sementes ou frutos secos à escolha).</p>
+
+<h4>R4. Sopa crua de urtiga (tipo gazpacho/pesto)</h4>
+<p>Sopa crua batida no liquidificador com limão e miso: fica cremosa, intensa e serve-se fria ou à temperatura ambiente.</p>
+
+<h4>R5. Salada de laranja e urtiga com molho de amêndoa</h4>
+<p>Folhas de urtiga “amaciadas” sem calor, combinadas com laranja e um molho rápido de manteiga de amêndoa.</p>
+
+<h4>R6. Sumo de urtiga com ananás, curgete e lima (extrator/slow juicer)</h4>
+<p>Sumo fresco e herbáceo equilibrado com fruta; pensado para extrator de sumos.</p>
+
+<h4>R7. Sumo cru de urtiga, pepino e limão (cold-press)</h4>
+<p>Tónico minimalista (3 ingredientes) para beber fresco, ideal em jejum se isso fizer sentido para ti.</p>
+
+<h4>R8. “Sumo” cru de urtiga no liquidificador (coado), com maçã e gengibre</h4>
+<p>Alternativa a extrator: bate-se com água, coa-se e bebe-se de imediato.</p>
+
+<h4>R9. Sumo detox cru de melão cantalupo (honeydew) e urtiga</h4>
+<p>Sumo muito simples (apenas 2 ingredientes) com perfil doce e verde, feito no extrator.</p>
+
+<h4>R10. Batido cru de urtiga, banana e cerejas (com bebida de arroz)</h4>
+<p>Batido mais “refeição”, doce e fácil, com canela e bebida vegetal.</p>
+
+
+<h2> Receitas completas</h2>
+
+<a id="pesto-cru-de-urtiga-e-manjericao"></a>
+<h3 id="r1">R1 — Pesto cru de urtiga e manjericão</h3>
+
+<h4>Introdução breve</h4>
+<p>Um pesto cru que usa folhas jovens de urtiga e manjericão para um resultado verde, cítrico e intenso. A trituração ajuda a neutralizar o efeito urticante, mas colhe e manuseia com cuidado.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>2 chávenas de folhas de urtiga (stinging nettles), bem compactadas</li>
+<li>1 chávena de folhas de manjericão, bem compactadas</li>
+<li>3 colheres de sopa de sumo de limão</li>
+<li>3 colheres de sopa de azeite</li>
+<li>2 dentes de alho médios, grosseiramente picados</li>
+</ul>
+
+<h3>Preparação (passos)</h3>
+<ol>
+<li>Coloca as folhas de urtiga, manjericão, sumo de limão, azeite e alho num processador de alimentos.</li>
+<li>Tritura em pulsos até ficar quase liso.</li>
+<li>Serve (por exemplo) com pepino, pimento amarelo ou crackers cruas.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Elana’s Pantry — 
+<a href="https://elanaspantry.com/nettles-pesto/" target="_blank" rel="noopener">
+https://elanaspantry.com/nettles-pesto/
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pesto-cru-superfood-de-urtiga-com-coentros-e-manjericao"></a>
+<h2 id="r2">R2 — Pesto cru “superfood” de urtiga (com coentros e manjericão)</h2>
+
+<h3>Introdução breve</h3>
+<p>Este pesto cru combina urtiga com coentros e manjericão, acrescentando sementes (pinhões e cânhamo/sésamo) para corpo e sabor. É pensado para comer cru, preservando a frescura dos verdes.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>2 grandes punhados (cerca de 50 g) de folhas de urtiga, acabadas de colher</li>
+<li>2 grandes punhados (cerca de 50 g) de coentros frescos</li>
+<li>4 grandes punhados (cerca de 100 g) de manjericão fresco</li>
+<li>1/4 chávena (cerca de 30 g) de pinhões</li>
+<li>1/4 chávena (cerca de 40 g) de sementes de cânhamo descascadas OU 1/4 chávena (cerca de 35 g) de sementes de sésamo inteiras</li>
+<li>1 colher de sopa de chlorella (opcional)</li>
+<li>1/4 a 1/2 colher de chá de sal marinho</li>
+<li>2 colheres de sopa de azeite virgem extra</li>
+<li>Fatias finas de pepino (para servir)</li>
+</ul>
+
+<h3>Preparação (passos)</h3>
+<ol>
+<li>Lava e seca delicadamente a urtiga e as ervas (coentros e manjericão) com um pano limpo.</li>
+<li>Coloca os verdes no processador e tritura até ficarem bem desfeitos, raspando as laterais quando necessário.</li>
+<li>Junta os restantes ingredientes (exceto o azeite e o pepino) e volta a triturar.</li>
+<li>Adiciona o azeite e tritura muito brevemente, só até incorporar.</li>
+<li>Serve pequenas porções sobre fatias de pepino (ou tomate, se quiseres manter a ideia original de servir em cru).</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Real Foods —  
+<a href="https://www.realfoods.co.uk/recipe/raw-vegan-wild-nettle-pesto-recipe" target="_blank" rel="noopener">
+https://www.realfoods.co.uk/recipe/raw-vegan-wild-nettle-pesto-recipe
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pesto-cru-de-urtiga-ou-espinafre-economico"></a>
+<h2 id="r3">R3 — Pesto cru de urtiga (ou espinafre) económico</h2>
+
+<h3>Introdução breve</h3>
+<p>Um pesto cru de base muito simples: folhas + alho + frutos secos/sementes + óleo + acidez. Pode ser feito com urtiga (ou, em alternativa prevista na receita, outras folhas verdes).</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>4 chávenas de folhas cruas de urtiga (e pontas tenras), bem soltas/“loosely packed” (ou outras folhas indicadas na receita)</li>
+<li>2 dentes de alho</li>
+<li>1/2 chávena de óleo (azeite recomendado, mas pode ser outro)</li>
+<li>1/3 chávena de cajus OU sementes de girassol OU pinhões</li>
+<li>1/2 a 1 colher de chá de sal (ou a gosto)</li>
+<li>1 a 2 colheres de chá de sumo de limão (ou a gosto)</li>
+</ul>
+
+<h3>Preparação (passos)</h3>
+<ol>
+<li>Coloca as folhas, o alho e os frutos secos/sementes no processador e tritura até ficar o mais liso possível; vai raspando as laterais.</li>
+<li>Adiciona o óleo e volta a triturar.</li>
+<li>Junta o sal e o sumo de limão; ajusta a gosto.</li>
+<li>Serve de imediato.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Penniless Parenting —  
+<a href="https://pennilessparenting.com/2017/02/raw-nettle-or-spinach-pesto-recipe-vegan-paleo-and-cheap.html" target="_blank" rel="noopener">
+https://pennilessparenting.com/2017/02/raw-nettle-or-spinach-pesto-recipe-vegan-paleo-and-cheap.html
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-crua-de-urtiga-tipo-gazpacho-pesto"></a>
+<h2 id="r4">R4 — Sopa crua de urtiga (tipo gazpacho/pesto)</h2>
+
+<h3>Introdução breve</h3>
+<p>Uma sopa crua batida no liquidificador com um perfil ácido/salgado (limão + miso) e um toque untuoso de azeite. A receita assume consumo cru e pode ser servida logo ou fria.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>5 chávenas de folhas de urtiga (sem caules), medidas “lightly packed”</li>
+<li>1 limão Meyer inteiro, sem sementes (nota: se não tiveres limão Meyer bem maduro, a receita sugere usar só raspa e sumo do limão, sem a parte branca)</li>
+<li>1/2 chávena de pasta de miso branco (white miso)</li>
+<li>2,5 chávenas de água</li>
+<li>1/4 chávena de azeite virgem extra</li>
+</ul>
+
+<h3>Preparação (passos)</h3>
+<ol>
+<li>Usando luvas, corta/retira as folhas de urtiga dos caules com uma tesoura de cozinha; descarta os caules. Corta o limão e remove as sementes.</li>
+<li>Coloca todos os ingredientes no liquidificador e bate até obter consistência uniforme.</li>
+<li>Serve de imediato à temperatura ambiente ou depois de refrigerar. (A receita sugere decorar com flores comestíveis sazonais.)</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Tyrant Farms —  
+<a href="https://www.tyrantfarms.com/recipe-raw-stinging-nettle-soup/" target="_blank" rel="noopener">
+https://www.tyrantfarms.com/recipe-raw-stinging-nettle-soup/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-de-laranja-e-urtiga-com-molho-de-amendoa"></a>
+<h2 id="r5">R5 — Salada de laranja e urtiga com molho de amêndoa</h2>
+
+<h3>Introdução breve</h3>
+<p>Salada primaveril que “domestica” a urtiga sem calor: demolha, amacia com rolo e mistura com laranja. O molho de amêndoa dá cremosidade e liga tudo.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 laranja</li>
+<li>1 chávena de folhas frescas de urtiga</li>
+<li>1 colher de sopa de manteiga de amêndoa</li>
+<li>1 colher de sopa de sumo de limão acabado de espremer</li>
+<li>1 colher de chá de azeite</li>
+<li>Sal e pimenta</li>
+</ul>
+
+<h3>Preparação (passos)</h3>
+<ol>
+<li>Demolha as folhas de urtiga 20 minutos em água fria.</li>
+<li>Espalha as folhas numa tábua e amacia-as com um rolo de massa.</li>
+<li>Pica-as (opção 1, sabor mais intenso) ou deixa-as enroladas (opção 2, aspeto mais “bonito”).</li>
+<li>Descasca a laranja e corta em pedaços.</li>
+<li>Para o molho, mistura manteiga de amêndoa, azeite, sumo de limão, sal e pimenta.</li>
+<li>Combina tudo e deixa repousar 20 minutos antes de servir.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+trout & hawk —  
+<a href="https://www.troutandhawk.com/orange-and-nettle-salad/" target="_blank" rel="noopener">
+https://www.troutandhawk.com/orange-and-nettle-salad/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sumo-de-urtiga-com-ananas-curgete-e-lima-extrator-slow-juicer"></a>
+<h2 id="r6">R6 — Sumo de urtiga com ananás, curgete e lima (extrator/slow juicer)</h2>
+
+<h3>Introdução breve</h3>
+<p>Sumo verde e fresco pensado para extrator de sumos, combinando urtiga com ananás (doçura), curgete (suavidade) e lima (acidez).</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>2 punhados de urtigas</li>
+<li>200 g de ananás</li>
+<li>200 g de curgete (com casca)</li>
+<li>1/2 lima (com casca)</li>
+</ul>
+
+<h3>Preparação (passos)</h3>
+<ol>
+<li>Lava bem todos os ingredientes.</li>
+<li>Descasca o ananás.</li>
+<li>Passa tudo no extrator/slow juicer.</li>
+<li>Idealmente, bebe imediatamente após extrair.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Keimling —  
+<a href="https://www.keimling.de/en/blog/natur-pur-wildkraeutersaefte-selbst-gemacht/" target="_blank" rel="noopener">
+https://www.keimling.de/en/blog/natur-pur-wildkraeutersaefte-selbst-gemacht/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sumo-cru-de-urtiga-pepino-e-limao-cold-press"></a>
+<h2 id="r7">R7 — Sumo cru de urtiga, pepino e limão (cold-press)</h2>
+
+<h3>Introdução breve</h3>
+<p>Tónico ultra simples feito num extrator (cold press): urtiga + pepino + limão. Serve-se fresco.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 punhado de urtigas frescas</li>
+<li>1 pepino orgânico</li>
+<li>1 limão orgânico</li>
+</ul>
+
+<h3>Preparação (passos)</h3>
+<ol>
+<li>Com um extrator de sumos “cold press”/mastigador, extrai o sumo dos três ingredientes.</li>
+<li>Bebe fresco.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Dr. Lina Garcia —  
+<a href="https://drlinagarcia.com/blog-recipes/wild-stinging-nettle-juice" target="_blank" rel="noopener">
+https://drlinagarcia.com/blog-recipes/wild-stinging-nettle-juice
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sumo-cru-de-urtiga-no-liquidificador-coado-com-maca-e-gengibre"></a>
+<h2 id="r8">R8 — “Sumo” cru de urtiga no liquidificador (coado), com maçã e gengibre</h2>
+
+<h3>Introdução breve</h3>
+<p>Uma abordagem para quem não tem extrator: bate-se urtiga com água, maçã, limão e gengibre, depois coa-se para um resultado mais “sumo” do que “batido”.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 1/2 chávena de folhas de urtiga (com um pouco de caule é aceitável, porque depois se coa)</li>
+<li>3 chávenas de água</li>
+<li>1/2 chávena de maçã picada (cerca de meia maçã média)</li>
+<li>2 colheres de sopa de sumo de limão</li>
+<li>3 a 4 fatias de gengibre</li>
+<li>1 pitada de sal marinho</li>
+</ul>
+
+<h3>Preparação (passos)</h3>
+<ol>
+<li>Coloca a água no liquidificador. Junta a maçã picada, o sumo de limão, o gengibre e o sal.</li>
+<li>Com pinças ou luvas, adiciona cuidadosamente a urtiga.</li>
+<li>Bate em alta velocidade durante 1 minuto (ou até a urtiga ficar completamente liquefeita).</li>
+<li>(Opcional) Junta cubos de gelo e bate para refrescar.</li>
+<li>Coa num coador de malha fina.</li>
+<li>Bebe de imediato.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Feasting At Home —  
+<a href="https://www.feastingathome.com/nettle-juice/" target="_blank" rel="noopener">
+https://www.feastingathome.com/nettle-juice/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sumo-detox-cru-de-melao-cantalupo-honeydew-e-urtiga"></a>
+<h2 id="r9">R9 — Sumo detox cru de melão cantalupo (honeydew) e urtiga</h2>
+
+<h3>Introdução breve</h3>
+<p>Sumo cru com apenas dois ingredientes: melão honeydew (cantalupo) para doçura e urtiga para o toque verde. Feito no extrator e bebido logo.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>1 melão honeydew (cantalupo), descascado, cortado e sem sementes</li>
+<li>2 chávenas de folhas de urtiga</li>
+</ul>
+
+<h3>Preparação (passos)</h3>
+<ol>
+<li>Passa o melão e as folhas de urtiga no extrator de sumos.</li>
+<li>Bebe imediatamente.</li>
+<li>Dica da fonte: o sumo sabe bem se o melão estiver previamente bem fresco.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Passionately Raw! —  
+<a href="https://passionaltelyraw.blogspot.com/2014/06/honey-dew-and-stinging-nettle-juice.html" target="_blank" rel="noopener">
+https://passionaltelyraw.blogspot.com/2014/06/honey-dew-and-stinging-nettle-juice.html
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="batido-cru-de-urtiga-banana-e-cerejas-com-bebida-de-arroz"></a>
+<h2 id="r10">R10 — Batido cru de urtiga, banana e cerejas (com bebida de arroz)</h2>
+
+<h3>Introdução breve</h3>
+<p>Batido grande e simples, com urtiga como verde principal e fruta para doçura. A bebida de arroz torna-o mais líquido e fácil de beber.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>2 bananas</li>
+<li>2 chávenas de cerejas</li>
+<li>5 chávenas de urtigas lavadas</li>
+<li>1/2 colher de chá de canela</li>
+<li>2 chávenas de bebida de arroz</li>
+</ul>
+
+<h3>Preparação (passos)</h3>
+<ol>
+<li>Coloca todos os ingredientes no liquidificador pela ordem indicada na receita.</li>
+<li>Bate até ficar homogéneo.</li>
+<li>Verte em 4 copos grandes.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Urban Goddess —  
+<a href="https://www.urban-goddess.com/en/blogs/default-blog/spring-cleanse-by-irina-verwer-2" target="_blank" rel="noopener">
+https://www.urban-goddess.com/en/blogs/default-blog/spring-cleanse-by-irina-verwer-2
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Couve-flor – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header{
+  background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+  color:#fff;
+  padding:1.2rem 1rem .8rem;
+  box-shadow:0 2px 4px rgba(0,0,0,0.12);
+}
+header h1{margin:0 0 .25rem;font-size:1.7rem}
+header p{margin:0;opacity:.9}
+main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+<div class="masthead">
+  <header>
+    <h1>Couve-flor – Receitas de Comida Viva</h1>
+    <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+  </header>
+
+  <nav>
+    <a href="../../../index.html">Início</a>
+    <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+    <a href="../../../abobora-grande.html">Abóbora grande</a>
+    <a href="../../../acelga.html">Acelga</a>
+    <a href="../../../agriao.html">Agrião-de-água</a>
+    <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+    <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+    <a href="../../../alface.html">Alface</a>
+    <a href="../../../alho.html">Alho</a>
+    <a href="../../../alho-frances.html">Alho-francês</a>
+    <a href="../../../aneto.html">Aneto / Endro</a>
+    <a href="../../../batata-comum.html">Batata comum</a>
+    <a href="../../../batata-doce.html">Batata-doce</a>
+    <a href="../../../beringela.html">Beringela</a>
+    <a href="../../../beterraba.html">Beterraba</a>
+    <a href="../../../brocolo.html">Brócolo</a>
+    <a href="../../../canonigos.html">Canónigos</a>
+    <a href="../../../cebola.html">Cebola</a>
+    <a href="../../../cebola-fresca.html">Cebola fresca</a>
+    <a href="../../../cenoura.html">Cenoura</a>
+    <a href="../../../coentros.html">Coentros</a>
+    <a href="../../../couve-chinesa.html">Couve chinesa</a>
+    <a href="../../../couve-flor.html" class="ativa">Couve-flor</a>
+    <a href="../../../couve-rabano.html">Couve-rábano</a>
+    <a href="../../../couve-repolho.html">Couve repolho</a>
+    <a href="../../../couve-toscana.html">Couve toscana</a>
+    <a href="../../../curgete.html">Curgete</a>
+    <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+    <a href="../../../espinafre.html">Espinafre</a>
+    <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+    <a href="../../../feijao-verde.html">Feijão verde</a>
+    <a href="../../../manjericao.html">Manjericão</a>
+    <a href="../../../milho-doce.html">Milho doce</a>
+    <a href="../../../mizuna.html">Mizuna</a>
+    <a href="../../../morangos.html">Morangueiro / Morangos</a>
+    <a href="../../../moringa.html">Moringa</a>
+    <a href="../../../nabica.html">Nabiça</a>
+    <a href="../../../nabo.html">Nabo</a>
+    <a href="../../../pak-choi.html">Pak choi</a>
+    <a href="../../../pepino.html">Pepino</a>
+    <a href="../../../pimento.html">Pimento</a>
+    <a href="../../../rabanete.html">Rabanete</a>
+    <a href="../../../rabano.html">Rábano / Daikon</a>
+    <a href="../../../rucula.html">Rúcula</a>
+    <a href="../../../salanova.html">Salanova</a>
+    <a href="../../../salsa.html">Salsa</a>
+    <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+    <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+  </nav>
+</div>
+
+<main>
+<article>
+
+<h2 id="receitas-preparados">Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/couve-flor_receitas_vegetariana.html">(Vegetariana)</a>
+    <a href="/data/refeicoes/vegan/couve-flor_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+  <ol>
+    <li><a href="#sopa-crua-cremosa-de-couve-flor-com-tahini">Sopa crua cremosa de couve-flor com tahini</a></li>
+    <li><a href="#arroz-frito-cru-de-couve-flor-cauliflower-fried-rice-raw">“Arroz frito” cru de couve-flor (cauliflower fried rice raw)</a></li>
+    <li><a href="#taboule-cru-de-couve-flor-com-pure-cru-de-beterraba-e-tomate-seco">Taboulé cru de couve-flor com puré cru de beterraba e tomate seco</a></li>
+    <li><a href="#sushi-raw-vegan-com-arroz-de-couve-flor">Sushi raw-vegan com “arroz” de couve-flor</a></li>
+    <li><a href="#pure-de-batata-cru-de-couve-flor-raw-mashed-potatoes">“Purê de batata” cru de couve-flor (raw mashed potatoes)</a></li>
+    <li><a href="#pure-cru-de-couve-flor-com-caju-e-ervas-cauliflower-mash">“Purê” cru de couve-flor com caju e ervas (cauliflower mash)</a></li>
+    <li><a href="#pizza-raw-vegan-com-base-de-couve-flor-em-desidratador">Pizza raw-vegan com base de couve-flor em desidratador</a></li>
+    <li><a href="#carne-raw-vegan-para-tacos-feita-de-couve-flor-desidratador">“Carne” raw-vegan para tacos feita de couve-flor (desidratador)</a></li>
+    <li><a href="#couve-flor-fermentada-picles-lactofermentados">Couve-flor fermentada (picles lactofermentados)</a></li>
+    <li><a href="#crab-cakes-raw-vegan-de-couve-flor-fermentada-desidratador">“Crab cakes” raw-vegan de couve-flor fermentada (desidratador)</a></li>
+  </ol>
+</div>
+
+<h2 id="resumo">Resumo das receitas (R1–R10)</h2>
+
+<h4>R1 — Sopa crua cremosa de couve-flor com tahini</h4>
+<p>Sopa de liquidificador com couve-flor crua, sementes de girassol e tahini: sai cremosa, suave e muito rápida, ideal fria ou levemente amornada (&lt;45 ºC).</p>
+
+<h4>R2 — “Arroz frito” cru de couve-flor (cauliflower fried rice raw)</h4>
+<p>Couve-flor ralada tipo “arroz”, misturada com legumes crus picados e um molho intenso com gengibre, lima e malagueta: textura crocante e sabor asiático.</p>
+
+<h4>R3 — Taboulé cru de couve-flor com puré cru de beterraba e tomate seco</h4>
+<p>Taboulé de couve-flor crua (granulado fino) servido com um puré cru de beterraba e tomate seco: prato colorido, fresco e com apresentação mais “gastronómica”.</p>
+
+<h4>R4 — Sushi raw-vegan com “arroz” de couve-flor</h4>
+<p>Sushi com folhas de nori e recheio de legumes crus, usando couve-flor crua triturada como “arroz”, com molho doce-picante feito no liquidificador.</p>
+
+<h4>R5 — “Purê de batata” cru de couve-flor (raw mashed potatoes)</h4>
+<p>Versão raw do purê: couve-flor crua triturada com caju e temperos, resultando numa textura cremosa que lembra “batata esmagada”.</p>
+
+<h4>R6 — “Purê” cru de couve-flor com caju e ervas (cauliflower mash)</h4>
+<p>Purê cru com couve-flor e caju demolhado, aromatizado com tomilho e especiarias, excelente como acompanhamento de pratos raw.</p>
+
+<h4>R7 — Pizza raw-vegan com base de couve-flor em desidratador</h4>
+<p>Base de pizza crua feita com couve-flor e sementes, desidratada até ficar firme, depois coberta com molho cru e vegetais.</p>
+
+<h4>R8 — “Carne” raw-vegan para tacos feita de couve-flor (desidratador)</h4>
+<p>Mistura condimentada de couve-flor (textura “crumbly”), desidratada para ganhar mastigabilidade, usada como “recheio” de tacos raw.</p>
+
+<h4>R9 — Couve-flor fermentada (picles lactofermentados)</h4>
+<p>Floretas de couve-flor em salmoura simples, fermentadas para criar picles crocantes e probióticos, ótimos como snack ou acompanhamento.</p>
+
+<h4>R10 — “Crab cakes” raw-vegan de couve-flor fermentada (desidratador)</h4>
+<p>“Bolachas” salgadas raw com couve-flor fermentada e “panko” cru, desidratadas para ficarem firmes por fora e saborosas, com perfil marinho/ácido.</p>
+
+
+<h2 id="receitas-completas">Receitas completas</h2>
+
+<a id="sopa-crua-cremosa-de-couve-flor-com-tahini-r1"></a>
+<h2 id="sopa-crua-cremosa-de-couve-flor-com-tahini">Sopa crua cremosa de couve-flor com tahini <span class="source">[R1]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma sopa crua de textura aveludada, feita no liquidificador, em que a couve-flor entra como base neutra e cremosa. O tahini e as sementes dão corpo e um sabor ligeiramente tostado, sem qualquer cozedura.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>350 g de floretes de couve-flor crua (provar antes: deve ser suave, sem amargor)</li>
+  <li>150 ml de água (e mais um pouco, se necessário)</li>
+  <li>2 colheres de sopa de sementes de girassol cruas</li>
+  <li>1 colher de sopa de tahini</li>
+  <li>1 pitada de sal</li>
+  <li>Opcional para servir: cenoura ralada fina e flocos de chili</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Lavar bem a couve-flor e cortar em floretes pequenos para facilitar a trituração.</li>
+  <li>No liquidificador, colocar couve-flor, água, sementes de girassol, tahini e sal.</li>
+  <li>Triturar até ficar totalmente cremoso; ajustar com mais água se quiser uma sopa mais leve.</li>
+  <li>Provar e acertar o sal.</li>
+  <li>Servir imediatamente (fria) ou amornar ligeiramente mantendo a temperatura abaixo de ~45 ºC (por exemplo, deixando o liquidificador trabalhar um pouco mais tempo).</li>
+  <li>Decorar com cenoura ralada e chili, se desejar.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Naual Hansen — 
+<a href="https://naualhansen.com/en/dinner-en/raw-cauliflower-cream-soup/" target="_blank" rel="noopener">
+https://naualhansen.com/en/dinner-en/raw-cauliflower-cream-soup/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="arroz-frito-cru-de-couve-flor-cauliflower-fried-rice-raw-r2"></a>
+<h2 id="arroz-frito-cru-de-couve-flor-cauliflower-fried-rice-raw">“Arroz frito” cru de couve-flor (cauliflower fried rice raw) <span class="source">[R2]</span></h2>
+
+<h4>Introdução</h4>
+<p>Um clássico raw: couve-flor triturada até parecer “grão” de arroz, misturada com legumes crus e um molho aromático (lima, gengibre, chili). Fica fresco, crocante e saciante sem fogão.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 couve-flor grande (para transformar em “arroz”)</li>
+  <li>Legumes crus picados bem pequenos (ex.: brócolos, pimento, cebola verde, cenoura)</li>
+  <li>Opcional: ervilhas descongeladas (se a tua dieta raw aceitar)</li>
+  <li>Para o molho: sumo de lima, gengibre, alho, tamari ou molho de soja cru/fermentado, chili, óleo de sésamo (opcional), sal</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Cortar a couve-flor em floretes e triturar em pulsos curtos até obter grãos pequenos (não deixar virar puré).</li>
+  <li>Picar os legumes bem pequenos para imitarem o “formato” do arroz frito.</li>
+  <li>Misturar couve-flor e legumes numa taça grande.</li>
+  <li>Preparar o molho: triturar/misturar os ingredientes do molho até ficar uniforme.</li>
+  <li>Envolver o molho no “arroz” de couve-flor, provar e ajustar acidez/picante/sal.</li>
+  <li>Servir de imediato ou repousar 10 minutos para apurar.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Raw Manda — 
+<a href="https://rawmanda.com/cauliflower-fried-rice/" target="_blank" rel="noopener">
+https://rawmanda.com/cauliflower-fried-rice/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="taboule-cru-de-couve-flor-com-pure-cru-de-beterraba-e-tomate-seco-r3"></a>
+<h2 id="taboule-cru-de-couve-flor-com-pure-cru-de-beterraba-e-tomate-seco">Taboulé cru de couve-flor com puré cru de beterraba e tomate seco <span class="source">[R3]</span></h2>
+
+<h4>Introdução</h4>
+<p>Taboulé de couve-flor (granulado fininho) com uma componente cremosa e doce-terrosa (puré cru de beterraba e tomate seco). Um prato “de empratamento”, excelente para variar dos bowls habituais.</p>
+
+<h4>Ingredientes</h4>
+<p>Para o taboulé:</p>
+<ul>
+  <li>Couve-flor crua (granulada no processador)</li>
+  <li>Cebola roxa (pouca, finamente picada)</li>
+  <li>Ervas frescas (salsa/coentros/hortelã conforme a receita)</li>
+  <li>Azeite e sumo de limão</li>
+  <li>Temperos secos (ex.: cominhos e coentros em pó, conforme a receita)</li>
+  <li>Sementes de romã (para finalizar)</li>
+</ul>
+
+<p>Para o puré:</p>
+<ul>
+  <li>Beterraba crua</li>
+  <li>Tomate seco</li>
+  <li>Alho</li>
+  <li>Limão</li>
+  <li>Um pouco de água para ajustar</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Granular a couve-flor no processador em pulsos até parecer “cuscuz”.</li>
+  <li>Picar finamente cebola e ervas; misturar com a couve-flor.</li>
+  <li>Temperar com azeite, limão e especiarias, envolvendo bem.</li>
+  <li>Fazer o puré: triturar beterraba, tomate seco, alho, limão e um pouco de água até ficar cremoso.</li>
+  <li>Empratar: colocar o taboulé, adicionar uma porção do puré ao lado/por cima e terminar com sementes de romã e fio de azeite.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Umami Information Center (PT) — 
+<a href="https://pt.umamiinfo.com/recipes2/2021/04/vegan-raw-cauliflower-tabouli-with-beetroot-and-sun-dried-tomato-mash.html" target="_blank" rel="noopener">
+https://pt.umamiinfo.com/recipes2/2021/04/vegan-raw-cauliflower-tabouli-with-beetroot-and-sun-dried-tomato-mash.html
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sushi-raw-vegan-com-arroz-de-couve-flor-r4"></a>
+<h2 id="sushi-raw-vegan-com-arroz-de-couve-flor">Sushi raw-vegan com “arroz” de couve-flor <span class="source">[R4]</span></h2>
+
+<h4>Introdução</h4>
+<p>Sushi sem cozido: o “arroz” é couve-flor triturada, temperada para ficar mais “sushi-like”, e o recheio é todo cru. Ótimo para almoços leves e apresentações bonitas.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Folhas de nori</li>
+  <li>Floretes de couve-flor (para “arroz”)</li>
+  <li>Legumes crus para recheio (ex.: cenoura, pimento, cebola verde, pepino)</li>
+  <li>Abacate</li>
+  <li>Coentros (ou outra erva fresca)</li>
+  <li>Para o molho: tâmaras, tahini, gengibre, limão, tamari e água</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Triturar a couve-flor em pulsos curtos até ficar tipo “arroz”.</li>
+  <li>Preparar os recheios: cortar legumes em tiras finas e o abacate em palitos.</li>
+  <li>Preparar o molho doce-picante: triturar ingredientes até ficar cremoso (ajustar água).</li>
+  <li>Montar: colocar nori na esteira, espalhar uma camada de “arroz” de couve-flor, dispor recheios e enrolar firme.</li>
+  <li>Cortar em peças com faca bem afiada.</li>
+  <li>Servir com o molho.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Olivia Budgen — 
+<a href="https://oliviabudgen.com/vegan-cauliflower-rice-sushi/" target="_blank" rel="noopener">
+https://oliviabudgen.com/vegan-cauliflower-rice-sushi/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pure-de-batata-cru-de-couve-flor-raw-mashed-potatoes-r5"></a>
+<h2 id="pure-de-batata-cru-de-couve-flor-raw-mashed-potatoes">“Purê de batata” cru de couve-flor (raw mashed potatoes) <span class="source">[R5]</span></h2>
+
+<h4>Introdução</h4>
+<p>Um purê raw famoso: couve-flor crua + caju (para cremosidade) + alho e sal. Fica surpreendentemente “comfort food”, ideal como base para cogumelos crus marinados ou legumes desidratados.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Couve-flor crua (em pedaços)</li>
+  <li>Cajus (demolhados)</li>
+  <li>Alho</li>
+  <li>Água (pouca, só para ajudar a bater)</li>
+  <li>Sal marinho</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Demolhar os cajus até ficarem macios; escorrer.</li>
+  <li>Triturar a couve-flor crua no processador até ficar bem miúda.</li>
+  <li>Passar para o liquidificador (ou continuar no processador potente) com cajus, alho, sal e um pouco de água.</li>
+  <li>Triturar até ficar cremoso, parando para raspar as laterais.</li>
+  <li>Ajustar sal e consistência (água aos poucos).</li>
+  <li>Servir à temperatura ambiente ou ligeiramente morno (sem ultrapassar ~45 ºC).</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+The Rawtarian — 
+<a href="https://www.therawtarian.com/raw-mashed-potatoes-recipe" target="_blank" rel="noopener">
+https://www.therawtarian.com/raw-mashed-potatoes-recipe
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pure-cru-de-couve-flor-com-caju-e-ervas-cauliflower-mash-r6"></a>
+<h2 id="pure-cru-de-couve-flor-com-caju-e-ervas-cauliflower-mash">“Purê” cru de couve-flor com caju e ervas (cauliflower mash) <span class="source">[R6]</span></h2>
+
+<h4>Introdução</h4>
+<p>Outra abordagem de purê raw: couve-flor crua com cajus demolhados e ervas (ex.: tomilho), criando um acompanhamento elegante e muito fácil de personalizar com especiarias.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Floretes de couve-flor crua (em pedaços)</li>
+  <li>Cajus crus demolhados</li>
+  <li>Água (pouca)</li>
+  <li>Azeite (prensado a frio)</li>
+  <li>Tomilho fresco (ou seco)</li>
+  <li>Alho em pó e cebola em pó</li>
+  <li>Sal e pimenta preta</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Demolhar os cajus e escorrer.</li>
+  <li>Triturar couve-flor no processador até ficar bem pequena.</li>
+  <li>Juntar cajus, água, azeite e temperos. Triturar até ficar cremoso.</li>
+  <li>Ajustar sal/pimenta e espessura.</li>
+  <li>Servir como “purê” cru; opcionalmente finalizar com ervas frescas.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Nouvelle Raw — 
+<a href="https://nouveauraw.com/raw-recipes/main-dishes/cauliflower-mash/" target="_blank" rel="noopener">
+https://nouveauraw.com/raw-recipes/main-dishes/cauliflower-mash/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pizza-raw-vegan-com-base-de-couve-flor-em-desidratador-r7"></a>
+<h2 id="pizza-raw-vegan-com-base-de-couve-flor-em-desidratador">Pizza raw-vegan com base de couve-flor em desidratador <span class="source">[R7]</span></h2>
+
+<h4>Introdução</h4>
+<p>Pizza crua com base de couve-flor desidratada: a couve-flor dá leveza e as sementes ajudam a ligar. A base fica firme o suficiente para segurar molho cru e toppings de legumes.</p>
+
+<h4>Ingredientes</h4>
+<p>Para a base:</p>
+<ul>
+  <li>Couve-flor crua (processada fina)</li>
+  <li>Sementes (ex.: linhaça/chia para ligar; outras sementes para textura)</li>
+  <li>Temperos (sal, ervas secas, alho em pó, etc.)</li>
+</ul>
+
+<p>Para cobrir:</p>
+<ul>
+  <li>Molho cru (ex.: tomate, pimento, ervas)</li>
+  <li>Toppings crus (ex.: cogumelos laminados, rúcula, tomate-cereja, azeitonas, etc.)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Processar a couve-flor até ficar fina (tipo “miolo”).</li>
+  <li>Misturar com sementes moídas/gelificadas (linhaça/chia) e temperos, até formar uma massa moldável.</li>
+  <li>Espalhar a massa numa folha antiaderente do desidratador (teflex), em formato de base.</li>
+  <li>Desidratar até ficar firme; virar e continuar até atingir a textura desejada.</li>
+  <li>Cobrir com molho cru e toppings.</li>
+  <li>Servir de imediato (ou desidratar mais um pouco com o topping, se gostar mais “seco”).</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Rawmazing — 
+<a href="https://rawmazing.com/recipe/raw-cauliflower-crust-pizza/" target="_blank" rel="noopener">
+https://rawmazing.com/recipe/raw-cauliflower-crust-pizza/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="carne-raw-vegan-para-tacos-feita-de-couve-flor-desidratador-r8"></a>
+<h2 id="carne-raw-vegan-para-tacos-feita-de-couve-flor-desidratador">“Carne” raw-vegan para tacos feita de couve-flor (desidratador) <span class="source">[R8]</span></h2>
+
+<h4>Introdução</h4>
+<p>Um recheio raw com textura “crumbly” para tacos: a couve-flor é picada e temperada com especiarias tipo “taco”, depois desidratada para ganhar mastigabilidade e profundidade de sabor.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Couve-flor crua (picada tipo migalhas)</li>
+  <li>Mistura de especiarias para taco (cominhos, paprika, alho, cebola em pó, chili, etc.)</li>
+  <li>Um toque ácido (limão/lima)</li>
+  <li>Sal</li>
+  <li>Opcional conforme a receita: tomate seco, tamari, pimento, coentros</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Picar/processar couve-flor em migalhas pequenas, sem virar puré.</li>
+  <li>Misturar com temperos e ingredientes líquidos até ficar uniformemente temperada.</li>
+  <li>Espalhar em camada fina no tabuleiro do desidratador.</li>
+  <li>Desidratar até ficar com textura “carne moída” seca por fora e ainda com alguma maciez por dentro (ajustar ao gosto).</li>
+  <li>Servir em folhas (alface) ou tortilhas raw, com salsa crua e guacamole.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+YouTube — 
+<a href="https://www.youtube.com/watch?v=mrmRBGfbI-k" target="_blank" rel="noopener">
+https://www.youtube.com/watch?v=mrmRBGfbI-k
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="couve-flor-fermentada-picles-lactofermentados-r9"></a>
+<h2 id="couve-flor-fermentada-picles-lactofermentados">Couve-flor fermentada (picles lactofermentados) <span class="source">[R9]</span></h2>
+
+<h4>Introdução</h4>
+<p>Fermentação simples e muito prática: couve-flor em salmoura, à temperatura ambiente, até desenvolver acidez e sabor. Excelente para microbiota, para acompanhar pratos ou como snack.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 couve-flor (em floretes)</li>
+  <li>Água filtrada</li>
+  <li>Sal marinho fino (para salmoura)</li>
+  <li>Opcional: alho, gengibre, especiarias (sementes), malagueta</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Lavar a couve-flor e cortar em floretes do tamanho desejado.</li>
+  <li>Preparar salmoura: dissolver sal em água filtrada na proporção indicada na receita (para garantir fermentação segura).</li>
+  <li>Colocar floretes num frasco limpo, adicionar aromáticos (se usar) e cobrir totalmente com a salmoura.</li>
+  <li>Usar um peso (ou folha de couve) para manter tudo submerso.</li>
+  <li>Fermentar à temperatura ambiente, “arrotando” o frasco quando necessário, até atingir a acidez desejada.</li>
+  <li>Guardar no frigorífico após fermentar.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Candyflosslife — 
+<a href="https://candyflosslife.com/fermented-cauliflower/" target="_blank" rel="noopener">
+https://candyflosslife.com/fermented-cauliflower/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="crab-cakes-raw-vegan-de-couve-flor-fermentada-desidratador-r10"></a>
+<h2 id="crab-cakes-raw-vegan-de-couve-flor-fermentada-desidratador">“Crab cakes” raw-vegan de couve-flor fermentada (desidratador) <span class="source">[R10]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma receita raw mais “avançada”: usa couve-flor fermentada para dar sabor e profundidade, depois molda-se em bolinhos tipo “crab cakes” e desidrata-se para obter textura firme e “panada” (com panko cru).</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Couve-flor fermentada (base do sabor)</li>
+  <li>Ingredientes para dar “corpo” (sementes/nozes conforme a receita)</li>
+  <li>“Panko” cru (migalhas desidratadas) para revestir</li>
+  <li>Temperos tipo “marinho” (ex.: limão, algas/condimentos usados na receita)</li>
+  <li>Sal e especiarias</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Preparar a mistura: processar a couve-flor fermentada com os ingredientes de “corpo” e temperos até formar uma massa moldável.</li>
+  <li>Moldar em bolinhos (formato de crab cake).</li>
+  <li>Passar pelo “panko” cru para criar revestimento.</li>
+  <li>Desidratar até firmar e ganhar textura (virar a meio).</li>
+  <li>Servir com molho cru (ex.: rábano/limão) ou maionese raw.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+The Raw Chef — 
+<a href="https://www.therawchef.com/fermented-cauliflower-raw-vegan-crab-cakes/" target="_blank" rel="noopener">
+https://www.therawchef.com/fermented-cauliflower-raw-vegan-crab-cakes/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

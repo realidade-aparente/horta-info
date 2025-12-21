@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Aneto (Anethum graveolens) – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+<div class="masthead">
+  <header>
+    <h1>Aneto (Anethum graveolens) – Receitas de Comida Viva</h1>
+    <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+  </header>
+
+  <nav>
+    <a href="../../../index.html">Início</a>
+    <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+    <a href="../../../abobora-grande.html">Abóbora grande</a>
+    <a href="../../../acelga.html">Acelga</a>
+    <a href="../../../agriao.html">Agrião-de-água</a>
+    <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+    <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+    <a href="../../../alface.html">Alface</a>
+    <a href="../../../alho.html">Alho</a>
+    <a href="../../../alho-frances.html">Alho-francês</a>
+    <a href="../../../aneto.html" class="ativa">Aneto / Endro</a>
+    <a href="../../../batata-comum.html">Batata comum</a>
+    <a href="../../../batata-doce.html">Batata-doce</a>
+    <a href="../../../beringela.html">Beringela</a>
+    <a href="../../../beterraba.html">Beterraba</a>
+    <a href="../../../brocolo.html">Brócolo</a>
+    <a href="../../../canonigos.html">Canónigos</a>
+    <a href="../../../cebola.html">Cebola</a>
+    <a href="../../../cebola-fresca.html">Cebola fresca</a>
+    <a href="../../../cenoura.html">Cenoura</a>
+    <a href="../../../coentros.html">Coentros</a>
+    <a href="../../../couve-chinesa.html">Couve chinesa</a>
+    <a href="../../../couve-flor.html">Couve-flor</a>
+    <a href="../../../couve-rabano.html">Couve-rábano</a>
+    <a href="../../../couve-repolho.html">Couve repolho</a>
+    <a href="../../../couve-toscana.html">Couve toscana</a>
+    <a href="../../../curgete.html">Curgete</a>
+    <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+    <a href="../../../espinafre.html">Espinafre</a>
+    <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+    <a href="../../../feijao-verde.html">Feijão verde</a>
+    <a href="../../../manjericao.html">Manjericão</a>
+    <a href="../../../milho-doce.html">Milho doce</a>
+    <a href="../../../mizuna.html">Mizuna</a>
+    <a href="../../../morangos.html">Morangueiro / Morangos</a>
+    <a href="../../../moringa.html">Moringa</a>
+    <a href="../../../nabica.html">Nabiça</a>
+    <a href="../../../nabo.html">Nabo</a>
+    <a href="../../../pak-choi.html">Pak choi</a>
+    <a href="../../../pepino.html">Pepino</a>
+    <a href="../../../pimento.html">Pimento</a>
+    <a href="../../../rabanete.html">Rabanete</a>
+    <a href="../../../rabano.html">Rábano / Daikon</a>
+    <a href="../../../rucula.html">Rúcula</a>
+    <a href="../../../salanova.html">Salanova</a>
+    <a href="../../../salsa.html">Salsa</a>
+    <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+    <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+  </nav>
+</div>
+
+<main>
+<article>
+
+<h2 id="receitas-preparados">Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/aneto_receitas_vegetariana.html">(Vegetariana)</a>
+    <a href="/data/refeicoes/vegan/aneto_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+  <ol>
+    <li><a href="#r1">Sopa crua de pepino e aneto</a> <span class="source">[R1]</span></li>
+    <li><a href="#r2">Molho cru cremoso de aneto e caju</a> <span class="source">[R2]</span></li>
+    <li><a href="#r3">Crackers crus de cenoura, aneto e cebola</a> <span class="source">[R3]</span></li>
+    <li><a href="#r4">Crackers crus de aneto e alcaravia</a> <span class="source">[R4]</span></li>
+    <li><a href="#r5">Crackers crus de sementes e ervas com aneto</a> <span class="source">[R5]</span></li>
+    <li><a href="#r6">Crackers crus fermentados de sementes e aneto</a> <span class="source">[R6]</span></li>
+    <li><a href="#r7">Pickles fermentados crus com aneto (método 1)</a> <span class="source">[R7]</span></li>
+    <li><a href="#r8">Pickles fermentados crus com aneto (método 2)</a> <span class="source">[R8]</span></li>
+    <li><a href="#r9">Bagels crus de aneto com creme de caju e alcaparras</a> <span class="source">[R9]</span></li>
+    <li><a href="#r10">Molho cru de aneto e nozes</a> <span class="source">[R10]</span></li>
+  </ol>
+</div>
+
+<h2 id="resumo">Resumo das receitas (R1–R10)</h2>
+
+<h4>R1 — Sopa crua de pepino e aneto</h4>
+<p>Sopa fria e totalmente crua à base de pepino, abacate, alho, limão e aneto fresco. A textura é cremosa e sedosa, com sabor muito fresco, ideal para hidratação, desintoxicação e dias quentes.</p>
+
+<h4>R2 — Molho cru cremoso de aneto e caju</h4>
+<p>Molho cru tipo “sour cream” feito com cajus demolhados, vinagre de maçã cru, limão, cebola desidratada e aneto. Serve para wraps crus, saladas, crackers vivos e legumes.</p>
+
+<h4>R3 — Crackers crus de cenoura, aneto e cebola</h4>
+<p>Crackers vivos de base vegetal feitos com cenoura ralada, sementes de linhaça e girassol, cebola e aneto, desidratados lentamente até ficarem crocantes e aromáticos.</p>
+
+<h4>R4 — Crackers crus de aneto e alcaravia</h4>
+<p>Crackers raw de perfil europeu, com aneto e alcaravia, preparados com farinha de amêndoa e linhaça. Ficam estaladiços, digestivos e ideais para acompanhar patês crus.</p>
+
+<h4>R5 — Crackers crus de sementes e ervas com aneto</h4>
+<p>Crackers ricos em ómega-3 feitos com mistura de sementes (linhaça, girassol, abóbora e sésamo) e ervas aromáticas, incluindo aneto. Nutritivos, crocantes e de longa conservação.</p>
+
+<h4>R6 — Crackers crus fermentados de sementes e aneto</h4>
+<p>Crackers vivos com fermentação láctica natural antes da desidratação, combinando sementes germinadas, alho, cebola e aneto. São ricos em probióticos e enzimas.</p>
+
+<h4>R7 — Pickles fermentados crus com aneto (método 1)</h4>
+<p>Pepinos fermentados naturalmente apenas com água, sal, alho e aneto fresco. Produzem um alimento probiótico vivo, crocante e de longa duração em refrigeração.</p>
+
+<h4>R8 — Pickles fermentados crus com aneto (método 2)</h4>
+<p>Variação técnica de fermentação crua de pepinos com aneto, utilizando especiarias adicionais. O resultado é um pickle mais complexo, com fermentação lenta e controlada.</p>
+
+<h4>R9 — Bagels crus de aneto com creme de caju e alcaparras</h4>
+<p>Bagels cru-vegan desidratados à base de linhaça e trigo-mourisco germinado, aromatizados com aneto, recheados com creme de caju ácido e alcaparras.</p>
+
+<h4>R10 — Molho cru de aneto e nozes</h4>
+<p>Molho verde cru à base de nozes, aneto, limão e mostarda crua. Cremoso, intenso e ideal para saladas, bowls crus, legumes espiralizados e wraps vivos.</p>
+
+<h2 id="receitas-completas">Receitas completas</h2>
+
+<a id="sopa-crua-de-pepino-e-aneto"></a>
+<h2 id="r1">R1 — Sopa crua de pepino e aneto <span class="source">[R1]</span></h2>
+
+<h4>1) Introdução</h4>
+<p>Sopa fria completamente crua, refrescante, alcalina e digestiva, ideal para verão.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>Pepino</li>
+  <li>Abacate</li>
+  <li>Aneto fresco</li>
+  <li>Alho</li>
+  <li>Limão</li>
+  <li>Água filtrada</li>
+  <li>Sal marinho</li>
+</ul>
+
+<h4>3) Preparação</h4>
+<p>Triturar tudo em liquidificador até obter creme liso. Servir fria.</p>
+
+<h4>4) Fonte</h4>
+<p>
+Cultivator Kitchen —
+<a href="https://cultivatorkitchen.com/cucumber-dill-soup/" target="_blank" rel="noopener">
+https://cultivatorkitchen.com/cucumber-dill-soup/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="molho-cru-cremoso-de-aneto-e-caju"></a>
+<h2 id="r2">R2 — Molho cru cremoso de aneto e caju <span class="source">[R2]</span></h2>
+
+<h4>1) Introdução</h4>
+<p>Molho estilo “sour cream” vivo para saladas, wraps e legumes.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>Cajus demolhados</li>
+  <li>Água</li>
+  <li>Vinagre de maçã cru</li>
+  <li>Limão</li>
+  <li>Cebola desidratada</li>
+  <li>Aneto fresco</li>
+  <li>Sal</li>
+</ul>
+
+<h4>3) Preparação</h4>
+<p>Triturar tudo até ficar sedoso.</p>
+
+<h4>4) Fonte</h4>
+<p>
+Nouveau Raw —
+<a href="https://nouveauraw.com/raw-recipes/dressings-dips/seriously-o-m-g-dill-and-onion-dip/" target="_blank" rel="noopener">
+https://nouveauraw.com/raw-recipes/dressings-dips/seriously-o-m-g-dill-and-onion-dip/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="crackers-crus-de-cenoura-aneto-e-cebola"></a>
+<h2 id="r3">R3 — Crackers crus de cenoura, aneto e cebola <span class="source">[R3]</span></h2>
+
+<h4>1) Introdução</h4>
+<p>Crackers desidratados ricos em fibras e minerais.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>Cenoura</li>
+  <li>Linhaça</li>
+  <li>Sementes de girassol</li>
+  <li>Aneto</li>
+  <li>Cebola</li>
+  <li>Sal</li>
+</ul>
+
+<h4>3) Preparação</h4>
+<p>Triturar, espalhar fino e desidratar 10–12 h a 41 °C.</p>
+
+<h4>4) Fonte</h4>
+<p>
+Aimee Magne —
+<a href="https://aimeemagne.com/recipeblog/carrot-dill-and-onion-bread" target="_blank" rel="noopener">
+https://aimeemagne.com/recipeblog/carrot-dill-and-onion-bread
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="crackers-crus-de-aneto-e-alcaravia"></a>
+<h2 id="r4">R4 — Crackers crus de aneto e alcaravia <span class="source">[R4]</span></h2>
+
+<h4>1) Introdução</h4>
+<p>Crackers aromáticos de perfil europeu.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>Linhaça</li>
+  <li>Farinha de amêndoa</li>
+  <li>Aneto seco</li>
+  <li>Alcaravia</li>
+  <li>Limão</li>
+  <li>Sal</li>
+</ul>
+
+<h4>3) Preparação</h4>
+<p>Misturar, espalhar e desidratar lentamente.</p>
+
+<h4>4) Fonte</h4>
+<p>
+Nouveau Raw —
+<a href="https://nouveauraw.com/raw-recipes/crackers/caraway-and-dill-crispy-crackers/" target="_blank" rel="noopener">
+https://nouveauraw.com/raw-recipes/crackers/caraway-and-dill-crispy-crackers/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="crackers-crus-de-sementes-e-ervas-com-aneto"></a>
+<h2 id="r5">R5 — Crackers crus de sementes e ervas com aneto <span class="source">[R5]</span></h2>
+
+<h4>1) Introdução</h4>
+<p>Crackers vivos ricos em ómega-3.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>Linhaça moída</li>
+  <li>Sementes de girassol</li>
+  <li>Abóbora</li>
+  <li>Sésamo</li>
+  <li>Manjericão</li>
+  <li>Coentros</li>
+  <li>Aneto</li>
+  <li>Água</li>
+  <li>Sal</li>
+</ul>
+
+<h4>3) Preparação</h4>
+<p>Hidratar, triturar, espalhar e desidratar.</p>
+
+<h4>4) Fonte</h4>
+<p>
+The Holistic Ingredient —
+<a href="https://www.theholisticingredient.com/blogs/wholesome-food/10217849-raw-mixed-seed-and-herb-crackers" target="_blank" rel="noopener">
+https://www.theholisticingredient.com/blogs/wholesome-food/10217849-raw-mixed-seed-and-herb-crackers
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="crackers-crus-fermentados-de-sementes-e-aneto"></a>
+<h2 id="r6">R6 — Crackers crus fermentados de sementes e aneto <span class="source">[R6]</span></h2>
+
+<h4>1) Introdução</h4>
+<p>Crackers vivos com fermentação láctica natural.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>Sementes de girassol germinadas</li>
+  <li>Ervas frescas (incluindo aneto)</li>
+  <li>Alho</li>
+  <li>Cebola</li>
+  <li>Sal</li>
+</ul>
+
+<h4>3) Preparação</h4>
+<p>Fermentar 24–36 h e depois desidratar.</p>
+
+<h4>4) Fonte</h4>
+<p>
+Round the Bend Farm —
+<a href="https://roundthebendfarm.org/2021/06/16/infinity-seed-crackers-live-culture-raw-vegan-and-shockingly-delicious/" target="_blank" rel="noopener">
+https://roundthebendfarm.org/2021/06/16/infinity-seed-crackers-live-culture-raw-vegan-and-shockingly-delicious/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pickles-fermentados-crus-com-aneto-metodo-1"></a>
+<h2 id="r7">R7 — Pickles fermentados crus com aneto (método 1) <span class="source">[R7]</span></h2>
+
+<h4>1) Introdução</h4>
+<p>Fermentação probiótica tradicional crua.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>Pepinos</li>
+  <li>Água</li>
+  <li>Sal</li>
+  <li>Alho</li>
+  <li>Aneto fresco</li>
+</ul>
+
+<h4>3) Preparação</h4>
+<p>Fermentar 5–10 dias à temperatura ambiente.</p>
+
+<h4>4) Fonte</h4>
+<p>
+Feasting at Home —
+<a href="https://www.feastingathome.com/fermented-pickles/" target="_blank" rel="noopener">
+https://www.feastingathome.com/fermented-pickles/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pickles-fermentados-crus-com-aneto-metodo-2"></a>
+<h2 id="r8">R8 — Pickles fermentados crus com aneto (método 2) <span class="source">[R8]</span></h2>
+
+<h4>1) Introdução</h4>
+<p>Variação técnica de fermentação sem aquecimento.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>Pepinos</li>
+  <li>Água</li>
+  <li>Sal</li>
+  <li>Aneto</li>
+  <li>Alho</li>
+  <li>Especiarias</li>
+</ul>
+
+<h4>3) Preparação</h4>
+<p>Fermentar 7–14 dias em jarros.</p>
+
+<h4>4) Fonte</h4>
+<p>
+Taste of Artisan —
+<a href="https://tasteofartisan.com/fermented-dill-pickles/" target="_blank" rel="noopener">
+https://tasteofartisan.com/fermented-dill-pickles/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="bagels-crus-de-aneto-com-creme-de-caju-e-alcaparras"></a>
+<h2 id="r9">R9 — Bagels crus de aneto com creme de caju e alcaparras <span class="source">[R9]</span></h2>
+
+<h4>1) Introdução</h4>
+<p>Bagels desidratados com recheio cremoso vivo.</p>
+
+<h4>2) Ingredientes</h4>
+<p><strong>Bagels:</strong></p>
+<ul>
+  <li>Linhaça</li>
+  <li>Trigo-mourisco germinado</li>
+  <li>Aneto</li>
+</ul>
+
+<p><strong>Creme:</strong></p>
+<ul>
+  <li>Caju</li>
+  <li>Limão</li>
+  <li>Alcaparras</li>
+  <li>Aneto</li>
+</ul>
+
+<h4>3) Preparação</h4>
+<p>Moldar, desidratar, rechear.</p>
+
+<h4>4) Fonte</h4>
+<p>
+The Raw Chef —
+<a href="https://www.therawchef.com/raw-vegan-bagels/" target="_blank" rel="noopener">
+https://www.therawchef.com/raw-vegan-bagels/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="molho-cru-de-aneto-e-nozes"></a>
+<h2 id="r10">R10 — Molho cru de aneto e nozes <span class="source">[R10]</span></h2>
+
+<h4>1) Introdução</h4>
+<p>Molho estilo “green goddess” cru.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>Nozes</li>
+  <li>Aneto</li>
+  <li>Limão</li>
+  <li>Água</li>
+  <li>Mostarda crua</li>
+  <li>Sal</li>
+</ul>
+
+<h4>3) Preparação</h4>
+<p>Triturar até creme liso.</p>
+
+<h4>4) Fonte</h4>
+<p>
+It Doesn’t Taste Like Chicken —
+<a href="https://itdoesnttastelikechicken.com/creamy-dill-walnut-sauce-vegan/" target="_blank" rel="noopener">
+https://itdoesnttastelikechicken.com/creamy-dill-walnut-sauce-vegan/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

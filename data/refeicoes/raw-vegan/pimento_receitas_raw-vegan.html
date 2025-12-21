@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Pimento doce / Pimentão – Receitas de Comida Viva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+ <div class="masthead">
+<header>
+  <h1>Pimento doce / Pimentão – Receitas de Comida Viva</h1>
+  <p>Preparações à base de plantas, sem cozimento, frescas, amornadas ou desidratadas</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-da-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html" class="ativa">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+  </header></div>
+<main>
+<article>
+
+<h2>Receitas e preparados – dieta de comida viva</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/pimento_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/pimento_receitas_vegan.html">(Vegan)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+<ol>
+<li><a href="#r1">Sopa crua cremosa de pimentão vermelho (liquidificador)</a> <span class="source">[R1]</span></li> 
+<li><a href="#r2">Sopa crua picante de tomate e pimentão vermelho</a> <span class="source">[R2]</span></li>
+<li><a href="#r3">Gaspacho raw-vegan com pimentos doces (vermelho e amarelo)</a> <span class="source">[R3]</span></li>
+<li><a href="#r4">Pimentos recheados crus (raw stuffed peppers)</a> <span class="source">[R4]</span></li>
+<li><a href="#r5">Pimentos doces fermentados (lactofermentados) em salmoura</a> <span class="source">[R5]</span></li>
+<li><a href="#r6">Molho cru de pimentão vermelho para saladas</a> <span class="source">[R6]</span></li>
+<li><a href="#r7">Wraps raw-vegan de pimentão vermelho e tomate seco (desidratador)</a> <span class="source">[R7]</span></li>
+<li><a href="#r8">Wrap “massa” crua de pimentão vermelho (desidratador)</a> <span class="source">[R8]</span></li>
+<li><a href="#r9">Wrap arco-íris de pimentos doces (desidratador)</a> <span class="source">[R9]</span></li>
+<li><a href="#r10">Crackers raw-vegan com pimentão vermelho (desidratador)</a> <span class="source">[R10]</span></li>
+</ol>
+</div>
+
+<h2> Resumo das Receitas</h2>
+
+<h4>R1. Sopa crua cremosa de pimentão vermelho (liquidificador)</h4>
+<p>Sopa rápida e cremosa feita com pimentão vermelho e caju, temperada com limão e especiarias. Pode ser servida fria ou ligeiramente amornada (sem ultrapassar ~45 ºC).</p>
+
+<h4>R2. Sopa crua picante de tomate e pimentão vermelho</h4>
+<p>Sopa crua refrescante, com tomate e pimentão vermelho como base, ervas aromáticas e toque picante. Ideal para dias quentes.</p>
+
+<h4>R3. Gaspacho raw-vegan com pimentos doces (vermelho e amarelo)</h4>
+<p>Gaspacho cru com pimentos doces, tomate e pepino, com acidez equilibrada. Pode incluir cebola em conserva para dar profundidade sem amargor.</p>
+
+<h4>R4. Pimentos recheados crus (raw stuffed peppers)</h4>
+<p>Pimentos recheados com mistura crua de curgete, ervas, especiarias e citrinos. Prato principal leve e visualmente bonito.</p>
+
+<h4>R5. Pimentos doces fermentados (lactofermentados) em salmoura</h4>
+<p>Pimento doce cortado e fermentado em salmoura com sal, criando um “pickle” probiótico para usar em saladas, bowls e sanduíches.</p>
+
+<h4>R6. Molho cru de pimentão vermelho para saladas</h4>
+<p>Molho cru (tipo vinagrete cremoso, sem frutos secos) com pimentão vermelho como ingrediente central, ótimo para folhas, coleslaws e legumes crus.</p>
+
+<h4>R7. Wraps raw-vegan de pimentão vermelho e tomate seco (desidratador)</h4>
+<p>Wraps finos feitos de massa batida com pimentão e tomate seco, ligados com linhaça moída, desidratados até ficarem flexíveis.</p>
+
+<h4>R8. Wrap “massa” crua de pimentão vermelho (desidratador)</h4>
+<p>Wrap maleável e aromático onde o pimentão é a base, combinada com curgete e psyllium, desidratado para criar folhas para enrolar recheios crus.</p>
+
+<h4>R9. Wrap arco-íris de pimentos doces (desidratador)</h4>
+<p>Wrap de pimentos coloridos com curgete e abacate, formando folhas flexíveis para wraps e rolinhos; sabor suave e textura elástica.</p>
+
+<h4>R10. Crackers raw-vegan com pimentão vermelho (desidratador)</h4>
+<p>Crackers crocantes de sementes e frutos secos com pimentão vermelho na massa, desidratados lentamente para um snack salgado e estaladiço.</p>
+
+
+<h2> Receitas completas</h2>
+
+<a id="sopa-crua-cremosa-de-pimentao-vermelho-liquidificador"></a>
+<h3 id="r1">R1 — Sopa crua cremosa de pimentão vermelho (liquidificador)</h3>
+
+<h4>Introdução</h4>
+<p>Uma sopa crua muito rápida, com pimentão vermelho como protagonista. O caju dá cremosidade sem lacticínios. Para servir morna e continuar “raw”, podes bater mais tempo no liquidificador (o atrito aquece) e parar quando estiver apenas amornada.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+<li>1 pimentão vermelho grande, sem sementes, em pedaços</li>
+<li>1/4 chávena de cajus crus (idealmente demolhados 1–2 h e escorridos)</li>
+<li>1/2 chávena de água (ajustar para a textura)</li>
+<li>1–2 colheres de sopa de sumo de limão</li>
+<li>1/2 dente de alho (opcional)</li>
+<li>1 pitada de sal marinho</li>
+<li>Pimenta preta q.b.</li>
+<li>Opcional: ervas frescas (manjericão/salsa) e uma pitada de paprika</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Colocar pimentão, cajus, água, limão, sal e temperos no liquidificador.</li>
+<li>Triturar até ficar totalmente liso e cremoso. Ajustar com mais água se necessário.</li>
+<li>Provar e acertar sal/limão.</li>
+<li>Servir frio ou ligeiramente amornado (sem exceder ~45 ºC, se esse for o teu critério).</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The Rawtarian — 
+<a href="https://www.therawtarian.com/raw-red-pepper-soup-recipe" target="_blank" rel="noopener">
+https://www.therawtarian.com/raw-red-pepper-soup-recipe
+</a>
+</p><p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-crua-picante-de-tomate-e-pimentao-vermelho"></a>
+<h2 id="r2">R2 — Sopa crua picante de tomate e pimentão vermelho</h2>
+
+<h3>Introdução</h3>
+<p>Uma sopa crua clássica de verão: tomate bem maduro e pimentão vermelho dão doçura e corpo; ervas e picante fazem o resto. Fica pronta em minutos.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>3–4 tomates maduros (ou equivalente em tomate-cereja)</li>
+<li>1 pimentão vermelho grande, sem sementes</li>
+<li>1/2 pepino (opcional, para frescura)</li>
+<li>1 dente de alho pequeno (opcional)</li>
+<li>1 punhado de ervas frescas (ex.: manjericão/salsa)</li>
+<li>1–2 colheres de sopa de azeite (opcional)</li>
+<li>1–2 colheres de sopa de sumo de limão ou vinagre suave</li>
+<li>Sal e pimenta q.b.</li>
+<li>Opcional: malagueta ou flocos de chili a gosto</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Juntar tomate, pimentão e restantes ingredientes no liquidificador.</li>
+<li>Triturar até obter a textura desejada (totalmente lisa ou com alguma textura).</li>
+<li>Provar e ajustar acidez, sal e picante.</li>
+<li>Levar ao frigorífico 15–30 minutos para ficar bem fresca, ou servir já.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The Simple Veganista —  
+<a href="https://simple-veganista.com/raw-tomato-red-pepper-soup/" target="_blank" rel="noopener">
+https://simple-veganista.com/raw-tomato-red-pepper-soup/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="gaspacho-raw-vegan-com-pimentos-doces-vermelho-e-amarelo"></a>
+<h2 id="r3">R3 — Gaspacho raw-vegan com pimentos doces (vermelho e amarelo)</h2>
+
+<h3>Introdução</h3>
+<p>Gaspacho cru em que os pimentos doces têm papel importante no sabor (doce e aromático). Boa opção para servir bem frio, com toppings crus (pepino, tomate, ervas).</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Tomate bem maduro (quantidade para base do gaspacho)</li>
+<li>1 pimentão vermelho + 1 pimentão amarelo, sem sementes</li>
+<li>Pepino (parte ou inteiro, conforme preferência)</li>
+<li>Alho (pequena quantidade, opcional)</li>
+<li>Azeite q.b.</li>
+<li>Vinagre (ex.: vinho branco/maçã) ou limão, q.b.</li>
+<li>Sal e pimenta q.b.</li>
+<li>Opcional: cebola/shallot em conserva (para dar pungência sem amargar)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Preparar e cortar os ingredientes em pedaços para facilitar.</li>
+<li>Triturar tudo no liquidificador até ficar homogéneo.</li>
+<li>Ajustar o tempero (sal, acidez e azeite).</li>
+<li>Refrigerar até ficar bem frio e servir com toppings crus.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Tomato Blues —  
+<a href="https://www.tomatoblues.com/raw-vegan-gazpacho/" target="_blank" rel="noopener">
+https://www.tomatoblues.com/raw-vegan-gazpacho/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pimentos-recheados-crus-raw-stuffed-peppers"></a>
+<h2 id="r4">R4 — Pimentos recheados crus (raw stuffed peppers)</h2>
+
+<h3>Introdução</h3>
+<p>Uma apresentação clássica em versão crua: pimentos inteiros servem de “taça” para um recheio fresco. Ótimo para almoço leve, entrada ou prato de partilha.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>4 pimentos vermelhos (ou mistura de cores), cortados e sem sementes</li>
+<li>4 curgetes descascadas (conforme a receita original)</li>
+<li>Endro fresco picado (quantidade generosa)</li>
+<li>Salsa fresca picada (quantidade generosa)</li>
+<li>Sumo de limão (quantidade indicada para temperar bem)</li>
+<li>Azeite q.b.</li>
+<li>Óleo de sésamo q.b.</li>
+<li>Curcuma, coentros em pó, paprika (a gosto)</li>
+<li>Opcional: uma pitada de chili</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Preparar os pimentos: cortar “tampa” ou ao meio e remover sementes. Reservar.</li>
+<li>Preparar o recheio: ralar/triturar a curgete (conforme a textura desejada) e misturar com as ervas, sumo de limão, azeite, óleo de sésamo e especiarias.</li>
+<li>Provar e ajustar sal/acidez/especiarias.</li>
+<li>Rechear os pimentos e servir de imediato (ou refrigerar um pouco para servir fresco).</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+BBC Good Food (Rawmunchies) —  
+<a href="https://www.bbcgoodfood.com/user/5146971/recipe/stuffed-peppers-rawmunchiesorg" target="_blank" rel="noopener">
+https://www.bbcgoodfood.com/user/5146971/recipe/stuffed-peppers-rawmunchiesorg
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pimentos-doces-fermentados-lactofermentados-em-salmoura"></a>
+<h2 id="r5">R5 — Pimentos doces fermentados (lactofermentados) em salmoura</h2>
+
+<h3>Introdução</h3>
+<p>Fermentar pimentos doces é uma forma excelente de conservar e ganhar sabor ácido e complexo, além de probióticos. Usa-se salmoura simples e tempo.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Pimentos doces (vermelhos, verdes, amarelos), lavados, sem sementes, em cubos ou tiras</li>
+<li>Água sem cloro (filtrada, idealmente)</li>
+<li>Sal (para salmoura; proporção conforme a receita)</li>
+<li>Opcional: alho, grãos de pimenta, folhas de louro, etc. (se a receita incluir variações)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Cortar e preparar os pimentos.</li>
+<li>Preparar a salmoura (água + sal) na proporção indicada.</li>
+<li>Colocar pimentos no frasco e cobrir totalmente com salmoura, mantendo-os submersos.</li>
+<li>Fermentar à temperatura ambiente pelo período recomendado, libertando gases conforme necessário.</li>
+<li>Quando atingir o sabor desejado, transferir para frio para abrandar a fermentação.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+WholeMade Homestead —  
+<a href="https://wholemadehomestead.com/fermented-bell-peppers/" target="_blank" rel="noopener">
+https://wholemadehomestead.com/fermented-bell-peppers/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="molho-cru-de-pimentao-vermelho-para-saladas"></a>
+<h2 id="r6">R6 — Molho cru de pimentão vermelho para saladas</h2>
+
+<h3>Introdução</h3>
+<p>Um molho cru simples e “limpo”, onde o pimentão vermelho é a base. Funciona como vinagrete espesso/cremoso e dá um sabor doce e fresco às saladas.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Pimentão vermelho (base do molho), sem sementes</li>
+<li>Azeite virgem extra</li>
+<li>Vinagre (ou limão), q.b.</li>
+<li>Sal marinho q.b.</li>
+<li>Opcional: alho (pequena quantidade)</li>
+<li>Opcional: ervas secas/frescas para aromatizar</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Colocar os ingredientes no liquidificador.</li>
+<li>Triturar até ficar liso.</li>
+<li>Ajustar a consistência com um pouco de água, se necessário.</li>
+<li>Guardar no frigorífico e usar ao longo de alguns dias.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The Rawtarian —  
+<a href="https://www.therawtarian.com/raw-red-pepper-dressing-recipe" target="_blank" rel="noopener">
+https://www.therawtarian.com/raw-red-pepper-dressing-recipe
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="wraps-raw-vegan-de-pimentao-vermelho-e-tomate-seco-desidratador"></a>
+<h2 id="r7">R7 — Wraps raw-vegan de pimentão vermelho e tomate seco (desidratador)</h2>
+
+<h3>Introdução</h3>
+<p>Wraps crus feitos com massa batida (pimentão + tomate seco + curgete) e linhaça moída para dar estrutura. Desidratam até ficarem flexíveis e prontos para enrolar recheios crus.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Pimentão vermelho (bem maduro), sem sementes</li>
+<li>Tomate seco (conforme a receita)</li>
+<li>Curgete ralada</li>
+<li>Sumo de limão</li>
+<li>Alho (opcional, pequena quantidade)</li>
+<li>Linhaça moída (para ligar)</li>
+<li>Sal e temperos a gosto (se indicados)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Triturar no processador/liquidificador pimentão, tomate seco, limão, curgete e alho até virar uma massa espessa.</li>
+<li>Adicionar a linhaça moída e voltar a misturar para ficar homogéneo.</li>
+<li>Espalhar a massa fina num tapete de desidratador (camada uniforme).</li>
+<li>Desidratar a baixa temperatura até a folha ficar seca por cima, mas ainda maleável.</li>
+<li>Virar e terminar a desidratação até ficar flexível (não quebradiça).</li>
+<li>Cortar, rechear e enrolar.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Vegan Food & Living —  
+<a href="https://www.veganfoodandliving.com/vegan-recipes/raw-vegan-red-pepper-sundried-tomato-wraps/" target="_blank" rel="noopener">
+https://www.veganfoodandliving.com/vegan-recipes/raw-vegan-red-pepper-sundried-tomato-wraps/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="wrap-massa-crua-de-pimentao-vermelho-desidratador"></a>
+<h2 id="r8">R8 — Wrap “massa” crua de pimentão vermelho (desidratador)</h2>
+
+<h3>Introdução</h3>
+<p>Uma “folha” de wrap onde o pimentão vermelho entra como ingrediente central, com curgete para suavidade e fibras (psyllium) para estrutura. Excelente para burritos crus e rolinhos.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Pimentão vermelho (base), sem sementes</li>
+<li>Curgete descascada (para suavizar e dar volume)</li>
+<li>Abacate (para cremosidade)</li>
+<li>Psyllium husk (para dar elasticidade)</li>
+<li>Ervas/temperos secos (ex.: mistura italiana), sal e pimenta (conforme receita)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Triturar os ingredientes até obter uma massa lisa e relativamente espessa.</li>
+<li>Deixar repousar alguns minutos para o psyllium hidratar e engrossar.</li>
+<li>Espalhar em folhas finas no tabuleiro/tapete do desidratador.</li>
+<li>Desidratar até a folha ficar firme o suficiente para virar.</li>
+<li>Virar e terminar até ficar flexível e não pegajosa.</li>
+<li>Cortar, rechear e enrolar.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Nouveau Raw —  
+<a href="https://nouveauraw.com/raw-recipes/wraps/red-bell-pepper-wrap/" target="_blank" rel="noopener">
+https://nouveauraw.com/raw-recipes/wraps/red-bell-pepper-wrap/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="wrap-arco-iris-de-pimentos-doces-desidratador"></a>
+<h2 id="r9">R9 — Wrap arco-íris de pimentos doces (desidratador)</h2>
+
+<h3>Introdução</h3>
+<p>Wrap colorido feito com pimentos doces de várias cores. A apresentação fica ótima e o sabor é suave, perfeito para recheios com folhas verdes, patês crus e legumes espiralizados.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Pimentos doces (vermelho, amarelo, laranja), sem sementes</li>
+<li>Curgete descascada</li>
+<li>Abacate</li>
+<li>Psyllium husk</li>
+<li>Temperos (ex.: mistura italiana), sal e pimenta (conforme receita)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Triturar pimentos, curgete e abacate até ficar liso.</li>
+<li>Juntar psyllium e temperos; misturar e repousar para engrossar.</li>
+<li>Espalhar em camada uniforme no desidratador.</li>
+<li>Desidratar até ficar “folha” flexível, virar e finalizar.</li>
+<li>Cortar, rechear e enrolar.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+Nouveau Raw —  
+<a href="https://nouveauraw.com/raw-recipes/wraps/bell-pepper-rainbow-wrap/" target="_blank" rel="noopener">
+https://nouveauraw.com/raw-recipes/wraps/bell-pepper-rainbow-wrap/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="crackers-raw-vegan-com-pimentao-vermelho-desidratador"></a>
+<h2 id="r10">R10 — Crackers raw-vegan com pimentão vermelho (desidratador)</h2>
+
+<h3>Introdução</h3>
+<p>Crackers de sementes desidratados são um clássico raw-vegan. Esta versão inclui pimentão vermelho na massa, o que dá cor, sabor e ajuda a ligar as sementes antes da desidratação.</p>
+
+<h3>Ingredientes</h3>
+<ul>
+<li>Amêndoas (ou outra base de frutos secos/sementes, conforme receita)</li>
+<li>Sementes de girassol</li>
+<li>Cajus (se indicado)</li>
+<li>Pimentão vermelho (cru), sem sementes</li>
+<li>Tomate (se indicado)</li>
+<li>Linhaça moída (para ligar)</li>
+<li>Cominhos (ou outras especiarias)</li>
+<li>Sal (ex.: sal rosa/Himalaia, conforme receita)</li>
+<li>(Na receita original existe também pimenta habanero para picante; usar apenas se quiseres)</li>
+</ul>
+
+<h3>Preparação</h3>
+<ol>
+<li>Demolhar frutos secos/sementes quando a receita indicar e escorrer bem.</li>
+<li>Triturar os ingredientes até formar uma massa espessa e espalhável.</li>
+<li>Espalhar em camada fina num tapete antiaderente do desidratador.</li>
+<li>Desidratar até firmar, marcar/cortar em quadrados e virar.</li>
+<li>Continuar a desidratar até ficar totalmente seco e crocante.</li>
+<li>Guardar hermeticamente para manter a crocância.</li>
+</ol>
+
+<p><h4>Fonte:</h4>
+The Healthy Family and Home —  
+<a href="https://thehealthyfamilyandhome.com/raw-vegan-habanero-pepper-crackers/" target="_blank" rel="noopener">
+https://thehealthyfamilyandhome.com/raw-vegan-habanero-pepper-crackers/
+</a>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>
