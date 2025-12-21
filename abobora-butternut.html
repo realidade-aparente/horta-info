@@ -5,7 +5,7 @@
   <title>Abóbora butternut – Horta da Terra para o prato</title>
   <link rel="stylesheet" href="style.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-<style>
+    <style>
         :root {
             --cor-fundo: #f5f7f2;
             --cor-principal: #2f855a;
@@ -29,7 +29,7 @@
         header {
             background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
             color: #fff;
-            padding: 1.5rem 1rem;
+            padding: 1.2rem 1rem 0.8rem;
             box-shadow: 0 2px 4px rgba(0,0,0,0.12);
         }
 
@@ -256,6 +256,69 @@
         .topo-link a:hover { text-decoration: underline; }
     
 .masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
 </style>
 </head>
 <body id="topo">
@@ -264,12 +327,11 @@
     <p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar.</p></header>
 <nav>
     <a href="index.html">Início</a>
-	<a href="espontaneas.html">Plantas espontâneas comestíveis</a>
 	<a href="abobora-butternut.html" class="ativa">Abóbora butternut</a>
 	<a href="abobora-grande.html">Abóbora grande</a>
     <a href="acelga.html">Acelga</a>
     <a href="agriao.html">Agrião-de-água</a>
-    <a href="agriao-terra.html">Agrião-de-terra</a>
+    <a href="agriao-terra.html">Agrião-da-terra</a>
     <a href="aipo.html">Aipo (talos e folhas)</a>
     <a href="alface.html">Alface</a>
     <a href="alho.html">Alho</a>
@@ -317,6 +379,16 @@
 
   <main>
     
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+    <a class="prev" href="index.html">
+      Início
+    </a>
+    <a class="next" href="abobora-grande.html">
+      Abóbora grande
+    </a>
+  </nav>
+	
 <article class="planta">
 <div class="planta-cabecalho">  <div class="planta-titulo">
 <h2>Abóbora butternut (<em>Cucurbita moschata</em>)</h2>        <div class="tags-nomes">      <span>Família: Cucurbitaceae</span>      <span>Parte usada: polpa e sementes</span>      <span>Tipo: abóbora de inverno</span>      <span>Produção: <strong>biológica</strong></span>    </div>    <div class="info-rapida"><div><strong>Origem</strong> Variedade de abóbora de inverno; polpa doce e densa.</div><div><strong>Uso principal</strong> Sopas/cremes, assados, purés, risotos, recheios.</div><div><strong>Perfil nutricional</strong> Baixa energia; carotenos (vit. A), vit. C, potássio, fibra.</div></div>  </div>  <div><div class="imagem-container-externo">  <div class="imagem-container">    <img src="imagens/abobora-butternut.png" alt="Abóbora butternut inteira e em cortes">  </div></div><p class="imagem-legenda">Imagem ilustrativa de abóbora butternut biológica (inteira e em cortes).</p></div></div>
@@ -653,6 +725,17 @@
     <!-- 7. Receitas e preparados (Top 10) -->
     <section id="receitas">
       <h3>Receitas e preparados (Top 10)</h3>
+	  <div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/abobora-butternut_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/abobora-butternut_receitas_vegan.html">(Vegan)</a>
+    <a href="/data/refeicoes/raw-vegan/abobora-butternut_receitas_raw-vegan.html">(Comida Viva)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro por ingredientes)</a>
+  </div>
+</div>
+
       <p>
         Exemplos de preparações populares com abóbora butternut / manteiga.
         As receitas completas podem ser consultadas nas fontes indicadas nas
@@ -660,50 +743,50 @@
       </p>
 
       <ol>
-        <li><strong><a href="data/refeicoes/vegetarianas/abobora-butternut-receitas.html#creme-de-abobora-butternut">Creme de abóbora butternut</a></strong> – sopa cremosa de abóbora
+        <li><strong><a href="data/refeicoes/original/abobora-butternut_receitas.html#creme-de-abobora-butternut">Creme de abóbora butternut</a></strong> – sopa cremosa de abóbora
           butternut, frequentemente combinada com cebola, alho, batata ou
           batata-doce e aromatizada com especiarias suaves; muito comum como
           prato de outono/inverno.<sup>[R1]</sup>
         </li>
-        <li><strong><a href="data/refeicoes/vegetarianas/abobora-butternut-receitas.html#abobora-butternut-assada-no-forno">Abóbora butternut assada no forno</a></strong> – cubos ou metades
+        <li><strong><a href="data/refeicoes/original/abobora-butternut_receitas.html#abobora-butternut-assada-no-forno">Abóbora butternut assada no forno</a></strong> – cubos ou metades
           de abóbora assados com azeite, sal, pimenta e ervas (por exemplo,
           alecrim ou salva), servidos como acompanhamento ou usados em saladas
           e bowls.<sup>[R2]</sup
         </li>
-        <li><strong><a href="data/refeicoes/vegetarianas/abobora-butternut-receitas.html#risoto-de-abobora-butternut">Risoto de abóbora butternut</a></strong> – risoto cremoso onde
+        <li><strong><a href="data/refeicoes/original/abobora-butternut_receitas.html#risoto-de-abobora-butternut">Risoto de abóbora butternut</a></strong> – risoto cremoso onde
           a abóbora é incorporada em puré ou em cubos assados, muitas vezes
           combinada com salva, parmesão e vinho branco.<sup>[R3]</sup>
         </li>
-        <li><strong><a href="data/refeicoes/vegetarianas/abobora-butternut-receitas.html#caril-de-abobora-e-grao-de-bico">Caril de abóbora e grão-de-bico</a></strong> – caril
+        <li><strong><a href="data/refeicoes/original/abobora-butternut_receitas.html#caril-de-abobora-e-grao-de-bico">Caril de abóbora e grão-de-bico</a></strong> – caril
           vegetariano/vegano com cubos de abóbora, leguminosas (como
           grão-de-bico) e especiarias de inspiração indiana ou tailandesa,
           servido com arroz ou outros cereais.<sup>[R4]</sup>
         </li>
-        <li><strong><a href="data/refeicoes/vegetarianas/abobora-butternut-receitas.html#pure-de-abobora-butternut">Puré de abóbora butternut</a></strong> – puré simples, usado
+        <li><strong><a href="data/refeicoes/original/abobora-butternut_receitas.html#pure-de-abobora-butternut">Puré de abóbora butternut</a></strong> – puré simples, usado
           como acompanhamento, base de outros pratos ou ingrediente para
           preparações doces como bolos e muffins.<sup>[R5]</sup>
         </li>
-        <li><strong><a href="data/refeicoes/vegetarianas/abobora-butternut-receitas.html#lasanha-ou-gratinados-com-abobora">Lasanha ou gratinados com abóbora</a></strong> – camadas de
+        <li><strong><a href="data/refeicoes/original/abobora-butternut_receitas.html#lasanha-ou-gratinados-com-abobora">Lasanha ou gratinados com abóbora</a></strong> – camadas de
           abóbora assada ou estufada em pratos de forno (lasanha vegetariana,
           gratinados com queijo, natas ou alternativas vegetais).
           <sup>[R6]</sup>
         </li>
-        <li><strong><a href="data/refeicoes/vegetarianas/abobora-butternut-receitas.html#muffins-pao-e-bolos-de-abobora">Muffins, pão e bolos de abóbora</a></strong> – massa doce
+        <li><strong><a href="data/refeicoes/original/abobora-butternut_receitas.html#muffins-pao-e-bolos-de-abobora">Muffins, pão e bolos de abóbora</a></strong> – massa doce
           enriquecida com puré de abóbora, especiarias como canela e
           noz-moscada e, por vezes, frutos secos ou chocolate.
           <sup>[R7]</sup>
         </li>
-        <li><strong><a href="data/refeicoes/vegetarianas/abobora-butternut-receitas.html#saladas-mornas-com-abobora-assada">Saladas mornas com abóbora assada</a></strong> – cubos de
+        <li><strong><a href="data/refeicoes/original/abobora-butternut_receitas.html#saladas-mornas-com-abobora-assada">Saladas mornas com abóbora assada</a></strong> – cubos de
           abóbora assada combinados com folhas verdes, cereais (por exemplo,
           trigo-sarraceno, bulgur ou farro), queijo de cabra ou feta e
           sementes tostadas.<sup>[R8]</sup>
         </li>
-        <li><strong><a href="data/refeicoes/vegetarianas/abobora-butternut-receitas.html#abobora-recheada-e-assada">Abóbora recheada e assada</a></strong> – frutos de butternut
+        <li><strong><a href="data/refeicoes/original/abobora-butternut_receitas.html#abobora-recheada-e-assada">Abóbora recheada e assada</a></strong> – frutos de butternut
           cortados longitudinalmente, parcialmente escavados e recheados com
           mistura de cereais, leguminosas, legumes e frutos secos, depois
           assados no forno.<sup>[R9]</sup>
         </li>
-        <li><strong><a href="data/refeicoes/vegetarianas/abobora-butternut-receitas.html#papinhas-e-pures-para-bebes">Papinhas e purés para bebés</a></strong> – puré simples de
+        <li><strong><a href="data/refeicoes/original/abobora-butternut_receitas.html#papinhas-e-pures-para-bebes">Papinhas e purés para bebés</a></strong> – puré simples de
           abóbora butternut, muitas vezes combinado com cenoura, batata-doce
           ou outros legumes, usado em alimentação complementar infantil.
           <sup>[U1]</sup><sup>[R10]</sup>

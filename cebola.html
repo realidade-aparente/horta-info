@@ -29,7 +29,7 @@
         header {
             background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
             color: #fff;
-            padding: 1.5rem 1rem;
+            padding: 1.2rem 1rem 0.8rem;
             box-shadow: 0 2px 4px rgba(0,0,0,0.12);
         }
 
@@ -256,6 +256,69 @@
         .topo-link a:hover { text-decoration: underline; }
     
 .masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
 </style>
 </head>
 <body id="topo">
@@ -264,12 +327,11 @@
     <p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar.</p></header>
 <nav>
   <a href="index.html">Início</a>
-  <a href="espontaneas.html">Plantas espontâneas comestíveis</a>
   <a href="abobora-butternut.html">Abóbora butternut</a>
   <a href="abobora-grande.html">Abóbora grande</a>
   <a href="acelga.html">Acelga</a>
   <a href="agriao.html">Agrião-de-água</a>
-  <a href="agriao-terra.html">Agrião-de-terra</a>
+  <a href="agriao-terra.html">Agrião-da-terra</a>
   <a href="aipo.html">Aipo (talos e folhas)</a>
   <a href="alface.html">Alface</a>
   <a href="alho.html">Alho</a>
@@ -315,7 +377,17 @@
 </nav></div>
 
   <main>
-
+    
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+    <a class="prev" href="canonigos.html">
+      Canónigos
+    </a>
+    <a class="next" href="cebola-fresca.html">
+      Cebola fresca
+    </a>
+  </nav>
+	
 <article class="planta">
 <div class="planta-cabecalho">
   <div class="planta-titulo">
@@ -503,6 +575,18 @@
     <!-- 4. Receitas e preparados (Top 10) -->
     <section id="receitas">
       <h3>4. Receitas e preparados (Top 10)</h3>
+			
+	  <div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/cebola_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/cebola_receitas_vegan.html">(Vegan)</a>
+    <a href="/data/refeicoes/raw-vegan/cebola_receitas_raw-vegan.html">(Comida Viva)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro por ingredientes)</a>
+  </div>
+</div>
+
       <p>
         Abaixo estão 10 exemplos de receitas em língua portuguesa que utilizam cebola como
         ingrediente central ou de destaque. Pelo menos cinco são de sites em português de

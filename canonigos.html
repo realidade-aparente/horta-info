@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Canónigos | Horta da Terra para o prato</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
+<style>
         :root {
             --cor-fundo: #f5f7f2;
             --cor-principal: #2f855a;
@@ -28,7 +28,7 @@
         header {
             background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
             color: #fff;
-            padding: 1.5rem 1rem;
+            padding: 1.2rem 1rem 0.8rem;
             box-shadow: 0 2px 4px rgba(0,0,0,0.12);
         }
 
@@ -205,18 +205,9 @@
 
         tbody tr:nth-child(even) { background: #f9fafb; }
 
-        .nota, .referencia-nota {
+        .nota {
             font-size: 0.8rem;
             color: #6b7280;
-        }
-
-        .nota-aviso {
-            font-size: 0.85rem;
-            color: #9a3412;
-            background: #fff7ed;
-            border-radius: 0.5rem;
-            padding: 0.5rem 0.75rem;
-            border: 1px solid #fed7aa;
         }
 
         .lista-permacultura {
@@ -262,7 +253,72 @@
         }
 
         .topo-link a:hover { text-decoration: underline; }
-    </style>
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
 </head>
 <body id="topo">
 <header>
@@ -272,12 +328,11 @@
 
 <nav>
     <a href="index.html">Início</a>
-    <a href="espontaneas.html">Plantas espontâneas comestíveis</a>
     <a href="abobora-butternut.html">Abóbora butternut</a>
     <a href="abobora-grande.html">Abóbora grande</a>
     <a href="acelga.html">Acelga</a>
     <a href="agriao.html">Agrião-de-água</a>
-    <a href="agriao-terra.html">Agrião-de-terra</a>
+    <a href="agriao-terra.html">Agrião-da-terra</a>
     <a href="aipo.html">Aipo (talos e folhas)</a>
     <a href="alface.html">Alface</a>
     <a href="alho.html">Alho</a>
@@ -289,10 +344,10 @@
     <a href="beterraba.html">Beterraba</a>
     <a href="brocolo.html">Brócolo</a>
     <a href="canonigos.html" class="ativa">Canónigos</a>
-    <a href="coentros.html">Coentros</a>
     <a href="cebola.html">Cebola</a>
     <a href="cebola-fresca.html">Cebola fresca</a>
     <a href="cenoura.html">Cenoura</a>
+	<a href="coentros.html">Coentros</a>
     <a href="couve-chinesa.html">Couve chinesa</a>
     <a href="couve-flor.html">Couve-flor</a>
     <a href="couve-rabano.html">Couve-rábano</a>
@@ -308,8 +363,8 @@
     <a href="mizuna.html">Mizuna</a>
     <a href="morangos.html">Morangueiro / Morangos</a>
     <a href="moringa.html">Moringa</a>
-    <a href="nabo.html">Nabo</a>
     <a href="nabica.html">Nabiça</a>
+    <a href="nabo.html">Nabo</a>
     <a href="pak-choi.html">Pak choi</a>
     <a href="pepino.html">Pepino</a>
     <a href="pimento.html">Pimento</a>
@@ -323,6 +378,17 @@
 </nav>
 
 <main>
+    
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+    <a class="prev" href="brocolo.html">
+      Brócolo
+    </a>
+    <a class="next" href="cebola.html">
+      Cebola
+    </a>
+  </nav>
+	
     <h2>Canónigos (<em>Valerianella locusta</em>)</h2>
 
     <!-- 0. Imagem -->
@@ -467,6 +533,18 @@
     <!-- 4. Receitas e preparados (Top 10) -->
     <section id="receitas">
       <h3>Receitas e preparados (Top 10)</h3>
+			
+	  <div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/canonigos_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/data/refeicoes/vegan/canonigos_receitas_vegan.html">(Vegan)</a>
+    <a href="/data/refeicoes/raw-vegan/canonigos_receitas_raw-vegan.html">(Comida Viva)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro por ingredientes)</a>
+  </div>
+</div>
+
       <p>
         Abaixo estão 10 exemplos de receitas em língua portuguesa que utilizam canónigos
         (ou alface-de-cordeiro) como ingrediente principal ou de destaque. Pelo menos cinco
