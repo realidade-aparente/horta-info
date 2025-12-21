@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Abóbora Grande – Receitas Vegan</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header{position:static;z-index:60;background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria));color:#fff;padding:1rem 1rem;box-shadow:0 2px 4px rgba(0,0,0,.12)}
+main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h3[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+
+<body id="topo">
+<header>
+  <h1>Abóbora Grande — Receitas Vegan</h1>
+  <p>Preparações 100% vegetais com abóbora de polpa densa, com quantidades e todos os passos incluídos</p>
+</header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../espontaneas.html">Plantas espontâneas comestíveis</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html" class="ativa">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-de-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+
+<main>
+<article>
+
+<p><strong>FICHEIRO DE RECEITAS – PLANTA: ABÓBORA GRANDE (Curcubita maxima)</strong></p>
+
+<a id="1-indice-rapido"></a>
+<h2>1) Índice rápido</h2>
+
+<p>SEÇÃO 1 – ÍNDICE (R1–R10)</p>
+
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/abobora-grande_receitas_vegetariana.html">(Vegetariana)</a>
+    <a href="/data/refeicoes/raw-vegan/abobora-grande_receitas_raw-vegan.html">(Comida Viva)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+<strong>Nomes das Receitas:</strong>
+<ol>
+  <li><a href="#r1">R1 – Abóbora Assada com Molho de Sésamo e Gengibre</a></li>
+  <li><a href="#r2">R2 – Ensopado Marroquino de Abóbora e Grão-de-Bico</a></li>
+  <li><a href="#r3">R3 – Caril Tailandês de Abóbora com Grão-de-Bico e Coco</a></li>
+  <li><a href="#r4">R4 – Massa Cremosa de Abóbora com Cogumelos Salteados</a></li>
+  <li><a href="#r5">R5 – Sopa Cremosa de Abóbora Assada com Leite de Coco</a></li>
+  <li><a href="#r6">R6 – Salada Morna de Abóbora Assada, Lentilhas e Couve-kale</a></li>
+  <li><a href="#r7">R7 – Húmus Cremoso de Abóbora e Tahini</a></li>
+  <li><a href="#r8">R8 – Pão Rústico de Abóbora e Especiarias (Vegan)</a></li>
+  <li><a href="#r9">R9 – Abóbora Assada Recheada com Arroz Selvagem, Nozes e Arandos</a></li>
+  <li><a href="#r10">R10 – Casserole de Arroz com Abóbora Salgada no Forno</a></li>
+</ol>
+</div>
+
+<a id="2-titulos-e-resumos"></a>
+<h2>2) Títulos e Resumos</h2>
+
+<p>SEÇÃO 2 – TÍTULOS E RESUMOS</p>
+
+<p><strong>R1 – Abóbora Assada com Molho de Sésamo e Gengibre</strong><br>
+Gomos de abóbora grande assados no forno até ficarem macios e dourados, servidos com um molho vibrante de gengibre fresco, tamari, vinagre de arroz e óleo de sésamo, com cebolinho e sementes de sésamo por cima.</p>
+
+<p><strong>R2 – Ensopado Marroquino de Abóbora e Grão-de-Bico</strong><br>
+Cubo de abóbora cozidos lentamente com grão-de-bico, tomate e cenoura, aromatizados com cominhos, coentros em pó, canela e açafrão, resultando num ensopado espesso e reconfortante, ideal para servir com cuscuz ou arroz.</p>
+
+<p><strong>R3 – Caril Tailandês de Abóbora com Grão-de-Bico e Coco</strong><br>
+Um caril cremoso e levemente picante, onde cubos de abóbora grande se juntam a grão-de-bico, leite de coco, pasta de caril vermelho, gengibre e lima, formando um prato completo servido com arroz jasmim.</p>
+
+<p><strong>R4 – Massa Cremosa de Abóbora com Cogumelos Salteados</strong><br>
+Molho cremoso de abóbora feito sem natas nem frutos secos, encorpado com a própria polpa da abóbora e água de cozedura da massa, servido com cogumelos assados, alho, ervas frescas e massa curta ou longa.</p>
+
+<p><strong>R5 – Sopa Cremosa de Abóbora Assada com Leite de Coco</strong><br>
+Abóbora grande assada no forno até caramelizar, depois triturada com caldo de legumes e leite de coco, temperada com especiarias quentes (cominhos, paprika, pimenta-da-jamaica ou noz-moscada) para uma sopa aveludada.</p>
+
+<p><strong>R6 – Salada Morna de Abóbora Assada, Lentilhas e Couve-kale</strong><br>
+Cubos de abóbora assada misturados com lentilhas verdes, folhas de kale massajadas, molho de tahini com limão e alho, e toques frescos de romã ou maçã, criando uma salada morna completa e muito saciante.</p>
+
+<p><strong>R7 – Húmus Cremoso de Abóbora e Tahini</strong><br>
+Uma variação outonal do húmus clássico, em que o grão-de-bico é triturado com puré de abóbora assada, tahini, limão, alho e cominhos, resultando num dip suave, levemente adocicado e muito aromático.</p>
+
+<p><strong>R8 – Pão Rústico de Abóbora e Especiarias (Vegan)</strong><br>
+Pão tipo bolo, húmido e aromático, feito com puré de abóbora, açúcar, óleo vegetal e uma mistura generosa de especiarias (canela, gengibre, noz-moscada, cravinho), perfeito para fatiar ao pequeno-almoço ou lanche.</p>
+
+<p><strong>R9 – Abóbora Assada Recheada com Arroz Selvagem, Nozes e Arandos</strong><br>
+Grossas “canoas” de abóbora grande vão ao forno recheadas com mistura de arroz selvagem, nozes, arandos secos, cebola e aipo salteados e muita salva, formando um prato principal festivo totalmente vegetal.</p>
+
+<p><strong>R10 – Casserole de Arroz com Abóbora Salgada no Forno</strong><br>
+Arroz já cozido envolvido em puré de abóbora temperado, legumes salteados e ervas, coberto com pão ralado e, opcionalmente, um pouco de “queijo” vegan ralado, e depois gratinado no forno até ficar dourado nas bordas.</p>
+
+<a id="3-receitas-completas"></a>
+<h2>3) Receitas completas</h2>
+
+<p>SEÇÃO 3 – RECEITAS COMPLETAS</p>
+
+<hr>
+<a id="abobora-assada-com-molho-de-sesamo-e-gengibre"></a>
+<h3 id="r1">R1 – Abóbora Assada com Molho de Sésamo e Gengibre</h3>
+<p><em>Inspirada em receitas de abóbora japonesa (kabocha) assada, esta versão usa abóbora grande tipo moranga/Jarrahdale cortada em gomos, que ficam macios por dentro e levemente caramelizados por fora. O molho de sésamo e gengibre dá um toque asiático e fresco, ideal como acompanhamento ou base de uma taça de cereais.</em></p>
+
+<a id="1-introducao"></a>
+<h4>1) Introdução</h4>
+<p>Inspirada em receitas de abóbora japonesa (kabocha) assada, esta versão usa abóbora grande tipo moranga/Jarrahdale cortada em gomos, que ficam macios por dentro e levemente caramelizados por fora. O molho de sésamo e gengibre dá um toque asiático e fresco, ideal como acompanhamento ou base de uma taça de cereais.</p>
+
+<a id="2-ingredientes-4-6-porcoes"></a>
+<h4>2) Ingredientes (4–6 porções)</h4>
+<p><strong>Para a abóbora:</strong></p>
+<ul>
+  <li>1 abóbora grande tipo moranga/Jarrahdale (1,5–2 kg), descascada se tiver casca muito grossa, sem sementes</li>
+  <li>2–3 colheres de sopa de azeite ou óleo neutro</li>
+  <li>Sal marinho q.b.</li>
+  <li>Pimenta-preta moída q.b.</li>
+</ul>
+
+<p><strong>Para o molho de sésamo e gengibre:</strong></p>
+<ul>
+  <li>2 colheres de sopa de tamari ou molho de soja</li>
+  <li>2 colheres de sopa de vinagre de arroz</li>
+  <li>1–2 colheres de sopa de óleo de sésamo tostado</li>
+  <li>1 colher de sopa de sumo de limão ou lima</li>
+  <li>1–2 colheres de chá de xarope de ácer (maple) ou outro adoçante líquido</li>
+  <li>1 dente de alho pequeno, ralado</li>
+  <li>2–3 cm de gengibre fresco, ralado</li>
+  <li>1–2 colheres de sopa de água (para ajustar a textura)</li>
+</ul>
+
+<p><strong>Para servir:</strong></p>
+<ul>
+  <li>2 cebolinhos (parte verde), finamente fatiados</li>
+  <li>1–2 colheres de sopa de sementes de sésamo tostadas</li>
+</ul>
+
+<a id="3-passos-de-preparacao"></a>
+<h4>3) Passos de preparação</h4>
+<ol>
+  <li>Pré-aquecer o forno a 200 ºC. Forrar um tabuleiro grande com papel vegetal.</li>
+  <li>Cortar a abóbora em fatias grossas, tipo gomos, com 2–3 cm de espessura.</li>
+  <li>Dispor os gomos no tabuleiro, regar com o azeite, temperar com sal e pimenta e envolver bem com as mãos.</li>
+  <li>Assar 30–40 minutos, virando a meio, até a abóbora estar dourada e macia ao espetar com um garfo.</li>
+  <li>Enquanto assa, preparar o molho: numa taça pequena, misturar o tamari, vinagre de arroz, óleo de sésamo, sumo de limão/lima, xarope de ácer, alho e gengibre. Juntar 1–2 colheres de sopa de água para ficar vertível mas ainda espesso.</li>
+  <li>Retirar a abóbora do forno, deixar arrefecer uns minutos. Transferir para uma travessa.</li>
+  <li>Regar com o molho (podes não usar tudo; serve o restante à parte), salpicar com cebolinho e sementes de sésamo.</li>
+  <li>Servir morno como acompanhamento ou sobre arroz integral/quinoa com legumes salteados para prato completo.</li>
+</ol>
+
+<a id="4-fonte"></a>
+<h4>4) Fonte</h4>
+<p>Fonte: Love &amp; Lemons – https://www.loveandlemons.com/roasted-kabocha-squash/</p>
+
+<hr>
+<a id="ensopado-marroquino-de-abobora-e-grao-de-bico"></a>
+<h3 id="r2">R2 – Ensopado Marroquino de Abóbora e Grão-de-Bico</h3>
+
+<h4>1) Introdução</h4>
+<p>Este ensopado marroquino combina a doçura natural da abóbora com grão-de-bico, tomate e um conjunto de especiarias quentes, criando um prato espesso e reconfortante. A abóbora grande cortada em cubos mantém a textura sem se desfazer.</p>
+
+<a id="2-ingredientes-4-porcoes"></a>
+<h4>2) Ingredientes (4 porções)</h4>
+<ul>
+  <li>2 colheres de sopa de azeite</li>
+  <li>1 cebola grande, picada</li>
+  <li>3 dentes de alho, picados</li>
+  <li>1 cenoura grande, em meias-luas</li>
+  <li>600–700 g de abóbora grande em cubos</li>
+  <li>1 lata (400 g) de grão-de-bico cozido, escorrido e passado por água</li>
+  <li>1 lata (400 g) de tomate pelado em pedaços (ou polpa de tomate + água)</li>
+  <li>500 ml de caldo de legumes</li>
+  <li>1 colher de chá de cominhos em pó</li>
+  <li>1 colher de chá de coentros em pó</li>
+  <li>1/2 colher de chá de canela em pó</li>
+  <li>1/2 colher de chá de açafrão-da-índia (curcuma)</li>
+  <li>1/2 colher de chá de paprika doce ou fumada</li>
+  <li>1 pitada de piripíri ou flocos de malagueta (opcional)</li>
+  <li>Sal e pimenta-preta q.b.</li>
+  <li>1 punhado de sultanas ou pedaços de alperce seco (opcional, para toque agridoce)</li>
+  <li>1 punhado de coentros frescos picados</li>
+  <li>Rodelas de limão para servir</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+  <li>Aquecer o azeite num tacho largo em lume médio. Juntar a cebola e refogar 5–7 minutos até ficar translúcida.</li>
+  <li>Adicionar o alho e a cenoura, cozinhar mais 2–3 minutos, mexendo.</li>
+  <li>Juntar as especiarias secas (cominhos, coentros, canela, curcuma, paprika e piripíri se usar) e mexer 30–60 segundos até libertarem aroma.</li>
+  <li>Acrescentar os cubos de abóbora, envolver bem nas especiarias.</li>
+  <li>Adicionar o tomate, o grão-de-bico, as sultanas/alperce se usar e o caldo de legumes. Temperar com sal e pimenta.</li>
+  <li>Deixar levantar fervura, reduzir para lume brando, tapar e cozinhar 25–30 minutos, até a abóbora ficar macia e o molho espessar. Mexer ocasionalmente e, se necessário, juntar um pouco mais de água.</li>
+  <li>Ajustar sal, pimenta e especiarias no final.</li>
+  <li>Servir quente, polvilhado com coentros frescos, com cuscuz, arroz ou pão achatado.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>Fonte: The Simple Veganista – https://simple-veganista.com/moroccan-pumpkin-chickpea-stew/</p>
+
+<hr>
+<a id="caril-tailandes-de-abobora-com-grao-de-bico-e-coco"></a>
+<h3 id="r3">R3 – Caril Tailandês de Abóbora com Grão-de-Bico e Coco</h3>
+
+<h4>1) Introdução</h4>
+<p>Adaptado de um caril tailandês de abóbora/butternut, este prato usa pedaços de abóbora grande que se tornam macios num molho aromático de leite de coco, pasta de caril vermelho, gengibre e lima. É uma refeição de tacho único, rica e reconfortante.</p>
+
+<h4>2) Ingredientes (4–6 porções)</h4>
+<ul>
+  <li>1–2 colheres de sopa de óleo (coco ou amendoim)</li>
+  <li>1 cebola grande, em meias-luas finas</li>
+  <li>3 dentes de alho, picados</li>
+  <li>2–3 cm de gengibre fresco, ralado</li>
+  <li>2–3 colheres de sopa de pasta de caril vermelho tailandês (verificar que é vegan)</li>
+  <li>600–700 g de abóbora grande em cubos</li>
+  <li>1 lata (400 ml) de leite de coco inteiro</li>
+  <li>250–300 ml de caldo de legumes ou água</li>
+  <li>1 lata (400 g) de grão-de-bico cozido, escorrido</li>
+  <li>1–2 colheres de sopa de molho de soja ou tamari</li>
+  <li>1 colher de sopa de sumo de lima (ou limão) + mais para servir</li>
+  <li>1–2 colheres de chá de açúcar mascavado ou xarope de ácer (ajustar)</li>
+  <li>Sal q.b. (se necessário)</li>
+  <li>Folhas de manjericão tailandês ou coentros frescos, para servir</li>
+  <li>Arroz jasmim cozido, para acompanhar</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+  <li>Aquecer o óleo num tacho largo em lume médio. Juntar a cebola e refogar 5–7 minutos até começar a dourar.</li>
+  <li>Adicionar o alho e o gengibre e saltear 1–2 minutos.</li>
+  <li>Juntar a pasta de caril vermelho e cozinhar 1 minuto, mexendo, para libertar os aromas.</li>
+  <li>Adicionar os cubos de abóbora, envolver bem na pasta de caril.</li>
+  <li>Juntar o leite de coco e o caldo de legumes. Mexer, deixar levantar fervura e reduzir o lume para brando.</li>
+  <li>Cozinhar 10–15 minutos até a abóbora começar a ficar macia.</li>
+  <li>Adicionar o grão-de-bico, o molho de soja/tamari, o açúcar e o sumo de lima. Cozinhar mais 5–10 minutos, até a abóbora estar tenra e o molho espesso.</li>
+  <li>Provar e ajustar: mais sal, lima ou açúcar, conforme necessário para equilibrar salgado/ácido/doce/picante.</li>
+  <li>Servir o caril sobre arroz jasmim, com folhas de manjericão ou coentros por cima e gomos extra de lima.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>Fonte: Rainbow Plant Life – https://rainbowplantlife.com/thai-butternut-squash-chickpea-curry/</p>
+
+<hr>
+<a id="massa-cremosa-de-abobora-com-cogumelos-salteados"></a>
+<h3 id="r4">R4 – Massa Cremosa de Abóbora com Cogumelos Salteados</h3>
+
+<h4>1) Introdução</h4>
+<p>Nesta massa, a abóbora assada é transformada num molho sedoso, sem usar natas nem frutos secos, apenas azeite, ervas e a água de cozedura da massa. Cogumelos assados ou salteados e ervas frescas completam um prato de conforto.</p>
+
+<h4>2) Ingredientes (4 porções)</h4>
+
+<p><strong>Para a abóbora e cogumelos:</strong></p>
+<ul>
+  <li>500–600 g de abóbora grande em cubos</li>
+  <li>250 g de cogumelos (shiitake, castanho, portobello, etc.), em fatias</li>
+  <li>3 colheres de sopa de azeite (divididas)</li>
+  <li>Sal e pimenta-preta q.b.</li>
+  <li>2–3 dentes de alho, picados</li>
+</ul>
+
+<p><strong>Para a massa e molho:</strong></p>
+<ul>
+  <li>320–400 g de massa seca (fusilli, penne, linguine, etc.)</li>
+  <li>200–250 ml de caldo de legumes</li>
+  <li>1–2 colheres de sopa de azeite extra</li>
+  <li>1 colher de sopa de levedura nutricional (opcional, para sabor “queijo”)</li>
+  <li>1 colher de chá de tomilho seco ou 1 colher de sopa de tomilho fresco</li>
+  <li>1 colher de chá de alecrim seco ou 1 colher de sopa de alecrim fresco picado</li>
+  <li>1 colher de sopa de sumo de limão</li>
+  <li>Sal e pimenta-preta q.b.</li>
+  <li>Salsa fresca picada, para servir</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+  <li>Pré-aquecer o forno a 200 ºC. Dispor os cubos de abóbora num tabuleiro, regar com 1–2 colheres de sopa de azeite, temperar com sal e pimenta e envolver.</li>
+  <li>Noutro tabuleiro, colocar os cogumelos fatiados com 1 colher de sopa de azeite, alho picado, sal e pimenta.</li>
+  <li>Assar a abóbora e os cogumelos 20–25 minutos, até a abóbora estar macia e os cogumelos dourados. Reservar.</li>
+  <li>Cozer a massa em água abundante com sal, seguindo o tempo da embalagem, até al dente. Guardar 300–400 ml da água de cozedura, escorrer a massa.</li>
+  <li>Colocar a abóbora assada num copo de blender com o caldo de legumes, 100–150 ml da água da massa, a levedura nutricional, tomilho, alecrim, sumo de limão, azeite extra, sal e pimenta. Triturar até ficar bem cremoso. Ajustar a textura com mais água da massa se necessário.</li>
+  <li>Voltar a colocar a massa na panela em lume brando, adicionar o molho de abóbora e envolver bem. Se estiver demasiado espesso, juntar um pouco mais de água da massa.</li>
+  <li>Misturar metade dos cogumelos assados na massa e reservar o resto para servir por cima. Ajustar sal, pimenta e limão.</li>
+  <li>Servir imediatamente, com os cogumelos reservados e salsa fresca picada.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>Fonte: Occasionally Eggs – https://www.occasionallyeggs.com/creamy-vegan-pumpkin-pasta/</p>
+
+<hr>
+<a id="sopa-cremosa-de-abobora-assada-com-leite-de-coco"></a>
+<h3 id="r5">R5 – Sopa Cremosa de Abóbora Assada com Leite de Coco</h3>
+
+<h4>1) Introdução</h4>
+<p>Esta sopa segue a ideia de assar primeiro a abóbora para concentrar o sabor, antes de a triturar com caldo e leite de coco. As especiarias dão profundidade, mantendo um perfil suave e reconfortante.</p>
+
+<a id="2-ingredientes-4-5-porcoes"></a>
+<h4>2) Ingredientes (4–5 porções)</h4>
+<ul>
+  <li>800–900 g de abóbora grande em cubos</li>
+  <li>2 colheres de sopa de azeite</li>
+  <li>Sal e pimenta-preta q.b.</li>
+  <li>1 cebola média, picada</li>
+  <li>3 dentes de alho, picados</li>
+  <li>1 colher de chá de cominhos em pó</li>
+  <li>1/2 colher de chá de coentros em pó</li>
+  <li>1/2 colher de chá de paprika (doce ou fumada)</li>
+  <li>1 pitada de noz-moscada ou pimenta-da-jamaica moída</li>
+  <li>600–700 ml de caldo de legumes</li>
+  <li>200–250 ml de leite de coco inteiro (lata)</li>
+  <li>Sumo de 1/2 limão (opcional, para equilibrar)</li>
+  <li>Sementes de abóbora tostadas, coentros ou salsa, para servir</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+  <li>Pré-aquecer o forno a 200 ºC. Dispor a abóbora em cubos num tabuleiro, regar com 1 colher de sopa de azeite, temperar com sal e pimenta e envolver.</li>
+  <li>Assar 25–30 minutos, mexendo a meio, até os cubos estarem dourados e macios.</li>
+  <li>Num tacho, aquecer a outra colher de sopa de azeite em lume médio. Juntar a cebola e refogar 5–7 minutos.</li>
+  <li>Adicionar o alho e as especiarias (cominhos, coentros, paprika, noz-moscada) e cozinhar 1 minuto, mexendo.</li>
+  <li>Juntar a abóbora assada ao tacho, envolver, e adicionar o caldo de legumes. Deixar ferver, reduzir o lume e cozinhar 5–10 minutos.</li>
+  <li>Triturar com varinha mágica ou no blender até ficar completamente cremosa.</li>
+  <li>Voltar ao tacho (se usou blender), juntar o leite de coco e aquecer em lume brando sem ferver demasiado. Ajustar a textura com mais caldo ou água se desejar.</li>
+  <li>Provar e ajustar sal, pimenta e, se quiser, um pouco de sumo de limão para equilibrar a doçura.</li>
+  <li>Servir bem quente, com sementes de abóbora tostadas e ervas frescas por cima.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>Fonte: Greenbowl2Soul – https://greenbowl2soul.com/vegan-pumpkin-soup/</p>
+
+<hr>
+<a id="salada-morna-de-abobora-assada-lentilhas-e-couve-kale"></a>
+<h3 id="r6">R6 – Salada Morna de Abóbora Assada, Lentilhas e Couve-kale</h3>
+
+<h4>1) Introdução</h4>
+<p>Esta salada morna é praticamente um prato único: abóbora assada, lentilhas ricas em proteína e folhas de kale massajadas, tudo ligado por um molho de tahini com limão e alho. Serve bem quente ou à temperatura ambiente.</p>
+
+<a id="2-ingredientes-4-porcoes-como-prato-principal"></a>
+<h4>2) Ingredientes (4 porções como prato principal)</h4>
+
+<p><strong>Para a salada:</strong></p>
+<ul>
+  <li>500–600 g de abóbora grande em cubos</li>
+  <li>2 colheres de sopa de azeite</li>
+  <li>Sal e pimenta-preta q.b.</li>
+  <li>200 g de lentilhas verdes ou castanhas, secas (ou 2 latas de lentilhas já cozidas, escorridas)</li>
+  <li>1 folha de louro (se usar lentilhas secas)</li>
+  <li>150–200 g de couve-kale (couve galega jovem ou kale), sem talos grossos, em tiras</li>
+  <li>1 colher de sopa de sumo de limão (para massajar a kale)</li>
+  <li>1 maçã firme em cubinhos ou 1/2 chávena de sementes de romã (opcional)</li>
+  <li>1/4 chávena de frutos secos picados (nozes, avelãs, amêndoas)</li>
+</ul>
+
+<p><strong>Para o molho de tahini:</strong></p>
+<ul>
+  <li>3 colheres de sopa de tahini</li>
+  <li>2–3 colheres de sopa de sumo de limão</li>
+  <li>1 dente de alho pequeno, ralado</li>
+  <li>1–2 colheres de chá de xarope de ácer ou outro adoçante (opcional)</li>
+  <li>3–6 colheres de sopa de água (para diluir)</li>
+  <li>Sal e pimenta-preta q.b.</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+  <li>Cozinhar as lentilhas: passar por água, colocar num tacho com água abundante e a folha de louro. Levar a ferver, reduzir o lume e cozinhar 20–25 minutos até ficarem tenras mas inteiras. Escorrer, descartar o louro e temperar com um pouco de sal.</li>
+  <li>Enquanto isso, pré-aquecer o forno a 200 ºC. Dispor a abóbora em tabuleiro com o azeite, sal e pimenta, envolver e assar 25–30 minutos, até dourar e ficar macia.</li>
+  <li>Colocar a kale numa taça grande, regar com 1 colher de sopa de sumo de limão e uma pitada de sal. Massajar com as mãos 1–2 minutos até amaciar e reduzir de volume.</li>
+  <li>Preparar o molho: numa taça pequena misturar o tahini, sumo de limão, alho, adoçante e 3 colheres de sopa de água. Mexer bem; se estiver muito espesso, acrescentar água, colher a colher, até ficar cremoso e vertível. Ajustar sal e pimenta.</li>
+  <li>Numa taça grande, juntar a abóbora assada, as lentilhas ainda mornas e a kale massajada. Adicionar a maçã ou romã, e os frutos secos picados.</li>
+  <li>Regar com o molho de tahini (guardar um pouco para servir à parte, se quiser) e envolver delicadamente.</li>
+  <li>Servir morno ou à temperatura ambiente.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>Fonte: Occasionally Eggs – https://www.occasionallyeggs.com/roasted-pumpkin-lentils-kale-tahini/</p>
+
+<hr>
+<a id="humus-cremoso-de-abobora-e-tahini"></a>
+<h3 id="r7">R7 – Húmus Cremoso de Abóbora e Tahini</h3>
+
+<h4>1) Introdução</h4>
+<p>Uma forma prática de usar sobras de abóbora assada: triturá-la com grão-de-bico e tahini, criando um húmus de cor alaranjada, com sabor mais doce e tempero ligeiramente quente. Funciona bem como entrada, snack ou pasta para sandes.</p>
+
+<a id="2-ingredientes-cerca-de-2-chavenas"></a>
+<h4>2) Ingredientes (cerca de 2 chávenas)</h4>
+<ul>
+  <li>1 chávena de puré de abóbora (abóbora grande assada e triturada)</li>
+  <li>1 chávena de grão-de-bico cozido, escorrido</li>
+  <li>2–3 colheres de sopa de tahini</li>
+  <li>2 colheres de sopa de sumo de limão</li>
+  <li>1–2 dentes de alho, picados</li>
+  <li>1 colher de chá de cominhos em pó</li>
+  <li>1/2 colher de chá de paprika</li>
+  <li>2–4 colheres de sopa de água gelada (para ajustar a textura)</li>
+  <li>Sal e pimenta-preta q.b.</li>
+  <li>Azeite, salsa ou coentros picados e sementes de sésamo, para servir</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+  <li>Num processador de alimentos, colocar o puré de abóbora, o grão-de-bico, o tahini, o sumo de limão, o alho, os cominhos, a paprika, sal e pimenta.</li>
+  <li>Triturar até começar a ficar cremoso, adicionando água gelada, colher a colher, até atingir a consistência desejada (quanto mais se tritura, mais liso fica).</li>
+  <li>Provar e ajustar: mais sal, limão, alho ou especiarias conforme o gosto.</li>
+  <li>Transferir para uma taça, abrir um pequeno “poço” no centro e regar com um fio de azeite. Polvilhar com ervas frescas e sementes de sésamo.</li>
+  <li>Servir com palitos de cenoura, pepino, pão pita, tostas ou como pasta em sandes e wraps.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>Fonte: Bianca Zapatka – https://biancazapatka.com/en/pumpkin-hummus/</p>
+
+<hr>
+<a id="pao-rustico-de-abobora-e-especiarias-vegan"></a>
+<h3 id="r8">R8 – Pão Rústico de Abóbora e Especiarias (Vegan)</h3>
+
+<h4>1) Introdução</h4>
+<p>Este pão de abóbora é um bolo rústico, húmido, especiado e fácil, feito numa só taça. Usa puré de abóbora grande, o que dá cor, textura e humidade, ideal para aproveitar grande quantidade de abóbora cozinhada.</p>
+
+<a id="2-ingredientes-1-forma-tipo-bolo-ingles-10-fatias"></a>
+<h4>2) Ingredientes (1 forma tipo bolo inglês, 10 fatias)</h4>
+<ul>
+  <li>1 chávena (cerca de 240 g) de puré de abóbora</li>
+  <li>3/4 chávena de açúcar mascavado ou branco</li>
+  <li>1/4 chávena de açúcar de coco ou outro (opcional, para mais doce)</li>
+  <li>1/3 chávena de óleo vegetal neutro (ou óleo de coco derretido)</li>
+  <li>1/3–1/2 chávena de bebida vegetal (soja, aveia, amêndoa)</li>
+  <li>1 colher de chá de extrato de baunilha</li>
+  <li>1 3/4 chávena de farinha de trigo (pode ser meio branca, meio integral)</li>
+  <li>1 colher de chá de bicarbonato de sódio</li>
+  <li>1/2 colher de chá de fermento em pó</li>
+  <li>1/2 colher de chá de sal</li>
+  <li>2–3 colheres de chá de mistura de especiarias para abóbora (por ex.: 1,5 colh. chá canela, 1/2 colh. chá gengibre, 1/4 colh. chá noz-moscada, 1/8 colh. chá cravinho)</li>
+  <li>1/2 chávena de nozes ou pepitas de chocolate vegan (opcional)</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+  <li>Pré-aquecer o forno a 180 ºC. Untar uma forma de bolo inglês (cerca de 23 x 13 cm) e forrar com papel vegetal.</li>
+  <li>Numa taça grande, misturar o puré de abóbora, os açúcares, o óleo, a bebida vegetal e a baunilha até ficar homogéneo.</li>
+  <li>Noutra taça, misturar a farinha, o bicarbonato, o fermento, o sal e as especiarias.</li>
+  <li>Adicionar os ingredientes secos aos líquidos e envolver apenas até não ver farinha seca (sem bater demasiado). Se usar nozes ou pepitas, incorporar no fim.</li>
+  <li>Verter a massa na forma preparada e alisar o topo.</li>
+  <li>Levar ao forno 55–70 minutos, até um palito sair quase seco (pode ficar com algumas migalhas húmidas). Se dourar demasiado cedo, cobrir com folha de alumínio.</li>
+  <li>Deixar arrefecer 15 minutos na forma, depois desenformar e arrefecer completamente sobre uma grelha antes de cortar.</li>
+  <li>Guardar bem embrulhado à temperatura ambiente (2–3 dias) ou no frigorífico/congelador.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>Fonte: Nora Cooks – https://www.noracooks.com/vegan-pumpkin-bread/</p>
+
+<hr>
+<a id="abobora-assada-recheada-com-arroz-selvagem-nozes-e-arandos"></a>
+<h3 id="r9">R9 – Abóbora Assada Recheada com Arroz Selvagem, Nozes e Arandos</h3>
+
+<h4>1) Introdução</h4>
+<p>Inspirada numa receita de butternut recheada, esta versão adapta-se à abóbora grande cortada em grossas “canoas” ou fatias largas que servem de recipiente para um recheio aromático de arroz selvagem, frutos secos e ervas.</p>
+
+<a id="2-ingredientes-4-6-porcoes-como-prato-principal"></a>
+<h4>2) Ingredientes (4–6 porções como prato principal)</h4>
+
+<p><strong>Para a abóbora:</strong></p>
+<ul>
+  <li>1 abóbora grande (1,5–2 kg), cortada em 4–6 fatias largas tipo “barcos”, sem sementes</li>
+  <li>2–3 colheres de sopa de azeite</li>
+  <li>Sal e pimenta-preta q.b.</li>
+</ul>
+
+<p><strong>Para o recheio:</strong></p>
+<ul>
+  <li>1 chávena de mistura de arroz selvagem e integral, lavado</li>
+  <li>2,5 chávenas de caldo de legumes</li>
+  <li>1 cebola pequena, picada</li>
+  <li>2 talos de aipo, picados</li>
+  <li>2 dentes de alho, picados</li>
+  <li>2 colheres de sopa de azeite ou um pouco de água para refogar</li>
+  <li>1/2 chávena de nozes ou pecans picadas grosseiramente</li>
+  <li>1/3–1/2 chávena de arandos secos picados</li>
+  <li>1–2 colheres de chá de salva seca ou 1 colher de sopa de salva fresca picada</li>
+  <li>1–2 colheres de chá de tomilho seco</li>
+  <li>Sal e pimenta-preta q.b.</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+  <li>Cozinhar o arroz: colocar a mistura de arroz e o caldo num tacho, levar a ferver, reduzir o lume, tapar e cozinhar 35–40 minutos (ou conforme instruções) até o arroz ficar tenro e o líquido ser absorvido. Deixar repousar 5 minutos e afofar com um garfo.</li>
+  <li>Pré-aquecer o forno a 200 ºC. Colocar as fatias de abóbora num tabuleiro grande, regar com azeite, temperar com sal e pimenta e esfregar para envolver bem. Assar 25–35 minutos até ficarem quase macias.</li>
+  <li>Enquanto a abóbora assa, aquecer 2 colheres de sopa de azeite numa frigideira grande em lume médio. Refogar a cebola e o aipo 5–7 minutos até amolecerem.</li>
+  <li>Adicionar o alho e cozinhar mais 1 minuto.</li>
+  <li>Juntar as nozes, os arandos, a salva e o tomilho e saltear 2–3 minutos.</li>
+  <li>Envolver o arroz cozido na frigideira, ajustar sal e pimenta. Reservar.</li>
+  <li>Retirar a abóbora do forno. Com cuidado, se as fatias tiverem muita polpa no centro, pode retirar uma pequena porção, picar e juntar ao recheio.</li>
+  <li>Rechear generosamente cada “barco” de abóbora com a mistura de arroz, pressionando ligeiramente.</li>
+  <li>Levar de novo ao forno 10–15 minutos, até tudo estar bem quente e as bordas da abóbora douradas.</li>
+  <li>Servir como prato principal festivo, acompanhado de legumes verdes ou salada.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>Fonte: It Doesn’t Taste Like Chicken – https://itdoesnttastelikechicken.com/stuffed-roasted-butternut-squash/</p>
+
+<hr>
+<a id="casserole-de-arroz-com-abobora-salgada-no-forno"></a>
+<h3 id="r10">R10 – Casserole de Arroz com Abóbora Salgada no Forno</h3>
+
+<h4>1) Introdução</h4>
+<p>Esta casserole é uma forma prática de transformar arroz cozido e puré de abóbora numa travessa única, pronta a ir ao forno. Legumes salteados, ervas e, opcionalmente, um pouco de “queijo” vegan criam camadas de sabor e textura, ideal para refeições de família.</p>
+
+<h4>2) Ingredientes (4–6 porções)</h4>
+<ul>
+  <li>3 chávenas de arroz cozido (branco ou integral, de preferência frio/restos)</li>
+  <li>1,5 chávena de puré de abóbora (bem espesso)</li>
+  <li>1 cebola média, picada</li>
+  <li>2 dentes de alho, picados</li>
+  <li>1 pimento vermelho pequeno, em cubinhos</li>
+  <li>1 chávena de milho cozido (fresco ou congelado)</li>
+  <li>1 chávena de ervilhas congeladas</li>
+  <li>2 colheres de sopa de azeite</li>
+  <li>1–2 colheres de chá de paprika</li>
+  <li>1 colher de chá de orégãos secos</li>
+  <li>1 colher de chá de tomilho seco</li>
+  <li>1–2 colheres de sopa de levedura nutricional (opcional)</li>
+  <li>1/2–3/4 chávena de bebida vegetal ou caldo de legumes (para soltar a mistura)</li>
+  <li>Sal e pimenta-preta q.b.</li>
+  <li>1/3–1/2 chávena de queijo vegan ralado (opcional)</li>
+  <li>1/2 chávena de pão ralado (pode ser de pão integral) para cobertura</li>
+  <li>1–2 colheres de sopa de azeite extra para regar por cima</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+  <li>Pré-aquecer o forno a 190 ºC e untar ligeiramente uma assadeira média (aprox. 20 x 30 cm).</li>
+  <li>Aquecer 2 colheres de sopa de azeite numa frigideira grande em lume médio. Juntar a cebola e refogar 5 minutos.</li>
+  <li>Adicionar o alho, o pimento, o milho e as ervilhas, cozinhar mais 4–5 minutos, mexendo.</li>
+  <li>Numa taça grande, misturar o puré de abóbora com a bebida vegetal/caldo, a paprika, os orégãos, o tomilho, a levedura nutricional (se usar), sal e pimenta. Deve ficar um creme espesso mas fluido o suficiente para envolver o arroz. Ajustar líquido se necessário.</li>
+  <li>Juntar o arroz cozido e os legumes salteados ao creme de abóbora, envolver bem. Se usar queijo vegan ralado, incorporar agora. Provar e ajustar temperos.</li>
+  <li>Transferir a mistura para a assadeira, alisar a superfície.</li>
+  <li>Misturar o pão ralado com 1–2 colheres de sopa de azeite e espalhar por cima da casserole.</li>
+  <li>Levar ao forno 25–30 minutos, até o topo estar dourado e crocante e o interior bem quente.</li>
+  <li>Deixar repousar 5–10 minutos antes de servir, para firmar ligeiramente.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>Fonte: Greenbowl2Soul – https://greenbowl2soul.com/savory-pumpkin-rice-casserole/</p>
+
+</article>
+</main>
+</body>
+</html>

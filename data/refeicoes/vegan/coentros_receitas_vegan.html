@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Coentros – Receitas Vegan (Top 10)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+<body id="topo">
+<div class="masthead">
+  <header>
+    <h1>Coentros – Receitas Vegan (Top 10)</h1>
+    <p>Preparações à base de plantas</p>
+  </header>
+
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-de-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html" class="ativa">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+</div>
+
+<main>
+<article>
+
+<h2 id="receitas-preparados">Receitas e preparados – dieta vegan</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/coentros_receitas_vegetariana.html">(Vegetariana)</a>
+    <a href="/data/refeicoes/raw-vegan/coentros_receitas_raw-vegan.html">(Comida Viva)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+  <ol>
+    <li><a href="#sopa-cremosa-de-coentros-vegan-cream-of-coriander-soup">Sopa cremosa de Coentros (Vegan Cream of Coriander Soup)</a></li>
+    <li><a href="#sopa-clara-de-tofu-e-coentros-cilantro-tofu-soup">Sopa clara de Tofu e Coentros (Cilantro Tofu Soup)</a></li>
+    <li><a href="#pesto-vegano-de-coentros-e-sementes-cilantro-pesto">Pesto vegano de Coentros e Sementes (Cilantro Pesto)</a></li>
+    <li><a href="#pesto-vegano-de-coentros-e-sementes-de-canhamo-cilantro-hemp-pesto">Pesto vegano de Coentros e Sementes de cânhamo (Cilantro-Hemp Pesto)</a></li>
+    <li><a href="#sopa-de-tomate-e-coentros-vegan-tomato-and-cilantro-soup">Sopa de Tomate e Coentros (Vegan Tomato and Cilantro Soup)</a></li>
+    <li><a href="#sopa-de-cenoura-e-coentros-vegan-carrot-and-coriander-soup">Sopa de Cenoura e Coentros (Vegan Carrot and Coriander Soup)</a></li>
+    <li><a href="#any-vegetable-sopa-de-coentros-e-legumes-any-vegetable-cilantro-soup">“Any-Vegetable” Sopa de Coentros e Legumes (Any-Vegetable Cilantro Soup)</a></li>
+    <li><a href="#molho-pesto-de-coentros-e-salsa-com-nozes-sementes-cilantro-parsley-pesto">Molho / Pesto de Coentros e Salsa com nozes / sementes (Cilantro &amp; Parsley Pesto)</a></li>
+    <li><a href="#sopa-cremosa-de-coentros-com-creme-vegetal-versao-alternativa-vegan-cream-of-cilantro-soup-cashews">Sopa cremosa de Coentros com creme vegetal (versão alternativa) (Vegan Cream of Cilantro Soup – cashews)</a></li>
+    <li><a href="#sopa-clara-de-coentros-e-legumes-variados-variante-de-sopa-leve">Sopa clara de Coentros e Legumes variados (variante de sopa leve)</a></li>
+  </ol>
+</div>
+
+<h2 id="resumo">Resumo das receitas (R1–R10)</h2>
+<ul>
+  <li><strong>R1. Sopa cremosa de Coentros (Vegan Cream of Coriander Soup):</strong> Sopa cremosa e reconfortante com folhas de coentros, caldo vegetal e creme vegetal — ideal para dias frios.</li>
+  <li><strong>R2. Sopa clara de Tofu e Coentros (Cilantro Tofu Soup):</strong> Sopa leve de inspiração asiática com tofu, legumes e coentros — rápida e nutritiva.</li>
+  <li><strong>R3. Pesto vegano de Coentros e Sementes (Cilantro Pesto):</strong> Molho versátil e aromático, feito com coentros, alho, sementes/nozes e azeite — ótimo para massas, vegetais, tostas.</li>
+  <li><strong>R4. Pesto vegano de Coentros e Sementes de cânhamo (Cilantro-Hemp Pesto):</strong> Variante mais leve e rica em nutrientes, usando sementes de cânhamo, coentros e azeite — ideal para bowls, tacos, saladas.</li>
+  <li><strong>R5. Sopa de Tomate e Coentros (Vegan Tomato and Cilantro Soup):</strong> Sopa rica e saborosa de tomate com coentros, especiarias e opção de creme vegetal — reconfortante e saborosa.</li>
+  <li><strong>R6. Sopa de Cenoura e Coentros (Vegan Carrot and Coriander Soup):</strong> Sopa cremosa de cenouras, batata e coentros (incluindo raízes ou talos), com caldo vegetal — nutritiva e simples.</li>
+  <li><strong>R7. “Any-Vegetable” Sopa de Coentros e Legumes (Any-Vegetable Cilantro Soup):</strong> Sopa flexível que permite usar legumes variados disponíveis — base de coentros (e manjericão opcional) e leite de coco, adaptável ao que tiveres.</li>
+  <li><strong>R8. Molho / Pesto de Coentros e Salsa com nozes / sementes (Cilantro &amp; Parsley Pesto):</strong> Variante de pesto que combina coentros e salsa, com nozes/hemp hearts, alho, limão e azeite — sabor intenso e versátil.</li>
+  <li><strong>R9. Sopa cremosa de Coentros com creme vegetal (versão alternativa) (Vegan Cream of Cilantro Soup – cashews):</strong> Sopa cremosa similar à R1, mas usando creme de caju e nozes para textura e sabor, com toque picante opcional de pimenta jalapeño.</li>
+  <li><strong>R10. Sopa clara de Coentros e Legumes variados (variante de sopa leve):</strong> Variante leve de sopa com coentros, tofu e legumes — ideal para refeição rápida, leve e saudável. Inspirada na R2 ou adaptações livres de sopas com coentros.</li>
+</ul>
+
+<!-- RECEITAS COMPLETAS -->
+
+<a id="sopa-cremosa-de-coentros-vegan-cream-of-coriander-soup-r1"></a>
+<h2 id="sopa-cremosa-de-coentros-vegan-cream-of-coriander-soup">Sopa cremosa de Coentros (Vegan Cream of Coriander Soup) <span class="source">[R1]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma sopa reconfortante e cremosa, com sabor herbal intenso de coentros — perfeita para dias mais frios ou quando se deseja uma refeição leve e nutritiva.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 molho grande de coentros frescos (folhas apenas — cerca de 4 chávenas, folhosas e soltas)</li>
+  <li>4 chávenas de caldo de legumes vegetal</li>
+  <li>4 colheres de sopa de “manteiga vegetal” (ou óleo vegetal à escolha)</li>
+  <li>1 ½ chávenas de cebola picada finamente</li>
+  <li>4 dentes de alho picados finamente</li>
+  <li>6 colheres de sopa de farinha (para criar roux / base cremosa)</li>
+  <li>¾ chávena de creme vegetal (por exemplo creme de coco, leite vegetal consistente)</li>
+  <li>Sal a gosto</li>
+</ul>
+
+<h4>Passos de Preparação</h4>
+<ol>
+  <li>Separar as folhas de coentros; lavar bem e deixar escorrer.</li>
+  <li>No liquidificador, bater cerca de 1 chávena de caldo com as folhas de coentros até obter um purê. Reservar.</li>
+  <li>Numa panela grande, derreter a manteiga vegetal (ou aquecer óleo). Adicionar a cebola e o alho; refogar até ficarem macios, sem dourar.</li>
+  <li>Acrescentar a farinha e mexer para formar um roux. Cozinhar 1–2 minutos.</li>
+  <li>Gradualmente, adicionar o restante caldo, mexendo com um batedor para evitar grumos, até formar uma base cremosa.</li>
+  <li>Misturar o purê de coentros reservado. Cobrir e deixar cozinhar em lume brando 15–20 minutos.</li>
+  <li>Adicionar o creme vegetal e misturar bem. Aquecer ligeiramente até incorporar.</li>
+  <li>Ajustar sal a gosto. Servir quente.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Vegan Cream of Coriander Soup — Food.com — <a href="https://www.food.com/recipe/vegan-cream-of-coriander-cilantro-soup-520308" target="_blank" rel="noopener">https://www.food.com/recipe/vegan-cream-of-coriander-cilantro-soup-520308</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-clara-de-tofu-e-coentros-cilantro-tofu-soup-r2"></a>
+<h2 id="sopa-clara-de-tofu-e-coentros-cilantro-tofu-soup">Sopa clara de Tofu e Coentros (Cilantro Tofu Soup) <span class="source">[R2]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma sopa leve de inspiração asiática, rápida de preparar, nutritiva e reconfortante — ideal para uma refeição simples e saudável.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 colher de chá de azeite ou óleo vegetal</li>
+  <li>½ chávena de coentros frescos picados (folhas)</li>
+  <li>¼ chávena de cenoura picada em cubos pequenos</li>
+  <li>¼ chávena de brócolos (floretes) ou outro vegetal à escolha</li>
+  <li>1 chávena de tofu firme cortado em cubos (bem escorrido)</li>
+  <li>2 chávenas de caldo de legumes vegetal</li>
+  <li>1 colher de sopa de molho de soja leve (ou tamari)</li>
+  <li>1/4 colher de chá de pimenta preta moída (ou a gosto)</li>
+  <li>1/2 colher de chá de sumo de limão (opcional)</li>
+  <li>Sal a gosto (atente ao sódio do molho de soja)</li>
+</ul>
+
+<h4>Passos de Preparação</h4>
+<ol>
+  <li>Numa panela média, aquecer o azeite. Adicionar os coentros picados e saltear ~30 segundos.</li>
+  <li>Adicionar a cenoura e os brócolos; saltear mais 30 segundos.</li>
+  <li>Acrescentar o tofu cortado em cubos e saltear por mais 30 segundos a 1 minuto.</li>
+  <li>Adicionar o caldo vegetal, o molho de soja, a pimenta e o sumo de limão (se usar). Misturar bem.</li>
+  <li>Levar a lume médio e cozinhar 5–7 minutos, até os legumes estarem tenros e o tofu aquecido.</li>
+  <li>Ajustar sal, se necessário. Servir quente, decorado com coentros adicionais se desejar.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Cilantro Tofu Soup — Kiipfit.com — <a href="https://kiipfit.com/cilantro-tofu-soup/" target="_blank" rel="noopener">https://kiipfit.com/cilantro-tofu-soup/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pesto-vegano-de-coentros-e-sementes-cilantro-pesto-r3"></a>
+<h2 id="pesto-vegano-de-coentros-e-sementes-cilantro-pesto">Pesto vegano de Coentros e Sementes (Cilantro Pesto) <span class="source">[R3]</span></h2>
+
+<h4>Introdução</h4>
+<p>Molho verde, aromático e versátil — ideal para massas, tostas, saladas, vegetais assados ou bowls — usando coentros no lugar do manjericão, e com nozes/sementes para textura e sabor a “queijo”.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>2 chávenas bem cheias de coentros frescos (folhas + talos tenros)</li>
+  <li>⅓ chávena de pinhões ou sementes/nozes (ou sementes de girassol para versão sem “nozes”)</li>
+  <li>2 dentes de alho inteiros</li>
+  <li>½ chávena (≈ 120 ml) de azeite extra-virgem (ou mais, conforme a textura desejada)</li>
+  <li>⅓ chávena de levedura nutricional (opcional — ou outro substituto vegano de “queijo”)</li>
+  <li>⅛ colher de chá de sal (ou a gosto)</li>
+  <li>⅛ colher de chá de pimenta preta moída (ou a gosto)</li>
+  <li>Opcional: sumo de limão ou lima para leve acidez e frescor extra</li>
+</ul>
+
+<h4>Passos de Preparação</h4>
+<ol>
+  <li>Lavar bem os coentros e secar. No processador de alimentos ou liquidificador potente, colocar os coentros, os pinhões/sementes e os dentes de alho. Pulse até picar fino.</li>
+  <li>Com o processador em funcionamento, verter lentamente o azeite até a mistura atingir textura de pasta — pode ficar mais rústica ou mais cremosa, conforme gosto.</li>
+  <li>Adicionar a levedura nutricional (se usar), sal e pimenta; misturar bem.</li>
+  <li>Provar e ajustar temperos a gosto. Se preferir, adicionar um chorinho de sumo de limão/lima para frescor.</li>
+  <li>Utilizar imediatamente (pasta para massa, tostas, legumes, bowls) ou guardar num frasco hermético no frigorífico.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Vegan Cilantro Pesto — Fork in the Road — <a href="https://www.forkintheroad.co/vegan-cilantro-pesto/" target="_blank" rel="noopener">https://www.forkintheroad.co/vegan-cilantro-pesto/</a><br>
+Também adaptado de Vegan Cilantro Pesto (com sementes de girassol) — HealingTomato.com — <a href="https://www.healingtomato.com/vegan-cilantro-pesto/" target="_blank" rel="noopener">https://www.healingtomato.com/vegan-cilantro-pesto/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pesto-vegano-de-coentros-e-sementes-de-canhamo-cilantro-hemp-pesto-r4"></a>
+<h2 id="pesto-vegano-de-coentros-e-sementes-de-canhamo-cilantro-hemp-pesto">Pesto vegano de Coentros e Sementes de cânhamo (Cilantro-Hemp Pesto) <span class="source">[R4]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma versão alternativa e nutritiva de pesto, usando coentros e sementes de cânhamo — sem nozes, leve e ideal para dietas com restrições alimentares.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>2 chávenas de coentros frescos (folhas + talos tenros)</li>
+  <li>½ chávena de sementes de cânhamo (hemp hearts) descascadas</li>
+  <li>1 dente de alho (ou mais, conforme gosto)</li>
+  <li>¼ chávena de azeite extra-virgem (ou mais, conforme consistência desejada)</li>
+  <li>½ colher de chá de sal (ou a gosto)</li>
+  <li>Opcional: 1 jalapeño sem sementes para leve picância (ou pimenta vermelha)</li>
+</ul>
+
+<h4>Passos de Preparação</h4>
+<ol>
+  <li>Lavar e secar bem os coentros. Num processador, colocar os coentros, as sementes de cânhamo, o alho (e o jalapeño, se usar). Processar até picar bem.</li>
+  <li>Com o processador em funcionamento, lentamente verter o azeite até formar uma pasta cremosa. Se desejar textura mais fluida, adicionar um pouco mais de azeite.</li>
+  <li>Temperar com sal; provar e ajustar conforme necessidade.</li>
+  <li>Usar como molho para massas, bowls, vegetais assados, tacos, wraps, etc. Pode conservar no frigorífico alguns dias.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Cilantro-Hemp Pesto — Cookie and Kate — <a href="https://cookieandkate.com/cilantro-hemp-pesto-recipe/" target="_blank" rel="noopener">https://cookieandkate.com/cilantro-hemp-pesto-recipe/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-de-tomate-e-coentros-vegan-tomato-and-cilantro-soup-r5"></a>
+<h2 id="sopa-de-tomate-e-coentros-vegan-tomato-and-cilantro-soup">Sopa de Tomate e Coentros (Vegan Tomato and Cilantro Soup) <span class="source">[R5]</span></h2>
+
+<h4>Introdução</h4>
+<p>Sopa reconfortante e saborosa de tomate com coentros, especiarias e sabor ligeiramente picante ou cítrico — ótima como entrada ou refeição leve.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>3 colheres de sopa de azeite extra-virgem</li>
+  <li>1 cebola grande, picada</li>
+  <li>2 dentes de alho, picados ou esmagados</li>
+  <li>1 colher de sopa de cominho moído</li>
+  <li>2 colheres de chá de paprika (ou pimentão doce/picante)</li>
+  <li>1 lata grande de tomate pelado com sumo (≈ 800 g)</li>
+  <li>4 colheres de sopa de polpa de tomate (tomato paste)</li>
+  <li>2 bons “molhos” de coentros frescos — lavados; reservar 2 colheres de sopa de folhas para guarnecer no final</li>
+  <li>Sumo de 1–2 limas (ou limões), conforme gosto, para acidez e frescor</li>
+  <li>Pitada de pimenta caiena ou chilli (opcional — para leve picância)</li>
+  <li>Sal e pimenta preta moída a gosto</li>
+  <li>Opcional: creme vegetal (iogurte vegetal ou creme de caju) para servir e dar cremosidade</li>
+</ul>
+
+<h4>Passos de Preparação</h4>
+<ol>
+  <li>Numa panela grande, aquecer o azeite. Adicionar a cebola e o alho; refogar até ficarem macios e translúcidos.</li>
+  <li>Adicionar o cominho e paprika; mexer por 1 minuto até libertarem aroma.</li>
+  <li>Acrescentar o tomate pelado com sumo, polpa de tomate, metade dos coentros (picados grosseiramente), e misturar.</li>
+  <li>Deixar cozinhar a lume médio-baixo 15–20 minutos, mexendo ocasionalmente.</li>
+  <li>Desligar o lume; com uma varinha mágica ou num liquidificador, triturar a sopa até textura lisa.</li>
+  <li>Adicionar o sumo de lima (ou limão), sal, pimenta e pimenta caiena a gosto; misturar bem.</li>
+  <li>Servir quente. Se quiseres, colocar uma colher de creme vegetal no centro de cada tigela e guarnecer com as folhas de coentros reservadas.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Easy Vegan Tomato and Cilantro Soup — BeHealthyNYC — <a href="https://behealthynyc.com/easy-vegan-tomato-and-cilantro-soup/" target="_blank" rel="noopener">https://behealthynyc.com/easy-vegan-tomato-and-cilantro-soup/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-de-cenoura-e-coentros-vegan-carrot-and-coriander-soup-r6"></a>
+<h2 id="sopa-de-cenoura-e-coentros-vegan-carrot-and-coriander-soup">Sopa de Cenoura e Coentros (Vegan Carrot and Coriander Soup) <span class="source">[R6]</span></h2>
+
+<h4>Introdução</h4>
+<p>Sopa cremosa e nutritiva de cenouras e batata, enriquecida com coentros (raízes ou talos incluídos), perfeita para refeições aconchegantes e reconfortantes.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 colher de sopa de azeite extra-virgem</li>
+  <li>1 cebola média picada grosseiramente</li>
+  <li>1 dente de alho, picado</li>
+  <li>6 cenouras grandes, descascadas e cortadas em pedaços grossos</li>
+  <li>2 batatas médias, descascadas e cortadas em pedaços grossos</li>
+  <li>1 molho de coentros frescos (preferencialmente com raízes ou talos; lavados e picados grosseiramente)</li>
+  <li>6 chávenas de caldo de legumes vegetal</li>
+  <li>2 colheres de chá de coentros moídos (se quisermos reforçar o sabor) — opcional</li>
+  <li>1 colher de chá de cominho moído — opcional, para sabor extra</li>
+  <li>1 colher de chá de gengibre moído ou ralado — opcional para aroma (se gostar)</li>
+  <li>Sal e pimenta a gosto</li>
+</ul>
+
+<h4>Passos de Preparação</h4>
+<ol>
+  <li>Aquecer o azeite numa panela grande. Adicionar a cebola e o alho; refogar até ficarem macios (~3–5 minutos).</li>
+  <li>Adicionar as cenouras e as batatas; mexer para envolver no azeite.</li>
+  <li>Acrescentar os coentros picados (incluindo raízes/talos), o caldo vegetal, os coentros moídos (se usar), cominho e gengibre (se usar). Levar a ferver.</li>
+  <li>Reduzir o lume e deixar cozinhar cerca de 30 minutos, ou até as cenouras e batatas ficarem bem macias.</li>
+  <li>Retirar do fogo e deixar arrefecer ligeiramente. Com uma varinha mágica ou liquidificador, triturar a sopa até obter textura lisa e cremosa.</li>
+  <li>Ajustar sal e pimenta; se desejar mais cremosidade, pode adicionar um fio de azeite extra ou um pouco de leite vegetal.</li>
+  <li>Servir quente, com pão ou torradas se quiser.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Vegan Carrot and Coriander Soup — OhMyVeggies.com — <a href="https://ohmyveggies.com/vegan-carrot-and-coriander-soup/" target="_blank" rel="noopener">https://ohmyveggies.com/vegan-carrot-and-coriander-soup/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="any-vegetable-sopa-de-coentros-e-legumes-any-vegetable-cilantro-soup-r7"></a>
+<h2 id="any-vegetable-sopa-de-coentros-e-legumes-any-vegetable-cilantro-soup">“Any-Vegetable” Sopa de Coentros e Legumes (Any-Vegetable Cilantro Soup) <span class="source">[R7]</span></h2>
+
+<h4>Introdução</h4>
+<p>Sopa adaptável e versátil: usa coentros como base aromática e permite adicionar os vegetais que tiveres à mão — ótima para aproveitar restos, ser prática e saborosa.</p>
+
+<h4>Ingredientes (exemplo base)</h4>
+<ul>
+  <li>1 embalagem de tofu firme, drenado e cortado em cubos (opcional, para proteína)</li>
+  <li>Azeite ou óleo vegetal para saltear</li>
+  <li>2 chávenas de folhas de coentros frescos lavadas (ou mais, conforme gosto)</li>
+  <li>1 chávena de folhas de manjericão (opcional) — ou outras ervas, conforme preferência</li>
+  <li>3 chávenas de espinafres (ou outro vegetal folhoso, opcional)</li>
+  <li>1 lata de leite de coco (ou equivalente vegetal)</li>
+  <li>1 cebola média, picada</li>
+  <li>4 dentes de alho, ralados ou picados</li>
+  <li>2 colheres de sopa de gengibre ralado</li>
+  <li>2 malaguetas tipo Birdseye (ou pimenta a gosto) — opcional, para picante</li>
+  <li>2 talos de capim-limão (lemongrass) — opcional, para aroma asiático</li>
+  <li>Sumo de 1 lima (ou limão) para frescor e acidez</li>
+  <li>Sal a gosto</li>
+</ul>
+
+<h4>Passos de Preparação</h4>
+<ol>
+  <li>Num tacho grande (panela), aquecer um pouco de azeite. Acrescentar o alho, o gengibre, a cebola e saltear até ficarem aromáticos.</li>
+  <li>Se estiver a usar tofu, adicionar os cubos e saltear brevemente para dar leve cor.</li>
+  <li>Adicionar os coentros, o manjericão (se usar), espinafres ou outras folhas, o leite de coco, e misturar bem.</li>
+  <li>Juntar água ou caldo vegetal até cobrir os ingredientes (ou conforme consistência desejada). Levar a ferver, depois reduzir o lume e deixar cozinhar 15–20 minutos para os sabores combinarem.</li>
+  <li>Ajustar sal, adicionar o sumo de lima, e pimenta (se quiser mais picante).</li>
+  <li>Servir quente, decorando com mais coentros se desejar. Combina bem com arroz, pão ou como refeição leve.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Any-Vegetable Cilantro Soup — JustineSnacks.com — <a href="https://justinesnacks.com/any-vegetable-cilantro-soup/" target="_blank" rel="noopener">https://justinesnacks.com/any-vegetable-cilantro-soup/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="molho-pesto-de-coentros-e-salsa-com-nozes-sementes-cilantro-parsley-pesto-r8"></a>
+<h2 id="molho-pesto-de-coentros-e-salsa-com-nozes-sementes-cilantro-parsley-pesto">Molho / Pesto de Coentros e Salsa com nozes / sementes (Cilantro &amp; Parsley Pesto) <span class="source">[R8]</span></h2>
+
+<h4>Introdução</h4>
+<p>Molho verde cru, fresco e nutritivo, combinando coentros e salsa com nozes ou sementes, alho, limão e azeite — excelente como topping de massas, saladas, legumes assados, tostas ou bowls.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 chávena de salsa (folhas + talos tenros), leve e levemente empacotada</li>
+  <li>1 chávena de coentros (folhas + talos tenros), leve e levemente empacotada</li>
+  <li>¼ chávena de nozes (ou mistura de nozes/sementes)</li>
+  <li>2 colheres de sopa de “hemp hearts” (sementes de cânhamo descascadas) — opcional para aporte nutricional e textura</li>
+  <li>1 dente de alho (ou dois, conforme gosto)</li>
+  <li>1/4 de limão (casca removida) ou suco de limão a gosto</li>
+  <li>Sal (½ colher de chá ou a gosto)</li>
+  <li>¼ chávena de azeite extra-virgem (ou mais, para ajustar consistência)</li>
+</ul>
+
+<h4>Passos de Preparação</h4>
+<ol>
+  <li>No processador de alimentos, combinar a salsa, os coentros, as nozes, os “hemp hearts”, o alho e o limão. Pulsar até ficar bem picado.</li>
+  <li>Com o processador a funcionar, derramar lentamente o azeite até obter uma pasta homogénea — mais rústica ou cremosa conforme a textura desejada.</li>
+  <li>Temperar com sal, provar e ajustar conforme gosto. Se necessário, adicionar mais azeite ou um toque de água para suavizar a textura.</li>
+  <li>Usar como molho para massas, tostas, legumes, saladas ou bowls. Pode conservar no frigorífico por alguns dias.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Vegan Cilantro and Parsley Pesto Recipe — Desireerd.com — <a href="https://desireerd.com/vegan-cilantro-and-parsley-pesto/" target="_blank" rel="noopener">https://desireerd.com/vegan-cilantro-and-parsley-pesto/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-cremosa-de-coentros-com-creme-vegetal-versao-alternativa-vegan-cream-of-cilantro-soup-cashews-r9"></a>
+<h2 id="sopa-cremosa-de-coentros-com-creme-vegetal-versao-alternativa-vegan-cream-of-cilantro-soup-cashews">Sopa cremosa de Coentros com creme vegetal (versão alternativa) (Vegan Cream of Cilantro Soup – cashews) <span class="source">[R9]</span></h2>
+
+<h4>Introdução</h4>
+<p>Sopa cremosa à base de coentros, enriquecida com creme de caju e nozes para textura suave e sabor rico — perfeita para quem prefere substitutos vegetais e sabor um pouco diferente.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>2 colheres de sopa de azeite vegetal</li>
+  <li>1 cebola pequena, grosseiramente picada</li>
+  <li>3 dentes de alho, picados grosseiramente</li>
+  <li>2 chávenas de coentros frescos picados grosseiramente (folhas + talos tenros)</li>
+  <li>1 chávena de nozes picadas grosseiramente</li>
+  <li>6 chávenas de caldo de legumes vegetal, sem sal preferencialmente</li>
+  <li>Suco de 1 lima (ou limão) para acidez e frescor</li>
+  <li>⅔ chávena de leite vegetal (amêndoa, arroz, aveia, etc.) — para a base cremosa</li>
+  <li>Sal a gosto (começar com 1 colher de chá, ajustar conforme preferência)</li>
+  <li>Opcional: pimenta jalapeño fatiada (ou outra pimenta) para leve picância — a gosto.</li>
+</ul>
+
+<h4>Passos de Preparação</h4>
+<ol>
+  <li>Antes de começar, deixar de molho as nozes por cerca de 1 hora. Depois escorrer e triturar com o leite vegetal até obter um creme liso (creme de caju). Reservar.</li>
+  <li>Numa panela média, aquecer o azeite. Adicionar a cebola e o alho, refogar até ficarem macios (~2–3 minutos).</li>
+  <li>Misturar metade dos coentros com a cebola e o alho, saltear 1 minuto para liberar aromas.</li>
+  <li>Transferir a mistura para um processador e adicionar as nozes, o caldo vegetal — triturar tudo até ficar homogéneo.</li>
+  <li>Devolver à panela. Adicionar o restante coentros, o suco de lima, o creme de caju e ajustar sal. Misturar bem.</li>
+  <li>Aquecer em lume médio por alguns minutos até a sopa ficar quente e levemente espessa. Se quiser mais picante, adicionar fatias de jalapeño aos poucos até o nível de picância desejado.</li>
+  <li>Servir quente, guarnecido com coentros frescos e, se desejar, algumas nozes picadas para textura.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Vegan Cream of Cilantro Soup — Pine and Crave (adaptada) — <a href="https://pineandcrave.wordpress.com/2017/03/17/vegan-cream-of-cilantro-soup/" target="_blank" rel="noopener">https://pineandcrave.wordpress.com/2017/03/17/vegan-cream-of-cilantro-soup/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-clara-de-coentros-e-legumes-variados-variante-de-sopa-leve-r10"></a>
+<h2 id="sopa-clara-de-coentros-e-legumes-variados-variante-de-sopa-leve">Sopa clara de Coentros e Legumes variados (variante de sopa leve) <span class="source">[R10]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma sopa leve e flexível, baseada em coentros e vegetais à escolha — ideal para uma refeição rápida, saudável e reconfortante.</p>
+
+<h4>Ingredientes (sugestão)</h4>
+<ul>
+  <li>Azeite ou óleo vegetal para saltear (1 colher de chá ou a gosto)</li>
+  <li>Legumes variados (ex: cenoura, brócolos, couve-flor, courgete, etc.) — fatias ou pedaços pequenos</li>
+  <li>1 chávena de tofu firme cortado em cubos (opcional)</li>
+  <li>2 chávenas de caldo de legumes vegetal</li>
+  <li>½ chávena de coentros frescos picados (folhas + talos)</li>
+  <li>1 colher de sopa de molho de soja ou tamari (opcional, para um toque de sabor)</li>
+  <li>¼ colher de chá de pimenta preta moída (ou a gosto)</li>
+  <li>½ colher de chá de sumo de limão ou lima (opcional)</li>
+  <li>Sal a gosto</li>
+</ul>
+
+<h4>Passos de Preparação (modo geral adaptável)</h4>
+<ol>
+  <li>Aquecer o azeite numa panela. Adicionar os legumes picados e saltear alguns minutos até começarem a amolecer.</li>
+  <li>Se usar tofu, adicionar e saltear ligeiramente.</li>
+  <li>Adicionar o caldo vegetal, o molho de soja (se usar), pimenta e coentros. Misturar bem e levar a ferver.</li>
+  <li>Reduzir o lume e cozinhar até os legumes estarem macios. Ajustar sal e, se quiser, juntar sumo de limão.</li>
+  <li>Servir quente, decorado com mais coentros se desejar.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>baseado na formulação geral de sopas claras com coentros como a “Cilantro Tofu Soup” e outras sopas veganas com coentros (variações comuns). Inspirações misturadas.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

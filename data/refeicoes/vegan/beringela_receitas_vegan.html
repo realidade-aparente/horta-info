@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Beringela – Receitas Vegan (Top 10)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+<body id="topo">
+<div class="masthead">
+  <header>
+    <h1>Beringela – Receitas Vegan (Top 10)</h1>
+  <p>Preparações à base de plantas</p>
+  </header>
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-de-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html" class="ativa">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+</div>
+
+<main>
+<article>
+
+<h2 id="receitas-preparados">Receitas e preparados – dieta vegan</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/beringela_receitas_vegetariana.html">(Vegetariana)</a>
+    <a href="/data/refeicoes/raw-vegan/beringela_receitas_raw-vegan.html">(Comida Viva)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro por ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+  <ol>
+    <li><a href="#beringela-recheada-mediterranica-com-couscous-e-grao-de-bico">Beringela recheada mediterrânica com couscous e grão-de-bico</a></li>
+    <li><a href="#pasta-alla-norma-massa-com-beringela-e-molho-de-tomate">Pasta alla Norma (massa com beringela e molho de tomate)</a></li>
+    <li><a href="#estufado-de-beringela-e-grao-de-bico-estilo-oriental-druze">Estufado de beringela e grão-de-bico (estilo oriental / Druze)</a></li>
+    <li><a href="#massa-picante-com-beringela-tomate-e-ervas">Massa picante com beringela, tomate e ervas</a></li>
+    <li><a href="#beringela-assada-ao-forno-com-molho-de-tahini-ervas-estilo-mediterranico">Beringela assada ao forno com molho de tahini &amp; ervas (Estilo mediterrânico)</a></li>
+    <li><a href="#roll-ups-de-beringela-vegan-com-arroz-de-couve-flor-e-marinara">Roll-ups de beringela vegan com “arroz” de couve-flor e marinara</a></li>
+    <li><a href="#gyros-de-beringela-vegan-com-pita-e-molho-de-hummus-dill">Gyros de beringela vegan com pita e molho de hummus-dill</a></li>
+    <li><a href="#lasanha-de-beringela-vegan-versao-sem-laticinios">Lasanha de beringela vegan (versão sem laticínios)</a></li>
+    <li><a href="#pasta-cremosa-de-beringela-e-tomate-com-massa-longa">Pasta cremosa de beringela e tomate com massa longa</a></li>
+    <li><a href="#beringela-e-tofu-assados-com-zaatar-e-molho-de-tahini-iogurte">Beringela e tofu assados com za’atar e molho de tahini-iogurte</a></li>
+  </ol>
+</div>
+
+<h2 id="resumo">Resumo das receitas (R1–R10)</h2>
+<ul>
+  <li><strong>R1. Beringela recheada mediterrânica com couscous e grão-de-bico</strong> — Beringelas assadas partidas ao meio e recheadas com couscous, grão-de-bico, tomate, ervas e especiarias, gratinadas no forno. :contentReference[oaicite:1]{index=1}</li>
+  <li><strong>R2. Pasta alla Norma</strong> — Uma receita clássica siciliana: beringela assada, molho de tomate e massa, simples e saborosa. :contentReference[oaicite:2]{index=2}</li>
+  <li><strong>R3. Estufado de beringela e grão-de-bico (estilo oriental / Druze)</strong> — Guisado reconfortante, aromático, a combinar beringela, tomate, grão-de-bico e especiarias. :contentReference[oaicite:3]{index=3}</li>
+  <li><strong>R4. Massa picante com beringela, tomate e ervas</strong> — Massa com pedaços tenros de beringela, tomate, ervas frescas e especiarias, prato leve e versátil. :contentReference[oaicite:4]{index=4}</li>
+  <li><strong>R5. Beringela assada ao forno com molho de tahini &amp; ervas (Estilo mediterrânico)</strong> — Fatias de beringela assadas com azeite, alho e ervas, servidas com molho de tahini-limão. :contentReference[oaicite:5]{index=5}</li>
+  <li><strong>R6. Roll-ups de beringela vegan com “arroz” de couve-flor e marinara</strong> — Fatias de beringela grelhadas enroladas com recheio vegetal e assadas em molho de tomate. :contentReference[oaicite:6]{index=6}</li>
+  <li><strong>R7. Gyros de beringela vegan com pita e molho de hummus-dill</strong> — Cubos de beringela temperados e assados, servidos em pão pita com vegetais e molho cremoso vegan. :contentReference[oaicite:7]{index=7}</li>
+  <li><strong>R8. Lasanha de beringela vegan (versão sem laticínios)</strong> — Camadas de beringela, molho de tomate e alternativas vegetais ao queijo, gratinada no forno. :contentReference[oaicite:8]{index=8}</li>
+  <li><strong>R9. Pasta cremosa de beringela e tomate com massa longa</strong> — Molho de tomate com beringela assada e massa longa, simples e reconfortante. :contentReference[oaicite:9]{index=9}</li>
+  <li><strong>R10. Beringela e tofu assados com za’atar e molho de tahini-iogurte</strong> — Forno de beringela e tofu temperados, servidos com molho cremoso e salada fresca. :contentReference[oaicite:10]{index=10}</li>
+</ul>
+
+<a id="beringela-recheada-mediterranica-com-couscous-e-grao-de-bico-r1"></a>
+<h2 id="beringela-recheada-mediterranica-com-couscous-e-grao-de-bico">Beringela recheada mediterrânica com couscous e grão-de-bico <span class="source">[R1]</span></h2>
+
+<p><strong>1) Introdução</strong><br>
+Meia beringela assada e recheada com couscous, grão-de-bico e vegetais cria um prato completo, nutritivo e cheio de sabores mediterrânicos — ideal como prato principal leve ou para partilhar.</p>
+
+<p><strong>2) Ingredientes</strong></p>
+<ul>
+  <li>2 beringelas médias, cortadas longitudinalmente ao meio</li>
+  <li>Sal e azeite extra-virgem</li>
+  <li>1 chávena de couscous seco</li>
+  <li>1 chávena de água a ferver (para hidratar couscous)</li>
+  <li>1 chávena de grão-de-bico cozido, escorrido</li>
+  <li>1 tomate médio, picado</li>
+  <li>1 cebola pequena, picada fina</li>
+  <li>2 dentes de alho picados</li>
+  <li>2 colheres sopa de salsa ou coentros frescos picados</li>
+  <li>1 colher chá de paprica doce</li>
+  <li>½ colher chá de cominhos em pó</li>
+  <li>Pimenta preta moída e sal a gosto</li>
+</ul>
+
+<p><strong>3) Passos de preparação</strong></p>
+<ol>
+  <li>Pré-aquece o forno a 200 °C. Lava e seca as beringelas. Faz vários furos na polpa com um garfo, pincela com azeite e uma pitada de sal. Leva ao forno cerca de 25–30 min, até ficarem macias.</li>
+  <li>Enquanto isso, prepara o couscous: numa tigela, coloca o couscous, verte a água a ferver, tampa e deixa repousar 5–10 min; solta com um garfo. Mistura o couscous com o grão-de-bico, tomate, cebola, alho, salsa e as especiarias (paprica, cominhos, sal, pimenta).</li>
+  <li>Quando as beringelas estiverem assadas, retira do forno e com uma colher aperta ligeiramente a polpa (sem rasgar a casca) para criar “barquinhos”.</li>
+  <li>Recheia cada meia beringela com a mistura de couscous e grão-de-bico, pressionando levemente.</li>
+  <li>Retorna ao forno por mais 10–15 min para aquecer bem o recheio.</li>
+  <li>Serve quente, decorado com ervas frescas e, se quiseres, um fio de azeite por cima.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+The Mediterranean Dish — https://www.themediterraneandish.com/vegetarian-stuffed-eggplant/
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pasta-alla-norma-massa-com-beringela-e-molho-de-tomate-r2"></a>
+<h2 id="pasta-alla-norma-massa-com-beringela-e-molho-de-tomate">Pasta alla Norma (massa com beringela e molho de tomate) <span class="source">[R2]</span></h2>
+
+<p><strong>1) Introdução</strong><br>
+Clássico siciliano de massa com beringela e molho de tomate, simples, reconfortante e que destaca a textura “carnuda” da beringela — perfeito para almoços ou jantares com poucos ingredientes.</p>
+
+<p><strong>2) Ingredientes</strong></p>
+<ul>
+  <li>400 g de massa (penne, fusilli, spaghetti, à escolha)</li>
+  <li>2–3 beringelas médias, cortadas em cubos ou tiras</li>
+  <li>Azeite extra-virgem</li>
+  <li>1 cebola média picada</li>
+  <li>2–3 dentes de alho picados</li>
+  <li>700 ml de passata de tomate (ou tomate pelado triturado)</li>
+  <li>1 colher chá de açúcar (opcional, para corrigir acidez)</li>
+  <li>Folhas de manjericão fresco</li>
+  <li>Sal, pimenta e (opcional) flocos de malagueta</li>
+</ul>
+
+<p><strong>3) Passos de preparação</strong></p>
+<ol>
+  <li>Pré-aquece o forno a 220 °C. Salpica os cubos/tiras de beringela com azeite, sal e pimenta e assa 20-25 min ou até dourar e murchar.</li>
+  <li>Coze a massa conforme instruções da embalagem; escorre e reserva.</li>
+  <li>Numa panela, aquece azeite, salteia a cebola e o alho até ficarem macios. Adiciona a passata de tomate, o açúcar (se usar), sal, pimenta e deixa ferver 5-10 min.</li>
+  <li>Mistura a beringela assada com o molho. Junta a massa escorrida e envolve bem.</li>
+  <li>Termina com folhas frescas de manjericão e um fio de azeite. Serve de imediato.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+RecipeTin Eats — https://www.recipetineats.com/pasta-alla-norma-eggplant-pasta/
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="estufado-de-beringela-e-grao-de-bico-estilo-oriental-druze-r3"></a>
+<h2 id="estufado-de-beringela-e-grao-de-bico-estilo-oriental-druze">Estufado de beringela e grão-de-bico (estilo oriental / Druze) <span class="source">[R3]</span></h2>
+
+<p><strong>1) Introdução</strong><br>
+Receita tradicional do Médio-Oriente, um guisado nutritivo e saboroso de beringela, tomate e grão-de-bico — reconfortante, proteico e ideal para épocas mais frias.</p>
+
+<p><strong>2) Ingredientes</strong></p>
+<ul>
+  <li>2 beringelas médias, cortadas em cubos</li>
+  <li>Azeite para saltear</li>
+  <li>1 cebola grande picada</li>
+  <li>3 dentes de alho picados</li>
+  <li>400 g de tomate pelado ou tomate maduro em cubos</li>
+  <li>1 lata de grão-de-bico cozido, escorrido</li>
+  <li>1 colher chá de cominhos moídos</li>
+  <li>1 colher chá de coentros moídos (opcional)</li>
+  <li>1 pitada de canela (opcional, para toque aromático)</li>
+  <li>500 ml de água ou caldo vegetal</li>
+  <li>Sal e pimenta a gosto</li>
+  <li>Sumo de ½ limão (opcional)</li>
+</ul>
+
+<p><strong>3) Passos de preparação</strong></p>
+<ol>
+  <li>Num tacho largo, aquece azeite e salteia a cebola e alho até dourarem.</li>
+  <li>Acrescenta os cubos de beringela e salteia 5-7 min até começarem a amolecer.</li>
+  <li>Junta o tomate, o grão-de-bico, os temperos, a água ou caldo. Mistura bem.</li>
+  <li>Deixa cozinhar em lume médio-baixo cerca de 25–30 min, até a beringela estar macia e o molho apurado.</li>
+  <li>Ajusta sal, pimenta e, se quiseres, adiciona o sumo de limão para frescor. Serve quente com pão ou arroz.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Tori Avey — https://toriavey.com/mnazaleh/
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="massa-picante-com-beringela-tomate-e-ervas-r4"></a>
+<h2 id="massa-picante-com-beringela-tomate-e-ervas">Massa picante com beringela, tomate e ervas <span class="source">[R4]</span></h2>
+
+<p><strong>1) Introdução</strong><br>
+Prato rápido e saboroso de massa com beringela e tomate, aromatizado com ervas e especiarias — ideal para uma refeição simples e reconfortante durante a semana.</p>
+
+<p><strong>2) Ingredientes</strong></p>
+<ul>
+  <li>350–400 g de massa à escolha</li>
+  <li>2 beringelas médias, cortadas em cubos</li>
+  <li>3 colheres sopa de azeite</li>
+  <li>1 cebola média picada</li>
+  <li>2–3 dentes de alho picados</li>
+  <li>1 lata de tomate pelado ou 400 g de tomate em cubos</li>
+  <li>1 colher chá de orégãos secos</li>
+  <li>1 pitada de flocos de malagueta (ou a gosto)</li>
+  <li>Pimenta e sal a gosto</li>
+  <li>Manjericão ou salsa fresca para servir</li>
+</ul>
+
+<p><strong>3) Passos de preparação</strong></p>
+<ol>
+  <li>Coze a massa conforme instruções. Escorre e reserva um pouco da água de cozedura.</li>
+  <li>Numa frigideira grande, aquece o azeite. Salteia a cebola e o alho até amaciarem.</li>
+  <li>Adiciona a beringela e cozinha até ficar tenra e ligeiramente dourada.</li>
+  <li>Junta o tomate, os orégãos e a malagueta. Deixa cozinhar em lume médio 10–15 min para apurar o molho. Se estiver muito espesso, junta um pouco da água da massa reservada.</li>
+  <li>Mistura a massa com o molho, retifica sal e pimenta. Serve quente com ervas frescas por cima.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Connoisseurus Veg — https://www.connoisseurusveg.com/eggplant-pasta/
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="beringela-assada-ao-forno-com-molho-de-tahini-ervas-estilo-mediterranico-r5"></a>
+<h2 id="beringela-assada-ao-forno-com-molho-de-tahini-ervas-estilo-mediterranico">Beringela assada ao forno com molho de tahini &amp; ervas (Estilo mediterrânico) <span class="source">[R5]</span></h2>
+
+<p><strong>1) Introdução</strong><br>
+Fatias de beringela assadas com azeite, alho e ervas que, servidas com molho de tahini e limão, transformam-se num prato leve, aromático e muito mediterrânico — ideal como entrada, acompanhamento ou prato principal leve.</p>
+
+<p><strong>2) Ingredientes</strong></p>
+<ul>
+  <li>2–3 beringelas médias, cortadas em rodelas ou fatias de 1–1,5 cm</li>
+  <li>Azeite extra-virgem</li>
+  <li>3 dentes de alho esmagados</li>
+  <li>Sal, pimenta e ervas secas a gosto (orégãos, tomilho, alecrim)</li>
+  <li>Para o molho: 3 colheres sopa de tahini, sumo de 1 limão, 1 dente de alho pequeno picado, água q.b., sal</li>
+</ul>
+
+<p><strong>3) Passos de preparação</strong></p>
+<ol>
+  <li>Pré-aquece o forno a 200–220 °C. Num tabuleiro, dispõe as fatias de beringela. Regar com azeite, polvilhar alho, sal, pimenta e ervas. Levar ao forno 20–25 min, virando a meio, até dourarem.</li>
+  <li>Enquanto assa, preparar o molho: misturar tahini, sumo de limão, alho e uma pitada de sal; adicionar água aos poucos até atingir consistência cremosa e fluida para regar.</li>
+  <li>Servir a beringela assada com o molho de tahini por cima e, se quiseres, salsa ou coentros frescos.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Debra Klein — https://debraklein.com/roasted-eggplant-tahini/
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="roll-ups-de-beringela-vegan-com-arroz-de-couve-flor-e-marinara-r6"></a>
+<h2 id="roll-ups-de-beringela-vegan-com-arroz-de-couve-flor-e-marinara">Roll-ups de beringela vegan com “arroz” de couve-flor e marinara <span class="source">[R6]</span></h2>
+
+<p><strong>1) Introdução</strong><br>
+Fatias de beringela grelhadas enroladas com recheio vegetal cremoso, assadas em molho de tomate — uma versão leve e saborosa de prato de forno que lembra lasanha ou canelones, mas com menos glúten e mais legumes.</p>
+
+<p><strong>2) Ingredientes</strong></p>
+<ul>
+  <li>2–3 beringelas médias, cortadas em fatias longitudinais de espessura fina (≈ 0,5 cm)</li>
+  <li>Azeite, sal e pimenta</li>
+  <li>1 chávena de “arroz” de couve-flor (couve-flor triturada)</li>
+  <li>Espinafres ou outra folha verde a gosto</li>
+  <li>2–3 colheres sopa de tomate seco picado (opcional)</li>
+  <li>Molho marinara suficiente para cobrir o fundo do tabuleiro</li>
+  <li>Alho e cebola para refogar o recheio</li>
+  <li>Ervas e especiarias a gosto</li>
+</ul>
+
+<p><strong>3) Passos de preparação</strong></p>
+<ol>
+  <li>Grelha ou assa rapidamente as fatias de beringela com azeite, sal e pimenta, só até ficarem maleáveis. Reserva.</li>
+  <li>Numa frigideira, refoga alho e cebola, adiciona o “arroz” de couve-flor, espinafres e tomate seco, ajusta sal e pimenta. Deixa cozinhar até a couve-flor amolecer e os verdes murcharem.</li>
+  <li>Num tabuleiro, espalha uma camada fina de molho marinara. Enrola cada fatia de beringela com um pouco do recheio e coloca no tabuleiro, lado a lado.</li>
+  <li>Cobre com mais molho marinara e se quiser, polvilha ervas ou levedura nutricional. Leva ao forno a 180 °C cerca de 25–30 min.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+This Savory Vegan — https://www.thissavoryvegan.com/mediterranean-vegan-eggplant-roll-ups/
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="gyros-de-beringela-vegan-com-pita-e-molho-de-hummus-dill-r7"></a>
+<h2 id="gyros-de-beringela-vegan-com-pita-e-molho-de-hummus-dill">Gyros de beringela vegan com pita e molho de hummus-dill <span class="source">[R7]</span></h2>
+
+<p><strong>1) Introdução</strong><br>
+Versão vegana de gyros: cubes de beringela temperados e assados, servidos em pão pita com vegetais frescos e molho cremoso de hummus com dill — rápido, prático e saboroso.</p>
+
+<p><strong>2) Ingredientes</strong></p>
+<ul>
+  <li>1 beringela grande cortada em cubos</li>
+  <li>Azeite, sal, pimenta, 1 a 2 colheres chá de za'atar ou orégãos</li>
+  <li>4 pitas integrais ou de trigo</li>
+  <li>1 tomate grande em rodelas</li>
+  <li>½ pepino em rodelas finas</li>
+  <li>¼ cebola roxa em rodelas finas</li>
+  <li>Para o molho: ⅓ chávena de húmus, sumo de 1 limão, 2 dentes alho picados, 1 colher chá de dill desidratado (ou fresco), água q.b.</li>
+</ul>
+
+<p><strong>3) Passos de preparação</strong></p>
+<ol>
+  <li>Pré-aquece o forno a 200 °C. Mistura os cubos de beringela com azeite, za'atar, sal e pimenta; espalha num tabuleiro e assa 25–30 min até dourarem.</li>
+  <li>Enquanto a beringela assa, prepara o molho: mistura o húmus, o sumo de limão, o alho e o dill; adiciona água aos poucos até obter consistência de molho cremoso e fluido.</li>
+  <li>Aquece as pitas (seca ou no forno). Monta os gyros: divide a beringela assada pelas pitas, junta tomate, pepino, cebola e molho hummus-dill por cima. Serve de imediato.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Delish Knowledge — https://www.delishknowledge.com/vegan-eggplant-gyros/
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="lasanha-de-beringela-vegan-versao-sem-laticinios-r8"></a>
+<h2 id="lasanha-de-beringela-vegan-versao-sem-laticinios">Lasanha de beringela vegan (versão sem laticínios) <span class="source">[R8]</span></h2>
+
+<p><strong>1) Introdução</strong><br>
+Camadas de beringela assada, molho de tomate e alternativas vegetais ao queijo resultam numa lasanha saborosa, nutritiva e sem produtos animais — ótima para servir numa refeição mais elaborada ou partilhar.</p>
+
+<p><strong>2) Ingredientes (sugestão)</strong></p>
+<ul>
+  <li>2–3 beringelas médias cortadas em rodelas de ~1 cm, assadas ou grelhadas previamente</li>
+  <li>700–800 ml de molho de tomate caseiro ou passata</li>
+  <li>Placas de lasanha (opcional — ou não, usar apenas camadas de beringela)</li>
+  <li>Tofu firme ou ricotta vegetal (opcional)</li>
+  <li>Levedura nutricional ou “parmesão” vegetal</li>
+  <li>Ervas: manjericão, orégãos, salsa</li>
+  <li>Azeite, sal, pimenta</li>
+</ul>
+
+<p><strong>3) Passos de preparação</strong></p>
+<ol>
+  <li>Pré-aquece o forno a 180–190 °C. Num tabuleiro/pirex, coloca uma camada de molho de tomate.</li>
+  <li>Coloca uma camada de rodelas de beringela assada. Se estás a usar placas de lasanha, intercala com estas.</li>
+  <li>Se usares tofu ou ricotta vegetal, espalha uma camada fina. Polvilha com levedura nutricional e ervas.</li>
+  <li>Repete camadas até acabar ingredientes, terminando com molho e levedura/“queijo” vegetal por cima.</li>
+  <li>Leva ao forno 25–35 min, até borbulhar e criar ligeira crosta por cima. Deixa descansar 5–10 min antes de servir.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+UniPlanet — https://theuniplanet.com/2022/03/18-receitas-vegetarianas-e-vegans-com-beringela/
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pasta-cremosa-de-beringela-e-tomate-com-massa-longa-r9"></a>
+<h2 id="pasta-cremosa-de-beringela-e-tomate-com-massa-longa">Pasta cremosa de beringela e tomate com massa longa <span class="source">[R9]</span></h2>
+
+<p><strong>1) Introdução</strong><br>
+Massa longa com molho cremoso de tomate e beringela assada — simples, reconfortante e ótimo para almoços ou jantares rápidos, mantendo o sabor intenso da beringela.</p>
+
+<p><strong>2) Ingredientes</strong></p>
+<ul>
+  <li>300–350 g de massa longa (spaghetti, linguine, etc.)</li>
+  <li>2 beringelas médias cortadas em cubos</li>
+  <li>Azeite extra-virgem</li>
+  <li>1 cebola média picada</li>
+  <li>2 dentes de alho picados</li>
+  <li>400 ml de tomate pelado triturado ou passata</li>
+  <li>1 folha de louro (opcional)</li>
+  <li>Manjericão ou salsa fresca para servir</li>
+  <li>Sal, pimenta e flocos de malagueta a gosto</li>
+</ul>
+
+<p><strong>3) Passos de preparação</strong></p>
+<ol>
+  <li>Pré-aquece o forno a 200 °C. Regra a beringela com azeite, sal e pimenta, espalha num tabuleiro e assa 20–25 min até dourar.</li>
+  <li>Coze a massa conforme instruções; escorre e guarda um pouco da água da cozedura.</li>
+  <li>Numa panela, aquece azeite e salteia a cebola e o alho até amaciarem. Junta o tomate triturado e a folha de louro, deixa ferver 5–10 min.</li>
+  <li>Mistura a beringela assada com o molho e aquece 2–3 min para que absorva sabores.</li>
+  <li>Junta a massa ao molho, mistura bem; se parecer seca, junta um pouco da água da cozedura. Ajusta sal/pimenta. Finaliza com ervas frescas.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Qui Sine Queen B — https://quisinequeenb.com/mediterranean-roasted-eggplant-tomato-pasta/
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="beringela-e-tofu-assados-com-zaatar-e-molho-de-tahini-iogurte-r10"></a>
+<h2 id="beringela-e-tofu-assados-com-zaatar-e-molho-de-tahini-iogurte">Beringela e tofu assados com za’atar e molho de tahini-iogurte <span class="source">[R10]</span></h2>
+
+<p><strong>1) Introdução</strong><br>
+Tigela mediterrânica com beringela e tofu assados a za’atar, servidos com salada fresca e molho cremoso de tahini-iogurte — prato completo, nutritivo e ideal para refeições equilibradas.</p>
+
+<p><strong>2) Ingredientes</strong></p>
+<ul>
+  <li>1 beringela média cortada em cubos ou rodelas</li>
+  <li>200–250 g de tofu firme cortado em cubos</li>
+  <li>3 colheres sopa de azeite</li>
+  <li>1 colher sopa de za’atar (ou mistura de ervas secas + sumac)</li>
+  <li>1 colher chá de alho em pó</li>
+  <li>Sal e pimenta a gosto</li>
+  <li>Para molho: 4 colheres sopa de iogurte vegetal (sem açúcar), 2 colheres sopa de tahini, sumo de ½ limão, 1 dente de alho picado, água q.b.</li>
+  <li>Salada de acompanhamento: tomate, pepino, salsa ou coentros, hortelã — ao gosto</li>
+</ul>
+
+<p><strong>3) Passos de preparação</strong></p>
+<ol>
+  <li>Pré-aquece o forno a 220 °C. Numa tigela grande, mistura beringela e tofu com azeite, za’atar, alho, sal e pimenta. Espalha num tabuleiro forrado e assa 25–30 min, mexendo a meio, até dourar.</li>
+  <li>Enquanto isso, prepara o molho: numa tigela, mistura iogurte vegetal, tahini, sumo de limão e alho; adiciona água aos poucos até obter consistência cremosa e fluida; ajusta sal.</li>
+  <li>Monta as tigelas: coloca a beringela e tofu assados, a salada fresca e rega com o molho tahini-iogurte. Serve imediatamente.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Hummusapien — https://www.hummusapien.com/mediterranean-tofu-bowls-with-eggplant/
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

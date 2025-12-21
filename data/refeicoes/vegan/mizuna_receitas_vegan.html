@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Mizuna – Receitas Vegan (Top 10)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+<body id="topo">
+<div class="masthead">
+  <header>
+    <h1>Mizuna – Receitas Vegan (Top 10)</h1>
+  <p>Preparações à base de plantas</p>
+  </header>
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-de-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html" class="ativa">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+</div>
+
+<main>
+<article>
+
+<h2 id="receitas-preparados">Receitas e preparados – dieta vegan</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/mizuna_receitas_vegetariana.html">(Vegetariana)</a>
+    <a href="/data/refeicoes/raw-vegan/mizuna_receitas_raw-vegan.html">(Comida Viva)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro por ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+  <ol>
+    <li><a href="#salada-de-mizuna-com-maca-sultanas-e-sementes">Salada de Mizuna com Maçã, Sultanas e Sementes</a></li>
+    <li><a href="#salada-de-mizuna-com-amendoins-e-molho-agridoce">Salada de Mizuna com Amendoins e Molho Agridoce</a></li>
+    <li><a href="#salada-estilo-japones-de-mizuna-com-tofu-pepino-e-tomate-molho-de-sesamo">Salada estilo japonês de Mizuna com tofu, pepino e tomate, molho de sésamo</a></li>
+    <li><a href="#mizuna-salteada-com-alho-e-limao">Mizuna salteada com alho e limão</a></li>
+    <li><a href="#sopa-miso-com-mizuna-e-tofu-sedoso">Sopa miso com Mizuna e tofu sedoso</a></li>
+    <li><a href="#sopa-cremosa-de-greens-incluindo-mizuna-batata-e-leite-vegetal">Sopa cremosa de “greens” incluindo Mizuna, batata e leite vegetal</a></li>
+    <li><a href="#minestrone-vegetariano-com-mizuna">Minestrone vegetariano com Mizuna</a></li>
+    <li><a href="#sopa-picante-de-tofu-farro-e-mizuna">Sopa picante de tofu, farro e Mizuna</a></li>
+    <li><a href="#salada-de-mizuna-com-sumagre-e-ingredientes-mediterraneos">Salada de Mizuna com sumagre e ingredientes mediterrâneos</a></li>
+    <li><a href="#salada-simples-de-mizuna-com-rabanete-e-sementes">Salada simples de Mizuna com rabanete e sementes</a></li>
+  </ol>
+</div>
+
+<h2 id="resumo">Resumo das receitas (R1–R10)</h2>
+<ul>
+  <li><strong>R1. Salada de Mizuna com Maçã, Sultanas e Sementes</strong> – Salada leve, fresca e ligeiramente doce-ácida, com mizuna, maçã, sultanas e sementes tostadas, envoltas num vinagrete cítrico.</li>
+  <li><strong>R2. Salada de Mizuna com Amendoins e Molho Agridoce</strong> – Salada rápida com mizuna, cebolinho e amendoins, temperada com um molho agridoce simples de óleo, vinagre, soja e um toque de doce.</li>
+  <li><strong>R3. Salada estilo japonês de Mizuna com tofu, pepino e tomate, molho de sésamo</strong> – Salada de inspiração japonesa com mizuna, tofu sedoso, pepino e tomate, ligada por um molho de sésamo leve.</li>
+  <li><strong>R4. Mizuna salteada com alho e limão (salteado simples)</strong> – Mizuna salteada rapidamente com alho e azeite, finalizada com um toque de limão; ótima como acompanhamento.</li>
+  <li><strong>R5. Sopa miso com Mizuna e tofu sedoso</strong> – Sopa simples com base de miso, rabanete, mizuna e tofu sedoso, leve e reconfortante.</li>
+  <li><strong>R6. Sopa cremosa de “greens” incluindo Mizuna, batata e leite vegetal</strong> – Sopa aveludada feita com folhas verdes (incluindo mizuna), batata, caldo e bebida vegetal, depois triturada até ficar cremosa.</li>
+  <li><strong>R7. Minestrone vegetariano com Mizuna</strong> – Versão de minestrone com legumes, feijão e, no final, mizuna adicionada para frescor e cor.</li>
+  <li><strong>R8. Sopa picante de tofu, farro e Mizuna</strong> – Sopa consistente com base de miso, tofu, farro, aromatizada com pastas picantes, finalizada com mizuna fresca.</li>
+  <li><strong>R9. Salada de Mizuna com sumagre e ingredientes mediterrâneos (variante grega)</strong> – Salada de mizuna com vegetais a gosto, temperada com vinagrete de azeite, limão e sumagre, em estilo mediterrâneo.</li>
+  <li><strong>R10. Salada simples de Mizuna com rabanete e sementes torradas</strong> – Salada crua rápida, misturando mizuna, rabanete, azeite, limão e sementes tostadas, muito fresca e crocante.</li>
+</ul>
+
+<!-- SECÇÃO 3 — RECEITAS COMPLETAS -->
+
+<a id="salada-de-mizuna-com-maca-sultanas-e-sementes-r1"></a>
+<h2 id="salada-de-mizuna-com-maca-sultanas-e-sementes">Salada de Mizuna com Maçã, Sultanas e Sementes <span class="source">[R1]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma salada leve, fresca e ligeiramente doce-ácida, ideal como entrada ou acompanhamento. A mizuna, de sabor suave e ligeiramente picante, combina bem com o doce da maçã e das sultanas e a crocância das sementes.</p>
+
+<h4>Ingredientes</h4>
+<h4>Para a salada:</h4>
+<ul>
+  <li>- 1 grande molho de mizuna, lavada, seca e grosseiramente picada</li>
+  <li>- 1/2 maçã doce-ácida, cortada em tiras finas (tipo “palitos”)</li>
+  <li>- 2 colheres de sopa de sultanas</li>
+  <li>- 2 colheres de sopa de sementes de girassol (ou outras sementes), tostadas</li>
+</ul>
+
+<h4>Para o molho:</h4>
+<ul>
+  <li>- 2 colheres de sopa de azeite</li>
+  <li>- 1 colher de sopa de sumo de limão</li>
+  <li>- 1 colher de chá de mostarda Dijon</li>
+  <li>- 1 colher de chá de vinagre de sidra (ou outro vinagre suave)</li>
+  <li>- 1 colher de chá de xarope de ácer (ou outro adoçante líquido vegetal)</li>
+  <li>- Sal e pimenta preta moída a gosto</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>1. Colocar a mizuna, a maçã, as sultanas e as sementes tostadas numa taça grande.</li>
+  <li>2. Numa taça pequena, misturar o azeite, o sumo de limão, a mostarda, o vinagre, o xarope de ácer, o sal e a pimenta, batendo até emulsionar.</li>
+  <li>3. Verter o molho sobre a salada e envolver bem com as mãos ou com talheres, até todos os ingredientes ficarem cobertos.</li>
+  <li>4. Servir de imediato para que a mizuna e a maçã se mantenham crocantes.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Mizuna Lettuce Salad – Running to the Kitchen<br>
+<a href="https://www.runningtothekitchen.com/mizuna-lettuce-salad/" target="_blank" rel="noopener">
+https://www.runningtothekitchen.com/mizuna-lettuce-salad/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-de-mizuna-com-amendoins-e-molho-agridoce-r2"></a>
+<h2 id="salada-de-mizuna-com-amendoins-e-molho-agridoce">Salada de Mizuna com Amendoins e Molho Agridoce <span class="source">[R2]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma salada muito simples e rápida, boa para acompanhar pratos principais ou servir como almoço leve. A mizuna ganha textura com os amendoins e o molho agridoce equilibra salgado, ácido e doce.</p>
+
+<h4>Ingredientes</h4>
+<h4>Para a salada:</h4>
+<ul>
+  <li>- Cerca de 10 chávenas de mizuna lavada e seca, cortada em pedaços</li>
+  <li>- 1/4 de chávena de cebolinho fresco picado (opcional)</li>
+  <li>- 1/4 de chávena de amendoins (salgados ou ligeiramente torrados, sem pele)</li>
+</ul>
+
+<h4>Para o molho:</h4>
+<ul>
+  <li>- 1/4 de chávena de óleo de amendoim (ou outro óleo vegetal suave)</li>
+  <li>- 3 colheres de sopa de vinagre (branco, de arroz ou outro suave)</li>
+  <li>- 1 colher de sopa de molho de soja ou tamari</li>
+  <li>- 1 colher de chá de açúcar (ou xarope de ácer)</li>
+  <li>- Sal e pimenta a gosto</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>1. Dispor a mizuna, o cebolinho e os amendoins numa taça grande.</li>
+  <li>2. Num frasco ou taça, misturar o óleo, o vinagre, o molho de soja e o açúcar. Temperar com sal e pimenta e mexer bem até o açúcar dissolver.</li>
+  <li>3. Verter o molho sobre a salada e envolver bem.</li>
+  <li>4. Servir imediatamente, antes de a mizuna murchar em demasia.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Mizuna Salad with Peanuts – Healthy Seasonal Recipes<br>
+<a href="https://www.healthyseasonalrecipes.com/mizuna-salad-with-peanuts/" target="_blank" rel="noopener">
+https://www.healthyseasonalrecipes.com/mizuna-salad-with-peanuts/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-estilo-japones-de-mizuna-com-tofu-pepino-e-tomate-molho-de-sesamo-r3"></a>
+<h2 id="salada-estilo-japones-de-mizuna-com-tofu-pepino-e-tomate-molho-de-sesamo">Salada estilo japonês de Mizuna com tofu, pepino e tomate, molho de sésamo <span class="source">[R3]</span></h2>
+
+<h4>Introdução</h4>
+<p>Salada leve com toques japoneses, que combina a textura crocante da mizuna com o frescor do pepino e tomate e a suavidade do tofu. O molho de sésamo dá um sabor tostado e aromático.</p>
+
+<h4>Ingredientes</h4>
+<h4>Para a salada:</h4>
+<ul>
+  <li>- 100 g de mizuna lavada, seca e cortada em pedaços</li>
+  <li>- 1 pepino pequeno, cortado em meias-luas ou palitos finos</li>
+  <li>- 1/2 chávena de tomates-cereja, cortados ao meio</li>
+  <li>- 150 g de tofu sedoso (silken tofu), cortado em cubos</li>
+</ul>
+
+<h4>Para o molho de sésamo (exemplo):</h4>
+<ul>
+  <li>- 2 colheres de sopa de óleo de sésamo</li>
+  <li>- 2 colheres de sopa de molho de soja ou tamari</li>
+  <li>- 1 colher de sopa de vinagre de arroz (ou outro vinagre suave)</li>
+  <li>- 1 colher de chá de açúcar ou xarope de ácer</li>
+  <li>- 1–2 colheres de chá de sementes de sésamo tostadas</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>1. Colocar a mizuna, o pepino e o tomate numa taça grande e misturar suavemente.</li>
+  <li>2. Dispor por cima os cubos de tofu com cuidado para não se desfazerem.</li>
+  <li>3. Numa taça pequena, misturar o óleo de sésamo, o molho de soja, o vinagre, o açúcar e as sementes de sésamo até combinar.</li>
+  <li>4. Regar a salada com o molho imediatamente antes de servir, mexendo com cuidado para não esmagar o tofu.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Sesame Mizuna Salad – Ellie Likes Cooking<br>
+<a href="https://www.ellielikes.cooking/sesame-mizuna-salad/" target="_blank" rel="noopener">
+https://www.ellielikes.cooking/sesame-mizuna-salad/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="mizuna-salteada-com-alho-e-limao-r4"></a>
+<h2 id="mizuna-salteada-com-alho-e-limao">Mizuna salteada com alho e limão <span class="source">[R4]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma receita rápida que realça o sabor ligeiramente picante da mizuna sem a esconder com demasiados ingredientes. Fica ótima como acompanhamento simples de qualquer refeição.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>- 1 grande molho de mizuna, lavada e cortada em pedaços</li>
+  <li>- 1 a 3 dentes de alho, picados finamente</li>
+  <li>- 1 colher de sopa de azeite</li>
+  <li>- Sumo de 1/2 limão</li>
+  <li>- Sal a gosto</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>1. Aquecer o azeite numa frigideira grande em lume médio.</li>
+  <li>2. Adicionar o alho e saltear cerca de 30 a 60 segundos, apenas até libertar aroma, sem deixar dourar demasiado.</li>
+  <li>3. Juntar a mizuna e mexer com frequência, durante 2–4 minutos, até murchar e ficar verde-viva.</li>
+  <li>4. Retirar do lume, espremer o sumo de limão por cima, temperar com sal e misturar.</li>
+  <li>5. Servir de imediato.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Simple Sautéed Mizuna – Main Street Farms<br>
+<a href="https://mainstreetfarms.com/simple-sauted-mizuna/" target="_blank" rel="noopener">
+https://mainstreetfarms.com/simple-sauted-mizuna/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-miso-com-mizuna-e-tofu-sedoso-r5"></a>
+<h2 id="sopa-miso-com-mizuna-e-tofu-sedoso">Sopa miso com Mizuna e tofu sedoso <span class="source">[R5]</span></h2>
+
+<h4>Introdução</h4>
+<p>Versão simples de sopa miso com mizuna e tofu, reconfortante e de preparação rápida. A mizuna entra no fim para se manter fresca e com alguma textura.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>- 400 ml de água</li>
+  <li>- 25–50 g de raiz de rabanete (daikon), cortada em fatias finas</li>
+  <li>- 20 g de tofu sedoso, cortado em cubos</li>
+  <li>- 40 g de mizuna, lavada e cortada</li>
+  <li>- 1 colher de chá (ou mais, a gosto) de pasta de miso</li>
+  <li>- Opcional: um pouco de dashi vegetal ou caldo de legumes leve, se quiseres reforçar o sabor</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>1. Levar a água ao lume num tacho médio, juntar o rabanete e cozinhar até este ficar quase translúcido.</li>
+  <li>2. Adicionar o tofu e a mizuna e ferver mais 1–2 minutos, apenas até a mizuna murchar.</li>
+  <li>3. Retirar do lume. Num pequeno recipiente, dissolver a pasta de miso em um pouco de caldo quente e depois misturar de volta na sopa (evitar ferver depois de adicionar o miso).</li>
+  <li>4. Ajustar a quantidade de miso ao gosto e servir imediatamente.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Mizuna Miso Soup Recipe – MisoSoup<br>
+<a href="https://misosoup.site/mizuna-miso-soup-recipe/" target="_blank" rel="noopener">
+https://misosoup.site/mizuna-miso-soup-recipe/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-cremosa-de-greens-incluindo-mizuna-batata-e-leite-vegetal-r6"></a>
+<h2 id="sopa-cremosa-de-greens-incluindo-mizuna-batata-e-leite-vegetal">Sopa cremosa de “greens” incluindo Mizuna, batata e leite vegetal <span class="source">[R6]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma sopa cremosa, rica em nutrientes, que pode usar mizuna como uma das folhas verdes principais. Leva batata para dar corpo e bebida vegetal no fim para ficar aveludada.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>- 2 colheres de sopa de azeite</li>
+  <li>- 1 cebola grande picada</li>
+  <li>- 2–3 dentes de alho picados</li>
+  <li>- 2–3 batatas médias, descascadas e cortadas em cubos</li>
+  <li>- 300–400 g de mizuna (pode misturar com outras folhas verdes se quiser)</li>
+  <li>- 4 chávenas de caldo de legumes</li>
+  <li>- 1–2 chávenas de bebida vegetal (soja, aveia, arroz, etc.)</li>
+  <li>- Sal e pimenta preta a gosto</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>1. Aquecer o azeite numa panela grande em lume médio. Refogar a cebola até ficar translúcida. Juntar o alho e cozinhar mais um minuto.</li>
+  <li>2. Adicionar as batatas e o caldo de legumes. Deixar ferver e reduzir para lume brando, cozinhando até as batatas estarem bem macias.</li>
+  <li>3. Juntar a mizuna e cozinhar 5–7 minutos, até murchar completamente.</li>
+  <li>4. Triturar a sopa com varinha mágica ou no liquidificador até ficar cremosa.</li>
+  <li>5. Voltar ao lume, adicionar a bebida vegetal aos poucos e mexer até atingir a espessura desejada. Temperar com sal e pimenta.</li>
+  <li>6. Servir quente, com um fio de azeite por cima se desejar.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Vegan Cream of Leafy Greens Soup – The Vegan Atlas<br>
+<a href="https://theveganatlas.com/vegan-cream-of-leafy-greens-soup/" target="_blank" rel="noopener">
+https://theveganatlas.com/vegan-cream-of-leafy-greens-soup/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="minestrone-vegetariano-com-mizuna-r7"></a>
+<h2 id="minestrone-vegetariano-com-mizuna">Minestrone vegetariano com Mizuna <span class="source">[R7]</span></h2>
+
+<h4>Introdução</h4>
+<p>Um minestrone versátil e nutritivo. A mizuna é adicionada no final da cozedura para trazer frescor e cor a um caldo de legumes e feijão.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>- 1 cebola picada</li>
+  <li>- 1 cenoura picada</li>
+  <li>- Outros legumes a gosto (por exemplo, courgette em cubos, aipo, abóbora)</li>
+  <li>- 1–2 colheres de sopa de azeite</li>
+  <li>- 1 lata de tomate em cubos ou tomates frescos picados</li>
+  <li>- 1 lata de feijão cozido (branco, vermelho, ou outro), escorrido e passado por água</li>
+  <li>- 4–5 chávenas de água ou caldo de legumes</li>
+  <li>- 1 chávena de massa pequena (macarrão curto), opcional</li>
+  <li>- 4 chávenas de mizuna picada grosseiramente</li>
+  <li>- Ervas secas a gosto (orégãos, tomilho, manjericão seco)</li>
+  <li>- Sal e pimenta</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>1. Numa panela grande, aquecer o azeite e refogar a cebola, cenoura e outros legumes até amaciarem ligeiramente.</li>
+  <li>2. Adicionar o tomate, o feijão, a água ou caldo, as ervas secas, sal e pimenta. Deixar levantar fervura.</li>
+  <li>3. Reduzir o lume e deixar cozinhar 15–20 minutos, até os legumes estarem quase macios.</li>
+  <li>4. Se for usar massa, cozer à parte conforme as instruções, escorrer e reservar.</li>
+  <li>5. Juntar a mizuna picada à sopa e cozinhar apenas 1–2 minutos, até murchar.</li>
+  <li>6. Juntar a massa às tigelas no momento de servir (para não inchar demasiado na sopa guardada). Ajustar o sal e a pimenta.</li>
+  <li>7. Servir quente.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Vegetarian Minestrone with Mizuna – Worden Farm to Table<br>
+<a href="https://wordenfarmtotable.com/2016/12/06/vegetarian-minestrone-with-mizuna/" target="_blank" rel="noopener">
+https://wordenfarmtotable.com/2016/12/06/vegetarian-minestrone-with-mizuna/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-picante-de-tofu-farro-e-mizuna-r8"></a>
+<h2 id="sopa-picante-de-tofu-farro-e-mizuna">Sopa picante de tofu, farro e Mizuna <span class="source">[R8]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma sopa encorpada, com farro, tofu e mizuna, que é aromatizada com miso e pastas picantes. Ótima para dias frios ou quando apetece algo forte de sabor.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>- 1 colher de sopa de óleo vegetal</li>
+  <li>- 1 cebola média, fatiada ou picada</li>
+  <li>- 4 dentes de alho picados</li>
+  <li>- 6 chávenas de água quente ou caldo de legumes</li>
+  <li>- 2 colheres de sopa de pasta de miso branca</li>
+  <li>- 1 colher de sopa de gochujang (opcional, picante)</li>
+  <li>- 1 colher de sopa de sriracha (opcional, picante)</li>
+  <li>- 1 chávena de farro, passado por água</li>
+  <li>- 400–450 g de tofu (de preferência sedoso), cortado em cubos</li>
+  <li>- 2 molhos grandes de mizuna, lavados e picados grosseiramente</li>
+  <li>- Sal a gosto (ter cuidado por causa das pastas salgadas)</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>1. Aquecer o óleo numa panela em lume médio-baixo e saltear a cebola e o alho com uma pitada de sal até a cebola ficar bem macia e ligeiramente dourada.</li>
+  <li>2. Adicionar a água ou caldo e dissolver a pasta de miso, o gochujang e a sriracha, mexendo até ficar homogéneo.</li>
+  <li>3. Acrescentar o farro e o tofu; deixar cozinhar cerca de 30 minutos, até o farro ficar macio.</li>
+  <li>4. Retirar a panela do lume e juntar a mizuna, mexendo até murchar.</li>
+  <li>5. Ajustar sal (se necessário) e servir quente.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Spicy Tofu + Mizuna Soup – Vegetarian and Cooking<br>
+<a href="https://www.vegetarianandcooking.com/2019/09/spicy-tofu-mizuna-soup.html" target="_blank" rel="noopener">
+https://www.vegetarianandcooking.com/2019/09/spicy-tofu-mizuna-soup.html
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-de-mizuna-com-sumagre-e-ingredientes-mediterraneos-r9"></a>
+<h2 id="salada-de-mizuna-com-sumagre-e-ingredientes-mediterraneos">Salada de Mizuna com sumagre e ingredientes mediterrâneos <span class="source">[R9]</span></h2>
+
+<h4>Introdução</h4>
+<p>Salada de mizuna inspirada em sabores gregos/mediterrâneos, com vinagrete de sumagre, que traz um toque cítrico e ligeiramente fumado à mistura.</p>
+
+<h4>Ingredientes</h4>
+<h4>Para a salada:</h4>
+<ul>
+  <li>- 1 molho de mizuna, lavada e grosseiramente picada</li>
+  <li>- Combinação de legumes a gosto: por exemplo tomate em cubos, pepino, cebola roxa, pimentos</li>
+  <li>- Opcional: azeitonas, grão-de-bico cozido, ervas frescas (salsa, hortelã)</li>
+</ul>
+
+<h4>Para o vinagrete de sumagre:</h4>
+<ul>
+  <li>- 3–4 colheres de sopa de azeite</li>
+  <li>- 2–3 colheres de sopa de sumo de limão ou vinagre suave</li>
+  <li>- 1–2 colheres de chá de sumagre em pó</li>
+  <li>- Sal e pimenta preta a gosto</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>1. Dispor a mizuna e os restantes legumes/ingredientes numa taça grande.</li>
+  <li>2. Num recipiente pequeno, misturar o azeite, o sumo de limão (ou vinagre), o sumagre, sal e pimenta. Bater bem até emulsionar.</li>
+  <li>3. Verter o molho sobre a salada e envolver.</li>
+  <li>4. Servir de imediato ou após alguns minutos de repouso para intensificar o sabor.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Greek Mizuna Salad with Sumac Vinaigrette (vegan, gluten-free) – Sharon Palmer<br>
+<a href="https://sharonpalmer.com/greek-mizuna-salad-with-sumac-vinaigrette-vegan-gluten-free/" target="_blank" rel="noopener">
+https://sharonpalmer.com/greek-mizuna-salad-with-sumac-vinaigrette-vegan-gluten-free/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-simples-de-mizuna-com-rabanete-e-sementes-r10"></a>
+<h2 id="salada-simples-de-mizuna-com-rabanete-e-sementes">Salada simples de Mizuna com rabanete e sementes <span class="source">[R10]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma das formas mais simples de servir mizuna crua: com rabanete crocante, um pouco de azeite, limão e sementes tostadas. Muito rápida de executar e ótima de entrada.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>- 1 grande molho de mizuna, lavada, seca e picada grosseiramente</li>
+  <li>- 2–3 rabanetes médios, cortados em fatias muito finas</li>
+  <li>- 2 colheres de sopa de sementes de girassol ou outras sementes, tostadas</li>
+  <li>- 2–3 colheres de sopa de azeite</li>
+  <li>- Sumo de 1/2 limão (ou a gosto)</li>
+  <li>- Sal marinho e pimenta preta moída</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>1. Colocar a mizuna e o rabanete numa taça.</li>
+  <li>2. Regar com o azeite e o sumo de limão.</li>
+  <li>3. Temperar com sal e pimenta e misturar bem.</li>
+  <li>4. Polvilhar com as sementes tostadas.</li>
+  <li>5. Servir imediatamente, de preferência bem fresca.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Simple Mizuna Salad – Dishing Up the Dirt<br>
+<a href="https://dishingupthedirt.com/farm-fresh/radishes/simple-mizuna-salad/" target="_blank" rel="noopener">
+https://dishingupthedirt.com/farm-fresh/radishes/simple-mizuna-salad/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

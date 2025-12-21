@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Cebola – Receitas Vegan (Top 10)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+<body id="topo">
+<div class="masthead">
+  <header>
+    <h1>Cebola – Receitas Vegan (Top 10)</h1>
+    <p>Preparações à base de plantas</p>
+  </header>
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-de-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html" class="ativa">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+</div>
+
+<main>
+<article>
+
+<h2 id="receitas-preparados">Receitas e preparados – dieta vegan</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/cebola_receitas_vegetariana.html">(Vegetariana)</a>
+    <a href="/data/refeicoes/raw-vegan/cebola_receitas_raw-vegan.html">(Comida Viva)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+  <ol>
+    <li><a href="#sopa-de-cebola-francesa-vegan">Sopa de Cebola Francesa Vegan</a></li>
+    <li><a href="#tarte-de-cebola-caramelizada-vegan">Tarte de Cebola Caramelizada Vegan</a></li>
+    <li><a href="#tarte-salgada-de-cebola-estilo-zwiebelkuchen-vegan">Tarte Salgada de Cebola estilo “Zwiebelkuchen” Vegan</a></li>
+    <li><a href="#sopa-cremosa-de-cenoura-com-cebola-caramelizada">Sopa cremosa de cenoura com cebola caramelizada</a></li>
+    <li><a href="#massas-com-cebola-salteada-alho-e-pimenta">Massas com cebola salteada, alho e pimenta</a></li>
+    <li><a href="#salada-crocante-de-cebola-roxa-marinada-e-legumes">Salada crocante de cebola roxa marinada e legumes</a></li>
+    <li><a href="#chips-de-cebola-assada-com-especiarias-snack">Chips de cebola assada com especiarias (snack)</a></li>
+    <li><a href="#guisado-de-grao-de-bico-com-cebola-tomate-e-especiarias">Guisado de grão-de-bico com cebola, tomate e especiarias</a></li>
+    <li><a href="#tarteletes-de-cebola-caramelizada-mini-quiches-vegan">Tarteletes de cebola caramelizada (mini-quiches vegan)</a></li>
+    <li><a href="#sopa-reconfortante-de-cebola-alho-e-ervas-com-pao-tostado">Sopa reconfortante de cebola, alho e ervas com pão tostado</a></li>
+  </ol>
+</div>
+
+<h2 id="resumo">Resumo das receitas (R1–R10)</h2>
+<ul>
+  <li><strong>R1. Sopa de Cebola Francesa Vegan</strong> — versão vegetal da clássica sopa francesa, com cebolas bem caramelizadas, caldo de legumes, vinho ou sherry, e fatias de pão com “queijo” vegan gratinado.</li>
+  <li><strong>R2. Tarte de Cebola Caramelizada Vegan</strong> — quiche sem ovos nem laticínios, com massa crocante e recheio cremoso de tofu ou amêndoas + cebolas caramelizadas e ervas.</li>
+  <li><strong>R3. Tarte Salgada de Cebola estilo “Zwiebelkuchen” Vegan</strong> — inspirado no clássico alemão de outono, com massa (sem glúten ou normal), cebola, alho-poró e pimentos, perfeito como prato principal ou lanche.</li>
+  <li><strong>R4. Sopa cremosa de cenoura com cebola caramelizada</strong> — sopa leve e adocicada, onde a doçura natural da cebola confere profundidade ao sabor.</li>
+  <li><strong>R5. Massas com cebola salteada, alho e pimenta</strong> — prato rápido e fácil, com cebola salteada e um toque picante, ideal para dias corridos.</li>
+  <li><strong>R6. Salada crocante de cebola roxa marinada e legumes</strong> — salada fresca, com cebola roxa a dobrar textura e sabor, complementada por legumes crocantes, ótima como acompanhamento leve.</li>
+  <li><strong>R7. Chips de cebola assada com especiarias (snack)</strong> — snack diferente e saboroso: rodelas de cebola temperadas e assadas até ficarem crocantes, excelente substituto de batatas fritas.</li>
+  <li><strong>R8. Guisado de grão-de-bico com cebola, tomate e especiarias</strong> — prato reconfortante e nutritivo, com cebola como base aromática e grão-de-bico como proteína vegetal.</li>
+  <li><strong>R9. Tarteletes de cebola caramelizada (mini-quiches vegan)</strong> — pequenas quiches ideais como aperitivo ou lanche, com massa e recheio cremoso vegetal e sabor intenso de cebola.</li>
+  <li><strong>R10. Sopa reconfortante de cebola, alho e ervas com pão tostado</strong> — sopa simples e reconfortante, ideal para reconfortar nas noites frias, com cebola como protagonista e pão tostado ao lado.</li>
+</ul>
+
+<h2 id="sopa-de-cebola-francesa-vegan">R1 — Sopa de Cebola Francesa Vegan <span class="source">[R1]</span></h2>
+
+<h4>Introdução</h4>
+<p>Clássica adaptação vegetal da famosa sopa de cebola francesa — cebolas caramelizadas lentamente conferem profundidade e doçura natural, combinadas com caldo de legumes, vinho (ou substituto) e finalizadas com pão tostado e “queijo” vegan gratinado. Perfeita para dias frios ou jantar reconfortante.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>6-8 cebolas médias (amarelas ou brancas), cortadas em meias-luas finas</li>
+  <li>3 colheres de sopa de azeite ou manteiga vegetal</li>
+  <li>1 colher de chá de açúcar (para ajudar a caramelizar)</li>
+  <li>2 dentes de alho picados</li>
+  <li>1 colher de sopa de farinha de trigo (para espessar levemente o caldo)</li>
+  <li>50–100 ml de vinho branco seco (opcional) — ou 1–2 colheres de sopa de vinagre de maçã para versão sem álcool</li>
+  <li>1,2–1,5 L de caldo de legumes</li>
+  <li>1 folha de louro</li>
+  <li>1 ramo de tomilho fresco (ou 1 colher de chá seco)</li>
+  <li>Sal e pimenta preta moída a gosto</li>
+  <li>Pão (baguete ou outro) fatiado e torrado</li>
+  <li>Queijo vegan (ralado ou fatias) para gratinar</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Numa panela grande, aquecer o azeite ou manteiga vegetal em lume médio-baixo. Adicionar as cebolas e o açúcar e cozinhar lentamente, mexendo de vez em quando, por cerca de 30–40 minutos, até as cebolas estarem bem douradas e caramelizadas.</li>
+  <li>Juntar o alho picado e cozinhar 1 minuto até libertar aroma. Polvilhar a farinha e mexer para incorporar — isto ajuda a espessar ligeiramente o caldo.</li>
+  <li>Deglacear com o vinho (ou vinagre), raspando o fundo da panela para soltar os resíduos dourados. Deixar reduzir 1–2 minutos.</li>
+  <li>Adicionar o caldo de legumes, a folha de louro e o tomilho. Levar a ferver, depois reduzir o lume e cozinhar 15–20 minutos. Ajustar sal e pimenta.</li>
+  <li>Pré-aquecer o forno a 200 °C. Distribuir a sopa em tigelas resistentes ao forno, colocar fatia de pão por cima, cobrir com queijo vegan e gratinar até derreter/dourar.</li>
+  <li>Servir quente.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Simple-Veganista — https://simple-veganista.com/vegan-french-onion-soup/</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<h2 id="tarte-de-cebola-caramelizada-vegan">R2 — Tarte de Cebola Caramelizada Vegan <span class="source">[R2]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma quiche/tarte salgada onde a cebola é a estrela: massa folhada ou quebrada vegetal, recheio cremoso à base de tofu ou creme vegetal, e cebolas caramelizadas com ervas — ideal para brunches, jantares leves ou como prato principal.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Para a massa: massa quebrada ou folhada vegetal de compra, ou caseira.</li>
+  <li>Para o recheio:</li>
+  <li>4-5 cebolas médias fatiadas finamente</li>
+  <li>2 colheres de sopa de azeite ou manteiga vegetal</li>
+  <li>1 colher de chá de açúcar para caramelizar</li>
+  <li>200 g de tofu sedoso (silken) ou creme vegetal à escolha</li>
+  <li>3 colheres de sopa de bebida vegetal (soja, aveia, etc.)</li>
+  <li>2 colheres de sopa de polvilho ou farinha para ajudar a ligar</li>
+  <li>1 colher de chá de orégãos ou tomilho seco</li>
+  <li>Sal e pimenta a gosto</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Pré-aquece o forno conforme instruções da massa. Forra uma forma com a massa e reserva.</li>
+  <li>Numa frigideira, aquece o azeite/manteiga vegetal. Adiciona as cebolas e o açúcar; cozinha em lume médio-baixo 25–35 minutos até caramelizarem e ficarem douradas, mexendo ocasionalmente. Deixa arrefecer.</li>
+  <li>No processador, mistura o tofu (ou creme vegetal), a bebida vegetal, a polvilho/farinha, orégãos, sal e pimenta até obter uma mistura homogénea.</li>
+  <li>Mistura as cebolas caramelizadas na mistura cremosa. Verta sobre a base de massa na forma.</li>
+  <li>Leva ao forno conforme tempo indicado para a massa (geralmente 25–35 min), até a tarte estar firme e dourada.</li>
+  <li>Deixa repousar 10 min antes de servir.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Crumbs &amp; Caramel — https://crumbsandcaramel.com/vegan-french-onion-tart/</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<h2 id="tarte-salgada-de-cebola-estilo-zwiebelkuchen-vegan">R3 — Tarte Salgada de Cebola estilo “Zwiebelkuchen” Vegan <span class="source">[R3]</span></h2>
+
+<h4>Introdução</h4>
+<p>Versão vegan do tradicional “Zwiebelkuchen” alemão: massa simples (normal ou sem glúten), recheio de cebola, alho-poró/pimento e especiarias. Boa tanto quente como fria, perfeita como prato principal leve ou lanche.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Para a massa: massa à escolha (normal ou sem glúten).</li>
+  <li>Para o recheio:</li>
+  <li>3-4 cebolas médias fatiadas</li>
+  <li>1 alho-poró ou 1 pimento vermelho (opcional), fatiado</li>
+  <li>2 colheres de sopa de azeite vegetal</li>
+  <li>2 dentes de alho picados</li>
+  <li>3 colheres de sopa de farinha de grão-de-bico ou farinha comum</li>
+  <li>100 ml de bebida vegetal (soja, aveia, etc.)</li>
+  <li>1 colher de chá de pimenta preta moída</li>
+  <li>Sal a gosto</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Preparar a massa, forrar a forma e reservar no frio.</li>
+  <li>Numa frigideira, aquecer o azeite. Adicionar a cebola (e o alho-poró/pimento se usar) e saltear até ficarem macios e ligeiramente dourados.</li>
+  <li>Juntar o alho e saltear 1 minuto. Misturar a farinha de grão-de-bico, pimenta e bebida vegetal, mexer até formar uma pasta cremosa.</li>
+  <li>Verter o recheio sobre a massa e alisar.</li>
+  <li>Levar ao forno a 180–200 °C por ~35–45 min, até dourar e ficar firme.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>ElaVegan — https://elavegan.com/caramelized-onion-tart/</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<h2 id="sopa-cremosa-de-cenoura-com-cebola-caramelizada">R4 — Sopa cremosa de cenoura com cebola caramelizada <span class="source">[R4]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma sopa reconfortante onde a doçura da cenoura se mistura com a profundidade e doçura natural da cebola caramelizada. Cremosa, nutritiva e fácil de fazer.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>400 g de cenouras, descascadas e cortadas em rodelas</li>
+  <li>2-3 cebolas médias fatiadas</li>
+  <li>2 colheres de sopa de azeite ou manteiga vegetal</li>
+  <li>1 batata média (opcional, para dar cremosidade), cortada em cubos</li>
+  <li>1 dente de alho picado</li>
+  <li>1 L de caldo de legumes</li>
+  <li>150–200 ml de bebida vegetal (caju, aveia, etc.)</li>
+  <li>Sal, pimenta preta moída a gosto</li>
+  <li>Noz-moscada (opcional)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Numa panela, aquecer 1 colher de azeite e refogar as cebolas lentamente até caramelizarem (~20–25 minutos). Reservar metade.</li>
+  <li>Na mesma panela, adicionar mais azeite, juntar a cenoura, batata e alho e saltear 3–4 minutos.</li>
+  <li>Acrescentar o caldo de legumes, levar a ferver, depois reduzir lume e cozinhar ~15-20 minutos até os vegetais estarem macios.</li>
+  <li>Adicionar a bebida vegetal e metade das cebolas caramelizadas. Triturar até obter uma consistência cremosa.</li>
+  <li>Temperar com sal, pimenta e noz-moscada, se usar. Decorar com o restante da cebola caramelizada antes de servir.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>TheTomatoTart — https://www.thetomatotart.com/recipe/vegan-carrot-soup/</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<h2 id="massas-com-cebola-salteada-alho-e-pimenta">R5 — Massas com cebola salteada, alho e pimenta <span class="source">[R5]</span></h2>
+
+<h4>Introdução</h4>
+<p>Prato de massa simples e reconfortante: cebola salteada com alho e pimenta, envolvida numa massa al dente, com um toque picante e sabor profundo — ideal para jantares rápidos e económicos.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>200–250 g de massa seca à escolha</li>
+  <li>3-4 cebolas médias fatiadas finas</li>
+  <li>4 dentes de alho fatiados finamente</li>
+  <li>4 colheres de sopa de azeite virgem extra</li>
+  <li>½ colher de chá de flocos de malagueta (ou a gosto)</li>
+  <li>Sal e pimenta preta q.b.</li>
+  <li>2–3 colheres de sopa de salsinha ou coentros picados (para guarnecer)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Cozer a massa em água abundante com sal até ficar al dente. Escorrer e reservar um pouco da água de cozedura.</li>
+  <li>Numa frigideira grande, aquecer o azeite em lume médio. Adicionar a cebola e saltear 8–10 minutos até começarem a dourar.</li>
+  <li>Juntar o alho e os flocos de malagueta; cozinhar mais 1–2 minutos até libertar aroma.</li>
+  <li>Acrescentar a massa escorrida à frigideira, envolver bem. Se a mistura estiver seca, adicionar um pouco da água reservada da massa.</li>
+  <li>Temperar com sal e pimenta. Servir com ervas frescas por cima.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>The Vegan Larder — https://theveganlarder.com/quick-garlicky-cavolo-nero-pasta/  *(adaptado para cebola em vez de couve, mantendo a ideia do prato rápido — esta é uma adaptação minha com base na estrutura do prato)*</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<h2 id="salada-crocante-de-cebola-roxa-marinada-e-legumes">R6 — Salada crocante de cebola roxa marinada e legumes <span class="source">[R6]</span></h2>
+
+<h4>Introdução</h4>
+<p>Salada fresca e vibrante, com cebola roxa marinada que perde parte da força e ganha doçura suave, combinada com legumes crocantes — ótima como acompanhamento ou entrada leve.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>2 cebolas roxas médias, cortadas em meias-luas finas</li>
+  <li>1 cenoura grande ralada</li>
+  <li>1 pimento (vermelho ou amarelo) cortado em tiras finas</li>
+  <li>1 pepino pequeno em rodelas finas</li>
+  <li>1 punhado de coentros ou salsa picados</li>
+  <li>3 colheres de sopa de vinagre (sidra, vinho ou maçã)</li>
+  <li>2 colheres de sopa de azeite</li>
+  <li>1 colher de chá de açúcar ou xarope de ácer (opcional, para equilibrar acidez)</li>
+  <li>Sal e pimenta a gosto</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Num recipiente, mistura o vinagre, azeite, açúcar, sal e pimenta — prepara o vinagrete.</li>
+  <li>Numa tigela grande, combina a cebola roxa, a cenoura, o pimento e o pepino. Verte o vinagrete e envolve bem.</li>
+  <li>Deixa marinar 20–30 minutos no frigorífico para a cebola perder parte da picância e os sabores se fundirem.</li>
+  <li>Antes de servir, mistura os coentros ou salsa picada.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Método inspirado em várias saladas de legumes marinados; adaptação pessoal. *(Não encontrei uma fonte online que use exatamente esta combinação — pelo que apresento como adaptação baseada em técnicas comuns de conserva e salada.)*</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<h2 id="chips-de-cebola-assada-com-especiarias-snack">R7 — Chips de cebola assada com especiarias (snack) <span class="source">[R7]</span></h2>
+
+<h4>Introdução</h4>
+<p>Um snack simples, diferente e saboroso: rodelas de cebola temperadas e assadas até ficarem crocantes, uma alternativa vegetal às batatas fritas.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>2–3 cebolas grandes cortadas em rodelas finas</li>
+  <li>3 colheres de sopa de azeite ou óleo vegetal</li>
+  <li>1 colher de chá de páprica doce</li>
+  <li>½ colher de chá de cominhos em pó</li>
+  <li>½ colher de chá de sal fino</li>
+  <li>¼ colher de chá de pimenta preta moída</li>
+  <li>Pitada de flocos de malagueta ou pimenta vermelha (opcional)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Pré-aquece o forno a 160–170 °C. Forra um tabuleiro com papel vegetal.</li>
+  <li>Numa tigela grande, mistura o azeite com as especiarias, sal e pimenta. Adiciona as rodelas de cebola e envolve bem.</li>
+  <li>Disponha as rodelas no tabuleiro em camada única, sem sobrepor.</li>
+  <li>Assar 25–35 minutos, virando a meio do tempo, até as rodelas estarem secas e crocantes.</li>
+  <li>Deixar arrefecer completamente — ficam ainda mais crocantes. Guardar num frasco hermético.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Este snack é uma adaptação livre inspirada em técnicas de chips de legumes assados. *(Sem fonte online específica — usei o meu conhecimento de culinária).*</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<h2 id="guisado-de-grao-de-bico-com-cebola-tomate-e-especiarias">R8 — Guisado de grão-de-bico com cebola, tomate e especiarias <span class="source">[R8]</span></h2>
+
+<h4>Introdução</h4>
+<p>Prato reconfortante e nutritivo: grão-de-bico guisado com cebola, tomate e especiarias — saudável e cheio de sabor, ideal para servir com arroz ou pão.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>2 colheres de sopa de azeite</li>
+  <li>1 cebola grande picada</li>
+  <li>3 dentes de alho picados</li>
+  <li>1 colher de chá de cominhos em pó</li>
+  <li>1 colher de chá de páprica doce</li>
+  <li>1 colher de chá de curcuma (opcional)</li>
+  <li>1 lata de tomate pelado ou 400 g de tomate maduro em cubos</li>
+  <li>400–500 g de grão-de-bico cozido, escorrido e lavado</li>
+  <li>200 ml de água ou caldo de legumes</li>
+  <li>Sal e pimenta a gosto</li>
+  <li>Coentros ou salsa picada para guarnecer</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Numa panela, aquecer o azeite em lume médio. Adicionar a cebola e refogar até ficar translúcida (~5–7 minutos).</li>
+  <li>Juntar o alho, o cominhos, a páprica e a curcuma; cozinhar 1 minuto até libertar aroma.</li>
+  <li>Acrescentar o tomate, o grão-de-bico e a água (ou caldo). Misturar bem.</li>
+  <li>Deixar ferver, depois reduzir o lume e cozinhar 10–15 minutos, até o molho reduzir e espessar ligeiramente.</li>
+  <li>Ajustar sal e pimenta. Antes de servir, envolver os coentros ou salsa picada.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Esta receita é uma adaptação comum de guisados vegetarianos com cebola e grão-de-bico; não retirei de uma fonte online específica.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<h2 id="tarteletes-de-cebola-caramelizada-mini-quiches-vegan">R9 — Tarteletes de cebola caramelizada (mini-quiches vegan) <span class="source">[R9]</span></h2>
+
+<h4>Introdução</h4>
+<p>Pequenas tarteletes saborosas e versáteis — perfeitas como aperitivo, lanche ou entrada. A base é massa vegetal e o recheio é cremoso e aromático com cebola caramelizada.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Como na receita da tarte maior (R2), mas adaptado para múltiplas tarteletes pequenas:</li>
+  <li>Massa vegetal para base (caseira ou de compra), cortada em discos e colocada em forminhas de mini-tarteleta</li>
+  <li>3-4 cebolas médias fatiadas finas</li>
+  <li>2 colheres de sopa de azeite ou manteiga vegetal</li>
+  <li>1 colher de chá de açúcar para caramelizar</li>
+  <li>150 g de tofu sedoso (ou creme vegetal)</li>
+  <li>2 colheres de sopa de bebida vegetal</li>
+  <li>2 colheres de sopa de polvilho ou farinha para ligar</li>
+  <li>1 colher de chá de ervas secas (ex.: tomilho, alecrim)</li>
+  <li>Sal e pimenta a gosto</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Pré-aquece o forno segundo a massa. Forra as forminhas com os discos de massa e reserva.</li>
+  <li>Numa frigideira, saltear as cebolas no azeite com o açúcar até caramelizarem (25–30 min). Deixar arrefecer.</li>
+  <li>Misturar no processador o tofu, bebida vegetal, polvilho/farinha, ervas, sal e pimenta até formar creme. Misturar as cebolas caramelizadas.</li>
+  <li>Distribuir o recheio pelas tarteletes. Levar ao forno 25–30 min até firmarem e dourarem. Deixar arrefecer um pouco antes de servir.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Mary’s Test Kitchen — https://www.marystestkitchen.com/vegan-thanksgiving-2011-caramelized-onion-tarts/</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<h2 id="sopa-reconfortante-de-cebola-alho-e-ervas-com-pao-tostado">R10 — Sopa reconfortante de cebola, alho e ervas com pão tostado <span class="source">[R10]</span></h2>
+
+<h4>Introdução</h4>
+<p>Sopa simples e tradicional, com base de cebola e alho, enriquecida com ervas e servida com pão tostado — perfeita para dias frios ou como entrada reconfortante.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>4 cebolas médias fatiadas finamente</li>
+  <li>2 dentes de alho picados</li>
+  <li>2 colheres de sopa de azeite</li>
+  <li>1 litro de caldo de legumes</li>
+  <li>1 folha de louro</li>
+  <li>1 ramo de tomilho ou 1 colher de chá de tomilho seco</li>
+  <li>Sal e pimenta a gosto</li>
+  <li>Pão cortado em fatias e torrado</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Numa panela, aquecer o azeite e adicionar a cebola; cozinhar em lume médio-baixo 15–20 minutos até amaciar e começar a dourar.</li>
+  <li>Juntar o alho e cozinhar 1 minuto.</li>
+  <li>Adicionar o caldo de legumes, a folha de louro e o tomilho. Levar a ferver, depois reduzir o lume e cozinhar 15–20 minutos.</li>
+  <li>Ajustar sal e pimenta. Servir com pão tostado ao lado.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Nora Cooks — https://www.noracooks.com/vegan-french-onion-soup/</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

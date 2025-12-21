@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Salanova – Receitas Vegan (Top 5)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+<body id="topo">
+<div class="masthead">
+  <header>
+    <h1>Salanova – Receitas Vegan (Top 5)</h1>
+  <p>Preparações à base de plantas</p>
+  </header>
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-de-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html" class="ativa">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+</div>
+
+<main>
+<article>
+
+<h2 id="receitas-preparados">Receitas e preparados – dieta vegan</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/salanova_receitas_vegetariana.html">(Vegetariana)</a>
+    <a href="/data/refeicoes/raw-vegan/salanova_receitas_raw-vegan.html">(Comida Viva)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro por ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+  <ol>
+    <li><a href="#salada-de-salanova-com-legumes-assados-e-vinagrete-de-limao">Salada de Salanova com legumes assados e vinagrete de limão</a></li>
+    <li><a href="#salada-crocante-vegan-com-salanova-manga-e-molho-de-amendoim">Salada crocante vegan com Salanova, manga e molho de amendoim</a></li>
+    <li><a href="#bowl-verde-com-salanova-quinoa-brocolos-e-molho-de-ervas">Bowl verde com Salanova, quinoa, brócolos e molho de ervas</a></li>
+    <li><a href="#salada-fresca-de-salanova-com-morangos-amendoas-tostadas-e-vinagrete-balsamico-framboesa">Salada fresca de Salanova com morangos, amêndoas tostadas e vinagrete balsâmico-framboesa</a></li>
+    <li><a href="#pasta-fria-com-legumes-assados-e-folhas-multileaf-salanova">Pasta fria com legumes assados e folhas multileaf (Salanova)</a></li>
+  </ol>
+</div>
+
+<h2 id="resumo">Resumo das receitas (R1–R5)</h2>
+<ul>
+  <li><strong>R1. Salada de Salanova com legumes assados e vinagrete de limão</strong>  <br>Mistura de folhas Salanova com courgette e beringela assadas no forno, servidas com vinagrete simples de limão, azeite, sal e pimenta — leve, colorida e com contraste quente/frio.</li>
+  <li><strong>R2. Salada crocante vegan com Salanova, manga e molho de amendoim</strong>  <br>Salada tropical-asiática com Salanova, tiras de manga, cenoura ralada, coentros e um molho cremoso de amendoim, soja e lima — doce, salgada e picante ao mesmo tempo.</li>
+  <li><strong>R3. Bowl verde com Salanova, quinoa, brócolos e molho de ervas</strong>  <br>Um bowl nutritivo e completo: Salanova como base de folhas, quinoa como cereal, brócolos e courgette grelhados e molho leve de ervas e limão — ideal como refeição saudável e equilibrada.</li>
+  <li><strong>R4. Salada fresca de Salanova com morangos, amêndoas tostadas e vinagrete balsâmico-framboesa</strong>  <br>Salada doce-salgada com Salanova, morangos frescos, amêndoas torradas e molho balsâmico-framboesa — refrescante e vibrante, ideal para entradas ou almoços leves.</li>
+  <li><strong>R5. Pasta fria com legumes assados e folhas multileaf (Salanova)</strong>  <br>Massa fusilli fria com courgette e pimento assados, azeitonas, tomate seco e folhas Salanova misturadas no final — prato vegetariano/vegano fácil, rápido e ótimo para levar como almoço.</li>
+</ul>
+
+<!-- SECÇÃO 3 — RECEITAS COMPLETAS -->
+
+<a id="salada-de-salanova-com-legumes-assados-e-vinagrete-de-limao-r1"></a>
+<h2 id="salada-de-salanova-com-legumes-assados-e-vinagrete-de-limao">Salada de Salanova com legumes assados e vinagrete de limão <span class="source">[R1]</span></h2>
+
+<h4>1) Introdução</h4>
+<p>Uma salada leve onde a crocância verde da Salanova contrasta com a doçura e suavidade dos legumes assados — ótima como acompanhamento ou refeição leve de verão.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>Folhas de Salanova, lavadas e escorridas (1 a 2 sacos, conforme porções)</li>
+  <li>1 courgette média, cortada em meias-luas</li>
+  <li>1 beringela pequena, cortada em cubos ou fatias grossas</li>
+  <li>Azeite q.b.</li>
+  <li>Sal e pimenta preta moída a gosto</li>
+  <li>Para o vinagrete: sumo de 1 limão, 4 colheres de sopa de azeite extra-virgem, sal e pimenta a gosto</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+  <li>Pré-aquecer o forno a 200 °C. Numa tigela, misturar a courgette e a beringela com um fio de azeite, sal e pimenta. Espalhar num tabuleiro e assar 20–25 minutos até dourar e amaciar, mexendo a meio.</li>
+  <li>Deixar os legumes assados arrefecerem um pouco.</li>
+  <li>Numa saladeira grande, colocar as folhas de Salanova. Acrescentar os legumes assados por cima.</li>
+  <li>Numa tigela pequena, preparar o vinagrete com limão, azeite, sal e pimenta. Bater até emulsionar.</li>
+  <li>Regar a salada com o vinagrete pouco antes de servir, envolver e servir imediatamente.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>Lazy Cat Kitchen — “Green vegan salad” — <a href="https://www.lazycatkitchen.com/green-vegan-salad/" target="_blank" rel="noopener">https://www.lazycatkitchen.com/green-vegan-salad/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-crocante-vegan-com-salanova-manga-e-molho-de-amendoim-r2"></a>
+<h2 id="salada-crocante-vegan-com-salanova-manga-e-molho-de-amendoim">Salada crocante vegan com Salanova, manga e molho de amendoim <span class="source">[R2]</span></h2>
+
+<h4>1) Introdução</h4>
+<p>Salada de inspiração asiática, fresca e vibrante, com fruta, legumes e molho cremoso. A Salanova serve de base perfeita de folhas verdes crocantes.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>Folhas de Salanova, lavadas e escorridas</li>
+  <li>1 manga madura, descascada e cortada em tiras ou cubos</li>
+  <li>1 cenoura grande, ralada em juliana ou tiras finas</li>
+  <li>2 colheres de sopa de coentros frescos picados</li>
+  <li>2 colheres de sopa de sementes de sésamo (opcional, torradas)</li>
+</ul>
+
+<h4>Para o molho de amendoim:</h4>
+<ul>
+  <li>2 colheres de sopa de manteiga de amendoim natural</li>
+  <li>2 colheres de sopa de molho de soja ou tamari</li>
+  <li>1 colher de sopa de sumo de lima ou limão</li>
+  <li>1–2 colheres de sopa de água para ajustar textura</li>
+  <li>½ colher de chá de açúcar de coco ou xarope de ácer (opcional)</li>
+  <li>1 pitada de pimenta ou flocos de malagueta (opcional)</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+  <li>Numa saladeira grande, colocar a Salanova, a manga, a cenoura e os coentros. Misturar delicadamente.</li>
+  <li>Numa tigela à parte, bater os ingredientes do molho até obter uma pasta cremosa e fluida — ajustar com água conforme necessário.</li>
+  <li>Regar a salada com o molho de amendoim e envolver bem até que tudo fique coberto.</li>
+  <li>Opcional: polvilhar sementes de sésamo torradas por cima para textura. Servir de imediato.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>“Ooh La La It’s Vegan” — “23 Of The Best Vegan Salad Recipes” (escolhendo uma salada fria de folhas e frutas) — <a href="https://oohlalaitsvegan.com/vegan-salad-recipes/" target="_blank" rel="noopener">https://oohlalaitsvegan.com/vegan-salad-recipes/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="bowl-verde-com-salanova-quinoa-brocolos-e-molho-de-ervas-r3"></a>
+<h2 id="bowl-verde-com-salanova-quinoa-brocolos-e-molho-de-ervas">Bowl verde com Salanova, quinoa, brócolos e molho de ervas <span class="source">[R3]</span></h2>
+
+<h4>1) Introdução</h4>
+<p>Um bowl nutritivo, completo e equilibrado — Salanova como base de folhas, legumes ricos em fibra, quinoa como cereal e molho leve de ervas e limão. Ideal como almoço saudável e sustentado.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>Folhas de Salanova lavadas e escorridas</li>
+  <li>1 chávena de quinoa crua, lavada</li>
+  <li>1 cabeça média de brócolos, cortada em floretes</li>
+  <li>1 courgette média, cortada em meias-luas ou cubos</li>
+  <li>Azeite q.b.</li>
+  <li>Sal e pimenta</li>
+  <li>Para o molho: sumo de 1 limão, 3 colheres de sopa de azeite, 1 dente de alho pequeno picado, um punhado de ervas frescas (manjericão ou salsa), sal e pimenta</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+  <li>Cozer a quinoa conforme instruções da embalagem, escorrer e reservar.</li>
+  <li>Num grelhador ou frigideira com pouco azeite, grelhar ou saltear os floretes de brócolos e a courgette até ficarem macios e ligeiramente dourados; temperar com sal e pimenta. Deixar arrefecer um pouco.</li>
+  <li>Numa tigela grande (ou bowl individual), colocar as folhas de Salanova como base. Acrescentar a quinoa e os legumes grelhados.</li>
+  <li>Preparar o molho: bater o sumo de limão, azeite, alho, ervas, sal e pimenta até emulsionar. Regar sobre o bowl e envolver delicadamente.</li>
+  <li>Servir imediatamente, ou conservar no frigorífico por umas horas — ideal para almoço preparado com antecedência.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>Lazy Cat Kitchen — “Green vegan salad” — <a href="https://www.lazycatkitchen.com/green-vegan-salad/" target="_blank" rel="noopener">https://www.lazycatkitchen.com/green-vegan-salad/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-fresca-de-salanova-com-morangos-amendoas-tostadas-e-vinagrete-balsamico-framboesa-r4"></a>
+<h2 id="salada-fresca-de-salanova-com-morangos-amendoas-tostadas-e-vinagrete-balsamico-framboesa">Salada fresca de Salanova com morangos, amêndoas tostadas e vinagrete balsâmico-framboesa <span class="source">[R4]</span></h2>
+
+<h4>1) Introdução</h4>
+<p>Salada de fruta e folhas verdes: a doçura dos morangos, a textura crocante das amêndoas e a leveza da Salanova, tudo ligado por um vinagrete agridoce — perfeita como entrada ou refeição leve de verão.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>Salanova lavada e escorrida</li>
+  <li>200 g de morangos frescos, lavados e cortados em quartos</li>
+  <li>3 colheres de sopa de amêndoas laminadas, tostadas</li>
+  <li>2 colheres de sopa de vinagre balsâmico</li>
+  <li>3 colheres de sopa de azeite extra-virgem</li>
+  <li>1 colher de chá de xarope de ácer (ou mel vegetal)</li>
+  <li>Sal e pimenta a gosto</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+  <li>Torre as amêndoas numa frigideira sem óleo, até dourarem — reservar para arrefecerem.</li>
+  <li>Numa saladeira, colocar as folhas de Salanova e os morangos cortados. Misturar delicadamente.</li>
+  <li>Numa tigela pequena, preparar o vinagrete com vinagre balsâmico, azeite, xarope de ácer, sal e pimenta; bater até emulsionar.</li>
+  <li>Regar a salada com o vinagrete e envolver com cuidado. Polvilhar as amêndoas tostadas por cima. Servir de imediato.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>VeggiesFirst — “Salada de alface Salanova com morangos, couve, amêndoas e queijo de cabra” — <a href="https://www.veggiesfirst.com/pt-br/receitas/salada-de-alface-salanova-com-morangos-couve-amendoas-e-queijo-de-cabra/" target="_blank" rel="noopener">https://www.veggiesfirst.com/pt-br/receitas/salada-de-alface-salanova-com-morangos-couve-amendoas-e-queijo-de-cabra/</a><br>
+(* adaptada retirando queijo de cabra para manter veganidade *)</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pasta-fria-com-legumes-assados-e-folhas-multileaf-salanova-r5"></a>
+<h2 id="pasta-fria-com-legumes-assados-e-folhas-multileaf-salanova">Pasta fria com legumes assados e folhas multileaf (Salanova) <span class="source">[R5]</span></h2>
+
+<h4>1) Introdução</h4>
+<p>Salada de massa fria, perfeita para almoços frios ou piqueniques, combinando massa, legumes assados e folhas verdes frescas (Salanova) — prática, nutritiva e versátil.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>300 g de massa curta (fusilli, penne, etc.)</li>
+  <li>1 courgette média, em cubos</li>
+  <li>1 pimento vermelho, em cubos</li>
+  <li>1 cebola roxa pequena, em gomos grossos</li>
+  <li>75 g de azeitonas pretas descaroçadas (opcional)</li>
+  <li>75 g de tomate seco em tiras (opcional)</li>
+  <li>Folhas de Salanova, lavadas e escorridas</li>
+  <li>Azeite, sal e pimenta para temperar e assar os legumes</li>
+  <li>Para o molho leve (opcional): 2 colheres de sopa de azeite, 1 colher de sopa de vinagre de vinho ou limão, 1 colher de chá de orégãos secos, 1 dente de alho picado</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+  <li>Coze a massa conforme instruções, escorre e reserva (de preferência arrefecer).</li>
+  <li>Pré-aquece o forno a 200 °C. Num tabuleiro, mistura a courgette, o pimento e a cebola com azeite, sal e pimenta. Assa 20–25 minutos, mexendo a meio, até os legumes ficarem macios e ligeiramente dourados. Deixa arrefecer.</li>
+  <li>Numa tigela grande, mistura a massa arrefecida, os legumes assados, as azeitonas e o tomate seco (se usar).</li>
+  <li>Juntas as folhas de Salanova e mistura delicadamente.</li>
+  <li>Se quiser, prepara o molho misturando azeite, vinagre (ou limão), orégãos e alho. Regar sobre a salada e envolver. Ajustar sal e pimenta.</li>
+  <li>Servir fria ou à temperatura ambiente.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>Dr. Vegan — “Plant-based Pasta Salad (Ve)” — <a href="https://www.drvegan.com/blogs/recipes/plant-based-pasta-salad-recipe-vegan" target="_blank" rel="noopener">https://www.drvegan.com/blogs/recipes/plant-based-pasta-salad-recipe-vegan</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

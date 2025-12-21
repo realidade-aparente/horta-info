@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Bredos – Receitas Vegan (Top 10)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+<body id="topo">
+<div class="masthead">
+  <header>
+    <h1>Bredos – Receitas Vegan (Top 10)</h1>
+  <p>Preparações à base de plantas</p>
+  </header>
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-de-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+  <a href="../../../bredos.html" class="ativa">Bredos</a>
+</nav>
+</div>
+
+<main>
+<article>
+
+<h2 id="receitas-preparados">Receitas e preparados – dieta vegan</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/bredos_receitas_vegetariana.html">(Vegetariana)</a>
+    <a href="/data/refeicoes/raw-vegan/bredos_receitas_raw-vegan.html">(Comida Viva)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro por ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+  <ol>
+    <li><a href="#vlita-bredos-cozidos-a-grega-com-azeite-e-limao">Vlita (Bredos cozidos à grega com azeite e limão)</a></li>
+    <li><a href="#risoto-vegan-de-bredos-e-ervas">Risoto vegan de bredos e ervas</a></li>
+    <li><a href="#caril-de-lentilhas-com-bredos-amaranth-dal">Caril de lentilhas com bredos (Amaranth Dal)</a></li>
+    <li><a href="#bredos-salteados-a-maharashtra-laal-maathachi-bhaji">Bredos salteados à Maharashtra (Laal Maathachi Bhaji)</a></li>
+    <li><a href="#bredos-vermelhos-a-goa-tambdi-bhaji">Bredos vermelhos à Goa (Tambdi Bhaji)</a></li>
+    <li><a href="#bredos-salteados-com-coco-a-kerala">Bredos salteados com coco à Kerala</a></li>
+    <li><a href="#bredos-vermelhos-salteados-com-amendoim-thotakura-vepudu">Bredos vermelhos salteados com amendoim (Thotakura Vepudu)</a></li>
+    <li><a href="#saag-de-bredos-com-tofu-vegan-amaranth-saag-paneer">Saag de bredos com tofu (Vegan Amaranth Saag Paneer)</a></li>
+    <li><a href="#salada-morna-de-tofu-bredos-e-leite-de-coco">Salada morna de tofu, bredos e leite de coco</a></li>
+    <li><a href="#dal-de-bredos-na-panela-de-pressao-eletrica-instant-pot-amaranth-dal">Dal de bredos na panela de pressão elétrica (Instant Pot Amaranth Dal)</a></li>
+  </ol>
+</div>
+
+<h2 id="resumo">Resumo das receitas (R1–R10)</h2>
+<ul>
+  <li><strong>R1. Vlita (Bredos cozidos à grega com azeite e limão)</strong> – Bredos inteiros são escaldados em água salgada, arrefecidos e servidos como salada morna ou fria, apenas com azeite virgem extra, limão ou vinagre tinto e, se quiser, um pouco de alho cru. É uma preparação muito simples, típica grega, que realça o sabor da verdura.</li>
+  <li><strong>R2. Risoto vegan de bredos e ervas</strong> – Um risoto cremoso onde um puré verde de bredos, aipo, salsa e endro é incorporado gradualmente no arroz carolino ou arborio, cozido em caldo de legumes. Termina com “parmesão” vegan de caju e levedura nutricional. Fica um prato principal completo e muito aromático.</li>
+  <li><strong>R3. Caril de lentilhas com bredos (Amaranth Dal)</strong> – Lentilhas moong são cozidas com bredos e depois envolvidas num refogado de alho, cominhos e tomate, temperado com coentros, cominhos, pimenta caiena e amchoor (ou sumo de limão). Amendoins entram no fim para dar textura. É um dal espesso, nutritivo e totalmente vegan.</li>
+  <li><strong>R4. Bredos salteados à Maharashtra (Laal Maathachi Bhaji)</strong> – Bredos vermelhos são salteados rapidamente em óleo neutro com sementes de mostarda, açafrão-da-terra, alho, malagueta verde e cebola. A verdura cozinha só até murchar e é finalizada com coentros frescos. Serve como acompanhamento simples com chapati ou outros pães indianos.</li>
+  <li><strong>R5. Bredos vermelhos à Goa (Tambdi Bhaji)</strong> – Nesta versão goesa, os bredos são salteados com cebola, alho, malaguetas secas e coco ralado. É um “sabzi” relativamente seco, com toques de coco e picante suave, servido como acompanhamento ao lado de arroz e dal.</li>
+  <li><strong>R6. Bredos salteados com coco à Kerala</strong> – Um “thoran” típico de Kerala: bredos cortados finamente são rapidamente cozinhados em óleo de coco com mostarda, cominhos, malagueta, alho e uma pasta de coco ralado e especiarias. Fica um salteado seco, muito perfumado e leve.</li>
+  <li><strong>R7. Bredos vermelhos salteados com amendoim (Thotakura Vepudu)</strong> – Bredos vermelhos são salteados com uma base de sementes e leguminosas (cominhos, mostarda, urad dal, chana dal) e depois envoltos num pó aromático de alho, amendoim, coco seco e malagueta. É um acompanhamento de sabor intenso e rico em proteína vegetal.</li>
+  <li><strong>R8. Saag de bredos com tofu (Vegan Amaranth Saag Paneer)</strong> – Tofu em cubos é dourado com garam masala e depois mergulhado num “saag” espesso de bredos com tomate, leite de coco e um conjunto de especiarias (garam masala, coentros, cominhos, malagueta, açafrão-da-terra). É a versão vegan de um clássico “saag paneer”.</li>
+  <li><strong>R9. Salada morna de tofu, bredos e leite de coco</strong> – Uma salada morna em que um molho cremoso de leite de coco, alho, malagueta, limão e cebolinho envolve alface em tiras, bredos salteados, cubos de tofu dourados, manjericão e fatias de abacate. Serve como prato único leve e saciante.</li>
+  <li><strong>R10. Dal de bredos na panela de pressão elétrica (Instant Pot Amaranth Dal)</strong> – Dal espesso de toor dal (lentilha amarela) com bredos, preparado diretamente na Instant Pot. Primeiro faz-se um refogado com cebola, alho, malagueta, sementes de mostarda e cominhos; depois junta-se tomate, bredos, lentilhas e temperos, cozinha-se sob pressão e termina com pasta de tamarindo.</li>
+</ul>
+
+<!-- SECÇÃO 3 — RECEITAS COMPLETAS -->
+
+<a id="vlita-bredos-cozidos-a-grega-com-azeite-e-limao-r1"></a>
+<h2 id="vlita-bredos-cozidos-a-grega-com-azeite-e-limao">Vlita (Bredos cozidos à grega com azeite e limão) <span class="source">[R1]</span></h2>
+<h4>Introdução</h4>
+<p>
+Vlita é o nome grego para amaranth greens, aqui equivalente aos nossos bredos. Nesta preparação, os talos tenros e folhas são simplesmente escaldados em bastante água salgada e servidos como salada morna ou fria, com azeite e limão ou vinagre. Na receita original também há sugestões de acompanhar com ovos ou queijo feta, mas a base de bredos cozidos é 100% vegetal e é essa que se descreve aqui.
+</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 kg de bredos (amaranth greens), talos grossos removidos, usando sobretudo a parte tenra superior</li>
+  <li>1 ½ colher de sopa de sal marinho (para a água de cozedura)</li>
+  <li>4 L de água (aprox.) para cozer os bredos</li>
+  <li>4–5 colheres de sopa de azeite virgem extra (ou a gosto, para servir)</li>
+  <li>1 limão, cortado em gomos (para servir)</li>
+  <li>Opcional, mas vegan:</li>
+  <li>3–4 dentes de alho, ralados ou esmagados</li>
+  <li>1–2 colheres de sopa de vinagre de vinho tinto</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li><strong>Preparar os bredos</strong><br>
+   1.1. Corte os talos dos bredos, deixando apenas a parte mais tenra onde a maioria das folhas se encontra.<br>
+   1.2. Se os talos forem tenros, pode reservar alguns, removendo eventuais fibras mais duras.<br>
+   1.3. Lave bem as folhas e talos tenros, deixando de molho em água fria alguns minutos e passando depois por um escorredor.</li>
+  <li><strong>Cozer os bredos</strong><br>
+   2.1. Num tacho grande, ferva cerca de 4 L de água com 1 ½ colher de sopa de sal.<br>
+   2.2. Quando ferver, mergulhe os bredos e use uma colher de pau para os submergir, pois tendem a boiar.<br>
+   2.3. Cozinhe 8–10 minutos, até os talos ficarem tenros ao espetar com um garfo, mas sem desfazer.</li>
+  <li><strong>Arrefecer e escorrer</strong><br>
+   3.1. Escorra os bredos num passador grande.<br>
+   3.2. Para preservar melhor a cor, mergulhe o passador com os bredos em água fria (ou água com gelo) por alguns minutos.<br>
+   3.3. Escorra bem e, se quiser, pique grosseiramente as folhas e talos tenros em pedaços mais curtos.</li>
+  <li><strong>Servir</strong><br>
+   4.1. Disponha os bredos num prato de servir.<br>
+   4.2. Se usar alho, misture 3–4 dentes ralados com 4–5 colheres de sopa de azeite e regue os bredos com este azeite aromatizado.<br>
+   4.3. Regue com um pouco de sumo de limão ou algumas gotas de vinagre de vinho tinto.<br>
+   4.4. Ajuste o sal, se necessário, e sirva morno ou à temperatura ambiente com gomos de limão ao lado.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Real Greek Recipes<br>
+<a href="https://realgreekrecipes.com/vlita-amaranth-greens-recipe/" target="_blank" rel="noopener">
+https://realgreekrecipes.com/vlita-amaranth-greens-recipe/
+</a>
+</p>
+<p class="nota">Texto descrito em linguagem própria, mantendo o espírito da receita original.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="risoto-vegan-de-bredos-e-ervas-r2"></a>
+<h2 id="risoto-vegan-de-bredos-e-ervas">Risoto vegan de bredos e ervas <span class="source">[R2]</span></h2>
+<h4>Introdução</h4>
+<p>
+Este risoto vegan utiliza bredos (vlita), aipo, salsa e endro para criar um “puré verde” que é incorporado no arroz em vez de apenas caldo simples. O prato é finalizado com um “parmesão” vegan feito de caju e levedura nutricional, resultando num risoto cremoso, aromático e totalmente vegetal.
+</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li><strong>Para o “parmesão” vegan</strong></li>
+  <li>1 chávena de cajus crus, sem sal (aprox. 140 g)</li>
+  <li>1/4 de chávena (4 colheres de sopa) de levedura nutricional</li>
+  <li>1 colher de chá de sal</li>
+  <li>1/4 de colher de chá de alho em pó</li>
+  <li><strong>Para o risoto</strong></li>
+  <li>50 g de aipo (idealmente aipo de folha tipo “aipo grego”, ou as folhas e talos finos do aipo comum)</li>
+  <li>40 g de folhas de bredos (sem talos grossos)</li>
+  <li>20 g de salsa fresca (folhas e talos finos)</li>
+  <li>20 g de endro fresco (folhas e talos finos)</li>
+  <li>1 L de caldo de legumes quente</li>
+  <li>40 g + 30 g de margarina vegetal (total 70 g)</li>
+  <li>4 cebolinhas/cebolos (cerca de 90 g), finamente fatiados (partes branca e verde clara, usando também um pouco da parte verde escura)</li>
+  <li>30 g de talos mais grossos de bredos, finamente picados</li>
+  <li>250 g de arroz para risoto (carolino, arborio ou similar)</li>
+  <li>75 ml de sumo de limão espremido na hora</li>
+  <li>3/4 de colher de chá de sal (ajustar no final)</li>
+  <li>3/4 de colher de chá de pimenta preta moída na hora</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li><strong>Preparar o “parmesão” vegan</strong><br>
+   1.1. Coloque os cajus, a levedura nutricional, o sal e o alho em pó num processador de alimentos.<br>
+   1.2. Triture até obter uma textura de pão ralado fino.<br>
+   1.3. Guarde numa caixa hermética no frigorífico até servir.</li>
+  <li><strong>Fazer o puré verde de ervas e bredos</strong><br>
+   2.1. Num copo liquidificador ou processador, junte o aipo, as folhas de bredos, a salsa e o endro.<br>
+   2.2. Adicione cerca de 250 ml (1 chávena) de caldo de legumes quente.<br>
+   2.3. Triture com cuidado (abrindo a tampa de vez em quando para libertar o vapor) até obter um puré liso.<br>
+   2.4. Transfira para uma tigela e misture mais 500 ml de caldo quente. Reserve este “caldo verde”.<br>
+   2.5. Mantenha o restante caldo de legumes (250 ml) simples, à parte.</li>
+  <li><strong>Iniciar o risoto</strong><br>
+   3.1. Numa frigideira larga e funda, aqueça 40 g de margarina vegetal em lume médio.<br>
+   3.2. Junte as cebolinhas fatiadas e os 30 g de talos de bredos picados.<br>
+   3.3. Refogue 5 minutos, mexendo, até amolecerem, sem queimar.</li>
+  <li><strong>Adicionar o arroz e o limão</strong><br>
+   4.1. Junte o arroz e mexa 2 minutos para envolver bem na gordura, sem deixar agarrar.<br>
+   4.2. Adicione o sumo de limão, o sal e a pimenta.<br>
+   4.3. Mexa até o arroz absorver quase todo o líquido.</li>
+  <li><strong>Cozinhar o risoto com os caldos</strong><br>
+   5.1. Adicione cerca de 125 ml do caldo simples (não verde) ao arroz, mexendo ocasionalmente até quase absorver.<br>
+   5.2. Repita com o restante caldo simples.<br>
+   5.3. Depois comece a adicionar o caldo verde, cerca de 125 ml de cada vez, mexendo e deixando absorver entre cada adição.<br>
+   5.4. Continue este processo durante cerca de 20–25 minutos, até o arroz ficar macio mas ainda “al dente” e a textura global for cremosa e ligeiramente fluida (não seca).</li>
+  <li><strong>Finalizar a textura</strong><br>
+   6.1. Quando o arroz estiver quase no ponto, desligue o lume.<br>
+   6.2. Se o risoto estiver demasiado espesso, adicione até 125 ml de água quente para o afrouxar (deve ficar um pouco mais líquido do que a textura final desejada, pois espessa ao repousar).<br>
+   6.3. Junte os 30 g restantes de margarina vegetal e envolva bem.<br>
+   6.4. Deixe repousar 5 minutos com a panela tapada.</li>
+  <li><strong>Servir</strong><br>
+   7.1. Prove e corrija sal e pimenta, se necessário.<br>
+   7.2. Sirva o risoto em pratos fundos, cobrindo generosamente com o “parmesão” vegan de caju.<br>
+   7.3. Sirva de imediato.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+The Foodie Corner<br>
+<a href="https://www.thefoodiecorner.gr/en/recipes/vegan-risotto-amaranth-herbs-recipe/" target="_blank" rel="noopener">
+https://www.thefoodiecorner.gr/en/recipes/vegan-risotto-amaranth-herbs-recipe/
+</a>
+</p>
+<p class="nota">Texto descrito em linguagem própria, mantendo o espírito da receita original.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="caril-de-lentilhas-com-bredos-amaranth-dal-r3"></a>
+<h2 id="caril-de-lentilhas-com-bredos-amaranth-dal">Caril de lentilhas com bredos (Amaranth Dal) <span class="source">[R3]</span></h2>
+<h4>Introdução</h4>
+<p>
+Esta receita junta lentilhas moong e bredos num dal espesso e aromático. As lentilhas e as folhas são cozidas em panela de pressão ou Instant Pot e depois temperadas com um “tadka” de alho, cominhos e especiarias em tomate. Amendoins entram no fim, dando textura e mais proteína vegetal.
+</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>3/4 de chávena de lentilhas moong (moong dal), passadas por água</li>
+  <li>1/2 colher de chá de açafrão-da-terra (curcuma), dividida (metade para cozer a lentilha, metade para o refogado)</li>
+  <li>1 molho de bredos (folhas de amaranth, cerca de 140 g), folhas bem lavadas e finamente picadas (pode incluir talos tenros)</li>
+  <li>Água suficiente para cobrir as lentilhas por cerca de 2,5 cm na panela de pressão/Instant Pot</li>
+  <li>1 colher de chá de óleo vegetal neutro (por ex. óleo de abacate ou outro óleo neutro)</li>
+  <li>1 colher de chá de sementes de cominho</li>
+  <li>1 pitada de assa-fétida (hing), opcional</li>
+  <li>12 dentes de alho, descascados e esmagados ou picados finamente</li>
+  <li>2 tomates médios, bem maduros, cortados em cubos pequenos</li>
+  <li>1 colher de chá de pimenta caiena (ajustar ao gosto)</li>
+  <li>1 colher de sopa de sementes de coentros moídas</li>
+  <li>1 colher de chá de cominhos moídos</li>
+  <li>1 colher de chá de amchoor (pó de manga seca) – pode ser substituído por sumo de 1 limão ou 1 colher de sopa de pasta de tamarindo</li>
+  <li>1/4 de chávena de amendoins crus, sem sal</li>
+  <li>Sal a gosto</li>
+  <li>2 colheres de sopa de coentros frescos picados (coroar no fim)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li><strong>Cozer lentilhas e bredos</strong><br>
+   1.1. Lave as lentilhas moong até a água sair quase clara.<br>
+   1.2. Coloque as lentilhas numa panela de pressão ou Instant Pot com água suficiente para cobrir por cerca de 2,5 cm.<br>
+   1.3. Junte metade do açafrão-da-terra (1/4 de colher de chá).<br>
+   1.4. Acrescente as folhas de bredos picadas e envolva.<br>
+   1.5. Cozinhe sob pressão: em panela de pressão tradicional, cerca de 3 “apitos”; na Instant Pot, 10 minutos em alta pressão.<br>
+   1.6. Deixe a pressão sair naturalmente (ou aguarde 10 minutos antes de libertar manualmente).</li>
+  <li><strong>Preparar o tadka (tempero em óleo)</strong><br>
+   2.1. Enquanto as lentilhas cozem, aqueça 1 colher de chá de óleo numa frigideira média em lume médio.<br>
+   2.2. Junte as sementes de cominho e a assa-fétida, se usar, e deixe as sementes estalarem ligeiramente e libertarem aroma.<br>
+   2.3. Acrescente o alho picado e salteie 1 minuto, sem queimar.</li>
+  <li><strong>Refogar tomates e especiarias</strong><br>
+   3.1. Adicione os tomates em cubos à frigideira.<br>
+   3.2. Junte o restante açafrão-da-terra (1/4 de colher de chá), a pimenta caiena, o coentro moído e o cominho moído.<br>
+   3.3. Cozinhe, mexendo, até os tomates escurecerem um pouco e a maior parte da água evaporar, ficando uma pasta espessa.</li>
+  <li><strong>Juntar o dal ao refogado</strong><br>
+   4.1. Abra com cuidado a panela de pressão/Instant Pot, mexa o conteúdo (lentilhas e bredos).<br>
+   4.2. Transfira as lentilhas cozidas para a frigideira com o refogado de tomate e especiarias (ou verta o refogado na panela, se for mais prático).<br>
+   4.3. Misture bem e, se necessário, adicione um pouco de água para ajustar a consistência (deve ficar um dal cremoso, nem demasiado espesso nem muito líquido).</li>
+  <li><strong>Acabamento com amendoins e acidez</strong><br>
+   5.1. Junte os amendoins crus ao dal e deixe ferver suavemente durante cerca de 10 minutos, tapado, em lume brando.<br>
+   5.2. Adicione o amchoor, o sumo de limão ou a pasta de tamarindo (escolha apenas uma opção), mexendo para incorporar.<br>
+   5.3. Tempere com sal a gosto.<br>
+   5.4. Desligue o lume e polvilhe com coentros frescos picados.</li>
+  <li><strong>Servir</strong><br>
+   6.1. Sirva o amaranth dal bem quente, com arroz basmati, jeera rice ou roti/chapati.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Holy Cow! Vegan<br>
+<a href="https://holycowvegan.net/amaranth-dal/" target="_blank" rel="noopener">
+https://holycowvegan.net/amaranth-dal/
+</a>
+</p>
+<p class="nota">Texto descrito em linguagem própria, mantendo o espírito da receita original.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="bredos-salteados-a-maharashtra-laal-maathachi-bhaji-r4"></a>
+<h2 id="bredos-salteados-a-maharashtra-laal-maathachi-bhaji">Bredos salteados à Maharashtra (Laal Maathachi Bhaji) <span class="source">[R4]</span></h2>
+<h4>Introdução</h4>
+<p>
+Laal Maathachi Bhaji é um salteado simples de bredos vermelhos à moda de Maharashtra. As folhas são rapidamente cozinhadas com alho, cebola, malagueta verde e um tempero de sementes de mostarda, açafrão-da-terra e assa-fétida. É um acompanhamento leve, com sabor intenso a verduras e alho.
+</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 molho (cerca de 450 g) de bredos vermelhos (red amaranth leafy greens), folhas lavadas e grosseiramente picadas</li>
+  <li>2 colheres de sopa de óleo neutro de cozinha (por ex. óleo de girassol ou canola)</li>
+  <li>1/2 colher de chá de sementes de mostarda</li>
+  <li>1 colher de chá de açafrão-da-terra (curcuma)</li>
+  <li>1 pitada de assa-fétida</li>
+  <li>2–3 dentes de alho grandes, grosseiramente picados</li>
+  <li>2–3 malaguetas verdes, em rodelas finas (reduzir para menos picante)</li>
+  <li>1 cebola pequena ou 1/2 cebola média, grosseiramente picada</li>
+  <li>Sal a gosto</li>
+  <li>1 pitada de açúcar</li>
+  <li>4–5 pés de coentros frescos (folhas e caules finos), picados, para guarnecer</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li><strong>Preparar as folhas</strong><br>
+   1.1. Separe as folhas dos talos mais grossos, lave em água abundante e escorra bem.<br>
+   1.2. Pique grosseiramente as folhas em pedaços de tamanho de uma garfada.</li>
+  <li><strong>Fazer o tempero inicial</strong><br>
+   2.1. Aqueça o óleo numa frigideira funda ou sauté em lume médio.<br>
+   2.2. Junte as sementes de mostarda, o açafrão-da-terra e a assa-fétida.<br>
+   2.3. Assim que as sementes de mostarda começarem a estalar, adicione o alho picado e as malaguetas verdes.<br>
+   2.4. Salteie cerca de 1 minuto, até o alho começar a dourar ligeiramente.</li>
+  <li><strong>Adicionar a cebola</strong><br>
+   3.1. Junte a cebola picada ao tacho.<br>
+   3.2. Salteie 1–2 minutos, até a cebola ficar translúcida.</li>
+  <li><strong>Saltear os bredos</strong><br>
+   4.1. Adicione as folhas de bredos picadas.<br>
+   4.2. Tempere com sal e uma pitada de açúcar.<br>
+   4.3. Mexa bem para envolver as folhas no tempero.<br>
+   4.4. Cozinhe, mexendo de vez em quando, espalhando as folhas em camada uniforme, até murcharem e ficarem cozidas (cerca de 4–5 minutos). Não deixe secar demasiado.</li>
+  <li><strong>Finalizar e servir</strong><br>
+   5.1. Prove e ajuste o sal, se necessário.<br>
+   5.2. Polvilhe com coentros frescos picados.<br>
+   5.3. Sirva quente com chapati, bhakri ou arroz.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Signature Concoctions<br>
+<a href="https://signatureconcoctions.com/recipes/maharashtrian-laal-maathachi-bhaji-sauteed-red-amaranth-leaves/" target="_blank" rel="noopener">
+https://signatureconcoctions.com/recipes/maharashtrian-laal-maathachi-bhaji-sauteed-red-amaranth-leaves/
+</a>
+</p>
+<p class="nota">Texto descrito em linguagem própria, mantendo o espírito da receita original.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="bredos-vermelhos-a-goa-tambdi-bhaji-r5"></a>
+<h2 id="bredos-vermelhos-a-goa-tambdi-bhaji">Bredos vermelhos à Goa (Tambdi Bhaji) <span class="source">[R5]</span></h2>
+<h4>Introdução</h4>
+<p>
+Tambdi Bhaji é um “sabzi” de Goa feito com bredos vermelhos, cebola, malaguetas secas e coco ralado. É cozinhado como um salteado húmido, com pouca água, ficando suculento mas sem molho abundante. A combinação de alho, malagueta e coco dá um perfil de sabor típico da costa ocidental da Índia.
+</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 molho de bredos vermelhos (red amaranth), folhas e talos tenros, bem lavados e picados</li>
+  <li>2 colheres de sopa de óleo (girassol, amendoim ou outro óleo vegetal)</li>
+  <li>1/2 colher de chá de sementes de mostarda</li>
+  <li>1/2 colher de chá de sementes de cominho</li>
+  <li>1 cebola média, picada finamente</li>
+  <li>2–3 malaguetas secas vermelhas</li>
+  <li>5–6 dentes de alho, picados</li>
+  <li>1/4 de colher de chá de açafrão-da-terra (curcuma)</li>
+  <li>1/2–3/4 de chávena de coco ralado fresco ou congelado</li>
+  <li>Sal a gosto</li>
+  <li>2–3 colheres de sopa de água, se necessário</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li><strong>Preparar os bredos</strong><br>
+   1.1. Lave bem as folhas e talos tenros de bredos em várias águas para remover terra.<br>
+   1.2. Pique as folhas e talos tenros em pedaços pequenos.</li>
+  <li><strong>Refogar aromáticos</strong><br>
+   2.1. Aqueça o óleo numa panela ou frigideira larga em lume médio.<br>
+   2.2. Junte as sementes de mostarda; quando começarem a estalar, adicione as sementes de cominho.<br>
+   2.3. Acrescente a cebola picada e salteie até ficar translúcida.<br>
+   2.4. Junte as malaguetas secas e o alho picado, mexendo mais 1–2 minutos.</li>
+  <li><strong>Adicionar os bredos</strong><br>
+   3.1. Adicione os bredos picados à panela.<br>
+   3.2. Junte o açafrão-da-terra e o sal.<br>
+   3.3. Mexa bem e, se a mistura estiver muito seca, adicione 2–3 colheres de sopa de água apenas para ajudar a cozinhar.</li>
+  <li><strong>Cozinhar até murchar</strong><br>
+   4.1. Tape a panela e deixe cozinhar em lume brando até as folhas murcharem e ficarem tenras (cerca de 7–10 minutos), mexendo ocasionalmente.</li>
+  <li><strong>Incorporar o coco</strong><br>
+   5.1. Quando os bredos estiverem cozinhados, junte o coco ralado.<br>
+   5.2. Misture bem e cozinhe mais 2–3 minutos, sem deixar secar demais (deve ficar húmido, não molhado).</li>
+  <li><strong>Servir</strong><br>
+   6.1. Prove e ajuste o sal.<br>
+   6.2. Sirva tambdi bhaji como acompanhamento de arroz, dal e outros pratos indianos.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Veg Recipes of India<br>
+<a href="https://www.vegrecipesofindia.com/tambdi-bhaji-recipe-red-amaranth-sabzi/" target="_blank" rel="noopener">
+https://www.vegrecipesofindia.com/tambdi-bhaji-recipe-red-amaranth-sabzi/
+</a>
+</p>
+<p class="nota">Texto descrito em linguagem própria, mantendo o espírito da receita original.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="bredos-salteados-com-coco-a-kerala-r6"></a>
+<h2 id="bredos-salteados-com-coco-a-kerala">Bredos salteados com coco à Kerala <span class="source">[R6]</span></h2>
+<h4>Introdução</h4>
+<p>
+Este salteado de bredos ao estilo de Kerala é um “thoran”: folhas finamente picadas salteadas rapidamente em óleo de coco com mostarda, cominhos, malagueta, alho e uma pequena quantidade de coco ralado. O resultado é um acompanhamento seco, leve, naturalmente vegan e sem glúten, ideal para servir com arroz e sambar/rasam.
+</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 molho de bredos (amaranth greens), lavados e picados (folhas e talos tenros)</li>
+  <li>3–4 colheres de chá de óleo de coco</li>
+  <li>1–2 malaguetas verdes, inteiras ou em rodelas</li>
+  <li>1/2 colher de chá de sementes de mostarda</li>
+  <li>1 pitada de pimenta vermelha em pó (opcional)</li>
+  <li>1/4 de colher de chá de açafrão-da-terra (opcional)</li>
+  <li>1/4 de colher de chá de sementes de cominho</li>
+  <li>1 dente de alho pequeno, opcional, picado</li>
+  <li>2 colheres de sopa de coco ralado fresco ou congelado</li>
+  <li>Sal a gosto</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li><strong>Preparar as folhas</strong><br>
+   1.1. Limpe bem as folhas e talos tenros, lavando em várias águas.<br>
+   1.2. Escorra e pique finamente.</li>
+  <li><strong>Fazer o refogado com temperos</strong><br>
+   2.1. Aqueça o óleo de coco numa frigideira larga em lume médio.<br>
+   2.2. Junte as sementes de mostarda e deixe estalar.<br>
+   2.3. Adicione as malaguetas verdes e deixe fritar ligeiramente.<br>
+   2.4. Acrescente as sementes de cominho, o alho (se usar), a pimenta vermelha em pó e o açafrão-da-terra, mexendo rapidamente.</li>
+  <li><strong>Adicionar os bredos e o coco</strong><br>
+   3.1. Junte imediatamente as folhas de bredos picadas, mexendo para envolver no tempero.<br>
+   3.2. Salpique com sal a gosto.<br>
+   3.3. Coloque o coco ralado no centro da frigideira, faça uma pequena “cova” entre as folhas e cubra com parte dos bredos, deixando cozinhar alguns minutos.</li>
+  <li><strong>Cozinhar e secar</strong><br>
+   4.1. Tape e cozinhe em lume brando cerca de 5 minutos, até as folhas murcharem.<br>
+   4.2. Destape e mexa, garantindo que o coco se distribui bem.<br>
+   4.3. Deixe cozinhar sem tampa alguns minutos, até não restar líquido visível; deve ficar um salteado seco.</li>
+  <li><strong>Servir</strong><br>
+   5.1. Ajuste o sal se necessário.<br>
+   5.2. Sirva quente com arroz e outros pratos indianos.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Elephants and the Coconut Trees<br>
+<a href="https://elephantsandthecoconuttrees.com/2025/05/amaranth-greens-stir-fry.html" target="_blank" rel="noopener">
+https://elephantsandthecoconuttrees.com/2025/05/amaranth-greens-stir-fry.html
+</a>
+</p>
+<p class="nota">Texto descrito em linguagem própria, mantendo o espírito da receita original.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="bredos-vermelhos-salteados-com-amendoim-thotakura-vepudu-r7"></a>
+<h2 id="bredos-vermelhos-salteados-com-amendoim-thotakura-vepudu">Bredos vermelhos salteados com amendoim (Thotakura Vepudu) <span class="source">[R7]</span></h2>
+<h4>Introdução</h4>
+<p>
+Este prato andhra de Thotakura Vepudu é um salteado de bredos vermelhos com uma base de sementes e leguminosas (chana dal e urad dal) e um pó aromático de alho, amendoim, coco seco e malaguetas. O resultado é um acompanhamento crocante, rico em proteína vegetal e com um sabor intenso a frutos secos e especiarias.
+</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 molho de bredos (red amaranth leaves), lavados e picados</li>
+  <li>1 colher de chá de sementes de cominho</li>
+  <li>1 colher de chá de sementes de mostarda</li>
+  <li>1/2 colher de sopa de urad dal (udad dal)</li>
+  <li>1/2 colher de sopa de chana dal</li>
+  <li>2–3 malaguetas secas vermelhas</li>
+  <li>Algumas folhas de caril</li>
+  <li>1–2 cebolas médias, cortadas em fatias finas</li>
+  <li>Sal a gosto</li>
+  <li>Óleo vegetal para saltear (q.b., suficiente para cobrir o fundo da frigideira)</li>
+  <li><strong>Para o pó de amendoim e alho (masala)</strong></li>
+  <li>5–6 dentes de alho</li>
+  <li>1 colher de sopa de amendoins torrados</li>
+  <li>1 colher de sopa de coco ralado seco</li>
+  <li>4–5 malaguetas secas vermelhas</li>
+  <li>1 colher de chá de grão-de-bico torrado (roasted chana)</li>
+  <li>Sal a gosto (separado, para o pó)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li><strong>Preparar o pó de amendoim e alho</strong><br>
+   1.1. Num moinho de especiarias ou processador pequeno, coloque os dentes de alho, os amendoins, o coco seco, as malaguetas secas e o grão-de-bico torrado.<br>
+   1.2. Junte uma pitada de sal.<br>
+   1.3. Triture até obter um pó grosso (não precisa ficar completamente fino). Reserve.</li>
+  <li><strong>Torrar as sementes e dals</strong><br>
+   2.1. Aqueça um pouco de óleo numa frigideira larga em lume médio.<br>
+   2.2. Junte as sementes de mostarda, as de cominho, o urad dal, o chana dal e as malaguetas secas.<br>
+   2.3. Salteie até o chana dal e o urad dal ficarem dourados e as sementes libertarem aroma.<br>
+   2.4. Adicione as folhas de caril e deixe fritar alguns segundos.</li>
+  <li><strong>Adicionar cebola e bredos</strong><br>
+   3.1. Acrescente a cebola fatiada e salteie até ficar macia e translúcida.<br>
+   3.2. Junte as folhas de bredos picadas e o sal. Mexa bem.<br>
+   3.3. Tape e deixe cozinhar em lume brando 5–6 minutos, até as folhas murcharem e ficarem tenras.</li>
+  <li><strong>Envolver o pó de amendoim</strong><br>
+   4.1. Quando os bredos estiverem cozidos, salpique o pó de amendoim e alho por cima.<br>
+   4.2. Mexa bem para envolver.<br>
+   4.3. Cozinhe mais 3–4 minutos em lume brando, sem tampa, para secar ligeiramente e permitir que o pó adira às folhas.</li>
+  <li><strong>Servir</strong><br>
+   5.1. Prove e ajuste o sal, se necessário.<br>
+   5.2. Sirva quente com chapati, roti ou arroz.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Saucepans and Spices<br>
+<a href="https://www.saucepansandspices.com/blog/red-amaranth-leaves-fry" target="_blank" rel="noopener">
+https://www.saucepansandspices.com/blog/red-amaranth-leaves-fry
+</a>
+</p>
+<p class="nota">Texto descrito em linguagem própria, mantendo o espírito da receita original.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="saag-de-bredos-com-tofu-vegan-amaranth-saag-paneer-r8"></a>
+<h2 id="saag-de-bredos-com-tofu-vegan-amaranth-saag-paneer">Saag de bredos com tofu (Vegan Amaranth Saag Paneer) <span class="source">[R8]</span></h2>
+<h4>Introdução</h4>
+<p>
+Esta receita é uma versão vegan de saag paneer, onde o paneer é substituído por cubos de tofu bem dourados, temperados com garam masala. O “saag” é feito com bredos cozinhados em tomate, especiarias e leite de coco, resultando num caril cremoso e aromático que acompanha na perfeição com arroz ou naan vegan.
+</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li><strong>Tofu “paneer”</strong></li>
+  <li>1 colher de sopa de azeite</li>
+  <li>450 g de tofu firme, escorrido e cortado em cubos de cerca de 1,5 cm</li>
+  <li>1 colher de sopa de garam masala</li>
+  <li><strong>Saag de bredos</strong></li>
+  <li>1 colher de sopa de azeite</li>
+  <li>1 colher de sopa de garam masala</li>
+  <li>1 colher de sopa de coentros moídos</li>
+  <li>1 colher de chá de flocos de pimenta vermelha (red pepper flakes)</li>
+  <li>1 colher de chá de cominhos moídos</li>
+  <li>1 cebola média, picada finamente</li>
+  <li>3 dentes de alho, ralados ou picados finamente</li>
+  <li>1 colher de sopa de gengibre fresco ralado</li>
+  <li>1 lata (cerca de 400 g) de tomate triturado (crushed tomatoes)</li>
+  <li>2 colheres de chá de açafrão-da-terra em pó</li>
+  <li>5 chávenas de folhas de bredos, bem lavadas e finamente picadas</li>
+  <li>1 lata (cerca de 400 ml) de leite de coco</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li><strong>Dourar o tofu</strong><br>
+   1.1. Aqueça 1 colher de sopa de azeite numa frigideira alta em lume médio.<br>
+   1.2. Junte os cubos de tofu e cozinhe, mexendo ocasionalmente, até estarem bem dourados em todos os lados.<br>
+   1.3. Polvilhe o tofu com 1 colher de sopa de garam masala e cozinhe mais 1–2 minutos, mexendo sempre para cobrir uniformemente.<br>
+   1.4. Retire o tofu para uma taça e reserve.</li>
+  <li><strong>Preparar o tempero de especiarias</strong><br>
+   2.1. Limpe rapidamente a frigideira com papel de cozinha, se necessário, e volte a colocá-la em lume médio.<br>
+   2.2. Adicione 1 colher de sopa de azeite.<br>
+   2.3. Junte 1 colher de sopa de garam masala, 1 colher de sopa de coentros moídos, os flocos de pimenta e o cominho moído.<br>
+   2.4. Cozinhe, mexendo continuamente, cerca de 1 minuto, até as especiarias libertarem aroma (sem queimar).</li>
+  <li><strong>Refogar cebola, alho e gengibre</strong><br>
+   3.1. Acrescente a cebola picada e salteie, mexendo frequentemente, até começar a dourar (cerca de 3 minutos).<br>
+   3.2. Junte o alho e o gengibre ralados, mexendo mais 1 minuto.</li>
+  <li><strong>Adicionar tomate e açafrão-da-terra</strong><br>
+   4.1. Junte o tomate triturado e o açafrão-da-terra.<br>
+   4.2. Mexa bem e deixe ferver suavemente alguns minutos, até o molho engrossar ligeiramente.</li>
+  <li><strong>Cozinhar os bredos</strong><br>
+   5.1. Com o lume em baixo, adicione as folhas de bredos picadas por cima do molho.<br>
+   5.2. Tape a frigideira e deixe que as folhas murchem, cerca de 2 minutos.<br>
+   5.3. Destape, mexa e junte o leite de coco.<br>
+   5.4. Aumente o lume para médio e deixe o saag voltar a ferver suavemente.</li>
+  <li><strong>Finalizar com o tofu</strong><br>
+   6.1. Junte os cubos de tofu dourados à frigideira.<br>
+   6.2. Cozinhe mais 5 minutos, mexendo de vez em quando, para aquecer o tofu e permitir que absorva os sabores.<br>
+   6.3. Ajuste o sal (se necessário; a receita original não indica sal, mas pode temperar ligeiramente a gosto).</li>
+  <li><strong>Servir</strong><br>
+   7.1. Sirva o saag de bredos com tofu quente, acompanhado de arroz basmati ou outro cereal, e se desejar naan vegan.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Meatless Makeovers<br>
+<a href="https://www.meatlessmakeovers.com/vegan-amaranth-saag-paneer/" target="_blank" rel="noopener">
+https://www.meatlessmakeovers.com/vegan-amaranth-saag-paneer/
+</a>
+</p>
+<p class="nota">Texto descrito em linguagem própria, mantendo o espírito da receita original.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-morna-de-tofu-bredos-e-leite-de-coco-r9"></a>
+<h2 id="salada-morna-de-tofu-bredos-e-leite-de-coco">Salada morna de tofu, bredos e leite de coco <span class="source">[R9]</span></h2>
+<h4>Introdução</h4>
+<p>
+Nesta salada morna, um molho cremoso de leite de coco, alho, malagueta, limão e sal envolve folhas de alface, bredos ligeiramente cozidos, cubos de tofu dourados, manjericão e abacate. É um prato leve mas nutritivo, adequado como refeição principal em dias mais quentes.
+</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>2 dentes de alho</li>
+  <li>1 pequena malagueta vermelha fresca, sem sementes, picada</li>
+  <li>Cerca de 1/2 colher de chá de sal fino</li>
+  <li>1/4 de chávena de óleo de girassol (ou outro óleo neutro)</li>
+  <li>8 cebolinhas/cebolos, finamente fatiados</li>
+  <li>1 lata (cerca de 400 ml) de leite de coco</li>
+  <li>Raspa fina e sumo de 1 limão</li>
+  <li>1 pequena cabeça de alface (tipo romana ou outra), sem caroço, cortada em tiras de cerca de 1,5 cm</li>
+  <li>2 chávenas de folhas de bredos, talos grossos removidos, grosseiramente picadas</li>
+  <li>200 g de tofu firme (aprox. 7 oz), cortado em cubos pequenos</li>
+  <li>1 pequeno molho de manjericão fresco, folhas cortadas em tiras</li>
+  <li>1 abacate maduro, cortado em fatias ou cubos</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li><strong>Preparar o molho de coco</strong><br>
+   1.1. Numa tigela pequena ou almofariz, esmague o alho com a malagueta vermelha e o sal até obter uma pasta.<br>
+   1.2. Aqueça uma frigideira grande em lume médio e junte o óleo de girassol.<br>
+   1.3. Adicione as cebolinhas e salteie brevemente até começarem a amolecer.<br>
+   1.4. Junte a pasta de alho e malagueta, mexendo 30 segundos.<br>
+   1.5. Deite o leite de coco na frigideira, junte a raspa e o sumo de limão e deixe levantar fervura suave.<br>
+   1.6. Reduza ligeiramente até o molho ficar cremoso mas ainda fluido. Reserve em lume muito brando.</li>
+  <li><strong>Cozinhar rapidamente os bredos</strong><br>
+   2.1. Noutra frigideira com um fio de óleo (ou na mesma frigideira, antes de fazer o molho), salteie as folhas de bredos durante 1–2 minutos, apenas até murcharem.<br>
+   2.2. Tempere com uma pitada de sal e reserve.</li>
+  <li><strong>Dourar o tofu</strong><br>
+   3.1. Na mesma frigideira dos bredos (ou noutra), aqueça um pouco de óleo se necessário.<br>
+   3.2. Junte os cubos de tofu e cozinhe, mexendo ocasionalmente, até ficarem dourados de todos os lados.<br>
+   3.3. Tempere levemente com sal, se desejar, e reserve.</li>
+  <li><strong>Montar a salada</strong><br>
+   4.1. Numa tigela grande, coloque a alface em tiras.<br>
+   4.2. Junte os bredos salteados e o tofu dourado.<br>
+   4.3. Adicione o manjericão e o abacate.</li>
+  <li><strong>Envolver com o molho</strong><br>
+   5.1. Deite o molho de leite de coco ainda morno sobre a mistura de salada.<br>
+   5.2. Envolva delicadamente para não esmagar o abacate nem o tofu.<br>
+   5.3. Prove e ajuste sal e limão, se necessário.</li>
+  <li><strong>Servir</strong><br>
+   6.1. Sirva imediatamente, enquanto o molho ainda está morno, como prato principal leve.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+101 Cookbooks<br>
+<a href="https://www.101cookbooks.com/tofu-amaranth-salad" target="_blank" rel="noopener">
+https://www.101cookbooks.com/tofu-amaranth-salad
+</a>
+</p>
+<p class="nota">Texto descrito em linguagem própria, mantendo o espírito da receita original.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="dal-de-bredos-na-panela-de-pressao-eletrica-instant-pot-amaranth-dal-r10"></a>
+<h2 id="dal-de-bredos-na-panela-de-pressao-eletrica-instant-pot-amaranth-dal">Dal de bredos na panela de pressão elétrica (Instant Pot Amaranth Dal) <span class="source">[R10]</span></h2>
+<h4>Introdução</h4>
+<p>
+Este dal combina lentilhas toor dal com bredos numa receita pensada para Instant Pot. Primeiro faz-se um refogado com cebola, alho, malagueta, sementes de mostarda e cominhos; depois juntam-se tomate, lentilhas, bredos, coentros em pó e um toque de açúcar. A cozedura sob pressão é rápida e o prato termina com tamarindo para dar acidez.
+</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1/2 chávena de toor dal (tuvar/arhar dal), lavada</li>
+  <li>1 molho de bredos (amaranth leaves), limpos, sem talos duros, picados</li>
+  <li>1 cebola média, cortada em cubos</li>
+  <li>2 tomates médios maduros, picados</li>
+  <li>3 malaguetas verdes (ajustar a gosto), picadas</li>
+  <li>2 dentes de alho, fatiados</li>
+  <li>1 1/2 colher de chá de coentros moídos</li>
+  <li>1/2 colher de chá de sementes de mostarda</li>
+  <li>1 colher de chá de sementes de cominho</li>
+  <li>2–3 colheres de chá de pasta de tamarindo (pode ajustar ao gosto)</li>
+  <li>1/2 colher de chá de açúcar</li>
+  <li>2 colheres de chá de óleo vegetal</li>
+  <li>1 colher de chá de sal (ou a gosto)</li>
+  <li>2 chávenas de água</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li><strong>Preparar a base na Instant Pot</strong><br>
+   1.1. Ligue a Instant Pot em modo “Sauté”.<br>
+   1.2. Adicione o óleo e deixe aquecer.<br>
+   1.3. Junte as sementes de mostarda e de cominho e deixe que as sementes de mostarda estourem.</li>
+  <li><strong>Refogar cebola, malagueta e alho</strong><br>
+   2.1. Acrescente a cebola picada, as malaguetas verdes e o alho fatiado.<br>
+   2.2. Salteie cerca de 2 minutos, até a cebola amolecer.</li>
+  <li><strong>Adicionar tomate e especiarias</strong><br>
+   3.1. Junte o tomate picado e cozinhe cerca de 1 minuto, mexendo.<br>
+   3.2. Adicione o coentro moído, o açúcar e o sal. Mexa bem.</li>
+  <li><strong>Juntar lentilhas e bredos</strong><br>
+   4.1. Acrescente os bredos picados e a toor dal lavada.<br>
+   4.2. Adicione as 2 chávenas de água e mexa para combinar tudo.<br>
+   4.3. Cancele o modo “Sauté”.</li>
+  <li><strong>Cozinhar sob pressão</strong><br>
+   5.1. Feche a tampa da Instant Pot e coloque a válvula na posição “Sealing”.<br>
+   5.2. Selecione “Pressure Cook” ou “Manual” e ajuste o tempo para 10 minutos em alta pressão.<br>
+   5.3. Quando o tempo terminar, deixe a pressão libertar naturalmente.</li>
+  <li><strong>Adicionar o tamarindo e ajustar a consistência</strong><br>
+   6.1. Abra a Instant Pot com cuidado.<br>
+   6.2. Adicione a pasta de tamarindo e volte a ligar o modo “Sauté”.<br>
+   6.3. Deixe o dal ferver suavemente 2–3 minutos para incorporar o tamarindo e ajustar a espessura (se estiver muito espesso, pode juntar um pouco mais de água).<br>
+   6.4. Prove e ajuste sal, tamarindo ou picante conforme o gosto.</li>
+  <li><strong>Servir</strong><br>
+   7.1. Sirva o dal de bredos quente, acompanhado de arroz branco ou integral, papad e pickles, ou com outros acompanhamentos indianos.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Madhu’s Everyday Indian<br>
+<a href="https://www.madhuseverydayindian.com/instant-pot-amaranth-dal/" target="_blank" rel="noopener">
+https://www.madhuseverydayindian.com/instant-pot-amaranth-dal/
+</a>
+</p>
+<p class="nota">Texto descrito em linguagem própria, mantendo o espírito da receita original.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

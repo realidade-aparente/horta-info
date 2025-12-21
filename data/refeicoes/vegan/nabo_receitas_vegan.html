@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Nabo – Receitas Vegan (Top 10)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+<body id="topo">
+<div class="masthead">
+  <header>
+    <h1>Nabo – Receitas Vegan (Top 10)</h1>
+  <p>Preparações à base de plantas</p>
+  </header>
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-de-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html" class="ativa">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+</div>
+
+<main>
+<article>
+
+<h2 id="receitas-preparados">Receitas e preparados – dieta vegan</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/nabo_receitas_vegetariana.html">(Vegetariana)</a>
+    <a href="/data/refeicoes/raw-vegan/nabo_receitas_raw-vegan.html">(Comida Viva)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro por ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+  <ol>
+    <li><a href="#sopa-cremosa-de-nabo-e-batata">Sopa cremosa de nabo e batata</a></li>
+    <li><a href="#guisado-de-grao-de-bico-com-nabo-e-especiarias-etiopes">Guisado de grão-de-bico com nabo e especiarias etíopes</a></li>
+    <li><a href="#sopa-cremosa-de-lentilhas-e-nabo-com-limao">Sopa cremosa de lentilhas e nabo com limão</a></li>
+    <li><a href="#ensopado-de-nabo-cremoso-com-vegetais-estilo-stew">Ensopado de nabo cremoso com vegetais (estilo “stew”)</a></li>
+    <li><a href="#sopa-assada-de-nabo-com-feijao-branco">Sopa assada de nabo com feijão branco</a></li>
+    <li><a href="#sopa-rustica-de-nabo-cenoura-e-legumes">Sopa rústica de nabo, cenoura e legumes</a></li>
+    <li><a href="#nabo-e-cenoura-salteados-com-cebolinha-side-dish">Nabo e cenoura salteados com cebolinha (side dish)</a></li>
+    <li><a href="#chips-de-nabo-assadas-laminas-estaladicas">Chips de nabo assadas (lâminas estaladiças)</a></li>
+    <li><a href="#nabo-assado-simples-com-ervas-e-azeite">Nabo assado simples com ervas e azeite</a></li>
+    <li><a href="#nabo-gratinado-vegan-com-pure-cremoso-batata-nabo">Nabo gratinado vegan com puré cremoso (batata + nabo)</a></li>
+  </ol>
+</div>
+
+<h2 id="resumo">Resumo das receitas (R1–R10)</h2>
+<ul>
+  <li><strong>R1. Sopa cremosa de nabo e batata</strong> — uma sopa suave e reconfortante onde o nabo e a batata são a base, resultando num puré cremoso e leve.</li>
+  <li><strong>R2. Guisado de grão-de-bico com nabo e especiarias etíopes</strong> — prato quente e aromático, com especiarias picantes, legumes, grão-de-bico e nabo, ideal para inverno.</li>
+  <li><strong>R3. Sopa cremosa de lentilhas e nabo com limão</strong> — versão mais leve e nutritiva combinando lentilhas, nabo e sabores cítricos, numa textura cremosa sem laticínios.</li>
+  <li><strong>R4. Ensopado de nabo cremoso com vegetais (estilo “stew”)</strong> — mistura de nabo, legumes e soja vegetal (opcional) numa textura rica, ideal com pão ou arroz.</li>
+  <li><strong>R5. Sopa assada de nabo com feijão branco</strong> — nabo assado transformado numa sopa com feijão branco, resultando numa textura sedosa e sabor profundo.</li>
+  <li><strong>R6. Sopa rústica de nabo, cenoura e legumes</strong> — sopa simples, feita com nabo e outros vegetais de raiz, reconfortante e nutritiva.</li>
+  <li><strong>R7. Nabo e cenoura salteados com cebolinha (side dish)</strong> — acompanhamento rápido e saboroso, com nabo e cenoura salteados, ótimo para acompanhar pratos principais.</li>
+  <li><strong>R8. Chips de nabo assadas (lâminas estaladiças)</strong> — alternativa saudável aos snacks, nabo cortado fino e assado até ficar crocante.</li>
+  <li><strong>R9. Nabo assado simples com ervas e azeite</strong> — nabo assado no forno com ervas e azeite, realçando o sabor natural da raiz.</li>
+  <li><strong>R10. Nabo gratinado vegan com puré cremoso (batata + nabo)</strong> — versão reconfortante de gratinado vegetariano, com puré misto de batata e nabo e cobertura vegetal.</li>
+</ul>
+
+<!-- SECÇÃO 3 — RECEITAS COMPLETAS -->
+
+<a id="sopa-cremosa-de-nabo-e-batata-r1"></a>
+<h2 id="sopa-cremosa-de-nabo-e-batata">Sopa cremosa de nabo e batata <span class="source">[R1]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma sopa reconfortante e cremosa, ideal para dias frios, onde o nabo e a batata se combinam para criar uma textura suave e sabor leve — perfeita para jantares simples.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>500 g de nabo, descascado e cortado em cubos</li>
+  <li>400 g de batatas, descascadas e em cubos</li>
+  <li>1 cebola média picada</li>
+  <li>2 dentes de alho picados</li>
+  <li>1 colher de sopa de azeite</li>
+  <li>1 litro de caldo de legumes (ou água + sal)</li>
+  <li>½ colher de chá de noz-moscada (opcional)</li>
+  <li>Sal e pimenta a gosto</li>
+  <li>Ervas frescas para guarnecer (ex.: salsa, cebolinho)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Aquece o azeite numa panela e refoga a cebola e o alho até ficarem translúcidos.</li>
+  <li>Adiciona os cubos de nabo e batata e mistura bem.</li>
+  <li>Verte o caldo de legumes até cobrir os vegetais e leva a ferver. Depois reduz o lume e cozinha cerca de 20–25 minutos, até nabo e batata estarem bem macios.</li>
+  <li>Com uma varinha mágica ou liquidificador, tritura até obter textura cremosa e lisa.</li>
+  <li>Junta noz-moscada (se usar), ajusta sal e pimenta a gosto.</li>
+  <li>Serve quente, guarnecido com ervas frescas.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Creamy Potato Turnip Soup — Babaganosh — <a href="https://www.babaganosh.org/creamy-turnip-potato-soup/" target="_blank" rel="noopener">https://www.babaganosh.org/creamy-turnip-potato-soup/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="guisado-de-grao-de-bico-com-nabo-e-especiarias-etiopes-r2"></a>
+<h2 id="guisado-de-grao-de-bico-com-nabo-e-especiarias-etiopes">Guisado de grão-de-bico com nabo e especiarias etíopes <span class="source">[R2]</span></h2>
+
+<h4>Introdução</h4>
+<p>Um guisado saboroso e aromático, com inspiração das especiarias etíopes, combinando o sabor terroso do nabo com grão-de-bico e legumes — reconfortante e nutritivo.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>500 g de nabos pequenos, limpos, descascados e cortados em cubos</li>
+  <li>1 lata de grão-de-bico (ou 250 g de grão-de-bico cozido)</li>
+  <li>1 cebola média picada</li>
+  <li>1 colher de chá de gengibre fresco ralado</li>
+  <li>2 colheres de chá de mistura de especiarias (berberé) ou, se preferir, 1 colher de chá de cúrcuma + 1 colher de chá de cominho + 1 colher de chá de pimenta-do-reino moída</li>
+  <li>2 cenouras médias em rodelas</li>
+  <li>3 talos de alho-francês (parte branca), fatiados</li>
+  <li>4 chávenas de caldo de legumes</li>
+  <li>1/2 chávena de leite vegetal de soja ou outra (opcional, para textura mais cremosa)</li>
+  <li>Sal a gosto</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Numa panela grande, refoga a cebola no azeite até ficar translúcida.</li>
+  <li>Junta o gengibre, as especiarias e o nabo; salteia uns minutos.</li>
+  <li>Adiciona as cenouras, o alho-francês, o grão-de-bico e o caldo de legumes. Cozinha em lume médio até os legumes estarem macios (~20 minutos).</li>
+  <li>Retira 1 chávena do guisado, tritura no liquidificador e devolve à panela — isso ajuda a engrossar o molho.</li>
+  <li>Se usares leite vegetal, adiciona agora, aquece sem ferver. Ajusta sal.</li>
+  <li>Serve quente, com pão ou arroz.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Chickpea and Turnip Stew with Ethiopian Spices — FatFreeVegan — <a href="https://blog.fatfreevegan.com/2007/02/chickpea-and-turnip-stew-with-ethiopian.html" target="_blank" rel="noopener">https://blog.fatfreevegan.com/2007/02/chickpea-and-turnip-stew-with-ethiopian.html</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-cremosa-de-lentilhas-e-nabo-com-limao-r3"></a>
+<h2 id="sopa-cremosa-de-lentilhas-e-nabo-com-limao">Sopa cremosa de lentilhas e nabo com limão <span class="source">[R3]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma sopa nutritiva e leve, combinando lentilhas vermelhas e nabo, com um toque de limão e ervas — textura aveludada e sabor ligeiramente ácido, ideal para refeições reconfortantes e saudáveis.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>400 g de nabo, cortado em cubos pequenos</li>
+  <li>200 g de lentilhas vermelhas, lavadas</li>
+  <li>1 cebola média picada</li>
+  <li>2 dentes de alho picados</li>
+  <li>1 talo de aipo picado (opcional)</li>
+  <li>1 colher de sopa de azeite</li>
+  <li>1 litro de caldo de legumes</li>
+  <li>Sumo de 1 limão + raspa da casca (opcional)</li>
+  <li>1 colher de chá de endro fresco ou seco (opcional)</li>
+  <li>Sal e pimenta a gosto</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Aquece o azeite numa panela e refoga a cebola, o alho e o aipo por 5 minutos.</li>
+  <li>Acrescenta os cubos de nabo, as lentilhas e o caldo de legumes. Leva a ferver.</li>
+  <li>Reduz o lume e cozinha 15–20 minutos, até o nabo e as lentilhas estarem macios.</li>
+  <li>Tritura com varinha mágica (ou liquidificador) até obter uma textura cremosa.</li>
+  <li>Adiciona o sumo de limão, raspa, o endro (se usar), ajusta sal e pimenta.</li>
+  <li>Serve quente, decorada com ervas frescas ou um fio de azeite.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Lemony Lentil Turnip Chowder — Healthy Midwestern Girl — <a href="https://healthymidwesterngirl.com/vegan-lemony-lentil-turnip-chowder/" target="_blank" rel="noopener">https://healthymidwesterngirl.com/vegan-lemony-lentil-turnip-chowder/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="ensopado-de-nabo-cremoso-com-vegetais-estilo-stew-r4"></a>
+<h2 id="ensopado-de-nabo-cremoso-com-vegetais-estilo-stew">Ensopado de nabo cremoso com vegetais (estilo “stew”) <span class="source">[R4]</span></h2>
+
+<h4>Introdução</h4>
+<p>Um prato reconfortante e simples, onde nabo e cenoura são estufados com soja vegetal (opcional) e legumes, resultando num guisado cremoso e nutritivo — ideal como prato principal com arroz ou pão.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 nabo grande, descascado e cortado em cubos</li>
+  <li>3 cenouras médias em rodelas</li>
+  <li>3 cebolas médias fatiadas</li>
+  <li>3 colheres de sopa de azeite</li>
+  <li>100 g de “soja texturizada” (opcional) ou feijão branco cozido</li>
+  <li>600 ml de água ou caldo de legumes</li>
+  <li>2 colheres de sopa de farinha de trigo integral dissolvidas em 100 ml de água fria (para engrossar)</li>
+  <li>Sal e pimenta a gosto</li>
+  <li>Opcional: 2 colheres de sopa de “natas vegetais” ou bebida vegetal cremosa</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Coze o nabo e as cenouras em água até ficarem macios, escorre bem.</li>
+  <li>Numa panela, aquece o azeite e adiciona a cebola, fritando até dourar.</li>
+  <li>Junta o nabo, as cenouras e a soja texturizada (ou feijão). Mistura.</li>
+  <li>Adiciona a água ou caldo, ajusta o sal e pimenta. Deixa ferver 2 minutos.</li>
+  <li>Mexe rapidamente a mistura de farinha com água fria e adiciona à panela, mexendo sempre.</li>
+  <li>Deixa ferver mais 2–3 minutos até engrossar. Se usar, adiciona as natas vegetais e aquece sem ferver.</li>
+  <li>Ajusta temperos e serve quente.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Creamy turnip stew — VeganSandra — <a href="https://www.vegansandra.com/2013/01/creamy-turnip-stew.html" target="_blank" rel="noopener">https://www.vegansandra.com/2013/01/creamy-turnip-stew.html</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-assada-de-nabo-com-feijao-branco-r5"></a>
+<h2 id="sopa-assada-de-nabo-com-feijao-branco">Sopa assada de nabo com feijão branco <span class="source">[R5]</span></h2>
+
+<h4>Introdução</h4>
+<p>Sopa reconfortante onde o nabo é assado primeiro para intensificar o sabor, depois misturado com feijão branco e transformado numa consistência aveludada — perfeita como entrada ou refeição leve.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>3-4 nabos médios, descascados e cortados em cubos</li>
+  <li>1 lata de feijão branco (cannellini) escorrido</li>
+  <li>1 cebola média picada</li>
+  <li>2 colheres de sopa de azeite</li>
+  <li>1 litro de caldo de legumes</li>
+  <li>2 dentes de alho picados</li>
+  <li>Sal e pimenta a gosto</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Pré-aquece o forno a 200 ºC. Numa assadeira, mistura os cubos de nabo com azeite, sal e pimenta. Assa 30–35 minutos, até ficarem macios e levemente dourados.</li>
+  <li>Numa panela, aquece um pouco de azeite e refoga a cebola e o alho até ficarem translúcidos.</li>
+  <li>Junta os nabos assados, o feijão branco e o caldo de legumes. Leva a ferver, depois reduz o lume e cozinha 10 minutos.</li>
+  <li>Tritura tudo com varinha mágica até obter uma sopa lisa e cremosa. Ajusta sal e pimenta.</li>
+  <li>5) Serve quente com um fio de azeite extra.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Roasted Turnip and White Bean Soup — SlavicVegan — <a href="https://www.slavicvegan.com/2020/02/29/roasted-turnip-and-white-bean-soup/" target="_blank" rel="noopener">https://www.slavicvegan.com/2020/02/29/roasted-turnip-and-white-bean-soup/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-rustica-de-nabo-cenoura-e-legumes-r6"></a>
+<h2 id="sopa-rustica-de-nabo-cenoura-e-legumes">Sopa rústica de nabo, cenoura e legumes <span class="source">[R6]</span></h2>
+
+<h4>Introdução</h4>
+<p>Sabor rústico e simples, aproveitando as raízes — nabo, cenoura e outros vegetais — para criar uma sopa nutritiva e reconfortante, ideal para dias frescos e refeições ligeiras.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>2 nabos médios cortados em cubos</li>
+  <li>2 cenouras médias em rodelas</li>
+  <li>1 cebola grande picada</li>
+  <li>2 colheres de sopa de azeite</li>
+  <li>1,2 litros de caldo de legumes</li>
+  <li>2 folhas de louro</li>
+  <li>1 ramo de tomilho (ou 1 colher de chá seco)</li>
+  <li>Sal e pimenta a gosto</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Aquece o azeite numa panela média e refoga a cebola até ficar macia.</li>
+  <li>Adiciona os nabos, as cenouras, o louro e o tomilho. Salteia 2–3 minutos.</li>
+  <li>Verte o caldo de legumes, leva a ferver. Depois reduz o lume e cozinha 25–30 minutos, até os vegetais estarem macios.</li>
+  <li>Retira as folhas de louro, corrige o sal e a pimenta. Serve quente.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Vegan Irish Vegetable Stew (versão simplificada) — Thyme and Love — <a href="https://thymeandlove.com/vegan-irish-vegetable-stew/" target="_blank" rel="noopener">https://thymeandlove.com/vegan-irish-vegetable-stew/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="nabo-e-cenoura-salteados-com-cebolinha-side-dish-r7"></a>
+<h2 id="nabo-e-cenoura-salteados-com-cebolinha-side-dish">Nabo e cenoura salteados com cebolinha (side dish) <span class="source">[R7]</span></h2>
+
+<h4>Introdução</h4>
+<p>Um acompanhamento simples e saboroso: nabo e cenoura salteados com cebola ou cebolinha, realçando o sabor natural das raízes — rápido de fazer e versátil para várias refeições.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>2 nabos médios descascados e fatiados em meias-luas finas</li>
+  <li>2 cenouras médias fatiadas em rodelas finas</li>
+  <li>1 cebola média fatiada fina (ou cebolinha)</li>
+  <li>2 colheres de sopa de azeite</li>
+  <li>Sal e pimenta a gosto</li>
+  <li>Ervas secas ou frescas (ex.: tomilho, salsa) a gosto</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Aquece o azeite numa frigideira em lume médio. Adiciona a cebola ou cebolinha e salteia até ficar macia.</li>
+  <li>Junta as rodelas de nabo e cenoura. Salteia até amaciarem e começarem a dourar nas bordas (~8–10 minutos), mexendo regularmente.</li>
+  <li>Tempera com sal, pimenta e ervas a gosto. Mistura bem e serve quente como acompanhamento.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Veggie Society – versão inspirada em técnicas de salteados de raízes (e combinações semelhantes) — <a href="https://veggiesociety.com/fried-cabbage-and-noodles-recipe/" target="_blank" rel="noopener">https://veggiesociety.com/fried-cabbage-and-noodles-recipe/</a> *(adaptado para nabo e cenoura)*
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="chips-de-nabo-assadas-laminas-estaladicas-r8"></a>
+<h2 id="chips-de-nabo-assadas-laminas-estaladicas">Chips de nabo assadas (lâminas estaladiças) <span class="source">[R8]</span></h2>
+
+<h4>Introdução</h4>
+<p>Snack saudável e crocante: o nabo é fatiado finamente e assado no forno até ficar estaladiço — ideal como alternativa a batatas fritas ou snacks processados.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>3-4 nabos médios, fatiados muito finamente (mandolina preferível)</li>
+  <li>2 colheres de sopa de azeite</li>
+  <li>1 colher de chá de sal grosso (ou a gosto)</li>
+  <li>Pimenta preta e especiarias ao gosto (ex.: páprica, alho em pó, tomilho, alecrim)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Pré-aquece o forno a 180 ºC. Forra um tabuleiro com papel vegetal.</li>
+  <li>Numa tigela, mistura as fatias de nabo com azeite, sal e especiarias. Mistura bem para que todas fiquem cobertas.</li>
+  <li>Disponha as fatias em camada única no tabuleiro, sem sobrepor.</li>
+  <li>Leva ao forno por 15–25 minutos, virando as fatias a meio do tempo, até ficarem douradas e crocantes. Observa cuidadosamente para não queimarem.</li>
+  <li>Deixa arrefecer completamente — as fatias irão estaladiças. Conserva num frasco fechado.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+“30-Minute Cheesy Kale Chips” adaptado para nabo — Minimalist Baker — <a href="https://minimalistbaker.com/30-minute-cheesy-kale-chips/" target="_blank" rel="noopener">https://minimalistbaker.com/30-minute-cheesy-kale-chips/</a> *(técnica adaptada para nabo)*
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="nabo-assado-simples-com-ervas-e-azeite-r9"></a>
+<h2 id="nabo-assado-simples-com-ervas-e-azeite">Nabo assado simples com ervas e azeite <span class="source">[R9]</span></h2>
+
+<h4>Introdução</h4>
+<p>Simples e saboroso: nabo assado no forno com azeite, ervas e sal, realçando o sabor natural da raiz — acompanhamento ideal para vários pratos.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>4-5 nabos médios, descascados e cortados em gomos ou cubos</li>
+  <li>3 colheres de sopa de azeite</li>
+  <li>1 colher de chá de tomilho seco (ou fresco)</li>
+  <li>1 colher de chá de alecrim seco (ou fresco)</li>
+  <li>2 dentes de alho esmagados (opcional)</li>
+  <li>Sal e pimenta a gosto</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Pré-aquece o forno a 200 ºC. Forra uma assadeira com papel vegetal.</li>
+  <li>Numa tigela, mistura os nabos com azeite, alho (se usar), ervas, sal e pimenta.</li>
+  <li>Espalha os pedaços na assadeira em camada única.</li>
+  <li>Assa cerca de 30–35 minutos, mexendo a meio do tempo, até os nabos ficarem macios e dourados.</li>
+  <li>5) Serve quente como acompanhamento ou base de prato principal.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Roasted Turnups Recipe — Eat the Vegan Rainbow — <a href="https://eattheveganrainbow.com/2020/04/turnips-roasted-recipe-roasted-turnips/" target="_blank" rel="noopener">https://eattheveganrainbow.com/2020/04/turnips-roasted-recipe-roasted-turnips/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="nabo-gratinado-vegan-com-pure-cremoso-batata-nabo-r10"></a>
+<h2 id="nabo-gratinado-vegan-com-pure-cremoso-batata-nabo">Nabo gratinado vegan com puré cremoso (batata + nabo) <span class="source">[R10]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma opção reconfortante e cremosa, combinando puré de batata e nabo com textura suave, coberto por “queijo” vegetal ou levedura nutricional e tostado no forno — ideal para substituir gratinados tradicionais com queijo.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>300 g de nabo, descascado e cortado em cubos</li>
+  <li>300 g de batatas, descascadas e em cubos</li>
+  <li>1 cebola pequena picada</li>
+  <li>2 colheres de sopa de azeite</li>
+  <li>150 ml de bebida vegetal cremosa (aveia, soja, amêndoa…)</li>
+  <li>3–4 colheres de sopa de levedura nutricional (para “sabor a queijo”)</li>
+  <li>Sal, pimenta e noz-moscada a gosto</li>
+  <li>Opcional: alho em pó ou ervas para sabor extra</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Coze o nabo e as batatas em água salgada até ficarem bem macios. Escorre.</li>
+  <li>Numa tigela grande, esmagar (purê) o nabo e a batata com um garfo ou esmaga-purê. Adicionar a bebida vegetal, azeite, levedura nutricional, sal, pimenta e noz-moscada. Misturar até obter puré cremoso.</li>
+  <li>Pré-aquece o forno a 190 ºC. Coloca o puré numa travessa refratária, alisando a superfície.</li>
+  <li>Se quiser, polvilha com alho em pó ou ervas. Leva ao forno 20–25 minutos até a superfície dourar ligeiramente.</li>
+  <li>5) Serve quente como acompanhamento ou prato principal leve.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Creamy turnip stew / ideias de gratinado adaptadas — VeganSandra — <a href="https://www.vegansandra.com/2013/01/creamy-turnip-stew.html" target="_blank" rel="noopener">https://www.vegansandra.com/2013/01/creamy-turnip-stew.html</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

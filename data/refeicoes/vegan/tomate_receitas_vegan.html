@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Tomate – Receitas Vegan (Top 10)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+<body id="topo">
+<div class="masthead">
+  <header>
+    <h1>Tomate – Receitas Vegan (Top 10)</h1>
+  <p>Preparações à base de plantas</p>
+  </header>
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-de-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html" class="ativa">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+</div>
+
+<main>
+<article>
+
+<h2 id="receitas-preparados">Receitas e preparados – dieta vegan</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/tomate_receitas_vegetariana.html">(Vegetariana)</a>
+    <a href="/data/refeicoes/raw-vegan/tomate_receitas_raw-vegan.html">(Comida Viva)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro por ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+  <ol>
+    <li><a href="#massa-puttanesca-de-tomate-cherry-vegan">Massa puttanesca de tomate cherry (vegan)</a></li>
+    <li><a href="#massa-de-tomate-cherry-e-manjericao-sem-oleo">Massa de tomate cherry e manjericão sem óleo</a></li>
+    <li><a href="#confit-de-tomate-cereja-no-forno">Confit de tomate cereja no forno</a></li>
+    <li><a href="#tomatinhos-cherry-gratinados-com-pao-ralado-e-uvas-passas">Tomatinhos cherry gratinados com pão ralado e uvas-passas</a></li>
+    <li><a href="#pomodorini-scattarisciati-a-moda-da-puglia">Pomodorini scattarisciati à moda da Puglia</a></li>
+    <li><a href="#salada-de-gravatinha-ao-creme-de-abacate-com-tomate-cereja">Salada de gravatinha ao creme de abacate com tomate-cereja</a></li>
+    <li><a href="#refogado-de-couve-de-bruxelas-com-tomate-cereja">Refogado de couve-de-bruxelas com tomate-cereja</a></li>
+    <li><a href="#salada-de-abacate-com-sementes-de-girassol-e-tomate-cereja">Salada de abacate com sementes de girassol e tomate-cereja</a></li>
+    <li><a href="#salada-citrica-de-tomate-cereja">Salada cítrica de tomate cereja</a></li>
+    <li><a href="#tomates-cherry-e-curgete-salteados-com-pinhoes-e-manjerona">Tomates cherry e curgete salteados com pinhões e manjerona</a></li>
+  </ol>
+</div>
+
+<h2 id="resumo">Resumo das receitas (R1–R10)</h2>
+<ul>
+  <li><strong>R1. Massa puttanesca de tomate cherry (vegan)</strong> – Spaghetti envolvido num molho tipo puttanesca feito no forno, com tomatinhos cherry, azeitonas pretas, alho, chalota, alcaparras, ervas frescas e toque de limão e vinagre balsâmico, sem anchovas nem laticínios.</li>
+  <li><strong>R2. Massa de tomate cherry e manjericão sem óleo</strong> – Pasta salteada em frigideira com tomate cherry suculento, cebola, alho e muito manjericão, terminada com um fio de vinagre balsâmico. Receita rápida, leve e totalmente sem óleo.</li>
+  <li><strong>R3. Confit de tomate cereja no forno</strong> – Tomatinhos cereja vão ao forno cobertos com azeite, alho, tomilho, sal e um pouco de açúcar até ficarem quase caramelizados, formando uma conserva aromática para servir em pão, massas ou saladas.</li>
+  <li><strong>R4. Tomatinhos cherry gratinados com pão ralado e uvas-passas</strong> – Metades de tomate cherry são cobertas com uma mistura de pão ralado, salsa, alcaparras, uvas-passas e azeite, indo ao forno até ficarem douradas e crocantes à superfície, macias por dentro.</li>
+  <li><strong>R5. Pomodorini scattarisciati à moda da Puglia</strong> – Tomatinhos maduros são salteados rapidamente com cebola, alho, alcaparras, orégãos, azeite e manjericão, até “rebentarem” e formarem um molho rústico perfeito para acompanhar pão, massa ou legumes grelhados.</li>
+  <li><strong>R6. Salada de gravatinha ao creme de abacate com tomate-cereja</strong> – Massa gravatinha é envolvida num creme de abacate com manjericão e limão, misturada com tomate-cereja, espinafre e flores de abóbora, resultando numa salada morna ou fria muito aromática.</li>
+  <li><strong>R7. Refogado de couve-de-bruxelas com tomate-cereja</strong> – Couve-de-bruxelas salteadas em azeite com tomate-cereja, salsa e sal formam um acompanhamento simples, rápido e leve, com contraste entre o vegetal mais denso e o tomate doce e ácido.</li>
+  <li><strong>R8. Salada de abacate com sementes de girassol e tomate-cereja</strong> – Rodelas de tomate-cereja, folhas verdes e cubos de abacate são temperados com limão, sal, pimenta e cobertos com sementes de girassol tostadas, numa salada completa e rica em gordura saudável.</li>
+  <li><strong>R9. Salada cítrica de tomate cereja</strong> – Tomate cereja cortado ao meio é temperado com limão, raspas de laranja, azeite, sal, pimenta e ervas frescas, criando uma salada fresca, simples e com um toque cítrico marcante.</li>
+  <li><strong>R10. Tomates cherry e curgete salteados com pinhões e manjerona</strong> – Curgete em meias-luas e tomates cherry coloridos são salteados com alho, pinhões, ervas frescas e azeite, compondo um acompanhamento rápido que combina crocância, doçura e aromas mediterrânicos.</li>
+</ul>
+
+<!-- SECÇÃO 3 — RECEITAS COMPLETAS -->
+
+<a id="massa-puttanesca-de-tomate-cherry-vegan-r1"></a>
+<h2 id="massa-puttanesca-de-tomate-cherry-vegan">Massa puttanesca de tomate cherry (vegan) <span class="source">[R1]</span></h2>
+<h4>Introdução</h4>
+<p>
+Uma versão vegan da clássica puttanesca, onde o sabor intenso vem dos tomatinhos cherry assados com azeitonas, alcaparras, alho e ervas. É um prato de massa cheio de carácter, mas relativamente leve e muito rápido de preparar.
+</p>
+
+<h4>Ingredientes</h4>
+<p>Para 4 porções:</p>
+<ul>
+  <li>12 oz (cerca de 340 g) de spaghetti (pode ser sem glúten)</li>
+  <li>3 chávenas de tomate cherry inteiro (cerca de 400–450 g)</li>
+  <li>1 chalota grande fatiada</li>
+  <li>5 dentes de alho laminados</li>
+  <li>1 chávena de azeitonas pretas Kalamata descaroçadas e picadas</li>
+  <li>3 colheres de sopa de alcaparras escorridas</li>
+  <li>1/4 chávena de salsa fresca picada</li>
+  <li>1/4 chávena de manjericão fresco picado</li>
+  <li>1/3 chávena de azeite</li>
+  <li>2 colheres de sopa de vinagre balsâmico</li>
+  <li>2 colheres de sopa de sumo de limão</li>
+  <li>Sal e pimenta preta a gosto</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Pré-aquece o forno a 220 °C.</li>
+  <li>Numa panela de ferro ou assadeira funda que possa ir ao forno, junta o tomate cherry, a chalota, o alho, as azeitonas, as alcaparras, a salsa, o manjericão, o azeite, o vinagre balsâmico, o sumo de limão, sal e pimenta. Envolve bem.</li>
+  <li>Leva ao forno cerca de 20 minutos, mexendo a meio, até os tomates rebentarem e o molho ficar bem suculento.</li>
+  <li>Enquanto isso, coze o spaghetti em água abundante com sal, seguindo as instruções da embalagem, até ficar al dente. Escorre.</li>
+  <li>Junta a massa escorrida diretamente ao tacho com o molho de tomate cherry, envolve bem para que o spaghetti fique coberto pelo molho.</li>
+  <li>Ajusta o sal, acrescenta mais pimenta se quiseres e serve de imediato, decorado com folhas extra de manjericão ou salsa.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Healthy Little Vittles<br>
+<a href="https://healthylittlevittles.com/vegan-cherry-tomato-puttanesca/" target="_blank" rel="noopener">
+https://healthylittlevittles.com/vegan-cherry-tomato-puttanesca/
+</a>
+</p>
+<p class="nota">Texto descrito em linguagem própria, mantendo o espírito da receita original.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="massa-de-tomate-cherry-e-manjericao-sem-oleo-r2"></a>
+<h2 id="massa-de-tomate-cherry-e-manjericao-sem-oleo">Massa de tomate cherry e manjericão sem óleo <span class="source">[R2]</span></h2>
+<h4>Introdução</h4>
+<p>
+Esta massa usa a técnica de “saltear sem óleo”: os legumes são cozinhados com um pouco de água e o próprio sumo do tomate. Fica um prato leve, rico em manjericão fresco e com um toque final de balsâmico.
+</p>
+
+<h4>Ingredientes</h4>
+<p>Para 4 porções:</p>
+<ul>
+  <li>340 g de massa curta ou longa (penne, fusilli, spaghetti, etc.)</li>
+  <li>500 g de tomate cherry, inteiros ou cortados ao meio se forem grandes</li>
+  <li>1 cebola média picada</li>
+  <li>3 dentes de alho picados</li>
+  <li>1/2 chávena de folhas de manjericão fresco rasgadas</li>
+  <li>2–3 colheres de sopa de vinagre balsâmico (mais a gosto)</li>
+  <li>1/2 chávena de água (para ir acrescentando ao refogado)</li>
+  <li>Sal e pimenta preta a gosto</li>
+  <li>(Opcional) flocos de malagueta para picante</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Coze a massa em água abundante com sal até ficar al dente. Reserva uma chávena da água da cozedura e escorre a massa.</li>
+  <li>Numa frigideira grande antiaderente, aquece 2–3 colheres de sopa de água. Junta a cebola e cozinha em lume médio, mexendo, até ficar translúcida. Se começar a colar, adiciona um pouco mais de água.</li>
+  <li>Acrescenta o alho e deixa cozinhar 1 minuto, mexendo para não queimar.</li>
+  <li>Junta o tomate cherry, sal, pimenta e, se quiseres, flocos de malagueta. Cozinha 8–10 minutos, até os tomates rebentarem e largarem bastante sumo.</li>
+  <li>Adiciona a massa cozida, parte do manjericão e um pouco da água de cozedura reservada, só o suficiente para envolver tudo num molho leve.</li>
+  <li>Desliga o lume, junta o resto do manjericão e o vinagre balsâmico. Prova e ajusta sal, pimenta e balsâmico.</li>
+  <li>Serve de imediato, simples ou com levedura nutricional polvilhada por cima, se quiseres um toque “queijoso”.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+No Sweat Vegan<br>
+<a href="https://nosweatvegan.com/cherry-tomato-basil-pasta-vegan-oil-free/" target="_blank" rel="noopener">
+https://nosweatvegan.com/cherry-tomato-basil-pasta-vegan-oil-free/
+</a>
+</p>
+<p class="nota">Receita adaptada e sistematizada em passos claros a partir da fonte original.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="confit-de-tomate-cereja-no-forno-r3"></a>
+<h2 id="confit-de-tomate-cereja-no-forno">Confit de tomate cereja no forno <span class="source">[R3]</span></h2>
+<h4>Introdução</h4>
+<p>
+O confit de tomate cereja é uma “conserva” em azeite feita a baixa temperatura. Os tomates ficam doces, macios e muito aromáticos, ideais para servir em pão, massas, risotos ou como topping de saladas.
+</p>
+
+<h4>Ingredientes</h4>
+<p>Para 1 frasco médio:</p>
+<ul>
+  <li>350 g de tomate cereja inteiro, lavados</li>
+  <li>3 dentes de alho inteiros, com casca</li>
+  <li>Ramos de tomilho fresco (ou alecrim)</li>
+  <li>1 colher de chá de sal</li>
+  <li>1/4 chávena de açúcar demerara ou mascavado claro</li>
+  <li>1/2 chávena de azeite de oliva extra virgem</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Pré-aquece o forno a 160 °C.</li>
+  <li>Coloca os tomates numa travessa de forno, numa só camada, sem sobrepor.</li>
+  <li>Junta os dentes de alho com casca e os ramos de tomilho. Polvilha com o sal e o açúcar.</li>
+  <li>Rega com o azeite, garantindo que todos os tomates ficam ligeiramente envolvidos.</li>
+  <li>Leva ao forno por 40–45 minutos, mexendo delicadamente 1–2 vezes, até os tomates ficarem murchos, macios e ligeiramente caramelizados.</li>
+  <li>Deixa arrefecer completamente, transfere tudo (tomates, alho, ervas e azeite) para um frasco esterilizado com tampa.</li>
+  <li>Guarda no frigorífico. Serve sobre pão torrado, em massas ou saladas. Consumir em alguns dias.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Santo Legume<br>
+<a href="https://www.santolegume.com.br/confit-de-tomate-cereja/" target="_blank" rel="noopener">
+https://www.santolegume.com.br/confit-de-tomate-cereja/
+</a>
+</p>
+<p class="nota">Texto organizado para este guia com base na receita de referência.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="tomatinhos-cherry-gratinados-com-pao-ralado-e-uvas-passas-r4"></a>
+<h2 id="tomatinhos-cherry-gratinados-com-pao-ralado-e-uvas-passas">Tomatinhos cherry gratinados com pão ralado e uvas-passas <span class="source">[R4]</span></h2>
+<h4>Introdução</h4>
+<p>
+Um acompanhamento italiano muito simples: os tomatinhos são cobertos com uma farofa de pão ralado, ervas, uvas-passas e alcaparras, e depois gratinados até ficarem dourados. A combinação de doce, ácido e salgado é excelente.
+</p>
+
+<h4>Ingredientes</h4>
+<p>Para 4 porções como acompanhamento:</p>
+<ul>
+  <li>400 g de tomate cherry (ou outros tomatinhos)</li>
+  <li>150 g de pão ralado (de preferência caseiro)</li>
+  <li>1 molho pequeno de salsa fresca picada</li>
+  <li>5 alcaparras em sal, lavadas e picadas</li>
+  <li>20 g de uvas-passas</li>
+  <li>1 dente de alho pequeno picado finamente</li>
+  <li>1 colher de sopa de vinagre</li>
+  <li>Azeite q.b.</li>
+  <li>Sal e pimenta preta q.b.</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Pré-aquece o forno a 190–200 °C.</li>
+  <li>Lava os tomates e corta-os ao meio. Dispõe as metades, com a parte cortada para cima, numa assadeira ligeiramente untada com azeite.</li>
+  <li>Numa taça, mistura o pão ralado, a salsa, as alcaparras, as uvas-passas picadas grosseiramente, o alho, o vinagre, um fio generoso de azeite, sal e pimenta. Deverá formar uma mistura húmida, mas solta.</li>
+  <li>Distribui esta mistura por cima dos tomates, pressionando ligeiramente para aderir.</li>
+  <li>Regue com mais um fio de azeite e leva ao forno 20–25 minutos, até o topo estar dourado e crocante e os tomates macios.</li>
+  <li>Serve quente ou à temperatura ambiente, como acompanhamento de pratos de massa, grelhados vegetais ou como parte de um mezze.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Il Caldo Sapore del Sud (GialloZafferano blog)<br>
+<a href="https://blog.giallozafferano.it/ilcaldosaporedelsud/ricetta-pomodorini-al-forno-gratinati/" target="_blank" rel="noopener">
+https://blog.giallozafferano.it/ilcaldosaporedelsud/ricetta-pomodorini-al-forno-gratinati/
+</a>
+</p>
+<p class="nota">Receita organizada em sequência de passos, mantendo o conteúdo essencial da fonte.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pomodorini-scattarisciati-a-moda-da-puglia-r5"></a>
+<h2 id="pomodorini-scattarisciati-a-moda-da-puglia">Pomodorini scattarisciati à moda da Puglia <span class="source">[R5]</span></h2>
+<h4>Introdução</h4>
+<p>
+“Scattarisciati” são tomatinhos que rebentam na frigideira em azeite, com cebola, alho e ervas. É um prato típico da Puglia, muito simples e rápido, que funciona como molho ou acompanhamento.
+</p>
+
+<h4>Ingredientes</h4>
+<p>Para 4 porções:</p>
+<ul>
+  <li>500 g de tomate cherry ou outros tomatinhos bem maduros</li>
+  <li>1 cebolinho ou cebola pequena fatiada</li>
+  <li>1 dente de alho picado</li>
+  <li>1 colher de sopa de alcaparras em sal (lavadas)</li>
+  <li>2 colheres de sopa de azeite de oliva</li>
+  <li>Orégãos secos q.b.</li>
+  <li>Folhas de manjericão fresco q.b.</li>
+  <li>(Opcional) uma mão cheia de azeitonas pretas</li>
+  <li>Sal e pimenta preta a gosto</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Lava os tomates e, se forem grandes, corta-os ao meio.</li>
+  <li>Aquece o azeite numa frigideira ampla em lume médio. Junta a cebola e o alho e refoga até amaciarem.</li>
+  <li>Adiciona as alcaparras e, se quiseres, as azeitonas, e deixa ganhar aroma por 1 minuto.</li>
+  <li>Junta os tomates, sal, pimenta e uma boa pitada de orégãos. Aumenta o lume.</li>
+  <li>Cozinha 8–10 minutos, mexendo de vez em quando, até os tomates rebentarem e formarem um molho espesso, mas ainda com alguns pedaços inteiros.</li>
+  <li>Desliga o lume, junta folhas de manjericão rasgadas e prova o sal.</li>
+  <li>Serve com pão torrado, sobre massa simples, ou como acompanhamento de legumes grelhados.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Viaggiare Vegan<br>
+<a href="https://viaggiarevegan.it/puglia-pomodorini-scattarisciati/" target="_blank" rel="noopener">
+https://viaggiarevegan.it/puglia-pomodorini-scattarisciati/
+</a>
+</p>
+<p class="nota">Texto estruturado com base na fonte, mantendo o perfil e técnica da receita.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-de-gravatinha-ao-creme-de-abacate-com-tomate-cereja-r6"></a>
+<h2 id="salada-de-gravatinha-ao-creme-de-abacate-com-tomate-cereja">Salada de gravatinha ao creme de abacate com tomate-cereja <span class="source">[R6]</span></h2>
+<h4>Introdução</h4>
+<p>
+Uma salada de massa robusta, com molho cremoso de abacate e manjericão, enriquecida com tomate-cereja, espinafre e flores de abóbora. Pode ser servida morna ou fria, ideal para piqueniques.
+</p>
+
+<h4>Ingredientes</h4>
+<p>Para 4 porções:</p>
+<ul>
+  <li>350 g de massa farfalle (gravatinha)</li>
+  <li>300 g de tomate-cereja</li>
+  <li>100 g de folhas de espinafre miúdo</li>
+  <li>1 abacate maduro</li>
+  <li>10 folhas de manjericão fresco</li>
+  <li>4 flores de abóbora (opcional)</li>
+  <li>Sumo de 1 limão</li>
+  <li>1 dente de alho</li>
+  <li>1 colher de sopa de pão ralado</li>
+  <li>5 colheres de sopa de azeite</li>
+  <li>Sal e uma pitada de açúcar a gosto</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Coze a massa em água com sal até ficar al dente. Escorre e reserva.</li>
+  <li>Escalda rapidamente os tomates-cereja em água a ferver, escorre e dispõe-os no fundo de uma forma ligeiramente untada com azeite.</li>
+  <li>Lâmina o dente de alho e junta-o aos tomates na forma. Rega com um fio de azeite, polvilha com o pão ralado, uma pitada de sal e outra de açúcar. Leva ao forno a 200 °C por cerca de 20 minutos, até começarem a dourar.</li>
+  <li>No liquidificador, tritura o abacate com o sumo de limão, o restante azeite, o manjericão, sal e um pouco de água, até obter um creme espesso e liso.</li>
+  <li>Numa taça grande, junta a massa, os tomates assados com o seu suco, o espinafre e as flores de abóbora em tiras. Envolve com o creme de abacate.</li>
+  <li>Prova e ajusta sal e acidez (mais limão, se necessário). Serve de imediato ou leva ao frio para servir como salada.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Petitchef / Cantinho Vegetariano<br>
+<a href="https://pt.petitchef.com/receitas/entrada/salada-de-gravatinha-ao-creme-de-abacate-vegana-fid-622413" target="_blank" rel="noopener">
+https://pt.petitchef.com/receitas/entrada/salada-de-gravatinha-ao-creme-de-abacate-vegana-fid-622413
+</a>
+</p>
+<p class="nota">Texto organizado para este guia com base na fonte de referência.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="refogado-de-couve-de-bruxelas-com-tomate-cereja-r7"></a>
+<h2 id="refogado-de-couve-de-bruxelas-com-tomate-cereja">Refogado de couve-de-bruxelas com tomate-cereja <span class="source">[R7]</span></h2>
+<h4>Introdução</h4>
+<p>
+Um salteado rápido que combina a couve-de-bruxelas com tomates-cereja, formando um acompanhamento vegetal simples, económico e marcadamente vegetal, ótimo para acompanhar pratos de grão, arroz ou tofu grelhado.
+</p>
+
+<h4>Ingredientes</h4>
+<p>Para 2 porções (como acompanhamento generoso):</p>
+<ul>
+  <li>400 g de couve-de-bruxelas</li>
+  <li>10 tomates-cereja médios</li>
+  <li>2 colheres de sopa de azeite de oliva</li>
+  <li>1 colher de sopa de salsa desidratada (ou fresca picada)</li>
+  <li>Sal a gosto</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Limpa as couve-de-bruxelas, retirando folhas externas danificadas. Lava e corta cada uma ao meio.</li>
+  <li>Lava os tomates-cereja e corta-os também ao meio.</li>
+  <li>Aquece o azeite numa frigideira larga em lume médio. Junta as couve-de-bruxelas e salteia 5 minutos, mexendo de vez em quando, até começarem a ficar macias e ligeiramente douradas.</li>
+  <li>Junta os tomates, a salsa e sal a gosto. Cozinha mais 1–2 minutos, mexendo delicadamente, só até os tomates aquecerem e começarem a amolecer, mas sem desfazer.</li>
+  <li>Serve de imediato, como acompanhamento.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Petitchef / Cantinho Vegetariano<br>
+<a href="https://pt.petitchef.com/receitas/outro/refogado-de-couve-de-bruxelas-com-tomate-cereja-vegana-fid-715116" target="_blank" rel="noopener">
+https://pt.petitchef.com/receitas/outro/refogado-de-couve-de-bruxelas-com-tomate-cereja-vegana-fid-715116
+</a>
+</p>
+<p class="nota">Receita estruturada em passos claros, mantendo o conteúdo original.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-de-abacate-com-sementes-de-girassol-e-tomate-cereja-r8"></a>
+<h2 id="salada-de-abacate-com-sementes-de-girassol-e-tomate-cereja">Salada de abacate com sementes de girassol e tomate-cereja <span class="source">[R8]</span></h2>
+<h4>Introdução</h4>
+<p>
+Salada fresca e colorida, com base de folhas verdes, tomate-cereja e abacate, finalizada com sementes de girassol para textura crocante. Funciona bem como entrada ou refeição ligeira.
+</p>
+
+<h4>Ingredientes</h4>
+<p>Para 4 porções:</p>
+<ul>
+  <li>2 abacates</li>
+  <li>Sumo de 1 limão</li>
+  <li>200 g de folhas de alface variadas</li>
+  <li>30 g de rúcula</li>
+  <li>250 g de tomate-cereja</li>
+  <li>2 colheres de sopa de sementes de girassol</li>
+  <li>1 raminho de manjericão</li>
+  <li>Sal e pimenta a gosto</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Descasca e corta o abacate em cubos ou fatias. Rega com o sumo de limão para evitar que escureça.</li>
+  <li>Lava e seca as folhas de alface e rúcula.</li>
+  <li>Lava os tomates-cereja e corta-os em rodelas ou em metades.</li>
+  <li>Numa travessa, dispõe as folhas de alface e rúcula como base. Por cima, distribui o abacate e os tomates.</li>
+  <li>Tempera com sal e pimenta, polvilha com as sementes de girassol e decora com folhas de manjericão.</li>
+  <li>Se quiseres, rega com um fio de azeite extra virgem mesmo antes de servir.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Petitchef / Cantinho Vegetariano<br>
+<a href="https://pt.petitchef.com/receitas/entrada/abacate-com-sementes-de-girassol-vegana-fid-993241" target="_blank" rel="noopener">
+https://pt.petitchef.com/receitas/entrada/abacate-com-sementes-de-girassol-vegana-fid-993241
+</a>
+</p>
+<p class="nota">Texto organizado em português, com base na receita de referência.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-citrica-de-tomate-cereja-r9"></a>
+<h2 id="salada-citrica-de-tomate-cereja">Salada cítrica de tomate cereja <span class="source">[R9]</span></h2>
+<h4>Introdução</h4>
+<p>
+Uma salada muito simples em que o protagonista é o tomate cereja temperado com limão, raspas de laranja, azeite e ervas. Perfeita como entrada leve ou acompanhamento de pratos grelhados.
+</p>
+
+<h4>Ingredientes</h4>
+<p>Para cerca de 4 porções:</p>
+<ul>
+  <li>1 1/2 chávena de tomate cereja vermelho (cerca de 250 g), cortado ao meio</li>
+  <li>1/2 limão (sumo)</li>
+  <li>Raspas de 1 laranja (biológica, se possível)</li>
+  <li>1 colher de sopa de azeite</li>
+  <li>Sal e pimenta-do-reino a gosto</li>
+  <li>Cebolinho fresco ou salsa picada (opcional)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Lava bem os tomates e corta-os ao meio. Coloca numa taça.</li>
+  <li>Se usares cebolinho ou salsa, pica finamente e junta aos tomates.</li>
+  <li>Numa taça pequena, mistura o sumo de limão, o azeite, as raspas de laranja, uma pitada de sal e outra de pimenta.</li>
+  <li>Bate com um garfo até emulsionar. Prova e ajusta o sal.</li>
+  <li>Verte o molho sobre os tomates e envolve cuidadosamente.</li>
+  <li>Deixa repousar 5–10 minutos para os sabores se integrarem e serve.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Receita Natureba<br>
+<a href="https://receitanatureba.com/salada-de-tomate-cereja/" target="_blank" rel="noopener">
+https://receitanatureba.com/salada-de-tomate-cereja/
+</a>
+</p>
+<p class="nota">Texto descrito de forma clara e sequencial, mantendo o conteúdo da receita.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="tomates-cherry-e-curgete-salteados-com-pinhoes-e-manjerona-r10"></a>
+<h2 id="tomates-cherry-e-curgete-salteados-com-pinhoes-e-manjerona">Tomates cherry e curgete salteados com pinhões e manjerona <span class="source">[R10]</span></h2>
+<h4>Introdução</h4>
+<p>
+Um acompanhamento rápido de inspiração italiana, que junta curgetes salteadas, tomate cherry colorido, pinhões tostados e ervas frescas. Vai bem com cereais cozidos, tofu grelhado ou simplesmente com pão.
+</p>
+
+<h4>Ingredientes</h4>
+<p>Para 6 porções como acompanhamento:</p>
+<ul>
+  <li>4 curgetes médias em meias-luas</li>
+  <li>350 g de tomatinhos coloridos (cherry ou outros)</li>
+  <li>40 g de pinhões</li>
+  <li>1 dente de alho picado</li>
+  <li>1 colher de sopa de salsa fresca picada</li>
+  <li>2 colheres de sopa de manjerona fresca picada (ou orégãos frescos)</li>
+  <li>60 g de azeite de oliva</li>
+  <li>Sal e pimenta a gosto</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Tosta os pinhões numa frigideira limpa, em lume médio, mexendo sempre até ficarem dourados. Reserva.</li>
+  <li>Lava e corta as curgetes em meias-luas finas. Lava os tomates, deixando-os inteiros ou cortando-os ao meio se forem grandes.</li>
+  <li>Aquece o azeite numa frigideira grande. Junta o alho e deixa perfumar alguns segundos.</li>
+  <li>Acrescenta as curgetes, sal e pimenta. Salteia 8–10 minutos até ficarem macias mas ainda com alguma firmeza.</li>
+  <li>Junta os tomates, a manjerona e a salsa. Cozinha mais 3–4 minutos, apenas até os tomates aquecerem e começarem a amolecer.</li>
+  <li>Envolve os pinhões tostados, ajusta o sal e serve de imediato.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Vegolosi<br>
+<a href="https://www.vegolosi.it/ricette-vegane-semplici-veloci/pomodori-colorati-e-zucchine-ai-pinoli-e-maggiorana/" target="_blank" rel="noopener">
+https://www.vegolosi.it/ricette-vegane-semplici-veloci/pomodori-colorati-e-zucchine-ai-pinoli-e-maggiorana/
+</a>
+</p>
+<p class="nota">Texto organizado e estruturado em passos claros a partir da fonte.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

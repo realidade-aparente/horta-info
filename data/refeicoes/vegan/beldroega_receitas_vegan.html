@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Beldroega – Receitas Vegan (Top 10)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+<body id="topo">
+<div class="masthead">
+  <header>
+    <h1>Beldroega – Receitas Vegan (Top 10)</h1>
+  <p>Preparações à base de plantas</p>
+  </header>
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-de-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../beldroega.html" class="ativa">Beldroega</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+</div>
+
+<main>
+<article>
+
+<h2 id="receitas-preparados">Receitas e preparados – dieta vegan</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/beldroega_receitas_vegetariana.html">(Vegetariana)</a>
+    <a href="/data/refeicoes/raw-vegan/beldroega_receitas_raw-vegan.html">(Comida Viva)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro por ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+  <ol>
+    <li><a href="#sopa-de-beldroegas-a-dona-clementina">Sopa de beldroegas à Dona Clementina</a></li>
+    <li><a href="#caril-de-grao-de-bico-e-beldroegas">Caril de grão-de-bico e beldroegas</a></li>
+    <li><a href="#salada-siciliana-de-beldroega">Salada siciliana de beldroega</a></li>
+    <li><a href="#salada-turca-de-beldroega-tomate-e-nozes">Salada turca de beldroega, tomate e nozes</a></li>
+    <li><a href="#chimichurri-de-beldroega">Chimichurri de beldroega</a></li>
+    <li><a href="#salada-de-beldroega-com-alface-tomate-e-pepino">Salada de beldroega com alface, tomate e pepino</a></li>
+    <li><a href="#pasteis-libaneses-de-beldroega-bakleh">Pastéis libaneses de beldroega (bakleh)</a></li>
+  </ol>
+</div>
+
+<h2 id="resumo">Resumo das receitas</h2>
+
+<h4>R1 – Sopa de beldroegas à Dona Clementina</h4>
+<p>Sopa simples e rústica em que a beldroega é cozida com batata, cebola e alho, resultando num caldo leve e aromático, ideal para aproveitar beldroegas frescas.</p>
+
+<h4>R2 – Caril de grão-de-bico e beldroegas</h4>
+<p>Estufado cremoso de grão-de-bico e beldroegas em molho de caril com leite de coco (ou bebida/natas vegetais), servido como prato principal reconfortante.</p>
+
+<h4>R3 – Salada siciliana de beldroega</h4>
+<p>Salada mediterrânica vegan com beldroega, folhas verdes, tomate cherry, azeitonas, alcaparras e tempero simples de azeite e vinagre balsâmico.</p>
+
+<h4>R4 – Salada turca de beldroega, tomate e nozes</h4>
+<p>Salada inspirada na cozinha turca, com cebola marinada em limão e sumagre, tomate, pepino, ervas frescas, nozes e beldroega, temperada com melaço de romã e azeite.</p>
+
+<h4>R5 – Chimichurri de beldroega</h4>
+<p>Molho argentino reinterpretado com beldroega: ervas frescas, alho, azeite, vinagre e pimento picante, tudo triturado, perfeito para legumes assados, tofu grelhado ou pão.</p>
+
+<h4>R6 – Salada de beldroega com alface, tomate e pepino</h4>
+<p>Salada fresca com muita beldroega, alface, tomate, pepino e hortelã, ligada por um molho de limão, alho, sumagre e azeite.</p>
+
+<h4>R7 – Pastéis libaneses de beldroega (bakleh)</h4>
+<p>Pastéis tipo “fatayer” feitos com massa folhada (usando versão vegana) recheada com beldroega, cebola e um molho agridoce de melaço de romã e especiarias, assados até ficarem dourados.</p>
+
+<!-- RECEITAS COMPLETAS -->
+
+<a id="sopa-de-beldroegas-a-dona-clementina-r1"></a>
+<h2 id="sopa-de-beldroegas-a-dona-clementina">Sopa de beldroegas à Dona Clementina <span class="source">[R1]</span></h2>
+
+<h4>[1] Introdução</h4>
+<p>Sopa tradicional de beldroegas em versão 100% vegetal, publicada num blogue de cozinha vegan. A beldroega é a protagonista, acompanhada apenas por batata, cebola, alho e azeite, resultando numa sopa simples, económica e muito aromática.</p>
+
+<h4>[2] Ingredientes</h4>
+<p>(para cerca de 4 porções)</p>
+<ul>
+  <li>1 molho de beldroegas frescas</li>
+  <li>3 batatas médias, descascadas e cortadas em cubos</li>
+  <li>1 cebola média, picada</li>
+  <li>2 dentes de alho, picados</li>
+  <li>2 colheres de sopa de azeite</li>
+  <li>Sal q.b.</li>
+  <li>Água q.b. (o suficiente para cobrir as batatas e formar a sopa)</li>
+</ul>
+
+<h4>[3] Passos de preparação</h4>
+<ol>
+  <li>Preparar as beldroegas<br>
+   - Lavar bem as beldroegas em várias águas para retirar areia ou impurezas.<br>
+   - Separar as folhas e caules mais tenros, descartando caules muito grossos.<br>
+   - Reservar.</li>
+  <li>Refogar a base<br>
+   - Num tacho, aquecer o azeite em lume médio.<br>
+   - Juntar a cebola picada e refogar até ficar translúcida.<br>
+   - Adicionar o alho picado e deixar cozinhar mais 1–2 minutos, sem deixar queimar.</li>
+  <li>Cozer as batatas<br>
+   - Acrescentar as batatas em cubos ao tacho e envolver bem no refogado.<br>
+   - Cobrir com água (apenas o suficiente para cobrir as batatas com algum espaço para a sopa).<br>
+   - Temperar com sal e deixar levantar fervura.<br>
+   - Reduzir o lume e cozinhar até a batata estar bem macia.</li>
+  <li>Juntar as beldroegas<br>
+   - Quando as batatas estiverem cozidas, adicionar a beldroega preparada.<br>
+   - Deixar cozinhar apenas alguns minutos, até a beldroega amolecer, mantendo a cor verde o máximo possível.</li>
+  <li>Ajustar e servir<br>
+   - Retificar o sal, se necessário.<br>
+   - Se quiseres uma textura mais cremosa, podes triturar uma parte da sopa com a varinha mágica e misturar novamente no tacho.<br>
+   - Servir quente, simples, para destacar o sabor das beldroegas.</li>
+</ol>
+
+<h4>[4] Fonte</h4>
+<p>Dona Clementina Vegan – “Sopa de Beldroegas”<br>
+<a href="https://www.donaclementinavegan.pt/sopa-de-beldroegas/" target="_blank" rel="noopener">https://www.donaclementinavegan.pt/sopa-de-beldroegas/</a></p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="caril-de-grao-de-bico-e-beldroegas-r2"></a>
+<h2 id="caril-de-grao-de-bico-e-beldroegas">Caril de grão-de-bico e beldroegas <span class="source">[R2]</span></h2>
+
+<h4>[1] Introdução</h4>
+<p>Este caril vegan combina beldroegas com grão-de-bico num molho cremoso aromatizado com caril em pó. A receita é apresentada num blogue de cozinha vegan português, usando leite de coco ou alternativas vegetais, sem qualquer produto de origem animal.</p>
+
+<h4>[2] Ingredientes</h4>
+<p>(serve 3–4 porções)</p>
+<ul>
+  <li>1 chávena de grão-de-bico cozido (escorrido)</li>
+  <li>1 molho de beldroegas frescas</li>
+  <li>1 cebola média, picada</li>
+  <li>2 dentes de alho, picados</li>
+  <li>1 colher de sopa de caril em pó</li>
+  <li>1 lata de leite de coco (cerca de 400 ml)<br>
+  OU cerca de 1½ chávena de bebida vegetal ou natas vegetais, conforme indicação da receita original</li>
+  <li>2 colheres de sopa de azeite</li>
+  <li>Sal q.b.</li>
+  <li>Pimenta preta q.b. (opcional)</li>
+</ul>
+
+<h4>[3] Passos de preparação</h4>
+<ol>
+  <li>Preparar as beldroegas e o grão<br>
+   - Lavar bem as beldroegas, separando folhas e caules tenros, descartando caules muito grossos.<br>
+   - Escorrer o grão-de-bico cozido e reservar.</li>
+  <li>Refogar aromáticos<br>
+   - Aquecer o azeite num tacho em lume médio.<br>
+   - Juntar a cebola picada e refogar até ficar macia e ligeiramente dourada.<br>
+   - Adicionar o alho picado e cozinhar mais 1–2 minutos.</li>
+  <li>Tostar o caril<br>
+   - Acrescentar o caril em pó ao refogado, mexendo bem durante alguns segundos para libertar o aroma das especiarias, sem deixar queimar.</li>
+  <li>Juntar o grão e as beldroegas<br>
+   - Adicionar o grão-de-bico ao tacho e envolver no refogado de caril.<br>
+   - Juntar a beldroega preparada e envolver.</li>
+  <li>Adicionar o leite de coco (ou alternativa vegetal)<br>
+   - Verter o leite de coco (ou a bebida/natas vegetais indicadas) para o tacho.<br>
+   - Mexer bem, deixar levantar fervura e reduzir o lume.<br>
+   - Cozinhar em lume brando cerca de 10–15 minutos, até o molho engrossar ligeiramente e os sabores estarem bem apurados.</li>
+  <li>Temperar e servir<br>
+   - Ajustar o sal e acrescentar pimenta preta a gosto, se desejares.<br>
+   - Servir quente, por exemplo acompanho com arroz branco ou integral.</li>
+</ol>
+
+<h4>[4] Fonte</h4>
+<p>Dona Clementina Vegan – “Caril de Grão e Beldroegas”<br>
+<a href="https://www.donaclementinavegan.pt/caril-grao-beldroegas/" target="_blank" rel="noopener">https://www.donaclementinavegan.pt/caril-grao-beldroegas/</a></p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-siciliana-de-beldroega-r3"></a>
+<h2 id="salada-siciliana-de-beldroega">Salada siciliana de beldroega <span class="source">[R3]</span></h2>
+
+<h4>[1] Introdução</h4>
+<p>Salada vegan inspirada na gastronomia da Sicília, publicada por uma dietista especializada em alimentação à base de plantas. A beldroega é combinada com alface, tomate, azeitonas e alcaparras, temperada com azeite e vinagre balsâmico, resultando numa salada fresca e muito aromática.</p>
+
+<h4>[2] Ingredientes</h4>
+<p>(para cerca de 6 porções)</p>
+<ul>
+  <li>2 chávenas de folhas jovens de alface (mistura de folhas “baby”)</li>
+  <li>1 molho pequeno de beldroega (cerca de 2 chávenas de folhas)</li>
+  <li>1 chávena de tomates cherry, cortados ao meio<br>
+  (ou 1 tomate grande, fatiado)</li>
+  <li>1 chávena de azeitonas (gregas, sicilianas ou italianas), sem caroço</li>
+  <li>2 colheres de sopa de alcaparras, enxaguadas e escorridas</li>
+  <li>1 colher de sopa de azeite virgem extra</li>
+  <li>1 colher de sopa de vinagre balsâmico</li>
+  <li>Sal marinho q.b.</li>
+  <li>Pimenta preta moída na hora q.b.</li>
+</ul>
+
+<h4>[3] Passos de preparação</h4>
+<ol>
+  <li>Preparar os vegetais<br>
+   - Lavar e secar bem as folhas de alface. Rasgar ou cortar em pedaços grandes.<br>
+   - Lavar a beldroega, separar as folhas e caules tenros, descartar caules grossos.<br>
+   - Lavar os tomates cherry e cortá-los ao meio (ou fatiar o tomate grande).<br>
+   - Escorrer as azeitonas e as alcaparras.</li>
+  <li>Dispor a base da salada<br>
+   - Colocar as folhas de alface numa saladeira ou prato de servir largo.<br>
+   - Distribuir a beldroega por cima.</li>
+  <li>Adicionar os restantes ingredientes<br>
+   - Espalhar os tomates, as azeitonas e as alcaparras sobre a alface e a beldroega.<br>
+   - Misturar delicadamente para distribuir os ingredientes.</li>
+  <li>Temperar<br>
+   - Regar a salada com o azeite virgem extra e o vinagre balsâmico.<br>
+   - Polvilhar com sal marinho e pimenta preta moída a gosto.</li>
+  <li>Servir<br>
+   - Servir de imediato, como entrada ou acompanhamento.<br>
+   - A salada é melhor consumida fresca, para manter a textura suculenta da beldroega.</li>
+</ol>
+
+<h4>[4] Fonte</h4>
+<p>Sharon Palmer – “Sicilian Purslane Salad”<br>
+<a href="https://sharonpalmer.com/2014-08-25-sicilian-purslane-salad/" target="_blank" rel="noopener">https://sharonpalmer.com/2014-08-25-sicilian-purslane-salad/</a></p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-turca-de-beldroega-tomate-e-nozes-r4"></a>
+<h2 id="salada-turca-de-beldroega-tomate-e-nozes">Salada turca de beldroega, tomate e nozes <span class="source">[R4]</span></h2>
+
+<h4>[1] Introdução</h4>
+<p>Salada vegana inspirada nas saladas turcas, publicada num blogue de cozinha à base de plantas. Usa uma combinação clássica de tomate, pepino, cebola, ervas frescas e azeitonas, enriquecida com nozes, beldroega e um vinagrete de sumagre, limão e melaço de romã.</p>
+
+<h4>[2] Ingredientes</h4>
+<p>(serve 4–6 porções)</p>
+<ul>
+  <li>1 cebola roxa pequena, fatiada finamente</li>
+  <li>2 colheres de sopa de melaço de romã</li>
+  <li>Raspa e sumo de 1 limão</li>
+  <li>1 colher de chá de sal</li>
+  <li>½ chávena de azeitonas verdes sem caroço</li>
+  <li>6 tomates, cortados em quartos</li>
+  <li>1 pepino, cortado em quartos no comprimento e depois em fatias</li>
+  <li>1 chávena de salsa e/ou coentros frescos, picados finamente</li>
+  <li>5 raminhos de hortelã fresca, grosseiramente picados</li>
+  <li>½ chávena de pontas/folhas de beldroega (purslane tips), opcional mas recomendada</li>
+  <li>½ chávena de nozes, grosseiramente picadas</li>
+  <li>1 colher de sopa de sumagre em pó</li>
+  <li>¼ colher de chá de pimenta preta moída</li>
+  <li>¼ chávena de azeite virgem extra</li>
+</ul>
+
+<h4>[3] Passos de preparação</h4>
+<ol>
+  <li>Marinar a cebola<br>
+   - Colocar a cebola roxa fatiada numa taça grande.<br>
+   - Adicionar o melaço de romã, a raspa e o sumo de limão e o sal.<br>
+   - Misturar bem e deixar marinar enquanto preparas o resto dos ingredientes.</li>
+  <li>Preparar os restantes ingredientes<br>
+   - Fatiar as azeitonas (se forem grandes).<br>
+   - Cortar os tomates em quartos.<br>
+   - Cortar o pepino em quartos no sentido do comprimento e depois em fatias.<br>
+   - Picar a salsa/coentros e a hortelã.<br>
+   - Lavar a beldroega e separar as pontas/folhas tenras.<br>
+   - Picar grosseiramente as nozes.</li>
+  <li>Montar a salada<br>
+   - Ao recipiente com a cebola marinada, juntar as azeitonas, os tomates, o pepino, as ervas picadas, a beldroega e as nozes.<br>
+   - Polvilhar com o sumagre e a pimenta preta.</li>
+  <li>Temperar com azeite<br>
+   - Regar com a ¼ de chávena de azeite virgem extra.<br>
+   - Misturar bem para envolver todos os ingredientes e distribuir o molho.</li>
+  <li>Servir<br>
+   - Provar e ajustar o sal, limão ou sumagre se necessário.<br>
+   - Servir como entrada ou acompanhamento de pratos principais.</li>
+</ol>
+
+<h4>[4] Fonte</h4>
+<p>The Veggie Tree – “Purslane Recipe – Turkish Inspired Salad”<br>
+<a href="https://www.theveggietree.com/single-post/purslane-recipe" target="_blank" rel="noopener">https://www.theveggietree.com/single-post/purslane-recipe</a></p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="chimichurri-de-beldroega-r5"></a>
+<h2 id="chimichurri-de-beldroega">Chimichurri de beldroega <span class="source">[R5]</span></h2>
+
+<h4>[1] Introdução</h4>
+<p>Versão de chimichurri em que parte das ervas é substituída por beldroega, publicada num site de receitas de uma chef profissional. O resultado é um molho verde intenso, ácido e aromático, ideal para acompanhar legumes grelhados, tofu, seitan ou simplesmente pão.</p>
+
+<h4>[2] Ingredientes</h4>
+<p>(rende cerca de 1½ chávena)</p>
+<ul>
+  <li>1 chávena de folhas de beldroega</li>
+  <li>1 chávena de folhas de salsa italiana</li>
+  <li>1 colher de sopa de orégãos frescos picados</li>
+  <li>3 dentes de alho, picados finamente</li>
+  <li>1 malagueta jalapeño pequena, sem sementes se preferires<br>
+  OU 1 colher de chá de flocos de malagueta (crushed red pepper)</li>
+  <li>½ chávena de azeite virgem extra</li>
+  <li>2 colheres de sopa de vinagre de vinho tinto (ou a gosto)</li>
+  <li>Sal q.b.</li>
+  <li>Pimenta preta moída q.b.</li>
+</ul>
+
+<h4>[3] Passos de preparação</h4>
+<ol>
+  <li>Preparar as ervas e a beldroega<br>
+   - Lavar bem as folhas de beldroega e de salsa, secando-as (por exemplo, em centrifugadora de saladas ou com pano).<br>
+   - Picar grosseiramente as folhas de beldroega, salsa e orégãos, para facilitar a trituração.<br>
+   - Picar o alho e a malagueta (se usares malagueta fresca).</li>
+  <li>Processar o molho<br>
+   - Colocar a beldroega, a salsa, os orégãos, o alho e a malagueta (ou flocos de malagueta) num processador de alimentos ou liquidificador.<br>
+   - Adicionar o azeite e o vinagre de vinho tinto.<br>
+   - Triturar até a mistura ficar homogénea ou com a textura desejada (mais ou menos rústica).</li>
+  <li>Ajustar temperos<br>
+   - Temperar com sal e pimenta preta a gosto.<br>
+   - Se necessário, ajustar a acidez adicionando um pouco mais de vinagre.</li>
+  <li>Armazenar e servir<br>
+   - Transferir o chimichurri para um frasco limpo.<br>
+   - Pode ser servido de imediato ou descansado no frigorífico por algumas horas para desenvolver o sabor.<br>
+   - Conservar no frigorífico e usar em 1–2 dias, ou congelar porções pequenas por 2–3 meses.</li>
+</ol>
+
+<h4>[4] Fonte</h4>
+<p>From A Chef’s Kitchen – “Purslane Chimichurri”<br>
+<a href="https://www.fromachefskitchen.com/purslane-chimichurri/" target="_blank" rel="noopener">https://www.fromachefskitchen.com/purslane-chimichurri/</a></p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-de-beldroega-com-alface-tomate-e-pepino-r6"></a>
+<h2 id="salada-de-beldroega-com-alface-tomate-e-pepino">Salada de beldroega com alface, tomate e pepino <span class="source">[R6]</span></h2>
+
+<h4>[1] Introdução</h4>
+<p>Salada fresca e vegana de inspiração mediterrânica, publicada num blogue de cozinha saudável. A beldroega é combinada em grandes quantidades com alface, tomate, pepino e hortelã, temperados com um molho simples de limão, sumagre, alho e azeite.</p>
+
+<h4>[2] Ingredientes</h4>
+<p>(para cerca de 6 porções)</p>
+
+<p><strong>Salada:</strong></p>
+<ul>
+  <li>3 chávenas de alface verde ou roxa, picada grosseiramente</li>
+  <li>3 chávenas de beldroega picada (podes usar menos se não tiveres tanto)</li>
+  <li>1 chávena de tomate em cubos ou tomates cherry cortados ao meio</li>
+  <li>1 chávena de pepino em cubos ou meias-luas</li>
+  <li>1 chávena de folhas de hortelã fresca picadas<br>
+  (podes substituir por salsa, se preferires)</li>
+  <li>Sal e pimenta preta moída q.b.</li>
+</ul>
+
+<p><strong>Molho:</strong></p>
+<ul>
+  <li>¼ de chávena de sumo de limão fresco</li>
+  <li>½ colher de chá de alho picado finamente</li>
+  <li>2 colheres de chá de sumagre em pó (mais um pouco para polvilhar)</li>
+  <li>½ colher de chá de sal</li>
+  <li>¼ de chávena de azeite (de sabor suave ou médio)</li>
+</ul>
+
+<h4>[3] Passos de preparação</h4>
+<ol>
+  <li>Preparar a salada<br>
+   - Lavar e secar bem a alface.<br>
+   - Lavar a beldroega, retirar caules grossos e picar o restante grosseiramente.<br>
+   - Cortar o tomate e o pepino.<br>
+   - Picar a hortelã (ou salsa).</li>
+  <li>Misturar os ingredientes da salada<br>
+   - Numa saladeira grande, juntar a alface, a beldroega, o tomate, o pepino e a hortelã.<br>
+   - Envolver tudo delicadamente.</li>
+  <li>Preparar o molho<br>
+   - Numa taça pequena ou copo medidor, misturar o sumo de limão, o alho picado, o sumagre e o sal.<br>
+   - Adicionar o azeite em fio, mexendo com um garfo ou vara de arames até o molho emulsionar.</li>
+  <li>Temperar a salada<br>
+   - Regar a salada com a quantidade de molho desejada.<br>
+   - Envolver bem para distribuir o molho.<br>
+   - Temperar com sal e pimenta preta a gosto e polvilhar com um pouco mais de sumagre, se quiseres.</li>
+  <li>Servir<br>
+   - Servir de imediato.<br>
+   - A salada pode ser guardada no frigorífico por algumas horas, mas a alface e a beldroega ficam mais frescas se for consumida pouco tempo depois de temperar.</li>
+</ol>
+
+<h4>[4] Fonte</h4>
+<p>Kalyn’s Kitchen – “Purslane Salad (with Lettuce, Tomatoes, Cucumbers, and Mint)”<br>
+<a href="https://kalynskitchen.com/mediterranean-lettuce-salad-recipe-with/" target="_blank" rel="noopener">https://kalynskitchen.com/mediterranean-lettuce-salad-recipe-with/</a></p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pasteis-libaneses-de-beldroega-bakleh-r7"></a>
+<h2 id="pasteis-libaneses-de-beldroega-bakleh">Pastéis libaneses de beldroega (bakleh) <span class="source">[R7]</span></h2>
+
+<h4>[1] Introdução</h4>
+<p>Receita libanesa vegana publicada num blogue de cozinha vegetal, em que a beldroega (bakleh) é usada como recheio de pequenos pastéis tipo “fatayer”. A massa é de massa folhada (deve ser escolhida uma versão vegana), e o recheio é um salteado frio de beldroega, cebola, melaço de romã e especiarias.</p>
+
+<h4>[2] Ingredientes</h4>
+<p>(rende 8 pastéis/turnovers)</p>
+
+<p><strong>Massa e acabamento:</strong></p>
+<ul>
+  <li>4 quadrados/folhas de massa folhada (usar massa folhada vegana, conforme indicado na receita original: “use vegan if needed”)</li>
+  <li>1 colher de chá de sementes de sésamo pretas ou sementes de nigela</li>
+  <li>Azeite q.b. para pincelar (conforme indicado no método)</li>
+</ul>
+
+<p><strong>Recheio de beldroega:</strong></p>
+<ul>
+  <li>100 g de beldroega, grosseiramente picada</li>
+  <li>1 cebola branca média, fatiada</li>
+  <li>1 colher de sopa de azeite</li>
+  <li>1 colher de chá de paprika</li>
+  <li>2 colheres de sopa de melaço de romã</li>
+  <li>1 colher de sopa de sumagre (opcional)</li>
+  <li>1 pitada de sal, a gosto</li>
+  <li>1 pitada de pimenta preta moída, a gosto</li>
+</ul>
+
+<h4>[3] Passos de preparação</h4>
+<ol>
+  <li>Preparar o recheio de beldroega<br>
+   - Numa taça grande, juntar a beldroega picada e a cebola fatiada.<br>
+   - Adicionar o azeite, o melaço de romã, a paprika, o sumagre (se usares), o sal e a pimenta preta.<br>
+   - Misturar tudo muito bem até que a beldroega e a cebola fiquem bem envolvidas no tempero.</li>
+  <li>Preparar a massa<br>
+   - Se estiverem congeladas, deixar as folhas de massa folhada descongelar de acordo com as instruções da embalagem.<br>
+   - Cortar cada folha de massa folhada ao meio.<br>
+   - No final, deves obter 8 retângulos/quadrados de massa (um para cada pastel).</li>
+  <li>Rechear e fechar os pastéis<br>
+   - Colocar uma porção do recheio de beldroega numa metade de cada peça de massa, deixando margem nas bordas.<br>
+   - Dobrar a massa sobre o recheio, formando um “bolso” ou pastel.<br>
+   - Fechar bem as bordas pressionando com os dedos ou com os dentes de um garfo, certificando-te de que não ficam aberturas por onde o recheio possa sair.</li>
+  <li>Preparar para assar<br>
+   - Dispor os pastéis num tabuleiro forrado com papel vegetal.<br>
+   - Pincelar a superfície de cada pastel com um pouco de azeite.<br>
+   - Polvilhar com as sementes de sésamo pretas ou de nigela.</li>
+  <li>Cozedura<br>
+   - Levar ao forno pré-aquecido a 180 ºC.<br>
+   - Assar durante cerca de 25–30 minutos, ou até os pastéis ficarem bem dourados e folhados.<br>
+   - Retirar do forno e transferir para uma grelha para arrefecer ligeiramente.</li>
+  <li>Servir<br>
+   - Servir morno ou à temperatura ambiente, como entrada, snack ou parte de uma mesa de mezze libanesa.</li>
+</ol>
+
+<h4>[4] Fonte</h4>
+<p>Plant Based Folk – “Lebanese Bakleh Pastries”<br>
+<a href="https://plantbasedfolk.com/purslane-pockets-lebanese-bakleh/" target="_blank" rel="noopener">https://plantbasedfolk.com/purslane-pockets-lebanese-bakleh/</a></p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

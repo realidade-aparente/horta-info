@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Alho – Receitas Vegan (Top 10)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+<body id="topo">
+<div class="masthead">
+  <header>
+    <h1>Alho – Receitas Vegan (Top 10)</h1>
+    <p>Preparações à base de plantas</p>
+  </header>
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-de-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html" class="ativa">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+</div>
+
+<main>
+<article>
+
+<h2 id="receitas-preparados">Receitas e preparados – dieta vegan</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/alho_receitas_vegetariana.html">(Vegetariana)</a>
+    <a href="/data/refeicoes/raw-vegan/alho_receitas_raw-vegan.html">(Comida Viva)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro por ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+  <ol>
+    <li><a href="#alho-assado-no-forno-roasted-garlic">Alho assado no forno (roasted garlic)</a></li>
+    <li><a href="#confit-de-alho-vegano-em-azeite">Confit de alho vegano em azeite</a></li>
+    <li><a href="#massa-cremosa-de-alho-garlic-cream-pasta">Massa cremosa de alho (garlic cream pasta)</a></li>
+    <li><a href="#sopa-cremosa-de-alho-assado">Sopa cremosa de alho assado</a></li>
+    <li><a href="#molho-aioli-vegano-de-alho">Molho aioli vegano de alho</a></li>
+    <li><a href="#pasta-de-alho-e-ervas-frescas">Pasta de alho e ervas frescas</a></li>
+    <li><a href="#arroz-de-alho-dourado-garlic-fried-rice">Arroz de alho dourado (garlic fried rice)</a></li>
+    <li><a href="#tahini-de-alho-assado">Tahini de alho assado</a></li>
+    <li><a href="#molho-de-alho-fermentado-black-garlic-vinaigrette">Molho de alho fermentado (black garlic vinaigrette)</a></li>
+    <li><a href="#cogumelos-salteados-com-alho-e-ervas-frescas">Cogumelos salteados com alho e ervas frescas</a></li>
+  </ol>
+</div>
+
+<h2 id="resumo">Resumo das receitas (R1–R10)</h2>
+<ul>
+  <li><strong>R1. Alho assado no forno</strong><br>Cabeças de alho inteiras assadas até ficarem cremosas, doces e untuosas — excelente para barrar ou usar em molhos.</li>
+  <li><strong>R2. Confit de alho vegano em azeite</strong><br>Dentes de alho cozidos lentamente em azeite, a baixa temperatura, até ficarem extremamente macios e aromáticos.</li>
+  <li><strong>R3. Massa cremosa de alho</strong><br>Massa envolvida num molho cremoso feito com alho assado, bebida vegetal e levedura nutricional.</li>
+  <li><strong>R4. Sopa cremosa de alho assado</strong><br>Uma sopa suave mas intensa, feita com alho assado, batata e caldo de legumes.</li>
+  <li><strong>R5. Molho aioli vegano de alho</strong><br>Versão vegetal do aioli, utilizando leite vegetal ou aquafaba para criar emulsão espessa com bastante alho.</li>
+  <li><strong>R6. Pasta de alho e ervas</strong><br>Pasta versátil feita com alho cru, ervas frescas e azeite — serve como marinada, base de tempero ou para barrar.</li>
+  <li><strong>R7. Arroz de alho dourado</strong><br>Arroz frito ao estilo asiático, com lâminas de alho douradas, molho de soja e cebolinho.</li>
+  <li><strong>R8. Tahini de alho assado</strong><br>Creme de sésamo enriquecido com alho assado, limão e água gelada — ótimo para bowls e vegetais.</li>
+  <li><strong>R9. Molho de alho fermentado (vinagrete de black garlic)</strong><br>Vinagrete profundo e adocicado feito com alho preto fermentado.</li>
+  <li><strong>R10. Cogumelos salteados com alho e ervas</strong><br>Prato rápido em que o alho dá carácter aromático a cogumelos dourados em azeite.</li>
+</ul>
+
+<h2 id="receitas-completas">Receitas completas</h2>
+
+<a id="alho-assado-no-forno-roasted-garlic-r1"></a>
+<h2 id="alho-assado-no-forno-roasted-garlic">R1 — Alho assado no forno (roasted garlic) <span class="source">[R1]</span></h2>
+
+<h4>Introdução</h4>
+<p>Assar alho transforma-o completamente: torna-o doce, suave e cremoso, podendo ser usado como pasta, em molhos, sopas ou simplesmente barrado em pão.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>2–4 cabeças de alho inteiras</li>
+  <li>Azeite q.b.</li>
+  <li>Sal q.b.</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Pré-aqueça o forno a 200 °C.</li>
+  <li>Corte a parte superior das cabeças de alho, expondo os dentes.</li>
+  <li>Regue com azeite e polvilhe com sal.</li>
+  <li>Envolva cada cabeça em papel de alumínio e leve ao forno 40–50 minutos, até ficar muito macio.</li>
+  <li>Esprema os dentes assados para fora das cascas e utilize conforme desejar.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+The Spruce Eats — https://www.thespruceeats.com/how-to-roast-garlic-2216936
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="confit-de-alho-vegano-em-azeite-r2"></a>
+<h2 id="confit-de-alho-vegano-em-azeite">R2 — Confit de alho vegano em azeite <span class="source">[R2]</span></h2>
+
+<h4>Introdução</h4>
+<p>O confit de alho consiste em cozinhar dentes de alho lentamente em azeite, obtendo uma textura amanteigada e um sabor suave e aromático.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>3–4 cabeças de alho, dentes descascados</li>
+  <li>1–2 chávenas de azeite extra virgem</li>
+  <li>1 ramo de tomilho ou alecrim (opcional)</li>
+  <li>1 folha de louro (opcional)</li>
+  <li>Pitada de sal</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Coloque os dentes de alho numa panela pequena.</li>
+  <li>Cubra completamente com azeite.</li>
+  <li>Adicione ervas se desejar.</li>
+  <li>Cozinhe em lume muito brando (quase sem borbulhar) por 40–60 minutos, até o alho ficar dourado e muito macio.</li>
+  <li>Armazene o alho e o azeite num frasco esterilizado no frigorífico.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Serious Eats — https://www.seriouseats.com/garlic-confit-recipe
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="massa-cremosa-de-alho-garlic-cream-pasta-r3"></a>
+<h2 id="massa-cremosa-de-alho-garlic-cream-pasta">R3 — Massa cremosa de alho (garlic cream pasta) <span class="source">[R3]</span></h2>
+
+<h4>Introdução</h4>
+<p>Um prato rápido de massa em que o alho assado é triturado para formar um molho cremoso e profundo, com textura sedosa.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>250 g de massa seca</li>
+  <li>1 cabeça de alho assado</li>
+  <li>1 chávena de bebida vegetal sem açúcar</li>
+  <li>2 colheres de sopa de levedura nutricional</li>
+  <li>1 colher de sopa de azeite</li>
+  <li>Sal e pimenta q.b.</li>
+  <li>Salsa picada para servir</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Cozinhe a massa conforme instruções.</li>
+  <li>Triture o alho assado com bebida vegetal, azeite, sal, pimenta e levedura nutricional até formar um creme.</li>
+  <li>Aqueça o molho numa frigideira grande.</li>
+  <li>Misture a massa cozida no molho e envolva bem.</li>
+  <li>Sirva com salsa picada.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Minimalist Baker — https://minimalistbaker.com/roasted-garlic-pasta/
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-cremosa-de-alho-assado-r4"></a>
+<h2 id="sopa-cremosa-de-alho-assado">R4 — Sopa cremosa de alho assado <span class="source">[R4]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma sopa suave e aromática, em que o alho assado ganha protagonismo, equilibrado com batata e caldo.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>2 cabeças de alho assado</li>
+  <li>2 batatas médias em cubos</li>
+  <li>1 cebola picada</li>
+  <li>2 colheres de sopa de azeite</li>
+  <li>4 chávenas de caldo de legumes</li>
+  <li>Sal e pimenta q.b.</li>
+  <li>Levedura nutricional (opcional)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Refogue a cebola no azeite até ficar translúcida.</li>
+  <li>Adicione as batatas e o caldo; cozinhe até ficarem macias.</li>
+  <li>Adicione o alho assado e triture tudo.</li>
+  <li>Ajuste a textura com mais caldo se necessário.</li>
+  <li>Tempere e sirva quente.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+BBC Good Food — https://www.bbcgoodfood.com/recipes/roasted-garlic-soup
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="molho-aioli-vegano-de-alho-r5"></a>
+<h2 id="molho-aioli-vegano-de-alho">R5 — Molho aioli vegano de alho <span class="source">[R5]</span></h2>
+
+<h4>Introdução</h4>
+<p>Versão vegana do clássico aioli, usando emulsão de aquafaba para criar textura cremosa com forte presença de alho.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>3 colheres de sopa de aquafaba</li>
+  <li>1 colher de chá de sumo de limão</li>
+  <li>2–3 dentes de alho picados</li>
+  <li>½ chávena de óleo vegetal suave</li>
+  <li>Pitada de sal</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Misture aquafaba, sal, alho e limão.</li>
+  <li>Bata com batedeira de mão enquanto adiciona o óleo em fio, até engrossar.</li>
+  <li>Ajuste ao gosto.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Loving It Vegan — https://lovingitvegan.com/vegan-aioli/
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pasta-de-alho-e-ervas-frescas-r6"></a>
+<h2 id="pasta-de-alho-e-ervas-frescas">R6 — Pasta de alho e ervas frescas <span class="source">[R6]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma pasta altamente versátil utilizada para temperar legumes, tofu, massas, arroz ou para barrar.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>6–8 dentes de alho crus</li>
+  <li>½ chávena de salsa ou coentros</li>
+  <li>¼ chávena de azeite</li>
+  <li>1 colher de chá de sal</li>
+  <li>1 colher de chá de sumo de limão</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Triture tudo num processador até formar uma pasta espessa.</li>
+  <li>Armazene no frigorífico até 1 semana.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+The Mediterranean Dish — https://www.themediterraneandish.com/garlic-sauce-paste/
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="arroz-de-alho-dourado-garlic-fried-rice-r7"></a>
+<h2 id="arroz-de-alho-dourado-garlic-fried-rice">R7 — Arroz de alho dourado (garlic fried rice) <span class="source">[R7]</span></h2>
+
+<h4>Introdução</h4>
+<p>Prato asiático simples e aromático em que o alho dourado é o ingrediente principal.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>6 dentes de alho laminados</li>
+  <li>3 colheres de sopa de óleo vegetal</li>
+  <li>3 chávenas de arroz já cozido</li>
+  <li>1 colher de sopa de molho de soja</li>
+  <li>Cebolinho picado</li>
+  <li>Sal e pimenta</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Aqueça o óleo e frite o alho até dourar (sem queimar).</li>
+  <li>Retire metade do alho para usar como topping.</li>
+  <li>Adicione o arroz à frigideira e salteie.</li>
+  <li>Junte o molho de soja e ajuste o sal.</li>
+  <li>Sirva com o alho reservado e cebolinho.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Just One Cookbook — https://www.justonecookbook.com/garlic-fried-rice/
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="tahini-de-alho-assado-r8"></a>
+<h2 id="tahini-de-alho-assado">R8 — Tahini de alho assado <span class="source">[R8]</span></h2>
+
+<h4>Introdução</h4>
+<p>Um molho cremoso e intenso, ótimo para vegetais, bowls ou pão, que combina a suavidade do tahini com o sabor doce do alho assado.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 cabeça de alho assado</li>
+  <li>½ chávena de tahini</li>
+  <li>2–3 colheres de sopa de sumo de limão</li>
+  <li>4–6 colheres de sopa de água gelada</li>
+  <li>Sal q.b.</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Retire os dentes de alho assado e coloque numa taça.</li>
+  <li>Junte o tahini e o limão e mexa.</li>
+  <li>Adicione água gelada pouco a pouco até formar creme sedoso.</li>
+  <li>Tempere com sal.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Feasting at Home — https://www.feastingathome.com/roasted-garlic-tahini-sauce/
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="molho-de-alho-fermentado-black-garlic-vinaigrette-r9"></a>
+<h2 id="molho-de-alho-fermentado-black-garlic-vinaigrette">R9 — Molho de alho fermentado (black garlic vinaigrette) <span class="source">[R9]</span></h2>
+
+<h4>Introdução</h4>
+<p>O alho preto, obtido por fermentação lenta, desenvolve sabores caramelizados e umami intensos. Esta vinagrete dá profundidade a saladas, legumes assados ou tofu.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>4 dentes de alho preto</li>
+  <li>2 colheres de sopa de vinagre balsâmico</li>
+  <li>4 colheres de sopa de azeite</li>
+  <li>1 colher de chá de mostarda Dijon</li>
+  <li>Sal e pimenta</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Amasse os dentes de alho preto até formar pasta.</li>
+  <li>Misture com vinagre, mostarda e azeite até emulsionar.</li>
+  <li>Ajuste temperos.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Bon Appétit — https://www.bonappetit.com/recipe/black-garlic-vinaigrette
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="cogumelos-salteados-com-alho-e-ervas-frescas-r10"></a>
+<h2 id="cogumelos-salteados-com-alho-e-ervas-frescas">R10 — Cogumelos salteados com alho e ervas frescas <span class="source">[R10]</span></h2>
+
+<h4>Introdução</h4>
+<p>Um salteado rápido em que o alho funciona como base aromática para cogumelos dourados, ideal como acompanhamento ou topping.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>400 g de cogumelos frescos fatiados</li>
+  <li>4–5 dentes de alho picados</li>
+  <li>2 colheres de sopa de azeite</li>
+  <li>1 colher de sopa de tomilho fresco ou salsa</li>
+  <li>Sal e pimenta</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Aqueça o azeite numa frigideira larga.</li>
+  <li>Junte o alho e cozinhe 30 segundos.</li>
+  <li>Adicione os cogumelos e salteie até dourarem e perderem água.</li>
+  <li>Tempere com sal, pimenta e ervas.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+The Guardian — https://www.theguardian.com/food/2020/jan/04/mushrooms-with-garlic-and-thyme-recipe
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

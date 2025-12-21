@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Morugem – Receitas Vegan (Top 10)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+<body id="topo">
+<div class="masthead">
+  <header>
+    <h1>Morugem – Receitas Vegan (Top 10)</h1>
+  <p>Preparações à base de plantas</p>
+  </header>
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../morugem.html" class="ativa">Morugem</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-de-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+</div>
+
+<main>
+<article>
+
+<h2 id="receitas-preparados">Receitas e preparados – dieta vegan</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegetariana/morugem_receitas_vegetariana.html">(Vegetariana)</a>
+    <a href="/data/refeicoes/raw-vegan/morugem_receitas_raw-vegan.html">(Comida Viva)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro por ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+  <ol>
+    <li><a href="#pesto-de-morugem-simples-vegan-chickweed-pesto-juliet-kemp">Pesto de morugem simples (Vegan chickweed pesto – Juliet Kemp)</a></li>
+    <li><a href="#pesto-de-morugem-rico-em-sementes-chickweed-pesto-produce-on-parade">Pesto de morugem rico em sementes (Chickweed Pesto – Produce On Parade)</a></li>
+    <li><a href="#pate-de-grao-de-bico-e-morugem-chickweed-pate-eatweeds">Patê de grão-de-bico e morugem (Chickweed Pate – Eatweeds)</a></li>
+    <li><a href="#humus-de-morugem-e-alho-dos-ursinhos-chickweed-and-wild-garlic-hummus-mandem-meetup">Húmus de morugem e alho-dos-ursinhos (Chickweed and Wild Garlic Hummus – Mandem Meetup)</a></li>
+    <li><a href="#salada-de-morugem-beterraba-e-cebolinho-chickweed-salad-edible-wild-food">Salada de morugem, beterraba e cebolinho (Chickweed Salad – Edible Wild Food)</a></li>
+    <li><a href="#salada-minimalista-de-morugem-com-limao-e-oleo-de-noz-chickweed-salad-food-wine">Salada minimalista de morugem com limão e óleo de noz (Chickweed Salad – Food &amp; Wine)</a></li>
+    <li><a href="#salada-de-morugem-com-molho-de-miso-e-sementes-de-angelica-chickweed-salad-with-wild-angelica-seed-dressing-eatweeds">Salada de morugem com molho de miso e sementes de angélica (Chickweed Salad With Wild Angelica Seed Dressing – Eatweeds)</a></li>
+    <li><a href="#salada-de-morugem-com-rabanete-cenoura-e-vinagre-de-kombucha-chickweed-salad-tyrant-farms">Salada de morugem com rabanete, cenoura e vinagre de kombucha (Chickweed Salad – Tyrant Farms)</a></li>
+    <li><a href="#pakoras-de-morugem-chickweed-pakora-chickweed-recipes-pakora-hot-dressed-salad-receita-1-2-carl-legge">Pakoras de morugem (Chickweed Pakora – Chickweed recipes: pakora &amp; hot dressed salad, Receita 1/2 – Carl Legge) (receita 1/2)</a></li>
+    <li><a href="#salada-quente-de-morugem-cenoura-e-sementes-de-kalonji-hot-dressed-chickweed-carrot-and-kalonji-salad-chickweed-recipes-pakora-hot-dressed-salad-receita-2-2-carl-legge">Salada quente de morugem, cenoura e sementes de kalonji (Hot dressed chickweed, carrot and kalonji salad – Chickweed recipes: pakora &amp; hot dressed salad, Receita 2/2 – Carl Legge) (receita 2/2)</a></li>
+  </ol>
+</div>
+
+<h2 id="resumo">Resumo das receitas (R1–R10)</h2>
+<ul>
+  <li><strong>R1 – Pesto de morugem simples (Vegan chickweed pesto – Juliet Kemp)</strong><br>Um pesto muito simples em que a morugem substitui o manjericão. Usa apenas morugem fresca, frutos secos (pinhões ou sementes de girassol), alho cru, levedura nutricional, azeite e sal. Tudo é triturado até obter um pesto intenso, ótimo para massas, tostas ou sandes.</li>
+
+  <li><strong>R2 – Pesto de morugem rico em sementes (Chickweed Pesto – Produce On Parade)</strong><br>Um pesto vegan mais elaborado e “cheio”, com morugem, mistura de sementes e frutos secos (abóbora, girassol e nozes), bastante levedura nutricional, miso e molho de soja ou aminoácidos líquidos, além de alho, azeite e sumo de limão. Fica muito cremoso e poderoso em sabor, ideal para envolver massas ou cereais.</li>
+
+  <li><strong>R3 – Patê de grão-de-bico e morugem (Chickweed Pate – Eatweeds)</strong><br>Patê tipo “húmus aromático” que junta grão-de-bico cozido, morugem fresca, cebolinho, chili, estragão, miso, vinagre de arroz integral, limão e azeite. Tudo é triturado até atingir a textura desejada (mais rústica ou mais lisa). Serve-se com tostas, bolachas salgadas ou legumes crus.</li>
+
+  <li><strong>R4 – Húmus de morugem e alho-dos-ursinhos (Chickweed and Wild Garlic Hummus – Mandem Meetup)</strong><br>Versão aromática de húmus em que a morugem e as folhas de alho-dos-ursinhos se juntam ao clássico grão-de-bico, tahini, limão, azeite e especiarias (cominhos, paprika fumada, sal). O resultado é um húmus verde, fresco e muito perfumado, perfeito para acompanhar legumes crus, pão pita ou sanduíches.</li>
+
+  <li><strong>R5 – Salada de morugem, beterraba e cebolinho (Chickweed Salad – Edible Wild Food)</strong><br>Salada crua muito colorida que combina folhas de morugem, beterraba ralada e cebolinho ou cebola roxa, tudo ligado com um molho simples de óleo de coco, vinagre de vinho e mostarda. É uma salada rápida, com textura crocante e um molho ligeiramente cremoso.</li>
+
+  <li><strong>R6 – Salada minimalista de morugem com limão e óleo de noz (Chickweed Salad – Food &amp; Wine)</strong><br>Salada minimalista em que a morugem é a estrela absoluta: apenas folhas e caules tenros, temperados com um vinagrete de sumo de limão, óleo de noz, sal e pimenta. Fica uma salada muito leve, delicada e perfumada, ideal como entrada ou acompanhamento.</li>
+
+  <li><strong>R7 – Salada de morugem com molho de miso e sementes de angélica (Chickweed Salad With Wild Angelica Seed Dressing – Eatweeds)</strong><br>Salada de morugem temperada com um molho intenso à base de óleo de linhaça, miso branco, raspa e sumo de laranja e sementes moídas de angélica-brava. O sabor é complexo, entre o cítrico, o salgado e o ligeiramente especiado.</li>
+
+  <li><strong>R8 – Salada de morugem com rabanete, cenoura e vinagre de kombucha (Chickweed Salad – Tyrant Farms)</strong><br>Salada crua que combina morugem picada com palitos finos de rabanete roxo e cenoura, temperados com azeite, vinagre de kombucha (ou outro vinagre), sumo e raspa de citrinos e sal marinho. É uma salada crocante, com acidez viva e aromas cítricos.</li>
+
+  <li><strong>R9 – Pakoras de morugem (Chickweed Pakora – Chickweed recipes: pakora &amp; hot dressed salad, Receita 1/2 – Carl Legge)</strong><br>Pastéis fritos de inspiração indiana, feitos com farinha de grão-de-bico, especiarias (curcuma, paprika fumada, cardamomo, cominhos), morugem e cebola, ligados com sumo de limão e água. São fritos em pouco óleo até ficarem dourados, ótimos como snack ou entrada.</li>
+
+  <li><strong>R10 – Salada quente de morugem, cenoura e sementes de kalonji (Hot dressed chickweed, carrot and kalonji salad – Chickweed recipes: pakora &amp; hot dressed salad, Receita 2/2 – Carl Legge)</strong><br>Salada morna onde morugem e cenoura ralada são regadas com óleo quente aromatizado com sementes de kalonji (Nigella sativa) e sumo de laranja. As sementes estalam no óleo e libertam o seu aroma, criando um tempero intenso e muito simples.</li>
+</ul>
+
+<!-- SECÇÃO 3 — RECEITAS COMPLETAS -->
+
+<a id="pesto-de-morugem-simples-vegan-chickweed-pesto-juliet-kemp-r1"></a>
+<h2 id="pesto-de-morugem-simples-vegan-chickweed-pesto-juliet-kemp">Pesto de morugem simples (Vegan chickweed pesto – Juliet Kemp) <span class="source">[R1]</span></h2>
+<h4>Introdução</h4>
+<p>Este pesto usa morugem fresca em vez de manjericão, com uma base muito simples de frutos secos, alho cru, levedura nutricional, azeite e sal. A receita original é explicitamente vegan e foi pensada para aproveitar a morugem que cresce espontaneamente em hortas e jardins no inverno.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Bons punhados de pontas de morugem (Juliet Kemp refere “talvez duas canecas bem cheias”)</li>
+  <li>1 punhado de pinhões OU sementes de girassol</li>
+  <li>1–2 dentes de alho cru, picados (ou cerca de 2 colheres de chá de alho picado/pasta de alho, se quiseres comer de imediato)</li>
+  <li>1 colher de sopa de levedura nutricional</li>
+  <li>1 pitada generosa de sal</li>
+  <li>2–3 colheres de sopa de azeite (acrescentar conforme necessário ao triturar)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Lavar bem as pontas de morugem e escorrer.</li>
+  <li>Colocar num processador de alimentos ou liquidificador a morugem, os pinhões ou sementes de girassol, o alho, a levedura nutricional e o sal.</li>
+  <li>Começar a triturar e ir adicionando o azeite aos poucos, conforme necessário, até obter uma textura de pesto, espessa mas cremosa. Se o triturador tiver dificuldade, pode juntar-se um fio de água, apenas o suficiente para ajudar a trabalhar.</li>
+  <li>Provar e ajustar o sal, o alho ou a levedura nutricional, se necessário.</li>
+  <li>Servir com massa, em tostas, sandes ou como molho para legumes. Guardar no frigorífico por alguns dias, coberto com uma fina camada de azeite.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Fonte: Juliet Kemp – <a href="https://julietkemp.com/2010/12/vegan-chickweed-pesto/" target="_blank" rel="noopener">https://julietkemp.com/2010/12/vegan-chickweed-pesto/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pesto-de-morugem-rico-em-sementes-chickweed-pesto-produce-on-parade-r2"></a>
+<h2 id="pesto-de-morugem-rico-em-sementes-chickweed-pesto-produce-on-parade">Pesto de morugem rico em sementes (Chickweed Pesto – Produce On Parade) <span class="source">[R2]</span></h2>
+<h4>Introdução</h4>
+<p>Este pesto vem de um blogue de cozinha vegan e é um molho espesso e muito rico, com morugem, mistura de sementes e frutos secos, levedura nutricional, miso e molho de soja ou aminoácidos líquidos. É um pesto robusto, pensado para envolver massas, cereais ou rechear legumes.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>4 chávenas de morugem, lavada</li>
+  <li>1/2 chávena de azeite</li>
+  <li>1/2 chávena de sementes de abóbora (pepitas)</li>
+  <li>1/4 de chávena de sementes de girassol</li>
+  <li>1/4 de chávena de nozes</li>
+  <li>1/4 de chávena + 2 colheres de sopa de levedura nutricional</li>
+  <li>3 dentes de alho frescos, descascados</li>
+  <li>1 colher de sopa de pasta de miso</li>
+  <li>1 colher de sopa de aminoácidos líquidos OU molho de soja</li>
+  <li>1/2 colher de sopa de sumo de limão</li>
+  <li>1 pitada de pimenta preta moída</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Lavar bem a morugem e escorrer.</li>
+  <li>Colocar num processador de alimentos a morugem, o azeite, as sementes de abóbora, as sementes de girassol, as nozes, a levedura nutricional, o alho, o miso, os aminoácidos líquidos (ou molho de soja), o sumo de limão e a pimenta.</li>
+  <li>Triturar alguns minutos, até obter um pesto bem homogéneo e cremoso.</li>
+  <li>Parar ocasionalmente para raspar as laterais do processador e garantir que tudo fica bem incorporado.</li>
+  <li>Provar e ajustar sal (através do miso ou molho de soja), pimenta ou sumo de limão, se necessário.</li>
+  <li>Servir imediatamente com massa, quinoa, millet, cuscuz ou como recheio de cogumelos. Pode ser congelado em pequenas porções para uso futuro.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Fonte: Produce On Parade – <a href="https://www.produceonparade.com/produce-on-parade/chickweed-pesto" target="_blank" rel="noopener">https://www.produceonparade.com/produce-on-parade/chickweed-pesto</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pate-de-grao-de-bico-e-morugem-chickweed-pate-eatweeds-r3"></a>
+<h2 id="pate-de-grao-de-bico-e-morugem-chickweed-pate-eatweeds">Patê de grão-de-bico e morugem (Chickweed Pate – Eatweeds) <span class="source">[R3]</span></h2>
+<h4>Introdução</h4>
+<p>Patê vegan de inspiração em receita de Wildman Steve Brill, publicado pelo site Eatweeds. Junta grão-de-bico cozido com morugem, ervas aromáticas, miso e vinagre, resultando num patê rico em proteína vegetal e sabor umami.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>5 punhados de grão-de-bico cozido</li>
+  <li>2 dentes de alho, esmagados</li>
+  <li>1 malagueta vermelha, sem sementes e picada</li>
+  <li>3 grandes punhados de folhas e caules de morugem fresca, picados</li>
+  <li>4 cebolinhas (spring onions / cebolinho com talo), picadas</li>
+  <li>2 punhados de estragão fresco, picado</li>
+  <li>1 colher de sopa de vinagre de arroz integral (brown rice vinegar)</li>
+  <li>2–3 colheres de sopa de miso</li>
+  <li>Sumos de 1 limão</li>
+  <li>2 colheres de sopa de azeite</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Colocar o grão-de-bico cozido e a morugem num processador de alimentos.</li>
+  <li>Triturar brevemente até ficarem misturados, mas ainda com alguma textura.</li>
+  <li>Adicionar o alho esmagado, a malagueta picada, as cebolinhas picadas, o estragão, o vinagre de arroz, o miso, o sumo de limão e o azeite.</li>
+  <li>Processar novamente até atingir a consistência desejada: podes deixar mais rústico (com pedaços) ou mais liso.</li>
+  <li>Provar e ajustar: se necessário, acrescentar mais miso para salgar, mais limão para acidez ou mais azeite para suavizar.</li>
+  <li>Servir com bolachas salgadas, pão torrado ou legumes crus. Conservar no frigorífico.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Fonte: Eatweeds (Robin Harford) – <a href="https://www.eatweeds.co.uk/chickweed-pate" target="_blank" rel="noopener">https://www.eatweeds.co.uk/chickweed-pate</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="humus-de-morugem-e-alho-dos-ursinhos-chickweed-and-wild-garlic-hummus-mandem-meetup-r4"></a>
+<h2 id="humus-de-morugem-e-alho-dos-ursinhos-chickweed-and-wild-garlic-hummus-mandem-meetup">Húmus de morugem e alho-dos-ursinhos (Chickweed and Wild Garlic Hummus – Mandem Meetup) <span class="source">[R4]</span></h2>
+<h4>Introdução</h4>
+<p>Receita de húmus publicada pelo projeto Mandem Meetup, em que morugem e folhas de alho-dos-ursinhos dão um toque de verde fresco à base clássica de grão-de-bico e tahini. É vegan de origem e pensado para servir como dip ou pasta para sandes.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 grande punhado de morugem fresca, lavada</li>
+  <li>8–10 folhas de alho-dos-ursinhos (wild garlic), lavadas</li>
+  <li>1 lata de 400 g de grão-de-bico, escorrido (reservar o líquido)</li>
+  <li>3 colheres de sopa de tahini</li>
+  <li>Sumo de 1 limão</li>
+  <li>2 colheres de sopa de azeite, mais extra para regar ao servir</li>
+  <li>1 colher de chá de cominhos moídos</li>
+  <li>Sal a gosto</li>
+  <li>1 pitada de paprika fumada para decorar</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Picar grosseiramente a morugem e as folhas de alho-dos-ursinhos.</li>
+  <li>Colocar num processador de alimentos a morugem, o alho-dos-ursinhos, o grão-de-bico escorrido, o tahini, o sumo de limão, o azeite, os cominhos e o sal.</li>
+  <li>Triturar até obter um creme homogéneo, adicionando aos poucos um pouco do líquido reservado do grão-de-bico até atingir a consistência desejada (mais espesso ou mais cremoso).</li>
+  <li>Provar e ajustar o sal, o limão ou os cominhos.</li>
+  <li>Transferir para uma taça, regar com um fio de azeite e polvilhar com a paprika fumada.</li>
+  <li>Servir com palitos de legumes, pão, tostas ou crackers.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Fonte: Mandem Meetup – <a href="https://www.mandemmeetup.org/recipes/chickweed-and-wild-garlic-hummus" target="_blank" rel="noopener">https://www.mandemmeetup.org/recipes/chickweed-and-wild-garlic-hummus</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-de-morugem-beterraba-e-cebolinho-chickweed-salad-edible-wild-food-r5"></a>
+<h2 id="salada-de-morugem-beterraba-e-cebolinho-chickweed-salad-edible-wild-food">Salada de morugem, beterraba e cebolinho (Chickweed Salad – Edible Wild Food) <span class="source">[R5]</span></h2>
+<h4>Introdução</h4>
+<p>Salada simples e rápida, apresentada como receita vegan no site Edible Wild Food. A morugem junta-se a beterraba crua ralada e cebolinho/cebola, tudo ligado com um molho de óleo de coco, vinagre de vinho e mostarda.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 chávena de folhas de morugem</li>
+  <li>1 molho de cebolinhas (scallions) OU 1 pequena cebola roxa, finamente fatiada</li>
+  <li>1 beterraba (crua), ralada</li>
+  <li>1 pitada de sal marinho</li>
+  <li>3 colheres de sopa de óleo de coco biológico</li>
+  <li>2 colheres de sopa de vinagre de vinho</li>
+  <li>1/2 colher de chá de mostarda à escolha</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Lavar e escorrer bem a morugem.</li>
+  <li>Fatiar finamente as cebolinhas ou a cebola roxa.</li>
+  <li>Ralar a beterraba crua.</li>
+  <li>Colocar morugem, cebolinhas/cebola e beterraba numa taça de salada.</li>
+  <li>Numa tigela pequena, misturar o óleo de coco (líquido ou amolecido), o vinagre de vinho e a mostarda, batendo até emulsionar.</li>
+  <li>Verter o molho sobre a salada e envolver bem.</li>
+  <li>Polvilhar com uma pitada de sal marinho por cima.</li>
+  <li>Servir de imediato.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Fonte: Edible Wild Food – <a href="https://www.ediblewildfood.com/chickweed-salad.aspx" target="_blank" rel="noopener">https://www.ediblewildfood.com/chickweed-salad.aspx</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-minimalista-de-morugem-com-limao-e-oleo-de-noz-chickweed-salad-food-wine-r6"></a>
+<h2 id="salada-minimalista-de-morugem-com-limao-e-oleo-de-noz-chickweed-salad-food-wine">Salada minimalista de morugem com limão e óleo de noz (Chickweed Salad – Food &amp; Wine) <span class="source">[R6]</span></h2>
+<h4>Introdução</h4>
+<p>Salada muito simples de Mark Bittman e Jean-Georges Vongerichten, publicada na Food &amp; Wine. A morugem é temperada apenas com limão, óleo de noz, sal e pimenta, para realçar o sabor próprio da planta.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>4 colheres de chá de sumo de limão fresco</li>
+  <li>4 colheres de chá de óleo de noz</li>
+  <li>Sal e pimenta preta acabada de moer, a gosto</li>
+  <li>6 chávenas de folhas e caules tenros de morugem (cerca de 170 g)</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Colocar o sumo de limão numa taça grande.</li>
+  <li>Juntar o óleo de noz em fio, batendo com um garfo ou vara de arames até emulsionar.</li>
+  <li>Temperar com sal e pimenta a gosto.</li>
+  <li>Adicionar a morugem e envolver bem até que todas as folhas fiquem ligeiramente cobertas pelo molho.</li>
+  <li>Servir imediatamente.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Fonte: Food &amp; Wine – <a href="https://www.foodandwine.com/recipes/chickweed-salad" target="_blank" rel="noopener">https://www.foodandwine.com/recipes/chickweed-salad</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-de-morugem-com-molho-de-miso-e-sementes-de-angelica-chickweed-salad-with-wild-angelica-seed-dressing-eatweeds-r7"></a>
+<h2 id="salada-de-morugem-com-molho-de-miso-e-sementes-de-angelica-chickweed-salad-with-wild-angelica-seed-dressing-eatweeds">Salada de morugem com molho de miso e sementes de angélica (Chickweed Salad With Wild Angelica Seed Dressing – Eatweeds) <span class="source">[R7]</span></h2>
+<h4>Introdução</h4>
+<p>Receita do site Eatweeds em que a morugem é acompanhada por um molho intenso de óleo de linhaça, miso branco, sumo e raspa de laranja e sementes moídas de angélica-brava. Uma salada simples mas com um tempero bastante aromático.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>4 bons punhados de morugem</li>
+  <li>1 colher de sopa de óleo de linhaça</li>
+  <li>Raspa e sumo de 1/2 laranja</li>
+  <li>1 colher de sopa de miso branco</li>
+  <li>1 colher de chá de sementes de angélica-brava (Wild Angelica) moídas</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Lavar e escorrer bem a morugem.</li>
+  <li>Numa tigela pequena, misturar o óleo de linhaça, o sumo de 1/2 laranja, a raspa dessa meia laranja, o miso e as sementes moídas de angélica. Bater bem até o miso ficar dissolvido e o molho homogéneo.</li>
+  <li>Colocar a morugem numa taça de servir.</li>
+  <li>Verter o molho sobre a morugem e envolver bem para que todas as folhas fiquem cobertas.</li>
+  <li>Servir como acompanhamento (a receita indica que rende cerca de 4 porções como guarnição).</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Fonte: Eatweeds (Robin Harford) – <a href="https://www.eatweeds.co.uk/chickweed-salad-with-wild-angelica-seed-dressing" target="_blank" rel="noopener">https://www.eatweeds.co.uk/chickweed-salad-with-wild-angelica-seed-dressing</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-de-morugem-com-rabanete-cenoura-e-vinagre-de-kombucha-chickweed-salad-tyrant-farms-r8"></a>
+<h2 id="salada-de-morugem-com-rabanete-cenoura-e-vinagre-de-kombucha-chickweed-salad-tyrant-farms">Salada de morugem com rabanete, cenoura e vinagre de kombucha (Chickweed Salad – Tyrant Farms) <span class="source">[R8]</span></h2>
+<h4>Introdução</h4>
+<p>Salada crua publicada na Tyrant Farms, com morugem, rabanete roxo, cenoura e um molho simples de azeite, vinagre de kombucha (ou outro vinagre), sumo e raspa de citrinos e sal marinho. O autor segue uma alimentação vegan e usa esta salada como exemplo de “gourmet” com ervas espontâneas.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>3 chávenas de morugem picada</li>
+  <li>1/4 de chávena de rabanete roxo (purple daikon) cortado em “pauzinhos” finos</li>
+  <li>1/4 de chávena de cenouras cortadas em “pauzinhos” finos</li>
+  <li>1,5 colheres de sopa de azeite virgem extra biológico</li>
+  <li>1 colher de sopa de vinagre de kombucha (ou outro vinagre de salada)</li>
+  <li>1 colher de sopa de sumo de limão OU sumo de laranja sanguínea</li>
+  <li>1 colher de chá de raspa fresca de citrinos (limão Meyer ou laranja sanguínea)</li>
+  <li>Sal marinho (por exemplo sal marinho vermelho do Havai ou sal rosa) q.b.</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Picar a morugem e colocar numa taça de salada.</li>
+  <li>Cortar o rabanete e a cenoura em palitos finos (“chopsticks” pequenos) e juntar à morugem.</li>
+  <li>Numa tigela pequena, misturar o azeite, o vinagre de kombucha e o sumo de citrinos, batendo até emulsionar.</li>
+  <li>Verter o molho sobre os legumes e envolver bem.</li>
+  <li>Polvilhar com sal marinho a gosto e voltar a envolver, ajustando o sal se necessário.</li>
+  <li>Dispor a salada em pratos individuais e polvilhar por cima com a raspa de citrinos antes de servir.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Fonte: Tyrant Farms – <a href="https://www.tyrantfarms.com/chickweed-recipe-turning-common-weeds-into-gourmet-food/" target="_blank" rel="noopener">https://www.tyrantfarms.com/chickweed-recipe-turning-common-weeds-into-gourmet-food/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pakoras-de-morugem-chickweed-pakora-chickweed-recipes-pakora-hot-dressed-salad-receita-1-2-carl-legge-r9"></a>
+<h2 id="pakoras-de-morugem-chickweed-pakora-chickweed-recipes-pakora-hot-dressed-salad-receita-1-2-carl-legge">Pakoras de morugem (Chickweed Pakora – Chickweed recipes: pakora &amp; hot dressed salad, Receita 1/2 – Carl Legge) (receita 1/2) <span class="source">[R9]</span></h2>
+<h4>Introdução</h4>
+<p>Nesta receita do blogue de Carl Legge, a morugem é usada em pakoras (pastéis fritos) inspiradas num método da River Cottage. A base é farinha de grão-de-bico (besan), especiarias e morugem com cebola, tudo frito em pouco óleo vegetal. É uma receita vegan tal como publicada.</p>
+
+<h4>Ingredientes</h4>
+<p>(para cerca de 10–12 pakoras de 6–8 cm)</p>
+<ul>
+  <li>150 g de farinha de grão-de-bico (gram flour / besan)</li>
+  <li>1/2 colher de chá de curcuma</li>
+  <li>1/2 colher de chá de paprika fumada</li>
+  <li>1/2 colher de chá de cardamomo moído</li>
+  <li>1 colher de chá de cominhos moídos</li>
+  <li>1 colher de chá de sal</li>
+  <li>1 colher de chá de fermento químico em pó (baking powder)</li>
+  <li>100 g de morugem, lavada e grosseiramente picada (cerca de 2 punhados)</li>
+  <li>1 cebola pequena, descascada, cortada ao meio e fatiada finamente (por exemplo com mandolina)</li>
+  <li>Sumo de 1 limão</li>
+  <li>Um pouco de água (q.b. para ligar a massa)</li>
+  <li>Óleo vegetal q.b. para fritar (usar uma camada fina numa frigideira antiaderente ou bem temperada)</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Colocar numa taça a farinha de grão-de-bico, a curcuma, a paprika fumada, o cardamomo, os cominhos, o sal e o fermento em pó. Peneirar ou misturar bem para distribuir as especiarias.</li>
+  <li>Juntar a morugem picada e a cebola fatiada e envolver até ficarem bem distribuídas na mistura seca.</li>
+  <li>Adicionar o sumo de limão e, aos poucos, um pouco de água, mexendo até obter uma massa espessa em que a morugem e a cebola fiquem envolvidas e ligadas (a massa deve “coerir”, não ficar líquida).</li>
+  <li>Aquecer uma camada de óleo vegetal numa frigideira antiaderente em lume médio.</li>
+  <li>Com uma colher, retirar porções de massa (cerca de 1 colher de sopa cheia), moldar grosseiramente em pequenos discos sobre a espátula e deslizar cuidadosamente para a frigideira.</li>
+  <li>Fritar as pakoras até ficarem bem douradas de um lado (cerca de 2–3 minutos), virar e fritar do outro lado até dourar.</li>
+  <li>Retirar para papel absorvente enquanto se frita o restante.</li>
+  <li>Servir quente, simples ou com iogurte vegetal, chutney ou compota de chili como acompanhamento.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Fonte: Carl Legge – <a href="https://www.carllegge.com/2012/01/chickweed-recipes-pakora-hot-dressed-salad/" target="_blank" rel="noopener">https://www.carllegge.com/2012/01/chickweed-recipes-pakora-hot-dressed-salad/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-quente-de-morugem-cenoura-e-sementes-de-kalonji-hot-dressed-chickweed-carrot-and-kalonji-salad-chickweed-recipes-pakora-hot-dressed-salad-receita-2-2-carl-legge-r10"></a>
+<h2 id="salada-quente-de-morugem-cenoura-e-sementes-de-kalonji-hot-dressed-chickweed-carrot-and-kalonji-salad-chickweed-recipes-pakora-hot-dressed-salad-receita-2-2-carl-legge">Salada quente de morugem, cenoura e sementes de kalonji (Hot dressed chickweed, carrot and kalonji salad – Chickweed recipes: pakora &amp; hot dressed salad, Receita 2/2 – Carl Legge) (receita 2/2) <span class="source">[R10]</span></h2>
+<h4>Introdução</h4>
+<p>A segunda receita do mesmo artigo de Carl Legge é uma salada muito simples em que morugem e cenoura ralada são “temperadas a quente” com óleo quente e sementes de kalonji (Nigella sativa) estaladas, mais sumo de laranja e sal. É um acompanhamento vegano rápido e aromático.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Cerca de 50 g de morugem, lavada e grosseiramente picada</li>
+  <li>2–3 cenouras, bem escovadas, aparadas e grosseiramente raladas</li>
+  <li>3 colheres de sopa de óleo vegetal</li>
+  <li>1–2 colheres de sopa de sementes de kalonji (Nigella sativa)</li>
+  <li>Sumo de 1/2 laranja</li>
+  <li>Sal marinho q.b.</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Colocar a morugem picada e a cenoura ralada numa taça de salada.</li>
+  <li>Aquecer o óleo vegetal numa frigideira até começar a libertar fumo ligeiro (bem quente, mas sem queimar).</li>
+  <li>Adicionar as sementes de kalonji ao óleo quente e mexer rapidamente; elas irão começar a “estalar” muito depressa. Não deixar queimar.</li>
+  <li>Verter imediatamente o óleo quente com as sementes sobre a mistura de morugem e cenoura.</li>
+  <li>Adicionar o sumo de 1/2 laranja e sal a gosto.</li>
+  <li>Envolver tudo muito bem e servir de imediato, enquanto a salada ainda está morna.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>Fonte: Carl Legge – <a href="https://www.carllegge.com/2012/01/chickweed-recipes-pakora-hot-dressed-salad/" target="_blank" rel="noopener">https://www.carllegge.com/2012/01/chickweed-recipes-pakora-hot-dressed-salad/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>
