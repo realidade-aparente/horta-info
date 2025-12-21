@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Nabiça – Receitas Vegetarianas (Top 10)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+<body id="topo">
+<div class="masthead">
+  <header>
+    <h1>Nabiça – Receitas Vegetarianas (Top 10)</h1>
+    <p>Preparações com ingredientes à base de plantas, leite e derivados do leite, ovos e mel</p>
+  </header>
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-de-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html" class="ativa">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+</div>
+
+<main>
+<article>
+
+<h2 id="receitas-preparados">Receitas e preparados – dieta vegetariana</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+	<a href="/data/refeicoes/vegan/nabica_receitas_vegan.html">(Vegan)</a>
+    <a href="/data/refeicoes/raw-vegan/nabica_receitas_raw-vegan.html">(Comida Viva)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro por ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+
+  <ol>
+    <li><a href="#nabicas-com-ovos-escalfados">Nabiças com ovos escalfados</a></li>
+    <li><a href="#ovos-escalfados-com-grao-e-nabicas-forno">Ovos escalfados com grão e nabiças (forno)</a></li>
+    <li><a href="#crepes-de-nabicas">Crepes de nabiças</a></li>
+    <li><a href="#nabicas-ao-alho">Nabiças ao alho</a></li>
+    <li><a href="#esparregado-de-nabicas-a-portuguesa">Esparregado de nabiças à portuguesa</a></li>
+    <li><a href="#tarte-de-grelos-ou-nabicas-com-bechamel-e-mozzarella">Tarte de grelos (ou nabiças) com bechamel e mozzarella</a></li>
+    <li><a href="#arroz-de-nabicas">Arroz de nabiças</a></li>
+    <li><a href="#arroz-de-hortos-com-espigos-de-nabica-e-couve">Arroz de hortos (com espigos de nabiça e couve)</a></li>
+    <li><a href="#quiche-de-nabo-e-folhas-de-nabo-com-base-de-amendoa">Quiche de nabo e folhas de nabo com base de amêndoa</a></li>
+    <li><a href="#sopa-de-feijao-com-nabicas">Sopa de feijão com nabiças</a></li>
+  </ol>
+</div>
+
+<h2 id="resumo">Resumo das receitas (R1–R10)</h2>
+<ul>
+  <li><strong>R1 — Nabiças com ovos escalfados</strong><br>Salteado rápido de nabiças e alho-francês aromatizado com louro, finalizado com ovos escalfados na frigideira. Refeição simples e completa para o dia a dia.</li>
+  <li><strong>R2 — Ovos escalfados com grão e nabiças (forno)</strong><br>Base de tomate, especiarias, grão-de-bico e nabiças, terminada no forno com ovos por cima. Prato de travessa, reconfortante e prático.</li>
+  <li><strong>R3 — Crepes de nabiças</strong><br>Crepes salgados em que as nabiças entram na própria massa (com ovos e leite), resultando numa textura macia e sabor vegetal suave. Ideais para prato principal leve.</li>
+  <li><strong>R4 — Nabiças ao alho</strong><br>Nabiças escaldadas e depois salteadas em azeite e alho. Um acompanhamento clássico, rápido e muito versátil.</li>
+  <li><strong>R5 — Esparregado de nabiças à portuguesa</strong><br>Nabiças cozidas e reduzidas a puré, ligadas com azeite e farinha, temperadas e servidas com ovos cozidos. Acompanhamento tradicional, cremoso e aromático.</li>
+  <li><strong>R6 — Tarte de grelos (ou nabiças) com bechamel e mozzarella</strong><br>Recheio cremoso de grelos/nabiças com bechamel e um toque de queijo, sobre base de massa quebrada. Boa para refeição principal com salada.</li>
+  <li><strong>R7 — Arroz de nabiças</strong><br>Arroz carolino cozinhado com nabiças salteadas em cebola e alho. Um arroz simples, “verde”, ótimo como acompanhamento ou prato leve.</li>
+  <li><strong>R8 — Arroz de hortos (com espigos de nabiça e couve)</strong><br>Arroz caldoso com caldo de legumes, tomate e “hortos” (espigos de nabiça e couve). Receita de grande escala, com perfil bem português.</li>
+  <li><strong>R9 — Quiche de nabo e folhas de nabo com base de amêndoa</strong><br>Quiche sem farinha na base (amêndoa), com refogado de nabo e folhas de nabo, ovos, natas/creme e queijo. Boa para brunch, marmita ou jantar.</li>
+  <li><strong>R10 — Sopa de feijão com nabiças</strong><br>Sopa nutritiva com feijão, batata, nabo e cenoura, terminada com nabiças adicionadas no fim para manter cor e textura. Sustentável e saciante.</li>
+</ul>
+
+<a id="nabicas-com-ovos-escalfados-r1"></a>
+<h2 id="nabicas-com-ovos-escalfados">Nabiças com ovos escalfados <span class="source">[R1]</span></h2>
+
+<p><strong>------------------------------------------------------------<br>
+R1 — Nabiças com ovos escalfados<br>
+------------------------------------------------------------</strong></p>
+
+<h4>1) Introdução</h4>
+<p>Uma frigideira, poucos ingredientes e um resultado muito saboroso: nabiças e alho-francês salteados com louro, com ovos escalfados diretamente por cima.</p>
+
+<h4>2) Ingredientes (1 porção)</h4>
+<ul>
+  <li>150 g de nabiças</li>
+  <li>50 g de alho-francês</li>
+  <li>1 c. de sobremesa de azeite</li>
+  <li>1 dente de alho</li>
+  <li>1 folha de louro</li>
+  <li>sal e pimenta q.b.</li>
+  <li>2 ovos</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+  <li>1. Lave os legumes. Corte as nabiças em pedaços médios e o alho-francês em rodelas finas.</li>
+  <li>2. Aqueça o azeite numa frigideira em lume médio. Junte o alho picado e o louro e deixe alourar.</li>
+  <li>3. Adicione as nabiças e o alho-francês, mexendo. Tempere com sal e pimenta. Junte um pouco de água (apenas o suficiente para criar vapor), tape e cozinhe cerca de 10 minutos, mexendo ocasionalmente, até amaciar.</li>
+  <li>4. Parta os ovos, um a um, para uma taça pequena e verta-os individualmente na frigideira. Tempere com uma pitada de sal e pimenta. Tape e deixe escalfar 3–4 minutos (claras firmes e gema ainda mole).</li>
+  <li>5. Sirva de imediato.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>Dieta3Passos — https://www.dieta3passos.pt/receita/vegetariano/nabicas-com-ovos-escalfados</p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="ovos-escalfados-com-grao-e-nabicas-forno-r2"></a>
+<h2 id="ovos-escalfados-com-grao-e-nabicas-forno">Ovos escalfados com grão e nabiças (forno) <span class="source">[R2]</span></h2>
+
+<p><strong>------------------------------------------------------------<br>
+R2 — Ovos escalfados com grão e nabiças (forno)<br>
+------------------------------------------------------------</strong></p>
+
+<h4>1) Introdução</h4>
+<p>Um prato de travessa: um estufado rápido de tomate com nabiças e grão, aromatizado com colorau e cominhos, terminado no forno com ovos por cima.</p>
+
+<h4>2) Ingredientes (6 doses)</h4>
+<ul>
+  <li>120 g de cebola (em pedaços)</li>
+  <li>2 dentes de alho</li>
+  <li>30 g de azeite</li>
+  <li>1 c. chá de colorau</li>
+  <li>1/2 c. chá de cominhos em pó</li>
+  <li>1 c. chá de sal</li>
+  <li>1 c. chá de pimenta</li>
+  <li>400 g de tomate em pedaços</li>
+  <li>200 g de nabiças</li>
+  <li>200 g de grão-de-bico cozido e escorrido</li>
+  <li>6 ovos</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+  <li>1. Pré-aqueça o forno a 200ºC.</li>
+  <li>2. Pique a cebola, o alho e junte o azeite; refogue até amaciar.</li>
+  <li>3. Junte o colorau, os cominhos, o sal e a pimenta e envolva.</li>
+  <li>4. Adicione o tomate e as nabiças e cozinhe até as nabiças amolecerem.</li>
+  <li>5. Junte o grão-de-bico e deixe apurar.</li>
+  <li>6. Verta para um pirex/travessa de forno, abra pequenas “cavidades” e disponha lá os ovos.</li>
+  <li>7. Leve ao forno a 200ºC cerca de 12 minutos (ou até as claras prenderem e a gema ficar ao seu gosto).</li>
+  <li>8. Sirva (a receita sugere acompanhar com arroz branco).</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>Mundo de Receitas Bimby — https://www.mundodereceitasbimby.com.pt/prato-principal-outros-receitas/ovos-escalfados-com-grao-e-nabicas/zf821k60-f3904-376581-cfcd2-ebgycu3w</p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="crepes-de-nabicas-r3"></a>
+<h2 id="crepes-de-nabicas">Crepes de nabiças <span class="source">[R3]</span></h2>
+
+<p><strong>------------------------------------------------------------<br>
+R3 — Crepes de nabiças<br>
+------------------------------------------------------------</strong></p>
+
+<h4>1) Introdução</h4>
+<p>Crepes verdes e macios, onde as nabiças entram na massa triturada com ovos e leite. Podem servir como base para recheios salgados.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>3 ovos</li>
+  <li>250 ml de leite meio gordo</li>
+  <li>2 c. de sopa de azeite</li>
+  <li>150 g de nabiças cozidas</li>
+  <li>coentros q.b.</li>
+  <li>100 g de farinha de trigo</li>
+  <li>sal q.b.</li>
+  <li>pimenta q.b.</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+  <li>1. No liquidificador, junte ovos, leite, 1 colher de sopa de azeite, as folhas de nabiças e coentros. Triture bem.</li>
+  <li>2. Passe a mistura por um coador.</li>
+  <li>3. Junte a farinha peneirada, tempere com sal e pimenta e envolva até ficar homogéneo.</li>
+  <li>4. Aqueça uma frigideira em lume médio com a outra colher de sopa de azeite.</li>
+  <li>5. Verta uma pequena concha de massa; deixe cozer e vire com espátula. Cozinhe do outro lado.</li>
+  <li>6. Repita até terminar a massa.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>Dieta Easyslim — https://www.dietaeasyslim.com/en/receitas/crepes-de-nabicas/</p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="nabicas-ao-alho-r4"></a>
+<h2 id="nabicas-ao-alho">Nabiças ao alho <span class="source">[R4]</span></h2>
+
+<p><strong>------------------------------------------------------------<br>
+R4 — Nabiças ao alho<br>
+------------------------------------------------------------</strong></p>
+
+<h4>1) Introdução</h4>
+<p>Acompanhamento rápido: as nabiças são primeiro escaldadas e depois salteadas em azeite e alho, ficando tenras e aromáticas.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>nabiças q.b.</li>
+  <li>sal q.b.</li>
+  <li>azeite q.b.</li>
+  <li>alho q.b.</li>
+  <li>pimenta preta q.b.</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+  <li>1. Lave e arranje as nabiças, retirando os caules mais duros e partindo as folhas em pedaços menores.</li>
+  <li>2. Ferva água com sal, junte as nabiças e cozinhe cerca de 5 minutos.</li>
+  <li>3. Numa frigideira larga, aqueça azeite com o alho picado.</li>
+  <li>4. Junte as nabiças e salteie.</li>
+  <li>5. Tempere com pimenta preta moída na hora e sirva.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>Dieta Easyslim — https://www.dietaeasyslim.com/en/receitas/nabicas-ao-alho/</p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="esparregado-de-nabicas-a-portuguesa-r5"></a>
+<h2 id="esparregado-de-nabicas-a-portuguesa">Esparregado de nabiças à portuguesa <span class="source">[R5]</span></h2>
+
+<p><strong>------------------------------------------------------------<br>
+R5 — Esparregado de nabiças à portuguesa<br>
+------------------------------------------------------------</strong></p>
+
+<h4>1) Introdução</h4>
+<p>Esparregado tradicional: nabiças cozidas e esmagadas, ligadas com azeite e farinha e perfumadas com noz-moscada e vinagre, com ovos cozidos por cima.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>1,250 kg de nabiças</li>
+  <li>1 dl de azeite</li>
+  <li>4 dentes de alho (levemente esmagados)</li>
+  <li>1 c. (sopa) bem cheia de farinha de trigo</li>
+  <li>sal q.b.</li>
+  <li>pimenta q.b.</li>
+  <li>noz-moscada q.b.</li>
+  <li>1 c. (chá) de vinagre</li>
+  <li>4 ovos cozidos</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+  <li>1. Retire talos, lave muito bem e coza as nabiças destapadas em bastante água a ferver temperada com sal por cerca de 10 minutos.</li>
+  <li>2. Escorra bem, deixe arrefecer e esprema; triture/pique até obter um puré homogéneo.</li>
+  <li>3. Aqueça o azeite com os alhos até alourarem. Retire os alhos e reserve.</li>
+  <li>4. Junte o puré de nabiças ao azeite e mexa; polvilhe com a farinha e mexa até ligar.</li>
+  <li>5. Mantenha ao lume, mexendo, até borbulhar; cozinhe mais 1–2 minutos.</li>
+  <li>6. Retire do lume, tempere com pimenta e noz-moscada, retifique sal e junte o vinagre.</li>
+  <li>7. Sirva numa travessa e decore com os ovos cozidos e os alhos reservados.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>A Travessa das Bolinhas Vermelhas — https://atravessabv.wordpress.com/2014/11/04/esparregado-de-nabicas-a-portuguesa/</p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="tarte-de-grelos-ou-nabicas-com-bechamel-e-mozzarella-r6"></a>
+<h2 id="tarte-de-grelos-ou-nabicas-com-bechamel-e-mozzarella">Tarte de grelos (ou nabiças) com bechamel e mozzarella <span class="source">[R6]</span></h2>
+
+<p><strong>------------------------------------------------------------<br>
+R6 — Tarte de grelos (ou nabiças) com bechamel e mozzarella<br>
+------------------------------------------------------------</strong></p>
+
+<h4>1) Introdução</h4>
+<p>Tarte salgada de forno: recheio de grelos/nabiças ligado com bechamel, aromatizado e coberto com queijo ralado, sobre massa quebrada.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>1 base de massa quebrada</li>
+  <li>1 molho de grelos ou nabiças</li>
+  <li>molho bechamel q.b. (caseiro)</li>
+  <li>sal q.b.</li>
+  <li>1 cebola</li>
+  <li>2 dentes de alho</li>
+  <li>1 fio de azeite</li>
+  <li>1 chávena de café de licor</li>
+  <li>pimenta q.b.</li>
+  <li>noz-moscada q.b.</li>
+  <li>queijo mozzarella ralado q.b.</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+  <li>1. Arranje o molho de grelos ou nabiças e coza em água temperada com sal.</li>
+  <li>2. Escorra e pique grosseiramente.</li>
+  <li>3. Num tacho, refogue a cebola e os alhos picados com um fio de azeite.</li>
+  <li>4. Junte os grelos/nabiças e mexa. Adicione o licor e o bechamel até obter um preparado bem ligado.</li>
+  <li>5. Tempere com sal, pimenta e noz-moscada e cozinhe cerca de 5 minutos.</li>
+  <li>6. Forre uma tarteira com a massa quebrada.</li>
+  <li>7. Coloque o recheio, polvilhe com mozzarella ralada e leve ao forno pré-aquecido a 190ºC por cerca de 30 minutos.</li>
+  <li>8. Sirva de imediato.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>Receitas e Truques da Clarinha — https://receitasetruquesdaclarinha.blogspot.com/2015/09/tarte-de-grelos.html</p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="arroz-de-nabicas-r7"></a>
+<h2 id="arroz-de-nabicas">Arroz de nabiças <span class="source">[R7]</span></h2>
+
+<p><strong>------------------------------------------------------------<br>
+R7 — Arroz de nabiças<br>
+------------------------------------------------------------</strong></p>
+
+<h4>1) Introdução</h4>
+<p>Arroz carolino cozinhado com nabiças salteadas em cebola e alho. Simples, económico e ótimo para acompanhar ou para comer como prato leve.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>1 ramo de nabiças (ou de espinafres)</li>
+  <li>2 copos de arroz carolino</li>
+  <li>1 cebola grande (picada finamente)</li>
+  <li>4 colheres (sopa) de azeite</li>
+  <li>2 dentes de alho (picados finamente)</li>
+  <li>4 copos de água quente</li>
+  <li>sal q.b.</li>
+  <li>pimenta moída q.b.</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+  <li>1. Arranje as nabiças, aproveitando apenas folhas e pontas mais tenras. Lave e escorra bem.</li>
+  <li>2. Refogue a cebola no azeite até ficar translúcida, sem deixar queimar.</li>
+  <li>3. Junte o alho e as nabiças e salteie até murcharem.</li>
+  <li>4. Adicione o arroz e envolva bem.</li>
+  <li>5. Regue com a água quente. Tempere com sal e pimenta.</li>
+  <li>6. Deixe ferver, tape, reduza o lume e cozinhe até o arroz absorver o líquido e ficar solto.</li>
+  <li>7. Deixe repousar 5 minutos fora do lume antes de servir.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>Receitas e Menus — https://www.receitasemenus.net/arroz-de-nabicas/</p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="arroz-de-hortos-com-espigos-de-nabica-e-couve-r8"></a>
+<h2 id="arroz-de-hortos-com-espigos-de-nabica-e-couve">Arroz de hortos (com espigos de nabiça e couve) <span class="source">[R8]</span></h2>
+
+<p><strong>------------------------------------------------------------<br>
+R8 — Arroz de hortos (com espigos de nabiça e couve)<br>
+------------------------------------------------------------</strong></p>
+
+<h4>1) Introdução</h4>
+<p>Arroz caldoso de inspiração tradicional e de aproveitamento (“hortos”), com caldo de legumes, tomate e mistura de espigos de nabiça e couve.</p>
+
+<h4>2) Ingredientes</h4>
+<p><strong>Para o caldo de legumes:</strong></p>
+<ul>
+  <li>1,0 l de água</li>
+  <li>30 g de caldo de legumes (pasta)</li>
+</ul>
+
+<p><strong>Para o arroz:</strong></p>
+<ul>
+  <li>200 g de cebola picada</li>
+  <li>500 g de vinho de arroz</li>
+  <li>100 ml de azeite</li>
+  <li>200 g de tomate em cubos</li>
+  <li>500 g de espigos de nabiça</li>
+  <li>500 g de espigos de couve portuguesa</li>
+  <li>5 g de sal grosso</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+  <li>1. Para o caldo: ferva a água, junte o caldo de legumes e deixe ferver cerca de 5 minutos.</li>
+  <li>2. Para o arroz: refogue a cebola em azeite.</li>
+  <li>3. Adicione o tomate em cubos e deixe cozinhar um pouco.</li>
+  <li>4. Junte o caldo de legumes preparado.</li>
+  <li>5. Junte o arroz e deixe cozer.</li>
+  <li>6. A meio da cozedura, adicione os espigos de couve portuguesa e os espigos de couve nabiça e deixe cozer.</li>
+  <li>7. Retifique o sabor com sal grosso, se necessário.</li>
+  <li>8. Sirva numa terrina/taça, indicado para arroz caldoso.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>Unilever Food Solutions — https://www.unileverfoodsolutions.pt/recipe/arroz-de-hortos-R0058705.html</p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="quiche-de-nabo-e-folhas-de-nabo-com-base-de-amendoa-r9"></a>
+<h2 id="quiche-de-nabo-e-folhas-de-nabo-com-base-de-amendoa">Quiche de nabo e folhas de nabo com base de amêndoa <span class="source">[R9]</span></h2>
+
+<p><strong>------------------------------------------------------------<br>
+R9 — Quiche de nabo e folhas de nabo com base de amêndoa<br>
+------------------------------------------------------------</strong></p>
+
+<h4>1) Introdução</h4>
+<p>Quiche com base de amêndoa e recheio de nabo + folhas de nabo (tipo “turnip greens”), ligada com ovos, natas/creme e queijo. Boa quente ou fria.</p>
+
+<h4>2) Ingredientes</h4>
+<p><strong>Para a base (almond crust):</strong></p>
+<ul>
+  <li>2 chávenas de farinha de amêndoa</li>
+  <li>1 ovo</li>
+  <li>2 c. sopa de azeite</li>
+  <li>1/2 c. chá de sal</li>
+</ul>
+
+<p><strong>Para o recheio:</strong></p>
+<ul>
+  <li>manteiga ou ghee (algumas colheres de sopa)</li>
+  <li>1 cebola (picada)</li>
+  <li>3 dentes de “green garlic” (ou alho) (picado)</li>
+  <li>sal (uma pitada)</li>
+  <li>tomilho (q.b.)</li>
+  <li>flocos de malagueta (q.b.)</li>
+  <li>2 nabos (em cubos)</li>
+  <li>folhas de nabo (q.b., para juntar e murchar)</li>
+  <li>4 ovos</li>
+  <li>1/2 chávena de natas/creme</li>
+  <li>pimenta (uma pitada)</li>
+  <li>1 chávena de queijo (metade para misturar + metade para finalizar)</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+  <li>1. Forno a 190ºC. Unte uma tarteira.</li>
+  <li>2. Base: misture farinha de amêndoa, ovo, azeite e sal. Pressione na tarteira (fundo e laterais). Leve ao forno cerca de 12–15 minutos, até firmar levemente.</li>
+  <li>3. Recheio: numa frigideira grande, aqueça manteiga/ghee. Junte a cebola e cozinhe até amaciar e alourar.</li>
+  <li>4. Junte o alho, sal, tomilho e flocos de malagueta; cozinhe ~1 minuto.</li>
+  <li>5. Adicione os cubos de nabo e cozinhe 5–7 minutos até amolecerem.</li>
+  <li>6. Junte as folhas de nabo e cozinhe mais alguns minutos até murcharem e ficar tudo bem envolvido. Retire do lume.</li>
+  <li>7. Numa taça, bata ovos e natas/creme com uma pitada de sal, pimenta e metade do queijo.</li>
+  <li>8. Junte o preparado de nabos/folhas, envolva e verta na base.</li>
+  <li>9. Cubra com o restante queijo e leve ao forno 30–35 minutos, até o centro ficar firme e dourado.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>Dishing Up the Dirt — https://dishingupthedirt.com/recipes/breakfast/fresh-turnip-greens-quiche-with-almond-crust/</p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-de-feijao-com-nabicas-r10"></a>
+<h2 id="sopa-de-feijao-com-nabicas">Sopa de feijão com nabiças <span class="source">[R10]</span></h2>
+
+<p><strong>------------------------------------------------------------<br>
+R10 — Sopa de feijão com nabiças<br>
+------------------------------------------------------------</strong></p>
+
+<h4>1) Introdução</h4>
+<p>Sopa tradicional e nutritiva: feijão como base, legumes em cubos e nabiças adicionadas no final. Ótima para dias frios e para refeições completas.</p>
+
+<h4>2) Ingredientes</h4>
+<ul>
+  <li>200 g feijão catarino seco</li>
+  <li>água q.b.</li>
+  <li>1 cebola</li>
+  <li>3 colheres de sopa de azeite</li>
+  <li>2 nabos médios</li>
+  <li>2 cenouras médias</li>
+  <li>300 g batatas para cozer</li>
+  <li>1 colher de sobremesa de sal</li>
+  <li>1 molho de nabiças</li>
+</ul>
+
+<h4>3) Passos de preparação</h4>
+<ol>
+  <li>1. Demolhe o feijão em água fria de um dia para o outro.</li>
+  <li>2. Escorra, coloque o feijão numa panela, cubra com água e junte a cebola em meias-luas. Regue com cerca de 2 colheres de sopa de azeite, tape e coza cerca de 35 minutos em lume moderado.</li>
+  <li>3. Descasque nabos, cenouras e batatas e corte em cubinhos.</li>
+  <li>4. Junte estes legumes ao feijão, tempere com cerca de 1 colher de sobremesa de sal e deixe ferver mais 15 minutos.</li>
+  <li>5. Arranje as nabiças, elimine talos e lave as folhas. Junte à sopa e ferva destapado mais 10 minutos (ou até ficarem macias).</li>
+  <li>6. Retifique temperos e regue com um fio de azeite.</li>
+</ol>
+
+<h4>4) Fonte</h4>
+<p>PNPAS / DGS — https://alimentacaosaudavel.dgs.pt/receitas/sopa-de-feijao-com-nabicas/</p>
+
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

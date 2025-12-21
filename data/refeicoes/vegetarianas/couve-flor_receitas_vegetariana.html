@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Couve-flor – Receitas Vegetarianas (Top 10)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+<body id="topo">
+<div class="masthead">
+  <header>
+    <h1>Couve-flor – Receitas Vegetarianas (Top 10)</h1>
+    <p>Preparações com ingredientes à base de plantas, leite e derivados do leite, ovos e mel</p>
+  </header>
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-de-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html" class="ativa">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+</div>
+
+<main>
+<article>
+
+<h2 id="receitas-preparados">Receitas e preparados – dieta vegetariana</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegan/couve-flor_receitas_vegan.html">(Vegan)</a>
+    <a href="/data/refeicoes/raw-vegan/couve-flor_receitas_raw-vegan.html">(Comida Viva)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+  <ol>
+    <li><a href="#sopa-de-couve-flor-assada-com-limao-e-noz-moscada">Sopa de couve-flor assada (com limão e noz-moscada)</a></li>
+    <li><a href="#sopa-cremosa-de-couve-flor-assada-com-manteiga-e-limao">Sopa cremosa de couve-flor assada (com manteiga e limão)</a></li>
+    <li><a href="#sopa-de-couve-flor-com-grao-assado-e-natas">Sopa de couve-flor com grão assado e natas</a></li>
+    <li><a href="#couve-flor-com-queijo-no-forno-estilo-cauliflower-cheese">Couve-flor com queijo no forno (estilo “cauliflower cheese”)</a></li>
+    <li><a href="#couve-flor-au-gratin">Couve-flor au gratin</a></li>
+    <li><a href="#caril-vegetariano-de-couve-flor-grao-e-espinafres">Caril vegetariano de couve-flor, grão e espinafres</a></li>
+    <li><a href="#cuscuz-de-couve-flor-com-alcaparras-e-raspas-de-limao">Cuscuz de couve-flor com alcaparras e raspas de limão</a></li>
+    <li><a href="#bifes-de-couve-flor-assados-com-manteiga-de-alho-e-parmesao">“Bifes” de couve-flor assados com manteiga de alho e parmesão</a></li>
+    <li><a href="#couve-flor-inteira-assada-com-crosta-de-manteiga-e-alho">Couve-flor inteira assada com crosta de manteiga e alho</a></li>
+    <li><a href="#wellington-de-couve-flor-assada-com-molho-de-queijo">Wellington de couve-flor assada com molho de queijo</a></li>
+  </ol>
+</div>
+
+<h2 id="resumo">Resumo das receitas (R1–R10)</h2>
+<ul>
+  <li><strong>R1 — Sopa de couve-flor assada (com limão e noz-moscada)</strong><br>Uma sopa muito cremosa feita com couve-flor salteada e cozida em caldo de legumes, triturada e finalizada com natas (ou leite de coco), limão e noz-moscada, servida com rabanetes e rebentos.</li>
+  <li><strong>R2 — Sopa cremosa de couve-flor assada (com manteiga e limão)</strong><br>A couve-flor é assada até caramelizar e depois cozida com cebola e caldo; no fim, tritura-se tudo com manteiga, limão e noz-moscada para uma textura sedosa.</li>
+  <li><strong>R3 — Sopa de couve-flor com grão assado e natas</strong><br>Sopa de legumes (couve-flor, curgete, alho-francês) triturada em creme com natas; acompanha com grão assado no forno temperado com alecrim e caril.</li>
+  <li><strong>R4 — Couve-flor com queijo no forno (estilo “cauliflower cheese”)</strong><br>Clássico gratinado: couve-flor cozida e coberta com molho espesso de leite, farinha e manteiga, com cheddar e (opcionalmente) pão ralado, indo ao forno até borbulhar.</li>
+  <li><strong>R5 — Couve-flor au gratin</strong><br>Couve-flor ao vapor, coberta com molho de queijo (cheddar) preparado em tacho (roux + leite) e gratinada no forno até dourar.</li>
+  <li><strong>R6 — Caril vegetariano de couve-flor, grão e espinafres</strong><br>Caril simples e nutritivo com tomate, couve-flor, leite de coco e especiarias (garam masala, açafrão, chili), enriquecido com grão e espinafres.</li>
+  <li><strong>R7 — Cuscuz de couve-flor com alcaparras e raspas de limão</strong><br>Couve-flor branqueada rapidamente, triturada até textura de cuscuz e salteada com alho, alcaparras e azeite; termina com raspas de limão e ervas frescas.</li>
+  <li><strong>R8 — “Bifes” de couve-flor assados com manteiga de alho e parmesão</strong><br>Fatias grossas de couve-flor assadas e finalizadas com uma manteiga composta de alho assado, parmesão e ervas; volta ao forno para derreter e servir.</li>
+  <li><strong>R9 — Couve-flor inteira assada com crosta de manteiga e alho</strong><br>Uma couve-flor inteira vai ao forno coberta com manteiga temperada com alho e paprika; assa coberta e depois destapada, com parmesão e cebolinho no final.</li>
+  <li><strong>R10 — Wellington de couve-flor assada com molho de queijo</strong><br>Couve-flor inteira assada e embrulhada em massa folhada com recheio de cogumelos e castanhas, servida com um molho de queijo (gruyère e parmesão).</li>
+</ul>
+
+<a id="sopa-de-couve-flor-assada-com-limao-e-noz-moscada-r1"></a>
+<h2 id="sopa-de-couve-flor-assada-com-limao-e-noz-moscada">Sopa de couve-flor assada (com limão e noz-moscada) <span class="source">[R1]</span></h2>
+<h4>Introdução breve</h4>
+<p>Uma sopa reconfortante e muito cremosa, com o toque fresco do limão e aroma de noz-moscada. Fica especialmente bonita com rabanetes e rebentos por cima.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>2 batatas</li>
+  <li>2 cebolinhas de rama</li>
+  <li>700 g de couve-flor lavada e cortada em raminhos (equivalente a meia couve-flor)</li>
+  <li>Azeite</li>
+  <li>800 ml de caldo de vegetais (aproximadamente, deve cobrir a couve-flor e as batatas)</li>
+  <li>200 g de natas ou leite de coco</li>
+  <li>Noz-moscada</li>
+  <li>1 colher de sopa de sumo de limão (ou um pouco mais)</li>
+  <li>Sal e pimenta preta moída</li>
+  <li>1 caixa de rebentos de beterraba ou de rabanete</li>
+  <li>4 rabanetes</li>
+  <li>Mistura de flores comestíveis frescas ou secas (opcional)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Descasque as batatas e corte-as em cubos. Corte a cebolinha de rama em pedaços pequenos. Num tacho, salteie as batatas, a cebolinha e a couve-flor num pouco de azeite durante 5–7 minutos, até tostarem. Junte o caldo de legumes até cobrir os vegetais e deixe ferver em lume médio cerca de 20 minutos.</li>
+  <li>Quando os vegetais estiverem macios, triture com varinha mágica e vá adicionando lentamente as natas (ou leite de coco). Tempere com noz-moscada ralada, sumo de limão, sal e pimenta.</li>
+  <li>Lave os rabanetes e corte-os em rodelas finas.</li>
+  <li>Separe os rebentos.</li>
+  <li>Decore a sopa com rabanetes, rebentos e (se usar) flores comestíveis. Sirva quente.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Le Creuset — 
+<a href="https://www.lecreuset.pt/pt_PT/sopa-de-couve-flor-assada/r0000000001745.html" target="_blank" rel="noopener">
+https://www.lecreuset.pt/pt_PT/sopa-de-couve-flor-assada/r0000000001745.html
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-cremosa-de-couve-flor-assada-com-manteiga-e-limao-r2"></a>
+<h2 id="sopa-cremosa-de-couve-flor-assada-com-manteiga-e-limao">Sopa cremosa de couve-flor assada (com manteiga e limão) <span class="source">[R2]</span></h2>
+<h4>Introdução breve</h4>
+<p>Aqui a couve-flor é assada primeiro para ganhar notas tostadas e mais profundidade. A manteiga dá cremosidade sem precisar de natas.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 cabeça grande de couve-flor (cerca de 2 pounds), cortada em floretes pequenos</li>
+  <li>3 colheres de sopa de azeite extra virgem, dividido</li>
+  <li>Sal marinho fino</li>
+  <li>1 cebola roxa média, picada</li>
+  <li>2 dentes de alho, esmagados ou picados</li>
+  <li>4 cups (32 ounces) de caldo de legumes</li>
+  <li>2 colheres de sopa de manteiga sem sal</li>
+  <li>1 colher de sopa de sumo de limão fresco (ou mais, se necessário)</li>
+  <li>1/4 de colher de chá rasa de noz-moscada moída</li>
+  <li>Para servir: 2 colheres de sopa de salsa lisa picada finamente, cebolinho e/ou cebola verde (opcional)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Pré-aqueça o forno a 425°F (cerca de 220°C). Num tabuleiro, envolva a couve-flor com 2 colheres de sopa de azeite, disponha numa só camada e tempere com um pouco de sal. Asse 25–35 minutos, mexendo a meio, até ficar macia e caramelizada nas bordas.</li>
+  <li>Quando a couve-flor estiver quase pronta, aqueça a 1 colher de sopa restante de azeite num tacho em lume médio. Junte a cebola e 1/4 colher de chá de sal; cozinhe 5–7 minutos até amolecer.</li>
+  <li>Junte o alho e cozinhe cerca de 30 segundos. Adicione o caldo.</li>
+  <li>Reserve 4 floretes assados para decorar. Transfira a restante couve-flor para o tacho. Deixe levantar fervura suave e cozinhe 20 minutos.</li>
+  <li>Retire do lume e deixe arrefecer alguns minutos. Triture (em liquidificador, por lotes se necessário) até ficar liso.</li>
+  <li>Junte a manteiga e triture. Adicione sumo de limão e noz-moscada e triture novamente. Ajuste o sal a gosto (na fonte é sugerido adicionar mais 1/4 a 3/4 colher de chá, dependendo do caldo).</li>
+  <li>Sirva em taças com um florete assado por cima e ervas picadas, se desejar.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Cookie and Kate — 
+<a href="https://cookieandkate.com/creamy-roasted-cauliflower-soup-recipe/" target="_blank" rel="noopener">
+https://cookieandkate.com/creamy-roasted-cauliflower-soup-recipe/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-de-couve-flor-com-grao-assado-e-natas-r3"></a>
+<h2 id="sopa-de-couve-flor-com-grao-assado-e-natas">Sopa de couve-flor com grão assado e natas <span class="source">[R3]</span></h2>
+<h4>Introdução breve</h4>
+<p>Uma sopa em “3 tempos”: base cremosa de couve-flor e legumes, grão crocante assado e finalização com natas para um prato mais completo.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 Embalagem Nata Mimosa Cremosa</li>
+  <li>20 g Manteiga Mimosa sem sal</li>
+  <li>1 cebola grande</li>
+  <li>1 dente de alho</li>
+  <li>100 g alho-francês</li>
+  <li>200 g curgetes</li>
+  <li>300 g couve-flor</li>
+  <li>2 colheres de sopa sal</li>
+  <li>Mistura de pimentas em moinho q.b.</li>
+  <li>1 frasco grão</li>
+  <li>Alecrim q.b.</li>
+  <li>1 colher de café caril</li>
+  <li>Salsa picada q.b.</li>
+  <li>1 litro de água (indicado na preparação)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Num tacho, refogue a cebola e o alho na manteiga. Junte o alho-francês às rodelas, a curgete sem casca em pedaços e a couve-flor em pedaços pequenos. Envolva, regue com 1 litro de água, tempere com 1 colher de sopa de sal e deixe cozinhar 20 minutos.</li>
+  <li>Escorra o grão, seque bem e coloque numa taça. Tempere com alecrim, caril, pimenta e o restante sal. Leve ao forno a 190°C por 15 minutos.</li>
+  <li>Triture a sopa com varinha mágica até obter creme. Adicione 3/4 do pacote de natas e volte a bater até ficar suave. Sirva com grão assado, salsa picada, pimenta moída e, se desejar, mais um fio de nata.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Mimosa — 
+<a href="https://mimosa.pt/mimosa-experimenta/entradas-e-pratos-principais/sopa-de-couve-flor/" target="_blank" rel="noopener">
+https://mimosa.pt/mimosa-experimenta/entradas-e-pratos-principais/sopa-de-couve-flor/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="couve-flor-com-queijo-no-forno-estilo-cauliflower-cheese-r4"></a>
+<h2 id="couve-flor-com-queijo-no-forno-estilo-cauliflower-cheese">Couve-flor com queijo no forno (estilo “cauliflower cheese”) <span class="source">[R4]</span></h2>
+<h4>Introdução breve</h4>
+<p>Um clássico britânico de acompanhamento (ou prato principal leve) com molho cremoso de queijo e topo gratinado.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 couve-flor grande (folhas retiradas), partida em pedaços</li>
+  <li>500 ml de leite</li>
+  <li>4 colheres de sopa de farinha</li>
+  <li>50 g de manteiga</li>
+  <li>100 g de cheddar forte, ralado</li>
+  <li>2–3 colheres de sopa de pão ralado (opcional)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Ferva uma panela grande de água e cozinhe a couve-flor 5 minutos (deve ficar cozida). Escorra.</li>
+  <li>Coloque a couve-flor num prato/assadeira de forno. Aqueça o forno a 220°C (200°C ventilado).</li>
+  <li>Volte a pôr a panela ao lume e junte leite, farinha e manteiga.</li>
+  <li>Bata (vara de arames) rapidamente enquanto derrete e levanta fervura; continue a bater 2 minutos para engrossar.</li>
+  <li>Apague o lume, junte a maior parte do cheddar e verta o molho sobre a couve-flor. Polvilhe com o restante queijo e, se usar, o pão ralado.</li>
+  <li>Leve ao forno 20 minutos, até borbulhar.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+BBC Good Food — 
+<a href="https://www.bbcgoodfood.com/recipes/cauliflower-cheese-0" target="_blank" rel="noopener">
+https://www.bbcgoodfood.com/recipes/cauliflower-cheese-0
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="couve-flor-au-gratin-r5"></a>
+<h2 id="couve-flor-au-gratin">Couve-flor au gratin <span class="source">[R5]</span></h2>
+<h4>Introdução breve</h4>
+<p>Versão “au gratin” simples e muito queijuda: couve-flor ao vapor, molho de cheddar e forno até dourar.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 cabeça de couve-flor, cortada em floretes</li>
+  <li>2 colheres de sopa de manteiga</li>
+  <li>1 cebola pequena, picada</li>
+  <li>2 colheres de sopa de farinha de trigo</li>
+  <li>1 cup de leite</li>
+  <li>6 ounces de queijo cheddar ralado, dividido</li>
+  <li>1 pitada de pimenta preta moída</li>
+  <li>1 pitada de noz-moscada moída (ou a gosto)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Coloque uma grelha/cesto de vapor numa panela e adicione água até ficar mesmo abaixo do cesto. Ferva. Adicione a couve-flor, tape e cozinhe a vapor 5–7 minutos, até ficar macia.</li>
+  <li>Pré-aqueça o forno a 350°F (175°C). Unte uma assadeira 9x9 inches.</li>
+  <li>Derreta a manteiga num tacho pequeno em lume baixo; cozinhe a cebola na manteiga até amolecer, cerca de 5 minutos. Junte a farinha e cozinhe, mexendo sempre, 3–5 minutos, até começar a alourar. Vá juntando o leite aos poucos, batendo até ficar um molho liso. Cozinhe até quase ferver.</li>
+  <li>Retire do lume e junte metade do cheddar até derreter; tempere com pimenta e noz-moscada.</li>
+  <li>Coloque a couve-flor na assadeira e cubra com o molho. Polvilhe com o cheddar restante.</li>
+  <li>Leve ao forno cerca de 25 minutos, até derreter e dourar.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Allrecipes — 
+<a href="https://www.allrecipes.com/recipe/232757/cauliflower-au-gratin/" target="_blank" rel="noopener">
+https://www.allrecipes.com/recipe/232757/cauliflower-au-gratin/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="caril-vegetariano-de-couve-flor-grao-e-espinafres-r6"></a>
+<h2 id="caril-vegetariano-de-couve-flor-grao-e-espinafres">Caril vegetariano de couve-flor, grão e espinafres <span class="source">[R6]</span></h2>
+<h4>Introdução breve</h4>
+<p>Caril rápido de tacho, equilibrando especiarias quentes com tomate e leite de coco, com couve-flor como base e proteína do grão.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 c. sopa azeite</li>
+  <li>1/2 cebola picada</li>
+  <li>2 dentes de alho picados</li>
+  <li>Gengibre ralado q.b.</li>
+  <li>1/2 c. sopa chili em pó</li>
+  <li>1/2 c. sopa açafrão da Índia</li>
+  <li>1 c. sopa garam masala</li>
+  <li>2 tomates em cubos</li>
+  <li>1/2 couve-flor em pedaços</li>
+  <li>1 cháv. de leite de coco</li>
+  <li>Água q.b.</li>
+  <li>200 g de grão de bico</li>
+  <li>2 c. café sal</li>
+  <li>Coentros picados q.b.</li>
+  <li>250 g espinafres</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Aqueça um tacho com azeite e faça um refogado com a cebola, o gengibre e o alho.</li>
+  <li>Junte o chili, o açafrão e o garam masala e mexa.</li>
+  <li>Quando a cebola perder a intensidade, junte o tomate e a couve-flor.</li>
+  <li>Acrescente o leite de coco, tape, reduza o lume para o mínimo e deixe cozinhar 15 minutos.</li>
+  <li>Junte o grão, tempere com sal e algumas folhas de coentros, misturando bem.</li>
+  <li>Adicione os espinafres e deixe cozinhar mais 5 minutos.</li>
+  <li>Emprate e sirva quente.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Continente — 
+<a href="https://feed.continente.pt/receitas/caril-vegetariano" target="_blank" rel="noopener">
+https://feed.continente.pt/receitas/caril-vegetariano
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="cuscuz-de-couve-flor-com-alcaparras-e-raspas-de-limao-r7"></a>
+<h2 id="cuscuz-de-couve-flor-com-alcaparras-e-raspas-de-limao">Cuscuz de couve-flor com alcaparras e raspas de limão <span class="source">[R7]</span></h2>
+<h4>Introdução breve</h4>
+<p>Uma forma leve e fresca de “transformar” couve-flor em acompanhamento tipo cuscuz, com acidez de limão e salinidade de alcaparras.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 couve-flor</li>
+  <li>1 colher (chá) de vinagre de vinho branco</li>
+  <li>1 dente de alho picado fino</li>
+  <li>2 colheres (sopa) de alcaparra</li>
+  <li>1 colher (sopa) de azeite</li>
+  <li>Raspas de 1 limão</li>
+  <li>Sal e pimenta-do-reino moída na hora a gosto</li>
+  <li>Folhas de salsinha a gosto para servir</li>
+  <li>Folhas de hortelã a gosto para servir</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Descarte as folhas e a base do talo. Corte em floretes (cerca de 3 cm). Lave.</li>
+  <li>Prepare uma tigela com água e gelo. Ferva água numa panela; quando ferver, adicione 1 colher (chá) de sal e o vinagre. Junte os floretes e cozinhe apenas 2 minutos. Retire com escumadeira e passe para a água com gelo.</li>
+  <li>No processador, bata os floretes por etapas até ficar com textura de cuscuz.</li>
+  <li>Aqueça uma frigideira grande em lume médio. Junte o azeite, o alho e a couve-flor processada; salteie cerca de 2 minutos. Baixe o lume, junte as alcaparras (sem o líquido) e cozinhe mais 5 minutos, até ficar macio e húmido. Tempere com sal e pimenta a gosto.</li>
+  <li>Fora do lume, misture as raspas de limão. Sirva com salsinha e hortelã.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Panelinha — 
+<a href="https://panelinha.com.br/receita/cuscuz-de-couve-flor" target="_blank" rel="noopener">
+https://panelinha.com.br/receita/cuscuz-de-couve-flor
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="bifes-de-couve-flor-assados-com-manteiga-de-alho-e-parmesao-r8"></a>
+<h2 id="bifes-de-couve-flor-assados-com-manteiga-de-alho-e-parmesao">“Bifes” de couve-flor assados com manteiga de alho e parmesão <span class="source">[R8]</span></h2>
+<h4>Introdução breve</h4>
+<p>Uma apresentação “de prato” (em vez de floretes) com fatias altas de couve-flor, finalizadas com manteiga de alho assado e parmesão.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>2 colheres de sopa de azeite extra virgem, dividido</li>
+  <li>1 cabeça grande de couve-flor (3 pounds), folhas removidas e caule aparado</li>
+  <li>1½ colheres de chá de tempero “garlic-and-herb” sem sal (mistura de alho e ervas)</li>
+  <li>4 colheres de sopa de manteiga sem sal, amolecida</li>
+  <li>3 colheres de sopa de parmesão ralado</li>
+  <li>1/2 colher de chá de sal</li>
+  <li>1 colher de sopa de ervas frescas mistas picadas (como salsa lisa e tomilho)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Pré-aqueça o forno a 425°F (cerca de 220°C). Corte 1/2 inch do topo de uma cabeça de alho para expor os dentes (conforme a fonte). Coloque em folha de alumínio, regue com 1 colher de sopa de azeite, feche e coloque num tabuleiro.</li>
+  <li>Com a couve-flor de pé (caule para baixo), corte 4 fatias (cerca de 3/4 inch) do centro. Disponha as “postas” no tabuleiro junto do alho.</li>
+  <li>Misture 1 colher de chá do tempero de alho e ervas com a colher de sopa de azeite restante e pincele sobre as “postas”. Asse 35–40 minutos, até ficar tenro e dourado. Retire e vire cuidadosamente.</li>
+  <li>Esprema o alho assado para uma taça e esmague. Misture manteiga, parmesão, sal e o tempero restante até ficar homogéneo.</li>
+  <li>Barre a manteiga de alho sobre as “postas” (cerca de 2 colheres de sopa por cada) e leve ao forno até o queijo derreter (cerca de 5 minutos). Polvilhe com as ervas.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+EatingWell — 
+<a href="https://www.eatingwell.com/roasted-garlic-butter-cauliflower-steaks-8718761" target="_blank" rel="noopener">
+https://www.eatingwell.com/roasted-garlic-butter-cauliflower-steaks-8718761
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="couve-flor-inteira-assada-com-crosta-de-manteiga-e-alho-r9"></a>
+<h2 id="couve-flor-inteira-assada-com-crosta-de-manteiga-e-alho">Couve-flor inteira assada com crosta de manteiga e alho <span class="source">[R9]</span></h2>
+<h4>Introdução breve</h4>
+<p>Uma peça central impressionante: couve-flor inteira assada, primeiro coberta para cozinhar por dentro e depois destapada para dourar e ficar crocante.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 couve-flor inteira (cerca de 2 pounds)</li>
+  <li>1/3 cup de manteiga com sal, amolecida</li>
+  <li>2 dentes de alho, picados</li>
+  <li>1 colher de chá de sal</li>
+  <li>1/4 colher de chá de paprika</li>
+  <li>2 colheres de sopa de parmesão ralado</li>
+  <li>1 colher de sopa de cebolinho picado finamente (e mais para servir)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Pré-aqueça o forno a 400°F (cerca de 205°C).</li>
+  <li>Com uma faca afiada, apare a base do caule para a couve-flor assentar. Coloque-a numa frigideira/assadeira própria para forno com bordos de pelo menos 2 inches.</li>
+  <li>Misture manteiga, alho, sal e paprika. Esfregue por toda a couve-flor (topo e lados). Cubra a couve-flor frouxamente com folha de alumínio e asse 40–50 minutos, até ficar tenra no centro.</li>
+  <li>Retire, baixe o forno para 375°F (cerca de 190°C), destape e regue com a manteiga derretida da assadeira. Polvilhe parmesão e cebolinho.</li>
+  <li>Volte ao forno, destapada, cerca de 15 minutos, até dourar, regando com a manteiga derretida de 5 em 5 minutos. Finalize com mais cebolinho e sirva.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Feel Good Foodie — 
+<a href="https://feelgoodfoodie.net/recipe/whole-roasted-cauliflower/" target="_blank" rel="noopener">
+https://feelgoodfoodie.net/recipe/whole-roasted-cauliflower/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="wellington-de-couve-flor-assada-com-molho-de-queijo-r10"></a>
+<h2 id="wellington-de-couve-flor-assada-com-molho-de-queijo">Wellington de couve-flor assada com molho de queijo <span class="source">[R10]</span></h2>
+<h4>Introdução breve</h4>
+<p>Um prato festivo vegetariano: couve-flor inteira assada e embrulhada em massa folhada com recheio de cogumelos e castanhas, servida com um molho de queijo rico.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>(Conforme descrito na fonte, em resumo)</li>
+  <li>Para o wellington:</li>
+  <li>1 couve-flor inteira (assada)</li>
+  <li>Massa folhada (puff pastry)</li>
+  <li>Recheio com: cebola, alho, tomilho, cogumelos e castanhas (inclui castanhas cozidas), ricotta, ervas, raspa de limão e noz-moscada</li>
+  <li>Para o molho:</li>
+  <li>Queijos gruyère e parmesão (para molho de queijo)</li>
+  <li>(Opcional) pecorino para finalizar e tomilho fresco</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Asse a couve-flor para ganhar sabor e estrutura.</li>
+  <li>Prepare o recheio: refogue/aromatize com cebola, alho e tomilho; junte cogumelos e castanhas e prepare a mistura; incorpore ricotta, ervas, raspa de limão e noz-moscada.</li>
+  <li>Envolva a couve-flor e o recheio em massa folhada, decore (folhas/lattice), leve ao frio para firmar e asse até ficar dourado e estaladiço.</li>
+  <li>Faça um molho de queijo com gruyère e parmesão para servir por cima ou à parte.</li>
+  <li>Sirva o wellington com o molho e finalize, se quiser, com pecorino e tomilho.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+The Guardian — 
+<a href="https://www.theguardian.com/food/2024/dec/04/whole-roast-cauliflower-wellington-cheese-sauce-recipe-ravinder-bhogal" target="_blank" rel="noopener">
+https://www.theguardian.com/food/2024/dec/04/whole-roast-cauliflower-wellington-cheese-sauce-recipe-ravinder-bhogal
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

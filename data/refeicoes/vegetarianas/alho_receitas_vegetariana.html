@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Alho – Receitas Vegetarianas (Top 10)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+<body id="topo">
+<div class="masthead">
+  <header>
+    <h1>Alho – Receitas Vegetarianas (Top 10)</h1>
+    <p>Preparações com ingredientes à base de plantas, leite e derivados do leite, ovos e mel</p>
+  </header>
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-de-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html" class="ativa">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+</div>
+
+<main>
+<article>
+
+<h2 id="receitas-preparados">Receitas e preparados – dieta vegetariana</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+	<a href="/data/refeicoes/vegan/alho_receitas_vegan.html">(Vegan)</a>
+    <a href="/data/refeicoes/raw-vegan/alho_receitas_raw-vegan.html">(Comida Viva)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro por ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+  <ol>
+    <li><a href="#sopa-de-alho-tradicional-com-ovos">Sopa de alho tradicional com ovos</a></li>
+    <li><a href="#spaghetti-aglio-e-olio-classico">Spaghetti aglio e olio clássico</a></li>
+    <li><a href="#alho-assado-no-forno">Alho assado no forno</a></li>
+    <li><a href="#alho-confitado-em-azeite">Alho confitado em azeite</a></li>
+    <li><a href="#creme-de-alho-tradicional">Creme de alho tradicional</a></li>
+    <li><a href="#pure-de-alho-com-margarina">Puré de alho com margarina</a></li>
+    <li><a href="#pao-de-alho-com-mozzarella-e-parmesao">Pão de alho com mozzarella e parmesão</a></li>
+    <li><a href="#arroz-de-alho-simples">Arroz de alho simples</a></li>
+    <li><a href="#arroz-com-alho-frito">Arroz com alho frito</a></li>
+    <li><a href="#risoto-aglio-olio-e-peperoncino">Risoto aglio, olio e peperoncino</a></li>
+  </ol>
+</div>
+
+<h2 id="resumo">Resumo das receitas (R1–R10)</h2>
+<ul>
+  <li><strong>R1. Sopa de alho tradicional com ovos</strong><br>Sopa rústica de origem espanhola com alho, pão, azeite, colorau e ovos escalfados diretamente no caldo quente.</li>
+  <li><strong>R2. Spaghetti aglio e olio clássico</strong><br>Massa italiana simples com alho laminado, azeite e malagueta, ligada com a água da cozedura para criar um molho leve.</li>
+  <li><strong>R3. Alho assado no forno</strong><br>Cabeças de alho assadas lentamente no forno até os dentes ficarem macios, doces e barráveis.</li>
+  <li><strong>R4. Alho confitado em azeite</strong><br>Dentes de alho cozinhados lentamente em azeite com ervas aromáticas, criando um condimento suave e perfumado.</li>
+  <li><strong>R5. Creme de alho tradicional</strong><br>Creme obtido pela emulsão de alho cru com leite, formando uma pasta cremosa para temperos e acompanhamentos.</li>
+  <li><strong>R6. Puré de alho com margarina</strong><br>Preparação simples de alho triturado com margarina e azeite, usada como base para torradas, carnes vegetais ou legumes.</li>
+  <li><strong>R7. Pão de alho com mozzarella e parmesão</strong><br>Pão barrado com alho, azeite e ervas, coberto com queijos e gratinado no forno até dourar.</li>
+  <li><strong>R8. Arroz de alho simples</strong><br>Arroz refogado em azeite com alho fresco, cozido em água quente até ficar solto e aromático.</li>
+  <li><strong>R9. Arroz com alho frito</strong><br>Arroz salteado com alho frito crocante em azeite, prato rápido de inspiração asiática.</li>
+  <li><strong>R10. Risoto aglio, olio e peperoncino</strong><br>Versão em risoto do clássico italiano alho e óleo com malagueta, cremoso e intensamente aromático.</li>
+</ul>
+
+<h2 id="receitas-completas">Receitas completas</h2>
+
+<a id="sopa-de-alho-tradicional-com-ovos-r1"></a>
+<h2 id="sopa-de-alho-tradicional-com-ovos">R1 — Sopa de alho tradicional com ovos <span class="source">[R1]</span></h2>
+
+<h4>Introdução</h4>
+<p>A sopa de alho é um prato clássico da gastronomia espanhola e portuguesa de fronteira, feito com ingredientes simples e muito aromático, ideal para dias frios.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>3 dentes de alho picados</li>
+  <li>100 g de pão duro em fatias finas</li>
+  <li>1 colher de sopa de colorau</li>
+  <li>½ dl de azeite</li>
+  <li>2 ovos</li>
+  <li>Água q.b.</li>
+  <li>Sal q.b.</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Aquecer o azeite numa panela.</li>
+  <li>Juntar o alho e deixar libertar aroma sem queimar.</li>
+  <li>Adicionar o pão e envolver bem.</li>
+  <li>Retirar brevemente do lume e juntar o colorau.</li>
+  <li>Cobrir com água quente, temperar de sal e ferver alguns minutos.</li>
+  <li>Partir os ovos diretamente na sopa e deixar escalfar.</li>
+  <li>Servir bem quente.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Spain Info<br>
+<a href="https://www.spain.info/pt_BR/receita/sopa-alho/" target="_blank" rel="noopener">https://www.spain.info/pt_BR/receita/sopa-alho/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="spaghetti-aglio-e-olio-classico-r2"></a>
+<h2 id="spaghetti-aglio-e-olio-classico">R2 — Spaghetti aglio e olio clássico <span class="source">[R2]</span></h2>
+
+<h4>Introdução</h4>
+<p>Um dos pratos mais icónicos da cozinha italiana, feito apenas com massa, alho, azeite e malagueta.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Spaghetti</li>
+  <li>Azeite de oliva</li>
+  <li>Dentes de alho picados</li>
+  <li>Malagueta seca</li>
+  <li>Sal</li>
+  <li>Queijo ralado (opcional)</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Cozer a massa em água com sal.</li>
+  <li>Aquecer o azeite e dourar suavemente o alho com a malagueta.</li>
+  <li>Juntar a massa escorrida e envolver no azeite aromatizado.</li>
+  <li>Ajustar sal e servir.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+PetitChef<br>
+<a href="https://pt.petitchef.com/receitas/prato-principal/spaghetti-ao-aglio-i-olio-espaguete-ao-alho-e-oleo-fid-934637" target="_blank" rel="noopener">https://pt.petitchef.com/receitas/prato-principal/spaghetti-ao-aglio-i-olio-espaguete-ao-alho-e-oleo-fid-934637</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="alho-assado-no-forno-r3"></a>
+<h2 id="alho-assado-no-forno">R3 — Alho assado no forno <span class="source">[R3]</span></h2>
+
+<h4>Introdução</h4>
+<p>O alho assado transforma-se num creme naturalmente doce e suave, ideal para barrar ou temperar pratos.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Cabeças de alho inteiras</li>
+  <li>Azeite</li>
+  <li>Sal</li>
+  <li>Orégãos (opcional)</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Cortar o topo das cabeças de alho.</li>
+  <li>Temperar com sal e azeite.</li>
+  <li>Envolver em papel de alumínio.</li>
+  <li>Levar ao forno cerca de 30 minutos até ficar macio.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Tudo Gostoso<br>
+<a href="https://www.tudogostoso.com.br/receita/41677-alho-assado.html" target="_blank" rel="noopener">https://www.tudogostoso.com.br/receita/41677-alho-assado.html</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="alho-confitado-em-azeite-r4"></a>
+<h2 id="alho-confitado-em-azeite">R4 — Alho confitado em azeite <span class="source">[R4]</span></h2>
+
+<h4>Introdução</h4>
+<p>Técnica de conservação onde o alho cozinha lentamente em azeite sem fritar, ficando macio e perfumado.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>500 g de dentes de alho descascados</li>
+  <li>Azeite extra virgem q.b.</li>
+  <li>Louro</li>
+  <li>Tomilho</li>
+  <li>Casca de limão</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Colocar todos os ingredientes num tacho.</li>
+  <li>Cobrir com azeite.</li>
+  <li>Levar a lume mínimo durante 40–50 minutos sem ferver.</li>
+  <li>Guardar em frascos esterilizados.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Blog da Spice<br>
+<a href="https://blogdaspice.com/alho-confitado/" target="_blank" rel="noopener">https://blogdaspice.com/alho-confitado/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="creme-de-alho-tradicional-r5"></a>
+<h2 id="creme-de-alho-tradicional">R5 — Creme de alho tradicional <span class="source">[R5]</span></h2>
+
+<h4>Introdução</h4>
+<p>Creme frio e intensamente aromático, muito usado como acompanhamento ou base de molhos.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Dentes de alho</li>
+  <li>Leite</li>
+  <li>Sal</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Colocar o alho no liquidificador.</li>
+  <li>Juntar leite e sal.</li>
+  <li>Bater até obter textura cremosa.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+MSabores<br>
+<a href="https://msabores.com/creme-de-alho-tradicional/" target="_blank" rel="noopener">https://msabores.com/creme-de-alho-tradicional/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pure-de-alho-com-margarina-r6"></a>
+<h2 id="pure-de-alho-com-margarina">R6 — Puré de alho com margarina <span class="source">[R6]</span></h2>
+
+<h4>Introdução</h4>
+<p>Neste puré, o alho é transformado numa pasta untuosa, ideal para barrar ou usar como tempero base.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Alho em pasta</li>
+  <li>Margarina com sal</li>
+  <li>Azeite</li>
+  <li>Sal</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Misturar todos os ingredientes numa taça.</li>
+  <li>Trabalhar até obter textura de maionese.</li>
+  <li>Refrigerar antes de usar.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Receitas Globo<br>
+<a href="https://receitas.globo.com/tipos-de-prato/acompanhamentos/pure-de-alho-4d54410152e0b20f76000df8.ghtml" target="_blank" rel="noopener">https://receitas.globo.com/tipos-de-prato/acompanhamentos/pure-de-alho-4d54410152e0b20f76000df8.ghtml</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pao-de-alho-com-mozzarella-e-parmesao-r7"></a>
+<h2 id="pao-de-alho-com-mozzarella-e-parmesao">R7 — Pão de alho com mozzarella e parmesão <span class="source">[R7]</span></h2>
+
+<h4>Introdução</h4>
+<p>Clássico acompanhamento de forno, muito aromático e gratinado.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Pão</li>
+  <li>Azeite</li>
+  <li>Dentes de alho esmagados</li>
+  <li>Mozzarella</li>
+  <li>Queijo parmesão</li>
+  <li>Cebolinho</li>
+  <li>Sal e pimenta</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Misturar azeite com alho, sal e pimenta.</li>
+  <li>Barrar o pão.</li>
+  <li>Cobrir com queijos e cebolinho.</li>
+  <li>Gratinar em forno a 180 ºC.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Continente Feed<br>
+<a href="https://feed.continente.pt/receitas/pao-de-alho" target="_blank" rel="noopener">https://feed.continente.pt/receitas/pao-de-alho</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="arroz-de-alho-simples-r8"></a>
+<h2 id="arroz-de-alho-simples">R8 — Arroz de alho simples <span class="source">[R8]</span></h2>
+
+<h4>Introdução</h4>
+<p>Arroz solto e aromático em que o alho é o protagonista absoluto.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Arroz</li>
+  <li>Alho picado</li>
+  <li>Azeite</li>
+  <li>Água</li>
+  <li>Sal</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Refogar o alho no azeite.</li>
+  <li>Juntar o arroz e envolver.</li>
+  <li>Acrescentar água quente e sal.</li>
+  <li>Cozinhar com tampa até macio.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Cigala<br>
+<a href="https://www.cigala.pt/receitas/arroz-ao-alho/" target="_blank" rel="noopener">https://www.cigala.pt/receitas/arroz-ao-alho/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="arroz-com-alho-frito-r9"></a>
+<h2 id="arroz-com-alho-frito">R9 — Arroz com alho frito <span class="source">[R9]</span></h2>
+
+<h4>Introdução</h4>
+<p>Prato rápido onde o alho é frito até ficar dourado e crocante, sendo depois misturado com arroz já cozido.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Arroz cozido</li>
+  <li>Dentes de alho</li>
+  <li>Azeite</li>
+  <li>Sal</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Fritar o alho em azeite até dourar.</li>
+  <li>Juntar o arroz e saltear rapidamente.</li>
+  <li>Ajustar sal e servir.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Iguaria<br>
+<a href="https://www.iguaria.com/prato-principal/arroz/arroz-com-alho-frito/" target="_blank" rel="noopener">https://www.iguaria.com/prato-principal/arroz/arroz-com-alho-frito/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="risoto-aglio-olio-e-peperoncino-r10"></a>
+<h2 id="risoto-aglio-olio-e-peperoncino">R10 — Risoto aglio, olio e peperoncino <span class="source">[R10]</span></h2>
+
+<h4>Introdução</h4>
+<p>Versão em risoto do clássico alho e óleo, transformando sabores simples num prato cremoso.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Arroz carnaroli</li>
+  <li>Alho</li>
+  <li>Azeite</li>
+  <li>Malagueta em pó</li>
+  <li>Caldo de legumes quente</li>
+  <li>Sal</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Preparar óleo aromatizado com alho.</li>
+  <li>Tostar o arroz.</li>
+  <li>Cozinhar lentamente com caldo quente.</li>
+  <li>Finalizar com o óleo de alho e malagueta.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+La Cucina Italiana<br>
+<a href="https://www.lacucinaitaliana.com/italian-food/italian-dishes/risotto-aglio-olio-e-peperoncino" target="_blank" rel="noopener">https://www.lacucinaitaliana.com/italian-food/italian-dishes/risotto-aglio-olio-e-peperoncino</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

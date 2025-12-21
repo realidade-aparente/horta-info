@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Quenopódio – Receitas Vegetarianas (Top 10)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+<body id="topo">
+<div class="masthead">
+  <header>
+    <h1>Quenopódio – Receitas Vegetarianas (Top 10)</h1>
+    <p>Preparações com ingredientes à base de plantas, leite e derivados do leite, ovos e mel</p>
+  </header>
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../quenopodio.html" class="ativa">Quenopódio</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-de-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+</div>
+
+<main>
+<article>
+
+<h2 id="receitas-preparados">Receitas e preparados – dieta vegetariana</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegan/quenopodio_receitas_vegan.html">(Vegan)</a>
+    <a href="/data/refeicoes/raw-vegan/quenopodio_receitas_raw-vegan.html">(Comida Viva)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro de ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+  <ol>
+    <li><a href="#quiche-de-queijo-com-lambs-quarters">Quiche de queijo com lamb’s quarters</a></li>
+    <li><a href="#fat-hen-a-la-creme-creme-de-quenopodio">Fat Hen a la crème (creme de quenopódio)</a></li>
+    <li><a href="#bathua-saag-ensopado-de-verdes-com-bathua">Bathua Saag (ensopado de verdes com bathua)</a></li>
+    <li><a href="#myeongaju-muchim-salada-coreana-picante-de-lambs-quarters">Myeongaju-muchim (salada coreana picante de lamb’s quarters)</a></li>
+    <li><a href="#dal-saag-de-bathua-receita-1-2">Dal Saag de bathua (Receita 1/2)</a></li>
+    <li><a href="#raita-de-bathua-receita-2-2">Raita de bathua (Receita 2/2)</a></li>
+    <li><a href="#paratha-de-bathua-pao-achatado-recheado">Paratha de bathua (pão achatado recheado)</a></li>
+    <li><a href="#bolo-de-espinafre-bravo-com-lambs-quarters">Bolo de “espinafre-bravo” com lamb’s quarters</a></li>
+    <li><a href="#fritters-crocantes-de-fat-hen">Fritters crocantes de fat hen</a></li>
+    <li><a href="#tabule-de-quinoa-com-fat-hen">Tabule de quinoa com fat hen</a></li>
+  </ol>
+</div>
+
+<h2 id="resumo">Resumo das receitas (R1–R10)</h2>
+<ul>
+  <li><strong>R1 – Quiche de queijo com lamb’s quarters</strong><br>Quiche salgada com base de massa quebrada feita com manteiga fria e farinha, recheada com lamb’s quarters salteados, cebola, cogumelos e uma mistura de ovos, leite, natas e dois tipos de queijo. Coze no forno até o creme ficar firme e a superfície dourada.</li>
+  <li><strong>R2 – Fat Hen a la crème (creme de quenopódio)</strong><br>Prato cremoso de folhas de fat hen escaldadas que são envolvidas num molho branco simples à base de roux (manteiga e farinha), leite, iogurte, crème fraîche, queijo duro e noz-moscada. Serve como acompanhamento rico para pratos de cereais ou batatas.</li>
+  <li><strong>R3 – Bathua Saag (ensopado de verdes com bathua)</strong><br>Ensopado espesso de folhas de bathua, mostarda, espinafre e endro, cozidos com cebola, alho, gengibre e especiarias, depois finalizados com um “tadka” de ghee ou óleo com cominhos, malaguetas secas, alho e pimenta vermelha em pó. Um clássico de inverno da Índia do Norte.</li>
+  <li><strong>R4 – Myeongaju-muchim (salada coreana picante de lamb’s quarters)</strong><br>Lamb’s quarters escaldados e espremidos, temperados com uma pasta picante e aromática de doenjang (pasta de soja), gochujang, alho, cebolinha, óleo de sésamo torrado e sementes de sésamo. Servido como acompanhamento frio com arroz ao estilo banchan coreano.</li>
+  <li><strong>R5 – Dal Saag de bathua (Receita 1/2)</strong><br>Guisado espesso de urad dal (lentilha inteira com casca) cozido em panela de pressão com bathua, espinafre, endro, cebola, gengibre, alho, malaguetas verdes e especiarias. É terminado com um tadka de ghee com cominhos, malagueta seca e asa-fétida para perfumar o prato.</li>
+  <li><strong>R6 – Raita de bathua (Receita 2/2)</strong><br>Raita simples em que uma pasta de folhas de bathua é misturada com iogurte, sal preto e açúcar em pó, terminando com um pequeno tadka de ghee com cominhos, malagueta seca e asa-fétida. Acompanha na perfeição o dal saag ou outros pratos condimentados.</li>
+  <li><strong>R7 – Paratha de bathua (pão achatado recheado)</strong><br>Parathas de trigo integrais em que as folhas de bathua picadas são misturadas diretamente na massa com especiarias, gengibre e malagueta verde. A massa é estendida e cozinhada na chapa com óleo até ficar dourada, resultando em pães macios e ligeiramente picantes.</li>
+  <li><strong>R8 – Bolo de “espinafre-bravo” com lamb’s quarters</strong><br>“Bolo” espesso de folhas de lamb’s quarters finamente fatiadas, misturadas com farinha, sal e especiarias, cozinhado numa frigideira com óleo até formar um disco dourado e firme. Corta-se em fatias e serve-se como acompanhamento ou base para outros elementos (ovos, molhos, etc.).</li>
+  <li><strong>R9 – Fritters crocantes de fat hen</strong><br>Polme espesso de cebola, fat hen picada, farinhas, especiarias, sementes de sésamo e gengibre-alho, frito em colheradas em óleo quente até formar fritters dourados e crocantes. Ótimos como petisco ou entrada com chutney ou iogurte temperado.</li>
+  <li><strong>R10 – Tabule de quinoa com fat hen</strong><br>Tabule em que a base de quinoa cozida é misturada com fat hen levemente cozinhada ao vapor, pimento, pepino, cebolinho, hortelã e salsa, tudo ligado por um vinagrete leve. Serve como salada fresca, nutritiva e sem lacticínios.</li>
+</ul>
+
+<!-- RECEITAS COMPLETAS -->
+
+<a id="quiche-de-queijo-com-lambs-quarters-r1"></a>
+<h2 id="quiche-de-queijo-com-lambs-quarters">Quiche de queijo com lamb’s quarters <span class="source">[R1]</span></h2>
+
+<p>(Baseada em “Lamb’s Quarters Cheese Quiche”)</p>
+
+<h4>3.1.1 Introdução</h4>
+<p>Quiche de massa quebrada caseira com recheio cremoso de ovos, leite e natas, enriquecido com lamb’s quarters (espinafre-bravo), cebola, cogumelos, cebolinho, queijo de cabra e cheddar. É uma forma clássica de destacar o sabor suave e herbáceo do quenopódio numa refeição principal.</p>
+
+<h4>3.1.2 Ingredientes</h4>
+<p>Para a base:</p>
+<ul>
+  <li>1 chávena de farinha de trigo (cerca de 120 g)</li>
+  <li>8 colheres de sopa de manteiga fria em cubos, divididas (7 + 1)</li>
+  <li>1 pitada de sal</li>
+  <li>6 colheres de sopa de água com gelo (pode ser necessário mais 1–2 colheres)</li>
+</ul>
+
+<p>Para o recheio:</p>
+<ul>
+  <li>1/4 de chávena de cebola roxa ou amarela picada</li>
+  <li>1/4 de chávena de cogumelos laminados</li>
+  <li>2 chávenas de folhas de lamb’s quarters grosseiramente picadas</li>
+  <li>4 ovos grandes</li>
+  <li>1 chávena de leite</li>
+  <li>3/4 de chávena de natas (heavy cream)</li>
+  <li>1 pitada de noz-moscada</li>
+  <li>Sal q.b.</li>
+  <li>Pimenta preta q.b.</li>
+  <li>2 colheres de sopa de cebolinho fresco picado</li>
+  <li>60 g de queijo de cabra esfarelado</li>
+  <li>60 g de queijo cheddar ralado</li>
+</ul>
+
+<h4>3.1.3 Passos de preparação</h4>
+<ol>
+  <li><strong>1) Preparar a massa</strong>
+    <ul>
+      <li>Numa taça grande, misturar a farinha com 7 colheres de sopa de manteiga e o sal.</li>
+      <li>Esfregar a manteiga na farinha com as pontas dos dedos até obter textura de areia grossa com alguns pedacinhos de manteiga ainda visíveis.</li>
+      <li>Juntar a água gelada, 1 colher de sopa de cada vez, mexendo com um garfo até a massa começar a unir-se. Se necessário, acrescentar mais 1–2 colheres de sopa de água.</li>
+      <li>Formar um disco, embrulhar em película ou cobrir, e refrigerar cerca de 45 minutos.</li>
+    </ul>
+  </li>
+  <li><strong>2) Cozer a base</strong>
+    <ul>
+      <li>Aquecer o forno a 190 ºC.</li>
+      <li>Estender a massa em círculo e forrar uma tarteira. Dobrar ligeiramente as bordas e prensar com um garfo.</li>
+      <li>Picar o fundo com um garfo, forrar com papel vegetal ou folha de alumínio e encher com pesos (grão seco, feijão, etc.).</li>
+      <li>Levar ao forno cerca de 15 minutos para pré-cozer a base. Retirar o papel e os pesos e reservar.</li>
+    </ul>
+  </li>
+  <li><strong>3) Saltear os legumes e as folhas</strong>
+    <ul>
+      <li>Numa frigideira, derreter a colher de sopa de manteiga restante em lume médio.</li>
+      <li>Juntar a cebola e saltear até ficar translúcida.</li>
+      <li>Adicionar os cogumelos e cozinhar até começarem a dourar.</li>
+      <li>Juntar as folhas de lamb’s quarters e mexer apenas até murcharem. Retirar do lume.</li>
+    </ul>
+  </li>
+  <li><strong>4) Preparar o aparelho de ovos</strong>
+    <ul>
+      <li>Numa taça grande, bater os ovos com o leite, as natas, a noz-moscada, sal, pimenta e o cebolinho picado.</li>
+    </ul>
+  </li>
+  <li><strong>5) Montar e cozer a quiche</strong>
+    <ul>
+      <li>Distribuir a mistura de cebola, cogumelos e lamb’s quarters no fundo da base já pré-cozida.</li>
+      <li>Espalhar o queijo de cabra e o cheddar por cima.</li>
+      <li>Verter a mistura de ovos e leite sobre o recheio.</li>
+      <li>Levar ao forno (ainda a 190 ºC) cerca de 35–45 minutos, até o centro do creme estar firme e as bordas douradas.</li>
+      <li>Deixar repousar alguns minutos antes de cortar em fatias.</li>
+    </ul>
+  </li>
+</ol>
+
+<h4>3.1.4 Fonte</h4>
+<p>Fonte: Edible Communities – <a href="https://ediblecommunities.com/recipes/lambs-quarters-quiche/" target="_blank" rel="noopener">https://ediblecommunities.com/recipes/lambs-quarters-quiche/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="fat-hen-a-la-creme-creme-de-quenopodio-r2"></a>
+<h2 id="fat-hen-a-la-creme-creme-de-quenopodio">Fat Hen a la crème (creme de quenopódio) <span class="source">[R2]</span></h2>
+
+<h4>3.2.1 Introdução</h4>
+<p>Este prato transforma folhas de fat hen em algo muito próximo de “espinafres à la crème”. As folhas são escaldadas e envolvidas num molho branco cremoso com iogurte, crème fraîche, queijo duro e noz-moscada, resultando num acompanhamento rico e reconfortante.</p>
+
+<h4>3.2.2 Ingredientes</h4>
+<ul>
+  <li>2 grandes mãos-cheias de folhas de fat hen (Chenopodium album), bem lavadas</li>
+  <li>25 g de farinha de trigo</li>
+  <li>25 g de manteiga</li>
+  <li>400 ml de leite</li>
+  <li>30 ml de iogurte natural</li>
+  <li>30 ml de crème fraîche</li>
+  <li>30 g de queijo duro ralado (por exemplo, parmesão)</li>
+  <li>1/4 de colher de chá de noz-moscada ralada</li>
+  <li>Sal q.b.</li>
+  <li>Pimenta preta q.b.</li>
+</ul>
+
+<h4>3.2.3 Passos de preparação</h4>
+<ol>
+  <li><strong>1) Escaldar as folhas</strong>
+    <ul>
+      <li>Ferver água numa panela grande.</li>
+      <li>Juntar as folhas de fat hen e escaldar cerca de 2 minutos.</li>
+      <li>Escorrer muito bem e picar grosseiramente.</li>
+    </ul>
+  </li>
+  <li><strong>2) Preparar o roux e o molho</strong>
+    <ul>
+      <li>Numa caçarola, derreter a manteiga em lume médio.</li>
+      <li>Juntar a farinha, mexendo sempre, e cozinhar 1 minuto para perder o sabor a cru.</li>
+      <li>Adicionar o leite aos poucos, mexendo com vara de arames para evitar grumos, até o molho engrossar e começar a borbulhar suavemente.</li>
+      <li>Deixar cozinhar alguns minutos em lume brando.</li>
+    </ul>
+  </li>
+  <li><strong>3) Finalizar o creme</strong>
+    <ul>
+      <li>Juntar o iogurte, a crème fraîche, o queijo ralado e a noz-moscada ao molho.</li>
+      <li>Acrescentar as folhas de fat hen picadas e envolver bem.</li>
+      <li>Ajustar de sal e pimenta a gosto e servir quente.</li>
+    </ul>
+  </li>
+</ol>
+
+<h4>3.2.4 Fonte</h4>
+<p>Fonte: Jack Raven Bushcraft – <a href="https://www.jackravenbushcraft.co.uk/fat-hen-la-creme/" target="_blank" rel="noopener">https://www.jackravenbushcraft.co.uk/fat-hen-la-creme/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="bathua-saag-ensopado-de-verdes-com-bathua-r3"></a>
+<h2 id="bathua-saag-ensopado-de-verdes-com-bathua">Bathua Saag (ensopado de verdes com bathua) <span class="source">[R3]</span></h2>
+
+<h4>3.3.1 Introdução</h4>
+<p>O Bathua Saag é um ensopado de inverno da Índia do Norte que combina bathua com outras folhas verdes (mostarda, espinafre, endro), cebola, alho, gengibre e especiarias. Depois de cozinhadas, as folhas recebem um tempero final em ghee ou óleo com cominhos, malaguetas secas e alho, o que dá um perfume intenso ao prato.</p>
+
+<h4>3.3.2 Ingredientes</h4>
+<p>Verdes e base:</p>
+<ul>
+  <li>1 molho de folhas de bathua (cerca de 2 chávenas)</li>
+  <li>1 molho de folhas de mostarda, grosseiramente picadas (cerca de 2 chávenas)</li>
+  <li>1 molho de espinafre, grosseiramente picado (cerca de 2 chávenas)</li>
+  <li>1/2 chávena de endro fresco picado</li>
+  <li>1 cebola média picada</li>
+  <li>2,5 cm de gengibre picado</li>
+  <li>5–6 dentes de alho esmagados</li>
+  <li>2–3 malaguetas verdes, a gosto</li>
+  <li>2 colheres de chá de coentros em pó</li>
+  <li>1/4 de colher de chá de açafrão-das-índias em pó</li>
+  <li>1 chávena de água</li>
+  <li>Sal q.b.</li>
+</ul>
+
+<p>Para o tadka (tempero final):</p>
+<ul>
+  <li>4 colheres de sopa de ghee ou óleo</li>
+  <li>1/2 colher de chá de sementes de cominho</li>
+  <li>3–4 malaguetas secas inteiras, partidas ao meio</li>
+  <li>1/8 de colher de chá de asa-fétida (hing)</li>
+  <li>6–8 dentes de alho fatiados</li>
+  <li>1/2 colher de chá de pimenta vermelha em pó (ajustar a gosto)</li>
+</ul>
+
+<p>Opcional:</p>
+<ul>
+  <li>1/4 de colher de chá de garam masala</li>
+  <li>Sumo de limão acabado de espremer, a gosto</li>
+</ul>
+
+<h4>3.3.3 Passos de preparação</h4>
+<ol>
+  <li><strong>1) Preparar e cortar as folhas</strong>
+    <ul>
+      <li>Lavar muito bem o bathua, a mostarda, o espinafre e o endro para remover terra.</li>
+      <li>Picar as folhas grosseiramente.</li>
+    </ul>
+  </li>
+  <li><strong>2) Cozinhar o saag na panela</strong>
+    <ul>
+      <li>Aquecer um pouco de óleo ou ghee numa panela.</li>
+      <li>Juntar as sementes de cominho e deixar crepitar.</li>
+      <li>Adicionar a cebola, as malaguetas verdes, o gengibre e o alho esmagado e saltear até a cebola ficar dourada.</li>
+      <li>Misturar o açafrão-das-índias, os coentros em pó e o sal.</li>
+      <li>Juntar o bathua e as restantes folhas verdes, mexendo para envolver nas especiarias.</li>
+      <li>Adicionar a chávena de água, reduzir o lume, tapar e deixar cozinhar 15–20 minutos, mexendo ocasionalmente, até as folhas estarem bem macias e o ensopado espesso.</li>
+    </ul>
+  </li>
+  <li><strong>3) Preparar o tadka</strong>
+    <ul>
+      <li>Numa pequena frigideira, aquecer o ghee ou óleo em lume médio-alto.</li>
+      <li>Juntar as sementes de cominho, deixar estalar, depois adicionar as malaguetas secas, a asa-fétida e o alho fatiado.</li>
+      <li>Cozinhar até o alho ficar ligeiramente dourado, desligar o lume e juntar a pimenta vermelha em pó.</li>
+    </ul>
+  </li>
+  <li><strong>4) Finalizar e servir</strong>
+    <ul>
+      <li>Verter o tadka sobre o saag quente e envolver bem.</li>
+      <li>Se desejar, polvilhar com garam masala e juntar umas gotas de sumo de limão.</li>
+      <li>Servir com doda, roti ou outro pão plano à escolha.</li>
+    </ul>
+  </li>
+</ol>
+
+<h4>3.3.4 Fonte</h4>
+<p>Fonte: Living Smart and Healthy – <a href="https://www.livingsmartandhealthy.com/bathua-saag/" target="_blank" rel="noopener">https://www.livingsmartandhealthy.com/bathua-saag/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="myeongaju-muchim-salada-coreana-picante-de-lambs-quarters-r4"></a>
+<h2 id="myeongaju-muchim-salada-coreana-picante-de-lambs-quarters">Myeongaju-muchim (salada coreana picante de lamb’s quarters) <span class="source">[R4]</span></h2>
+
+<h4>3.4.1 Introdução</h4>
+<p>Este acompanhamento coreano utiliza lamb’s quarters escaldados, bem espremidos e temperados com uma pasta rica de doenjang (pasta de soja fermentada) e gochujang (pasta de malagueta), alho, cebolinha, óleo e sementes de sésamo. É servido frio como banchan ao lado de arroz e outros pratos.</p>
+
+<h4>3.4.2 Ingredientes (serve 2–4)</h4>
+<ul>
+  <li>300 g (cerca de 10 oz) de lamb’s quarters (folhas jovens e caules tenros)</li>
+  <li>3 colheres de sopa de doenjang (pasta de soja fermentada)</li>
+  <li>1 colher de sopa de gochujang (pasta de malagueta coreana)</li>
+  <li>2 dentes de alho picados</li>
+  <li>1 cebolinha verde picada</li>
+  <li>1 colher de sopa de óleo de sésamo torrado</li>
+  <li>1 colher de sopa de sementes de sésamo torradas</li>
+</ul>
+
+<h4>3.4.3 Passos de preparação</h4>
+<ol>
+  <li><strong>1) Escaldar e preparar as folhas</strong>
+    <ul>
+      <li>Ferver cerca de 3 litros de água numa panela grande.</li>
+      <li>Escaldar as lamb’s quarters durante 1–2 minutos, até as folhas ficarem tenras.</li>
+      <li>Escorrer e passar imediatamente por água fria para parar a cozedura e remover resíduos.</li>
+      <li>Espremer bem o excesso de água e, se os caules forem longos, cortar em pedaços de tamanho de bocado.</li>
+    </ul>
+  </li>
+  <li><strong>2) Preparar a pasta de tempero</strong>
+    <ul>
+      <li>Numa taça, misturar o doenjang, o gochujang, o alho picado, a cebolinha e o óleo de sésamo até formar uma pasta homogénea.</li>
+    </ul>
+  </li>
+  <li><strong>3) Temperar e servir</strong>
+    <ul>
+      <li>Juntar as lamb’s quarters escorridas à taça com a pasta de tempero.</li>
+      <li>Misturar com a mão ou com pauzinhos até todas as folhas ficarem bem cobertas.</li>
+      <li>Transferir para um prato de servir, polvilhar com as sementes de sésamo tostadas e servir à temperatura ambiente como acompanhamento.</li>
+    </ul>
+  </li>
+</ol>
+
+<h4>3.4.4 Fonte</h4>
+<p>Fonte: Maangchi – <a href="https://www.maangchi.com/recipe/myeongaju-muchim" target="_blank" rel="noopener">https://www.maangchi.com/recipe/myeongaju-muchim</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="dal-saag-de-bathua-receita-1-2-r5"></a>
+<h2 id="dal-saag-de-bathua-receita-1-2">Dal Saag de bathua (Receita 1/2) <span class="source">[R5]</span></h2>
+
+<h4>3.5.1 Introdução</h4>
+<p>Parte da dupla “Bathua Ka Raita & Dal Saag”, este dal saag combina urad dal (lentilha inteira com casca) com bathua, espinafre e endro, cozidos em panela de pressão com aromáticos e depois finalizados com um tadka em ghee. O resultado é um guisado cremoso, rico em proteínas e sabor.</p>
+
+<h4>3.5.2 Ingredientes</h4>
+<p>Para o dal saag:</p>
+<ul>
+  <li>1 1/2 chávena de urad dal com casca, demolhado</li>
+  <li>1/2 chávena de endro (shepu) picado</li>
+  <li>1 molho de folhas de bathua</li>
+  <li>1 molho de espinafre</li>
+  <li>2 colheres de chá de gengibre picado</li>
+  <li>2 colheres de chá de alho picado</li>
+  <li>2 malaguetas verdes</li>
+  <li>1 cebola média picada</li>
+  <li>1/2 colher de sopa de sal (ajustar a gosto)</li>
+  <li>1/2 colher de chá de açafrão-das-índias em pó</li>
+  <li>1 colher de sopa de óleo de mostarda</li>
+  <li>Água q.b. para cozinhar</li>
+</ul>
+
+<p>Para o tadka do dal:</p>
+<ul>
+  <li>2 colheres de sopa de ghee</li>
+  <li>2 colheres de chá de sementes de cominho</li>
+  <li>1 malagueta seca</li>
+  <li>1 colher de chá de asa-fétida (hing)</li>
+</ul>
+
+<h4>3.5.3 Passos de preparação</h4>
+<ol>
+  <li><strong>1) Preparar os ingredientes</strong>
+    <ul>
+      <li>Demolhar o urad dal conforme indicado (por exemplo, algumas horas).</li>
+      <li>Lavar e picar o bathua e o espinafre.</li>
+      <li>Picar o endro, a cebola, o gengibre, o alho e as malaguetas verdes.</li>
+    </ul>
+  </li>
+  <li><strong>2) Cozinhar o dal com as folhas</strong>
+    <ul>
+      <li>Numa panela de pressão, juntar o urad dal demolhado, o espinafre, o bathua, o gengibre, o alho, a cebola, as malaguetas verdes, o sal, o açafrão-das-índias e o óleo de mostarda.</li>
+      <li>Adicionar água suficiente para cobrir bem o conteúdo.</li>
+      <li>Fechar a panela e cozinhar sob pressão por 3–4 apitos (ou até o dal e as folhas ficarem macios).</li>
+    </ul>
+  </li>
+  <li><strong>3) Ajustar a textura</strong>
+    <ul>
+      <li>Deixar a pressão sair, abrir a panela e esmagar parcialmente o dal e as folhas até obter um guisado espesso e cremoso.</li>
+      <li>Se necessário, deixar apurar em lume brando, sem tampa, para ajustar a consistência.</li>
+    </ul>
+  </li>
+  <li><strong>4) Preparar o tadka</strong>
+    <ul>
+      <li>Numa pequena frigideira, aquecer o ghee.</li>
+      <li>Juntar as sementes de cominho e deixar estalar.</li>
+      <li>Adicionar a malagueta seca e a asa-fétida e fritar brevemente até ficarem aromáticos.</li>
+    </ul>
+  </li>
+  <li><strong>5) Finalizar</strong>
+    <ul>
+      <li>Verter o tadka por cima do dal saag quente e misturar.</li>
+      <li>Manter tapado até servir, para o aroma se incorporar.</li>
+    </ul>
+  </li>
+</ol>
+
+<h4>3.5.4 Fonte</h4>
+<p>Fonte: Chef Ajay Chopra – <a href="https://www.chefajaychopra.com/food-recipes/bathua-ka-raita-dal-saag-recipe" target="_blank" rel="noopener">https://www.chefajaychopra.com/food-recipes/bathua-ka-raita-dal-saag-recipe</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="raita-de-bathua-receita-2-2-r6"></a>
+<h2 id="raita-de-bathua-receita-2-2">Raita de bathua (Receita 2/2) <span class="source">[R6]</span></h2>
+
+<h4>3.6.1 Introdução</h4>
+<p>A segunda parte do conjunto é um raita refrescante em que bathua cozido e triturado é misturado com iogurte, sal preto e açúcar em pó. Um pequeno tadka em ghee com cominhos, malagueta seca e asa-fétida é vertido por cima, criando contraste de texturas e temperatura.</p>
+
+<h4>3.6.2 Ingredientes</h4>
+<p>Para o raita:</p>
+<ul>
+  <li>1 chávena de iogurte (coalhada)</li>
+  <li>1/2 chávena de folhas de bathua (pigweed) cozidas e trituradas em pasta</li>
+  <li>1/2 colher de chá de sal preto</li>
+  <li>1/2 colher de chá de açúcar em pó</li>
+</ul>
+
+<p>Para o tadka do raita:</p>
+<ul>
+  <li>2 colheres de sopa de ghee</li>
+  <li>2 colheres de chá de sementes de cominho</li>
+  <li>1 malagueta seca</li>
+  <li>1 colher de chá de asa-fétida (hing)</li>
+</ul>
+
+<h4>3.6.3 Passos de preparação</h4>
+<ol>
+  <li><strong>1) Preparar a base do raita</strong>
+    <ul>
+      <li>Cozer as folhas de bathua em água a ferver até ficarem tenras, escorrer bem e triturar até obter uma pasta.</li>
+      <li>Numa taça, bater o iogurte até ficar liso.</li>
+      <li>Juntar a pasta de bathua, o sal preto e o açúcar em pó, mexendo até ficar homogéneo.</li>
+    </ul>
+  </li>
+  <li><strong>2) Fazer o tadka</strong>
+    <ul>
+      <li>Aquecer o ghee numa pequena frigideira.</li>
+      <li>Adicionar as sementes de cominho, deixar crepitar, e depois juntar a malagueta seca e a asa-fétida.</li>
+      <li>Fritar até libertar aroma e desligar o lume.</li>
+    </ul>
+  </li>
+  <li><strong>3) Finalizar</strong>
+    <ul>
+      <li>Deitar o tadka quente sobre o raita de bathua.</li>
+      <li>Misturar ligeiramente ou deixar o tempero em “manchas” à superfície, conforme preferência.</li>
+      <li>Servir fresco como acompanhamento.</li>
+    </ul>
+  </li>
+</ol>
+
+<h4>3.6.4 Fonte</h4>
+<p>Fonte: Chef Ajay Chopra – <a href="https://www.chefajaychopra.com/food-recipes/bathua-ka-raita-dal-saag-recipe" target="_blank" rel="noopener">https://www.chefajaychopra.com/food-recipes/bathua-ka-raita-dal-saag-recipe</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="paratha-de-bathua-pao-achatado-recheado-r7"></a>
+<h2 id="paratha-de-bathua-pao-achatado-recheado">Paratha de bathua (pão achatado recheado) <span class="source">[R7]</span></h2>
+
+<h4>3.7.1 Introdução</h4>
+<p>Paratha de bathua é um pão plano de trigo em que as folhas de bathua são incorporadas diretamente na massa juntamente com especiarias. A massa é estendida em discos e cozinhada na chapa com óleo até ganhar manchas douradas, produzindo um pão perfumado, ideal para pequeno-almoço ou jantar leve.</p>
+
+<h4>3.7.2 Ingredientes</h4>
+<ul>
+  <li>2 chávenas de farinha de trigo (atta/wheat flour)</li>
+  <li>2 molhos de bathua</li>
+  <li>3 malaguetas verdes</li>
+  <li>1 pedaço de gengibre (cerca de 2,5 cm)</li>
+  <li>1/2 colher de chá de açafrão-das-índias em pó</li>
+  <li>1/2 colher de chá de garam masala em pó</li>
+  <li>1 colher de chá de cominhos em pó</li>
+  <li>Sal q.b.</li>
+  <li>Óleo q.b. (para a massa e para grelhar os parathas)</li>
+</ul>
+
+<h4>3.7.3 Passos de preparação</h4>
+<ol>
+  <li><strong>1) Preparar o bathua e aromáticos</strong>
+    <ul>
+      <li>Lavar muito bem as folhas de bathua e picá-las finamente.</li>
+      <li>Picar também o gengibre e as malaguetas verdes bem miúdo.</li>
+    </ul>
+  </li>
+  <li><strong>2) Fazer a massa</strong>
+    <ul>
+      <li>Numa taça grande, juntar a farinha de trigo, sal e cerca de 2 colheres de chá de óleo. Misturar.</li>
+      <li>Adicionar o gengibre, as malaguetas verdes, o açafrão-das-índias, o garam masala, o cominho em pó e as folhas de bathua picadas. Misturar tudo.</li>
+      <li>Acrescentar água aos poucos e amassar até obter uma massa macia e maleável.</li>
+      <li>Deixar repousar alguns minutos.</li>
+    </ul>
+  </li>
+  <li><strong>3) Formar os parathas</strong>
+    <ul>
+      <li>Dividir a massa em bolas de tamanho médio.</li>
+      <li>Polvilhar com farinha e estender cada bola num círculo uniforme.</li>
+    </ul>
+  </li>
+  <li><strong>4) Cozinhar na chapa</strong>
+    <ul>
+      <li>Aquecer um tawa ou frigideira antiaderente.</li>
+      <li>Colocar um disco de massa na superfície quente e cozinhar cerca de 1 minuto, até surgirem bolhas.</li>
+      <li>Virar, pincelar com um pouco de óleo e cozinhar o outro lado até ficar dourado.</li>
+      <li>Virar mais uma vez se necessário, adicionando um pouco mais de óleo, até ambos os lados ficarem bem cozidos e com manchas douradas.</li>
+      <li>Repetir com o resto da massa e servir quente, com pickles ou outro acompanhamento.</li>
+    </ul>
+  </li>
+</ol>
+
+<h4>3.7.4 Fonte</h4>
+<p>Fonte: Cookpad – <a href="https://cookpad.com/eng/recipes/14595555" target="_blank" rel="noopener">https://cookpad.com/eng/recipes/14595555</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="bolo-de-espinafre-bravo-com-lambs-quarters-r8"></a>
+<h2 id="bolo-de-espinafre-bravo-com-lambs-quarters">Bolo de “espinafre-bravo” com lamb’s quarters <span class="source">[R8]</span></h2>
+
+<h4>3.8.1 Introdução</h4>
+<p>Este “bolo” salgado é feito apenas com lamb’s quarters bem fatiados, farinha, sal e especiarias, cozinhado numa frigideira com óleo até formar um disco compacto e dourado. É naturalmente vegan, mas encaixa perfeitamente na alimentação vegetariana e pode ser servido como acompanhamento ou base para ovos, molhos e outros toppings.</p>
+
+<h4>3.8.2 Ingredientes</h4>
+<ul>
+  <li>280 g (10 oz) de lamb’s quarters frescos ou outras folhas verdes tenras (sem caules grossos)</li>
+  <li>4 colheres de sopa de farinha de trigo</li>
+  <li>1/2 colher de chá de sal kosher</li>
+  <li>1/2 colher de sopa de paprika doce ou fumada</li>
+  <li>Uma ponta de faca de pimenta caiena</li>
+  <li>1/2 colher de chá de cominhos em pó (opcional)</li>
+  <li>4 colheres de sopa de óleo de cozinha (mais se necessário)</li>
+</ul>
+
+<h4>3.8.3 Passos de preparação</h4>
+<ol>
+  <li><strong>1) Cortar as folhas</strong>
+    <ul>
+      <li>Juntar as folhas de lamb’s quarters num “molho”, enrolar e cortar em tiras finas (chiffonade).</li>
+      <li>Rodar o molho 180º e voltar a cortar para obter quadradinhos pequenos.</li>
+    </ul>
+  </li>
+  <li><strong>2) Misturar a massa do bolo</strong>
+    <ul>
+      <li>Colocar as folhas numa taça.</li>
+      <li>Juntar a farinha, o sal, a paprika, a pimenta caiena e o cominho, se usar.</li>
+      <li>Misturar bem até as folhas ficarem ligeiramente cobertas pela farinha e especiarias.</li>
+    </ul>
+  </li>
+  <li><strong>3) Cozinhar o bolo – primeiro lado</strong>
+    <ul>
+      <li>Aquecer metade do óleo numa frigideira antiaderente ou de ferro (cerca de 25 cm).</li>
+      <li>Espalhar a mistura de folhas na frigideira, formando uma camada alta mas compacta.</li>
+      <li>Cozinhar alguns minutos até as folhas começarem a murchar.</li>
+      <li>Com uma colher de pau, pressionar o topo e as laterais para formar um disco compacto.</li>
+      <li>Tapar a frigideira, baixar o lume e cozinhar mais alguns minutos até o bolo se mover como uma peça única ao abanar a frigideira.</li>
+    </ul>
+  </li>
+  <li><strong>4) Virar o bolo</strong>
+    <ul>
+      <li>Levantar uma ponta com a espátula para verificar se a base está ligeiramente dourada.</li>
+      <li>Virar o bolo: pode fazê-lo com a espátula, ou inverter para um prato ou tábua e deslizar de volta para a frigideira.</li>
+    </ul>
+  </li>
+  <li><strong>5) Cozinhar o segundo lado</strong>
+    <ul>
+      <li>Regar as bordas do bolo com o restante óleo e voltar a pressionar suavemente as laterais para manter a forma circular.</li>
+      <li>Cozinhar cerca de 5 minutos, virando se necessário, até ambos os lados ficarem dourados e o bolo firme.</li>
+      <li>Se a frigideira parecer seca, juntar um pouco mais de óleo.</li>
+    </ul>
+  </li>
+  <li><strong>6) Servir</strong>
+    <ul>
+      <li>Deslizar o bolo para um prato e cortar em 4 fatias com uma faca de chef.</li>
+      <li>Servir simples com uma rodela de limão ou como base para ovos ou outros complementos.</li>
+    </ul>
+  </li>
+</ol>
+
+<h4>3.8.4 Fonte</h4>
+<p>Fonte: Forager | Chef – <a href="https://foragerchef.com/wild-spinach-cake/" target="_blank" rel="noopener">https://foragerchef.com/wild-spinach-cake/</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="fritters-crocantes-de-fat-hen-r9"></a>
+<h2 id="fritters-crocantes-de-fat-hen">Fritters crocantes de fat hen <span class="source">[R9]</span></h2>
+
+<h4>3.9.1 Introdução</h4>
+<p>Estes fritters utilizam fat hen picada, cebolinha e uma mistura de farinhas e especiarias indianas para formar um polme espesso que é frito em óleo quente. O resultado são bolinhos muito crocantes por fora, macios por dentro e intensamente condimentados, ideais para servir com chutney ou iogurte.</p>
+
+<h4>3.9.2 Ingredientes</h4>
+<ul>
+  <li>200 g de cebolinho ou cebola-nova, finamente picado</li>
+  <li>150 g de folhas de fat hen grosseiramente picadas</li>
+  <li>90 g de farinha de trigo</li>
+  <li>60 g de farinha de trigo integral (wholemeal)</li>
+  <li>5 g de pó de malagueta vermelha</li>
+  <li>5 g de coentros em pó</li>
+  <li>2,5 g de garam masala</li>
+  <li>2 malaguetas verdes pequenas, finamente picadas</li>
+  <li>10 g de pasta de gengibre e alho</li>
+  <li>45–60 ml de água</li>
+  <li>Óleo vegetal q.b. para fritar</li>
+  <li>Uma pitada de asa-fétida (opcional)</li>
+  <li>5 g de sementes de sésamo</li>
+  <li>5 g de açafrão-das-índias em pó</li>
+  <li>Sal q.b.</li>
+</ul>
+
+<h4>3.9.3 Passos de preparação</h4>
+<ol>
+  <li><strong>1) Misturar os ingredientes secos</strong>
+    <ul>
+      <li>Numa taça grande, juntar as farinhas, o pó de malagueta, os coentros em pó, o garam masala, o açafrão-das-índias, o sal e as sementes de sésamo. Misturar bem.</li>
+    </ul>
+  </li>
+  <li><strong>2) Juntar os vegetais</strong>
+    <ul>
+      <li>Acrescentar o cebolinho picado, as folhas de fat hen, as malaguetas verdes e a pasta de gengibre e alho.</li>
+      <li>Com as mãos, envolver bem, esfregando ligeiramente os vegetais com a mistura de farinha para libertar aromas.</li>
+    </ul>
+  </li>
+  <li><strong>3) Ajustar a consistência</strong>
+    <ul>
+      <li>Adicionar água aos poucos (uma colher de sopa de cada vez), misturando, até obter um polme espesso que envolva bem os vegetais e mantenha a forma quando deixado cair da colher.</li>
+    </ul>
+  </li>
+  <li><strong>4) Fritar</strong>
+    <ul>
+      <li>Aquecer uma quantidade generosa de óleo vegetal numa frigideira funda ou wok em lume médio.</li>
+      <li>Quando o óleo estiver quente (uma pequena porção de massa deve chiar e subir à superfície), deixar cair colheradas do polme, sem encher demasiado a frigideira.</li>
+      <li>Fritar 2–3 minutos, virando ocasionalmente, até os fritters ficarem dourados e crocantes.</li>
+      <li>Retirar com escumadeira e escorrer sobre papel absorvente.</li>
+    </ul>
+  </li>
+  <li><strong>5) Servir</strong>
+    <ul>
+      <li>Servir quentes, acompanhados de chutney de tamarindo ou iogurte de hortelã, por exemplo.</li>
+    </ul>
+  </li>
+</ol>
+
+<h4>3.9.4 Fonte</h4>
+<p>Fonte: Eatweeds – <a href="https://www.eatweeds.co.uk/crispy-fat-hen-fritters" target="_blank" rel="noopener">https://www.eatweeds.co.uk/crispy-fat-hen-fritters</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="tabule-de-quinoa-com-fat-hen-r10"></a>
+<h2 id="tabule-de-quinoa-com-fat-hen">Tabule de quinoa com fat hen <span class="source">[R10]</span></h2>
+
+<h4>3.10.1 Introdução</h4>
+<p>Este tabule troca o bulgur por quinoa e junta fat hen levemente cozinhada ao vapor, pimento, pepino, cebolinho, hortelã e salsa. A salada é temperada com um vinagrete simples, resultando num prato leve, nutritivo e ótimo para servir frio como acompanhamento.</p>
+
+<h4>3.10.2 Ingredientes</h4>
+<ul>
+  <li>150 g de quinoa</li>
+  <li>1/2 colher de chá de açafrão-das-índias em pó</li>
+  <li>100 g de folhas de fat hen bem lavadas</li>
+  <li>Vinagrete q.b. (azeite, vinagre ou sumo de limão, sal, pimenta – conforme a receita de vinagrete usada)</li>
+  <li>1 pimento vermelho, picado</li>
+  <li>1 molho de cebolinho, fatiado</li>
+  <li>1/4 de pepino (aprox.), sem sementes, cortado em cubos</li>
+  <li>2 raminhos de hortelã</li>
+  <li>1 pequena mão-cheia de salsa de folha lisa</li>
+</ul>
+
+<h4>3.10.3 Passos de preparação</h4>
+<ol>
+  <li><strong>1) Cozinhar a quinoa</strong>
+    <ul>
+      <li>Colocar 400 ml de água numa panela com o açafrão-das-índias e levar ao lume até ferver.</li>
+      <li>Juntar a quinoa, reduzir o lume e cozinhar cerca de 15 minutos, até a água ser absorvida e os grãos ficarem macios.</li>
+      <li>Transferir para uma taça, regar com um pouco de vinagrete e soltar com um garfo. Deixar arrefecer.</li>
+    </ul>
+  </li>
+  <li><strong>2) Cozinhar a fat hen</strong>
+    <ul>
+      <li>Colocar as folhas de fat hen num cesto de vapor sobre água a ferver e cozinhar 2–3 minutos, até murcharem.</li>
+      <li>Retirar, deixar arrefecer um pouco e picar grosseiramente.</li>
+    </ul>
+  </li>
+  <li><strong>3) Preparar os vegetais e ervas</strong>
+    <ul>
+      <li>Retirar as sementes do pepino, cortar em tiras e depois em cubos.</li>
+      <li>Picar o pimento em cubos.</li>
+      <li>Aparar e fatiar o cebolinho.</li>
+      <li>Picar finamente a hortelã e a salsa.</li>
+    </ul>
+  </li>
+  <li><strong>4) Montar o tabule</strong>
+    <ul>
+      <li>Num recipiente grande, misturar a quinoa já fria, a fat hen picada, o pepino, o pimento, o cebolinho, a hortelã e a salsa.</li>
+      <li>Adicionar mais vinagrete, se necessário, e envolver delicadamente até ficar bem temperado, mas não encharcado.</li>
+    </ul>
+  </li>
+  <li><strong>5) Servir</strong>
+    <ul>
+      <li>Ajustar o sal, a pimenta e a acidez a gosto.</li>
+      <li>Servir como acompanhamento frio.</li>
+    </ul>
+  </li>
+</ol>
+
+<h4>3.10.4 Fonte</h4>
+<p>Fonte: Eatweeds – <a href="https://www.eatweeds.co.uk/fat-hen-tabbouleh" target="_blank" rel="noopener">https://www.eatweeds.co.uk/fat-hen-tabbouleh</a></p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

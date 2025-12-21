@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Alface – Receitas Vegetarianas (Top 10)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+<body id="topo">
+<div class="masthead">
+  <header>
+    <h1>Alface – Receitas Vegetarianas (Top 10)</h1>
+    <p>Preparações com ingredientes à base de plantas, leite e derivados do leite, ovos e mel</p>
+  </header>
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-de-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html" class="ativa">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+</div>
+
+<main>
+<article>
+
+<h2 id="receitas-preparados">Receitas e preparados – dieta vegetariana</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+	<a href="/data/refeicoes/vegan/alface_receitas_vegan.html">(Vegan)</a>
+    <a href="/data/refeicoes/raw-vegan/alface_receitas_raw-vegan.html">(Comida Viva)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro por ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+  <ol>
+    <li><a href="#sopa-de-alface-portuguesa">Sopa de Alface Portuguesa</a></li>
+    <li><a href="#salada-waldorf-tradicional">Salada Waldorf Tradicional</a></li>
+    <li><a href="#alface-refogada-com-alho">Alface Refogada com Alho</a></li>
+    <li><a href="#alface-romana-salteada-a-chinesa">Alface Romana Salteada à Chinesa</a></li>
+    <li><a href="#tacos-mexicanos-em-folha-de-alface">Tacos Mexicanos em Folha de Alface</a></li>
+    <li><a href="#salada-de-alface-com-molho-de-iogurte">Salada de Alface com Molho de Iogurte</a></li>
+    <li><a href="#salada-de-alface-com-alho-e-shoyu">Salada de Alface com Alho e Shoyu</a></li>
+    <li><a href="#salada-japonesa-de-alface-yamitsuki">Salada Japonesa de Alface “Yamitsuki”</a></li>
+    <li><a href="#taco-de-alface-com-cheddar-e-guacamole">Taco de Alface com Cheddar e Guacamole</a></li>
+    <li><a href="#salada-waldorf-com-uvas-e-iogurte">Salada Waldorf com Uvas e Iogurte</a></li>
+  </ol>
+</div>
+
+<h2 id="resumo">Resumo das receitas (R1–R10)</h2>
+<ul>
+  <li><strong>R1. Sopa de Alface Portuguesa</strong>  <br>Sopa cremosa tradicional com batata, cebola, alho e alface, simples, económica e reconfortante.</li>
+  <li><strong>R2. Salada Waldorf Tradicional</strong>  <br>Clássica salada agridoce com maçã, nozes, aipo, iogurte, maionese e folhas de alface fresca.</li>
+  <li><strong>R3. Alface Refogada com Alho</strong>  <br>Alface rapidamente salteada com alho e cebola, usada como acompanhamento quente.</li>
+  <li><strong>R4. Alface Romana Salteada à Chinesa</strong>  <br>Preparação asiática com alho crocante e óleo quente, mantendo a alface estaladiça.</li>
+  <li><strong>R5. Tacos Mexicanos em Folha de Alface</strong>  <br>Tacos leves sem tortilha, usando folhas de alface como base para o recheio.</li>
+  <li><strong>R6. Salada de Alface com Molho de Iogurte</strong>  <br>Salada fresca temperada com molho cremoso de iogurte natural e alho.</li>
+  <li><strong>R7. Salada de Alface com Alho e Shoyu</strong>  <br>Salada quente de inspiração oriental com alho salteado e molho de soja.</li>
+  <li><strong>R8. Salada Japonesa de Alface “Yamitsuki”</strong>  <br>Salada japonesa viciante com molho salgado e algas nori.</li>
+  <li><strong>R9. Taco de Alface com Cheddar e Guacamole</strong>  <br>Lanche rápido com alface, queijo cheddar e guacamole.</li>
+  <li><strong>R10. Salada Waldorf com Uvas e Iogurte</strong>  <br>Variação da Waldorf com uvas frescas, iogurte, maionese e nozes.</li>
+</ul>
+
+<a id="sopa-de-alface-portuguesa-r1"></a>
+<h2 id="sopa-de-alface-portuguesa">Sopa de Alface Portuguesa <span class="source">[R1]</span></h2>
+
+<h4>Introdução</h4>
+<p>Sopa clássica portuguesa de alface com base de batata, cebola e alho, triturada até ficar cremosa.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>500 g de batata</li>
+  <li>1 cebola média (150 g)</li>
+  <li>3 dentes de alho</li>
+  <li>1 alface grande (250–300 g)</li>
+  <li>1 colher de sopa de margarina ou manteiga</li>
+  <li>1 colher de sopa de azeite</li>
+  <li>1 litro de água</li>
+  <li>1 colher de chá rasa de sal</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Refogar a cebola e o alho na gordura.</li>
+  <li>Juntar batata em cubos e água.</li>
+  <li>Cozinhar até a batata ficar macia.</li>
+  <li>Triturar, juntar a alface e ferver mais 2–3 minutos.</li>
+  <li>Ajustar com sal.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Vaqueiro<br>
+<a href="https://www.vaqueiro.pt/recipes/sopa-de-alface-portuguesa-198573" target="_blank" rel="noopener">
+https://www.vaqueiro.pt/recipes/sopa-de-alface-portuguesa-198573
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-waldorf-tradicional-r2"></a>
+<h2 id="salada-waldorf-tradicional">Salada Waldorf Tradicional <span class="source">[R2]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma das saladas mais conhecidas do mundo, agridoce e crocante, servida sobre folhas de alface.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>2 maçãs verdes médias (300 g)</li>
+  <li>2 talos de aipo (80 g)</li>
+  <li>80 g de nozes picadas</li>
+  <li>Sumo de ½ limão</li>
+  <li>100 g de iogurte natural</li>
+  <li>80 g de maionese</li>
+  <li>1 colher de sopa de azeite</li>
+  <li>½ colher de chá de sal</li>
+  <li>¼ colher de chá de pimenta</li>
+  <li>1 alface grande para servir</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Cortar as maçãs e regar com limão.</li>
+  <li>Juntar aipo e nozes.</li>
+  <li>Misturar iogurte, maionese, azeite, sal e pimenta.</li>
+  <li>Envolver tudo e servir sobre alface.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Panelinha<br>
+<a href="https://panelinha.com.br/receita/salada-waldorf" target="_blank" rel="noopener">
+https://panelinha.com.br/receita/salada-waldorf
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="alface-refogada-com-alho-r3"></a>
+<h2 id="alface-refogada-com-alho">Alface Refogada com Alho <span class="source">[R3]</span></h2>
+
+<h4>Introdução</h4>
+<p>Forma simples e surpreendente de usar alface como acompanhamento quente.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 alface grande</li>
+  <li>½ cebola média</li>
+  <li>2 dentes de alho</li>
+  <li>2 colheres de sopa de azeite</li>
+  <li>100 ml de caldo de legumes</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Refogar cebola e alho em azeite.</li>
+  <li>Juntar a alface rasgada.</li>
+  <li>Regar com caldo, tapar e cozinhar 3 minutos.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+TudoGostoso<br>
+<a href="https://www.tudogostoso.com.br/receita/113034-alface-refogada-facil.html" target="_blank" rel="noopener">
+https://www.tudogostoso.com.br/receita/113034-alface-refogada-facil.html
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="alface-romana-salteada-a-chinesa-r4"></a>
+<h2 id="alface-romana-salteada-a-chinesa">Alface Romana Salteada à Chinesa <span class="source">[R4]</span></h2>
+
+<h4>Introdução</h4>
+<p>Prato popular asiático com alho crocante e salteado rápido.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 alface romana grande</li>
+  <li>4 dentes de alho</li>
+  <li>3 colheres de sopa de óleo</li>
+  <li>1 colher de sopa de molho de soja</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Fritar o alho em óleo até dourar e retirar.</li>
+  <li>Saltear a alface rapidamente no óleo quente.</li>
+  <li>Juntar o alho de novo e temperar com soja.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Reddit Chinese Food<br>
+<a href="https://www.reddit.com/r/chinesefood/comments/15k7m2c/stir_fried_romaine_lettuce_with_garlic_%E7%94%9F%E8%8F%9C_used/" target="_blank" rel="noopener">
+https://www.reddit.com/r/chinesefood/comments/15k7m2c/stir_fried_romaine_lettuce_with_garlic_%E7%94%9F%E8%8F%9C_used/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="tacos-mexicanos-em-folha-de-alface-r5"></a>
+<h2 id="tacos-mexicanos-em-folha-de-alface">Tacos Mexicanos em Folha de Alface <span class="source">[R5]</span></h2>
+
+<h4>Introdução</h4>
+<p>Versão leve e fresca dos tacos, usando alface como suporte.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>12 folhas grandes de alface</li>
+  <li>1 cebola média</li>
+  <li>2 tomates médios</li>
+  <li>2 colheres de sopa de azeite</li>
+  <li>1 colher de chá de cominhos</li>
+  <li>1 colher de chá de paprica</li>
+  <li>300 g de recheio vegetal à escolha</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Refogar cebola e tomate com especiarias.</li>
+  <li>Colocar o recheio nas folhas de alface.</li>
+  <li>Dobrar e servir.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+24 Kitchen<br>
+<a href="https://www.24kitchen.pt/receita/tacos-mexicanos-em-folha-de-alface" target="_blank" rel="noopener">
+https://www.24kitchen.pt/receita/tacos-mexicanos-em-folha-de-alface
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-de-alface-com-molho-de-iogurte-r6"></a>
+<h2 id="salada-de-alface-com-molho-de-iogurte">Salada de Alface com Molho de Iogurte <span class="source">[R6]</span></h2>
+
+<h4>Introdução</h4>
+<p>Salada leve e cremosa com molho fresco de iogurte e alho.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 alface roxa grande</li>
+  <li>150 g de iogurte natural</li>
+  <li>1 dente de alho</li>
+  <li>Sumo de ½ limão</li>
+  <li>½ colher de chá de sal</li>
+  <li>1 colher de sopa de azeite</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Misturar o iogurte com alho e limão.</li>
+  <li>Temperar a alface e servir fria.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Receitas Nestlé<br>
+<a href="https://www.receitasnestle.com.br/receitas/salada-de-folhas-especial-com-molho-de-iogurte-natural" target="_blank" rel="noopener">
+https://www.receitasnestle.com.br/receitas/salada-de-folhas-especial-com-molho-de-iogurte-natural
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-de-alface-com-alho-e-shoyu-r7"></a>
+<h2 id="salada-de-alface-com-alho-e-shoyu">Salada de Alface com Alho e Shoyu <span class="source">[R7]</span></h2>
+
+<h4>Introdução</h4>
+<p>Salada quente de inspiração oriental.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 alface crespa grande</li>
+  <li>3 dentes de alho</li>
+  <li>2 colheres de sopa de azeite</li>
+  <li>2 colheres de sopa de molho shoyu</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Fritar o alho no azeite.</li>
+  <li>Juntar o shoyu.</li>
+  <li>Envolver rapidamente a alface.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Receitas Globo<br>
+<a href="https://receitas.globo.com/tipos-de-prato/saladas/salada-de-alface-com-alho-4d508c6f52e0b252bc002a47.ghtml" target="_blank" rel="noopener">
+https://receitas.globo.com/tipos-de-prato/saladas/salada-de-alface-com-alho-4d508c6f52e0b252bc002a47.ghtml
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-japonesa-de-alface-yamitsuki-r8"></a>
+<h2 id="salada-japonesa-de-alface-yamitsuki">Salada Japonesa de Alface “Yamitsuki” <span class="source">[R8]</span></h2>
+
+<h4>Introdução</h4>
+<p>Salada japonesa famosa pelo sabor viciante.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 alface grande</li>
+  <li>2 colheres de sopa de óleo de sésamo</li>
+  <li>1 colher de sopa de vinagre de arroz</li>
+  <li>1 dente de alho ralado</li>
+  <li>1 colher de chá de açúcar</li>
+  <li>1 folha grande de alga nori em tiras</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Preparar o molho com os condimentos.</li>
+  <li>Envolver a alface.</li>
+  <li>Finalizar com algas.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Sudachi Recipes<br>
+<a href="https://sudachirecipes.com/yamitsuki-lettuce-salad/" target="_blank" rel="noopener">
+https://sudachirecipes.com/yamitsuki-lettuce-salad/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="taco-de-alface-com-cheddar-e-guacamole-r9"></a>
+<h2 id="taco-de-alface-com-cheddar-e-guacamole">Taco de Alface com Cheddar e Guacamole <span class="source">[R9]</span></h2>
+
+<h4>Introdução</h4>
+<p>Versão rápida e cremosa de taco vegetariano.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>10 folhas de alface</li>
+  <li>150 g de queijo cheddar ralado</li>
+  <li>200 g de guacamole</li>
+  <li>10 mini tacos ou tortilhas</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Aquecer os tacos.</li>
+  <li>Rechear com alface, queijo e guacamole.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Gomes da Costa<br>
+<a href="https://gomesdacosta.com.br/receitas/lanches/taco/" target="_blank" rel="noopener">
+https://gomesdacosta.com.br/receitas/lanches/taco/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-waldorf-com-uvas-e-iogurte-r10"></a>
+<h2 id="salada-waldorf-com-uvas-e-iogurte">Salada Waldorf com Uvas e Iogurte <span class="source">[R10]</span></h2>
+
+<h4>Introdução</h4>
+<p>Variação fresca da Waldorf com uvas doces.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>100 g de maionese</li>
+  <li>100 g de iogurte natural</li>
+  <li>Sumo de ½ limão</li>
+  <li>80 g de nozes picadas</li>
+  <li>150 g de uvas sem grainha</li>
+  <li>2 maçãs médias</li>
+  <li>2 talos de salsão (aipo)</li>
+  <li>1 alface grande</li>
+</ul>
+
+<h4>Preparação</h4>
+<ol>
+  <li>Misturar fruta e nozes.</li>
+  <li>Envolver no molho cremoso.</li>
+  <li>Servir sobre folhas de alface.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Receiteria<br>
+<a href="https://www.receiteria.com.br/receita/salada-waldorf/" target="_blank" rel="noopener">
+https://www.receiteria.com.br/receita/salada-waldorf/
+</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>

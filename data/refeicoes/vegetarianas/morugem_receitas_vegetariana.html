@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Morugem – Receitas Vegetarianas (Top 10)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base (root-relative paths) */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+<body id="topo">
+<div class="masthead">
+  <header>
+    <h1>Morugem – Receitas Vegetarianas (Top 10)</h1>
+    <p>Preparações com ingredientes à base de plantas, leite e derivados do leite, ovos e mel</p>
+  </header>
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../morugem.html" class="ativa">Morugem</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-de-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav>
+</div>
+
+<main>
+<article>
+
+<h2 id="receitas-preparados">Receitas e preparados – dieta vegetariana</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/data/refeicoes/vegan/morugem_receitas_vegan.html">(Vegan)</a>
+    <a href="/data/refeicoes/raw-vegan/morugem_receitas_raw-vegan.html">(Comida Viva)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro por ingredientes)</a>
+  </div>
+</div>
+
+<div class="index">
+  <strong>Índice rápido:</strong>
+  <ol>
+    <li><a href="#salada-de-morugem-com-queijo-fresco-e-frutos-secos">Salada de morugem com queijo fresco e frutos secos</a></li>
+    <li><a href="#pesto-de-morugem-com-parmesao">Pesto de morugem com parmesão</a></li>
+    <li><a href="#salada-power-de-morugem-com-lentilhas-e-quinoa">Salada “power” de morugem com lentilhas e quinoa</a></li>
+    <li><a href="#pesto-de-morugem-com-frutos-secos-e-parmesao">Pesto de morugem com frutos secos e parmesão</a></li>
+    <li><a href="#sandes-de-queijo-grelhado-com-morugem">Sandes de queijo grelhado com morugem</a></li>
+    <li><a href="#pate-de-grao-de-bico-e-morugem">Patê de grão-de-bico e morugem</a></li>
+    <li><a href="#salada-simples-de-morugem-com-limao-e-oleo-de-noz">Salada simples de morugem com limão e óleo de noz</a></li>
+    <li><a href="#salada-de-morugem-com-cenoura-e-rabanete-crocantes">Salada de morugem com cenoura e rabanete crocantes</a></li>
+    <li><a href="#salada-morugem-com-cogumelos-salteados-e-parmesao">Salada morugem com cogumelos salteados e parmesão</a></li>
+    <li><a href="#alfaze-com-morugem-e-queijo-de-cabra-decorada-com-calendula">Alfaze com morugem e queijo de cabra, decorada com calêndula</a></li>
+  </ol>
+</div>
+
+<h2 id="resumo">Resumo das receitas (R1–R10)</h2>
+<ul>
+  <li><strong>R1. Salada de morugem com queijo fresco e frutos secos</strong><br>Salada colorida com morugem (chickweed), outras folhas verdes, flores comestíveis, queijo macio e frutos secos, regada com um molho de ervas, azeite, limão e mel.</li>
+  <li><strong>R2. Pesto de morugem com parmesão</strong><br>Pesto verde intenso preparado com morugem fresca, azeite, alho, parmesão ralado e frutos secos, ótimo para massas, tostas ou para servir como molho.</li>
+  <li><strong>R3. Salada “power” de morugem com lentilhas e quinoa</strong><br>Salada substancial com base de morugem, lentilhas francesas, quinoa, cenoura, frutos secos, sementes e queijo, servida com molho cremoso de abacate e limão.</li>
+  <li><strong>R4. Pesto de morugem com frutos secos e parmesão</strong><br>Outro pesto de morugem, desta vez com mistura de frutos secos (noz/caju/pinhão), azeite, limão e parmesão, de textura cremosa e sabor marcado.</li>
+  <li><strong>R5. Sandes de queijo grelhado com morugem</strong><br>Sandes de pão torrado na frigideira com manteiga, recheada com queijo de cabra, azeitonas e morugem fresca, numa versão “queijo grelhado” enriquecida com ervas selvagens.</li>
+  <li><strong>R6. Patê de grão-de-bico e morugem</strong><br>Patê espesso à base de grão-de-bico, morugem, alho, cebolinho, estragão, miso e limão, ideal para servir com legumes crus, tostas ou pão.</li>
+  <li><strong>R7. Salada simples de morugem com limão e óleo de noz</strong><br>Salada minimalista de morugem temperada apenas com sumo de limão, óleo de noz, sal e pimenta, que realça o sabor fresco da planta.</li>
+  <li><strong>R8. Salada de morugem com cenoura e rabanete crocantes</strong><br>Salada crua de morugem com cenoura e rabanete em tiras finas, temperada com azeite, vinagre (ou vinagre de kombucha), sumo e raspa de citrinos, e sal marinho.</li>
+  <li><strong>R9. Salada morugem com cogumelos salteados e parmesão</strong><br>Salada morna em que cogumelos silvestres salteados em azeite com alho são misturados com morugem fresca e outras folhas, finalizados com sumo de limão e parmesão ralado.</li>
+  <li><strong>R10. Alfaze com morugem e queijo de cabra, decorada com calêndula</strong><br>Mistura de alface e morugem finamente cortada, temperada com azeite e sal ou molho de soja e limão, servida com pedaços de queijo de cabra e pétalas de calêndula.</li>
+</ul>
+
+<a id="salada-de-morugem-com-queijo-fresco-e-frutos-secos-r1"></a>
+<h2 id="salada-de-morugem-com-queijo-fresco-e-frutos-secos">Salada de morugem com queijo fresco e frutos secos <span class="source">[R1]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma salada rica em texturas e cores, onde a morugem é combinada com outras folhas, flores comestíveis, queijo macio e frutos secos, regada com um molho aromático de ervas, azeite, limão e mel.</p>
+
+<h4>Ingredientes</h4>
+<p>Para a salada:</p>
+<ul>
+  <li>3 chávenas de morugem (chickweed) só com folhas tenras, lavada e picada</li>
+  <li>3 chávenas de outras folhas de salada (alface, espinafres, etc.)</li>
+  <li>1–2 chávenas de flores comestíveis (ex.: flores de robínia/locust, redbud, violetas) ou arandos secos</li>
+  <li>½ chávena de queijo fresco, queijo de cabra macio ou mozzarella em pedaços</li>
+  <li>¼–¾ chávena de nozes, sementes de girassol tostadas ou pecãs demolhadas e tostadas</li>
+</ul>
+
+<p>Para o molho:</p>
+<ul>
+  <li>⅓ chávena de folhas frescas de manjericão ou monarda (ou outras ervas aromáticas frescas)</li>
+  <li>1 chávena de azeite</li>
+  <li>2 colheres de sopa de sumo de limão</li>
+  <li>⅛ chávena de mel</li>
+  <li>1½ colher de chá de sal</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Numa taça grande, junta a morugem, as outras folhas de salada e as flores ou arandos secos.</li>
+  <li>Adiciona o queijo partido em pedaços e os frutos secos ou sementes tostadas.</li>
+  <li>Para o molho, coloca num copo misturador ou robot de cozinha: as ervas frescas, o azeite, o sumo de limão, o mel e o sal. Tritura ou bate até ficar homogéneo.</li>
+  <li>Prova o molho e ajusta sal, mel ou limão se necessário.</li>
+  <li>Verte parte do molho sobre a salada, envolve cuidadosamente e adiciona mais molho se precisares.</li>
+  <li>Serve de imediato.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+A Teaspoon — 
+<a href="https://www.ateaspoon.com/how-to/2022/5/7/chickweed-salad" target="_blank" rel="noopener">https://www.ateaspoon.com/how-to/2022/5/7/chickweed-salad</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pesto-de-morugem-com-parmesao-r2"></a>
+<h2 id="pesto-de-morugem-com-parmesao">Pesto de morugem com parmesão <span class="source">[R2]</span></h2>
+
+<h4>Introdução</h4>
+<p>Um pesto rápido e aromático em que a morugem substitui o manjericão, mantendo o perfil de pesto clássico com azeite, alho, frutos secos e parmesão.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>2–4 dentes de alho picados</li>
+  <li>½ chávena de azeite virgem extra</li>
+  <li>2–3 chávenas de folhas jovens de morugem frescas, bem lavadas</li>
+  <li>¼ chávena de queijo parmesão ralado</li>
+  <li>1 pitada de sal marinho</li>
+  <li>1 punhado de nozes (opcional)</li>
+  <li>1 colher de sopa de sumo de limão (opcional)</li>
+  <li>Raspa de limão (opcional)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Coloca no processador de alimentos o alho, a morugem e, se usares, as nozes. Pica grosseiramente.</li>
+  <li>Adiciona o parmesão, o sal, o sumo e a raspa de limão (se usares).</li>
+  <li>Liga o processador e, com a máquina a trabalhar, vai vertendo o azeite em fio até obteres uma pasta cremosa.</li>
+  <li>Prova e ajusta sal ou limão se necessário.</li>
+  <li>Serve com massa, pão torrado ou como molho para legumes.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+LearningHerbs — 
+<a href="https://www.learningherbs.com/blog/chickweed-pesto" target="_blank" rel="noopener">https://www.learningherbs.com/blog/chickweed-pesto</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-power-de-morugem-com-lentilhas-e-quinoa-r3"></a>
+<h2 id="salada-power-de-morugem-com-lentilhas-e-quinoa">Salada “power” de morugem com lentilhas e quinoa <span class="source">[R3]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma salada completa, muito saciante, que combina lentilhas francesas, quinoa, morugem, cenoura, frutos secos, sementes e queijo, com um molho cremoso de abacate e limão.</p>
+
+<h4>Ingredientes</h4>
+<p>Para a base da salada:</p>
+<ul>
+  <li>Morugem fresca (ou outras folhas verdes), quantidade suficiente para encher uma saladeira grande</li>
+  <li>1 chávena de lentilhas francesas cruas</li>
+  <li>1 chávena de quinoa crua, bem passada por água</li>
+  <li>1 cenoura grande em tiras finas ou laminada</li>
+  <li>¼–½ chávena de arandos secos ou passas</li>
+  <li>¼–½ chávena de sementes de abóbora tostadas (ou outras sementes/nozes a gosto)</li>
+  <li>Queijo ralado ou em lascas (parmesão ou queijo de cabra), quantidade a gosto</li>
+</ul>
+
+<p>Para as lentilhas:</p>
+<ul>
+  <li>1 chávena de lentilhas francesas</li>
+  <li>4 chávenas de água</li>
+  <li>1 folha de louro</li>
+  <li>1 colher de chá de sal</li>
+  <li>(Opcional) alguns dentes de alho esmagados, ½ cebola, 1 talo de aipo, 1 raminho de tomilho</li>
+</ul>
+
+<p>Para a quinoa:</p>
+<ul>
+  <li>1 chávena de quinoa</li>
+  <li>1¼ chávena de água</li>
+  <li>¼ colher de chá de sal</li>
+</ul>
+
+<p>Para o molho de abacate e limão:</p>
+<ul>
+  <li>½ abacate Hass</li>
+  <li>2 colheres de sopa de sumo de limão</li>
+  <li>2 colheres de sopa de azeite</li>
+  <li>2 colheres de sopa de água</li>
+  <li>1 dente de alho pequeno picado</li>
+  <li>¼ colher de chá de sal</li>
+  <li>Pimenta preta q.b.</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Coze as lentilhas: coloca-as num tacho com a água, a folha de louro, o sal e os aromáticos opcionais. Deixa ferver, reduz o lume e cozinha 25–30 minutos até ficarem tenras mas inteiras. Escorre e reserva.</li>
+  <li>Coze a quinoa: tosta a quinoa numa panela seca, mexendo, até ficar ligeiramente dourada e aromática (cerca de 5 minutos). Adiciona a água e o sal, deixa ferver, baixa o lume, tapa e cozinha até a água ser absorvida. Solta com um garfo e deixa arrefecer.</li>
+  <li>Prepara o molho: coloca no liquidificador o abacate, sumo de limão, azeite, água, alho, sal e pimenta. Tritura até ficar cremoso. Ajusta espessura com mais água se necessário.</li>
+  <li>Numa saladeira, coloca a morugem, a cenoura em tiras, as lentilhas e a quinoa já arrefecidas. Acrescenta os frutos secos e as sementes tostadas.</li>
+  <li>Adiciona o queijo em lascas. Rega com o molho de abacate e envolve bem.</li>
+  <li>Serve de imediato ou guarda no frio por algumas horas para os sabores se integrarem.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Tant Hill Farm — 
+<a href="https://tanthillfarm.com/2015/03/16/chickweed-power-salad" target="_blank" rel="noopener">https://tanthillfarm.com/2015/03/16/chickweed-power-salad</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pesto-de-morugem-com-frutos-secos-e-parmesao-r4"></a>
+<h2 id="pesto-de-morugem-com-frutos-secos-e-parmesao">Pesto de morugem com frutos secos e parmesão <span class="source">[R4]</span></h2>
+
+<h4>Introdução</h4>
+<p>Um pesto de morugem robusto, com frutos secos (nozes, caju ou pinhões), azeite, limão e parmesão. Ideal para aproveitar grandes quantidades de morugem fresca.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>½ chávena de nozes, cajus ou pinhões</li>
+  <li>2–3 dentes de alho picados</li>
+  <li>3 chávenas de morugem, bem lavada e ligeiramente comprimida na chávena</li>
+  <li>1 colher de sopa de sumo de limão</li>
+  <li>½ chávena de azeite virgem extra</li>
+  <li>½ colher de chá de sal</li>
+  <li>¼ colher de chá de pimenta preta moída</li>
+  <li>¼ chávena de parmesão ralado</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Coloca os frutos secos e o alho no processador de alimentos e tritura brevemente.</li>
+  <li>Adiciona a morugem e o sumo de limão, tritura mais um pouco.</li>
+  <li>Com o processador a funcionar, verte o azeite em fio até obter uma textura de pesto espesso.</li>
+  <li>Junta o sal, a pimenta e o parmesão. Mistura rapidamente até incorporar.</li>
+  <li>Se estiver demasiado espesso, acrescenta um pouco mais de azeite.</li>
+  <li>Usa como molho para massas, para barrar em pão ou como topping de legumes assados.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Grow Forage Cook Ferment — 
+<a href="https://www.growforagecookferment.com/chickweed-pesto" target="_blank" rel="noopener">https://www.growforagecookferment.com/chickweed-pesto</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sandes-de-queijo-grelhado-com-morugem-r5"></a>
+<h2 id="sandes-de-queijo-grelhado-com-morugem">Sandes de queijo grelhado com morugem <span class="source">[R5]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma sandes de conforto, tipo “queijo grelhado”, enriquecida com morugem fresca e azeitonas, tostada em manteiga até ficar dourada e o queijo derreter.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>2 fatias de pão (tipo de sandes à escolha)</li>
+  <li>Queijo de cabra macio, quantidade suficiente para barrar as fatias</li>
+  <li>1–2 azeitonas pretas (ex.: Kalamata) picadas finamente</li>
+  <li>Um punhado de morugem fresca picada</li>
+  <li>Manteiga para barrar o pão (q.b.)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Barra o interior das fatias de pão com o queijo de cabra.</li>
+  <li>Polvilha com as azeitonas picadas.</li>
+  <li>Cobre com uma camada generosa de morugem picada.</li>
+  <li>Fecha a sandes e barra o exterior das fatias com manteiga.</li>
+  <li>Aquece uma frigideira (idealmente de ferro) até ficar bem quente.</li>
+  <li>Coloca a sandes, lado com manteiga para baixo, e grelha até o pão dourar. Barra a outra face com manteiga, vira e grelha o outro lado em lume mais baixo, tapando para o queijo derreter.</li>
+  <li>Serve de imediato.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+LearningHerbs — 
+<a href="https://www.learningherbs.com/blog/chickweed-grilled-cheese" target="_blank" rel="noopener">https://www.learningherbs.com/blog/chickweed-grilled-cheese</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pate-de-grao-de-bico-e-morugem-r6"></a>
+<h2 id="pate-de-grao-de-bico-e-morugem">Patê de grão-de-bico e morugem <span class="source">[R6]</span></h2>
+
+<h4>Introdução</h4>
+<p>Um patê vegetal espesso, à base de grão-de-bico e morugem, temperado com miso, limão, alho e estragão. Excelente como entrada ou para barrar em pão.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>5 punhados de grão-de-bico cozido</li>
+  <li>2 dentes de alho esmagados</li>
+  <li>1 malagueta vermelha (chili), sem sementes, picada</li>
+  <li>3 grandes punhados de morugem (folhas e caules tenros), picada</li>
+  <li>4 cebolinhas (spring onions) picadas</li>
+  <li>2 punhados de estragão fresco picado</li>
+  <li>1 colher de sopa de vinagre de arroz integral</li>
+  <li>2–3 colheres de sopa de miso</li>
+  <li>Sumo de 1 limão</li>
+  <li>2 colheres de sopa de azeite</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Coloca o grão-de-bico e a morugem num processador de alimentos e tritura brevemente para misturar.</li>
+  <li>Adiciona o alho, a malagueta, as cebolinhas, o estragão, o vinagre de arroz, o miso, o sumo de limão e o azeite.</li>
+  <li>Processa até obter a consistência desejada (mais rústica ou mais lisa).</li>
+  <li>Prova e ajusta sal (via miso ou mais limão) se necessário.</li>
+  <li>Serve com tostas, pão ou legumes crus.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Eatweeds — 
+<a href="https://www.eatweeds.co.uk/chickweed-pate" target="_blank" rel="noopener">https://www.eatweeds.co.uk/chickweed-pate</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-simples-de-morugem-com-limao-e-oleo-de-noz-r7"></a>
+<h2 id="salada-simples-de-morugem-com-limao-e-oleo-de-noz">Salada simples de morugem com limão e óleo de noz <span class="source">[R7]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma salada minimalista onde o sabor fresco da morugem é o protagonista, temperada apenas com limão, óleo de noz, sal e pimenta.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>4 colheres de chá de sumo de limão fresco</li>
+  <li>4 colheres de chá de óleo de noz</li>
+  <li>Sal q.b.</li>
+  <li>Pimenta preta moída q.b.</li>
+  <li>6 chávenas de folhas e caules tenros de morugem (cerca de 170 g)</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Numa taça grande, coloca o sumo de limão.</li>
+  <li>Bate com uma vara de arames enquanto adicionas o óleo de noz em fio, até emulsionar ligeiramente.</li>
+  <li>Tempera com sal e pimenta.</li>
+  <li>Junta a morugem, envolve bem para que todas as folhas fiquem cobertas com o molho.</li>
+  <li>Serve de imediato.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Food &amp; Wine — 
+<a href="https://www.foodandwine.com/recipes/chickweed-salad" target="_blank" rel="noopener">https://www.foodandwine.com/recipes/chickweed-salad</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-de-morugem-com-cenoura-e-rabanete-crocantes-r8"></a>
+<h2 id="salada-de-morugem-com-cenoura-e-rabanete-crocantes">Salada de morugem com cenoura e rabanete crocantes <span class="source">[R8]</span></h2>
+
+<h4>Introdução</h4>
+<p>Salada crua, vibrante e muito fresca, que junta morugem, cenoura e rabanete em tiras finas, com um molho de azeite, vinagre (ou vinagre de kombucha), citrinos e sal.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>3 chávenas de morugem picada</li>
+  <li>¼ chávena de rabanete roxo (ex.: daikon) cortado em “palitos” finos</li>
+  <li>¼ chávena de cenoura cortada em “palitos” finos</li>
+  <li>1½ colher de sopa de azeite virgem extra</li>
+  <li>1 colher de sopa de vinagre de kombucha ou outro vinagre para saladas</li>
+  <li>1 colher de sopa de sumo de limão ou de laranja sanguínea</li>
+  <li>1 colher de chá de raspa de citrinos (limão Meyer ou laranja)</li>
+  <li>Sal marinho (de preferência sal rosa) q.b.</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Prepara os legumes: corta o rabanete e a cenoura em palitos finos. Pica a morugem grosseiramente.</li>
+  <li>Numa taça, mistura o azeite, o vinagre, o sumo de citrinos e a raspa. Bate com um garfo até integrar.</li>
+  <li>Junta a morugem, o rabanete e a cenoura à taça e envolve bem no molho.</li>
+  <li>Tempera com sal a gosto e volta a envolver.</li>
+  <li>Serve, terminando com um pouco mais de raspa de citrinos se desejares.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Tyrant Farms — 
+<a href="https://www.tyrantfarms.com/chickweed-recipe-turning-common-weeds-into-gourmet-food/" target="_blank" rel="noopener">https://www.tyrantfarms.com/chickweed-recipe-turning-common-weeds-into-gourmet-food/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-morugem-com-cogumelos-salteados-e-parmesao-r9"></a>
+<h2 id="salada-morugem-com-cogumelos-salteados-e-parmesao">Salada morugem com cogumelos salteados e parmesão <span class="source">[R9]</span></h2>
+
+<h4>Introdução</h4>
+<p>Esta salada morna combina cogumelos silvestres salteados em azeite com morugem e outras folhas resistentes, finalizados com alho, limão e parmesão.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>85–115 g de cogumelos silvestres frescos (ex.: chanterelles, porcini), em pedaços grandes</li>
+  <li>1–2 colheres de sopa de azeite (ou mistura de azeite com óleo neutro)</li>
+  <li>115 g de folhas verdes resistentes (morugem, agrião, rúcula, etc.)</li>
+  <li>Sal kosher q.b.</li>
+  <li>Pimenta preta moída q.b.</li>
+  <li>1 dente de alho grande, picado finamente</li>
+  <li>Parmesão ralado q.b.</li>
+  <li>Gomos de limão para servir</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Lava e seca bem as folhas (morugem e outras) e coloca-as numa taça de mistura grande.</li>
+  <li>Limpa os cogumelos e corta-os em pedaços grandes, deixando os mais pequenos inteiros.</li>
+  <li>Aquece um fio generoso de azeite numa frigideira larga em lume médio-alto.</li>
+  <li>Junta os cogumelos e cozinha sem mexer muito até começarem a libertar água e a dourar ligeiramente.</li>
+  <li>Tempera com uma pitada de sal e pimenta, adiciona mais um pouco de azeite se necessário e deixa dourar mais um pouco.</li>
+  <li>Junta o alho picado, mexe e cozinha mais 1 minuto, sem deixar queimar.</li>
+  <li>Verte os cogumelos ainda quentes sobre as folhas na taça, adiciona um pouco de sumo de limão e envolve tudo. Ajusta sal, pimenta e limão a gosto.</li>
+  <li>Divide pelos pratos e finaliza com parmesão ralado por cima.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Forager Chef — 
+<a href="https://foragerchef.com/sauteed-wild-mushroom-and-chickweed-salad/" target="_blank" rel="noopener">https://foragerchef.com/sauteed-wild-mushroom-and-chickweed-salad/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="alfaze-com-morugem-e-queijo-de-cabra-decorada-com-calendula-r10"></a>
+<h2 id="alfaze-com-morugem-e-queijo-de-cabra-decorada-com-calendula">Alfaze com morugem e queijo de cabra, decorada com calêndula <span class="source">[R10]</span></h2>
+
+<h4>Introdução</h4>
+<p>Uma salada simples em português que combina alface e morugem, temperada “como de costume”, com um toque especial de queijo de cabra e pétalas de calêndula comestível.</p>
+
+<h4>Ingredientes</h4>
+<ul>
+  <li>Alface (alfaze) em folhas ou rasgada, quantidade a gosto</li>
+  <li>Morugem (Stellaria media), bem lavada e finamente cortada, quantidade semelhante à alface ou a gosto</li>
+  <li>Azeite q.b.</li>
+  <li>Sal q.b.</li>
+  <li>OU molho de soja q.b. + sumo de limão q.b. (como alternativa de tempero)</li>
+  <li>Pétalas de flores de calêndula comestível, para decorar</li>
+  <li>Pedaços de queijo de cabra, a gosto</li>
+</ul>
+
+<h4>Passos de preparação</h4>
+<ol>
+  <li>Lava bem a alface e a morugem. Corta a morugem finamente.</li>
+  <li>Mistura a alface e a morugem numa saladeira.</li>
+  <li>Tempera com azeite e sal, OU com uma mistura de molho de soja e sumo de limão, conforme o teu hábito. Envolve bem.</li>
+  <li>Transfere para o prato de servir e decora com pétalas de calêndula e pedaços de queijo de cabra por cima.</li>
+  <li>Serve de imediato.</li>
+</ol>
+
+<h4>Fonte</h4>
+<p>
+Casa das Ervas Silvestres — 
+<a href="https://ervassilvestres.wordpress.com/2010/05/02/alfaze-com-mastruco-decorada-com-calendula-comestivel/" target="_blank" rel="noopener">https://ervassilvestres.wordpress.com/2010/05/02/alfaze-com-mastruco-decorada-com-calendula-comestivel/</a>
+</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+</body>
+</html>
