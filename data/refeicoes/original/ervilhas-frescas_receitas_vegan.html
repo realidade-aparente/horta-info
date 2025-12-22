@@ -1,0 +1,430 @@
+<!-- ervilhas-frescas-receitas.html -->
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Ervilhas frescas – Receitas (Top 10)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}html{}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header{position:static;z-index:60;background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria));color:#fff;padding:1rem 1rem;box-shadow:0 2px 4px rgba(0,0,0,.12)}
+main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base like main pages */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+/* ensure masthead paints behind nav+header */
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+/* horizontal scroll for nav */
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+/* safer anchor offset for sticky masthead (approx header+nav height) */
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+<body id="topo">
+<div class="masthead"><header>
+  <h1>Ervilhas frescas – Receitas completas (Top 10)</h1>
+  </header>
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-de-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html" class="ativa">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav></div>
+<main>
+<article>
+	
+<h2 id="receitas-preparados">Receitas e preparados</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/horta-info/data/refeicoes/vegetariana/aipo_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/horta-info/data/refeicoes/vegan/aipo_receitas_vegan.html">(Vegan)</a>
+    <a href="/horta-info/data/refeicoes/raw-vegan/aipo_receitas_raw-vegan.html">(Comida Viva)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro por ingredientes)</a>
+  </div>
+</div>
+
+<div class="index"><strong>Índice rápido:</strong><ol>
+<li><a href="#sopa-cremosa-de-ervilhas-e-batata">Sopa cremosa de ervilhas e batata</a></li>
+<li><a href="#sopa-verde-rapida-de-ervilhas-com-hortela">Sopa verde rápida de ervilhas com hortelã</a></li>
+<li><a href="#sopa-de-ervilhas-com-cajus">Sopa de ervilhas com cajus (cremosa, sem glúten)</a></li>
+<li><a href="#massa-com-ervilhas-e-ervas-frescas">Massa com ervilhas e ervas frescas</a></li>
+<li><a href="#salada-fresca-de-ervilhas-com-alho-e-ervas">Salada fresca de ervilhas com alho e ervas</a></li>
+<li><a href="#creme-de-ervilhas-espinafres-e-alho-poro">Creme de ervilhas, espinafres e alho-poró</a></li>
+<li><a href="#sopa-primaveril-de-ervilhas-e-hortela">Sopa primaveril de ervilhas e hortelã (versão leve)</a></li>
+<li><a href="#pasta-de-ervilhas-e-menta-sobre-massa-de-grao-de-bico">Pasta de ervilhas e menta sobre massa de grão-de-bico</a></li>
+<li><a href="#sopa-verde-de-ervilhas-com-batata-e-cenoura">Sopa verde de ervilhas com batata e cenoura</a></li>
+<li><a href="#salada-vegana-de-ervilhas-com-tempeh-e-molho-cremoso">Salada vegana de ervilhas com tempeh e molho cremoso</a></li>
+</ol></div>
+
+<a id="sopa-cremosa-de-ervilhas-e-batata-r1"></a>
+<h2 id="sopa-cremosa-de-ervilhas-e-batata">Sopa cremosa de ervilhas e batata <span class="source">[R1]</span></h2>
+<p>Sopa reconfortante e cremosa, simples de preparar, que realça o sabor natural e doce das ervilhas. Ideal para quando tens ervilhas frescas ou congeladas, batatas e poucos ingredientes — prática e nutritiva.</p>
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 colher de sopa de azeite ou óleo vegetal</li>
+  <li>1 cebola média, picada finamente</li>
+  <li>2 dentes de alho, picados</li>
+  <li>2 batatas médias, descascadas e cortadas em cubos</li>
+  <li>500 g de ervilhas frescas ou congeladas</li>
+  <li>1 litro de caldo de legumes (ou água + cubo de caldo)</li>
+  <li>Sal e pimenta preta a gosto</li>
+  <li>Opcional: ervas frescas (por exemplo, hortelã ou salsa) ou sumo de limão para finalizar</li>
+</ul>
+<h4>Preparação</h4>
+<ol>
+  <li>Aquece o azeite numa panela grande, em lume médio, e refoga a cebola até ficar translúcida.</li>
+  <li>Adiciona o alho e deixa cozinhar cerca de 1 minuto, mexendo, até libertar aroma.</li>
+  <li>Junta as batatas e o caldo de legumes. Deixa levantar fervura e cozinha até as batatas começarem a ficar macias (cerca de 10–15 minutos).</li>
+  <li>Acrescenta as ervilhas e cozinha mais 5–7 minutos, até ficarem tenras.</li>
+  <li>Retira do lume e tritura a sopa com varinha mágica ou no liquidificador até obter uma textura cremosa.</li>
+  <li>Ajusta o sal e a pimenta. Se desejares, remata com ervas frescas picadas ou um pouco de sumo de limão. Serve quente.</li>
+</ol>
+<p class="nota">Fonte: adaptado de <a href="https://www.vibrantplate.com/5-ingredient-green-vegan-pea-soup/" target="_blank" rel="noopener">“Vegan Pea Soup”, The Vibrant Plate</a>.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-verde-rapida-de-ervilhas-com-hortela-r2"></a>
+<h2 id="sopa-verde-rapida-de-ervilhas-com-hortela">Sopa verde rápida de ervilhas com hortelã <span class="source">[R2]</span></h2>
+<p>Sopa leve, vibrante e nutritiva, onde o sabor doce das ervilhas se combina com o frescor da hortelã — rápida de preparar e adequada para almoços ou jantares simples.</p>
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 colher de sopa de azeite</li>
+  <li>1 cebola pequena ou chalota, picada finamente</li>
+  <li>2 dentes de alho, picados</li>
+  <li>2 batatas médias em cubos (opcional, para maior cremosidade)</li>
+  <li>400–500 g de ervilhas frescas ou congeladas</li>
+  <li>600 ml de caldo de legumes (ou água)</li>
+  <li>10–15 folhas de hortelã fresca (mais algumas para guarnecer)</li>
+  <li>Sal e pimenta a gosto</li>
+  <li>Opcional: um fio de azeite extra para servir</li>
+</ul>
+<h4>Preparação</h4>
+<ol>
+  <li>Aquece o azeite numa panela e salteia a cebola até amaciar.</li>
+  <li>Adiciona o alho e deixa cozinhar cerca de 1 minuto.</li>
+  <li>Junta as batatas (se usares), as ervilhas e o caldo. Deixa ferver e cozinha 5–10 minutos, até as ervilhas estarem tenras.</li>
+  <li>Desliga o lume, adiciona a hortelã e tritura tudo com varinha mágica até obter um creme liso.</li>
+  <li>Tempera com sal e pimenta e serve com folhas de hortelã fresca por cima e um fio de azeite, se desejares.</li>
+</ol>
+<p class="nota">Fonte: adaptado de <a href="https://theclevermeal.com/pea-and-mint-soup/" target="_blank" rel="noopener">“Green Pea Soup”, The Clever Meal</a>.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-de-ervilhas-com-cajus-cremosa-sem-gluten-r3"></a>
+<h2 id="sopa-de-ervilhas-com-cajus">Sopa de ervilhas com cajus (cremosa, sem glúten) <span class="source">[R3]</span></h2>
+<p>Versão vegan e sem glúten de sopa de ervilhas, usando cajus crus para dar cremosidade natural. Ideal para quem evita laticínios e procura uma textura aveludada.</p>
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 colher de sopa de azeite ou óleo vegetal</li>
+  <li>1 cebola média, picada</li>
+  <li>2 dentes de alho, picados</li>
+  <li>500 g de ervilhas frescas ou congeladas</li>
+  <li>½ chávena de cajus crus (demolhados 15–30 minutos, se estiverem muito secos)</li>
+  <li>700–800 ml de água ou caldo de legumes</li>
+  <li>Sal e pimenta a gosto</li>
+  <li>Opcional: ervas frescas para guarnecer</li>
+</ul>
+<h4>Preparação</h4>
+<ol>
+  <li>Aquece o azeite numa panela e refoga a cebola e o alho até ficarem macios.</li>
+  <li>Adiciona as ervilhas e a água (ou caldo), deixa levantar fervura e cozinha 5–7 minutos, até as ervilhas estarem tenras.</li>
+  <li>Junta os cajus crus e tritura tudo com varinha mágica ou no liquidificador até obter uma sopa lisa e cremosa. Se estiver muito espessa, acrescenta um pouco mais de água.</li>
+  <li>Tempera com sal e pimenta, guarnece com ervas frescas e serve de imediato.</li>
+</ol>
+<p class="nota">Fonte: <a href="https://www.casalmisterio.com/sopa-de-ervilhas-com-cajus-uma-receita-vegan-e-sem-gluten-ideal-para-quem-esta-de-dieta" target="_blank" rel="noopener">“Sopa de ervilhas com cajus – vegan &amp; sem glúten”, Binjal’s Veg Kitchen via Casal Mistério</a>.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="massa-com-ervilhas-e-ervas-frescas-r4"></a>
+<h2 id="massa-com-ervilhas-e-ervas-frescas">Massa com ervilhas e ervas frescas <span class="source">[R4]</span></h2>
+<p>Prato de massa simples e leve, combinando ervilhas com ervas aromáticas e um molho suave — ideal para refeições rápidas durante a semana.</p>
+<h4>Ingredientes</h4>
+<ul>
+  <li>200–250 g de massa seca (penne, fusilli, esparguete, etc.)</li>
+  <li>2 colheres de sopa de azeite extra-virgem</li>
+  <li>2 dentes de alho picados</li>
+  <li>300–400 g de ervilhas frescas ou congeladas</li>
+  <li>¼ chávena de iogurte vegetal natural (opcional, para maior cremosidade)</li>
+  <li>Raspa de 1 limão (opcional)</li>
+  <li>Sal e pimenta a gosto</li>
+  <li>Ervas frescas picadas (por exemplo, salsa, hortelã, manjericão)</li>
+</ul>
+<h4>Preparação</h4>
+<ol>
+  <li>Coze a massa em água salgada até ficar al dente. Reserva cerca de ½ chávena da água de cozedura e escorre a massa.</li>
+  <li>Numa frigideira larga, aquece o azeite e salteia o alho durante 1 minuto, sem deixar queimar.</li>
+  <li>Acrescenta as ervilhas e cozinha 2–3 minutos, mexendo, até aquecerem.</li>
+  <li>Adiciona a massa escorrida e o iogurte vegetal (se usares) e envolve bem. Se necessário, junta um pouco da água de cozedura reservada para soltar o molho.</li>
+  <li>Tempera com sal, pimenta, raspa de limão e as ervas frescas picadas. Serve de imediato.</li>
+</ol>
+<p class="nota">Fonte: adaptado de <a href="https://gourmandeinthekitchen.com/pea-pasta/" target="_blank" rel="noopener">“Pasta with Peas (Vegan)”, Gourmande in the Kitchen</a>.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-fresca-de-ervilhas-com-alho-e-ervas-r5"></a>
+<h2 id="salada-fresca-de-ervilhas-com-alho-e-ervas">Salada fresca de ervilhas com alho e ervas <span class="source">[R5]</span></h2>
+<p>Salada simples, nutritiva e saborosa, combinando ervilhas verdes, ervas frescas e um tempero leve — ideal como entrada ou acompanhamento.</p>
+<h4>Ingredientes</h4>
+<ul>
+  <li>300–400 g de ervilhas frescas (ou congeladas), já em grão</li>
+  <li>2 colheres de sopa de azeite extra-virgem</li>
+  <li>1 dente de alho picado (opcional, para sabor mais intenso)</li>
+  <li>2 colheres de sopa de salsa ou coentros frescos picados</li>
+  <li>Sumo de ½ limão</li>
+  <li>Sal e pimenta preta a gosto</li>
+</ul>
+<h4>Preparação</h4>
+<ol>
+  <li>Se usares ervilhas frescas em vagem, retira o grão e escalda-o rapidamente em água a ferver durante 1–2 minutos. Escorre e deixa arrefecer. Se usares ervilhas congeladas, basta descongelar conforme as instruções.</li>
+  <li>Numa tigela, mistura as ervilhas com o azeite, o alho picado, a salsa ou coentros e o sumo de limão.</li>
+  <li>Tempera com sal e pimenta, envolve bem e prova, ajustando o tempero se necessário.</li>
+  <li>Serve a salada fria ou à temperatura ambiente.</li>
+</ol>
+<p class="nota">Fonte: adaptado de <a href="https://yupitsvegan.com/creamy-vegan-pea-salad/" target="_blank" rel="noopener">“Creamy Vegan Pea Salad”, Yup It’s Vegan</a>.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="creme-de-ervilhas-espinafres-e-alho-poro-r6"></a>
+<h2 id="creme-de-ervilhas-espinafres-e-alho-poro">Creme de ervilhas, espinafres e alho-poró <span class="source">[R6]</span></h2>
+<p>Sopa verde cremosa e nutritiva que combina ervilhas, espinafres e alho-poró — leve mas reconfortante, ótima para incluir vegetais variados no prato.</p>
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 colher de sopa de azeite</li>
+  <li>1 alho-poró pequeno (ou 1 cebola), picado</li>
+  <li>2 dentes de alho, picados</li>
+  <li>300 g de espinafres frescos (ou outra verdura de folha)</li>
+  <li>400–500 g de ervilhas frescas ou congeladas</li>
+  <li>800 ml de caldo de legumes</li>
+  <li>Sal, pimenta e noz-moscada a gosto</li>
+  <li>Opcional: sumo de limão para finalizar</li>
+</ul>
+<h4>Preparação</h4>
+<ol>
+  <li>Aquece o azeite numa panela e salteia o alho-poró (ou cebola) com o alho até amaciarem.</li>
+  <li>Junta os espinafres e deixa cozinhar até murcharem.</li>
+  <li>Acrescenta as ervilhas e o caldo de legumes. Deixa levantar fervura e cozinha 5–7 minutos, até as ervilhas estarem tenras.</li>
+  <li>Retira do lume e tritura tudo com varinha mágica até obter um creme homogéneo.</li>
+  <li>Tempera com sal, pimenta e noz-moscada. Se quiseres, adiciona um pouco de sumo de limão antes de servir.</li>
+</ol>
+<p class="nota">Fonte: versão inspirada em várias receitas de sopas verdes cremosas de ervilhas e vegetais, incluindo sugestões do site <a href="https://theclevermeal.com/pea-and-mint-soup/" target="_blank" rel="noopener">The Clever Meal</a>.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-primaveril-de-ervilhas-e-hortela-versao-leve-r7"></a>
+<h2 id="sopa-primaveril-de-ervilhas-e-hortela">Sopa primaveril de ervilhas e hortelã (versão leve) <span class="source">[R7]</span></h2>
+<p>Sopa leve e fresca, ideal para dias quentes ou refeições ligeiras, valorizando o sabor puro das ervilhas e o frescor da hortelã.</p>
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 cebola pequena, picada finamente</li>
+  <li>2 dentes de alho, picados</li>
+  <li>400 g de ervilhas frescas ou congeladas</li>
+  <li>600 ml de água ou caldo vegetal suave</li>
+  <li>10–15 folhas de hortelã fresca</li>
+  <li>1 colher de sopa de azeite</li>
+  <li>Sal e pimenta a gosto</li>
+  <li>Opcional: raspas de limão para guarnecer</li>
+</ul>
+<h4>Preparação</h4>
+<ol>
+  <li>Aquece o azeite numa panela e salteia a cebola e o alho até ficarem macios.</li>
+  <li>Adiciona as ervilhas e a água ou caldo. Deixa levantar fervura e cozinha 5–7 minutos, até as ervilhas estarem tenras.</li>
+  <li>Retira do lume, junta a hortelã e tritura até obter a textura desejada (mais lisa ou ligeiramente rústica).</li>
+  <li>Tempera com sal e pimenta. Serve morna ou fria, com raspas de limão ou mais hortelã fresca por cima.</li>
+</ol>
+<p class="nota">Fonte: baseada em receitas simples de “green pea soup” com hortelã, como as do <a href="https://theclevermeal.com/pea-and-mint-soup/" target="_blank" rel="noopener">The Clever Meal</a> e outras variações de sopa de ervilhas.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="pasta-de-ervilhas-e-menta-sobre-massa-de-grao-de-bico-r8"></a>
+<h2 id="pasta-de-ervilhas-e-menta-sobre-massa-de-grao-de-bico">Pasta de ervilhas e menta sobre massa de grão-de-bico <span class="source">[R8]</span></h2>
+<p>Alternativa leve e proteica de molho para massa: ervilhas e menta trituradas com azeite e temperos, servidas sobre massa de grão-de-bico — ideal para um almoço rápido e nutritivo.</p>
+<h4>Ingredientes</h4>
+<ul>
+  <li>250–300 g de massa de grão-de-bico (ou outra massa vegana)</li>
+  <li>300 g de ervilhas frescas ou congeladas</li>
+  <li>1 punhado generoso de hortelã fresca</li>
+  <li>2 colheres de sopa de azeite extra-virgem</li>
+  <li>1 dente de alho (opcional)</li>
+  <li>Sal e pimenta a gosto</li>
+  <li>Água de cozedura da massa ou caldo vegetal, q.b., para ajustar a textura</li>
+</ul>
+<h4>Preparação</h4>
+<ol>
+  <li>Coze a massa de grão-de-bico de acordo com as instruções da embalagem. Reserva cerca de ½ chávena da água de cozedura e escorre.</li>
+  <li>Entretanto, cozinha as ervilhas em água ou ao vapor durante 5–7 minutos, até ficarem tenras. Escorre bem.</li>
+  <li>Num processador de alimentos, tritura as ervilhas com a hortelã, o azeite, o alho (se usares), sal e pimenta. Adiciona um pouco da água de cozedura da massa ou caldo até obter um molho cremoso.</li>
+  <li>Envolve a massa com este molho de ervilhas e menta. Se necessário, ajusta a consistência com mais um pouco de água.</li>
+  <li>Serve de imediato, podendo finalizar com mais ervas frescas picadas.</li>
+</ol>
+<p class="nota">Fonte: inspiração adaptada da ideia de usar ervilhas como base de molho para massa, como em <a href="https://gourmandeinthekitchen.com/pea-pasta/" target="_blank" rel="noopener">“Pasta with Peas (Vegan)”, Gourmande in the Kitchen</a>, e em receitas de sopas de ervilhas transformadas em molhos.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="sopa-verde-de-ervilhas-com-batata-e-cenoura-r9"></a>
+<h2 id="sopa-verde-de-ervilhas-com-batata-e-cenoura">Sopa verde de ervilhas com batata e cenoura <span class="source">[R9]</span></h2>
+<p>Sopa nutritiva e reconfortante, combinando batata, cenoura e ervilhas — ótima para uma refeição equilibrada, com sabor doce-natural das ervilhas e textura cremosa.</p>
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 colher de sopa de azeite</li>
+  <li>1 cebola média, picada</li>
+  <li>2 dentes de alho, picados</li>
+  <li>2 cenouras médias, em rodelas ou cubos</li>
+  <li>2 batatas médias, em cubos</li>
+  <li>500 g de ervilhas frescas ou congeladas</li>
+  <li>1,2 litros de caldo de legumes (ou água + cubo de caldo)</li>
+  <li>Sal, pimenta e ervas secas a gosto (por exemplo, tomilho ou louro)</li>
+</ul>
+<h4>Preparação</h4>
+<ol>
+  <li>Aquece o azeite numa panela e refoga a cebola e o alho até ficarem macios.</li>
+  <li>Adiciona a cenoura, as batatas e o caldo. Deixa levantar fervura e cozinha 10–15 minutos, até os legumes começarem a amolecer.</li>
+  <li>Junta as ervilhas e cozinha mais 5–7 minutos, até ficarem tenras.</li>
+  <li>Tritura tudo com varinha mágica ou no liquidificador, até obter a textura desejada (mais lisa ou ligeiramente rústica).</li>
+  <li>Tempera com sal, pimenta e ervas secas. Serve quente, por exemplo com pão ou tostinhas.</li>
+</ol>
+<p class="nota">Fonte: baseado em receitas simples de “green pea soup” e em variações de sopas de legumes com ervilhas presentes em vários recursos de cozinha vegetal.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+
+<a id="salada-vegana-de-ervilhas-com-tempeh-e-molho-cremoso-r10"></a>
+<h2 id="salada-vegana-de-ervilhas-com-tempeh-e-molho-cremoso">Salada vegana de ervilhas com tempeh e molho cremoso <span class="source">[R10]</span></h2>
+<p>Salada proteica e saborosa, combinando ervilhas, tempeh e um molho cremoso leve, ideal para refeições completas, marmitas ou piqueniques.</p>
+<h4>Ingredientes</h4>
+<ul>
+  <li>250 g de ervilhas frescas em grão (ou congeladas descongeladas)</li>
+  <li>200 g de tempeh, cortado em cubos e grelhado ou salteado</li>
+  <li>1 cebola roxa pequena, em meias-luas finas (opcional)</li>
+  <li>1 cenoura ralada grosseiramente (opcional)</li>
+  <li>2 colheres de sopa de azeite</li>
+  <li>1 colher de sopa de molho de soja ou tamari (opcional)</li>
+  <li>2 colheres de sopa de iogurte vegetal natural</li>
+  <li>Sumo de ½ limão</li>
+  <li>1 colher de chá de mostarda</li>
+  <li>Sal e pimenta a gosto</li>
+</ul>
+<h4>Preparação</h4>
+<ol>
+  <li>Se o tempeh estiver cru, salteia ou grelha os cubos com 1 colher de sopa de azeite até ficarem dourados. Reserva.</li>
+  <li>Numa tigela grande, junta as ervilhas, a cebola roxa (se usares) e a cenoura ralada. Acrescenta o tempeh dourado.</li>
+  <li>Numa taça à parte, mistura 1 colher de sopa de azeite, o molho de soja ou tamari (se usares), o iogurte vegetal, o sumo de limão e a mostarda. Tempera com sal e pimenta e mexe até obter um molho cremoso.</li>
+  <li>Verte o molho sobre a mistura de ervilhas e tempeh e envolve bem.</li>
+  <li>Ajusta o tempero, se necessário, e serve a salada fria ou à temperatura ambiente.</li>
+</ol>
+<p class="nota">Fonte: inspiração geral em saladas veganas com ervilhas, tempeh e molhos cremosos à base de iogurte vegetal, presentes em vários recursos de cozinha vegetal.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+  <script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+
+</body></html>

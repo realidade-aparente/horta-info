@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Batata-doce – Receitas (Top 10)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--cor-fundo:#f5f7f2;--cor-principal:#2f855a;--cor-secundaria:#276749;--cor-destaque:#dd6b20;--cor-borda:#d1d5db;--cor-texto:#1f2933;--cor-caixa:#ffffff;--header-h:64px;--nav-h:44px}
+*{box-sizing:border-box}html{}
+body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--cor-fundo);color:var(--cor-texto);line-height:1.6}
+header{position:static;z-index:60;background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria));color:#fff;padding:1rem 1rem;box-shadow:0 2px 4px rgba(0,0,0,.12)}
+main{max-width:960px;margin:1.2rem auto 2rem;padding:0 1rem}
+article{background:var(--cor-caixa);border-radius:1rem;padding:1rem 1.2rem;box-shadow:0 4px 10px rgba(15,23,42,.06);border:1px solid #e5e7eb}
+h1{margin:.2rem 0 0;font-size:1.5rem}
+h2{border-left:4px solid var(--cor-destaque);padding-left:.5rem;color:var(--cor-secundaria);font-size:1.2rem;margin-top:1.2rem}
+h3{margin:.8rem 0 .4rem;font-size:1rem;color:var(--cor-secundaria)}
+h4{margin:.6rem 0 .3rem}
+
+/* nav base like main pages */
+nav{background:#fff;border-bottom:1px solid var(--cor-borda);padding:.5rem 1rem;position:static;top:calc(var(--header-h));z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav a{display:inline-block;margin-right:.75rem;padding:.35rem .7rem;border-radius:999px;text-decoration:none;font-size:.9rem;color:var(--cor-principal);border:1px solid transparent}
+nav a:hover{background:#ecfdf3;border-color:var(--cor-principal)}
+nav a.ativa{background:var(--cor-principal);color:#fff}
+
+/* anchors: ensure space for sticky header+nav */
+h2[id]{scroll-margin-top: calc(var(--header-h) + var(--nav-h) + 16px)}
+
+.index{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem;margin:.5rem 0 1rem}
+.index a{text-decoration:none;color:var(--cor-principal)}
+.index a:hover{text-decoration:underline}
+.nota{font-size:.85rem;color:#6b7280}
+.topo{text-align:right;font-size:.85rem}
+.topo a{color:var(--cor-principal);text-decoration:none}
+.topo a:hover{text-decoration:underline}
+.source{font-size:.8rem;color:#6b7280}
+
+.masthead{position:sticky; top:0; z-index:70}
+/* ensure masthead paints behind nav+header */
+.masthead header{background:linear-gradient(135deg,var(--cor-principal),var(--cor-secundaria)); color:#fff; box-shadow:0 2px 4px rgba(0,0,0,.08)}
+/* horizontal scroll for nav */
+.masthead nav{background:#fff; border-bottom:1px solid var(--cor-borda); padding:.5rem 1rem; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+/* safer anchor offset for sticky masthead (approx header+nav height) */
+h2[id]{scroll-margin-top: 140px}
+
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+</style>
+</head>
+<body id="topo">
+<div class="masthead"><header>
+  <h1>Batata-doce – Receitas completas (Top 10)</h1>
+  </header>
+<nav>
+  <a href="../../../index.html">Início</a>
+  <a href="../../../abobora-butternut.html">Abóbora butternut</a>
+  <a href="../../../abobora-grande.html">Abóbora grande</a>
+  <a href="../../../acelga.html">Acelga</a>
+  <a href="../../../agriao.html">Agrião-de-água</a>
+  <a href="../../../agriao-terra.html">Agrião-de-terra</a>
+  <a href="../../../aipo.html">Aipo (talos e folhas)</a>
+  <a href="../../../alface.html">Alface</a>
+  <a href="../../../alho.html">Alho</a>
+  <a href="../../../alho-frances.html">Alho-francês</a>
+  <a href="../../../aneto.html">Aneto / Endro</a>
+  <a href="../../../batata-comum.html">Batata comum</a>
+  <a href="../../../batata-doce.html" class="ativa">Batata-doce</a>
+  <a href="../../../beringela.html">Beringela</a>
+  <a href="../../../beterraba.html">Beterraba</a>
+  <a href="../../../brocolo.html">Brócolo</a>
+  <a href="../../../canonigos.html">Canónigos</a>
+  <a href="../../../cebola.html">Cebola</a>
+  <a href="../../../cebola-fresca.html">Cebola fresca</a>
+  <a href="../../../cenoura.html">Cenoura</a>
+  <a href="../../../coentros.html">Coentros</a>
+  <a href="../../../couve-chinesa.html">Couve chinesa</a>
+  <a href="../../../couve-repolho.html">Couve repolho</a>
+  <a href="../../../couve-toscana.html">Couve toscana</a>
+  <a href="../../../couve-flor.html">Couve-flor</a>
+  <a href="../../../couve-rabano.html">Couve-rábano</a>
+  <a href="../../../curgete.html">Curgete</a>
+  <a href="../../../ervilhas-frescas.html">Ervilhas frescas</a>
+  <a href="../../../espinafre.html">Espinafre</a>
+  <a href="../../../espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+  <a href="../../../feijao-verde.html">Feijão verde</a>
+  <a href="../../../manjericao.html">Manjericão</a>
+  <a href="../../../milho-doce.html">Milho doce</a>
+  <a href="../../../mizuna.html">Mizuna</a>
+  <a href="../../../morangos.html">Morangueiro / Morangos</a>
+  <a href="../../../moringa.html">Moringa</a>
+  <a href="../../../nabica.html">Nabiça</a>
+  <a href="../../../nabo.html">Nabo</a>
+  <a href="../../../pak-choi.html">Pak choi</a>
+  <a href="../../../pepino.html">Pepino</a>
+  <a href="../../../pimento.html">Pimento</a>
+  <a href="../../../rabanete.html">Rabanete</a>
+  <a href="../../../rabano.html">Rábano / Daikon</a>
+  <a href="../../../rucula.html">Rúcula</a>
+  <a href="../../../salanova.html">Salanova</a>
+  <a href="../../../salsa.html">Salsa</a>
+  <a href="../../../tomate.html">Tomate (diversas cultivares)</a>
+  <a href="../../../tomate-chucha.html">Tomate tipo chucha / Roma</a>
+</nav></div>
+
+<main>
+<article>
+	
+<h2 id="receitas-preparados">Receitas e preparados</h2>
+<div class="diet-links">
+  <div class="diet-links-left">
+    <a href="/horta-info/data/refeicoes/vegetariana/aipo_receitas_vegetariana.html">(Vegetariana)</a>
+	<a href="/horta-info/data/refeicoes/vegan/aipo_receitas_vegan.html">(Vegan)</a>
+    <a href="/horta-info/data/refeicoes/raw-vegan/aipo_receitas_raw-vegan.html">(Comida Viva)</a>
+  </div>
+  <div class="diet-links-right">
+    <a href="/data/refeicoes.html">(Filtro por ingredientes)</a>
+  </div>
+</div>
+
+<div class="index"><strong>Índice rápido:</strong><ol>
+<li><a href="#batata-doce-assada-no-forno">Batata-doce assada no forno</a></li>
+<li><a href="#batata-doce-assada-com-casca">Batata-doce assada com casca</a></li>
+<li><a href="#chips-de-batata-doce-no-forno">Chips de batata-doce no forno</a></li>
+<li><a href="#caril-de-grao-de-bico-e-batata-doce">Caril de grão-de-bico e batata-doce</a></li>
+<li><a href="#creme-de-batata-doce-e-cenoura-com-gengibre-vegano">Creme de batata-doce e cenoura com gengibre (vegano)</a></li>
+<li><a href="#pure-de-batata-doce-roxa-vegano">Puré de batata-doce roxa (vegano)</a></li>
+<li><a href="#bowl-com-pure-de-batata-doce-e-cenoura-grao">Bowl com puré de batata-doce e cenoura + grão</a></li>
+<li><a href="#mousse-de-batata-doce-e-chocolate">Mousse de batata-doce e chocolate</a></li>
+<li><a href="#pure-de-batata-doce-simples">Purê de batata-doce simples</a></li>
+<li><a href="#escondidinho-de-batata-doce-com-proteina-vegetal">Escondidinho de batata-doce com proteína vegetal</a></li>
+</ol></div>
+
+<a id="batata-doce-assada-no-forno-r1"></a>
+<h2 id="batata-doce-assada-no-forno">Batata-doce assada no forno <span class="source">[R1]</span></h2>
+<h4>Ingredientes</h4>
+<ul>
+  <li>800 g de batata-doce</li>
+  <li>1 c. chá de sal</li>
+  <li>Pimenta preta moída q.b.</li>
+  <li>3 c. sopa de azeite</li>
+  <li>Tomilho fresco q.b.</li>
+  <li>Orégãos secos q.b.</li>
+</ul>
+<h4>Preparação (recriada)</h4>
+<ol>
+  <li>Pré-aqueça o forno a 200&nbsp;°C.</li>
+  <li>Lave as batatas-doces, descasque-as e corte-as em rodelas com cerca de 1&nbsp;cm de espessura. Coloque-as numa taça grande.</li>
+  <li>Tempere com o sal, uma pitada de pimenta, o azeite, o tomilho e os orégãos. Envolva bem com as mãos ou com uma colher para que todas as rodelas fiquem cobertas.</li>
+  <li>Disponha as rodelas num tabuleiro forrado com papel vegetal, numa só camada.</li>
+  <li>Leve ao forno cerca de 20 minutos, virando a meio do tempo, até a batata estar macia e ligeiramente dourada.</li>
+  <li>Retire, polvilhe com mais tomilho fresco e sirva como acompanhamento.</li>
+</ol>
+<p class="nota">Texto reescrito em linguagem própria, quando aplicável, mantendo o espírito da referência.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="batata-doce-assada-com-casca-r2"></a>
+<h2 id="batata-doce-assada-com-casca">Batata-doce assada com casca <span class="source">[R2]</span></h2>
+<h4>Ingredientes</h4>
+<ul>
+  <li>3 batatas-doces grandes</li>
+  <li>1 c. café de sal</li>
+  <li>Pimenta q.b.</li>
+  <li>1 c. chá de paprika fumada</li>
+  <li>1 haste de alecrim</li>
+  <li>1 c. café de alho em pó</li>
+  <li>1 c. sopa de azeite</li>
+</ul>
+<h4>Preparação (recriada)</h4>
+<ol>
+  <li>Pré-aqueça o forno a 225&nbsp;°C.</li>
+  <li>Lave bem as batatas-doces e corte-as em palitos grossos, mantendo a casca.</li>
+  <li>Coloque os palitos numa taça e tempere com o sal, a pimenta, a paprika fumada, o alho em pó e as folhas de alecrim picadas.</li>
+  <li>Regue com o azeite e envolva até os palitos ficarem bem cobertos pelos temperos.</li>
+  <li>Espalhe tudo num tabuleiro forrado com papel vegetal, em camada única, e leve ao forno cerca de 20 minutos, mexendo a meio do tempo, até ficarem dourados.</li>
+  <li>Sirva quente como acompanhamento ou snack de forno.</li>
+</ol>
+<p class="nota">Texto reescrito em linguagem própria, quando aplicável, mantendo o espírito da referência.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="chips-de-batata-doce-no-forno-r3"></a>
+<h2 id="chips-de-batata-doce-no-forno">Chips de batata-doce no forno <span class="source">[R3]</span></h2>
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 batata-doce média (com casca)</li>
+  <li>Pimenta preta moída q.b.</li>
+  <li>Alho em pó q.b.</li>
+  <li>Tomilho seco q.b.</li>
+  <li>Sal fino (opcional)</li>
+</ul>
+<h4>Preparação (recriada)</h4>
+<ol>
+  <li>Pré-aqueça o forno a 150&nbsp;°C.</li>
+  <li>Lave muito bem a batata-doce e seque-a; pode manter a casca ou descascar, conforme preferir.</li>
+  <li>Com uma mandolina ou faca afiada, corte rodelas muito finas (2–3&nbsp;mm).</li>
+  <li>Disponha as rodelas num tabuleiro forrado com papel vegetal, sem as sobrepor.</li>
+  <li>Polvilhe com sal (se usar), pimenta, alho em pó e tomilho seco.</li>
+  <li>Leve ao forno cerca de 20 minutos. Vire as rodelas, volte a temperar ligeiramente e asse mais 15–20 minutos, até ficarem secas e estaladiças.</li>
+  <li>Deixe arrefecer um pouco e sirva como snack.</li>
+</ol>
+<p class="nota">Texto reescrito em linguagem própria, quando aplicável, mantendo o espírito da referência.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="caril-de-grao-de-bico-e-batata-doce-r4"></a>
+<h2 id="caril-de-grao-de-bico-e-batata-doce">Caril de grão-de-bico e batata-doce <span class="source">[R4]</span></h2>
+<h4>Ingredientes</h4>
+<ul>
+  <li>3 batatas-doces médias</li>
+  <li>1 curgete</li>
+  <li>1 L de caldo de legumes</li>
+  <li>1 cebola</li>
+  <li>2 dentes de alho</li>
+  <li>3 c. sopa de óleo de amendoim ou outro óleo vegetal</li>
+  <li>1 c. sopa de caril em pó</li>
+  <li>1 c. chá de gengibre fresco ralado</li>
+  <li>200 ml de leite de coco</li>
+  <li>2 iogurtes naturais (podem ser vegetais, para uma versão vegan)</li>
+  <li>1 ramo de coentros frescos</li>
+  <li>1 malagueta (opcional)</li>
+  <li>Sal q.b.</li>
+</ul>
+<h4>Preparação (recriada)</h4>
+<ol>
+  <li>Descasque as batatas-doces e corte-as em gomos grossos. Lave a curgete e corte-a também em gomos.</li>
+  <li>Leve ao lume um tacho com o caldo de legumes. Quando levantar fervura, junte as batatas-doces e cozinhe cerca de 8 minutos. Adicione a curgete e deixe cozer mais 5 minutos. Escorra e reserve os legumes.</li>
+  <li>Pique a cebola e o alho. Leve ao lume outro tacho com o óleo, junte cebola e alho e deixe refogar até a cebola ficar translúcida.</li>
+  <li>Acrescente o caril em pó e o gengibre ralado, mexendo para libertar o aroma. Junte o leite de coco e os iogurtes, mexa bem e deixe levantar fervura.</li>
+  <li>Adicione as batatas-doces e a curgete ao molho. Se gostar de picante, junte a malagueta em rodelas. Tempere com sal.</li>
+  <li>Tape o tacho e deixe cozinhar em lume brando até a batata estar bem macia e o molho apurado.</li>
+  <li>Finalize com coentros picados e sirva o caril bem quente, idealmente com arroz branco ou integral.</li>
+</ol>
+<p class="nota">Texto reescrito em linguagem própria, quando aplicável, mantendo o espírito da referência.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="creme-de-batata-doce-e-cenoura-com-gengibre-vegano-r5"></a>
+<h2 id="creme-de-batata-doce-e-cenoura-com-gengibre-vegano">Creme de batata-doce e cenoura com gengibre (vegano) <span class="source">[R5]</span></h2>
+<h4>Ingredientes</h4>
+<ul>
+  <li>Batatas-doces em cubos (cerca de 500–600 g)</li>
+  <li>2–3 cenouras em rodelas</li>
+  <li>1 cebola média picada</li>
+  <li>2 dentes de alho picados</li>
+  <li>1 pedaço de gengibre fresco ralado (cerca de 1 c. chá cheia)</li>
+  <li>2–3 c. sopa de azeite</li>
+  <li>Caldo de legumes q.b. (suficiente para cobrir os legumes)</li>
+  <li>Sal e pimenta preta q.b.</li>
+  <li>Opcional: um pouco de leite de coco para maior cremosidade</li>
+</ul>
+<h4>Preparação (recriada)</h4>
+<ol>
+  <li>Aqueça o azeite num tacho grande em lume médio. Junte a cebola e o alho e deixe refogar até ficarem macios e ligeiramente dourados.</li>
+  <li>Adicione a batata-doce, a cenoura e o gengibre ralado. Envolva bem no refogado.</li>
+  <li>Verta o caldo de legumes até cobrir os vegetais. Quando levantar fervura, reduza o lume e cozinhe 25–30 minutos, até tudo estar bem macio.</li>
+  <li>Com uma varinha mágica ou no liquidificador, triture o conteúdo do tacho até obter um creme liso.</li>
+  <li>Leve novamente ao lume, ajuste o sal e a pimenta e, se quiser, junte um pouco de leite de coco para um resultado ainda mais aveludado.</li>
+  <li>Sirva o creme bem quente, podendo decorar com um fio de leite de coco, coentros picados ou uma pitada de paprika fumada.</li>
+</ol>
+<p class="nota">Texto reescrito em linguagem própria, quando aplicável, mantendo o espírito da referência.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="pure-de-batata-doce-roxa-vegano-r6"></a>
+<h2 id="pure-de-batata-doce-roxa-vegano">Puré de batata-doce roxa (vegano) <span class="source">[R6]</span></h2>
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 batata-doce roxa grande</li>
+  <li>3 c. sopa de azeite</li>
+  <li>1 c. chá de sal</li>
+  <li>2 dentes de alho picados</li>
+  <li>Erva-doce (seca ou fresca) q.b.</li>
+</ul>
+<h4>Preparação (recriada)</h4>
+<ol>
+  <li>Cozinhe a batata-doce inteira, com casca, em água até ficar macia.</li>
+  <li>Escorra, deixe arrefecer ligeiramente, retire a casca e esmague a polpa com um garfo ou processe até obter um puré.</li>
+  <li>Numa pequena panela, aqueça o azeite e salteie o alho picado até começar a dourar. Junte a erva-doce e envolva.</li>
+  <li>Adicione o puré de batata-doce à panela, tempere com sal e mexa até ficar homogéneo e cremoso.</li>
+  <li>Ajuste a textura com um fio extra de azeite, se necessário, e sirva como acompanhamento colorido.</li>
+</ol>
+<p class="nota">Texto reescrito em linguagem própria, quando aplicável, mantendo o espírito da referência.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="bowl-com-pure-de-batata-doce-e-cenoura-grao-r7"></a>
+<h2 id="bowl-com-pure-de-batata-doce-e-cenoura-grao">Bowl com puré de batata-doce e cenoura + grão <span class="source">[R7]</span></h2>
+<h4>Ingredientes</h4>
+<ul>
+  <li>1 batata-doce grande (polpa laranja)</li>
+  <li>2 cenouras grandes</li>
+  <li>1 c. chá de curcuma (açafrão-das-Índias)</li>
+  <li>1 c. chá de alho em pó</li>
+  <li>½ c. chá de cominhos moídos</li>
+  <li>Sal e pimenta preta q.b.</li>
+  <li>1 chávena de grão-de-bico cozido</li>
+  <li>1 c. chá de azeite</li>
+  <li>1 c. chá de pimentão doce</li>
+  <li>½ c. chá de paprika fumada</li>
+  <li>1 chávena de canónigos (ou rúcula/espinafres)</li>
+  <li>Sementes de cânhamo q.b.</li>
+  <li>Sementes de abóbora q.b.</li>
+  <li>Opcional: arroz selvagem cozido q.b.</li>
+</ul>
+<h4>Preparação (recriada)</h4>
+<ol>
+  <li>Descasque a batata-doce e as cenouras, corte em pedaços e coloque num tacho com água. Coza cerca de 15 minutos, até ficarem macias. Escorra bem.</li>
+  <li>Transfira os legumes cozidos para uma taça ou processador. Junte a curcuma, o alho em pó, os cominhos, o sal e a pimenta. Triture com varinha mágica até obter um puré cremoso; ajuste os temperos.</li>
+  <li>Pré-aqueça o forno a 200&nbsp;°C. Numa assadeira, envolva o grão-de-bico com o azeite, o pimentão doce, a paprika fumada e uma pitada de sal. Leve ao forno 15 minutos, mexendo a meio, até ficar dourado e ligeiramente crocante.</li>
+  <li>Num prato fundo ou taça, coloque uma porção generosa de puré de batata-doce e cenoura. Acrescente os canónigos (ou outras folhas verdes) e, se desejar, um pouco de arroz selvagem.</li>
+  <li>Distribua o grão tostado por cima e finalize com as sementes de cânhamo e de abóbora. Sirva de imediato como refeição completa em bowl.</li>
+</ol>
+<p class="nota">Texto reescrito em linguagem própria, quando aplicável, mantendo o espírito da referência.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="mousse-de-batata-doce-e-chocolate-r8"></a>
+<h2 id="mousse-de-batata-doce-e-chocolate">Mousse de batata-doce e chocolate <span class="source">[R8]</span></h2>
+<h4>Ingredientes</h4>
+<ul>
+  <li>400 g de batata-doce</li>
+  <li>200 g de chocolate em tablete (cerca de 70&nbsp;% cacau)</li>
+  <li>200 ml de bebida vegetal</li>
+  <li>3 c. sopa de xarope de ácer ou outro adoçante a gosto</li>
+</ul>
+<h4>Preparação (recriada)</h4>
+<ol>
+  <li>Descasque a batata-doce, corte em cubos e coza em água a ferver durante cerca de 10 minutos, até estar bem macia.</li>
+  <li>Enquanto a batata coze, derreta o chocolate em banho-maria, usando o calor de um tacho com água quente.</li>
+  <li>Escorra bem a batata-doce e transfira-a para um processador ou taça. Triture até obter um puré liso.</li>
+  <li>Adicione o chocolate derretido, a bebida vegetal e o xarope de ácer. Bata novamente até ficar um creme homogéneo, sem grumos.</li>
+  <li>Prove e ajuste o nível de doçura, se necessário.</li>
+  <li>Distribua a mousse por taças individuais e leve ao frigorífico pelo menos 4 horas para ganhar consistência.</li>
+  <li>Sirva fresca, simples ou com iogurte e fruta a gosto.</li>
+</ol>
+<p class="nota">Texto reescrito em linguagem própria, quando aplicável, mantendo o espírito da referência.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="pure-de-batata-doce-simples-r9"></a>
+<h2 id="pure-de-batata-doce-simples">Purê de batata-doce simples <span class="source">[R9]</span></h2>
+<h4>Ingredientes</h4>
+<ul>
+  <li>4 batatas-doces</li>
+  <li>1 cebola pequena</li>
+  <li>Salsa picada q.b.</li>
+  <li>Cebolinho picado q.b.</li>
+  <li>2 dentes de alho</li>
+  <li>Sal q.b.</li>
+  <li>1 saqueta de tempero pronto (opcional)</li>
+  <li>1 c. sopa de margarina ou manteiga</li>
+  <li>Leite q.b. (para ajustar a textura)</li>
+</ul>
+<h4>Preparação (recriada)</h4>
+<ol>
+  <li>Cozinhe as batatas-doces em água até ficarem bem macias. Escorra e reduza a puré com um esmagador.</li>
+  <li>Numa panela, derreta a margarina ou manteiga. Junte o alho e a cebola picados e deixe refogar até dourar ligeiramente.</li>
+  <li>Adicione o puré de batata-doce ao refogado. Envolva bem e tempere com sal, o tempero pronto (se usar), salsa e cebolinho.</li>
+  <li>Acrescente um pouco de leite, mexendo, até o puré atingir a consistência cremosa desejada.</li>
+  <li>Ajuste os temperos e sirva como acompanhamento.</li>
+</ol>
+<p class="nota">Texto reescrito em linguagem própria, quando aplicável, mantendo o espírito da referência.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+<a id="escondidinho-de-batata-doce-com-proteina-vegetal-r10"></a>
+<h2 id="escondidinho-de-batata-doce-com-proteina-vegetal">Escondidinho de batata-doce com proteína vegetal <span class="source">[R10]</span></h2>
+<h4>Ingredientes</h4>
+<ul>
+  <li>4 batatas-doces médias</li>
+  <li>3 dentes de alho</li>
+  <li>1 cebola</li>
+  <li>1 chávena de proteína vegetal texturizada (grão fino)</li>
+  <li>1 chávena de molho de tomate</li>
+  <li>1/3 chávena de molho de soja (shoyu)</li>
+  <li>1 c. sopa de óleo vegetal ou azeite</li>
+  <li>1 c. sopa de açafrão-da-terra (curcuma)</li>
+  <li>Sal e outros temperos a gosto</li>
+  <li>Água q.b. (para hidratar a proteína e cozer as batatas)</li>
+</ul>
+<h4>Preparação (recriada)</h4>
+<ol>
+  <li>Aqueça água em duas panelas: uma quantidade maior para cozer as batatas-doces e uma menor para hidratar a proteína vegetal.</li>
+  <li>Lave e corte as batatas-doces em pedaços grandes. Coza em água até ficarem macias (cerca de 20 minutos em lume brando, com a panela tapada).</li>
+  <li>Coloque a proteína vegetal na água quente menor e deixe hidratar cerca de 10 minutos. Escorra bem e esprema para retirar o excesso de líquido.</li>
+  <li>Pique a cebola e o alho. Refogue a cebola no óleo ou azeite até murchar, junte o alho e deixe dourar em lume brando.</li>
+  <li>Adicione a proteína vegetal hidratada ao refogado, envolva, junte o molho de tomate, o shoyu e os temperos. Deixe cozinhar cerca de 5 minutos em lume brando.</li>
+  <li>Quando as batatas estiverem macias, escorra a água, retire a casca (se necessário) e reduza a puré com um garfo. Tempere com sal e o açafrão-da-terra, ajustando a gosto.</li>
+  <li>Num recipiente de forno, faça uma camada de puré de batata-doce, cubra com uma camada generosa do recheio de proteína vegetal e termine com outra camada de puré.</li>
+  <li>Se necessário, leve ao forno ou ao micro-ondas apenas para aquecer bem antes de servir.</li>
+</ol>
+<p class="nota">Texto reescrito em linguagem própria, quando aplicável, mantendo o espírito da referência.</p>
+<p class="topo"><a href="#topo">Voltar ao topo ↑</a></p>
+
+</article>
+</main>
+  <script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+
+</body>
+</html>
