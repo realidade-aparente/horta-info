@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <title>Receitas de Sumos</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="page-sumos">
+  <header class="site-header">
+    <h1>Sumos com [Ingredientes selecionados]</h1>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="refeicoes.html">Refeições</a>
+      <a href="sumos.html">Sumos</a>
+      <a href="">Smoothies (brevemente)</a>
+    </nav>
+  </header>
+
+  <section class="banner banner-sumos">
+    <div class="banner-content">
+      <h2>Receitas de sumos</h2>
+      <p>Sumos naturais com [ingredientes selecionados], combinada com frutas e outros ingredientes.</p>
+    </div>
+  </section>
+
+  <main class="conteudo">
+
+
+    <section>
+      <h2>Escolhe os ingredientes</h2>
+      <p>Marca os ingredientes que tens em casa e vê as receitas possíveis.</p>
+	  <div id="contador-ingredientes" class="contador-ingredientes">(0 ingredientes disponíveis)</div></p>
+	  
+      <div id="lista-ingredientes" class="lista-ingredientes">
+      </div>
+
+      <div class="botoes-acoes">
+        <button id="btn-procurar">Procurar receitas</button>
+        <button id="btn-limpar" type="button">Limpar seleções</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Resultados</h2>
+      <p id="contador-resultados">(0 receitas encontradas)</p>
+      <div id="resultados"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 – Receitas com [Planta]</p>
+  </footer>
+
+  <script>
+    const RECIPE_JSON_URL = "sumos/receitas_sumos.json";
+  </script>
+  <script src="../receitas_com_contador_e_link_v2.js"></script>
+</body>
+</html>
