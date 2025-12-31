@@ -1,390 +1,266 @@
 [
   {
     "id": 1198,
-    "nome": "Salsa Fresca",
+    "nome": "Tango de Manga",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_10_(S)_v3.txt",
-    "link": "sumos/sumos_pag_10_(S)_v3.html",
+    "ficheiro_txt": "sumos_pag_10_(T-V)_v4.txt",
+    "link": "sumos/sumos_pag_10_(T-V)_v4.html",
     "ingredientes": [
-      "aipo",
-      "limão",
-      "pimento verde",
-      "salsa",
-      "tomate"
+      "ananás",
+      "manga"
     ]
   },
   {
     "id": 1199,
-    "nome": "Sangue de Dragão",
+    "nome": "Tango Tropical",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_10_(S)_v3.txt",
-    "link": "sumos/sumos_pag_10_(S)_v3.html",
+    "ficheiro_txt": "sumos_pag_10_(T-V)_v4.txt",
+    "link": "sumos/sumos_pag_10_(T-V)_v4.html",
     "ingredientes": [
-      "beterraba",
-      "maçã",
-      "morangos"
-    ]
-  },
-  {
-    "id": 1200,
-    "nome": "Sangue do Hulk",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_10_(S)_v3.txt",
-    "link": "sumos/sumos_pag_10_(S)_v3.html",
-    "ingredientes": [
-      "aipo",
-      "espinafres",
-      "maçã",
-      "pepino"
-    ]
-  },
-  {
-    "id": 1201,
-    "nome": "Sedoso e Doce",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_10_(S)_v3.txt",
-    "link": "sumos/sumos_pag_10_(S)_v3.html",
-    "ingredientes": [
-      "limão",
-      "maçã",
+      "ananás",
       "pêra"
     ]
   },
   {
-    "id": 1202,
-    "nome": "Sensação Cítrica",
+    "id": 1200,
+    "nome": "Tarte de Batata‑doce em Copo",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_10_(S)_v3.txt",
-    "link": "sumos/sumos_pag_10_(S)_v3.html",
+    "ficheiro_txt": "sumos_pag_10_(T-V)_v4.txt",
+    "link": "sumos/sumos_pag_10_(T-V)_v4.html",
     "ingredientes": [
+      "batata-doce",
+      "cenoura",
+      "maçã"
+    ]
+  },
+  {
+    "id": 1201,
+    "nome": "Temos a Beterraba",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_10_(T-V)_v4.txt",
+    "link": "sumos/sumos_pag_10_(T-V)_v4.html",
+    "ingredientes": [
+      "azeite",
+      "batata-doce",
+      "beterraba",
+      "cenoura",
+      "gengibre",
       "laranja",
-      "limão"
+      "maçã"
+    ]
+  },
+  {
+    "id": 1202,
+    "nome": "Up Beet",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_10_(T-V)_v4.txt",
+    "link": "sumos/sumos_pag_10_(T-V)_v4.html",
+    "ingredientes": [
+      "aipo",
+      "beterraba",
+      "cenoura",
+      "laranja",
+      "limão",
+      "maçã",
+      "morangos",
+      "pepino"
     ]
   },
   {
     "id": 1203,
-    "nome": "Shot Anti-Ressaca",
+    "nome": "Verde Agradável",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_10_(S)_v3.txt",
-    "link": "sumos/sumos_pag_10_(S)_v3.html",
+    "ficheiro_txt": "sumos_pag_10_(T-V)_v4.txt",
+    "link": "sumos/sumos_pag_10_(T-V)_v4.html",
     "ingredientes": [
-      "gengibre",
+      "aipo",
+      "laranja",
       "limão",
       "maçã"
     ]
   },
   {
     "id": 1204,
-    "nome": "Sonho de Uma Noite de Verão",
+    "nome": "Verde de Romã",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_10_(S)_v3.txt",
-    "link": "sumos/sumos_pag_10_(S)_v3.html",
+    "ficheiro_txt": "sumos_pag_10_(T-V)_v4.txt",
+    "link": "sumos/sumos_pag_10_(T-V)_v4.html",
     "ingredientes": [
+      "aipo",
+      "espinafres",
+      "maçã",
+      "pepino",
+      "romã",
+      "uvas"
+    ]
+  },
+  {
+    "id": 1205,
+    "nome": "Verde Enxuto",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_10_(T-V)_v4.txt",
+    "link": "sumos/sumos_pag_10_(T-V)_v4.html",
+    "ingredientes": [
+      "acelga",
+      "gengibre",
+      "hortelã",
+      "laranja",
+      "limão",
+      "maçã",
+      "pepino"
+    ]
+  },
+  {
+    "id": 1206,
+    "nome": "Verde Intenso",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_10_(T-V)_v4.txt",
+    "link": "sumos/sumos_pag_10_(T-V)_v4.html",
+    "ingredientes": [
+      "aipo",
+      "couve-kale",
+      "gengibre",
+      "limão",
+      "maçã",
+      "pepino"
+    ]
+  },
+  {
+    "id": 1207,
+    "nome": "Verde para Iniciantes",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_10_(T-V)_v4.txt",
+    "link": "sumos/sumos_pag_10_(T-V)_v4.html",
+    "ingredientes": [
+      "aipo",
+      "espinafres",
+      "gengibre",
+      "laranja",
       "limão",
       "maçã"
     ]
   },
   {
-    "id": 1205,
-    "nome": "Sumo ao Estilo Mexicano",
+    "id": 1208,
+    "nome": "Verde Tropical",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_10_(S)_v3.txt",
-    "link": "sumos/sumos_pag_10_(S)_v3.html",
+    "ficheiro_txt": "sumos_pag_10_(T-V)_v4.txt",
+    "link": "sumos/sumos_pag_10_(T-V)_v4.html",
     "ingredientes": [
-      "aipo",
-      "limão",
-      "pimenta caiena",
-      "tomate"
+      "ananás",
+      "couve-kale",
+      "gengibre fresco",
+      "laranja",
+      "manga"
     ]
   },
   {
-    "id": 1206,
-    "nome": "Sumo de Consciencialização do Cancro da Mama",
+    "id": 1209,
+    "nome": "Vermelho Radiante",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_10_(S)_v3.txt",
-    "link": "sumos/sumos_pag_10_(S)_v3.html",
-    "ingredientes": [
-      "beterraba",
-      "maçã",
-      "morangos"
-    ]
-  },
-  {
-    "id": 1207,
-    "nome": "Sumo Fortificante do Sangue do Dr. Schulze",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_10_(S)_v3.txt",
-    "link": "sumos/sumos_pag_10_(S)_v3.html",
+    "ficheiro_txt": "sumos_pag_10_(T-V)_v4.txt",
+    "link": "sumos/sumos_pag_10_(T-V)_v4.html",
     "ingredientes": [
       "beterraba",
       "cenoura",
       "couve-kale",
+      "dente-de-leão",
+      "gengibre",
+      "laranja",
+      "maçã",
+      "pepino"
+    ]
+  },
+  {
+    "id": 1210,
+    "nome": "Viva Forever!",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_10_(T-V)_v4.txt",
+    "link": "sumos/sumos_pag_10_(T-V)_v4.html",
+    "ingredientes": [
+      "cenoura",
+      "coentros frescos",
+      "gengibre",
+      "lima",
+      "limão",
+      "pimenta",
+      "sal",
+      "água"
+    ]
+  },
+  {
+    "id": 1211,
+    "nome": "A Beterraba Continua",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_1_(A)_v4.txt",
+    "link": "sumos/sumos_pag_1_(A)_v4.html",
+    "ingredientes": [
+      "aipo",
+      "beterraba",
+      "cenoura",
       "maçã",
       "salsa"
     ]
   },
   {
-    "id": 1208,
-    "nome": "Sumo Harry Potter",
+    "id": 1212,
+    "nome": "A Relembrar o A-B-C",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_10_(S)_v3.txt",
-    "link": "sumos/sumos_pag_10_(S)_v3.html",
+    "ficheiro_txt": "sumos_pag_1_(A)_v4.txt",
+    "link": "sumos/sumos_pag_1_(A)_v4.html",
     "ingredientes": [
       "beterraba",
       "cenoura",
-      "maçã"
-    ]
-  },
-  {
-    "id": 1209,
-    "nome": "Sumo para Relaxar",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_10_(S)_v3.txt",
-    "link": "sumos/sumos_pag_10_(S)_v3.html",
-    "ingredientes": [
-      "limão",
-      "maçã",
-      "pêra"
-    ]
-  },
-  {
-    "id": 1210,
-    "nome": "Sumo Verde da Martha Stewart",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_10_(S)_v3.txt",
-    "link": "sumos/sumos_pag_10_(S)_v3.html",
-    "ingredientes": [
-      "aipo",
-      "espinafres",
-      "limão",
-      "maçã",
-      "pepino"
-    ]
-  },
-  {
-    "id": 1211,
-    "nome": "Sumo Verde de Treino da Tracee",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_10_(S)_v3.txt",
-    "link": "sumos/sumos_pag_10_(S)_v3.html",
-    "ingredientes": [
-      "espinafres",
-      "limão",
-      "maçã",
-      "pepino"
-    ]
-  },
-  {
-    "id": 1212,
-    "nome": "Tango de Manga",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_11_(T-V)_v3.txt",
-    "link": "sumos/sumos_pag_11_(T-V)_v3.html",
-    "ingredientes": [
-      "laranja",
-      "manga",
       "maçã"
     ]
   },
   {
     "id": 1213,
-    "nome": "Tango Tropical",
+    "nome": "Abana a Beterraba",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_11_(T-V)_v3.txt",
-    "link": "sumos/sumos_pag_11_(T-V)_v3.html",
+    "ficheiro_txt": "sumos_pag_1_(A)_v4.txt",
+    "link": "sumos/sumos_pag_1_(A)_v4.html",
     "ingredientes": [
-      "ananás",
-      "lima",
-      "manga"
+      "beterraba",
+      "limão",
+      "pêra"
     ]
   },
   {
     "id": 1214,
-    "nome": "Tarte de Batata-Doce",
+    "nome": "Abre-Olhos",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_11_(T-V)_v3.txt",
-    "link": "sumos/sumos_pag_11_(T-V)_v3.html",
+    "ficheiro_txt": "sumos_pag_1_(A)_v4.txt",
+    "link": "sumos/sumos_pag_1_(A)_v4.html",
     "ingredientes": [
-      "batata-doce",
-      "canela",
-      "maçã",
-      "noz-moscada"
-    ]
-  },
-  {
-    "id": 1215,
-    "nome": "Temos a Beterraba",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_11_(T-V)_v3.txt",
-    "link": "sumos/sumos_pag_11_(T-V)_v3.html",
-    "ingredientes": [
-      "beterraba",
-      "limão",
+      "cenoura",
       "maçã"
     ]
   },
   {
-    "id": 1216,
-    "nome": "Vegetais e Mirtilo",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_11_(T-V)_v3.txt",
-    "link": "sumos/sumos_pag_11_(T-V)_v3.html",
-    "ingredientes": [
-      "espinafres",
-      "maçã",
-      "pepino"
-    ]
-  },
-  {
-    "id": 1217,
-    "nome": "Verde Agradável",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_11_(T-V)_v3.txt",
-    "link": "sumos/sumos_pag_11_(T-V)_v3.html",
-    "ingredientes": [
-      "espinafres",
-      "limão",
-      "maçã",
-      "pepino"
-    ]
-  },
-  {
-    "id": 1218,
-    "nome": "Verde de Romã",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_11_(T-V)_v3.txt",
-    "link": "sumos/sumos_pag_11_(T-V)_v3.html",
-    "ingredientes": [
-      "espinafres",
-      "maçã",
-      "romã"
-    ]
-  },
-  {
-    "id": 1219,
-    "nome": "Verde Leve",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_11_(T-V)_v3.txt",
-    "link": "sumos/sumos_pag_11_(T-V)_v3.html",
-    "ingredientes": [
-      "aipo",
-      "limão",
-      "maçã",
-      "pepino"
-    ]
-  },
-  {
-    "id": 1220,
-    "nome": "Verde para Iniciantes",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_11_(T-V)_v3.txt",
-    "link": "sumos/sumos_pag_11_(T-V)_v3.html",
-    "ingredientes": [
-      "espinafres",
-      "maçã",
-      "pepino"
-    ]
-  },
-  {
-    "id": 1221,
-    "nome": "Verde Poderoso",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_11_(T-V)_v3.txt",
-    "link": "sumos/sumos_pag_11_(T-V)_v3.html",
-    "ingredientes": [
-      "aipo",
-      "espinafres",
-      "limão",
-      "maçã",
-      "pepino"
-    ]
-  },
-  {
-    "id": 1222,
-    "nome": "Verde Tropical",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_11_(T-V)_v3.txt",
-    "link": "sumos/sumos_pag_11_(T-V)_v3.html",
-    "ingredientes": [
-      "espinafres",
-      "manga",
-      "maçã",
-      "pepino"
-    ]
-  },
-  {
-    "id": 1223,
-    "nome": "Vermelho Radiante",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_11_(T-V)_v3.txt",
-    "link": "sumos/sumos_pag_11_(T-V)_v3.html",
-    "ingredientes": [
-      "beterraba",
-      "maçã",
-      "morangos"
-    ]
-  },
-  {
-    "id": 1224,
-    "nome": "Viva Para Sempre!",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_11_(T-V)_v3.txt",
-    "link": "sumos/sumos_pag_11_(T-V)_v3.html",
-    "ingredientes": [
-      "laranja",
-      "maçã",
-      "morangos"
-    ]
-  },
-  {
-    "id": 1225,
-    "nome": "A Batida Continua",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_1_(A)_v3.txt",
-    "link": "sumos/sumos_pag_1_(A)_v3.html",
-    "ingredientes": [
-      "aipo",
-      "beterraba",
-      "cenoura",
-      "maçã",
-      "salsa"
-    ]
-  },
-  {
-    "id": 1226,
+    "id": 1215,
     "nome": "Adeus Café",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_1_(A)_v3.txt",
-    "link": "sumos/sumos_pag_1_(A)_v3.html",
+    "ficheiro_txt": "sumos_pag_1_(A)_v4.txt",
+    "link": "sumos/sumos_pag_1_(A)_v4.html",
     "ingredientes": [
       "cenoura",
       "chá verde",
@@ -395,27 +271,206 @@
     ]
   },
   {
-    "id": 1227,
-    "nome": "Ajuda Verde",
+    "id": 1216,
+    "nome": "Alface-Maçã-Laranja",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_1_(A)_v3.txt",
-    "link": "sumos/sumos_pag_1_(A)_v3.html",
+    "ficheiro_txt": "sumos_pag_1_(A)_v4.txt",
+    "link": "sumos/sumos_pag_1_(A)_v4.html",
     "ingredientes": [
       "aipo",
-      "couve-kale",
+      "alface",
+      "laranja",
+      "maçã",
+      "pepino"
+    ]
+  },
+  {
+    "id": 1217,
+    "nome": "Alívio para Artrite",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_1_(A)_v4.txt",
+    "link": "sumos/sumos_pag_1_(A)_v4.html",
+    "ingredientes": [
+      "aipo",
+      "ananás",
+      "azeite",
+      "cenoura",
+      "gengibre fresco",
+      "maçã"
+    ]
+  },
+  {
+    "id": 1218,
+    "nome": "Amanhecer de Curcuma",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_1_(A)_v4.txt",
+    "link": "sumos/sumos_pag_1_(A)_v4.html",
+    "ingredientes": [
+      "aipo",
+      "cenoura",
+      "curcuma",
+      "gengibre fresco",
+      "limão",
+      "maçã",
+      "pêra"
+    ]
+  },
+  {
+    "id": 1219,
+    "nome": "Amanhecer Vermelho",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_1_(A)_v4.txt",
+    "link": "sumos/sumos_pag_1_(A)_v4.html",
+    "ingredientes": [
+      "cenoura",
+      "manga",
+      "maçã",
+      "morangos",
+      "pepino"
+    ]
+  },
+  {
+    "id": 1220,
+    "nome": "Baga Irresistível",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_2_(B)_v4.txt",
+    "link": "sumos/sumos_pag_2_(B)_v4.html",
+    "ingredientes": [
+      "lima",
+      "maçã",
+      "morangos"
+    ]
+  },
+  {
+    "id": 1221,
+    "nome": "Bagas com Hortelã",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_2_(B)_v4.txt",
+    "link": "sumos/sumos_pag_2_(B)_v4.html",
+    "ingredientes": [
+      "kiwi",
+      "morangos",
+      "pimenta"
+    ]
+  },
+  {
+    "id": 1222,
+    "nome": "Bebida “Slimdown” do Dr. Oz",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_2_(B)_v4.txt",
+    "link": "sumos/sumos_pag_2_(B)_v4.html",
+    "ingredientes": [
+      "mel",
+      "vinagre"
+    ]
+  },
+  {
+    "id": 1223,
+    "nome": "Bebida Verde do Dr. Oz",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_2_(B)_v4.txt",
+    "link": "sumos/sumos_pag_2_(B)_v4.html",
+    "ingredientes": [
+      "aipo",
       "espinafres",
+      "gengibre",
+      "lima",
+      "limão",
+      "maçã",
+      "pepino",
+      "salsa"
+    ]
+  },
+  {
+    "id": 1224,
+    "nome": "Beet Nik",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_2_(B)_v4.txt",
+    "link": "sumos/sumos_pag_2_(B)_v4.html",
+    "ingredientes": [
+      "aipo",
+      "beterraba",
+      "cenoura",
+      "espinafres",
+      "maçã"
+    ]
+  },
+  {
+    "id": 1225,
+    "nome": "Beijo de Sol",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_2_(B)_v4.txt",
+    "link": "sumos/sumos_pag_2_(B)_v4.html",
+    "ingredientes": [
+      "ananás",
+      "laranja",
+      "mel"
+    ]
+  },
+  {
+    "id": 1226,
+    "nome": "Beterraba do Coração",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_2_(B)_v4.txt",
+    "link": "sumos/sumos_pag_2_(B)_v4.html",
+    "ingredientes": [
+      "beterraba",
+      "cenoura",
+      "laranja",
       "limão",
       "maçã"
     ]
   },
   {
-    "id": 1228,
-    "nome": "Alegria Verde",
+    "id": 1227,
+    "nome": "Beterrabas Doces",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_1_(A)_v3.txt",
-    "link": "sumos/sumos_pag_1_(A)_v3.html",
+    "ficheiro_txt": "sumos_pag_2_(B)_v4.txt",
+    "link": "sumos/sumos_pag_2_(B)_v4.html",
+    "ingredientes": [
+      "batata-doce",
+      "beterraba",
+      "canela",
+      "laranja",
+      "lima",
+      "maçã"
+    ]
+  },
+  {
+    "id": 1228,
+    "nome": "Beterrabas e Mimos",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_2_(B)_v4.txt",
+    "link": "sumos/sumos_pag_2_(B)_v4.html",
+    "ingredientes": [
+      "ananás",
+      "beterraba",
+      "cenoura",
+      "espinafres",
+      "laranja",
+      "limão"
+    ]
+  },
+  {
+    "id": 1229,
+    "nome": "Brinde Verde",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_2_(B)_v4.txt",
+    "link": "sumos/sumos_pag_2_(B)_v4.html",
     "ingredientes": [
       "abacate",
       "espinafres",
@@ -428,99 +483,107 @@
     ]
   },
   {
-    "id": 1229,
-    "nome": "Alface Romana–Maçã–Laranja",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_1_(A)_v3.txt",
-    "link": "sumos/sumos_pag_1_(A)_v3.html",
-    "ingredientes": [
-      "aipo",
-      "alface",
-      "laranja",
-      "maçã",
-      "pepino"
-    ]
-  },
-  {
     "id": 1230,
-    "nome": "Amanhecer Vermelho",
+    "nome": "Brisa de Verão",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_1_(A)_v3.txt",
-    "link": "sumos/sumos_pag_1_(A)_v3.html",
+    "ficheiro_txt": "sumos_pag_2_(B)_v4.txt",
+    "link": "sumos/sumos_pag_2_(B)_v4.html",
     "ingredientes": [
-      "cenoura",
-      "manga",
-      "maçã",
-      "morangos",
-      "pepino"
-    ]
-  },
-  {
-    "id": 1231,
-    "nome": "Ananás Delicioso",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_1_(A)_v3.txt",
-    "link": "sumos/sumos_pag_1_(A)_v3.html",
-    "ingredientes": [
-      "ananás",
-      "batata-doce",
       "lima",
-      "manga"
-    ]
-  },
-  {
-    "id": 1232,
-    "nome": "Arrasa com a Beterraba",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_1_(A)_v3.txt",
-    "link": "sumos/sumos_pag_1_(A)_v3.html",
-    "ingredientes": [
-      "beterraba",
-      "limão",
-      "pêra"
-    ]
-  },
-  {
-    "id": 1233,
-    "nome": "Bebida do Coelhinho",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_2_(B)_v3.txt",
-    "link": "sumos/sumos_pag_2_(B)_v3.html",
-    "ingredientes": [
-      "ananás",
-      "cenoura",
-      "limão",
+      "manjericão",
+      "mel",
       "pimenta"
     ]
   },
   {
-    "id": 1234,
-    "nome": "Bebida Emagrecedora do Dr. Oz",
+    "id": 1231,
+    "nome": "Campo de Força",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_2_(B)_v3.txt",
-    "link": "sumos/sumos_pag_2_(B)_v3.html",
+    "ficheiro_txt": "sumos_pag_3_(C)_v4.txt",
+    "link": "sumos/sumos_pag_3_(C)_v4.html",
     "ingredientes": [
-      "hortelã",
+      "beterraba",
+      "cenoura",
+      "curcuma",
+      "gengibre",
+      "laranja",
+      "lima",
+      "água"
+    ]
+  },
+  {
+    "id": 1232,
+    "nome": "Cetim Doce",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_3_(C)_v4.txt",
+    "link": "sumos/sumos_pag_3_(C)_v4.html",
+    "ingredientes": [
+      "ananás",
+      "batata-doce",
+      "cenoura",
+      "maçã"
+    ]
+  },
+  {
+    "id": 1233,
+    "nome": "Cheio de Kale‑cio",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_3_(C)_v4.txt",
+    "link": "sumos/sumos_pag_3_(C)_v4.html",
+    "ingredientes": [
+      "cenoura",
+      "coentros",
+      "couve-kale",
+      "maçã",
+      "pimento vermelho"
+    ]
+  },
+  {
+    "id": 1234,
+    "nome": "Cítricos de Manga",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_3_(C)_v4.txt",
+    "link": "sumos/sumos_pag_3_(C)_v4.html",
+    "ingredientes": [
+      "laranja",
       "limão",
-      "pepino"
+      "manga",
+      "maçã",
+      "pimenta caiena"
     ]
   },
   {
     "id": 1235,
-    "nome": "Bebida Verde do Dr. Oz",
+    "nome": "Citrinos Doces e Ácidos",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_2_(B)_v3.txt",
-    "link": "sumos/sumos_pag_2_(B)_v3.html",
+    "ficheiro_txt": "sumos_pag_3_(C)_v4.txt",
+    "link": "sumos/sumos_pag_3_(C)_v4.html",
+    "ingredientes": [
+      "ananás",
+      "gengibre",
+      "laranja",
+      "lima",
+      "maçã",
+      "mel"
+    ]
+  },
+  {
+    "id": 1236,
+    "nome": "Cocktail a Qualquer Hora",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_3_(C)_v4.txt",
+    "link": "sumos/sumos_pag_3_(C)_v4.html",
     "ingredientes": [
       "aipo",
-      "espinafres",
+      "couve-kale",
+      "laranja",
       "limão",
       "maçã",
       "pepino",
@@ -528,251 +591,247 @@
     ]
   },
   {
-    "id": 1236,
-    "nome": "Beijado pelo Sol",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_2_(B)_v3.txt",
-    "link": "sumos/sumos_pag_2_(B)_v3.html",
-    "ingredientes": [
-      "cenoura",
-      "laranja",
-      "limão"
-    ]
-  },
-  {
     "id": 1237,
-    "nome": "Bênção da Manhã",
+    "nome": "Começo Fresco",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_2_(B)_v3.txt",
-    "link": "sumos/sumos_pag_2_(B)_v3.html",
+    "ficheiro_txt": "sumos_pag_3_(C)_v4.txt",
+    "link": "sumos/sumos_pag_3_(C)_v4.html",
     "ingredientes": [
       "aipo",
-      "limão",
-      "maçã",
-      "pêra"
+      "cenoura",
+      "maçã"
     ]
   },
   {
     "id": 1238,
-    "nome": "Beterraba Animada",
+    "nome": "Companheiro de Treino",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_2_(B)_v3.txt",
-    "link": "sumos/sumos_pag_2_(B)_v3.html",
+    "ficheiro_txt": "sumos_pag_3_(C)_v4.txt",
+    "link": "sumos/sumos_pag_3_(C)_v4.html",
     "ingredientes": [
-      "beterraba",
+      "aipo",
       "cenoura",
-      "limão",
-      "maçã"
+      "espinafres",
+      "maçã",
+      "pepino",
+      "spirulina"
     ]
   },
   {
     "id": 1239,
-    "nome": "Beterraba do Coração",
+    "nome": "Conforto Doce do Sul",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_2_(B)_v3.txt",
-    "link": "sumos/sumos_pag_2_(B)_v3.html",
+    "ficheiro_txt": "sumos_pag_3_(C)_v4.txt",
+    "link": "sumos/sumos_pag_3_(C)_v4.html",
     "ingredientes": [
-      "beterraba",
+      "ananás",
       "laranja",
       "limão",
-      "maçã"
+      "pimenta",
+      "água"
     ]
   },
   {
     "id": 1240,
-    "nome": "Beterraba Nik",
+    "nome": "Corta‑Nevoeiro",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_2_(B)_v3.txt",
-    "link": "sumos/sumos_pag_2_(B)_v3.html",
+    "ficheiro_txt": "sumos_pag_3_(C)_v4.txt",
+    "link": "sumos/sumos_pag_3_(C)_v4.html",
     "ingredientes": [
-      "aipo",
-      "beterraba",
       "cenoura",
       "espinafres",
+      "gengibre fresco",
+      "limão",
       "maçã"
     ]
   },
   {
     "id": 1241,
-    "nome": "Beterrabas Doces",
+    "nome": "Creme de Pumpkin Colada",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_2_(B)_v3.txt",
-    "link": "sumos/sumos_pag_2_(B)_v3.html",
+    "ficheiro_txt": "sumos_pag_3_(C)_v4.txt",
+    "link": "sumos/sumos_pag_3_(C)_v4.html",
     "ingredientes": [
-      "batata-doce",
-      "beterraba",
-      "canela",
-      "laranja",
-      "lima",
-      "maçã"
+      "abóbora",
+      "ananás",
+      "especiarias",
+      "leite de coco"
     ]
   },
   {
     "id": 1242,
-    "nome": "Beterrabas e Delícias",
+    "nome": "Cremoso de Laranja e Batata‑Doce",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_2_(B)_v3.txt",
-    "link": "sumos/sumos_pag_2_(B)_v3.html",
+    "ficheiro_txt": "sumos_pag_3_(C)_v4.txt",
+    "link": "sumos/sumos_pag_3_(C)_v4.html",
     "ingredientes": [
-      "ananás",
-      "beterraba",
-      "cenoura",
-      "espinafres",
+      "aipo",
+      "batata-doce",
       "laranja",
-      "limão"
+      "maçã",
+      "pêra"
     ]
   },
   {
     "id": 1243,
-    "nome": "Brisa de Verão",
+    "nome": "Delícia de Espargos",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_2_(B)_v3.txt",
-    "link": "sumos/sumos_pag_2_(B)_v3.html",
+    "ficheiro_txt": "sumos_pag_4_(D-E)_v4.txt",
+    "link": "sumos/sumos_pag_4_(D-E)_v4.html",
     "ingredientes": [
-      "lima",
-      "manjericão",
-      "mel",
-      "pimenta caiena"
+      "aipo",
+      "cenoura",
+      "espargos"
     ]
   },
   {
     "id": 1244,
-    "nome": "Calmante para Artrite",
+    "nome": "Delícia de Funcho",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_3_(C)_v3.txt",
-    "link": "sumos/sumos_pag_3_(C)_v3.html",
+    "ficheiro_txt": "sumos_pag_4_(D-E)_v4.txt",
+    "link": "sumos/sumos_pag_4_(D-E)_v4.html",
     "ingredientes": [
-      "aipo",
-      "ananás",
+      "funcho",
       "gengibre",
-      "pepino"
+      "laranja",
+      "limão",
+      "maçã",
+      "pimenta"
     ]
   },
   {
     "id": 1245,
-    "nome": "Campo de Força",
+    "nome": "Doce e Simples",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_3_(C)_v3.txt",
-    "link": "sumos/sumos_pag_3_(C)_v3.html",
+    "ficheiro_txt": "sumos_pag_4_(D-E)_v4.txt",
+    "link": "sumos/sumos_pag_4_(D-E)_v4.html",
     "ingredientes": [
-      "couve-kale",
-      "espinafres",
-      "limão",
-      "maçã",
-      "pepino"
+      "aipo",
+      "maçã"
     ]
   },
   {
     "id": 1246,
-    "nome": "Cheio de Kale-cio (cálcio)",
+    "nome": "Energizante de Limão e Gengibre",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_3_(C)_v3.txt",
-    "link": "sumos/sumos_pag_3_(C)_v3.html",
+    "ficheiro_txt": "sumos_pag_4_(D-E)_v4.txt",
+    "link": "sumos/sumos_pag_4_(D-E)_v4.html",
     "ingredientes": [
-      "couve-kale",
+      "cenoura",
+      "gengibre",
       "limão",
-      "maçã",
-      "pepino"
+      "maçã"
     ]
   },
   {
     "id": 1247,
-    "nome": "Cítrico de Manga Delicioso",
+    "nome": "Escova de Fígado",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_3_(C)_v3.txt",
-    "link": "sumos/sumos_pag_3_(C)_v3.html",
+    "ficheiro_txt": "sumos_pag_4_(D-E)_v4.txt",
+    "link": "sumos/sumos_pag_4_(D-E)_v4.html",
     "ingredientes": [
-      "laranja",
-      "limão",
-      "manga"
+      "aipo",
+      "beterraba",
+      "cenoura",
+      "gengibre fresco",
+      "maçã"
     ]
   },
   {
     "id": 1248,
-    "nome": "Cítrico Doce e Ácido",
+    "nome": "Especiaria Dourada",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_3_(C)_v3.txt",
-    "link": "sumos/sumos_pag_3_(C)_v3.html",
+    "ficheiro_txt": "sumos_pag_4_(D-E)_v4.txt",
+    "link": "sumos/sumos_pag_4_(D-E)_v4.html",
     "ingredientes": [
-      "laranja",
-      "limão"
+      "ananás",
+      "beterraba",
+      "especiarias",
+      "gengibre",
+      "limão",
+      "maçã"
     ]
   },
   {
     "id": 1249,
-    "nome": "Cocktail para Qualquer Hora",
+    "nome": "Espinafre Esplêndido",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_3_(C)_v3.txt",
-    "link": "sumos/sumos_pag_3_(C)_v3.html",
+    "ficheiro_txt": "sumos_pag_4_(D-E)_v4.txt",
+    "link": "sumos/sumos_pag_4_(D-E)_v4.html",
     "ingredientes": [
-      "aipo",
-      "cenoura",
-      "limão",
-      "maçã"
+      "couve-kale",
+      "espinafres frescos",
+      "maçã",
+      "salsa"
     ]
   },
   {
     "id": 1250,
-    "nome": "Começo Fresco",
+    "nome": "Essência de Limão",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_3_(C)_v3.txt",
-    "link": "sumos/sumos_pag_3_(C)_v3.html",
+    "ficheiro_txt": "sumos_pag_4_(D-E)_v4.txt",
+    "link": "sumos/sumos_pag_4_(D-E)_v4.html",
     "ingredientes": [
+      "cenoura",
+      "gengibre",
       "limão",
-      "maçã",
-      "pepino"
+      "maçã"
     ]
   },
   {
     "id": 1251,
-    "nome": "Companheiro de Treino",
+    "nome": "Explosão Arco‑Íris",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_3_(C)_v3.txt",
-    "link": "sumos/sumos_pag_3_(C)_v3.html",
+    "ficheiro_txt": "sumos_pag_4_(D-E)_v4.txt",
+    "link": "sumos/sumos_pag_4_(D-E)_v4.html",
     "ingredientes": [
-      "beterraba",
       "cenoura",
+      "espinafres",
+      "gengibre",
       "limão",
-      "maçã"
+      "maçã",
+      "pepino",
+      "pêra"
     ]
   },
   {
     "id": 1252,
-    "nome": "Cordial de Abóbora",
+    "nome": "Explosão de Amora",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_3_(C)_v3.txt",
-    "link": "sumos/sumos_pag_3_(C)_v3.html",
+    "ficheiro_txt": "sumos_pag_4_(D-E)_v4.txt",
+    "link": "sumos/sumos_pag_4_(D-E)_v4.html",
     "ingredientes": [
-      "abóbora",
-      "maçã"
+      "ananás",
+      "kiwi",
+      "pimenta",
+      "pêra"
     ]
   },
   {
     "id": 1253,
-    "nome": "Corta-Nevoeiro",
+    "nome": "Explosão de Laranja",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_3_(C)_v3.txt",
-    "link": "sumos/sumos_pag_3_(C)_v3.html",
+    "ficheiro_txt": "sumos_pag_4_(D-E)_v4.txt",
+    "link": "sumos/sumos_pag_4_(D-E)_v4.html",
     "ingredientes": [
-      "gengibre",
+      "ananás",
       "laranja",
       "limão",
       "maçã"
@@ -780,36 +839,193 @@
   },
   {
     "id": 1254,
-    "nome": "Creme de Colada de Abóbora",
+    "nome": "Funcho a todo o gás",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_3_(C)_v3.txt",
-    "link": "sumos/sumos_pag_3_(C)_v3.html",
+    "ficheiro_txt": "sumos_pag_5_(F-L)_v4.txt",
+    "link": "sumos/sumos_pag_5_(F-L)_v4.html",
     "ingredientes": [
-      "abóbora",
-      "ananás",
+      "canela",
+      "funcho",
+      "laranja",
+      "limão",
+      "pimenta",
+      "pêra",
       "água"
     ]
   },
   {
     "id": 1255,
-    "nome": "Creme de Laranja",
+    "nome": "Ginger Ale Verde",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_3_(C)_v3.txt",
-    "link": "sumos/sumos_pag_3_(C)_v3.html",
+    "ficheiro_txt": "sumos_pag_5_(F-L)_v4.txt",
+    "link": "sumos/sumos_pag_5_(F-L)_v4.html",
     "ingredientes": [
+      "aipo",
+      "gengibre",
+      "lima",
+      "maçã",
+      "pepino"
+    ]
+  },
+  {
+    "id": 1256,
+    "nome": "Glória da Manhã",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_5_(F-L)_v4.txt",
+    "link": "sumos/sumos_pag_5_(F-L)_v4.html",
+    "ingredientes": [
+      "beterraba",
       "cenoura",
       "laranja"
     ]
   },
   {
-    "id": 1256,
-    "nome": "Crocante de Maçã",
+    "id": 1257,
+    "nome": "Gota de Limão",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_3_(C)_v3.txt",
-    "link": "sumos/sumos_pag_3_(C)_v3.html",
+    "ficheiro_txt": "sumos_pag_5_(F-L)_v4.txt",
+    "link": "sumos/sumos_pag_5_(F-L)_v4.html",
+    "ingredientes": [
+      "cenoura",
+      "curgete",
+      "gengibre",
+      "limão",
+      "maçã",
+      "pêra"
+    ]
+  },
+  {
+    "id": 1258,
+    "nome": "Imbatível (com Beterraba)",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_5_(F-L)_v4.txt",
+    "link": "sumos/sumos_pag_5_(F-L)_v4.html",
+    "ingredientes": [
+      "aipo",
+      "beterraba",
+      "cenoura",
+      "gengibre",
+      "maçã",
+      "pepino"
+    ]
+  },
+  {
+    "id": 1259,
+    "nome": "Impulso Verde do Shoostie",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_5_(F-L)_v4.txt",
+    "link": "sumos/sumos_pag_5_(F-L)_v4.html",
+    "ingredientes": [
+      "aipo",
+      "couve-kale",
+      "curgete",
+      "laranja",
+      "malagueta",
+      "maçã",
+      "salsa"
+    ]
+  },
+  {
+    "id": 1260,
+    "nome": "Imunidade Total",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_5_(F-L)_v4.txt",
+    "link": "sumos/sumos_pag_5_(F-L)_v4.html",
+    "ingredientes": [
+      "alho",
+      "cenoura",
+      "gengibre",
+      "maçã",
+      "salsa"
+    ]
+  },
+  {
+    "id": 1261,
+    "nome": "Jugo à Mexicana",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_5_(F-L)_v4.txt",
+    "link": "sumos/sumos_pag_5_(F-L)_v4.html",
+    "ingredientes": [
+      "coentros",
+      "lima",
+      "maçã",
+      "pepino",
+      "pimento verde"
+    ]
+  },
+  {
+    "id": 1262,
+    "nome": "Julep de Morango e Hortelã",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_5_(F-L)_v4.txt",
+    "link": "sumos/sumos_pag_5_(F-L)_v4.html",
+    "ingredientes": [
+      "chá verde",
+      "limão",
+      "maçã",
+      "mel",
+      "morangos",
+      "pimenta"
+    ]
+  },
+  {
+    "id": 1263,
+    "nome": "Limonada Festiva",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_5_(F-L)_v4.txt",
+    "link": "sumos/sumos_pag_5_(F-L)_v4.html",
+    "ingredientes": [
+      "gengibre",
+      "laranja",
+      "limão",
+      "maçã"
+    ]
+  },
+  {
+    "id": 1264,
+    "nome": "Limonada Verde",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_5_(F-L)_v4.txt",
+    "link": "sumos/sumos_pag_5_(F-L)_v4.html",
+    "ingredientes": [
+      "couve-kale",
+      "espinafres",
+      "limão",
+      "maçã",
+      "pepino"
+    ]
+  },
+  {
+    "id": 1265,
+    "nome": "Louco por Melão Cantalupo",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_5_(F-L)_v4.txt",
+    "link": "sumos/sumos_pag_5_(F-L)_v4.html",
+    "ingredientes": [
+      "manga",
+      "melão",
+      "pimenta"
+    ]
+  },
+  {
+    "id": 1266,
+    "nome": "Maçã Crocante",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_6_(M-O)_v4.txt",
+    "link": "sumos/sumos_pag_6_(M-O)_v4.html",
     "ingredientes": [
       "aipo",
       "laranja",
@@ -817,267 +1033,159 @@
     ]
   },
   {
-    "id": 1257,
-    "nome": "Delícia de Espargos",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_4_(D-E)_v3.txt",
-    "link": "sumos/sumos_pag_4_(D-E)_v3.html",
-    "ingredientes": [
-      "espargos",
-      "limão",
-      "maçã"
-    ]
-  },
-  {
-    "id": 1258,
-    "nome": "Doce Conforto do Sul",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_4_(D-E)_v3.txt",
-    "link": "sumos/sumos_pag_4_(D-E)_v3.html",
-    "ingredientes": [
-      "batata-doce",
-      "canela",
-      "maçã",
-      "pêra"
-    ]
-  },
-  {
-    "id": 1259,
-    "nome": "Doce e Simples",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_4_(D-E)_v3.txt",
-    "link": "sumos/sumos_pag_4_(D-E)_v3.html",
-    "ingredientes": [
-      "cenoura",
-      "maçã"
-    ]
-  },
-  {
-    "id": 1260,
-    "nome": "Esmagador de Laranja",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_4_(D-E)_v3.txt",
-    "link": "sumos/sumos_pag_4_(D-E)_v3.html",
-    "ingredientes": [
-      "laranja"
-    ]
-  },
-  {
-    "id": 1261,
-    "nome": "Especiaria Dourada",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_4_(D-E)_v3.txt",
-    "link": "sumos/sumos_pag_4_(D-E)_v3.html",
-    "ingredientes": [
-      "cenoura",
-      "curcuma",
-      "gengibre",
-      "maçã"
-    ]
-  },
-  {
-    "id": 1262,
-    "nome": "Especiaria Vermelha Picante",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_4_(D-E)_v3.txt",
-    "link": "sumos/sumos_pag_4_(D-E)_v3.html",
-    "ingredientes": [
-      "beterraba",
-      "gengibre",
-      "limão",
-      "maçã"
-    ]
-  },
-  {
-    "id": 1263,
-    "nome": "Espinafres Esplêndidos",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_4_(D-E)_v3.txt",
-    "link": "sumos/sumos_pag_4_(D-E)_v3.html",
-    "ingredientes": [
-      "espinafres",
-      "maçã",
-      "pepino"
-    ]
-  },
-  {
-    "id": 1264,
-    "nome": "Essência de Limão",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_4_(D-E)_v3.txt",
-    "link": "sumos/sumos_pag_4_(D-E)_v3.html",
-    "ingredientes": [
-      "maçã"
-    ]
-  },
-  {
-    "id": 1265,
-    "nome": "Explosão Arco-Íris",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_4_(D-E)_v3.txt",
-    "link": "sumos/sumos_pag_4_(D-E)_v3.html",
-    "ingredientes": [
-      "beterraba",
-      "cenoura",
-      "maçã",
-      "pepino"
-    ]
-  },
-  {
-    "id": 1266,
-    "nome": "Explosão de Amora",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_4_(D-E)_v3.txt",
-    "link": "sumos/sumos_pag_4_(D-E)_v3.html",
-    "ingredientes": [
-      "maçã"
-    ]
-  },
-  {
     "id": 1267,
-    "nome": "Explosão de Coco",
+    "nome": "Maçã e Morango Cremoso",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_4_(D-E)_v3.txt",
-    "link": "sumos/sumos_pag_4_(D-E)_v3.html",
+    "ficheiro_txt": "sumos_pag_6_(M-O)_v4.txt",
+    "link": "sumos/sumos_pag_6_(M-O)_v4.html",
     "ingredientes": [
-      "ananás"
-    ]
-  },
-  {
-    "id": 1268,
-    "nome": "Frutos Vermelhos com Hortelã",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_5_(F-I)_v3.txt",
-    "link": "sumos/sumos_pag_5_(F-I)_v3.html",
-    "ingredientes": [
-      "maçã",
-      "morangos",
-      "pimenta"
-    ]
-  },
-  {
-    "id": 1269,
-    "nome": "Frutos Vermelhos Irresistíveis",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_5_(F-I)_v3.txt",
-    "link": "sumos/sumos_pag_5_(F-I)_v3.html",
-    "ingredientes": [
+      "cenoura",
       "maçã",
       "morangos"
     ]
   },
   {
-    "id": 1270,
-    "nome": "Funcho a Todo o Gás",
+    "id": 1268,
+    "nome": "Melão de Verão",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_5_(F-I)_v3.txt",
-    "link": "sumos/sumos_pag_5_(F-I)_v3.html",
+    "ficheiro_txt": "sumos_pag_6_(M-O)_v4.txt",
+    "link": "sumos/sumos_pag_6_(M-O)_v4.html",
     "ingredientes": [
-      "funcho",
+      "melão",
+      "tomate"
+    ]
+  },
+  {
+    "id": 1269,
+    "nome": "Mirtilo Vegetal",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_6_(M-O)_v4.txt",
+    "link": "sumos/sumos_pag_6_(M-O)_v4.html",
+    "ingredientes": [
+      "brócolo",
+      "cenoura",
+      "maçã",
+      "tomate"
+    ]
+  },
+  {
+    "id": 1270,
+    "nome": "Mistura de Pêssego",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_6_(M-O)_v4.txt",
+    "link": "sumos/sumos_pag_6_(M-O)_v4.html",
+    "ingredientes": [
+      "cenoura",
       "laranja",
+      "limão",
       "maçã"
     ]
   },
   {
     "id": 1271,
-    "nome": "Funcho Delicioso",
+    "nome": "Mistura Pôr‑do‑Sol",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_5_(F-I)_v3.txt",
-    "link": "sumos/sumos_pag_5_(F-I)_v3.html",
+    "ficheiro_txt": "sumos_pag_6_(M-O)_v4.txt",
+    "link": "sumos/sumos_pag_6_(M-O)_v4.html",
     "ingredientes": [
-      "funcho",
-      "maçã"
-    ]
-  },
-  {
-    "id": 1272,
-    "nome": "Ginger Ale Verde",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_5_(F-I)_v3.txt",
-    "link": "sumos/sumos_pag_5_(F-I)_v3.html",
-    "ingredientes": [
-      "gengibre",
-      "limão",
-      "maçã",
-      "pepino"
-    ]
-  },
-  {
-    "id": 1273,
-    "nome": "Glória da Manhã",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_5_(F-I)_v3.txt",
-    "link": "sumos/sumos_pag_5_(F-I)_v3.html",
-    "ingredientes": [
+      "batata-doce",
+      "beterraba",
       "cenoura",
       "laranja",
       "maçã"
     ]
   },
   {
-    "id": 1274,
-    "nome": "Gota de Limão",
+    "id": 1272,
+    "nome": "Morango, Ananás e Hortelã",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_5_(F-I)_v3.txt",
-    "link": "sumos/sumos_pag_5_(F-I)_v3.html",
+    "ficheiro_txt": "sumos_pag_6_(M-O)_v4.txt",
+    "link": "sumos/sumos_pag_6_(M-O)_v4.html",
     "ingredientes": [
-      "maçã"
+      "ananás",
+      "morangos",
+      "pimenta",
+      "pêra"
     ]
   },
   {
-    "id": 1275,
-    "nome": "Imbatível de Beterraba",
+    "id": 1273,
+    "nome": "Não Te Esqueças das Raízes",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_5_(F-I)_v3.txt",
-    "link": "sumos/sumos_pag_5_(F-I)_v3.html",
+    "ficheiro_txt": "sumos_pag_6_(M-O)_v4.txt",
+    "link": "sumos/sumos_pag_6_(M-O)_v4.html",
     "ingredientes": [
+      "batata-doce",
       "beterraba",
-      "limão",
-      "maçã"
+      "cenoura"
     ]
   },
   {
-    "id": 1276,
-    "nome": "Impulso Verde da Shoostie",
+    "id": 1274,
+    "nome": "O Fiel Companheiro",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_5_(F-I)_v3.txt",
-    "link": "sumos/sumos_pag_5_(F-I)_v3.html",
+    "ficheiro_txt": "sumos_pag_6_(M-O)_v4.txt",
+    "link": "sumos/sumos_pag_6_(M-O)_v4.html",
     "ingredientes": [
-      "espinafres",
+      "aipo",
+      "couve-kale",
+      "gengibre fresco",
+      "laranja",
       "limão",
       "maçã",
       "pepino"
     ]
   },
   {
-    "id": 1277,
-    "nome": "Imunidade Total",
+    "id": 1275,
+    "nome": "O Homem do Sumo Dourado",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_5_(F-I)_v3.txt",
-    "link": "sumos/sumos_pag_5_(F-I)_v3.html",
+    "ficheiro_txt": "sumos_pag_6_(M-O)_v4.txt",
+    "link": "sumos/sumos_pag_6_(M-O)_v4.html",
     "ingredientes": [
+      "aipo",
+      "beterraba",
       "cenoura",
+      "gengibre fresco",
+      "pepino",
+      "pêra"
+    ]
+  },
+  {
+    "id": 1276,
+    "nome": "O Que Muda o Jogo",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_6_(M-O)_v4.txt",
+    "link": "sumos/sumos_pag_6_(M-O)_v4.html",
+    "ingredientes": [
+      "ananás",
+      "espinafres",
+      "gengibre fresco",
+      "laranja",
+      "lima",
+      "pepino",
+      "pimenta"
+    ]
+  },
+  {
+    "id": 1277,
+    "nome": "Orange Crush",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_6_(M-O)_v4.txt",
+    "link": "sumos/sumos_pag_6_(M-O)_v4.html",
+    "ingredientes": [
+      "ananás",
       "laranja",
       "limão",
       "maçã"
@@ -1085,441 +1193,361 @@
   },
   {
     "id": 1278,
-    "nome": "Julep de Morango e Hortelã",
+    "nome": "Paixão Roxa",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_6_(J-L)_v3.txt",
-    "link": "sumos/sumos_pag_6_(J-L)_v3.html",
+    "ficheiro_txt": "sumos_pag_7_(P)_v4.txt",
+    "link": "sumos/sumos_pag_7_(P)_v4.html",
     "ingredientes": [
-      "hortelã",
-      "limão",
-      "maçã",
-      "morangos"
-    ]
-  },
-  {
-    "id": 1279,
-    "nome": "Lembrando os ABCs",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_6_(J-L)_v3.txt",
-    "link": "sumos/sumos_pag_6_(J-L)_v3.html",
-    "ingredientes": [
-      "beterraba",
-      "cenoura",
+      "lima",
       "maçã"
     ]
   },
   {
-    "id": 1280,
-    "nome": "Limão e Gengibre Revigorante",
+    "id": 1279,
+    "nome": "Pantera Cor-de-Rosa",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_6_(J-L)_v3.txt",
-    "link": "sumos/sumos_pag_6_(J-L)_v3.html",
+    "ficheiro_txt": "sumos_pag_7_(P)_v4.txt",
+    "link": "sumos/sumos_pag_7_(P)_v4.html",
     "ingredientes": [
+      "laranja",
+      "maçã",
+      "mel",
+      "morangos"
+    ]
+  },
+  {
+    "id": 1280,
+    "nome": "Paraíso de Gengibre",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_7_(P)_v4.txt",
+    "link": "sumos/sumos_pag_7_(P)_v4.html",
+    "ingredientes": [
+      "cenoura",
       "gengibre",
       "maçã"
     ]
   },
   {
     "id": 1281,
-    "nome": "Limonada Festiva",
+    "nome": "Pequeno-Almoço Verde",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_6_(J-L)_v3.txt",
-    "link": "sumos/sumos_pag_6_(J-L)_v3.html",
+    "ficheiro_txt": "sumos_pag_7_(P)_v4.txt",
+    "link": "sumos/sumos_pag_7_(P)_v4.html",
     "ingredientes": [
-      "maçã"
-    ]
-  },
-  {
-    "id": 1282,
-    "nome": "Limonada Verde",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_6_(J-L)_v3.txt",
-    "link": "sumos/sumos_pag_6_(J-L)_v3.html",
-    "ingredientes": [
+      "cenoura",
       "espinafres",
       "maçã",
-      "pepino"
-    ]
-  },
-  {
-    "id": 1283,
-    "nome": "Limpador do Fígado",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_6_(J-L)_v3.txt",
-    "link": "sumos/sumos_pag_6_(J-L)_v3.html",
-    "ingredientes": [
-      "aipo",
-      "beterraba",
-      "cenoura",
-      "gengibre",
-      "maçã"
-    ]
-  },
-  {
-    "id": 1284,
-    "nome": "Louco por Cantalupe",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_6_(J-L)_v3.txt",
-    "link": "sumos/sumos_pag_6_(J-L)_v3.html",
-    "ingredientes": [
-      "limão",
-      "maçã",
-      "melão"
-    ]
-  },
-  {
-    "id": 1285,
-    "nome": "Maçã e Frutos Vermelhos Cremoso",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_7_(M-O)_v3.txt",
-    "link": "sumos/sumos_pag_7_(M-O)_v3.html",
-    "ingredientes": [
-      "maçã",
-      "morangos"
-    ]
-  },
-  {
-    "id": 1286,
-    "nome": "Melão de Verão",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_7_(M-O)_v3.txt",
-    "link": "sumos/sumos_pag_7_(M-O)_v3.html",
-    "ingredientes": [
-      "limão",
-      "maçã",
-      "melão"
-    ]
-  },
-  {
-    "id": 1287,
-    "nome": "Mistura de Pêssego",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_7_(M-O)_v3.txt",
-    "link": "sumos/sumos_pag_7_(M-O)_v3.html",
-    "ingredientes": [
-      "limão",
-      "maçã"
-    ]
-  },
-  {
-    "id": 1288,
-    "nome": "Mistura do Pôr do Sol",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_7_(M-O)_v3.txt",
-    "link": "sumos/sumos_pag_7_(M-O)_v3.html",
-    "ingredientes": [
-      "cenoura",
-      "laranja",
-      "maçã"
-    ]
-  },
-  {
-    "id": 1289,
-    "nome": "Morango–Ananás–Hortelã",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_7_(M-O)_v3.txt",
-    "link": "sumos/sumos_pag_7_(M-O)_v3.html",
-    "ingredientes": [
-      "ananás",
-      "hortelã",
-      "morangos"
-    ]
-  },
-  {
-    "id": 1290,
-    "nome": "Não Esqueças as Tuas Raízes",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_7_(M-O)_v3.txt",
-    "link": "sumos/sumos_pag_7_(M-O)_v3.html",
-    "ingredientes": [
-      "beterraba",
-      "cenoura",
-      "limão",
-      "maçã"
-    ]
-  },
-  {
-    "id": 1291,
-    "nome": "Nascer do Sol com Curcuma",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_7_(M-O)_v3.txt",
-    "link": "sumos/sumos_pag_7_(M-O)_v3.html",
-    "ingredientes": [
-      "curcuma",
-      "laranja",
-      "maçã"
-    ]
-  },
-  {
-    "id": 1292,
-    "nome": "O Abre-olhos",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_7_(M-O)_v3.txt",
-    "link": "sumos/sumos_pag_7_(M-O)_v3.html",
-    "ingredientes": [
-      "laranja",
-      "limão",
-      "maçã"
-    ]
-  },
-  {
-    "id": 1293,
-    "nome": "O Braço Direito",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_7_(M-O)_v3.txt",
-    "link": "sumos/sumos_pag_7_(M-O)_v3.html",
-    "ingredientes": [
-      "aipo",
-      "maçã",
-      "pepino"
-    ]
-  },
-  {
-    "id": 1294,
-    "nome": "O Homem com o Sumo Dourado",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_7_(M-O)_v3.txt",
-    "link": "sumos/sumos_pag_7_(M-O)_v3.html",
-    "ingredientes": [
-      "gengibre",
-      "laranja",
-      "maçã"
-    ]
-  },
-  {
-    "id": 1295,
-    "nome": "O Revolucionário",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_7_(M-O)_v3.txt",
-    "link": "sumos/sumos_pag_7_(M-O)_v3.html",
-    "ingredientes": [
-      "espinafres",
-      "limão",
-      "maçã",
-      "pepino"
-    ]
-  },
-  {
-    "id": 1296,
-    "nome": "Paixão Roxa",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_8_(P)_v3.txt",
-    "link": "sumos/sumos_pag_8_(P)_v3.html",
-    "ingredientes": [
-      "maçã",
+      "pepino",
+      "pimento verde",
+      "tomate",
       "uvas"
     ]
   },
   {
-    "id": 1297,
-    "nome": "Pantera Cor-de-Rosa",
+    "id": 1282,
+    "nome": "Pêra Perfeita",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_8_(P)_v3.txt",
-    "link": "sumos/sumos_pag_8_(P)_v3.html",
+    "ficheiro_txt": "sumos_pag_7_(P)_v4.txt",
+    "link": "sumos/sumos_pag_7_(P)_v4.html",
     "ingredientes": [
-      "limão",
-      "maçã",
-      "morangos"
-    ]
-  },
-  {
-    "id": 1298,
-    "nome": "Paraíso de Gengibre",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_8_(P)_v3.txt",
-    "link": "sumos/sumos_pag_8_(P)_v3.html",
-    "ingredientes": [
-      "gengibre",
-      "laranja",
-      "maçã"
-    ]
-  },
-  {
-    "id": 1299,
-    "nome": "Pequeno-Almoço Verde",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_8_(P)_v3.txt",
-    "link": "sumos/sumos_pag_8_(P)_v3.html",
-    "ingredientes": [
+      "aipo",
+      "canela",
       "espinafres",
+      "laranja",
       "limão",
       "maçã",
-      "pepino"
-    ]
-  },
-  {
-    "id": 1300,
-    "nome": "Perfeição de Pêra",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_8_(P)_v3.txt",
-    "link": "sumos/sumos_pag_8_(P)_v3.html",
-    "ingredientes": [
-      "limão",
+      "pepino",
       "pêra"
     ]
   },
   {
-    "id": 1301,
+    "id": 1283,
     "nome": "Pêssego Interior",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_8_(P)_v3.txt",
-    "link": "sumos/sumos_pag_8_(P)_v3.html",
+    "ficheiro_txt": "sumos_pag_7_(P)_v4.txt",
+    "link": "sumos/sumos_pag_7_(P)_v4.html",
     "ingredientes": [
-      "maçã"
+      "laranja",
+      "limão",
+      "maçã",
+      "água"
     ]
   },
   {
-    "id": 1302,
+    "id": 1284,
     "nome": "Pêssego Perfeito",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_8_(P)_v3.txt",
-    "link": "sumos/sumos_pag_8_(P)_v3.html",
+    "ficheiro_txt": "sumos_pag_7_(P)_v4.txt",
+    "link": "sumos/sumos_pag_7_(P)_v4.html",
     "ingredientes": [
-      "laranja"
+      "cenoura",
+      "limão",
+      "manjericão"
     ]
   },
   {
-    "id": 1303,
+    "id": 1285,
+    "nome": "Picante Vermelho Cítrico",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_7_(P)_v4.txt",
+    "link": "sumos/sumos_pag_7_(P)_v4.html",
+    "ingredientes": [
+      "aipo",
+      "beterraba",
+      "cenoura",
+      "espinafres",
+      "gengibre",
+      "lima",
+      "malagueta"
+    ]
+  },
+  {
+    "id": 1286,
+    "nome": "Pina-Manga Deliciosa",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_7_(P)_v4.txt",
+    "link": "sumos/sumos_pag_7_(P)_v4.html",
+    "ingredientes": [
+      "ananás",
+      "batata-doce",
+      "lima",
+      "manga"
+    ]
+  },
+  {
+    "id": 1287,
+    "nome": "Pizazz de Romã",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_7_(P)_v4.txt",
+    "link": "sumos/sumos_pag_7_(P)_v4.html",
+    "ingredientes": [
+      "laranja",
+      "limão",
+      "maçã",
+      "pepino",
+      "romã"
+    ]
+  },
+  {
+    "id": 1288,
     "nome": "Pizza Líquida",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_8_(P)_v3.txt",
-    "link": "sumos/sumos_pag_8_(P)_v3.html",
+    "ficheiro_txt": "sumos_pag_7_(P)_v4.txt",
+    "link": "sumos/sumos_pag_7_(P)_v4.html",
     "ingredientes": [
-      "aipo",
+      "cebolinho",
+      "couve-flor",
       "manjericão",
-      "pimento verde",
-      "tomate"
+      "pepino",
+      "tomate cereja"
     ]
   },
   {
-    "id": 1304,
+    "id": 1289,
+    "nome": "Plus de Romã",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_7_(P)_v4.txt",
+    "link": "sumos/sumos_pag_7_(P)_v4.html",
+    "ingredientes": [
+      "limão",
+      "romã"
+    ]
+  },
+  {
+    "id": 1290,
+    "nome": "Poção do Coelhinho",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_7_(P)_v4.txt",
+    "link": "sumos/sumos_pag_7_(P)_v4.html",
+    "ingredientes": [
+      "ananás",
+      "cenoura",
+      "limão",
+      "pimenta"
+    ]
+  },
+  {
+    "id": 1291,
+    "nome": "Poder das Flores",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_7_(P)_v4.txt",
+    "link": "sumos/sumos_pag_7_(P)_v4.html",
+    "ingredientes": [
+      "alho",
+      "ananás",
+      "coentros",
+      "couve-de-bruxelas",
+      "espinafres",
+      "laranja",
+      "pepino",
+      "salsa"
+    ]
+  },
+  {
+    "id": 1292,
     "nome": "Poder do Popeye",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_8_(P)_v3.txt",
-    "link": "sumos/sumos_pag_8_(P)_v3.html",
+    "ficheiro_txt": "sumos_pag_7_(P)_v4.txt",
+    "link": "sumos/sumos_pag_7_(P)_v4.html",
     "ingredientes": [
       "espinafres",
+      "lima",
       "maçã",
       "pepino"
     ]
   },
   {
-    "id": 1305,
-    "nome": "Poder Floral",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_8_(P)_v3.txt",
-    "link": "sumos/sumos_pag_8_(P)_v3.html",
-    "ingredientes": [
-      "limão",
-      "maçã",
-      "pêra"
-    ]
-  },
-  {
-    "id": 1306,
+    "id": 1293,
     "nome": "Poder Roxo",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_8_(P)_v3.txt",
-    "link": "sumos/sumos_pag_8_(P)_v3.html",
+    "ficheiro_txt": "sumos_pag_7_(P)_v4.txt",
+    "link": "sumos/sumos_pag_7_(P)_v4.html",
     "ingredientes": [
-      "beterraba",
-      "maçã"
+      "aipo",
+      "gengibre",
+      "limão",
+      "maçã",
+      "uvas",
+      "vinagre"
     ]
   },
   {
-    "id": 1307,
+    "id": 1294,
     "nome": "Poder Verde",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_8_(P)_v3.txt",
-    "link": "sumos/sumos_pag_8_(P)_v3.html",
+    "ficheiro_txt": "sumos_pag_7_(P)_v4.txt",
+    "link": "sumos/sumos_pag_7_(P)_v4.html",
     "ingredientes": [
-      "espinafres",
+      "abacate",
+      "ananás",
+      "couve-kale",
+      "gengibre",
+      "laranja",
       "limão",
-      "maçã",
-      "pepino"
+      "pêra",
+      "salsa"
     ]
   },
   {
-    "id": 1308,
-    "nome": "Ponche de Fruta com um Toque Especial",
+    "id": 1295,
+    "nome": "Ponche Frutado com um Toque",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_8_(P)_v3.txt",
-    "link": "sumos/sumos_pag_8_(P)_v3.html",
+    "ficheiro_txt": "sumos_pag_7_(P)_v4.txt",
+    "link": "sumos/sumos_pag_7_(P)_v4.html",
     "ingredientes": [
       "ananás",
+      "kiwi",
       "laranja",
+      "lima",
+      "limão",
       "maçã"
     ]
   },
   {
-    "id": 1309,
+    "id": 1296,
+    "nome": "Prazer da Manhã",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_7_(P)_v4.txt",
+    "link": "sumos/sumos_pag_7_(P)_v4.html",
+    "ingredientes": [
+      "aipo",
+      "batata-doce",
+      "cenoura",
+      "curcuma",
+      "gengibre",
+      "laranja",
+      "limão",
+      "maçã"
+    ]
+  },
+  {
+    "id": 1297,
     "nome": "Raiz Quadrada",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_8_(P)_v3.txt",
-    "link": "sumos/sumos_pag_8_(P)_v3.html",
-    "ingredientes": [
-      "beterraba",
-      "cenoura",
-      "limão",
-      "maçã"
-    ]
-  },
-  {
-    "id": 1310,
-    "nome": "Square Root",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_9_(R)_v3.txt",
-    "link": "sumos/sumos_pag_9_(R)_v3.html",
+    "ficheiro_txt": "sumos_pag_8_(R)_v4.txt",
+    "link": "sumos/sumos_pag_8_(R)_v4.html",
     "ingredientes": [
       "aipo",
       "batata-doce",
       "beterraba",
       "cenoura",
+      "curgete",
       "gengibre",
       "laranja",
       "maçã"
     ]
   },
   {
-    "id": 1311,
-    "nome": "Recuperação Pós-Ressaca",
+    "id": 1298,
+    "nome": "Receita Original de V-8",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_9_(R)_v3.txt",
-    "link": "sumos/sumos_pag_9_(R)_v3.html",
+    "ficheiro_txt": "sumos_pag_8_(R)_v4.txt",
+    "link": "sumos/sumos_pag_8_(R)_v4.html",
+    "ingredientes": [
+      "aipo",
+      "cenoura",
+      "espinafres",
+      "pepino",
+      "pimento verde",
+      "salsa",
+      "tomate"
+    ]
+  },
+  {
+    "id": 1299,
+    "nome": "Refresco Verde",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_8_(R)_v4.txt",
+    "link": "sumos/sumos_pag_8_(R)_v4.html",
+    "ingredientes": [
+      "aipo",
+      "couve-kale",
+      "espinafres",
+      "limão",
+      "maçã"
+    ]
+  },
+  {
+    "id": 1300,
+    "nome": "Ressaca Amena",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_8_(R)_v4.txt",
+    "link": "sumos/sumos_pag_8_(R)_v4.html",
+    "ingredientes": [
+      "limão",
+      "melão"
+    ]
+  },
+  {
+    "id": 1301,
+    "nome": "Ressaca Suave",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_8_(R)_v4.txt",
+    "link": "sumos/sumos_pag_8_(R)_v4.html",
     "ingredientes": [
       "aipo",
       "beterraba",
@@ -1528,12 +1556,12 @@
     ]
   },
   {
-    "id": 1312,
-    "nome": "Refúgio de Beterraba",
+    "id": 1302,
+    "nome": "Retiro de Beterraba",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_9_(R)_v3.txt",
-    "link": "sumos/sumos_pag_9_(R)_v3.html",
+    "ficheiro_txt": "sumos_pag_8_(R)_v4.txt",
+    "link": "sumos/sumos_pag_8_(R)_v4.html",
     "ingredientes": [
       "beterraba",
       "cenoura",
@@ -1543,33 +1571,186 @@
     ]
   },
   {
-    "id": 1313,
-    "nome": "Romã Extra",
-    "tipo": "sumos",
-    "dieta": "",
-    "ficheiro_txt": "sumos_pag_9_(R)_v3.txt",
-    "link": "sumos/sumos_pag_9_(R)_v3.html",
-    "ingredientes": [
-      "laranja",
-      "limão",
-      "maçã",
-      "pepino",
-      "romã"
-    ]
-  },
-  {
-    "id": 1314,
+    "id": 1303,
     "nome": "Romã Rosa",
     "tipo": "sumos",
     "dieta": "",
-    "ficheiro_txt": "sumos_pag_9_(R)_v3.txt",
-    "link": "sumos/sumos_pag_9_(R)_v3.html",
+    "ficheiro_txt": "sumos_pag_8_(R)_v4.txt",
+    "link": "sumos/sumos_pag_8_(R)_v4.html",
     "ingredientes": [
       "gengibre",
       "laranja",
       "limão",
       "maçã",
       "romã"
+    ]
+  },
+  {
+    "id": 1304,
+    "nome": "Salpico de Coco",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_9_(S)_v4.txt",
+    "link": "sumos/sumos_pag_9_(S)_v4.html",
+    "ingredientes": [
+      "laranja"
+    ]
+  },
+  {
+    "id": 1305,
+    "nome": "Salsa Fresca",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_9_(S)_v4.txt",
+    "link": "sumos/sumos_pag_9_(S)_v4.html",
+    "ingredientes": [
+      "aipo",
+      "alho",
+      "cebolinho",
+      "coentros",
+      "pimenta caiena",
+      "pimento vermelho",
+      "sal",
+      "tomate"
+    ]
+  },
+  {
+    "id": 1306,
+    "nome": "Sangue de Dragão",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_9_(S)_v4.txt",
+    "link": "sumos/sumos_pag_9_(S)_v4.html",
+    "ingredientes": [
+      "limão",
+      "pêra"
+    ]
+  },
+  {
+    "id": 1307,
+    "nome": "Sangue do Hulk",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_9_(S)_v4.txt",
+    "link": "sumos/sumos_pag_9_(S)_v4.html",
+    "ingredientes": [
+      "abacate",
+      "aipo",
+      "espinafres",
+      "lima",
+      "maçã",
+      "uvas"
+    ]
+  },
+  {
+    "id": 1308,
+    "nome": "Sensação Cítrica",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_9_(S)_v4.txt",
+    "link": "sumos/sumos_pag_9_(S)_v4.html",
+    "ingredientes": [
+      "maçã"
+    ]
+  },
+  {
+    "id": 1309,
+    "nome": "Sonho de Noite de Verão",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_9_(S)_v4.txt",
+    "link": "sumos/sumos_pag_9_(S)_v4.html",
+    "ingredientes": [
+      "lima",
+      "mel",
+      "morangos",
+      "pimenta"
+    ]
+  },
+  {
+    "id": 1310,
+    "nome": "Sumo de Sensibilização para o Cancro da Mama",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_9_(S)_v4.txt",
+    "link": "sumos/sumos_pag_9_(S)_v4.html",
+    "ingredientes": [
+      "limão",
+      "mel",
+      "tomate"
+    ]
+  },
+  {
+    "id": 1311,
+    "nome": "Sumo Fortificante do Sangue do Dr. Schulze",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_9_(S)_v4.txt",
+    "link": "sumos/sumos_pag_9_(S)_v4.html",
+    "ingredientes": [
+      "beterraba",
+      "cenoura",
+      "couve-kale"
+    ]
+  },
+  {
+    "id": 1312,
+    "nome": "Sumo Harry Potter",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_9_(S)_v4.txt",
+    "link": "sumos/sumos_pag_9_(S)_v4.html",
+    "ingredientes": [
+      "abóbora",
+      "ananás",
+      "canela",
+      "cenoura",
+      "maçã"
+    ]
+  },
+  {
+    "id": 1313,
+    "nome": "Sumo Hora de Dormir",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_9_(S)_v4.txt",
+    "link": "sumos/sumos_pag_9_(S)_v4.html",
+    "ingredientes": [
+      "aipo",
+      "mel"
+    ]
+  },
+  {
+    "id": 1314,
+    "nome": "Sumo Verde da Martha Stewart",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_9_(S)_v4.txt",
+    "link": "sumos/sumos_pag_9_(S)_v4.html",
+    "ingredientes": [
+      "aipo",
+      "espinafres",
+      "gengibre",
+      "maçã",
+      "pepino",
+      "pêra",
+      "salsa"
+    ]
+  },
+  {
+    "id": 1315,
+    "nome": "Sumo Verde de Treino da Tracee",
+    "tipo": "sumos",
+    "dieta": "",
+    "ficheiro_txt": "sumos_pag_9_(S)_v4.txt",
+    "link": "sumos/sumos_pag_9_(S)_v4.html",
+    "ingredientes": [
+      "aipo",
+      "couve-kale",
+      "dente-de-leão",
+      "limão",
+      "maçã",
+      "pepino"
     ]
   }
 ]
