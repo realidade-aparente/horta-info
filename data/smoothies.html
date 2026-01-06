@@ -2,24 +2,24 @@
 <html lang="pt-PT">
 <head>
   <meta charset="UTF-8">
-  <title>Receitas de refeições com [Ingredientes selecionados]</title>
+  <title>Receitas de Smoothies com [Ingredientes selecionados]</title>
   <link rel="stylesheet" href="../style.css">
 </head>
-<body class="page-refeicoes">
+<body class="page-smoothies">
   <header class="site-header">
-    <h1>Refeições com [Ingredientes selecionados]</h1>
+    <h1>Smoothies com [Ingredientes selecionados]</h1>
     <nav>
-      <a href="../index.html">Início</a>
+      <a href="index.html">Início</a>
       <a href="refeicoes.html">Refeições</a>
-	  <a href="sumos.html">Sumos (brevemente)</a>
-      <a href="smoothies.html">Smoothies (brevemente)</a>
+      <a href="sumos.html">Sumos</a>
+      <a href="smoothies.html">Smoothies</a>
     </nav>
   </header>
 
-  <section class="banner banner-refeicoes">
+  <section class="banner banner-smoothies">
     <div class="banner-content">
-      <h2>Receitas de refeições</h2>
-      <p>Descobre receitas de refeições completas, filtradas pelos ingredientes que tens em casa.</p>
+      <h2>Receitas de smoothies</h2>
+      <p>Cremosos, nutritivos e cheios de frutas, vegetais e outros ingredientes.</p>
     </div>
   </section>
 
@@ -27,20 +27,18 @@
     <section>
       <h2>Filtros de dieta</h2>
       <div id="filtros-dieta" class="filtros-dieta">
+        <!--<label>
+          <input type="checkbox" value="vegetariana">
+          Vegetarianas
+        </label>
         <label>
-			<input type="checkbox" id="chk-vegetariana">
-			Vegetariana
-		</label>
-
-		<label>
-			<input type="checkbox" id="chk-vegan">
-			Vegan
-		</label>
-
-		<label>
-			<input type="checkbox" id="chk-raw-vegan">
-			Raw vegan
-		</label>
+          <input type="checkbox" value="vegan">
+          Vegan
+        </label>
+        <label>
+          <input type="checkbox" value="raw-vegan">
+          Raw vegan
+        </label> -->
       
     
     
@@ -56,10 +54,9 @@
 
     <section>
       <h2>Escolhe os ingredientes</h2>
-      <p>Marca os ingredientes que tens em casa e vê as receitas possíveis.
-	  <div id="contador-ingredientes" class="contador-ingredientes">(0 ingredientes disponíveis)</div></p>
-      
-	  <div id="lista-ingredientes" class="lista-ingredientes">
+      <p>Marca os ingredientes que tens em casa e vê as receitas possíveis.</p>
+      <div id="contador-ingredientes" class="contador-ingredientes">(0 ingredientes disponíveis)</div></p>
+      <div id="lista-ingredientes" class="lista-ingredientes">
       </div>
 
       <div class="botoes-acoes">
@@ -86,11 +83,11 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 – Receitas com [Plantas]</p>
+    <p>&copy; 2025 – Receitas com [Planta]</p>
   </footer>
 
   <script>
-    const RECIPE_JSON_URL = "refeicoes/receitas_refeicoes.json";
+    const RECIPE_JSON_URL = "smoothies/receitas_smoothies.json";
   </script>
   <script src="../receitas_com_contador_e_link_v2.js"></script>
 </body>
