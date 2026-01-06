@@ -1,1 +1,5402 @@
-[]
+[
+  {
+    "id": 1198,
+    "nome": "Smoothie de maçã com caramelo",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "aveia",
+      "caju",
+      "canela",
+      "maçã",
+      "sal marinho",
+      "tâmaras"
+    ]
+  },
+  {
+    "id": 1199,
+    "nome": "Smoothie de maçã e banana com canela",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana",
+      "manteiga",
+      "noz-moscada"
+    ]
+  },
+  {
+    "id": 1200,
+    "nome": "Smoothie de maca e matcha",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "abacate",
+      "ananás",
+      "banana",
+      "chá verde",
+      "extrato de baunilha",
+      "gengibre fresco",
+      "maçã",
+      "tâmaras",
+      "água"
+    ]
+  },
+  {
+    "id": 1201,
+    "nome": "Batidos de maçã verde com kiwi, lima, pepino, hortelã e lavanda",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "hortelã",
+      "kiwi",
+      "lima",
+      "maçã",
+      "pepino"
+    ]
+  },
+  {
+    "id": 1202,
+    "nome": "Smoothie de maçã, cenoura e laranja",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "açafrão",
+      "cenoura",
+      "laranja",
+      "manga",
+      "maçã",
+      "água"
+    ]
+  },
+  {
+    "id": 1203,
+    "nome": "Smoothie de maçã, pêra e framboesa",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "maçã"
+    ]
+  },
+  {
+    "id": 1204,
+    "nome": "Smoothie de manga",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "açafrão",
+      "manga"
+    ]
+  },
+  {
+    "id": 1205,
+    "nome": "Taça de batido de manga",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana",
+      "leite de coco",
+      "manga",
+      "xarope de ácer"
+    ]
+  },
+  {
+    "id": 1206,
+    "nome": "Taça de batido de manga com granola com especiarias chai",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "ananás",
+      "banana",
+      "especiarias",
+      "manga",
+      "água"
+    ]
+  },
+  {
+    "id": 1207,
+    "nome": "Batido de manga e ananás sem glúten",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "ananás",
+      "iogurte grego natural",
+      "laranja",
+      "manga",
+      "mel"
+    ]
+  },
+  {
+    "id": 1208,
+    "nome": "Smoothie de manga e banana #1",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana",
+      "coco ralado",
+      "extrato de baunilha",
+      "manga"
+    ]
+  },
+  {
+    "id": 1209,
+    "nome": "Smoothie de manga e banana #2",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "açúcar",
+      "banana",
+      "manga",
+      "sementes de chia"
+    ]
+  },
+  {
+    "id": 1210,
+    "nome": "Taça de batido de manga e banana com granola de quinoa",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana",
+      "extrato de baunilha",
+      "manga",
+      "maracujá",
+      "morangos",
+      "quinoa",
+      "sal marinho",
+      "sementes de abóbora",
+      "sementes de girassol",
+      "sementes de linhaça",
+      "sementes de sésamo",
+      "xarope de agave",
+      "óleo de coco"
+    ]
+  },
+  {
+    "id": 1211,
+    "nome": "Smoothie de manga e espinafre",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "açúcar",
+      "manga"
+    ]
+  },
+  {
+    "id": 1212,
+    "nome": "Smoothie de manga e pimenta-caiena",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "manga",
+      "morangos",
+      "pimenta caiena"
+    ]
+  },
+  {
+    "id": 1213,
+    "nome": "Smoothie de manga, banana e lúcuma",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana",
+      "kiwi",
+      "leite de coco",
+      "sementes de chia"
+    ]
+  },
+  {
+    "id": 1214,
+    "nome": "Taça de smoothie de manga, maçã, couve e espinafre",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "gengibre",
+      "lascas de coco",
+      "leite de coco",
+      "manga",
+      "maçã",
+      "sementes de abóbora"
+    ]
+  },
+  {
+    "id": 1215,
+    "nome": "Mangonada mexicana",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "lima",
+      "manga",
+      "sumo de laranja",
+      "tamari"
+    ]
+  },
+  {
+    "id": 1216,
+    "nome": "Batido de manteiga de amendoim e banana com grão-de-bico",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "açúcar",
+      "banana",
+      "cacau em pó",
+      "grão-de-bico",
+      "manteiga",
+      "sal marinho",
+      "tâmaras"
+    ]
+  },
+  {
+    "id": 1217,
+    "nome": "Batido de manteiga de amendoim e batata-doce",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana",
+      "batata-doce",
+      "canela",
+      "manteiga"
+    ]
+  },
+  {
+    "id": 1218,
+    "nome": "Smoothies de manteiga de amendoim e framboesa",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "água"
+    ]
+  },
+  {
+    "id": 1219,
+    "nome": "Smoothie de manteiga de amendoim e geleia",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "canela",
+      "couve-flor",
+      "iogurte grego natural",
+      "manga",
+      "manteiga",
+      "mel",
+      "morangos"
+    ]
+  },
+  {
+    "id": 1220,
+    "nome": "Taça de smoothie de manteiga de amendoim e geleia",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana",
+      "cacau em pó",
+      "coco ralado",
+      "manteiga",
+      "sal",
+      "sementes de chia",
+      "tâmaras",
+      "xarope de ácer"
+    ]
+  },
+  {
+    "id": 1221,
+    "nome": "Taça de smoothie de manteiga de amendoim e geleia",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "abacate",
+      "couve-flor",
+      "manteiga"
+    ]
+  },
+  {
+    "id": 1222,
+    "nome": "Batido de manteiga de amendoim e geleia",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "aveia",
+      "banana",
+      "canela",
+      "farinha",
+      "leite vegetal",
+      "limão",
+      "manteiga",
+      "xarope de ácer",
+      "água"
+    ]
+  },
+  {
+    "id": 1223,
+    "nome": "Smoothie de manteiga de caju e especiarias de abóbora",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "abóbora",
+      "banana",
+      "canela",
+      "gengibre",
+      "manteiga",
+      "mel",
+      "noz-moscada"
+    ]
+  },
+  {
+    "id": 1224,
+    "nome": "Smoothie de manteiga de caju, cacau e laranja",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana",
+      "canela",
+      "laranja",
+      "manteiga",
+      "sal marinho"
+    ]
+  },
+  {
+    "id": 1225,
+    "nome": "Taça de smoothie de matcha e coco",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana",
+      "coco ralado",
+      "matcha",
+      "sementes de chia",
+      "água"
+    ]
+  },
+  {
+    "id": 1226,
+    "nome": "Smoothie de matcha e manga",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "abacate",
+      "banana",
+      "caju",
+      "coco ralado",
+      "manga",
+      "matcha",
+      "mel",
+      "morangos",
+      "sementes de cânhamo"
+    ]
+  },
+  {
+    "id": 1227,
+    "nome": "Batidos de melancia",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana",
+      "kiwi",
+      "mel",
+      "morangos"
+    ]
+  },
+  {
+    "id": 1228,
+    "nome": "Batido de melão",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "hortelã",
+      "melão",
+      "sumo de limão",
+      "água"
+    ]
+  },
+  {
+    "id": 1229,
+    "nome": "Batido de melão doce",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana",
+      "caju",
+      "couve-flor",
+      "melão"
+    ]
+  },
+  {
+    "id": 1230,
+    "nome": "Smoothie de menta com pedacinhos de chocolate",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "abacate",
+      "açúcar",
+      "pimenta"
+    ]
+  },
+  {
+    "id": 1231,
+    "nome": "Milkshake vegano de chocolate",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana",
+      "cacau em pó",
+      "canela",
+      "manteiga",
+      "maçã",
+      "xarope de agave"
+    ]
+  },
+  {
+    "id": 1232,
+    "nome": "Batido de mirtilo",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana",
+      "canela",
+      "cenoura"
+    ]
+  },
+  {
+    "id": 1233,
+    "nome": "Taça de smoothie de mirtilo",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana",
+      "leite de coco",
+      "manteiga",
+      "mel",
+      "sementes de abóbora",
+      "sementes de cânhamo",
+      "sumo de limão"
+    ]
+  },
+  {
+    "id": 1234,
+    "nome": "Taça de smoothie de mirtilo com pitaya e flores comestíveis",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "aveia",
+      "açúcar",
+      "banana",
+      "flores comestíveis",
+      "iogurte natural",
+      "sementes de chia"
+    ]
+  },
+  {
+    "id": 1235,
+    "nome": "Smoothie de mirtilo e amêndoa",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana",
+      "iogurte natural",
+      "sementes de linhaça"
+    ]
+  },
+  {
+    "id": 1236,
+    "nome": "Smoothie de mirtilo e banana",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana",
+      "goji"
+    ]
+  },
+  {
+    "id": 1237,
+    "nome": "Taça de smoothie de mirtilo e banana",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana"
+    ]
+  },
+  {
+    "id": 1238,
+    "nome": "Batidos de mirtilo e banana",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana",
+      "extrato de baunilha",
+      "iogurte grego natural",
+      "leite de coco"
+    ]
+  },
+  {
+    "id": 1239,
+    "nome": "Batido de mirtilo e beterraba",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "aveia",
+      "banana",
+      "beterraba",
+      "leite de coco",
+      "sementes de chia"
+    ]
+  },
+  {
+    "id": 1240,
+    "nome": "Smoothie de mirtilo e beterraba",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "beterraba",
+      "gengibre",
+      "maçã",
+      "água"
+    ]
+  },
+  {
+    "id": 1241,
+    "nome": "Taça de smoothie de mirtilo e caju",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "açúcar",
+      "couve-flor",
+      "manteiga",
+      "sementes de sésamo"
+    ]
+  },
+  {
+    "id": 1242,
+    "nome": "Smoothie de mirtilo e caramelo",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "aveia",
+      "banana",
+      "coco ralado",
+      "manteiga",
+      "maçã",
+      "sementes de cânhamo"
+    ]
+  },
+  {
+    "id": 1243,
+    "nome": "Taça de batido de mirtilo e coco",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana",
+      "coco ralado",
+      "leite de coco",
+      "maçã",
+      "sementes de cânhamo",
+      "trigo sarraceno"
+    ]
+  },
+  {
+    "id": 1244,
+    "nome": "Copo de smoothie de mirtilo e couve-flor",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "batata-doce",
+      "couve-flor",
+      "especiarias",
+      "manteiga",
+      "sal marinho",
+      "xarope de ácer",
+      "água"
+    ]
+  },
+  {
+    "id": 1245,
+    "nome": "Smoothie de mirtilo e espinafre",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana",
+      "ervilhas congeladas",
+      "água"
+    ]
+  },
+  {
+    "id": 1246,
+    "nome": "Batido de mirtilo e manteiga de sementes de girassol",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana",
+      "leite de coco",
+      "sementes de cânhamo",
+      "sementes de girassol"
+    ]
+  },
+  {
+    "id": 1247,
+    "nome": "Taça de smoothie de mirtilo e romã",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "aveia",
+      "açúcar",
+      "flores comestíveis",
+      "quinoa",
+      "romã",
+      "sementes de chia"
+    ]
+  },
+  {
+    "id": 1248,
+    "nome": "Taça de batido de mirtilo silvestre e coco",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana"
+    ]
+  },
+  {
+    "id": 1249,
+    "nome": "Batido de mirtilo, abacate e banana",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "abacate",
+      "canela",
+      "manteiga"
+    ]
+  },
+  {
+    "id": 1250,
+    "nome": "Smoothie de mirtilo, amêndoa e iogurte",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana",
+      "canela",
+      "iogurte natural",
+      "sal",
+      "xarope de ácer"
+    ]
+  },
+  {
+    "id": 1251,
+    "nome": "Taça de smoothie de mirtilo, chocolate e abacate",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "abacate",
+      "banana",
+      "cacau em pó",
+      "xarope de ácer"
+    ]
+  },
+  {
+    "id": 1252,
+    "nome": "Taça de smoothie de mocha e tahini",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "aveia",
+      "banana",
+      "cacau em pó",
+      "extrato de baunilha",
+      "leite vegetal",
+      "tahini",
+      "tâmaras"
+    ]
+  },
+  {
+    "id": 1253,
+    "nome": "Smoothie Monstro Verde",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "ananás",
+      "banana",
+      "lima",
+      "manga",
+      "pepino"
+    ]
+  },
+  {
+    "id": 1254,
+    "nome": "Taça de smoothie de morango com iogurte de amêndoa, kiwi, amoras, coco e sementes de chia",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "morangos",
+      "sementes de chia"
+    ]
+  },
+  {
+    "id": 1255,
+    "nome": "Taça de smoothie de morango e amêndoa",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "leite de coco",
+      "manteiga",
+      "morangos",
+      "sementes de abóbora",
+      "sementes de chia"
+    ]
+  },
+  {
+    "id": 1256,
+    "nome": "Smoothies de morango e ananás",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "ananás",
+      "açúcar mascavado",
+      "hortelã",
+      "kiwi",
+      "lima",
+      "mel",
+      "morangos",
+      "sal",
+      "água"
+    ]
+  },
+  {
+    "id": 1257,
+    "nome": "Smoothie de morango e banana",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana",
+      "extrato de baunilha",
+      "mel",
+      "morangos"
+    ]
+  },
+  {
+    "id": 1258,
+    "nome": "Smoothie de morango e banana com granola de matcha",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana",
+      "chá verde",
+      "leite de coco",
+      "manteiga",
+      "matcha",
+      "morangos",
+      "sementes de chia",
+      "sementes de cânhamo"
+    ]
+  },
+  {
+    "id": 1259,
+    "nome": "Taça de smoothie de morango e coco",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana",
+      "morangos"
+    ]
+  },
+  {
+    "id": 1260,
+    "nome": "Taças de smoothie de morango e creme de coco",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "abacate",
+      "coco ralado",
+      "morangos",
+      "tofu"
+    ]
+  },
+  {
+    "id": 1261,
+    "nome": "Taça de smoothie de morango e gelado",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana",
+      "couve-flor",
+      "morangos"
+    ]
+  },
+  {
+    "id": 1262,
+    "nome": "Batido de morango e manga n.º 1",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "açúcar",
+      "manga",
+      "morangos"
+    ]
+  },
+  {
+    "id": 1263,
+    "nome": "Batido de morango e manga #2",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "hortelã",
+      "lima",
+      "manga",
+      "morangos",
+      "água"
+    ]
+  },
+  {
+    "id": 1264,
+    "nome": "Batido de morango e ruibarbo",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "beterraba",
+      "gengibre fresco",
+      "morangos",
+      "ruibarbo",
+      "sumo de limão",
+      "xarope de ácer",
+      "água"
+    ]
+  },
+  {
+    "id": 1265,
+    "nome": "Smoothie Bowl de morango ensolarado",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana",
+      "extrato de baunilha",
+      "hortelã",
+      "limão",
+      "morangos"
+    ]
+  },
+  {
+    "id": 1266,
+    "nome": "Batido de morango, ananás e coco",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "banana",
+      "iogurte natural",
+      "morangos",
+      "xarope de agave"
+    ]
+  },
+  {
+    "id": 1267,
+    "nome": "Smoothie de morango, framboesa e lima",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "abacate",
+      "açúcar",
+      "limão",
+      "morangos",
+      "sementes de linhaça"
+    ]
+  },
+  {
+    "id": 1268,
+    "nome": "Taça de smoothie de morango, framboesa e pitaya",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "leite vegetal",
+      "morangos",
+      "sementes de abóbora"
+    ]
+  },
+  {
+    "id": 1269,
+    "nome": "Taça de smoothie de morango, papaia e ananás com creme de coco",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "ananás",
+      "banana",
+      "coco ralado",
+      "kiwi",
+      "mel",
+      "morangos",
+      "xarope de ácer",
+      "água"
+    ]
+  },
+  {
+    "id": 1270,
+    "nome": "Smoothies de morango, ruibarbo e laranja sanguínea",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag10_(M).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag10_(M).html",
+    "ingredientes": [
+      "laranja",
+      "mel",
+      "ruibarbo"
+    ]
+  },
+  {
+    "id": 1271,
+    "nome": "Smoothie napolitano em camadas",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag11_(N-O).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag11_(N-O).html",
+    "ingredientes": [
+      "banana",
+      "cacau em pó",
+      "extrato de baunilha",
+      "iogurte vegetal",
+      "leite vegetal",
+      "morangos",
+      "tâmaras"
+    ]
+  },
+  {
+    "id": 1272,
+    "nome": "Smoothie ombré de manga e frutos silvestres",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag11_(N-O).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag11_(N-O).html",
+    "ingredientes": [
+      "hortelã",
+      "leite de coco",
+      "manga",
+      "pepino"
+    ]
+  },
+  {
+    "id": 1273,
+    "nome": "Batido Orange Julius",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag11_(N-O).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag11_(N-O).html",
+    "ingredientes": [
+      "banana",
+      "extrato de baunilha",
+      "iogurte grego natural",
+      "laranja",
+      "mel",
+      "sumo de laranja",
+      "xarope de ácer"
+    ]
+  },
+  {
+    "id": 1274,
+    "nome": "Batido de pão de banana com chocolate",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "banana",
+      "canela",
+      "couve-flor",
+      "extrato de baunilha",
+      "leite vegetal",
+      "manteiga",
+      "xarope de ácer"
+    ]
+  },
+  {
+    "id": 1275,
+    "nome": "Smoothies para preparar com antecedência",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "manteiga",
+      "sementes de linhaça"
+    ]
+  },
+  {
+    "id": 1276,
+    "nome": "Cubos de gelo de smoothie para preparar com antecedência",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "banana",
+      "cenoura",
+      "espinafres",
+      "lima",
+      "manga",
+      "manteiga",
+      "maçã",
+      "morangos",
+      "spirulina",
+      "sumo de laranja",
+      "sumo de limão",
+      "uvas",
+      "xarope de ácer",
+      "água"
+    ]
+  },
+  {
+    "id": 1277,
+    "nome": "Smoothie para uma pele limpa",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "abacate",
+      "ananás",
+      "açúcar",
+      "espinafres"
+    ]
+  },
+  {
+    "id": 1278,
+    "nome": "Smoothie da Hailey Bieber para uma «pele radiante»",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "abacate",
+      "aveia",
+      "banana",
+      "morangos",
+      "tâmaras",
+      "água"
+    ]
+  },
+  {
+    "id": 1279,
+    "nome": "Pequeno-almoço equilibrado para levar",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "aveia",
+      "manteiga"
+    ]
+  },
+  {
+    "id": 1280,
+    "nome": "Pequeno-almoço saudável pós-férias",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "laranja",
+      "pepino",
+      "sal",
+      "sementes de cânhamo",
+      "sementes de linhaça",
+      "água"
+    ]
+  },
+  {
+    "id": 1281,
+    "nome": "Taça de smoothie de pêssego com chia e pistácios",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "banana",
+      "goji",
+      "pistácio",
+      "sementes de abóbora",
+      "sementes de chia",
+      "sementes de cânhamo"
+    ]
+  },
+  {
+    "id": 1282,
+    "nome": "Taça de smoothie de pêssego e frutos silvestres",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "aveia",
+      "banana",
+      "goji",
+      "morangos",
+      "nectarina",
+      "pinhões",
+      "quinoa",
+      "sementes de cânhamo"
+    ]
+  },
+  {
+    "id": 1283,
+    "nome": "Smoothie de pêssego, morango e iogurte",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "morangos",
+      "tahini"
+    ]
+  },
+  {
+    "id": 1284,
+    "nome": "Smoothie picante de manga",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "leite de coco",
+      "manga"
+    ]
+  },
+  {
+    "id": 1285,
+    "nome": "Smoothie picante de pêssego e manga",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "limão",
+      "manga",
+      "manjericão",
+      "sementes de chia",
+      "água"
+    ]
+  },
+  {
+    "id": 1286,
+    "nome": "Picolés de frutas vermelhas e granola",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "iogurte grego natural",
+      "mel",
+      "morangos"
+    ]
+  },
+  {
+    "id": 1287,
+    "nome": "Picolés veganos de morango",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "extrato de baunilha",
+      "iogurte natural",
+      "morangos",
+      "xarope de ácer"
+    ]
+  },
+  {
+    "id": 1288,
+    "nome": "Batidos Piña Colada",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "ananás",
+      "açúcar",
+      "extrato de baunilha",
+      "leite de coco"
+    ]
+  },
+  {
+    "id": 1289,
+    "nome": "Smoothie de Pistache e Abacate",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "abacate",
+      "banana",
+      "mel"
+    ]
+  },
+  {
+    "id": 1290,
+    "nome": "Taça de smoothie de pitaya com frutas frescas e sementes",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "banana",
+      "coco ralado",
+      "sementes de cânhamo",
+      "água"
+    ]
+  },
+  {
+    "id": 1291,
+    "nome": "Smoothie de pitaya e banana",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "banana",
+      "sementes de cânhamo"
+    ]
+  },
+  {
+    "id": 1292,
+    "nome": "Taça de smoothie de pitaya e coco",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "banana",
+      "manteiga",
+      "água"
+    ]
+  },
+  {
+    "id": 1293,
+    "nome": "Taça de smoothie de pitaya e framboesa",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "banana",
+      "manteiga",
+      "morangos"
+    ]
+  },
+  {
+    "id": 1294,
+    "nome": "Smoothies Pitaya Ombré",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "banana",
+      "leite de coco"
+    ]
+  },
+  {
+    "id": 1295,
+    "nome": "Smoothie Pretty In Pink",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "banana",
+      "laranja",
+      "morangos",
+      "sementes de cânhamo"
+    ]
+  },
+  {
+    "id": 1296,
+    "nome": "Taça de smoothie Pretty in Pink",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "ananás",
+      "banana",
+      "morangos",
+      "água"
+    ]
+  },
+  {
+    "id": 1297,
+    "nome": "Smoothie probiótico de laranja sanguínea e creme",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "extrato de baunilha",
+      "iogurte natural",
+      "laranja",
+      "sementes de cânhamo",
+      "stevia líquida"
+    ]
+  },
+  {
+    "id": 1298,
+    "nome": "Smoothie proteico de bagas e banana",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "banana",
+      "leite de coco",
+      "morangos",
+      "sementes de chia",
+      "sementes de linhaça"
+    ]
+  },
+  {
+    "id": 1299,
+    "nome": "Taça de batido proteico de cacau, banana e mirtilo com sementes de chia, nibs de cacau, mirtilos e pólen de abelha",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "banana",
+      "cacau em pó",
+      "sementes de chia",
+      "xarope de ácer"
+    ]
+  },
+  {
+    "id": 1300,
+    "nome": "Smoothie proteico de manteiga de amendoim e abóbora",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "abóbora",
+      "banana",
+      "cacau em pó",
+      "couve-flor",
+      "especiarias",
+      "manteiga"
+    ]
+  },
+  {
+    "id": 1301,
+    "nome": "Batido proteico de tarte de abóbora",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "abóbora",
+      "banana",
+      "canela",
+      "especiarias",
+      "leite vegetal",
+      "sal"
+    ]
+  },
+  {
+    "id": 1302,
+    "nome": "Batidos proteicos de cheesecake de morango",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "açúcar",
+      "morangos"
+    ]
+  },
+  {
+    "id": 1303,
+    "nome": "Pudim de chia tropical ao pôr do sol",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag12_(P).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag12_(P).html",
+    "ingredientes": [
+      "caju",
+      "kiwi",
+      "manga",
+      "sementes de chia",
+      "xarope de ácer",
+      "água"
+    ]
+  },
+  {
+    "id": 1304,
+    "nome": "Receita de smoothie de melancia",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag13_(R).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag13_(R).html",
+    "ingredientes": [
+      "lima",
+      "mel"
+    ]
+  },
+  {
+    "id": 1305,
+    "nome": "Smoothie de recuperação do Dia do Pi",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag13_(R).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag13_(R).html",
+    "ingredientes": [
+      "goji",
+      "laranja",
+      "leite de vaca",
+      "sementes de chia",
+      "sementes de linhaça",
+      "água"
+    ]
+  },
+  {
+    "id": 1306,
+    "nome": "Smoothie refrescante",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag13_(R).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag13_(R).html",
+    "ingredientes": [
+      "ananás",
+      "gengibre",
+      "água"
+    ]
+  },
+  {
+    "id": 1307,
+    "nome": "Batido refrescante de açaí e mirtilo silvestre",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag13_(R).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag13_(R).html",
+    "ingredientes": [
+      "hortelã"
+    ]
+  },
+  {
+    "id": 1308,
+    "nome": "Taças de smoothie Road To Rio Olympics!",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag13_(R).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag13_(R).html",
+    "ingredientes": [
+      "banana",
+      "coco ralado",
+      "leite de coco",
+      "spirulina",
+      "água"
+    ]
+  },
+  {
+    "id": 1309,
+    "nome": "Smoothie de romã e estragão",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag13_(R).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag13_(R).html",
+    "ingredientes": [
+      "ananás",
+      "estragão",
+      "gengibre",
+      "kiwi",
+      "laranja",
+      "pêra",
+      "romã",
+      "água"
+    ]
+  },
+  {
+    "id": 1310,
+    "nome": "Smoothie rosa #1",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag13_(R).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag13_(R).html",
+    "ingredientes": [
+      "laranja",
+      "limão",
+      "manga",
+      "romã",
+      "sementes de cânhamo",
+      "tomilho",
+      "água"
+    ]
+  },
+  {
+    "id": 1311,
+    "nome": "Smoothie rosa #2",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag13_(R).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag13_(R).html",
+    "ingredientes": [
+      "banana",
+      "gengibre",
+      "hortelã",
+      "leite de coco",
+      "morangos",
+      "pêra",
+      "raspa de limão",
+      "sementes de linhaça",
+      "tahini"
+    ]
+  },
+  {
+    "id": 1312,
+    "nome": "Taça de smoothie rosa",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag13_(R).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag13_(R).html",
+    "ingredientes": [
+      "aveia",
+      "banana",
+      "morangos"
+    ]
+  },
+  {
+    "id": 1313,
+    "nome": "Batido roxo",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag13_(R).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag13_(R).html",
+    "ingredientes": [
+      "ananás",
+      "açúcar",
+      "banana",
+      "canela",
+      "manteiga",
+      "morangos"
+    ]
+  },
+  {
+    "id": 1314,
+    "nome": "Smoothie de ruibarbo com coco ralado",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag13_(R).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag13_(R).html",
+    "ingredientes": [
+      "banana",
+      "beterraba",
+      "leite de coco",
+      "ruibarbo",
+      "água"
+    ]
+  },
+  {
+    "id": 1315,
+    "nome": "Taça de smoothie salgado de cenoura e curcuma",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag14_(S).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag14_(S).html",
+    "ingredientes": [
+      "açúcar",
+      "banana",
+      "cenoura",
+      "couve-flor",
+      "noz-moscada",
+      "sementes de chia",
+      "tâmaras"
+    ]
+  },
+  {
+    "id": 1316,
+    "nome": "Smoothie de satsuma",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag14_(S).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag14_(S).html",
+    "ingredientes": [
+      "banana",
+      "especiarias",
+      "pimenta preta",
+      "sal marinho"
+    ]
+  },
+  {
+    "id": 1317,
+    "nome": "Batido saudável de abóbora sem laticínios",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag14_(S).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag14_(S).html",
+    "ingredientes": [
+      "especiarias",
+      "laranja",
+      "mel"
+    ]
+  },
+  {
+    "id": 1318,
+    "nome": "Batido saudável de chocolate e manteiga de amendoim",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag14_(S).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag14_(S).html",
+    "ingredientes": [
+      "banana",
+      "manteiga",
+      "água"
+    ]
+  },
+  {
+    "id": 1319,
+    "nome": "Batido saudável de laranja sanguínea com gengibre",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag14_(S).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag14_(S).html",
+    "ingredientes": [
+      "banana",
+      "gengibre fresco",
+      "laranja",
+      "manga",
+      "morangos",
+      "água"
+    ]
+  },
+  {
+    "id": 1320,
+    "nome": "Batido saudável de pêssego e banana",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag14_(S).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag14_(S).html",
+    "ingredientes": [
+      "banana",
+      "mel"
+    ]
+  },
+  {
+    "id": 1321,
+    "nome": "Smoothie saudável de tarte de abóbora",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag14_(S).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag14_(S).html",
+    "ingredientes": [
+      "abóbora",
+      "banana",
+      "canela",
+      "gengibre fresco",
+      "manteiga",
+      "pimenta",
+      "raspa de limão",
+      "sal",
+      "xarope de ácer"
+    ]
+  },
+  {
+    "id": 1322,
+    "nome": "Seis maneiras de preparar smoothies de frutas e vegetais",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag14_(S).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag14_(S).html",
+    "ingredientes": [
+      "abacate",
+      "ananás",
+      "aveia",
+      "açafrão",
+      "beterraba",
+      "cacau em pó",
+      "cenoura",
+      "chá verde",
+      "couve-flor",
+      "extrato de baunilha",
+      "laranja",
+      "leite de coco",
+      "manga",
+      "manteiga",
+      "maçã",
+      "morangos",
+      "pêra",
+      "sementes de chia",
+      "sementes de cânhamo",
+      "sementes de linhaça",
+      "sumo de laranja",
+      "uvas",
+      "água"
+    ]
+  },
+  {
+    "id": 1323,
+    "nome": "Smoothie de sementes de girassol e maca",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag14_(S).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag14_(S).html",
+    "ingredientes": [
+      "caju",
+      "couve-flor",
+      "maçã",
+      "sementes de girassol",
+      "tâmaras"
+    ]
+  },
+  {
+    "id": 1324,
+    "nome": "Sorvete de morango e limão",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag14_(S).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag14_(S).html",
+    "ingredientes": [
+      "mel",
+      "morangos",
+      "sumo de limão"
+    ]
+  },
+  {
+    "id": 1325,
+    "nome": "Sumo verde no liquidificador",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag14_(S).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag14_(S).html",
+    "ingredientes": [
+      "aipo",
+      "gengibre",
+      "limão",
+      "maçã",
+      "pepino",
+      "água"
+    ]
+  },
+  {
+    "id": 1326,
+    "nome": "Smoothie Sunshine",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag14_(S).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag14_(S).html",
+    "ingredientes": [
+      "açafrão",
+      "gengibre fresco",
+      "laranja",
+      "mel",
+      "sementes de chia",
+      "xarope de ácer",
+      "água"
+    ]
+  },
+  {
+    "id": 1327,
+    "nome": "Taça de smoothie perfeita",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag15_(T).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag15_(T).html",
+    "ingredientes": [
+      "banana",
+      "manteiga"
+    ]
+  },
+  {
+    "id": 1328,
+    "nome": "Batido de tahini e chocolate",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag15_(T).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag15_(T).html",
+    "ingredientes": [
+      "açúcar",
+      "cacau em pó",
+      "sal marinho",
+      "tahini",
+      "tâmaras"
+    ]
+  },
+  {
+    "id": 1329,
+    "nome": "Taça de batido de tahini, baunilha e matcha",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag15_(T).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag15_(T).html",
+    "ingredientes": [
+      "aipo",
+      "banana",
+      "extrato de baunilha",
+      "funcho",
+      "leite vegetal",
+      "manga",
+      "matcha",
+      "sumo de limão",
+      "tahini"
+    ]
+  },
+  {
+    "id": 1330,
+    "nome": "Batido tailandês picante de morango",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag15_(T).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag15_(T).html",
+    "ingredientes": [
+      "lima",
+      "malagueta",
+      "manjericão",
+      "morangos",
+      "água"
+    ]
+  },
+  {
+    "id": 1331,
+    "nome": "Batido de tâmaras e nozes",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag15_(T).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag15_(T).html",
+    "ingredientes": [
+      "açúcar",
+      "batata-doce",
+      "caju",
+      "canela",
+      "couve-flor",
+      "extrato de baunilha",
+      "maçã",
+      "tâmaras"
+    ]
+  },
+  {
+    "id": 1332,
+    "nome": "Batido de tarte de abóbora",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag15_(T).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag15_(T).html",
+    "ingredientes": [
+      "abóbora",
+      "banana",
+      "canela",
+      "especiarias",
+      "leite vegetal",
+      "manteiga",
+      "sal marinho"
+    ]
+  },
+  {
+    "id": 1333,
+    "nome": "Smoothie de toranja n.º 1",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag15_(T).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag15_(T).html",
+    "ingredientes": [
+      "banana",
+      "manga",
+      "maçã",
+      "mel"
+    ]
+  },
+  {
+    "id": 1334,
+    "nome": "Batido de toranja n.º 2",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag15_(T).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag15_(T).html",
+    "ingredientes": [
+      "ananás",
+      "hortelã",
+      "manga",
+      "água"
+    ]
+  },
+  {
+    "id": 1335,
+    "nome": "Batido de torta de creme de banana e coco",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag15_(T).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag15_(T).html",
+    "ingredientes": [
+      "açúcar",
+      "banana",
+      "couve-flor",
+      "manteiga",
+      "noz-moscada"
+    ]
+  },
+  {
+    "id": 1336,
+    "nome": "Taças de smoothie de três maneiras Mirtilo, framboesa e ananás",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag15_(T).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag15_(T).html",
+    "ingredientes": [
+      "caju",
+      "manteiga",
+      "sementes de chia"
+    ]
+  },
+  {
+    "id": 1337,
+    "nome": "Smoothies tropicais de manga, gengibre e papaia",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag15_(T).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag15_(T).html",
+    "ingredientes": [
+      "gengibre",
+      "manga"
+    ]
+  },
+  {
+    "id": 1338,
+    "nome": "Smoothie tropical",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag15_(T).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag15_(T).html",
+    "ingredientes": [
+      "ananás",
+      "gengibre fresco"
+    ]
+  },
+  {
+    "id": 1339,
+    "nome": "Taça de smoothie tropical",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag15_(T).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag15_(T).html",
+    "ingredientes": [
+      "banana",
+      "coco ralado",
+      "couve-flor",
+      "kiwi",
+      "limão",
+      "manga",
+      "sementes de chia"
+    ]
+  },
+  {
+    "id": 1340,
+    "nome": "Smoothies tropicais",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag15_(T).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag15_(T).html",
+    "ingredientes": [
+      "ananás",
+      "açafrão",
+      "leite vegetal",
+      "manga"
+    ]
+  },
+  {
+    "id": 1341,
+    "nome": "Smoothie tropical de banana e gengibre",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag15_(T).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag15_(T).html",
+    "ingredientes": [
+      "açúcar",
+      "banana",
+      "gengibre fresco",
+      "lima",
+      "manga",
+      "sementes de chia",
+      "sumo de laranja"
+    ]
+  },
+  {
+    "id": 1342,
+    "nome": "Smoothie vegano de amêndoa e mirtilo",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "leite vegetal",
+      "manteiga",
+      "tâmaras"
+    ]
+  },
+  {
+    "id": 1343,
+    "nome": "Smoothie vegano de limão e caju",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "banana",
+      "caju",
+      "leite vegetal",
+      "raspa de limão",
+      "sementes de cânhamo",
+      "sumo de limão",
+      "trigo sarraceno",
+      "tâmaras",
+      "xarope de ácer"
+    ]
+  },
+  {
+    "id": 1344,
+    "nome": "Taça de batido verde",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "banana",
+      "canela",
+      "sementes de chia"
+    ]
+  },
+  {
+    "id": 1345,
+    "nome": "Smoothie verde brilhante",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "abacate",
+      "ananás",
+      "banana"
+    ]
+  },
+  {
+    "id": 1346,
+    "nome": "Batido verde brilhante de espirulina",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "açúcar",
+      "banana",
+      "spirulina"
+    ]
+  },
+  {
+    "id": 1347,
+    "nome": "Smoothie verde com banana e espinafre",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "abacate",
+      "banana",
+      "maçã"
+    ]
+  },
+  {
+    "id": 1348,
+    "nome": "Taça de batido verde com banana, mirtilo e erva de trigo",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "banana",
+      "kiwi",
+      "sementes de linhaça"
+    ]
+  },
+  {
+    "id": 1349,
+    "nome": "Smoothie verde com cinco ingredientes",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "abacate",
+      "banana"
+    ]
+  },
+  {
+    "id": 1350,
+    "nome": "Smoothie verde com flores comestíveis",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "gengibre",
+      "kiwi",
+      "limão",
+      "pêra",
+      "sementes de chia",
+      "sementes de cânhamo",
+      "sementes de linhaça",
+      "vinagre",
+      "água"
+    ]
+  },
+  {
+    "id": 1351,
+    "nome": "Smoothie verde com matcha",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "banana",
+      "hortelã",
+      "leite de coco",
+      "manga",
+      "matcha",
+      "pêra"
+    ]
+  },
+  {
+    "id": 1352,
+    "nome": "Taça de batido verde com melão",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "aipo",
+      "banana",
+      "caju",
+      "kiwi",
+      "maracujá",
+      "melão"
+    ]
+  },
+  {
+    "id": 1353,
+    "nome": "Smoothie verde com pedacinhos de menta",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "abacate",
+      "açúcar",
+      "banana",
+      "hortelã",
+      "manteiga",
+      "sal",
+      "tâmaras"
+    ]
+  },
+  {
+    "id": 1354,
+    "nome": "Smoothie verde com toque cítrico",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "acelga",
+      "gengibre",
+      "laranja",
+      "limão",
+      "sementes de linhaça",
+      "água"
+    ]
+  },
+  {
+    "id": 1355,
+    "nome": "Smoothie verde de abacate",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "abacate",
+      "banana",
+      "canela",
+      "leite de coco",
+      "sementes de chia"
+    ]
+  },
+  {
+    "id": 1356,
+    "nome": "Taça de batido verde de ananás e banana",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "ananás",
+      "açúcar",
+      "banana",
+      "canela",
+      "couve-flor",
+      "goji",
+      "manteiga"
+    ]
+  },
+  {
+    "id": 1357,
+    "nome": "Smoothie verde de brócolos e funcho",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "brócolo",
+      "funcho"
+    ]
+  },
+  {
+    "id": 1358,
+    "nome": "Batido verde de espinafre",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "banana",
+      "canela",
+      "limão",
+      "sementes de cânhamo",
+      "tâmaras"
+    ]
+  },
+  {
+    "id": 1359,
+    "nome": "Batido verde de espirulina",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "banana",
+      "couve-flor",
+      "manteiga",
+      "spirulina"
+    ]
+  },
+  {
+    "id": 1360,
+    "nome": "Smoothie verde de folhas de cenoura com manga, banana, leite de coco, água de coco, aveia e nozes",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "abóbora",
+      "aveia",
+      "banana",
+      "cenoura",
+      "leite de coco",
+      "sementes de chia",
+      "água"
+    ]
+  },
+  {
+    "id": 1361,
+    "nome": "Batido verde de gengibre",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "alface",
+      "funcho",
+      "gengibre fresco",
+      "laranja",
+      "limão",
+      "manga",
+      "maçã",
+      "pepino",
+      "sementes de cânhamo",
+      "xarope de ácer"
+    ]
+  },
+  {
+    "id": 1362,
+    "nome": "Batido verde de goiaba",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "aveia",
+      "banana",
+      "sementes de cânhamo"
+    ]
+  },
+  {
+    "id": 1363,
+    "nome": "Smoothie verde de hortelã e ananás",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "ananás",
+      "coco ralado",
+      "hortelã",
+      "iogurte vegetal",
+      "lima",
+      "limão",
+      "manteiga",
+      "spirulina"
+    ]
+  },
+  {
+    "id": 1364,
+    "nome": "Batido verde de leitelho",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "banana",
+      "pêra",
+      "tâmaras",
+      "água"
+    ]
+  },
+  {
+    "id": 1365,
+    "nome": "Batido verde de manga e gengibre",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "banana",
+      "gengibre",
+      "hortelã",
+      "limão",
+      "manga",
+      "água"
+    ]
+  },
+  {
+    "id": 1366,
+    "nome": "Batido verde de piña colada",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "ananás",
+      "banana",
+      "leite de coco",
+      "néctar de agave"
+    ]
+  },
+  {
+    "id": 1367,
+    "nome": "Smoothie verde de torta de limão",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "ananás",
+      "banana",
+      "leite de coco",
+      "néctar de agave"
+    ]
+  },
+  {
+    "id": 1368,
+    "nome": "Smoothie verde de verbena-limão",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "ananás",
+      "gengibre",
+      "hortelã",
+      "laranja",
+      "limão",
+      "maçã",
+      "sementes de cânhamo"
+    ]
+  },
+  {
+    "id": 1369,
+    "nome": "Batido Verde Definitivo",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "leite vegetal"
+    ]
+  },
+  {
+    "id": 1370,
+    "nome": "Smoothie verde fácil",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "abacate",
+      "banana",
+      "manga"
+    ]
+  },
+  {
+    "id": 1371,
+    "nome": "Batido verde n.º 1",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "banana",
+      "gengibre fresco",
+      "manga",
+      "manteiga",
+      "água"
+    ]
+  },
+  {
+    "id": 1372,
+    "nome": "Smoothie verde n.º 2",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "banana",
+      "manteiga",
+      "sementes de cânhamo"
+    ]
+  },
+  {
+    "id": 1373,
+    "nome": "Smoothie verde n.º 4",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "aipo",
+      "limão",
+      "pepino",
+      "salsa",
+      "água"
+    ]
+  },
+  {
+    "id": 1374,
+    "nome": "Smoothie verde n.º 5",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "acelga",
+      "erva-doce",
+      "gengibre",
+      "laranja",
+      "lima",
+      "limão",
+      "pêra",
+      "sementes de chia",
+      "água"
+    ]
+  },
+  {
+    "id": 1375,
+    "nome": "Smoothie verde n.º 6",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "banana",
+      "gengibre",
+      "maçã"
+    ]
+  },
+  {
+    "id": 1376,
+    "nome": "Smoothie verde nº 3",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "abacate",
+      "ananás",
+      "gengibre fresco",
+      "lima",
+      "pêra",
+      "água"
+    ]
+  },
+  {
+    "id": 1377,
+    "nome": "Smoothie verde para o pequeno-almoço",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "abacate",
+      "banana",
+      "leite de coco",
+      "manga",
+      "sementes de cânhamo",
+      "spirulina",
+      "tâmaras"
+    ]
+  },
+  {
+    "id": 1378,
+    "nome": "Taça de batido verde para o pequeno-almoço",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "abacate",
+      "aipo",
+      "banana",
+      "kiwi",
+      "maçã",
+      "mel",
+      "pistácio",
+      "uvas"
+    ]
+  },
+  {
+    "id": 1379,
+    "nome": "Taça de smoothie verde rico em proteínas",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "banana",
+      "leite de coco",
+      "lima",
+      "sementes de chia",
+      "xarope de ácer"
+    ]
+  },
+  {
+    "id": 1380,
+    "nome": "Batido verde superalimento com couve, maracujá, manga, banana, aveia, água de coco, sementes de linhaça e sementes de chia",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "aveia",
+      "banana",
+      "manga",
+      "maracujá",
+      "sementes de chia",
+      "sementes de linhaça",
+      "água"
+    ]
+  },
+  {
+    "id": 1381,
+    "nome": "Batido verde Vitamix",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "aipo",
+      "cenoura",
+      "gengibre",
+      "hortelã",
+      "limão",
+      "maçã",
+      "pepino",
+      "salsa",
+      "água"
+    ]
+  },
+  {
+    "id": 1382,
+    "nome": "Batidos verdes",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "banana",
+      "manga",
+      "manteiga",
+      "água"
+    ]
+  },
+  {
+    "id": 1383,
+    "nome": "Batidos vermelhos geométricos",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag16_(V).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag16_(V).html",
+    "ingredientes": [
+      "beterraba",
+      "coco ralado",
+      "morangos",
+      "pepitas de cacau",
+      "sementes de chia",
+      "xarope de ácer",
+      "água"
+    ]
+  },
+  {
+    "id": 1384,
+    "nome": "Smoothie de 3 camadas",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag1_(#).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag1_(#).html",
+    "ingredientes": [
+      "banana",
+      "chá verde",
+      "gengibre",
+      "leite de coco",
+      "manga",
+      "mel",
+      "morangos",
+      "sementes de chia"
+    ]
+  },
+  {
+    "id": 1385,
+    "nome": "Smoothie Bowl de 3 Frutos Silvestres",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag1_(#).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag1_(#).html",
+    "ingredientes": [
+      "abacate",
+      "açúcar",
+      "pepino",
+      "sementes de cânhamo"
+    ]
+  },
+  {
+    "id": 1386,
+    "nome": "Smoothie de avelã torrada com banana e 3 ingredientes",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag1_(#).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag1_(#).html",
+    "ingredientes": [
+      "avelãs",
+      "banana",
+      "pepitas de cacau"
+    ]
+  },
+  {
+    "id": 1387,
+    "nome": "3 maneiras de fazer smoothies vegetarianos",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag1_(#).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag1_(#).html",
+    "ingredientes": [
+      "abacate",
+      "banana",
+      "canela",
+      "couve-flor",
+      "gengibre",
+      "leite de coco",
+      "manteiga",
+      "morangos",
+      "sementes de chia",
+      "sementes de cânhamo"
+    ]
+  },
+  {
+    "id": 1388,
+    "nome": "Smoothie com 4 ingredientes",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag1_(#).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag1_(#).html",
+    "ingredientes": [
+      "banana",
+      "leite vegetal",
+      "manteiga"
+    ]
+  },
+  {
+    "id": 1389,
+    "nome": "Smoothie de abacate",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "abacate",
+      "mel"
+    ]
+  },
+  {
+    "id": 1390,
+    "nome": "Batido de abacate e banana",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "abacate",
+      "banana",
+      "água"
+    ]
+  },
+  {
+    "id": 1391,
+    "nome": "Batido de abacate e lassi",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "abacate",
+      "cardamomo",
+      "mel",
+      "pistácio"
+    ]
+  },
+  {
+    "id": 1392,
+    "nome": "Smoothie de abacate, hortelã e castanha de caju",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "couve-flor",
+      "hortelã",
+      "manteiga",
+      "sementes de chia",
+      "xarope de ácer"
+    ]
+  },
+  {
+    "id": 1393,
+    "nome": "Batido de abacaxi e açafrão",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "ananás",
+      "açafrão",
+      "gengibre fresco"
+    ]
+  },
+  {
+    "id": 1394,
+    "nome": "Smoothie de abacaxi e brócolos",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "abacate",
+      "ananás",
+      "brócolo",
+      "cenoura",
+      "espinafres",
+      "gengibre fresco",
+      "limão",
+      "água"
+    ]
+  },
+  {
+    "id": 1395,
+    "nome": "Smoothies de abacaxi e morango para o café da manhã",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "ananás",
+      "aveia",
+      "morangos",
+      "sementes de chia",
+      "xarope de ácer",
+      "água"
+    ]
+  },
+  {
+    "id": 1396,
+    "nome": "Smoothie de abacaxi, manga e coco",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "ananás",
+      "manga"
+    ]
+  },
+  {
+    "id": 1397,
+    "nome": "Batidos de abóbora",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "abóbora",
+      "banana",
+      "canela",
+      "especiarias",
+      "extrato de baunilha",
+      "leite de coco",
+      "xarope de ácer"
+    ]
+  },
+  {
+    "id": 1398,
+    "nome": "Batido cremoso de abóbora",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "abóbora",
+      "banana",
+      "especiarias",
+      "espinafres",
+      "extrato de baunilha"
+    ]
+  },
+  {
+    "id": 1399,
+    "nome": "Batido de abóbora e manteiga de amendoim",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "abóbora",
+      "banana",
+      "cacau em pó",
+      "couve-flor",
+      "especiarias",
+      "manteiga",
+      "água"
+    ]
+  },
+  {
+    "id": 1400,
+    "nome": "Batido de abóbora kabocha",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "abóbora",
+      "banana",
+      "canela",
+      "manteiga"
+    ]
+  },
+  {
+    "id": 1401,
+    "nome": "Taça de Açaí",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "aveia",
+      "banana",
+      "coco ralado",
+      "manteiga",
+      "mel"
+    ]
+  },
+  {
+    "id": 1402,
+    "nome": "Taça de smoothie de açaí com bagas",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "banana",
+      "coco ralado",
+      "laranja",
+      "xarope de ácer"
+    ]
+  },
+  {
+    "id": 1403,
+    "nome": "Taça de açaí com frutos silvestres frescos, pólen de abelha e granola",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "arroz",
+      "banana",
+      "manteiga",
+      "morangos",
+      "pistácio",
+      "sementes de chia",
+      "xarope de agave"
+    ]
+  },
+  {
+    "id": 1404,
+    "nome": "Taça de smoothie de açaí com kiwi e aveia",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "açúcar",
+      "banana",
+      "leite de coco",
+      "manga"
+    ]
+  },
+  {
+    "id": 1405,
+    "nome": "Taça de açaí com mirtilo",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "couve-flor",
+      "leite de coco",
+      "manteiga",
+      "morangos"
+    ]
+  },
+  {
+    "id": 1406,
+    "nome": "Smoothies em camadas de açaí e gergelim preto",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "banana",
+      "caju",
+      "leite de coco",
+      "maçã",
+      "sementes de chia",
+      "sementes de cânhamo",
+      "sementes de sésamo",
+      "xarope de ácer"
+    ]
+  },
+  {
+    "id": 1407,
+    "nome": "Smoothie de adzuki, matcha e bagas",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "massa",
+      "matcha"
+    ]
+  },
+  {
+    "id": 1408,
+    "nome": "Smoothie de amêndoa, banana e chia com baunilha e quinoa tufada",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "banana",
+      "extrato de baunilha",
+      "quinoa",
+      "sementes de chia"
+    ]
+  },
+  {
+    "id": 1409,
+    "nome": "Smoothie de amêndoa, figo e banana",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "banana",
+      "canela",
+      "maçã",
+      "mel"
+    ]
+  },
+  {
+    "id": 1410,
+    "nome": "Smoothie de amora para o pequeno-almoço",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "coco ralado",
+      "leite vegetal",
+      "manteiga",
+      "sementes de chia",
+      "sementes de linhaça"
+    ]
+  },
+  {
+    "id": 1411,
+    "nome": "Taça de smoothie de amora, beterraba e nozes",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "açúcar",
+      "beterraba",
+      "cacau em pó",
+      "coco ralado",
+      "manteiga",
+      "sementes de chia",
+      "tahini"
+    ]
+  },
+  {
+    "id": 1412,
+    "nome": "Batido de ananás e banana",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "ananás",
+      "açúcar",
+      "banana"
+    ]
+  },
+  {
+    "id": 1413,
+    "nome": "Batido de ananás e espinafre",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "ananás",
+      "laranja",
+      "maracujá",
+      "sementes de chia",
+      "trigo sarraceno",
+      "água"
+    ]
+  },
+  {
+    "id": 1414,
+    "nome": "Batido de ananás e maracujá",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "ananás",
+      "banana",
+      "maracujá",
+      "matcha",
+      "mel"
+    ]
+  },
+  {
+    "id": 1415,
+    "nome": "Taças de smoothie de ananás, maçã e couve",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "ananás",
+      "couve-chinesa",
+      "gengibre fresco",
+      "hortelã",
+      "mel",
+      "pêra",
+      "sementes de cânhamo",
+      "água"
+    ]
+  },
+  {
+    "id": 1416,
+    "nome": "Smoothies de aveia e amêndoa com mirtilo",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "aveia",
+      "banana",
+      "extrato de baunilha",
+      "mel"
+    ]
+  },
+  {
+    "id": 1417,
+    "nome": "Smoothie de aveia e mocha",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "aveia",
+      "banana",
+      "cacau em pó",
+      "caju",
+      "leite vegetal",
+      "sal",
+      "xarope de ácer"
+    ]
+  },
+  {
+    "id": 1418,
+    "nome": "Taça de smoothie azul com banana, maçã, kiwi, iogurte e pó espiralado",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "banana",
+      "kiwi",
+      "maçã",
+      "spirulina"
+    ]
+  },
+  {
+    "id": 1419,
+    "nome": "Taça de batido azul com colagénio",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag2_(A).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag2_(A).html",
+    "ingredientes": [
+      "banana",
+      "leite de coco",
+      "manga"
+    ]
+  },
+  {
+    "id": 1420,
+    "nome": "Smoothie de bagas de goji",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "banana",
+      "canela",
+      "goji",
+      "maçã",
+      "sal marinho"
+    ]
+  },
+  {
+    "id": 1421,
+    "nome": "Batido de bagas e banana",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "aveia",
+      "banana",
+      "limão",
+      "tâmaras"
+    ]
+  },
+  {
+    "id": 1422,
+    "nome": "Taça de smoothie de bagas e banana",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "banana",
+      "manteiga",
+      "morangos"
+    ]
+  },
+  {
+    "id": 1423,
+    "nome": "Taça de smoothie de bagas e chocolate",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "banana",
+      "cacau em pó",
+      "caju",
+      "iogurte vegetal",
+      "leite vegetal",
+      "maçã",
+      "sementes de chia",
+      "tâmaras",
+      "óleo de coco"
+    ]
+  },
+  {
+    "id": 1424,
+    "nome": "Smoothie de bagas e coco",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "coco ralado",
+      "leite de coco",
+      "sementes de chia"
+    ]
+  },
+  {
+    "id": 1425,
+    "nome": "Taça de batido de bagas e romã",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "romã"
+    ]
+  },
+  {
+    "id": 1426,
+    "nome": "Smoothie bowl de bagas e verduras",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "banana",
+      "maçã"
+    ]
+  },
+  {
+    "id": 1427,
+    "nome": "Smoothies de bagas para o pequeno-almoço",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "beterraba",
+      "mel",
+      "morangos",
+      "spirulina"
+    ]
+  },
+  {
+    "id": 1428,
+    "nome": "Smoothie de bagas, manteiga de amêndoa e gengibre com sementes de chia",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "extrato de baunilha",
+      "gengibre",
+      "manteiga",
+      "sementes de chia"
+    ]
+  },
+  {
+    "id": 1429,
+    "nome": "Smoothie de banana azul e leite de avelã",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "banana",
+      "quinoa"
+    ]
+  },
+  {
+    "id": 1430,
+    "nome": "Taça de banana e açaí com compota de mirtilo",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "aveia",
+      "banana",
+      "manteiga",
+      "xarope de ácer",
+      "água"
+    ]
+  },
+  {
+    "id": 1431,
+    "nome": "Batido de banana e coco",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "arroz integral",
+      "açúcar",
+      "banana",
+      "cacau em pó",
+      "canela",
+      "coco ralado",
+      "leite vegetal",
+      "maçã",
+      "sal marinho",
+      "sementes de abóbora",
+      "sementes de cânhamo"
+    ]
+  },
+  {
+    "id": 1432,
+    "nome": "Batido de banana e courgette",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "açúcar",
+      "banana",
+      "canela",
+      "extrato de baunilha"
+    ]
+  },
+  {
+    "id": 1433,
+    "nome": "Taça de smoothie de banana e espinafre",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "banana",
+      "goji",
+      "sementes de chia"
+    ]
+  },
+  {
+    "id": 1434,
+    "nome": "Smoothie de banana e frutos silvestres",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "banana",
+      "morangos"
+    ]
+  },
+  {
+    "id": 1435,
+    "nome": "Taça de smoothie de banana e frutos silvestres",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "banana",
+      "coco ralado",
+      "flores comestíveis",
+      "lima",
+      "sementes de cânhamo",
+      "sementes de linhaça",
+      "trigo sarraceno"
+    ]
+  },
+  {
+    "id": 1436,
+    "nome": "Smoothie de banana e manteiga de amêndoa",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "açafrão",
+      "banana",
+      "canela",
+      "chá verde",
+      "manteiga"
+    ]
+  },
+  {
+    "id": 1437,
+    "nome": "Smoothie de banana e morango",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "banana",
+      "extrato de baunilha",
+      "iogurte natural",
+      "mel",
+      "morangos"
+    ]
+  },
+  {
+    "id": 1438,
+    "nome": "Smoothie Bowl de banana e morango",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "banana",
+      "mel",
+      "morangos",
+      "água"
+    ]
+  },
+  {
+    "id": 1439,
+    "nome": "Smoothie de banana e morango com iogurte",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "açúcar",
+      "banana",
+      "morangos",
+      "água"
+    ]
+  },
+  {
+    "id": 1440,
+    "nome": "Batido de banana, ananás e laranja",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "ananás",
+      "banana",
+      "laranja"
+    ]
+  },
+  {
+    "id": 1441,
+    "nome": "Taça de batido de banana, ananás e morango",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "aveia",
+      "banana",
+      "caju",
+      "canela",
+      "leite de coco",
+      "manteiga",
+      "sementes de abóbora",
+      "sementes de girassol"
+    ]
+  },
+  {
+    "id": 1442,
+    "nome": "Smoothie de banana, cânhamo e morango",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "banana",
+      "cacau em pó",
+      "canela",
+      "coco ralado",
+      "gengibre",
+      "maçã",
+      "morangos",
+      "sementes de cânhamo"
+    ]
+  },
+  {
+    "id": 1443,
+    "nome": "Taça de smoothie de banana, couve-flor e espirulina",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "banana",
+      "couve-flor",
+      "spirulina",
+      "uvas"
+    ]
+  },
+  {
+    "id": 1444,
+    "nome": "Smoothie de banana, manga e espirulina com iogurte de mirtilo",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "aveia",
+      "banana",
+      "hortelã",
+      "manga",
+      "sementes de chia",
+      "spirulina"
+    ]
+  },
+  {
+    "id": 1445,
+    "nome": "Batido de banana, tâmaras e nozes",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "banana",
+      "canela",
+      "extrato de baunilha",
+      "manteiga",
+      "sementes de linhaça",
+      "tâmaras"
+    ]
+  },
+  {
+    "id": 1446,
+    "nome": "Barra de pequeno-almoço com smoothie",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "açafrão",
+      "banana",
+      "canela",
+      "espinafres",
+      "gengibre fresco",
+      "lima",
+      "manga",
+      "mel",
+      "sal",
+      "sementes de abóbora",
+      "sementes de chia",
+      "sementes de cânhamo",
+      "sumo de limão"
+    ]
+  },
+  {
+    "id": 1447,
+    "nome": "Batata-doce batido #1",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "açúcar",
+      "batata-doce",
+      "canela",
+      "manga",
+      "noz-moscada",
+      "água"
+    ]
+  },
+  {
+    "id": 1448,
+    "nome": "Batido de batata-doce #2",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "açafrão",
+      "açúcar",
+      "banana",
+      "batata-doce",
+      "canela",
+      "gengibre",
+      "manteiga",
+      "sementes de linhaça",
+      "sumo de laranja",
+      "óleo vegetal"
+    ]
+  },
+  {
+    "id": 1449,
+    "nome": "Taça de batata-doce batida",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "banana",
+      "batata-doce",
+      "canela",
+      "sementes de chia"
+    ]
+  },
+  {
+    "id": 1450,
+    "nome": "Smoothie de batata-doce com chai",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "anis-estrelado",
+      "banana",
+      "batata-doce",
+      "canela",
+      "coco ralado",
+      "couve-flor",
+      "especiarias",
+      "água"
+    ]
+  },
+  {
+    "id": 1451,
+    "nome": "Smoothie de batata-doce com especiarias e manteiga de amêndoa",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "batata-doce",
+      "cardamomo",
+      "cenoura",
+      "couve-flor",
+      "manteiga",
+      "sementes de girassol"
+    ]
+  },
+  {
+    "id": 1452,
+    "nome": "Taça de smoothie de baunilha e framboesa",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": []
+  },
+  {
+    "id": 1453,
+    "nome": "Taça de batido cremoso de baunilha e maca",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "avelãs",
+      "banana",
+      "canela",
+      "leite vegetal",
+      "manteiga",
+      "maçã",
+      "tâmaras"
+    ]
+  },
+  {
+    "id": 1454,
+    "nome": "Taça de smoothie de baunilha, sementes de cânhamo e nozes",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "açúcar",
+      "banana",
+      "canela",
+      "couve-flor",
+      "extrato de baunilha",
+      "maçã",
+      "pepino",
+      "sementes de cânhamo"
+    ]
+  },
+  {
+    "id": 1455,
+    "nome": "Smoothie Bowl de Beterraba",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "aveia",
+      "banana",
+      "beterraba",
+      "manteiga"
+    ]
+  },
+  {
+    "id": 1456,
+    "nome": "Smoothie de beterraba e água de coco",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "beterraba",
+      "laranja",
+      "limão",
+      "sumo de limão",
+      "água"
+    ]
+  },
+  {
+    "id": 1457,
+    "nome": "Smoothie de beterraba vermelha com iogurte grego e flores",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "beterraba",
+      "cebola",
+      "lima",
+      "manga",
+      "morangos",
+      "pimenta caiena",
+      "sal",
+      "sumo de laranja"
+    ]
+  },
+  {
+    "id": 1458,
+    "nome": "Smoothie de beterraba vermelha para dar energia à tarde",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "banana",
+      "beterraba",
+      "mel"
+    ]
+  },
+  {
+    "id": 1459,
+    "nome": "Smoothie de beterraba, frutos silvestres e maçã com sementes de chia",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "açúcar",
+      "beterraba",
+      "canela",
+      "leite de coco",
+      "sementes de chia"
+    ]
+  },
+  {
+    "id": 1460,
+    "nome": "Bombas imunológicas",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag3_(B).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag3_(B).html",
+    "ingredientes": [
+      "açafrão",
+      "gengibre fresco",
+      "limão",
+      "pimenta preta",
+      "sal",
+      "água"
+    ]
+  },
+  {
+    "id": 1461,
+    "nome": "Taças de smoothie de cacau e banana rosa",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "banana",
+      "cacau em pó",
+      "extrato de baunilha",
+      "leite vegetal",
+      "pistácio"
+    ]
+  },
+  {
+    "id": 1462,
+    "nome": "Taça de smoothie de cacau e cereja",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "açúcar",
+      "banana",
+      "cacau em pó",
+      "canela",
+      "couve-flor",
+      "manteiga"
+    ]
+  },
+  {
+    "id": 1463,
+    "nome": "Batido cremoso de café",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "açúcar",
+      "manteiga",
+      "tâmaras"
+    ]
+  },
+  {
+    "id": 1464,
+    "nome": "Smoothie de caramelo salgado",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "banana",
+      "manteiga",
+      "maçã",
+      "sal",
+      "tâmaras"
+    ]
+  },
+  {
+    "id": 1465,
+    "nome": "Smoothie de cenoura",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "aveia",
+      "açafrão",
+      "banana",
+      "canela",
+      "cenoura"
+    ]
+  },
+  {
+    "id": 1466,
+    "nome": "Smoothie de cenoura, beterraba, erva de trigo, broto de ervilha, maçã, limão, gengibre e jalapeño",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "beterraba",
+      "cenoura",
+      "gengibre",
+      "limão",
+      "maçã"
+    ]
+  },
+  {
+    "id": 1467,
+    "nome": "Smoothie de cereja",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "ananás",
+      "farinha",
+      "morangos",
+      "água"
+    ]
+  },
+  {
+    "id": 1468,
+    "nome": "Smoothie de cereja e coco",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "açúcar",
+      "lima"
+    ]
+  },
+  {
+    "id": 1469,
+    "nome": "Smoothie de cereja e limão",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "abacate",
+      "espinafres",
+      "lima",
+      "mel"
+    ]
+  },
+  {
+    "id": 1470,
+    "nome": "Batido de cereja preta e cacau crocante",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "banana",
+      "canela",
+      "ovo",
+      "óleo",
+      "óleo de coco"
+    ]
+  },
+  {
+    "id": 1471,
+    "nome": "Chá com bolhas de pitaya rosa",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "açúcar",
+      "xarope de ácer",
+      "água"
+    ]
+  },
+  {
+    "id": 1472,
+    "nome": "Smoothie de cheesecake de abóbora",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "abóbora"
+    ]
+  },
+  {
+    "id": 1473,
+    "nome": "Smoothie de cheesecake de matcha e morango",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "extrato de baunilha",
+      "leite de coco",
+      "matcha"
+    ]
+  },
+  {
+    "id": 1474,
+    "nome": "Smoothie de chia azul",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "banana",
+      "manteiga",
+      "sementes de chia",
+      "sementes de cânhamo"
+    ]
+  },
+  {
+    "id": 1475,
+    "nome": "Batido de chocolate",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "banana",
+      "cacau em pó",
+      "canela",
+      "manteiga",
+      "maçã",
+      "xarope de agave"
+    ]
+  },
+  {
+    "id": 1476,
+    "nome": "Milkshake de chocolate com castanha de caju e coco",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "banana",
+      "cacau em pó",
+      "caju"
+    ]
+  },
+  {
+    "id": 1477,
+    "nome": "Batido de chocolate com molho de ananás",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "ananás",
+      "banana",
+      "cacau em pó",
+      "água",
+      "óleo de coco"
+    ]
+  },
+  {
+    "id": 1478,
+    "nome": "Taça de smoothie de chocolate com molho de chocolate caseiro",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "cacau em pó",
+      "mel",
+      "sal marinho",
+      "óleo de coco"
+    ]
+  },
+  {
+    "id": 1479,
+    "nome": "Batido de chocolate e banana",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "banana",
+      "cacau em pó",
+      "leite vegetal",
+      "manteiga"
+    ]
+  },
+  {
+    "id": 1480,
+    "nome": "Milkshake de chocolate e batata-doce",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "banana",
+      "batata",
+      "cacau em pó",
+      "canela",
+      "gengibre em pó",
+      "leite de coco",
+      "xarope de ácer"
+    ]
+  },
+  {
+    "id": 1481,
+    "nome": "Milkshake de chocolate e baunilha",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "aveia",
+      "banana",
+      "cacau em pó",
+      "extrato de baunilha",
+      "tâmaras"
+    ]
+  },
+  {
+    "id": 1482,
+    "nome": "Batido de chocolate e courgette",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "cacau em pó",
+      "canela",
+      "leite de coco",
+      "manteiga",
+      "maçã",
+      "sal",
+      "tâmaras"
+    ]
+  },
+  {
+    "id": 1483,
+    "nome": "Batido de chocolate e laranja para o pequeno-almoço",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "ananás",
+      "banana",
+      "cacau em pó",
+      "laranja",
+      "mel",
+      "sementes de linhaça",
+      "sumo de laranja"
+    ]
+  },
+  {
+    "id": 1484,
+    "nome": "Batido de chocolate e pêra",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "cacau em pó",
+      "canela",
+      "cardamomo",
+      "manteiga",
+      "pêra",
+      "sementes de linhaça",
+      "tâmaras"
+    ]
+  },
+  {
+    "id": 1485,
+    "nome": "Smoothie Bowl de Chocolate Fudge",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "banana",
+      "manteiga"
+    ]
+  },
+  {
+    "id": 1486,
+    "nome": "Batido de chocolate, banana e nozes",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "banana",
+      "cacau em pó",
+      "sal marinho",
+      "sementes de chia",
+      "xarope de ácer"
+    ]
+  },
+  {
+    "id": 1487,
+    "nome": "Taça de smoothie de chocolate, café e chaga",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "abacate",
+      "açúcar",
+      "banana",
+      "cacau em pó",
+      "couve-flor",
+      "mel",
+      "tâmaras"
+    ]
+  },
+  {
+    "id": 1488,
+    "nome": "Batido de chocolate, coco e banana",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "banana",
+      "cacau em pó",
+      "leite de coco",
+      "manteiga",
+      "sal marinho",
+      "tâmaras"
+    ]
+  },
+  {
+    "id": 1489,
+    "nome": "Batido de chocolate, coco e canela",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "açúcar",
+      "canela",
+      "chocolate em pó"
+    ]
+  },
+  {
+    "id": 1490,
+    "nome": "Smoothie de chocolate, manteiga de amêndoa e batata-doce",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "banana",
+      "batata-doce",
+      "cacau em pó",
+      "canela",
+      "couve-flor",
+      "manteiga"
+    ]
+  },
+  {
+    "id": 1491,
+    "nome": "Batido de chocolate, manteiga de amendoim e banana",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "aveia",
+      "banana",
+      "cacau em pó",
+      "extrato de baunilha",
+      "manteiga"
+    ]
+  },
+  {
+    "id": 1492,
+    "nome": "Batido de citrinos de inverno para reforçar o sistema imunitário",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "ananás",
+      "açafrão",
+      "banana",
+      "canela",
+      "cenoura",
+      "couve-flor",
+      "gengibre fresco",
+      "leite vegetal",
+      "pimenta preta",
+      "sumo de laranja"
+    ]
+  },
+  {
+    "id": 1493,
+    "nome": "Batido de citrinos picante rosa pálido",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "laranja",
+      "limão",
+      "malagueta",
+      "manjericão"
+    ]
+  },
+  {
+    "id": 1494,
+    "nome": "Batido de coco e matcha Nutribullet",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "abacate",
+      "farinha",
+      "leite de coco",
+      "lima",
+      "matcha",
+      "néctar de agave"
+    ]
+  },
+  {
+    "id": 1495,
+    "nome": "Batido de coco e picles",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "ananás",
+      "banana",
+      "xarope de ácer",
+      "água"
+    ]
+  },
+  {
+    "id": 1496,
+    "nome": "Taças de coco sereia",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "banana",
+      "leite de coco",
+      "spirulina",
+      "xarope de ácer"
+    ]
+  },
+  {
+    "id": 1497,
+    "nome": "Smoothie para combater a confusão mental",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "chá verde",
+      "espinafres"
+    ]
+  },
+  {
+    "id": 1498,
+    "nome": "Copo de smoothie de maracujá e chia",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "aveia",
+      "banana",
+      "maracujá"
+    ]
+  },
+  {
+    "id": 1499,
+    "nome": "Batido de couve",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": []
+  },
+  {
+    "id": 1500,
+    "nome": "Taça de batido de couve",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "banana",
+      "caju",
+      "chá verde",
+      "flocos de aveia",
+      "manga",
+      "morangos",
+      "sementes de chia",
+      "xarope de ácer"
+    ]
+  },
+  {
+    "id": 1501,
+    "nome": "Batido de couve tropical",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "ananás",
+      "laranja",
+      "manga",
+      "sementes de chia",
+      "água"
+    ]
+  },
+  {
+    "id": 1502,
+    "nome": "Batido de couve com frutas",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "ananás",
+      "açúcar",
+      "coco ralado",
+      "manga"
+    ]
+  },
+  {
+    "id": 1503,
+    "nome": "Smoothie de couve-flor e açafrão",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "açafrão",
+      "banana",
+      "canela",
+      "couve-flor",
+      "extrato de baunilha",
+      "iogurte natural",
+      "pimenta preta",
+      "sementes de chia"
+    ]
+  },
+  {
+    "id": 1504,
+    "nome": "Smoothie Bowl de couve-flor e mirtilo",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag4_(C).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag4_(C).html",
+    "ingredientes": [
+      "batata-doce",
+      "couve-flor",
+      "sementes de chia"
+    ]
+  },
+  {
+    "id": 1505,
+    "nome": "Smoothies de ervilha-borboleta, pitaya rosa e manga",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag5_(E).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag5_(E).html",
+    "ingredientes": [
+      "banana",
+      "manga"
+    ]
+  },
+  {
+    "id": 1506,
+    "nome": "Taça de smoothie espesso de ácer",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag5_(E).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag5_(E).html",
+    "ingredientes": [
+      "açúcar",
+      "banana",
+      "canela",
+      "couve-flor",
+      "manteiga",
+      "maçã",
+      "xarope de ácer"
+    ]
+  },
+  {
+    "id": 1507,
+    "nome": "Smoothie de espinafre",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag5_(E).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag5_(E).html",
+    "ingredientes": [
+      "banana",
+      "gengibre",
+      "iogurte natural",
+      "laranja",
+      "água"
+    ]
+  },
+  {
+    "id": 1508,
+    "nome": "Smoothie de espinafre, abacate e ananás",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag5_(E).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag5_(E).html",
+    "ingredientes": [
+      "abacate",
+      "lima",
+      "água"
+    ]
+  },
+  {
+    "id": 1509,
+    "nome": "Taça de batido de espinafre, couve, banana, abacate e gengibre",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag5_(E).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag5_(E).html",
+    "ingredientes": [
+      "abacate",
+      "açúcar",
+      "gengibre fresco",
+      "mel"
+    ]
+  },
+  {
+    "id": 1510,
+    "nome": "Taça de batido de espirulina n.º 1",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag5_(E).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag5_(E).html",
+    "ingredientes": [
+      "abacate",
+      "banana",
+      "canela",
+      "couve-flor",
+      "spirulina"
+    ]
+  },
+  {
+    "id": 1511,
+    "nome": "Taça de batido de espirulina n.º 2",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag5_(E).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag5_(E).html",
+    "ingredientes": [
+      "banana",
+      "spirulina"
+    ]
+  },
+  {
+    "id": 1512,
+    "nome": "Taça de batido de espirulina n.º 3",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag5_(E).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag5_(E).html",
+    "ingredientes": [
+      "banana",
+      "morangos",
+      "spirulina"
+    ]
+  },
+  {
+    "id": 1513,
+    "nome": "Smoothie fácil de bagas",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "banana",
+      "mel"
+    ]
+  },
+  {
+    "id": 1514,
+    "nome": "Smoothie fácil de manga",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "banana",
+      "manga",
+      "sementes de abóbora"
+    ]
+  },
+  {
+    "id": 1515,
+    "nome": "Smoothie fácil de morango",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "maçã",
+      "morangos"
+    ]
+  },
+  {
+    "id": 1516,
+    "nome": "Smoothie fácil de romã",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "banana",
+      "romã",
+      "sumo de laranja"
+    ]
+  },
+  {
+    "id": 1517,
+    "nome": "Smoothie fácil de torta de maçã",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "aveia",
+      "canela",
+      "maçã"
+    ]
+  },
+  {
+    "id": 1518,
+    "nome": "Taça de batido de figo fresco e banana",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "banana"
+    ]
+  },
+  {
+    "id": 1519,
+    "nome": "Slushies Lava Flow",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "ananás",
+      "açúcar",
+      "banana",
+      "morangos"
+    ]
+  },
+  {
+    "id": 1520,
+    "nome": "Taças de smoothie de framboesa com fatias de abacate, maçã e granola",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "abacate",
+      "aveia",
+      "açúcar",
+      "sementes de cânhamo"
+    ]
+  },
+  {
+    "id": 1521,
+    "nome": "Batido de framboesa e abacate",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "abacate"
+    ]
+  },
+  {
+    "id": 1522,
+    "nome": "Batido de framboesa e banana",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "banana",
+      "sementes de cânhamo"
+    ]
+  },
+  {
+    "id": 1523,
+    "nome": "Taça de smoothie de framboesa e manteiga de amendoim #2",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "ananás",
+      "banana"
+    ]
+  },
+  {
+    "id": 1524,
+    "nome": "Taça de smoothie de framboesa e manteiga de amendoim n.º 1",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "banana",
+      "couve-flor"
+    ]
+  },
+  {
+    "id": 1525,
+    "nome": "Batido de framboesa e pepino com cobertura de coco e nibs de cacau",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "arroz",
+      "banana",
+      "canela",
+      "manteiga",
+      "pepino",
+      "sementes de chia"
+    ]
+  },
+  {
+    "id": 1526,
+    "nome": "Taça de batido de framboesa e toranja",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "açúcar",
+      "banana",
+      "mel",
+      "romã",
+      "sementes de chia",
+      "sumo de limão"
+    ]
+  },
+  {
+    "id": 1527,
+    "nome": "Smoothie de framboesa, banana, mel e sementes de cânhamo",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "banana",
+      "leite de vaca",
+      "mel",
+      "sementes de cânhamo",
+      "sumo de laranja"
+    ]
+  },
+  {
+    "id": 1528,
+    "nome": "Taças de smoothie de framboesa, quinoa e flor de laranjeira",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "banana",
+      "leite de coco",
+      "quinoa",
+      "água"
+    ]
+  },
+  {
+    "id": 1529,
+    "nome": "Frullato di Frutta (batido de frutas italiano)",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "banana",
+      "manga"
+    ]
+  },
+  {
+    "id": 1530,
+    "nome": "Batido de fruta do dragão, maçã e coco",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "maçã"
+    ]
+  },
+  {
+    "id": 1531,
+    "nome": "Taça de smoothie de frutas",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "banana"
+    ]
+  },
+  {
+    "id": 1532,
+    "nome": "Batido de frutas cítricas e bagas de inverno",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "laranja",
+      "limão",
+      "sementes de cânhamo",
+      "sementes de linhaça",
+      "vinagre"
+    ]
+  },
+  {
+    "id": 1533,
+    "nome": "Smoothie em camadas de frutas cítricas, framboesa e pêssego",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "sumo de laranja"
+    ]
+  },
+  {
+    "id": 1534,
+    "nome": "Taça de batido de frutas de outono",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "maçã"
+    ]
+  },
+  {
+    "id": 1535,
+    "nome": "Taça de smoothie de frutas e nozes",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "arandos secos",
+      "banana",
+      "goji",
+      "maçã",
+      "sementes de abóbora"
+    ]
+  },
+  {
+    "id": 1536,
+    "nome": "Smoothie de frutas e vegetais",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "açúcar",
+      "banana",
+      "cenoura",
+      "sementes de chia",
+      "água"
+    ]
+  },
+  {
+    "id": 1537,
+    "nome": "Frutas vermelhas e bagas",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "laranja",
+      "ruibarbo"
+    ]
+  },
+  {
+    "id": 1538,
+    "nome": "Taça de batido de frutos silvestres",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "banana",
+      "manteiga",
+      "nectarina",
+      "sementes de chia",
+      "sementes de cânhamo",
+      "sumo de laranja"
+    ]
+  },
+  {
+    "id": 1539,
+    "nome": "Batido de frutos silvestres",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "laranja",
+      "maçã",
+      "morangos",
+      "sementes de cânhamo"
+    ]
+  },
+  {
+    "id": 1540,
+    "nome": "Taça de batido de frutos silvestres ácidos e beterraba",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag6_(F).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag6_(F).html",
+    "ingredientes": [
+      "banana",
+      "beterraba",
+      "couve-flor",
+      "lima",
+      "sementes de chia",
+      "tâmaras",
+      "água"
+    ]
+  },
+  {
+    "id": 1541,
+    "nome": "Gelado de espirulina azul",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag7_(G).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag7_(G).html",
+    "ingredientes": [
+      "aveia",
+      "banana",
+      "spirulina"
+    ]
+  },
+  {
+    "id": 1542,
+    "nome": "Gelado de piña colada",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag7_(G).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag7_(G).html",
+    "ingredientes": [
+      "ananás",
+      "banana",
+      "água"
+    ]
+  },
+  {
+    "id": 1543,
+    "nome": "Gelado flutuante para o pequeno-almoço",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag7_(G).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag7_(G).html",
+    "ingredientes": [
+      "pimenta caiena",
+      "sementes de cânhamo"
+    ]
+  },
+  {
+    "id": 1544,
+    "nome": "Gelado rosa",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag7_(G).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag7_(G).html",
+    "ingredientes": [
+      "ananás",
+      "banana"
+    ]
+  },
+  {
+    "id": 1545,
+    "nome": "Batidos de gengibre",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag7_(G).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag7_(G).html",
+    "ingredientes": [
+      "aveia",
+      "banana",
+      "canela",
+      "gengibre fresco",
+      "leite de coco",
+      "mel",
+      "noz-moscada",
+      "pimenta"
+    ]
+  },
+  {
+    "id": 1546,
+    "nome": "Batido de gengibre, maçã e beterraba",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag7_(G).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag7_(G).html",
+    "ingredientes": [
+      "beterraba",
+      "cenoura",
+      "gengibre fresco",
+      "laranja",
+      "maçã",
+      "água"
+    ]
+  },
+  {
+    "id": 1547,
+    "nome": "Taças de smoothie de hibisco e frutos silvestres com creme de caju e mel",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag8_(H-K).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag8_(H-K).html",
+    "ingredientes": [
+      "aveia",
+      "banana",
+      "leite vegetal",
+      "manteiga",
+      "mel",
+      "morangos",
+      "sal",
+      "sementes de chia",
+      "sementes de cânhamo",
+      "água"
+    ]
+  },
+  {
+    "id": 1548,
+    "nome": "Smoothie de hortelã, maçã e pepino",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag8_(H-K).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag8_(H-K).html",
+    "ingredientes": [
+      "banana",
+      "limão",
+      "maçã",
+      "pepino",
+      "água"
+    ]
+  },
+  {
+    "id": 1549,
+    "nome": "Smoothie de hortelã, manjericão e frutas tropicais",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag8_(H-K).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag8_(H-K).html",
+    "ingredientes": [
+      "ananás",
+      "gengibre",
+      "hortelã",
+      "leite vegetal",
+      "manga",
+      "manjericão"
+    ]
+  },
+  {
+    "id": 1550,
+    "nome": "Batido de iogurte com menta e framboesa",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag8_(H-K).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag8_(H-K).html",
+    "ingredientes": [
+      "hortelã"
+    ]
+  },
+  {
+    "id": 1551,
+    "nome": "Taça de iogurte de coco com frutos silvestres",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag8_(H-K).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag8_(H-K).html",
+    "ingredientes": [
+      "aveia",
+      "banana",
+      "leite de coco",
+      "morangos"
+    ]
+  },
+  {
+    "id": 1552,
+    "nome": "Batido de iogurte grego com frutos silvestres",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag8_(H-K).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag8_(H-K).html",
+    "ingredientes": [
+      "banana",
+      "morangos"
+    ]
+  },
+  {
+    "id": 1553,
+    "nome": "Taça de smoothie de kiwi e morango",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag8_(H-K).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag8_(H-K).html",
+    "ingredientes": [
+      "morangos",
+      "sementes de linhaça"
+    ]
+  },
+  {
+    "id": 1554,
+    "nome": "Smoothie de laranja cremoso",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag9_(L).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag9_(L).html",
+    "ingredientes": [
+      "açúcar",
+      "banana",
+      "couve-flor",
+      "laranja"
+    ]
+  },
+  {
+    "id": 1555,
+    "nome": "Smoothie de laranja e manga",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag9_(L).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag9_(L).html",
+    "ingredientes": [
+      "laranja",
+      "manga"
+    ]
+  },
+  {
+    "id": 1556,
+    "nome": "Smoothie de laranja e pêssego",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag9_(L).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag9_(L).html",
+    "ingredientes": [
+      "laranja",
+      "água",
+      "óleo"
+    ]
+  },
+  {
+    "id": 1557,
+    "nome": "Smoothie de laranja sanguínea, bagas, banana e espinafre",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag9_(L).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag9_(L).html",
+    "ingredientes": [
+      "banana",
+      "romã",
+      "sementes de chia",
+      "sementes de cânhamo",
+      "sumo de laranja"
+    ]
+  },
+  {
+    "id": 1558,
+    "nome": "Smoothie de laranja, arando e tâmara",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag9_(L).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag9_(L).html",
+    "ingredientes": [
+      "banana",
+      "canela",
+      "coco ralado",
+      "extrato de baunilha",
+      "leite de coco",
+      "sal",
+      "sumo de laranja",
+      "tâmaras"
+    ]
+  },
+  {
+    "id": 1559,
+    "nome": "Batido de laranja, framboesa e pistácio",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag9_(L).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag9_(L).html",
+    "ingredientes": [
+      "aveia",
+      "morangos",
+      "pistácio",
+      "xarope de ácer"
+    ]
+  },
+  {
+    "id": 1560,
+    "nome": "Batido de leite de aveia",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag9_(L).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag9_(L).html",
+    "ingredientes": [
+      "aveia",
+      "banana",
+      "extrato de baunilha",
+      "manga",
+      "morangos"
+    ]
+  },
+  {
+    "id": 1561,
+    "nome": "Batido de limonada de morango congelado",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag9_(L).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag9_(L).html",
+    "ingredientes": [
+      "limão",
+      "morangos",
+      "xarope de ácer",
+      "água"
+    ]
+  },
+  {
+    "id": 1562,
+    "nome": "Batido de linhaça",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag9_(L).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag9_(L).html",
+    "ingredientes": [
+      "manteiga",
+      "morangos",
+      "sementes de linhaça"
+    ]
+  },
+  {
+    "id": 1563,
+    "nome": "Batido de linhaça, espinafre, banana e manteiga de amendoim",
+    "tipo": "smoothies",
+    "dieta": "vegetariana",
+    "ficheiro_txt": "thefeedfeed_pag9_(L).txt",
+    "link": "smoothies/vegetariana/thefeedfeed_pag9_(L).html",
+    "ingredientes": [
+      "banana",
+      "farinha",
+      "manteiga"
+    ]
+  }
+]
