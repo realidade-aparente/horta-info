@@ -340,6 +340,67 @@
   border:1px solid rgba(0,0,0,.25);
   background:rgba(255,255,255,.9);
   cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
 }</style>
 </head>
 <body id="topo">
@@ -400,7 +461,7 @@
 </div>
 <div>
 <div class="imagem-container-externo">
-<div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div>
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
 </div>
 <p class="imagem-legenda">Beldroega biológica, planta rasteira suculenta muito usada em sopas e saladas no Alentejo.</p>
 </div>
@@ -866,7 +927,7 @@
 </main>
 <script>
 /*
-  === v2: Viewer / Carousel (imagens + vídeo) ===
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
 
   Como usar:
   1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
@@ -876,27 +937,65 @@
      - poster: (só vídeo) imagem de capa opcional
      - caption: legenda opcional (aproveita .imagem-legenda se existir)
 
-  2) Botões:
-     - ◀ (Anterior) e ▶ (Próximo)
-
-  3) Swipe (touch / trackpad):
-     - Arrastar para a esquerda: próximo
-     - Arrastar para a direita: anterior
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
 */
 
 (function(){
   const items = [
-    { type: "image", src: "imagens/beldroega.png", alt: "Beldroega (Portulaca oleracea) em crescimento espontâneo na horta", caption: "Imagem 1" },
-    // Exemplos (altera/ativa conforme os teus ficheiros):
-    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Beldroega em molho", caption: "Imagem 2" },
-    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/beldroega.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/exemplo_2.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/exemplo.mp4", poster: "imagens/exemplo_video_thumb.jpg", caption: "Vídeo" }
   ];
 
   let idx = 0;
+
   const frame = document.getElementById("mediaFrame");
   const btnPrev = document.getElementById("btnPrev");
   const btnNext = document.getElementById("btnNext");
   const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
 
   function render(){
     frame.innerHTML = "";
@@ -917,14 +1016,13 @@
       frame.appendChild(video);
     }
 
-    // Atualiza a legenda se existir na página
     if(captionEl){
       const cap = item.caption ?? "";
       captionEl.textContent = cap;
-      // Se preferires esconder a legenda quando for vídeo, troca a linha abaixo por:
-      // captionEl.style.display = (item.type === "video") ? "none" : "";
       captionEl.style.display = cap ? "" : "";
     }
+
+    updateDots();
   }
 
   function next(){ idx = (idx + 1) % items.length; render(); }
@@ -933,21 +1031,19 @@
   btnNext && btnNext.addEventListener("click", next);
   btnPrev && btnPrev.addEventListener("click", prev);
 
-  // Swipe via pointer events (funciona em touch e também em rato/trackpad)
+  // Swipe via pointer events (touch + rato/trackpad)
   let startX = null;
-  frame.addEventListener("pointerdown", (e) => {
-    startX = e.clientX;
-  });
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
   frame.addEventListener("pointerup", (e) => {
     if(startX === null) return;
     const dx = e.clientX - startX;
     startX = null;
-
-    const threshold = 40; // px
+    const threshold = 40;
     if(dx > threshold) prev();
     else if(dx < -threshold) next();
   });
 
+  buildDots();
   render();
 })();
 </script></body>
