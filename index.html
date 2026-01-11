@@ -7,14 +7,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 <body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead">
   <header>
     <h1>Horta da Terra para o prato</h1>
     <p>Informação prática sobre plantas hortícolas de produção biológica e algumas plantas espontâneas comestíveis para partilhar.</p>
   </header>
 
   <nav>
-    <a href="index.html" class="ativa">Início</a>
-    <a href="espontaneas.html">Plantas espontâneas comestíveis</a>
     <a href="abobora-butternut.html">Abóbora butternut</a>
     <a href="abobora-grande.html">Abóbora grande</a>
     <a href="acelga.html">Acelga</a>
@@ -63,11 +66,13 @@
     <a href="tomate.html">Tomate (genérico)</a>
     <a href="tomate-chucha.html">Tomate tipo chucha / Roma</a>
   </nav>
+  </div>
+
 
   <main>
     <article class="planta">
       <header class="intro-cabecalho">
-        <h2>Bem-vindo à Horta da Terra para o prato (v3.0)</h2>
+        <h2>Bem-vindo à Horta da Terra para o prato (v4.0)</h2>
         <p>
           Aqui encontras fichas detalhadas sobre várias <strong>plantas hortícolas de produção biológica</strong>
           e também sobre algumas <strong>plantas espontâneas comestíveis (PANC)</strong>:
@@ -340,5 +345,66 @@
   <footer>
     Horta da Terra para o prato – partilha de saberes da horta biológica à mesa
   </footer>
+  <script>
+  (function(){
+    const mount = document.getElementById("sidebar-mount");
+    if(!mount) return;
+
+    const applyActive = (root) => {
+      const path = (location.pathname.split("/").pop() || "inicio.html").toLowerCase();
+      root.querySelectorAll(".nav-item").forEach(a => {
+        const route = (a.getAttribute("data-route") || a.getAttribute("href") || "").toLowerCase();
+        const href = (a.getAttribute("href") || "").toLowerCase();
+        const isActive = (route && route === path) || (href && href === path);
+        if(isActive) a.classList.add("active");
+        else a.classList.remove("active");
+      });
+    };
+
+    const setCollapsed = (sidebar, collapsed) => {
+      sidebar.setAttribute("data-collapsed", collapsed ? "1" : "0");
+      document.body.classList.toggle("sidebar-collapsed", !!collapsed);
+      localStorage.setItem("sidebar-collapsed", collapsed ? "1" : "0");
+    };
+
+    fetch("sidebar.html", { cache: "no-store" })
+      .then(r => r.text())
+      .then(html => {
+        mount.innerHTML = html;
+
+        const sidebar = mount.querySelector(".sidebar");
+        const toggle = mount.querySelector(".sidebar-toggle");
+        if(!sidebar || !toggle) return;
+
+        // restore collapsed state
+        const saved = localStorage.getItem("sidebar-collapsed");
+        const collapsed = saved === "1";
+        setCollapsed(sidebar, collapsed);
+
+        toggle.addEventListener("click", () => {
+          const now = sidebar.getAttribute("data-collapsed") === "1";
+          setCollapsed(sidebar, !now);
+        });
+
+        applyActive(mount);
+      })
+      .catch(() => {
+        // se sidebar.html não existir, não quebra a página
+      });
+
+    // Masthead "stuck" feedback
+    const masthead = document.querySelector(".with-sidebar .masthead");
+    const sentinel = document.querySelector(".masthead-sentinel");
+    if(masthead && sentinel && "IntersectionObserver" in window){
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          masthead.classList.toggle("is-stuck", !entry.isIntersecting);
+        });
+      }, {root: null, threshold: 0});
+      io.observe(sentinel);
+    }
+  })();
+  </script>
+  </div>
 </body>
 </html>

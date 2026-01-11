@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Umbigo-de-vénus (Umbilicus rupestris) | Horta da Terra para o prato</title>
+	<link rel="stylesheet" href="style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
         :root {
@@ -318,9 +319,95 @@
 .diet-links-right a:hover{
   text-decoration:underline;
 }
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
 </style>
 </head>
 <body id="topo">
+
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
 <div class="masthead">
 <header>
     <h1>Horta da Terra para o prato</h1>
@@ -328,8 +415,6 @@
 </header>
 
 <nav>
-    <a href="index.html">Início</a>
-    <a href="espontaneas.html">Índice</a>
     <a href="beldroega.html">Beldroega</a>
     <a href="bredos.html">Bredos</a>
     <a href="dente-de-leao.html">Dente-de-leão</a>
@@ -385,10 +470,8 @@
 
             <div>
                 <div class="imagem-container-externo">
-                    <div class="imagem-container">
-                        <img src="imagens/umbigo-de-venus.png" alt="Umbigo-de-vénus (Umbilicus rupestris) em parede de pedra">
-                    </div>
-                </div>
+				<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+				</div>
                 <p class="imagem-legenda">
                     Umbigo-de-vénus biológico a crescer em fendas de parede. As folhas peltadas formam uma “covinha”
                     central que lembra um umbigo.
@@ -853,5 +936,190 @@
         </div>
     </article>
 </main>
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/umbigo-de-venus.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/umbigo-de-venus.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+  </div>
+  <script>
+  (function(){
+    const mount = document.getElementById("sidebar-mount");
+    if(!mount) return;
+
+    const applyActive = (root) => {
+      const path = (location.pathname.split("/").pop() || "inicio.html").toLowerCase();
+      root.querySelectorAll(".nav-item").forEach(a => {
+        const route = (a.getAttribute("data-route") || a.getAttribute("href") || "").toLowerCase();
+        const href = (a.getAttribute("href") || "").toLowerCase();
+        const isActive = (route && route === path) || (href && href === path);
+        if(isActive) a.classList.add("active");
+        else a.classList.remove("active");
+      });
+    };
+
+    const setCollapsed = (sidebar, collapsed) => {
+      sidebar.setAttribute("data-collapsed", collapsed ? "1" : "0");
+      document.body.classList.toggle("sidebar-collapsed", !!collapsed);
+      localStorage.setItem("sidebar-collapsed", collapsed ? "1" : "0");
+    };
+
+    fetch("sidebar.html", { cache: "no-store" })
+      .then(r => r.text())
+      .then(html => {
+        mount.innerHTML = html;
+
+        const sidebar = mount.querySelector(".sidebar");
+        const toggle = mount.querySelector(".sidebar-toggle");
+        if(!sidebar || !toggle) return;
+
+        // restore collapsed state
+        const saved = localStorage.getItem("sidebar-collapsed");
+        const collapsed = saved === "1";
+        setCollapsed(sidebar, collapsed);
+
+        toggle.addEventListener("click", () => {
+          const now = sidebar.getAttribute("data-collapsed") === "1";
+          setCollapsed(sidebar, !now);
+        });
+
+        applyActive(mount);
+      })
+      .catch(() => {
+        // se sidebar.html não existir, não quebra a página
+      });
+
+    // Masthead "stuck" feedback
+    const masthead = document.querySelector(".with-sidebar .masthead");
+    const sentinel = document.querySelector(".masthead-sentinel");
+    if(masthead && sentinel && "IntersectionObserver" in window){
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          masthead.classList.toggle("is-stuck", !entry.isIntersecting);
+        });
+      }, {root: null, threshold: 0});
+      io.observe(sentinel);
+    }
+  })();
+  
+  </script>
 </body>
 </html>
+

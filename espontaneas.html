@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Plantas espontâneas comestíveis | Horta da Terra para o prato</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
         :root {
             --cor-fundo: #f5f7f2;
@@ -302,14 +303,17 @@
 </style>
 </head>
 <body id="topo">
-<div class="masthead">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+    <div class="masthead">
 <header>
     <h1>Horta da Terra para o prato</h1>
     <p>Plantas espontâneas comestíveis de produção biológica – do campo para a cozinha.</p>
 </header>
 
 <nav>
-    <a href="index.html">Início</a>
     <a href="beldroega.html">Beldroega</a>
     <a href="bredos.html">Bredos</a>
     <a href="dente-de-leao.html">Dente-de-leão</a>
@@ -319,7 +323,8 @@
     <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
 	<a href="urtiga.html"> Urtiga</a>
 </nav>
-</header></div>
+    </div>
+
 <main>
     <section class="intro">
         <h2>Plantas espontâneas comestíveis</h2>
@@ -413,5 +418,68 @@
         </article>
     </section>
 </main>
+  </div>
+
+<script>
+  (function(){
+    const mount = document.getElementById("sidebar-mount");
+    if(!mount) return;
+
+    const applyActive = (root) => {
+      const path = (location.pathname.split("/").pop() || "inicio.html").toLowerCase();
+      root.querySelectorAll(".nav-item").forEach(a => {
+        const route = (a.getAttribute("data-route") || a.getAttribute("href") || "").toLowerCase();
+        const href = (a.getAttribute("href") || "").toLowerCase();
+        const isActive = (route && route === path) || (href && href === path);
+        if(isActive) a.classList.add("active");
+        else a.classList.remove("active");
+      });
+    };
+
+    const setCollapsed = (sidebar, collapsed) => {
+      sidebar.setAttribute("data-collapsed", collapsed ? "1" : "0");
+      document.body.classList.toggle("sidebar-collapsed", !!collapsed);
+      localStorage.setItem("sidebar-collapsed", collapsed ? "1" : "0");
+    };
+
+    fetch("sidebar.html", { cache: "no-store" })
+      .then(r => r.text())
+      .then(html => {
+        mount.innerHTML = html;
+
+        const sidebar = mount.querySelector(".sidebar");
+        const toggle = mount.querySelector(".sidebar-toggle");
+        if(!sidebar || !toggle) return;
+
+        // restore collapsed state
+        const saved = localStorage.getItem("sidebar-collapsed");
+        const collapsed = saved === "1";
+        setCollapsed(sidebar, collapsed);
+
+        toggle.addEventListener("click", () => {
+          const now = sidebar.getAttribute("data-collapsed") === "1";
+          setCollapsed(sidebar, !now);
+        });
+
+        applyActive(mount);
+      })
+      .catch(() => {
+        // se sidebar.html não existir, não quebra a página
+      });
+
+    // Masthead "stuck" feedback
+    const masthead = document.querySelector(".with-sidebar .masthead");
+    const sentinel = document.querySelector(".masthead-sentinel");
+    if(masthead && sentinel && "IntersectionObserver" in window){
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          masthead.classList.toggle("is-stuck", !entry.isIntersecting);
+        });
+      }, {root: null, threshold: 0});
+      io.observe(sentinel);
+    }
+  })();
+  </script>
+
 </body>
 </html>

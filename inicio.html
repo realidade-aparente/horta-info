@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Início – Horta da Terra para o prato</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+    /* Estilos específicos da página inicial */
+    main { max-width: 1040px; }
+
+    .home-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .home-card {
+      background: var(--cor-caixa);
+      border: 1px solid var(--cor-borda);
+      border-radius: 14px;
+      padding: 1rem 1.05rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+    }
+    .home-card h2, .home-card h3 { margin-top: 0; }
+    .home-card a {
+      display: inline-block;
+      margin-top: 0.6rem;
+      padding: 0.55rem 0.75rem;
+      background: var(--cor-principal);
+      color: #fff;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .home-card a:hover { background: var(--cor-secundaria); }
+  </style>
+</head>
+<body>
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+  <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead">
+    <header>
+      <h1>Horta da Terra para o prato</h1>
+      <p>Informação prática sobre plantas cultivadas e espontâneas – para partilhar.</p>
+    </header>
+  </div>
+
+  <main>
+        <section class="home-card">
+          <h2>Bem-vindo 👋</h2>
+          <p>
+            Aqui encontras informação prática sobre plantas cultivadas e espontâneas comestíveis,
+            ideias de consumo, receitas e notas de &quot;farmácia do campo&quot; (com referências).
+          </p>
+          <p style="margin:0.5rem 0 0;">
+            Usa o menu lateral à esquerda: clica no botão ☰ para expandir e ver todos os itens.
+          </p>
+        </section>
+
+        <section class="home-grid" aria-label="Atalhos principais">
+          <div class="home-card">
+            <h3>Plantas cultivadas</h3>
+            <p>Lista de hortícolas e aromáticas do site (páginas individuais por planta).</p>
+            <a href="index.html">Abrir lista</a>
+          </div>
+
+          <div class="home-card">
+            <h3>Plantas espontâneas</h3>
+            <p>Espécies que aparecem sozinhas e podem ser úteis (com identificação e cuidados).</p>
+            <a href="espontaneas.html">Ver espontâneas</a>
+          </div>
+
+          <div class="home-card">
+            <h3>Receitas</h3>
+            <p>Preparações simples e práticas: sopas, saladas, conservas, infusões e mais.</p>
+            <a href="receitas.html">Ir para receitas</a>
+          </div>
+
+          <div class="home-card">
+            <h3>Farmácia do campo</h3>
+            <p>Benefícios, usos tradicionais e o que a evidência científica suporta (quando existir).</p>
+            <a href="farmacia.html">Abrir farmácia</a>
+          </div>
+
+          <div class="home-card">
+            <h3>Videoteca</h3>
+            <p>Vídeos úteis (identificação, cultivo, receitas e preparação).</p>
+            <a href="videoteca.html">Ver vídeos</a>
+          </div>
+
+          <div class="home-card">
+            <h3>Horta (apresentação)</h3>
+            <p>Contexto do projeto, objetivos e como estão organizadas as páginas.</p>
+            <a href="apresentacao.html">Ler apresentação</a>
+          </div>
+
+          <div class="home-card">
+            <h3>Contactos</h3>
+            <p>Como falar comigo / contribuir / sugerir melhorias.</p>
+            <a href="contactos.html">Abrir contactos</a>
+          </div>
+        </section>
+      </main>
+        
+        <!--  <small>💡 Dica: no modo recolhido, podes escolher quais os atalhos rápidos com <code>data-quick="1"</code> no HTML.</small> -->
+        
+  <footer style="padding: 1.25rem 0 2.5rem; color:#4b5563;">
+          <small>💡 Dica: no modo recolhido, podes escolher de entre os atalhos rápidos.</small>
+        </footer>
+
+  <script>
+  (function(){
+    const mount = document.getElementById("sidebar-mount");
+    if(!mount) return;
+
+    const applyActive = (root) => {
+      const path = (location.pathname.split("/").pop() || "inicio.html").toLowerCase();
+      root.querySelectorAll(".nav-item").forEach(a => {
+        const route = (a.getAttribute("data-route") || a.getAttribute("href") || "").toLowerCase();
+        const href = (a.getAttribute("href") || "").toLowerCase();
+        const isActive = (route && route === path) || (href && href === path);
+        if(isActive) a.classList.add("active");
+        else a.classList.remove("active");
+      });
+    };
+
+    const setCollapsed = (sidebar, collapsed) => {
+      sidebar.setAttribute("data-collapsed", collapsed ? "1" : "0");
+      document.body.classList.toggle("sidebar-collapsed", !!collapsed);
+      localStorage.setItem("sidebar-collapsed", collapsed ? "1" : "0");
+    };
+
+    fetch("sidebar.html", { cache: "no-store" })
+      .then(r => r.text())
+      .then(html => {
+        mount.innerHTML = html;
+
+        const sidebar = mount.querySelector(".sidebar");
+        const toggle = mount.querySelector(".sidebar-toggle");
+        if(!sidebar || !toggle) return;
+
+        // restore collapsed state
+        const saved = localStorage.getItem("sidebar-collapsed");
+        const collapsed = saved === "1";
+        setCollapsed(sidebar, collapsed);
+
+        toggle.addEventListener("click", () => {
+          const now = sidebar.getAttribute("data-collapsed") === "1";
+          setCollapsed(sidebar, !now);
+        });
+
+        applyActive(mount);
+      })
+      .catch(() => {
+        // se sidebar.html não existir, não quebra a página
+      });
+
+    // Masthead "stuck" feedback
+    const masthead = document.querySelector(".with-sidebar .masthead");
+    const sentinel = document.querySelector(".masthead-sentinel");
+    if(masthead && sentinel && "IntersectionObserver" in window){
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          masthead.classList.toggle("is-stuck", !entry.isIntersecting);
+        });
+      }, {root: null, threshold: 0});
+      io.observe(sentinel);
+    }
+  })();
+  </script>
+  </div>
+</body>
+</html>
