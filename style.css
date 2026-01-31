@@ -439,6 +439,28 @@ footer {
   margin: 6px 6px;
 }
 
+/* Scrollbar da sidebar (Chrome, Edge, Safari) */
+.sidebar::-webkit-scrollbar {
+  width: 4px;           /* podes ajustar a largura */
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: var(--sidebar-bg);  /* igual ao fundo da sidebar */
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.25); /* cor do "polegar" do scroll */
+  border-radius: 8px;
+  border: 2px solid var(--sidebar-bg);   /* margem com a cor do fundo */
+}
+
+/* Scrollbar da sidebar (Firefox) */
+.sidebar {
+  scrollbar-width: thin; /* thin / auto */
+  scrollbar-color: rgba(0,0,0,0.35) var(--sidebar-bg);
+  /*        thumb                 track               */
+}
+
 /* Items */
 .sidebar .nav-item{
   display: flex;
@@ -681,3 +703,24 @@ body.sidebar-collapsed .sidebar-toggle,
   justify-content: center !important;
   align-items: center !important;
 }
+
+
+/* Transições suaves da sidebar */
+.sidebar{
+  transition: width 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.sidebar .nav-item .label{
+  transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out;
+}
+
+.sidebar[data-collapsed="1"] .nav-item .label{
+  opacity: 0;
+  transform: translateX(-4px);
+}
+
+.sidebar[data-collapsed="0"] .nav-item .label{
+  opacity: 1;
+  transform: translateX(0);
+}
+
