@@ -364,7 +364,6 @@
     const setCollapsed = (sidebar, collapsed) => {
       sidebar.setAttribute("data-collapsed", collapsed ? "1" : "0");
       document.body.classList.toggle("sidebar-collapsed", !!collapsed);
-      localStorage.setItem("sidebar-collapsed", collapsed ? "1" : "0");
     };
 
     fetch("sidebar.html", { cache: "no-store" })
@@ -376,10 +375,8 @@
         const toggle = mount.querySelector(".sidebar-toggle");
         if(!sidebar || !toggle) return;
 
-        // restore collapsed state
-        const saved = localStorage.getItem("sidebar-collapsed");
-        const collapsed = saved === "1";
-        setCollapsed(sidebar, collapsed);
+        // start collapsed on every page load
+		setCollapsed(sidebar, true);
 
         toggle.addEventListener("click", () => {
           const now = sidebar.getAttribute("data-collapsed") === "1";
