@@ -724,3 +724,105 @@ body.sidebar-collapsed .sidebar-toggle,
   transform: translateX(0);
 }
 
+.tabela-farmaco caption {
+  caption-side: bottom;   /* faz a legenda aparecer por baixo da tabela */
+  padding-top: 0.3rem;
+  font-size: 0.9rem;
+  font-style: italic;
+  text-align: left;       /* ou center, se preferires */
+}
+
+/* Botão e Corpo de texto expansível Disclaimer */
+.disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+/* Botão verde "Encontrar soluções…" como na ilustração */
+.btn-encontrar {
+  display: inline-block;
+  padding: 0.7rem 2.2rem;
+  border-radius: 999px;          /* bem redondo */
+  background: #2f8a2f;           /* verde principal */
+  border: 2px solid #1f6521;     /* contorno mais escuro */
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  box-shadow: 0 4px 0 #1f6521;   /* “borda” inferior tipo 3D */
+  transition: transform 0.1s ease, box-shadow 0.1s ease,
+              background-color 0.1s ease;
+}
+
+/* Hover: ligeiramente mais claro */
+.btn-encontrar:hover {
+  background: #36a236;
+  box-shadow: 0 4px 0 #1f6521;
+}
+
+/* Active: botão “afunda” um bocadinho */
+.btn-encontrar:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #1f6521;
+}
+
+/* Boneco "De que é que se queixa?" */
+.boneco-queixa {
+  display: block;
+  max-width: 400px;   /* tamanho máximo no desktop/tablet */
+  width: 100%;        /* ocupa até 100% da largura do container */
+  height: auto;       /* mantém proporção original */
+  margin: 0 auto;     /* centra a imagem */
+}

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Plantas espontâneas comestíveis | Horta da Terra para o prato</title>
+        <link rel="stylesheet" href="style.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+    <div class="masthead">
+<header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Plantas espontâneas comestíveis em contexto de produção biológica – do campo para a cozinha.</p>
+</header>
+
+<nav>
+    <a href="beldroega.html">Beldroega</a>
+    <a href="bredos.html">Bredos</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="quenopodio.html">Quenopódio</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+	<a href="urtiga.html"> Urtiga</a>
+</nav>
+    </div>
+
+<main>
+    <section class="intro">
+        <h2>Plantas espontâneas comestíveis</h2>
+        <p>
+            Nesta secção juntam-se algumas <strong>plantas espontâneas comestíveis</strong> que aparecem
+            sozinhas em hortas, pomares, olivais e terrenos agrícolas. Muitas destas espécies são
+            classificadas como “ervas daninhas”, mas em contexto de <strong>agricultura biológica</strong> e
+            <strong>permacultura</strong> podem tornar-se aliadas importantes na alimentação e na saúde da
+            horta.
+        </p>
+        <p>
+            De forma geral, estas plantas não foram tão intensamente <strong>domesticadas</strong> como as
+            hortícolas clássicas. Isso significa que, em muitos casos, mantêm uma <strong>densidade
+            nutricional elevada</strong> (vitaminas, minerais, fitoquímicos) e sabores mais marcados
+            (amargos, ácidos, aromáticos), ao mesmo tempo que são bem adaptadas aos solos e climas locais.
+            Em contrapartida, exigem <strong>boa identificação botânica</strong> e colheita em locais limpos,
+            longe de contaminações químicas ou poluição.
+        </p>
+        <p>
+            As fichas que se seguem focam o uso alimentar destas espécies em contexto de produção
+            <strong>biológica</strong>, dando destaque a: identificação básica, sazonalidade, formas de
+            consumo, receitas, benefícios para a saúde (com suporte em estudos sempre que possível),
+            propriedades nutricionais e papel em sistemas de permacultura.
+        </p>
+    </section>
+
+    <section class="grid-plantas">
+        <article class="planta-card">
+            <h3>Beldroega</h3>
+            <p><em>Portulaca oleracea</em></p>
+            <p>Planta rasteira suculenta, rica em ómega-3, muito usada em sopas e saladas no Alentejo e noutras cozinhas tradicionais.</p>
+            <span class="tag">PANC / espontânea</span><br>
+            <a href="beldroega.html">Ver ficha da beldroega →</a>
+        </article>
+
+        <article class="planta-card">
+            <h3>Bredos</h3>
+            <p><em>Amaranthus blitum</em> (e afins)</p>
+            <p>Amaranto de folha espontâneo, usado como verdura de tacho, de sabor e uso semelhante a espinafres.</p>
+            <span class="tag">PANC / espontânea</span><br>
+            <a href="bredos.html">Ver ficha dos bredos →</a>
+        </article>
+
+        <article class="planta-card">
+            <h3>Dente-de-leão</h3>
+            <p><em>Taraxacum officinale</em></p>
+            <p>Folhas amargas comestíveis, flores aproveitadas em saladas e preparados tradicionais de múltiplos países.</p>
+            <span class="tag">PANC / espontânea</span><br>
+            <a href="dente-de-leao.html">Ver ficha do dente-de-leão →</a>
+        </article>
+
+        <article class="planta-card">
+            <h3>Morugem</h3>
+            <p><em>Stellaria media</em> (e espécies afins)</p>
+            <p>Erva rasteira de sombra fresca, com folhas tenras usadas em saladas, omeletes e salteados rápidos.</p>
+            <span class="tag">PANC / espontânea</span><br>
+            <a href="morugem.html">Ver ficha da morugem →</a>
+        </article>
+
+        <article class="planta-card">
+            <h3>Quenopódio</h3>
+            <p><em>Chenopodium spp.</em></p>
+            <p>Grupo de espécies de folhas verdes, tradicionalmente consumidas como verdura semelhante ao espinafre.</p>
+            <span class="tag">PANC / espontânea</span><br>
+            <a href="quenopodio.html">Ver ficha do quenopódio →</a>
+        </article>
+
+        <article class="planta-card">
+            <h3>Umbigo-de-vénus</h3>
+            <p><em>Umbilicus rupestris</em></p>
+            <p>Planta de muros e rochedos, com folhas suculentas e crocantes usadas em saladas e petiscos.</p>
+            <span class="tag">PANC / espontânea</span><br>
+            <a href="umbigo-de-venus.html">Ver ficha do umbigo-de-vénus →</a>
+        </article>
+
+        <article class="planta-card">
+            <h3>Serralha</h3>
+            <p><em>Sonchus spp.</em></p>
+            <p>Folhas e rebentos jovens consumidos como “grelos espontâneos”, em sopas, migas e salteados.</p>
+            <span class="tag">PANC / espontânea</span><br>
+            <a href="serralha.html">Ver ficha da serralha →</a>
+        </article>
+		
+		
+        <article class="planta-card">
+            <h3>Urtiga</h3>
+            <p><em>Urtica dioica / Urtica urens</em></p>
+            <p>Folhas e rebentos jovens consumidos escaldados ou cozidos em sopas, migas de forma semelhante a espinafres, bem como em infusões e preparados tradicionais..</p>
+            <span class="tag">PANC / espontânea</span><br>
+            <a href="urtiga.html">Ver ficha da urtiga →</a>
+        </article>
+    </section>
+</main>
+
+<script src="sidebar.js" defer></script>
+  </div>
+
+
+
+</body>
+</html>

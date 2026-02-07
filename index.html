@@ -2,352 +2,117 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8" />
-  <title>Horta da Terra para o prato</title>
+  <title>Início – Horta da Terra para o prato</title>
   <link rel="stylesheet" href="style.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+    /* Estilos específicos da página inicial */
+    main { max-width: 1040px; }
+
+    .home-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .home-card {
+      background: var(--cor-caixa);
+      border: 1px solid var(--cor-borda);
+      border-radius: 14px;
+      padding: 1rem 1.05rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+    }
+    .home-card h2, .home-card h3 { margin-top: 0; }
+    .home-card a {
+      display: inline-block;
+      margin-top: 0.6rem;
+      padding: 0.55rem 0.75rem;
+      background: var(--cor-principal);
+      color: #fff;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .home-card a:hover { background: var(--cor-secundaria); }
+  </style>
 </head>
-<body id="topo">
+<body>
   <div id="sidebar-mount"></div>
   <div class="with-sidebar">
-    <div class="masthead-sentinel" aria-hidden="true"></div>
+  <div class="masthead-sentinel" aria-hidden="true"></div>
 
   <div class="masthead">
-  <header>
-    <h1>Horta da Terra para o prato</h1>
-    <p>Informação prática sobre plantas hortícolas de produção biológica e algumas plantas espontâneas comestíveis para partilhar.</p>
-  </header>
-
-  <nav>
-    <a href="abobora-butternut.html">Abóbora butternut</a>
-    <a href="abobora-grande.html">Abóbora grande</a>
-    <a href="acelga.html">Acelga</a>
-    <a href="agriao.html">Agrião-de-água</a>
-    <a href="agriao-terra.html">Agrião-da-terra</a>
-    <a href="aipo.html">Aipo (talos e folhas)</a>
-    <a href="alface.html">Alface</a>
-    <a href="alho.html">Alho</a>
-    <a href="alho-frances.html">Alho-francês</a>
-    <a href="aneto.html">Aneto / Endro</a>
-    <a href="batata-comum.html">Batata comum</a>
-    <a href="batata-doce.html">Batata-doce</a>
-    <a href="beringela.html">Beringela</a>
-    <a href="beterraba.html">Beterraba</a>
-    <a href="brocolo.html">Brócolo</a>
-    <a href="canonigos.html">Canónigos</a>
-    <a href="cebola.html">Cebola</a>
-    <a href="cebola-fresca.html">Cebola fresca</a>
-    <a href="cenoura.html">Cenoura</a>
-	<a href="coentros.html">Coentros</a>
-    <a href="couve-chinesa.html">Couve chinesa</a>
-    <a href="couve-flor.html">Couve-flor</a>
-    <a href="couve-rabano.html">Couve-rábano</a>
-    <a href="couve-repolho.html">Couve repolho</a>
-    <a href="couve-toscana.html">Couve toscana</a>
-    <a href="curgete.html">Curgete</a>
-    <a href="ervilhas-frescas.html">Ervilhas frescas</a>
-    <a href="espinafre.html">Espinafre</a>
-    <a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
-    <a href="feijao-verde.html">Feijão verde</a>
-    <a href="manjericao.html">Manjericão</a>
-    <a href="milho-doce.html">Milho doce</a>
-    <a href="mizuna.html">Mizuna</a>
-    <a href="morangos.html">Morangueiro / Morangos</a>
-    <a href="moringa.html">Moringa</a>
-    <a href="nabica.html">Nabiça</a>
-    <a href="nabo.html">Nabo</a>
-    <a href="pak-choi.html">Pak choi</a>
-    <a href="pepino.html">Pepino</a>
-    <a href="pimento.html">Pimento</a>
-    <a href="rabanete.html">Rabanete</a>
-    <a href="rabano.html">Rábano / Daikon</a>
-    <a href="rucula.html">Rúcula</a>
-    <a href="salanova.html">Salanova</a>
-    <a href="salsa.html">Salsa</a>
-    <a href="tomate.html">Tomate (genérico)</a>
-    <a href="tomate-chucha.html">Tomate tipo chucha / Roma</a>
-  </nav>
+    <header>
+      <h1>Horta da Terra para o prato</h1>
+      <p>Informação prática sobre plantas cultivadas e espontâneas – para partilhar.</p>
+    </header>
   </div>
 
-
   <main>
-    <article class="planta">
-      <header class="intro-cabecalho">
-        <h2>Bem-vindo à Horta da Terra para o prato (v4.0)</h2>
-        <p>
-          Aqui encontras fichas detalhadas sobre várias <strong>plantas hortícolas de produção biológica</strong>
-          e também sobre algumas <strong>plantas espontâneas comestíveis (PANC)</strong>:
-          apresentação, sazonalidade em Portugal continental, propriedades nutricionais, benefícios
-          para a saúde (com referências científicas), usos em permacultura e top 10's de receitas
-          para cada planta.
-        </p>
-      </header>
+        <section class="home-card">
+          <h2>Bem-vindo 👋</h2>
+          <p>
+            Aqui encontras informação prática sobre plantas cultivadas e espontâneas comestíveis,
+            ideias de consumo, receitas e notas de &quot;farmácia do campo&quot; (com referências).
+          </p>
+          <p style="margin:0.5rem 0 0;">
+            Usa o menu lateral à esquerda: clica no botão ☰ para expandir e ver todos os itens.
+          </p>
+        </section>
 
-      <section>
-        <h3>Escolhe uma planta para explorar</h3>
-        <p class="nota-intro">
-          Clica no nome de cada planta para abrir a ficha completa com mais detalhes.  
-          Se quiseres começar pelas espontâneas, podes ir diretamente para a
-          <a href="espontaneas.html">secção de plantas espontâneas comestíveis</a>.
-        </p>
+        <section class="home-grid" aria-label="Atalhos principais">
+          <div class="home-card">
+            <h3>Plantas cultivadas</h3>
+            <p>Lista de hortícolas e aromáticas do site (páginas individuais por planta).</p>
+            <a href="index_cultivadas.html">Ver cultivadas</a>
+          </div>
 
-        <div class="plant-grid">
-          <!-- Card de destaque para as espontâneas -->
-          <article class="plant-card">
-            <h3><a href="espontaneas.html">Plantas espontâneas comestíveis</a></h3>
-            <p>Beldroega, dente-de-leão, morugem, bredo, quenopódio, umbigo-de-vénus, serralha… Ver sub-index &rarr;</p>
-          </article>
-		  
-          <article class="plant-card">
-            <h3><a href="abobora-butternut.html">Abóbora butternut</a></h3>
-            <p>Polpa doce, ótima para assados e sopas cremosas. Ver ficha completa &rarr;</p>
-          </article>
-		  
-          <article class="plant-card">
-            <h3><a href="abobora-grande.html">Abóbora grande</a></h3>
-            <p>Polpa doce de cor laranja intensa, ótima para sopas, doces, purés, saladas, pães. Ver ficha completa &rarr;</p>
-          </article>
+          <div class="home-card">
+            <h3>Plantas espontâneas</h3>
+            <p>Espécies que aparecem sozinhas e podem ser úteis (com identificação e cuidados).</p>
+            <a href="index_espontaneas.html">Ver espontâneas</a>
+          </div>
 
-          <article class="plant-card">
-            <h3><a href="acelga.html">Acelga</a></h3>
-            <p>Hortícola de folha colorida, para salteados e sopas. Ver ficha completa &rarr;</p>
-          </article>
+          <div class="home-card">
+            <h3>Receitas</h3>
+            <p>Preparações simples e práticas: sopas, saladas, conservas, infusões e mais.</p>
+            <a href="data/refeicoes.html">Ir para receitas</a>
+          </div>
 
-          <article class="plant-card">
-            <h3><a href="agriao.html">Agrião-de-água</a></h3>
-            <p>Folha de sabor levemente picante. Ver ficha completa &rarr;</p>
-          </article>
-		  
-          <article class="plant-card">
-            <h3><a href="agriao-terra.html">Agrião-de-terra</a></h3>
-            <p>Folha de sabor levemente picante. Ver ficha completa &rarr;</p>
-          </article>
-		  
-          <article class="plant-card">
-            <h3><a href="aipo.html">Aipo (talos e folhas)</a></h3>
-            <p>Aromático para sopas, caldos e saladas. Ver ficha completa &rarr;</p>
-          </article>
+          <div class="home-card">
+            <h3>Farmácia do campo</h3>
+            <p>Benefícios, usos tradicionais e o que a evidência científica suporta (quando existir).</p>
+            <a href="index_medicinais.html">Abrir farmácia</a>
+          </div>
 
-          <article class="plant-card">
-            <h3><a href="alface.html">Alface</a></h3>
-            <p>Base clássica de saladas frescas. Ver ficha completa &rarr;</p>
-          </article>
+          <div class="home-card">
+            <h3>Videoteca</h3>
+            <p>Vídeos úteis (identificação, cultivo, receitas e preparação).</p>
+            <a href="videoteca.html">Ver vídeos</a>
+          </div>
 
-          <article class="plant-card">
-            <h3><a href="alho.html">Alho</a></h3>
-            <p>Bulbo aromático com vasta utilização culinária. Ver ficha completa &rarr;</p>
-          </article>
+          <div class="home-card">
+            <h3>Horta (apresentação)</h3>
+            <p>Contexto do projeto, objetivos e como estão organizadas as páginas.</p>
+            <a href="apresentacao.html">Ler apresentação</a>
+          </div>
 
-          <article class="plant-card">
-            <h3><a href="alho-frances.html">Alho-francês</a></h3>
-            <p>Base de sopas e refogados suaves. Ver ficha completa &rarr;</p>
-          </article>
+          <div class="home-card">
+            <h3>Contactos</h3>
+            <p>Como falar comigo / contribuir / sugerir melhorias.</p>
+            <a href="contactos.html">Abrir contactos</a>
+          </div>
+        </section>
+      </main>
+        
+        <!--  <small>💡 Dica: no modo recolhido, podes escolher quais os atalhos rápidos com <code>data-quick="1"</code> no HTML.</small> -->
+        
+  <footer style="padding: 1.25rem 0 2.5rem; color:#4b5563;">
+          <small>💡 Dica: no modo recolhido, podes escolher de entre os atalhos rápidos.</small>
+        </footer>
 
-          <article class="plant-card">
-            <h3><a href="aneto.html">Aneto / Endro</a></h3>
-            <p>Aromática delicada para saladas, peixe e conservas. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="batata-comum.html">Batata comum</a></h3>
-            <p>Raiz tuberosa versátil em múltiplas confeções. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="batata-doce.html">Batata-doce</a></h3>
-            <p>Tubérculo adocicado, assado, em puré ou sopas. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="beringela.html">Beringela</a></h3>
-            <p>Fruto para grelhar, assar ou estufar. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="beterraba.html">Beterraba</a></h3>
-            <p>Raiz doce, usada crua, assada ou em sopas. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="brocolo.html">Brócolo</a></h3>
-            <p>Crucífera de inflorescência rica em micronutrientes. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="canonigos.html">Canónigos</a></h3>
-            <p>Folha tenra para saladas de inverno/primavera. Ver ficha completa &rarr;</p>
-          </article>
-          
-          <article class="plant-card">
-            <h3><a href="cebola.html">Cebola</a></h3>
-            <p>Base clássica de refogados, assados e sopas. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="cebola-fresca.html">Cebola fresca</a></h3>
-            <p>Cebolinho/cebola nova para saladas e salteados. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="cenoura.html">Cenoura</a></h3>
-            <p>Raiz rica em cor e sabor, crua ou cozinhada. Ver ficha completa &rarr;</p>
-          </article>
-		  
-		  <article class="plant-card">
-            <h3><a href="coentros.html">Coentros</a></h3>
-            <p>Aromática típica de sopas, arrozes e peixe. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="couve-chinesa.html">Couve chinesa</a></h3>
-            <p>Hortícola de folha para salteados e fermentados. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="couve-flor.html">Couve-flor</a></h3>
-            <p>Inflorescência branca ou colorida, ótima para gratinados. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="couve-rabano.html">Couve-rábano</a></h3>
-            <p>Caule engrossado crocante, cru ou cozinhado. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="couve-repolho.html">Couve repolho</a></h3>
-            <p>Repolhos diversos para sopas, estufados e fermentados. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="couve-toscana.html">Couve toscana</a></h3>
-            <p>Couve de folha escura, típica de sopas ricas. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="curgete.html">Curgete</a></h3>
-            <p>Fruto tenro para salteados, grelhados e sopas. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="ervilhas-frescas.html">Ervilhas frescas</a></h3>
-            <p>Leguminosa doce para sopas, arrozes e acompanhamentos. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="espinafre.html">Espinafre</a></h3>
-            <p>Folha verde escura para sopas, salteados e tartes. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a></h3>
-            <p>Alternativa de verão ao espinafre comum. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="feijao-verde.html">Feijão verde</a></h3>
-            <p>Vagens tenras, para sopas, saladas e estufados leves. Ver ficha completa &rarr;</p>
-          </article>
-		  
-          <article class="plant-card">
-            <h3><a href="manjericao.html">Manjericão</a></h3>
-            <p>Planta hortícola aromática. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="milho-doce.html">Milho doce</a></h3>
-            <p>Maçaroca fresca para cozer, grelhar ou saltear. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="mizuna.html">Mizuna</a></h3>
-            <p>Folha nipónica suave e ligeiramente picante. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="morangos.html">Morangueiro / Morangos</a></h3>
-            <p>Fruto vermelho aromático, para consumo em fresco ou sobremesas. Ver ficha completa &rarr;</p>
-          </article>
-		  
-          <article class="plant-card">
-            <h3><a href="moringa.html">Moringa (folhas frescas)</a></h3>
-            <p>Árvore de folha muito nutritiva em clima ameno. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="nabo.html">Nabo</a></h3>
-            <p>Raiz e folhas (nabiças) para sopas e estufados. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="nabica.html">Nabiça</a></h3>
-            <p>Folhas jovens do nabo, típicas de caldos e migas. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="pak-choi.html">Pak choi</a></h3>
-            <p>Brássica asiática para salteados rápidos e wok. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="pepino.html">Pepino</a></h3>
-            <p>Fruto refrescante para saladas e conservas. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="pimento.html">Pimento</a></h3>
-            <p>Fruto colorido para salteados, assados e recheados. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="rabanete.html">Rabanete</a></h3>
-            <p>Raiz picante de crescimento rápido, para saladas e pickles. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="rabano.html">Rábano / Daikon</a></h3>
-            <p>Raiz alongada, geralmente picante, usada em cru ou cozinhada. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="rucula.html">Rúcula</a></h3>
-            <p>Folha de sabor intenso e ligeiramente amargo. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="salanova.html">Salanova</a></h3>
-            <p>Alface de folhas pequenas, prática para saladas variadas. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="salsa.html">Salsa</a></h3>
-            <p>Aromática básica de cozinha, em cru ou em pratos acabados. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="tomate.html">Tomate (genérico)</a></h3>
-            <p>Fruto suculento para saladas, molhos e pratos confecionados. Ver ficha completa &rarr;</p>
-          </article>
-
-          <article class="plant-card">
-            <h3><a href="tomate-chucha.html">Tomate tipo chucha / Roma</a></h3>
-            <p>Tomate mais carnudo, ideal para molhos, secagem e conserva. Ver ficha completa &rarr;</p>
-          </article>
-		  
-		  <article class="plant-card">
-            <h3><a href="data/refeicoes.html">Filtro de receitas (experimental)</a></h3>
-            <p>Clica para encontrares receitas para os teus ingredientes;</p>
-          </article>
-		  
-        </div>
-      </section>
-    </article>
-  </main>
-
-  <footer>
-    Horta da Terra para o prato – partilha de saberes da horta biológica à mesa
-  </footer>
-  
   <script src="sidebar.js" defer></script>
   
-</div>
+  </div>
 </body>
 </html>
