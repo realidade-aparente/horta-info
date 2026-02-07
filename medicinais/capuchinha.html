@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html" class="ativa">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="calendula.html">Calêndula</a>
+  <a class="next" href="cardo-mariano.html">Cardo-mariano</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Capuchinha (<em>Tropaeolum majus L.</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Tropaeolaceae</span>
+  <span>Parte usada: folhas, flores e sementes</span>
+  <span>Tipo: anual trepadora comestível medicinal</span>
+  <span>Produção: <strong>fácil cultivo em hortas e vasos</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> Andes sul-americanos, hoje amplamente cultivada em jardins e hortas</div>
+  <div><strong>Uso principal</strong> apoio respiratório, urinário e cutâneo, flor e folha comestíveis</div>
+  <div><strong>Perfil medicinal</strong> antimicrobiana, expetorante, diurética suave, depurativa e imunomoduladora</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Capuchinha (Tropaeolum majus L.)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>A capuchinha (Tropaeolum majus L.) é uma planta herbácea anual, com hábito rasteiro ou trepador, caules suculentos e muito ramificados e folhas arredondadas, peltadas, de cor verde-clara a verde-azulada, com nervuras em forma de leque a partir do ponto de inserção do pecíolo. As flores, solitárias, têm cinco pétalas de cores vivas (amarelo, laranja, vermelho, salmão) e um esporão posterior característico, sendo muito atrativas para insetos polinizadores.</p>
+      <p>Em português é conhecida por capuchinha, chagas, nastúrcio-de-jardim, capuchinho e, em contexto de PANC, é referida como uma das flores comestíveis mais acessíveis. Em inglês, os nomes mais comuns incluem nasturtium, garden nasturtium, Indian cress e monks cress. Toda a parte aérea jovem é comestível: flores, folhas, caules e frutos verdes, com sabor picante que lembra rúcula, agrião ou mostarda.</p>
+      <p>Além de decorativa, é uma planta multifuncional na horta, funcionando como alimento, planta medicinal, atraente de auxiliares e, em muitos sistemas, como planta companheira e planta &quot;sacrificial&quot; para desviar pulgões e outros insetos de culturas mais sensíveis. Pelo seu caráter vigoroso e auto-sementeira, pode, contudo, comportar-se como ligeiramente infestante se não for manejada.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a> <a href="#ref-D4">[D4]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, a capuchinha comporta-se como anual de primavera-verão, sensível às geadas e a frios intensos. Semeia-se normalmente no final do inverno ou início da primavera, após o risco de geadas, e desenvolve-se rapidamente à medida que as temperaturas sobem.
+A floração é abundante do fim da primavera até ao outono, sobretudo em locais com boa exposição solar e rega moderada. Em zonas de inverno muito suave pode persistir mais tempo, mas geralmente as plantas morrem com o frio, reaparecendo por auto-sementeira na estação seguinte.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Sementeira em Portugal: final do inverno a primavera, após o risco de geadas.</li>
+        <li>Crescimento vegetativo rápido com temperaturas amenas e solos ligeiramente húmidos.</li>
+        <li>Floração: aproximadamente 6–8 semanas após a germinação, prolongando-se da primavera ao outono.</li>
+        <li>Produção de sementes e auto-sementeira no final do verão e outono, com rebrota espontânea em anos seguintes.</li>
+        <li>Plantas sensíveis à geada: o ciclo termina com os primeiros frios intensos do outono/inverno.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a> <a href="#ref-D1">[D1]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Preparados padronizados de Tropaeolum majus (ervas ou extratos ricos em benzil isotiocianato) têm sido utilizados em fitomedicamentos, isoladamente ou em combinação com Armoracia rusticana, para o tratamento adjuvante de infeções do trato urinário e do trato respiratório superior, em doses equivalentes a várias centenas de miligramas de extrato por dia, durante 7–14 dias, com resultados positivos em estudos observacionais e ensaios clínicos controlados. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a></li>
+        <li>Extratos hidroalcoólicos e aquosos de folhas e flores demonstraram atividade antimicrobiana, anti-inflamatória e antioxidante in vitro, atribuída sobretudo aos isotiocianatos derivados da glucotropaeolina e a polifenóis presentes nas flores, suportando o uso como adjuvante em infeções respiratórias e urinárias ligeiras e em inflamação crónica de baixo grau. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></li>
+        <li>Estudos pré-clínicos com benzil isotiocianato sugerem ainda potenciais efeitos metabólicos, incluindo modulação da produção hepática de glicose e aumento da capacidade antioxidante celular, embora estes efeitos não se traduzam ainda em indicações clínicas formais para o uso isolado da planta em diabetes ou outras patologias metabólicas. <a href="#ref-F5">[F5]</a> <a href="#ref-F6">[F6]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Infusão de flores e folhas frescas ou secas de capuchinha, isoladas ou combinadas com outras plantas respiratórias (como tomilho ou malva), utilizada tradicionalmente como chá expectorante suave em constipações, bronquite ligeira e estados gripais iniciais. <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Chá ou infusão de capuchinha como apoio em infeções urinárias ligeiras e retenção de líquidos, com consumo de 2–3 chávenas por dia por curtos períodos, associado a aumento da ingestão de água e acompanhamento médico quando necessário. <a href="#ref-R1">[R1]</a> <a href="#ref-R3">[R3]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Uso tópico de infusões concentradas ou preparados macerados de flores e folhas em lavagens do couro cabeludo, como adjuvante em caspa, queda de cabelo e oleosidade, frequentemente em combinação com outras plantas tónicas para o couro cabeludo. <a href="#ref-R4">[R4]</a> <a href="#ref-A2">[A2]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Aplicação de infusões mornas ou compressas de capuchinha sobre pele com acne, pequenas infeções superficiais, psoríase ou eczema, aproveitando propriedades antimicrobianas e cicatrizantes descritas na tradição popular. <a href="#ref-R1">[R1]</a> <a href="#ref-R4">[R4]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Consumo de flores e folhas frescas em saladas, pestos, recheios e outros pratos, visto como forma de enriquecer a dieta com compostos bioativos e vitamina C, em quantidades moderadas e de forma intermitente. <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-A3">[A3]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>Apesar de ser amplamente consumida como alimento e usada tradicionalmente como planta medicinal, a capuchinha contém glucosinolatos que libertam isotiocianatos biologicamente ativos, pelo que preparações concentradas ou uso prolongado não devem ser feitos sem orientação profissional. Estudos de qualidade e segurança recentes sublinham a importância de padronizar o teor de glucotropaeolina e de avaliar doses, duração e grupos de risco. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></p>
+      <p>Pessoas com doença renal, doença gastrointestinal inflamatória, hipotiroidismo ou história de úlcera gástrica devem ser particularmente cautelosas, uma vez que os isotiocianatos podem ser irritantes para mucosas e interferir com o metabolismo de iodo em doses elevadas, à semelhança de outras plantas ricas em compostos do tipo mostarda. <a href="#ref-U2">[U2]</a> <a href="#ref-F5">[F5]</a></p>
+      <p>O uso durante a gravidez, amamentação e em crianças pequenas não está bem estudado; muitas fontes de fitoterapia recomendam evitar preparados concentrados nestes grupos, limitando-se ao consumo alimentar moderado de flores e folhas como parte de refeições, quando não houver contraindicações individuais. Em caso de infeções urinárias ou respiratórias moderadas a graves, a automedicação com capuchinha não substitui avaliação médica nem terapêutica antibiótica quando indicada. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-U4">[U4]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        Na fitoterapia, a capuchinha é utilizada em chás, infusões, macerados, xaropes, tinturas e preparados externos para apoio a infeções respiratórias e urinárias ligeiras, bem como a problemas de pele e couro cabeludo. Em contexto alimentar, integra saladas, pestos, recheios, manteigas aromatizadas e outros pratos que tiram partido do seu sabor picante e do valor ornamental das flores. As receitas terapêuticas devem respeitar as quantidades e durações sugeridas nas fontes de referência, e ser enquadradas pelas recomendações de segurança.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="capuchinha_receitas.html">Chá de capuchinha para infeção urinária:</a> infusão de folhas e flores usada como apoio em infeções urinárias ligeiras e eliminação de líquidos, integrada em acompanhamento médico adequado. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="capuchinha_receitas.html">Infusão expectorante de capuchinha e tomilho:</a> chá combinado de capuchinha com tomilho, tomado morno para aliviar tosse produtiva, congestão brônquica e constipações ligeiras. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="capuchinha_receitas.html">Xarope simples de capuchinha para tosse:</a> preparação adoçada à base de infusão de capuchinha utilizada em doses pequenas para acalmar tosse irritativa em adultos e crianças maiores. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="capuchinha_receitas.html">Infusão de capuchinha para apoio à pele:</a> chá concentrado usado em lavagens e compressas sobre acne, eczemas ou psoríase, como complemento de cuidados dermatológicos. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="capuchinha_receitas.html">Macerado de capuchinha para couro cabeludo:</a> preparação líquida de folhas e flores maceradas aplicada no couro cabeludo após a lavagem para estimular circulação e vitalidade do cabelo. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="capuchinha_receitas.html">Tintura de capuchinha:</a> extrato hidroalcoólico padronizado utilizado em gotas diluídas em água como coadjuvante em infeções respiratórias e urinárias ligeiras, sob orientação profissional. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="capuchinha_receitas.html">Salada com flores de capuchinha:</a> utilização culinária de flores frescas e folhas jovens em saladas coloridas, aproveitando o sabor picante e os compostos bioativos da planta. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="capuchinha_receitas.html">Pesto de capuchinha:</a> molho espesso preparado com folhas de capuchinha trituradas, usado em pequenas quantidades para temperar massas, legumes ou pão. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="capuchinha_receitas.html">Cataplasma de capuchinha fresca:</a> aplicação externa de folhas e flores esmagadas sobre pequenas zonas de pele, como adjuvante em inflamações locais ligeiras. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="capuchinha_receitas.html">Combinação de capuchinha e rábano-silvestre:</a> preparado fitoterapêutico com extratos das duas plantas utilizado em infeções respiratórias e urinárias pouco graves, sob supervisão clínica. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>A capuchinha é utilizada na medicina popular e na fitoterapia moderna sobretudo como planta antimicrobiana e depurativa suave, com afinidade pelo trato respiratório superior e pelo trato urinário. Preparados internos são usados como adjuvantes em constipações, bronquite ligeira, infeções urinárias iniciais e estados de congestão das vias aéreas, em associação com outras medidas terapêuticas. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-A2">[A2]</a></p>
+      <p>As flores e folhas são ricas em compostos fenólicos, vitamina C e glucosinolatos, em particular glucotropaeolina, cuja hidrólise gera isotiocianatos com propriedades antibacterianas, antifúngicas e possivelmente antivirais. Estes compostos parecem concentrar-se em parte nas vias respiratórias e urinárias, o que ajuda a explicar o uso dirigido a estes sistemas. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>Revisões recentes sobre Tropaeolum majus descrevem ainda efeitos antioxidantes, anti-inflamatórios, hipotensores, diuréticos e possíveis benefícios na saúde cardiovascular e metabólica, embora a maior parte da evidência seja experimental ou baseada em estudos de pequena dimensão. Assim, a planta é melhor encarada como adjuvante em regimes integrados, e não como terapia única em doenças instaladas. <a href="#ref-M1">[M1]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F5">[F5]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Adjuvante em infeções respiratórias altas ligeiras (constipações, bronquite ligeira), ajudando a fluidificar secreções, favorecer a expectoração e modular a inflamação das vias aéreas. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-R2">[R2]</a></li>
+        <li>Apoio em infeções urinárias recorrentes e ligeiras, por efeito antimicrobiano suave e aumento da eliminação urinária, sempre em complemento ao acompanhamento médico adequado. <a href="#ref-M1">[M1]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-U4">[U4]</a></li>
+        <li>Contribuição para a saúde da pele e do couro cabeludo, com uso interno e externo em acne, seborreia, caspa e pequenas infeções cutâneas, tirando partido de propriedades antimicrobianas, cicatrizantes e antioxidantes. <a href="#ref-M1">[M1]</a> <a href="#ref-A2">[A2]</a> <a href="#ref-A3">[A3]</a> <a href="#ref-R4">[R4]</a> <a href="#ref-R5">[R5]</a></li>
+        <li>Aporte de compostos antioxidantes, fenólicos e minerais através do consumo regular mas moderado de flores e folhas frescas, podendo integrar padrões alimentares que visem a prevenção cardiovascular e o suporte do sistema imunitário. <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>Tropaeolum majus contém um conjunto rico de compostos bioativos, entre os quais se destacam glucosinolatos (sobretudo glucotropaeolina), isotiocianatos libertados pela sua hidrólise (como o benzil isotiocianato), flavonoides, ácidos fenólicos, antocianinas e vitamina C. Estudos de composição mostram que as flores frescas apresentam baixo valor energético, teor apreciável de fibra, fenólicos totais e capacidade antioxidante medida por ensaios TEAC e ORAC. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>Trabalhos específicos sobre a planta demonstram que as flores e folhas são fonte de macro e microelementos como potássio, ferro, cobre, manganês e zinco, bem como de diversos polifenóis. A composição em antocianinas das pétalas, responsável pelas cores vivas, inclui derivados de pelargonidina e outros pigmentos com impacto na atividade antioxidante global dos extratos. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F4">[F4]</a></p>
+      <p>Do ponto de vista farmacológico, o benzil isotiocianato tem sido estudado pelos seus efeitos antimicrobianos (nomeadamente contra bactérias do trato respiratório e urinário), anti-inflamatórios e modulares do metabolismo da glicose e do stress oxidativo. Diferentes métodos de extração e processamento (fresco, suco, extratos etanólicos) influenciam a quantidade de glucosinolatos, isotiocianatos e polifenóis, o que deve ser considerado na formulação de preparados fitoterapêuticos. <a href="#ref-F3">[F3]</a> <a href="#ref-F5">[F5]</a> <a href="#ref-F6">[F6]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Fenólicos totais (TPC) nas flores frescas</td><td>12,95 mg GAE/g (peso fresco)</td></tr>
+        <tr><td>Capacidade antioxidante ORAC das flores frescas</td><td>47,84 µmol TE/g (peso fresco)</td></tr>
+        <tr><td>Capacidade antioxidante TEAC das flores frescas</td><td>9,51 µmol TE/g (peso fresco)</td></tr>
+        <tr><td>Macro e microelementos principais (K, Fe, Cu, Mn, Zn) nas flores</td><td>traços a dezenas de mg/100 g, dependendo do elemento</td></tr>
+        <tr><td>Glucotropaeolina nas partes aéreas (precursora de isotiocianatos)</td><td>presença confirmada, teores variáveis conforme parte e método de extração</td></tr>
+        <tr><td>Benzil isotiocianato (BITC) libertado a partir da glucotropaeolina</td><td>presença confirmada, quantidades eficazes em modelos in vitro e in vivo</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Flor comestível muito decorativa em saladas, entradas e pratos principais, utilizada também para produção de manteigas, óleos aromatizados e pestos, valorizando a apresentação e acrescentando sabor picante. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Planta companheira na horta, utilizada em consociações com couves, tomates, abóboras, pepinos e outras culturas, ajudando a atrair auxiliares e a desviar pragas como pulgões e escaravelhos. <a href="#ref-A1">[A1]</a> <a href="#ref-A4">[A4]</a></li>
+        <li>Uso como planta &quot;sacrificial&quot; em estratégias de luta biológica: as capuchinhas atraem pragas para si, que podem depois ser controladas mecanicamente, reduzindo a pressão sobre culturas principais. <a href="#ref-A4">[A4]</a> <a href="#ref-P1">[P1]</a></li>
+        <li>Função ornamental em jardins, varandas e taludes, cobrindo o solo com folhas arredondadas e flores de cores vivas, o que também contribui para proteção do solo contra erosão e excesso de insolação. <a href="#ref-A4">[A4]</a> <a href="#ref-S1">[S1]</a></li>
+        <li>Integração em projetos de educação ambiental e hortas pedagógicas como exemplo de PANC multifuncional, permitindo demonstrar ligações entre alimentação, saúde, biodiversidade e desenho ecológico de hortas. <a href="#ref-A1">[A1]</a> <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 8,4 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em permacultura, a capuchinha destaca-se como planta altamente multifuncional: é uma flor comestível e aromática, fonte de compostos bioativos, planta medicinal e excelente auxiliar ecológica na horta. Desempenha funções alimentares, medicinais suaves, de cobertura parcial do solo e de atração de polinizadores e insetos auxiliares, além de funcionar como planta companheira e planta sacrificial em consociações com hortícolas sensíveis.
+Embora seja anual e não forneça estrutura lenhosa duradoura, compensa pela dinâmica rápida, pela facilidade de cultivo e pela capacidade de auto-semeadura que reduz o trabalho de manutenção. O grau atribuído reflete uma combinação forte de funções alimentares, medicinais e ecológicas, com penalizações moderadas pelo potencial de comportamento ligeiramente infestante e pela necessidade de gestão em espaços pequenos, resultando numa planta muito valiosa em sistemas de horta diversificada e de baixa manutenção.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação resulta de valores elevados em uso alimentar (ALIM), uso medicinal (MED), suporte à fauna (ECO) e multifuncionalidade cultural (MULT), com contributo razoável para solo/biomassa (SOLO) através de cobertura parcial e produção de biomassa tenra. A rusticidade (RUST) é boa em climas amenos, exigindo apenas proteção contra geadas fortes.
+As penalizações aplicam-se sobretudo ao comportamento expansivo por auto-sementeira (INVAS) e à competitividade moderada com outras culturas em espaços reduzidos (COMP). O valor final em escala 0–10 resulta da aplicação do algoritmo descrito em anexo (soma dos critérios positivos até 14 pontos, subtração de penalizações, com conversão por regra de três simples), indicando uma planta de elevada funcionalidade em permacultura, especialmente adequada a bordaduras, consociações e taludes férteis.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-A1">[A1]</a> <a href="#ref-A4">[A4]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Wikipedia. &quot;Plantas alimentícias não convencionais&quot; – secção sobre Capuchinha (Tropaeolum majus L.), descrevendo partes comestíveis, ciclo anual e usos alimentares e ornamentais. Disponível em: <a href="https://pt.wikipedia.org/wiki/Plantas_aliment%C3%ADcias_n%C3%A3o_convencionais" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Plantas_aliment%C3%ADcias_n%C3%A3o_convencionais</a></li>
+        <li id="ref-D2">[D2] Tua Saúde. &quot;Capuchinha: para que serve, como usar (flor, folhas e frutos)&quot; – artigo em português sobre Tropaeolum majus como planta medicinal, com indicações, partes usadas e formas de uso. Disponível em: <a href="https://www.tuasaude.com/capuchinha/" target="_blank" rel="noopener">https://www.tuasaude.com/capuchinha/</a></li>
+        <li id="ref-D3">[D3] Tia Xica. &quot;Flor de capuchinha: faz bem aos olhos, à pele e ao cabelo&quot; – texto em português com descrição da planta, nomes populares, características botânicas e usos culinários e cosméticos. Disponível em: <a href="https://www.tiaxica.com/flor-de-capuchinha/" target="_blank" rel="noopener">https://www.tiaxica.com/flor-de-capuchinha/</a></li>
+        <li id="ref-D4">[D4] Herbal Reality. &quot;Nasturtium (Tropaeolum majus)&quot; – monografia em inglês que descreve botânica básica, partes usadas, perfil de sabor e usos medicinais e alimentares da espécie. Disponível em: <a href="https://www.herbalreality.com/herb/nasturtium/" target="_blank" rel="noopener">https://www.herbalreality.com/herb/nasturtium/</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Hortas Biológicas. &quot;Capuchinha / Chagas&quot; – artigo em português sobre cultivo em Portugal, ciclo anual, época de plantação, necessidades de solo e água e benefícios na horta. Disponível em: <a href="https://www.hortasbiologicas.pt/flores-na-horta-capuchinha/" target="_blank" rel="noopener">https://www.hortasbiologicas.pt/flores-na-horta-capuchinha/</a></li>
+        <li id="ref-S2">[S2] A Cientista Agrícola. &quot;Capuchinhas: o que deves saber e porque deves tê-las na horta&quot; – texto em português que descreve épocas de sementeira, transplantação e floração em Portugal, bem como cuidados de cultivo. Disponível em: <a href="https://acientistaagricola.pt/2024/02/01/capuchinhas-na-horta/" target="_blank" rel="noopener">https://acientistaagricola.pt/2024/02/01/capuchinhas-na-horta/</a></li>
+        <li id="ref-S3">[S3] CPT – Centro de Produções Técnicas. &quot;Horta: como plantar Capuchinha (Tropaeolum majus)&quot; – orientações práticas sobre sementeira, exposição solar e rega, com notas sobre ciclo de desenvolvimento da planta. Disponível em: <a href="https://www.cpt.com.br/cursos-horticultura-agricultura/artigos/horta-como-plantar-capuchinha-tropaeolum-majus" target="_blank" rel="noopener">https://www.cpt.com.br/cursos-horticultura-agricultura/artigos/horta-como-plantar-capuchinha-tropaeolum-majus</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] Herbal Reality. &quot;Nasturtium (Tropaeolum majus)&quot; – monografia que discute usos medicinais, doses tradicionais, precauções, potenciais efeitos adversos e grupos de risco. Disponível em: <a href="https://www.herbalreality.com/herb/nasturtium/" target="_blank" rel="noopener">https://www.herbalreality.com/herb/nasturtium/</a></li>
+        <li id="ref-U2">[U2] Perestrelo, R. et al. &quot;New Contributions to Deepen the Quality-Based Safety Assessment of Garden Nasturtium (Tropaeolum majus L.)&quot; – artigo científico recente sobre avaliação de segurança, marcadores químicos e considerações toxicológicas. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/40724555/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/40724555/</a></li>
+        <li id="ref-U3">[U3] Tua Saúde. &quot;Capuchinha: para que serve, como usar (flor, folhas e frutos)&quot; – inclui secção sobre possíveis efeitos adversos e cuidados, salientando que não substitui tratamento médico. Disponível em: <a href="https://www.tuasaude.com/capuchinha/" target="_blank" rel="noopener">https://www.tuasaude.com/capuchinha/</a></li>
+        <li id="ref-U4">[U4] MedizinOnline. &quot;Multiple herbal options for urinary tract infections&quot; – revisão em inglês que menciona o uso de Tropaeolum majus em infeções urinárias e aborda considerações de segurança na fitoterapia. Disponível em: <a href="https://medizinonline.com/en/multiple-herbal-options-for-urinary-tract-infections/" target="_blank" rel="noopener">https://medizinonline.com/en/multiple-herbal-options-for-urinary-tract-infections/</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Tua Saúde. &quot;Capuchinha: para que serve, como usar (flor, folhas e frutos)&quot; – apresenta receitas de chá de capuchinha para infeções urinárias e outras indicações, com quantidades e modo de preparo. Disponível em: <a href="https://www.tuasaude.com/capuchinha/" target="_blank" rel="noopener">https://www.tuasaude.com/capuchinha/</a></li>
+        <li id="ref-R2">[R2] Herbal Reality. &quot;Nasturtium (Tropaeolum majus)&quot; – descreve modos de preparo em infusão e uso combinado com outras plantas respiratórias, com orientações gerais de dosagem. Disponível em: <a href="https://www.herbalreality.com/herb/nasturtium/" target="_blank" rel="noopener">https://www.herbalreality.com/herb/nasturtium/</a></li>
+        <li id="ref-R3">[R3] YouTube – Horta da Érica. &quot;Tudo Sobre a Capuchinha - a flor comestível&quot; – vídeo em português com demonstração prática de preparo de chás, xaropes simples e uso culinário repetido em contexto de saúde. Disponível em: <a href="https://www.youtube.com/watch?v=P2_jfaSL5mQ" target="_blank" rel="noopener">https://www.youtube.com/watch?v=P2_jfaSL5mQ</a></li>
+        <li id="ref-R4">[R4] Tia Xica. &quot;Flor de capuchinha&quot; – inclui sugestões de uso externo e interno da capuchinha em cuidados de pele e cabelo, com base em infusões e preparos artesanais. Disponível em: <a href="https://www.tiaxica.com/flor-de-capuchinha/" target="_blank" rel="noopener">https://www.tiaxica.com/flor-de-capuchinha/</a></li>
+        <li id="ref-R5">[R5] Nô Figueiredo. &quot;Tudo sobre a capuchinha – a flor comestível&quot; – vídeo informativo com receitas práticas para uso em chás, saladas e preparos caseiros de cuidado capilar. Disponível em: <a href="https://www.youtube.com/watch?v=P2_jfaSL5mQ" target="_blank" rel="noopener">https://www.youtube.com/watch?v=P2_jfaSL5mQ</a></li>
+        <li id="ref-R6">[R6] Herbal Reality. Monografia de nasturtium – secções sobre formas de extração (tinturas, macerados em vinagre) e diretrizes gerais de dose, usadas como base para a descrição de preparados. Disponível em: <a href="https://www.herbalreality.com/herb/nasturtium/" target="_blank" rel="noopener">https://www.herbalreality.com/herb/nasturtium/</a></li>
+        <li id="ref-R7">[R7] Wikipedia. &quot;Plantas alimentícias não convencionais&quot; – secção da capuchinha descreve uso das flores e folhas em saladas e outros pratos, apoiando receitas alimentares terapêuticas leves. Disponível em: <a href="https://pt.wikipedia.org/wiki/Plantas_aliment%C3%ADcias_n%C3%A3o_convencionais" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Plantas_aliment%C3%ADcias_n%C3%A3o_convencionais</a></li>
+        <li id="ref-R8">[R8] Hortas da Corujas. &quot;Flor comestível: onde encontrar e como plantar a capuchinha&quot; – artigo que sugere uso culinário frequente e repetido de flores de capuchinha em saladas e pratos simples. Disponível em: <a href="https://hortadascorujas.wordpress.com/2014/10/22/flor-comestivel-onde-encontrar-e-como-plantar-a-capuchinha/" target="_blank" rel="noopener">https://hortadascorujas.wordpress.com/2014/10/22/flor-comestivel-onde-encontrar-e-como-plantar-a-capuchinha/</a></li>
+        <li id="ref-R9">[R9] Tia Xica. &quot;Flor de capuchinha&quot; – nota sobre aplicação tópica da planta em pequenas inflamações e irritações cutâneas, associada a preparos simples de cataplasmas. Disponível em: <a href="https://www.tiaxica.com/flor-de-capuchinha/" target="_blank" rel="noopener">https://www.tiaxica.com/flor-de-capuchinha/</a></li>
+        <li id="ref-R10">[R10] Frei, P. et al. &quot;Structural Characterization, and Antioxidative and Anti-Inflammatory Activity of Tropaeolum majus L. Extracts&quot; – artigo que suporta o uso de extratos padronizados em combinações terapêuticas, incluindo formulações comerciais para infeções urinárias. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11156495/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC11156495/</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] Klimek-Szczykutowicz, M. et al. &quot;Traditional usages, botany, phytochemistry, biological activity and toxicology of Tropaeolum majus L. – A review&quot; – revisão abrangente sobre usos tradicionais, atividades farmacológicas e segurança da espécie. Disponível em: <a href="https://www.researchgate.net/publication/295551672_Traditional_usages_botany_phytochemistry_biological_activity_and_toxicology_of_Tropaeolum_majus_L_-_A_review" target="_blank" rel="noopener">https://www.researchgate.net/publication/295551672_Traditional_usages_botany_phytochemistry_biological_activity_and_toxicology_of_Tropaeolum_majus_L_-_A_review</a></li>
+        <li id="ref-M2">[M2] Jakubczyk, K. et al. &quot;Garden nasturtium (Tropaeolum majus L.) – a source of mineral elements and bioactive compounds&quot; – artigo que caracteriza minerais e compostos bioativos relevantes para a saúde. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/29766690/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/29766690/</a></li>
+        <li id="ref-M3">[M3] Herbal Reality. &quot;Nasturtium (Tropaeolum majus)&quot; – monografia que sintetiza indicações, mecanismos de ação e perfis de uso para sistema respiratório, urinário e cardiovascular. Disponível em: <a href="https://www.herbalreality.com/herb/nasturtium/" target="_blank" rel="noopener">https://www.herbalreality.com/herb/nasturtium/</a></li>
+        <li id="ref-M4">[M4] Pfäffle, S.P. et al. &quot;A 14-Day Double-Blind, Randomized, Controlled Dietary Intervention Study Investigating Nasturtium and Horseradish&quot; – ensaio clínico com preparações de Tropaeolum majus e Armoracia rusticana em contexto de infeções respiratórias/urinárias. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/38337658/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/38337658/</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Navarro-González, I. et al. &quot;Nutritional Composition and Antioxidant Capacity in Edible Flowers: Characterisation of Phenolic Compounds by HPLC-DAD-ESI/MSn&quot; – estudo que determina TPC, ORAC, TEAC e perfil fenólico das flores de Tropaeolum majus. Disponível em: <a href="https://www.mdpi.com/1422-0067/16/1/805" target="_blank" rel="noopener">https://www.mdpi.com/1422-0067/16/1/805</a></li>
+        <li id="ref-F2">[F2] Jakubczyk, K. et al. &quot;Garden nasturtium (Tropaeolum majus L.) – a source of mineral elements and bioactive compounds&quot; – quantifica macro e microelementos e discute implicações para a saúde. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/29766690/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/29766690/</a></li>
+        <li id="ref-F3">[F3] Vrca, I. et al. &quot;Phenolic Compounds in Edible Tropaeolum majus L. Flower Extracts&quot; – artigo da revista PhytoChem que avalia compostos fenólicos e atividade antioxidante em extratos aquosos e hidroalcoólicos da planta. Disponível em: <a href="https://www.mdpi.com/2673-4532/6/2/14" target="_blank" rel="noopener">https://www.mdpi.com/2673-4532/6/2/14</a></li>
+        <li id="ref-F4">[F4] Garzón, G.A. et al. &quot;Major anthocyanins and antioxidant activity of Nasturtium flowers (Tropaeolum majus)&quot; – estudo que caracteriza antocianinas das pétalas e sua contribuição para a atividade antioxidante. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0308814608010868" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S0308814608010868</a></li>
+        <li id="ref-F5">[F5] Guzmán-Pérez, V. et al. &quot;Benzylglucosinolate Derived Isothiocyanate from Tropaeolum majus L. Reduces Hepatic Glucose Production&quot; – estudo que explora efeitos metabólicos do benzil isotiocianato em modelos de diabetes tipo 2. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/27622707/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/27622707/</a></li>
+        <li id="ref-F6">[F6] Aguilera-Ángel, Y.E. et al. &quot;Chemical profiling, antioxidant, and antibacterial properties of Tropaeolum majus&quot; – artigo que descreve perfis químicos e atividades antioxidantes e antibacterianas de extratos da planta. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12507335/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC12507335/</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Wikipedia. &quot;Plantas alimentícias não convencionais&quot; – destaca a capuchinha como PANC, descrevendo usos ornamentais, alimentares e como planta companheira na horta. Disponível em: <a href="https://pt.wikipedia.org/wiki/Plantas_aliment%C3%ADcias_n%C3%A3o_convencionais" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Plantas_aliment%C3%ADcias_n%C3%A3o_convencionais</a></li>
+        <li id="ref-A2">[A2] CPT – Centro de Produções Técnicas. &quot;Plantas Medicinais: conheça a capuchinha, sua utilização e benefícios&quot; – artigo que aborda usos ornamentais, alimentares e medicinais da capuchinha, incluindo flores, folhas e sementes. Disponível em: <a href="https://www.cpt.com.br/artigos/plantas-medicinais-conheca-a-capuchinha-sua-utilizacao-e-beneficios" target="_blank" rel="noopener">https://www.cpt.com.br/artigos/plantas-medicinais-conheca-a-capuchinha-sua-utilizacao-e-beneficios</a></li>
+        <li id="ref-A3">[A3] Tia Xica. &quot;Flor de capuchinha&quot; – destaca aplicações cosméticas, culinárias e decorativas da flor em pratos e arranjos. Disponível em: <a href="https://www.tiaxica.com/flor-de-capuchinha/" target="_blank" rel="noopener">https://www.tiaxica.com/flor-de-capuchinha/</a></li>
+        <li id="ref-A4">[A4] Hortas Biológicas. &quot;Capuchinha / Chagas&quot; – enfatiza o papel da capuchinha como auxiliar na horta, planta companheira e planta sacrificial no controlo biológico de pragas. Disponível em: <a href="https://www.hortasbiologicas.pt/flores-na-horta-capuchinha/" target="_blank" rel="noopener">https://www.hortasbiologicas.pt/flores-na-horta-capuchinha/</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] Hortas Biológicas. &quot;Capuchinha / Chagas&quot; – descreve em detalhe o uso da capuchinha como planta companheira, planta sacrificial e auxiliar ecológica na horta biológica. Disponível em: <a href="https://www.hortasbiologicas.pt/flores-na-horta-capuchinha/" target="_blank" rel="noopener">https://www.hortasbiologicas.pt/flores-na-horta-capuchinha/</a></li>
+        <li id="ref-P2">[P2] Wikipedia. &quot;Plantas alimentícias não convencionais&quot; – secção sobre capuchinha, salientando o uso como companheira para várias culturas e atrativa de insetos, relevante para desenho em permacultura. Disponível em: <a href="https://pt.wikipedia.org/wiki/Plantas_aliment%C3%ADcias_n%C3%A3o_convencionais" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Plantas_aliment%C3%ADcias_n%C3%A3o_convencionais</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

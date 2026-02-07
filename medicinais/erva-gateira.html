@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html" class="ativa">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+  <a class="next" href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Erva-gateira (<em>Nepeta cataria L.</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Lamiaceae</span>
+  <span>Parte usada: folhas e sumidades floridas</span>
+  <span>Tipo: erva perene aromática medicinal</span>
+  <span>Produção: <strong>cultivada em canteiros, vasos, bordaduras</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> Europa e Ásia ocidental, hoje comum em regiões temperadas</div>
+  <div><strong>Uso principal</strong> calmante, digestiva suave, diaforética ligeira, apoio ao sono</div>
+  <div><strong>Perfil medicinal</strong> ansiolítica, sedativa, digestiva, diaforética, espasmolítica, relaxante, carminativa suave</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Erva-gateira (Nepeta cataria L.)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>Erva-gateira (Nepeta cataria L.), também conhecida como erva-dos-gatos, gatária, nêveda-dos-gatos ou simplesmente catnip em inglês, é uma planta herbácea perene da família Lamiaceae, aparentada com a hortelã e outras mentas aromáticas. Forma tufos de 40–80 cm de altura, com caules quadrangulares, folhas ovadas, verde-acinzentadas e ligeiramente pilosas, e inflorescências terminais com pequenas flores brancas ou lilases salpicadas de púrpura.</p>
+      <p>É nativa da Europa e de regiões da Ásia ocidental e central, encontrando-se hoje naturalizada em muitas zonas temperadas do mundo. Desenvolve-se de forma espontânea em bermas de caminhos, taludes secos e campos ruderalizados, mas adapta-se bem ao cultivo em hortas e jardins, preferindo solos bem drenados, de textura leve a média, e exposição solar plena ou meia-sombra ligeira.</p>
+      <p>Historicamente, a erva-gateira foi utilizada na Europa como planta medicinal e condimentar, em especial em chás digestivos e calmantes e como tempero suave para sopas e pratos de carne. É igualmente conhecida pelos efeitos marcantes do seu óleo essencial rico em nepetalactonas sobre felinos domésticos e selvagens, sendo muito usada em brinquedos, arranhadores e outros elementos de enriquecimento ambiental para gatos.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, a erva-gateira comporta-se geralmente como vivaz de ciclo longo ou perene rústica, rebrotando da base na primavera após o frio do inverno e mantendo-se em produção durante vários anos quando bem instalada.
+Prefere locais de boa exposição solar, com solos bem drenados e moderadamente férteis. Depois de enraizada, tolera bem verões quentes e algum défice hídrico, desde que o solo não permaneça encharcado no inverno.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Semeadura em tabuleiros protegidos ou alfobre: de fevereiro/março até abril.</li>
+        <li>Transplante ou plantação em canteiro definitivo: de março/abril até maio, evitando geadas tardias.</li>
+        <li>Floração principal: de maio/junho até setembro, variando com a região e a data de sementeira.</li>
+        <li>Colheita de folhas e sumidades floridas para uso medicinal: preferencialmente no início da floração, em tempo seco.</li>
+        <li>Poda de limpeza e renovação dos tufos: no final do outono ou final do inverno, para estimular rebrote vigoroso.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a> <a href="#ref-S3">[S3]</a> <a href="#ref-S4">[S4]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Infusão das folhas e sumidades floridas secas (cerca de 1–2 g em 150–250 mL de água quente), tomada até 2–3 vezes ao dia, tradicionalmente usada como carminativa e antiespasmódica suave para aliviar cólicas digestivas, flatulência e indigestão ligeira em adultos. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a></li>
+        <li>Infusão quente de erva-gateira em dose moderada, usada como diaforético suave em estados gripais ou febris ligeiros, para promover sudorese moderada e conforto, desde que não existam sinais de gravidade, desidratação ou necessidade de avaliação médica urgente. <a href="#ref-U1">[U1]</a> <a href="#ref-U3">[U3]</a></li>
+        <li>Infusão fraca de erva-gateira, isolada ou combinada com plantas como camomila e hortelã, utilizada em fitoterapia ocidental como nervino e sedativo ligeiro para crianças e adultos, em situações de agitação, dificuldade em adormecer ou ansiedade ligeira. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U4">[U4]</a> <a href="#ref-U5">[U5]</a></li>
+        <li>Extratos hidroalcoólicos, glicólicos ou cápsulas com pó de folhas secas, usados em alguns suplementos fitoterápicos para apoio adjuvante em quadros de tensão nervosa, dispepsia funcional e dores espásticas leves, em esquemas de curta duração e sob orientação profissional. <a href="#ref-U1">[U1]</a> <a href="#ref-U6">[U6]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Chá simples de erva-gateira, preparado com uma colher de chá das folhas secas por chávena de água, consumido ao final do dia como bebida relaxante e lenitiva, em alternativa a outras tisanas calmantes. <a href="#ref-U2">[U2]</a> <a href="#ref-U4">[U4]</a> <a href="#ref-U7">[U7]</a></li>
+        <li>Misturas caseiras de erva-gateira com camomila, hortelã-pimenta ou erva-cidreira, usadas tradicionalmente em famílias como chá de conforto para resfriados ligeiros, mal-estar geral ou digestões pesadas. <a href="#ref-U2">[U2]</a> <a href="#ref-U4">[U4]</a> <a href="#ref-U8">[U8]</a></li>
+        <li>Uso em pequenas quantidades como condimento aromático em sopas leves, caldos e alguns pratos de carne, aproveitando o seu aroma mentolado suave e, ocasionalmente, em bebidas fermentadas artesanais. <a href="#ref-U7">[U7]</a> <a href="#ref-U9">[U9]</a></li>
+        <li>Preparos de erva-gateira para gatos (brinquedos recheados, almofadas, sprays ou pequenas porções secas) utilizados para enriquecimento ambiental e estimulação lúdica dos felinos domésticos. <a href="#ref-U7">[U7]</a> <a href="#ref-U10">[U10]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>Em doses usuais de infusão fraca a moderada, a erva-gateira é geralmente considerada uma planta de uso relativamente seguro para adultos saudáveis, quando utilizada por períodos curtos e de forma pontual, sobretudo na forma de chá. <a href="#ref-U1">[U1]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-U4">[U4]</a> <a href="#ref-U11">[U11]</a></p>
+      <p>O uso em doses elevadas ou muito concentradas, seja em infusões, extratos ou outros preparados, pode provocar efeitos indesejáveis como náuseas, vómitos, desconforto abdominal ou cefaleias em pessoas sensíveis; recomenda-se evitar autoprescrições de alta dose ou uso prolongado sem acompanhamento profissional. <a href="#ref-U1">[U1]</a> <a href="#ref-U4">[U4]</a> <a href="#ref-U5">[U5]</a> <a href="#ref-U11">[U11]</a></p>
+      <p>Em gestantes, lactantes, crianças pequenas, pessoas com doenças crónicas, em tratamento farmacológico regular ou com antecedentes de alergia a plantas da família Lamiaceae, o uso interno da erva-gateira deve ser feito apenas com orientação de profissional de saúde habilitado, ou evitado na ausência dessa supervisão. <a href="#ref-U1">[U1]</a> <a href="#ref-U4">[U4]</a> <a href="#ref-U10">[U10]</a> <a href="#ref-U11">[U11]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        A erva-gateira é usada sobretudo em infusões simples ou combinadas com outras plantas calmantes e digestivas, podendo também integrar fórmulas caseiras para banhos mornos, compressas e preparados líquidos em gotas. Muitas receitas tradicionais descrevem chás para relaxamento, apoio digestivo, estados gripais ligeiros e uso suave em crianças, bem como preparos específicos para gatos em contexto de enriquecimento ambiental.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="erva-gateira_receitas.html">Chá simples de erva-gateira para relaxamento:</a> infusão de folhas secas em água quente, usada como tisana calmante ao final do dia, sem açúcar excessivo, indicada em estados de nervosismo ligeiro e dificuldade em adormecer. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="erva-gateira_receitas.html">Chá de erva-dos-gatos para desconfortos digestivos:</a> preparo tradicional com pequena quantidade de planta seca em água a ferver, bebido em goles ao longo do dia para aliviar cólicas, inchaço e má digestão ligeira. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="erva-gateira_receitas.html">Chá combinado de ervas com erva-gateira:</a> mistura de erva-gateira, hortelã-pimenta e folha de framboesa em infusão, usada em algumas fontes como apoio complementar em episódios de diarreia e gastroenterite ligeira. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="erva-gateira_receitas.html">Chá de erva-gateira para gripes e constipações:</a> infusão quente, por vezes associada a outras plantas aromáticas, tomada em repouso para promover sudorese leve e conforto em estados gripais sem sinais de gravidade. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="erva-gateira_receitas.html">Tisana calmante para adultos com erva-gateira:</a> combinação de erva-gateira com camomila e outras ervas relaxantes, preparada como chá antes de dormir para aliviar ansiedade, tensão muscular e insónia ligeira. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="erva-gateira_receitas.html">Infusão suave de erva-gateira para crianças:</a> chá fraco de erva-gateira, frequentemente combinado com camomila e outras plantas seguras, administrado em pequenas quantidades para ajudar em cólicas, nervosismo e febre ligeira. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="erva-gateira_receitas.html">Banho morno com erva-gateira:</a> preparação de infusão concentrada adicionada à água do banho, utilizada tradicionalmente para promover relaxamento, conforto muscular e alívio de tensão em adultos e crianças mais velhas. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="erva-gateira_receitas.html">Compressas de erva-gateira para pele irritada:</a> aplicação tópica de infusão arrefecida em compressas sobre áreas de pele sensível ou com prurido ligeiro, respeitando sempre a integridade da pele e eventuais alergias. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="erva-gateira_receitas.html">Tintura ou gotas de erva-gateira:</a> uso de extratos líquidos padronizados, tomados em gotas diluídas em água, como adjuvantes em quadros de ansiedade leve, digestão lenta ou tensão nervosa, sob supervisão profissional. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="erva-gateira_receitas.html">Preparados líquidos de erva-gateira para gatos:</a> infusões suaves ou sprays diluídos usados em brinquedos ou superfícies de arranhar, para estimular o comportamento lúdico e o enriquecimento ambiental dos felinos domésticos. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>Na fitoterapia ocidental, a erva-gateira é descrita sobretudo como um nervino e sedativo ligeiro, com afinidade pelo sistema nervoso em estados de agitação, ansiedade moderada e dificuldades em adormecer, incluindo em crianças, quando utilizada em doses apropriadas. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a></p>
+      <p>A planta apresenta também ação carminativa e antiespasmódica suave sobre o trato gastrointestinal, sendo apontada em diferentes monografias como coadjuvante em quadros de cólicas, flatulência, má digestão e alguns desconfortos digestivos associados ao stress. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a></p>
+      <p>Estudos experimentais e revisões apontam ainda para propriedades diaforéticas, antipiréticas ligeiras, anti-inflamatórias e antioxidantes, além de potenciais efeitos antinociceptivos, antimicrobianos e repelentes de insetos atribuídos principalmente ao óleo essencial rico em nepetalactonas. <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-M6">[M6]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Apoio em ansiedade ligeira, estados de nervosismo e dificuldades em adormecer, pela ação nervina e sedativa suave. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a></li>
+        <li>Alívio de cólicas, flatulência e dispepsia funcional ligeira, através de efeitos carminativos e antiespasmódicos sobre o trato gastrointestinal. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a></li>
+        <li>Suporte em resfriados, gripes ligeiras e estados febris moderados, como diaforético suave que favorece a sudorese e o conforto geral. <a href="#ref-M1">[M1]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-M5">[M5]</a></li>
+        <li>Contribuição antioxidante e anti-inflamatória moderada, documentada em estudos com extratos e óleo essencial de Nepeta cataria. <a href="#ref-M3">[M3]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-M6">[M6]</a></li>
+        <li>Potencial atividade antimicrobiana e repelente de insetos, relacionada sobretudo com o teor e o perfil de nepetalactonas no óleo essencial. <a href="#ref-M3">[M3]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-M7">[M7]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>A erva-gateira contém um óleo essencial aromático concentrado sobretudo nas folhas e sumidades floridas, sendo as nepetalactonas (iridoides monoterpénicos) os constituintes característicos mais estudados. Diversos trabalhos reportam teores de óleo essencial em torno de poucas décimas de percentagem da matéria seca, com variações associadas ao genótipo, estádio de desenvolvimento, condições edafoclimáticas e métodos de extração. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></p>
+      <p>Nos óleos essenciais típicos de Nepeta cataria, as diferentes formas isoméricas de nepetalactona podem representar a maior parte da fração volátil, frequentemente em proporções superiores a 70 % da mistura, acompanhadas por sesquiterpenos como β-cariofileno e óxido de cariofileno em quantidades menores. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F5">[F5]</a></p>
+      <p>Estudos in vitro e em modelos experimentais sugerem que estes constituintes voláteis, em conjunto com outros compostos fenólicos e taninos presentes nos extratos, contribuem para atividades antiespasmódicas, sedativas, antimicrobianas, repelentes de insetos, antioxidantes e potencialmente anti-inflamatórias, embora os valores numéricos reportados devam ser interpretados com cautela devido à grande variabilidade entre cultivos e ensaios. <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a> <a href="#ref-F5">[F5]</a> <a href="#ref-F6">[F6]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Óleo essencial total nas folhas e sumidades floridas (matéria seca)</td><td>≈0,3–0,9 % m/m da matéria seca</td></tr>
+        <tr><td>Nepetalactonas totais no óleo essencial</td><td>≈70–85 % m/m do óleo essencial</td></tr>
+        <tr><td>β-cariofileno e óxido de cariofileno no óleo essencial</td><td>≈4–7 % m/m do óleo essencial</td></tr>
+        <tr><td>Extratos de Nepeta cataria com atividade antimicrobiana e repelente de insetos</td><td>Atividade em ensaios in vitro em faixas de ≈50–500 µg/mL</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Uso extensivo em enriquecimento ambiental para gatos domésticos, em brinquedos, arranhadores, almofadas aromatizadas e pulverizações controladas. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a> <a href="#ref-A3">[A3]</a> <a href="#ref-A4">[A4]</a> <a href="#ref-A5">[A5]</a></li>
+        <li>Emprego como planta ornamental e aromática em bordaduras de canteiros, espirais de ervas e maciços em jardins de clima temperado.</li>
+        <li>Função potencial como planta companheira em hortas, ajudando a repelir alguns insetos indesejáveis e a atrair polinizadores quando em flor.</li>
+        <li>Utilização de folhas e flores secas em pequenos sachês aromáticos para gavetas ou armários, aproveitando o aroma mentolado suave.</li>
+        <li>Experiências etnobotânicas e usos históricos em bebidas, rituais e práticas culturais associadas a relaxamento e bem‑estar.</li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 7,1 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Na ótica da permacultura, a erva-gateira oferece um conjunto interessante de funções úteis num espaço relativamente reduzido, combinando valor medicinal, potencial uso alimentar em pequenas quantidades (tisanas e condimento suave), atratividade para polinizadores durante a floração e um papel marcante no enriquecimento ambiental para gatos. Embora não seja uma grande produtora de biomassa, contribui para alguma cobertura do solo, para a diversidade estrutural de bordaduras e para o aumento da biodiversidade funcional no sistema.
+A planta é geralmente rústica em climas de tipo mediterrânico ou temperado, com baixa exigência de manutenção após instalada e boa capacidade de adaptação a solos drenados e relativamente pobres. Pode, no entanto, auto-sementar-se e alargar a área ocupada se não for manejada, o que exige algum controlo em canteiros pequenos. No conjunto, o equilíbrio entre múltiplas funções úteis e riscos limitados justifica um grau de funcionalidade intermédio‑alto em permacultura, sobretudo em sistemas que integrem animais de companhia e valorizem a diversidade de plantas aromáticas.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação da erva-gateira resulta de valores moderados em uso alimentar (ALIM=1), pela utilização sobretudo em tisanas e como condimento leve, e valores elevados em uso medicinal (MED=2), graças ao perfil nervino, sedativo suave, carminativo e diaforético documentado em diversas monografias. Soma-se um contributo estrutural modesto mas real (ESTR=1), como erva perene baixa em bordaduras e espirais de ervas, algum apoio ao solo e biomassa (SOLO=1) através de cobertura parcial e produção de massa verde para compostagem, e um papel ecológico relevante (ECO=2) ao atrair polinizadores e insetos benéficos durante a floração.
+A rusticidade é considerada boa (RUST=2) em contextos de clima temperado e mediterrânico, com capacidade de suportar períodos de seca moderada e solos relativamente pobres, e a multifuncionalidade cultural e prática é elevada (MULT=2), pela combinação de usos medicinais, aromáticos, ornamentais e de enriquecimento ambiental para gatos. Nas penalizações, admite-se um risco tóxico baixo em usos tradicionais moderados (TOX=0), ausência de perigo físico relevante (PERIGO=0), alguma tendência a auto-semeadura e expansão em canteiros pouco manejados (INVAS=-1) e competição pouco problemática por água e luz quando bem posicionada (COMP=0). O valor final em escala 0–10 resulta da aplicação do algoritmo descrito no projeto (soma dos critérios positivos até 14 pontos, subtração das penalizações e conversão por regra de três simples), situando a erva-gateira em cerca de 7,1/10 e indicando uma planta de elevada funcionalidade em permacultura, especialmente adequada para bordaduras aromáticas, jardins de ervas e sistemas onde se integrem animais de companhia.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Wikipédia. &quot;Nepeta cataria&quot;. Artigo enciclopédico com descrição botânica, nomes comuns, distribuição e usos tradicionais da erva-dos-gatos. Disponível em: <a href="https://pt.wikipedia.org/wiki/Nepeta_cataria" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Nepeta_cataria</a></li>
+        <li id="ref-D2">[D2] Horto Didático de Plantas Medicinais do HU/CCS – UFSC. &quot;Erva-dos-gatos (Nepeta cataria L.)&quot;. Ficha técnica com nomes populares, características botânicas e usos medicinais tradicionais da espécie. Disponível em: <a href="https://hortodidatico.ufsc.br/erva-dos-gatos/" target="_blank" rel="noopener">https://hortodidatico.ufsc.br/erva-dos-gatos/</a></li>
+        <li id="ref-D3">[D3] PlantaMundo. &quot;Erva dos Gatos – Erva Gatuna – Catnip – Nepeta cataria&quot;. Descrição comercial de sementes com informação sobre origem, aparência e uso culinário e em infusão da erva-gateira. Disponível em: <a href="https://www.plantamundo.com/produtos/erva-dos-gatos-erva-gatuna-catnip-nepeta-cataria/" target="_blank" rel="noopener">https://www.plantamundo.com/produtos/erva-dos-gatos-erva-gatuna-catnip-nepeta-cataria/</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Bunnings. &quot;What is catnip and how to grow it&quot;. Guia de cultivo com informação sobre clima, exposição solar, solo e época de floração de Nepeta cataria em climas temperados. Disponível em: <a href="https://www.bunnings.com.au/diy-advice/garden/planting-and-growing/what-is-catnip-and-how-to-grow-it" target="_blank" rel="noopener">https://www.bunnings.com.au/diy-advice/garden/planting-and-growing/what-is-catnip-and-how-to-grow-it</a></li>
+        <li id="ref-S2">[S2] True Leaf Market. &quot;Catnip Herb Growing Guide&quot;. Ficha de cultivo com dados sobre perenidade, zonas de rusticidade, espaçamento e requisitos de luz e solo para catnip. Disponível em: <a href="https://trueleafmarket.com/pages/grow-catnip" target="_blank" rel="noopener">https://trueleafmarket.com/pages/grow-catnip</a></li>
+        <li id="ref-S3">[S3] Gardeners&#x27; World. &quot;How to grow a catnip plant&quot;. Artigo prático que descreve épocas de plantação, sementeira e poda de catnip em jardins domésticos. Disponível em: <a href="https://www.gardenersworld.com/how-to/grow-plants/how-to-grow-a-catnip-plant/" target="_blank" rel="noopener">https://www.gardenersworld.com/how-to/grow-plants/how-to-grow-a-catnip-plant/</a></li>
+        <li id="ref-S4">[S4] Homes &amp; Gardens. &quot;How to grow catnip: expert advice for this aromatic plant&quot;. Texto com recomendações de clima, tolerância ao frio e comportamento perene da erva-gateira em diferentes zonas. Disponível em: <a href="https://www.homesandgardens.com/gardens/how-to-grow-catnip" target="_blank" rel="noopener">https://www.homesandgardens.com/gardens/how-to-grow-catnip</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] Health Canada. &quot;Natural Health Product Monograph: Catnip – Nepeta cataria&quot;. Monografia oficial com indicações tradicionais, doses, forma farmacêutica e advertências de segurança para produtos de catnip. Disponível em: <a href="https://webprod.hc-sc.gc.ca/nhpid-bdipsn/dbImages/mono_catnip_english.pdf" target="_blank" rel="noopener">https://webprod.hc-sc.gc.ca/nhpid-bdipsn/dbImages/mono_catnip_english.pdf</a></li>
+        <li id="ref-U2">[U2] Herbal Reality. &quot;Catnip (Nepeta cataria): benefits, safety, uses&quot;. Revisão de usos tradicionais, efeitos sedativos suaves, posologia em chá e considerações de segurança da erva-gateira. Disponível em: <a href="https://www.herbalreality.com/herb/catnip/" target="_blank" rel="noopener">https://www.herbalreality.com/herb/catnip/</a></li>
+        <li id="ref-U3">[U3] WebMD. &quot;Catnip Tea: Are There Health Benefits?&quot;. Artigo de divulgação com sumário de usos, potenciais benefícios, efeitos adversos e interações da infusão de catnip. Disponível em: <a href="https://www.webmd.com/diet/catnip-tea-health-benefits" target="_blank" rel="noopener">https://www.webmd.com/diet/catnip-tea-health-benefits</a></li>
+        <li id="ref-U4">[U4] LearningHerbs. &quot;Catnip Uses &amp; Plant Monograph&quot;. Perfil de planta com descrições de usos tradicionais, formulações em chá e combinações com outras ervas calmantes. Disponível em: <a href="https://www.learningherbs.com/blog/catnip-uses" target="_blank" rel="noopener">https://www.learningherbs.com/blog/catnip-uses</a></li>
+        <li id="ref-U5">[U5] Healthline. &quot;Catnip Tea: Health Benefits and Uses&quot;. Texto que resume evidência disponível sobre efeitos digestivos, sedativos e possíveis riscos de consumo excessivo de catnip em humanos. Disponível em: <a href="https://www.healthline.com/health/catnip-tea" target="_blank" rel="noopener">https://www.healthline.com/health/catnip-tea</a></li>
+        <li id="ref-U6">[U6] Carahealth. &quot;Catnip (Nepeta cataria) – Herb Profile&quot;. Monografia clínica com ações farmacológicas, usos internos e externos e notas de segurança sobre a erva-gateira. Disponível em: <a href="https://carahealth.com/herbal-monographs/catnip-nepeta-cataria" target="_blank" rel="noopener">https://carahealth.com/herbal-monographs/catnip-nepeta-cataria</a></li>
+        <li id="ref-U7">[U7] Leve da Terra. &quot;Erva-gateira: conheça os benefícios dessa planta&quot;. Artigo em português que descreve usos tradicionais, benefícios e possíveis efeitos adversos da erva-gateira em humanos. Disponível em: <a href="https://levedaterra.com.br/erva-gateira/" target="_blank" rel="noopener">https://levedaterra.com.br/erva-gateira/</a></li>
+        <li id="ref-U8">[U8] Zamnesia. &quot;O efeito da erva-dos-gatos nos humanos: guia completo&quot;. Texto em português que aborda usos recreativos e relaxantes do chá de erva-gateira, incluindo advertências sobre consumo excessivo. Disponível em: <a href="https://www.zamnesia.pt/blog-efeito-da-catnip-nos-humanos-n3781" target="_blank" rel="noopener">https://www.zamnesia.pt/blog-efeito-da-catnip-nos-humanos-n3781</a></li>
+        <li id="ref-U9">[U9] Mundo Boa Forma. &quot;Chá calmante – chá de erva-gateira&quot;. Artigo sobre chás calmantes com secção dedicada ao chá de erva-gateira, benefícios para relaxamento e sono. Disponível em: <a href="https://www.mundoboaforma.com.br/cha-calmante-15-melhores-como-fazer-e-dicas/" target="_blank" rel="noopener">https://www.mundoboaforma.com.br/cha-calmante-15-melhores-como-fazer-e-dicas/</a></li>
+        <li id="ref-U10">[U10] Apepi. &quot;Catnip: a erva-do-gato tem a ver com a cannabis?&quot;. Texto informativo sobre efeitos em humanos e gatos, incluindo notas sobre possíveis efeitos adversos do consumo excessivo de erva-gateira. Disponível em: <a href="https://apepi.org/catnip-a-erva-do-gato-tem-a-ver-com-a-cannabis/" target="_blank" rel="noopener">https://apepi.org/catnip-a-erva-do-gato-tem-a-ver-com-a-cannabis/</a></li>
+        <li id="ref-U11">[U11] Health Canada. &quot;Catnip – Safety and efficacy assessment (included in NHP monograph background documents)&quot;. Documentação de suporte sobre segurança, efeitos adversos e limites de uso de produtos contendo Nepeta cataria. Disponível em: <a href="https://webprod.hc-sc.gc.ca/nhpid-bdipsn" target="_blank" rel="noopener">https://webprod.hc-sc.gc.ca/nhpid-bdipsn</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] O Liberal. &quot;Chá de catnip: como preparar, é bom pra que e quem não pode tomar&quot;. Reportagem com explicação dos benefícios do chá de erva-gateira, modo básico de preparo e contraindicações. Disponível em: <a href="https://www.oliberal.com/receita/cha-de-catnip-como-preparar-e-bom-pra-que-e-quem-nao-pode-tomar-1.592385" target="_blank" rel="noopener">https://www.oliberal.com/receita/cha-de-catnip-como-preparar-e-bom-pra-que-e-quem-nao-pode-tomar-1.592385</a></li>
+        <li id="ref-R2">[R2] Medicina Natural. &quot;Erva-dos-gatos – Nepeta cataria&quot;. Ficha em português com benefícios e receita simples de chá de erva-dos-gatos, incluindo proporções aproximadas de planta seca e água. Disponível em: <a href="https://www.medicinanatural.com.br/erva-dos-gatos-nepeta-cataria/" target="_blank" rel="noopener">https://www.medicinanatural.com.br/erva-dos-gatos-nepeta-cataria/</a></li>
+        <li id="ref-R3">[R3] Tua Saúde. &quot;Remédios caseiros para gastroenterite – chá de ervas&quot;. Artigo que inclui combinação de erva-dos-gatos, hortelã-pimenta e folha de framboesa em chá para apoio sintomático da gastroenterite. Disponível em: <a href="https://www.tuasaude.com/remedio-caseiro-para-gastroenterite/" target="_blank" rel="noopener">https://www.tuasaude.com/remedio-caseiro-para-gastroenterite/</a></li>
+        <li id="ref-R4">[R4] Healthline. &quot;Catnip Tea: Health Benefits and Uses&quot;. Secção com instruções gerais para preparar chá de catnip e recomendações de consumo em situações de constipação e febre ligeira. Disponível em: <a href="https://www.healthline.com/health/catnip-tea" target="_blank" rel="noopener">https://www.healthline.com/health/catnip-tea</a></li>
+        <li id="ref-R5">[R5] LearningHerbs. &quot;Catnip Uses &amp; Plant Monograph&quot;. Descrição de preparações de chá de catnip em combinação com camomila e outras ervas calmantes para adultos. Disponível em: <a href="https://www.learningherbs.com/blog/catnip-uses" target="_blank" rel="noopener">https://www.learningherbs.com/blog/catnip-uses</a></li>
+        <li id="ref-R6">[R6] EcoParent. &quot;Kid-friendly herbs for soothing discomfort&quot;. Artigo que inclui catnip como erva adequada para crianças, com sugestões de infusões suaves para cólicas e desconforto. Disponível em: <a href="https://www.ecoparent.ca/eco-wellness/kid-friendly-herbs-soothing-discomfort" target="_blank" rel="noopener">https://www.ecoparent.ca/eco-wellness/kid-friendly-herbs-soothing-discomfort</a></li>
+        <li id="ref-R7">[R7] Clef des Champs. &quot;Catnip infusion – tRADitiON&quot;. Folheto em PDF com indicações de uso em infusão interna e aplicações tópicas, incluindo banhos e compressas. Disponível em: <a href="https://clefdeschamps.net/uploads/EN_CATNIP.pdf" target="_blank" rel="noopener">https://clefdeschamps.net/uploads/EN_CATNIP.pdf</a></li>
+        <li id="ref-R8">[R8] The Herb Cottage. &quot;Catnip&quot; (boletim informativo). Documento em PDF com descrição de usos tradicionais, incluindo aplicação em problemas de pele e preparações em chá concentrado. Disponível em: <a href="https://www.theherbcottage.com/wp-content/uploads/2018/11/Catnip_NHLM_March_2018.pdf" target="_blank" rel="noopener">https://www.theherbcottage.com/wp-content/uploads/2018/11/Catnip_NHLM_March_2018.pdf</a></li>
+        <li id="ref-R9">[R9] Carahealth. &quot;Catnip (Nepeta cataria) – Herb Profile&quot;. Monografia que descreve uso de tinturas e outras formas concentradas de catnip para apoio ao sistema nervoso e digestivo. Disponível em: <a href="https://carahealth.com/herbal-monographs/catnip-nepeta-cataria" target="_blank" rel="noopener">https://carahealth.com/herbal-monographs/catnip-nepeta-cataria</a></li>
+        <li id="ref-R10">[R10] Republic of Cats. &quot;Catnip tea recipe for your cat&quot;. Receita de chá de catnip adaptado para gatos, incluindo modo de preparo e forma de oferecer a bebida de forma segura. Disponível em: <a href="https://www.republicofcats.com/thelick/catnip-tea-recipe-for-your-cat/" target="_blank" rel="noopener">https://www.republicofcats.com/thelick/catnip-tea-recipe-for-your-cat/</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] Herbal Reality. &quot;Catnip (Nepeta cataria): benefits, safety, uses&quot;. Revisão de usos terapêuticos, incluindo efeitos nervinos, digestivos, diaforéticos e uso tradicional em crianças. Disponível em: <a href="https://www.herbalreality.com/herb/catnip/" target="_blank" rel="noopener">https://www.herbalreality.com/herb/catnip/</a></li>
+        <li id="ref-M2">[M2] Carahealth. &quot;Catnip (Nepeta cataria) – Herb Profile&quot;. Monografia clínica com descrição de ações ansiolíticas, antiespasmódicas, digestivas e antipiréticas da erva-gateira. Disponível em: <a href="https://carahealth.com/herbal-monographs/catnip-nepeta-cataria" target="_blank" rel="noopener">https://carahealth.com/herbal-monographs/catnip-nepeta-cataria</a></li>
+        <li id="ref-M3">[M3] Journal of Drug Delivery and Therapeutics. &quot;Catnip (Nepeta cataria L.): Recent advances in pharmacological activities and applications&quot;. Artigo de revisão sobre atividades farmacológicas, incluindo efeitos sedativos, antinociceptivos, antioxidantes e antimicrobianos. Disponível em: <a href="https://jddtonline.info/index.php/jddt/article/view/5559" target="_blank" rel="noopener">https://jddtonline.info/index.php/jddt/article/view/5559</a></li>
+        <li id="ref-M4">[M4] Scientific Reports. &quot;Repellency assessment of Nepeta cataria essential oils and purified nepetalactone against mosquitoes&quot;. Estudo que documenta a atividade repelente do óleo essencial de catnip frente a insetos vetores. Disponível em: <a href="https://www.nature.com/articles/s41598-018-36814-1" target="_blank" rel="noopener">https://www.nature.com/articles/s41598-018-36814-1</a></li>
+        <li id="ref-M5">[M5] Veterinary World. &quot;Antimicrobial effects of catnip (Nepeta cataria L.) essential oil&quot;. Trabalho experimental que avalia a atividade antibacteriana e antifúngica do óleo essencial de erva-gateira. Disponível em: <a href="https://www.veterinaryworld.org/Vol.17/March-2024/10.pdf" target="_blank" rel="noopener">https://www.veterinaryworld.org/Vol.17/March-2024/10.pdf</a></li>
+        <li id="ref-M6">[M6] Journal of Essential Oil Research. &quot;Catnip (Nepeta cataria L.) essential oil&quot;. Estudo clássico sobre composição química do óleo essencial de catnip e sua variação durante a hidrodestilação. Disponível em: <a href="https://gwern.net/doc/cat/psychology/drug/catnip/1993-bourrel.pdf" target="_blank" rel="noopener">https://gwern.net/doc/cat/psychology/drug/catnip/1993-bourrel.pdf</a></li>
+        <li id="ref-M7">[M7] ClinicWala. &quot;Medicinal plants: Nepeta cataria&quot;. Resumo popular sobre usos medicinais de catnip em distúrbios digestivos, febre, cólicas e insónia. Disponível em: <a href="https://www.clinicwala.com/cure_medicinalplants--nepetacataria.html" target="_blank" rel="noopener">https://www.clinicwala.com/cure_medicinalplants--nepetacataria.html</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] OnLine Journal of Biological Sciences. &quot;Study of Plant Growth and Essential Oil of Nepeta cataria L. in Kazakhstan&quot;. Estudo agronómico que reporta teores de óleo essencial e percentagens de nepetalactona em plantas cultivadas. Disponível em: <a href="https://thescipub.com/abstract/ojbsci.2023.286.295" target="_blank" rel="noopener">https://thescipub.com/abstract/ojbsci.2023.286.295</a></li>
+        <li id="ref-F2">[F2] Journal of Essential Oil Research. &quot;Catnip (Nepeta cataria L.) essential oil&quot;. Análise detalhada da composição do óleo essencial de catnip e variação de nepetalactonas durante a destilação. Disponível em: <a href="https://gwern.net/doc/cat/psychology/drug/catnip/1993-bourrel.pdf" target="_blank" rel="noopener">https://gwern.net/doc/cat/psychology/drug/catnip/1993-bourrel.pdf</a></li>
+        <li id="ref-F3">[F3] Journal of Essential Oil Bearing Plants. &quot;Changes in essential oil content and composition of catnip (Nepeta cataria L.) during different developmental stages&quot;. Trabalho que descreve variações sazonais no teor de óleo essencial e seus principais constituintes. Disponível em: <a href="https://jmp.ir/article-1-1298-en.pdf" target="_blank" rel="noopener">https://jmp.ir/article-1-1298-en.pdf</a></li>
+        <li id="ref-F4">[F4] Horticulturae (MDPI). &quot;Seasonal variation in volatile profiles of lemon catnip&quot;. Artigo que compila intervalos de teor de óleo essencial em catnip e lemon catnip, com valores entre 0,02 % e 1,70 % m/m. Disponível em: <a href="https://www.mdpi.com/2311-7524/11/7/862" target="_blank" rel="noopener">https://www.mdpi.com/2311-7524/11/7/862</a></li>
+        <li id="ref-F5">[F5] Scientific Reports. &quot;Repellency assessment of Nepeta cataria essential oils and purified nepetalactone against mosquitoes&quot;. Estudo que relaciona a composição rica em nepetalactona com efeitos repelentes de insetos. Disponível em: <a href="https://www.nature.com/articles/s41598-018-36814-1" target="_blank" rel="noopener">https://www.nature.com/articles/s41598-018-36814-1</a></li>
+        <li id="ref-F6">[F6] Veterinary World. &quot;Antimicrobial effects of catnip (Nepeta cataria L.) essential oil&quot;. Avaliação da atividade antimicrobiana do óleo essencial de catnip em diferentes concentrações. Disponível em: <a href="https://www.veterinaryworld.org/Vol.17/March-2024/10.pdf" target="_blank" rel="noopener">https://www.veterinaryworld.org/Vol.17/March-2024/10.pdf</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Petlove. &quot;Catnip: a erva do gato&quot;. Artigo sobre o uso de erva-gateira em brinquedos, arranhadores e enriquecimento ambiental para gatos domésticos. Disponível em: <a href="https://www.petlove.com.br/dicas/catnip-a-erva-do-gato" target="_blank" rel="noopener">https://www.petlove.com.br/dicas/catnip-a-erva-do-gato</a></li>
+        <li id="ref-A2">[A2] HHCFriends. &quot;Erva dos gatos – efeitos, benefícios e dicas para gatos&quot;. Texto em português com sugestões de almofadas aromáticas, brinquedos e outras formas de uso lúdico da erva-dos-gatos. Disponível em: <a href="https://www.hhcfriends.eu/pt-pt/blogs/noticias-1/erva-dos-gatos" target="_blank" rel="noopener">https://www.hhcfriends.eu/pt-pt/blogs/noticias-1/erva-dos-gatos</a></li>
+        <li id="ref-A3">[A3] PFAF Plant Database. &quot;Nepeta cataria – Catmint, Catnip&quot;. Ficha de planta que menciona usos ornamentais, culinários e possíveis efeitos repelentes de insetos na horta. Disponível em: <a href="https://pfaf.org/user/Plant.aspx?LatinName=Nepeta+cataria" target="_blank" rel="noopener">https://pfaf.org/user/Plant.aspx?LatinName=Nepeta+cataria</a></li>
+        <li id="ref-A4">[A4] Traditional Medicinals. &quot;Catnip – herb library&quot;. Perfil de erva que descreve usos calmantes, aplicações em chá e valor como planta aromática em jardins. Disponível em: <a href="https://www.traditionalmedicinals.com/blogs/herb-library/catnip" target="_blank" rel="noopener">https://www.traditionalmedicinals.com/blogs/herb-library/catnip</a></li>
+        <li id="ref-A5">[A5] Mundo Ecologia. &quot;História da erva-gateira: significado, origem da planta e fotos&quot;. Artigo em português sobre história cultural, usos tradicionais e curiosidades associadas à erva-gateira. Disponível em: <a href="https://www.mundoecologia.com.br/plantas/historia-da-erva-gateira-significado-origem-da-planta-e-fotos/" target="_blank" rel="noopener">https://www.mundoecologia.com.br/plantas/historia-da-erva-gateira-significado-origem-da-planta-e-fotos/</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] PFAF Plant Database. &quot;Nepeta cataria – Catmint, Catnip&quot;. Informação sobre rusticidade, exigências de solo, valor ecológico e usos múltiplos em sistemas de cultivo diversificados. Disponível em: <a href="https://pfaf.org/user/Plant.aspx?LatinName=Nepeta+cataria" target="_blank" rel="noopener">https://pfaf.org/user/Plant.aspx?LatinName=Nepeta+cataria</a></li>
+        <li id="ref-P2">[P2] NC State Extension. &quot;Nepeta (Catmint, Catnip)&quot;. Ficha hortícola com notas sobre tolerância à seca, valor para polinizadores e comportamento em jardins e bordaduras. Disponível em: <a href="https://plants.ces.ncsu.edu/plants/nepeta/" target="_blank" rel="noopener">https://plants.ces.ncsu.edu/plants/nepeta/</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

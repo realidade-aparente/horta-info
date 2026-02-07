@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html" class="ativa">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+  <a class="next" href="fisalis.html">Fisális</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Figueira (<em>Ficus carica L.</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Moraceae</span>
+  <span>Parte usada: folhas, frutos frescos e secos</span>
+  <span>Tipo: árvore frutífera medicinal mediterrânica</span>
+  <span>Produção: <strong>cultivada em pomares e hortas</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> região mediterrânica e sudoeste asiático, amplamente cultivada em Portugal</div>
+  <div><strong>Uso principal</strong> suporte digestivo e metabólico, adjuvante cardiovascular e regulador intestinal</div>
+  <div><strong>Perfil medicinal</strong> rica em fibra e polifenóis, efeitos glicémicos, lipídicos e antioxidantes</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Figueira (Ficus carica L.)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>A figueira (Ficus carica L.) é uma árvore de folha caduca da família Moraceae que normalmente atinge entre 3 e 8 metros de altura, com copa ampla e tronco retorcido. As folhas são grandes, profundamente lobadas, de textura rugosa, e caem no outono, deixando os ramos nus durante o inverno. Os frutos conhecidos como figos são, do ponto de vista botânico, siconos: estruturas carnudas em forma de pera que contêm no interior numerosas flores e pequenas sementes.</p>
+      <p>Em Portugal, além de figueira e figo, usam-se nomes como figueira-comum, figueira-da-horta ou figueira-da-rocha consoante variedades e contextos regionais. Em inglês, os nomes mais comuns são common fig, fig tree ou simply fig. Existem muitas cultivares com diferentes épocas de maturação, cores de casca e perfis de sabor, incluindo variedades bíferas que produzem duas colheitas por ano.</p>
+      <p>A figueira é uma espécie emblemática de pomares mediterrânicos, muito associada à paisagem rural de sequeiro, taludes e bordaduras de campos. Além do fruto, utilizam-se tradicionalmente as folhas em infusão e o látex em aplicações tópicas específicas. Estudos recentes descrevem uma composição rica em açúcares, fibras, ácidos orgânicos, polifenóis, flavonoides, triterpenos e furocumarinas, que ajudam a explicar a combinação de usos alimentares e medicinais da espécie.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, a figueira é uma árvore caducifólia adaptada ao clima mediterrânico, com rebentação na primavera, desenvolvimento vegetativo ao longo da primavera e verão e queda das folhas no outono. A floração decorre dentro dos siconos e não é visível externamente, sendo mais relevante, na prática, a época de maturação dos figos.
+A colheita dos frutos varia com a cultivar e a região, mas em geral decorre do verão ao início do outono. Muitas variedades produzem uma primeira colheita de figos "lampos" no início do verão e uma segunda colheita de figos "vindimos" no final do verão ou início do outono. As folhas para uso medicinal colhem-se durante a estação vegetativa, preferencialmente no verão, em plantas saudáveis e afastadas de fontes de contaminação.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Rebentação e desenvolvimento vegetativo: primavera (março–maio), com emissão de novos ramos e folhas.</li>
+        <li>Maturação de figos lampos (primeira colheita em variedades bíferas): início a meio do verão (aproximadamente junho–julho), dependendo da região e cultivar.</li>
+        <li>Maturação de figos de vindima (segunda colheita): final do verão e início do outono (agosto–setembro, podendo estender-se até outubro em algumas zonas).</li>
+        <li>Queda de folhas e entrada em dormência: outono (outubro–novembro), com árvores permanecendo em repouso durante o inverno.</li>
+        <li>Colheita de folhas para uso medicinal: durante a estação vegetativa, preferencialmente no verão, escolhendo folhas bem desenvolvidas mas ainda saudáveis e inteiras.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a> <a href="#ref-S3">[S3]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Consumo regular de figos frescos ou secos como fonte de fibra alimentar, açúcares naturais, minerais e compostos fenólicos, com estudos que sugerem efeitos favoráveis sobre o trânsito intestinal, o perfil lipídico e marcadores de stress oxidativo, quando integrados numa alimentação equilibrada. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></li>
+        <li>Infusões de folhas de figueira (por exemplo 1–2 g de folhas secas em 150–250 mL de água quente, infundidas 10–15 minutos) estudadas como adjuvantes em diabetes tipo 2 e dislipidemia, com alguns ensaios clínicos e estudos em animais a indicar melhoria da tolerância à glicose, redução moderada de glicemia e efeitos benéficos sobre colesterol e triglicerídeos. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-F2">[F2]</a></li>
+        <li>Extratos de folhas de Ficus carica (hidroalcoólicos ou etanólicos) investigados em modelos experimentais pela sua atividade antioxidante, anti-inflamatória, hepatoprotetora e cardioprotetora, com redução de marcadores de dano hepático, melhoria do perfil lipídico e proteção contra stress oxidativo induzido. <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></li>
+        <li>Aplicação local de látex de figueira em verrugas cutâneas, avaliada em pequenos ensaios clínicos e estudos recentes que sugerem eficácia comparável a alguns tratamentos convencionais em verrugas virais, mas com risco significativo de irritação, fototoxicidade e queimadura química quando usado de forma inadequada. <a href="#ref-M3">[M3]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-F5">[F5]</a> <a href="#ref-U2">[U2]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Uso tradicional de figos frescos e secos para regular o intestino, aliviar a obstipação ligeira e suavizar o trânsito intestinal, frequentemente combinados com outros frutos secos e uma boa hidratação. <a href="#ref-R1">[R1]</a> <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Infusão de folhas de figueira como remédio caseiro para auxiliar no controlo de açúcar no sangue, regular o colesterol e apoiar o fígado, em especial em contextos de alimentação rica em gorduras e açúcares. <a href="#ref-R2">[R2]</a> <a href="#ref-A3">[A3]</a> <a href="#ref-A4">[A4]</a></li>
+        <li>Utilização popular de látex fresco aplicado localmente em verrugas, calosidades e algumas lesões cutâneas, seguindo receitas tradicionais que recomendam aplicações pontuais repetidas durante alguns dias ou semanas. <a href="#ref-R3">[R3]</a> <a href="#ref-R4">[R4]</a> <a href="#ref-U3">[U3]</a></li>
+        <li>Emprego de figos cozidos em água ou leite para suavizar a garganta, aliviar tosse seca e desconforto respiratório ligeiro, bem como em cataplasmas mornos sobre zonas dolorosas ou inflamadas. <a href="#ref-R1">[R1]</a> <a href="#ref-R5">[R5]</a> <a href="#ref-A1">[A1]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>Embora figos e preparações leves de folhas de figueira sejam geralmente bem tolerados quando consumidos como alimento em quantidades moderadas, o uso medicinal mais concentrado e prolongado deve ser abordado com prudência. Pessoas com diabetes, dislipidemia ou doenças hepáticas não devem substituir a terapêutica prescrita por chás ou extratos de figueira sem supervisão médica, e devem monitorizar glicemia e lípidos quando usam estes preparados como adjuvantes. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-M1">[M1]</a></p>
+      <p>O látex da figueira é fortemente irritante para a pele e mucosas e contém furocumarinas fotossensibilizantes; aplicações tópicas incorretas ou em grandes áreas podem provocar queimaduras químicas, dermatite intensa e, em casos de exposição extensa ao sol, lesões graves. O uso de látex em verrugas deve ser sempre muito localizado, evitando pele sã, olhos, mucosas e exposição solar, e idealmente enquadrado por profissional de saúde. <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-F5">[F5]</a></p>
+      <p>Preparados de folhas podem interagir com fármacos antidiabéticos, anti-hipertensores ou hipolipemiantes, potencialmente potenciando os efeitos e originando episódios de hipoglicemia ou hipotensão em usos descuidados. Grávidas, lactantes, crianças, pessoas com doenças hepáticas ou renais, bem como indivíduos com alergia conhecida a Moraceae, devem usar figueira medicinal apenas com aconselhamento especializado. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U4">[U4]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        Na fitoterapia, a figueira é trabalhada sobretudo através do fruto (fresco ou seco), infusões de folhas e, em contexto muito controlado, aplicações tópicas do látex. As receitas incluem chás de folhas para apoio metabólico e cardiovascular, figos cozidos para o intestino e garganta e compressas ou cataplasmas externos. Todas estas utilizações devem respeitar doses moderadas, tempos de utilização limitados e as advertências de segurança, em especial no uso do látex e em pessoas com doenças metabólicas acompanhadas clinicamente.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="figueira_receitas.html">Infusão simples de folhas de figueira:</a> chá de folhas secas ou frescas tomado em programas curtos como apoio suave à glicemia e ao colesterol. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="figueira_receitas.html">Chá de folhas de figueira para apoio metabólico:</a> infusão regular integrada em dieta equilibrada para ajudar no controlo de tensão, gorduras e açúcar no sangue. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="figueira_receitas.html">Decocção de folhas de figueira para gargarejos:</a> preparado concentrado utilizado apenas para bochechos e gargarejos em irritações de boca e garganta. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="figueira_receitas.html">Figos secos cozidos em água ou leite:</a> preparado tradicional reconfortante com figos cozidos, usado em obstipação ligeira e tosse irritativa. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="figueira_receitas.html">Xarope simples de figo:</a> redução doce de figos frescos em líquido aromático, usada em colheradas como suavizante de garganta e apoio digestivo. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="figueira_receitas.html">Compressas com infusão de folhas de figueira:</a> pano embebido em infusão morna aplicado externamente em zonas de pele irritada ou sensível. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="figueira_receitas.html">Aplicação pontual de látex de figueira em verrugas:</a> uso muito localizado do látex fresco sobre verrugas resistentes, seguindo com rigor as recomendações de segurança. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="figueira_receitas.html">Banho de imersão parcial com folhas de figueira:</a> utilização de infusão em bacias ou banheiras pequenas para relaxar pernas cansadas e apoiar a circulação. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="figueira_receitas.html">Mistura depurativa com folhas de figueira:</a> combinação de folhas de figueira com outras plantas depurativas em chá diário de apoio a metabolismo e fígado. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="figueira_receitas.html">Cataplasma morno de figos cozidos:</a> aplicação externa de polpa de figos aquecida sobre zonas específicas, em usos tradicionais para desconforto local. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>A figueira é amplamente estudada como planta com potencial nutracêutico, combinando o valor alimentar dos figos com propriedades farmacológicas das folhas, frutos e látex. Revisões recentes descrevem benefícios em várias áreas, incluindo sistema digestivo, metabolismo glicídico e lipídico, saúde cardiovascular e proteção contra stress oxidativo. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M6">[M6]</a> <a href="#ref-F1">[F1]</a></p>
+      <p>Os figos, frescos ou secos, destacam-se pelo teor de fibra solúvel e insolúvel, açúcares naturais, minerais (potássio, cálcio, magnésio) e polifenóis, associados a melhoria do trânsito intestinal, efeitos pré-bióticos, contributo para controlo dietético da obstipação e suporte ao equilíbrio lipídico e glicémico. Estudos observacionais e alguns ensaios sugerem impacto favorável sobre marcadores de inflamação e stress oxidativo quando integrados em dietas equilibradas. <a href="#ref-M2">[M2]</a> <a href="#ref-M6">[M6]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></p>
+      <p>As folhas e extratos de folhas de Ficus carica têm sido investigados como adjuvantes em diabetes tipo 2, hiperlipidemia, obesidade e doença hepática não alcoólica, com resultados promissores em modelos animais e alguns ensaios clínicos de pequena escala. Verificam-se reduções moderadas de glicemia em jejum, melhoria de perfil lipídico e efeitos hepatoprotetores, atribuídos a uma combinação de flavonoides, ácidos fenólicos, triterpenos e outros fitoquímicos com atividade antioxidante e anti-inflamatória. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Apoio ao trânsito intestinal e à saúde digestiva, contribuindo para prevenção e alívio de obstipação ligeira e melhoria do conforto gastrointestinal, graças ao teor de fibra e compostos bioativos dos figos. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M6">[M6]</a></li>
+        <li>Adjuvante em controlo glicémico em pessoas com diabetes tipo 2, quando folhas ou extratos de folhas são usados como complemento à terapêutica convencional, com estudos que sugerem redução moderada de glicemia e melhoria da sensibilidade à insulina. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-F2">[F2]</a></li>
+        <li>Suporte ao equilíbrio lipídico e à saúde cardiovascular, com dados que indicam efeitos benéficos de extratos de folhas e frutos sobre colesterol total, LDL, HDL e triglicerídeos, bem como redução de stress oxidativo e inflamação de baixo grau. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></li>
+        <li>Apoio hepatoprotetor em contextos de agressão tóxica ou metabólica, com extratos de folhas a demonstrarem redução de enzimas hepáticas elevadas e melhoria histológica em modelos animais. <a href="#ref-M3">[M3]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></li>
+        <li>Aplicação tópica adjuvante em verrugas cutâneas e algumas lesões de pele específicas, através de uso cuidadoso do látex, com estudos que apontam para taxas de resolução significativas mas também para riscos de irritação e fototoxicidade. <a href="#ref-M3">[M3]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-F5">[F5]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>A figueira apresenta um perfil fitoquímico complexo, com diferenças entre frutos, folhas, casca e látex. Os figos maduros são ricos em açúcares simples (glucose, frutose), fibra alimentar, ácidos orgânicos, minerais e polifenóis, incluindo flavonoides e ácidos fenólicos que contribuem para a atividade antioxidante. Estudos recentes destacam a presença de compostos fenólicos como ácido clorogénico, ácido ferúlico, rutina e quercetina, entre outros. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F6">[F6]</a></p>
+      <p>As folhas de Ficus carica contêm flavonoides, cumarinas e furocumarinas (por exemplo, psoraleno), triterpenos, taninos, lactonas e outros constituintes com propriedades antioxidantes, anti-inflamatórias, hipoglicemiantes, hipolipemiantes e hepatoprotetoras demonstradas em modelos experimentais. Extratos hidroalcoólicos e etanólicos de folhas mostram forte capacidade de neutralização de radicais livres e inibição de enzimas relacionadas com metabolismo dos lípidos e hidratos de carbono. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F6">[F6]</a> <a href="#ref-F7">[F7]</a></p>
+      <p>O látex da figueira, um exsudado branco e espesso, é rico em proteases (como ficina), fenóis, coumarinas e outros compostos bioativos. Revisões sistemáticas indicam atividade antiviral, antiparasitária, anticancerígena e potencial para tratamento de verrugas, mas também realçam o risco de irritação cutânea e fototoxicidade, especialmente devido à presença de furocumarinas e outras substâncias sensibilizantes. <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a> <a href="#ref-F5">[F5]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Polifenóis totais em frutos de Ficus carica</td><td>≈1–5 mg de equivalentes de ácido gálico/g de fruto fresco (valores típicos, variando com cultivar e maturação)</td></tr>
+        <tr><td>Capacidade antioxidante de extratos de figo (fruto)</td><td>atividade moderada a elevada (IC50 em ensaios DPPH/ABTS na gama de dezenas a poucas centenas de µg/mL)</td></tr>
+        <tr><td>Flavonoides e ácidos fenólicos em folhas de figueira</td><td>presença confirmada de múltiplos flavonoides e ácidos fenólicos; teores na gama de dezenas de mg/g de extrato seco em alguns estudos</td></tr>
+        <tr><td>Atividade antioxidante de extratos de folhas (ensaios DPPH/ABTS)</td><td>atividade antioxidante elevada em extratos etanólicos, com IC50 frequentemente inferior à de extratos aquosos correspondentes</td></tr>
+        <tr><td>Constituintes fenólicos e enzimáticos do látex de Ficus carica</td><td>presença de proteases (ficina) e compostos fenólicos, incluindo coumarinas e furocumarinas, em concentrações relevantes para atividade biológica</td></tr>
+        <tr><td>Atividade antiviral e antiparasitária de látex de figueira</td><td>inibição significativa de crescimento de parasitas e vírus em concentrações de látex/fracções purificadas na gama de dezenas a centenas de µg/mL</td></tr>
+        <tr><td>Atividade hipoglicemiante de extratos de folhas em modelos animais</td><td>reduções de glicemia em modelos animais após administração de extratos de folhas, com doses na ordem de dezenas a centenas de mg/kg de peso corporal</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Árvore de grande valor paisagístico e cultural em regiões mediterrânicas, fornecendo sombra, frescura e um elemento visual marcante em pátios, hortas e jardins. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Importante recurso alimentar para aves, mamíferos e insetos, que consomem figos maduros e contribuem para a dispersão de sementes e manutenção da biodiversidade.</li>
+        <li>Uso do látex fresco em práticas tradicionais para tratamento de verrugas e pequenas lesões cutâneas, bem como em receitas artesanais de queijos e outros alimentos em algumas culturas.</li>
+        <li>Utilização da madeira e ramos de figueira em pequenas construções, estacas, lenha e produção de carvão vegetal, ainda que em escala limitada.</li>
+        <li>Simbolismo forte em diversas tradições religiosas e culturais (por exemplo, mundo greco-romano, judaico-cristão e islâmico), conferindo à árvore um valor cultural e espiritual acrescido.</li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 7,9 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em permacultura, a figueira é uma espécie de grande valor pela combinação de funções alimentares, medicinais, ecológicas e estruturais. Fornece frutos ricos em energia e micronutrientes, sombra estival em zonas quentes, abrigo e alimento para aves e insetos, além de folhas e outros componentes utilizáveis em fitoterapia e compostagem. Integra-se bem em sistemas agroflorestais, pomares de sequeiro, consociações com culturas de sub-bosque e bordaduras de taludes.
+A sua rusticidade em climas mediterrânicos, capacidade de suportar solos relativamente pobres e alguma seca, bem como a longevidade e produtividade, fazem da figueira uma árvore muito interessante em jardins comestíveis e quintais familiares. Ao mesmo tempo, o porte arbóreo implica competição por luz, água e nutrientes em redor da projeção da copa e raízes vigorosas, exigindo planeamento na localização e escolha de consórcios.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação da figueira resulta de valores elevados em uso alimentar (ALIM=2), com o figo a desempenhar papel relevante como fruto fresco e seco, uso medicinal (MED=2), graças a dados etnobotânicos e estudos recentes sobre folhas, frutos e látex, estrutura/porte arbóreo (ESTR=2), oferecendo sombra e presença marcante, contributo moderado para solo e biomassa (SOLO=1), sobretudo via queda de folhas e ramos para compostagem, forte suporte à fauna (ECO=2), ao fornecer alimento abundante a aves e outros animais, boa rusticidade em climas mediterrânicos (RUST=2) e elevada multifuncionalidade cultural e ecológica (MULT=2). As penalizações aplicam-se sobretudo à competição por água, luz e nutrientes nas proximidades da copa (COMP=-1) e ao potencial irritante e fotossensibilizante do látex em usos descuidados (TOX=-1), enquanto o perigo físico (PERIGO) e o comportamento invasor problemático (INVAS) são geralmente baixos no contexto hortícola habitual.
+O valor final em escala 0–10 resulta da aplicação do algoritmo descrito em anexo (soma dos critérios positivos até 14 pontos, subtração das penalizações, com conversão por regra de três simples), situando a figueira em cerca de 7,9/10 e indicando uma árvore de elevada funcionalidade em permacultura, especialmente útil em pomares, bordaduras agroflorestais, quintais de sequeiro e sistemas alimentares biodiversos bem desenhados.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-A1">[A1]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Mawa, S. et al. Ficus carica L. (Moraceae): Phytochemistry, Traditional Uses and Pharmacological Activities. Evid Based Complement Alternat Med. 2013;2013:974256. Revisão abrangente sobre botânica, usos tradicionais e propriedades farmacológicas da figueira. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/24159347/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/24159347/</a></li>
+        <li id="ref-D2">[D2] INIAV. Manual de Fruticultura – Figueira (Ficus carica L.). Documento técnico sobre origem, importância económica, morfologia e manejo da cultura em Portugal. Disponível em: <a href="https://www.iniav.pt/images/publicacoes/livros-manuais/manual_de_fruticultura_figueira.pdf" target="_blank" rel="noopener">https://www.iniav.pt/images/publicacoes/livros-manuais/manual_de_fruticultura_figueira.pdf</a></li>
+        <li id="ref-D3">[D3] Jardins. A cultura da figueira. Artigo de divulgação em português com descrição da espécie, características da árvore, produção e ciclo biológico em contexto mediterrânico. Disponível em: <a href="https://revistajardins.pt/plantas/arvores/cultura-da-figueira/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/arvores/cultura-da-figueira/</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Jardins. Figueiras para decorar o jardim. Ficha de cultivo com informação sobre altura, época de plantação e época de colheita de figos em Portugal. Disponível em: <a href="https://revistajardins.pt/plantas/arvores/figueiras-decorar-jardim/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/arvores/figueiras-decorar-jardim/</a></li>
+        <li id="ref-S2">[S2] INIAV. Manual de Fruticultura – Figueira (Ficus carica L.). Secções sobre fenologia, épocas de produção e exigências climáticas da cultura em Portugal. Disponível em: <a href="https://www.iniav.pt/images/publicacoes/livros-manuais/manual_de_fruticultura_figueira.pdf" target="_blank" rel="noopener">https://www.iniav.pt/images/publicacoes/livros-manuais/manual_de_fruticultura_figueira.pdf</a></li>
+        <li id="ref-S3">[S3] DGAV. Ficha técnica para a produção, controlo e certificação de material de propagação de figueira (Ficus carica L.). Informação oficial sobre material vegetal, origem e condições de produção. Disponível em: <a href="https://www.dgav.pt/wp-content/uploads/2021/02/Ficha-tecnica-para-certificacao-Figueira.pdf" target="_blank" rel="noopener">https://www.dgav.pt/wp-content/uploads/2021/02/Ficha-tecnica-para-certificacao-Figueira.pdf</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] Darwin Nutrition. Figueira: benefícios, posologia, contraindicações. Artigo em português que descreve usos de rebentos, folhas e frutos, efeitos metabólicos e principais cuidados. Disponível em: <a href="https://www.darwin-nutrition.fr/pt/ativos/figueira/" target="_blank" rel="noopener">https://www.darwin-nutrition.fr/pt/ativos/figueira/</a></li>
+        <li id="ref-U2">[U2] Fazel, M. F. et al. Physicochemistry, nutritional and therapeutic potential of Ficus carica: A promising nutraceutical. Drug Des Devel Ther. 2024;18:521–546. Revisão recente que discute benefícios, doses estudadas e segurança de preparos de figo e folhas. Disponível em: <a href="https://www.dovepress.com/physicochemistry-nutritional-and-therapeutic-potential-of-ficus-carica-peer-reviewed-fulltext-article-DDDT" target="_blank" rel="noopener">https://www.dovepress.com/physicochemistry-nutritional-and-therapeutic-potential-of-ficus-carica-peer-reviewed-fulltext-article-DDDT</a></li>
+        <li id="ref-U3">[U3] Mansilla-Polo, M. et al. Chemical burns and systemic toxicity due to Ficus carica latex exposure: Case report and review of the literature. J Investig Allergol Clin Immunol. 2023;33(3):220–223. Descreve riscos de queimadura química e fototoxicidade associados ao látex de figueira. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S1572100023000327" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S1572100023000327</a></li>
+        <li id="ref-U4">[U4] Rahnama, Z. et al. Ficus carica Tree Latex is Used for Treating Warts: Is it a Coincidence or a New Point of View? Dermatol Ther. 2025. Revisão sobre uso tradicional do látex em verrugas e discussão sobre segurança e fotossensibilização. Disponível em: <a href="https://www.researchgate.net/publication/397897968_Ficus_carica_Tree_Latex_is_Used_for_Treating_Warts_Is_it_a_Coincidence_or_a_New_Point_of_View" target="_blank" rel="noopener">https://www.researchgate.net/publication/397897968_Ficus_carica_Tree_Latex_is_Used_for_Treating_Warts_Is_it_a_Coincidence_or_a_New_Point_of_View</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Girassol. Figueira Folha 50 g. Descrição comercial que refere o chá de folhas de figueira como remédio natural para trânsito intestinal e colesterol elevado, incluindo forma de uso. Disponível em: <a href="https://www.girassol.com/plantas-medicinais/13323-figueira-folha-50g.html" target="_blank" rel="noopener">https://www.girassol.com/plantas-medicinais/13323-figueira-folha-50g.html</a></li>
+        <li id="ref-R2">[R2] Darwin Nutrition. Figueira: benefícios, posologia, contraindicações. Indicações de utilização do chá de folhas de figueira como adjuvante em metabolismo e colesterol, com recomendações de doses. Disponível em: <a href="https://www.darwin-nutrition.fr/pt/ativos/figueira/" target="_blank" rel="noopener">https://www.darwin-nutrition.fr/pt/ativos/figueira/</a></li>
+        <li id="ref-R3">[R3] ESMTC. Figo em MTC. Texto em português que descreve decocções de figos e folhas de figueira para uso em inflamações da boca e diarreias, com indicações práticas de preparação. Disponível em: <a href="https://esmtc.pt/figo-em-mtc/" target="_blank" rel="noopener">https://esmtc.pt/figo-em-mtc/</a></li>
+        <li id="ref-R4">[R4] ESMTC. Figo em MTC. Secções sobre figos secos cozidos em leite ou água para obstipação e problemas digestivos, incluindo modo de preparação e consumo. Disponível em: <a href="https://esmtc.pt/figo-em-mtc/" target="_blank" rel="noopener">https://esmtc.pt/figo-em-mtc/</a></li>
+        <li id="ref-R5">[R5] Correio Braziliense. Esse fruto pode proteger suas células e aliviar problemas digestivos. Artigo de divulgação que resume benefícios do figo para intestino e digestão, baseado em estudos científicos. Disponível em: <a href="https://www.correiobraziliense.com.br/cbradar/esse-fruto-pode-proteger-suas-celulas-e-aliviar-problemas-digestivos/" target="_blank" rel="noopener">https://www.correiobraziliense.com.br/cbradar/esse-fruto-pode-proteger-suas-celulas-e-aliviar-problemas-digestivos/</a></li>
+        <li id="ref-R6">[R6] Nutriboty. Figueira (Ficus carica). Ficha de ingrediente que descreve usos de extratos de folha em produtos funcionais, incluindo benefícios hepáticos e metabólicos. Disponível em: <a href="https://www.nutriboty.com/ingredientes-sustentaveis/figueira/" target="_blank" rel="noopener">https://www.nutriboty.com/ingredientes-sustentaveis/figueira/</a></li>
+        <li id="ref-R7">[R7] Bohlooli, S. et al. Comparative study of fig tree efficacy in the treatment of common warts vs. cryotherapy. Int J Dermatol. 2007;46(5):524–526. Estudo clínico que avalia aplicação tópica de látex de figueira em verrugas e descreve protocolo de uso. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/17472688/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/17472688/</a></li>
+        <li id="ref-R8">[R8] Itatiaia. Quais são as propriedades curativas das folhas de figo? Artigo que discute usos populares de chá de folha de figueira para colesterol, triglicerídeos e glicemia, com alertas contra promessas milagrosas. Disponível em: <a href="https://www.itatiaia.com.br/trends/quais-sao-as-propriedades-curativas-das-folhas-de-figo-que-nasce-de-planta-presente-em-varias-casas-brasileiras" target="_blank" rel="noopener">https://www.itatiaia.com.br/trends/quais-sao-as-propriedades-curativas-das-folhas-de-figo-que-nasce-de-planta-presente-em-varias-casas-brasileiras</a></li>
+        <li id="ref-R9">[R9] Viral / SAPO. Chá de folha de figueira é “milagroso” contra diabetes e colesterol alto? Fact-check que recapitula evidência sobre chá de folhas de figueira e alerta para exageros e necessidade de acompanhamento médico. Disponível em: <a href="https://viral.sapo.pt/factos/cha-de-folha-de-figueira-diabetes-colesterol/" target="_blank" rel="noopener">https://viral.sapo.pt/factos/cha-de-folha-de-figueira-diabetes-colesterol/</a></li>
+        <li id="ref-R10">[R10] Instagram – página de fitoterapia. Figueira (Ficus carica): digestão, pele, metabolismo. Publicação que resume formas de uso de figos e folhas em chás, xaropes e preparos tradicionais. Disponível em: <a href="https://www.instagram.com/p/DT3N5pSj_1k/" target="_blank" rel="noopener">https://www.instagram.com/p/DT3N5pSj_1k/</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] Hajam, T. A. et al. Phytochemistry, biological activities, industrial and biotechnological applications of fig (Ficus carica): A comprehensive review. Fitoterapia. 2022;159:105314. Revisão extensa sobre atividades biológicas e usos medicinais de frutos, folhas e látex. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0009279722004422" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S0009279722004422</a></li>
+        <li id="ref-M2">[M2] Fazel, M. F. et al. Physicochemistry, nutritional and therapeutic potential of Ficus carica: A promising nutraceutical. Drug Des Devel Ther. 2024;18:521–546. Síntese recente sobre potencial terapêutico e nutracêutico do figo. Disponível em: <a href="https://www.dovepress.com/physicochemistry-nutritional-and-therapeutic-potential-of-ficus-carica-peer-reviewed-fulltext-article-DDDT" target="_blank" rel="noopener">https://www.dovepress.com/physicochemistry-nutritional-and-therapeutic-potential-of-ficus-carica-peer-reviewed-fulltext-article-DDDT</a></li>
+        <li id="ref-M3">[M3] Khalid, M. U. et al. Fig (Ficus carica) as a source of bioactive compounds with anti-inflammatory potential: A review. Int J Food Sci Technol. 2025;60(2):vvaf231. Revisão sobre compostos bioativos de frutos e folhas e seu impacto em inflamação e metabolismo. Disponível em: <a href="https://academic.oup.com/ijfst/article/60/2/vvaf231/8341466" target="_blank" rel="noopener">https://academic.oup.com/ijfst/article/60/2/vvaf231/8341466</a></li>
+        <li id="ref-M4">[M4] Badgujar, S. B. et al. Traditional uses, phytochemistry and pharmacology of Ficus carica: A review. J Ethnopharmacol. 2014;158 Pt A:200–212. Revisão clássica que resume usos tradicionais, dados farmacológicos e potenciais indicações clínicas. Disponível em: <a href="https://www.tandfonline.com/doi/full/10.3109/13880209.2014.892515" target="_blank" rel="noopener">https://www.tandfonline.com/doi/full/10.3109/13880209.2014.892515</a></li>
+        <li id="ref-M5">[M5] Ghanbari, A. et al. Biological activities of Ficus carica latex for potential therapeutic applications. Sci Rep. 2019;9:1037. Estudo que explora atividades antivirais, antiparasitárias e anticancerígenas do látex. Disponível em: <a href="https://www.nature.com/articles/s41598-018-37665-6" target="_blank" rel="noopener">https://www.nature.com/articles/s41598-018-37665-6</a></li>
+        <li id="ref-M6">[M6] Yasmeen, S. et al. Ficus carica L.: A panacea of nutritional and medicinal values. CellMed. 2020;10(1):1–10. Revisão que enfatiza propriedades nutricionais, digestivas e metabólicas do figo. Disponível em: <a href="https://accesson.kr/cellmed/assets/pdf/43101/journal-10-1-1.pdf" target="_blank" rel="noopener">https://accesson.kr/cellmed/assets/pdf/43101/journal-10-1-1.pdf</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Hajam, T. A. et al. Phytochemistry, biological activities, industrial and biotechnological applications of fig (Ficus carica): A comprehensive review. Fitoterapia. 2022;159:105314. Inclui dados sobre constituintes químicos de frutos e folhas e sua relação com atividades biológicas. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0009279722004422" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S0009279722004422</a></li>
+        <li id="ref-F2">[F2] Fazel, M. F. et al. Physicochemistry, nutritional and therapeutic potential of Ficus carica: A promising nutraceutical. Drug Des Devel Ther. 2024;18:521–546. Apresenta dados sobre composição, polifenóis e capacidade antioxidante de diferentes partes da figueira. Disponível em: <a href="https://www.dovepress.com/physicochemistry-nutritional-and-therapeutic-potential-of-ficus-carica-peer-reviewed-fulltext-article-DDDT" target="_blank" rel="noopener">https://www.dovepress.com/physicochemistry-nutritional-and-therapeutic-potential-of-ficus-carica-peer-reviewed-fulltext-article-DDDT</a></li>
+        <li id="ref-F3">[F3] Gani, G. et al. Phytochemistry and pharmacological activities of fig (Ficus carica): A review. Int J Res Pharm Pharm Sci. 2018;3(1):1–8. Revisão que sumariza constituintes e atividades farmacológicas, incluindo efeito hipoglicemiante e hipolipemiante. Disponível em: <a href="https://www.academia.edu/117003692/Phytochemistry_and_pharmacological_activities_of_fig_Ficus_carica_A_review" target="_blank" rel="noopener">https://www.academia.edu/117003692/Phytochemistry_and_pharmacological_activities_of_fig_Ficus_carica_A_review</a></li>
+        <li id="ref-F4">[F4] Ghanbari, A. et al. Biological activities of Ficus carica latex for potential therapeutic applications. Sci Rep. 2019;9:1037. Descreve composição e atividades do látex, incluindo proteases e fenóis com ação antiviral e antiparasitária. Disponível em: <a href="https://www.nature.com/articles/s41598-018-37665-6" target="_blank" rel="noopener">https://www.nature.com/articles/s41598-018-37665-6</a></li>
+        <li id="ref-F5">[F5] ResearchGate. Phytochemistry and pharmacological activities of Ficus carica latex: a systematic review. Revisão focada no látex da figueira e suas atividades farmacológicas, incluindo anticancerígena, antiviral e hepatoprotetora. Disponível em: <a href="https://www.researchgate.net/publication/359258087_Phytochemistry_and_pharmacological_activities_of_Ficus_carica_latex_a_systematic_review" target="_blank" rel="noopener">https://www.researchgate.net/publication/359258087_Phytochemistry_and_pharmacological_activities_of_Ficus_carica_latex_a_systematic_review</a></li>
+        <li id="ref-F6">[F6] Khalid, M. U. et al. Fig (Ficus carica) as a source of bioactive compounds with anti-inflammatory potential: A review. Int J Food Sci Technol. 2025;60(2):vvaf231. Apresenta dados quantitativos sobre compostos fenólicos e capacidade antioxidante. Disponível em: <a href="https://academic.oup.com/ijfst/article/60/2/vvaf231/8341466" target="_blank" rel="noopener">https://academic.oup.com/ijfst/article/60/2/vvaf231/8341466</a></li>
+        <li id="ref-F7">[F7] Fazel, M. F. et al. Physicochemistry, nutritional and therapeutic potential of Ficus carica: A promising nutraceutical. Secções sobre comparação de métodos de extração e impacto em teor de polifenóis e atividade antioxidante. Disponível em: <a href="https://www.dovepress.com/physicochemistry-nutritional-and-therapeutic-potential-of-ficus-carica-peer-reviewed-fulltext-article-DDDT" target="_blank" rel="noopener">https://www.dovepress.com/physicochemistry-nutritional-and-therapeutic-potential-of-ficus-carica-peer-reviewed-fulltext-article-DDDT</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Plantas e Jardins. Figueira (Ficus carica). Ficha que destaca valor ornamental, sombreamento, porte e papel cultural da figueira em jardins mediterrânicos. Disponível em: <a href="https://www.plantalivre.pt/pt/plantas/plantas-de-exterior/fruto-aromaticas-e-comestiveis/ficus-carica-figueira-comum" target="_blank" rel="noopener">https://www.plantalivre.pt/pt/plantas/plantas-de-exterior/fruto-aromaticas-e-comestiveis/ficus-carica-figueira-comum</a></li>
+        <li id="ref-A2">[A2] INIAV. Manual de Fruticultura – Figueira. Comentários sobre importância cultural, económica e paisagística da figueira em Portugal. Disponível em: <a href="https://www.iniav.pt/images/publicacoes/livros-manuais/manual_de_fruticultura_figueira.pdf" target="_blank" rel="noopener">https://www.iniav.pt/images/publicacoes/livros-manuais/manual_de_fruticultura_figueira.pdf</a></li>
+        <li id="ref-A3">[A3] Diversas fontes etnobotânicas e históricas (compiladas em Badgujar et al., 2014) que descrevem o simbolismo da figueira em tradições antigas, incluindo mundo greco-romano, judaico-cristão e islâmico. Disponível em: <a href="https://www.tandfonline.com/doi/full/10.3109/13880209.2014.892515" target="_blank" rel="noopener">https://www.tandfonline.com/doi/full/10.3109/13880209.2014.892515</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] INIAV. Manual de Fruticultura – Figueira. Discussão sobre adaptação da figueira a sequeiro, tolerância à seca e papel em sistemas agrícolas de baixa entrada, relevante para desenho em permacultura. Disponível em: <a href="https://www.iniav.pt/images/publicacoes/livros-manuais/manual_de_fruticultura_figueira.pdf" target="_blank" rel="noopener">https://www.iniav.pt/images/publicacoes/livros-manuais/manual_de_fruticultura_figueira.pdf</a></li>
+        <li id="ref-P2">[P2] Jardins. Figueiras para decorar o jardim. Sugestões de utilização de figueiras em jardins e pomares domésticos, enfatizando rusticidade, porte e valor ecológico em espaços verdes. Disponível em: <a href="https://revistajardins.pt/plantas/arvores/figueiras-decorar-jardim/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/arvores/figueiras-decorar-jardim/</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

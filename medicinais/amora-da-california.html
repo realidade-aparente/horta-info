@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html" class="ativa">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="amor-de-hortelao.html">Amor-de-hortelão</a>
+  <a class="next" href="arruda.html">Arruda</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Amora-da-Califórnia (<em>Rubus ursinus Cham. & Schltdl.</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Rosaceae</span>
+  <span>Parte usada: frutos, folhas e raízes</span>
+  <span>Tipo: trepadeira perene espinhosa frutífera</span>
+  <span>Produção: <strong>espontânea ou cultivada em sebes</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> costa oeste norte-americana, naturalizada em várias regiões de clima temperado</div>
+  <div><strong>Uso principal</strong> astringente digestivo e oral, frutos nutritivos antioxidantes para saúde cardiovascular</div>
+  <div><strong>Perfil medicinal</strong> adstringente digestiva suave, anti-inflamatória oral, antioxidante, cardioprotetora e metabólica</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Amora-da-Califórnia (Rubus ursinus Cham. & Schltdl.)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>A amora-da-Califórnia (Rubus ursinus Cham. &amp; Schltdl.) é uma espécie de amora silvestre rasteira da família Rosaceae, nativa da costa oeste da América do Norte. Em português encontra-se também como amora-da-Califórnia rasteira ou amora-da-Califórnia trepadeira; em inglês é conhecida como California blackberry, Pacific blackberry, trailing blackberry ou Pacific dewberry.</p>
+      <p>É uma planta perene com caules longos, delgados e prostrados, que podem ultrapassar 5 m de comprimento, enraizando em vários pontos e formando tapetes ou silvados densos. Os ramos apresentam acúleos recurvados e não achatados. As folhas são compostas, geralmente com três folíolos ovados a obovados, margens duplamente serradas e face superior verde-escura.</p>
+      <p>As flores surgem em hastes florais com várias flores brancas ou rosadas, de cinco pétalas e até cerca de 4 cm de diâmetro. As plantas são dióicas, com flores masculinas e femininas em indivíduos distintos, o que contribui para a variabilidade de frutificação em povoamentos espontâneos.</p>
+      <p>Os frutos são pequenas drupas agregadas formando uma amora negra ou arroxeada, geralmente mais pequena que a amora europeia comum (Rubus fruticosus), mas muito aromática. Têm forte importância ecológica, alimentando aves, pequenos mamíferos e outros animais silvestres, e são colhidos tradicionalmente para consumo humano fresco, em compotas, sumos ou sobremesas.</p>
+      <p>Do ponto de vista medicinal, tal como outras espécies de Rubus, as folhas e raízes são ricas em taninos e outros polifenóis, usados tradicionalmente em infusões e decocções de efeito adstringente para diarreias ligeiras, inflamações da boca e da garganta, e em aplicações externas sobre pele e mucosas irritadas.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em regiões de clima temperado húmido e mediterrânico semelhante ao de partes de Portugal continental, a amora-da-Califórnia comporta-se como uma perene de crescimento vigoroso, rebentando com força na primavera, florescendo da primavera ao verão e frutificando sobretudo no verão.
+No seu habitat nativo, na costa do Pacífico da América do Norte, o período de floração principal decorre, em geral, de abril a agosto, com maturação dos frutos do fim da primavera ao pico do verão. Em condições de cultivo semelhantes em jardins e sebes com boa exposição solar, em Portugal, o padrão esperado é uma floração primaveril e frutificação concentrada entre o final da primavera e o verão, com possível alongamento em microclimas mais amenos.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Plantação/propagação: estacas lenhosas ou de raiz e transplante de plantas jovens preferencialmente no final do outono ou fim do inverno, em solo bem drenado e com boa exposição solar.</li>
+        <li>Floração: em climas temperados húmidos, a floração típica estende-se da primavera ao verão (aprox. abril–agosto), podendo variar consoante a altitude e a exposição.</li>
+        <li>Frutificação: maturação das amoras, em geral, do fim da primavera ao verão, com pico de produção no verão, quando as temperaturas são mais elevadas e há boa disponibilidade hídrica.</li>
+        <li>Colheita de frutos: colher as amoras bem maduras, de cor negra brilhante, em tempo seco, consumindo frescas ou processando rapidamente em compotas, geleias, sumos ou congelação.</li>
+        <li>Crescimento vegetativo: os caules rasteiros podem crescer vários metros por estação de crescimento, exigindo controlo regular para evitar que invadam caminhos ou culturas vizinhas.</li>
+        <li>Gestão anual: podas seletivas no final do inverno ou após a frutificação ajudam a renovar os ramos frutíferos, facilitar a colheita e limitar o carácter invasivo em espaços pequenos.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-Informação">[Informação]</a> <a href="#ref-adaptada">[adaptada]</a> <a href="#ref-a">[a]</a> <a href="#ref-partir">[partir]</a> <a href="#ref-de">[de]</a> <a href="#ref-guias">[guias]</a> <a href="#ref-de">[de]</a> <a href="#ref-flora">[flora]</a> <a href="#ref-nativa">[nativa]</a> <a href="#ref-da">[da]</a> <a href="#ref-costa">[costa]</a> <a href="#ref-oeste">[oeste]</a> <a href="#ref-da">[da]</a> <a href="#ref-América">[América]</a> <a href="#ref-do">[do]</a> <a href="#ref-Norte">[Norte]</a> <a href="#ref-e">[e]</a> <a href="#ref-fichas">[fichas]</a> <a href="#ref-de">[de]</a> <a href="#ref-cultivo">[cultivo]</a> <a href="#ref-de">[de]</a> <a href="#ref-espécies">[espécies]</a> <a href="#ref-frutíferas">[frutíferas]</a> <a href="#ref-silvestres">[silvestres]</a> <a href="#ref-em">[em]</a> <a href="#ref-climas">[climas]</a> <a href="#ref-temperados.">[temperados.]</a> <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a> <a href="#ref-S3">[S3]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Infusão de folhas secas de Rubus spp. (incluindo silvas e amoras silvestres, como a amora-da-Califórnia): 1,5–4,5 g de folhas secas em 150–250 ml de água a ferver, infusão 10–15 minutos, até 3 vezes por dia, como adstringente em diarreias ligeiras e em bochechos/gargarejos para inflamações moderadas da boca e garganta. As doses derivam sobretudo de monografias para Rubus fruticosus e outras espécies próximas, pelo que para R. ursinus recomenda-se uso em curas curtas e monitorizadas. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a></li>
+        <li>Decocção de raízes de Rubus spp. (incluindo espécies de amora silvestre) para episódios agudos de diarreia: cerca de 5–10 g de raiz seca picada em 250 ml de água, ferver 10–15 minutos, coar e tomar 1 chávena, até 3 vezes ao dia durante 1–3 dias, em adultos, de acordo com descrições de fitoterapia tradicional e revisões sobre o uso medicinal das raízes de amora-preta. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-U4">[U4]</a> <a href="#ref-U5">[U5]</a></li>
+        <li>Consumo regular do fruto (amoras negras de Rubus spp., incluindo R. ursinus) em 50–100 g/dia como parte da alimentação contribui para a ingestão de fibra, vitamina C, vitamina K e antocianinas, associada em estudos observacionais e experimentais de outros frutos vermelhos a efeitos benéficos sobre o perfil lipídico, a glicémia e marcadores de inflamação de baixo grau. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-M6">[M6]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Chá popular de folhas jovens de silva/amora, muitas vezes em mistura com framboeseiro ou outras plantas, usado em Portugal e noutras regiões como apoio digestivo suave, para &quot;apertar o intestino&quot; em diarreias ligeiras e como elixir para gengivas e aftas (bochechos e gargarejos com a infusão morna). <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></li>
+        <li>Cataplasmas e compressas de folhas esmagadas ou infusões concentradas aplicadas externamente sobre feridas ligeiras, pequenas inflamações cutâneas, picadas e eczemas, explorando o efeito adstringente e ligeiramente antisséptico dos taninos presentes nas folhas de Rubus spp. <a href="#ref-U1">[U1]</a> <a href="#ref-U5">[U5]</a> <a href="#ref-U6">[U6]</a></li>
+        <li>Preparações caseiras como xaropes, vinhos medicinais, vinagres de fruto ou macerações em mel à base de amoras ou raízes, usados em várias tradições como tónicos digestivos e circulatórios, integrando simultaneamente o uso alimentar e medicinal dos silvados. <a href="#ref-U3">[U3]</a> <a href="#ref-U5">[U5]</a> <a href="#ref-U6">[U6]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>O uso interno de preparações concentradas de folhas e, sobretudo, de raízes ricas em taninos (como nas amoras silvestres) deve ser feito em curas curtas e bem delimitadas no tempo. Doses elevadas ou uso prolongado podem irritar a mucosa gastrointestinal, agravar obstipação em algumas pessoas e interferir com a absorção de minerais como o ferro, sendo desaconselhado em doença inflamatória intestinal ativa, úlcera péptica ou colite grave. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M5">[M5]</a></p>
+      <p>Gestantes, lactantes, crianças pequenas, pessoas com patologia hepática ou renal significativa e doentes sob terapêutica anticoagulante, antiagregante ou antidiabética devem evitar o uso continuado de chás concentrados de folhas ou decocções de raiz de Rubus spp. sem aconselhamento profissional. Nestes grupos é preferível limitar-se ao consumo alimentar moderado dos frutos maduros. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-U8">[U8]</a> <a href="#ref-U9">[U9]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        Com a amora-da-Califórnia e outras espécies de Rubus utilizam-se sobretudo infusões de folhas, decocções de raiz, xaropes e tinturas de raiz para uso interno em situações agudas, assim como bochechos e gargarejos com a infusão para inflamações ligeiras da boca e garganta e aplicações externas em compressas ou cataplasmas. Os frutos entram em compotas, sumos, vinagres, vinhos e sobremesas que conjugam valor alimentar com um potencial efeito antioxidante. Todas estas receitas devem ser usadas com prudência, respeitando doses e durações recomendadas nas fontes e integrando sempre o disclaimer padrão de segurança.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="amora-da-california_receitas.html">Infusão adstringente de folhas de amora:</a> chá de folhas secas de silva ou amora-preta usado como bebida adstringente em diarreias ligeiras e inflamações digestivas simples. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="amora-da-california_receitas.html">Chá de folhas de amora-preta para boca e garganta:</a> infusão de folhas usada morna em gargarejos e bochechos para aliviar inflamações ligeiras da boca, gengivas e garganta. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="amora-da-california_receitas.html">Decocção de raiz de amora silvestre:</a> preparado mais concentrado a partir de raízes de silva, tomado em curtos períodos como adjuvante em episódios agudos de diarreia. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="amora-da-california_receitas.html">Xarope tradicional de raiz de amora:</a> combinação de raízes de amora com outras plantas adstringentes em xarope espesso, utilizado em colheradas como apoio em tosse e irritações de garganta. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="amora-da-california_receitas.html">Infusão mista de folhas de silva com urtiga e tanchagem:</a> mistura de plantas rica em taninos e mucilagens, usada como chá funcional em inflamações ligeiras do trato digestivo e urinário. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="amora-da-california_receitas.html">Chá de folhas de silva para digestão sensível:</a> infusão simples de folhas empregue tradicionalmente em diarreias ligeiras e desconforto gástrico moderado. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="amora-da-california_receitas.html">Infusão ou elixir de folhas de silva para uso ocular externo:</a> preparado suave aplicado em compressas sobre pálpebras fechadas, como apoio em irritações ligeiras dos olhos. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="amora-da-california_receitas.html">Chá de folhas de amora-preta em saquetas:</a> infusão comercial vendida como bebida adstringente e antioxidante, apreciada como chá diário funcional. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="amora-da-california_receitas.html">Infusão caseira de folhas secas de amora silvestre:</a> chá preparado com folhas desidratadas adquiridas a granel, usado em contextos domésticos para apoio digestivo e intestinal. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="amora-da-california_receitas.html">Tinturas e tónicos digestivos com folhas de amora:</a> preparados artesanais que combinam extratos de folhas de silva com outras plantas e mel, tomados em pequenas doses após as refeições. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>Os frutos de amoras silvestres como a amora-da-Califórnia são ricos em fibra alimentar, vitamina C, vitamina K, manganês e diversos compostos fenólicos, especialmente antocianinas, que contribuem para uma elevada capacidade antioxidante. Estudos com amoras e outros frutos vermelhos sugerem potenciais efeitos benéficos sobre o perfil lipídico, a glicémia e marcadores de inflamação de baixo grau, embora os dados específicos para Rubus ursinus sejam ainda limitados e provenientes sobretudo de extrapolações dentro do género Rubus. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-M6">[M6]</a></p>
+      <p>As folhas e raízes das amoras (Rubus spp.) são tradicionalmente utilizadas como adstringentes devido ao teor elevado em taninos e outros polifenóis. Revisões fitoquímicas e etnofarmacológicas indicam que preparações à base de folhas de Rubus fruticosus e espécies próximas podem ser úteis como apoio em diarreias ligeiras, inflamações da mucosa oral e faríngea e em certas afeções ginecológicas leves, embora a evidência clínica controlada seja escassa e a maior parte dos dados derive de uso tradicional, séries de casos e modelos animais. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M5">[M5]</a></p>
+      <p>A combinação entre um fruto nutritivo e antioxidante e órgãos vegetativos ricos em taninos faz da amora-da-Califórnia uma planta potencialmente interessante em fitoterapia de apoio, desde que usada com parcimónia, em indicações ligeiras e nunca como substituto de diagnóstico ou tratamento médico adequado em quadros graves ou persistentes. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Apoio digestivo em diarreias ligeiras e algumas inflamações gastrointestinais, pela ação adstringente dos taninos presentes nas folhas e raízes de Rubus spp., usados em infusões e decocções de curta duração. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a></li>
+        <li>Apoio na saúde oral em situações ligeiras de inflamação da boca, gengivas e garganta, através de bochechos e gargarejos com infusões de folhas de amora/silva, tal como descrito em monografias e tradições europeias. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-U1">[U1]</a></li>
+        <li>Contribuição antioxidante e anti-inflamatória geral associada ao consumo regular de frutos de amora-da-Califórnia e outras amoras negras, ricos em antocianinas, vitamina C, vitamina K e fibra. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-M6">[M6]</a></li>
+        <li>Potencial efeito favorável sobre fatores cardiometabólicos (perfil lipídico, glicémia, resistência à insulina, inflamação de baixo grau) sugerido para amoras e outros frutos vermelhos ricos em polifenóis, ainda com evidência moderada e pouco específica para Rubus ursinus. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M5">[M5]</a></li>
+        <li>Possível apoio em pequenas irritações cutâneas e de mucosas (feridas superficiais, pequenas queimaduras, eczema ligeiro) com uso externo de infusões de folhas em compressas ou banhos locais, explorando o efeito adstringente e ligeiramente antimicrobiano descrito para folhas de Rubus. <a href="#ref-M1">[M1]</a> <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U5">[U5]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>Estudos de composição em folhas e frutos de várias espécies de Rubus (incluindo amoras e framboesas) mostram um teor elevado em polifenóis, em particular ellagitanninas, flavonoides e antocianinas, bem como vitamina C e outros antioxidantes. As folhas secas concentram taninos hidrolisáveis e condensados em quantidades relevantes, enquanto os frutos maduros apresentam perfis ricos em antocianinas responsáveis pela cor escura característica. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>Revisões recentes sobre as folhas de Rubus salientam que extratos aquosos, hidroalcoólicos e etanólicos exibem atividade antioxidante marcada em ensaios DPPH, ABTS e FRAP, além de efeitos anti-inflamatórios, antimicrobianos e hipoglicemiantes observados em modelos in vitro e in vivo. Os valores de ellagitanninas e de fenólicos totais em chás de folha situam-se frequentemente em faixas de centenas de mg/100 g de folha seca, dependendo da espécie, origem e tempo de infusão. <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>Embora haja ainda poucos dados analíticos específicos para Rubus ursinus, assume-se, por analogia com outras amoras negras silvestres, um perfil qualitativamente semelhante de compostos, com variações quantitativas influenciadas por fatores como o solo, o clima, o estádio de maturação e o método de extração. Os valores numéricos apresentados na tabela seguinte devem ser entendidos como intervalos aproximados derivados de estudos com folhas e frutos de Rubus spp., úteis apenas como ordem de grandeza. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Ellagitanninas totais em folhas secas de Rubus spp.</td><td>≈150–400 mg/100 g folhas secas</td></tr>
+        <tr><td>Fenólicos totais em folhas secas/extratos de folhas de Rubus spp.</td><td>≈360–600 mg/100 g folhas secas</td></tr>
+        <tr><td>Capacidade antioxidante de extratos de folha (ensaio DPPH/ABTS)</td><td>IC50 ≈20–80 µg/mL</td></tr>
+        <tr><td>Antocianinas totais nas bagas maduras (Rubus spp.)</td><td>≈100–300 mg/100 g peso fresco</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Formação de sebes defensivas e barreiras vivas com ramos espinhosos, úteis para delimitar áreas da horta, dissuadir passagem de pessoas e animais e criar micro-habitats abrigados. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a> <a href="#ref-D1">[D1]</a></li>
+        <li>Suporte importante para a fauna silvestre, fornecendo frutos para aves, pequenos mamíferos e insetos, e abrigo denso em silvados para nidificação e refúgio. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a> <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a></li>
+        <li>Uso em tinturaria natural, aproveitando o sumo das bagas para corantes roxo-violáceos em tecidos, papel artesanal e preparações alimentares caseiras. <a href="#ref-A1">[A1]</a> <a href="#ref-U3">[U3]</a></li>
+        <li>Aplicação em projetos de restauração ecológica e estabilização de taludes em regiões onde a espécie é nativa, graças ao sistema radicular denso e à capacidade de cobrir rapidamente o solo. <a href="#ref-A1">[A1]</a> <a href="#ref-S2">[S2]</a> <a href="#ref-P1">[P1]</a></li>
+        <li>Valor simbólico e cultural associado à colheita de amoras silvestres no final do verão, presente em narrativas, memórias rurais e práticas de educação ambiental centradas na flora nativa e nos frutos de sebes. <a href="#ref-A1">[A1]</a> <a href="#ref-A3">[A3]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 7,1 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em contexto de permacultura, a amora-da-Califórnia funciona sobretudo como planta frutífera silvestre, produtora de biomassa e cobertura viva do solo, ao mesmo tempo que oferece abrigo e alimento abundante à fauna. Os caules rasteiros e vigorosos permitem formar sebes vivas densas, proteger taludes e margens, e criar corredores ecológicos ricos em flores e frutos para polinizadores, aves e pequenos mamíferos. Em sistemas de horta-jardim pode ser usada em bordaduras, sebes e zonas de transição pouco frequentadas, desde que se preveja espaço e manutenção adequada.
+A forte rusticidade em climas temperados, a baixa necessidade de insumos após o estabelecimento e a multifuncionalidade (alimentar, medicinal, ecológica e estrutural) aumentam a sua pontuação global, mas o carácter espinhoso, a capacidade de formar silvados densos e alguma tendência invasora em certos contextos implicam planeamento cuidadoso e possíveis limitações em áreas pequenas ou muito usadas por crianças. Como planta nativa na região de origem, tem valor ecológico muito elevado; fora dessa área, é importante avaliar o risco de competição com flora local antes de a introduzir em grande escala.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação da amora-da-Califórnia resulta de valores elevados em uso alimentar (ALIM=2), pela produção de frutos comestíveis ricos em fibra e antioxidantes, e em uso medicinal (MED=2), com folhas e raízes tradicionalmente empregues como adstringentes em diarreias ligeiras e inflamações da boca e garganta. A estrutura perene rasteira mas vigorosa contribui moderadamente para o desenho do espaço (ESTR=1), sobretudo em sebes baixas, bordaduras densas e taludes. O contributo para solo e biomassa é significativo (SOLO=2), graças à capacidade de cobrir o solo, produzir grande quantidade de folhas e ramos e proteger encostas da erosão, enquanto o apoio à fauna e à ecologia (ECO=2) é muito marcado, fornecendo néctar, pólen, frutos e abrigo para inúmeras espécies.
+A rusticidade e baixa manutenção em climas temperados (RUST=2) e a multifuncionalidade combinada (MULT=2) – alimentar, medicinal, ecológica, estrutural e cultural – reforçam a pontuação positiva. As penalizações aplicadas concentram-se sobretudo no risco de espinhos e arranhões em zonas de passagem (PERIGO=-1), na tendência para formar silvados densos e invadir áreas vizinhas se não for gerida (INVAS=-1) e na competição moderada por luz e recursos em espaços pequenos ou com culturas sensíveis (COMP=-1). Não é atribuída penalização de toxicidade relevante nas formas tradicionais de uso (TOX=0). O valor final em escala 0–10 resulta da aplicação do algoritmo descrito em anexo (soma dos critérios positivos até 14 pontos, subtração de penalizações, com conversão por regra de três simples), situando a amora-da-Califórnia em cerca de 7,1/10 e indicando uma planta de elevada funcionalidade em permacultura, especialmente interessante em sebes comestíveis, bordaduras para fauna e sistemas de restauração ecológica.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-P3">[P3]</a> <a href="#ref-A1">[A1]</a> <a href="#ref-D1">[D1]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Washington Native Plant Society. Ficha &quot;Rubus ursinus&quot; na Native Plant Directory (descrição botânica, distribuição, etnobotânica e usos). Disponível em: <a href="https://www.wnps.org/native-plant-directory/236%3Arubus-ursinus" target="_blank" rel="noopener">https://www.wnps.org/native-plant-directory/236%3Arubus-ursinus</a></li>
+        <li id="ref-D2">[D2] Urban Garden Ecology (Portland State University). Perfil &quot;Rubus Ursinus – Trailing Blackberry&quot; com identificação, floração, habitat e notas ecológicas. Disponível em: <a href="https://gardenecology.pdx.edu/plants/rubus-ursinus-trailing-blackberry/index.html" target="_blank" rel="noopener">https://gardenecology.pdx.edu/plants/rubus-ursinus-trailing-blackberry/index.html</a></li>
+        <li id="ref-D3">[D3] Plants For A Future. Ficha &quot;Rubus ursinus – Pacific Dewberry, California blackberry&quot; com informações sobre comestibilidade, usos medicinais e cultivo. Disponível em: <a href="https://pfaf.org/User/Plant.aspx?LatinName=Rubus+ursinus" target="_blank" rel="noopener">https://pfaf.org/User/Plant.aspx?LatinName=Rubus+ursinus</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Urban Garden Ecology (Portland State University). Indicadores de época de floração e habitat para Rubus ursinus (abril–agosto na costa do Pacífico). Disponível em: <a href="https://gardenecology.pdx.edu/plants/rubus-ursinus-trailing-blackberry/index.html" target="_blank" rel="noopener">https://gardenecology.pdx.edu/plants/rubus-ursinus-trailing-blackberry/index.html</a></li>
+        <li id="ref-S2">[S2] Gorge Waterway Action Society. Ficha &quot;Trailing Blackberry (Rubus ursinus)&quot; com notas sobre crescimento rápido, habitats perturbados e funções ecológicas. Disponível em: <a href="https://www.gorge.ca/species-gallery/%28physocarpus-capitatus%29" target="_blank" rel="noopener">https://www.gorge.ca/species-gallery/%28physocarpus-capitatus%29</a></li>
+        <li id="ref-S3">[S3] Forterra. &quot;Forest Steward Field Guide&quot; com listagem de Rubus ursinus e informações gerais de fenologia e exigências ecológicas em projetos de restauração. Disponível em: <a href="https://forterra.org/wp-content/uploads/2023/01/Forest-Steward-Field-Guide-2023.pdf" target="_blank" rel="noopener">https://forterra.org/wp-content/uploads/2023/01/Forest-Steward-Field-Guide-2023.pdf</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] Revista Jardins. Artigo &quot;Plantas que combatem inflamações oculares&quot; com referência ao uso de folhas de silvas (Rubus fruticosus) em infusão para compressas oculares. Disponível em: <a href="https://revistajardins.pt/lifestyle/plantas-combatem-inflamacoes-oculares/" target="_blank" rel="noopener">https://revistajardins.pt/lifestyle/plantas-combatem-inflamacoes-oculares/</a></li>
+        <li id="ref-U2">[U2] Revista Jardins. Artigo &quot;Plantas que ajudam no regresso à escola&quot; referindo folhas de silva e framboeseiro para diarreias e gastrites em contexto tradicional. Disponível em: <a href="https://revistajardins.pt/plantas/herbaceas/plantas-que-ajudam-no-regresso-escola/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/herbaceas/plantas-que-ajudam-no-regresso-escola/</a></li>
+        <li id="ref-U3">[U3] LearningHerbs. &quot;Blackberry Uses and Plant Profile&quot; com descrição de usos tradicionais da raiz e folhas de amora (Rubus spp.) em diarreias, gastroenterites e afeções da boca e garganta. Disponível em: <a href="https://www.learningherbs.com/blog/blackberry-uses%E2%80%A8%E2%80%A8" target="_blank" rel="noopener">https://www.learningherbs.com/blog/blackberry-uses%E2%80%A8%E2%80%A8</a></li>
+        <li id="ref-U4">[U4] Sunny Savage. Artigo &quot;Wild Blackberry Leaf Tea&quot; explicando a preparação do chá de folhas de amora silvestre e mencionando o uso para diarreia. Disponível em: <a href="https://sunnysavage.com/wild-blackberry-leaf-tea/" target="_blank" rel="noopener">https://sunnysavage.com/wild-blackberry-leaf-tea/</a></li>
+        <li id="ref-U5">[U5] Blessed Maine Herbs. Página &quot;Blackberry&quot; descrevendo usos tradicionais de raiz, folhas e frutos de Rubus spp. na medicina popular europeia e norte-americana. Disponível em: <a href="https://blessedmaineherbs.com/pages/blackberry" target="_blank" rel="noopener">https://blessedmaineherbs.com/pages/blackberry</a></li>
+        <li id="ref-U6">[U6] EarthNotes. &quot;Blackberry – Herb Database + Images&quot; com receita detalhada de xarope de raiz de amora e discussão de usos tradicionais para doenças dos intestinos. Disponível em: <a href="https://earthnotes.tripod.com/blackberry_h.htm" target="_blank" rel="noopener">https://earthnotes.tripod.com/blackberry_h.htm</a></li>
+        <li id="ref-U8">[U8] Tua Saúde. Artigo &quot;Amora: 10 benefícios para a saúde e como consumir (com receitas)&quot; abordando propriedades gerais de amoras e efeitos de chás de folhas/raízes, incluindo precauções e contraindicações. Disponível em: <a href="https://www.tuasaude.com/amora/" target="_blank" rel="noopener">https://www.tuasaude.com/amora/</a></li>
+        <li id="ref-U9">[U9] PeaceHealth. Monografia &quot;Blackberry&quot; com recomendações de dose para chá de folha/raiz, indicações tradicionais e avisos de segurança (inclui referência à Commission E). Disponível em: <a href="https://www.peacehealth.org/medical-topics/id/hn-2045002" target="_blank" rel="noopener">https://www.peacehealth.org/medical-topics/id/hn-2045002</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] PeaceHealth. Monografia &quot;Blackberry&quot; com método de preparação de chá de folha e raiz (1,5 g de folhas ou raiz para 250 ml de água, até 3 chávenas/dia). Disponível em: <a href="https://www.peacehealth.org/medical-topics/id/hn-2045002" target="_blank" rel="noopener">https://www.peacehealth.org/medical-topics/id/hn-2045002</a></li>
+        <li id="ref-R2">[R2] Susan&#x27;s Sumptuous Suppers. Artigo &quot;Blackberry leaf tea&quot; descrevendo o uso do chá de folhas para diarreia, dores de garganta e feridas, com modo de preparação caseiro. Disponível em: <a href="https://susansumptuousuppers.wordpress.com/2016/02/29/blackberry-leaf-tea/" target="_blank" rel="noopener">https://susansumptuousuppers.wordpress.com/2016/02/29/blackberry-leaf-tea/</a></li>
+        <li id="ref-R3">[R3] Herbal Roots zine. Página &quot;Blackberry – Issue 52&quot; apresentando preparações com raiz de amora, incluindo decocções para diarreia e tónicos sanguíneos. Disponível em: <a href="https://herbalrootszine.com/product/blackberry-issue-52/" target="_blank" rel="noopener">https://herbalrootszine.com/product/blackberry-issue-52/</a></li>
+        <li id="ref-R4">[R4] EarthNotes. &quot;Blackberry – Herb Database + Images&quot; com receita detalhada de xarope de raiz de amora para doenças dos intestinos e instruções de preparação e doses. Disponível em: <a href="https://earthnotes.tripod.com/blackberry_h.htm" target="_blank" rel="noopener">https://earthnotes.tripod.com/blackberry_h.htm</a></li>
+        <li id="ref-R5">[R5] Sunny Savage. Artigo &quot;Wild Blackberry Leaf Tea&quot; com instruções para colher, secar e preparar chá de folhas de amora silvestre, usado ocasionalmente como remédio para diarreia. Disponível em: <a href="https://sunnysavage.com/wild-blackberry-leaf-tea/" target="_blank" rel="noopener">https://sunnysavage.com/wild-blackberry-leaf-tea/</a></li>
+        <li id="ref-R6">[R6] Revista Jardins. Artigo &quot;Plantas que ajudam no regresso à escola&quot; mencionando infusões de folhas de silva para diarreias e gastrites em crianças, em contexto de uso tradicional. Disponível em: <a href="https://revistajardins.pt/plantas/herbaceas/plantas-que-ajudam-no-regresso-escola/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/herbaceas/plantas-que-ajudam-no-regresso-escola/</a></li>
+        <li id="ref-R7">[R7] Revista Jardins. Artigo &quot;Plantas que combatem inflamações oculares&quot; com referência ao uso de infusões de folhas de silvas (Rubus fruticosus) em compressas oculares. Disponível em: <a href="https://revistajardins.pt/lifestyle/plantas-combatem-inflamacoes-oculares/" target="_blank" rel="noopener">https://revistajardins.pt/lifestyle/plantas-combatem-inflamacoes-oculares/</a></li>
+        <li id="ref-R8">[R8] Etsy / Mucaj Herbs. Ficha de produto &quot;BLACKBERRY LEAVES – (RUBI FRUCTICOSI FOLIUM)&quot; com instruções para preparar chá de folhas de amora-preta (1–2 colheres de chá em água quente, 5–10 minutos de infusão). Disponível em: <a href="https://mucaj-herbs.com/products/blackberry-leaves-rubi-fructicosi-folium/" target="_blank" rel="noopener">https://mucaj-herbs.com/products/blackberry-leaves-rubi-fructicosi-folium/</a></li>
+        <li id="ref-R9">[R9] Etsy. Anúncios para folhas de amora-preta secas (Rubus fruticosus) com indicações gerais de uso em chá de ervas, incluindo quantidades aproximadas por chávena. Exemplo: <a href="https://www.etsy.com/pt/listing/1723822046/folhas-de-amora-preta-secas-220-gramas" target="_blank" rel="noopener">https://www.etsy.com/pt/listing/1723822046/folhas-de-amora-preta-secas-220-gramas</a></li>
+        <li id="ref-R10">[R10] Diversos ervanários e blogs de fitoterapia que combinam folhas de amora-preta com outras plantas digestivas e mel em infusões e tónicos caseiros; exemplo de referência comercial: lista de plantas medicinais (silvas, Rubus fruticosus) em Chás do Mundo. Disponível em: <a href="https://chasdomundo.pt/pt/content/lista-de-plantas-medicinais-a-a-z" target="_blank" rel="noopener">https://chasdomundo.pt/pt/content/lista-de-plantas-medicinais-a-a-z</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] Kostic DA et al. &quot;The genus Rubus L.: An insight into phytochemicals and pharmacological studies of leaves from the most promising species&quot; – revisão sobre a composição e atividades farmacológicas das folhas de várias espécies de Rubus. Disponível em: <a href="https://www.researchgate.net/publication/381588716_The_genus_Rubus_L_An_insight_into_phytochemicals_and_pharmacological_studies_of_leaves_from_the_most_promising_species" target="_blank" rel="noopener">https://www.researchgate.net/publication/381588716_The_genus_Rubus_L_An_insight_into_phytochemicals_and_pharmacological_studies_of_leaves_from_the_most_promising_species</a></li>
+        <li id="ref-M2">[M2] Verma R et al. &quot;Rubus fruticosus (blackberry) use as an herbal medicine&quot; – revisão em acesso aberto sobre usos medicinais de amoras, incluindo folhas e raízes como adstringentes. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4127818/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC4127818/</a></li>
+        <li id="ref-M3">[M3] PeaceHealth. Monografia &quot;Blackberry&quot; com síntese de indicações tradicionais, doses e segurança para chás de folha e raiz de Rubus fruticosus. Disponível em: <a href="https://www.peacehealth.org/medical-topics/id/hn-2045002" target="_blank" rel="noopener">https://www.peacehealth.org/medical-topics/id/hn-2045002</a></li>
+        <li id="ref-M4">[M4] Tua Saúde. Artigo &quot;Amora: 10 benefícios para a saúde e como consumir (com receitas)&quot; abordando composição nutricional das amoras e potenciais benefícios cardiovasculares e metabólicos. Disponível em: <a href="https://www.tuasaude.com/amora/" target="_blank" rel="noopener">https://www.tuasaude.com/amora/</a></li>
+        <li id="ref-M5">[M5] Raya-Morquecho EM et al. &quot;Ellagitannins and Their Derivatives: A Review on the Metabolization, Absorption, and Some Benefits Related to Intestinal Health&quot; – revisão sobre ellagitanninas em frutos e folhas ricos em taninos, incluindo Rubus spp. Disponível em: <a href="https://www.mdpi.com/2036-7481/16/6/113" target="_blank" rel="noopener">https://www.mdpi.com/2036-7481/16/6/113</a></li>
+        <li id="ref-M6">[M6] Continente. Artigo &quot;Amora: conheça os benefícios desta fruta&quot; com resumo nutricional e sugestões de consumo de amoras enquanto fruto rico em fibra e antioxidantes. Disponível em: <a href="https://feed.continente.pt/alimentacao/amora" target="_blank" rel="noopener">https://feed.continente.pt/alimentacao/amora</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Kostic DA et al. &quot;The genus Rubus L.: An insight into phytochemicals and pharmacological studies of leaves from the most promising species&quot; – descrição detalhada de compostos fenólicos e atividades farmacológicas em folhas de Rubus spp. Disponível em: <a href="https://www.researchgate.net/publication/381588716_The_genus_Rubus_L_An_insight_into_phytochemicals_and_pharmacological_studies_of_leaves_from_the_most_promising_species" target="_blank" rel="noopener">https://www.researchgate.net/publication/381588716_The_genus_Rubus_L_An_insight_into_phytochemicals_and_pharmacological_studies_of_leaves_from_the_most_promising_species</a></li>
+        <li id="ref-F2">[F2] Raya-Morquecho EM et al. &quot;Ellagitannins and Their Derivatives: A Review on the Metabolization, Absorption, and Some Benefits Related to Intestinal Health&quot; – revisão sobre ellagitanninas e seus efeitos, incluindo fontes como frutos e folhas de Rubus. Disponível em: <a href="https://www.mdpi.com/2036-7481/16/6/113" target="_blank" rel="noopener">https://www.mdpi.com/2036-7481/16/6/113</a></li>
+        <li id="ref-F3">[F3] Kowalska-Cydzik M et al. &quot;Determination of the Polyphenol Composition of Raspberry Leaf Using LC-MS/MS&quot; – estudo analítico que quantifica polifenóis e ellagitanninas em chá de folha de framboeseiro, usado como referência para folhas de Rubus. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11858761/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC11858761/</a></li>
+        <li id="ref-F4">[F4] Verma R et al. &quot;Rubus fruticosus (blackberry) use as an herbal medicine&quot; – inclui dados sobre compostos fenólicos e relação com atividades farmacológicas em folhas e frutos de amora-preta. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4127818/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC4127818/</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Gorge Waterway Action Society. Ficha &quot;Trailing Blackberry (Rubus ursinus)&quot; destacando funções ecológicas (alimento para aves e mamíferos, abrigo e estabilização de solo). Disponível em: <a href="https://www.gorge.ca/species-gallery/%28physocarpus-capitatus%29" target="_blank" rel="noopener">https://www.gorge.ca/species-gallery/%28physocarpus-capitatus%29</a></li>
+        <li id="ref-A2">[A2] Urban Garden Ecology (Portland State University). Perfil &quot;Rubus Ursinus – Trailing Blackberry&quot; com notas sobre habitat, flores, frutos e importância para polinizadores. Disponível em: <a href="https://gardenecology.pdx.edu/plants/rubus-ursinus-trailing-blackberry/index.html" target="_blank" rel="noopener">https://gardenecology.pdx.edu/plants/rubus-ursinus-trailing-blackberry/index.html</a></li>
+        <li id="ref-A3">[A3] University of Washington Botanic Gardens. Artigo &quot;Rubus berries and brambles found throughout the Arboretum&quot; que descreve diferentes Rubus, incluindo R. ursinus, com notas sobre ecologia e usos em jardins. Disponível em: <a href="https://botanicgardens.uw.edu/about/blog/2019/07/23/rubus-berries-and-brambles-found-throughout-the-arboretum/" target="_blank" rel="noopener">https://botanicgardens.uw.edu/about/blog/2019/07/23/rubus-berries-and-brambles-found-throughout-the-arboretum/</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] Urban Garden Ecology (Portland State University). Perfil &quot;Rubus Ursinus – Trailing Blackberry&quot; com informação prática sobre atratividade para polinizadores, aves e funções em jardins urbanos. Disponível em: <a href="https://gardenecology.pdx.edu/plants/rubus-ursinus-trailing-blackberry/index.html" target="_blank" rel="noopener">https://gardenecology.pdx.edu/plants/rubus-ursinus-trailing-blackberry/index.html</a></li>
+        <li id="ref-P2">[P2] Gorge Waterway Action Society. Ficha &quot;Trailing Blackberry (Rubus ursinus)&quot; destacando o papel da espécie como alimento e abrigo para fauna, bem como estabilização de solos. Disponível em: <a href="https://www.gorge.ca/species-gallery/%28physocarpus-capitatus%29" target="_blank" rel="noopener">https://www.gorge.ca/species-gallery/%28physocarpus-capitatus%29</a></li>
+        <li id="ref-P3">[P3] Washington Native Plant Society. Ficha &quot;Rubus ursinus&quot; na Native Plant Directory com indicação de usos em restauração ecológica e paisagismo com flora nativa. Disponível em: <a href="https://www.wnps.org/native-plant-directory/236%3Arubus-ursinus" target="_blank" rel="noopener">https://www.wnps.org/native-plant-directory/236%3Arubus-ursinus</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

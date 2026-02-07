@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html" class="ativa">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+  <a class="next" href="oliveira.html">Oliveira</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Morugem (<em>Stellaria media (L.) Vill.</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Caryophyllaceae</span>
+  <span>Parte usada: partes aéreas jovens</span>
+  <span>Tipo: erva anual espontânea comestível</span>
+  <span>Produção: <strong>espontânea em hortas, canteiros húmidos</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> nativa da Europa e Ásia, hoje comum em Portugal</div>
+  <div><strong>Uso principal</strong> emoliente, depurativa suave, apoio digestivo, cutâneo e geral</div>
+  <div><strong>Perfil medicinal</strong> emoliente, anti-inflamatória suave, adjuvante digestiva, metabólica e dermatológica</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Morugem (Stellaria media (L.) Vill.)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>A morugem (Stellaria media), também conhecida como morugem-branca, erva-dos-passarinhos, erva-estrela ou erva-canária, é uma pequena planta herbácea anual, rasteira, de caule fino e quebradiço, com folhas opostas, ovadas, e minúsculas flores brancas em forma de estrela.</p>
+      <p>É uma das ervas espontâneas comestíveis mais comuns em hortas e jardins de clima temperado, formando tapetes densos em solos húmidos e férteis durante o outono, inverno e primavera. Em inglês é conhecida como “common chickweed” ou simplesmente “chickweed”.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, a morugem é típica de climas frescos e húmidos, aparecendo com maior abundância do outono à primavera, sobretudo em solos trabalhados e ricos em matéria orgânica.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Em Portugal continental surge sobretudo do outono ao fim da primavera, com picos de abundância entre novembro e abril em hortas e talhões irrigados.</li>
+        <li>Prefere solos húmidos, frescos e férteis, ricos em azoto, surgindo frequentemente como “erva espontânea” em canteiros de hortícolas.</li>
+        <li>Para uso alimentar e medicinal colhem‑se de preferência rebentos jovens e tenros, antes de a planta ficar fibrosa ou de produzir muita semente.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Infusão interna de morugem (planta seca ou fresca) usada em estudos pré-clínicos como coadjuvante em distúrbios metabólicos (dislipidemia, excesso de peso, alterações de glicemia), geralmente em doses equivalentes a 2–4 g de droga seca por chávena, até 2–3 vezes ao dia, durante períodos limitados, sempre como complemento e não substituto da terapêutica médica [M2][U1]. <a href="#ref-M1">[M1]</a> <a href="#ref-U1">[U1]</a></li>
+        <li>Extratos hidroalcoólicos e metanólicos de Stellaria media foram estudados em modelo animal com efeitos anti-inflamatórios e analgésicos, sugerindo interesse em situações de dor e inflamação ligeira, ainda sem padronização de doses para uso humano [M1][M3]. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a></li>
+        <li>Extratos de morugem demonstraram atividade antioxidante relevante in vitro e inibição de enzimas associadas ao stress oxidativo, o que pode ajudar a explicar usos tradicionais em inflamações cutâneas e articulares, embora os dados clínicos em humanos ainda sejam limitados [F1][M1][M4]. <a href="#ref-F1">[F1]</a> <a href="#ref-M1">[M1]</a> <a href="#ref-M4">[M4]</a></li>
+        <li>Preparados tópicos à base de extratos de Stellaria media (pomadas, cremes, unguentos) têm sido explorados em estudos experimentais para apoio a dermatites, prurito e pequenas lesões, integrando a planta em formulações multi‑planta, com evidências sobretudo pré‑clínicas e observacionais [M1][M4]. <a href="#ref-M1">[M1]</a> <a href="#ref-M4">[M4]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Infusão simples de morugem (1–2 colheres de chá de planta seca ou um pequeno punhado de planta fresca por chávena de água quente), bebida 2–3 vezes ao dia, tradicionalmente usada como tónico depurativo suave, apoio digestivo e complemento em dietas de controlo de peso [U2][U3][U4]. <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-U4">[U4]</a></li>
+        <li>Cataplasmas de morugem fresca amassada ou ligeiramente escaldada, aplicados externamente sobre peles irritadas, pequenas feridas superficiais, eczemas e picadas de insetos, renovados várias vezes ao dia conforme a necessidade [U2][U5]. <a href="#ref-U2">[U2]</a> <a href="#ref-U5">[U5]</a></li>
+        <li>Banhos de assento ou banhos parciais preparados com infusão concentrada de morugem (cerca de 30–50 g de planta seca por litro de água), utilizados na medicina popular para desconfortos cutâneos, hemorróidas ligeiras e irritações da pele [U2][U5]. <a href="#ref-U2">[U2]</a> <a href="#ref-U5">[U5]</a></li>
+        <li>Consumo alimentar em saladas, sopas, omeletes, pestos ou como verdura ligeiramente salteada, aproveitando o sabor suave e o teor de vitaminas e minerais, sempre colhendo plantas de locais limpos e não contaminados [U2][U3][A1]. <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-A1">[A1]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>A morugem é geralmente considerada uma planta de baixa toxicidade quando usada em quantidades moderadas, seja na alimentação (como verdura fresca) seja em infusões leves. No entanto, contém saponinas e outros constituintes que, em doses elevadas ou uso prolongado, podem causar desconforto gastrointestinal (náuseas, diarreia) em pessoas sensíveis [SG1][SG2]. <a href="#ref-SG1">[SG1]</a> <a href="#ref-SG2">[SG2]</a></p>
+      <p>Tal como outras plantas da família Caryophyllaceae, existe possibilidade de reações alérgicas cutâneas ou de contacto em indivíduos sensíveis. Pessoas com alergia conhecida a cravos ou outras Caryophyllaceae devem testar previamente uma pequena quantidade tópica e suspender o uso em caso de irritação, prurido ou erupção [SG1][SG3]. <a href="#ref-SG1">[SG1]</a> <a href="#ref-SG3">[SG3]</a></p>
+      <p>Devido ao potencial efeito diurético suave e a algum uso tradicional em distúrbios metabólicos, recomenda‑se cautela em pessoas a tomar medicamentos diuréticos, anti‑hipertensores, hipoglicemiantes ou anticoagulantes, pela possibilidade teórica de interações. Grávidas, lactantes, crianças pequenas, idosos fragilizados e pessoas com doença crónica devem usar apenas sob orientação de profissional de saúde [SG1][SG2][SG4]. <a href="#ref-SG1">[SG1]</a> <a href="#ref-SG2">[SG2]</a> <a href="#ref-SG4">[SG4]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        Em fitoterapia caseira, a morugem é usada sobretudo em infusões internas suaves, cataplasmas frescos, banhos de assento e preparados tópicos (óleos macerados, pomadas e bálsamos) para apoio a problemas de pele, desconfortos digestivos ligeiros e processos depurativos moderados. As receitas abaixo exemplificam preparações usuais com quantidades e modos de uso típicos, retiradas de fontes tradicionais e contemporâneas. Devem ser adaptadas ao contexto individual e usadas com prudência, respeitando limites de dose e duração de uso.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="morugem_receitas.html">Infusão depurativa de morugem:</a> chá interno suave preparado com morugem seca ou fresca, usado em programas curtos de apoio depurativo e urinário. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="morugem_receitas.html">Chá digestivo de morugem:</a> infusão leve tomada após as refeições principais, para aliviar desconforto digestivo ligeiro e favorecer o trânsito. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="morugem_receitas.html">Banho de assento com morugem:</a> utilização de infusão concentrada em bacia ou banheira pequena para aliviar desconfortos cutâneos e irritações locais. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="morugem_receitas.html">Cataplasma fresco de morugem:</a> aplicação externa de planta amassada ou ligeiramente escaldada sobre zonas de pele irritada ou pruriginosa. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="morugem_receitas.html">Óleo macerado de morugem:</a> óleo vegetal onde a morugem é macerada lentamente, usado em pequenas aplicações sobre pele sensível ou seca. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="morugem_receitas.html">Pomada de morugem para pele:</a> preparado semissólido à base de óleo ou gordura com extrato de morugem, aplicado em camadas finas em áreas secas. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="morugem_receitas.html">Infusão nutritiva longa de morugem:</a> bebida rica em princípios ativos obtida por tempos de infusão prolongados, utilizada como complemento em regimes específicos. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="morugem_receitas.html">Tintura de morugem:</a> extrato hidroalcoólico concentrado da planta, administrado em gotas diluídas em água sob orientação profissional adequada. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="morugem_receitas.html">Tónico digestivo com morugem:</a> mistura de morugem com outras ervas carminativas em infusão, tomada antes das refeições mais pesadas. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="morugem_receitas.html">Salada terapêutica de morugem:</a> uso de folhas jovens cruas ou levemente escaldadas em saladas, sempre colhidas em locais limpos e não poluídos. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>A morugem é tradicionalmente valorizada como planta emoliente, refrescante e suavemente depurativa, com afinidade particular pela pele, sistema digestivo e vias urinárias. O uso popular destaca‑a em inflamações cutâneas com prurido, pequenas feridas, irritações digestivas ligeiras e estados de “excesso de calor” no organismo, muitas vezes em combinação com outras plantas depurativas. <a href="#ref-M1">[M1]</a> <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a></p>
+      <p>Revisões fitoquímicas e farmacológicas sobre Stellaria media apontam para a presença de flavonoides (incluindo glicósidos de apigenina), saponinas, mucilagens e outros compostos fenólicos, associados a atividades antioxidante, anti-inflamatória, analgésica e potencialmente hipolipemiante e hipoglicemiante em modelos animais. Embora as evidências em humanos ainda sejam limitadas, estes dados ajudam a justificar parte do uso tradicional da morugem como coadjuvante em distúrbios metabólicos e inflamatórios ligeiros. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Apoio a problemas de pele com prurido, inflamação ligeira, eczema, dermatites e pequenas feridas superficiais, em cataplasmas frescos, banhos locais ou pomadas à base de morugem, geralmente em combinação com outras plantas emolientes [M1][M4]. <a href="#ref-M1">[M1]</a> <a href="#ref-M4">[M4]</a></li>
+        <li>Uso interno moderado em infusões como coadjuvante em processos depurativos, distúrbios digestivos leves (azia, gastrite ligeira, sensação de calor ou irritação) e apoio ao trânsito intestinal, sempre integrado numa abordagem dietética adequada [M1][U2]. <a href="#ref-M1">[M1]</a> <a href="#ref-U2">[U2]</a></li>
+        <li>Potencial efeito adjuvante em estratégias de controlo de peso e melhoria de perfis lipídicos, com estudos em animais a apontar para atividade anti-obesidade e ação sobre o metabolismo lipídico, ainda sem dados robustos em humanos [M2]. <a href="#ref-M2">[M2]</a></li>
+        <li>Estudos experimentais sugerem atividade antioxidante e anti-inflamatória relevante dos extratos de morugem, incluindo redução de espécies reativas de oxigénio em modelos celulares e inibição de enzimas associadas ao stress oxidativo [F1][M1][M4]. <a href="#ref-F1">[F1]</a> <a href="#ref-M1">[M1]</a> <a href="#ref-M4">[M4]</a></li>
+        <li>Alguns trabalhos pré-clínicos indicam efeitos sobre parâmetros glicémicos e possíveis benefícios em contextos de síndrome metabólica, requerendo, porém, investigação clínica adequada antes de extrapolar para recomendações generalizadas [M2][M3]. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>Estudos fitoquímicos sobre Stellaria media descrevem um conjunto de constituintes em que se destacam flavonoides (com predomínio de glicósidos de apigenina), saponinas triterpénicas, mucilagens, compostos fenólicos diversos e minerais. Extratos aquosos e etanólicos da parte aérea da planta têm sido avaliados em ensaios in vitro e in vivo, com enfoque na atividade antioxidante, anti-inflamatória, anti-obesidade e em modelos de distúrbios metabólicos. <a href="#ref-M1">[M1]</a> <a href="#ref-M4">[M4]</a></p>
+      <p>Em particular, trabalhos com extratos aquosos e etanólicos de morugem mostraram teores de flavonoides totais em faixas da ordem de dezenas de mg por grama de extrato seco, bem como forte inibição de xantina oxidase e redução de espécies reativas de oxigénio em culturas de fibroblastos e queratinócitos, o que sustenta a utilização tradicional em inflamações cutâneas e stress oxidativo [F1][M1][M4]. <a href="#ref-F1">[F1]</a> <a href="#ref-M1">[M1]</a> <a href="#ref-M4">[M4]</a></p>
+      <p>Revisões recentes compilam também dados sobre atividades anti-obesidade, hipolipemiantes e antivirais (incluindo ação contra o vírus da hepatite B em modelos celulares), reforçando o interesse farmacêutico da planta, mas sublinhando a necessidade de estudos clínicos que definam com maior precisão doses eficazes e perfis de segurança em humanos [M1][M2][M3]. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Flavonoides totais em extratos aquosos de parte aérea (glicósidos de apigenina predominantes)</td><td>≈25,6 mg/g extrato seco</td></tr>
+        <tr><td>Flavonoides totais em extratos etanólicos de parte aérea</td><td>≈63,9 mg/g extrato seco</td></tr>
+        <tr><td>Atividade antioxidante em ensaios de eliminação de espécies reativas de oxigénio (SC50 para H2O2, NO, ONOO−)</td><td>SC50 ≈132,8; 16,5; 11,9 µg/mL</td></tr>
+        <tr><td>Inibição de xantina oxidase por extratos de morugem</td><td>SC50 ≈62,8 µg/mL</td></tr>
+        <tr><td>Atividade anti-obesidade e hipolipemiante em modelos animais</td><td>≈50–400 mg/kg</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Planta comestível espontânea (PANC), usada em saladas cruas, sopas, recheios, pestos e outras preparações culinárias, aproveitando o sabor suave e a textura tenra das folhas e rebentos jovens [A1][A2]. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Indicadora de solos férteis, húmidos e ricos em azoto, podendo ajudar o hortelão a perceber o estado de humidade e fertilidade das parcelas onde surge em abundância [A1][A3].</li>
+        <li>Utilizada tradicionalmente como alimento para aves (daí o nome inglês “chickweed” e o popular em português “erva-dos-passarinhos”), bem como para pequenos animais de criação em pequena escala [A1][A2].</li>
+        <li>Boa produtora de biomassa verde tenra para incorporar em pilhas de compostagem, contribuindo para matéria orgânica fresca e para uma cobertura viva temporária do solo em épocas húmidas [A3].</li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 6,4 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em permacultura, a morugem destaca-se como verdura espontânea muito nutritiva, cobertura viva de solo e fonte rápida de biomassa tenra. Forma tapetes densos que protegem o solo da erosão, mantêm alguma humidade e fornecem matéria verde para compostagem, ao mesmo tempo que oferece alimento para pessoas, aves e outros pequenos animais.
+A combinação de usos alimentares, medicinais suaves e valor ecológico faz desta planta um recurso interessante em zonas de horta e pomares, sobretudo em sistemas onde se aceita uma certa espontaneidade e se faz colheita seletiva em vez de capina total. No entanto, precisa de algum controlo em canteiros muito intensivos, para não competir em excesso com culturas jovens, o que justifica uma funcionalidade elevada mas não máxima em permacultura.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        Em sistemas de permacultura, a morugem combina funções alimentares e medicinais com um papel interessante como cobertura viva de solo e fonte rápida de biomassa tenra. É uma verdura espontânea com boa palatabilidade (ALIM=2), rica em nutrientes e tradicionalmente usada como planta medicinal multifuncional (MED=2), embora sobretudo em preparações suaves. A sua natureza rasteira e efémera não lhe confere grande estrutura vertical (ESTR=0), mas a capacidade de formar tapetes densos contribui para proteção do solo e para produção de biomassa verde de ciclo curto (SOLO=2). As flores pequenas e abundantes e a produção de semente atraem insetos e aves granívoras, acrescentando valor ecológico (ECO=2). A rusticidade elevada em solos frescos perturbados e a facilidade de regeneração espontânea em hortas e pomares conferem‑lhe boa pontuação em rusticidade (RUST=2). No conjunto, a combinação de usos alimentares, medicinais, ecológicos e culturais (MULT=2) torna a morugem uma espécie com várias funções úteis quando bem manejada.
+As penalizações incidem sobretudo no potencial de comportamento infestante em canteiros muito revolvidos ou adubados (INVAS=-1) e na competição moderada por luz, água e nutrientes com culturas hortícolas jovens quando se deixa alastrar em excesso (COMP=-1). Embora geralmente considerada segura, a presença de saponinas e a escassez de estudos clínicos detalhados justificam uma pequena penalização de toxicidade teórica (TOX=-1), sobretudo para usos concentrados ou prolongados. Não apresenta perigos físicos relevantes (PERIGO=0). A pontuação bruta resulta assim da soma dos critérios positivos (ALIM+MED+ESTR+SOLO+ECO+RUST+MULT=12) e da subtração das penalizações (TOX+PERIGO+INVAS+COMP=-3), obtendo‑se 9 pontos numa escala teórica de -8 a 14. Aplicando a regra de três simples que equipara 14 pontos positivos a 10/10, a morugem situa‑se em cerca de 6,4/10 de funcionalidade em permacultura, refletindo uma planta muito útil como verdura espontânea, medicinal suave e cobertura viva de solo, mas que exige algum controlo de densidade e localização para não competir em excesso com culturas mais sensíveis.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Wikipedia (PT). &quot;Stellaria media&quot; – Morugem, ou erva-dos-passarinhos. Artigo enciclopédico com descrição botânica, distribuição e usos gerais. Disponível em: <a href="https://pt.wikipedia.org/wiki/Stellaria_media" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Stellaria_media</a></li>
+        <li id="ref-D2">[D2] Elementais. &quot;Morugem (Planta)&quot;. Ficha comercial e descritiva de Stellaria media com constituintes, histórico de uso e propriedades tradicionais. Disponível em: <a href="https://elementais.pt/produto/morugem-planta/" target="_blank" rel="noopener">https://elementais.pt/produto/morugem-planta/</a></li>
+        <li id="ref-D3">[D3] Flor de Giesta. &quot;Notas do Herbalista 48: Morugem&quot;. Texto em português com descrição morfológica, usos tradicionais e notas de colheita em Portugal. Disponível em: <a href="https://flordegiesta.com/2018/09/08/notas-do-herbalista-48-morugem/" target="_blank" rel="noopener">https://flordegiesta.com/2018/09/08/notas-do-herbalista-48-morugem/</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Flor de Giesta. &quot;Notas do Herbalista 48: Morugem&quot;. Discussão sobre habitats, época de aparecimento e observações de campo em Portugal. Disponível em: <a href="https://flordegiesta.com/2018/09/08/notas-do-herbalista-48-morugem/" target="_blank" rel="noopener">https://flordegiesta.com/2018/09/08/notas-do-herbalista-48-morugem/</a></li>
+        <li id="ref-S2">[S2] Herbal Reality. &quot;Medicinal plants to forage in May – Chickweed (Stellaria media)&quot;. Nota sobre presença quase todo o ano em solos cultivados e sabor em saladas. Disponível em: <a href="https://www.herbalreality.com/herbalism/home-herbalism/foraging/medicinal-plants-to-forage-in-may/" target="_blank" rel="noopener">https://www.herbalreality.com/herbalism/home-herbalism/foraging/medicinal-plants-to-forage-in-may/</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] Oladeji OS, Oyebamiji AK. &quot;Stellaria media (L.) Vill. – A plant with immense therapeutic potentials: phytochemistry and pharmacology&quot;. Revisão em Heliyon sobre usos terapêuticos, mecanismos e segurança pré-clínica. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7284062/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC7284062/</a></li>
+        <li id="ref-U2">[U2] Medicina Natural. &quot;Morugem (Stellaria media): saiba para que serve a erva&quot;. Artigo em português sobre usos tradicionais, formas de preparação e indicações populares. Disponível em: <a href="https://www.medicinanatural.com.br/morugem-stellaria-media/" target="_blank" rel="noopener">https://www.medicinanatural.com.br/morugem-stellaria-media/</a></li>
+        <li id="ref-U3">[U3] Elementais. &quot;Morugem (Planta)&quot;. Ficha de planta medicinal com indicação de usos digestivos, depurativos, respiratórios e dermatológicos e forma de consumo. Disponível em: <a href="https://elementais.pt/produto/morugem-planta/" target="_blank" rel="noopener">https://elementais.pt/produto/morugem-planta/</a></li>
+        <li id="ref-U4">[U4] Pharmácia das Ervas. &quot;Morugem – Stellaria media&quot;. Texto de fitoterapia popular sobre chá, cataplasmas e aplicações externas de morugem. Disponível em: <a href="https://www.pharmaciadaservas.pt/2022/03/03/morugem-stelaria-media/" target="_blank" rel="noopener">https://www.pharmaciadaservas.pt/2022/03/03/morugem-stelaria-media/</a></li>
+        <li id="ref-U5">[U5] A Senhora do Monte. &quot;Morugem – Sabiam que esta erva é comestível e medicinal?&quot;. Artigo com foco em usos culinários e medicinais, incluindo chá, banhos de assento e cataplasmas. Disponível em: <a href="https://asenhoradomonte.com/2021/10/09/beneficios-da-morugem/" target="_blank" rel="noopener">https://asenhoradomonte.com/2021/10/09/beneficios-da-morugem/</a></li>
+        <li id="ref-SG1">[SG1] Herbal Reality. &quot;Chickweed (Stellaria media): Benefits, Uses, Safety&quot;. Monografia moderna com secção detalhada sobre segurança, precauções e grupos de risco. Disponível em: <a href="https://www.herbalreality.com/herb/chickweed/" target="_blank" rel="noopener">https://www.herbalreality.com/herb/chickweed/</a></li>
+        <li id="ref-SG2">[SG2] Oladeji OS, Oyebamiji AK. Revisão em Heliyon com dados toxicológicos e de segurança pré-clínica de Stellaria media em modelos animais. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7284062/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC7284062/</a></li>
+        <li id="ref-SG3">[SG3] Ask-Ayurveda. &quot;Stellaria media (Chickweed) in Ayurveda&quot;. Secção sobre segurança, contraindicações e possíveis efeitos adversos em uso prolongado. Disponível em: <a href="https://ask-ayurveda.com/wiki/article/5915-stellaria-media--chickweed" target="_blank" rel="noopener">https://ask-ayurveda.com/wiki/article/5915-stellaria-media--chickweed</a></li>
+        <li id="ref-SG4">[SG4] DrOracle. &quot;What are the potential side effects of using Stellaria media&quot;. Síntese de evidência disponível sobre segurança e limitações de dados clínicos. Disponível em: <a href="https://www.droracle.ai/articles/239745/what-are-the-potential-side-effects-of-using-stellaria" target="_blank" rel="noopener">https://www.droracle.ai/articles/239745/what-are-the-potential-side-effects-of-using-stellaria</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Espaço S / Antiga Ervanária. &quot;Morugem (chá) | AAT | 50 g&quot;. Posologia detalhada de infusão interna de morugem (4 colheres de sopa por litro, 3–4 chávenas/dia). Disponível em: <a href="https://lojaespacos.com/loja/chas-e-alimentacao/chas/morugem-cha-aat-50g/" target="_blank" rel="noopener">https://lojaespacos.com/loja/chas-e-alimentacao/chas/morugem-cha-aat-50g/</a></li>
+        <li id="ref-R2">[R2] Medicina Natural. &quot;Morugem (Stellaria media): saiba para que serve a erva&quot;. Recomendações de chá de morugem para apoio digestivo e depurativo, com indicação de proporções usuais. Disponível em: <a href="https://www.medicinanatural.com.br/morugem-stellaria-media/" target="_blank" rel="noopener">https://www.medicinanatural.com.br/morugem-stellaria-media/</a></li>
+        <li id="ref-R3">[R3] A Senhora do Monte. &quot;Benefícios da morugem&quot;. Sugestões de chá concentrado e banhos de assento com morugem para problemas de pele e mucosas. Disponível em: <a href="https://asenhoradomonte.com/2021/10/09/beneficios-da-morugem/" target="_blank" rel="noopener">https://asenhoradomonte.com/2021/10/09/beneficios-da-morugem/</a></li>
+        <li id="ref-R4">[R4] Flor de Giesta. &quot;Notas do Herbalista 48: Morugem&quot;. Descrição de cataplasmas caseiros com morugem fresca para irritações cutâneas. Disponível em: <a href="https://flordegiesta.com/2018/09/08/notas-do-herbalista-48-morugem/" target="_blank" rel="noopener">https://flordegiesta.com/2018/09/08/notas-do-herbalista-48-morugem/</a></li>
+        <li id="ref-R5">[R5] Homegrown Health. &quot;Simple chickweed salve recipe&quot;. Receita passo-a-passo de óleo macerado e pomada de morugem para pele seca e comichão. Disponível em: <a href="https://www.homegrownhealth.au/post/simplechickweedsalverecipe" target="_blank" rel="noopener">https://www.homegrownhealth.au/post/simplechickweedsalverecipe</a></li>
+        <li id="ref-R6">[R6] Grow Forage Cook Ferment. &quot;Chickweed salve&quot;. Receita de bálsamo de morugem para aplicação em pele irritada, com proporções de óleo, cera e erva. Disponível em: <a href="https://www.growforagecookferment.com/chickweed-salve/" target="_blank" rel="noopener">https://www.growforagecookferment.com/chickweed-salve/</a></li>
+        <li id="ref-R7">[R7] Herbal Reality. &quot;Eat your medicine: integrating herbs into nutritional therapy&quot; (secções com infusões nutritivas). Sugestões de infusões longas com chickweed como erva nutritiva em combinação com outras espécies. Disponível em: <a href="https://www.herbalreality.com/herbalism/health-and-lifestyle/digestion-and-nutrition/eat-your-medicine-integrating-herbs-into-nutritional-therapy/" target="_blank" rel="noopener">https://www.herbalreality.com/herbalism/health-and-lifestyle/digestion-and-nutrition/eat-your-medicine-integrating-herbs-into-nutritional-therapy/</a></li>
+        <li id="ref-R8">[R8] Practical Self Reliance. &quot;Chickweed tincture&quot;. Receita de tintura de chickweed com instruções sobre proporções de erva e álcool e tempo de maceração. Disponível em: <a href="https://practicalselfreliance.com/chickweed-tincture/" target="_blank" rel="noopener">https://practicalselfreliance.com/chickweed-tincture/</a></li>
+        <li id="ref-R9">[R9] Rebecca’s Herbs. &quot;Herb article: Chickweed&quot;. Sugestões de uso em fórmulas digestivas leves com outras ervas carminativas. Disponível em: <a href="https://www.rebeccasherbs.com/pages/herb-article-br-chickweed" target="_blank" rel="noopener">https://www.rebeccasherbs.com/pages/herb-article-br-chickweed</a></li>
+        <li id="ref-R10">[R10] PANC Mania (Facebook). &quot;Pesto de morugem&quot; e &quot;Ravioli de morugem&quot;. Receitas culinárias detalhadas com morugem fresca como verdura em pratos principais. Disponível em: <a href="https://www.facebook.com/pancmania/posts/2026597130922884/" target="_blank" rel="noopener">https://www.facebook.com/pancmania/posts/2026597130922884/</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] Oladeji OS, Oyebamiji AK. &quot;Stellaria media (L.) Vill. – A plant with immense therapeutic potentials: phytochemistry and pharmacology&quot;. Revisão científica sobre constituintes, atividades farmacológicas e potenciais aplicações terapêuticas. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7284062/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC7284062/</a></li>
+        <li id="ref-M2">[M2] Rani N, Vasudeva N, Sharma SK. &quot;Quality assessment and anti-obesity activity of Stellaria media (Linn.) Vill.&quot;. Estudo em modelo animal sobre efeitos anti-obesidade e impacto em parâmetros lipídicos. Disponível em: <a href="https://doi.org/10.1186/1472-6882-12-145" target="_blank" rel="noopener">https://doi.org/10.1186/1472-6882-12-145</a></li>
+        <li id="ref-M3">[M3] Ahmad W, Ahmad M, Khan R. &quot;Stellaria media attenuates the hyperglycemia and hyperlipidemia in alloxan-induced diabetic rat&quot;. Estudo pré-clínico sobre efeitos em glicemia e perfil lipídico. Disponível em: <a href="https://www.banglajol.info/index.php/BJP/article/view/39355" target="_blank" rel="noopener">https://www.banglajol.info/index.php/BJP/article/view/39355</a></li>
+        <li id="ref-M4">[M4] Miere (Groza) F et al. &quot;Characterization in terms of phytochemical content and medicinal potential of the Stellaria media plant extract&quot;. Artigo em Pharmacophore sobre composição e atividades antioxidante e biológica de extratos de morugem. Disponível em: <a href="https://pharmacophorejournal.com/storage/models/article/8r49DmBNUjCyk9DfKVh8a9PZL0V3cJwV9K0aA6SZqkqI9ZVtU4sR0RjK8YbC/characterization-in-terms-of-phytochemical-content-and-medicinal-potential-of-the-stellaria-media-pl.pdf" target="_blank" rel="noopener">https://pharmacophorejournal.com/storage/models/article/8r49DmBNUjCyk9DfKVh8a9PZL0V3cJwV9K0aA6SZqkqI9ZVtU4sR0RjK8YbC/characterization-in-terms-of-phytochemical-content-and-medicinal-potential-of-the-stellaria-media-pl.pdf</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Rogowska M et al. &quot;Chemical composition, antioxidative and enzyme inhibition activities of chickweed herb (Stellaria media L., Vill.) ethanolic and aqueous extracts&quot;. Estudo em Industrial Crops and Products com quantificação de flavonoides, SC50 para vários radicais e inibição de xantina oxidase. Disponível em: <a href="https://doi.org/10.1016/j.indcrop.2016.12.058" target="_blank" rel="noopener">https://doi.org/10.1016/j.indcrop.2016.12.058</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Eatweeds. &quot;Chickweed (Stellaria media)&quot;. Artigo sobre uso alimentar, histórico de consumo como verdura e valor cultural da espécie. Disponível em: <a href="https://www.eatweeds.co.uk/chickweed-stellaria-media" target="_blank" rel="noopener">https://www.eatweeds.co.uk/chickweed-stellaria-media</a></li>
+        <li id="ref-A2">[A2] Herbal Reality. &quot;Chickweed&quot;. Monografia com notas sobre valor nutritivo, uso culinário e lugar da planta em sistemas de forrageio. Disponível em: <a href="https://www.herbalreality.com/herb/chickweed/" target="_blank" rel="noopener">https://www.herbalreality.com/herb/chickweed/</a></li>
+        <li id="ref-A3">[A3] Confraria da Urtiga / Revista Jardins. Reportagem sobre forrageio e refeições com plantas espontâneas, mencionando morugem como componente de pratos e indicador de solos férteis. Disponível em: <a href="https://revistajardins.pt/lifestyle/jardins-e-viagens/confraria-da-urtiga/" target="_blank" rel="noopener">https://revistajardins.pt/lifestyle/jardins-e-viagens/confraria-da-urtiga/</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] Herbal Reality. &quot;Medicinal plants to forage in May – Chickweed (Stellaria media)&quot;. Destaque para abundância em terrenos cultivados, valor ecológico e papel em sistemas de forrageio sustentáveis. Disponível em: <a href="https://www.herbalreality.com/herbalism/home-herbalism/foraging/medicinal-plants-to-forage-in-may/" target="_blank" rel="noopener">https://www.herbalreality.com/herbalism/home-herbalism/foraging/medicinal-plants-to-forage-in-may/</a></li>
+        <li id="ref-P2">[P2] Eatweeds. &quot;Chickweed (Stellaria media)&quot;. Discussão sobre papel da morugem em ecossistemas agrícolas, importância para fauna e necessidade de manejo em hortas. Disponível em: <a href="https://www.eatweeds.co.uk/chickweed-stellaria-media" target="_blank" rel="noopener">https://www.eatweeds.co.uk/chickweed-stellaria-media</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

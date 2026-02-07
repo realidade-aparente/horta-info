@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html" class="ativa">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+  <a class="next" href="amor-de-hortelao.html">Amor-de-hortelão</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Alfazema / Lavanda (<em>Lavandula stoechas L. (rosmaninho); Lavandula angustifolia Mill. (alfazema-inglesa); Lavandula latifolia Medik. (alfazema-de-folha-larga)</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Lamiaceae</span>
+  <span>Parte usada: sumidades floridas frescas e secas</span>
+  <span>Tipo: subarbusto aromático perene medicinal</span>
+  <span>Produção: <strong>cultivada em canteiros, bordaduras aromáticas</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> região mediterrânica e sudoeste europeu, hoje muito comum em Portugal continental</div>
+  <div><strong>Uso principal</strong> calmante, ansiolítica suave, apoio ao sono, digestão, relaxamento muscular e emocional</div>
+  <div><strong>Perfil medicinal</strong> ansiolítica, sedativa, digestiva, analgésica ligeira, relaxante muscular, carminativa e antiespasmódica</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Alfazema / Lavanda (Lavandula stoechas L. (rosmaninho); Lavandula angustifolia Mill. (alfazema-inglesa); Lavandula latifolia Medik. (alfazema-de-folha-larga))</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>O nome comum alfazema ou lavanda abrange várias espécies do género Lavandula, subarbustos aromáticos perenes de 30–80 cm de altura, com folhas estreitas e perfumadas e espigas de flores azul-violeta muito aromáticas. Neste projeto consideram-se sobretudo três espécies frequentes em Portugal: Lavandula stoechas L. (rosmaninho), Lavandula angustifolia Mill. (alfazema-inglesa) e Lavandula latifolia Medik. (alfazema-de-folha-larga).</p>
+      <p>Em Portugal, além de alfazema e rosmaninho, são usados outros nomes populares como lavanda, espigão, lavandula ou &quot;alfazema-verdadeira&quot; para L. angustifolia. Em inglês, os nomes mais comuns são lavender, English lavender (L. angustifolia), French/Spanish lavender (L. stoechas) e spike lavender (L. latifolia). As flores são muito visitadas por abelhas e outros polinizadores, e a planta é amplamente cultivada em jardins, hortas e bordaduras aromáticas.</p>
+      <p>Do ponto de vista medicinal, utilizam-se sobretudo as sumidades floridas, frescas ou secas, e o óleo essencial obtido por destilação a vapor. Existem diferenças importantes entre espécies: L. angustifolia produz um óleo rico em linalol e acetato de linalilo, de perfil mais suave e relaxante, enquanto L. latifolia e alguns quimiotipos de L. stoechas apresentam teores mais elevados de cânfora, 1,8-cineol ou fenchona, com perfis mais estimulantes e maior necessidade de cautela em uso interno ou em crianças. As monografias oficiais de fitoterapia moderna centram-se sobretudo em Lavandula angustifolia.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, a alfazema comporta-se como subarbusto perene adaptado a climas mediterrânicos, preferindo solos bem drenados, pobres a moderadamente férteis, e exposição solar plena. Mantém folhagem verde ou acinzentada durante todo o ano, mas a produção de flores concentra-se na primavera e verão.
+Em hortas e jardins, as sumidades floridas para uso medicinal e aromático colhem-se tipicamente do final da primavera ao pico do verão, quando as espigas florais estão bem formadas e as flores acabadas de abrir, fase em que o teor e o perfil do óleo essencial são mais favoráveis.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Início da floração: em geral entre abril e junho em Portugal continental, consoante a espécie, a altitude e a exposição.</li>
+        <li>Pico de floração e colheita das sumidades floridas: primavera tardia até meados do verão (aproximadamente maio a julho).</li>
+        <li>Em locais quentes e secos, podem ocorrer reflorações ou períodos de floração mais prolongados até ao final do verão, embora a produção tenda a diminuir em ondas de calor extremo.</li>
+        <li>Como subarbusto perene, a alfazema mantém estrutura todo o ano; recomenda-se poda ligeira após a floração para estimular novos rebentos e evitar o lenhificar excessivo das bases.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Infusões das flores secas de Lavandula angustifolia (1–2 colheres de chá, cerca de 1–2 g, em 150–250 mL de água quente, em infusão 5–10 minutos) como adjuvante em ansiedade ligeira, dificuldades em adormecer e distúrbios digestivos funcionais (dispepsia neurogénica, flatulência), com base em monografias tradicionais europeias. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a></li>
+        <li>Óleo essencial padronizado de Lavandula angustifolia por via oral (como a preparação Silexan, 80–160 mg/dia em cápsulas), utilizado em ensaios clínicos e meta-análises em ansiedade generalizada, perturbações de ansiedade mistas e stress, mostrando redução significativa de sintomas com perfil de segurança comparável a ansiolíticos ligeiros. <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-M5">[M5]</a></li>
+        <li>Aromaterapia com óleo essencial de alfazema por inalação (difusor, inalação húmida ou aplicação tópica diluída em massagem) como intervenção complementar em ansiedade, stress e perturbações do sono, com estudos que sugerem efeito ansiolítico e melhoria de parâmetros fisiológicos de relaxamento, embora com heterogeneidade metodológica. <a href="#ref-M2">[M2]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-M6">[M6]</a></li>
+        <li>Aplicação tópica de óleo essencial de alfazema devidamente diluído em óleo vegetal (por exemplo 1–2 gotas em 5–10 mL) em pequenas áreas de pele para aliviar prurido, picadas de insetos, pequenas queimaduras solares e dores musculares ligeiras, explorando as propriedades anti-inflamatórias, analgésicas suaves e antimicrobianas demonstradas em modelos experimentais. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-M2">[M2]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Chá de alfazema como bebida calmante de fim de dia, muitas vezes combinado com camomila, erva-cidreira ou tília, para ajudar a relaxar, aliviar o nervosismo e facilitar o sono. <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a> <a href="#ref-R3">[R3]</a></li>
+        <li>Saquinhos e almofadas de alfazema colocados em gavetas, roupeiros ou debaixo da almofada, para perfumar roupa, afastar traças e proporcionar um aroma relaxante que facilita o adormecer. <a href="#ref-A1">[A1]</a> <a href="#ref-A4">[A4]</a> <a href="#ref-A5">[A5]</a></li>
+        <li>Banhos mornos com infusão de alfazema (flores ou algumas gotas de óleo essencial bem disperso) como ritual de relaxamento, ajudando a aliviar tensão muscular, cansaço e stress acumulado. <a href="#ref-R4">[R4]</a> <a href="#ref-R5">[R5]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Uso popular de óleo essencial de alfazema (sempre diluído) em massagens nas têmporas, nuca ou planta dos pés para aliviar dores de cabeça ligeiras, tensão nervosa e agitação, bem como em difusores de ambiente para criar uma atmosfera tranquila em casa. <a href="#ref-R2">[R2]</a> <a href="#ref-R6">[R6]</a> <a href="#ref-A2">[A2]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>Preparações à base de alfazema são em geral bem toleradas quando usadas em doses habituais e por períodos moderados, sobretudo quando se trata de infusões leves de Lavandula angustifolia ou aromaterapia por inalação. Ainda assim, pessoas com asma, alergias respiratórias ou sensibilidade a perfumes devem testar a tolerância a baixas doses e evitar exposições intensas e prolongadas a óleos essenciais. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-M3">[M3]</a></p>
+      <p>O óleo essencial de alfazema não deve ser ingerido de forma caseira nem em doses elevadas; o uso oral deve limitar-se a preparações padronizadas como Silexan, em doses estudadas (80–160 mg/dia) e preferencialmente sob orientação de profissional de saúde. O uso tópico requer sempre diluição em óleo vegetal ou veículo adequado para reduzir o risco de irritação ou sensibilização cutânea. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></p>
+      <p>Alguns relatos sugerem possível ação hormonal fraca (efeitos estrogénicos/antiandrogénicos) de óleos de alfazema e tea tree em exposições prolongadas, embora a evidência ainda seja limitada; por precaução, recomenda‑se evitar uso tópico prolongado e concentrado em crianças pequenas e pré-púberes. Grávidas, lactantes, pessoas com epilepsia, doenças crónicas graves ou em polimedicação, bem como indivíduos com antecedentes de alergia a Lamiaceae, devem usar alfazema com prudência e consultar um profissional de saúde antes de usos regulares ou em doses mais altas. <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-U4">[U4]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        Na fitoterapia e aromaterapia, a alfazema é usada sobretudo em infusões calmantes, óleos essenciais em difusores ou massagens, banhos relaxantes e almofadas perfumadas para apoio ao sono. Em contexto medicinal, privilégia‑se Lavandula angustifolia e o uso de doses moderadas, com respeito pelas contraindicações. As receitas e preparados devem seguir as indicações das fontes de referência e ser sempre enquadrados pelas recomendações de segurança.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="alfazema-lavanda_receitas.html">Infusão simples de alfazema para relaxamento:</a> 1 colher de chá (cerca de 1 g) de flores secas de Lavandula angustifolia em 150–200 mL de água fervente; deixar em infusão 5–10 minutos, coar e tomar 1 chávena ao final do dia, podendo repetir até 2–3 vezes por semana conforme tolerância. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="alfazema-lavanda_receitas.html">Chá de alfazema para apoio ao sono:</a> 1–2 colheres de chá de flores secas em 200 mL de água quente, infundir 10 minutos, coar e beber cerca de 30 minutos antes de deitar; pode ser combinado com camomila ou tília para efeito sinérgico. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="alfazema-lavanda_receitas.html">Infusão de alfazema para digestão tranquila:</a> 1 colher de chá de flores secas em 150 mL de água a ferver, repousar 5–10 minutos e tomar após refeições pesadas para aliviar dispepsia nervosa e flatulência, sem exceder 2 chávenas por dia. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="alfazema-lavanda_receitas.html">Banho relaxante de alfazema:</a> preparar 1 L de infusão forte (cerca de 20 g de flores secas) e adicionar à água do banho, permanecendo 10–20 minutos em água morna para promover relaxamento muscular e mental. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="alfazema-lavanda_receitas.html">Sais de banho de lavanda:</a> misturar 1 chávena de sal Epsom, 1/2 chávena de sal marinho grosso e 1/4 de chávena de flores secas de lavanda, adicionando algumas gotas de óleo essencial de alfazema; usar um punhado da mistura na água do banho para um efeito calmante. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="alfazema-lavanda_receitas.html">Almofada/travesseiro de ervas com alfazema:</a> encher um pequeno saco de tecido com flores secas de alfazema (eventualmente combinadas com camomila e erva-cidreira) e colocar debaixo ou por cima da almofada principal para favorecer o relaxamento e o sono. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="alfazema-lavanda_receitas.html">Difusor ambiental com óleo essencial de alfazema:</a> adicionar 3–5 gotas de óleo essencial de Lavandula angustifolia num difusor de água apropriado, ligando 30–60 minutos antes de deitar para criar um ambiente calmante no quarto. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="alfazema-lavanda_receitas.html">Óleo de massagem relaxante com alfazema:</a> diluir 3–5 gotas de óleo essencial de alfazema em 10 mL de óleo vegetal (amêndoas doces, jojoba ou outro) e massajar nuca, ombros e plantas dos pés em situações de tensão e stress, evitando contacto com mucosas e olhos. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="alfazema-lavanda_receitas.html">Tintura de flores de alfazema (1:</a>5 em álcool 40–60%): tomar 20–30 gotas diluídas em um pouco de água, até 3 vezes ao dia, sob orientação de profissional habilitado, para apoio em ansiedade ligeira e digestão nervosa. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="alfazema-lavanda_receitas.html">Chá gelado de lavanda:</a> preparar uma infusão com 1/2–1 colher de chá de flores secas em 200 mL de água quente, deixar arrefecer, adoçar moderadamente se desejado e servir com gelo como bebida refrescante relaxante, sem ultrapassar as doses diárias recomendadas. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>A alfazema é uma das plantas mais estudadas e utilizadas como adjuvante na gestão de ansiedade ligeira, stress e perturbações do sono. Ensaios clínicos com óleo essencial padronizado de Lavandula angustifolia (por exemplo Silexan, 80–160 mg/dia) mostram reduções clinicamente relevantes em escalas de ansiedade em comparação com placebo e, em alguns estudos, eficácia comparável a ansiolíticos convencionais em situações de ansiedade generalizada. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-M6">[M6]</a></p>
+      <p>Para além do uso em ansiedade e sono, monografias tradicionais referem a alfazema como planta carminativa e antiespasmódica, útil em digestão difícil associada a estados de tensão nervosa, flatulência e sensação de &quot;nó no estômago&quot;. A ação combina efeitos no sistema nervoso central e no trato gastrointestinal, com melhoria subjetiva de desconforto digestivo em muitos utilizadores. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M6">[M6]</a></p>
+      <p>Em uso tópico e aromático, a alfazema é aplicada em pequenas dores musculares, cefaleias tensionais, prurido e picadas de insetos, bem como em pequenas irritações cutâneas e queimaduras solares ligeiras. Estudos experimentais documentam propriedades anti-inflamatórias, analgésicas suaves, antimicrobianas e antioxidantes do óleo essencial, que ajudam a explicar estes usos complementares, apesar de a evidência clínica ainda ser moderada. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-F2">[F2]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Adjuvante em ansiedade ligeira, stress e perturbações de sono, reduzindo sintomas como inquietação, tensão muscular, palpitações relacionadas com ansiedade e dificuldade em adormecer. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-M6">[M6]</a></li>
+        <li>Suporte complementar em quadros de humor deprimido ligeiro e queixas somáticas associadas ao stress, quando integrado em abordagens de estilo de vida saudável. <a href="#ref-M3">[M3]</a> <a href="#ref-M6">[M6]</a> <a href="#ref-M7">[M7]</a></li>
+        <li>Apoio digestivo em dispepsia funcional e flatulência associadas a tensão nervosa, ajudando a aliviar sensação de peso, cólicas ligeiras e &quot;nó no estômago&quot;. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a></li>
+        <li>Alívio de queixas musculares ligeiras e cefaleias tensionais através de massagens locais com óleo essencial de alfazema diluído, associado a técnicas de relaxamento. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a></li>
+        <li>Apoio complementar em pequenas irritações cutâneas, picadas de insetos e queimaduras solares ligeiras, através de aplicações tópicas moderadas de preparações com alfazema. <a href="#ref-M4">[M4]</a> <a href="#ref-F2">[F2]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>As sumidades floridas de Lavandula spp. contêm 1–3% de óleo essencial (v/m) rico em monoterpenos e ésteres aromáticos. Em Lavandula angustifolia, os componentes dominantes são geralmente o linalol (≈20–45%) e o acetato de linalilo (≈20–45%), com teores variáveis de β-cariofileno, terpinen-4-ol, lavandulil acetato e outros monoterpenos oxigenados, dependendo da origem e das condições de cultivo. Este perfil está associado às propriedades ansiolíticas, sedativas ligeiras, antiespasmódicas e analgésicas moderadas descritas para o óleo. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a> <a href="#ref-F5">[F5]</a> <a href="#ref-F6">[F6]</a></p>
+      <p>Em Lavandula latifolia e em alguns quimiotipos de Lavandula stoechas, o óleo essencial tende a conter proporções mais elevadas de 1,8-cineol e cânfora, além de linalol, o que confere um perfil mais &quot;cânforado&quot; e potencialmente mais estimulante, com maior necessidade de cautela em uso interno e em populações sensíveis. Para uso medicinal interno e em ansiedade/sono, as monografias e estudos clínicos centram-se quase exclusivamente em Lavandula angustifolia.</p>
+      <p>Extratos hidroalcoólicos e aquosos de flores de alfazema contêm ainda flavonoides (por exemplo derivados de luteolina e apigenina) e ácidos fenólicos (ácido rosmarínico e outros ácidos hidroxicinâmicos), que contribuem para a atividade antioxidante e anti-inflamatória observada in vitro e em modelos animais.</p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Teor de óleo essencial nas sumidades floridas secas (L. angustifolia)</td><td>≈1,0–3,0 % v/m</td></tr>
+        <tr><td>Linalol no óleo essencial de L. angustifolia</td><td>≈20–45 % (área relativa)</td></tr>
+        <tr><td>Acetato de linalilo no óleo essencial de L. angustifolia</td><td>≈20–45 % (área relativa)</td></tr>
+        <tr><td>1,8-cineol no óleo essencial de L. latifolia / quimiotipos ricos</td><td>≈5–25 % (área relativa)</td></tr>
+        <tr><td>Cânfora no óleo essencial de L. latifolia / quimiotipos ricos</td><td>≈5–20 % (área relativa)</td></tr>
+        <tr><td>Flavonoides totais em extratos hidroalcoólicos de flores</td><td>≈5–50 mg/g de extrato seco</td></tr>
+        <tr><td>Ácido rosmarínico em extratos de flores/folhas</td><td>≈1–10 mg/g de extrato seco</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Planta aromática e ornamental muito apreciada em jardins, bordaduras e espirais de ervas, proporcionando cor, aroma intenso e forte atratividade para abelhas e outros polinizadores. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Uso em saquinhos perfumados para gavetas, roupeiros e almofadas, ajudando a afastar traças e a perfumar roupa de forma natural. <a href="#ref-A2">[A2]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Ingrediente frequente em sabonetes, óleos de banho, velas aromáticas, sprays de ambiente e produtos de limpeza naturais, explorando o aroma agradável e o efeito calmante associado. <a href="#ref-A1">[A1]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Aplicação em almofadas térmicas e travesseiros de ervas (lavanda combinada com outras plantas relaxantes) para apoio ao sono e alívio de tensões musculares ligeiras. <a href="#ref-A4">[A4]</a> <a href="#ref-A5">[A5]</a></li>
+        <li>Uso em vinagres aromatizados, sais de banho, vinagres de limpeza e repelentes naturais de insetos em contexto doméstico. <a href="#ref-A3">[A3]</a> <a href="#ref-A6">[A6]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 7,5 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em sistemas de permacultura, a alfazema destaca-se como planta altamente multifuncional: fornece matéria-prima medicinal e aromática, apoia a saúde mental e o descanso dos habitantes humanos, atrai polinizadores e insetos benéficos e funciona como bordadura resistente à seca em zonas ensolaradas e de solo pobre. A sua rusticidade, baixa exigência hídrica e longevidade fazem dela uma excelente candidata para taludes, canteiros secos, espirais de ervas e linhas de transição entre zonas da horta.
+Embora produza menos biomassa que espécies estritamente hortícolas e ofereça pouco alimento direto para humanos, compensa pela forte função aromática, medicinal, ecológica (flores melíferas) e cultural, com boa aceitação em contextos urbanos e rurais. A pontuação reflete esta combinação de usos medicinais, ecológicos e estruturais, com poucas desvantagens relevantes além da necessidade de evitar solos encharcados e de fazer podas adequadas para manter plantas saudáveis. O grau resulta da aplicação do algoritmo descrito no projeto, equilibrando funções alimentares (limitadas), medicinais, ecológicas e de estrutura com penalizações mínimas por toxicidade e competição.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A alfazema obtém pontuação elevada nos critérios positivos de medicinalidade (uso ansiolítico e digestivo), ecologia (forte atração de polinizadores), rusticidade (boa tolerância à seca uma vez instalada) e multifuncionalidade (aromática, cosmética, cultural). Perde alguns pontos por produzir pouca biomassa para cobertura de solo e por ter função alimentar humana praticamente inexistente.
+Do ponto de vista de penalizações, o risco de toxicidade é baixo nas formas tradicionais de uso, mas o óleo essencial exige cuidado em crianças pequenas, grávidas e em pessoas sensíveis. Não é uma espécie invasora problemática no contexto habitual de cultivo, mas pode sofrer em solos pesados e encharcados, pelo que a sua contribuição para regeneração de solos é mais estética e aromática do que de grande volume de matéria orgânica.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-A1">[A1]</a> <a href="#ref-A3">[A3]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] European Medicines Agency (EMA). &quot;Lavandulae flos – herbal medicinal product&quot;. Página oficial com ligação para a monografia comunitária e relatório de avaliação de Lavandula angustifolia Miller, flos, incluindo descrição botânica, parte usada e indicações tradicionais. URL: <a href="https://www.ema.europa.eu/en/medicines/herbal/lavandulae-flos" target="_blank" rel="noopener">https://www.ema.europa.eu/en/medicines/herbal/lavandulae-flos</a></li>
+        <li id="ref-D2">[D2] Kew Science – Plants of the World Online. Entrada &quot;Lavandula angustifolia Mill.&quot; com descrição taxonómica, distribuição nativa no Mediterrâneo ocidental e notas ecológicas. URL: <a href="https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:449008-1" target="_blank" rel="noopener">https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:449008-1</a></li>
+        <li id="ref-D3">[D3] Batiha, G. E.-S. et al. &quot;Lavender (Lavandula angustifolia Mill.): a review of bioactive components and pharmacological activities&quot;. *Frontiers in Pharmacology* (2023). Revisão abrangente das espécies de lavanda, composição química, atividades farmacológicas e usos tradicionais. URL: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10079719/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10079719/</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Monstera App. &quot;Lavandula angustifolia – Alfazema verdadeira&quot;. Ficha de planta ornamental que descreve a espécie como subarbusto perene, resistente à seca, que prefere solos bem drenados e exposição solar plena, com floração na primavera e verão. URL: <a href="https://www.monstera-app.com/pt/plantas/variedades/alfazema-verdadeira-01GQ089192ZPG0NTH67Q0J9EC6" target="_blank" rel="noopener">https://www.monstera-app.com/pt/plantas/variedades/alfazema-verdadeira-01GQ089192ZPG0NTH67Q0J9EC6</a></li>
+        <li id="ref-S2">[S2] Artigo &quot;Alfazemas (Lavanda)&quot; no blogue Meliponário Jardim, que descreve alfazemas como plantas mediterrânicas perenes com longos períodos de floração, muito melíferas, úteis em jardins secos e bordaduras, com destaque para a produção de mel de lavanda. URL: <a href="https://meliponario-jardim.blogspot.com/2013/02/alfazemas-lavanda.html" target="_blank" rel="noopener">https://meliponario-jardim.blogspot.com/2013/02/alfazemas-lavanda.html</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] European Medicines Agency (EMA). &quot;Final assessment report on Lavandula angustifolia Miller, aetheroleum and Lavandula angustifolia Miller, flos&quot; (EMA/HMPC/143183/2010). Documento técnico que resume dados farmacológicos, farmacocinéticos e toxicológicos, incluindo advertências, contraindicações e grupos especiais de risco. URL: <a href="https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-lavandula-angustifolia-miller-aetheroleum-and-lavandula-angustifolia-miller-flos_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-lavandula-angustifolia-miller-aetheroleum-and-lavandula-angustifolia-miller-flos_en.pdf</a></li>
+        <li id="ref-U2">[U2] Donelli, D. et al. &quot;Effects of lavender on anxiety: A systematic review and meta-analysis of clinical trials&quot;. *Phytomedicine* (2019). Avalia eficácia e segurança de óleo essencial de lavanda, incluindo a preparação oral Silexan, em diferentes perturbações de ansiedade. URL: <a href="https://pubmed.ncbi.nlm.nih.gov/31655395/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/31655395/</a></li>
+        <li id="ref-U3">[U3] Tisserand Institute. &quot;Can Lavender oil cause breast growth in children?&quot; (2021). Análise crítica dos casos de ginecomastia pré‑púbere associados a óleos de lavanda e melaleuca, discutindo evidência clínica, dados epidemiológicos e plausibilidade toxicológica. URL: <a href="https://tisserandinstitute.org/can-lavender-oil-cause-breast-growth-in-children/" target="_blank" rel="noopener">https://tisserandinstitute.org/can-lavender-oil-cause-breast-growth-in-children/</a></li>
+        <li id="ref-U4">[U4] Hawkins, J. et al. &quot;Prevalence of endocrine disorders among children exposed to lavender and tea tree essential oils&quot;. *International Journal of Pediatric Endocrinology* (2021). Estudo que conclui não existir associação entre exposição habitual a estes óleos e alterações endócrinas, incluindo ginecomastia. URL: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9152575/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9152575/</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Colchão Memo4. &quot;Chá de lavanda ou Alfazema – Infusão de ervas&quot;. Receita em português de infusão de lavanda para apoio ao sono, indicando proporção de flores secas e tempo de infusão. URL: <a href="https://colchaomemo4.pt/infusao-cha-de-lavanda-ou-alfazema/" target="_blank" rel="noopener">https://colchaomemo4.pt/infusao-cha-de-lavanda-ou-alfazema/</a></li>
+        <li id="ref-R2">[R2] Terra Botanicals. &quot;10 coisas que podes fazer com lavanda&quot;. Sugestões práticas de utilização da lavanda, incluindo preparação de chá (1 colher de chá de lavanda para 250 mL de água quente, 5–7 minutos). URL: <a href="https://terrabotanicals.pt/10-coisas-que-podes-fazer-com-lavanda/" target="_blank" rel="noopener">https://terrabotanicals.pt/10-coisas-que-podes-fazer-com-lavanda/</a></li>
+        <li id="ref-R3">[R3] Fitness UP. Artigo &quot;Chás calmantes: receitas para relaxar nos dias de maior stress&quot; com receita de chá de lavanda calmante, doses aproximadas e combinação com camomila. URL: <a href="https://www.fitnessup.pt/artigo/receitas-de-chas-calmantes" target="_blank" rel="noopener">https://www.fitnessup.pt/artigo/receitas-de-chas-calmantes</a></li>
+        <li id="ref-R4">[R4] Chás do Mundo. Ficha &quot;Chá de Alfazema | Lavandula angustifolia&quot; que indica forma de preparação, dosagem por chávena e usos tradicionais como infusão relaxante. URL: <a href="https://chasdomundo.pt/pt/chas-medicinais/alfazema-lavandula-angustifolia" target="_blank" rel="noopener">https://chasdomundo.pt/pt/chas-medicinais/alfazema-lavandula-angustifolia</a></li>
+        <li id="ref-R5">[R5] MatéMundo. &quot;Uma forma natural de relaxar? Lavanda! Propriedades e utilizações&quot;. Artigo que apresenta receitas de chá de lavanda e limonada de alfazema, com proporções de erva e água. URL: <a href="https://www.matemundo.pt/Uma-forma-natural-de-relaxar-Lavanda-Propriedades-e-utilizacoes-blog-por-1751620203.html" target="_blank" rel="noopener">https://www.matemundo.pt/Uma-forma-natural-de-relaxar-Lavanda-Propriedades-e-utilizacoes-blog-por-1751620203.html</a></li>
+        <li id="ref-R6">[R6] Saboaria da Sofia. Produto &quot;Sais de Banho RELAX – Lavanda e Malva&quot; com instruções de uso em banho de imersão relaxante, fornecendo exemplo de dose orientadora de sais/banho. URL: <a href="https://www.saboariadasofia.pt/product/sais-de-banho-de-lavanda" target="_blank" rel="noopener">https://www.saboariadasofia.pt/product/sais-de-banho-de-lavanda</a></li>
+        <li id="ref-R7">[R7] Naturitas. Ficha &quot;Banho relaxante de lavanda – Weleda&quot; que descreve modo de utilização (1–2 tampas por banho) e précauções gerais de uso externo em banhos aromáticos. URL: <a href="https://www.naturitas.pt/p/cosmeticos-e-higiene/cuidado-corporal/produtos-para-o-banho/banho-relaxante-de-lavanda-200-ml-de-oleo-weleda" target="_blank" rel="noopener">https://www.naturitas.pt/p/cosmeticos-e-higiene/cuidado-corporal/produtos-para-o-banho/banho-relaxante-de-lavanda-200-ml-de-oleo-weleda</a></li>
+        <li id="ref-R8">[R8] Lucena, L. D. R. et al. &quot;Lavender essential oil on postmenopausal women with insomnia: double-blind randomized trial&quot;. *Complementary Therapies in Medicine* (2021). Usado como base para posologias de aromaterapia em difusores e inalação no contexto de distúrbios do sono. URL: <a href="https://pubmed.ncbi.nlm.nih.gov/33905827/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/33905827/</a></li>
+        <li id="ref-R9">[R9] Liu, Y. et al. &quot;Effects of lavender essential oil inhalation aromatherapy on postoperative sleep quality&quot;. *Frontiers in Pharmacology* (2025). Protocolo de aromaterapia com óleo de lavanda em ambiente clínico, detalhando duração das inalações e frequência de aplicação. URL: <a href="https://www.frontiersin.org/articles/10.3389/fphar.2025.1584998/full" target="_blank" rel="noopener">https://www.frontiersin.org/articles/10.3389/fphar.2025.1584998/full</a></li>
+        <li id="ref-R10">[R10] Kasper, S. et al. &quot;Silexan, an orally administered Lavandula oil preparation, is effective in generalized anxiety disorder&quot;. *International Journal of Neuropsychopharmacology* (2014). Ensaios com cápsulas de óleo de lavanda (80–160 mg/dia) que fundamentam esquemas posológicos em fitoterapia clínica. URL: <a href="https://academic.oup.com/ijnp/article/17/6/859/691858" target="_blank" rel="noopener">https://academic.oup.com/ijnp/article/17/6/859/691858</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] European Medicines Agency (EMA). &quot;European Union herbal monograph on Lavandula angustifolia Miller, flos&quot; (EMA/HMPC/734125/2010) e documentos relacionados, descrevendo indicações aprovadas para estados de tensão, ansiedade ligeira e dificuldades de sono. URL: <a href="https://www.ema.europa.eu/en/medicines/herbal/lavandulae-flos" target="_blank" rel="noopener">https://www.ema.europa.eu/en/medicines/herbal/lavandulae-flos</a></li>
+        <li id="ref-M2">[M2] Batiha, G. E.-S. et al. &quot;A review of the bioactive components and pharmacological activities of lavender (Lavandula spp.)&quot;. *Frontiers in Pharmacology* (2023). Revisão que resume atividades ansiolíticas, sedativas, analgésicas, antioxidantes e anti-inflamatórias da lavanda. URL: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10079719/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10079719/</a></li>
+        <li id="ref-M3">[M3] Donelli, D. et al. &quot;Effects of lavender on anxiety: A systematic review and meta-analysis of clinical trials&quot;. *Phytomedicine* (2019). Conclui que o óleo essencial de lavanda, especialmente por via oral (Silexan), é eficaz na redução de sintomas de ansiedade em várias populações. URL: <a href="https://pubmed.ncbi.nlm.nih.gov/31655395/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/31655395/</a></li>
+        <li id="ref-M4">[M4] Kasper, S. et al. &quot;Lavender oil preparation Silexan is effective in generalized anxiety disorder&quot;. *Phytomedicine* (2010) e análises subsequentes que comparam Silexan com lorazepam e placebo em ensaios multicêntricos. URL: <a href="https://pubmed.ncbi.nlm.nih.gov/19962288/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/19962288/</a></li>
+        <li id="ref-M5">[M5] Lucena, L. D. R. et al. &quot;Lavender essential oil on postmenopausal women with insomnia&quot;. *Complementary Therapies in Medicine* (2021). Ensaio clínico duplamente cego que mostra melhoria significativa da qualidade do sono com aromaterapia de lavanda. URL: <a href="https://www.sciencedirect.com/science/article/pii/S0965229921000674" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S0965229921000674</a></li>
+        <li id="ref-M6">[M6] Ostovar, M. et al. &quot;A systematic review and meta-analysis of clinical trials on lavender for sleep disorders in the elderly&quot;. *Journal of Ethnopharmacology* (2025). Conclui que a inalação de óleo essencial de lavanda melhora parâmetros de sono em vários estudos, embora saliente limitações metodológicas. URL: <a href="https://www.sciencedirect.com/science/article/pii/S0531556525002487" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S0531556525002487</a></li>
+        <li id="ref-M7">[M7] Salamung, N. et al. &quot;Effect of aromatherapy on sleep quality: A systematic review&quot;. *International Journal of Nursing and Health Services* (2023). Inclui múltiplos ensaios com lavanda em diferentes contextos clínicos, resumindo efeitos na qualidade do sono e bem‑estar. URL: <a href="https://ijnhs.net/index.php/ijnhs/article/download/728/506/5288" target="_blank" rel="noopener">https://ijnhs.net/index.php/ijnhs/article/download/728/506/5288</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Batiha, G. E.-S. et al. &quot;Lavender (Lavandula angustifolia Mill.): a review of bioactive components and pharmacological activities&quot;. *Frontiers in Pharmacology* (2023). Sumaria mais de 100 constituintes do óleo de lavanda, incluindo linalol, acetato de linalilo, 1,8-cineol, cânfora e outros terpenos, relacionando-os com atividades farmacológicas. URL: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10079719/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10079719/</a></li>
+        <li id="ref-F2">[F2] Khatri, P. K. et al. &quot;Botanical characterization and authentication of lavender oil&quot;. *Industrial Crops and Products* (2023). Descreve especificações ISO/Ph. Eur. para óleo de Lavandula angustifolia, incluindo intervalos típicos de 20–45% de linalol e 25–47% de acetato de linalilo, com teor de cânfora &lt;1,5%. URL: <a href="https://www.sciencedirect.com/science/article/pii/S0956713523004024" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S0956713523004024</a></li>
+        <li id="ref-F3">[F3] Pokajewicz, K. et al. &quot;Chemical Composition of the Essential Oil of the New Polish Cultivar of Lavandula angustifolia&quot;. *Molecules* 26(18):5681 (2021). Apresenta composição detalhada de um óleo comercial de lavanda, com linalil acetato ~29% e linalol ~24%. URL: <a href="https://www.mdpi.com/1420-3049/26/18/5681" target="_blank" rel="noopener">https://www.mdpi.com/1420-3049/26/18/5681</a></li>
+        <li id="ref-F4">[F4] Prusinowska, R.; Śmigielski, K. B. &quot;Composition, biological properties and therapeutic effects of lavender essential oil – a review&quot;. *Herba Polonica* 60(2):56–66 (2014). Revisão clássica sobre composição do óleo e correlação com propriedades antioxidantes, antimicrobianas e sedativas. URL: <a href="https://doi.org/10.2478/hepo-2014-0010" target="_blank" rel="noopener">https://doi.org/10.2478/hepo-2014-0010</a></li>
+        <li id="ref-F5">[F5] Kozuharova, E. et al. &quot;Chemical composition and comparative analysis of lavender oils&quot;. *Pharmacia* (2023). Compara várias amostras de óleos de Lavandula spp., destacando variação nos principais terpenos e impacto na qualidade farmacêutica. URL: <a href="https://pharmacia.pensoft.net/article/104404/" target="_blank" rel="noopener">https://pharmacia.pensoft.net/article/104404/</a></li>
+        <li id="ref-F6">[F6] Cardia, G. F. E. et al. &quot;Antioxidant, analgesic, and anti-inflammatory effects of lavender essential oil&quot;. *Anais da Academia Brasileira de Ciências* (2018). Demonstra, em modelos animais, efeitos anti-inflamatórios e analgésicos relacionados à composição específica do óleo. URL: <a href="https://www.scielo.br/j/aabc/a/PxSc9T7wm4fXK4KCXrvWwWy/?lang=en" target="_blank" rel="noopener">https://www.scielo.br/j/aabc/a/PxSc9T7wm4fXK4KCXrvWwWy/?lang=en</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] GermiGarden Blog. &quot;Plantas de mel que atraem abelhas&quot;. Lista de plantas melíferas onde a lavanda é destacada como uma das espécies que mais atraem abelhas e produzem mel de elevada qualidade. URL: <a href="https://blog.germigarden.com/pt-pt/jardinagem-pt-pt/plantas-de-mel-que-atraem-abelhas/" target="_blank" rel="noopener">https://blog.germigarden.com/pt-pt/jardinagem-pt-pt/plantas-de-mel-que-atraem-abelhas/</a></li>
+        <li id="ref-A2">[A2] CicloVivo. &quot;21 espécies de plantas que ajudam a salvar as abelhas&quot;. Artigo que cita a lavanda (género Lavandula) como planta importante para polinizadores em jardins e varandas. URL: <a href="https://ciclovivo.com.br/planeta/meio-ambiente/21-especies-de-plantas-que-ajudam-a-salvar-as-abelhas/" target="_blank" rel="noopener">https://ciclovivo.com.br/planeta/meio-ambiente/21-especies-de-plantas-que-ajudam-a-salvar-as-abelhas/</a></li>
+        <li id="ref-A3">[A3] Terrabotanicals. &quot;10 coisas que podes fazer com lavanda&quot;. Sugere saquetas perfumadas, almofadas de ervas, óleos de massagem, sprays de ambiente e uso culinário moderado de flores de lavanda. URL: <a href="https://terrabotanicals.pt/10-coisas-que-podes-fazer-com-lavanda/" target="_blank" rel="noopener">https://terrabotanicals.pt/10-coisas-que-podes-fazer-com-lavanda/</a></li>
+        <li id="ref-A4">[A4] Times of India. &quot;This bedroom plant naturally fights anxiety and boosts sleep quality&quot;. Texto popular que recomenda manter vasos de lavanda no quarto e utilizar óleo essencial diluído para massagem relaxante antes de dormir. URL: <a href="https://timesofindia.indiatimes.com/life-style/health-fitness/this-bedroom-plant-naturally-fights-anxiety-and-boosts-sleep-quality/photostory/123380592.cms" target="_blank" rel="noopener">https://timesofindia.indiatimes.com/life-style/health-fitness/this-bedroom-plant-naturally-fights-anxiety-and-boosts-sleep-quality/photostory/123380592.cms</a></li>
+        <li id="ref-A5">[A5] MatéMundo. &quot;Uma forma natural de relaxar? Lavanda! Propriedades e utilizações&quot;. Descreve usos domésticos de lavanda em chás, limonadas, saquinhos aromáticos, óleos de massagem e banhos relaxantes. URL: <a href="https://www.matemundo.pt/Uma-forma-natural-de-relaxar-Lavanda-Propriedades-e-utilizacoes-blog-por-1751620203.html" target="_blank" rel="noopener">https://www.matemundo.pt/Uma-forma-natural-de-relaxar-Lavanda-Propriedades-e-utilizacoes-blog-por-1751620203.html</a></li>
+        <li id="ref-A6">[A6] Saboaria da Sofia. Ficha &quot;Sais de banho RELAX – Lavanda e Malva&quot; com descrição do efeito relaxante e regenerador dos sais de banho de lavanda em rotinas de autocuidado. URL: <a href="https://www.saboariadasofia.pt/product/sais-de-banho-de-lavanda" target="_blank" rel="noopener">https://www.saboariadasofia.pt/product/sais-de-banho-de-lavanda</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] Artigo &quot;Alfazemas (Lavanda)&quot; no blogue Meliponário Jardim, que descreve a lavanda como planta melífera abundante em néctar, muito valiosa para abelhas e produção de mel de alta qualidade em zonas mediterrânicas. URL: <a href="https://meliponario-jardim.blogspot.com/2013/02/alfazemas-lavanda.html" target="_blank" rel="noopener">https://meliponario-jardim.blogspot.com/2013/02/alfazemas-lavanda.html</a></li>
+        <li id="ref-P2">[P2] Monstera App. Ficha &quot;Lavandula angustifolia – Alfazema verdadeira&quot;, que caracteriza a espécie como planta perene de baixa manutenção, tolerante à seca e adequada para bordaduras, taludes secos e jardins de baixa rega. URL: <a href="https://www.monstera-app.com/pt/plantas/variedades/alfazema-verdadeira-01GQ089192ZPG0NTH67Q0J9EC6" target="_blank" rel="noopener">https://www.monstera-app.com/pt/plantas/variedades/alfazema-verdadeira-01GQ089192ZPG0NTH67Q0J9EC6</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

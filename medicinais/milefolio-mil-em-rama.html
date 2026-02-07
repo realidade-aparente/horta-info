@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html" class="ativa">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+  <a class="next" href="morugem.html">Morugem</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Milefólio / Mil-em-rama (<em>Achillea millefolium L.</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Asteraceae</span>
+  <span>Parte usada: sumidades floridas frescas ou secas</span>
+  <span>Tipo: erva perene aromática medicinal</span>
+  <span>Produção: <strong>espontânea em prados, clareiras e bermas</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> nativa da Europa e Ásia, hoje comum em Portugal</div>
+  <div><strong>Uso principal</strong> digestiva, carminativa, sudorífica, tónica vascular e ginecológica tradicional</div>
+  <div><strong>Perfil medicinal</strong> antiespasmódica, anti-inflamatória, vulnerária e reguladora menstrual suave ligeira</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Milefólio / Mil-em-rama (Achillea millefolium L.)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>O milefólio (Achillea millefolium L.) é uma planta herbácea perene, de 20 a 60 cm de altura, com caule ereto e folhas finamente recortadas, que lhe conferem o aspeto de “mil folhas”, origem do seu nome comum. As inflorescências formam capítulos pequenos, brancos ou rosados, reunidos em corimbos densos e planos, muito atrativos para insetos polinizadores.</p>
+      <p>Em Portugal é conhecido por diversos nomes populares: milefólio, mil-em-rama, mil-folhas, milfolhada, erva-dos-carpinteiros, milenrama, entre outros. Em inglês é geralmente designado por yarrow ou common yarrow. A espécie pertence à família Asteraceae e é parente de muitas outras plantas com capítulos compostos, como a camomila, a arnica e o dente-de-leão.</p>
+      <p>É uma planta rústica que cresce em prados, clareiras, bermas de caminhos e encostas secas, tolerando bem cortes frequentes e pisoteio moderado. As sumidades floridas colhidas na plena floração concentram grande parte dos compostos aromáticos e fenólicos com interesse medicinal, sendo tradicionalmente secas à sombra e guardadas para infusões, tinturas e preparados externos.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, o milefólio comporta-se como uma perene de ciclo longo, com rebentação primaveril e floração prolongada. A vegetação basal permanece muitas vezes verde durante grande parte do ano em locais não sujeitos a frio extremo ou seca severa.
+A floração ocorre tipicamente do final da primavera ao verão, podendo prolongar-se até ao início do outono em zonas de clima mais fresco ou em locais com alguma rega. A colheita das sumidades floridas faz‑se preferencialmente no início da floração, em dias secos e soalheiros, quando as flores estão plenamente abertas e o teor em óleo essencial é mais elevado.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Rebentação vegetativa: final do inverno e início da primavera, com crescimento rápido em abril‑maio.</li>
+        <li>Floração: aproximadamentre de maio a agosto em Portugal continental, podendo estender‑se até setembro em zonas mais frescas ou húmidas.</li>
+        <li>Frutificação e dispersão de sementes: verão e início do outono.</li>
+        <li>Época de colheita recomendada: início e pleno período de floração, em dias secos, preferindo-se as flores recém-abertas e plantas longe de fontes de poluição.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Infusões das sumidades floridas secas de Achillea millefolium (por exemplo 1–2 g de droga seca em 150–250 mL de água a ferver, em infusão 10–15 minutos, até 3 vezes ao dia) são utilizadas, segundo monografias europeias, como medicamento tradicional à base de plantas para perda temporária de apetite e para o tratamento sintomático de queixas gastrointestinais ligeiras e espasmódicas, incluindo flatulência e cólicas. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a></li>
+        <li>Preparados orais contendo extratos de milefólio (herba e flos) são descritos em monografias e revisões como adjuvantes em cólicas menstruais ligeiras e em distúrbios funcionais do ciclo menstrual, explorando as ações antiespasmódica, ligeiramente emenagoga e moduladora da circulação pélvica. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a></li>
+        <li>Usos tópicos tradicionais reconhecidos em monografias oficiais incluem a aplicação de infusões concentradas ou preparações líquidas de milefólio em compressas, lavagens ou banhos de assento para pequenas feridas superficiais, inflamações cutâneas ligeiras e hemorroidas, beneficiando de propriedades adstringentes, anti-inflamatórias e cicatrizantes. <a href="#ref-M2">[M2]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-F2">[F2]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Na tradição popular, o chá de milefólio é amplamente utilizado como &quot;chá para a gripe&quot; ou para estados febris ligeiros, em combinação com outras plantas diaforéticas, para estimular a transpiração, aliviar arrepios e apoiar a recuperação em constipações e gripes. <a href="#ref-R1">[R1]</a> <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>É também usado como chá digestivo e carminativo após refeições pesadas, para aliviar gases, desconforto abdominal e digestões lentas, por vezes associado a camomila, hortelã-pimenta ou funcho para suavizar o sabor e reforçar o efeito. <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Entre as utilizações tradicionais femininas, destacam-se o uso de infusões de milefólio como adjuvante em cólicas menstruais e menstruações abundantes, sempre em quantidades moderadas e por períodos limitados, muitas vezes em combinação com camomila, urtiga branca ou outras plantas ginecológicas. <a href="#ref-R3">[R3]</a> <a href="#ref-A3">[A3]</a> <a href="#ref-U1">[U1]</a></li>
+        <li>Externamente, o milefólio é usado em banhos de imersão, lavagens e compressas em varizes superficiais, pernas cansadas, pequenas feridas, hematomas e derrames cutâneos, explorando a reputação como planta cicatrizante e tónica da circulação periférica. <a href="#ref-R4">[R4]</a> <a href="#ref-R5">[R5]</a> <a href="#ref-A4">[A4]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>Preparados de milefólio são geralmente bem tolerados quando usados por via interna em adultos saudáveis, em doses moderadas e por períodos curtos, de acordo com as indicações tradicionais e monografias oficiais. No entanto, tal como outras plantas da família Asteraceae, podem causar reações alérgicas em pessoas sensíveis, incluindo dermatite de contacto e erupções cutâneas. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></p>
+      <p>As monografias europeias e várias fontes de segurança desaconselham o uso de Achillea millefolium durante a gravidez e a amamentação, pela falta de dados robustos de segurança e pela possibilidade de efeitos sobre o útero e o ciclo menstrual. O uso em crianças pequenas também é normalmente restringido ou limitado a preparações e doses específicas sob supervisão profissional. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U4">[U4]</a> <a href="#ref-U5">[U5]</a></p>
+      <p>A utilização em pessoas com história de alergia a plantas da família Asteraceae (como camomila, arnica ou ambrósia), com úlceras gastroduodenais, obstrução das vias biliares, doenças hemorrágicas ou em terapêutica com anticoagulantes ou antiagregantes plaquetários deve ser feita com grande prudência e sempre com acompanhamento profissional, devido à presença de lactonas sesquiterpénicas, taninos e possíveis efeitos sobre a coagulação. <a href="#ref-U3">[U3]</a> <a href="#ref-U4">[U4]</a> <a href="#ref-U6">[U6]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        Na fitoterapia, o milefólio é utilizado sobretudo sob a forma de infusões simples ou em mistura, macerações, banhos de imersão, compressas e, com supervisão adequada, tinturas e outros extratos hidroalcoólicos. É comum combiná-lo com plantas como camomila, hortelã, tília ou sabugueiro, em chás para a digestão, para estados gripais ou para apoio ao ciclo menstrual. Em todos os casos, é fundamental respeitar as doses e durações de uso sugeridas nas fontes de referência e enquadrar estas práticas no contexto do Disclaimer padrão.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="milefolio-mil-em-rama_receitas.html">Infusão simples de milefólio para digestão e gases:</a> chá quente preparado com as sumidades floridas, tomado após as refeições para aliviar desconforto digestivo e excesso de gases. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="milefolio-mil-em-rama_receitas.html">Chá de milefólio para constipações e estados gripais:</a> infusão aromática bebida em curtos períodos, associada ao alívio de arrepios, mal-estar geral e apoio à sudorese. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="milefolio-mil-em-rama_receitas.html">Infusão combinada de milefólio e camomila para digestão sensível:</a> chá suave que junta ambas as plantas para acalmar o estômago nervoso e facilitar a digestão. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="milefolio-mil-em-rama_receitas.html">Chá feminino com milefólio para cólicas menstruais ligeiras:</a> infusão usada em fases de maior desconforto pélvico para ajudar a reduzir cólicas e tensão associada. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="milefolio-mil-em-rama_receitas.html">Compressas de infusão concentrada de milefólio:</a> aplicação externa sobre varizes superficiais, pequenas equimoses ou pele inflamada, usando pano embebido na infusão morna. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="milefolio-mil-em-rama_receitas.html">Banho parcial de pés ou pernas com milefólio:</a> utilização de infusão morna em recipiente para imergir pés e pernas cansadas, procurando aliviar sensação de peso e má circulação. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="milefolio-mil-em-rama_receitas.html">Banho de assento com milefólio:</a> adição de infusão concentrada à água morna do banho de assento, utilizada como adjuvante em desconfortos pélvicos ligeiros e hemorroidas. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="milefolio-mil-em-rama_receitas.html">Tintura de milefólio:</a> extrato hidroalcoólico de sumidades floridas usado em gotas diluídas, como apoio em digestão nervosa e circulação, sob orientação profissional. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="milefolio-mil-em-rama_receitas.html">Óleo macerado de milefólio para massagens locais:</a> óleo vegetal onde as flores foram maceradas, aplicado em massagens suaves em zonas com tensão ou inflamação ligeira. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="milefolio-mil-em-rama_receitas.html">Xarope simples de milefólio para apoio respiratório suave:</a> preparado adoçado que incorpora infusão de milefólio, tomado em colheres para aliviar tosse irritativa ligeira. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>Do ponto de vista tradicional e segundo monografias europeias, o milefólio é uma planta de referência para queixas digestivas funcionais, como perda de apetite, digestões lentas, gases e cólicas intestinais ligeiras. As ações amargo-aromática, carminativa, antiespasmódica e ligeiramente colerética explicam grande parte destes usos, em particular quando associado a uma alimentação equilibrada e a outras plantas digestivas. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a></p>
+      <p>O milefólio é igualmente valorizado como planta diaforética suave em estados gripais e febris, ajudando a promover a transpiração e o alívio de arrepios, bem como como adjuvante em pequenas infeções respiratórias de evolução benigna, frequentemente em combinação com sabugueiro, tília ou hortelã. <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-M7">[M7]</a></p>
+      <p>A afinidade desta planta pelo sistema circulatório e pelo útero levou ao seu uso tradicional em menstruações dolorosas, menstruações abundantes e varizes superficiais, sempre em doses moderadas e com cautela em situações de maior risco hemorrágico. Estudos modernos apontam também para propriedades anti-inflamatórias, antioxidantes e moduladoras da coagulação, que podem contribuir para estes efeitos. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-M7">[M7]</a></p>
+      <p>Estudos experimentais e revisões recentes destacam ainda o potencial cicatrizante, antimicrobiano e anti-inflamatório de extratos de Achillea millefolium, justificando o uso externo em pequenas feridas, dermatites e outras afecções cutâneas ligeiras. No entanto, a evidência clínica robusta ainda é limitada para muitas indicações, devendo a planta ser vista como adjuvante e não como substituto de terapêutica médica estruturada. <a href="#ref-M2">[M2]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-M6">[M6]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Adjuvante em perda temporária de apetite, digestões lentas, flatulência e espasmos gastrointestinais ligeiros, em associação a medidas dietéticas adequadas. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a></li>
+        <li>Planta de suporte em constipações e estados gripais ligeiros, com ação diaforética suave e possível apoio na modulação da resposta inflamatória. <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-M7">[M7]</a></li>
+        <li>Ajuda complementar em cólicas menstruais ligeiras e menstruações abundantes funcionais em mulheres saudáveis, quando usada por períodos curtos e com prudência. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M5">[M5]</a></li>
+        <li>Suporte externo em pequenas feridas superficiais, inflamações cutâneas ligeiras e varizes superficiais, através de compressas, banhos e lavagens com infusões concentradas. <a href="#ref-M2">[M2]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-M6">[M6]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>Achillea millefolium contém uma combinação complexa de compostos bioativos, incluindo óleo essencial, flavonoides, ácidos fenólicos, lactonas sesquiterpénicas, cumarinas e taninos. Estudos de composição indicam que as sumidades floridas secas apresentam teores típicos de cerca de 0,2–1,0 % de óleo essencial, onde se destacam monoterpenos como β‑pineno, eucaliptol (1,8‑cineol), limoneno e sesquiterpenos como β‑cariofileno, bem como derivados de azulenos (como o chamazuleno) formados durante a destilação. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F4">[F4]</a></p>
+      <p>Extratos hidroalcoólicos e aquosos de milefólio são ricos em fenólicos e flavonoides, incluindo ácidos fenólicos como o ácido clorogénico e o ácido rosmarínico, e flavonoides como apigenina, luteolina e quercetina. Determinações quantitativas em diferentes trabalhos indicam conteúdos de fenólicos totais frequentemente na ordem das centenas de mg de equivalentes de ácido gálico por grama de extrato seco, com atividade antioxidante relevante em ensaios como DPPH e ABTS. <a href="#ref-F3">[F3]</a> <a href="#ref-F5">[F5]</a> <a href="#ref-F6">[F6]</a></p>
+      <p>Revisões recentes sobre Achillea millefolium descrevem ainda atividades anti-inflamatórias, antiespasmódicas, hemostáticas, cicatrizantes e possivelmente antitumorais em modelos experimentais, associadas a diferentes frações (óleo essencial, extratos metanólicos e hidroalcoólicos). A intensidade destes efeitos varia com a origem da planta, o quimiotipo e o método de extração, pelo que os valores apresentados devem ser entendidos como intervalos aproximados. <a href="#ref-F1">[F1]</a> <a href="#ref-F5">[F5]</a> <a href="#ref-F6">[F6]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Teor de óleo essencial nas sumidades floridas secas</td><td>0,2–1,0 % m/m (droga seca)</td></tr>
+        <tr><td>Chamazuleno no óleo essencial</td><td>≈1–20 % m/m (do óleo essencial)</td></tr>
+        <tr><td>Fenóis totais em extratos hidroalcoólicos da erva</td><td>≈100–200 mg GAE/g de extrato seco</td></tr>
+        <tr><td>Flavonoides totais em extratos da erva</td><td>≈20–80 mg/g de extrato seco</td></tr>
+        <tr><td>Capacidade antioxidante total de extratos (DPPH/ABTS)</td><td>EC50 ≈50–100 µg/mL</td></tr>
+        <tr><td>Concentrações efetivas em ensaios anti-inflamatórios e antiespasmódicos in vitro</td><td>efeitos em ≈10–200 µg/mL de extrato</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Planta muito melífera e atrativa para polinizadores, incluindo abelhas e diversos insetos benéficos, sendo frequentemente incluída em prados floridos e misturas para sebes biodiversas. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a> <a href="#ref-A3">[A3]</a> <a href="#ref-P1">[P1]</a></li>
+        <li>Utilizada em permacultura e horticultura ecológica como planta companheira, ajudando a atrair insetos auxiliares e a aumentar a diversidade funcional em canteiros e pomares.</li>
+        <li>Empregue como planta ornamental em bordaduras, canteiros de flores e jardins de ervas, graças ao seu porte baixo, à floração prolongada e à resistência à seca.</li>
+        <li>Em algumas tradições europeias, o milefólio foi usado em práticas simbólicas, adivinhação e rituais ligados à proteção e à clarividência, refletindo o seu valor cultural.</li>
+        <li>A parte aérea pode ser incorporada em compostos e coberturas de solo (mulch) em pequena escala, contribuindo com biomassa aromática e nutrientes para o sistema.</li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 7,1 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em permacultura, o milefólio destaca-se como planta medicinal muito versátil, excelente fornecedora de néctar e pólen para polinizadores, e elemento ornamental de baixa manutenção para bordaduras, taludes e prados floridos. A sua rusticidade, resistência relativa à seca e capacidade de crescer em solos pobres tornam-no uma boa escolha para enriquecer a biodiversidade funcional sem grandes exigências de manejo.
+Embora forneça alguma biomassa para cobertura e compostagem, não é uma grande produtora de matéria verde em comparação com outras espécies de corte e deposição, nem oferece estrutura elevada (árvore ou arbusto). Pode ainda alastrar moderadamente por rizomas, exigindo algum controlo em canteiros intensivos. No conjunto, é uma planta de elevada utilidade medicinal e ecológica, com poucas desvantagens quando bem posicionada no desenho.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação do milefólio resulta de valores moderados em uso alimentar (ALIM=1, sobretudo como condimento ou chá ocasional) e elevados em uso medicinal (MED=2), suporte à fauna e polinizadores (ECO=2) e multifuncionalidade cultural e ecológica (MULT=2). Existe ainda um contributo relevante para a estrutura de bordaduras e prados floridos (ESTR=1), alguma contribuição para solo e biomassa (SOLO=1) e boa rusticidade em climas temperados e mediterrânicos (RUST=2), com boa adaptação a solos pobres e secos depois de estabelecido. As penalizações aplicam-se sobretudo ao potencial de causar reações alérgicas em pessoas sensíveis a Asteraceae e a um certo grau de expansão vegetativa em canteiros pouco manejados (TOX=-1, INVAS=0 ou ligeiro, COMP=0), enquanto o perigo físico direto (PERIGO) é praticamente inexistente. O valor final em escala 0–10 resulta da aplicação do algoritmo descrito em anexo (soma dos critérios positivos até 14 pontos, subtração de penalizações, com conversão por regra de três simples), situando o milefólio em cerca de 7,1/10 e indicando uma planta de elevada funcionalidade em permacultura, especialmente útil em bordaduras, prados de flores silvestres e sistemas alimentares biodiversos em que se valorize o suporte a polinizadores e o acesso fácil a uma planta medicinal polivalente.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Faroleco. Milefólio. Ficha em português com descrição botânica, nomes comuns, origem, distribuição e usos tradicionais em Portugal. Disponível em: <a href="https://faroleco.blogspot.com/2012/06/milefolio.html" target="_blank" rel="noopener">https://faroleco.blogspot.com/2012/06/milefolio.html</a></li>
+        <li id="ref-D2">[D2] Infopédia. Erva-dos-carpinteiros (Achillea millefolium). Verbete de dicionário com descrição da espécie, família, morfologia e principais nomes comuns. Disponível em: <a href="https://www.infopedia.pt/dicionarios/lingua-portuguesa/erva-dos-carpinteiros" target="_blank" rel="noopener">https://www.infopedia.pt/dicionarios/lingua-portuguesa/erva-dos-carpinteiros</a></li>
+        <li id="ref-D3">[D3] Biodiversity4All. Achillea millefolium. Registo de espécie com nome científico, nomes comuns portugueses, classificação taxonómica e ocorrências em Portugal. Disponível em: <a href="https://www.biodiversity4all.org/taxa/52821-Achillea-millefolium" target="_blank" rel="noopener">https://www.biodiversity4all.org/taxa/52821-Achillea-millefolium</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Faroleco. Milefólio. Descrição de habitat, distribuição e comportamento da planta ao longo do ano em Portugal, incluindo notas de floração e perenidade. Disponível em: <a href="https://faroleco.blogspot.com/2012/06/milefolio.html" target="_blank" rel="noopener">https://faroleco.blogspot.com/2012/06/milefolio.html</a></li>
+        <li id="ref-S2">[S2] Portal do Jardim. As mil utilidades do milefólio. Artigo que descreve a planta no jardim, indicações de cultivo, exposição e época de floração prolongada. Disponível em: <a href="https://www.portaldojardim.com/pdj/2008/01/20/as-mil-utilidades-do-milefolio/" target="_blank" rel="noopener">https://www.portaldojardim.com/pdj/2008/01/20/as-mil-utilidades-do-milefolio/</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] EMA. European Union herbal monograph on Achillea millefolium L., herba. Monografia oficial que define indicações, posologia, duração de uso e avisos de segurança para preparados com a erva de milefólio. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-opinion/draft-european-union-herbal-monograph-achillea-millefolium-l-herba-revision-1_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-opinion/draft-european-union-herbal-monograph-achillea-millefolium-l-herba-revision-1_en.pdf</a></li>
+        <li id="ref-U2">[U2] EMA. Assessment report on Achillea millefolium L., flos. Relatório de avaliação das flores de milefólio com indicações tradicionais, dados de segurança, gravidez e lactação. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-achillea-millefolium-l-flos_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-achillea-millefolium-l-flos_en.pdf</a></li>
+        <li id="ref-U3">[U3] Fitoterapia Brasil. Achillea millefolium. Monografia em português com usos, contraindicações, advertências para alergia a Asteraceae e restrições em gestantes, lactantes e crianças. Disponível em: <a href="https://fitoterapiabrasil.com.br/planta-medicinal/achillea-millefolium" target="_blank" rel="noopener">https://fitoterapiabrasil.com.br/planta-medicinal/achillea-millefolium</a></li>
+        <li id="ref-U4">[U4] Tua Saúde. Achillea millefolium: para que serve e onde encontrar (mil-em-rama). Artigo de divulgação sobre indicações, posologia tradicional e contraindicações em gravidez e amamentação. Disponível em: <a href="https://www.tuasaude.com/mil-em-rama/" target="_blank" rel="noopener">https://www.tuasaude.com/mil-em-rama/</a></li>
+        <li id="ref-U5">[U5] Tua Saúde. Chás que não pode tomar na amamentação. Lista de plantas, incluindo mil-folhas, que devem ser evitadas por falta de dados de segurança em lactantes. Disponível em: <a href="https://www.tuasaude.com/chas-que-nao-pode-tomar-na-amamentacao/" target="_blank" rel="noopener">https://www.tuasaude.com/chas-que-nao-pode-tomar-na-amamentacao/</a></li>
+        <li id="ref-U6">[U6] UTEP Herbal Safety. Herbs to Avoid During Pregnancy: Achillea millefolium. Recurso técnico que lista o milefólio como planta a evitar na gravidez devido a possíveis efeitos uterinos. Disponível em: <a href="https://www.utep.edu/herbal-safety/populations/herbs-to-avoid-during-pregnancy.html" target="_blank" rel="noopener">https://www.utep.edu/herbal-safety/populations/herbs-to-avoid-during-pregnancy.html</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] A Senhora do Monte. Milefólio – propriedades e indicações terapêuticas. Contém receita de infusão simples com 1–2 colheres de sopa de planta seca por chávena de água a ferver e recomendações de toma. Disponível em: <a href="https://asenhoradomonte.com/2014/06/29/milefolio-propriedades-e-indicacoes-terapeuticas/" target="_blank" rel="noopener">https://asenhoradomonte.com/2014/06/29/milefolio-propriedades-e-indicacoes-terapeuticas/</a></li>
+        <li id="ref-R2">[R2] Permaculture Magazine. Yarrow and its medicinal benefits. Artigo que inclui usos tradicionais de yarrow em gripes e febres, com referência a chás quentes diaforéticos e banhos. Disponível em: <a href="https://www.permaculture.co.uk/articles/yarrow-and-its-medicinal-benefits/" target="_blank" rel="noopener">https://www.permaculture.co.uk/articles/yarrow-and-its-medicinal-benefits/</a></li>
+        <li id="ref-R3">[R3] Chás do Mundo. Chá de Milefólio – Planta (Achillea millefolium). Ficha de produto em português com receita de infusão combinada de milefólio com camomila, incluindo quantidades e tempo de infusão. Disponível em: <a href="https://chasdomundo.pt/pt/chas-medicinais/milefolio-planta-achillea-millefollium" target="_blank" rel="noopener">https://chasdomundo.pt/pt/chas-medicinais/milefolio-planta-achillea-millefollium</a></li>
+        <li id="ref-R4">[R4] Oficina de Ervas. Aquileia ou Mil-folhas: para que serve e benefícios. Texto em português que descreve o uso de mil-folhas em chás femininos para cólicas menstruais e distúrbios do ciclo. Disponível em: <a href="https://www.oficinadeervas.com.br/conteudo/aquileia-ou-mil-folhas-para-que-serve-e-beneficios" target="_blank" rel="noopener">https://www.oficinadeervas.com.br/conteudo/aquileia-ou-mil-folhas-para-que-serve-e-beneficios</a></li>
+        <li id="ref-R5">[R5] A Senhora do Monte. Milefólio – propriedades e indicações terapêuticas. Secções sobre usos externos em varizes, pernas cansadas e afecções cutâneas, incluindo banhos e compressas. Disponível em: <a href="https://asenhoradomonte.com/2014/06/29/milefolio-propriedades-e-indicacoes-terapeuticas/" target="_blank" rel="noopener">https://asenhoradomonte.com/2014/06/29/milefolio-propriedades-e-indicacoes-terapeuticas/</a></li>
+        <li id="ref-R6">[R6] Ca Dentro. Milefólio. Ficha de planta medicinal com indicação de uso em hipertensão ligeira, reumatismo e problemas circulatórios, incluindo referência a chás e banhos locais. Disponível em: <a href="https://cadentro.pt/produto/milefolio/" target="_blank" rel="noopener">https://cadentro.pt/produto/milefolio/</a></li>
+        <li id="ref-R7">[R7] Natura / Darwin Nutrition. Mil-folhas: benefícios, posologia, contraindicações. Artigos que descrevem formas de uso interno e externo, incluindo doses preliminares em preparações tradicionais. Disponível em: <a href="https://www.darwin-nutrition.fr/pt/ativos/mil-folhas/" target="_blank" rel="noopener">https://www.darwin-nutrition.fr/pt/ativos/mil-folhas/</a></li>
+        <li id="ref-R8">[R8] Ask Ayurveda. Achillea millefolium. Monografia com instruções para preparação de tinturas e tomas diárias em gotas para suporte digestivo e circulatório. Disponível em: <a href="https://ask-ayurveda.com/wiki/article/48-achillea-millefolium" target="_blank" rel="noopener">https://ask-ayurveda.com/wiki/article/48-achillea-millefolium</a></li>
+        <li id="ref-R9">[R9] Jardin Feuilles de Vie. Benefits of Yarrow: A Guide to Using this Amazing Wild Herb. Artigo que inclui orientações para óleos macerados e aplicações externas em massagens e contusões ligeiras. Disponível em: <a href="https://jardinfeuillesdevie.com/benefits-of-yarrow/" target="_blank" rel="noopener">https://jardinfeuillesdevie.com/benefits-of-yarrow/</a></li>
+        <li id="ref-R10">[R10] Herbal Reality. Yarrow (Achillea millefolium). Monografia que descreve o uso de xaropes, infusões e misturas para apoio respiratório e estados gripais ligeiros. Disponível em: <a href="https://www.herbalreality.com/herb/yarrow/" target="_blank" rel="noopener">https://www.herbalreality.com/herb/yarrow/</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] EMA. Assessment report on Achillea millefolium L., flos. Documento técnico que sumariza dados farmacológicos, indicações e segurança do uso tradicional das flores de milefólio. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-achillea-millefolium-l-flos_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-achillea-millefolium-l-flos_en.pdf</a></li>
+        <li id="ref-M2">[M2] EMA. European Union herbal monograph on Achillea millefolium L., herba. Monografia oficial que descreve usos tradicionais da erva de milefólio em perda de apetite e queixas gastrointestinais espasmódicas. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-opinion/draft-european-union-herbal-monograph-achillea-millefolium-l-herba-revision-1_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-opinion/draft-european-union-herbal-monograph-achillea-millefolium-l-herba-revision-1_en.pdf</a></li>
+        <li id="ref-M3">[M3] Herbal Reality. Yarrow (Achillea millefolium). Monografia herbal que descreve ações digestivas, antiespasmódicas, diaforéticas, tónicas uterinas e cicatrizantes da planta. Disponível em: <a href="https://www.herbalreality.com/herb/yarrow/" target="_blank" rel="noopener">https://www.herbalreality.com/herb/yarrow/</a></li>
+        <li id="ref-M4">[M4] Permaculture Magazine. Yarrow and its medicinal benefits. Artigo que discute usos tradicionais de milefólio em febres, circulação periférica, menstruação e apoio cardiovascular. Disponível em: <a href="https://www.permaculture.co.uk/articles/yarrow-and-its-medicinal-benefits/" target="_blank" rel="noopener">https://www.permaculture.co.uk/articles/yarrow-and-its-medicinal-benefits/</a></li>
+        <li id="ref-M5">[M5] Saeidnia S. et al. A review on phytochemistry and medicinal properties of the genus Achillea (Iranian Journal of Basic Medical Sciences, 2011). Revisão que compila usos medicinais, compostos e mecanismos propostos para várias espécies de Achillea, incluindo A. millefolium. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3232110/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC3232110/</a></li>
+        <li id="ref-M6">[M6] Far B.F. et al. Achillea millefolium: mechanism of action, pharmacological effects and clinical applications (Heliyon, 2023). Revisão recente sobre mecanismos de ação, efeitos anti-inflamatórios, antiespasmódicos, cicatrizantes e potenciais aplicações clínicas. Disponível em: <a href="https://www.sciencedirect.com/science/article/pii/S2405844023100491" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S2405844023100491</a></li>
+        <li id="ref-M7">[M7] Darwin Nutrition. Mil-folhas: benefícios, posologia, contraindicações. Artigo em português que sumariza evidência preliminar sobre cicatrização de fissuras mamilares, efeitos anti-inflamatórios e outros potenciais benefícios. Disponível em: <a href="https://www.darwin-nutrition.fr/pt/ativos/mil-folhas/" target="_blank" rel="noopener">https://www.darwin-nutrition.fr/pt/ativos/mil-folhas/</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Saeidnia S. et al. A review on phytochemistry and medicinal properties of the genus Achillea (Iranian Journal of Basic Medical Sciences, 2011). Descreve grupos de compostos em Achillea millefolium (óleo essencial, flavonoides, ácidos fenólicos, lactonas sesquiterpénicas) e as respetivas atividades farmacológicas. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3232110/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC3232110/</a></li>
+        <li id="ref-F2">[F2] Dias M.I. et al. Chemical composition and antioxidant activity of wild and commercial Achillea millefolium L. herbs (trabalho alojado na Biblioteca Digital do IPB). Apresenta teores de óleo essencial, composição de monoterpenos e sesquiterpenos e dados de atividade antioxidante. Disponível em: <a href="https://bibliotecadigital.ipb.pt/server/api/core/bitstreams/0b267ceb-bfb7-4b00-b607-82f23c4db6f8/content" target="_blank" rel="noopener">https://bibliotecadigital.ipb.pt/server/api/core/bitstreams/0b267ceb-bfb7-4b00-b607-82f23c4db6f8/content</a></li>
+        <li id="ref-F3">[F3] Konarska A. et al. Phenolic Compounds in Flowers and Herb of Achillea millefolium (Molecules, 2025). Estudo que quantifica compostos fenólicos e flavonoides em flores e erva, com valores típicos de fenólicos totais em centenas de mg GAE/g de extrato. Disponível em: <a href="https://www.mdpi.com/1420-3049/30/9/2084" target="_blank" rel="noopener">https://www.mdpi.com/1420-3049/30/9/2084</a></li>
+        <li id="ref-F4">[F4] Rahimmalek M. et al. Essential oil variation among and within six Achillea species (Industrial Crops and Products, 2009). Relata variação no teor de óleo essencial de A. millefolium e outras espécies, com intervalos de 0,1–2,7 % m/m nas partes aéreas. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0926669008001283" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S0926669008001283</a></li>
+        <li id="ref-F5">[F5] Székely-Szentmiklósi I. et al. Investigation of Yarrow Essential Oil Composition and Biological Activity (Applied Sciences, 2024). Artigo que caracteriza a composição do óleo essencial de milefólio e avalia atividades antioxidantes e antimicrobianas. Disponível em: <a href="https://www.mdpi.com/2076-3417/14/17/7867" target="_blank" rel="noopener">https://www.mdpi.com/2076-3417/14/17/7867</a></li>
+        <li id="ref-F6">[F6] Górska-Drabik E. et al. Chemical Composition and Toxicity of Achillea millefolium L. Essential Oil (Plants, 2025). Descreve percentagens de componentes principais do óleo essencial (β-pineno, eucaliptol, chamazuleno, β-cariofileno) e avalia toxicidade em modelos experimentais. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12073657/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC12073657/</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Permaculture Magazine. Yarrow and its medicinal benefits. Artigo que destaca o milefólio como planta melífera, atraente para polinizadores e útil em prados floridos e bordaduras biodiversas. Disponível em: <a href="https://www.permaculture.co.uk/articles/yarrow-and-its-medicinal-benefits/" target="_blank" rel="noopener">https://www.permaculture.co.uk/articles/yarrow-and-its-medicinal-benefits/</a></li>
+        <li id="ref-A2">[A2] Portal do Jardim. As mil utilidades do milefólio. Texto em português que descreve o uso da planta no jardim ornamental, em bordaduras e como recurso para insetos úteis. Disponível em: <a href="https://www.portaldojardim.com/pdj/2008/01/20/as-mil-utilidades-do-milefolio/" target="_blank" rel="noopener">https://www.portaldojardim.com/pdj/2008/01/20/as-mil-utilidades-do-milefolio/</a></li>
+        <li id="ref-A3">[A3] Naturitas. Milefólio. Ficha comercial que refere o uso tradicional da planta desde a Antiguidade, as múltiplas aplicações medicinais e o interesse na saúde vascular. Disponível em: <a href="https://www.naturitas.pt/c/suplementos/fitoterapia/milefolio" target="_blank" rel="noopener">https://www.naturitas.pt/c/suplementos/fitoterapia/milefolio</a></li>
+        <li id="ref-A4">[A4] eCycle. Mil-folhas: o que é, origem e benefícios. Artigo que menciona benefícios em doenças inflamatórias, neurológicas e cardiovasculares, bem como aspetos culturais da planta. Disponível em: <a href="https://www.ecycle.com.br/mil-folhas/" target="_blank" rel="noopener">https://www.ecycle.com.br/mil-folhas/</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] Permaculture Magazine. Yarrow and its medicinal benefits. Descreve o milefólio como planta de grande utilidade em jardins de permacultura, prados floridos e sistemas de policultura, realçando o suporte a polinizadores e a biodiversidade. Disponível em: <a href="https://www.permaculture.co.uk/articles/yarrow-and-its-medicinal-benefits/" target="_blank" rel="noopener">https://www.permaculture.co.uk/articles/yarrow-and-its-medicinal-benefits/</a></li>
+        <li id="ref-P2">[P2] Portal do Jardim. As mil utilidades do milefólio. Enfatiza a rusticidade, baixa manutenção e papel ecológico da espécie em jardins naturais e sistemas de baixo input. Disponível em: <a href="https://www.portaldojardim.com/pdj/2008/01/20/as-mil-utilidades-do-milefolio/" target="_blank" rel="noopener">https://www.portaldojardim.com/pdj/2008/01/20/as-mil-utilidades-do-milefolio/</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html" class="ativa">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="boldo-brasileiro.html">Boldo-brasileiro</a>
+  <a class="next" href="borragem.html">Borragem</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Boldo-do-Chile (<em>Peumus boldus Molina</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Monimiaceae</span>
+  <span>Parte usada: folhas secas aromáticas</span>
+  <span>Tipo: árvore ou arbusto medicinal aromático</span>
+  <span>Produção: <strong>cultivo em pomares e jardins</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> nativa da zona central do Chile, difundida no Mediterrâneo</div>
+  <div><strong>Uso principal</strong> apoio digestivo e hepatobiliar, desconfortos pós-refeição e cólicas</div>
+  <div><strong>Perfil medicinal</strong> colerético, hepatoprotetor, digestivo, antioxidante, depurativo e antiespasmódico suave</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Boldo-do-Chile (Peumus boldus Molina)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>O boldo-do-Chile (Peumus boldus Molina) é uma pequena árvore ou grande arbusto perene, aromático, que pode atingir entre 6 e 12 metros de altura na sua área de origem, com copa densa e folhas persistentes, coriáceas e fortemente aromáticas. Pertence à família Monimiaceae e é uma espécie característica das florestas esclerófilas da zona central do Chile, adaptada a verões secos e invernos suaves.</p>
+      <p>Em português é conhecido como boldo-do-Chile ou simplesmente boldo, sendo frequente a confusão com outras espécies também chamadas &quot;boldo&quot; (como o boldo-da-terra ou boldo-brasileiro, Plectranthus barbatus, e o boldo-baiano, Vernonia condensata), que pertencem a famílias diferentes e apresentam perfis de segurança próprios. Em inglês, Peumus boldus é habitualmente designado por boldo, Chilean boldo ou boldo tree. As folhas do verdadeiro boldo-do-Chile são espessas, verde-acinzentadas, com margens ligeiramente recurvadas e um aroma resinoso característico.</p>
+      <p>As folhas são usadas como droga medicinal e como aromatizante culinário, em infusões digestivas e, nalguns contextos, como condimento para pratos salgados e para misturas com erva-mate. O princípio ativo mais estudado é a boldina, um alcaloide com atividade espasmolítica e efeitos hepatoprotetores em modelos experimentais, ao lado de um conjunto de compostos fenólicos e de um óleo essencial rico em monoterpenos oxigenados.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Na sua área de origem, no Chile central, o boldo-do-Chile é uma espécie perene de clima mediterrânico, com crescimento ativo sobretudo na primavera e outono, entrando em relativa dormência durante o pico de verão seco e os períodos de frio mais intenso. Em Portugal continental, quando cultivado em regiões de inverno suave (sobretudo litoral centro e sul), comporta-se como um arbusto ou pequena árvore perene, com folhas disponíveis ao longo de todo o ano.
+Para uso medicinal, as fontes de farmacognosia referem que as folhas podem ser colhidas em qualquer época, privilegiando ramos adultos bem desenvolvidos, mas em cultivo ecológico é comum concentrar as podas de colheita no final da primavera e no verão, quando o crescimento vegetativo é mais vigoroso e as folhas apresentam maior teor de compostos aromáticos.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Crescimento vegetativo ativo: sobretudo na primavera e outono, em climas mediterrânicos suaves.</li>
+        <li>Floração: geralmente na primavera, variando com o clima local e a idade das plantas.</li>
+        <li>Folhagem: perene, com folhas disponíveis ao longo de todo o ano em regiões de inverno ameno.</li>
+        <li>Época de colheita recomendada: colheitas escalonadas de folhas ao longo do ano, com preferência por ramos bem folhosos no final da primavera e no verão, evitando desfolha excessiva da planta.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Infusões de folhas secas de Peumus boldus, preparadas com cerca de 1–2 g de droga por chávena (150–200 mL) de água recém-fervida, deixando em infusão 5–10 minutos e administrando 2–3 vezes por dia, são descritas em monografias europeias e latino-americanas para o alívio sintomático de dispepsias ligeiras, sensação de enfartamento pós-prandial e espasmos gastrointestinais leves. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-F1">[F1]</a></li>
+        <li>Extratos hidroalcoólicos padronizados em boldina, administrados em cápsulas ou comprimidos, são utilizados em fitoterapia em alguns países para apoio da função hepatobiliar e digestiva, existindo estudos experimentais que demonstram efeitos hepatoprotetores, antioxidantes e coleréticos em modelos animais. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a></li>
+        <li>Ensaios in vitro com extratos de folhas de Peumus boldus mostraram capacidade antioxidante relevante, inibição de espécies reativas de oxigénio e efeitos moduladores sobre enzimas de biotransformação hepática, o que pode ajudar a explicar a tradição de uso da planta em distúrbios hepatobiliares e digestivos. <a href="#ref-M2">[M2]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Uso muito difundido do &quot;chá de boldo&quot; em Portugal e no Brasil, preparado com 1 colher de chá de folhas secas de boldo-do-Chile ou boldo brasileiro em 150–200 mL de água quente, deixado em infusão por alguns minutos, como remédio caseiro para má digestão, azia, sensação de peso no estômago e desconforto após refeições copiosas. <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a> <a href="#ref-R3">[R3]</a></li>
+        <li>Emprego tradicional de infusões de boldo como apoio em quadros de desconforto hepático ligeiro, má disposição e ressaca após excesso alimentar ou de álcool, frequentemente em combinação com outras plantas digestivas e coleréticas. <a href="#ref-R2">[R2]</a> <a href="#ref-R4">[R4]</a> <a href="#ref-A1">[A1]</a></li>
+        <li>Preparação de macerados a frio com folhas frescas de boldo (especialmente do boldo-da-terra em contextos domésticos), em água à temperatura ambiente, como alternativa ao chá quente para reduzir o sabor amargo intenso e obter efeito digestivo suave. <a href="#ref-R1">[R1]</a> <a href="#ref-R3">[R3]</a></li>
+        <li>Associação de boldo com outras plantas em misturas para o fígado e vesícula biliar, designadamente alcachofra, dente-de-leão e camomila, em tisanas comercializadas como apoio à digestão e ao conforto abdominal. <a href="#ref-R2">[R2]</a> <a href="#ref-R5">[R5]</a> <a href="#ref-A1">[A1]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>Embora as infusões aquosas de folhas de boldo-do-Chile em doses moderadas sejam tradicionalmente usadas para distúrbios digestivos leves, as principais entidades reguladoras alertam para riscos de toxicidade associados a constituintes específicos, em particular o monoterpeno ascaridole presente no óleo essencial. O uso de óleo essencial de boldo, interno ou externo, não é recomendado. Preparações hidroalcoólicas concentradas também podem concentrar ascaridole e alcaloides, exigindo supervisão profissional. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></p>
+      <p>Estudos e relatórios de casos clínicos documentam hepatotoxicidade associada ao consumo prolongado ou em doses elevadas de folhas de Peumus boldus, por vezes em combinação com outros produtos naturais, incluindo casos de hepatite colestática e icterícia. Pessoas com doença hepática, inflamação das vias biliares, cálculos biliares, pancreatite, insuficiência renal significativa ou história de hepatotoxicidade induzida por medicamentos não devem utilizar boldo sem aconselhamento médico. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U4">[U4]</a></p>
+      <p>O uso é geralmente desaconselhado em grávidas, lactantes e crianças, devido à ausência de dados de segurança robustos e à possibilidade de efeitos abortivos em doses elevadas observados em modelos animais. Recomenda-se limitar o uso caseiro a períodos curtos, em doses moderadas, e evitar o uso concomitante com outros produtos potencialmente hepatotóxicos ou com fármacos de janela terapêutica estreita sem supervisão. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U5">[U5]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        Os preparados com folhas de boldo-do-Chile utilizam-se principalmente sob a forma de infusão simples, macerado a frio e, em contextos clínicos ou farmacêuticos, extratos padronizados em boldina. Em fitoterapia caseira privilegiam-se infusões leves, com 1 colher de chá de folhas secas por chávena, tomadas por períodos curtos para apoio digestivo e hepatobiliar, respeitando as contraindicações e limites de segurança. Receitas populares incluem chás de boldo simples, macerados com folhas frescas e combinações com outras plantas digestivas, sempre enquadradas pelo aviso de não prolongar o uso sem supervisão profissional.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="boldo-do-chile_receitas.html">Chá de boldo simples:</a> infusão de folhas secas em água quente, tomada após refeições para aliviar desconfortos digestivos e sensação de enfartamento. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="boldo-do-chile_receitas.html">Chá de boldo com folhas frescas:</a> infusão suave preparada com poucas folhas frescas da planta, consumida após refeições mais pesadas para facilitar a digestão. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="boldo-do-chile_receitas.html">Macerado a frio de boldo:</a> preparação de folhas de boldo em água fria, deixadas repousar algumas horas, usada como alternativa mais suave ao chá quente em estômagos sensíveis. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="boldo-do-chile_receitas.html">Infusão digestiva combinada de boldo e camomila:</a> mistura de boldo com camomila em infusão morna, utilizada para aliviar distúrbios digestivos nervosos e espasmos gastrointestinais ligeiros. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="boldo-do-chile_receitas.html">Infusão hepatobiliar com boldo e alcachofra:</a> combinação de boldo-do-Chile com folhas de alcachofra em chá amargo, utilizada em programas curtos de apoio ao fígado e vesícula biliar. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="boldo-do-chile_receitas.html">Chá de boldo para excesso alimentar:</a> infusão mais concentrada tomada ocasionalmente após excessos alimentares, em quadros de indigestão ligeira, sempre por períodos curtos. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="boldo-do-chile_receitas.html">Mistura de boldo com erva-mate:</a> bebida quente que une boldo e erva-mate, em proporções moderadas, para suavizar o sabor e reforçar o efeito digestivo suave. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="boldo-do-chile_receitas.html">Infusão suave de boldo para uso noturno:</a> chá ligeiro de boldo tomado ao final do dia, utilizado ocasionalmente quando há sensação de estômago pesado antes de dormir. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="boldo-do-chile_receitas.html">Infusão de boldo-do-Chile em saqueta:</a> chá de boldo pronto a usar em saquetas individuais, preparado conforme as instruções da embalagem para apoio digestivo pontual. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="boldo-do-chile_receitas.html">Infusão culinária com boldo:</a> uso de pequena quantidade de folhas de boldo em caldos e molhos, lembrando o uso da folha de louro para aromatizar pratos gordurosos. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>A evidência tradicional e regulamentar descreve o boldo-do-Chile como uma planta medicinal sobretudo digestiva, espasmolítica e colerética/colagoga. Monografias europeias e latino-americanas reconhecem o uso de preparações de folhas de Peumus boldus para o alívio sintomático de dispepsia, desconforto abdominal e espasmos ligeiros do trato gastrointestinal, com base em longa história de utilização. Em alguns países é também utilizado como adjuvante em distúrbios funcionais da vesícula biliar. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a></p>
+      <p>Estudos farmacológicos com extratos de folhas e com boldina demonstram efeitos hepatoprotetores em modelos experimentais de hepatotoxicidade química, bem como atividades antioxidantes, anti-inflamatórias e moduladoras de enzimas de biotransformação hepática. Estes resultados ajudam a justificar o uso tradicional em distúrbios hepatobiliares leves e na proteção do fígado frente a agressões oxidativas, ainda que os dados clínicos humanos sejam limitados. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>Revisões recentes sugerem que a combinação de alcaloides (sobretudo boldina) e compostos fenólicos contribui também para efeitos potenciais sobre o metabolismo lipídico, a resistência à insulina e a inflamação crónica de baixo grau, com estudos em modelos animais de obesidade, diabetes e doenças cardiovasculares. No entanto, estes usos permanecem numa fase predominantemente experimental e não constituem indicações aprovadas em fitoterapia regulamentada. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F4">[F4]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Alívio sintomático de dispepsia funcional, sensação de enfartamento pós-prandial, flatulência e espasmos leves do trato gastrointestinal. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a></li>
+        <li>Adjuvante em distúrbios funcionais hepatobiliares ligeiros, como sensação de congestão hepática e desconforto após refeições gordurosas, dentro de planos abrangentes que incluem dieta adequada e redução de álcool. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a></li>
+        <li>Apoio antioxidante e hepatoprotetor em modelos experimentais de lesão hepática induzida por agentes químicos, com redução de marcadores de stress oxidativo e melhoria de parâmetros bioquímicos hepáticos em animais. <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a></li>
+        <li>Potencial ação anti-inflamatória e moduladora de fatores de risco metabólicos (como resistência à insulina e dislipidemia) em modelos animais, sugerindo possível interesse futuro como adjuvante em doenças cardiometabólicas, ainda sem recomendações clínicas consolidadas. <a href="#ref-M2">[M2]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F4">[F4]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>As folhas de Peumus boldus contêm uma fração rica em alcaloides aporfinóides, dos quais a boldina é o principal representante, bem como uma diversidade de compostos fenólicos (flavonoides, ácidos fenólicos) e um óleo essencial característico. Revisões farmacognósticas referem teores típicos de boldina na gama de décimos de percentagem em massa na folha seca, e variação considerável entre populações e métodos de extração. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>O óleo essencial de boldo-do-Chile, presente em teores relativamente baixos nas folhas, é rico em monoterpenos oxigenados como ascaridole, 1,8-cineol e p-cimeno. A ascaridole, em particular, é reconhecida como composta potencialmente tóxica (neurotóxica e hepatotóxica) em doses elevadas, o que levou as entidades reguladoras europeias a desaconselharem o uso de óleo essencial e a recomendarem atenção à exposição total a este composto em preparados de folha. <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></p>
+      <p>Extratos aquosos e hidroalcoólicos de folhas de Peumus boldus mostram teores significativos de compostos fenólicos totais e elevada atividade antioxidante in vitro, com capacidade de neutralizar espécies reativas de oxigénio e quelar metais. Estudos com diferentes solventes, incluindo solventes eutéticos naturais, mostram que é possível concentrar de forma seletiva alcaloides (como boldina) e polifenóis, o que influencia a potência antioxidante, hepatoprotetora e, potencialmente, outras atividades farmacológicas dos extratos. <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Boldina em folhas secas</td><td>≈1,2–1,4 mg/g</td></tr>
+        <tr><td>Rendimento de óleo essencial em folhas secas</td><td>≈0,2–0,4 %</td></tr>
+        <tr><td>Ascaridole no óleo essencial de folhas</td><td>≈16–38 %</td></tr>
+        <tr><td>Compostos fenólicos totais em extratos de folhas</td><td>≈20–40 mg GAE/g</td></tr>
+        <tr><td>Atividade antioxidante (ensaio DPPH) de extratos de folhas</td><td>≈20–60 µg/mL</td></tr>
+        <tr><td>Teor de boldina em extratos aquosos/etanólicos selecionados</td><td>≈300–400 mg/L</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Uso culinário das folhas como aromatizante em caldos, pratos de carne, cogumelos e molhos, de forma semelhante à folha de louro, retirando a folha antes de servir. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Utilização tradicional de folhas secas em misturas de erva-mate e outras tisanas, para conferir aroma resinoso e efeito digestivo. <a href="#ref-A1">[A1]</a> <a href="#ref-D3">[D3]</a></li>
+        <li>Planta ornamental e aromática para jardins de clima mediterrânico suave, contribuindo com textura persistente e aroma intenso em sebes baixas ou como exemplar isolado. <a href="#ref-D1">[D1]</a> <a href="#ref-D3">[D3]</a></li>
+        <li>Emprego da madeira densa, em pequena escala, para usos locais e artesanais, em particular em regiões de origem no Chile. <a href="#ref-A2">[A2]</a></li>
+        <li>Interesse ecológico local como componente de matos e bosques esclerófilos, oferecendo alimento e abrigo a fauna nativa e insetos, embora este papel seja menos relevante em áreas de introdução limitada. <a href="#ref-D1">[D1]</a> <a href="#ref-D3">[D3]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 6,7 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em sistemas de permacultura de clima mediterrânico suave, o boldo-do-Chile pode desempenhar funções interessantes como pequena árvore ou grande arbusto perene aromático: fornece sombra parcial, estrutura de médio porte, folhas aromáticas para uso medicinal e culinário e algum suporte à biodiversidade local através da flor e do fruto. A rusticidade em solos bem drenados e a tolerância relativa à seca, uma vez estabelecido, tornam-no uma opção interessante para zonas mais secas e taludes.
+Por outro lado, trata-se de uma espécie exótica, de crescimento relativamente lento fora da sua área de origem e com foco funcional essencialmente medicinal/digestivo. Não fornece alimento de base em quantidade significativa e apresenta um perfil de segurança que exige prudência, o que limita o seu uso massivo como planta-chave de segurança alimentar. O grau atribuído reflete assim uma boa multifuncionalidade (medicinal, aromática, estrutural moderada), mas com peso limitado em termos alimentares e ecológicos em muitos jardins e hortas, sobretudo onde a espécie não é nativa.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação resulta de uma avaliação qualitativa em que o boldo-do-Chile obtém valores elevados em função medicinal (MED) e multifuncionalidade cultural (MULT), moderados em estrutura/porte (ESTR) e rusticidade (RUST) em climas adequados, e baixos em função alimentar (ALIM). Não se considera uma espécie invasora no contexto português (INVAS≈0), mas penaliza-se ligeiramente o seu contributo limitado para biomassa/solo (SOLO) e o facto de ser uma árvore exótica de crescimento relativamente lento fora do habitat original.
+O grau sintetiza o balanço entre uma planta medicinal e aromática valiosa, mas de nicho, e a necessidade de integrar espécies mais produtivas em termos alimentares e de biomassa quando se desenha um sistema de permacultura. A metodologia segue o algoritmo do projeto, somando funções positivas (alimentares, medicinais, ecológicas, estruturais) e subtraindo possíveis limitações ou riscos.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-D1">[D1]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Wikipedia (PT). &quot;Peumus boldus&quot; (boldo-do-Chile). Artigo com descrição botânica, nomes comuns, origem, distribuição e usos medicinais básicos.</li>
+        <li>URL: <a href="https://pt.wikipedia.org/wiki/Peumus_boldus" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Peumus_boldus</a></li>
+        <li id="ref-D2">[D2] Wikipedia (EN). &quot;Boldo&quot;. Entrada em inglês que descreve Peumus boldus, características morfológicas, usos culinários e medicinais, bem como notas sobre toxicidade e composição do óleo essencial.</li>
+        <li>URL: <a href="https://en.wikipedia.org/wiki/Boldo" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Boldo</a></li>
+        <li id="ref-D3">[D3] Índice EU. &quot;Peumus Boldus Molina – informação geral&quot;. Ficha em português sobre boldo-do-Chile, com resumo de propriedades farmacológicas e indicações como planta medicinal digestiva e espasmolítica.</li>
+        <li>URL: <a href="https://www.indice.eu/pt/medicamentos/DCI/peumus-boldus-molina/informacao-geral" target="_blank" rel="noopener">https://www.indice.eu/pt/medicamentos/DCI/peumus-boldus-molina/informacao-geral</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Biodiversity4All. &quot;Peumus boldus (boldo-do-chile)&quot;. Registos de ocorrência e notas breves sobre porte e distribuição da espécie em Portugal.</li>
+        <li>URL: <a href="https://www.biodiversity4all.org/taxa/326673-Peumus-boldus" target="_blank" rel="noopener">https://www.biodiversity4all.org/taxa/326673-Peumus-boldus</a></li>
+        <li id="ref-S2">[S2] Soria Natural. &quot;Boldo (Peumus boldus Mol.)&quot;. Enciclopédia de plantas com informação sobre origem, condições ecológicas e utilização em produtos fitoterápicos.</li>
+        <li>URL: <a href="https://www.sorianatural.com/pt/enciclopedia-de-plantas/boldo" target="_blank" rel="noopener">https://www.sorianatural.com/pt/enciclopedia-de-plantas/boldo</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] European Medicines Agency (EMA). &quot;Assessment report on Peumus boldus Molina, folium&quot;. Relatório de avaliação que resume composição, indicações tradicionais, segurança e conclui que o óleo essencial não deve ser utilizado devido à toxicidade do ascaridole.</li>
+        <li>URL: <a href="https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-peumus-boldus-molina-folium_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-peumus-boldus-molina-folium_en.pdf</a></li>
+        <li id="ref-U2">[U2] Sá AO et al. &quot;Boldo-Induced Hepatotoxicity: A Case of Unexplained Jaundice&quot;. Relato de caso de hepatotoxicidade associada ao consumo de infusão de folhas de boldo em idosa, com icterícia e alterações enzimáticas hepáticas.</li>
+        <li>URL: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7806290/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC7806290/</a></li>
+        <li id="ref-U3">[U3] Nortadas R et al. &quot;Herbal therapy-induced toxic hepatitis – a case report&quot;. Artigo que descreve casos de hepatite colestática relacionados com Peumus boldus e outros fitoterápicos, discutindo possíveis mecanismos de toxicidade.</li>
+        <li>URL: <a href="https://www.spmi.pt/revista/vol18/eng_vol18_n2_2011_089_092.pdf" target="_blank" rel="noopener">https://www.spmi.pt/revista/vol18/eng_vol18_n2_2011_089_092.pdf</a></li>
+        <li id="ref-U4">[U4] Vida Ativa. &quot;Chá de boldo: benefícios e precauções da sua toma&quot;. Artigo em português que aborda benefícios digestivos do chá de boldo e lista contraindicações, incluindo problemas hepáticos e gravidez.</li>
+        <li>URL: <a href="https://www.vidaativa.pt/cha-de-boldo/" target="_blank" rel="noopener">https://www.vidaativa.pt/cha-de-boldo/</a></li>
+        <li id="ref-U5">[U5] Revista Saúde Abril. &quot;Chá de boldo: quais os benefícios e riscos para a saúde?&quot;. Texto de divulgação com secção específica sobre quem não deve tomar o chá de boldo e por quanto tempo.</li>
+        <li>URL: <a href="https://saude.abril.com.br/alimentacao/cha-de-boldo-saiba-beneficios-saude/" target="_blank" rel="noopener">https://saude.abril.com.br/alimentacao/cha-de-boldo-saiba-beneficios-saude/</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Tua Saúde. &quot;Chá de boldo: para que serve e como fazer&quot;. Explica benefícios e fornece receita detalhada de chá de boldo com quantidades de folhas secas ou frescas e tempo de infusão.</li>
+        <li>URL: <a href="https://www.tuasaude.com/cha-de-boldo/" target="_blank" rel="noopener">https://www.tuasaude.com/cha-de-boldo/</a></li>
+        <li id="ref-R2">[R2] EU Atleta / Globo. &quot;Chá de boldo serve para quê? Benefícios e como fazer&quot;. Artigo que descreve propriedades, contraindicações e receita básica para preparar chá de boldo.</li>
+        <li>URL: <a href="https://receitas.globo.com/blog/alimentacao-e-saude/cha-de-boldo-serve-para-que-veja-beneficios-e-como-fazer.ghtml" target="_blank" rel="noopener">https://receitas.globo.com/blog/alimentacao-e-saude/cha-de-boldo-serve-para-que-veja-beneficios-e-como-fazer.ghtml</a></li>
+        <li id="ref-R3">[R3] Diário do Nordeste. &quot;Chá de boldo: para que serve, como fazer e quem não deve tomar&quot;. Inclui modo de preparo com proporção de 1 colher de chá de folhas secas para 150–200 mL de água.</li>
+        <li>URL: <a href="https://diariodonordeste.verdesmares.com.br/ser-saude/cha-de-boldo-para-que-serve-como-fazer-e-quem-nao-deve-tomar-1.3120622/leia-tamb%C3%A9m-1.3120672/ch%C3%A1-de-canela-benef%C3%ADcios-como-fazer-e-quem-n%C3%A3o-pode-tomar-7.4546438" target="_blank" rel="noopener">https://diariodonordeste.verdesmares.com.br/ser-saude/cha-de-boldo-para-que-serve-como-fazer-e-quem-nao-deve-tomar-1.3120622/leia-tamb%C3%A9m-1.3120672/ch%C3%A1-de-canela-benef%C3%ADcios-como-fazer-e-quem-n%C3%A3o-pode-tomar-7.4546438</a></li>
+        <li id="ref-R4">[R4] Vida Ativa. &quot;Chá de boldo: benefícios e precauções da sua toma&quot;. Para além de listar benefícios e riscos, descreve a forma de preparação do chá de boldo.</li>
+        <li>URL: <a href="https://www.vidaativa.pt/cha-de-boldo/" target="_blank" rel="noopener">https://www.vidaativa.pt/cha-de-boldo/</a></li>
+        <li id="ref-R5">[R5] E-Konomista. &quot;Chá de boldo: ideal para os excessos&quot;. Artigo com receita simples de chá de boldo e orientações de consumo após refeições pesadas.</li>
+        <li>URL: <a href="https://www.e-konomista.pt/cha-de-boldo/" target="_blank" rel="noopener">https://www.e-konomista.pt/cha-de-boldo/</a></li>
+        <li id="ref-R6">[R6] Terra / Guia da Cozinha. &quot;Chá de boldo: saiba como preparar e quais são os benefícios&quot;. Apresenta modo de preparo passo a passo e lista de situações em que a bebida é usada.</li>
+        <li>URL: <a href="https://www.terra.com.br/vida-e-estilo/degusta/receitas/cha-de-boldo-saiba-como-preparar-e-quais-sao-os-beneficios%2C5c060727df86b4b9753618a961655f6fvhokkd3z.html" target="_blank" rel="noopener">https://www.terra.com.br/vida-e-estilo/degusta/receitas/cha-de-boldo-saiba-como-preparar-e-quais-sao-os-beneficios%2C5c060727df86b4b9753618a961655f6fvhokkd3z.html</a></li>
+        <li id="ref-R7">[R7] Drogasil. &quot;Chá de boldo: para que serve, benefícios e como fazer&quot;. Artigo com receita detalhada e limites de consumo diário recomendados.</li>
+        <li>URL: <a href="https://www.drogasil.com.br/blog/alimentacao/receitas/cha-de-boldo" target="_blank" rel="noopener">https://www.drogasil.com.br/blog/alimentacao/receitas/cha-de-boldo</a></li>
+        <li id="ref-R8">[R8] Receitas Nestlé Brasil. &quot;Chá de boldo: para que serve, benefícios e como fazer&quot;. Descreve ingredientes, modo de preparo e dicas de consumo.</li>
+        <li>URL: <a href="https://www.receitasnestle.com.br/artigos/cha-boldo" target="_blank" rel="noopener">https://www.receitasnestle.com.br/artigos/cha-boldo</a></li>
+        <li id="ref-R9">[R9] Chás do Mundo. &quot;Chá de Boldo do Chile Peumus boldus ideal para Fígado&quot;. Texto em português que descreve modo de preparo e principais usos digestivos.</li>
+        <li>URL: <a href="https://chasdomundo.pt/pt/chas-medicinais/cha-de-boldo-do-chile-peumus-boldus" target="_blank" rel="noopener">https://chasdomundo.pt/pt/chas-medicinais/cha-de-boldo-do-chile-peumus-boldus</a></li>
+        <li id="ref-R10">[R10] Guia da Cozinha / Terra. &quot;Chá de boldo: saiba como preparar e quais são os benefícios&quot;. Utilizado aqui como referência para variações de receita e integração do chá em contextos culinários.</li>
+        <li>URL: <a href="https://www.terra.com.br/vida-e-estilo/degusta/receitas/cha-de-boldo-saiba-como-preparar-e-quais-sao-os-beneficios%2C5c060727df86b4b9753618a961655f6fvhokkd3z.html" target="_blank" rel="noopener">https://www.terra.com.br/vida-e-estilo/degusta/receitas/cha-de-boldo-saiba-como-preparar-e-quais-sao-os-beneficios%2C5c060727df86b4b9753618a961655f6fvhokkd3z.html</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] European Medicines Agency (EMA). &quot;Assessment report on Peumus boldus Molina, folium&quot;. Resumo de usos tradicionais aprovados, mecanismos de ação propostos e avaliação de eficácia em dispepsia e espasmos gastrointestinais leves.</li>
+        <li>URL: <a href="https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-peumus-boldus-molina-folium_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-peumus-boldus-molina-folium_en.pdf</a></li>
+        <li id="ref-M2">[M2] Ruiz ALTG et al. &quot;Farmacologia e toxicologia de Peumus boldus e Baccharis genistelloides&quot; (Revista Brasileira de Farmacognosia, 2008). Revisão de atividades farmacológicas, uso tradicional e dados de segurança de boldo e carqueja.</li>
+        <li>URL: <a href="https://www.scielo.br/j/rbfar/a/PgnvSBRct5YnmpNKFSnfNQR/" target="_blank" rel="noopener">https://www.scielo.br/j/rbfar/a/PgnvSBRct5YnmpNKFSnfNQR/</a></li>
+        <li id="ref-M3">[M3] Lima JA de et al. &quot;Peumus boldus (boldo-do-chile): uma revisão sistemática sobre sua utilização e riscos associados&quot; (Revista Fitos, 2023). Revisão focada em indicações digestivas, efeitos hepatobiliares e eventos adversos relatados.</li>
+        <li>URL: <a href="https://revistaft.com.br/peumus-boldus-boldo-do-chile-uma-revisao-sistematica-sobre-sua-utilizacao-e-riscos-associados/" target="_blank" rel="noopener">https://revistaft.com.br/peumus-boldus-boldo-do-chile-uma-revisao-sistematica-sobre-sua-utilizacao-e-riscos-associados/</a></li>
+        <li id="ref-M4">[M4] Tua Saúde. &quot;Boldo: para que serve, benefícios e como usar&quot;. Artigo em português que resume indicações digestivas, hepatobiliares e formas de uso de boldo-do-Chile e boldo-brasileiro, com destaque para precauções.</li>
+        <li>URL: <a href="https://www.tuasaude.com/beneficios-do-cha-de-boldo/" target="_blank" rel="noopener">https://www.tuasaude.com/beneficios-do-cha-de-boldo/</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Ruiz ALTG et al. &quot;Farmacologia e toxicologia de Peumus boldus e Baccharis genistelloides&quot;. Inclui dados sobre alcaloides, em particular boldina, e resultados de ensaios farmacológicos in vitro e in vivo.</li>
+        <li>URL: <a href="https://www.scielo.br/j/rbfar/a/PgnvSBRct5YnmpNKFSnfNQR/" target="_blank" rel="noopener">https://www.scielo.br/j/rbfar/a/PgnvSBRct5YnmpNKFSnfNQR/</a></li>
+        <li id="ref-F2">[F2] Torres-Vega J et al. &quot;Green Extraction of Alkaloids and Polyphenols from Peumus boldus Mol.&quot; (Plants, 2020). Estudo que avalia métodos de extração de boldina e compostos fenólicos, reportando teores e capacidade antioxidante.</li>
+        <li>URL: <a href="https://www.mdpi.com/2223-7747/9/2/242" target="_blank" rel="noopener">https://www.mdpi.com/2223-7747/9/2/242</a></li>
+        <li id="ref-F3">[F3] Fuentes-Barros G et al. &quot;Phytochemical variation of wild and farmed populations of Peumus boldus&quot; (Heliyon, 2023). Analisa a variabilidade de alcaloides e fenólicos em diferentes populações e descreve a composição do óleo essencial.</li>
+        <li>URL: <a href="https://www.sciencedirect.com/science/article/abs/pii/S2214786123000463" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S2214786123000463</a></li>
+        <li id="ref-F4">[F4] Pavela R et al. &quot;Exploring the insecticidal potential of boldo (Peumus boldus) essential oil&quot; (Molecules, 2019). Descreve a composição detalhada do óleo essencial e confirma teores elevados de ascaridole e outros monoterpenos.</li>
+        <li>URL: <a href="https://www.mdpi.com/1420-3049/24/5/879" target="_blank" rel="noopener">https://www.mdpi.com/1420-3049/24/5/879</a></li>
+        <li id="ref-F5">[F5] Klimaczewski CV et al. &quot;Antioxidant activity of Peumus boldus extract and alkaloid boldine&quot; (Industrial Crops &amp; Products, 2014). Quantifica atividade antioxidante de extratos e boldina e relaciona-a com o teor de polifenóis.</li>
+        <li>URL: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0926669013006778" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S0926669013006778</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Wikipedia (EN). &quot;Boldo&quot;. Secções sobre usos culinários, uso em infusões e como aromatizante em pratos salgados e misturas com erva-mate.</li>
+        <li>URL: <a href="https://en.wikipedia.org/wiki/Boldo" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Boldo</a></li>
+        <li id="ref-A2">[A2] Chás do Mundo. &quot;Chá de Boldo do Chile Peumus boldus ideal para Fígado&quot;. Ficha comercial que descreve usos digestivos, forma de preparo e breves observações sobre a planta.</li>
+        <li>URL: <a href="https://chasdomundo.pt/pt/chas-medicinais/cha-de-boldo-do-chile-peumus-boldus" target="_blank" rel="noopener">https://chasdomundo.pt/pt/chas-medicinais/cha-de-boldo-do-chile-peumus-boldus</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] Wikipedia (EN). &quot;Boldo&quot;. Informação sobre ecologia, porte arbóreo, integração em florestas esclerófilas chilenas e funções da planta em sistemas naturais.</li>
+        <li>URL: <a href="https://en.wikipedia.org/wiki/Boldo" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Boldo</a></li>
+        <li id="ref-P2">[P2] Chás do Mundo. &quot;Chá de Boldo do Chile Peumus boldus ideal para Fígado&quot;. Ficha que menciona cultivo em zonas mediterrânicas e características gerais de adaptação da espécie.</li>
+        <li>URL: <a href="https://chasdomundo.pt/pt/chas-medicinais/cha-de-boldo-do-chile-peumus-boldus" target="_blank" rel="noopener">https://chasdomundo.pt/pt/chas-medicinais/cha-de-boldo-do-chile-peumus-boldus</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

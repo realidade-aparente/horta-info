@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html" class="ativa">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="tanchagem.html">Tanchagem</a>
+  <a class="next" href="tomilho.html">Tomilho</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Tília (<em>Tilia platyphyllos / Tilia cordata / Tilia × europaea</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Malvaceae (subfamília Tilioideae)</span>
+  <span>Parte usada: flores e brácteas secas</span>
+  <span>Tipo: árvore medicinal caducifólia europeia</span>
+  <span>Produção: <strong>olival urbano e florestas mistas</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> espécie europeia temperada, comum em florestas, cidades, parques históricos e alinhamentos urbanos.</div>
+  <div><strong>Uso principal</strong> infusões calmantes, sudoríferas e digestivas suaves para tensão nervosa, constipações e mal‑estar.</div>
+  <div><strong>Perfil medicinal</strong> sedativa suave, ansiolítica, diaphorética e espasmolítica, adjuvante em insónia, ansiedade, gripes, tosse e desconforto digestivo.</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Tília (Tilia platyphyllos / Tilia cordata / Tilia × europaea)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>A tília, aqui considerada nas espécies Tilia platyphyllos, Tilia cordata e no híbrido Tilia × europaea, é uma árvore caducifólia de médio a grande porte, podendo atingir entre 15 e mais de 30 metros de altura, com tronco direito, copa ampla e densa, e ramos que fornecem sombra abundante. As folhas são alternas, largas, em forma de coração (cordiformes), com margem serrada e consistência macia, surgindo na primavera e caindo no outono, o que reforça o carácter sazonal da copa.</p>
+      <p>As inflorescências são formadas por pequenos conjuntos de flores perfumadas, esbranquiçadas ou amareladas, pendentes a partir de uma bráctea membranosa e alongada característica, que facilita a dispersão dos frutos pelo vento. As flores são ricas em néctar e pólen, atraindo abelhas e outros polinizadores, e dando origem a méis aromáticos típicos de tília. Os frutos são pequenas núculas lenhosas que amadurecem no final do verão.</p>
+      <p>Em português, a planta é conhecida por tília, tilha, texa ou teja, entre outros nomes regionais. Em inglês, os nomes mais comuns são linden, lime tree ou lime blossom (para as flores). Na fitoterapia utiliza-se sobretudo a droga Tiliae flos (inflorescências com brácteas) e, em menor grau, folhas jovens e casca interna como plantas medicinais com propriedades calmantes, sudoríferas, espasmolíticas e suavemente sedativas, particularmente em contexto de estados de tensão nervosa ligeira, insónia e constipações associadas a febre e mal‑estar.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, as tílias de folha larga e de folha pequena são árvores caducifólias de clima temperado, com rebentação foliar na primavera, floração aromática no final da primavera e início do verão, e queda da folha no outono. A floração, período de maior interesse medicinal, ocorre geralmente entre maio e julho, dependendo da espécie, da altitude e da exposição.
+As inflorescências para uso medicinal colhem‑se tipicamente pouco depois da abertura das flores, em tempo seco, quando o aroma é intenso e antes de estas começarem a escurecer. A secagem deve ser feita à sombra, em locais bem ventilados, evitando humidade excessiva e contacto com contaminantes urbanos.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Rebentação foliar: primavera (março a abril), após o abrandar das geadas invernais.</li>
+        <li>Floração aromática: final da primavera e início do verão (maio a julho), com variações regionais.</li>
+        <li>Colheita de flores para uso medicinal: durante a floração, em dias secos e de preferência de manhã.</li>
+        <li>Queda da folha e repouso vegetativo: outono e inverno, com a árvore em dormência até ao ciclo seguinte.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Infusões de Tiliae flos preparadas com flores e brácteas secas são descritas em monografias europeias como tradicionalmente utilizadas para o alívio de sintomas de constipações comuns, incluindo tosse ligeira, febre moderada, dores de cabeça e mal‑estar geral, graças à ação diaphorética e calmante, muitas vezes combinadas com repouso e hidratação adequada. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a></li>
+        <li>Preparados de flores de tília são também indicados como adjuvantes em estados de tensão nervosa e dificuldade em adormecer, atuando como sedativos suaves e ansiolíticos ligeiros, sendo frequentemente recomendados em situações de ansiedade leve, irritabilidade e insónia inicial, em particular em crianças e adultos sensíveis a fármacos hipnóticos. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a></li>
+        <li>Estudos fitoquímicos e farmacológicos mostram que extratos de Tilia spp. contêm flavonoides, mucilagens e compostos voláteis que contribuem para atividades antioxidantes, espasmolíticas, anti‑inflamatórias e moduladoras de recetores GABAérgicos, o que ajuda a explicar o uso tradicional em estados de nervosismo, distúrbios do sono e queixas respiratórias leves. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Chá de tília tomado à noite como bebida calmante e reconfortante, usado popularmente para aliviar ansiedade, preocupação, irritabilidade e insónia leve, frequentemente associado a rituais de descanso e preparação para o sono. <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a> <a href="#ref-A1">[A1]</a></li>
+        <li>Infusão quente de flores de tília em combinação com outras plantas para constipações e gripes, como sabugueiro, hortelã‑pimenta ou limão, aproveitando o efeito sudorífero e o conforto de uma bebida quente para diminuir calafrios e mal‑estar. <a href="#ref-R2">[R2]</a> <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Uso tradicional de chá de tília para aliviar dores de cabeça de tensão, desconforto digestivo associado ao stress, palpitações benignas e sensação de opressão no peito, em doses moderadas e por curtos períodos. <a href="#ref-R3">[R3]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Banhos de imersão ou de pés preparados com infusão concentrada de flores de tília, utilizados em tradições populares para relaxar a musculatura, suavizar a pele e promover relaxamento geral ao final do dia. <a href="#ref-R4">[R4]</a> <a href="#ref-A1">[A1]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>A tília é geralmente considerada segura quando utilizada em doses moderadas e por períodos limitados sob a forma de infusão de flores, particularmente no contexto de constipações simples e tensão nervosa leve. No entanto, as monografias regulatórias salientam a falta de ensaios clínicos controlados robustos e recomendam que não seja usada como substituto de avaliação médica em casos de febre alta, sintomas persistentes ou agravamento do estado geral. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a></p>
+      <p>Existe alguma controvérsia em torno do uso muito prolongado de grandes quantidades de chá de tília em pessoas com doença cardíaca preexistente, baseada em relatos isolados antigos; embora não haja evidência causal sólida, várias fontes sugerem prudência em doentes cardíacos, insuficiência cardíaca, arritmias ou terapêuticas complexas, sobretudo se pretendido uso diário e continuado. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></p>
+      <p>Grávidas, lactantes, crianças pequenas, idosos fragilizados e pessoas a tomar medicamentos sedativos, ansiolíticos, anti‑hipertensores ou outras terapêuticas cardiovasculares devem consultar um profissional de saúde antes de utilizar infusões concentradas ou produtos à base de tília de forma regular. O aparecimento de sinais como dificuldade respiratória, dor no peito, palpitações fortes, erupções cutâneas ou sintomas persistentes deve motivar suspensão do uso e avaliação médica. <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        As flores de tília são usadas sobretudo em infusões simples ou em combinação com outras plantas, como sabugueiro, camomila ou hortelã, para apoio em constipações, estados de tensão nervosa e dificuldades em adormecer. Em fitoterapia popular, a planta integra ainda banhos de imersão relaxantes e misturas para crianças em momentos de agitação e febre ligeira. As receitas detalhadas, com proporções e modo de preparação, devem seguir fontes fiáveis e ser sempre usadas em conjunto com cuidados médicos adequados quando existam sintomas significativos.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="tilia_receitas.html">Chá simples de flores de tília:</a> infusão tradicional de flores e brácteas secas, usada como bebida calmante à noite e apoio em constipações ligeiras, sem substituir acompanhamento médico quando necessário. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="tilia_receitas.html">Infusão de tília para ansiedade e insónia:</a> chá preparado com flores de tília, tomado ao fim do dia ou antes de dormir, integrado em rotinas de higiene do sono e práticas de relaxamento. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="tilia_receitas.html">Mistura de tília com camomila e hortelã:</a> combinação popular em infusão quente para aliviar tensão digestiva, nervosismo e desconforto associado ao stress, adequada em curtos períodos. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="tilia_receitas.html">Chá de tília para constipações:</a> infusão de flores usada em episódios de gripe ou constipação, muitas vezes combinada com repouso, líquidos e outros cuidados caseiros enquanto os sintomas forem ligeiros. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="tilia_receitas.html">Infusão de tília para crianças:</a> chá suave de tília utilizado em contexto popular para acalmar crianças em estados de agitação, febre baixa ou dificuldade em adormecer, sempre com atenção às doses e à avaliação pediátrica. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="tilia_receitas.html">Chá de tília com mel e limão:</a> bebida reconfortante e aromática que combina tília com mel e limão, tomada quente em serões frios para promover relaxamento e conforto respiratório. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="tilia_receitas.html">Infusão concentrada para banho de pés:</a> preparado mais forte de flores de tília adicionado a água morna, usado em banhos de pés relaxantes ao final do dia ou em convalescenças leves. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="tilia_receitas.html">Banho de imersão com tília e outras flores:</a> banho de banheira preparado com infusão de tília e outras plantas calmantes, destinado a promover descanso, aliviar tensão muscular e acalmar o sistema nervoso. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="tilia_receitas.html">Mistura comercial de tília para sono:</a> blend em saquetas de chá onde a tília se associa a outras plantas sedativas suaves, indicado em rótulo para apoio no adormecer e melhoria da qualidade do sono. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="tilia_receitas.html">Xarope caseiro com tília:</a> preparado artesanal que combina infusão concentrada de tília com mel ou açúcar, usado em pequenas quantidades para aliviar irritação da garganta e tosse ligeira. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>Na fitoterapia europeia, as flores de tília são tradicionalmente usadas como remédio suave para estados de tensão nervosa, ansiedade ligeira e insónia, atuando como sedativo moderado e ansiolítico ligeiro, adequado para crianças e adultos quando usados em doses adequadas e por períodos curtos. Monografias oficiais reconhecem o uso tradicional de Tiliae flos para o alívio de sintomas de stress mental leve. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a></p>
+      <p>A tília é também apreciada como planta de apoio em constipações, gripes e infeções respiratórias ligeiras, pela sua ação sudorífera, suavemente espasmolítica e calmante, ajudando a aliviar tosse irritativa, dores de cabeça e mal‑estar associado a febre moderada. A combinação de mucilagens, flavonoides e componentes voláteis parece contribuir para estes efeitos. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M5">[M5]</a></p>
+      <p>Estudos fitoquímicos e farmacológicos em Tilia spp. mostram perfis ricos em flavonoides, ácidos fenólicos, mucilagens e compostos voláteis com atividade antioxidante, anti‑inflamatória e moduladora de recetores GABAérgicos, apoiando plausibilidade para efeitos sedativos e ansiolíticos leves, ainda que a evidência clínica controlada em humanos seja limitada. <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Adjuvante em ansiedade ligeira, agitação e estados de stress, ajudando a promover relaxamento sem sedação intensa. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a></li>
+        <li>Apoio em insónia inicial e dificuldades em adormecer, especialmente quando associadas a tensão nervosa e ruminação mental. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a></li>
+        <li>Suporte suave em constipações, gripes e infeções respiratórias ligeiras, favorecendo sudorese moderada, conforto e alívio de tosse irritativa. <a href="#ref-M2">[M2]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-F1">[F1]</a></li>
+        <li>Alívio de dores de cabeça de tensão, desconforto digestivo associado ao stress e sensação de opressão nervosa, em combinação com outras medidas de estilo de vida. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-A1">[A1]</a></li>
+        <li>Contribuição antioxidante e anti‑inflamatória de fundo, relacionada com a presença de flavonoides e outros polifenóis nas flores. <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>As flores de Tilia spp. contêm uma combinação de flavonoides (como quercetina, kaempferol, tilianina e rutina), ácidos fenólicos, mucilagens, polissacarídeos e pequenas quantidades de óleo essencial com componentes como farnesol, aos quais se atribuem atividades sedativas, espasmolíticas, diaphoréticas e antioxidantes. Estudos de perfil químico mostram variações quantitativas entre espécies e partes da planta, mas confirmam a presença consistente destes grupos de compostos em Tilia cordata e Tilia platyphyllos. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>Ensaios in vitro e em modelos animais indicam que os extratos de flores de tília apresentam atividade antioxidante relevante, capacidade de neutralizar radicais livres, efeitos espasmolíticos sobre musculatura lisa e possível modulação de recetores do sistema GABAérgico, o que oferece uma base farmacológica plausível para as ações sedativa suavemente ansiolítica e relaxante muscular descritas na tradição. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></p>
+      <p>Trabalhos recentes dedicados à otimização das condições de extração mostram que fatores como temperatura, tempo de extração e escolha do solvente influenciam significativamente os teores de flavonoides e ácidos fenólicos obtidos em extratos de Tiliae flos, afetando a potência antioxidante e o perfil padronizado de marcadores, com implicações para a qualidade de fitoterápicos e suplementos. <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Flavonoides totais em extratos de flores de tília</td><td>faixas de dezenas de mg/g de extrato seco</td></tr>
+        <tr><td>Ácidos fenólicos totais em Tiliae flos</td><td>faixas de poucas a dezenas de mg/g de extrato</td></tr>
+        <tr><td>Mucilagens e polissacarídeos na droga Tiliae flos</td><td>presença confirmada em percentagens relevantes da matéria seca</td></tr>
+        <tr><td>Capacidade antioxidante de extratos de Tiliae flos (DPPH/ABTS)</td><td>EC50 na gama de centenas de µg/mL</td></tr>
+        <tr><td>Atividade espasmolítica e sedativa em modelos experimentais</td><td>efeitos observados em doses experimentais típicas de extratos hidroalcoólicos</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Árvore ornamental de grande valor estético em cidades, parques e alinhamentos, fornecendo sombra densa e ambiente agradável no verão. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Espécie melífera importante, fornecendo néctar abundante para abelhas e outros polinizadores, resultando em méis aromáticos característicos. <a href="#ref-A1">[A1]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Uso tradicional da madeira macia de tília em escultura, marcenaria fina, instrumentos musicais e objetos entalhados. <a href="#ref-A2">[A2]</a></li>
+        <li>Valor cultural e simbólico em várias regiões europeias, associada a praças antigas, reuniões comunitárias e espaços de encontro à sombra. <a href="#ref-A1">[A1]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Contribuição para microclimas urbanos mais amenos, redução de ilhas de calor e melhoria da qualidade do ar em ruas arborizadas. <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 7,1 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em sistemas de permacultura em clima temperado, a tília funciona sobretudo como árvore estrutural de grande porte, fornecendo sombra, biomassa foliar abundante e habitat para aves e insetos, além de flores melíferas com valor medicinal e ecológico. Em hortas de pequena escala pode ser excessiva em dimensão, mas em quintas, parques e sistemas agroflorestais oferece funções importantes de microclima, abrigo e suporte à biodiversidade.
+A copa larga e a queda anual de folhas criam oportunidades para acumulação de matéria orgânica e construção de solo, mas também forte competição por luz e água em zonas próximas do tronco. Por isso, a tília é especialmente valiosa quando usada como árvore de bordo, elemento de sombra em zonas de descanso ou componente de estratos superiores num desenho em camadas, mais do que no centro de pequenos canteiros produtivos.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação da tília resulta de um valor intermédio em função alimentar humana (ALIM=1), sobretudo pelo uso de flores em infusões medicinais e bebidas, e de valores elevados em função medicinal (MED=2), dada a longa tradição de uso das flores como sedativo suave, diaforético e planta de apoio em constipações. Recebe pontuação máxima em estrutura e perenidade (ESTR=2), por ser uma árvore de grande porte e longa vida, e pontuação alta em solo/biomassa (SOLO=2), devido à produção significativa de folhas e madeira que podem ser integradas em ciclos de matéria orgânica.
+A tília é muito relevante para ecologia e fauna (ECO=2), atraindo polinizadores e fornecendo abrigo para aves, e mostra rusticidade razoável (RUST=1) em climas temperados húmidos, embora seja menos tolerante à seca extrema do que espécies mediterrânicas típicas. A multifuncionalidade cultural e simbólica (MULT=2) é elevada, pelo papel da árvore em praças, parques e tradições locais. As penalizações concentram‑se na competição por luz e água (COMP=-1), sobretudo em espaços pequenos ou solos rasos, enquanto o risco de toxicidade relevante (TOX), perigo físico (PERIGO) e comportamento invasor problemático (INVAS) é considerado baixo no contexto habitual. O valor final em escala 0–10 resulta da aplicação do algoritmo descrito no projeto (soma dos critérios positivos até 14 pontos, subtração das penalizações e conversão por regra de três simples), situando a tília em cerca de 7,1/10 e indicando uma planta de boa funcionalidade em permacultura, especialmente indicada como árvore de sombra, melífera e medicinal em bordaduras e zonas de uso mais extensivo.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-A1">[A1]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Wikipedia. &quot;Tília&quot;. Artigo em português com descrição botânica geral das tílias, espécies mais comuns na Europa e usos tradicionais das flores. Disponível em: <a href="https://pt.wikipedia.org/wiki/T%C3%ADlia" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/T%C3%ADlia</a></li>
+        <li id="ref-D2">[D2] Wikipedia. &quot;Tilia&quot;. Entrada em inglês com informação taxonómica, descrição morfológica, distribuição e uso ornamental das principais espécies de Tilia. Disponível em: <a href="https://en.wikipedia.org/wiki/Tilia" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Tilia</a></li>
+        <li id="ref-D3">[D3] Florestas.pt. &quot;Chá de tília e outras aplicações que talvez não conheça&quot;. Artigo em português que descreve a árvore, as flores, outros usos e o papel na paisagem e cultura. Disponível em: <a href="https://florestas.pt/descobrir/cha-de-tilia-e-outras-aplicacoes-que-talvez-nao-conheca/" target="_blank" rel="noopener">https://florestas.pt/descobrir/cha-de-tilia-e-outras-aplicacoes-que-talvez-nao-conheca/</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Florestas.pt. &quot;Chá de tília e outras aplicações que talvez não conheça&quot;. Secções sobre floração, colheita das flores e período ideal para aproveitamento medicinal. Disponível em: <a href="https://florestas.pt/descobrir/cha-de-tilia-e-outras-aplicacoes-que-talvez-nao-conheca/" target="_blank" rel="noopener">https://florestas.pt/descobrir/cha-de-tilia-e-outras-aplicacoes-que-talvez-nao-conheca/</a></li>
+        <li id="ref-S2">[S2] European Medicines Agency. &quot;Community herbal monograph on Tilia cordata Miller, Tilia platyphyllos Scop., Tilia x vulgaris Heyne, flos&quot;. Documento com informações sobre a droga Tiliae flos, parte usada e época de colheita. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-monograph/community-herbal-monograph-tilia-cordata-miller-tilia-platyphyllos-scop-tilia-x-vulgaris-heyne-or-their-mixtures-flos_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-monograph/community-herbal-monograph-tilia-cordata-miller-tilia-platyphyllos-scop-tilia-x-vulgaris-heyne-or-their-mixtures-flos_en.pdf</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] European Medicines Agency. &quot;Assessment report on Tilia cordata Miller, Tilia platyphyllos Scop., Tilia x vulgaris Heyne, flos&quot;. Relatório com indicações tradicionais, segurança, contra‑indicações e limitações de uso da tília. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-tilia-cordata-miller-tilia-platyphyllos-scop-tilia-x-vulgaris-heyne-or-their-mixtures-flos-first-version_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-tilia-cordata-miller-tilia-platyphyllos-scop-tilia-x-vulgaris-heyne-or-their-mixtures-flos-first-version_en.pdf</a></li>
+        <li id="ref-U2">[U2] ESCOP. &quot;Tiliae flos (Lime flower)&quot;. Monografia que resume eficácia, dosagem e segurança de Tiliae flos em stress leve e constipações. Disponível em: <a href="https://www.escop.com/downloads/tiliae-flos-lime-flower/" target="_blank" rel="noopener">https://www.escop.com/downloads/tiliae-flos-lime-flower/</a></li>
+        <li id="ref-U3">[U3] Florestas.pt. &quot;Chá de tília e outras aplicações que talvez não conheça&quot;. Dispositivo de divulgação com notas sobre usos, benefícios e cuidados gerais no consumo de chá de tília. Disponível em: <a href="https://florestas.pt/descobrir/cha-de-tilia-e-outras-aplicacoes-que-talvez-nao-conheca/" target="_blank" rel="noopener">https://florestas.pt/descobrir/cha-de-tilia-e-outras-aplicacoes-que-talvez-nao-conheca/</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Tua Saúde. &quot;Tília: para que serve (e como fazer o chá)&quot;. Artigo em português com descrições de chá de tília, usos em ansiedade e constipações e modo básico de preparação. Disponível em: <a href="https://www.tuasaude.com/tilia/" target="_blank" rel="noopener">https://www.tuasaude.com/tilia/</a></li>
+        <li id="ref-R2">[R2] Activa. &quot;Os benefícios do chá de tília&quot;. Texto de divulgação com explicação de preparação de chá de tília, doses usuais e número de chávenas por dia. Disponível em: <a href="https://activa.pt/saude/2023-11-13-os-beneficios-do-cha-de-tilia/" target="_blank" rel="noopener">https://activa.pt/saude/2023-11-13-os-beneficios-do-cha-de-tilia/</a></li>
+        <li id="ref-R3">[R3] Chás do Mundo. &quot;Chá de tília em folhas&quot;. Ficha de produto com descrição do chá, forma de consumo e indicação de que é usado como bebida calmante e digestiva. Disponível em: <a href="https://chasdomundo.pt/pt/chas-avulso/plantas-simples/cha-de-tilia-em-folhas-tilia-europaea" target="_blank" rel="noopener">https://chasdomundo.pt/pt/chas-avulso/plantas-simples/cha-de-tilia-em-folhas-tilia-europaea</a></li>
+        <li id="ref-R4">[R4] Florestas.pt. &quot;Chá de tília e outras aplicações que talvez não conheça&quot;. Secções que descrevem a infusão de tília como bebida calmante e em constipações, sugerindo preparação semelhante à tradicional. Disponível em: <a href="https://florestas.pt/descobrir/cha-de-tilia-e-outras-aplicacoes-que-talvez-nao-conheca/" target="_blank" rel="noopener">https://florestas.pt/descobrir/cha-de-tilia-e-outras-aplicacoes-que-talvez-nao-conheca/</a></li>
+        <li id="ref-R5">[R5] Energia em Equilíbrio. &quot;Tília flor 30g MC&quot;. Ficha de planta medicinal com indicação de uso em chá relaxante, problemas gastrointestinais e distúrbios do sono. Disponível em: <a href="https://energiaemequilibrio.com/pt/plantas-medicinais/2139-tilia-flor-30g-mc-5604345011452.html" target="_blank" rel="noopener">https://energiaemequilibrio.com/pt/plantas-medicinais/2139-tilia-flor-30g-mc-5604345011452.html</a></li>
+        <li id="ref-R6">[R6] Naturvida. &quot;Tília Flor 40 grs&quot;. Descrição de produto que destaca propriedades calmantes do chá de tília e o seu uso em ansiedade, insónia e sintomas de gripes. Disponível em: <a href="https://www.naturvida.pt/products/tilia-flor-40-grs" target="_blank" rel="noopener">https://www.naturvida.pt/products/tilia-flor-40-grs</a></li>
+        <li id="ref-R7">[R7] Chás do Mundo. &quot;Chás calmantes para dormir&quot;. Página com misturas de plantas onde a tília surge combinada com outras espécies em preparados comerciais para o sono. Disponível em: <a href="https://chasdomundo.pt/pt/chas-medicinais" target="_blank" rel="noopener">https://chasdomundo.pt/pt/chas-medicinais</a></li>
+        <li id="ref-R8">[R8] Lush. &quot;Decocção de Flor de Tília e Amor-de-hortelão&quot;. Ficha de ingrediente que referem uso de decocções de tília em produtos de banho e cuidados de pele. Disponível em: <a href="https://www.lush.com/pt/pt/i/limeflower-and-cleaver-decoction" target="_blank" rel="noopener">https://www.lush.com/pt/pt/i/limeflower-and-cleaver-decoction</a></li>
+        <li id="ref-R9">[R9] Blogs de saúde e bem‑estar em português que sugerem banhos de imersão e de pés com infusões de tília para relaxamento, como complemento a outras práticas de gestão de stress. Disponível em: <a href="https://www.medicinanatural.pt/banho-de-ervas-calmantes" target="_blank" rel="noopener">https://www.medicinanatural.pt/banho-de-ervas-calmantes</a></li>
+        <li id="ref-R10">[R10] Marcas de suplementos e chás funcionais que comercializam misturas para sono e relaxamento contendo tília como um dos componentes, com indicações de preparo em rótulo. Disponível em: <a href="https://www.celeiro.pt/produtos/chas-e-infusoes" target="_blank" rel="noopener">https://www.celeiro.pt/produtos/chas-e-infusoes</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] ESCOP. &quot;Tiliae flos (Lime flower)&quot;. Monografia que documenta usos tradicionais de Tiliae flos em sintomas de stress mental leve e constipações. Disponível em: <a href="https://www.escop.com/downloads/tiliae-flos-lime-flower/" target="_blank" rel="noopener">https://www.escop.com/downloads/tiliae-flos-lime-flower/</a></li>
+        <li id="ref-M2">[M2] European Medicines Agency. &quot;Assessment report on Tilia cordata Miller, Tilia platyphyllos Scop., Tilia x vulgaris Heyne, flos&quot;. Documento que resume dados farmacológicos e indicações tradicionais de Tiliae flos. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-tilia-cordata-miller-tilia-platyphyllos-scop-tilia-x-vulgaris-heyne-or-their-mixtures-flos-first-version_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-tilia-cordata-miller-tilia-platyphyllos-scop-tilia-x-vulgaris-heyne-or-their-mixtures-flos-first-version_en.pdf</a></li>
+        <li id="ref-M3">[M3] Altmeyers Encyclopedia. &quot;Tiliae flos&quot;. Entrada que descreve a droga como sedativa, expectorante e diaphorética, com indicação para constipações e stress leve. Disponível em: <a href="https://www.altmeyers.org/en/naturopathy/tiliae-flos-143745" target="_blank" rel="noopener">https://www.altmeyers.org/en/naturopathy/tiliae-flos-143745</a></li>
+        <li id="ref-M4">[M4] Abascal K, Yarnell E. &quot;Nervine Herbs for Treating Anxiety&quot;. Revisão que inclui Tilia spp. como nervina com efeito sedativo moderado e aplicações em ansiedade leve. Disponível em: <a href="https://academy.miloa.eu/wp-content/uploads/2020/06/Nervine_Herbs_for_Treating_Anxiety.pdf" target="_blank" rel="noopener">https://academy.miloa.eu/wp-content/uploads/2020/06/Nervine_Herbs_for_Treating_Anxiety.pdf</a></li>
+        <li id="ref-M5">[M5] Borrás S et al. &quot;Medicinal Plants for Insomnia Related to Anxiety&quot;. Revisão que menciona Tilia spp. entre as plantas utilizadas tradicionalmente para perturbações do sono relacionadas com ansiedade. Disponível em: <a href="https://www.thieme-connect.com/products/ejournals/pdf/10.1055/a-1510-9826.pdf" target="_blank" rel="noopener">https://www.thieme-connect.com/products/ejournals/pdf/10.1055/a-1510-9826.pdf</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Rodin MN et al. &quot;Study of flavonoids profile of linden flowers&quot;. Artigo que caracteriza o perfil de flavonoides em flores de Tilia cordata usadas como droga medicinal. Disponível em: <a href="https://www.researchgate.net/publication/382059657_Study_of_flavonoids_profile_of_linden_flowers" target="_blank" rel="noopener">https://www.researchgate.net/publication/382059657_Study_of_flavonoids_profile_of_linden_flowers</a></li>
+        <li id="ref-F2">[F2] Toker G et al. &quot;Comparative evaluation of the flavonoid content in officinal Tilia platyphyllos&quot;. Estudo HPLC do conteúdo de flavonoides em flores, brácteas e folhas de Tilia platyphyllos. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S073170850100351X" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S073170850100351X</a></li>
+        <li id="ref-F3">[F3] Pieczykolan A, Nowak R. &quot;Optimization of extraction conditions for determination of selected flavonoids and phenolic acids from Tilia cordata inflorescence&quot;. Trabalho que avalia como diferentes métodos de extração influenciam o teor de flavonoides e ácidos fenólicos. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6343130/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC6343130/</a></li>
+        <li id="ref-F4">[F4] Melnyk N et al. &quot;Tiliae flos by HPTLC method with chemometric analysis&quot;. Artigo que aborda padronização e perfis químicos de Tiliae flos por métodos cromatográficos. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0308814620328041" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S0308814620328041</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Florestas.pt. &quot;Chá de tília e outras aplicações que talvez não conheça&quot;. Descreve usos da madeira, importância ornamental, valor cultural e presença em espaços públicos. Disponível em: <a href="https://florestas.pt/descobrir/cha-de-tilia-e-outras-aplicacoes-que-talvez-nao-conheca/" target="_blank" rel="noopener">https://florestas.pt/descobrir/cha-de-tilia-e-outras-aplicacoes-que-talvez-nao-conheca/</a></li>
+        <li id="ref-A2">[A2] Wikipedia. &quot;Tilia&quot;. Secções sobre usos da madeira, produção de mel e utilização ornamental em parques e ruas. Disponível em: <a href="https://en.wikipedia.org/wiki/Tilia" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Tilia</a></li>
+        <li id="ref-A3">[A3] Abascal K, Yarnell E. &quot;Nervine Herbs for Treating Anxiety&quot;. Referência à tília como nervina com valor cultural e uso tradicional prolongado. Disponível em: <a href="https://academy.miloa.eu/wp-content/uploads/2020/06/Nervine_Herbs_for_Treating_Anxiety.pdf" target="_blank" rel="noopener">https://academy.miloa.eu/wp-content/uploads/2020/06/Nervine_Herbs_for_Treating_Anxiety.pdf</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] Florestas.pt. &quot;Chá de tília e outras aplicações que talvez não conheça&quot;. Realça o papel das tílias na paisagem urbana, sombra, abrigo e suporte à biodiversidade. Disponível em: <a href="https://florestas.pt/descobrir/cha-de-tilia-e-outras-aplicacoes-que-talvez-nao-conheca/" target="_blank" rel="noopener">https://florestas.pt/descobrir/cha-de-tilia-e-outras-aplicacoes-que-talvez-nao-conheca/</a></li>
+        <li id="ref-P2">[P2] European Forest Institute. Materiais sobre árvores urbanas em cidades europeias que incluem a tília como espécie estrutural chave para sombra, microclima e biodiversidade. Disponível em: <a href="https://efi.int/projects/urban-forests" target="_blank" rel="noopener">https://efi.int/projects/urban-forests</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

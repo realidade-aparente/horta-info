@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html" class="ativa">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="tomilho.html">Tomilho</a>
+  <a class="next" href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Trevo-branco e trevo-dos-prados (<em>Trifolium repens L.; Trifolium pratense L.</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Fabaceae</span>
+  <span>Parte usada: folhas, flores e topos tenros</span>
+  <span>Tipo: planta vivaz forrageira e medicinal</span>
+  <span>Produção: <strong>espontânea e cultivada em pastagens sequeiro</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> Europa e oeste da Ásia, hoje naturalizada em zonas temperadas.</div>
+  <div><strong>Uso principal</strong> cobertura viva fixadora de azoto, forragem, chás e saladas medicinais.</div>
+  <div><strong>Perfil medicinal</strong> depurativa suave, estrogénica leve, linfática, dermoprotetora, expectorante e cardiovascular.</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Trevo-branco e trevo-dos-prados (Trifolium repens L.; Trifolium pratense L.)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>O trevo-branco (Trifolium repens L.) e o trevo-dos-prados ou trevo-vermelho (Trifolium pratense L.) são leguminosas perenes de porte baixo a médio, muito comuns em prados, relvados e pastagens de clima temperado. Ambos apresentam folhas trifoliadas características, com folíolos ovais muitas vezes marcados por uma mancha pálida, e capítulos florais globosos – brancos ou esbranquiçados no trevo-branco, rosados a púrpura no trevo-vermelho.</p>
+      <p>Na flora agrícola são importantes plantas forrageiras e de cobertura de solo, frequentemente semeadas em mistura com gramíneas para pastagens, cortinas verdes e regeneração de solos pobres, graças à capacidade de fixar azoto atmosférico em simbiose com rizóbios. As raízes rasas mas densas contribuem para a estruturação da camada superficial do solo e para reduzir a erosão em taludes e zonas pisoteadas.</p>
+      <p>Além do valor forrageiro, as duas espécies têm longa tradição como plantas comestíveis e medicinais. As flores e folhas jovens são utilizadas em saladas, sopas, farinhas e chás, e o trevo-vermelho é descrito em várias monografias de fitoterapia moderna como planta rica em isoflavonas, usada sobretudo em apoio sintomático da menopausa e em preparações depurativas e para saúde da pele. O trevo-branco, embora com menor teor de isoflavonas, é apontado em fontes etnobotânicas como planta suavemente depurativa, ligeiramente anti-inflamatória e útil em tisanas para problemas cutâneos e articulares leves.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a> <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a> <a href="#ref-D1">[D1]</a> <a href="#ref-D4">[D4]</a> <a href="#ref-D5">[D5]</a> <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, o trevo-branco e o trevo-dos-prados comportam-se como espécies vivazes que rebentam a partir da coroa ao nível do solo. O trevo-branco mantém manchas verdes durante grande parte do ano sempre que exista alguma humidade, enquanto o trevo-vermelho tende a concentrar a floração entre a primavera e o início do verão.
+A sementeira em pastagens e hortas de inspiração permacultural faz-se tipicamente no outono ou no final do inverno, em solos frescos mas bem drenados. Em contexto hortícola podem ser usados como cobertura viva entre linhas, suportando cortes regulares para forragem verde ou cobertura morta, desde que não sofram seca prolongada no verão.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Sementeira em mistura para pastagens: de outono a início da primavera, em solo fresco, bem drenado e com boa luz.</li>
+        <li>Floração principal: primavera e início do verão, com refloração possível após cortes leves ou pastoreio moderado.</li>
+        <li>Colheita para uso medicinal: flores recém-abertas e folhas jovens, colhidas em dias secos e secas à sombra em camadas finas.</li>
+        <li>Cobertura viva na horta: estabelecer faixas ou manchas fixadoras de azoto, evitando semear demasiado denso junto de culturas frágeis.</li>
+        <li>Gestão de rega: toleram alguma seca quando bem enraizados, mas produzem mais biomassa e néctar com humidade moderada no solo.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-Informação">[Informação]</a> <a href="#ref-baseada">[baseada]</a> <a href="#ref-em">[em]</a> <a href="#ref-manuais">[manuais]</a> <a href="#ref-de">[de]</a> <a href="#ref-forragens">[forragens]</a> <a href="#ref-fichas">[fichas]</a> <a href="#ref-técnicas">[técnicas]</a> <a href="#ref-de">[de]</a> <a href="#ref-trevos">[trevos]</a> <a href="#ref-forrageiros">[forrageiros]</a> <a href="#ref-e">[e]</a> <a href="#ref-guias">[guias]</a> <a href="#ref-práticos">[práticos]</a> <a href="#ref-de">[de]</a> <a href="#ref-cobertura">[cobertura]</a> <a href="#ref-viva">[viva]</a> <a href="#ref-em">[em]</a> <a href="#ref-hortas">[hortas]</a> <a href="#ref-e">[e]</a> <a href="#ref-pomares">[pomares]</a> <a href="#ref-em">[em]</a> <a href="#ref-clima">[clima]</a> <a href="#ref-mediterrânico">[mediterrânico]</a> <a href="#ref-temperado.">[temperado.]</a> <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a> <a href="#ref-S3">[S3]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Extratos padronizados de trevo-vermelho ricos em isoflavonas (especialmente formononetina e biochanina A) têm sido estudados por via oral em mulheres na peri-menopausa e pós-menopausa, em doses na ordem de 40–80 mg/dia de isoflavonas, com resultados globalmente modestos mas consistentes em parte dos ensaios na redução da frequência e intensidade de afrontamentos e melhoria de alguns parâmetros de qualidade de vida. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-U1">[U1]</a></li>
+        <li>Alguns estudos clínicos e revisões apontam ainda para potenciais efeitos favoráveis sobre o perfil lipídico, rigidez arterial e densidade mineral óssea, embora com elevada heterogeneidade de resultados e necessidade de mais ensaios de longa duração antes de se fazerem recomendações firmes. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a></li>
+        <li>Ensaios in vitro e em modelos animais mostram atividade antioxidante, anti-inflamatória e moduladora de vias estrogénicas para extratos hidroalcoólicos e frações polifenólicas de trevo-vermelho, bem como para extratos ricos em fenóis de trevo-branco, apoiando o uso tradicional como planta depurativa e de suporte à pele e mucosas. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-M2">[M2]</a></li>
+        <li>Extratos aquosos e etanólicos de folhas e flores de trevo-branco apresentaram teores significativos de fenóis totais e flavonoides, com conteúdo em fenóis nas flores na ordem das dezenas de mg de equivalentes de ácido gálico por grama de planta seca, associado a capacidade de neutralização de radicais DPPH em ensaios laboratoriais. <a href="#ref-F4">[F4]</a> <a href="#ref-F5">[F5]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Infusões de flores e folhas de trevo-vermelho, isoladas ou em mistura com outras plantas, usadas tradicionalmente como tisana depurativa suave, de apoio à pele, circulação e conforto feminino ao longo da menopausa. <a href="#ref-U2">[U2]</a> <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a> <a href="#ref-R3">[R3]</a></li>
+        <li>Chás de trevo-branco (flores e partes aéreas) preparados em infusão curta, consumidos em pequenas quantidades como bebida suave para gripes ligeiras, estados febris moderados e apoio às articulações, em várias tradições rurais europeias. <a href="#ref-U2">[U2]</a> <a href="#ref-D5">[D5]</a> <a href="#ref-R6">[R6]</a></li>
+        <li>Aplicações externas sob a forma de banhos, compressas ou óleos macerados de flores de trevo-vermelho e trevo-branco, utilizados em medicina popular para aliviar problemas reumáticos ligeiros, gota, irritações cutâneas e pequenas inflamações. <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-A1">[A1]</a></li>
+        <li>Uso alimentar quotidiano de folhas jovens e flores em saladas, sopas, pães, panquecas, farinhas e mel infundido, integrando o trevo como verdura silvestre rica em minerais e complemento aromático em pratos simples. <a href="#ref-D4">[D4]</a> <a href="#ref-D5">[D5]</a> <a href="#ref-A1">[A1]</a> <a href="#ref-R6">[R6]</a> <a href="#ref-R8">[R8]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>Em uso alimentar e em infusões suaves de flores e folhas, os trevos branco e dos prados são geralmente bem tolerados pela maioria dos adultos saudáveis, quando consumidos em quantidades moderadas e por períodos limitados. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-U4">[U4]</a></p>
+      <p>Devido ao conteúdo em isoflavonas e outros fitoquímicos com atividade estrogénica no trevo-vermelho, e à presença de cumarinas, saponinas e outros compostos bioativos, deve evitar-se o uso de preparados concentrados ou uso prolongado em pessoas com história de tumores hormono-sensíveis, em doentes sob terapêutica anticoagulante, em grávidas, lactantes, crianças pequenas e em situações de doença crónica sem supervisão profissional. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-U4">[U4]</a> <a href="#ref-U5">[U5]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        Com trevo-branco e trevo-vermelho preparam-se sobretudo infusões simples ou em mistura, tisanas depurativas e chás para apoio sintomático da menopausa, bem como saladas, pães, xaropes e méis infusionados onde flores e folhas entram como ingrediente aromático e nutritivo. As receitas descritas nas fontes variam na combinação com outras plantas, no tempo de infusão e na forma de toma, devendo ser adaptadas com bom senso e respeitando as precauções de segurança indicadas para isoflavonas e outros fitoquímicos destas espécies.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="trevo-branco-e-trevo-dos-prados_receitas.html">Chá simples de flores de trevo-vermelho:</a> infusão de flores secas em água quente, bebida em pequenas quantidades como tisana depurativa suave e de apoio ao conforto feminino. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="trevo-branco-e-trevo-dos-prados_receitas.html">Chá de trevo-vermelho para sintomas da menopausa:</a> combinação de flores secas com outras plantas reguladoras, preparado como infusão diária de curto prazo para alívio moderado de afrontamentos. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="trevo-branco-e-trevo-dos-prados_receitas.html">Infusão de trevo-vermelho para pele e bem-estar:</a> flores secas maceradas em água acabada de ferver, consumidas em chá morno associado a cuidados com pele e cabelo. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="trevo-branco-e-trevo-dos-prados_receitas.html">Infusão simples de trevo-vermelho (red clover tea):</a> receita tradicional anglo-saxónica em que flores frescas ou secas são infundidas 10–15 minutos e bebidas como chá suave. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="trevo-branco-e-trevo-dos-prados_receitas.html">Chá misto de trevo-vermelho com hortelã:</a> tisana aromática que combina flores de trevo-vermelho e folhas de menta para bebida digestiva e relaxante após as refeições. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="trevo-branco-e-trevo-dos-prados_receitas.html">Salada crua com folhas e flores de trevo-branco:</a> folhas jovens e capítulos florais adicionados a outras verduras e temperados com vinagrete leve, sobretudo em saladas de verão. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="trevo-branco-e-trevo-dos-prados_receitas.html">Xarope de trevo-vermelho:</a> flores cozidas suavemente em água e açúcar para obter um xarope aromático usado em pequenas quantidades sobre panquecas ou diluído em água. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="trevo-branco-e-trevo-dos-prados_receitas.html">Mel infundido com flores de trevo-branco:</a> flores frescas cobertas com mel e deixadas a macerar, usado pontualmente em chás e sobremesas como adoçante aromático. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="trevo-branco-e-trevo-dos-prados_receitas.html">Tabule selvagem com folhas de trevo:</a> salada de inspiração mediterrânica em que folhas tenras de trevo-vermelho entram juntamente com outras ervas frescas e cereais. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="trevo-branco-e-trevo-dos-prados_receitas.html">Pães estaladiços com flores de trevo:</a> massa fina enriquecida com flores secas de trevo-branco ou trevo-vermelho, cozida em bolachas salgadas de aroma herbal suave. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>O trevo-vermelho é uma das leguminosas mais estudadas em fitoterapia moderna pelo seu conteúdo em isoflavonas (formononetina, biochanina A, genisteína, daidzeína), compostos com atividade estrogénica fraca que parecem contribuir para o alívio moderado de alguns sintomas da menopausa em parte das mulheres, bem como para efeitos discretos sobre perfil lipídico e densidade mineral óssea em estudos de curta e média duração. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a></p>
+      <p>Tanto o trevo-vermelho como o trevo-branco apresentam ainda compostos fenólicos, flavonoides, cumarinas e saponinas com atividade antioxidante, anti-inflamatória e potencial modulador do metabolismo cardiovascular, justificando usos tradicionais como plantas depurativas suaves, de suporte às articulações, pele e mucosas respiratórias. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-F4">[F4]</a> <a href="#ref-F5">[F5]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Apoio sintomático moderado em afrontamentos e outros sintomas vasomotores da menopausa em algumas mulheres, quando usados extratos padronizados de trevo-vermelho ricos em isoflavonas. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a></li>
+        <li>Potencial contributo para melhoria discreta do perfil lipídico (colesterol total e LDL) e de alguns marcadores de saúde cardiovascular em ensaios clínicos selecionados. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a></li>
+        <li>Atividade antioxidante e anti-inflamatória em modelos celulares e animais, associada à presença de fenóis totais, flavonoides e outros fitoquímicos bioativos nas flores e folhas. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></li>
+        <li>Uso tradicional como planta depurativa e linfática suave, associada a tisanas e preparados destinados a apoiar a função cutânea, articulações e estados congestivos ligeiros. <a href="#ref-M2">[M2]</a> <a href="#ref-D5">[D5]</a> <a href="#ref-U2">[U2]</a></li>
+        <li>Possível contribuição para manutenção da saúde óssea em mulheres pós-menopáusicas, sugerida por alguns ensaios com extratos padronizados, embora com resultados ainda heterogéneos. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>As partes aéreas do trevo-vermelho e do trevo-branco são ricas em compostos fenólicos, incluindo flavonoides, isoflavonas, cumarinas, ácidos fenólicos e saponinas, bem como pequenas quantidades de óleo essencial. No trevo-vermelho, os estudos de composição destacam isoflavonas como formononetina e biochanina A, além de genisteína e daidzeína, em concentrações que, em folhas e misturas de partes aéreas, podem atingir valores de cerca de 10–15 mg de isoflavonas totais por grama de matéria seca em alguns cultivares. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F5">[F5]</a></p>
+      <p>Estudos recentes sobre extratos hidroalcoólicos de trevo-vermelho descrevem teores de polifenóis totais frequentemente na ordem de dezenas de mg de equivalentes de ácido gálico por grama de extrato, com atividade antioxidante medida por ensaios como DPPH e ABTS e correlação positiva entre teor fenólico e capacidade de neutralização de radicais livres. <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>No trevo-branco, a composição fenólica caracteriza-se por flavonóis como quercetina, kaempferol e miricetina em formas glicosiladas, com teor de fenóis totais nas flores na faixa aproximada de 28–39 mg GAE/g de planta seca e isoflavonas em quantidades muito mais baixas (cerca de 0,2 mg/g). Extratos etanólicos e metanólicos mostram igualmente atividade antioxidante moderada em ensaios DPPH, associada ao conteúdo de flavonoides. <a href="#ref-F4">[F4]</a> <a href="#ref-F5">[F5]</a></p>
+      <p>Ensaios adicionais com extratos de trevos em contexto de alimentação animal e de fitoextração de metais pesados sugerem que a matriz fenólica e saponínica contribui para propriedades antioxidantes, anti-inflamatórias e de tolerância a stress oxidativo, embora estes resultados devam ser extrapolados para uso humano com prudência. <a href="#ref-F4">[F4]</a> <a href="#ref-F5">[F5]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Isoflavonas totais nas folhas de trevo-vermelho (formononetina, biochanina A e congéneres)</td><td>≈10–15 mg/g de isoflavonas totais (matéria seca)</td></tr>
+        <tr><td>Polifenóis totais em extratos hidroalcoólicos de partes aéreas de trevo-vermelho</td><td>≈40–70 mg GAE/g de extrato seco</td></tr>
+        <tr><td>Fenóis totais nas flores de trevo-branco</td><td>≈28,7–38,8 mg GAE/g de planta seca</td></tr>
+        <tr><td>Isoflavonas nas flores e folhas de trevo-branco</td><td>≈0,2 mg/g de isoflavonas</td></tr>
+        <tr><td>Capacidade antioxidante (ensaio DPPH) de extratos de trevo-branco</td><td>EC50 ≈72–180 µg/mL nos extratos</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Cobertura viva e adubo verde em hortas, pomares e sistemas agroflorestais, ajudando a fixar azoto, reduzir erosão e melhorar a estrutura do solo. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a> <a href="#ref-S2">[S2]</a></li>
+        <li>Planta melífera muito apreciada por abelhas e outros polinizadores, contribuindo para a produção de mel de trevo e para a biodiversidade funcional. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Uso em relvados naturais e prados biodiversos, onde o trevo-branco em particular reduz a necessidade de fertilização azotada e de rega intensiva. <a href="#ref-A1">[A1]</a> <a href="#ref-S1">[S1]</a> <a href="#ref-S3">[S3]</a></li>
+        <li>Emprego em misturas de flores comestíveis e decoração de pratos, bem como em méis, vinagres e vinhos aromatizados artesanais. <a href="#ref-A2">[A2]</a> <a href="#ref-R7">[R7]</a> <a href="#ref-R8">[R8]</a></li>
+        <li>Integração em práticas de agricultura regenerativa e permacultura, incluindo consociações com frutíferas, legumes perenes e sebes multifuncionais. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a> <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 8,7 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        O trevo-branco e o trevo-dos-prados combinam funções alimentares (folhas e flores comestíveis em pequenas quantidades), medicinais (tisanas depurativas, de conforto feminino e de apoio cutâneo), ecológicas (fixação de azoto, produção de néctar e pólen) e estruturais ao nível do solo (cobertura viva, redução de erosão e melhoria da estrutura superficial). Em contexto de permacultura, funcionam como tapete vivo entre culturas perenes e zonas de baixa mobilização do solo, reduzindo infestantes e fornecendo biomassa para chop-and-drop.
+A pontuação elevada resulta da combinação de forte multifuncionalidade, rusticidade em climas temperados, elevada contribuição para solo e biodiversidade e boa compatibilidade com muitos sistemas alimentares biodiversos, ainda que com necessidade de alguma gestão para evitar competição excessiva com culturas mais delicadas. O valor obtido na escala 0–10 deriva da aplicação do algoritmo descrito no projeto (soma dos critérios positivos até 14 pontos, subtração de penalizações como invasividade moderada e possível competição por água/luz, com conversão por regra de três simples), situando o trevo em cerca de 8,7/10 e indicando uma planta de elevadíssima funcionalidade em permacultura, especialmente como cobertura viva, adubo verde e suporte à fauna polinizadora.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação do trevo considera contribuição elevada em uso alimentar pontual (ALIM=1), uso medicinal relevante mas de intensidade moderada em contexto doméstico (MED=2), papel perene de baixa a média estrutura vegetal (ESTR=1), forte impacto na melhoria de solo e biomassa através de cobertura viva e fixação de azoto (SOLO=2), apoio claro a polinizadores e outros insetos benéficos (ECO=2), rusticidade e baixa manutenção após instalação em solos adequados (RUST=2) e multifuncionalidade adicional com valor cultural, paisagístico e simbólico em prados floridos e sistemas regenerativos (MULT=2). As penalizações incidem sobretudo na tendência para comportamento algo invasor em relvados e canteiros mal geridos (INVAS=-1) e em alguma competição por água e luz com culturas de porte baixo, especialmente em situações de seca (COMP=-1), sendo o risco de toxicidade e perigo físico considerado baixo quando se respeitam as limitações de dose e grupos de risco. O resultado bruto positivo é convertido para a escala 0–10, conduzindo a um valor final próximo de 8,7/10 e reforçando a classificação como espécie de alta funcionalidade em permacultura.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-P3">[P3]</a> <a href="#ref-A1">[A1]</a> <a href="#ref-S2">[S2]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Wikipédia (en). &quot;Trifolium pratense&quot; – descrição botânica, distribuição e usos como planta forrageira e medicinal. Disponível em: <a href="https://en.wikipedia.org/wiki/Trifolium_pratense" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Trifolium_pratense</a></li>
+        <li id="ref-D2">[D2] Wikipédia (en). &quot;Trifolium repens&quot; – descrição botânica, distribuição, usos forrageiros e como cobertura de solo. Disponível em: <a href="https://en.wikipedia.org/wiki/Trifolium_repens" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Trifolium_repens</a></li>
+        <li id="ref-D3">[D3] Motti R et al. &quot;Edible Flowers Used in Some Countries of the Mediterranean Basin&quot; – revisão etnobotânica incluindo o uso de flores de trevos (Trifolium spp.) como comestíveis. Disponível em: <a href="https://www.mdpi.com/2223-7747/11/3/3272" target="_blank" rel="noopener">https://www.mdpi.com/2223-7747/11/3/3272</a></li>
+        <li id="ref-D4">[D4] Practical Self Reliance. &quot;Foraging White Clover (Trifolium repens)&quot; – guia prático de identificação e usos alimentares e medicinais do trevo-branco. Disponível em: <a href="https://practicalselfreliance.com/foraging-white-clover/" target="_blank" rel="noopener">https://practicalselfreliance.com/foraging-white-clover/</a></li>
+        <li id="ref-D5">[D5] A Senhora do Monte. &quot;Trevo branco – Conheça os benefícios desta planta comestível&quot; – artigo em português sobre usos comestíveis e medicinais de Trifolium repens. Disponível em: <a href="https://asenhoradomonte.com/2020/07/23/beneficios-trevo-branco/" target="_blank" rel="noopener">https://asenhoradomonte.com/2020/07/23/beneficios-trevo-branco/</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Tava A et al. &quot;Phenolic Content and Antioxidant Activity in Trifolium pratense and other clovers&quot; – inclui informação sobre cultivo e partes utilizadas em diferentes sistemas de produção. Disponível em: <a href="https://www.mdpi.com/1420-3049/24/2/298" target="_blank" rel="noopener">https://www.mdpi.com/1420-3049/24/2/298</a></li>
+        <li id="ref-S2">[S2] Keela Yoga Farm. &quot;Nitrogen Fixing Cover Crops and Living Mulch&quot; – artigo prático (Portugal) sobre uso de trevos branco e vermelho como adubo verde e cobertura viva. Disponível em: <a href="https://www.keelayogafarm.com/growing-green-manure-portugal/" target="_blank" rel="noopener">https://www.keelayogafarm.com/growing-green-manure-portugal/</a></li>
+        <li id="ref-S3">[S3] The Spruce. &quot;How to Grow and Care for White Clover (Trifolium repens)&quot; – ficha de cultivo com informação sobre solo, clima, manejo e comportamento como cobertura de solo. Disponível em: <a href="https://www.thespruce.com/growing-white-clover-trifolium-repens-5101230" target="_blank" rel="noopener">https://www.thespruce.com/growing-white-clover-trifolium-repens-5101230</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] National Center for Complementary and Integrative Health (NCCIH). &quot;Red Clover&quot; – monografia sobre usos, evidência clínica, segurança e precauções de Trifolium pratense. Disponível em: <a href="https://www.nccih.nih.gov/health/red-clover" target="_blank" rel="noopener">https://www.nccih.nih.gov/health/red-clover</a></li>
+        <li id="ref-U2">[U2] WebMD. &quot;Red Clover – Uses, Side Effects, and More&quot; – resumo de usos populares, doses típicas, efeitos adversos e interações medicamentosas. Disponível em: <a href="https://www.webmd.com/vitamins/ai/ingredientmono-308/red-clover" target="_blank" rel="noopener">https://www.webmd.com/vitamins/ai/ingredientmono-308/red-clover</a></li>
+        <li id="ref-U3">[U3] MedlinePlus. &quot;Red clover&quot; – informação sobre segurança, eficácia potencial e precauções em grupos de risco. Disponível em: <a href="https://medlineplus.gov/druginfo/natural/844.html" target="_blank" rel="noopener">https://medlineplus.gov/druginfo/natural/844.html</a></li>
+        <li id="ref-U4">[U4] Breastcancer.org. &quot;Phytoestrogens and breast cancer&quot; – discussão sobre fitoestrogénios, incluindo isoflavonas de trevo-vermelho, em doentes com história de cancro da mama. Disponível em: <a href="https://www.breastcancer.org/risk/factors/phytoestrogens" target="_blank" rel="noopener">https://www.breastcancer.org/risk/factors/phytoestrogens</a></li>
+        <li id="ref-U5">[U5] A Senhora do Monte. &quot;Ervas benéficas que não deve arrancar do seu jardim/horta&quot; – inclui secção sobre trevo branco e trevo vermelho, com usos tradicionais e avisos gerais. Disponível em: <a href="https://asenhoradomonte.com/2020/09/16/ervas-beneficas-que-nao-deve-arrancar/" target="_blank" rel="noopener">https://asenhoradomonte.com/2020/09/16/ervas-beneficas-que-nao-deve-arrancar/</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Blog Nutritivo. &quot;Trevo-vermelho: benefícios e como preparar&quot; – artigo em português com receita de chá de trevo-vermelho para uso diário moderado. Disponível em: <a href="https://blognutritivo.com.br/trevo-vermelho-beneficios-e-como-preparar/" target="_blank" rel="noopener">https://blognutritivo.com.br/trevo-vermelho-beneficios-e-como-preparar/</a></li>
+        <li id="ref-R2">[R2] Vitat. &quot;Chás que aliviam os sintomas da menopausa&quot; – inclui indicação e modo de preparo de chá de trevo-vermelho para apoio sintomático. Disponível em: <a href="https://vitat.com.br/chas-sintomas-da-menopausa/" target="_blank" rel="noopener">https://vitat.com.br/chas-sintomas-da-menopausa/</a></li>
+        <li id="ref-R3">[R3] NutriEla. &quot;Chá de trevo-vermelho&quot; – receita em português de infusão de trevo-vermelho com indicação de preparo e modo de consumo. Disponível em: <a href="https://nutriela.com.br/cha-de-trevo-vermelho/" target="_blank" rel="noopener">https://nutriela.com.br/cha-de-trevo-vermelho/</a></li>
+        <li id="ref-R4">[R4] Katie Spring. &quot;Red Clover Tea&quot; – receita detalhada em inglês para preparar chá de trevo-vermelho a partir de flores secas. Disponível em: <a href="https://katiespring.com/red-clover-tea/" target="_blank" rel="noopener">https://katiespring.com/red-clover-tea/</a></li>
+        <li id="ref-R5">[R5] Food.com. &quot;Red Clover Tea&quot; – receita simples em inglês para chá de trevo-vermelho com indicação básica de quantidades e tempo de infusão. Disponível em: <a href="https://www.food.com/recipe/red-clover-tea-261262" target="_blank" rel="noopener">https://www.food.com/recipe/red-clover-tea-261262</a></li>
+        <li id="ref-R6">[R6] A Senhora do Monte. &quot;Trevo branco – Conheça os benefícios desta planta comestível&quot; – sugere uso de folhas e flores em saladas, chás e óleos, com instruções de secagem. Disponível em: <a href="https://asenhoradomonte.com/2020/07/23/beneficios-trevo-branco/" target="_blank" rel="noopener">https://asenhoradomonte.com/2020/07/23/beneficios-trevo-branco/</a></li>
+        <li id="ref-R7">[R7] Edible Wild Food. &quot;Clover Syrup&quot; – receita em inglês para xarope de flores de trevo, com uso culinário e ocasionalmente medicinal. Disponível em: <a href="https://www.ediblewildfood.com/clover-syrup.aspx" target="_blank" rel="noopener">https://www.ediblewildfood.com/clover-syrup.aspx</a></li>
+        <li id="ref-R8">[R8] Wild Edible Plant of the Month. &quot;White Clover&quot; – página com receitas de salada, chá e mel infundido com trevo-branco. Disponível em: <a href="https://wildedibleplantofthemonth.com/white-clover/" target="_blank" rel="noopener">https://wildedibleplantofthemonth.com/white-clover/</a></li>
+        <li id="ref-R9">[R9] Permacrafters. &quot;Wild Tabbouleh with Red Clover&quot; – receita em inglês que utiliza folhas de trevo-vermelho em tabule selvagem. Disponível em: <a href="https://www.permacrafters.com/wild-tabbouleh-red-clover/" target="_blank" rel="noopener">https://www.permacrafters.com/wild-tabbouleh-red-clover/</a></li>
+        <li id="ref-R10">[R10] Monica Wilde. &quot;Clover Crispbreads&quot; – receita de pães estaladiços com flores de trevo em inglês. Disponível em: <a href="https://monicawilde.com/clover-crispbreads/" target="_blank" rel="noopener">https://monicawilde.com/clover-crispbreads/</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] Błaszczyk N et al. &quot;Trifolium species-derived substances and extracts – biological properties and prospects&quot; – revisão sobre composição, atividade farmacológica e usos de espécies de Trifolium. Disponível em: <a href="https://www.sciencedirect.com/science/article/pii/S221475002300063X" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S221475002300063X</a></li>
+        <li id="ref-M2">[M2] Błaszczyk N et al. &quot;Trifolium species – The latest findings&quot; – revisão sobre química, propriedades biológicas e potenciais aplicações terapêuticas de Trifolium pratense e T. repens. Disponível em: <a href="https://www.mdpi.com/2223-7747/9/8/1028" target="_blank" rel="noopener">https://www.mdpi.com/2223-7747/9/8/1028</a></li>
+        <li id="ref-M3">[M3] Rapisarda S et al. &quot;Polyphenol Characterization and Antioxidant Capacity of Red Clover&quot; – estudo sobre compostos fenólicos e capacidade antioxidante de Trifolium pratense. Disponível em: <a href="https://arrow.tudublin.ie/cgi/viewcontent.cgi?article=1548&context=schfsehart" target="_blank" rel="noopener">https://arrow.tudublin.ie/cgi/viewcontent.cgi?article=1548&amp;context=schfsehart</a></li>
+        <li id="ref-M4">[M4] Coon JT, Ernst E. &quot;Alternative treatments for menopausal symptoms: systematic review&quot; – inclui extratos de trevo-vermelho no contexto de terapias para afrontamentos e outros sintomas. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/11527523/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/11527523/</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Mikulić M et al. &quot;Phytochemical Composition of Different Red Clover Genotypes Based on Plant Part and Genetic Traits&quot; – dados sobre teores de isoflavonas e polifenóis em Trifolium pratense. Disponível em: <a href="https://www.mdpi.com/2304-8158/12/12/2404" target="_blank" rel="noopener">https://www.mdpi.com/2304-8158/12/12/2404</a></li>
+        <li id="ref-F2">[F2] BenchChem. &quot;The Isoflavone Irilone: A Comprehensive Technical Guide&quot; – inclui tabela com teores aproximados de isoflavonas totais em folhas, caules e flores de trevo-vermelho. Disponível em: <a href="https://www.benchchem.com/pdf/The_Isoflavone_Irilone_A_Comprehensive_Technical_Guide_to_its_Natural_Sources_and_Biological_Interactions.pdf" target="_blank" rel="noopener">https://www.benchchem.com/pdf/The_Isoflavone_Irilone_A_Comprehensive_Technical_Guide_to_its_Natural_Sources_and_Biological_Interactions.pdf</a></li>
+        <li id="ref-F3">[F3] Drużyńska B et al. &quot;Optimization of the Extraction Conditions of Polyphenols from Red Clover&quot; – estudo sobre extração de polifenóis com valores de até cerca de 46 mg GAE/g. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11047408/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11047408/</a></li>
+        <li id="ref-F4">[F4] Kicel A, Wolbiś M. &quot;Phenolic content and DPPH radical scavenging activity of the flowers and leaves of Trifolium repens&quot; – quantificação de fenóis totais, flavonoides e isoflavonas em flores e folhas de trevo-branco. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/23472468/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/23472468/</a></li>
+        <li id="ref-F5">[F5] Tava A et al. &quot;Phenolic Content and Antioxidant Activity in Trifolium pratense and other species&quot; – estudo sobre polifenóis e atividade antioxidante em diferentes trevos. Disponível em: <a href="https://www.mdpi.com/1420-3049/24/2/298" target="_blank" rel="noopener">https://www.mdpi.com/1420-3049/24/2/298</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] A Senhora do Monte. &quot;Trevo branco – Conheça os benefícios desta planta comestível&quot; – destaca funções alimentares, medicinais suaves e utilidade ecológica em jardins e hortas. Disponível em: <a href="https://asenhoradomonte.com/2020/07/23/beneficios-trevo-branco/" target="_blank" rel="noopener">https://asenhoradomonte.com/2020/07/23/beneficios-trevo-branco/</a></li>
+        <li id="ref-A2">[A2] Good Life Permaculture. &quot;Living Mulches&quot; – inclui uso de trevo-branco como cobertura viva numa horta de permacultura. Disponível em: <a href="https://goodlifepermaculture.com.au/living-mulches/" target="_blank" rel="noopener">https://goodlifepermaculture.com.au/living-mulches/</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] Insteading. &quot;6 Reasons Why I Chose Clover as a Living Mulch&quot; – artigo sobre trevo-branco como mulch vivo, fixador de azoto e suporte à fauna. Disponível em: <a href="https://insteading.com/blog/white-clover-as-a-living-mulch/" target="_blank" rel="noopener">https://insteading.com/blog/white-clover-as-a-living-mulch/</a></li>
+        <li id="ref-P2">[P2] Urban Seedling. &quot;Living Mulch&quot; – descreve o uso de trevo-branco anão entre culturas em hortas urbanas como mulch vivo. Disponível em: <a href="https://www.urbanseedling.com/living-mulch/" target="_blank" rel="noopener">https://www.urbanseedling.com/living-mulch/</a></li>
+        <li id="ref-P3">[P3] Keela Yoga Farm. &quot;Nitrogen Fixing Cover Crops and Living Mulch&quot; – inclui trevos branco e vermelho em consociações e sistemas regenerativos em Portugal. Disponível em: <a href="https://www.keelayogafarm.com/growing-green-manure-portugal/" target="_blank" rel="noopener">https://www.keelayogafarm.com/growing-green-manure-portugal/</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

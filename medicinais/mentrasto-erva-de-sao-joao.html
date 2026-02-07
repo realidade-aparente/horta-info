@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html" class="ativa">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+  <a class="next" href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Mentrasto / Erva-de-são-joão (<em>Ageratum conyzoides L.</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Asteraceae</span>
+  <span>Parte usada: partes aéreas jovens e inflorescências</span>
+  <span>Tipo: erva anual aromática medicinal invasora tropical</span>
+  <span>Produção: <strong>espontânea em solos férteis húmidos tropicais</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> América tropical, hoje disseminada por regiões tropicais e subtropicais globais</div>
+  <div><strong>Uso principal</strong> analgesia e anti-inflamatório popular em dores reumáticas e inflamações locais</div>
+  <div><strong>Perfil medicinal</strong> potente planta analgésica e anti-inflamatória, com risco hepatotóxico relevante</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Mentrasto / Erva-de-são-joão (Ageratum conyzoides L.)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>O mentrasto ou erva-de-são-joão (Ageratum conyzoides L.) é uma erva anual aromática, muito ramificada, com 20–80 cm de altura, folhas opostas, ovadas a triangulares, de margem serrada, e pequenos capítulos florais de cor lilás, azulada ou branca, reunidos em inflorescências terminais densas. A planta emite um odor característico quando friccionada e produz grande quantidade de sementes leves, o que favorece a sua dispersão.</p>
+      <p>No Brasil é conhecida por diversos nomes populares, entre os quais mentrasto, erva-de-são-joão, catinga-de-bode, picão-roxo, catinga-de-barão e celestina. Em português europeu também se encontra a designação mentrasto para esta espécie, embora o nome possa ser partilhado com outras plantas em alguns contextos. Em inglês, é frequentemente designada por billy goat weed, chick weed, goatweed ou tropical whiteweed.</p>
+      <p>Botanicamente, pertence à família Asteraceae e é considerada uma infestante agressiva de culturas anuais, pastagens e áreas ruderalizadas em regiões tropicais e subtropicais. Ao mesmo tempo, em vários países é valorizada como planta medicinal e fonte de compostos bioativos, o que cria um paradoxo entre o seu valor etnofarmacológico e os riscos ecológicos e toxicológicos associados.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em climas tropicais e subtropicais, o mentrasto comporta-se como anual de ciclo rápido, germinando e florindo ao longo de grande parte do ano sempre que há calor e humidade suficientes. Em regiões com estação seca marcada, tende a surgir com mais intensidade na estação das chuvas e a declinar quando a disponibilidade hídrica diminui.
+Em sistemas de cultivo e hortas, Ageratum conyzoides instala-se sobretudo em solos férteis, revolvidos ou recentemente adubados, onde pode formar manchas densas. Para fins medicinais, privilegia-se a colheita de plantas viçosas em plena vegetação e início de floração, evitando exemplares muito velhos ou danificados.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Germinação e estabelecimento: preferencialmente em períodos quentes e húmidos, após chuvas ou regas abundantes.</li>
+        <li>Crescimento vegetativo: rápido, podendo cobrir o solo em poucas semanas em solos férteis e com boa disponibilidade de água.</li>
+        <li>Floração e frutificação: ao longo de grande parte do ano em climas tropicais; em climas mais frescos, concentra-se nos meses mais quentes.</li>
+        <li>Época de colheita para uso medicinal: plantas bem desenvolvidas, mas ainda vigorosas, em fase de crescimento ativo e início de floração, colhidas em locais limpos e sem contaminação.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Estudos farmacológicos com extratos de folhas de Ageratum conyzoides demonstram atividades anti-inflamatórias e analgésicas em modelos animais, sustentando o uso tradicional em dores reumáticas, artrite e inflamações musculoesqueléticas. Os extratos etanólicos e hidroalcoólicos reduziram edema induzido e mostraram efeito analgésico em testes de nocicepção em ratos. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a></li>
+        <li>Ensaios in vitro e in vivo indicam ainda atividades antimicrobianas, antitumorais, antidiabéticas, antioxidantes e inseticidas, associadas a diferentes frações da planta e aos seus metabolitos secundários, incluindo flavonoides, cromenos e derivados terpénicos. Alguns estudos exploram o potencial do mentrasto como fonte de compostos para controlo de pragas agrícolas e patógenos. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-F2">[F2]</a></li>
+        <li>Paralelamente, estudos toxicológicos revelam que a espécie contém alcaloides pirrolizidínicos hepatotóxicos, e que infusões e outros preparados podem libertar quantidades detectáveis destas substâncias. Ensaios crónicos em animais e avaliações in silico sugerem riscos de hepato e genotoxicidade, especialmente com uso prolongado ou em doses elevadas, o que justifica forte prudência na extrapolação de doses tradicionais para uso moderno. <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Uso tradicional no Brasil e noutros países tropicais de infusões de mentrasto como chá para dores reumáticas, artrite, febres, constipações, cólicas menstruais e pequenas infeções urinárias, muitas vezes em combinação com outras plantas. <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a> <a href="#ref-R3">[R3]</a></li>
+        <li>Emprego popular de banhos e compressas de mentrasto para aliviar dores musculares e articulares, torções, pancadas e inflamações superficiais, aplicando a infusão morna sobre a área afetada. <a href="#ref-R2">[R2]</a> <a href="#ref-R4">[R4]</a></li>
+        <li>Uso tradicional em banhos de assento e banhos de imersão para alívio de dores pélvicas e desconfortos no pós-parto, sobretudo em contextos de medicina popular brasileira. <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a></li>
+        <li>Preparação de xaropes, macerações e outras formas caseiras para tosse, gripes, problemas respiratórios e distúrbios digestivos, ainda muito frequentes em comunidades rurais, embora hoje desaconselhados para uso prolongado devido às preocupações com toxicidade hepática. <a href="#ref-R1">[R1]</a> <a href="#ref-R3">[R3]</a> <a href="#ref-U1">[U1]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>Apesar da longa história de uso tradicional, há evidência consistente de que Ageratum conyzoides contém alcaloides pirrolizidínicos hepatotóxicos em diferentes partes da planta e que estes podem passar para infusões e outros preparados. Estudos in vivo e análises de chás medicinais mostram risco potencial de dano hepático e genotoxicidade, sobretudo com uso prolongado ou em doses elevadas. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>Por este motivo, várias fontes modernas recomendam evitar o uso interno continuado de mentrasto, especialmente em grupos vulneráveis como grávidas, lactantes, crianças, pessoas com doença hepática, alcoólicas, indivíduos sob medicação hepatotóxica ou com história de problemas hepáticos. O uso tópico em zonas limitadas e por períodos curtos, em preparações adequadamente filtradas, poderá ser relativamente mais seguro, mas mesmo assim deve ser prudente. <a href="#ref-U1">[U1]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></p>
+      <p>Recomenda-se não utilizar mentrasto como automedicação prolongada, nem como substituto de tratamentos médicos para doenças inflamatórias, reumáticas ou infecciosas. Em caso de sintomas como dor abdominal persistente, icterícia, urina escura, náuseas, fadiga intensa ou alterações laboratoriais hepáticas, é essencial procurar ajuda médica e informar sobre qualquer uso de plantas contendo alcaloides pirrolizidínicos. <a href="#ref-U1">[U1]</a> <a href="#ref-U4">[U4]</a> <a href="#ref-F4">[F4]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        Na prática tradicional, o mentrasto é utilizado em chás, decoções, banhos, compressas, cataplasmas e, ocasionalmente, em xaropes e tinturas, tanto para uso interno como externo. Contudo, à luz do conhecimento atual sobre a presença de alcaloides pirrolizidínicos e os riscos de toxicidade hepática, é recomendável privilegiar aplicações externas, limitar a duração de uso e evitar preparações concentradas ou de longa duração por via interna, sobretudo sem acompanhamento profissional. As receitas aqui descritas reproduzem práticas tradicionais documentadas, mas devem ser encaradas com muita prudência e sempre enquadradas pelas recomendações de segurança.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="mentrasto-erva-de-sao-joao_receitas.html">Infusão tradicional de mentrasto para dores reumáticas e febre:</a> chá quente usado na medicina popular para aliviar dor reumática, febre e mal-estar geral em períodos curtos. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="mentrasto-erva-de-sao-joao_receitas.html">Chá de mentrasto para cólicas menstruais e dores articulares:</a> infusão utilizada em crises de dor menstrual e desconforto articular ligeiro, com uso limitado no tempo e supervisão recomendada. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="mentrasto-erva-de-sao-joao_receitas.html">Decoção leve para banhos e compressas:</a> preparado aquoso aplicado externamente em banhos e compressas sobre articulações dolorosas, contusões e zonas inflamadas. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="mentrasto-erva-de-sao-joao_receitas.html">Banho de assento com mentrasto:</a> decoção concentrada adicionada à água morna do banho de assento em desconfortos pélvicos, pós-parto e inflamações superficiais. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="mentrasto-erva-de-sao-joao_receitas.html">Óleo macerado de mentrasto para uso externo:</a> macerado oleoso aplicado em pequenas áreas de pele dolorosa ou inflamada, evitando pele lesionada extensa e uso prolongado. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="mentrasto-erva-de-sao-joao_receitas.html">Cataplasma de folhas amassadas:</a> folhas frescas esmagadas aplicadas localmente em áreas doloridas ou inflamadas, apenas em pele íntegra e por períodos curtos. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="mentrasto-erva-de-sao-joao_receitas.html">Xarope caseiro com mentrasto e mel:</a> preparado tradicional adoçado usado ocasionalmente para acalmar tosse e desconforto respiratório, com grande cautela devido à toxicidade. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="mentrasto-erva-de-sao-joao_receitas.html">Pomada artesanal com extrato oleoso de mentrasto:</a> preparação semi-sólida com base oleosa aplicada em pequenas zonas com dor ou inflamação localizada. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="mentrasto-erva-de-sao-joao_receitas.html">Infusão combinada de mentrasto com outras plantas anti-inflamatórias:</a> mistura de ervas em que o mentrasto é associado a espécies mais seguras para apoio ocasional em dor e inflamação. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="mentrasto-erva-de-sao-joao_receitas.html">Preparados fitoterápicos padronizados com mentrasto:</a> produtos específicos à base de extratos de Ageratum conyzoides estudados em contexto farmacológico, sujeitos a regulamentação rigorosa. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>Diversas revisões e monografias descrevem Ageratum conyzoides como planta de forte tradição etnomedicinal, utilizada para tratar dores reumáticas, inflamações articulares, febres, constipações, infeções respiratórias ligeiras, problemas digestivos e perturbações menstruais. Estudos pré-clínicos em modelos animais confirmam efeitos anti-inflamatórios e analgésicos relevantes, o que dá suporte a parte destes usos tradicionais. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a></p>
+      <p>Além da ação anti-inflamatória e analgésica, foram demonstradas atividades antimicrobianas, antioxidantes, antitumorais, antidiabéticas e inseticidas para extratos de folhas e partes aéreas de Ageratum conyzoides. Alguns trabalhos sugerem potencial para desenvolvimento de fitomedicamentos ou produtos naturais para controlo de pragas, embora a transposição para a prática clínica exija mais estudos de eficácia e segurança. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-F2">[F2]</a></p>
+      <p>Em paralelo, a evidência toxicológica sobre a presença de alcaloides pirrolizidínicos hepatotóxicos obriga a relativizar os benefícios, sobretudo quando se consideram usos internos prolongados. Assim, os benefícios potenciais de mentrasto devem ser sempre avaliados em equilíbrio com o seu perfil de risco, sendo preferível, em muitos contextos, recorrer a plantas alternativas com perfis de segurança melhor estabelecidos para indicações como dores reumáticas ou distúrbios menstruais. <a href="#ref-M2">[M2]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Adjuvante tradicional em dores reumáticas, artrite e inflamações musculoesqueléticas, com suporte pré-clínico para efeitos anti-inflamatórios e analgésicos. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a></li>
+        <li>Uso complementar em cólicas menstruais e dores pélvicas, sobretudo em contextos populares, embora sem ensaios clínicos robustos que definam eficácia e segurança. <a href="#ref-M1">[M1]</a> <a href="#ref-R2">[R2]</a></li>
+        <li>Potencial apoio em infeções ligeiras e pequenas feridas, devido a atividades antimicrobianas demonstradas in vitro, em particular contra certas bactérias e fungos. <a href="#ref-M2">[M2]</a> <a href="#ref-F2">[F2]</a></li>
+        <li>Possível contribuição antioxidante e antitumoral baseada em estudos experimentais, que apontam para inibição de crescimento tumoral em modelos animais e células em cultura, carecendo ainda de confirmação em estudos clínicos. <a href="#ref-M2">[M2]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F5">[F5]</a></li>
+        <li>Uso como fonte de substâncias bioativas para controlo de pragas agrícolas e vetores de doença, explorando as propriedades inseticidas e repelentes do óleo essencial e de outros compostos. <a href="#ref-M3">[M3]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F6">[F6]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>A composição química de Ageratum conyzoides inclui uma diversidade de metabolitos secundários, entre os quais cromenos (como precoceno I e II), flavonoides, terpenoides, cumarinas, ácidos fenólicos, esteróis e alcaloides pirrolizidínicos. Revisões fitoquímicas recentes identificam dezenas de compostos isolados da parte aérea, incluindo substâncias responsáveis por atividades anti-inflamatórias, analgésicas, antimicrobianas e inseticidas. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F5">[F5]</a></p>
+      <p>Estudos de toxicidade crónica e análises específicas de infusões de mentrasto mostram que os alcaloides pirrolizidínicos presentes na planta podem ser extraídos em quantidades significativas para chás e outras preparações aquosas. Estes alcaloides são estruturalmente semelhantes aos de outras plantas hepatotóxicas e estão associados a dano hepático, veno-oclusão hepática e potencial carcinogenicidade. <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></p>
+      <p>Para além da presença de PAs, trabalhos experimentais demonstram que extratos de Ageratum conyzoides apresentam atividades antioxidantes, imunomoduladoras, antitumorais e antimicrobianas, com eficácia dependente do solvente de extração (água, etanol, metanol, óleos) e da parte da planta utilizada. Óleos essenciais com altos teores de cromenos mostram também potencial para uso em controlo de pragas agrícolas, mas exigem avaliação de segurança ambiental e toxicológica antes de aplicação alargada. <a href="#ref-F2">[F2]</a> <a href="#ref-F5">[F5]</a> <a href="#ref-F6">[F6]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Cromenos (por exemplo precoceno I e II) em extratos e óleos essenciais</td><td>presença confirmada, principais constituintes do óleo em vários quimiotipos</td></tr>
+        <tr><td>Flavonoides totais em extratos etanólicos da parte aérea</td><td>≈5–40 mg/g de extrato seco (valores aproximados)</td></tr>
+        <tr><td>Ácidos fenólicos e outros fenóis em extratos da erva</td><td>≈5–30 mg/g de extrato seco (valores aproximados)</td></tr>
+        <tr><td>Alcaloides pirrolizidínicos (PAs) em folhas e infusões</td><td>níveis mensuráveis em infusões e extratos, com detecção em µg/mL</td></tr>
+        <tr><td>Atividade antioxidante total (ensaios DPPH, ABTS, etc.)</td><td>atividade moderada a elevada, com IC50 antioxidante em dezenas de µg/mL</td></tr>
+        <tr><td>Atividade antitumoral e imunomoduladora de extratos em modelos experimentais</td><td>inibição significativa de crescimento tumoral e modulação de parâmetros imunes em doses de dezenas a centenas de mg/kg em modelos animais</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Planta espontânea que produz biomassa rapidamente, podendo ser usada em pequenos volumes para cobertura temporária do solo e compostagem, desde que colhida antes da frutificação. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a> <a href="#ref-F6">[F6]</a></li>
+        <li>Fonte de compostos inseticidas e repelentes em contexto agrícola, com estudos que sugerem eficácia do óleo essencial e de extratos contra diversas pragas de culturas. <a href="#ref-F6">[F6]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Elemento de biodiversidade em sistemas tropicais, fornecendo néctar e pólen para insetos, embora o seu comportamento invasor exija forte controlo. <a href="#ref-P1">[P1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Objeto de interesse científico como modelo para estudo de alcaloides pirrolizidínicos e para desenvolvimento de métodos de monitorização destes compostos em alimentos e fitoterápicos. <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></li>
+        <li>Utilizada em alguns programas de Farmácia Viva e hortos medicinais experimentais como espécie de estudo em etnofarmacologia, toxicologia e manejo de plantas medicinais de risco. <a href="#ref-A2">[A2]</a> <a href="#ref-F1">[F1]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 2,1 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em termos de permacultura, o mentrasto oferece algumas funções úteis: fornece biomassa rápida para compostagem em pequenos volumes, possui propriedades medicinais tradicionais relevantes (sobretudo anti-inflamatórias e analgésicas) e contém compostos com potencial inseticida para controlo de pragas em sistemas agrícolas de pequena escala. Também participa na teia ecológica local, oferecendo flores para insetos em ambientes tropicais e subtropicais.
+Porém, Ageratum conyzoides é uma erva anual invasora e agressiva em muitas culturas, competindo por espaço, luz e nutrientes, e pode rapidamente dominar áreas perturbadas. Além disso, a presença de alcaloides pirrolizidínicos hepatotóxicos torna o seu uso interno controverso e arriscado, limitando bastante o valor alimentar ou medicinal prático em contexto doméstico. Assim, em permacultura é geralmente mais sensato minimizar a sua instalação descontrolada e preferir outras espécies multifuncionais de menor risco toxicológico.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação do mentrasto resulta de valores nulos em uso alimentar direto (ALIM=0), valores elevados em uso medicinal tradicional e pré-clínico (MED=2), pontuação baixa em estrutura (ESTR=0), contribuição moderada para solo e biomassa como erva de crescimento rápido mas pouco estrutural (SOLO=1), algum suporte ecológico a insetos em paisagens tropicais (ECO=1), boa rusticidade e baixa exigência de manutenção em climas adequados (RUST=2) e multifuncionalidade adicional ligada a usos inseticidas e ao interesse etnofarmacológico (MULT=2). No lado das penalizações, são considerados um risco toxicológico relevante devido à presença de alcaloides pirrolizidínicos (TOX=-2), ausência de perigo físico direto significativo (PERIGO=0), comportamento invasor e competitivo em culturas agrícolas (INVAS=-2) e competição moderada por água, luz e nutrientes em canteiros e talhões menos manejados (COMP=-1).
+O valor final em escala 0–10 resulta da aplicação do algoritmo descrito no projeto (soma dos critérios positivos até 14 pontos, subtração de penalizações, com conversão por regra de três simples), situando o mentrasto em cerca de 2,1/10. Este valor traduz uma planta com funções medicinais e ecológicas interessantes, mas com balanço global pouco favorável em permacultura de horta/jardim, devido ao risco toxicológico e ao carácter infestante, sendo mais apropriada como objeto de estudo e uso muito controlado do que como espécie-chave em sistemas alimentares biodiversos.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Wikipedia (PT). Artigo sobre Ageratum conyzoides (mentrasto), com descrição botânica, distribuição, nomes comuns e referência à presença da espécie em Portugal e no Brasil. Disponível em: <a href="https://pt.wikipedia.org/wiki/Ageratum_conyzoides" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Ageratum_conyzoides</a></li>
+        <li id="ref-D2">[D2] Wu H. et al. Weed risk assessment for Ageratum conyzoides L., descrevendo a espécie como infestante de áreas agrícolas e ruderal em diversos países tropicais e subtropicais. Disponível em: <a href="https://www.aphis.usda.gov/sites/default/files/ageratum-conyzoides.pdf" target="_blank" rel="noopener">https://www.aphis.usda.gov/sites/default/files/ageratum-conyzoides.pdf</a></li>
+        <li id="ref-D3">[D3] Hind D. J. N. et al. Fichas botânicas e monografias do género Ageratum em bases como Kew Science e Flora of Australia, com informação morfológica e taxonómica detalhada. Disponível em: <a href="https://profiles.ala.org.au/opus/foa/profile/Ageratum%20conyzoides%20subsp.%20conyzoides" target="_blank" rel="noopener">https://profiles.ala.org.au/opus/foa/profile/Ageratum%20conyzoides%20subsp.%20conyzoides</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Castro H. G. et al. Teor e composição do óleo essencial de cinco acessos de mentrasto (Ageratum conyzoides L.), incluindo notas sobre origem, adaptação ecológica e comportamento em diferentes condições ambientais. Disponível em: <a href="https://www.scielo.br/j/qn/a/N3hMj6pTZTJHQKY434XFgtd/" target="_blank" rel="noopener">https://www.scielo.br/j/qn/a/N3hMj6pTZTJHQKY434XFgtd/</a></li>
+        <li id="ref-S2">[S2] CABI Compendium. Ficha de Ageratum conyzoides com informação sobre distribuição, ecologia, habitats e comportamento como infestante em várias culturas agrícolas. Disponível em: <a href="https://www.cabidigitallibrary.org/doi/full/10.1079/cabicompendium.3572" target="_blank" rel="noopener">https://www.cabidigitallibrary.org/doi/full/10.1079/cabicompendium.3572</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] Bosi C. F. et al. Pyrrolizidine alkaloids in medicinal tea of Ageratum conyzoides L., estudo que identifica e quantifica PAs em infusões de mentrasto usadas na medicina popular brasileira. Disponível em: <a href="https://www.scielo.br/j/rbfar/a/yNj4ZMNjDC49RqWFVcsqdNt/" target="_blank" rel="noopener">https://www.scielo.br/j/rbfar/a/yNj4ZMNjDC49RqWFVcsqdNt/</a></li>
+        <li id="ref-U2">[U2] Chahal R. et al. Ageratum conyzoides L. and Its Secondary Metabolites in the Management of Different Clinical Conditions, revisão que discute usos terapêuticos potenciais e preocupações de toxicidade. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8156077/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8156077/</a></li>
+        <li id="ref-U3">[U3] Moreira R. et al. Pyrrolizidine Alkaloids: Chemistry, Pharmacology, Toxicology and Food Safety, revisão geral sobre PAs e riscos para a saúde humana, relevante para espécies contendo estes compostos. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6032134/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6032134/</a></li>
+        <li id="ref-U4">[U4] Tuasaúde. Artigo em português sobre mentrasto (Ageratum conyzoides), descrevendo usos populares, formas de consumo e principais contraindicações e cuidados. Disponível em: <a href="https://www.tuasaude.com/mentrasto/" target="_blank" rel="noopener">https://www.tuasaude.com/mentrasto/</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] CPT Artigos. &quot;Medicina natural: Mentrasto (Ageratum conyzoides)&quot;, texto que descreve usos tradicionais internos e externos, incluindo chá para dores reumáticas, febre e cólicas. Disponível em: <a href="https://www.cpt.com.br/artigos/medicina-natural-mentrasto-ageratum-conyzoides" target="_blank" rel="noopener">https://www.cpt.com.br/artigos/medicina-natural-mentrasto-ageratum-conyzoides</a></li>
+        <li id="ref-R2">[R2] Tuasaúde. Artigo sobre mentrasto explicando formas de uso em chá, doses populares e indicações como artrose, cólicas menstruais, feridas e infeção urinária. Disponível em: <a href="https://www.tuasaude.com/mentrasto/" target="_blank" rel="noopener">https://www.tuasaude.com/mentrasto/</a></li>
+        <li id="ref-R3">[R3] Osugi N. K. et al. &quot;Propriedades farmacológicas e possíveis usos medicinais de Ageratum conyzoides&quot;, revisão que lista indicações tradicionais e modos de preparação em fitoterapia popular. Disponível em: <a href="https://bjhp.crfmg.org.br/crfmg/article/view/229" target="_blank" rel="noopener">https://bjhp.crfmg.org.br/crfmg/article/view/229</a></li>
+        <li id="ref-R4">[R4] Florien. Ficha técnica &quot;Erva de São João&quot; com descrição de preparo de infusões, banhos e usos populares da planta em contexto brasileiro. Disponível em: <a href="https://florien.com.br/wp-content/uploads/2016/06/ERVA-DE-S%C3%83O-JO%C3%83O.pdf" target="_blank" rel="noopener">https://florien.com.br/wp-content/uploads/2016/06/ERVA-DE-S%C3%83O-JO%C3%83O.pdf</a></li>
+        <li id="ref-R5">[R5] Documentos de Farmácias Vivas e monografias regionais sobre mentrasto, descrevendo preparo de macerados oleosos e uso externo em dores reumáticas. Disponível em: <a href="https://ojs.brazilianjournals.com.br/ojs/index.php/BRJD/article/download/34166/pdf/87295" target="_blank" rel="noopener">https://ojs.brazilianjournals.com.br/ojs/index.php/BRJD/article/download/34166/pdf/87295</a></li>
+        <li id="ref-R6">[R6] Artigos de etnofarmacologia e blogs de herbalistas que descrevem cataplasmas de folhas frescas de mentrasto para aplicação tópica em dores e inflamações. Disponível em: <a href="https://pt.scribd.com/document/334941832/Ageratum-Conyzoides-L" target="_blank" rel="noopener">https://pt.scribd.com/document/334941832/Ageratum-Conyzoides-L</a></li>
+        <li id="ref-R7">[R7] Materiais de divulgação em fitoterapia tradicional que abordam xaropes e combinações de mentrasto com outras plantas respiratórias, destacando usos e cautelas. Disponível em: <a href="https://www.sbpmed.org.br/admin/files/papers/file_nNPRlIh07zGC.pdf" target="_blank" rel="noopener">https://www.sbpmed.org.br/admin/files/papers/file_nNPRlIh07zGC.pdf</a></li>
+        <li id="ref-R8">[R8] Relatos de uso de pomadas e ungentos com extratos de mentrasto em revistas técnicas e relatórios de pesquisa aplicada. Disponível em: <a href="https://periodicos.ufba.br/index.php/nit/article/download/17123/198248" target="_blank" rel="noopener">https://periodicos.ufba.br/index.php/nit/article/download/17123/198248</a></li>
+        <li id="ref-R9">[R9] Osugi N. K. et al. e outras revisões que relatam infusões combinadas de Ageratum conyzoides com espécies anti-inflamatórias, discutindo benefícios e riscos. Disponível em: <a href="https://bjhp.crfmg.org.br/crfmg/article/view/229" target="_blank" rel="noopener">https://bjhp.crfmg.org.br/crfmg/article/view/229</a></li>
+        <li id="ref-R10">[R10] Revisão científica recente sobre valores farmacológicos e fitoquímicos de mentrasto, descrevendo a necessidade de padronização de extratos e controlo de PAs em produtos comerciais. Disponível em: <a href="https://www.revistasuninter.com/revistasaude/index.php/revista-praticas-interativas/article/view/1399" target="_blank" rel="noopener">https://www.revistasuninter.com/revistasaude/index.php/revista-praticas-interativas/article/view/1399</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] Chahal R. et al. &quot;Ageratum conyzoides L. and Its Secondary Metabolites in the Management of Different Clinical Conditions&quot;, revisão abrangente sobre atividades anti-inflamatórias, analgésicas, antitumorais, antimicrobianas e outras propriedades medicinais da espécie. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8156077/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8156077/</a></li>
+        <li id="ref-M2">[M2] Osugi N. K. et al. &quot;Propriedades farmacológicas e possíveis usos medicinais de Ageratum conyzoides&quot;, artigo de revisão em português que discute principais indicações etnomedicinais e resultados farmacológicos. Disponível em: <a href="https://bjhp.crfmg.org.br/crfmg/article/view/229" target="_blank" rel="noopener">https://bjhp.crfmg.org.br/crfmg/article/view/229</a></li>
+        <li id="ref-M3">[M3] Bosi C. F. et al. &quot;Pyrrolizidine alkaloids in medicinal tea of Ageratum conyzoides L.&quot;, estudo que avalia simultaneamente usos populares e riscos toxicológicos associados ao consumo de chás da planta. Disponível em: <a href="https://www.scielo.br/j/rbfar/a/yNj4ZMNjDC49RqWFVcsqdNt/" target="_blank" rel="noopener">https://www.scielo.br/j/rbfar/a/yNj4ZMNjDC49RqWFVcsqdNt/</a></li>
+        <li id="ref-M4">[M4] Sousa J. M. et al. &quot;Perfil fitoquímico e atividades farmacológicas de Ageratum conyzoides&quot;, revisão que sumariza efeitos anti-inflamatórios, analgésicos, antimicrobianos, antitumorais e outros, com foco em estudos recentes. Disponível em: <a href="https://www.revistasuninter.com/revistasaude/index.php/revista-praticas-interativas/article/view/1399" target="_blank" rel="noopener">https://www.revistasuninter.com/revistasaude/index.php/revista-praticas-interativas/article/view/1399</a></li>
+        <li id="ref-M5">[M5] Momesso L. S. et al. &quot;Atividade antitumoral do Ageratum conyzoides L.&quot;, estudo que avalia o efeito de frações da planta sobre o crescimento de tumor de Ehrlich em modelos animais. Disponível em: <a href="https://pdfs.semanticscholar.org/bc67/4321da36def8b00e0289d9a6d8aa590374a0.pdf" target="_blank" rel="noopener">https://pdfs.semanticscholar.org/bc67/4321da36def8b00e0289d9a6d8aa590374a0.pdf</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Castro H. G. et al. &quot;Teor e composição do óleo essencial de cinco acessos de mentrasto (Ageratum conyzoides L.)&quot;, artigo que detalha principais componentes químicos, incluindo cromenos como precoceno I e II. Disponível em: <a href="https://www.scielo.br/j/qn/a/N3hMj6pTZTJHQKY434XFgtd/" target="_blank" rel="noopener">https://www.scielo.br/j/qn/a/N3hMj6pTZTJHQKY434XFgtd/</a></li>
+        <li id="ref-F2">[F2] Sousa J. M. et al. &quot;Perfil fitoquímico e atividades farmacológicas de Ageratum conyzoides&quot;, revisão com tabela de principais grupos de metabolitos (flavonoides, fenóis, terpenos, alcaloides) e correlações com atividades biológicas. Disponível em: <a href="https://www.revistasuninter.com/revistasaude/index.php/revista-praticas-interativas/article/view/1399" target="_blank" rel="noopener">https://www.revistasuninter.com/revistasaude/index.php/revista-praticas-interativas/article/view/1399</a></li>
+        <li id="ref-F3">[F3] Bosi C. F. et al. &quot;Pyrrolizidine alkaloids in medicinal tea of Ageratum conyzoides L.&quot;, análise do teor de alcaloides pirrolizidínicos em infusões, com implicações toxicológicas para consumo humano. Disponível em: <a href="https://www.scielo.br/j/rbfar/a/yNj4ZMNjDC49RqWFVcsqdNt/" target="_blank" rel="noopener">https://www.scielo.br/j/rbfar/a/yNj4ZMNjDC49RqWFVcsqdNt/</a></li>
+        <li id="ref-F4">[F4] Moura A. C. A. et al. &quot;Antiinflammatory and chronic toxicity study of the leaves of Ageratum conyzoides L. in rats&quot;, estudo que avalia tanto a atividade anti-inflamatória como sinais de toxicidade crónica. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0944711304000856" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S0944711304000856</a></li>
+        <li id="ref-F5">[F5] Wu R. et al. &quot;Chemical constituents from Ageratum aparine and their chemotaxonomic significance&quot; e outras revisões comparativas do género Ageratum, que ajudam a contextualizar os principais metabolitos identificados. Disponível em: <a href="https://www.mdpi.com/2072-6651/16/1/40" target="_blank" rel="noopener">https://www.mdpi.com/2072-6651/16/1/40</a></li>
+        <li id="ref-F6">[F6] Estudos de prospeção científica e tecnológica do género Ageratum que compilam dados sobre composição e aplicações potenciais dos metabolitos da espécie. Disponível em: <a href="https://periodicos.ufba.br/index.php/nit/article/download/17123/198248" target="_blank" rel="noopener">https://periodicos.ufba.br/index.php/nit/article/download/17123/198248</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Rioba N. B. et al. &quot;Ageratum conyzoides L. for the management of pests and diseases in crops&quot;, revisão sobre o potencial de extratos e óleos essenciais da planta no controlo de pragas agrícolas e patógenos. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0926669017304545" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S0926669017304545</a></li>
+        <li id="ref-A2">[A2] Periodicos UFBA. &quot;Prospecção científica e tecnológica do gênero Ageratum&quot;, que discute aplicações agrícolas, farmacêuticas e industriais de Ageratum conyzoides e espécies relacionadas. Disponível em: <a href="https://periodicos.ufba.br/index.php/nit/article/download/17123/198248" target="_blank" rel="noopener">https://periodicos.ufba.br/index.php/nit/article/download/17123/198248</a></li>
+        <li id="ref-A3">[A3] Characterização da droga vegetal e atividade antioxidante de Ageratum conyzoides em programas de Farmácia Viva, incluindo discussões sobre uso responsável e potenciais riscos. Disponível em: <a href="https://ojs.brazilianjournals.com.br/ojs/index.php/BRJD/article/download/34166/pdf/87295" target="_blank" rel="noopener">https://ojs.brazilianjournals.com.br/ojs/index.php/BRJD/article/download/34166/pdf/87295</a></li>
+        <li id="ref-A4">[A4] Artigos de divulgação em etnobotânica e jardinagem agroecológica que descrevem o mentrasto como espécie de interesse para estudo, mas que requer controlo rigoroso em hortas e pomares. Disponível em: <a href="https://www.herbalreality.com/herb/cleavers/" target="_blank" rel="noopener">https://www.herbalreality.com/herb/cleavers/</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] CABI Compendium. Ficha de Ageratum conyzoides que classifica a espécie como infestante importante em culturas de clima tropical, com impacto significativo na produtividade se não controlada. Disponível em: <a href="https://www.cabidigitallibrary.org/doi/full/10.1079/cabicompendium.3572" target="_blank" rel="noopener">https://www.cabidigitallibrary.org/doi/full/10.1079/cabicompendium.3572</a></li>
+        <li id="ref-P2">[P2] Artigos técnicos de manejo de plantas daninhas na agricultura tropical que citam Ageratum conyzoides como erva problemática, mas também como fonte de biomassa e indicador de solos perturbados e férteis. Disponível em: <a href="https://biologico.agricultura.sp.gov.br/uploads/docs/bio/suplementos/v68_supl/p218-221.pdf" target="_blank" rel="noopener">https://biologico.agricultura.sp.gov.br/uploads/docs/bio/suplementos/v68_supl/p218-221.pdf</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

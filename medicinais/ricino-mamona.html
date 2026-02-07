@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html" class="ativa">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="poejo.html">Poejo</a>
+  <a class="next" href="romazeira.html">Romãzeira</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Rícino / Mamona (<em>Ricinus communis L.</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Euphorbiaceae</span>
+  <span>Parte usada: sementes e óleo extraído</span>
+  <span>Tipo: arbusto tropical tóxico e medicinal</span>
+  <span>Produção: <strong>ornamental e industrial em climas quentes</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> nativa de África oriental, hoje cultivada e subespontânea em regiões tropicais</div>
+  <div><strong>Uso principal</strong> laxante potente sob supervisão médica e óleo tópico para pele</div>
+  <div><strong>Perfil medicinal</strong> laxante estimulante, emoliente tópico e coadjuvante em inflamações ligeiras</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Rícino / Mamona (Ricinus communis L.)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>Ricinus communis L., conhecido em português sobretudo como mamona, rícino, mamoneira ou carrapateira, é um arbusto ou pequena árvore perene que pode atingir 2–5 m de altura em climas favoráveis. Apresenta caule único, ereto, frequentemente avermelhado, com ramificações na parte superior, e folhas grandes, palmadas, profundamente lobadas, com margens serradas e pecíolos compridos.</p>
+      <p>Os frutos são cápsulas espinhosas, geralmente verdes a avermelhadas, que contêm sementes ovais brilhantes, marmoreadas, semelhantes a pequenos feijões. Estas sementes são extremamente tóxicas devido à presença da proteína ricina e de outros componentes bioativos. Em português são usados vários nomes populares como mamona, pé-de-mamona, carrapateira, carrapato, rícino e figueira-do-inferno; em inglês, os nomes mais comuns são castor oil plant e castor bean.</p>
+      <p>Em Portugal continental, o rícino é encontrado sobretudo como planta cultivada ou subespontânea em terrenos perturbados, taludes, margens de cursos de água e terrenos incultos, sendo considerado invasor em algumas regiões. A espécie é cultivada em larga escala em países tropicais para extração do óleo de mamona, utilizado na indústria química, farmacêutica, cosmética e como matéria-prima para biodiesel.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a> <a href="#ref-D4">[D4]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Ricinus communis é uma planta tropical perene que, em climas frios, se comporta como anual de crescimento rápido, enquanto em regiões de inverno suave pode persistir vários anos como arbusto lenhoso. O crescimento é mais vigoroso em temperaturas entre aproximadamente 20 e 35 ºC, com ótima produção de biomassa em verões quentes e húmidos.
+Em Portugal continental, a mamona tende a crescer a partir da primavera, desenvolvendo grande massa vegetativa no verão e produzindo flores e frutos entre o verão e o outono. Geadas fortes podem danificar ou matar a parte aérea, pelo que a planta se estabelece melhor em zonas litorais e vales abrigados.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Início de crescimento vegetativo: primavera, a partir de temperaturas médias estáveis acima de 15–18 ºC.</li>
+        <li>Pico de crescimento e produção de folhas: final da primavera e verão, com grande desenvolvimento em condições de calor e humidade suficientes.</li>
+        <li>Floração e frutificação: verão até ao outono, com formação de cachos florais e cápsulas espinhosas contendo sementes altamente tóxicas.</li>
+        <li>Em regiões com geadas, as plantas podem secar parcialmente no inverno, rebrotando da base se as raízes não forem destruídas pelo frio; em climas muito amenos pode comportar-se como perene lenhosa.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Uso interno como laxante estimulante: óleo de rícino refinado (Ricini oleum) em preparações farmacêuticas padronizadas, utilizado para tratamento de curta duração da obstipação ocasional em adultos. As monografias da EMA e relatórios de avaliação descrevem o óleo de mamona como laxante de segunda linha, a utilizar apenas quando alterações da dieta ou laxantes de volume não são suficientes, e limitando o uso a períodos curtos. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a></li>
+        <li>O efeito farmacológico do óleo de rícino deve-se principalmente ao ácido ricinoléico libertado no intestino delgado, que stimula a motilidade intestinal e aumenta a secreção de fluidos. Estudos experimentais documentam a ação sobre recetores EP3 da prostaglandina e a modulação da motilidade do intestino delgado, explicando o início relativamente rápido do efeito laxante. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></li>
+        <li>Em contexto médico, o óleo de rícino foi historicamente utilizado em doses mais elevadas como purgante em preparação para exames diagnósticos ou procedimentos gastrointestinais, mas, na prática clínica moderna, tende a ser substituído por laxantes osmóticos e soluções específicas de preparação intestinal. Quando ainda utilizado, segue doses estritamente definidas e sob supervisão médica. <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F4">[F4]</a></li>
+        <li>Uso tópico: o óleo de rícino purificado é amplamente utilizado como excipiente e componente de formulações dermatológicas, cosméticas e farmacêuticas (por exemplo em cremes, pomadas e colírios), explorando as suas propriedades emolientes, formadoras de filme e compatibilidade com mucosas. Estes usos assentam mais na segurança e propriedades físico-químicas do óleo do que em evidência clínica robusta para indicações específicas. <a href="#ref-F1">[F1]</a> <a href="#ref-F5">[F5]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Uso tradicional como purgante caseiro para &quot;limpar o intestino&quot;, com administração de colheradas de óleo de rícino em jejum para aliviar obstipação, prática hoje desaconselhada em automedicação devido ao risco de cólicas intensas, desidratação e perturbações eletrolíticas. <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a> <a href="#ref-M3">[M3]</a></li>
+        <li>Aplicação externa de óleo de mamona em fricções e cataplasmas sobre articulações dolorosas, costas ou músculos cansados, muitas vezes aquecido ligeiramente e combinado com panos quentes, como remédio popular em dores reumáticas e lombalgias. <a href="#ref-R3">[R3]</a> <a href="#ref-M3">[M3]</a></li>
+        <li>Utilização de óleo de rícino em cuidados capilares e da pele (massagens no couro cabeludo, pestanas, sobrancelhas, unhas e pele seca), como óleo espesso e emoliente que ajuda a manter a humidade e a suavizar tecidos, embora a evidência científica para muitos destes efeitos cosméticos seja limitada. <a href="#ref-R4">[R4]</a> <a href="#ref-R5">[R5]</a></li>
+        <li>Uso etnomedicinal em diversas culturas, incluindo a medicina ayurvédica e práticas populares, onde o óleo e outras partes da planta são utilizados em combinações complexas para problemas articulares, distúrbios digestivos, afecções cutâneas e como adjuvante em algumas infeções parasitárias – sempre com margens de segurança estreitas e hoje considerados de alto risco fora de contexto clínico especializado. <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-M5">[M5]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>Ricinus communis é uma das plantas medicinais mais tóxicas usadas tradicionalmente. As sementes cruas contêm ricina, uma toxalbumina extremamente potente, e outros componentes tóxicos como a ricinina. A ingestão de poucas sementes pode ser potencialmente fatal, especialmente em crianças e animais domésticos. Por este motivo, as sementes nunca devem ser mastigadas ou consumidas diretamente e não são adequadas para preparados caseiros. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U6">[U6]</a></p>
+      <p>O óleo de rícino farmacêutico (Ricini oleum) é isento de ricina em condições normais de fabrico, mas continua a ser um laxante forte que pode causar cólicas intensas, diarreia, desidratação e desequilíbrios eletrolíticos se usado em doses elevadas ou por períodos prolongados. As monografias regulatórias recomendam o uso apenas em adultos, em obstipação ocasional e por períodos muito curtos, evitando o uso crónico e o abuso laxante. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-U5">[U5]</a></p>
+      <p>O uso interno de óleo de rícino é contraindicado em gravidez (devido ao risco de estimular contrações uterinas), em lactação, em crianças e adolescentes, em doentes com doenças inflamatórias intestinais, obstrução intestinal, apendicite, dor abdominal de causa desconhecida, desidratação, distúrbios eletrolíticos ou insuficiência cardíaca e renal. Interações com diuréticos, corticosteróides, glicosídeos cardíacos e outros medicamentos podem agravar perdas de potássio ou alterar o efeito terapêutico. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U4">[U4]</a> <a href="#ref-U5">[U5]</a></p>
+      <p>Contactos cutâneos repetidos com sementes, pó de semente ou óleo bruto podem causar sensibilização alérgica e irritação cutânea ou respiratória. Produtos farmacêuticos injetáveis contendo excipientes derivados de óleo de rícino polioxietilado estão associados a reações de hipersensibilidade graves em alguns casos. Em qualquer situação, o uso de rícino deve privilegiar produtos farmacêuticos regulados e nunca preparados caseiros com sementes ou óleo artesanal. <a href="#ref-U4">[U4]</a> <a href="#ref-U5">[U5]</a> <a href="#ref-U6">[U6]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        No contexto deste projeto, as receitas com rícino focam-se exclusivamente no uso de óleo de rícino refinado (Ricini oleum) proveniente de fontes farmacêuticas fiáveis, utilizado como laxante estimulante de curto prazo em obstipação ocasional e em algumas aplicações externas em óleos e pomadas. Não se recomendam preparados caseiros internos com sementes ou óleo artesanal, devido ao risco extremo associado à ricina e a outros componentes tóxicos. Todas as posologias devem seguir fontes regulamentares ou médicas, e o uso deve ser enquadrado pelas advertências de segurança.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="ricino-mamona_receitas.html">Laxante estimulante com óleo de rícino farmacêutico:</a> uso de óleo de rícino purificado em contexto farmacêutico para desencadear evacuação intestinal rápida em obstipação ocasional, sempre por períodos muito curtos e com seguimento profissional. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="ricino-mamona_receitas.html">Laxante suave com doses menores de óleo de rícino:</a> utilização de quantidades reduzidas de óleo de rícino para efeito laxante menos intenso, reservada a adultos e respeitando contraindicações e avisos de segurança oficiais. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="ricino-mamona_receitas.html">Preparações laxantes combinadas com óleo de rícino:</a> fórmulas farmacêuticas que associam óleo de rícino a outros agentes laxantes em gotas ou cápsulas, usadas apenas conforme prescrição e indicações do fabricante. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="ricino-mamona_receitas.html">Óleo de rícino em creme ou loção para pele seca:</a> inclusão de óleo de rícino em formulações cosméticas emolientes para zonas muito secas, como calcanhares e cotovelos, aplicado em pequenas quantidades sobre pele íntegra. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="ricino-mamona_receitas.html">Óleo de rícino em cuidados capilares nutritivos:</a> utilização de óleo de rícino em máscaras, óleos ou séruns para cabelo e couro cabeludo, aplicado topicamente para aumentar a sensação de hidratação e brilho. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="ricino-mamona_receitas.html">Compressas quentes com óleo de rícino:</a> aplicação local de pano embebido em óleo de rícino ligeiramente aquecido sobre articulações ou zonas dolorosas, como prática complementar tradicional em dores musculares e lombalgias. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="ricino-mamona_receitas.html">Colírios e preparações oftálmicas com óleo de rícino:</a> produtos farmacêuticos estéreis que utilizam pequenas quantidades de óleo de rícino em fórmulas lubrificantes ou terapêuticas para os olhos, sempre sob indicação profissional. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="ricino-mamona_receitas.html">Pomadas e cremes protetores contendo óleo de rícino:</a> formulações dermatológicas em que o óleo contribui para formar filme protetor e reduzir fricção em áreas sujeitas a irritação mecânica ligeira. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="ricino-mamona_receitas.html">Preparados ayurvédicos com pequenas quantidades de óleo de rícino:</a> uso do óleo em algumas fórmulas tradicionais da medicina ayurvédica, em doses cuidadosamente controladas e sob orientação de praticantes experientes. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="ricino-mamona_receitas.html">Clisteres e lavagens intestinais com óleo de rícino em contexto clínico:</a> emprego do óleo em enemas ou lavagens intestinais realizados apenas em ambiente hospitalar ou supervisionado, devido ao risco elevado de complicações. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>O principal benefício medicinal comprovado de Ricinus communis é o efeito laxante do óleo de rícino purificado (Ricini oleum) em obstipação ocasional. Monografias regulatórias, incluindo a da EMA, classificam-no como laxante estimulante, eficaz na promoção da motilidade intestinal e na evacuação, devendo ser reservado a situações em que medidas dietéticas e laxantes de volume não tenham sido suficientes. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a></p>
+      <p>Para além desta indicação central, revisões etnofarmacológicas documentam usos tradicionais de diversas partes da planta (raízes, folhas, sementes e óleo) em dores articulares e musculares, afecções cutâneas, distúrbios digestivos, infeções parasitárias e outras condições. Muitos destes usos assentam em práticas locais e em dados experimentais in vitro ou em modelos animais que descrevem propriedades anti-inflamatórias, analgésicas, antimicrobianas e antiparasitárias, mas a evidência clínica humana é limitada e a margem de segurança estreita. <a href="#ref-M3">[M3]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-M6">[M6]</a></p>
+      <p>Estudos fitoquímicos e farmacológicos recentes detalham a presença de ácidos gordos (sobretudo ácido ricinoléico), alcaloides, lignanas, flavonoides e outros compostos em diferentes partes da planta, bem como uma diversidade de atividades biológicas, incluindo efeitos antioxidantes, anti-inflamatórios, antibacterianos, antifúngicos, antidiabéticos e citotóxicos. No entanto, a toxicidade extrema de componentes como a ricina condiciona fortemente o uso medicinal direto de partes cruas da planta, tornando essencial distinguir entre óleo refinado e outros materiais vegetais. <a href="#ref-M5">[M5]</a> <a href="#ref-M6">[M6]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Laxante estimulante de curto prazo em obstipação ocasional em adultos, quando outras medidas (dieta, líquidos, laxantes de volume) não foram suficientes. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a></li>
+        <li>Adjuvante em cuidados da pele seca ou fissurada, como componente de óleos e pomadas emolientes, ajudando a suavizar e proteger a pele em zonas de fricção. <a href="#ref-F5">[F5]</a> <a href="#ref-M4">[M4]</a></li>
+        <li>Uso tradicional como coadjuvante em dores articulares e musculares, através de aplicações tópicas de óleo de rícino aquecido em fricções e compressas, em associação com repouso e outras terapias. <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-M5">[M5]</a></li>
+        <li>Potencial fonte de compostos com atividade anti-inflamatória, antioxidante, antimicrobiana e antiparasitária, com interesse em investigação para desenvolvimento de novos fármacos, embora sem traduções diretas imediatas em recomendações clínicas amplas para o público. <a href="#ref-M5">[M5]</a> <a href="#ref-M6">[M6]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>As sementes de Ricinus communis são ricas em óleo (tipicamente 40–60% da massa seca), cujo principal ácido gordo é o ácido ricinoléico, normalmente representando cerca de 80–90% dos ácidos gordos totais. O óleo comercial de mamona é constituído sobretudo por triglicéridos deste ácido e de outros ácidos gordos, sendo o ácido ricinoléico responsável pela maior parte da atividade laxante. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></p>
+      <p>Para além dos lípidos, as sementes contêm a toxalbumina ricina, um inibidor potente da síntese proteica, e o alcaloide ricinina, ambos responsáveis pela elevada toxicidade da planta. A ricina é uma proteína de elevado peso molecular, inativada pelos processos industriais de extração e refinação do óleo, mas presente em bolos de extração e sementes cruas. <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></p>
+      <p>Estudos fitoquímicos e farmacológicos descrevem ainda a presença de flavonoides, lignanas, ácidos fenólicos e outros compostos em folhas, raízes e casca, bem como múltiplas atividades biológicas (anti-inflamatórias, antioxidantes, antimicrobianas, antiparasitárias e citotóxicas) em extratos obtidos com diferentes solventes. Os valores quantitativos variam de acordo com a origem da planta, o órgão estudado e o método de extração. <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Teor de óleo nas sementes de Ricinus communis</td><td>≈40–60 % m/m da semente seca</td></tr>
+        <tr><td>Proporção de ácido ricinoléico no óleo de mamona</td><td>≈80–90 % dos ácidos gordos totais</td></tr>
+        <tr><td>Presença de ricina (toxalbumina) nas sementes</td><td>presença confirmada em níveis tóxicos nas sementes</td></tr>
+        <tr><td>Presença de ricinina (alcaloide) em diferentes partes da planta</td><td>presença confirmada em várias partes da planta</td></tr>
+        <tr><td>Conteúdo total de compostos fenólicos e flavonoides em extratos</td><td>valores na ordem de dezenas a centenas de mg/g de extrato seco</td></tr>
+        <tr><td>Atividade antioxidante global de extratos de Ricinus communis</td><td>atividade moderada a elevada (IC50 em ensaios DPPH/ABTS na gama de dezenas de µg/mL)</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Produção industrial de óleo de mamona para a indústria química, incluindo fabrico de plásticos especiais, lubrificantes, tintas, vernizes, poliuretanos, nylon e outros materiais técnicos de elevado valor acrescentado. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Matéria-prima para produção de biodiesel e biocombustíveis, beneficiando da elevada viscosidade, densidade e características singulares do óleo de rícino. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Uso como planta ornamental em jardins tropicais e subtropicais, devido ao porte escultural, às grandes folhas palmadas e aos frutos coloridos, embora com necessidade de sinalização clara do risco tóxico das sementes em espaços frequentados por crianças. <a href="#ref-A3">[A3]</a> <a href="#ref-D1">[D1]</a></li>
+        <li>Emprego em alguns contextos como planta de barreira ou em consociações para desencorajar herbivoria de mamíferos, aproveitando a toxicidade das sementes e folhas, embora este uso exija forte prudência e gestão responsável. <a href="#ref-A4">[A4]</a> <a href="#ref-P1">[P1]</a></li>
+        <li>Utilização em investigação científica e toxicológica como modelo de estudo para proteínas toxínicas (ricina) e para desenvolvimento de métodos de deteção e antídotos. <a href="#ref-F3">[F3]</a> <a href="#ref-A4">[A4]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 5,0 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em permacultura, o rícino é uma planta de uso muito específico: produz grande quantidade de biomassa e tem porte estrutural capaz de criar sombra leve, servir de elemento vertical em canteiros e fornecer matéria orgânica para compostagem. O seu valor medicinal reside quase exclusivamente no óleo refinado, não na planta em si tal como cresce na horta, e a sua presença pode funcionar como elemento de desenho em taludes, bordaduras e zonas de produção de biomassa.
+No entanto, a extrema toxicidade das sementes e a capacidade de auto-sementeira colocam riscos consideráveis em quintas familiares, espaços educativos e jardins frequentados por crianças e animais. Em muitos contextos de permacultura doméstica, isso faz com que o rícino seja uma espécie a usar apenas em zonas bem controladas (por exemplo zona 4–5), afastadas de zonas de circulação intensa, ou a substituir por espécies menos perigosas com funções ecológicas semelhantes.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação do rícino resulta de valores elevados em uso medicinal (MED=2, centrado no óleo refinado), estrutura e porte (ESTR=2), suporte moderado à fauna e polinizadores através das inflorescências (ECO=2), contributo razoável para solo e biomassa (SOLO=1) e elevada rusticidade em climas quentes e secos (RUST=2). Acresce uma multifuncionalidade significativa (MULT=2), devido à combinação de usos industriais, ornamentais e medicinais. Por outro lado, o uso alimentar direto é praticamente inexistente para fins seguros (ALIM=0), uma vez que as sementes são altamente tóxicas and o óleo interno não é um alimento de consumo quotidiano.
+As penalizações são marcadas pela toxicidade extrema das sementes (TOX=-2), pela tendência a comportar-se como espécie espontânea e, em alguns contextos, invasora (INVAS=-1), e pela competição relevante por luz, água e nutrientes quando plantado junto de culturas mais baixas (COMP=-1). O valor final em escala 0–10 resulta da aplicação do algoritmo descrito em anexo (soma dos critérios positivos até 14 pontos, subtração de penalizações, com conversão por regra de três simples), situando o rícino em cerca de 5,0/10 e indicando uma planta de funcionalidade moderada, útil em contextos específicos mas que exige grande prudência em hortas familiares e sistemas agroecológicos abertos ao público.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-A3">[A3]</a> <a href="#ref-D1">[D1]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Wikipédia. Mamona (Ricinus communis). Descrição botânica, nomes comuns, origem, usos e toxicidade das sementes. Disponível em: <a href="https://pt.wikipedia.org/wiki/Mamona" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Mamona</a></li>
+        <li id="ref-D2">[D2] Flora-On. Ricinus communis. Ficha da flora de Portugal com informação sobre ecologia, habitats, tipo biológico e notas de toxicidade das sementes. Disponível em: <a href="https://flora-on.pt/?q=Ricinus" target="_blank" rel="noopener">https://flora-on.pt/?q=Ricinus</a></li>
+        <li id="ref-D3">[D3] Invasoras.pt. Ricinus communis. Ficha de planta invasora em Portugal com descrição, características, distribuição, impactes e métodos de controlo. Disponível em: <a href="https://invasoras.pt/pt/planta-invasora/ricinus-communis" target="_blank" rel="noopener">https://invasoras.pt/pt/planta-invasora/ricinus-communis</a></li>
+        <li id="ref-D4">[D4] Jardineiro.net. Mamona – Ricinus communis. Descrição hortícola da mamona como arbusto ornamental e planta oleaginosa, com detalhes de cultivo. Disponível em: <a href="https://www.jardineiro.net/plantas/mamona-ricinus-communis.html" target="_blank" rel="noopener">https://www.jardineiro.net/plantas/mamona-ricinus-communis.html</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Embrapa. Características da planta – Mamona (Ricinus communis L.). Ficha técnica com informação sobre origem, exigências climáticas, desenvolvimento e ciclo cultural. Disponível em: <a href="https://www.embrapa.br/agencia-de-informacao-tecnologica/cultivos/mamona/pre-producao/caracteristicas-da-planta" target="_blank" rel="noopener">https://www.embrapa.br/agencia-de-informacao-tecnologica/cultivos/mamona/pre-producao/caracteristicas-da-planta</a></li>
+        <li id="ref-S2">[S2] Jardineiro.net. Mamona – Ricinus communis. Secções relativas a clima, luminosidade, solo e comportamento perene ou anual consoante as condições ambientais. Disponível em: <a href="https://www.jardineiro.net/plantas/mamona-ricinus-communis.html" target="_blank" rel="noopener">https://www.jardineiro.net/plantas/mamona-ricinus-communis.html</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] European Medicines Agency (EMA). Ricini oleum – herbal medicinal product. Síntese pública da monografia de óleo de rícino, indicações, dose, duração de uso e contraindicações. Disponível em: <a href="https://www.ema.europa.eu/en/medicines/herbal/ricini-oleum" target="_blank" rel="noopener">https://www.ema.europa.eu/en/medicines/herbal/ricini-oleum</a></li>
+        <li id="ref-U2">[U2] European Medicines Agency (EMA). Assessment report on Ricinus communis L., oleum. Relatório de avaliação com dados de eficácia, segurança, interações e advertências para óleo de rícino. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-ricinus-communis-l-oleum_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-ricinus-communis-l-oleum_en.pdf</a></li>
+        <li id="ref-U3">[U3] MedlinePlus. Castor oil overdose. Informação sobre intoxicação por óleo de rícino, sintomas, riscos e necessidade de apoio médico. Disponível em: <a href="https://medlineplus.gov/ency/article/002768.htm" target="_blank" rel="noopener">https://medlineplus.gov/ency/article/002768.htm</a></li>
+        <li id="ref-U4">[U4] Alookaran J. et al. Castor Oil – StatPearls. Revisão clínica sobre farmacologia, indicações, efeitos adversos e precauções do óleo de rícino. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/books/NBK551626/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/books/NBK551626/</a></li>
+        <li id="ref-U5">[U5] Cosmetic Ingredient Review (CIR). Safety Assessment of Ricinus Communis (Castor) Seed Oil and Related Ingredients. Documento técnico com dados de segurança, doses laxantes e avaliação toxicológica. Disponível em: <a href="https://www.cir-safety.org/sites/default/files/Castor%20Oil.pdf" target="_blank" rel="noopener">https://www.cir-safety.org/sites/default/files/Castor%20Oil.pdf</a></li>
+        <li id="ref-U6">[U6] Wikipédia. Ricina. Artigo sobre a toxina presente nas sementes de mamona, descrevendo mecanismo de ação, toxicidade e riscos para a saúde. Disponível em: <a href="https://pt.wikipedia.org/wiki/Ricina" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Ricina</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] European Medicines Agency (EMA). Assessment report on Ricinus communis L., oleum. Secções que indicam o uso de curto prazo de óleo de rícino como laxante em obstipação ocasional, com doses típicas e limitações. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-ricinus-communis-l-oleum_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-ricinus-communis-l-oleum_en.pdf</a></li>
+        <li id="ref-R2">[R2] WebMD. Castor Oil – Uses, Side Effects, and More. Artigo que descreve utilização de óleo de rícino como laxante, incluindo intervalos de dose e avisos de segurança. Disponível em: <a href="https://www.webmd.com/drugs/castor-oil" target="_blank" rel="noopener">https://www.webmd.com/drugs/castor-oil</a></li>
+        <li id="ref-R3">[R3] Scarpa A., Guerci A. Various uses of the castor oil plant (Ricinus communis L.). Survey etnomedicinal que inclui usos em preparação intestinal e purga em diferentes países. Disponível em: <a href="https://www.sciencedirect.com/science/article/pii/0378874182900381" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/0378874182900381</a></li>
+        <li id="ref-R4">[R4] Healthline. 4 Benefits and Uses of Castor Oil. Artigo de divulgação que aborda usos tópicos e cosméticos do óleo de rícino em pele seca e cicatrização. Disponível em: <a href="https://www.healthline.com/nutrition/castor-oil" target="_blank" rel="noopener">https://www.healthline.com/nutrition/castor-oil</a></li>
+        <li id="ref-R5">[R5] Altmeyers Encyclopedia. Castor oil. Ficha de naturopatia que menciona uso interno como laxante e uso externo em cosmética e cuidados de pele. Disponível em: <a href="https://www.altmeyers.org/en/naturopathy/castor-oil-143908" target="_blank" rel="noopener">https://www.altmeyers.org/en/naturopathy/castor-oil-143908</a></li>
+        <li id="ref-R6">[R6] Scarpa A., Guerci A. Various uses of the castor oil plant (Ricinus communis L.). Descrição de cataplasmas e aplicações externas tradicionais com óleo de rícino aquecido. Disponível em: <a href="https://www.sciencedirect.com/science/article/pii/0378874182900381" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/0378874182900381</a></li>
+        <li id="ref-R7">[R7] MedlinePlus. Paclitaxel (with polyoxyethylated castor oil) injection. Ficha que comenta o uso de derivados de óleo de rícino como excipiente em formulações injetáveis e efeitos adversos associados. Disponível em: <a href="https://medlineplus.gov/druginfo/meds/a607070.html" target="_blank" rel="noopener">https://medlineplus.gov/druginfo/meds/a607070.html</a></li>
+        <li id="ref-R8">[R8] Cosmetic Ingredient Review (CIR). Safety Assessment of Castor Seed Oil. Secções sobre uso de óleo de rícino em produtos de cuidados da pele, cosméticos e formaulações protetoras. Disponível em: <a href="https://www.cir-safety.org/sites/default/files/Castor%20Oil.pdf" target="_blank" rel="noopener">https://www.cir-safety.org/sites/default/files/Castor%20Oil.pdf</a></li>
+        <li id="ref-R9">[R9] Raza H. et al. A Review on Castor/Eranda (Ricinus communis) from Unani and Modern Perspective. Revisão que descreve preparações tradicionais baseadas em óleo de rícino em sistemas de medicina Unani e ayurvédica. Disponível em: <a href="https://oaji.net/pdf.html?n=2023/1791-1705504062.pdf" target="_blank" rel="noopener">https://oaji.net/pdf.html?n=2023/1791-1705504062.pdf</a></li>
+        <li id="ref-R10">[R10] Scarpa A., Guerci A. Various uses of the castor oil plant (Ricinus communis L.). Referências históricas a clisteres e lavagens intestinais com óleo de rícino em medicina antiga. Disponível em: <a href="https://www.sciencedirect.com/science/article/pii/0378874182900381" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/0378874182900381</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] European Medicines Agency (EMA). Ricini oleum – herbal medicinal product. Documento que resume as conclusões do Comité HMPC sobre o uso de óleo de rícino como laxante. Disponível em: <a href="https://www.ema.europa.eu/en/medicines/herbal/ricini-oleum" target="_blank" rel="noopener">https://www.ema.europa.eu/en/medicines/herbal/ricini-oleum</a></li>
+        <li id="ref-M2">[M2] European Medicines Agency (EMA). Assessment report on Ricinus communis L., oleum. Relatório de avaliação com dados de eficácia clínica, histórico de uso e segurança. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-ricinus-communis-l-oleum_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-ricinus-communis-l-oleum_en.pdf</a></li>
+        <li id="ref-M3">[M3] Scarpa A., Guerci A. Various uses of the castor oil plant (Ricinus communis L.). Revisão etnomedicinal sobre usos tradicionais da mamona em cerca de 50 países. Disponível em: <a href="https://www.sciencedirect.com/science/article/pii/0378874182900381" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/0378874182900381</a></li>
+        <li id="ref-M4">[M4] Alookaran J. et al. Castor Oil – StatPearls. Revisão clínica que discute indicações, mecanismos de ação, efeitos adversos e papel atual do óleo de rícino na prática médica. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/books/NBK551626/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/books/NBK551626/</a></li>
+        <li id="ref-M5">[M5] Marwat S.K. et al. Review – Ricinus communis: Ethnomedicinal uses and pharmacological profile. Artigo que compila usos tradicionais e atividades farmacológicas relatadas para várias partes da planta. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/29084706/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/29084706/</a></li>
+        <li id="ref-M6">[M6] Muhammad S.A. et al. A phytochemical and pharmacological review of Ricinus communis L. Revisão recente que sumariza atividades biológicas como analgésica, anti-inflamatória, antimicrobiana, antidiabética e citotóxica. Disponível em: <a href="https://www.researchgate.net/publication/381282134_A_phytochemical_and_pharmacological_review_of_Ricinus_communis_L" target="_blank" rel="noopener">https://www.researchgate.net/publication/381282134_A_phytochemical_and_pharmacological_review_of_Ricinus_communis_L</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] European Medicines Agency (EMA). Assessment report on Ricinus communis L., oleum. Secções sobre constituintes principais do óleo, teor de óleo nas sementes e papel do ácido ricinoléico na atividade laxante. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-ricinus-communis-l-oleum_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-ricinus-communis-l-oleum_en.pdf</a></li>
+        <li id="ref-F2">[F2] Cosmetic Ingredient Review (CIR). Safety Assessment of Ricinus Communis (Castor) Seed Oil and Related Ingredients. Dados de composição típica, incluindo percentagens de ácido ricinoléico e outros ácidos gordos no óleo. Disponível em: <a href="https://www.cir-safety.org/sites/default/files/Castor%20Oil.pdf" target="_blank" rel="noopener">https://www.cir-safety.org/sites/default/files/Castor%20Oil.pdf</a></li>
+        <li id="ref-F3">[F3] Muhammad S.A. et al. A phytochemical and pharmacological review of Ricinus communis L. Artigo que descreve compostos bioativos, incluindo flavonoides, fenólicos, alcaloides e toxinas, e respetivas atividades. Disponível em: <a href="https://www.researchgate.net/publication/381282134_A_phytochemical_and_pharmacological_review_of_Ricinus_communis_L" target="_blank" rel="noopener">https://www.researchgate.net/publication/381282134_A_phytochemical_and_pharmacological_review_of_Ricinus_communis_L</a></li>
+        <li id="ref-F4">[F4] Marwat S.K. et al. Review – Ricinus communis: Ethnomedicinal uses and pharmacological profile. Secções com informação sobre ricina, ricinina e outros constituintes químicos relevantes. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/29084706/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/29084706/</a></li>
+        <li id="ref-F5">[F5] Healthline. 4 Benefits and Uses of Castor Oil. Resumo popular que indica propriedades hidratantes, de suporte à cicatrização e de possível ação antimicrobiana do óleo, citando literatura científica. Disponível em: <a href="https://www.healthline.com/nutrition/castor-oil" target="_blank" rel="noopener">https://www.healthline.com/nutrition/castor-oil</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Wikipédia. Mamona. Secções sobre uso industrial do óleo de rícino na produção de plásticos, lubrificantes, tintas, vernizes e outros produtos. Disponível em: <a href="https://pt.wikipedia.org/wiki/Mamona" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Mamona</a></li>
+        <li id="ref-A2">[A2] Embrapa. Mamona – uso e produção. Documentos técnicos que discutem o potencial da mamona como cultura oleaginosa para indústria e biocombustíveis. Disponível em: <a href="https://www.embrapa.br/agencia-de-informacao-tecnologica/cultivos/mamona" target="_blank" rel="noopener">https://www.embrapa.br/agencia-de-informacao-tecnologica/cultivos/mamona</a></li>
+        <li id="ref-A3">[A3] Jardineiro.net. Mamona – Ricinus communis. Referências ao uso ornamental da planta em jardins tropicais e subtropicais. Disponível em: <a href="https://www.jardineiro.net/plantas/mamona-ricinus-communis.html" target="_blank" rel="noopener">https://www.jardineiro.net/plantas/mamona-ricinus-communis.html</a></li>
+        <li id="ref-A4">[A4] Invasoras.pt. Ricinus communis. Informação sobre impacto ecológico, riscos para a fauna e necessidade de controlo da espécie em habitats naturais e agrícolas. Disponível em: <a href="https://invasoras.pt/pt/planta-invasora/ricinus-communis" target="_blank" rel="noopener">https://invasoras.pt/pt/planta-invasora/ricinus-communis</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] Invasoras.pt. Ricinus communis. Discussão dos impactes ecológicos e do comportamento invasor da mamona em Portugal, relevante para a avaliação de penalizações em permacultura. Disponível em: <a href="https://invasoras.pt/pt/planta-invasora/ricinus-communis" target="_blank" rel="noopener">https://invasoras.pt/pt/planta-invasora/ricinus-communis</a></li>
+        <li id="ref-P2">[P2] Flora-On. Ricinus communis. Informação sobre ocorrência em terrenos perturbados, margens e leitos de linhas de água, ajudando a enquadrar o papel da espécie em sistemas agrícolas e de regeneração. Disponível em: <a href="https://flora-on.pt/?q=Ricinus" target="_blank" rel="noopener">https://flora-on.pt/?q=Ricinus</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

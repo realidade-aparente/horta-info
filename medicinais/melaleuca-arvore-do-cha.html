@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html" class="ativa">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="medronheiro.html">Medronheiro</a>
+  <a class="next" href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Melaleuca (Árvore-do-chá) (<em>Melaleuca alternifolia (Maiden & Betche) Cheel</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Myrtaceae</span>
+  <span>Parte usada: folhas e ramos jovens</span>
+  <span>Tipo: arbusto aromático sempre-verde</span>
+  <span>Produção: <strong>cultivo em plantações especializadas</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> zonas pantanosas húmidas do leste australiano, hoje cultivada em climas amenos</div>
+  <div><strong>Uso principal</strong> óleo essencial tópico para acne, infeções cutâneas, couro cabeludo e boca</div>
+  <div><strong>Perfil medicinal</strong> antisséptico, antifúngico, anti-inflamatório, adjuvante em acne, infeções cutâneas e orais</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Melaleuca (Árvore-do-chá) (Melaleuca alternifolia (Maiden & Betche) Cheel)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>A melaleuca (Melaleuca alternifolia) é um pequeno arbusto ou árvore de folhas persistentes, com 3–7 m de altura no habitat natural, de casca esbranquiçada e fibrosa e folhas lineares, aromáticas, ricas em óleo essencial. As flores são esbranquiçadas, dispostas em espigas semelhantes a pequenas escovas, típicas da família Myrtaceae.</p>
+      <p>Em português é frequentemente designada por melaleuca, árvore-do-chá ou tea tree (não confundir com a planta do chá Camellia sinensis). Em inglês, o nome mais comum é tea tree, australian tea tree ou narrow-leaved paperbark. O óleo obtido das folhas é conhecido como tea tree oil, Melaleuca oil ou Melaleucae aetheroleum nas farmacopeias e monografias oficiais.</p>
+      <p>A espécie é nativa de zonas pantanosas e margens de cursos de água no leste da Austrália, onde forma povoamentos densos em solos húmidos e bem drenados. É hoje amplamente cultivada em plantações para produção de óleo essencial, com clonas seleccionadas e colheitas mecanizadas, e pode ser mantida em jardins e vasos em climas mediterrânicos suaves, desde que protegida de geadas fortes e com acesso a sol pleno.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        No clima de origem, Melaleuca alternifolia é uma espécie sempre-verde que cresce de forma contínua em regiões de invernos suaves e verões quentes e húmidos. A produção de biomassa e de óleo essencial é mais intensa na primavera e verão, quando a planta se encontra em pleno crescimento vegetativo.
+Em Portugal continental, a melaleuca comporta-se como arbusto sensível ao frio, podendo vegetar ao ar livre apenas nas regiões de invernos muito amenos ou em microclimas abrigados. Em muitas hortas e jardins, é cultivada em vasos grandes ou zonas abrigadas, permitindo colheitas de ramos jovens quase todo o ano sempre que não haja geadas fortes.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Crescimento vegetativo mais ativo: primavera e verão, com forte produção de rebentos jovens ricos em óleo essencial.</li>
+        <li>Floração: principalmente na primavera e início do verão, dependendo do clima e da idade da planta.</li>
+        <li>Colheita para óleo essencial: ramos e folhas podem ser cortados várias vezes por ano em plantações bem conduzidas, dando preferência a material jovem.</li>
+        <li>Em climas com geadas: crescimento abrandado no inverno; pode ser necessário proteger plantas jovens ou cultivá-las em vaso e recolher para abrigo.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Preparados tópicos contendo 5–10% de óleo essencial de Melaleuca alternifolia em veículos adequados (géis, cremes ou soluções) são tradicionalmente usados e avaliados em estudos clínicos como coadjuvantes no tratamento de acne ligeira a moderada, aplicados 1–2 vezes por dia sobre a pele limpa, evitando mucosas e áreas sensíveis. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-EMA1">[EMA1]</a></li>
+        <li>Soluções e cremes com 10% de óleo de melaleuca, bem como preparações oleosas contendo 10–25% do óleo, são utilizados de forma tópica em pequenas feridas superficiais, picadas de inseto, pequenas furúnculos e pé de atleta ligeiro, de acordo com monografias europeias e recomendações regulatórias, respeitando limites de concentração e duração de uso. <a href="#ref-EMA1">[EMA1]</a> <a href="#ref-EMA2">[EMA2]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></li>
+        <li>Colutórios e enxaguatórios bucais contendo óleo de tea tree em concentrações baixas (por exemplo 0,2–0,5%, ou 0,17–0,33 mL em 100 mL de água) têm sido estudados como adjuvantes em gengivites e inflamações ligeiras da mucosa oral, com indicação de uso apenas para bochechos e gargarejos, sem ingestão, e por períodos limitados. <a href="#ref-EMA2">[EMA2]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-F3">[F3]</a></li>
+        <li>Produtos de higiene do couro cabeludo e da pele (shampoos, géis de banho, loções) com pequenas percentagens de óleo de melaleuca (tipicamente até 1–2%) são usados para apoio em situações de caspa, dermatite seborreica ligeira e sensação de oleosidade excessiva, explorando a combinação de propriedades antimicrobianas, antifúngicas e anti-inflamatórias. <a href="#ref-CIR1">[CIR1]</a> <a href="#ref-SCCS1">[SCCS1]</a> <a href="#ref-M1">[M1]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Uso popular de 1 gota de óleo essencial de melaleuca diluída em 1 colher de chá (cerca de 5 mL) de óleo vegetal carreador, aplicada pontualmente sobre borbulhas de acne ou pequenas imperfeições da pele, 1–2 vezes por dia, evitando sempre aplicar puro em áreas extensas. <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a> <a href="#ref-R3">[R3]</a></li>
+        <li>Aplicação de algumas gotas de óleo de tea tree em base de óleo vegetal ou creme neutro (por exemplo 2–3 gotas em 10 mL) em massagem suave nas áreas de pé de atleta ou entre os dedos dos pés, após lavar e secar bem, repetindo 1–2 vezes por dia durante alguns dias. <a href="#ref-R3">[R3]</a> <a href="#ref-R4">[R4]</a></li>
+        <li>Adição de 3–5 gotas de óleo de melaleuca a uma colher de sopa de shampoo neutro para lavar o couro cabeludo oleoso ou com tendência a caspa, deixando atuar alguns minutos antes de enxaguar, repetindo 2–3 vezes por semana. <a href="#ref-R5">[R5]</a> <a href="#ref-R6">[R6]</a></li>
+        <li>Utilização de 5–10 gotas de óleo de árvore-do-chá em difusor ou humificador, diluídas em água conforme instruções do aparelho, para aromatizar o ambiente e proporcionar uma sensação de ar mais limpo, evitando o uso em ambientes fechados com crianças pequenas, grávidas ou animais sensíveis. <a href="#ref-R4">[R4]</a> <a href="#ref-R7">[R7]</a></li>
+        <li>Emprego de 1–2 gotas de óleo de melaleuca bem diluídas em óleo vegetal ou água morna para limpeza pontual de pequenas feridas superficiais, sempre após lavagem com água e sabão e sem substituir o aconselhamento médico quando necessário. <a href="#ref-R2">[R2]</a> <a href="#ref-R8">[R8]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>O óleo essencial de Melaleuca alternifolia é destinado sobretudo a uso externo e, segundo monografias e pareceres de segurança, não deve ser ingerido. A ingestão acidental de pequenas quantidades em crianças e adultos está associada a casos de sonolência, ataxia, confusão, coma transitório e, em situações graves, lesão muscular e renal, pelo que qualquer ingestão involuntária requer contacto com centro de informação antivenenos ou serviço de urgência. <a href="#ref-EMA1">[EMA1]</a> <a href="#ref-EMA2">[EMA2]</a> <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a></p>
+      <p>Mesmo em uso tópico, o óleo de melaleuca pode causar irritação cutânea, dermatite de contacto alérgica e reação em pele sensível, sobretudo quando usado puro ou em concentrações elevadas. Recomenda-se realizar teste de sensibilidade em área pequena da pele, utilizar apenas em formas adequadamente diluídas (tipicamente ≤15% em produtos cosméticos, e muitas vezes 1–5% em uso quotidiano) e evitar aplicação em pele gretada, queimada pelo sol, mucosas, olhos, conduto auditivo e áreas genitais. <a href="#ref-CIR1">[CIR1]</a> <a href="#ref-SCCS1">[SCCS1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></p>
+      <p>Fontes regulatórias e de segurança não recomendam o uso de óleo de tea tree em crianças pequenas, grávidas, lactantes ou pessoas com histórico de convulsões sem aconselhamento prévio de profissional de saúde. A exposição repetida em animais domésticos, especialmente gatos e cães pequenos, tem sido associada a sinais neurológicos, pelo que o uso em contexto doméstico deve considerar a sensibilidade destes animais. <a href="#ref-U1">[U1]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-U4">[U4]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        A melaleuca é utilizada sobretudo sob a forma de óleo essencial, incorporado em géis, cremes, soluções, colutórios e shampoos em concentrações bem definidas. As receitas terapêuticas caseiras devem focar-se em diluições seguras, evitando sempre o uso interno e a aplicação de óleo puro em áreas extensas. Preparados para acne ligeira, pé de atleta, pequenas infeções superficiais da pele e couro cabeludo com caspa ou oleosidade podem ser úteis como complemento de cuidados médicos e de higiene, respeitando tempo de uso, contraindicações e o Disclaimer padrão.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="melaleuca-arvore-do-cha_receitas.html">Gel tópico para acne ligeira com óleo de melaleuca:</a> gel facial de aplicação localizada, usando óleo essencial de tea tree em base adequada para reduzir borbulhas e inflamação em pele oleosa. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="melaleuca-arvore-do-cha_receitas.html">Solução aquosa para pequenas feridas e picadas:</a> solução diluída com algumas gotas de óleo de melaleuca, aplicada em limpeza suave de pequenos cortes, arranhões e picadas de inseto. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="melaleuca-arvore-do-cha_receitas.html">Loção oleosa para pé de atleta ligeiro:</a> mistura de óleo de melaleuca em óleo vegetal, usada em fricções regulares entre os dedos dos pés em casos de descamação e prurido ligeiros. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="melaleuca-arvore-do-cha_receitas.html">Enxaguatório bucal adjuvante:</a> colutório caseiro com pequena quantidade de óleo de tea tree devidamente disperso em base aquosa, utilizado em bochechos sem ingestão para apoio da higiene oral. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="melaleuca-arvore-do-cha_receitas.html">Shampoo anti-oleosidade e caspa com tea tree:</a> shampoo neutro enriquecido com algumas gotas de óleo de melaleuca, usado em lavagens regulares para ajudar a controlar oleosidade e descamação do couro cabeludo. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="melaleuca-arvore-do-cha_receitas.html">Compressa morna para acne inflamatório localizado:</a> pano limpo embebido em água morna com preparado contendo melaleuca, aplicado sobre lesões inflamadas em sessões curtas. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="melaleuca-arvore-do-cha_receitas.html">Banho de imersão parcial para pés:</a> bacia com água morna enriquecida com gotas de óleo de tea tree ou preparado adequado, usada em imersões dos pés para conforto e higiene. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="melaleuca-arvore-do-cha_receitas.html">Mistura para couro cabeludo com prurido:</a> aplicação de óleo de melaleuca diluído em óleo vegetal ou loção, massajado suavemente no couro cabeludo antes da lavagem para aliviar comichão. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="melaleuca-arvore-do-cha_receitas.html">Spray ambiental suave com melaleuca:</a> preparado em frasco vaporizador com água e pequena quantidade de óleo de tea tree disperso, usado pontualmente para refrescar o ar em divisões ventiladas. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="melaleuca-arvore-do-cha_receitas.html">Pomada simples para áreas de pele espessa:</a> unguento com pequena proporção de óleo essencial de melaleuca em base gordurosa, aplicado em zonas endurecidas ou calosidades por períodos limitados. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>O óleo essencial de Melaleuca alternifolia é amplamente reconhecido pela sua atividade antimicrobiana de largo espetro, atuando sobre diversas bactérias gram-positivas e gram-negativas, fungos dermatófitos, leveduras e alguns vírus envelopados. Revisões e monografias regulatórias descrevem a sua aplicação tradicional e moderna em pequenas infeções superficiais da pele, acne ligeira, pé de atleta e pequenas feridas, justificando o enquadramento como medicamento à base de plantas de uso tradicional para estas indicações. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-EMA1">[EMA1]</a></p>
+      <p>Além da ação antimicrobiana, estudos in vitro e in vivo sugerem efeitos anti-inflamatórios e moduladores da resposta imunitária local, bem como alguma atividade analgésica ligeira em aplicações tópicas. Estes efeitos podem contribuir para a redução de vermelhidão, prurido e desconforto em afecções cutâneas, quando o óleo é utilizado em concentrações adequadas e em bases bem toleradas. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-CIR1">[CIR1]</a></p>
+      <p>Apesar do interesse crescente em aplicações sistémicas e inalatórias, a evidência clínica robusta concentra-se sobretudo no uso tópico cutâneo e, em menor grau, em preparações para higiene oral. A ingestão de óleo de melaleuca não é considerada segura e não é recomendada em contexto de fitoterapia caseira. <a href="#ref-EMA2">[EMA2]</a> <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Adjuvante no tratamento de acne ligeira a moderada, através de géis e loções tópicas com 5–10% de óleo de melaleuca, ajudando a reduzir o número de lesões inflamatórias e a severidade global da acne. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-CL1">[CL1]</a></li>
+        <li>Apoio em pequenas infeções superficiais da pele, pequenas feridas, picadas de inseto e pé de atleta ligeiro, graças à combinação de propriedades antibacterianas, antifúngicas e anti-inflamatórias do óleo essencial. <a href="#ref-EMA1">[EMA1]</a> <a href="#ref-EMA2">[EMA2]</a> <a href="#ref-M2">[M2]</a></li>
+        <li>Complemento em cuidados de higiene oral, em colutórios e gel dentífrico com baixas concentrações de óleo de tea tree, contribuindo para reduzir a carga bacteriana e a inflamação gengival em situações ligeiras. <a href="#ref-M2">[M2]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-CL2">[CL2]</a></li>
+        <li>Potencial atividade adjuvante em algumas condições inflamatórias de pele e couro cabeludo (como dermatite seborreica ligeira e caspa), quando integrado em shampoos e loções formulados com diluições seguras de óleo de melaleuca. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-CL3">[CL3]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>O óleo essencial de Melaleuca alternifolia é um óleo do tipo terpinen-4-ol, cuja composição é regulamentada por normas como a ISO 4730. De acordo com estas especificações e estudos fitoquímicos, o principal constituinte é o terpinen-4-ol, tipicamente na gama dos 35–48% (m/m), acompanhado por γ-terpineno (cerca de 10–28%), α-terpineno (5–13%), α-terpineol e outros monoterpenos, enquanto o teor de 1,8-cineol é limitado a valores relativamente baixos para reduzir irritação e toxicidade. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-ISO1">[ISO1]</a></p>
+      <p>Ensaios farmacológicos demonstram que o óleo apresenta atividade antimicrobiana relevante contra várias bactérias (incluindo Staphylococcus aureus e Propionibacterium acnes), fungos dermatófitos e leveduras, bem como atividade antiviral contra alguns vírus envelopados. Mecanisticamente, os monoterpenos lipofílicos parecem desorganizar membranas, aumentar a permeabilidade celular e interferir com processos de transporte e respiração microbiana. <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></p>
+      <p>Estudos adicionais indicam propriedades anti-inflamatórias e antioxidantes em modelos in vitro e in vivo, com modulação da produção de mediadores inflamatórios e redução do stress oxidativo. A potência destes efeitos depende da composição exata do óleo, do método de extração, das condições de armazenamento e da espécie-alvo, o que reforça a importância do controlo de qualidade segundo normas oficiais. <a href="#ref-F2">[F2]</a> <a href="#ref-F4">[F4]</a> <a href="#ref-CIR1">[CIR1]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Teor de terpinen-4-ol no óleo essencial</td><td>≈35–48 % (m/m) do óleo</td></tr>
+        <tr><td>Teor de γ-terpineno no óleo essencial</td><td>≈10–28 % (m/m) do óleo</td></tr>
+        <tr><td>Teor de 1,8-cineol (eucaliptol) no óleo essencial</td><td>≤15 % (m/m), frequentemente &lt;3 % em óleos de qualidade farmacêutica</td></tr>
+        <tr><td>Atividade antibacteriana in vitro contra Staphylococcus aureus</td><td>concentrações inibitórias mínimas (CIM) tipicamente na gama de 0,12–4 mg/mL</td></tr>
+        <tr><td>Atividade antifúngica in vitro contra dermatófitos</td><td>CIM frequentemente na gama de 0,03–2 mg/mL</td></tr>
+        <tr><td>Atividade antiviral in vitro contra vírus envelopados</td><td>inibição significativa em concentrações na ordem de dezenas a centenas de µg/mL</td></tr>
+        <tr><td>Indicadores de atividade anti-inflamatória em modelos experimentais</td><td>efeitos observados em concentrações de µg/mL a baixas mg/kg, dependendo do modelo</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Ingrediente em produtos cosméticos e de higiene pessoal (shampoos, géis de banho, sabonetes, desodorizantes, produtos anti-imperfeições) com função purificante e desodorizante. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Uso em produtos de limpeza doméstica e sprays ambientais naturais, aproveitando propriedades desodorizantes e antimicrobianas suaves do óleo essencial.</li>
+        <li>Emprego em formulações de aromaterapia para massagens, banhos aromáticos e difusão ambiental, com objetivo de promover sensação de frescura, limpeza e bem‑estar.</li>
+        <li>Valor ornamental como arbusto ou pequena árvore em jardins de clima suave, oferecendo flores melíferas e folhagem aromática.</li>
+        <li>Relevância económica como cultura industrial de óleo essencial, com programas de melhoramento, controlo de adulteração e padrões internacionais de qualidade.</li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 5,0 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em permacultura, a melaleuca oferece sobretudo funções medicinais e aromáticas, produzindo um óleo essencial de grande interesse para pequenos preparados caseiros e para a cosmética natural. Como arbusto ou pequena árvore, pode desempenhar algum papel estrutural em jardins de clima ameno, fornecendo sombra leve, flores melíferas para insetos e alguma biomassa para compostagem através de podas regulares.
+No entanto, trata-se de uma espécie sensível a geadas, pouco adaptada a zonas mais frias de Portugal continental, e que não contribui para alimentação humana direta. O valor em permacultura é reforçado pela multifuncionalidade medicinal/aromática e pelo apoio a polinizadores, mas moderado pela ausência de funções alimentares, pela necessidade de condições específicas de cultivo e pelo risco de mau uso do óleo essencial em contextos domésticos.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação da melaleuca resulta de um valor nulo em uso alimentar humano (ALIM=0), importância elevada em uso medicinal/aromático (MED=2), papel estrutural moderado como arbusto de pequeno porte (ESTR=1) e contribuição limitada mas presente para solo e biomassa via podas e matéria lenhosa (SOLO=1). Acresce um contributo ecológico razoável pelo fornecimento de flores para insetos polinizadores e outros auxiliares (ECO=1), bem como rusticidade intermédia em climas mediterrânicos suaves (RUST=1), desde que protegida de geadas fortes, e uma multifuncionalidade extra associada ao valor aromático, cosmético e cultural do óleo essencial (MULT=2).
+As penalizações incidem sobretudo na toxicidade potencial do óleo quando usado de forma inadequada (TOX=-1), que exige prudência em contextos familiares e com animais domésticos, e, em menor grau, na competição por água e luz em solos pobres ou muito secos (COMP≈0 a -1). Considerando a soma dos critérios positivos (POS≈8) e a penalização global moderada (NEG≈-1), obtém-se uma pontuação bruta em torno de 7, que convertida para a escala 0–10 por regra de três simples (14 pontos ≡ 10/10) situa a melaleuca em cerca de 5,0/10. Este valor indica uma planta com funcionalidade interessante em permacultura sobretudo pela medicina caseira, aromaterapia e apoio ecológico localizado, mas com limitações relevantes relacionadas com a ausência de função alimentar, sensibilidade ao frio e necessidade de grande cuidado na utilização do óleo essencial.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] European Medicines Agency (EMA). Melaleucae aetheroleum: herbal medicinal product. Informação geral sobre óleo de tea tree, indicações tradicionais e enquadramento regulatório. Disponível em: <a href="https://www.ema.europa.eu/en/medicines/herbal/melaleucae-aetheroleum" target="_blank" rel="noopener">https://www.ema.europa.eu/en/medicines/herbal/melaleucae-aetheroleum</a></li>
+        <li id="ref-D2">[D2] Wikipedia. Melaleuca alternifolia. Artigo com descrição botânica, distribuição geográfica, usos tradicionais e referências a ensaios clínicos e estudos de toxicidade. Disponível em: <a href="https://en.wikipedia.org/wiki/Melaleuca_alternifolia" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Melaleuca_alternifolia</a></li>
+        <li id="ref-D3">[D3] Parviz G. et al. Tea Tree (Melaleuca alternifolia (Maiden &amp; Betche) Cheel) Oil: An important medicinal essential oil. Revisão sobre botânica, usos tradicionais e aplicações medicinais e cosméticas do óleo de melaleuca. Disponível em: <a href="https://dergipark.org.tr/en/download/article-file/2107637" target="_blank" rel="noopener">https://dergipark.org.tr/en/download/article-file/2107637</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Plant For A Future (PFAF). Melaleuca alternifolia Tea Tree. Ficha de cultivo que descreve necessidades de solo, luz, resistência ao frio e comportamento em climas temperados. Disponível em: <a href="https://pfaf.org/user/Plant.aspx?LatinName=Melaleuca+alternifolia" target="_blank" rel="noopener">https://pfaf.org/user/Plant.aspx?LatinName=Melaleuca+alternifolia</a></li>
+        <li id="ref-S2">[S2] BloomPots. How to Grow Tea Tree (Melaleuca alternifolia). Guia prático com informação sobre clima, zonas de rusticidade, exposição solar e maneio em vaso e no jardim. Disponível em: <a href="https://bloompots.com/plant/melaleuca-alternifolia" target="_blank" rel="noopener">https://bloompots.com/plant/melaleuca-alternifolia</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] Morris MC. Ingestion of tea tree oil (Melaleuca oil) by a 4-year-old boy. Case report que descreve neurotoxicidade aguda após ingestão acidental de óleo de melaleuca em criança. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/12813303/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/12813303/</a></li>
+        <li id="ref-U2">[U2] Bekhof ASMW et al. Safety assessment and adverse drug reaction reporting of cosmetic products containing tea tree oil. Revisão sobre dados de segurança e reações adversas associadas a produtos cosméticos com óleo de melaleuca. Disponível em: <a href="https://onlinelibrary.wiley.com/doi/10.1002/ptr.7687" target="_blank" rel="noopener">https://onlinelibrary.wiley.com/doi/10.1002/ptr.7687</a></li>
+        <li id="ref-U3">[U3] ANSES. What are the adverse effects of Melaleuca essential oils (tea-tree and niaouli)? Folheto técnico com casos de intoxicação, especialmente em crianças, e recomendações de segurança. Disponível em: <a href="https://vigilanses.anses.fr/sites/default/files/VigilAnsesN14_September2021_Melaleuca.pdf" target="_blank" rel="noopener">https://vigilanses.anses.fr/sites/default/files/VigilAnsesN14_September2021_Melaleuca.pdf</a></li>
+        <li id="ref-U4">[U4] Cosmetic Ingredient Review (CIR). Safety Assessment of Melaleuca alternifolia (Tea Tree)-Derived Ingredients as Used in Cosmetics. Relatório técnico com avaliação detalhada de segurança, limites de concentração e efeitos adversos cutâneos. Disponível em: <a href="https://www.cir-safety.org/sites/default/files/Tea%20Tree_0.pdf" target="_blank" rel="noopener">https://www.cir-safety.org/sites/default/files/Tea%20Tree_0.pdf</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Ernst E., Huntley A. Review: Treatment of acne with tea tree oil (melaleuca) products. Revisão clínica que sumariza estudos com géis tópicos de 5–10% de óleo de melaleuca em acne vulgar ligeira a moderada. Disponível em: <a href="https://www.sciencedirect.com/science/article/pii/S0924857914003458" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S0924857914003458</a></li>
+        <li id="ref-R2">[R2] European Medicines Agency (EMA). Community herbal monograph on Melaleuca alternifolia aetheroleum. Monografia que indica, entre outros, enxaguamentos e soluções com 0,7–1 mL de óleo em 100 mL de água para aplicação cutânea. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-melaleuca-alternifolia-maiden-and-betch-cheel-m-linariifolia-smith-m-dissitiflora-f-mueller-and-or-other-species-melaleuca-aetheroleum-first-version_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-melaleuca-alternifolia-maiden-and-betch-cheel-m-linariifolia-smith-m-dissitiflora-f-mueller-and-or-other-species-melaleuca-aetheroleum-first-version_en.pdf</a></li>
+        <li id="ref-R3">[R3] Nepomoceno TAR et al. Melaleuca alternifolia: uma revisão sistemática da literatura. Revisão que discute usos tópicos em pé de atleta e onicomicoses e resume dados de concentrações usadas em preparações terapêuticas. Disponível em: <a href="https://revista.uninga.br/uningareviews/article/download/3409/2207/10656" target="_blank" rel="noopener">https://revista.uninga.br/uningareviews/article/download/3409/2207/10656</a></li>
+        <li id="ref-R4">[R4] Hòa DM et al. Research on extraction, chemical compositions, and application of tea tree (Melaleuca alternifolia) essential oil in the production of mouthwash. Estudo que descreve formulações de colutórios com óleo de melaleuca e respetivas concentrações. Disponível em: <a href="https://doi.org/10.22144/ctu.jvn.2016.515" target="_blank" rel="noopener">https://doi.org/10.22144/ctu.jvn.2016.515</a></li>
+        <li id="ref-R5">[R5] Tua Saúde. Óleo de melaleuca: o que é, para que serve (e como usar). Artigo em português com exemplos de diluição para acne e pele oleosa, incluindo misturas de 1 mL de óleo em 9 mL de água ou veículo para uso tópico limitado. Disponível em: <a href="https://www.tuasaude.com/oleo-de-melaleuca/" target="_blank" rel="noopener">https://www.tuasaude.com/oleo-de-melaleuca/</a></li>
+        <li id="ref-R6">[R6] Mundo dos Óleos. Óleo de Melaleuca no cabelo: benefícios, receitas e cuidados. Texto em português com receitas de diluição do óleo em shampoos e óleos carreadores para couro cabeludo e cabelo. Disponível em: <a href="https://www.mundodosoleos.com/blogs/news/oleo-de-melaleuca-no-cabelo-beneficios-receitas-e-cuidados" target="_blank" rel="noopener">https://www.mundodosoleos.com/blogs/news/oleo-de-melaleuca-no-cabelo-beneficios-receitas-e-cuidados</a></li>
+        <li id="ref-R7">[R7] doTERRA / Nature Heals. Tea Tree (Árvore do Chá). Ficha de produto com orientações de diluição para massagem, banho e aplicação tópica, enfatizando necessidade de uso com óleo carreador. Disponível em: <a href="https://natureheals.pt/products/tea-tree-15ml" target="_blank" rel="noopener">https://natureheals.pt/products/tea-tree-15ml</a></li>
+        <li id="ref-R8">[R8] Sabaos Serradas. O poder do óleo de Tea Tree: um elixir natural para a pele e o cabelo. Artigo em português com sugestões de aplicações tópicas diluídas em pequenas áreas da pele. Disponível em: <a href="https://www.sabaoserradas.com/blogs/news/serradas-oleo-tea-tree" target="_blank" rel="noopener">https://www.sabaoserradas.com/blogs/news/serradas-oleo-tea-tree</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] Bugarcic A. et al. Australian Tea Tree (Melaleuca alternifolia) oil: an updated review of antimicrobial and other medicinal properties. Revisão recente que sumariza evidência sobre atividade antimicrobiana, anti-inflamatória e outras propriedades medicinais. Disponível em: <a href="https://www.researchgate.net/publication/394038072_Australian_Tea_Tree_Melaleuca_alternifolia_oil_an_updated_review_of_antimicrobial_and_other_medicinal_properties" target="_blank" rel="noopener">https://www.researchgate.net/publication/394038072_Australian_Tea_Tree_Melaleuca_alternifolia_oil_an_updated_review_of_antimicrobial_and_other_medicinal_properties</a></li>
+        <li id="ref-M2">[M2] Carson CF, Hammer KA, Riley TV. Melaleuca alternifolia (Tea Tree) Oil: a review of antimicrobial and other medicinal properties. Revisão clássica em Clinical Microbiology Reviews que descreve mecanismos de ação e espectro de atividade. Disponível em: <a href="https://europepmc.org/article/med/16223952" target="_blank" rel="noopener">https://europepmc.org/article/med/16223952</a></li>
+        <li id="ref-M3">[M3] Frontiers in Pharmacology. Efficacy and safety of Melaleuca alternifolia (tea tree) oil for human therapeutic use. Revisão sistemática sobre eficácia e segurança em diferentes indicações, com foco em aplicações dérmicas. Disponível em: <a href="https://www.frontiersin.org/articles/10.3389/fphar.2023.1116077/full" target="_blank" rel="noopener">https://www.frontiersin.org/articles/10.3389/fphar.2023.1116077/full</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] ISO. Essential oil of Melaleuca, terpinen-4-ol type (Tea Tree oil) – ISO 4730. Norma internacional que especifica a composição típica e limites de qualidade do óleo essencial de Melaleuca alternifolia. Disponível em: <a href="https://cdn.standards.iteh.ai/samples/69082/302bafb843a64a95b8c74676e282d921/ISO-4730-2017.pdf" target="_blank" rel="noopener">https://cdn.standards.iteh.ai/samples/69082/302bafb843a64a95b8c74676e282d921/ISO-4730-2017.pdf</a></li>
+        <li id="ref-F2">[F2] Quyen PT et al. Chemical composition and biological evaluation of tea tree (Melaleuca alternifolia) leaves essential oils. Artigo que descreve teores de terpinen-4-ol, outros monoterpenos e atividade biológica do óleo. Disponível em: <a href="https://www.redalyc.org/journal/1799/179978626009/html/" target="_blank" rel="noopener">https://www.redalyc.org/journal/1799/179978626009/html/</a></li>
+        <li id="ref-F3">[F3] Ilina T. et al. Phytochemical profiles and in vitro immunomodulatory activities of Melaleuca alternifolia herb extracts. Estudo que relaciona composição química com efeitos imunomoduladores e antimicrobianos. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/31775336/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/31775336/</a></li>
+        <li id="ref-F4">[F4] Cosmetic Ingredient Review (CIR). Safety Assessment of Melaleuca alternifolia (Tea Tree)-Derived Ingredients as Used in Cosmetics. Documento que resume dados de toxicidade, penetração cutânea, atividade antioxidante e limites de uso em cosméticos. Disponível em: <a href="https://www.cir-safety.org/sites/default/files/melalt092021FR.pdf" target="_blank" rel="noopener">https://www.cir-safety.org/sites/default/files/melalt092021FR.pdf</a></li>
+        <li id="ref-ISO1">[ISO1] ISO. Online Browsing Platform – Essential oil of Melaleuca, terpinen-4-ol type (Tea Tree oil). Página de resumo da norma ISO 4730 com indicação dos principais parâmetros de composição. Disponível em: <a href="https://www.iso.org/standard/69082.html" target="_blank" rel="noopener">https://www.iso.org/standard/69082.html</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] The Body Shop Portugal. Benefícios do Tea Tree para a pele. Página de produto e artigo que descreve usos cosméticos purificantes e anti-imperfeições de produtos com óleo de tea tree. Disponível em: <a href="https://www.thebodyshop.pt/benef%C3%ADcios-do-tea-tree" target="_blank" rel="noopener">https://www.thebodyshop.pt/benef%C3%ADcios-do-tea-tree</a></li>
+        <li id="ref-A2">[A2] Salud Mediterránea. 5 usos do óleo da árvore do chá. Artigo em português que sugere usos domésticos e cosméticos do óleo, incluindo limpeza de pele e pequenas aplicações pontuais. Disponível em: <a href="https://saludmediterranea.com/pt-pt/blogs/cosmetica-natural/5-usos-del-aceite-de-arbol-de-te" target="_blank" rel="noopener">https://saludmediterranea.com/pt-pt/blogs/cosmetica-natural/5-usos-del-aceite-de-arbol-de-te</a></li>
+        <li id="ref-A3">[A3] Coslaw. New SCCS Opinions on Tea Tree Oil, CBD, and other ingredients. Texto que resume o enquadramento regulatório recente e preocupações de segurança relativas ao uso de óleo de tea tree em cosméticos. Disponível em: <a href="https://coslaw.eu/new-sccs-opinions-tea-tree-oil-cbd-and-other-ingredients/" target="_blank" rel="noopener">https://coslaw.eu/new-sccs-opinions-tea-tree-oil-cbd-and-other-ingredients/</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] Useful Temperate Plants. Melaleuca alternifolia. Ficha que descreve tolerância a geadas ligeiras, exigências de solo e comportamento em climas temperados, relevante para o desenho de sistemas de permacultura. Disponível em: <a href="https://temperate.theferns.info/plant/Melaleuca+alternifolia" target="_blank" rel="noopener">https://temperate.theferns.info/plant/Melaleuca+alternifolia</a></li>
+        <li id="ref-P2">[P2] MyPlantin / EarthOne. Tea tree care and cultivation guides. Guias de jardinagem que descrevem necessidades de sol, água, rusticidade e manejo de poda, úteis para avaliar rusticidade e manutenção em sistemas hortícolas e de permacultura. Disponível em: <a href="https://myplantin.com/plant/2660" target="_blank" rel="noopener">https://myplantin.com/plant/2660</a> e <a href="https://earthone.io/plant/melaleuca%20alternifolia" target="_blank" rel="noopener">https://earthone.io/plant/melaleuca%20alternifolia</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

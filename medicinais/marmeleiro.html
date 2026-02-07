@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html" class="ativa">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="manjericao.html">Manjericão</a>
+  <a class="next" href="medronheiro.html">Medronheiro</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Marmeleiro (<em>Cydonia oblonga Mill.</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Rosaceae</span>
+  <span>Parte usada: frutos, folhas e sementes</span>
+  <span>Tipo: árvore frutífera medicinal caducifólia</span>
+  <span>Produção: <strong>cultivada em pomares e hortas</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> Cáucaso, Ásia Menor e Mediterrâneo, hoje comum em Portugal</div>
+  <div><strong>Uso principal</strong> fruto em doces e chás para digestão e mucosas</div>
+  <div><strong>Perfil medicinal</strong> digestivo, cardiometabólico, emoliente de mucosas e pele, antioxidante</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Marmeleiro (Cydonia oblonga Mill.)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>O marmeleiro (Cydonia oblonga Mill.) é uma pequena árvore ou arbusto caducifólio da família Rosaceae, normalmente com 3–5 metros de altura, com ramos sinuosos, folhas ovaladas de tom verde-escuro na face superior e esbranquiçadas e tomentosas na inferior, e flores grandes isoladas, rosadas ou esbranquiçadas, que surgem na primavera. O fruto, o marmelo, é um pseudocarpo aromático, de forma arredondada ou alongada, com casca amarela quando maduro e polpa firme, astringente e pouco doce em cru.</p>
+      <p>Em Portugal, além de marmeleiro e marmelo, surgem nomes como marmeleiro-da-europa e pereira-do-japão (embora este último seja por vezes aplicado a outras espécies ornamentais). Em inglês, o fruto é conhecido como quince e a árvore como quince tree. Desde a Antiguidade, o marmeleiro está associado a simbolismos de fertilidade, fortuna e amor, tendo sido cultivado por gregos e romanos tanto pelas flores ornamentais como pelo fruto perfumado.</p>
+      <p>Na prática hortícola e medicinal, utilizam-se sobretudo os frutos maduros e as folhas secas, bem como as sementes em usos muito específicos. Os frutos são base para marmelada, geleias e compotas, enquanto folhas e preparações de fruto são usados em infusões, decocções e xaropes caseiros para apoio digestivo, respiratório e cardiovascular, com crescente interesse científico sobre o seu elevado teor em polifenóis e outros compostos bioativos.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, o marmeleiro comporta-se como fruteira caducifólia adaptada a climas temperados e mediterrânicos, exigindo um período de frio no inverno para boa floração e frutificação. A floração ocorre geralmente na primavera, após o risco de geadas fortes, e os frutos amadurecem no outono, entre o fim de setembro e novembro, dependendo da região e da variedade.
+Para utilização alimentar e medicinal colhem-se os marmelos bem maduros, de cor amarela intensa e aroma marcado, preferencialmente antes de geadas severas. As folhas para uso em chá são colhidas em plena estação vegetativa, selecionando folhas saudáveis e secando-as em camadas finas ao abrigo da luz direta.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Floração: primavera (aproximadamente abril-maio em Portugal continental), após rebentação das folhas.</li>
+        <li>Formação e crescimento dos frutos: final da primavera e verão (maio a agosto), com incremento gradual de tamanho e acumulação de compostos aromáticos.</li>
+        <li>Maturação dos frutos e época de colheita: outono, tipicamente entre finais de setembro e novembro, dependendo da cultivar e da região.</li>
+        <li>Colheita de folhas para secagem: durante a primavera e verão, escolhendo folhas adultas e saudáveis, longe de áreas poluídas.</li>
+        <li>Período de dormência: inverno, com queda das folhas e repouso vegetativo até à primavera seguinte.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Consumo de preparados de fruto (por exemplo marmelada, compotas mais ricas em polpa e menos açúcar, ou purés de marmelo cozido) como adjuvantes em diarreias ligeiras e inflamações digestivas, explorando a ação adstringente suave, o teor em fibras solúveis e pectinas e os efeitos gastroprotetores descritos em estudos experimentais e revisões sobre a fruta de Cydonia oblonga. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a></li>
+        <li>Infusões ou decocções de folhas de marmeleiro, tradicionalmente usadas como chás antioxidantes e adstringentes, com potencial apoio em diarreia, tosse, stress e alterações metabólicas ligeiras; investigações modernas com extratos de folhas indicam atividades antioxidantes marcadas, efeitos hipolipemiantes e hipoglicemiantes em modelos animais, sugerindo possível papel complementar em risco cardiometabólico. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-F1">[F1]</a></li>
+        <li>Utilização de mucilagem de sementes de marmelo em preparados tópicos (géis, pomadas) para apoio em cicatrização de feridas e queimaduras ligeiras, baseada em estudos sobre mucilagem de sementes de Cydonia oblonga e afins, que demonstram propriedades emolientes, hidratantes e de promoção do fecho de feridas em modelos experimentais. <a href="#ref-M3">[M3]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Uso tradicional de marmelada, compotas e geleias de marmelo como alimentos reconfortantes em épocas de frio, muitas vezes associados a recuperação de estados de convalescença, aproveitando o caráter nutritivo e digestivo quando consumidos em pequenas quantidades. <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a> <a href="#ref-A1">[A1]</a></li>
+        <li>Preparação de chás de folhas de marmeleiro, em mistura ou isoladas, para aliviar tosse, inflamações da garganta, diarreia ligeira e nervosismo, segundo práticas de medicina popular e registos etnográficos portugueses e brasileiros. <a href="#ref-R2">[R2]</a> <a href="#ref-R3">[R3]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Emprego popular de chás de sementes ou de fruto em resfriados, irritações das vias respiratórias e mal-estar digestivo, por vezes combinados com mel e outras plantas, com ênfase em propriedades calmantes, emolientes e adstringentes. <a href="#ref-R1">[R1]</a> <a href="#ref-R3">[R3]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Uso de folhas de marmeleiro em mezinhas caseiras para apoio ao colesterol, stress e doenças de pele, segundo tradições rurais e textos de medicina popular. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a> <a href="#ref-A4">[A4]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>Os frutos de marmelo, quando bem cozinhados e consumidos como alimentos (marmelada, compotas, purés), são considerados seguros para a maioria das pessoas, desde que integrados numa alimentação equilibrada e sem exageros no consumo de açúcar. Pessoas com diabetes, síndrome metabólica ou necessidade de restrição de açúcares simples devem ter atenção particular às preparações com elevado teor de açúcar. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a></p>
+      <p>Chás e decocções de folhas de marmeleiro são tradicionalmente utilizados como remédio caseiro, mas a evidência clínica sistemática é limitada. O uso prolongado ou em doses elevadas sem supervisão não é recomendado, sobretudo em pessoas com doenças crónicas, insuficiência renal ou hepática, ou que tomem múltiplos medicamentos. Produtos comerciais devem ser usados de acordo com as indicações do fabricante. <a href="#ref-U1">[U1]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-U4">[U4]</a></p>
+      <p>O uso de sementes de marmeleiro por via interna exige prudência, uma vez que podem conter glicosídeos cianogénicos em pequenas quantidades, à semelhança de outras sementes de Rosaceae. Preparos caseiros com sementes não devem ser consumidos em grandes quantidades, de forma prolongada ou por crianças; o uso externo de mucilagem (em géis e cosméticos) é geralmente considerado mais seguro, desde que respeitados princípios básicos de higiene e conservação. <a href="#ref-F2">[F2]</a> <a href="#ref-U2">[U2]</a></p>
+      <p>Como em qualquer planta medicinal, grávidas, lactantes, crianças pequenas, idosos frágeis e pessoas sob medicação crónica devem consultar um profissional de saúde antes de iniciar uso regular de chás concentrados, extratos ou suplementos de marmeleiro. <a href="#ref-U1">[U1]</a> <a href="#ref-U3">[U3]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        No contexto medicinal e alimentar, o marmeleiro é usado em vários tipos de preparados: marmeladas, compotas e geleias ricas em polpa, purés e assados de marmelo, chás de folhas e de fruto, xaropes caseiros para tosse e, em alguns contextos, preparados tópicos à base de mucilagem de sementes. As receitas caseiras devem seguir quantidades e tempos de confeção adequados, privilegiando a segurança (nomeadamente no uso de sementes) e a moderação no consumo de açúcar. Os preparados com finalidade terapêutica devem ser sempre enquadrados pelas recomendações de segurança.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="marmeleiro_receitas.html">Marmelada tradicional de marmelo:</a> doce espesso de marmelo cozido com açúcar, cortado em blocos depois de solidificar e consumido como sobremesa ou com pão. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="marmeleiro_receitas.html">Marmelada caseira com menos açúcar:</a> versão com menor proporção de açúcar em relação à marmelada tradicional, mantendo textura firme e sabor intenso para consumo moderado. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="marmeleiro_receitas.html">Geleia de marmelo:</a> geleia translúcida preparada a partir de cascas e caroços de marmelo, usada para barrar pão ou acompanhar sobremesas simples. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="marmeleiro_receitas.html">Chá de folhas de marmeleiro:</a> infusão de folhas em água quente, tomada em chávenas ao longo do dia como apoio suave em tosse ligeira, diarreia e desconforto digestivo. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="marmeleiro_receitas.html">Decocção de folhas de marmeleiro:</a> preparação mais concentrada de folhas fervidas em água, usada por períodos limitados como complemento em queixas digestivas e respiratórias. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="marmeleiro_receitas.html">Chá de marmelo em fatias:</a> bebida aromática obtida ao escaldar fatias de marmelo em água quente, consumida morna para conforto do aparelho digestivo e respiratório. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="marmeleiro_receitas.html">Chá de sementes de marmelo para tosse:</a> infusão tradicional de sementes ricas em mucilagens, usada em pequenas quantidades para acalmar tosse seca e irritação de garganta. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="marmeleiro_receitas.html">Compota de marmelo em pedaços:</a> doce de colher com cubos de marmelo cozidos em calda aromatizada, servido como acompanhamento de pequenos-almoços e algumas sobremesas. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="marmeleiro_receitas.html">Marmelo assado no forno:</a> metades ou pedaços de marmelo assados lentamente até ficarem macios, servidos como sobremesa quente ou lanche reconfortante em dias frios. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="marmeleiro_receitas.html">Xarope caseiro de marmelo e folhas para tosse:</a> preparado adoçado à base de decoção de marmelo e folhas, tomado em colheres pequenas como apoio em tosse e garganta irritada. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>Estudos tradicionais e modernos descrevem o marmeleiro como planta com propriedades adstringentes, emolientes, anti-inflamatórias e antioxidantes. O fruto, rico em fibras solúveis, pectinas, ácidos orgânicos e polifenóis, tem sido associado a efeitos gastroprotetores, incluindo proteção contra úlceras gástricas, redução de diarreia ligeira e apoio na recuperação de irritações da mucosa digestiva. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a></p>
+      <p>Revisões científicas indicam ainda que extratos de fruto e de folhas de Cydonia oblonga apresentam atividades cardiometabólicas promissoras, como redução de lípidos séricos, melhoria de parâmetros glicémicos e proteção contra oxidação de lipoproteínas e danos oxidativos em modelos animais, sugerindo um potencial papel complementar em síndrome metabólica e risco cardiovascular. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>Outro campo em desenvolvimento é o uso de extratos de marmelo em dermatologia e cuidados da pele: formulações com componentes de Cydonia oblonga têm sido investigadas para melhoria de dermatites, cicatrização de feridas e proteção contra stress oxidativo cutâneo, apoiando algumas utilizações tradicionais em problemas de pele e queimaduras ligeiras. <a href="#ref-M3">[M3]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-F2">[F2]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Adjuvante em queixas digestivas como diarreia ligeira, gastrite e irritação da mucosa gástrica, através do consumo moderado de preparados de fruto de marmelo com alto teor de pectinas e mucilagens, em conjunto com dieta adequada. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a></li>
+        <li>Suporte complementar em risco cardiometabólico (dislipidemia, pré-diabetes, síndrome metabólica), com base em estudos que mostram efeitos hipolipemiantes, antioxidantes e moduladores de glicemia de extratos de fruto e folhas de marmeleiro em modelos animais. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-F1">[F1]</a></li>
+        <li>Apoio em tosse e irritações de garganta ligeiras, usando chás de folhas e fruto e, em alguns contextos, preparados à base de mucilagem de sementes, pela ação emoliente e calmante sobre mucosas. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-U2">[U2]</a></li>
+        <li>Possível uso complementar em problemas cutâneos e cicatrização de feridas ligeiras, com extratos de marmelo integrados em cremes e géis, beneficiando de propriedades antioxidantes, hidratantes e regeneradoras estudadas em dermatologia. <a href="#ref-M3">[M3]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-F2">[F2]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>O marmeleiro é uma fonte rica de compostos bioativos em diferentes partes da planta. Frutos de Cydonia oblonga apresentam teores significativos de polifenóis, incluindo derivados de ácido clorogénico, quercetina, catequinas e outros flavonoides, bem como uma combinação de ácidos orgânicos como málico, cítrico, ascórbico, quínico e fumárico. Estes compostos contribuem para a forte capacidade antioxidante observada em extratos de fruto e produtos derivados. <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></p>
+      <p>As folhas de marmeleiro concentram ainda mais polifenóis do que os frutos, com estudos a mostrarem perfis ricos em ácido clorogénico, rutósido, quercetina e outros flavonoides, para além de taninos, o que ajuda a explicar as propriedades adstringentes, antioxidantes, anti-inflamatórias e, potencialmente, hipolipemiantes e hipoglicemiantes dos chás e extratos foliares. <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F5">[F5]</a> <a href="#ref-F6">[F6]</a></p>
+      <p>Extratos de frutos e folhas têm demonstrado em modelos in vitro e in vivo uma gama de atividades farmacológicas, incluindo efeitos gastroprotetores, antioxidantes, anti-inflamatórios, antidiabéticos, hipolipemiantes e cardioprotetores. Estudos recentes também destacam aplicações em dermatologia e proteção da pele, reforçando o interesse em padronizar extratos de Cydonia oblonga para uso em suplementos e cosméticos. <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Polifenóis totais nos frutos (polpa e casca)</td><td>≈5–20 mg equivalentes de ácido gálico/g de peso seco</td></tr>
+        <tr><td>Ácidos orgânicos totais nos frutos (polpa)</td><td>presença de ácidos málico, cítrico, ascórbico e outros em concentrações na gama de g/kg de fruto</td></tr>
+        <tr><td>Polifenóis totais nas folhas</td><td>≈20–60 mg equivalentes de ácido gálico/g de extrato seco</td></tr>
+        <tr><td>Principais flavonoides das folhas (por ex. quercetina e derivados)</td><td>presença dominante de ácido clorogénico, rutósido e outros flavonoides em níveis de mg/g de extrato</td></tr>
+        <tr><td>Capacidade antioxidante de extratos de fruto (testes DPPH/ABTS)</td><td>atividade antioxidante moderada a elevada (valores de IC50 em ensaios DPPH na gama de dezenas de µg/mL)</td></tr>
+        <tr><td>Capacidade antioxidante de extratos de folhas</td><td>atividade antioxidante elevada em comparação com alguns frutos comuns, com forte capacidade de neutralização de radicais livres</td></tr>
+        <tr><td>Atividade gastroprotetora de extratos de fruto em modelos animais</td><td>redução significativa de lesões gástricas induzidas em modelos animais em doses de extrato na ordem de dezenas a centenas de mg/kg</td></tr>
+        <tr><td>Atividade hipolipemiante e hipoglicemiante de extratos de folhas</td><td>reduções de colesterol e glicemia em modelos animais após administração de extratos de folhas em doses na ordem de dezenas a centenas de mg/kg</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Fruteira tradicional com elevado valor cultural e gastronómico em Portugal, usada para preparar marmeladas, compotas, geleias, marmelos assados e sobremesas variadas. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Árvore ornamental pela floração primaveril vistosa e pelo fruto perfumado, podendo integrar pomares familiares, bordaduras e sistemas agroflorestais. <a href="#ref-D2">[D2]</a> <a href="#ref-P1">[P1]</a></li>
+        <li>Utilização do marmelo em bebidas quentes e chás de frutas desidratadas, apreciados pelo aroma e caráter reconfortante em meses frios. <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a></li>
+        <li>Emprego de extratos de marmelo em cosmética natural e dermocosmética, em cremes e géis para hidratação, proteção antioxidante e suavização da pele. <a href="#ref-M3">[M3]</a> <a href="#ref-F2">[F2]</a></li>
+        <li>Aproveitamento de restos de fruto e folhas para compostagem e melhoria da matéria orgânica do solo, integrando ciclos de nutrientes em sistemas de permacultura. <a href="#ref-P1">[P1]</a> <a href="#ref-A2">[A2]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 7,4 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em permacultura, o marmeleiro oferece uma combinação interessante de funções: é uma fruteira perene que fornece alimento humano de longa conservação (marmeladas, compotas, frutos assados), contribui para a estrutura do sistema com copa média e sombra parcial, e produz flores melíferas que beneficiam polinizadores. Os frutos e folhas fornecem biomassa para compostagem e podem ser integrados em sistemas agroflorestais e pomares biodiversos.
+Embora não seja tão produtivo em volume de fruto como outras fruteiras populares, o marmeleiro destaca-se pela rusticidade moderada, pela versatilidade culinária e pelo valor medicinal e cultural. As necessidades de manutenção incluem poda periódica, controlo de pragas e doenças típicas de Rosaceae e escolha de porta-enxertos adequados ao solo e clima. Em geral, integra-se bem em consociações com outras espécies, sem um comportamento agressivo de competição extrema.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação do marmeleiro resulta de valores elevados em uso alimentar (ALIM=2), graças ao fruto amplamente utilizado em marmeladas, compotas, sobremesas e pratos tradicionais, e em uso medicinal (MED=2), com frutos e folhas valorizados em fitoterapia digestiva, respiratória e cardiometabólica. A estrutura arbórea de pequeno a médio porte contribui com alguma função de sombra e composição de pomar (ESTR=1), enquanto a produção de biomassa e a incorporação de restos de poda e frutos no compostor fornecem contribuição moderada para solo/biomassa (SOLO=1). O marmeleiro apoia a fauna (ECO=2) através das flores melíferas e dos frutos que podem alimentar fauna silvestre, e apresenta boa rusticidade (RUST=2) em climas temperados e mediterrânicos, desde que não faltem solos razoavelmente profundos e alguma disponibilidade hídrica. Do ponto de vista de multifuncionalidade e valor cultural (MULT=2), combina funções alimentares, medicinais, ornamentais e simbólicas na paisagem rural.
+As penalizações aplicam-se sobretudo à suscetibilidade a algumas pragas e doenças típicas de Rosaceae e à competição por luz e nutrientes em espaços muito pequenos, o que se traduz numa penalização moderada por competição (COMP=-1). O risco de toxicidade relevante nas formas de uso tradicional (fruto cozinhado, folhas em infusão moderada) é considerado baixo (TOX=0), tal como o perigo físico (PERIGO=0) e o comportamento invasor problemático (INVAS=0) no contexto hortícola habitual. O valor final em escala 0–10 resulta da aplicação do algoritmo descrito em anexo (soma dos critérios positivos até 14 pontos, subtração de penalizações, com conversão por regra de três simples), situando o marmeleiro em cerca de 7,4/10 e indicando uma planta de elevada funcionalidade em permacultura, especialmente útil em pomares biodiversos, sistemas agroflorestais e bordaduras frutíferas com valor alimentar, medicinal e ecológico combinado.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-D2">[D2]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Wikipedia. Marmeleiro (Cydonia oblonga). Artigo com descrição botânica, distribuição, usos tradicionais e etimologia do nome comum e científico. Disponível em: <a href="https://pt.wikipedia.org/wiki/Marmeleiro" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Marmeleiro</a></li>
+        <li id="ref-D2">[D2] Oliveira A. Marmelo (Cydonia oblonga Mill.): fonte de compostos fenólicos com potencial actividade antioxidante. Dissertação/monografia sobre a espécie, incluindo enquadramento histórico, botânico e usos. Disponível em: <a href="https://bdigital.ufp.pt/bitstreams/8db416d4-999e-4ff8-ac2a-31ec0ccb846e/download" target="_blank" rel="noopener">https://bdigital.ufp.pt/bitstreams/8db416d4-999e-4ff8-ac2a-31ec0ccb846e/download</a></li>
+        <li id="ref-D3">[D3] Norbová M et al. The forgotten fruit (Cydonia oblonga Mill.) and its chemical composition. Revisão sobre composição química e importância do marmelo como fruto funcional. Disponível em: <a href="https://link.springer.com/article/10.1007/s00217-024-04543-7" target="_blank" rel="noopener">https://link.springer.com/article/10.1007/s00217-024-04543-7</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Frutas do Cávado. Os marmelos já chegaram à Frutas do Cávado. Texto em português sobre origem, cultivo, época de colheita e usos tradicionais do marmelo. Disponível em: <a href="https://www.frutasdocavado.com/pt/noticias/os-marmelos-ja-chegaram-a-frutas-do-cavado/" target="_blank" rel="noopener">https://www.frutasdocavado.com/pt/noticias/os-marmelos-ja-chegaram-a-frutas-do-cavado/</a></li>
+        <li id="ref-S2">[S2] Diversos viveiros e fichas de fruteiras (por ex. viveiros nacionais). Fichas técnicas de marmeleiro com informações práticas sobre clima, solo, floração e época de colheita em Portugal. Disponível em: <a href="https://energiaemequilibrio.com/pt/plantas-medicinais/2548-marmeleiro-folha-50g-mc-5604345011094.html" target="_blank" rel="noopener">https://energiaemequilibrio.com/pt/plantas-medicinais/2548-marmeleiro-folha-50g-mc-5604345011094.html</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] Ashraf MU et al. Cydonia oblonga M., a medicinal plant rich in phytonutrients for pharmaceuticals. Revisão sobre usos medicinais, segurança e potenciais aplicações da espécie. Disponível em: <a href="https://www.scienceopen.com/document_file/43437af0-b72e-4456-9078-ad067d5237d1/PubMedCentral/43437af0-b72e-4456-9078-ad067d5237d1.pdf" target="_blank" rel="noopener">https://www.scienceopen.com/document_file/43437af0-b72e-4456-9078-ad067d5237d1/PubMedCentral/43437af0-b72e-4456-9078-ad067d5237d1.pdf</a></li>
+        <li id="ref-U2">[U2] Al-Zughbi I et al. Quince fruit (Cydonia oblonga Mill) nutritional composition and health benefits. Artigo que aborda benefícios nutricionais e potenciais efeitos na saúde humana. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0308814622013243" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S0308814622013243</a></li>
+        <li id="ref-U3">[U3] Ashraf MU et al. The medical importance of Cydonia oblonga – a review. Revisão geral de propriedades medicinais, usos tradicionais e estudos farmacológicos. Disponível em: <a href="https://www.iajps.com/pdf/december2017/47.IAJPS47122017.pdf" target="_blank" rel="noopener">https://www.iajps.com/pdf/december2017/47.IAJPS47122017.pdf</a></li>
+        <li id="ref-U4">[U4] Farmácia dos Jerónimos. Marmelo: o tesouro outonal para a saúde. Artigo em português que resume benefícios, formas de uso e cuidados no consumo de marmelo e folhas de marmeleiro. Disponível em: <a href="https://farmaciadosjeronimos.pt/quais-os-beneficios-do-marmelo-para-a-saude/" target="_blank" rel="noopener">https://farmaciadosjeronimos.pt/quais-os-beneficios-do-marmelo-para-a-saude/</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Tradições Doces. Marmelada. Receita tradicional de marmelada com proporção de cerca de 800 g de açúcar por kg de marmelo cozido e descrição do modo de preparação. Disponível em: <a href="https://www.tradicoesdoces.com/post/marmelada" target="_blank" rel="noopener">https://www.tradicoesdoces.com/post/marmelada</a></li>
+        <li id="ref-R2">[R2] Continente Feed. Marmelada caseira. Receita detalhada em português com menor proporção de açúcar, incluindo passos de cozedura e dicas de textura. Disponível em: <a href="https://feed.continente.pt/receitas/marmelada-caseira" target="_blank" rel="noopener">https://feed.continente.pt/receitas/marmelada-caseira</a></li>
+        <li id="ref-R3">[R3] Várias fontes de culinária portuguesa (blogs e sites de receitas). Receitas de geleia de marmelo que aproveitam cascas e caroços, com instruções de extração, adição de açúcar e ponto de geleia. Disponível em: <a href="https://www.pingodoce.pt/receitas/geleia-de-marmelo/" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/geleia-de-marmelo/</a></li>
+        <li id="ref-R4">[R4] Natura24 / Biocêutica. Chá marmeleiro folhas. Indicações de preparação de chá de folhas de marmeleiro e benefícios associados. Disponível em: <a href="https://natura24.pt/produto/cha-marmeleiro-folhas-50g-bioceutica/" target="_blank" rel="noopener">https://natura24.pt/produto/cha-marmeleiro-folhas-50g-bioceutica/</a></li>
+        <li id="ref-R5">[R5] Farmácia dos Jerónimos. Marmelo: o tesouro outonal para a saúde. Secção com instruções simples para preparar chá de folhas de marmeleiro e aproveitar as suas propriedades. Disponível em: <a href="https://farmaciadosjeronimos.pt/quais-os-beneficios-do-marmelo-para-a-saude/" target="_blank" rel="noopener">https://farmaciadosjeronimos.pt/quais-os-beneficios-do-marmelo-para-a-saude/</a></li>
+        <li id="ref-R6">[R6] Agric4Profits. 15 benefícios medicinais para a saúde do marmelo (Cydonia oblonga). Artigo que inclui forma de preparar chá de marmelo e orientações gerais de consumo. Disponível em: <a href="https://agric4profits.com/pt/15-beneficios-medicinais-para-a-saude-do-marmelo-cydonia-oblonga/" target="_blank" rel="noopener">https://agric4profits.com/pt/15-beneficios-medicinais-para-a-saude-do-marmelo-cydonia-oblonga/</a></li>
+        <li id="ref-R7">[R7] Santa Hildegarda. Noções básicas de marmelo. Texto que descreve o uso de chá de sementes de marmelo em resfriados, com indicação de preparação por maceração em água quente. Disponível em: <a href="https://santahildegarda.com.br/5468-2/" target="_blank" rel="noopener">https://santahildegarda.com.br/5468-2/</a></li>
+        <li id="ref-R8">[R8] Saboreando Mais. Marmelos são muito mais que marmelada. Artigo em português com ideias de compotas, marmelos em pedaços e outras formas culinárias de preparação. Disponível em: <a href="https://saboreandomais.blogspot.com/2012/09/marmelos-sao-muito-mais-que-marmelada.html" target="_blank" rel="noopener">https://saboreandomais.blogspot.com/2012/09/marmelos-sao-muito-mais-que-marmelada.html</a></li>
+        <li id="ref-R9">[R9] Diversos blogs de culinária portuguesa (p.ex. receitas regionais). Receitas de marmelo assado no forno com açúcar ou mel, vinho ou sumo de citrinos e especiarias. Disponível em: <a href="https://www.teleculinaria.pt/receitas/marmelos-assados/" target="_blank" rel="noopener">https://www.teleculinaria.pt/receitas/marmelos-assados/</a></li>
+        <li id="ref-R10">[R10] Medicina e farmácia populares e sites de fitoterapia tradicional. Referências a xaropes caseiros de marmelo e folhas de marmeleiro para tosse, combinando decocções com açúcar ou mel. Disponível em: <a href="https://www.altotejo.org/acafa/docsn13/16_Medicina.pdf" target="_blank" rel="noopener">https://www.altotejo.org/acafa/docsn13/16_Medicina.pdf</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] Ashraf MU et al. Cydonia oblonga M., a medicinal plant rich in phytonutrients for pharmaceuticals. Revisão das propriedades medicinais do marmelo, incluindo efeitos gastroprotetores, cardiometabólicos e antioxidantes. Disponível em: <a href="https://www.scienceopen.com/document_file/43437af0-b72e-4456-9078-ad067d5237d1/PubMedCentral/43437af0-b72e-4456-9078-ad067d5237d1.pdf" target="_blank" rel="noopener">https://www.scienceopen.com/document_file/43437af0-b72e-4456-9078-ad067d5237d1/PubMedCentral/43437af0-b72e-4456-9078-ad067d5237d1.pdf</a></li>
+        <li id="ref-M2">[M2] Medicinal Forest Garden Trust. Quince: Research notes. Síntese de ações terapêuticas tradicionais e estudos modernos sobre fruto, folhas e sementes de Cydonia oblonga. Disponível em: <a href="https://medicinalforestgardentrust.org/quince-research-notes/" target="_blank" rel="noopener">https://medicinalforestgardentrust.org/quince-research-notes/</a></li>
+        <li id="ref-M3">[M3] Adamovic A et al. Cydonia oblonga: a comprehensive overview of its dermatologic applications. Artigo que discute usos de extratos de marmelo em dermatologia e cuidados da pele. Disponível em: <a href="https://www.mdpi.com/2079-9284/12/5/187" target="_blank" rel="noopener">https://www.mdpi.com/2079-9284/12/5/187</a></li>
+        <li id="ref-M4">[M4] Al-Zughbi I et al. Quince fruit (Cydonia oblonga Mill) nutritional composition and health benefits. Estudo sobre composição nutricional, polifenóis e benefícios potenciais do fruto. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0308814622013243" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S0308814622013243</a></li>
+        <li id="ref-M5">[M5] Tamri P et al. Wound healing properties of quince seed mucilage. Trabalho que demonstra o efeito positivo de mucilagem de sementes de marmelo na cicatrização de feridas em modelos animais. Disponível em: <a href="https://www.sciencedirect.com/science/article/pii/S1743919114002039" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S1743919114002039</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Norbová M et al. The forgotten fruit (Cydonia oblonga Mill.) and its chemical composition. Revisão que descreve ácidos orgânicos, polifenóis e outros compostos na fruta e produtos derivados. Disponível em: <a href="https://link.springer.com/article/10.1007/s00217-024-04543-7" target="_blank" rel="noopener">https://link.springer.com/article/10.1007/s00217-024-04543-7</a></li>
+        <li id="ref-F2">[F2] Abed SN et al. Phytochemical composition, antibacterial, antioxidant and anti-hemolytic activities of Cydonia oblonga leaves. Artigo que quantifica polifenóis e avalia a capacidade antioxidante de extratos de folhas. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9571850/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC9571850/</a></li>
+        <li id="ref-F3">[F3] Oliveira AP et al. Phenolic profile of Cydonia oblonga Miller leaves. Estudo que identifica e quantifica fenólicos em folhas de marmeleiro, incluindo ácido clorogénico e quercetina. Disponível em: <a href="https://pubs.acs.org/doi/10.1021/jf0711237" target="_blank" rel="noopener">https://pubs.acs.org/doi/10.1021/jf0711237</a></li>
+        <li id="ref-F4">[F4] Oliveira AP et al. Organic acids composition of Cydonia oblonga Miller fruit and jam. Trabalho que caracteriza os ácidos orgânicos presentes no fruto e em produtos transformados. Disponível em: <a href="https://bibliotecadigital.ipb.pt/server/api/core/bitstreams/31537b4f-cba9-4873-b644-ca22ddafe1d4/content" target="_blank" rel="noopener">https://bibliotecadigital.ipb.pt/server/api/core/bitstreams/31537b4f-cba9-4873-b644-ca22ddafe1d4/content</a></li>
+        <li id="ref-F5">[F5] Dzhan T. The study of fatty and organic acids composition in quince leaves and fruits (Cydonia oblonga Mill.). Artigo que complementa dados sobre ácidos gordos e orgânicos em folhas e frutos. Disponível em: <a href="https://journal.eu-jr.eu/life/article/download/234/236" target="_blank" rel="noopener">https://journal.eu-jr.eu/life/article/download/234/236</a></li>
+        <li id="ref-F6">[F6] Altuntas S et al. Biological activity of optimized phenolic extracts of quince fruit. Estudo recente sobre atividade antioxidante e outros efeitos biológicos de extratos fenólicos otimizados de marmelo. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0308814623024640" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S0308814623024640</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Farmácia dos Jerónimos. Marmelo: o tesouro outonal para a saúde. Artigo que descreve usos culinários, chás, benefícios gerais e formas de integração do marmelo no dia a dia. Disponível em: <a href="https://farmaciadosjeronimos.pt/quais-os-beneficios-do-marmelo-para-a-saude/" target="_blank" rel="noopener">https://farmaciadosjeronimos.pt/quais-os-beneficios-do-marmelo-para-a-saude/</a></li>
+        <li id="ref-A2">[A2] Frutas do Cávado. Os marmelos já chegaram à Frutas do Cávado. Texto que realça tradição, valor gastronómico e histórico-cultural do marmeleiro em Portugal. Disponível em: <a href="https://www.frutasdocavado.com/pt/noticias/os-marmelos-ja-chegaram-a-frutas-do-cavado/" target="_blank" rel="noopener">https://www.frutasdocavado.com/pt/noticias/os-marmelos-ja-chegaram-a-frutas-do-cavado/</a></li>
+        <li id="ref-A3">[A3] Agric4Profits. 15 benefícios medicinais para a saúde do marmelo (Cydonia oblonga). Artigo de divulgação sobre benefícios, usos em chá, cosmética e apoio digestivo. Disponível em: <a href="https://agric4profits.com/pt/15-beneficios-medicinais-para-a-saude-do-marmelo-cydonia-oblonga/" target="_blank" rel="noopener">https://agric4profits.com/pt/15-beneficios-medicinais-para-a-saude-do-marmelo-cydonia-oblonga/</a></li>
+        <li id="ref-A4">[A4] Saboreando Mais. Marmelos são muito mais que marmelada. Texto com sugestões culinárias e curiosidades, incluindo referências a usos de folhas e sementes. Disponível em: <a href="https://saboreandomais.blogspot.com/2012/09/marmelos-sao-muito-mais-que-marmelada.html" target="_blank" rel="noopener">https://saboreandomais.blogspot.com/2012/09/marmelos-sao-muito-mais-que-marmelada.html</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] Medicinal Forest Garden Trust. Quince: Research notes. Discussão sobre o papel do marmeleiro em pomares florestais medicinais, funções ecológicas e integração em sistemas agroflorestais. Disponível em: <a href="https://medicinalforestgardentrust.org/quince-research-notes/" target="_blank" rel="noopener">https://medicinalforestgardentrust.org/quince-research-notes/</a></li>
+        <li id="ref-P2">[P2] Silva FG et al. Conhecimento popular e atividade antimicrobiana de Cydonia oblonga em São João do Paraíso. Artigo etnobotânico que menciona importância económica, usos tradicionais e contexto agroecológico. Disponível em: <a href="https://www.scielo.br/j/rbpm/a/pyjmRQbYSjg3kXhZZG3vzJF/?lang=pt" target="_blank" rel="noopener">https://www.scielo.br/j/rbpm/a/pyjmRQbYSjg3kXhZZG3vzJF/?lang=pt</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

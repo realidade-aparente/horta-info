@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html" class="ativa">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="borragem.html">Borragem</a>
+  <a class="next" href="capuchinha.html">Capuchinha</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Calêndula (<em>Calendula officinalis L.</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Asteraceae</span>
+  <span>Parte usada: flores e capítulos florais secos</span>
+  <span>Tipo: herbácea anual ornamental medicinal</span>
+  <span>Produção: <strong>cultivo em hortas, canteiros e bordaduras</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> espécie mediterrânica amplamente cultivada em hortas e jardins europeus</div>
+  <div><strong>Uso principal</strong> cuidado tópico da pele inflamada, cicatrização, apoio digestivo e imunológico</div>
+  <div><strong>Perfil medicinal</strong> anti-inflamatória, cicatrizante, calmante cutânea, ligeiramente antiespasmódica e imunomoduladora</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Calêndula (Calendula officinalis L.)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>A calêndula (Calendula officinalis L.) é uma herbácea anual ou subperene de pequeno porte, da família Asteraceae, cultivada sobretudo como flor ornamental e planta medicinal. Forma tufos com cerca de 20–50 cm de altura, com folhas oblongas a lanceoladas, ligeiramente carnudas e recobertas por pelos finos.</p>
+      <p>Os capítulos florais são amarelos a laranja-intenso, simples ou cheios, com flores liguladas na periferia e flores tubulares no centro. As flores abrem e fecham com a luz, sendo tradicionalmente usadas como “relógio” do jardim. As pétalas e, em menor grau, as folhas são comestíveis, podendo ser usadas em saladas, arrozes, sopas e chás como flor comestível e corante natural em substituição do açafrão.</p>
+      <p>A espécie é originária provavelmente da região mediterrânica/Europa do Sul, mas encontra-se hoje amplamente difundida em jardins e hortas de climas temperados em todo o mundo. É conhecida em português principalmente como calêndula, maravilha ou mal-me-quer, e em inglês como pot marigold ou common marigold.</p>
+      <p>Do ponto de vista medicinal, as flores da calêndula são ricas em flavonoides, triterpenos, carotenoides e outros compostos bioativos, tradicionalmente utilizados em preparações tópicas (pomadas, cremes, óleos, lavagens) para favorecer a cicatrização de feridas superficiais, aliviar inflamações ligeiras da pele e da mucosa e acalmar irritações.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, a calêndula comporta-se tipicamente como anual de outono/inverno-primavera, embora possa florir quase todo o ano em locais amenos e com sementeira escalonada.
+É uma espécie pouco exigente, que germina facilmente em solos bem drenados e com boa exposição solar, sendo adequada tanto para canteiros de horta e floríferas como para vasos e floreiras em varandas ou terraços.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Sementeira: de outono a início da primavera (aprox. setembro–março), diretamente no local definitivo ou em tabuleiros para transplantar.</li>
+        <li>Floração: normalmente do fim do inverno até ao verão, podendo prolongar-se com cortes regulares das flores secas e sementeiras escalonadas.</li>
+        <li>Colheita de flores: colher capítulos florais abertos em dias secos, preferencialmente ao fim da manhã, e secar em local ventilado e à sombra para uso medicinal ou culinário.</li>
+        <li>Cultivo em vaso: adapta-se bem a vasos de médio porte com boa drenagem; tolera frio moderado, mas geadas fortes podem danificar as plantas.</li>
+        <li>Conservação: as flores secas podem ser guardadas em frascos bem fechados, ao abrigo da luz, para uso em chás, banhos, óleos macerados e preparações cosméticas.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-Informação">[Informação]</a> <a href="#ref-baseada">[baseada]</a> <a href="#ref-em">[em]</a> <a href="#ref-calendários">[calendários]</a> <a href="#ref-de">[de]</a> <a href="#ref-sementeira">[sementeira]</a> <a href="#ref-e">[e]</a> <a href="#ref-guias">[guias]</a> <a href="#ref-de">[de]</a> <a href="#ref-cultivo">[cultivo]</a> <a href="#ref-para">[para]</a> <a href="#ref-Portugal">[Portugal]</a> <a href="#ref-e">[e]</a> <a href="#ref-outros">[outros]</a> <a href="#ref-climas">[climas]</a> <a href="#ref-mediterrânicos">[mediterrânicos]</a> <a href="#ref-temperados.">[temperados.]</a> <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Uso tópico: cremes, pomadas, óleos e lavagens à base de extratos de flores de calêndula para feridas superficiais, queimaduras ligeiras, irritações cutâneas e dermatites leves, com vários estudos a sugerirem efeito cicatrizante, anti-inflamatório e antimicrobiano moderado. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a></li>
+        <li>Enxaguatórios orais/gargarejos: preparações alcoólicas diluídas ou infusões concentradas de flores utilizadas para estomatites, gengivites e inflamações ligeiras da mucosa oral, em alguns países integradas em medicamentos tradicionais à base de plantas. <a href="#ref-M3">[M3]</a> <a href="#ref-U1">[U1]</a></li>
+        <li>Uso interno em chás/infusões: infusões suaves de flores, isoladas ou em associação com outras plantas, utilizadas tradicionalmente para desconfortos digestivos ligeiros e como suporte em estados inflamatórios leves, embora com menos estudos clínicos do que para o uso tópico. <a href="#ref-M4">[M4]</a> <a href="#ref-U3">[U3]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Uso empírico em banhos, compressas e banhos de assento (tradição popular): aplicação externa de infusões de calêndula em banhos de imersão, compressas ou banhos de assento para aliviar inflamações ligeiras da pele e mucosas (por exemplo, zona perineal). <a href="#ref-U2">[U2]</a></li>
+        <li>Uso empírico em cosmética artesanal: flores maceradas em óleo vegetal ou incorporadas em sabonetes, bálsamos e unguentos caseiros para pele sensível, bebés e idosos, baseando-se sobretudo em evidência empírica e experiência tradicional. <a href="#ref-A3">[A3]</a> <a href="#ref-U2">[U2]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>Preparações à base de calêndula são, em geral, bem toleradas quando utilizadas topicamente em pele íntegra ou com lesões superficiais, mas podem causar reações alérgicas em pessoas sensíveis a plantas da família Asteraceae (margaridas, crisântemos, etc.); em caso de irritação, deve suspender-se o uso. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a></p>
+      <p>O uso interno (chás, gotas, tinturas) deve ser moderado e, idealmente, acompanhado por profissional de saúde, sobretudo em grávidas, lactantes, crianças, pessoas medicadas (p.ex. sedativos, anti-hipertensores) ou com doenças crónicas, dado que monografias oficiais e revisões apontam para falta de dados robustos sobre segurança a longo prazo e doses ótimas. <a href="#ref-U1">[U1]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-U4">[U4]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        infusões simples, chás combinados com outras plantas, tinturas e óleos macerados para uso interno ou externo, bem como saladas, arrozes, bolos e biscoitos que utilizam pétalas frescas ou secas como flor comestível e corante natural.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="calendula_receitas.html">Infusão simples de flores de calêndula:</a> chá quente ou frio tomado em quantidades moderadas como bebida suave de apoio digestivo e imunitário. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="calendula_receitas.html">Chá de calêndula para garganta e digestão:</a> infusão de flores usada em bebidas e gargarejos suaves para conforto da garganta e do aparelho digestivo. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="calendula_receitas.html">Infusão de calêndula segundo guias de saúde:</a> chá preparado conforme manuais de fitoterapia em português, utilizado internamente e em bochechos moderados. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="calendula_receitas.html">Chá de calêndula em receita caseira:</a> preparação popular descrita em plataformas de culinária, consumida como bebida reconfortante e aromática. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="calendula_receitas.html">Chá de maçã com calêndula:</a> combinação de pétalas de calêndula com maçã, rooibos e gengibre, servida como infusão aromática e frutada. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="calendula_receitas.html">Salada de arroz com pétalas de calêndula:</a> prato frio em que as pétalas são usadas como flor comestível colorida e aromática. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="calendula_receitas.html">Saladas verdes com calêndula:</a> saladas de folhas variadas decoradas com pétalas de calêndula para acrescentar cor, textura e leve aroma. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="calendula_receitas.html">Bolachas de calêndula:</a> biscoitos doces em que pétalas secas são incorporadas na massa para aroma e aspecto floral. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="calendula_receitas.html">Salada Mata Atlântica com calêndula:</a> salada elaborada finalizada com pétalas de flores comestíveis, incluindo calêndula, como elemento decorativo. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="calendula_receitas.html">Bolo ou sobremesa com flores de calêndula:</a> doçaria em que as pétalas integram a decoração ou massa, conferindo apontamentos de cor e aroma. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>A flor de calêndula é tradicionalmente utilizada em fitoterapia principalmente pela sua ação sobre a pele e mucosas, sendo valorizada como planta cicatrizante, anti-inflamatória e suavizante. Preparações tópicas com extratos de flores são amplamente usadas em pomadas, cremes, géis e lavagens para feridas superficiais, escoriações, queimaduras ligeiras, dermatites e assaduras. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a></p>
+      <p>Revisões modernas e monografias regulatórias reconhecem o uso tradicional de preparações de Calendula officinalis em indicações como inflamações menores da pele, pequenas feridas, estomatites e gengivites, salientando a presença de flavonoides, triterpenos e outros compostos com efeito anti-inflamatório, antioxidante e antimicrobiano moderado. <a href="#ref-M3">[M3]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Suporte à cicatrização de feridas superficiais, escoriações, fissuras e úlceras venosas ligeiras, através de cremes e pomadas de calêndula aplicados localmente, com vários ensaios a mostrarem aceleração da cicatrização e melhoria da qualidade do tecido de granulação. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a></li>
+        <li>Alívio de inflamações ligeiras da pele (dermatites, eritemas, assaduras, queimaduras solares de primeiro grau) e da mucosa oral (estomatites, gengivites), em produtos registados como medicamentos tradicionais à base de plantas em alguns países europeus. <a href="#ref-M3">[M3]</a> <a href="#ref-M5">[M5]</a></li>
+        <li>Efeito calmante e antioxidante sobre a pele, explorado em cosméticos (cremes, loções, óleos) para pele sensível e em produtos infantis, com dados de segurança tópica geralmente favoráveis e baixa taxa de reações adversas. <a href="#ref-M6">[M6]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>As flores de Calendula officinalis contêm um conjunto rico de compostos bioativos, incluindo flavonoides, triterpenos (e saponinas triterpénicas), carotenoides, polissacarídeos e pequenas quantidades de óleo essencial. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></p>
+      <p>A composição exata varia com a cultivar, condições de cultivo e método de extração, mas vários estudos apontam para elevado teor de compostos fenólicos e forte capacidade antioxidante, que em conjunto contribuem para os efeitos anti-inflamatórios, cicatrizantes e calmantes observados em preparações tópicas. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></p>
+      <p>Fenóis totais (polifenóis): valores reportados em extratos de flores secas de calêndula variam aproximadamente entre 11,6 e 109 mg equivalentes de ácido gálico por grama de extrato (mg GAE/g), dependendo do solvente e das condições de cultivo. <a href="#ref-F2">[F2]</a></p>
+      <p>Flavonoides totais: estudos indicam teores na ordem de 76–86 mg equivalentes de quercetina por grama de extrato (mg QE/g) em flores secas, e concentrações de cerca de 145–177 mg/g de matéria seca quando quantificados em capítulos florais inteiros em determinados estádios de desenvolvimento. <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>α‑Tocoferol (vitamina E): flores secas de Calendula officinalis podem apresentar cerca de 56,8 mg de α‑tocoferol por 100 g de massa seca (mg/100 g dw), estando entre as flores comestíveis com maior teor desta vitamina. <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>Carotenoides totais (luteína, zeaxantina, β‑caroteno): trabalhos de composição mostram a calêndula como fonte importante de luteína e zeaxantina para suplementos; os teores de carotenoides totais em flores secas situam-se, em diferentes estudos, na ordem de centenas de mg por 100 g de massa seca, variando com a cultivar e o método de extração.</p>
+      <p>Triterpenos e saponinas triterpénicas: frações triterpénicas isoladas a partir de flores de calêndula podem ser altamente enriquecidas em glicosídeos triterpénicos, e estudos toxicológicos e farmacológicos relatam valores de ID50 entre ~0,05–0,32 mg por orelha em modelos de inflamação cutânea, ilustrando a potência destas frações, embora nem sempre expressem o conteúdo em mg/100 g de flor.</p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Flavonoides totais (quercetina, isorhamnetina, rutina e derivados)</td><td>11,6–109 mg GAE/g de extrato</td></tr>
+        <tr><td>Triterpenos e saponinas triterpénicas (por exemplo, calendasaponinas A–D)</td><td>76–86 mg QE/g de extrato; 145–177 mg/g ms</td></tr>
+        <tr><td>Carotenoides (luteína, zeaxantina, beta-caroteno, flavoxantina, auroxantina)</td><td>56,8 mg/100 g ms</td></tr>
+        <tr><td>Polissacarídeos solúveis</td><td>≈100–500 mg/100 g ms (dependente da cultivar e do estudo)</td></tr>
+        <tr><td>Óleo essencial (mono- e sesquiterpenos em baixa percentagem)</td><td>ID50 0,05–0,32 mg/orelha (modelo de inflamação cutânea)</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Flor ornamental muito usada em bordaduras, canteiros e vasos, atraindo polinizadores e fornecendo cor intensa durante grande parte do ano. [U1] <a href="#ref-A1">[A1]</a></li>
+        <li>Pétalas usadas como corante natural e “açafrão-do-pobre” para colorir arrozes, sopas, queijos, manteigas e outros pratos, bem como em misturas de flores comestíveis. [U2] <a href="#ref-A2">[A2]</a></li>
+        <li>Uso frequente em cosmética e higiene natural (sabões, bálsamos, cremes, óleos) como ingrediente calmante e suavizante para a pele. [U3] <a href="#ref-A3">[A3]</a></li>
+        <li>Planta companheira na horta, associada a benefícios como atração de insetos úteis, apoio à biodiversidade e potencial redução de certas pragas quando integrada em consórcios com hortícolas e outras flores. [P1] <a href="#ref-P1">[P1]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 7,1 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Função alimentar: flor comestível que fornece cor, aroma suave e compostos bioativos a pratos simples (saladas, arrozes, infusões), contribuindo com pequena mas interessante diversidade alimentar.
+Função ecológica: atrai abelhas, sirfídeos e outros polinizadores, oferece néctar e pólen e pode funcionar como planta acompanhante em consórcios, criando bordaduras vivas e manchas floridas na horta.
+Função medicinal e cosmética: flores facilmente colhidas e secas para produção caseira de pomadas, óleos e chás, integrando o desenho de sistemas alimentares resilientes com farmácia viva próxima do utilizador.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação da calêndula resulta de um conjunto equilibrado de funções úteis em sistemas de permacultura. Do ponto de vista alimentar, as flores são comestíveis e podem ser usadas em pequenas quantidades para colorir e enriquecer saladas, pratos de cereais ou sobremesas (ALIM=1), enquanto o uso medicinal e cosmético é relevante (MED=2), com múltiplas aplicações tópicas e internas em fitoterapia tradicional. Como planta anual de porte baixo a médio, contribui moderadamente para estrutura de canteiros e bordaduras floridas (ESTR=1) e fornece alguma biomassa para cobertura leve do solo e compostagem (SOLO=1), sobretudo se se permitirem manchas densas ou consociações em talhões dedicados.
+A nível ecológico, a calêndula é muito atrativa para polinizadores e outros insetos benéficos (ECO=2), funcionando como recurso de néctar e pólen em várias fases do ano, e apresenta boa rusticidade (RUST=2) em climas mediterrânicos e temperados, desde que o solo seja minimamente fértil e bem drenado. A multifuncionalidade é elevada (MULT=2), combinando usos medicinais, ornamentais, alimentares e cosméticos, bem como valor cultural crescente em hortas urbanas e projetos de agricultura sustentável. As penalizações aplicam-se sobretudo à tendência para alguma competição com culturas vizinhas em espaços muito densos ou pouco rotacionados (COMP=-1), enquanto o risco de toxicidade relevante (TOX), perigo físico (PERIGO) e comportamento invasor problemático (INVAS) é considerado baixo no contexto hortícola habitual.
+O valor final em escala 0–10 resulta da aplicação do algoritmo descrito no projeto (soma dos critérios positivos até 14 pontos, subtração de penalizações e conversão por regra de três simples), situando a calêndula em cerca de 7,1/10 e indicando uma planta de elevada funcionalidade em permacultura, especialmente útil em consociações, bordaduras floridas, talhões medicinais e sistemas alimentares biodiversos com forte componente estética e ecológica.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-Referência(s)">[Referência(s)]</a> <a href="#ref-em">[em]</a> <a href="#ref-horticultura">[horticultura]</a> <a href="#ref-biológica">[biológica]</a> <a href="#ref-e">[e]</a> <a href="#ref-consorciação">[consorciação]</a> <a href="#ref-de">[de]</a> <a href="#ref-culturas">[culturas]</a> <a href="#ref-incluindo">[incluindo]</a> <a href="#ref-materiais">[materiais]</a> <a href="#ref-de">[de]</a> <a href="#ref-permacultura:">[permacultura:]</a> <a href="#ref-P1">[P1]</a> <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a> <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Wikipédia (pt). &quot;Calendula officinalis&quot; – descrição botânica, nomes comuns, usos tradicionais e culinários. Disponível em: <a href="https://pt.wikipedia.org/wiki/Calendula_officialis" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Calendula_officialis</a></li>
+        <li id="ref-D2">[D2] European Medicines Agency (EMA). &quot;European Union herbal monograph on Calendula officinalis L., flos&quot;. EMA/HMPC/437450/2017, 2018. Disponível em: <a href="https://www.ema.europa.eu/en/medicines/herbal/calendulae-flos" target="_blank" rel="noopener">https://www.ema.europa.eu/en/medicines/herbal/calendulae-flos</a></li>
+        <li id="ref-D3">[D3] Silva EF et al. &quot;Aspectos botânicos e propriedades farmacológicas de Calendula officinalis: uma revisão&quot;. Brazilian Journal of Development, 2020. Disponível em: <a href="https://www.researchgate.net/publication/341993943_Aspectos_botanicos_e_propriedades_farmacologicas_de_calendula_officinalis_uma_revisao" target="_blank" rel="noopener">https://www.researchgate.net/publication/341993943_Aspectos_botanicos_e_propriedades_farmacologicas_de_calendula_officinalis_uma_revisao</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] A Cientista Agrícola. &quot;As calêndulas na horta: tudo o que deve saber sobre os seus benefícios&quot;. 2023. Disponível em: <a href="https://acientistaagricola.pt/2023/01/14/a-calendulas-na-horta/" target="_blank" rel="noopener">https://acientistaagricola.pt/2023/01/14/a-calendulas-na-horta/</a></li>
+        <li id="ref-S2">[S2] Revista Jardins. &quot;12 meses nos jardins: como plantar calêndulas&quot;. Disponível em: <a href="https://revistajardins.pt/jardinagem/tarefas-de-jardinagem/12-meses-nos-jardins-calendulas/" target="_blank" rel="noopener">https://revistajardins.pt/jardinagem/tarefas-de-jardinagem/12-meses-nos-jardins-calendulas/</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] European Medicines Agency (EMA). &quot;Assessment report on Calendula officinalis L., flos&quot;. EMA/HMPC/195714/2018. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-calendula-officinalis-l-flos-revision-1_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-calendula-officinalis-l-flos-revision-1_en.pdf</a></li>
+        <li id="ref-U2">[U2] Horto Didático de Plantas Medicinais (UFSC). &quot;Calêndula (Calendula officinalis)&quot; – usos populares e orientações de segurança. Disponível em: <a href="https://hortodidatico.ufsc.br/calendula/" target="_blank" rel="noopener">https://hortodidatico.ufsc.br/calendula/</a></li>
+        <li id="ref-U3">[U3] Tua Saúde. &quot;Calêndula: para que serve (e como fazer o chá)&quot; – benefícios e modos de utilização. Disponível em: <a href="https://www.tuasaude.com/calendula/" target="_blank" rel="noopener">https://www.tuasaude.com/calendula/</a></li>
+        <li id="ref-U4">[U4] Darwin Nutrition. &quot;Calêndula: benefícios, posologia, contraindicações&quot; – visão geral de segurança e limitações do uso interno. Disponível em: <a href="https://www.darwin-nutrition.fr/pt/ativos/calendula/" target="_blank" rel="noopener">https://www.darwin-nutrition.fr/pt/ativos/calendula/</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Chás do Mundo. &quot;Calêndula, Flor (Calendula officinalis L.)&quot; – modo de preparar o chá. Disponível em: <a href="https://chasdomundo.pt/pt/chas-medicinais/calendula-flor-calendula-officinalis-l" target="_blank" rel="noopener">https://chasdomundo.pt/pt/chas-medicinais/calendula-flor-calendula-officinalis-l</a></li>
+        <li id="ref-R2">[R2] Proteste / Minha Saúde. &quot;Chá de calêndula: veja benefícios e como preparar a bebida&quot;. Disponível em: <a href="https://minhasaude.proteste.org.br/cha-de-calendula-veja-beneficios-e-como-preparar-a-bebida/" target="_blank" rel="noopener">https://minhasaude.proteste.org.br/cha-de-calendula-veja-beneficios-e-como-preparar-a-bebida/</a></li>
+        <li id="ref-R3">[R3] Tua Saúde. &quot;Calêndula: para que serve (e como fazer o chá)&quot; – secção sobre chá e usos. Disponível em: <a href="https://www.tuasaude.com/calendula/" target="_blank" rel="noopener">https://www.tuasaude.com/calendula/</a></li>
+        <li id="ref-R4">[R4] Cookpad Brasil. &quot;Chá de calêndula&quot; – receita partilhada por utilizadores. Disponível em: <a href="https://cookpad.com/br/receitas/11637057" target="_blank" rel="noopener">https://cookpad.com/br/receitas/11637057</a></li>
+        <li id="ref-R5">[R5] KitchenAid Portugal. &quot;Chá de maçã e calêndula&quot;. Disponível em: <a href="https://www.kitchenaid.pt/receitas/cha-maca-calendula" target="_blank" rel="noopener">https://www.kitchenaid.pt/receitas/cha-maca-calendula</a></li>
+        <li id="ref-R6">[R6] Folha (Receitas). &quot;Salada de arroz com calêndula&quot; (ou salada de arroz negro com calêndula). Disponível em: <a href="https://receitas.folha.com.br/receita/1754" target="_blank" rel="noopener">https://receitas.folha.com.br/receita/1754</a></li>
+        <li id="ref-R7">[R7] Peeters Place. &quot;Salada com capuchinha e calêndula&quot;. Disponível em: <a href="https://www.peetersplace.com.br/2016/02/salada-com-capuchinha-e-calendula/" target="_blank" rel="noopener">https://www.peetersplace.com.br/2016/02/salada-com-capuchinha-e-calendula/</a></li>
+        <li id="ref-R8">[R8] GZ Recipes. &quot;Biscoitos de calêndula simples&quot;. Disponível em: <a href="https://www.gzrecipes.com/pt/timoelenticchie/biscoitos-de-calendula-simples/" target="_blank" rel="noopener">https://www.gzrecipes.com/pt/timoelenticchie/biscoitos-de-calendula-simples/</a></li>
+        <li id="ref-R9">[R9] Blog Falando Nisso. &quot;Salada Mata Atlântica&quot; – salada com pétalas de calêndula. Disponível em: <a href="https://www.blogfalandonisso.com.br/minhasdicas/salada-mata-atlantica/" target="_blank" rel="noopener">https://www.blogfalandonisso.com.br/minhasdicas/salada-mata-atlantica/</a></li>
+        <li id="ref-R10">[R10] Hoje para Jantar. &quot;Bolo de Maçã, Noz e cheirinho de Flores&quot; – uso de pétalas de calêndula e centáurea. Disponível em: <a href="https://www.hojeparajantar.com/2011/11/bolo-de-maca-noz-e-cheirinho-de-flores.html" target="_blank" rel="noopener">https://www.hojeparajantar.com/2011/11/bolo-de-maca-noz-e-cheirinho-de-flores.html</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] Arora D et al. &quot;Phytochemical constituents and pharmacological activities of Calendula officinalis Linn. (Asteraceae): A review&quot;. 2013. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3841996/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3841996/</a></li>
+        <li id="ref-M2">[M2] Ejiohuo O et al. &quot;Calendula in modern medicine: Advancements in wound healing&quot;. 2024. Disponível em: <a href="https://www.sciencedirect.com/science/article/pii/S2772417424000712" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S2772417424000712</a></li>
+        <li id="ref-M3">[M3] European Medicines Agency (EMA). &quot;European Union herbal monograph on Calendula officinalis L., flos&quot;. EMA/HMPC/437450/2017. Disponível em: <a href="https://www.ema.europa.eu/en/medicines/herbal/calendulae-flos" target="_blank" rel="noopener">https://www.ema.europa.eu/en/medicines/herbal/calendulae-flos</a></li>
+        <li id="ref-M4">[M4] Zournatzis I et al. &quot;Calendula officinalis – a comprehensive review&quot;. 2024. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S2950199724001289" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S2950199724001289</a></li>
+        <li id="ref-M5">[M5] Health.com. &quot;What Happens to Your Body When You Use Calendula Daily&quot; – resumo de evidência clínica recente em aplicações tópicas. Disponível em: <a href="https://www.health.com/calendula-benefits-11811155" target="_blank" rel="noopener">https://www.health.com/calendula-benefits-11811155</a></li>
+        <li id="ref-M6">[M6] Final Report on the Safety Assessment of Calendula officinalis Extract and related ingredients&quot;. International Journal of Toxicology, 2001. Disponível em: <a href="https://journals.sagepub.com/doi/pdf/10.1080/10915810152902556" target="_blank" rel="noopener">https://journals.sagepub.com/doi/pdf/10.1080/10915810152902556</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Arora D et al. &quot;Phytochemical constituents and pharmacological activities of Calendula officinalis Linn. (Asteraceae): A review&quot; – secções sobre flavonoides, triterpenos e carotenoides. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3841996/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3841996/</a></li>
+        <li id="ref-F2">[F2] Breda C et al. &quot;Phenolic Composition and Antioxidant Activity of Edible Flowers&quot; – dados para flores de Calendula officinalis. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11939731/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11939731/</a></li>
+        <li id="ref-F3">[F3] &quot;Phytochemical Constituents and Pharmacological Activities of Calendula officinalis Linn&quot; e outras revisões sobre óleos essenciais e frações triterpénicas. Exemplo: <a href="https://www.researchgate.net/publication/43561145_Phytochemical_Constituents_and_Pharmacological_Activities_of_Calendula_officinalis_Linn_Asteraceae_A_Review" target="_blank" rel="noopener">https://www.researchgate.net/publication/43561145_Phytochemical_Constituents_and_Pharmacological_Activities_of_Calendula_officinalis_Linn_Asteraceae_A_Review</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Royal Horticultural Society (RHS). &quot;Calendula&quot; – guia de cultivo e notas sobre flores comestíveis. Disponível em: <a href="https://www.rhs.org.uk/plants/calendula" target="_blank" rel="noopener">https://www.rhs.org.uk/plants/calendula</a></li>
+        <li id="ref-A2">[A2] Germigarden / artigos sobre flores comestíveis – secções dedicadas à calêndula como flor comestível em arrozes, massas, sobremesas e outros pratos. Exemplo: <a href="https://blog.germigarden.com/pt-pt/jardinagem-pt-pt/flores-comestiveis-como-usa-las-na-cozinha/" target="_blank" rel="noopener">https://blog.germigarden.com/pt-pt/jardinagem-pt-pt/flores-comestiveis-como-usa-las-na-cozinha/</a></li>
+        <li id="ref-A3">[A3] Diversos fabricantes de cosmética natural (ex.: descrições de produtos com calêndula) que citam o uso tradicional da planta em bálsamos, sabões e cremes. Exemplo: <a href="https://andaverportugal.pt/produto/balsamo/" target="_blank" rel="noopener">https://andaverportugal.pt/produto/balsamo/</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] Washington College Center for Environment &amp; Society. &quot;Calendula officinalis&quot; – perfil de permacultura e usos alimentares/medicinais. Disponível em: <a href="https://www.washcoll.edu/learn-by-doing/ces/plants/asteraceae/calendula-officinalis.php" target="_blank" rel="noopener">https://www.washcoll.edu/learn-by-doing/ces/plants/asteraceae/calendula-officinalis.php</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

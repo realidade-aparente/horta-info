@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html" class="ativa">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="saramago.html">Saramago</a>
+  <a class="next" href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Serralha (<em>Sonchus oleraceus L.</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Asteraceae</span>
+  <span>Parte usada: folhas e partes aéreas jovens</span>
+  <span>Tipo: erva anual comestível medicinal</span>
+  <span>Produção: <strong>espontânea em hortas sebes taludes</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> nativa da Europa mediterrânica, hoje cosmopolita em regiões temperadas do mundo</div>
+  <div><strong>Uso principal</strong> depurativa, digestiva e diurética suave, folhas comestíveis em culinária</div>
+  <div><strong>Perfil medicinal</strong> apoio fígado, digestão, inflamação leve e equilíbrio metabólico geral</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Serralha (Sonchus oleraceus L.)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>A serralha (Sonchus oleraceus L.) é uma erva anual da família Asteraceae, com caules ocos, suculentos e ramificados, que podem atingir 30–100 cm de altura. As folhas são verde-claras, tenras, com lóbulos irregulares e margens dentadas, lembrando uma alface silvestre; ao partir o caule ou as folhas liberta-se um látex branco característico. As flores são amarelas e dispostas em capítulos que lembram pequenos dentes-de-leão, formando posteriormente penachos de sementes com papos que se dispersam facilmente pelo vento.</p>
+      <p>Em Portugal é conhecida sobretudo por serralha, serralha-brava ou serralha-dos-campos, sendo muitas vezes vista como infestante em hortas e pomares. Em inglês surgem nomes como common sow-thistle, smooth sow-thistle ou sowthistle. Apesar da reputação de &quot;erva daninha&quot;, é uma importante verdura silvestre comestível e planta medicinal usada em várias culturas tradicionais. A espécie é cosmopolita, ocorrendo em grande parte da Europa, América, África, Ásia e Oceânia.</p>
+      <p>Toda a planta jovem é comestível e pode ser utilizada em saladas, sopas e salteados, desde que corretamente identificada e colhida em locais não contaminados. Na medicina popular, a serralha é valorizada como planta depurativa, digestiva, diurética e de apoio hepático, sendo usada em chás, cataplasmas e preparações culinárias medicinais. Estudos recentes têm vindo a confirmar a presença de compostos fenólicos e flavonoides com atividade antioxidante e anti-inflamatória.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a> <a href="#ref-D4">[D4]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, a serralha comporta-se como uma anual de ciclo relativamente rápido, surgindo espontaneamente sobretudo em terrenos lavrados, hortas, pousios e taludes férteis. As sementes germinam em condições variadas de humidade e temperatura, o que faz com que a planta possa ser encontrada grande parte do ano, especialmente em regiões de clima mais suave.
+Para consumo alimentar e uso medicinal, colhem-se preferencialmente as plantas jovens, antes da floração completa e do endurecimento dos caules, quando as folhas estão mais tenras e com sabor mais suave. Em muitas zonas, a serralha é colhida na primavera como verdura silvestre, mas pode rebentar e produzir folhas úteis também no outono e inverno em anos amenos.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Germinação: ao longo do outono, inverno e primavera, especialmente em solos frescos e revolvidos.</li>
+        <li>Crescimento vegetativo: inverno e primavera, com maior abundância de folhas tenras entre fevereiro e maio em Portugal continental.</li>
+        <li>Floração e frutificação: primavera e verão, com emissão de capítulos amarelos e produção abundante de sementes com papos.</li>
+        <li>Época preferencial de colheita para uso alimentar e medicinal: fase vegetativa jovem, antes da floração plena, escolhendo plantas tenras e saudáveis.</li>
+        <li>Em regiões de inverno suave, pode ser colhida quase todo o ano, exceto em períodos de geadas fortes ou seca extrema.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a> <a href="#ref-S3">[S3]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Extratos aquosos e hidroalcoólicos de Sonchus oleraceus têm demonstrado atividade anti-inflamatória em modelos animais, reduzindo edema, febre e marcadores inflamatórios em ratos, o que apoia o uso tradicional da planta em inflamações do trato digestivo, dores articulares e estados inflamatórios leves. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a></li>
+        <li>Estudos fitoquímicos e farmacológicos apontam para efeitos hepatoprotetores e gastroprotetores de extratos da parte aérea, com diminuição de lesões hepáticas e gástricas em modelos experimentais, sugerindo um potencial papel adjuvante em estratégias de proteção do fígado e do estômago, sempre em complemento às terapêuticas convencionais. <a href="#ref-M1">[M1]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-F1">[F1]</a></li>
+        <li>Sonchus oleraceus tem sido investigada como verdura funcional rica em compostos fenólicos, com capacidade antioxidante relevante e efeitos antimicrobianos em ensaios in vitro, o que reforça o interesse em integrar a planta em padrões alimentares saudáveis e em preparados fitoterapêuticos cuidadosamente estudados. <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Chá de serralha preparado com toda a planta jovem, usado tradicionalmente em Portugal e no Brasil para apoiar a digestão, estimular o fígado, aumentar a produção de bílis e aliviar desconfortos gastrointestinais ligeiros. <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a> <a href="#ref-R3">[R3]</a></li>
+        <li>Infusões e decocções leves empregues como diurético suave e depurativo, em curas curtas para &quot;limpar&quot; o fígado e os rins, muitas vezes associadas a dietas mais leves e aumento da ingestão de água. <a href="#ref-R2">[R2]</a> <a href="#ref-R4">[R4]</a> <a href="#ref-A1">[A1]</a></li>
+        <li>Consumo culinário das folhas e caules tenros como verdura silvestre em sopas, migas, salteados, recheios e tartes, substituindo ou complementando espinafres, nabiças ou outras folhas verdes. <a href="#ref-R3">[R3]</a> <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Uso externo de cataplasmas com folhas amassadas ou tisanas aplicadas em compressas sobre pequenas inflamações cutâneas, picadas e desconfortos articulares ligeiros, com base em práticas tradicionais locais. <a href="#ref-A1">[A1]</a> <a href="#ref-A3">[A3]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>A serralha é considerada, em geral, uma verdura silvestre segura quando corretamente identificada e consumida em quantidades alimentares moderadas, cozida ou salteada e colhida em locais limpos, longe de contaminação por pesticidas, trânsito intenso ou efluentes. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></p>
+      <p>O uso em doses elevadas e continuadas de chás concentrados ou extratos não está bem estudado em ensaios clínicos; fontes de fitoterapia e de segurança recomendam prudência em grávidas, lactantes, crianças pequenas, pessoas com doenças hepáticas, renais ou autoimunes e indivíduos sob terapêuticas complexas, pela ausência de dados robustos nestes grupos. <a href="#ref-U1">[U1]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-U4">[U4]</a></p>
+      <p>Tal como com outras plantas silvestres, existe risco de confusão com espécies semelhantes para pessoas pouco experientes; a identificação botânica deve ser segura antes da ingestão. Em caso de sintomas como reações alérgicas, desconforto digestivo intenso, sinais de toxicidade ou agravamento de doença pré-existente, o uso deve ser interrompido e deve ser procurada avaliação médica. <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-U5">[U5]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        Na prática fitoterapêutica popular, a serralha é utilizada sobretudo sob a forma de infusões e decocções leves, bem como em receitas culinárias simples que funcionam como "comida-remédio", integrando sopas, salteados e pratos de verduras. Alguns autores descrevem também cataplasmas e compressas com a planta fresca, além de preparados combinados com outras ervas depurativas e digestivas. As quantidades devem seguir as indicações das fontes e ser enquadradas pelas recomendações de segurança.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="serralha_receitas.html">Chá digestivo de serralha:</a> infusão simples com planta jovem para apoiar a digestão e o fígado, tomada antes das refeições principais. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="serralha_receitas.html">Infusão depurativa suave:</a> chá leve de serralha seca em tomadas diárias curtas, usado como bebida de apoio à função depurativa. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="serralha_receitas.html">Chá depurativo de serralha com dente-de-leão:</a> mistura de ervas amargas indicada em curas de primavera para estimular fígado e drenagem. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="serralha_receitas.html">Cataplasma de serralha fresca:</a> folhas bem lavadas amassadas e aplicadas em pele íntegra, usadas tradicionalmente em pequenas inflamações locais. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="serralha_receitas.html">Sopa de serralha e batata:</a> sopa cremosa de legumes em que as folhas de serralha conferem sabor verde e caráter depurativo ao prato. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="serralha_receitas.html">Serralha salteada com alho e azeite:</a> acompanhamento rápido em que as folhas escaldadas são salteadas em azeite com alho para servir com pratos simples. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="serralha_receitas.html">Arroz de serralha:</a> prato em que a verdura é adicionada ao arroz durante a cozedura, enriquecendo o valor nutricional e o sabor. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="serralha_receitas.html">Tarte salgada de serralha e queijo:</a> receita de forno em que a serralha salteada é combinada com ovos e queijo numa base de massa. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="serralha_receitas.html">Salada morna de serralha:</a> folhas escaldadas misturadas com batata, azeite e ervas aromáticas, servidas como refeição leve de primavera. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="serralha_receitas.html">Infusão combinada com outras ervas amargas:</a> blend preparado segundo orientações de produtos ou profissionais, usado como apoio digestivo e hepático. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>A serralha é tradicionalmente considerada uma planta depurativa e digestiva, associada ao apoio do fígado, da vesícula biliar e do trato gastrointestinal. Fontes etnomedicinais descrevem o uso de infusões e decocções da planta para estimular a produção de bílis, aliviar dispepsias leves e contribuir para a desintoxicação do organismo, sobretudo em curas de primavera. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></p>
+      <p>Revisões recentes sobre Sonchus oleraceus destacam a presença de compostos fenólicos com forte atividade antioxidante e efeitos anti-inflamatórios em modelos animais, o que pode ajudar a explicar os usos tradicionais em inflamações articulares, dores musculares, problemas cutâneos e desconfortos abdominais relacionados com inflamação de baixo grau. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-F1">[F1]</a></p>
+      <p>Estudos experimentais sugerem ainda potenciais efeitos hepatoprotetores, gastroprotetores, antimicrobianos e reguladores de parâmetros metabólicos, incluindo glicemia e perfil lipídico, embora estes resultados sejam sobretudo pré-clínicos. Assim, a serralha deve ser entendida como adjuvante num estilo de vida saudável e em programas integrados de prevenção, não como substituto de terapêuticas médicas estabelecidas. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Adjuvante em problemas digestivos ligeiros, como má digestão, sensação de peso após as refeições e produção insuficiente de bílis. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-R1">[R1]</a></li>
+        <li>Apoio em estratégias de desintoxicação hepática suave e de proteção do fígado em contextos de sobrecarga metabólica, sempre em conjunto com medidas dietéticas. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Suporte complementar em estados inflamatórios de baixo grau, dores articulares e musculares ligeiras, graças a efeitos anti-inflamatórios demonstrados em modelos animais. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a></li>
+        <li>Contribuição antioxidante e potencial moduladora de parâmetros metabólicos (glicemia, perfil lipídico), em associação com padrões alimentares saudáveis e atividade física. <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></li>
+        <li>Possível adjuvante em alguns problemas cutâneos e estados de congestão linfática ligeira, quando usada em conjunto com outras medidas de cuidado da pele e depuração. <a href="#ref-M1">[M1]</a> <a href="#ref-A1">[A1]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>Estudos fitoquímicos de Sonchus oleraceus mostram uma fração rica em compostos fenólicos, incluindo ácidos fenólicos como o ácido clorogénico e cafeico, bem como flavonoides como quercetina, apigenina, rutina e isoquercitrina. Estes compostos foram identificados e quantificados em extratos de partes aéreas, com teores que variam conforme a origem do material vegetal e o método de extração. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>A fração polifenólica total apresenta elevada capacidade antioxidante em ensaios in vitro (DPPH, ABTS, poder redutor), com valores de EC50 na gama de dezenas a poucas centenas de microgramas por mililitro, indicando potencial relevante para neutralização de radicais livres. Estes resultados alinham-se com observações de efeitos protetores em modelos de dano oxidativo e inflamação. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F4">[F4]</a></p>
+      <p>Trabalhos recentes também descrevem atividade antimicrobiana de extratos de Sonchus oleraceus contra diversas bactérias e fungos, bem como efeitos citotóxicos moderados sobre determinadas linhas celulares tumorais em concentrações elevadas. A interpretação destes dados requer cautela, mas reforça o interesse da espécie como fonte de compostos bioativos para investigação farmacológica. <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Fenóis totais em extratos de partes aéreas (equivalentes de ácido gálico)</td><td>≈20–80 mg GAE/g de extrato seco</td></tr>
+        <tr><td>Ácidos fenólicos principais (ácido clorogénico, cafeico) em extratos</td><td>≈5–15 mg/g de extrato seco</td></tr>
+        <tr><td>Flavonoides principais (quercetina, apigenina, rutina, isoquercitrina)</td><td>presença confirmada em faixas de poucos mg/g de extrato</td></tr>
+        <tr><td>Capacidade antioxidante total dos extratos (ensaios DPPH/ABTS)</td><td>EC50 na ordem de 20–200 µg/mL</td></tr>
+        <tr><td>Concentrações efetivas em ensaios anti-inflamatórios e citotóxicos in vitro</td><td>efeitos observados em concentrações na ordem de dezenas a centenas de µg/mL</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Verdura silvestre de alto valor em sistemas alimentares locais, permitindo aumentar a diversidade de folhas verdes na horta e na mesa. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Planta espontânea que fornece biomassa para compostagem e cobertura leve do solo, ajudando a proteger contra erosão e a manter a humidade. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Recurso importante para fauna de insetos e outros herbívoros, incluindo caracóis, coelhos e alguns insetos que se alimentam das folhas tenras. <a href="#ref-A1">[A1]</a> <a href="#ref-A4">[A4]</a></li>
+        <li>Elemento pedagógico em hortas educativas, permitindo ensinar identificação de plantas silvestres comestíveis e diferenciação de espécies semelhantes. <a href="#ref-A3">[A3]</a> <a href="#ref-A4">[A4]</a></li>
+        <li>Indicadora de solos férteis e perturbados; a sua presença repetida pode sinalizar excesso de nutrientes superficiais e necessidade de ajustar o manejo. <a href="#ref-A2">[A2]</a> <a href="#ref-P1">[P1]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 5,7 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em permacultura, a serralha funciona como uma verdura silvestre muito produtiva, de crescimento rápido e capaz de ocupar espaços nus em solos férteis, fornecendo folhas comestíveis e biomassa para compostagem ou cobertura. Atraindo insetos e outros pequenos herbívoros, contribui também para a teia alimentar local e para a biodiversidade em hortas e pomares, sobretudo quando se permite a floração de alguns exemplares.
+Por outro lado, é uma anual competitiva que se comporta como infestante em muitas culturas, podendo sombrear plântulas e consumir água e nutrientes que seriam necessários para espécies cultivadas. O valor funcional em permacultura reflete este equilíbrio: útil como fonte de alimento, biomassa e biodiversidade em zonas de manejo flexível, mas exigindo controlo cuidadoso em canteiros intensivos.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação da serralha resulta de valores elevados em uso alimentar humano (ALIM=2), dado o seu papel como verdura silvestre comestível, e em uso medicinal tradicional (MED=2), pela associação a efeitos depurativos, digestivos e anti-inflamatórios leves. A contribuição estrutural como planta anual baixa é limitada (ESTR=0), mas há um contributo moderado para solo e biomassa (SOLO=1) através da produção rápida de verde para compostagem e cobertura simples, e uma boa rusticidade (RUST=2) em climas temperados e mediterrânicos, onde se instala facilmente em solos perturbados. O suporte à fauna (ECO=2) é relevante, ao oferecer alimento e abrigo a insetos e pequenos herbívoros, enquanto a multifuncionalidade adicional (MULT=1) reflete usos alimentares, medicinais e pedagógicos, embora com menor peso cultural que outras espécies emblemáticas.
+As penalizações concentram-se sobretudo no comportamento infestante e na competição com culturas (INVAS=-1; COMP=-1), uma vez que a serralha se dissemina abundante e rapidamente a partir de sementes leves e pode ocupar grandes áreas se não for manejada. O risco de toxicidade nas formas tradicionais de uso (TOX) e o perigo físico (PERIGO) são considerados baixos no contexto hortícola normal. O valor final em escala 0–10 resulta da aplicação do algoritmo definido no projeto (soma dos critérios positivos até 14 pontos, subtração das penalizações e conversão por regra de três simples), situando a serralha em cerca de 5,7/10 e indicando uma planta útil e multifuncional, mas que requer desenho inteligente e controlo regular para não comprometer culturas mais sensíveis.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Wikipedia. &quot;Sonchus oleraceus&quot;. Descrição botânica, nomes comuns, distribuição e estatuto de planta daninha cosmopolita. Disponível em: <a href="https://en.wikipedia.org/wiki/Sonchus_oleraceus" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Sonchus_oleraceus</a></li>
+        <li id="ref-D2">[D2] Useful Tropical Plants. &quot;Sonchus oleraceus&quot;. Ficha com descrição morfológica, usos comestíveis e medicinais e notas de cultivo. Disponível em: <a href="https://tropical.theferns.info/viewtropical.php?id=Sonchus+oleraceus" target="_blank" rel="noopener">https://tropical.theferns.info/viewtropical.php?id=Sonchus+oleraceus</a></li>
+        <li id="ref-D3">[D3] Wild Food UK. &quot;Sow Thistle&quot;. Guia de identificação e usos culinários de Sonchus oleraceus como verdura comestível. Disponível em: <a href="https://www.wildfooduk.com/wild-plants/sow-thistle-2/" target="_blank" rel="noopener">https://www.wildfooduk.com/wild-plants/sow-thistle-2/</a></li>
+        <li id="ref-D4">[D4] Great Outdoordinary. &quot;Sow Thistle (Sonchus oleraceus) – Wild edible plants&quot;. Artigo sobre identificação, história e consumo da serralha como alimento. Disponível em: <a href="https://greatoutdoordinary.com/2018/05/02/sow-thistle-sonchus-oleraceus-wild-edible-plants/" target="_blank" rel="noopener">https://greatoutdoordinary.com/2018/05/02/sow-thistle-sonchus-oleraceus-wild-edible-plants/</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Wild Food UK. &quot;Sow Thistle&quot;. Informação sobre época de aparecimento e disponibilidade quase todo o ano em climas suaves. Disponível em: <a href="https://www.wildfooduk.com/wild-plants/sow-thistle-2/" target="_blank" rel="noopener">https://www.wildfooduk.com/wild-plants/sow-thistle-2/</a></li>
+        <li id="ref-S2">[S2] Useful Tropical Plants. &quot;Sonchus oleraceus&quot;. Notas sobre distribuição, habitats e comportamento como planta anual oportunista em solos perturbados. Disponível em: <a href="https://tropical.theferns.info/viewtropical.php?id=Sonchus+oleraceus" target="_blank" rel="noopener">https://tropical.theferns.info/viewtropical.php?id=Sonchus+oleraceus</a></li>
+        <li id="ref-S3">[S3] UniPlanet. &quot;Serralha, uma &#x27;erva daninha&#x27; com ação benéfica no fígado&quot;. Artigo em português que descreve abundância sazonal e colheita primaveril da serralha. Disponível em: <a href="https://theuniplanet.com/2019/06/serralha-uma-erva-daninha-com-acao-benefica-no-figado/" target="_blank" rel="noopener">https://theuniplanet.com/2019/06/serralha-uma-erva-daninha-com-acao-benefica-no-figado/</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] Tua Saúde. &quot;Serralha&quot;. Ficha sobre usos, modo de preparo do chá e observações sobre efeitos colaterais conhecidos. Disponível em: <a href="https://www.tuasaude.com/serralha/" target="_blank" rel="noopener">https://www.tuasaude.com/serralha/</a></li>
+        <li id="ref-U2">[U2] Chás &amp; Aromas. &quot;Chá de Serralha (planta)&quot;. Informação em português sobre propriedades, indicações, modo de uso e advertências gerais. Disponível em: <a href="https://www.chasearomas.com/produto/infusao-serralha/" target="_blank" rel="noopener">https://www.chasearomas.com/produto/infusao-serralha/</a></li>
+        <li id="ref-U3">[U3] Ervanário Portuense. &quot;Planta Medicinal Serralha 100g&quot;. Ficha de produto com indicações de uso em infusões e recomendações de consulta médica em caso de doença ou medicação. Disponível em: <a href="https://www.ervanarioportuense.pt/loja/plantas/plantas-simples/serralha-planta-medicinal/" target="_blank" rel="noopener">https://www.ervanarioportuense.pt/loja/plantas/plantas-simples/serralha-planta-medicinal/</a></li>
+        <li id="ref-U4">[U4] Medicinal Plants of UAE. &quot;Sonchus oleraceus&quot;. Enciclopédia de plantas medicinais que descreve usos tradicionais como diurético, laxante e tónico geral, com notas de segurança. Disponível em: <a href="https://medicinalplants.doh.gov.ae/en/Encyclopedia-of-medicine-plant-of-UAE/Sonchus-oleraceus" target="_blank" rel="noopener">https://medicinalplants.doh.gov.ae/en/Encyclopedia-of-medicine-plant-of-UAE/Sonchus-oleraceus</a></li>
+        <li id="ref-U5">[U5] Lima JM et al. &quot;Prospecção fitoquímica de Sonchus oleraceus e sua toxicidade para Artemia salina&quot;. Estudo que avalia toxicidade em modelo de Artemia, servindo de base para prudência em doses elevadas. Disponível em: <a href="https://www.scielo.br/j/pd/a/XhP7nFTKH7QjFN6MWhWLZ3R/" target="_blank" rel="noopener">https://www.scielo.br/j/pd/a/XhP7nFTKH7QjFN6MWhWLZ3R/</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Tua Saúde. &quot;Serralha&quot;. Secção sobre modo de uso com receita de chá para má digestão, quantidades de planta e tempo de infusão. Disponível em: <a href="https://www.tuasaude.com/serralha/" target="_blank" rel="noopener">https://www.tuasaude.com/serralha/</a></li>
+        <li id="ref-R2">[R2] Chás &amp; Aromas. &quot;Chá de Serralha (planta)&quot;. Indicações de preparação de infusão com colher de sobremesa por chávena e número de tomas diárias. Disponível em: <a href="https://www.chasearomas.com/produto/infusao-serralha/" target="_blank" rel="noopener">https://www.chasearomas.com/produto/infusao-serralha/</a></li>
+        <li id="ref-R3">[R3] UniPlanet. &quot;Serralha, uma &#x27;erva daninha&#x27; com ação benéfica no fígado&quot;. Sugestões de uso em chás depurativos e combinações com outras plantas amargas. Disponível em: <a href="https://theuniplanet.com/2019/06/serralha-uma-erva-daninha-com-acao-benefica-no-figado/" target="_blank" rel="noopener">https://theuniplanet.com/2019/06/serralha-uma-erva-daninha-com-acao-benefica-no-figado/</a></li>
+        <li id="ref-R4">[R4] Plantas, Horta e Jardinagem (Facebook). &quot;Serralha — Da roça à mesa, um remédio natural do quintal&quot;. Publicação com sugestões de uso culinário e medicinal, incluindo cataplasmas e preparações caseiras. Disponível em: <a href="https://www.facebook.com/plantashortaejardinagem/photos/serralha-da-ro%C3%A7a-%C3%A0-mesa-um-rem%C3%A9dio-natural-do-quintala-serralha-sonchus-oleraceu/1227358926163278/" target="_blank" rel="noopener">https://www.facebook.com/plantashortaejardinagem/photos/serralha-da-ro%C3%A7a-%C3%A0-mesa-um-rem%C3%A9dio-natural-do-quintala-serralha-sonchus-oleraceu/1227358926163278/</a></li>
+        <li id="ref-R5">[R5] Blog Acenda uma Brava. &quot;SERRALHA: apanham-na, deixavam-na secar à sombra&quot;. Receita tradicional de sopa de serralha e outras formas de confeção como verdura. Disponível em: <a href="https://acendurabrava.blogspot.com/2023/09/serralha-apanhavam-na-deixavam-na-secar.html" target="_blank" rel="noopener">https://acendurabrava.blogspot.com/2023/09/serralha-apanhavam-na-deixavam-na-secar.html</a></li>
+        <li id="ref-R6">[R6] The UniPlanet. &quot;Serralha, uma &#x27;erva daninha&#x27; com ação benéfica no fígado&quot;. Sugestões de salteados e utilização culinária simples com azeite e alho. Disponível em: <a href="https://theuniplanet.com/2019/06/serralha-uma-erva-daninha-com-acao-benefica-no-figado/" target="_blank" rel="noopener">https://theuniplanet.com/2019/06/serralha-uma-erva-daninha-com-acao-benefica-no-figado/</a></li>
+        <li id="ref-R7">[R7] Great Outdoordinary. &quot;Sow Thistle (Sonchus oleraceus) – Wild edible plants&quot;. Ideias de confeção em pratos cozinhados, salteados e recheios com serralha. Disponível em: <a href="https://greatoutdoordinary.com/2018/05/02/sow-thistle-sonchus-oleraceus-wild-edible-plants/" target="_blank" rel="noopener">https://greatoutdoordinary.com/2018/05/02/sow-thistle-sonchus-oleraceus-wild-edible-plants/</a></li>
+        <li id="ref-R8">[R8] Diego Bonetto. &quot;How to identify and use sow thistle, the perfect edible weed&quot;. Artigo com sugestões de receitas simples utilizando folhas jovens em pratos do dia-a-dia. Disponível em: <a href="https://www.diegobonetto.com/blog/how-to-identify-and-use-sowthistle-the-perfect-edible-weed" target="_blank" rel="noopener">https://www.diegobonetto.com/blog/how-to-identify-and-use-sowthistle-the-perfect-edible-weed</a></li>
+        <li id="ref-R9">[R9] Wild Food UK. &quot;Sow Thistle&quot;. Notas sobre consumo em saladas e pratos cozinhados, incluindo conselhos de preparação. Disponível em: <a href="https://www.wildfooduk.com/wild-plants/sow-thistle-2/" target="_blank" rel="noopener">https://www.wildfooduk.com/wild-plants/sow-thistle-2/</a></li>
+        <li id="ref-R10">[R10] Ask Ayurveda. &quot;Sonchus oleraceus: Uses, Properties &amp; Benefits&quot;. Monografia que inclui orientações genéricas de preparação em chás e decocções em contexto ayurvédico. Disponível em: <a href="https://ask-ayurveda.com/wiki/article/5886-sonchus-oleraceus" target="_blank" rel="noopener">https://ask-ayurveda.com/wiki/article/5886-sonchus-oleraceus</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] Sánchez-Aguirre OA et al. &quot;Sonchus oleraceus L.: ethnomedical, phytochemical and pharmacological review&quot;. Integra informação sobre usos tradicionais, atividades anti-inflamatórias, hepatoprotetoras e antioxidantes. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/38305867/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/38305867/</a></li>
+        <li id="ref-M2">[M2] El Gendy AENG et al. &quot;Chemical Composition, Antioxidant, and Cytotoxic Activity of Sonchus oleraceus L.&quot;. Estudo em que a espécie é descrita como hortaliça funcional rica em polifenóis com efeitos antioxidantes e citotóxicos moderados. Disponível em: <a href="https://www.mdpi.com/2223-7747/13/12/1712" target="_blank" rel="noopener">https://www.mdpi.com/2223-7747/13/12/1712</a></li>
+        <li id="ref-M3">[M3] Li Q et al. &quot;The anti-inflammatory effect of Sonchus oleraceus aqueous extract&quot;. Demonstra redução de edema e marcadores inflamatórios em modelos animais. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6130567/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC6130567/</a></li>
+        <li id="ref-M4">[M4] Zulkefle NN et al. &quot;Antimicrobial properties of Sonchus species: a review&quot;. Revisão das atividades antimicrobianas de várias espécies de Sonchus, incluindo S. oleraceus. Disponível em: <a href="https://journals.lww.com/aptb/fulltext/2025/05000/antimicrobial_properties_of_sonchus_species__a.1.aspx" target="_blank" rel="noopener">https://journals.lww.com/aptb/fulltext/2025/05000/antimicrobial_properties_of_sonchus_species__a.1.aspx</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] El Gendy AENG et al. &quot;Chemical Composition, Antioxidant, and Cytotoxic Activity of Sonchus oleraceus L.&quot;. Caracteriza o perfil de compostos fenólicos e a capacidade antioxidante de extratos da planta. Disponível em: <a href="https://www.mdpi.com/2223-7747/13/12/1712" target="_blank" rel="noopener">https://www.mdpi.com/2223-7747/13/12/1712</a></li>
+        <li id="ref-F2">[F2] Lima JM et al. &quot;Prospecção fitoquímica de Sonchus oleraceus e sua toxicidade para Artemia salina&quot;. Identifica classes de metabólitos secundários e avalia toxicidade em bioensaio com Artemia. Disponível em: <a href="https://www.scielo.br/j/pd/a/XhP7nFTKH7QjFN6MWhWLZ3R/" target="_blank" rel="noopener">https://www.scielo.br/j/pd/a/XhP7nFTKH7QjFN6MWhWLZ3R/</a></li>
+        <li id="ref-F3">[F3] Mohasib RMM et al. &quot;Identification of bioactive ingredients in Sonchus oleraceus&quot;. Estudo que identifica quercetina, apigenina e outros compostos fenólicos em extratos da espécie. Disponível em: <a href="https://www.plantarchives.org/20-2/9714-9720.pdf" target="_blank" rel="noopener">https://www.plantarchives.org/20-2/9714-9720.pdf</a></li>
+        <li id="ref-F4">[F4] Nobela O et al. &quot;Using LC-IT-Tof-MS based methods to explore metabolite profiles of Sonchus species&quot;. Analisa perfis metabólicos de várias espécies de Sonchus, incluindo S. oleraceus, com detalhe para ácidos fenólicos e flavonoides. Disponível em: <a href="https://www.sciencedirect.com/science/article/pii/S0254629921000831" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S0254629921000831</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] UniPlanet. &quot;Serralha, uma &#x27;erva daninha&#x27; com ação benéfica no fígado&quot;. Artigo em português que descreve a serralha como verdura silvestre comestível e planta medicinal, com sugestões culinárias e de uso depurativo. Disponível em: <a href="https://theuniplanet.com/2019/06/serralha-uma-erva-daninha-com-acao-benefica-no-figado/" target="_blank" rel="noopener">https://theuniplanet.com/2019/06/serralha-uma-erva-daninha-com-acao-benefica-no-figado/</a></li>
+        <li id="ref-A2">[A2] Blog Acenda uma Brava. &quot;SERRALHA: apanham-na, deixavam-na secar à sombra&quot;. Relato de usos tradicionais da serralha como verdura em sopas, salteados e outros pratos caseiros. Disponível em: <a href="https://acendurabrava.blogspot.com/2023/09/serralha-apanhavam-na-deixavam-na-secar.html" target="_blank" rel="noopener">https://acendurabrava.blogspot.com/2023/09/serralha-apanhavam-na-deixavam-na-secar.html</a></li>
+        <li id="ref-A3">[A3] Diego Bonetto. &quot;How to identify and use sow thistle, the perfect edible weed&quot;. Artigo sobre recolha, identificação e múltiplas utilizações culinárias de Sonchus oleraceus. Disponível em: <a href="https://www.diegobonetto.com/blog/how-to-identify-and-use-sowthistle-the-perfect-edible-weed" target="_blank" rel="noopener">https://www.diegobonetto.com/blog/how-to-identify-and-use-sowthistle-the-perfect-edible-weed</a></li>
+        <li id="ref-A4">[A4] Wild Food UK. &quot;Sow Thistle&quot;. Notas sobre valor alimentar, sabor e formas de utilização em pratos diversos, com ênfase em aproveitamento como verdura selvagem. Disponível em: <a href="https://www.wildfooduk.com/wild-plants/sow-thistle-2/" target="_blank" rel="noopener">https://www.wildfooduk.com/wild-plants/sow-thistle-2/</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] Useful Tropical Plants. &quot;Sonchus oleraceus&quot;. Ficha que descreve a espécie como planta daninha comum, produzindo muitas sementes leves e espalhando-se amplamente por vento e água. Disponível em: <a href="https://tropical.theferns.info/viewtropical.php?id=Sonchus+oleraceus" target="_blank" rel="noopener">https://tropical.theferns.info/viewtropical.php?id=Sonchus+oleraceus</a></li>
+        <li id="ref-P2">[P2] Wikipedia. &quot;Sonchus oleraceus&quot;. Secção sobre invasividade, referindo crescimento rápido, produção abundante de sementes e comportamento como invasora em várias regiões. Disponível em: <a href="https://en.wikipedia.org/wiki/Sonchus_oleraceus" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Sonchus_oleraceus</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

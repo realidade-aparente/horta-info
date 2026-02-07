@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html" class="ativa">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="fisalis.html">Fisális</a>
+  <a class="next" href="funcho.html">Funcho</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Framboesa vermelha (<em>Rubus idaeus L.</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Rosaceae</span>
+  <span>Parte usada: folhas secas e frutos</span>
+  <span>Tipo: arbusto perene frutífero medicinal</span>
+  <span>Produção: <strong>cultivada em sebes, pomares, hortas</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> zonas temperadas da Europa e Ásia, hoje amplamente cultivada mundialmente</div>
+  <div><strong>Uso principal</strong> tónico uterino feminino, apoio digestivo, urinário e inflamações ligeiras de mucosas</div>
+  <div><strong>Perfil medicinal</strong> adstringente, tónico uterino, anti-inflamatório suave, antioxidante e metabólico leve de suporte geral</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Framboesa vermelha (Rubus idaeus L.)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>A framboeseira vermelha (Rubus idaeus L.) é um arbusto perene da família Rosaceae, com 1–2 m de altura, caules eretos ou arqueados, frequentemente revestidos de pequenos espinhos ou acúleos. Forma touceiras e sebes densas através de rebentos radiculares, produzindo canas bienais que frutificam ao segundo ano (ou, em cultivares remontantes, também no primeiro). As folhas são compostas, geralmente com 3–7 folíolos ovados, verde-escuras na página superior e mais claras ou esbranquiçadas na inferior, com margens serradas.</p>
+      <p>Em português é conhecida como framboeseira, framboesa-vermelha ou framboeseiro, e em algumas regiões simplesmente por &quot;framboesa&quot; referindo-se à planta e ao fruto. Em inglês é designada como red raspberry ou European red raspberry. As flores, brancas ou esbranquiçadas, são melíferas e muito atrativas para abelhas e outros polinizadores, originando os frutos agregados vermelhos que são colhidos no verão.</p>
+      <p>Do ponto de vista medicinal, as folhas secas (Rubus idaeus folium) constituem a droga vegetal mais utilizada, estando descritas em monografias da Farmacopeia Europeia, da EMA/HMPC e da Comissão E. São ricas em taninos, flavonoides e outros polifenóis, responsáveis pelas propriedades adstringentes e pela ação moduladora sobre músculo liso uterino e gastrointestinal.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, a framboeseira comporta-se como arbusto perene de clima temperado fresco, com rebentação de novos canaços na primavera e frutificação principalmente entre o final da primavera e o verão, dependendo do cultivar e da região. As folhas usadas em fitoterapia colhem-se habitualmente no período em que estão totalmente desenvolvidas, antes ou depois da frutificação, evitando material muito velho ou danificado.
+Em regiões com invernos marcados, a parte aérea entra em repouso vegetativo durante o outono-inverno, com queda parcial das folhas e necessidade de poda de renovação. Em locais mais amenos, pode manter alguma folhagem verde durante mais tempo, mas a fase de maior qualidade para colheita de folhas medicinais continua a concentrar-se na estação de crescimento ativa.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Rebentação vegetativa: sobretudo na primavera (março–maio), com emissão de novos canas a partir da base.</li>
+        <li>Floração: em geral entre abril e junho em Portugal continental, variando com o cultivar, altitude e exposição.</li>
+        <li>Frutificação: de final da primavera ao verão (maio–agosto), podendo prolongar-se no outono em cultivares remontantes.</li>
+        <li>Época de colheita das folhas para uso medicinal: durante a estação de crescimento, preferencialmente finais da primavera e início do verão, colhendo folhas bem formadas, verdes e saudáveis.</li>
+        <li>Repouso vegetativo e poda: outono-inverno, com queda parcial de folhas e corte de canas que já frutificaram.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Infusões de folha seca de Rubus idaeus (por exemplo 1,5–2,5 g de droga vegetal em 150–250 mL de água a ferver, em infusão durante 10–15 minutos, 2–3 vezes por dia) são descritas em monografias europeias como tradicionalmente utilizadas para o tratamento sintomático de diarreia ligeira, graças ao elevado teor em taninos com efeito adstringente na mucosa intestinal. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a></li>
+        <li>Preparados em forma de infusão ou decoção de folha de framboesa são usados, por via de bochechos e gargarejos, para alívio de inflamações ligeiras da boca e garganta (estomatites, faringites), explorando as mesmas propriedades adstringentes e anti-inflamatórias locais sobre a mucosa orofaríngea. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-F1">[F1]</a></li>
+        <li>O uso de folha de framboesa como tónico uterino e adjuvante em cólicas menstruais e desconforto pré-menstrual é descrito em monografias fitoterapêuticas e revisões recentes, com alguns estudos clínicos de pequena dimensão a sugerirem possível redução da necessidade de intervenções no trabalho de parto, embora a evidência seja considerada limitada e insuficiente para recomendações fortes. <a href="#ref-M1">[M1]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Chá de folha de framboesa tomado em ciclos regulares por mulheres em idade fértil como tónico da &quot;matriz&quot; e aliado do ciclo menstrual, ajudando a aliviar cólicas e a regular o fluxo, segundo a tradição de parteiras e herbalistas europeias. <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a> <a href="#ref-A1">[A1]</a></li>
+        <li>Infusões de folha de framboesa utilizadas no terceiro trimestre de gravidez, sob orientação de profissionais de saúde, com o objetivo de preparar o útero para o parto e favorecer contrações mais eficientes, prática bastante difundida em contextos de medicina natural e parto humanizado. <a href="#ref-R2">[R2]</a> <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a></li>
+        <li>Uso popular do chá de folha de framboesa como bebida geral de bem‑estar para mulheres, associando propriedades antioxidantes, aporte mineral e suporte ao sistema reprodutor, frequentemente combinada com outras plantas como folhas de amora, urtiga ou flores de tília. <a href="#ref-R3">[R3]</a> <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Aplicação externa de infusões concentradas em forma de lavagens, compressas ou banhos de assento para apoio em desconfortos da região pélvica, hemorroidas ligeiras e pequenas inflamações da pele ou mucosas. <a href="#ref-R4">[R4]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Consumo dos frutos frescos ou congelados como alimento funcional rico em fibra, vitamina C e polifenóis (particularmente elagitanninos), associado de forma empírica à saúde cardiovascular, ao controlo glicémico e à proteção antioxidante geral. <a href="#ref-M3">[M3]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-A2">[A2]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>De acordo com a avaliação da EMA/HMPC e outras fontes científicas, os preparados à base de folha de framboesa parecem ter bom perfil de segurança quando usados em doses tradicionalmente recomendadas e por períodos limitados em adultos. No entanto, os produtos não devem ser utilizados como tratamento de diarreias graves, febre alta, dor abdominal intensa ou sangramento retal, situações que exigem avaliação médica imediata. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></p>
+      <p>Na gravidez, o uso de chá ou suplementos de folha de framboesa é comum em contextos de medicina natural, mas a evidência da sua eficácia é fraca e os dados sobre segurança a longo prazo ainda são limitados. Revisões recentes sugerem que, quando utilizados em doses moderadas e iniciados no terceiro trimestre sob supervisão de profissional de saúde, não foram observados efeitos adversos significativos; contudo, não se recomenda o uso em gravidezes de alto risco, ameaça de parto pré‑termo, antecedentes de parto muito rápido ou outras complicações obstétricas. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-U1">[U1]</a> <a href="#ref-U4">[U4]</a></p>
+      <p>A presença de taninos em quantidade apreciável pode teoricamente interferir com a absorção de alguns fármacos e minerais se consumida em grandes quantidades ou muito próxima das tomas de medicação. Recomenda-se precaução em pessoas sob medicação crónica (anticoagulantes, anti-hipertensores, fármacos com janela terapêutica estreita) e em doentes com doença renal significativa, bem como em indivíduos com história de alergia a plantas da família Rosaceae. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-U3">[U3]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        As principais formas de uso fitoterapêutico da framboeseira vermelha envolvem infusões e decoções da folha seca, o uso de folha em misturas para bochechos e gargarejos, e preparações em comprimidos ou tinturas padronizadas descritas em monografias e estudos clínicos. Na prática popular, o chá de folha de framboesa é valorizado como aliado da saúde feminina e da regulação do ciclo menstrual, bem como como adjuvante no final da gravidez, sempre com atenção às recomendações de segurança. Preparados externos (lavagens, banhos de assento) são utilizados em inflamações ligeiras de mucosas e pele.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="framboesa-vermelha_receitas.html">Infusão simples de folha de framboesa para uso geral:</a> chá diário suave de folhas secas, tomado entre refeições como apoio digestivo e ligeiramente adstringente. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="framboesa-vermelha_receitas.html">Chá de folha de framboesa para cólicas menstruais:</a> infusão mais concentrada consumida antes e durante a menstruação para aliviar cólicas e tensão uterina. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="framboesa-vermelha_receitas.html">Infusão no terceiro trimestre de gravidez:</a> chá de folha de framboesa usado sob supervisão profissional nas últimas semanas de gestação como tónico uterino suave. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="framboesa-vermelha_receitas.html">Infusão concentrada para gargarejos e bochechos:</a> preparado de folha de framboesa utilizado morno em enxaguamentos da boca e garganta em inflamações ligeiras. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="framboesa-vermelha_receitas.html">Decoção suave para banho de assento:</a> preparação aquecida de folhas de framboesa usada em banhos de assento para aliviar desconforto pélvico e hemorroidas ligeiras. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="framboesa-vermelha_receitas.html">Tintura de folha de framboesa:</a> extrato hidroalcoólico utilizado em gotas diluídas em água como adjuvante em queixas menstruais e tónico geral feminino, segundo orientação profissional. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="framboesa-vermelha_receitas.html">Mistura depurativa feminina:</a> combinação de folha de framboesa com outras plantas depurativas em chá diário de suporte ao bem-estar hormonal e circulação pélvica. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="framboesa-vermelha_receitas.html">Xarope simples de framboesa:</a> preparado adoçado à base de infusão de folha e/ou fruto de framboesa, tomado em colheradas como coadjuvante em irritações ligeiras de garganta. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="framboesa-vermelha_receitas.html">Cataplasma morna de folhas esmagadas:</a> aplicação externa de folhas de framboesa amolecidas em água quente sobre zonas dolorosas ou articulações ligeiramente inflamadas. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="framboesa-vermelha_receitas.html">Infusão fria de folha de framboesa com hibisco:</a> bebida refrescante rica em antioxidantes, usada em doses moderadas como suporte geral da circulação e bem-estar. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>A folha de framboesa vermelha é tradicionalmente empregue como planta adstringente e tónica do sistema reprodutor feminino, com especial afinidade pelo útero e pela região pélvica. Monografias oficiais europeias reconhecem o uso tradicional de Rubus idaeus folium como medicamento à base de plantas para o tratamento sintomático de diarreia ligeira, inflamação suave da boca e da garganta e espasmos menstruais, atribuindo estes efeitos ao alto teor de taninos e outros polifenóis. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a></p>
+      <p>Na medicina natural e na prática de parteiras e doulas, o chá de folha de framboesa é amplamente usado como adjuvante no final da gravidez, com o objetivo de apoiar a preparação do útero para o parto e favorecer contrações mais eficazes, bem como para reduzir desconfortos pré-menstruais. Estudos clínicos e revisões recentes sugerem que o uso em doses moderadas no terceiro trimestre parece ser seguro e pode estar associado a alguns benefícios obstétricos, embora a evidência global seja considerada ainda insuficiente para recomendações definitivas. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></p>
+      <p>Estudos de composição e de atividade biológica mostram que as folhas e frutos de Rubus idaeus são ricos em elagitanninos, flavonoides e outros compostos fenólicos com marcada atividade antioxidante, anti-inflamatória e potencialmente metabolomoduladora. Estas propriedades sustentam o interesse da framboeseira como alimento funcional (no caso dos frutos) e como planta medicinal adjuvante em inflamação crónica de baixo grau, saúde cardiovascular e equilíbrio metabólico, sempre no contexto de estilos de vida saudáveis. <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Adjuvante no alívio sintomático de diarreia ligeira e de inflamação suave da boca e garganta, graças ao efeito adstringente dos taninos presentes na folha de framboesa sobre mucosas digestivas e orofaríngeas. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a></li>
+        <li>Suporte moderado em cólicas menstruais e desconfortos cíclicos leves, pela combinação de ação adstringente e possível efeito espasmolítico suave sobre músculo liso uterino. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-A1">[A1]</a></li>
+        <li>Potencial apoio no final da gravidez, quando usado sob supervisão profissional, contribuindo para um trabalho de parto mais eficiente e com menor necessidade de intervenções, embora a evidência clínica seja limitada e não permita afirmar um efeito indutor ou de aceleração do parto. <a href="#ref-M3">[M3]</a> <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></li>
+        <li>Contributo antioxidante e anti-inflamatório sistémico decorrente do consumo regular dos frutos de framboesa e, em menor grau, de extratos de folhas padronizados, com interesse em estratégias de proteção cardiovascular e do metabolismo. <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-M4">[M4]</a></li>
+        <li>Possível atividade citoprotetora e moduladora de respostas celulares em modelos experimentais de cancro e stress oxidativo, ainda numa fase inicial de investigação e sem indicações clínicas estabelecidas. <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>A composição fitoquímica das folhas de Rubus idaeus é dominada por taninos hidrolisáveis (elagitanninos como sanguiina H-6 e lambertianina C), taninos condensados, flavonoides (incluindo derivados de quercetina e kaempferol), ácidos fenólicos e traços de óleos essenciais. Farmacopeias e monografias estabelecem um teor mínimo de taninos nas folhas secas, refletindo a importância destes compostos para a atividade adstringente. <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></p>
+      <p>Estudos recentes têm quantificado o conteúdo de compostos fenólicos totais e a capacidade antioxidante de extratos de folha de framboesa, mostrando valores elevados de fenólicos (na ordem de dezenas de mg de equivalentes de ácido cafeico por grama de peso seco) e forte atividade em ensaios DPPH, FRAP e outros modelos in vitro. Trabalhos adicionais exploram a citotoxicidade seletiva e o potencial citoprotetor de extratos de folha sobre linhagens celulares tumorais e saudáveis. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F4">[F4]</a></p>
+      <p>A variabilidade da composição depende do cultivar, época de colheita, posição da folha e método de extração. Extratos secos, extratos hidroalcoólicos e destilados de folhas podem apresentar perfis ligeiramente diferentes em termos de proporção de elagitanninos, flavonoides e outros constituintes, situação que deve ser considerada na padronização de preparados farmacêuticos. <a href="#ref-F3">[F3]</a> <a href="#ref-F5">[F5]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Taninos totais nas folhas secas (teor mínimo farmacopéico)</td><td>≥5 % m/m de taninos na droga seca</td></tr>
+        <tr><td>Elagitanninos majoritários (por exemplo sanguiina H-6) nas folhas</td><td>predominância qualitativa; até dezenas de % dos polifenóis totais</td></tr>
+        <tr><td>Fenólicos totais em extratos de folhas (equivalentes de ácido cafeico)</td><td>≈18–27 mg/g de peso seco</td></tr>
+        <tr><td>Flavonoides totais em extratos de folhas (equivalentes de quercetina)</td><td>≈5–20 mg/g de peso seco</td></tr>
+        <tr><td>Capacidade antioxidante de extratos de folhas (ensaio DPPH/FRAP)</td><td>atividade elevada, com IC50 em ensaios DPPH na gama de dezenas de µg/mL</td></tr>
+        <tr><td>Atividade citotóxica/citoprotetora de extratos de folha em modelos celulares</td><td>efeitos observados em concentrações de dezenas a centenas de µg/mL em cultura</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Produção de frutos vermelhos muito apreciados em fresco, congelados, em compotas, geleias, xaropes, vinagres aromatizados e outras preparações culinárias, com elevado valor gastronómico. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Utilização das folhas e frutos como corantes e aromatizantes naturais em chás de frutas, misturas de infusão e produtos alimentares. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Função ornamental e estruturante em sebes comestíveis e jardins de permacultura, criando barreiras vivas que produzem frutos e oferecem abrigo a fauna diversa. <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-P3">[P3]</a></li>
+        <li>Recurso apícola, fornecendo flores melíferas ricas em néctar e pólen numa fase importante da época de trabalho das abelhas. <a href="#ref-P2">[P2]</a> <a href="#ref-P4">[P4]</a></li>
+        <li>Uso de canas secas como material de suporte ou trançado em pequenas estruturas leves no jardim, bem como fonte de biomassa para compostagem. <a href="#ref-P3">[P3]</a> <a href="#ref-P4">[P4]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 6,5 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em sistemas de permacultura, a framboeseira vermelha oferece múltiplas funções úteis: fornece frutos alimentares de alto valor nutricional e funcional, folhas medicinais com aplicações tradicionais bem estabelecidas e estrutura arbustiva que pode integrar sebes comestíveis e bordaduras de produção. Atraindo polinizadores durante a floração e fornecendo abrigo a aves e pequenos animais, contribui também para a biodiversidade local. A produção de biomassa é razoável, mais em forma de canas e ramos do que de folhagem densa, útil para compostagem e cobertura leve.
+Por outro lado, as canas são espinhosas e o sistema radicular tende a emitir rebentos laterais, o que pode tornar a planta incómoda em espaços pequenos ou mal planeados, exigindo poda e controlo regulares. Em climas muito quentes e secos, a framboeseira pode exigir rega e solos frescos, perdendo alguma rusticidade. Globalmente, é uma excelente opção para sebes comestíveis, franjas de pomares e zonas de produção intensiva de frutos, mas menos adequada para áreas de circulação frequente ou canteiros pequenos junto a caminhos.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação da framboesa vermelha resulta de valores elevados em uso alimentar humano (ALIM=2), graças ao papel de destaque dos frutos na dieta e em preparações artesanais, e em uso medicinal (MED=2), devido à importância das folhas em fitoterapia como planta adstringente e de apoio à saúde feminina. Soma-se uma boa contribuição ecológica (ECO=2), pela floração rica em néctar que atrai polinizadores e pelo abrigo oferecido a aves e pequenos mamíferos, e uma multifuncionalidade cultural e de paisagem relevante (MULT=2). As funções de estrutura/porte (ESTR=1) e solo/biomassa (SOLO=1) são moderadas, já que se trata de um arbusto de médio porte e biomassa não tão elevada quanto espécies lenhosas maiores, enquanto a rusticidade (RUST=1) é razoável mas condicionada por necessidades de solo fresco e alguma rega em climas quentes.
+As penalizações incidem sobretudo no caráter espinhoso das canas, que representa um pequeno perigo físico em zonas de passagem (PERIGO=-1), e na tendência a alastrar por rebentos se não houver contenção, o que traduz uma competitividade moderada com outras culturas e algum potencial de comportamento agressivo em espaços reduzidos (COMP=-1; INVAS=-1). O risco de toxicidade relevante (TOX) é considerado baixo no contexto das formas de uso descritas. O valor final em escala 0–10 resulta da aplicação do algoritmo definido (soma dos critérios positivos até 14 pontos, subtração de penalizações e conversão por regra de três simples), situando a framboesa vermelha em cerca de 6,5/10 e indicando uma planta de boa funcionalidade em permacultura, especialmente adequada para sebes comestíveis, margens produtivas e sistemas alimentares biodiversos bem planeados.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-P3">[P3]</a> <a href="#ref-P4">[P4]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Wikipedia. Rubus idaeus. Artigo enciclopédico com descrição botânica, distribuição, usos e identificação do arbusto de framboesa vermelha. Disponível em: <a href="https://en.wikipedia.org/wiki/Rubus_idaeus" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Rubus_idaeus</a></li>
+        <li id="ref-D2">[D2] EMA. Assessment report on Rubus idaeus L., folium. Documento técnico do HMPC com descrição da droga vegetal, parte usada e contexto de utilização tradicional. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-rubus-idaeus-l-folium_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-rubus-idaeus-l-folium_en.pdf</a></li>
+        <li id="ref-D3">[D3] Soin et Nature. Framboesa (Rubus idaeus): benefícios e conselhos. Texto em português que descreve a planta, a família botânica, a origem e os principais usos medicinais e nutricionais. Disponível em: <a href="https://www.soin-et-nature.com/pt/framboesa-28777" target="_blank" rel="noopener">https://www.soin-et-nature.com/pt/framboesa-28777</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Permaculture Magazine. Beginner’s Guide to Growing Raspberries. Artigo com informações práticas sobre cultivo, épocas de plantação, floração e frutificação em clima temperado. Disponível em: <a href="https://www.permaculture.co.uk/articles/beginners-guide-to-growing-raspberries/" target="_blank" rel="noopener">https://www.permaculture.co.uk/articles/beginners-guide-to-growing-raspberries/</a></li>
+        <li id="ref-S2">[S2] Future Forests. Planting and Growing Mixed Hedges. Inclui referência ao uso de fruteiras como framboeseiras em sebes e notas sobre época de plantação e manejo em regiões atlânticas. Disponível em: <a href="https://futureforests.ie/blogs/news/planting-and-growing-mixed-hedges-mattie-keane" target="_blank" rel="noopener">https://futureforests.ie/blogs/news/planting-and-growing-mixed-hedges-mattie-keane</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] EMA. Community herbal monograph on Rubus idaeus L., folium. Monografia comunitária que descreve indicações tradicionais, posologia, duração recomendada do uso e avisos de segurança dos preparados de folha de framboesa. Disponível em: <a href="https://www.ema.europa.eu/en/medicines/herbal/rubi-idaei-folium" target="_blank" rel="noopener">https://www.ema.europa.eu/en/medicines/herbal/rubi-idaei-folium</a></li>
+        <li id="ref-U2">[U2] EMA. Assessment report on Rubus idaeus L., folium. Relatório de avaliação que revê dados de eficácia e segurança, salientando limitações da evidência e precauções na utilização. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-rubus-idaeus-l-folium_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-rubus-idaeus-l-folium_en.pdf</a></li>
+        <li id="ref-U3">[U3] Bowman R. et al. Biophysical effects, safety and efficacy of raspberry leaf use in pregnancy: A systematic integrative review. Revisão sobre a utilização de folha de framboesa na gravidez e possíveis riscos e benefícios. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7871383/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC7871383/</a></li>
+        <li id="ref-U4">[U4] Flourish Community Care. Chá de folhas de framboesa e gravidez: benefícios, riscos e recomendações. Artigo em português que resume usos na gravidez e ressalta a necessidade de supervisão profissional e cautelas específicas. Disponível em: <a href="https://flourishcommunitycare.com/pt/raspberry-leaf-tea-and-pregnancy-benefits-risks-and-recommendations/" target="_blank" rel="noopener">https://flourishcommunitycare.com/pt/raspberry-leaf-tea-and-pregnancy-benefits-risks-and-recommendations/</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Tua Saúde. 8 benefícios da framboesa e como fazer o chá. Guia em português que ensina a preparar o chá de folha de framboesa e indica doses e frequência de consumo diários. Disponível em: <a href="https://www.tuasaude.com/framboesa/" target="_blank" rel="noopener">https://www.tuasaude.com/framboesa/</a></li>
+        <li id="ref-R2">[R2] Veja Saúde (Abril). Chá da folha de framboesa: como é feito e quais os benefícios. Artigo em português com modo de preparação do chá, tempo de infusão e principais benefícios descritos. Disponível em: <a href="https://saude.abril.com.br/alimentacao/cha-da-folha-de-framboesa-beneficios/" target="_blank" rel="noopener">https://saude.abril.com.br/alimentacao/cha-da-folha-de-framboesa-beneficios/</a></li>
+        <li id="ref-R3">[R3] Tua Saúde. Chá de framboesa para acelerar o parto: funciona?. Artigo com receita detalhada, posologia durante o terceiro trimestre e advertências sobre uso apenas com orientação médica. Disponível em: <a href="https://www.tuasaude.com/remedio-caseiro-para-acelerar-o-trabalho-de-parto/" target="_blank" rel="noopener">https://www.tuasaude.com/remedio-caseiro-para-acelerar-o-trabalho-de-parto/</a></li>
+        <li id="ref-R4">[R4] Herbal Reality. Raspberry (Rubus idaeus): benefits, safety, research. Monografia herbal em inglês que descreve formas de preparação para uso interno e gargarejos em inflamações orofaríngeas. Disponível em: <a href="https://www.herbalreality.com/herb/raspberry/" target="_blank" rel="noopener">https://www.herbalreality.com/herb/raspberry/</a></li>
+        <li id="ref-R5">[R5] Chás Naturais. Folha de framboesa: os seus benefícios. Texto em português com indicações gerais de uso em infusões e referências à preparação da bebida. Disponível em: <a href="https://chasnaturais.pt/plantas/plantas-medicinais/folha-de-framboesa-os-seus-beneficios/" target="_blank" rel="noopener">https://chasnaturais.pt/plantas/plantas-medicinais/folha-de-framboesa-os-seus-beneficios/</a></li>
+        <li id="ref-R6">[R6] Ask Ayurveda. Rubus idaeus – Red Raspberry Leaf. Perfil ayurvédico com sugestões de preparação em tinturas e extratos líquidos, incluindo doses orientativas. Disponível em: <a href="https://ask-ayurveda.com/wiki/article/5649-rubus-idaeus--red-raspberry-leaf" target="_blank" rel="noopener">https://ask-ayurveda.com/wiki/article/5649-rubus-idaeus--red-raspberry-leaf</a></li>
+        <li id="ref-R7">[R7] Replantea. Infusão de Folha de Framboesa Orgânica 100g. Ficha comercial que descreve a infusão de folhas de framboesa, recomendações de uso e contexto de utilização durante e após a gravidez. Disponível em: <a href="https://replantea.eu/products/infusion-de-hoja-de-frambuesa-ecologica-100g" target="_blank" rel="noopener">https://replantea.eu/products/infusion-de-hoja-de-frambuesa-ecologica-100g</a></li>
+        <li id="ref-R8">[R8] Evidence Based Birth. Evidence on Red Raspberry Leaf Tea for Natural Labour Induction. Revisão de evidência com exemplos de esquemas de uso em cápsulas e chá no final da gravidez. Disponível em: <a href="https://evidencebasedbirth.com/ebb-139-red-raspberry-leaf-tea/" target="_blank" rel="noopener">https://evidencebasedbirth.com/ebb-139-red-raspberry-leaf-tea/</a></li>
+        <li id="ref-R9">[R9] Girassol. Framboesas, folha 50 g (Antiga Ervanaria). Ficha de produto com modo de preparação de infusão concentrada (quantidade de folhas por litro e tempo de infusão). Disponível em: <a href="https://www.girassol.com/cha-simples-f-j/9253-framboesas-folha-50g-antiga-ervanaria.html" target="_blank" rel="noopener">https://www.girassol.com/cha-simples-f-j/9253-framboesas-folha-50g-antiga-ervanaria.html</a></li>
+        <li id="ref-R10">[R10] Framboesa folhas – Almophariz. Ficha comercial que indica uso da infusão de folhas de framboesa como auxiliar na gravidez e no conforto menstrual, com sugestões de consumo. Disponível em: <a href="https://www.almophariz.pt/loja-online/chas-rooibos-e-infusoes/framboesa-folhas-746" target="_blank" rel="noopener">https://www.almophariz.pt/loja-online/chas-rooibos-e-infusoes/framboesa-folhas-746</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] Herbal Reality. Raspberry (Rubus idaeus): benefits, safety, research. Monografia herbal que resume usos tradicionais, evidência disponível e indicações aprovadas para folha de framboesa. Disponível em: <a href="https://www.herbalreality.com/herb/raspberry/" target="_blank" rel="noopener">https://www.herbalreality.com/herb/raspberry/</a></li>
+        <li id="ref-M2">[M2] EMA. Community herbal monograph on Rubus idaeus L., folium. Documento oficial que define indicações tradicionais, doseamento e contexto regulatório da folha de framboesa como medicamento à base de plantas. Disponível em: <a href="https://www.ema.europa.eu/en/medicines/herbal/rubi-idaei-folium" target="_blank" rel="noopener">https://www.ema.europa.eu/en/medicines/herbal/rubi-idaei-folium</a></li>
+        <li id="ref-M3">[M3] Bowman R. et al. Biophysical effects, safety and efficacy of raspberry leaf use in pregnancy. Revisão integrativa que avalia resultados de estudos em gravidez e trabalho de parto. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7871383/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC7871383/</a></li>
+        <li id="ref-M4">[M4] Simpson M. et al. Raspberry leaf in pregnancy: its safety and efficacy in labour. Estudo clínico que avalia comprimidos de folha de framboesa na gravidez e trabalho de parto. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S1526952301000952" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S1526952301000952</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] EMA. Assessment report on Rubus idaeus L., folium. Relatório que documenta o conteúdo mínimo de taninos na folha seca e resume dados farmacológicos disponíveis. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-rubus-idaeus-l-folium_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-rubus-idaeus-l-folium_en.pdf</a></li>
+        <li id="ref-F2">[F2] Krauze-Baranowska M. et al. Chemical composition and biological activity of Rubus idaeus L. (red raspberry) fruits. Artigo de revisão sobre elagitanninos e outros polifenóis relevantes também presentes em folhas e frutos. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4295307/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC4295307/</a></li>
+        <li id="ref-F3">[F3] De Santis D. et al. Bioactivity and Chemical Profile of Rubus idaeus L. Leaves Steam-Distillation Extract. Estudo que caracteriza perfis químicos e atividade antioxidante de extratos de folhas. Disponível em: <a href="https://www.mdpi.com/2304-8158/11/10/1455" target="_blank" rel="noopener">https://www.mdpi.com/2304-8158/11/10/1455</a></li>
+        <li id="ref-F4">[F4] Gudej J. Determination of flavonoids, tannins and ellagic acid in leaves from Rubus L. species. Trabalho que quantifica flavonoides, taninos e ácido elágico em folhas de Rubus, incluindo Rubus idaeus. Disponível em: <a href="https://link.springer.com/article/10.1007/BF02975114" target="_blank" rel="noopener">https://link.springer.com/article/10.1007/BF02975114</a></li>
+        <li id="ref-F5">[F5] Chwil M., Kostryco M. Bioactive compounds and antioxidant activity of Rubus idaeus L. leaves. Artigo que mede teor de compostos fenólicos totais e capacidade antioxidante em diferentes variedades. Disponível em: <a href="https://www.researchgate.net/publication/325421143_Bioactive_compounds_and_antioxidant_activity_of_Rubus_idaeus_L_Leaves" target="_blank" rel="noopener">https://www.researchgate.net/publication/325421143_Bioactive_compounds_and_antioxidant_activity_of_Rubus_idaeus_L_Leaves</a></li>
+        <li id="ref-F6">[F6] Durgo K. et al. The bioactive potential of red raspberry (Rubus idaeus L.) leaves in exhibiting cytotoxic and cytoprotective activity on human carcinoma cell lines. Estudo que avalia efeitos citotóxicos e citoprotetores de extratos de folha de framboesa. Disponível em: <a href="https://doi.org/10.1089/jmf.2011.0087" target="_blank" rel="noopener">https://doi.org/10.1089/jmf.2011.0087</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Chás Naturais. Folha de framboesa: os seus benefícios. Artigo em português que destaca usos da folha de framboesa em chás funcionais, incluindo saúde feminina e propriedades adstringentes. Disponível em: <a href="https://chasnaturais.pt/plantas/plantas-medicinais/folha-de-framboesa-os-seus-beneficios/" target="_blank" rel="noopener">https://chasnaturais.pt/plantas/plantas-medicinais/folha-de-framboesa-os-seus-beneficios/</a></li>
+        <li id="ref-A2">[A2] Girassol. Framboesas, folha 50 g (Antiga Ervanaria). Ficha de produto que relaciona benefícios propostos da infusão de folhas de framboesa para fertilidade, gravidez e saúde cardiovascular. Disponível em: <a href="https://www.girassol.com/cha-simples-f-j/9253-framboesas-folha-50g-antiga-ervanaria.html" target="_blank" rel="noopener">https://www.girassol.com/cha-simples-f-j/9253-framboesas-folha-50g-antiga-ervanaria.html</a></li>
+        <li id="ref-A3">[A3] Replantea. Folha de Framboesa Biológica 100 g. Descreve a folha de framboesa como &quot;erva da mulher&quot;, com foco em saúde reprodutiva, menstruação e gravidez. Disponível em: <a href="https://www.farmaciasdirect.pt/products/replantea-folha-de-framboesa-biologica-100-g" target="_blank" rel="noopener">https://www.farmaciasdirect.pt/products/replantea-folha-de-framboesa-biologica-100-g</a></li>
+        <li id="ref-A4">[A4] My Edible Habitat. Growing Raspberries, the Ruby of the Permaculture Garden. Artigo que sublinha usos alimentares, ecológicos e paisagísticos da framboeseira em jardins comestíveis. Disponível em: <a href="https://myediblehabitat.com/growing-raspberries/" target="_blank" rel="noopener">https://myediblehabitat.com/growing-raspberries/</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] My Edible Habitat. Growing Raspberries, the Ruby of the Permaculture Garden. Descreve funções ecológicas da framboeseira, incluindo atração de polinizadores, abrigo para fauna e produção de alimento humano. Disponível em: <a href="https://myediblehabitat.com/growing-raspberries/" target="_blank" rel="noopener">https://myediblehabitat.com/growing-raspberries/</a></li>
+        <li id="ref-P2">[P2] USDA NRCS. Technical Note 77: Hedgerow plantings for Idaho and Utah. Ficha técnica que identifica Rubus idaeus como arbusto nativo, com valor para vida selvagem e uso em sebes. Disponível em: <a href="https://www.nrcs.usda.gov/plantmaterials/idpmctn13774.pdf" target="_blank" rel="noopener">https://www.nrcs.usda.gov/plantmaterials/idpmctn13774.pdf</a></li>
+        <li id="ref-P3">[P3] Cornwall Wildlife Trust. Canes, sticks and edible jewels in the fruit and wildlife garden. Artigo que descreve o papel de framboesas e outras espécies na criação de habitat e estruturas vivas. Disponível em: <a href="https://www.cornwallwildlifetrust.org.uk/blog/rowena-millar/canes-sticks-and-edible-jewels-fruit-and-wildlife-garden" target="_blank" rel="noopener">https://www.cornwallwildlifetrust.org.uk/blog/rowena-millar/canes-sticks-and-edible-jewels-fruit-and-wildlife-garden</a></li>
+        <li id="ref-P4">[P4] Permaculture Magazine. Beginner’s Guide to Growing Raspberries. Texto que mostra como integrar framboeseiras em cercas vivas, sistemas agroflorestais e jardins de permacultura. Disponível em: <a href="https://www.permaculture.co.uk/articles/beginners-guide-to-growing-raspberries/" target="_blank" rel="noopener">https://www.permaculture.co.uk/articles/beginners-guide-to-growing-raspberries/</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

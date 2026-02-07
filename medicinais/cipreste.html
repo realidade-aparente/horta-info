@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html" class="ativa">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="cavalinha.html">Cavalinha</a>
+  <a class="next" href="coentro.html">Coentro</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Cipreste (<em>Cupressus sempervirens L.</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Cupressaceae</span>
+  <span>Parte usada: folhas, ramos jovens e cones</span>
+  <span>Tipo: árvore perene aromática medicinal</span>
+  <span>Produção: <strong>cultivada em jardins, sebes e cemitérios</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> Mediterrâneo oriental, hoje comum em regiões mediterrânicas de Portugal continental</div>
+  <div><strong>Uso principal</strong> apoio venoso, linfático, respiratório e em queixas musculares ligeiras e articulares</div>
+  <div><strong>Perfil medicinal</strong> tónico venoso e linfático, adstringente, anti-inflamatório, antisséptico suave e respiratório</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Cipreste (Cupressus sempervirens L.)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>O cipreste-mediterrânico (Cupressus sempervirens L.) é uma conífera perene de copa estreita e colunar ou ligeiramente piramidal, capaz de atingir 20–30 m de altura ou mais. Possui ramos densos, ascendentes, com folhagem em escamas verde-escuras que se mantêm todo o ano, e pequenos cones globosos ou ovóides, lenhosos, com escamas grossas que libertam sementes aladas quando amadurecem.</p>
+      <p>Em Portugal é conhecido por vários nomes comuns, incluindo cipreste, cipreste-comum, cipreste-mediterrânico e cipreste-italiano. Em inglês os nomes mais frequentes são Italian cypress, Mediterranean cypress ou apenas cypress. É uma árvore emblemática de paisagens mediterrânicas, frequente em alinhamentos, cemitérios, jardins históricos e sebes cortavento.</p>
+      <p>Do ponto de vista medicinal, utilizam-se sobretudo folhas, raminhos jovens e cones, frescos ou secos, bem como o óleo essencial obtido por destilação a vapor. Os preparados concentram propriedades adstringentes, ligeiramente vasoconstritoras, expectorantes e antimicrobianas, exploradas em usos tradicionais para problemas circulatórios, respiratórios e cutâneos, embora a evidência clínica ainda seja limitada.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a> <a href="#ref-D4">[D4]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, o cipreste é uma árvore perenifólia que mantém a folhagem verde ao longo de todo o ano, com crescimento mais ativo na primavera e início do verão. A formação de cones ocorre após a floração, com maturação ao longo de 1–2 anos.
+Do ponto de vista de aproveitamento medicinal, as folhas e raminhos podem ser colhidos em qualquer época, privilegiando períodos de tempo seco e ensolarado, enquanto os cones se colhem maduros e lenhosos. Em permacultura e jardinagem ecológica é plantado preferencialmente no outono ou final do inverno, para melhor enraizamento antes dos verões quentes.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Crescimento vegetativo mais intenso: primavera e início do verão em climas mediterrânicos.</li>
+        <li>Floração discreta no final do inverno/início da primavera, seguida de formação de cones que demoram 1–2 anos a amadurecer.</li>
+        <li>Folhagem persistente durante todo o ano, com ligeira redução de vitalidade em períodos de seca extrema ou ventos muito quentes.</li>
+        <li>Épocas recomendadas de plantação em Portugal continental: outono e final do inverno/início da primavera, evitando geadas fortes e picos de calor.</li>
+        <li>Colheita de material para uso medicinal: folhas e raminhos jovens em tempo seco; cones maduros para secagem e posterior utilização.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a> <a href="#ref-S3">[S3]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Uso de extratos de folhas e cones de Cupressus sempervirens em preparações orais tradicionais para apoio da circulação venosa e capilar (varizes, pernas pesadas, hemorroidas), baseando-se em estudos experimentais que indicam efeitos vasoconstritores, venotónicos e antioxidantes, ainda com limitada evidência clínica formal. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a></li>
+        <li>Aplicação tópica de preparações com óleo essencial de cipreste, devidamente diluído em óleos vegetais ou bases apropriadas, em massagens nas pernas, tornozelos e áreas com varizes superficiais, com o objetivo de aliviar sensação de peso, edema ligeiro e desconforto venoso, em complemento a medidas posturais e de estilo de vida. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M6">[M6]</a></li>
+        <li>Utilização de óleo essencial de cipreste em inalações, difusores ou fricções torácicas diluídas para apoio em tosse espasmódica, bronquite ligeira e congestão nasal, explorando propriedades expectorantes, antiespasmódicas e ligeiramente antissépticas descritas em estudos e monografias de aromaterapia. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M6">[M6]</a> <a href="#ref-R1">[R1]</a></li>
+        <li>Estudos in vitro e em modelos animais indicam que extratos e óleo essencial de Cupressus sempervirens possuem atividade antimicrobiana, antioxidante, anti-inflamatória e antiparasitária, sugerindo potencial como adjuvante em infeções ligeiras e processos inflamatórios crónicos, embora ainda sejam necessários ensaios clínicos robustos para definir indicações e doses padronizadas. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Banhos de pés ou de imersão parcial com algumas gotas de óleo essencial de cipreste diluídas em sal ou num emulsificante adequado, para aliviar sensação de pernas cansadas, pés suados e ligeiro inchaço ao final do dia. <a href="#ref-R2">[R2]</a> <a href="#ref-R3">[R3]</a></li>
+        <li>Massagens caseiras com mistura de óleo vegetal e algumas gotas de óleo essencial de cipreste sobre zonas com celulite, varizes superficiais ou sensação de má circulação, em combinação com exercício físico e alimentação equilibrada. <a href="#ref-R2">[R2]</a> <a href="#ref-R3">[R3]</a> <a href="#ref-R4">[R4]</a></li>
+        <li>Uso de preparações aromáticas com cipreste (em difusores ou inaladores pessoais) em contextos de stress e agitação, em que o aroma resinoso e &quot;florestal&quot; é percebido como estabilizante e centrador. <a href="#ref-R3">[R3]</a> <a href="#ref-R5">[R5]</a></li>
+        <li>Emprego popular de infusões fracas ou decocções leves de folhas/raminhos em gargarejos ou lavagens para pequenas irritações da garganta e da boca, sempre respeitando doses moderadas e evitando ingestão de grandes quantidades. <a href="#ref-R2">[R2]</a> <a href="#ref-R4">[R4]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>O cipreste, enquanto árvore ornamental, é geralmente seguro no ambiente da horta ou jardim. No entanto, o óleo essencial de Cupressus sempervirens é concentrado e pode apresentar efeitos neurotóxicos e oxitócicos em doses elevadas, sendo frequentemente referido como contraindicado em grávidas, sobretudo por via oral e em doses terapêuticas altas. Em aromaterapia moderna há autores que o consideram de baixo risco em usos tópicos moderados e inalação suave, mas a prudência aconselha evitar exposições intensas em gravidez e em crianças pequenas. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></p>
+      <p>De forma geral, óleos essenciais não devem ser ingeridos de forma caseira nem usados puros sobre a pele. É indispensável diluí-los em óleos vegetais ou bases apropriadas e respeitar doses baixas, especialmente em pessoas com pele sensível, antecedentes de alergia respiratória, asma, epilepsia, doença hepática ou renal. Utilizadores sob medicação crónica (como anticoagulantes, anti-hipertensores ou fármacos de janela terapêutica estreita) devem discutir qualquer uso interno com profissional de saúde qualificado. <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-U4">[U4]</a> <a href="#ref-U5">[U5]</a></p>
+      <p>Preparados internos com folhas e cones de cipreste não são recomendados em automedicação prolongada, sobretudo em grávidas, lactantes, crianças, pessoas com doenças cardiovasculares significativas ou insuficiência renal. Em caso de sintomas como tonturas, palpitações, dificuldade respiratória, reações cutâneas intensas ou agravamento de queixas, o uso deve ser interrompido e deve ser procurada avaliação médica. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        Em fitoterapia e aromaterapia, o cipreste é utilizado sobretudo na forma de óleo essencial (para aplicações tópicas diluídas, banhos e difusão) e, em menor escala, de infusões leves, decocções e tinturas de folhas e cones. Os preparados procuram explorar efeitos adstringentes, venotónicos e expectorantes, sempre em doses moderadas e em combinação com medidas de estilo de vida saudável. A utilização deve respeitar os limites de segurança dos óleos essenciais e as contraindicações em grupos de risco, sendo enquadrada pelas recomendações.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="cipreste_receitas.html">Óleo de massagem para pernas cansadas:</a> óleo corporal com óleo essencial de cipreste diluído em óleo vegetal, usado em massagens ascendentes para aliviar sensação de peso e fadiga nas pernas. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="cipreste_receitas.html">Banho de pés com cipreste:</a> banho morno para os pés ao qual se adiciona uma pequena quantidade de óleo essencial de cipreste, ajudando a refrescar, desodorizar e aliviar cansaço após o dia. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="cipreste_receitas.html">Mistura aromática para apoio respiratório:</a> combinação de óleo essencial de cipreste com outros óleos respiratórios em difusor ou inalação suave, usada como apoio em constipações ligeiras e congestão nasal. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="cipreste_receitas.html">Sinergia para celulite e circulação:</a> óleo corporal de massagem que junta cipreste e outros óleos essenciais circulatórios, aplicado em movimentos vigorosos sobre zonas com celulite e má circulação. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="cipreste_receitas.html">Compressas locais com cipreste:</a> pano embebido em água morna contendo algumas gotas de óleo essencial de cipreste, aplicado sobre zonas doloridas ou tensas, como ombros, pescoço e articulações. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="cipreste_receitas.html">Inalação húmida suave com cipreste:</a> inalação de vapor de água quente contendo pequena quantidade de óleo essencial de cipreste, usada por períodos curtos para aliviar congestão e expetoração ligeira. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="cipreste_receitas.html">Infusão muito suave de folhas e raminhos:</a> chá leve preparado com pequena quantidade de folhas e raminhos de cipreste, usado tradicionalmente como adjuvante em problemas circulatórios, sempre com grande prudência. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="cipreste_receitas.html">Decocção externa de cones:</a> preparação de uma decocção de cones de cipreste para uso em lavagens, banhos de assento ou compressas em problemas venosos superficiais e cutâneos ligeiros. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="cipreste_receitas.html">Spray ambiental com cipreste:</a> solução hidroalcoólica perfumada com óleo essencial de cipreste usada como spray ambiental em espaços interiores, ajudando a refrescar o ar e reduzir odores. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="cipreste_receitas.html">Mistura suave para difusor noturno:</a> combinação de óleo essencial de cipreste com lavanda e citrinos em difusor, criando um ambiente relaxante e de apoio à circulação ao final do dia. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>Revisões etnofarmacológicas e estudos modernos descrevem o cipreste como planta com múltiplas atividades biológicas, incluindo efeitos antimicrobianos, antioxidantes, anti-inflamatórios, antiparasitários e potencialmente vasoconstritores. Na medicina tradicional mediterrânica, folhas e cones foram usados como adstringentes e tónicos para problemas circulatórios, hemorroidas e varizes, bem como em preparações para infeções leves das vias respiratórias e da pele. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a></p>
+      <p>O óleo essencial de Cupressus sempervirens, rico em monoterpenos como o α-pineno e o δ3-careno, é foco de vários estudos em que se observa atividade antimicrobiana contra bactérias e fungos, inibição de formação de biofilmes e efeitos antioxidantes relevantes, o que sustenta o uso como adjuvante em infeções cutâneas ligeiras, pequenas feridas e situações de sobrecarga oxidativa. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-M7">[M7]</a></p>
+      <p>Há também referências ao uso de cipreste em distúrbios metabólicos (como diabetes) e em condições inflamatórias crónicas, mas a maior parte da evidência ainda se baseia em estudos in vitro, em modelos animais ou em séries de casos, pelo que estas aplicações devem ser consideradas exploratórias e não substituem a terapêutica médica convencional. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Adjuvante em problemas circulatórios venosos ligeiros, como sensação de pernas pesadas, varizes superficiais e pequenas hemorroidas, sobretudo em forma de aplicações tópicas e medidas de estilo de vida, sem substituir avaliação médica. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a></li>
+        <li>Apoio complementar em infecções respiratórias ligeiras com tosse espasmódica e congestão das vias aéreas superiores, através de inalações e difusão de óleo essencial devidamente diluído. <a href="#ref-M1">[M1]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-M6">[M6]</a></li>
+        <li>Suporte em problemas cutâneos ligeiros, pequenas feridas superficiais, acne e infeções de pele de baixa gravidade, explorando a atividade antimicrobiana e antioxidante dos extratos e do óleo essencial. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M7">[M7]</a></li>
+        <li>Potencial papel como adjuvante em estados inflamatórios crónicos de baixo grau e alterações metabólicas, a partir de efeitos antioxidantes, anti-inflamatórios e antiparasitários descritos em modelos experimentais, carecendo ainda de confirmação clínica robusta. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>O perfil fitoquímico de Cupressus sempervirens é dominado pelo óleo essencial presente nas folhas, raminhos e cones, constituído maioritariamente por monoterpenos como α-pineno, δ3-careno, limoneno, terpinil acetato, mirceno e cedrol, entre outros. Estudos em diferentes quimiotipos mediterrânicos apontam para teores de α-pineno frequentemente entre 20–60% da fração volátil, com δ3-careno em torno de 10–25% e contributos menores de outros monoterpenos e sesquiterpenos. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></p>
+      <p>Para além do óleo essencial, análises fitoquímicas revelam a presença de taninos, flavonoides, ácidos fenólicos, saponinas, alcaloides em pequenas quantidades e outros constituintes fenólicos e esteroídicos. Quantificações aproximadas indicam percentagens de saponinas da ordem de 1–2% e teores mensuráveis de flavonoides e taninos, que contribuem para as propriedades adstringentes, antioxidantes e anti-inflamatórias atribuídas à planta. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></p>
+      <p>Extratos metanólicos, etanólicos e hidroalcoólicos de folhas e cones mostram, em ensaios in vitro, atividade antimicrobiana significativa, capacidade antioxidante elevada e efeitos citotóxicos seletivos sobre algumas linhas celulares tumorais, bem como atividade acaricida e antiparasitária. Estes resultados ajudam a explicar a diversidade de usos tradicionais e motivam investigação adicional sobre formas de extração, doseamento e segurança em aplicações terapêuticas. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Teor de óleo essencial em folhas/raminhos</td><td>≈0,5–2,0 % v/m</td></tr>
+        <tr><td>α-pineno no óleo essencial de folhas</td><td>≈20–60 % (área relativa)</td></tr>
+        <tr><td>δ3-careno no óleo essencial de folhas</td><td>≈10–25 % (área relativa)</td></tr>
+        <tr><td>Limoneno no óleo essencial de folhas</td><td>≈2–10 % (área relativa)</td></tr>
+        <tr><td>Cedrol e outros sesquiterpenos no óleo essencial</td><td>≈1–7 % (área relativa)</td></tr>
+        <tr><td>Teor aproximado de saponinas na parte aérea</td><td>≈1–2 % m/m</td></tr>
+        <tr><td>Flavonoides e taninos totais em extratos hidroalcoólicos</td><td>≈0,2–1 % m/m</td></tr>
+        <tr><td>Capacidade antioxidante (ensaios DPPH/ABTS) de extratos</td><td>IC50 em geral na gama de dezenas de µg/mL</td></tr>
+        <tr><td>Atividade antimicrobiana de óleo essencial e extratos</td><td>Atividade relevante em concentrações na ordem de dezenas a centenas de µg/mL</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Árvore ornamental de grande valor estético, muito utilizada em jardins, cemitérios, quintas e alinhamentos para criar estruturas verticais marcantes e enquadramento paisagístico em regiões de clima mediterrânico. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Uso como sebe cortavento e barreira visual ao longo de estradas, caminhos e limites de propriedades, ajudando a reduzir a ação do vento e a erosão eólica. <a href="#ref-A1">[A1]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Produção de madeira resistente, usada tradicionalmente em carpintaria fina, mobiliário, construção de portas, caixilharias e instrumentos musicais como cravos e outros cordofones. <a href="#ref-A1">[A1]</a> <a href="#ref-A4">[A4]</a></li>
+        <li>Importância cultural e simbólica em várias tradições mediterrânicas, associada a cemitérios, locais de culto e ideias de longevidade, luto ou eternidade. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Planta de abrigo e nidificação para aves e outros animais, contribuindo para a biodiversidade de jardins, sebes e sistemas agroflorestais. <a href="#ref-A1">[A1]</a> <a href="#ref-P1">[P1]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 5,7 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em permacultura, o cipreste oferece funções estruturais marcantes como árvore alta e perenifólia, capaz de formar sebes cortavento, cortinas visuais e elementos verticais de grande impacto paisagístico. A folhagem persistente e a tolerância a solos pobres e secos tornam-no valioso em climas mediterrânicos para proteger culturas mais sensíveis, reduzir o efeito de ventos dominantes e criar microclimas.
+Do ponto de vista medicinal, fornece material aromático (folhas, cones e óleo essencial) com múltiplos usos tradicionais, embora com necessidade de prudência devido à potência do óleo essencial. A produção de biomassa é moderada, e a copa densa pode competir fortemente por água e luz com culturas de pequena dimensão se mal posicionado. Por isso, o cipreste tende a ser mais útil como elemento estrutural e de suporte ecológico (refúgio para aves, habitat e conectividade paisagística) do que como planta produtiva directa para alimentação.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação do cipreste resulta de um valor nulo em uso alimentar humano (ALIM=0), mas valores elevados em uso medicinal aromático (MED=2), estrutura e perenidade como árvore de grande porte (ESTR=2) e multifuncionalidade cultural e ecológica (MULT=2). Há ainda um contributo moderado para solo/biomassa (SOLO=1), sobretudo através de alguma produção de resíduos lenhosos e folhagem para cobertura leve e proteção contra erosão, e uma boa rusticidade (RUST=2) em climas mediterrânicos, com baixa necessidade de manutenção após estabelecido. O suporte à fauna (ECO=1) é relevante, sobretudo como abrigo e local de nidificação, embora a oferta alimentar direta seja limitada.
+As penalizações aplicam-se principalmente à competição por água e luz (COMP=-1), já que árvores adultas podem sombrear e desidratar culturas próximas se o desenho não for cuidadoso, e a um risco de toxicidade moderado (TOX=-1) associado ao uso inadequado de óleo essencial concentrado. O perigo físico (PERIGO=0) e o comportamento invasor problemático (INVAS=0) são considerados baixos no contexto hortícola e paisagístico habitual. O valor final em escala 0–10 resulta da aplicação do algoritmo descrito em anexo (soma dos critérios positivos até 14 pontos, subtração de penalizações, com conversão por regra de três simples), situando o cipreste em cerca de 5,7/10 e indicando uma planta de funcionalidade intermédia a elevada em permacultura, especialmente útil como elemento estrutural, cortavento e fonte de matéria-prima aromática em sistemas bem desenhados.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-A1">[A1]</a> <a href="#ref-A3">[A3]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Wikipédia. Artigo &quot;Cupressus sempervirens&quot; (cipreste-mediterrânico) com descrição botânica, distribuição e nomes comuns. Disponível em: <a href="https://pt.wikipedia.org/wiki/Cupressus_sempervirens" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Cupressus_sempervirens</a></li>
+        <li id="ref-D2">[D2] Wikipedia. Artigo &quot;Cupressus sempervirens&quot; em inglês com descrição morfológica, usos e distribuição da espécie. Disponível em: <a href="https://en.wikipedia.org/wiki/Cupressus_sempervirens" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Cupressus_sempervirens</a></li>
+        <li id="ref-D3">[D3] Revista Jardins. Artigo &quot;Beleza além da copa&quot; com ficha de Cupressus sempervirens, descrição de copa, folhas, origem e uso ornamental em Portugal. Disponível em: <a href="https://revistajardins.pt/plantas/arvores/beleza-alem-da-copa/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/arvores/beleza-alem-da-copa/</a></li>
+        <li id="ref-D4">[D4] Plantamus. Ficha &quot;Cupressus sempervirens, cipreste comum&quot; com descrição de porte, utilização em sebes e informação prática de cultivo. Disponível em: <a href="https://www.plantamus.pt/cupressus-sempervirens-cipreste-comum-b128d/" target="_blank" rel="noopener">https://www.plantamus.pt/cupressus-sempervirens-cipreste-comum-b128d/</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Revista Jardins. &quot;CUPRESSUS SEMPERVIRENS L.&quot; – informação sobre adaptação ao clima mediterrânico, porte, exigências de solo e utilização em jardins. Disponível em: <a href="https://revistajardins.pt/plantas/arvores/beleza-alem-da-copa/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/arvores/beleza-alem-da-copa/</a></li>
+        <li id="ref-S2">[S2] Plantamus. Ficha de cultivo do cipreste-comum com notas sobre necessidades hídricas, exposição solar e recomendações de plantação. Disponível em: <a href="https://www.plantamus.pt/cupressus-sempervirens-cipreste-comum-b128d/" target="_blank" rel="noopener">https://www.plantamus.pt/cupressus-sempervirens-cipreste-comum-b128d/</a></li>
+        <li id="ref-S3">[S3] CPT Cursos Presenciais. Artigo &quot;Quer plantar cipreste? Confira as melhores dicas&quot; com informações gerais de cultivo, poda e manejo de ciprestes ornamentais. Disponível em: <a href="https://www.cpt.com.br/artigos/quer-plantar-cipreste-confira-as-melhores-dicas" target="_blank" rel="noopener">https://www.cpt.com.br/artigos/quer-plantar-cipreste-confira-as-melhores-dicas</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] Ask Ayurveda. Monografia &quot;Cupressus sempervirens&quot; com usos tradicionais, posologias ayurvédicas e orientações de segurança, incluindo cautelas em gravidez, aleitamento e crianças. Disponível em: <a href="https://ask-ayurveda.com/wiki/article/4169-cupressus-sempervirens" target="_blank" rel="noopener">https://ask-ayurveda.com/wiki/article/4169-cupressus-sempervirens</a></li>
+        <li id="ref-U2">[U2] Botanical Online. Página &quot;Cypress toxicity&quot; descrevendo riscos associados ao óleo essencial de cipreste, incluindo neurotoxicidade, ação oxitócica e contraindicações em grávidas. Disponível em: <a href="https://www.botanical-online.com/en/medicinal-plants/cypress-toxicity" target="_blank" rel="noopener">https://www.botanical-online.com/en/medicinal-plants/cypress-toxicity</a></li>
+        <li id="ref-U3">[U3] Healthline. Artigo &quot;About Cypress Oil: Science, Benefits, Risks &amp; How to Use It&quot; com informação sobre usos, precauções e segurança de óleos essenciais, incluindo recomendação de evitar uso em grávidas e crianças sem orientação. Disponível em: <a href="https://www.healthline.com/health/cypress-oil" target="_blank" rel="noopener">https://www.healthline.com/health/cypress-oil</a></li>
+        <li id="ref-U4">[U4] Aromatic Studies. Artigo &quot;Learn About Cypress Essential Oil&quot; descrevendo propriedades, usos terapêuticos e considerações de segurança do óleo essencial de cipreste. Disponível em: <a href="https://aromaticstudies.com/learn-about-cypress-essential-oil/" target="_blank" rel="noopener">https://aromaticstudies.com/learn-about-cypress-essential-oil/</a></li>
+        <li id="ref-U5">[U5] Carolina Water Birth. Artigo &quot;Essential Oils During Pregnancy&quot; discutindo evidência e prudência no uso de óleos essenciais na gravidez, útil como enquadramento geral de segurança. Disponível em: <a href="https://www.carolinawaterbirth.com/post/essential-oils-during-pregnancy" target="_blank" rel="noopener">https://www.carolinawaterbirth.com/post/essential-oils-during-pregnancy</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Aromatic Wisdom Institute. &quot;Fragrant Friday: Essential Oil Spotlight Cypress&quot; com sugestões de sinergias e aplicações tópicas para dores, circulação e congestionamento, incluindo doses típicas de óleo essencial. Disponível em: <a href="https://www.aromaticwisdominstitute.com/fragrant-friday-cypress/" target="_blank" rel="noopener">https://www.aromaticwisdominstitute.com/fragrant-friday-cypress/</a></li>
+        <li id="ref-R2">[R2] Aromatic Studies. &quot;Learn About Cypress Essential Oil&quot; com exemplos de usos em banhos de pés, massagens e misturas aromáticas, incluindo orientações básicas de diluição. Disponível em: <a href="https://aromaticstudies.com/learn-about-cypress-essential-oil/" target="_blank" rel="noopener">https://aromaticstudies.com/learn-about-cypress-essential-oil/</a></li>
+        <li id="ref-R3">[R3] Healthline. &quot;About Cypress Oil: Science, Benefits, Risks &amp; How to Use It&quot; com secções sobre formas de utilização, difusão e aplicação tópica segura. Disponível em: <a href="https://www.healthline.com/health/cypress-oil" target="_blank" rel="noopener">https://www.healthline.com/health/cypress-oil</a></li>
+        <li id="ref-R4">[R4] Dr. Axe. &quot;8 Surprising Benefits of Cypress Essential Oil&quot; apresentando receitas de óleos de massagem, banhos e misturas aromáticas com cipreste. Disponível em: <a href="https://draxe.com/essential-oils/cypress-essential-oil/" target="_blank" rel="noopener">https://draxe.com/essential-oils/cypress-essential-oil/</a></li>
+        <li id="ref-R5">[R5] Aromatic Wisdom Institute. Mesma página &quot;Fragrant Friday: Cypress&quot; com indicações de diluições e áreas de aplicação em massagens e compressas. Disponível em: <a href="https://www.aromaticwisdominstitute.com/fragrant-friday-cypress/" target="_blank" rel="noopener">https://www.aromaticwisdominstitute.com/fragrant-friday-cypress/</a></li>
+        <li id="ref-R6">[R6] Aromatic Studies. Recomendações de inalação húmida e difusão suave com óleo essencial de cipreste para apoio respiratório. Disponível em: <a href="https://aromaticstudies.com/learn-about-cypress-essential-oil/" target="_blank" rel="noopener">https://aromaticstudies.com/learn-about-cypress-essential-oil/</a></li>
+        <li id="ref-R7">[R7] Ask Ayurveda. Monografia &quot;Cupressus sempervirens&quot; incluindo orientações tradicionais de uso interno em forma de pó, decocto e extratos, com doses aproximadas. Disponível em: <a href="https://ask-ayurveda.com/wiki/article/4169-cupressus-sempervirens" target="_blank" rel="noopener">https://ask-ayurveda.com/wiki/article/4169-cupressus-sempervirens</a></li>
+        <li id="ref-R8">[R8] Medical Plant Virtual Tour – University of Arizona. Ficha &quot;Italian Cypress&quot; com referências a aplicações tradicionais de folhas e frutos em forma de decocções e usos externos. Disponível em: <a href="https://arboretum.arizona.edu/medicinal-plant-virtual-tour-italian-cypress" target="_blank" rel="noopener">https://arboretum.arizona.edu/medicinal-plant-virtual-tour-italian-cypress</a></li>
+        <li id="ref-R9">[R9] Natural Ingredient Resource Center. Monografia &quot;Cypress Oil&quot; com notas sobre utilização em sprays ambientais, desodorizantes naturais e produtos de higiene. Disponível em: <a href="https://naturalingredient.org/?p=1936" target="_blank" rel="noopener">https://naturalingredient.org/?p=1936</a></li>
+        <li id="ref-R10">[R10] Wikipedia. Secção de usos cosméticos e medicinais em &quot;Cupressus sempervirens&quot; em inglês, com referência à aplicação do óleo e sementes em cuidados de pele e cosmética. Disponível em: <a href="https://en.wikipedia.org/wiki/Cupressus_sempervirens" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Cupressus_sempervirens</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] Orhan I.E. et al. &quot;Potential of Cupressus sempervirens (Mediterranean Cypress) in Health&quot; – revisão sobre atividades biológicas e usos tradicionais do cipreste. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7149725/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC7149725/</a></li>
+        <li id="ref-M2">[M2] Batiha G.E.S. et al. &quot;Bioactive compounds, pharmacological actions and pharmacokinetics of essential oils&quot; com secções que referem Cupressus spp. como fonte de vários efeitos biológicos. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9898348/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC9898348/</a></li>
+        <li id="ref-M3">[M3] Khan M. et al. &quot;Medical importance of Cupressus sempervirens – A review&quot; compilando dados sobre atividades antimicrobianas, antioxidantes, anticancerígenas e outros efeitos farmacológicos. Disponível em: <a href="https://www.researchgate.net/publication/313742752_Medical_importance_of_Cupressus_sempervirens-A_review" target="_blank" rel="noopener">https://www.researchgate.net/publication/313742752_Medical_importance_of_Cupressus_sempervirens-A_review</a></li>
+        <li id="ref-M4">[M4] Frezza C. et al. &quot;There Is Not Only Cupressus sempervirens L.: A Review on the Essential Oils of Mediterranean Cypress&quot; revendo fitoquímica, usos etnobotânicos e atividades biológicas. Disponível em: <a href="https://www.mdpi.com/2076-3417/12/14/7353" target="_blank" rel="noopener">https://www.mdpi.com/2076-3417/12/14/7353</a></li>
+        <li id="ref-M5">[M5] Medicinal Plant Virtual Tour – University of Arizona Arboretum. Ficha &quot;Italian Cypress&quot; descrevendo usos tradicionais de folhas, frutos e sementes em distúrbios digestivos, inflamatórios e respiratórios. Disponível em: <a href="https://arboretum.arizona.edu/medicinal-plant-virtual-tour-italian-cypress" target="_blank" rel="noopener">https://arboretum.arizona.edu/medicinal-plant-virtual-tour-italian-cypress</a></li>
+        <li id="ref-M6">[M6] Aromatic Studies. &quot;Learn About Cypress Essential Oil&quot; discutindo propriedades expectorantes, diuréticas e adstringentes do óleo essencial de cipreste. Disponível em: <a href="https://aromaticstudies.com/learn-about-cypress-essential-oil/" target="_blank" rel="noopener">https://aromaticstudies.com/learn-about-cypress-essential-oil/</a></li>
+        <li id="ref-M7">[M7] Selim S.A. et al. &quot;Chemical composition, antimicrobial and antibiofilm activity of the essential oil and methanol extract of the Mediterranean cypress (Cupressus sempervirens L.)&quot; (BMC Complementary and Alternative Medicine, 2014). Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4052795/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC4052795/</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Selim S.A. et al. &quot;Chemical composition, antimicrobial and antibiofilm activity of the essential oil and methanol extract of the Mediterranean cypress (Cupressus sempervirens L.)&quot; descrevendo composição do óleo essencial e propriedades antimicrobianas. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4052795/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC4052795/</a></li>
+        <li id="ref-F2">[F2] Ben Nouri A. et al. &quot;Chemical Composition, Antioxidant Potential, and Antimicrobial Activity of Essential Oils from Cupressus sempervirens&quot; com quantificação de α-pineno e outros monoterpenos. Disponível em: <a href="https://onlinelibrary.wiley.com/doi/10.1155/2015/538929" target="_blank" rel="noopener">https://onlinelibrary.wiley.com/doi/10.1155/2015/538929</a></li>
+        <li id="ref-F3">[F3] Fayed S.A. et al. &quot;Chemical Composition, Antioxidant, Anticancer Properties of Cypress (Cupressus sempervirens) Essential Oil&quot; detalhando componentes principais como α-pineno e δ3-careno e atividades biológicas. Disponível em: <a href="https://www.notulaebotanicae.ro/index.php/nbha/article/download/10070/7828/37826" target="_blank" rel="noopener">https://www.notulaebotanicae.ro/index.php/nbha/article/download/10070/7828/37826</a></li>
+        <li id="ref-F4">[F4] ScenTree. Ficha &quot;Cypress oil&quot; com descrição de principais componentes do óleo essencial de cipreste e variações entre quimiotipos. Disponível em: <a href="https://www.scentree.co/en/Cypress_oil.html" target="_blank" rel="noopener">https://www.scentree.co/en/Cypress_oil.html</a></li>
+        <li id="ref-F5">[F5] Batiha G.E.S. et al. Revisão sobre compostos bioativos de óleos essenciais, incluindo referência a efeitos farmacológicos de Cupressus spp. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9898348/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC9898348/</a></li>
+        <li id="ref-F6">[F6] Khan M. et al. &quot;Medical importance of Cupressus sempervirens – A review&quot; com dados de fitoquímica (teores de taninos, flavonoides, saponinas e fenóis) da planta. Disponível em: <a href="https://www.researchgate.net/publication/313742752_Medical_importance_of_Cupressus_sempervirens-A_review" target="_blank" rel="noopener">https://www.researchgate.net/publication/313742752_Medical_importance_of_Cupressus_sempervirens-A_review</a></li>
+        <li id="ref-F7">[F7] Taha M.A. et al. &quot;Evaluation of phytochemicals and essential oils of Cupressus sempervirens in controlling cattle tick Rhipicephalus annulatus&quot; avaliando composição e atividade acaricida dos extratos. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11895369/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC11895369/</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Wikipedia. Artigo &quot;Cupressus sempervirens&quot; (secções de usos) descrevendo utilização ornamental, plantio em jardins, cemitérios, como corta-vento e para madeira. Disponível em: <a href="https://en.wikipedia.org/wiki/Cupressus_sempervirens" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Cupressus_sempervirens</a></li>
+        <li id="ref-A2">[A2] Wikipédia. Artigo &quot;Cipreste&quot; em português com referência ao cipreste-mediterrânico e ao uso como planta de jardim popular. Disponível em: <a href="https://pt.wikipedia.org/wiki/Cipreste" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Cipreste</a></li>
+        <li id="ref-A3">[A3] Revista Jardins. Artigo sobre o cipreste-comum como árvore ornamental, com notas sobre valor paisagístico, porte e utilização em alinhamentos. Disponível em: <a href="https://revistajardins.pt/plantas/arvores/beleza-alem-da-copa/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/arvores/beleza-alem-da-copa/</a></li>
+        <li id="ref-A4">[A4] Hubbard F. &quot;Three Centuries of Harpsichord Making&quot; (Harvard University Press, 1965), citado em Wikipedia, referindo o uso tradicional da madeira de cipreste em cravos e instrumentos musicais. Disponível em: <a href="https://en.wikipedia.org/wiki/Cupressus_sempervirens" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Cupressus_sempervirens</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] Revista Jardins. Discussão do uso de Cupressus sempervirens em jardins mediterrânicos como elemento vertical, sebe cortavento e árvore estrutural de baixa exigência, relevante para desenho em permacultura. Disponível em: <a href="https://revistajardins.pt/plantas/arvores/beleza-alem-da-copa/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/arvores/beleza-alem-da-copa/</a></li>
+        <li id="ref-P2">[P2] Plantamus. Ficha de cipreste-comum destacando utilização em sebes, alinhamentos e como barreira visual, com baixa manutenção em climas adequados. Disponível em: <a href="https://www.plantamus.pt/cupressus-sempervirens-cipreste-comum-b128d/" target="_blank" rel="noopener">https://www.plantamus.pt/cupressus-sempervirens-cipreste-comum-b128d/</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

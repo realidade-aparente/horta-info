@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html" class="ativa">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+  <a class="next" href="laranjeira-doce.html">Laranjeira (doce)</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Jasmim (<em>Jasminum spp. (sobretudo Jasminum officinale L., J. grandiflorum L. e J. sambac (L.) Aiton)</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Oleaceae</span>
+  <span>Parte usada: flores perfumadas frescas ou secas</span>
+  <span>Tipo: trepadeira lenhosa aromática ornamental</span>
+  <span>Produção: <strong>cultivada em jardins, pátios, vasos</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> regiões tropicais, subtropicais e mediterrânicas, hoje amplamente cultivada</div>
+  <div><strong>Uso principal</strong> relaxamento, apoio ao sono, conforto emocional e digestivo</div>
+  <div><strong>Perfil medicinal</strong> calmante ligeira, ansiolítica suave, digestiva, aromática e harmonizadora</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Jasmim (Jasminum spp. (sobretudo Jasminum officinale L., J. grandiflorum L. e J. sambac (L.) Aiton))</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>O jasmim é o nome comum de diversas espécies do género Jasminum (família Oleaceae), um grupo com cerca de 200 arbustos e trepadeiras de flores muito perfumadas. Neste projeto consideram‑se sobretudo o jasmim‑comum ou jasmim‑branco (Jasminum officinale L.), o jasmim‑de‑Espanha (J. grandiflorum L.) e o jasmim‑árabe ou jasmim‑de‑chá (J. sambac (L.) Aiton), que partilham um perfil aromático intenso e um uso tradicional semelhante em chás, perfumaria, cosmética e remédios caseiros.</p>
+      <p>São plantas lenhosas, trepadoras ou semi‑arbustivas, de crescimento vigoroso, com caules flexíveis que se apoiam em paredes, pérgulas ou sebes. As folhas são opostas, geralmente pinadas ou simples, e as flores, dispostas em cachos, são pequenas, estreladas, na maior parte das espécies brancas ou branco‑rosadas e muito ricas em óleo essencial. O jasmim‑comum pode atingir 6–8 m quando conduzido em suporte, formando rapidamente cortinas vegetais perfumadas. As flores concentram‑se sobretudo entre a primavera e o fim do verão em Portugal continental, podendo prolongar‑se até ao outono em locais abrigados.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a> <a href="#ref-D4">[D4]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, os jasmins verdadeiros mais usados no jardim (Jasminum officinale e J. grandiflorum) comportam‑se como plantas perenes, relativamente rústicas em regiões de inverno suave. A floração concentra‑se, em geral, da primavera ao fim do verão, com picos de florescimento entre maio e agosto, podendo prolongar‑se até ao início do outono em locais abrigados e soalheiros.
+O jasmim prefere solos bem drenados, ricos em matéria orgânica e exposições de sol pleno a meia‑sombra luminosa. Suporta alguma secura estival depois de bem instalado, mas responde melhor a regas regulares em períodos muito quentes e secos. Em zonas mais frias ou de geadas fortes podem perder a parte aérea ou parte da folhagem no inverno, rebentando de novo na primavera.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Portugal continental (litoral e regiões de inverno suave): floração principal de finais de primavera até fim do verão (aprox. maio–setembro).</li>
+        <li>Climas mais frescos ou zonas interiores: floração mais concentrada no verão; risco de danos por geada em invernos rigorosos.</li>
+        <li>Poda e condução: podar logo após a floração principal, para estimular novos ramos floríferos no ano seguinte.</li>
+        <li>Planta perene: estrutura lenhosa permanente, com necessidade de suporte em trepadeira (arames, grades, pérgulas, muros).</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-Em">[Em]</a> <a href="#ref-Portugal">[Portugal]</a> <a href="#ref-a">[a]</a> <a href="#ref-descrição">[descrição]</a> <a href="#ref-da">[da]</a> <a href="#ref-rusticidade">[rusticidade]</a> <a href="#ref-exigências">[exigências]</a> <a href="#ref-de">[de]</a> <a href="#ref-solo">[solo]</a> <a href="#ref-e">[e]</a> <a href="#ref-época">[época]</a> <a href="#ref-de">[de]</a> <a href="#ref-floração">[floração]</a> <a href="#ref-do">[do]</a> <a href="#ref-jasmim‑branco">[jasmim‑branco]</a> <a href="#ref-e">[e]</a> <a href="#ref-de">[de]</a> <a href="#ref-outros">[outros]</a> <a href="#ref-jasmins">[jasmins]</a> <a href="#ref-ornamentais">[ornamentais]</a> <a href="#ref-baseia‑se">[baseia‑se]</a> <a href="#ref-sobretudo">[sobretudo]</a> <a href="#ref-em">[em]</a> <a href="#ref-fichas">[fichas]</a> <a href="#ref-hortícolas">[hortícolas]</a> <a href="#ref-e">[e]</a> <a href="#ref-fontes">[fontes]</a> <a href="#ref-de">[de]</a> <a href="#ref-jardinagem">[jardinagem]</a> <a href="#ref-mediterrânica">[mediterrânica]</a> <a href="#ref-combinadas">[combinadas]</a> <a href="#ref-com">[com]</a> <a href="#ref-observação">[observação]</a> <a href="#ref-prática">[prática]</a> <a href="#ref-em">[em]</a> <a href="#ref-jardins.">[jardins.]</a> <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a> <a href="#ref-S3">[S3]</a> <a href="#ref-S4">[S4]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Infusão simples de flores secas de jasmim (Jasminum officinale ou J. grandiflorum) em mistura com chá verde ou chá branco: 1 colher de chá de flores secas por chávena (~240 ml) de água quase a ferver, deixando em infusão 3–5 minutos, até 2–3 chávenas por dia. Usado tradicionalmente como bebida aromática com efeito suave sobre o relaxamento e o bem‑estar, com suporte em estudos que descrevem atividade antioxidante, ansiolítica ligeira e moduladora do humor de extratos e aromas de jasmins. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></li>
+        <li>Infusão de flores secas de jasmim em água (sem chá verde), para uso ocasional em períodos de maior tensão ou dificuldade em adormecer: 1 colher de sobremesa rasa de flores secas por chávena de água, infundir 2–3 minutos, tomar 1 chávena ao fim da tarde e, se tolerado, outra ao deitar, evitando consumos prolongados sem acompanhamento profissional. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U4">[U4]</a></li>
+        <li>Inalação do aroma de jasmim (óleo essencial diluído em difusor, almofada aromática, inalação suave) como adjuvante em ansiedade ligeira, stress e perturbações do sono: 2–3 gotas de óleo essencial ou absoluto de jasminum a 3 % num difusor de água ou em inalação indireta, por períodos de 15–30 minutos, 1–2 vezes ao dia, respeitando as orientações de segurança para óleos essenciais. <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-U5">[U5]</a></li>
+        <li>Aplicação tópica pontual de óleo de jasmim (absoluto de Jasminum spp.) diluído em óleo vegetal, em massagem suave de zonas tensas (pescoço, ombros, plexo solar) ou em pequenos segmentos de pele seca/reativa: diluições típicas de 1–3 % em adulto saudável, evitando sempre pele irritada ou ferida, rosto de crianças e uso extensivo em grandes áreas corporais. <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-F1">[F1]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Chá de flores de jasmim simples, preparado com flores secas ou frescas, bebido ao serão para &quot;acalmar os nervos&quot;, aliviar o stress do dia e favorecer um sono mais tranquilo. <a href="#ref-U1">[U1]</a> <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a></li>
+        <li>Infusão de jasmim com mel, usada em muitas tradições como bebida de conforto para estados de tristeza, cansaço emocional ou convalescença ligeira. <a href="#ref-R2">[R2]</a></li>
+        <li>Jasmim em mistura com outras plantas para tisanas relaxantes (por exemplo com erva‑cidreira, tília, camomila), bebido ao final do dia ou em situações de ansiedade ligeira e tensão digestiva. <a href="#ref-R1">[R1]</a> <a href="#ref-R3">[R3]</a></li>
+        <li>Uso tópico tradicional de flores maceradas em óleo (óleo de jasmim caseiro) para fricções suaves em pele seca, massagens aromáticas relaxantes, apoio a cólicas menstruais ligeiras (massagem na zona abdominal) e como ingrediente de óleos corporais perfumados. <a href="#ref-R4">[R4]</a> <a href="#ref-A1">[A1]</a></li>
+        <li>Banhos aromáticos com flores de jasmim (frescas ou secas) adicionadas a água morna, isoladamente ou em combinação com sais e outros aromáticos, como ritual relaxante e para suavizar a pele. <a href="#ref-R3">[R3]</a> <a href="#ref-A1">[A1]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>Em doses alimentares habituais (chás aromatizados com jasmim ou consumo ocasional de infusões fracas), o jasmim é considerado geralmente seguro para a maioria dos adultos saudáveis, embora possam ocorrer reações alérgicas em pessoas sensíveis a plantas da família Oleaceae ou ao perfume intenso das flores. <a href="#ref-SG1">[SG1]</a> <a href="#ref-SG2">[SG2]</a></p>
+      <p>O chá de jasmim comercial é muitas vezes obtido a partir de chá verde ou preto aromatizado com flores de jasmim, pelo que contém cafeína. Pessoas sensíveis à cafeína, com hipertensão não controlada, doença cardíaca, insónia, ansiedade marcada, úlceras gástricas ou outras patologias em que a cafeína é desaconselhada devem limitar a ingestão ou procurar alternativas descafeinadas. <a href="#ref-SG1">[SG1]</a> <a href="#ref-SG3">[SG3]</a> <a href="#ref-SG4">[SG4]</a></p>
+      <p>Durante a gravidez e aleitamento, e em crianças, faltam dados robustos sobre a segurança do uso regular de jasmim em doses medicinais. As principais fontes recomendam limitar‑se a quantidades alimentares moderadas ou evitar o uso frequente de chás fortes e de óleos essenciais sem supervisão de profissional de saúde, sobretudo no primeiro trimestre de gravidez. <a href="#ref-SG1">[SG1]</a> <a href="#ref-SG2">[SG2]</a> <a href="#ref-SG5">[SG5]</a></p>
+      <p>O óleo essencial/absoluto de jasmim é uma substância concentrada. Deve ser sempre bem diluído em óleo vegetal antes de aplicação na pele, respeitando diluições baixas (1–3 % em adultos) e evitando uso em grávidas, lactantes, crianças, pessoas com pele muito sensível ou histórico de dermatite de contacto, salvo indicação de profissional com formação em aromaterapia clínica. Não deve ser ingerido em contexto doméstico. <a href="#ref-SG1">[SG1]</a> <a href="#ref-SG6">[SG6]</a> <a href="#ref-SG7">[SG7]</a></p>
+      <p>Tal como outros chás aromatizados, o jasmim pode interagir com medicamentos através da cafeína ou de compostos bioativos. Pessoas sob medicação crónica (nomeadamente anticoagulantes, antidepressivos, ansiolíticos, anti‑hipertensores ou fármacos para tiroide) devem discutir o consumo regular de chá de jasmim com o médico ou farmacêutico. <a href="#ref-SG1">[SG1]</a> <a href="#ref-SG3">[SG3]</a> <a href="#ref-SG4">[SG4]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        Com jasmim preparam‑se sobretudo infusões suaves (chá de flores de jasmim isolado ou em mistura com chá verde/branco), tisanas relaxantes combinadas com outras plantas calmantes, chás aromáticos digestivos e preparados externos como óleos macerados, óleos de massagem e banhos aromáticos. As receitas variam de contextos mais tradicionais (fitoterapia popular asiática e mediterrânica) a usos modernos em aromaterapia. Toda a utilização terapêutica deve respeitar as advertências de segurança acima, entendendo estes preparados como complemento e não substituto de acompanhamento médico.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="jasmim_receitas.html">Chá simples de flores de jasmim:</a> infusão aromática preparada com flores secas ou frescas, bebida morna para relaxar, aliviar o stress diário e criar um ambiente mais tranquilo. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="jasmim_receitas.html">Chá de jasmim com chá verde:</a> bebida inspirada em tradições asiáticas que combina chá verde com flores de jasmim, unindo leve estímulo da cafeína com efeito calmante do aroma floral. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="jasmim_receitas.html">Infusão de jasmim com mel:</a> tisana doce em que as flores de jasmim são combinadas com mel, usada em momentos de tristeza ligeira, cansaço emocional e necessidade de conforto reconfortante. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="jasmim_receitas.html">Chá de jasmim estilo Mòlìhuā chá:</a> versão caseira do clássico chá chinês perfumado, onde o chá é aromatizado com flores de jasmim para obter bebida suave, perfumada e relaxante após refeições leves. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="jasmim_receitas.html">Chá de jasmim com erva‑cidreira e limão:</a> tisana calma e digestiva que junta jasmim, erva‑cidreira e notas cítricas, indicada para finais de dia e digestões nervosas. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="jasmim_receitas.html">Chá verde com flores de jasmim soltas:</a> chá verde preparado com flores avulsas de jasmim, resultando numa bebida aromática adequada a consumos moderados em horários de maior atividade. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="jasmim_receitas.html">Chá de jasmim artesanal:</a> chá perfumado obtido ao alternar camadas de chá e flores de jasmim, permitindo que o aroma floral impregne as folhas antes de secar para uso posterior em infusão. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="jasmim_receitas.html">Óleo macerado de jasmim para massagem:</a> preparação caseira em que flores de jasmim são maceradas em óleo vegetal neutro, usado em pequenas quantidades para massagens relaxantes em pele íntegra. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="jasmim_receitas.html">Banho aromático de jasmim:</a> banho morno ao qual se adiciona infusão concentrada de jasmim, criando um ritual de relaxamento corporal e mental ao final do dia. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="jasmim_receitas.html">Spray aromático de jasmim:</a> preparado com algumas gotas de óleo essencial de jasmim diluídas em base adequada, aplicado como spray de ambiente ou em almofadas aromáticas, sempre em quantidades moderadas. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>O jasmim é tradicionalmente associado ao sistema nervoso, sendo usado em muitas culturas como planta aromática calmante, antidepressiva suave e moduladora do humor. Estudos com óleo essencial e extratos de Jasminum spp. sugerem efeitos ansiolíticos ligeiros, melhoria da qualidade do sono, redução de stress subjetivo e possíveis benefícios em sintomas depressivos ligeiros, sobretudo quando o aroma é inalado de forma repetida. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a></p>
+      <p>Para além dos efeitos sobre humor e sono, extratos de jasmim demonstraram atividade antioxidante, anti‑inflamatória, analgésica, antimicrobiana e antiviral em modelos pré‑clínicos. Alguns trabalhos exploram ainda potenciais efeitos hipoglicemiantes, cardioprotetores e protetores da pele, embora estes resultados devam ser interpretados com cautela e enquadrados como investigação em curso, não como provas de eficácia clínica estabelecida. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>Em fitoterapia prática, o jasmim é sobretudo usado como planta complementar em chás e preparados combinados, ajudando a tornar mais agradáveis infusões de outras ervas, reforçando o bem‑estar subjetivo e o relaxamento. É frequentemente associado a momentos de autocuidado, rituais de chá e práticas de gestão de stress, o que contribui também, por vias psicológicas, para a perceção de benefício. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Adjuvante na gestão de ansiedade ligeira, nervosismo e stress quotidiano, através de chás aromatizados e inalação do aroma de jasmim, com suporte em estudos de aromaterapia e em uso tradicional. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a></li>
+        <li>Apoio à qualidade do sono e ao relaxamento antes de deitar, em combinação com práticas de higiene do sono e, quando adequado, com outras plantas calmantes. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-SG5">[SG5]</a></li>
+        <li>Suporte complementar em queixas digestivas funcionais ligeiras (má digestão, sensação de peso, gases), sobretudo quando usado em mistura com chá verde/branco e outras plantas digestivas. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a></li>
+        <li>Adjuvante em sintomas menstruais e de tensão pré‑menstrual, tanto por via aromática (óleo essencial) como por bebidas de conforto com jasmim, em combinação com abordagens médicas e de estilo de vida. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M5">[M5]</a></li>
+        <li>Apoio à saúde da pele em uso tópico (óleos macerados, cremes aromatizados), aproveitando propriedades emolientes, calmantes e antimicrobianas dos extratos e do aroma. <a href="#ref-M1">[M1]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></li>
+        <li>Suporte geral ao bem‑estar e ao humor, integrando o jasmim em rituais de chá, banhos aromáticos e práticas de autocuidado, o que pode facilitar a gestão de stress e promover relaxamento. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>As espécies de Jasminum usadas neste projeto (em especial J. officinale e J. sambac) apresentam uma composição fitoquímica rica, com presença de óleos essenciais, saponinas triterpénicas, iridóides, secoiridóides, lignanos, flavonoides e outros fenóis. Nos extratos aquosos de folhas de J. officinale foram quantificados teores relativamente elevados de compostos fenólicos totais, flavonoides e flavonóis, o que ajuda a explicar a atividade antioxidante observada em ensaios in vitro e em modelos animais. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></p>
+      <p>O óleo essencial e os absolutos de jasmim contêm uma fração volátil complexa em que podem predominar, consoante a espécie e o método de extração, componentes como fitol, alcoóis alifáticos de cadeia longa, sesquiterpenos e ésteres aromáticos (por exemplo benzil benzoato, benzil acetato), para além de compostos azotados responsáveis por notas olfativas características. Estes constituintes têm sido relacionados com atividades ansiolíticas, moduladoras do sistema nervoso central, analgésicas e anti‑inflamatórias observadas em diferentes modelos experimentais. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>Diversos estudos pré‑clínicos com extratos de Jasminum officinale e J. sambac relatam ainda atividades antimicrobianas (particularmente contra bactérias e fungos oportunistas), antivirais (incluindo efeitos de certos secoiridóides sobre replicação do vírus da hepatite B em modelos celulares e animais), e potenciais efeitos cardiometabólicos (por exemplo melhoria de parâmetros glicémicos e perfil lipídico em modelos animais). Embora estes resultados sejam promissores, a sua tradução direta para doses e formas de utilização em humanos exige prudência. <a href="#ref-F1">[F1]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Compostos fenólicos totais em extratos aquosos de folhas de Jasminum officinale.</td><td>104,02 ± 1,28 mg/g equivalente de ácido gálico (fenóis totais).</td></tr>
+        <tr><td>Flavonoides totais em extratos aquosos de folhas de Jasminum officinale.</td><td>10,76 ± 0,83 mg/g equivalente de quercetina (flavonoides totais).</td></tr>
+        <tr><td>Flavonóis totais em extratos aquosos de folhas de Jasminum officinale.</td><td>5,65 ± 0,45 mg/g equivalente de quercetina (flavonóis totais).</td></tr>
+        <tr><td>Componentes principais do óleo essencial de Jasminum officinale (fração volátil identificada por GC‑MS).</td><td>Principais componentes voláteis em torno de 10–26 % m/m cada (fitol, alcoóis diterpénicos e outros terpenoides de cadeia longa) no óleo essencial.</td></tr>
+        <tr><td>Secoiridóides e outros glicosídeos isolados de flores e folhas de Jasminum officinale e J. sambac, com atividade antiviral e antioxidante.</td><td>Valores típicos de concentrações ativas em ensaios antivirais e antioxidantes na gama das dezenas de μg/ml para alguns secoiridóides e glicosídeos (por exemplo oleuropeína e análogos).</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Perfumaria e cosmética natural: absoluto e óleo essencial de jasmim amplamente usados em perfumes, óleos corporais, sabonetes e cremes pelo aroma intenso e pelas propriedades calmantes e sensoriais. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Planta ornamental de elevado valor estético, utilizada para cobrir muros, pérgulas, vedações e fachadas, conferindo sombra parcial e forte impacto visual e olfativo. <a href="#ref-A1">[A1]</a> <a href="#ref-S2">[S2]</a> <a href="#ref-S4">[S4]</a></li>
+        <li>Uso em rituais culturais, religiosos e festivos em vários países (por exemplo na Ásia do Sul e Sudeste Asiático), onde as flores de jasmim são usadas em guirlandas, oferendas, cerimónias e decoração. <a href="#ref-A1">[A1]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Atração de polinizadores e insetos benéficos, contribuindo para a biodiversidade funcional da horta e do jardim. <a href="#ref-A1">[A1]</a> <a href="#ref-S1">[S1]</a> <a href="#ref-S4">[S4]</a></li>
+        <li>Matéria‑prima aromática para preparados de uso doméstico, como saquinhos perfumados, sprays de ambiente, velas artesanais e misturas pot‑pourri. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Planta de valor educativo e sensorial em jardins terapêuticos, hortas escolares e espaços de bem‑estar, pela intensidade do perfume e pela associação a práticas de relaxamento. <a href="#ref-A1">[A1]</a> <a href="#ref-A3">[A3]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 7,9 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em contexto de permacultura, o jasmim funciona sobretudo como planta medicinal aromática e ornamental de suporte ecológico, ocupando treliças, muros e pérgulas com uma massa vegetal relativamente leve mas muito perfumada. Oferece néctar e pólen a abelhas, borboletas e outros insetos benéficos, acrescenta valor sensorial ao espaço e fornece flores para chás suaves, tisanas aromáticas, macerações oleosas e experimentação em cosmética natural. Após bem estabelecido, exige poucos cuidados para além de poda de formação e algum controlo de vigor.
+O valor atribuído reflete a combinação de usos medicinais e aromáticos relevantes (embora não alimentares em grande quantidade), um papel ecológico positivo na atração de polinizadores, boa adaptação a climas mediterrânicos suaves e forte valor cultural/simbólico. A ausência de espinhos e de toxicidade marcada em usos tradicionais, aliada a um comportamento geralmente não invasor no contexto hortícola caseiro, contribui para uma avaliação globalmente favorável.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação do jasmim resulta de valores moderados em uso alimentar humano (ALIM=1), dado que as flores são usadas sobretudo como aromatizante em chás e tisanas, e valores elevados em uso medicinal/aromático (MED=2), estrutura perene trepadora (ESTR=2) e suporte ecológico a polinizadores (ECO=2). Há ainda um contributo relevante para solo/biomassa (SOLO=1), principalmente como cobertura vertical e fonte de material lenhoso leve para poda e compostagem, e uma rusticidade globalmente boa em climas mediterrânicos (RUST=1), desde que o solo seja bem drenado e a planta tenha acesso a sol e algum abrigo. A multifuncionalidade cultural e paisagística (MULT=2) é elevada, combinando perfume marcante, valor ornamental, usos em rituais e aplicação em aromaterapia e cosmética.
+No que respeita a penalizações, o jasmim verdadeiro apresenta baixo risco de toxicidade em usos tradicionais (TOX=0), não possui espinhos relevantes (PERIGO=0) e, embora possa ganhar vigor em condições muito favoráveis, raramente se comporta como espécie fortemente invasora em hortas domésticas bem geridas (INVAS=0). A competição por água e luz é moderada e gerível com poda e desenho adequado (COMP=0). O valor final em escala 0–10 resulta da aplicação do algoritmo descrito em anexo (soma dos critérios positivos até 14 pontos, subtração de penalizações, com conversão por regra de três simples), situando o jasmim em cerca de 7,9/10 e indicando uma planta de elevada funcionalidade em permacultura, especialmente útil em bordaduras aromáticas, trepadeiras de sombra leve e sistemas agroecológicos biodiversos.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Wikipedia. Jasmine. Síntese sobre o género Jasminum, espécies principais, distribuição e usos gerais. Disponível em: <a href="https://en.wikipedia.org/wiki/Jasmine" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Jasmine</a></li>
+        <li id="ref-D2">[D2] Wikipedia. Jasminum officinale. Descrição botânica, distribuição e notas sobre uso de J. officinale. Disponível em: <a href="https://en.wikipedia.org/wiki/Jasminum_officinale" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Jasminum_officinale</a></li>
+        <li id="ref-D3">[D3] Royal Botanic Gardens, Kew. Common jasmine (Jasminum officinale). Ficha botânica e ecológica da espécie, com descrição de porte e habitat. Disponível em: <a href="https://www.kew.org/plants/common-jasmine" target="_blank" rel="noopener">https://www.kew.org/plants/common-jasmine</a></li>
+        <li id="ref-D4">[D4] Encyclopaedia Britannica. Jasmine (plant). Artigo de referência sobre o género Jasminum, número de espécies e importância ornamental. Disponível em: <a href="https://www.britannica.com/plant/jasmine-plant" target="_blank" rel="noopener">https://www.britannica.com/plant/jasmine-plant</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Jardins (Revista). O despertar dos sentidos: aromas no jardim. Artigo em português que destaca Jasminum officinale como trepadeira perfumada para jardins mediterrânicos. Disponível em: <a href="https://revistajardins.pt/plantas/o-despertar-dos-sentidos-aromas-no-jardim/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/o-despertar-dos-sentidos-aromas-no-jardim/</a></li>
+        <li id="ref-S2">[S2] Árvores e Arbustos de Portugal. Jasmineiro‑galego (Jasminum officinalis). Ficha de cultivo com informação sobre rusticidade, solo e necessidades de luz em Portugal. Disponível em: <a href="https://www.arvoresearbustosdeportugal.com/portfolio-item/jasmineiro-galego-jasminum-officinalis/" target="_blank" rel="noopener">https://www.arvoresearbustosdeportugal.com/portfolio-item/jasmineiro-galego-jasminum-officinalis/</a></li>
+        <li id="ref-S3">[S3] Plantazon. Jasmim officinale (PT). Descrição hortícola, indicação de resistência ao inverno e nota sobre atrair borboletas. Disponível em: <a href="https://www.plantazon.pt/jasmim-officinale-pt-a14027.html" target="_blank" rel="noopener">https://www.plantazon.pt/jasmim-officinale-pt-a14027.html</a></li>
+        <li id="ref-S4">[S4] Leroy Merlin Portugal. Jasminum officinale – ficha de produto. Informação prática sobre posição solar, solo e cuidados de cultivo para jasmim‑estrela/jasmim comum. Disponível em: <a href="https://www.leroymerlin.pt/produtos/jasmim-estrela-6-pcs-jasminum-officinale-altura-25-40cm-9cm-87652018.html" target="_blank" rel="noopener">https://www.leroymerlin.pt/produtos/jasmim-estrela-6-pcs-jasminum-officinale-altura-25-40cm-9cm-87652018.html</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-SG1">[SG1] RxList. Jasmine: Health Benefits, Side Effects, Uses, Dose &amp; Precautions. Síntese sobre segurança do jasmim em doses alimentares, advertências para gravidez, aleitamento e alergias. Disponível em: <a href="https://www.rxlist.com/supplements/jasmine.htm" target="_blank" rel="noopener">https://www.rxlist.com/supplements/jasmine.htm</a></li>
+        <li id="ref-SG2">[SG2] WebMD. Jasmine – Uses and Side Effects. Informação sobre uso, potenciais reações adversas e precauções (incluindo gravidez e aleitamento). Disponível em: <a href="https://www.webmd.com/vitamins/ai/ingredientmono-617/jasmine" target="_blank" rel="noopener">https://www.webmd.com/vitamins/ai/ingredientmono-617/jasmine</a></li>
+        <li id="ref-SG3">[SG3] Tua Saúde. Chá de jasmim: para que serve, como fazer (e contraindicações). Artigo em português com orientações de uso, limitações para grupos de risco e dose diária sugerida. Disponível em: <a href="https://www.tuasaude.com/jasmim/" target="_blank" rel="noopener">https://www.tuasaude.com/jasmim/</a></li>
+        <li id="ref-SG4">[SG4] Lybrate. Benefits of Jasmine Tea And Its Side Effects. Discussão dos possíveis efeitos adversos ligados à cafeína e interações com patologias/medicação. Disponível em: <a href="https://www.lybrate.com/topic/benefits-of-jasmine-tea-and-its-side-effects" target="_blank" rel="noopener">https://www.lybrate.com/topic/benefits-of-jasmine-tea-and-its-side-effects</a></li>
+        <li id="ref-SG5">[SG5] Cymbiotika. Understanding the Side Effects of Jasmine Tea: What You Need to Know. Artigo sobre efeitos secundários, sensibilidade à cafeína e precauções em grupos específicos. Disponível em: <a href="https://cymbiotika.com/blogs/health-hub/understanding-the-side-effects-of-jasmine-tea-what-you-need-to-know" target="_blank" rel="noopener">https://cymbiotika.com/blogs/health-hub/understanding-the-side-effects-of-jasmine-tea-what-you-need-to-know</a></li>
+        <li id="ref-SG6">[SG6] Essential Three. How to Use Jasmine Essential Oil with Money-saving Tips. Texto de aromaterapia com recomendações de diluição, modos de aplicação e cuidados gerais de segurança. Disponível em: <a href="https://essentialthree.com/how-to-use-jasmine-essential-oil/" target="_blank" rel="noopener">https://essentialthree.com/how-to-use-jasmine-essential-oil/</a></li>
+        <li id="ref-SG7">[SG7] Health Canada. Jasmine oil, perfumes and essences of jasmine and your health. Ficha de segurança sobre óleo de jasmim em produtos cosméticos e orientações de uso seguro. Disponível em: <a href="https://www.canada.ca/en/health-canada/services/chemicals-product-safety/jasmine-oil.html" target="_blank" rel="noopener">https://www.canada.ca/en/health-canada/services/chemicals-product-safety/jasmine-oil.html</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Tua Saúde. Chá de jasmim: para que serve, como fazer (e contraindicações). Receita detalhada de infusão de flores de jasmim com quantidades e posologia sugerida. Disponível em: <a href="https://www.tuasaude.com/jasmim/" target="_blank" rel="noopener">https://www.tuasaude.com/jasmim/</a></li>
+        <li id="ref-R2">[R2] Chás do Mundo. Chá de Flores de Jasmim (Jasminum grandiflorum L) – ficha de produto. Instruções de preparação do chá de jasmim com dosagem e tempo de infusão. Disponível em: <a href="https://chasdomundo.pt/pt/chas-avulso/plantas-simples/flores-de-jasmim" target="_blank" rel="noopener">https://chasdomundo.pt/pt/chas-avulso/plantas-simples/flores-de-jasmim</a></li>
+        <li id="ref-R3">[R3] Clube do Mel. Jasmim com mel: Receita e Benefícios Naturais. Receita de infusão de jasmim com mel, com quantidades indicadas e modo de preparação. Disponível em: <a href="https://glossario.clubedomel.com.br/glossario/jasmim-com-mel/" target="_blank" rel="noopener">https://glossario.clubedomel.com.br/glossario/jasmim-com-mel/</a></li>
+        <li id="ref-R4">[R4] Adriana Tenchini. Chá de Jasmim – Mòlìhuā Chá. Receita de chá de flores desidratadas de jasmim com proporções e modo de preparo passo a passo. Disponível em: <a href="https://adrianatenchini.com.br/2025/07/25/cha-de-jasmim-molihua-cha/" target="_blank" rel="noopener">https://adrianatenchini.com.br/2025/07/25/cha-de-jasmim-molihua-cha/</a></li>
+        <li id="ref-R5">[R5] Panelinha. Chá de jasmim e erva‑cidreira. Receita em português de tisana combinando chá de jasmim e erva‑cidreira, com quantidades e modo de preparação. Disponível em: <a href="https://panelinha.com.br/receita/cha-de-jasmim-e-erva-cidreira" target="_blank" rel="noopener">https://panelinha.com.br/receita/cha-de-jasmim-e-erva-cidreira</a></li>
+        <li id="ref-R6">[R6] Chás do Mundo. Chá Verde com Jasmim. Indicações de preparo de chá verde aromatizado com flores de jasmim, doses por chávena e número de tomas diárias. Disponível em: <a href="https://chasdomundo.pt/pt/chas-avulso/chas-verdes/cha-verde-com-jasmim" target="_blank" rel="noopener">https://chasdomundo.pt/pt/chas-avulso/chas-verdes/cha-verde-com-jasmim</a></li>
+        <li id="ref-R7">[R7] Nitty Gritty Life. How to Make Exotically Scented Jasmine Tea at Home. Receita caseira de chá de jasmim utilizando camadas de flores frescas e folhas de chá. Disponível em: <a href="https://nittygrittylife.com/how-to-make-jasmine-tea/" target="_blank" rel="noopener">https://nittygrittylife.com/how-to-make-jasmine-tea/</a></li>
+        <li id="ref-R8">[R8] umCOMO. Como fazer óleo de jasmim. Guia passo a passo para preparar óleo macerado de jasmim em casa, com quantidades e tempo de maceração. Disponível em: <a href="https://beleza.umcomo.com.br/artigo/como-fazer-oleo-de-jasmim-12756.html" target="_blank" rel="noopener">https://beleza.umcomo.com.br/artigo/como-fazer-oleo-de-jasmim-12756.html</a></li>
+        <li id="ref-R9">[R9] Casa d&#x27;Aromaterapia. AromaLupa – Óleo Essencial de Jasmim. Artigo em português com sugestões de uso em massagens e rituais de relaxamento, incluindo combinações práticas com óleos vegetais. Disponível em: <a href="https://www.casadaromaterapia.pt/blogs/novidades/aromalupa-%F0%9F%94%8E-oleo-essencial-de-jasmim" target="_blank" rel="noopener">https://www.casadaromaterapia.pt/blogs/novidades/aromalupa-%F0%9F%94%8E-oleo-essencial-de-jasmim</a></li>
+        <li id="ref-R10">[R10] Essential Three. How to Use Jasmine Essential Oil with Money-saving Tips. Sugestões de aplicação em difusores, sprays e inalação pessoal, com indicações práticas de diluição. Disponível em: <a href="https://essentialthree.com/how-to-use-jasmine-essential-oil/" target="_blank" rel="noopener">https://essentialthree.com/how-to-use-jasmine-essential-oil/</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] Al-Snafi AE. Pharmacology and Medicinal Properties of Jasminum officinale – A Review. Indo American Journal of Pharmaceutical Sciences, 2018. Revisão sobre constituintes, atividades farmacológicas e usos tradicionais de J. officinale. Disponível em: <a href="https://www.researchgate.net/publication/324521531_PHARMACOLOGY_AND_MEDICINAL_PROPERTIES_OF_JASMINUM_OFFICINALE-A_REVIEW" target="_blank" rel="noopener">https://www.researchgate.net/publication/324521531_PHARMACOLOGY_AND_MEDICINAL_PROPERTIES_OF_JASMINUM_OFFICINALE-A_REVIEW</a></li>
+        <li id="ref-M2">[M2] Sahu R, Kumari U. Pharmacological and Therapeutic Properties of Jasminum Officinale. Ecology, Environment and Conservation / Indian Ecological Society, 2022. Revisão recente das propriedades farmacológicas e potenciais aplicações terapêuticas de jasmins. Disponível em: <a href="https://indianecologicalsociety.com/wp-content/themes/ecology/volume_pdfs/1657765760.pdf" target="_blank" rel="noopener">https://indianecologicalsociety.com/wp-content/themes/ecology/volume_pdfs/1657765760.pdf</a></li>
+        <li id="ref-M3">[M3] Mourya NMN et al. A review on Jasminum sambac: A potential medicinal plant. Herbs &amp; Drugs: An International Journal of Research in Pharmacology, 2017. Revisão sobre usos tradicionais e atividades farmacológicas de J. sambac. Disponível em: <a href="https://www.saapjournals.org/index.php/herbsanddrugs/article/view/59" target="_blank" rel="noopener">https://www.saapjournals.org/index.php/herbsanddrugs/article/view/59</a></li>
+        <li id="ref-M4">[M4] Wang H et al. Jasminum sambac: Progress in research on pharmacological activities and mechanisms. Journal of Ethnopharmacology / ScienceDirect, 2025. Revisão atualizada das atividades farmacológicas e mecanismos de ação de J. sambac. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0378874125011705" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S0378874125011705</a></li>
+        <li id="ref-M5">[M5] Ask Ayurveda. Jasminum officinale (Common Jasmine) in Ayurveda. Síntese de usos ayurvédicos de jasmim para stress, sono e pele, correlacionados com evidência moderna. Disponível em: <a href="https://ask-ayurveda.com/wiki/article/4742-jasminum-officinale" target="_blank" rel="noopener">https://ask-ayurveda.com/wiki/article/4742-jasminum-officinale</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Al-Snafi AE. Pharmacology and Medicinal Properties of Jasminum officinale – A Review. Indo American Journal of Pharmaceutical Sciences, 2018. Inclui dados sobre composição química, fenóis totais, flavonoides e estudos antimicrobianos e antivirais. Disponível em: <a href="https://www.researchgate.net/publication/324521531_PHARMACOLOGY_AND_MEDICINAL_PROPERTIES_OF_JASMINUM_OFFICINALE-A_REVIEW" target="_blank" rel="noopener">https://www.researchgate.net/publication/324521531_PHARMACOLOGY_AND_MEDICINAL_PROPERTIES_OF_JASMINUM_OFFICINALE-A_REVIEW</a></li>
+        <li id="ref-F2">[F2] Rescigno A et al. Harnessing Jasminum Bioactive Compounds for Functional Foods and Nutraceuticals. Food Frontiers, 2025. Discussão sobre compostos bioativos de jasmins e potenciais aplicações em alimentos funcionais. Disponível em: <a href="https://iadns.onlinelibrary.wiley.com/doi/10.1002/fft2.70024" target="_blank" rel="noopener">https://iadns.onlinelibrary.wiley.com/doi/10.1002/fft2.70024</a></li>
+        <li id="ref-F3">[F3] Sahu R, Kumari U. Pharmacological and Therapeutic Properties of Jasminum Officinale. Ecology, Environment and Conservation / Indian Ecological Society, 2022. Dados sobre extratos, atividades antioxidantes e ensaios antimicrobianos. Disponível em: <a href="https://indianecologicalsociety.com/wp-content/themes/ecology/volume_pdfs/1657765760.pdf" target="_blank" rel="noopener">https://indianecologicalsociety.com/wp-content/themes/ecology/volume_pdfs/1657765760.pdf</a></li>
+        <li id="ref-F4">[F4] Reshma D et al. Phytochemical and pharmacological properties of five Jasminum species. CAB International / CABI Digital Library, 2021. Trabalho comparativo com dados de composicão e atividades biológicas em várias espécies de Jasminum. Disponível em: <a href="https://www.cabidigitallibrary.org/doi/pdf/10.5555/20220164078" target="_blank" rel="noopener">https://www.cabidigitallibrary.org/doi/pdf/10.5555/20220164078</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Kew. Common jasmine (Jasminum officinale). Página institucional sobre usos ornamentais, importância cultural e valor sensorial do jasmim. Disponível em: <a href="https://www.kew.org/plants/common-jasmine" target="_blank" rel="noopener">https://www.kew.org/plants/common-jasmine</a></li>
+        <li id="ref-A2">[A2] Panier des Sens. The benefits of jasmine for the skin. Artigo sobre utilização cosmética de jasmim em produtos para pele, com destaque para propriedades sensoriais e antioxidantes. Disponível em: <a href="https://panierdessens.com/en-fr/blogs/journal/the-benefits-of-jasmine-for-the-skin" target="_blank" rel="noopener">https://panierdessens.com/en-fr/blogs/journal/the-benefits-of-jasmine-for-the-skin</a></li>
+        <li id="ref-A3">[A3] Blog Morada Ideal. Jasmim: a flor aromática que conquista corações. Texto em português sobre o uso ornamental, cuidados básicos e valor paisagístico do jasmim em jardins. Disponível em: <a href="https://blog.moradaideal.pt/2025/03/03/jasmim-a-flor-que-conquista-coracoes" target="_blank" rel="noopener">https://blog.moradaideal.pt/2025/03/03/jasmim-a-flor-que-conquista-coracoes</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] Plantazon. Jasmim officinale (PT). Ficha de produto com notas sobre rusticidade, baixa manutenção e atração de borboletas, relevante para avaliação ecológica em jardins. Disponível em: <a href="https://www.plantazon.pt/jasmim-officinale-pt-a14027.html" target="_blank" rel="noopener">https://www.plantazon.pt/jasmim-officinale-pt-a14027.html</a></li>
+        <li id="ref-P2">[P2] Florastore. Jasminoides officinale – set of 6. Descrição hortícola que destaca o uso do jasmim branco como trepadeira para cobrir paredes, resistência e atração de abelhas, útil para contexto de permacultura. Disponível em: <a href="https://pt.florastore.com/products/jasminoides-officinale-set-van-6-wit-jasmijn-pot-9cm-hoogte-25-40cm" target="_blank" rel="noopener">https://pt.florastore.com/products/jasminoides-officinale-set-van-6-wit-jasmijn-pot-9cm-hoogte-25-40cm</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

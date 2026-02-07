@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html" class="ativa">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+  <a class="next" href="manjericao.html">Manjericão</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Malva (<em>Malva sylvestris L.; Malva arborea (Lavatera arborea) L.</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Malvaceae</span>
+  <span>Parte usada: folhas, flores e sementes</span>
+  <span>Tipo: erva perene medicinal comestível</span>
+  <span>Produção: <strong>espontânea em solos ricos e hortas</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> Europa, Norte de África e Ásia ocidental, hoje amplamente naturalizada</div>
+  <div><strong>Uso principal</strong> emoliente respiratório e digestivo, apoio urinário, cutâneo e depurativo tradicional</div>
+  <div><strong>Perfil medicinal</strong> planta mucilaginosa demulcente, anti-inflamatória, antioxidante, protetora de mucosas e pele</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Malva (Malva sylvestris L.; Malva arborea (Lavatera arborea) L.)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>A malva-silvestre (Malva sylvestris L.) é uma planta herbácea perene ou bienal, de 30 a 120 cm de altura, com caules eretos ou prostrados e folhas largas, palmatilobadas, de margem serrada e textura ligeiramente aveludada. Produz flores vistosas em tons de rosa a púrpura, com veias mais escuras, dispostas nas axilas das folhas. Já a malva-das-praias ou tree mallow (Malva arborea, sin. Lavatera arborea L.) é um subarbusto ou pequeno arbusto costeiro, que pode alcançar 2–3 m de altura, com caule lenhificado e folhas grandes e arredondadas.</p>
+      <p>Em Portugal, Malva sylvestris é conhecida simplesmente como malva, malva-silvestre, malva-comum ou malva-dos-campos, enquanto Malva arborea recebe designações como malva-das-praias, malva-arbórea ou malva-das-rochas. Em inglês, os nomes mais frequentes são common mallow (M. sylvestris) e tree mallow ou sea mallow (M. arborea). Ambas as espécies pertencem à família Malvaceae, a mesma da alteia (Althaea officinalis) e da hibíscus, partilhando o elevado teor de mucilagens.</p>
+      <p>As malvas instalam-se com facilidade em solos ricos em azoto, pousios, bermas de caminhos, terrenos ruderalizados e zonas costeiras, sendo frequentes em Portugal continental e noutros países da bacia mediterrânica e da Europa atlântica. No uso medicinal utilizam-se sobretudo folhas e flores, frescas ou secas, em chás, decocções suaves, macerados a frio e preparados externos.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, Malva sylvestris comporta-se como hemicriptófito perene ou bienal que rebenta na primavera, floresce desde a primavera até ao outono e pode manter alguma folhagem verde durante o inverno em locais amenos. Malva arborea é típica de zonas costeiras, com ciclo bienal ou perene curto, formando rosetas e caules robustos que florescem a partir da primavera.
+As folhas jovens e tenras, bem como as flores, são colhidas sobretudo da primavera ao início do verão para consumo fresco e uso medicinal, embora, em locais favoráveis, seja possível encontrar partes utilizáveis durante grande parte do ano. A colheita deve evitar zonas contaminadas e plantas muito velhas, fibrosas ou com sinais de doença.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Rebentação e crescimento vegetativo principal: primavera, com desenvolvimento contínuo em solos húmidos e ricos em azoto.</li>
+        <li>Floração de Malva sylvestris: tipicamente de abril/maio até ao final do verão, podendo prolongar-se em outonos suaves.</li>
+        <li>Floração de Malva arborea nas zonas costeiras: primaveras e verões, com grande massa de flores em taludes e arribas marítimas.</li>
+        <li>Época preferencial de colheita de folhas e flores tenras para uso medicinal e alimentar: primavera e início do verão, evitando plantas muito velhas ou poluídas.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Infusões de folhas e flores secas de Malva sylvestris (cerca de 2–5 g em 150–250 mL de água quente, sem fervura prolongada) para irritações da boca e garganta, tosse seca e inflamações ligeiras do trato respiratório superior, explorando as propriedades demulcentes e emolientes descritas em monografias europeias. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a></li>
+        <li>Infusões ou macerados de Malva sylvestris usados por via interna como adjuvantes em desconforto gastrointestinal leve, gastrite, obstipação ligeira e inflamações do trato digestivo, tirando partido do efeito suavizante da mucilagem sobre as mucosas e da possível ação anti-inflamatória. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-F1">[F1]</a></li>
+        <li>Preparados externos (banhos locais, compressas, cataplasmas) com folhas e flores de malva para uso em inflamações cutâneas, pequenas queimaduras, eczema, picadas de insetos e hemorroidas, com base em estudos que evidenciam propriedades anti-inflamatórias, cicatrizantes e antioxidantes de extratos de Malva sylvestris. <a href="#ref-M2">[M2]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-F2">[F2]</a></li>
+        <li>Estudos clínicos e pré-clínicos sugerem ainda potencial benefício em obstipação funcional, sintomas de inflamação orofaríngea, proteção hepática e modulação de processos inflamatórios sistémicos, embora muitos dados ainda provenham de modelos animais e ensaios de pequena dimensão. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-F3">[F3]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Uso tradicional de chás e tisanas de malva para &quot;amaciar&quot; a garganta, aliviar rouquidão, tosse seca e constipações, muitas vezes combinada com alteia, malvaísco, tília ou camomila. <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a> <a href="#ref-A1">[A1]</a></li>
+        <li>Emprego popular de decocções suaves de folhas e flores de malva em lavagens, banhos de assento e compressas para aliviar inflamações da pele, furúnculos, irritações oculares ligeiras e hemorroidas. <a href="#ref-R3">[R3]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Consumo de folhas jovens e flores de Malva sylvestris, e em menor grau de Malva arborea, em sopas, estufados e salteados, explorando a textura mucilaginosa para engrossar caldos, bem como o seu valor nutritivo. <a href="#ref-R2">[R2]</a> <a href="#ref-R4">[R4]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Uso tradicional de sementes de malva (&quot;queijinhos&quot;) como petisco e de partes jovens como vegetal em pratos mediterrânicos, como sopas e guisados com leguminosas e cereais. <a href="#ref-D1">[D1]</a> <a href="#ref-R2">[R2]</a> <a href="#ref-A3">[A3]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>Malva sylvestris é geralmente considerada segura quando utilizada em doses tradicionais como planta emoliente e alimentícia, tanto em infusões suaves como em sopas e caldos. Contudo, o elevado teor em mucilagens pode interferir com a absorção de fármacos administrados por via oral se tomados em simultâneo; recomenda-se separar a toma de medicamentos e preparados de malva por pelo menos 1–2 horas. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a></p>
+      <p>A literatura de segurança relata poucos efeitos adversos graves associados a Malva sylvestris, mas a evidência sistemática é limitada. Grávidas, lactantes, crianças pequenas, pessoas com doenças crónicas graves ou em polimedicação devem usar a planta com prudência e preferencialmente sob orientação de profissional de saúde, especialmente no uso de extratos concentrados ou formulações não alimentares. <a href="#ref-U1">[U1]</a> <a href="#ref-U3">[U3]</a></p>
+      <p>Indivíduos com alergia conhecida à família Malvaceae ou que desenvolvam sinais de hipersensibilidade (prurido intenso, erupções cutâneas, dificuldade respiratória) devem evitar o uso e procurar avaliação médica. Em inflamações graves, dor persistente, febre alta ou sangue nas fezes, urina ou expetoração, a malva não substitui cuidados médicos adequados. <a href="#ref-U1">[U1]</a> <a href="#ref-U3">[U3]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        No uso fitoterapêutico, a malva é preparada sobretudo em infusões, decocções suaves, macerados a frio e banhos locais, aproveitando a sua riqueza em mucilagens e o efeito suavizante sobre mucosas e pele. Em contexto alimentar, entra em sopas, estufados, recheios e alguns pratos tradicionais mediterrânicos. As receitas devem respeitar as proporções e tempos de extração sugeridos nas fontes de referência e ser sempre enquadradas pelas recomendações de segurança.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="malva_receitas.html">Infusão emoliente de malva para garganta:</a> chá de folhas e flores de malva tomado morno para suavizar irritação da garganta e aliviar tosse seca. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="malva_receitas.html">Macerado a frio de malva:</a> preparação em água fria com folhas e flores deixadas em repouso, bebida em pequenas porções para acalmar mucosas digestivas e urinárias. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="malva_receitas.html">Decocção suave de malva para banhos de assento:</a> tisana concentrada de malva usada em banhos locais mornos para aliviar hemorroidas e desconfortos anais ligeiros. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="malva_receitas.html">Compressas ou cataplasmas de malva:</a> aplicação externa de infusão ou pasta de malva sobre pele irritada, pequenas queimaduras e zonas inflamadas para efeito calmante. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="malva_receitas.html">Sopa tradicional com malva-silvestre:</a> sopa caseira em que folhas e flores de malva são cozinhadas com legumes, resultando num caldo espesso, macio e reconfortante. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="malva_receitas.html">Sopa mediterrânica de malvas com leguminosas:</a> prato nutritivo que combina malva com feijões ou grão-de-bico, aproveitando a mucilagem para dar corpo ao caldo. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="malva_receitas.html">Estufado de malva com alho e limão:</a> folhas de malva salteadas rapidamente com alho, gordura e limão, servidas como acompanhamento vegetal macio e suave. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="malva_receitas.html">Flores de malva em saladas:</a> utilização de flores frescas de malva e folhas jovens cortadas finamente para decorar e suavizar saladas cruas. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="malva_receitas.html">Sopa costeira com malva-das-praias:</a> sopa regional onde malvas costeiras são cozinhadas com batata e outros legumes, produzindo uma textura cremosa e aromática. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="malva_receitas.html">Infusão combinada de malva e tília:</a> chá relaxante que associa mucilagens da malva ao efeito calmante da tília, usado para conforto respiratório suave. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>As malvas, em particular Malva sylvestris, são reconhecidas na fitoterapia tradicional e em revisões modernas como plantas emolientes e demulcentes importantes, utilizadas para aliviar irritações da mucosa orofaríngea, tosse seca e inflamações ligeiras do trato respiratório superior. A mucilagem forma uma película protetora sobre as mucosas, reduzindo a sensação de arranhar e acalmando a tosse irritativa. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-EMA1">[EMA1]</a></p>
+      <p>No sistema digestivo, preparados de malva são usados como adjuvantes em gastrite, desconforto gastrointestinal, obstipação ligeira e inflamação da mucosa, beneficiando da combinação de fibra, mucilagens e compostos fenólicos com atividade anti-inflamatória e antioxidante. Estudos experimentais sugerem ainda efeitos hepatoprotetores e citoprotetores em modelos de lesão hepática. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>No domínio dermatológico e mucocutâneo, decocções e cataplasmas de malva são aplicados em dermatites, pequenas queimaduras, picadas de insetos e inflamações anais, como hemorroidas, com relatos de melhoria da dor, prurido e inflamação. Ensaios pré-clínicos confirmam atividades anti-inflamatórias, cicatrizantes e antimicrobianas de extratos de Malva sylvestris, embora a evidência clínica controlada ainda seja limitada. <a href="#ref-M2">[M2]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F4">[F4]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Adjuvante no alívio de irritação da boca e garganta, tosse seca e inflamações ligeiras do trato respiratório superior, graças ao efeito demulcente das mucilagens. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-EMA1">[EMA1]</a></li>
+        <li>Suporte em desconforto gastrointestinal leve, gastrite, obstipação ligeira e inflamações do trato digestivo, contribuindo para suavizar a mucosa e melhorar o trânsito intestinal. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-F1">[F1]</a></li>
+        <li>Apoio complementar em inflamações cutâneas ligeiras, pequenas queimaduras, picadas de insetos e hemorroidas, através de banhos locais, compressas e cataplasmas com malva. <a href="#ref-M2">[M2]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-F2">[F2]</a></li>
+        <li>Potencial benefício em processos inflamatórios crónicos e stress oxidativo, em virtude da presença de polifenóis, flavonoides e antocianinas com atividade antioxidante e anti-inflamatória demonstradas em estudos experimentais. <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>Malva sylvestris contém quantidades elevadas de mucilagens, predominantemente polissacáridos neutros e ácidos, responsáveis pelas propriedades demulcentes e emolientes da planta. Estudos fitoquímicos identificam ainda flavonoides (como quercetina, rutina e derivados), antocianinas (por exemplo malvidina-3-glucosídeo), ácidos fenólicos, escopoletina e outros compostos fenólicos com atividade antioxidante pronunciada. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>Revisões recentes descrevem uma ampla gama de atividades farmacológicas para extratos de Malva sylvestris, incluindo efeitos anti-inflamatórios, analgésicos, antimicrobianos, hepatoprotetores, gastroprotetores, antitumorais e cicatrizantes, em grande medida atribuídos à sinergia entre mucilagens e compostos fenólicos. Estudos em modelos animais demonstram redução de edema, proteção de tecidos contra agentes tóxicos e modulação de mediadores inflamatórios. <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></p>
+      <p>A composição e a potência dos extratos dependem de fatores como parte da planta usada (folhas, flores), solvente (aquoso, hidroalcoólico) e condições de cultivo. Trabalhos específicos quantificam o teor de fenólicos totais e flavonoides em extratos de malva, bem como a capacidade antioxidante medida por ensaios DPPH, ABTS e FRAP, mostrando valores comparáveis a outras plantas medicinais ricas em polifenóis. <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Mucilagens totais em folhas e flores de Malva sylvestris</td><td>valores elevados; fração majoritária dos polissacáridos solúveis</td></tr>
+        <tr><td>Fenólicos totais em extratos de Malva sylvestris</td><td>≈20–80 mg de equivalentes de ácido gálico/g de extrato seco</td></tr>
+        <tr><td>Flavonoides totais em extratos de Malva sylvestris</td><td>≈5–30 mg de equivalentes de rutina/g de extrato seco</td></tr>
+        <tr><td>Antocianinas (malvidina-3-glucosídeo e outros) em flores</td><td>≈1–10 mg/g de extrato seco</td></tr>
+        <tr><td>Capacidade antioxidante total (ensaios DPPH/ABTS/FRAP) de extratos</td><td>atividade moderada a elevada, com IC50 antioxidante em dezenas de µg/mL</td></tr>
+        <tr><td>Marcadores anti-inflamatórios em modelos animais tratados com extratos de Malva sylvestris</td><td>reduções significativas de edema e mediadores inflamatórios em doses na gama de dezenas a centenas de mg/kg (animais)</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Uso ornamental em hortas e jardins, com flores vistosas que atraem polinizadores e embelezam sebes, taludes e bordaduras. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Planta útil em sistemas alimentares biodiversos, fornecendo verdura silvestre comestível, sementes comestíveis e flores decorativas para pratos. <a href="#ref-A1">[A1]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Em algumas regiões costeiras, Malva arborea é utilizada em práticas tradicionais para alimentação humana e animal, bem como para proteção de taludes e encostas expostas ao vento marítimo. <a href="#ref-P1">[P1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Potencial utilização de extratos de Malva sylvestris em cosméticos naturais (cremes, sabonetes, tónicos) pela sua ação suavizante, calmante e hidratante sobre a pele. <a href="#ref-A3">[A3]</a> <a href="#ref-F2">[F2]</a></li>
+        <li>Referências a possível uso de malvas em práticas de agricultura sustentável e controlo de doenças em culturas, explorando propriedades antifúngicas de extratos. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 7,3 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em permacultura, a malva combina funções alimentares, medicinais e ecológicas relevantes. Fornece folhas e flores comestíveis, mucilaginosas e nutritivas, úteis em sopas e pratos tradicionais, ao mesmo tempo que oferece uma matéria-prima medicinal emoliente valiosa para apoio do sistema respiratório, digestivo e da pele. As plantas atraem polinizadores e insetos benéficos, contribuem para a biodiversidade e podem funcionar como cobertura viva moderada em taludes, bordaduras e zonas ruderalizadas.
+Por outro lado, M. sylvestris e M. arborea podem comportar-se como arvenses vigorosas, competindo com culturas hortícolas em solos muito férteis e exigindo algum manejo para evitar sombreamento excessivo ou ocupação de espaço em demasia. A biomassa produzida é útil para compostagem e cobertura leve, mas não se trata de uma espécie estrutural de grande porte (exceto alguns exemplares de M. arborea em contexto costeiro). O grau atribuído reflete esta combinação de multifuncionalidade e rusticidade, temperada pela competição moderada com outras culturas.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação da malva resulta de valores elevados em uso alimentar (ALIM=2, sobretudo em sistemas que aproveitam folhas, flores e sementes), uso medicinal bem estabelecido como planta emoliente e demulcente (MED=2), suporte à fauna e polinizadores através das flores ricas em néctar (ECO=2) e multifuncionalidade cultural e culinária (MULT=2), incluindo usos tradicionais em sopas e pratos mediterrânicos. Há ainda um contributo moderado para solo/biomassa (SOLO=1), fornecendo verde para compostagem e alguma cobertura leve, e uma boa rusticidade (RUST=2) em climas mediterrânicos e atlânticos suaves, com facilidade de auto-ensementeira em solos ricos.
+As penalizações aplicam-se sobretudo à competição moderada com outras culturas em espaços muito densos ou mal planeados (COMP=-1), e, em alguns contextos, ao comportamento espontâneo vigoroso em campos cultivados e bermas (INVAS=-1), enquanto o risco de toxicidade (TOX) e perigo físico (PERIGO) é considerado baixo no contexto hortícola habitual. O valor final em escala 0–10 resulta da aplicação do algoritmo descrito em anexo (soma dos critérios positivos até 14 pontos, subtração de penalizações, com conversão por regra de três simples), situando a malva em cerca de 7,3/10 e indicando uma planta de elevada funcionalidade em permacultura, particularmente útil em bordaduras comestíveis, zonas de forrageio de verdes silvestres e sistemas alimentares biodiversos.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-A1">[A1]</a> <a href="#ref-A3">[A3]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Wikipedia. Malva sylvestris. Descrição botânica, distribuição e usos gerais da malva-silvestre. Disponível em: <a href="https://en.wikipedia.org/wiki/Malva_sylvestris" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Malva_sylvestris</a></li>
+        <li id="ref-D2">[D2] Wikipédia (PT). Malva sylvestris. Informação sobre ocorrência em Portugal, enquadramento taxonómico e ligações para floras ibéricas. Disponível em: <a href="https://pt.wikipedia.org/wiki/Malva_sylvestris" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Malva_sylvestris</a></li>
+        <li id="ref-D3">[D3] Wikipedia. Malva arborea. Descrição botânica, habitat costeiro e notas sobre comestibilidade das folhas de tree mallow. Disponível em: <a href="https://en.wikipedia.org/wiki/Malva_arborea" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Malva_arborea</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Horta Jardim na Varanda. Ficha de planta: Malva – Malva sylvestris. Descreve abundância da espécie em Portugal, habitats, exposição solar e época de desenvolvimento. Disponível em: <a href="https://hortajardimnavaranda.wordpress.com/2013/08/09/ficha-de-planta-malva-malva-sylvestris/" target="_blank" rel="noopener">https://hortajardimnavaranda.wordpress.com/2013/08/09/ficha-de-planta-malva-malva-sylvestris/</a></li>
+        <li id="ref-S2">[S2] Flora-on. Malva sylvestris. Ficha da flora portuguesa com informação sobre ecologia, habitats ruderais e distribuição em Portugal. Disponível em: <a href="https://flora-on.pt/?q=Malva+sylvestris" target="_blank" rel="noopener">https://flora-on.pt/?q=Malva+sylvestris</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] European Medicines Agency (EMA). Draft assessment report on Malva sylvestris L. folium e flos. Inclui informação sobre indicações tradicionais, posologia e considerações de segurança. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-report/draft-assessment-report-malva-sylvestris-l-andor-malva-neglecta-wallr-folium-and-malva-sylvestris-l-flos-first-version_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-report/draft-assessment-report-malva-sylvestris-l-andor-malva-neglecta-wallr-folium-and-malva-sylvestris-l-flos-first-version_en.pdf</a></li>
+        <li id="ref-U2">[U2] Mousavi S.M. et al. A Review on Health Benefits of Malva sylvestris L. Nutritional and Medicinal Values. Revista que discute usos tradicionais, benefícios e dados de segurança da espécie. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8382527/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC8382527/</a></li>
+        <li id="ref-U3">[U3] Batiha G.E.-S. et al. The phytochemical profiling, pharmacological activities, and safety of Malva sylvestris. Revisão recente com secção dedicada à segurança e toxicidade. Disponível em: <a href="https://link.springer.com/article/10.1007/s00210-022-02329-w" target="_blank" rel="noopener">https://link.springer.com/article/10.1007/s00210-022-02329-w</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Fitoterapia Brasil. Malva sylvestris L. Entrada com indicações, forma de uso e preparações tradicionais, incluindo infusões para mucosas respiratória e digestiva. Disponível em: <a href="https://fitoterapiabrasil.com.br/planta-medicinal/malva-sylvestris" target="_blank" rel="noopener">https://fitoterapiabrasil.com.br/planta-medicinal/malva-sylvestris</a></li>
+        <li id="ref-R2">[R2] Permaculture.co.uk. Benefits of Common Mallow (Malva sylvestris). Artigo que descreve usos alimentares e medicinais, incluindo macerados e chás suavizantes. Disponível em: <a href="https://www.permaculture.co.uk/articles/benefits-of-common-mallow-malva-sylvestris/" target="_blank" rel="noopener">https://www.permaculture.co.uk/articles/benefits-of-common-mallow-malva-sylvestris/</a></li>
+        <li id="ref-R3">[R3] FarmaImpresa. Mallow: here are all its beneficial powers. Texto que descreve preparações com malva para uso interno e externo e respetivos benefícios. Disponível em: <a href="https://farmaimpresa.com/en/mallow-here-are-all-its-beneficial-powers/" target="_blank" rel="noopener">https://farmaimpresa.com/en/mallow-here-are-all-its-beneficial-powers/</a></li>
+        <li id="ref-R4">[R4] Lush Portugal. Decocção de Malva. Fichas de ingredientes e produtos de banho com malva, referindo o uso de infusões e decocções suavizantes. Disponível em: <a href="https://www.lush.com" target="_blank" rel="noopener">https://www.lush.com</a></li>
+        <li id="ref-R5">[R5] Eatweeds. Mallow – Malva sylvestris. Guia de forrageio com sugestões culinárias de sopas e pratos usando folhas e flores de malva. Disponível em: <a href="https://www.eatweeds.co.uk/mallow-malva-sylvestris" target="_blank" rel="noopener">https://www.eatweeds.co.uk/mallow-malva-sylvestris</a></li>
+        <li id="ref-R6">[R6] Permaculture.co.uk. Benefits of Common Mallow (Malva sylvestris). Referências a pratos tradicionais e usos culinários em diferentes culturas. Disponível em: <a href="https://www.permaculture.co.uk/articles/benefits-of-common-mallow-malva-sylvestris/" target="_blank" rel="noopener">https://www.permaculture.co.uk/articles/benefits-of-common-mallow-malva-sylvestris/</a></li>
+        <li id="ref-R7">[R7] Food Forest Garden. Marvellous Malvas. Artigo que descreve usos culinários de várias malvas, incluindo estufados e pratos com folhas e flores. Disponível em: <a href="https://www.foodforest.garden/2011/09/03/marvellous-malvas/" target="_blank" rel="noopener">https://www.foodforest.garden/2011/09/03/marvellous-malvas/</a></li>
+        <li id="ref-R8">[R8] Totally Wild UK. Sea Mallow Identification. Sugestões de uso culinário das flores e folhas de Malva arborea em saladas e outros pratos. Disponível em: <a href="https://totallywilduk.co.uk/2023/12/07/sea-mallow-identification/" target="_blank" rel="noopener">https://totallywilduk.co.uk/2023/12/07/sea-mallow-identification/</a></li>
+        <li id="ref-R9">[R9] West Carclaze Garden Village. July Foraging: Tree Mallow. Texto sobre forrageio de Malva arborea, com referências a sopas e preparações culinárias tradicionais. Disponível em: <a href="https://westcarclaze-gardenvillage.co.uk/articles/july-foraging-tree-mallow/" target="_blank" rel="noopener">https://westcarclaze-gardenvillage.co.uk/articles/july-foraging-tree-mallow/</a></li>
+        <li id="ref-R10">[R10] Permaculture.co.uk. Benefits of Common Mallow (Malva sylvestris). Sugestão de infusões combinadas com outras plantas calmantes e suavizantes. Disponível em: <a href="https://www.permaculture.co.uk/articles/benefits-of-common-mallow-malva-sylvestris/" target="_blank" rel="noopener">https://www.permaculture.co.uk/articles/benefits-of-common-mallow-malva-sylvestris/</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] European Medicines Agency (EMA). European Union herbal monograph on Malva sylvestris L. folium e flos. Monografia oficial sobre usos tradicionais e indicações de malva. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-malva-sylvestris-l-andor-malva-neglecta-wallr-folium-first-version_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-malva-sylvestris-l-andor-malva-neglecta-wallr-folium-first-version_en.pdf</a></li>
+        <li id="ref-M2">[M2] Mousavi S.M. et al. A Review on Health Benefits of Malva sylvestris L. Nutritional and Medicinal Values. Revisão abrangente dos efeitos antimicrobianos, anti-inflamatórios, hepatoprotetores e antioxidantes. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8382527/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC8382527/</a></li>
+        <li id="ref-M3">[M3] Batiha G.E.-S. et al. The phytochemical profiling, pharmacological activities, and safety of Malva sylvestris. Revisão que resume usos tradicionais, atividades farmacológicas e segurança. Disponível em: <a href="https://link.springer.com/article/10.1007/s00210-022-02329-w" target="_blank" rel="noopener">https://link.springer.com/article/10.1007/s00210-022-02329-w</a></li>
+        <li id="ref-M4">[M4] Prudente A.S. et al. Pre-clinical anti-inflammatory aspects of a cuisine and medicinal herb: Malva sylvestris. Estudo que avalia a ação anti-inflamatória tópica de extratos hidroalcoólicos em modelo animal. Disponível em: <a href="https://www.sciencedirect.com/science/article/pii/S0278691513002858" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S0278691513002858</a></li>
+        <li id="ref-M5">[M5] Gasparetto J.C. et al. Ethnobotanical and scientific aspects of Malva sylvestris L.: a review. Revisão sobre usos etnobotânicos e evidência científica disponível para a espécie. Disponível em: <a href="https://onlinelibrary.wiley.com/doi/10.1111/j.2042-7158.2011.01383.x" target="_blank" rel="noopener">https://onlinelibrary.wiley.com/doi/10.1111/j.2042-7158.2011.01383.x</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Mousavi S.M. et al. A Review on Health Benefits of Malva sylvestris L. Nutritional and Medicinal Values. Secções sobre composição química e teores de fenólicos, mucilagens e pigmentos. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8382527/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC8382527/</a></li>
+        <li id="ref-F2">[F2] Sharifi-Rad J. et al. Malva species: Insights on its chemical composition, nutritional and pharmacological properties. Revisão que sumariza compostos fenólicos, flavonoides e mucilagens em espécies de Malva. Disponível em: <a href="https://www.uv.mx/qfb/files/2020/10/A13-Sharifi-Rad-2020.-Malva-species_Maria-Guiomar-Melgar.pdf" target="_blank" rel="noopener">https://www.uv.mx/qfb/files/2020/10/A13-Sharifi-Rad-2020.-Malva-species_Maria-Guiomar-Melgar.pdf</a></li>
+        <li id="ref-F3">[F3] Irfan A. et al. Phenolic and flavonoid contents in Malva sylvestris and evaluation of antioxidant and antimicrobial activities. Quantifica fenólicos e flavonoides em extratos e avalia capacidade antioxidante. Disponível em: <a href="https://www.sciencedirect.com/science/article/pii/S131961032100082X" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S131961032100082X</a></li>
+        <li id="ref-F4">[F4] Paul Z. et al. Phytochemistry and Pharmacological Activity of Malva sylvestris: A Review. Compila dados sobre constituintes químicos, ensaios antioxidantes e outras atividades farmacológicas. Disponível em: <a href="https://rjeid.com/1386-2073/article/view/644288" target="_blank" rel="noopener">https://rjeid.com/1386-2073/article/view/644288</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Permaculture.co.uk. Benefits of Common Mallow (Malva sylvestris). Descreve funções ecológicas, atração de polinizadores e múltiplos usos da malva em sistemas biodiversos. Disponível em: <a href="https://www.permaculture.co.uk/articles/benefits-of-common-mallow-malva-sylvestris/" target="_blank" rel="noopener">https://www.permaculture.co.uk/articles/benefits-of-common-mallow-malva-sylvestris/</a></li>
+        <li id="ref-A2">[A2] Food Forest Garden. Marvellous Malvas. Artigo sobre o papel das malvas em food forests, incluindo funções alimentares e ecológicas. Disponível em: <a href="https://www.foodforest.garden/2011/09/03/marvellous-malvas/" target="_blank" rel="noopener">https://www.foodforest.garden/2011/09/03/marvellous-malvas/</a></li>
+        <li id="ref-A3">[A3] Eatweeds. Mallow – Malva sylvestris. Guia de forrageio que destaca usos alimentares, habitats e interação com ecossistemas locais. Disponível em: <a href="https://www.eatweeds.co.uk/mallow-malva-sylvestris" target="_blank" rel="noopener">https://www.eatweeds.co.uk/mallow-malva-sylvestris</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] Permaculture.co.uk. Benefits of Common Mallow (Malva sylvestris). Realça o valor da malva como planta multifuncional em jardins de permacultura, com funções alimentares, medicinais e ecológicas. Disponível em: <a href="https://www.permaculture.co.uk/articles/benefits-of-common-mallow-malva-sylvestris/" target="_blank" rel="noopener">https://www.permaculture.co.uk/articles/benefits-of-common-mallow-malva-sylvestris/</a></li>
+        <li id="ref-P2">[P2] Food Forest Garden. Marvellous Malvas. Discute o uso de malvas em sistemas agroflorestais e food forests, incluindo contributo para biomassa e biodiversidade. Disponível em: <a href="https://www.foodforest.garden/2011/09/03/marvellous-malvas/" target="_blank" rel="noopener">https://www.foodforest.garden/2011/09/03/marvellous-malvas/</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html" class="ativa">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="alecrim.html">Alecrim</a>
+  <a class="next" href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Alfavaca-de-cobra (<em>Parietaria officinalis L.</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Urticaceae</span>
+  <span>Parte usada: folhas e partes aéreas</span>
+  <span>Tipo: erva perene ruderal medicinal</span>
+  <span>Produção: <strong>espontânea em muros sombrios</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> regiões mediterrânicas e Europa ocidental, hoje amplamente naturalizada</div>
+  <div><strong>Uso principal</strong> depurativa e diurética suave, apoio urinário, cutâneo e linfático</div>
+  <div><strong>Perfil medicinal</strong> planta depurativa linfática, adjuvante em inflamações urinárias e cutâneas</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Alfavaca-de-cobra (Parietaria officinalis L.)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>A alfavaca-de-cobra (Parietaria officinalis L.) é uma planta herbácea da família das urtigas (Urticaceae), de porte baixo a médio, com caules erectos ou ligeiramente arqueados que podem atingir 30–80 cm de altura. Apresenta folhas simples, alternas, ovado-lanceoladas, de cor verde viva e textura algo macia, sem pelos urticantes, o que a distingue das urtigas verdadeiras. As pequenas flores esverdeadas agrupam-se em axilas foliares e, após a floração, formam-se frutos discretos contendo as sementes.</p>
+      <p>Em Portugal continental é conhecida por vários nomes populares, como alfavaca-de-cobra, parietária, erva-das-muralhas, erva-fura-paredes, cobrinha ou erva-das-paredes, refletindo o seu hábito de crescer em muros velhos, fendas de rochas, taludes e locais ruderalizados. Em inglês é frequentemente designada por pellitory-of-the-wall ou wall pellitory. Trata-se de uma planta ruderal muito comum em zonas urbanas e rurais, sobretudo em ambientes húmidos, sombrios e ricos em azoto.</p>
+      <p>Tradicionalmente, a alfavaca-de-cobra é colhida na fase vegetativa, quando as folhas estão tenras, para uso em infusões, decocções e preparações externas com fins depurativos, diuréticos e de apoio ao sistema urinário e à pele. Em algumas regiões é também utilizada como verdura silvestre, por exemplo em sopas, e integra misturas comerciais de plantas medicinais em saquetas para infusão.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, a alfavaca-de-cobra comporta-se como planta perene de vida relativamente curta ou como vivaz, com rebentação principalmente na primavera e outono em locais húmidos e sombrios. Pode manter alguma vegetação ao longo de grande parte do ano em muros, taludes e fendas de rocha protegidas do sol intenso e com alguma humidade.
+Para uso medicinal e alimentar, colhem-se preferencialmente as partes aéreas jovens durante a primavera e o início do verão, quando os caules e as folhas estão tenros e vigorosos. Em climas muito secos ou durante ondas de calor prolongadas, o desenvolvimento pode abrandar, retomando com as primeiras chuvas de outono.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Crescimento vegetativo mais intenso: primavera e outono, sobretudo em locais húmidos e sombrios.</li>
+        <li>Floração: em geral entre abril e setembro, com pequenas flores discretas nas axilas das folhas.</li>
+        <li>Maturação de sementes: final da primavera ao outono, permitindo a dispersão e colonização de novos muros e taludes.</li>
+        <li>Época de colheita recomendada: primavera e início do verão, colhendo partes aéreas jovens e isentas de poluição evidente.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Infusões de folhas e partes aéreas de Parietaria officinalis, preparadas com planta seca ou fresca em água quente, são referidas em literatura etnofarmacológica como adjuvantes diuréticos e depurativos suaves, usadas em pequenas queixas urinárias e retenção ligeira de líquidos. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a></li>
+        <li>Estudos fitoquímicos e farmacológicos indicam que extratos de espécies de Parietaria contêm flavonoides, ácidos fenólicos e outros compostos bioativos com atividade antioxidante, anti-inflamatória e potencialmente protetora do epitélio urinário, o que sustenta parcialmente o uso tradicional em inflamações das vias urinárias. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></li>
+        <li>Alguns trabalhos experimentais referem efeitos de extratos de Parietaria em modelos de cristalização de oxalato de cálcio e em parâmetros de função renal, sugerindo um possível papel coadjuvante em prevenção de formação de cálculos, embora os dados ainda sejam preliminares e limitados. <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Uso de infusões de alfavaca-de-cobra como &quot;chá depurativo&quot; e diurético suave em Portugal, especialmente em misturas tradicionais para rins, bexiga e retenção de líquidos. <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a></li>
+        <li>Emprego popular em banhos de assento, lavagens e compressas com infusão concentrada para aliviar desconfortos cutâneos ligeiros e irritações na zona genital ou perianal. <a href="#ref-R1">[R1]</a> <a href="#ref-R3">[R3]</a></li>
+        <li>Utilização em sopas e caldos, particularmente nalgumas ilhas dos Açores, onde as folhas são cozinhadas com feijão e carne de porco, sendo vistas como verdura silvestre nutritiva. <a href="#ref-R4">[R4]</a> <a href="#ref-A1">[A1]</a></li>
+        <li>Inclusão de alfavaca em misturas comerciais de infusões para celulite, drenagem e &quot;eliminação de toxinas&quot;, associada a outras plantas depurativas e circulatórias. <a href="#ref-R2">[R2]</a> <a href="#ref-A2">[A2]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>A alfavaca-de-cobra é geralmente considerada segura quando utilizada em quantidades moderadas e por períodos curtos, sob a forma de infusão ou como verdura cozinhada, em adultos saudáveis. No entanto, pessoas com alergia conhecida ao pólen de Parietaria podem ter maior risco de reações ao contacto com a planta fresca, devendo evitar o seu uso ou proceder com grande cautela. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></p>
+      <p>Devido ao potencial efeito diurético, o uso de infusões concentradas não é recomendado em doentes com insuficiência renal moderada a grave, edemas de causa desconhecida ou sob terapêutica diurética sem supervisão profissional. Alguns autores alertam ainda para o teor em sais minerais e oxalatos, recomendando cautela em pessoas com antecedentes de cálculos renais por oxalato de cálcio. <a href="#ref-U2">[U2]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>Grávidas, lactantes, crianças pequenas, pessoas com doenças crónicas complexas ou em polimedicação (incluindo fármacos anti-hipertensores, anticoagulantes ou antidiabéticos) devem consultar previamente um profissional de saúde antes de utilizar alfavaca-de-cobra em quantidades superiores às alimentares. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U4">[U4]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        Na fitoterapia tradicional, a alfavaca-de-cobra é sobretudo utilizada em infusões simples ou em mistura com outras plantas depurativas e urinárias, bem como em banhos de assento e lavagens externas. Em contexto alimentar regional pode integrar sopas e caldos como verdura silvestre. As receitas detalhadas com quantidades, tempos e passos de preparação devem seguir as fontes de referência e ser enquadradas pelas recomendações de segurança.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="alfavaca-de-cobra_receitas.html">Chá simples de alfavaca-de-cobra:</a> infusão de folhas e partes aéreas em água quente, usada como bebida depurativa e diurética suave em programas curtos de apoio aos rins e bexiga. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="alfavaca-de-cobra_receitas.html">Infusão mista drenante com alfavaca:</a> mistura de alfavaca-de-cobra com outras plantas depurativas em saquetas prontas a usar, recomendada para apoio na retenção de líquidos e celulite. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="alfavaca-de-cobra_receitas.html">Banho de ervas com alfavaca:</a> preparação de infusão concentrada de alfavaca-de-cobra para adicionar à água do banho ou de assento, utilizada em limpezas energéticas e cuidados da pele. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="alfavaca-de-cobra_receitas.html">Sopa tradicional com alfavaca:</a> sopa regional onde as folhas de Parietaria officinalis são cozinhadas com feijão e carne de porco, consumida como prato reconfortante e nutritivo. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="alfavaca-de-cobra_receitas.html">Infusão depurativa de primavera:</a> chá combinado de alfavaca-de-cobra com outras ervas de primavera, tomado em curtos períodos como parte de rotinas de limpeza e bem-estar. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="alfavaca-de-cobra_receitas.html">Infusão para drenagem e celulite:</a> mistura funcional contendo alfavaca e outras plantas drenantes, ingerida em chávena ao longo do dia para apoio da microcirculação e eliminação de líquidos. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="alfavaca-de-cobra_receitas.html">Infusão calmante para pele reativa:</a> infusão de alfavaca utilizada externamente em compressas ou lavagens suaves sobre zonas de pele sensível ou irritada. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="alfavaca-de-cobra_receitas.html">Uso culinário em caldo verde silvestre:</a> adaptação de sopas verdes onde pequenas quantidades de alfavaca cozinhada substituem ou complementam outras verduras. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="alfavaca-de-cobra_receitas.html">Infusão suave de alfavaca e hortelã:</a> chá aromático que combina alfavaca-de-cobra com hortelã, tomado morno após as refeições principais. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="alfavaca-de-cobra_receitas.html">Banho de pés morno com alfavaca:</a> utilização de infusão concentrada em bacia para imersão dos pés, integrada em rotinas de relaxamento e cuidado das pernas cansadas. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>Na tradição fitoterapêutica europeia, a alfavaca-de-cobra é sobretudo indicada como planta depurativa e diurética suave, associada ao apoio do sistema urinário e à eliminação de líquidos em excesso. É frequentemente incluída em misturas para rins e bexiga, bem como em fórmulas caseiras para retenção ligeira de líquidos e sensação de &quot;intoxicação&quot; metabólica. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-A1">[A1]</a></p>
+      <p>Além disso, é utilizada como adjuvante em problemas cutâneos ligeiros e estados inflamatórios crónicos de baixo grau, em que se procura combinar melhorias na eliminação através da urina com um efeito calmante sobre a pele. Em banhos, lavagens e compressas, a planta é aplicada em zonas de irritação cutânea, prurido ou desconforto local. <a href="#ref-M1">[M1]</a> <a href="#ref-R3">[R3]</a> <a href="#ref-A1">[A1]</a></p>
+      <p>Alguns estudos fitoquímicos e farmacológicos em espécies de Parietaria documentam a presença de flavonoides, ácidos fenólicos e outros compostos com atividade antioxidante, anti-inflamatória e possivelmente nefroprotetora. Embora a evidência clínica específica para Parietaria officinalis seja ainda limitada, estes dados contribuem para fundamentar o seu uso tradicional como planta de apoio urinário e depurativo. <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Adjuvante em pequenas queixas urinárias e retenção ligeira de líquidos, em combinação com hidratação adequada e acompanhamento médico quando necessário. <a href="#ref-M1">[M1]</a> <a href="#ref-R2">[R2]</a></li>
+        <li>Suporte depurativo suave em programas de curta duração destinados a melhorar a eliminação de resíduos metabólicos através da urina. <a href="#ref-M1">[M1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Apoio complementar em problemas cutâneos ligeiros e estados inflamatórios de pele associados a congestão interna, usando preparados internos e externos. <a href="#ref-M1">[M1]</a> <a href="#ref-R3">[R3]</a> <a href="#ref-A1">[A1]</a></li>
+        <li>Possível contributo como coadjuvante em prevenção de formação de cálculos renais à base de oxalato de cálcio, segundo alguns estudos experimentais com extratos de Parietaria. <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a> <a href="#ref-M2">[M2]</a></li>
+        <li>Contribuição antioxidante e anti-inflamatória geral, ainda sobretudo documentada em estudos pré-clínicos, que pode ser relevante em inflamação crónica de baixo grau. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-M2">[M2]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>Estudos fitoquímicos sobre Parietaria officinalis e espécies próximas descrevem a presença de flavonoides como quercetina, kaempferol e seus glicósidos, bem como ácidos fenólicos (por exemplo ácido cafeico e derivados), mucilagens e sais minerais. Estes compostos estão associados a efeitos antioxidantes, anti-inflamatórios e emolientes, que ajudam a explicar o uso tradicional como planta suavizante das vias urinárias e da pele. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>Trabalhos experimentais referem também atividades antimicrobianas, anti-lipase e anti-amilase de extratos de Parietaria, sugerindo um potencial interesse em distúrbios metabólicos e digestivos, embora a investigação ainda seja incipiente. A composição exata e os teores dos compostos variam com a espécie, a origem geográfica, o momento de colheita e o método de extração. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></p>
+      <p>Alguns estudos de química elementar em plantas medicinais apontam para conteúdos relevantes de minerais em Parietaria spp., incluindo potássio e outros eletrólitos, o que pode contribuir para o seu efeito diurético, mas também justifica cautela em doentes com patologias renais ou metabólicas específicas. <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Flavonoides totais (quercetina, kaempferol e derivados) nas partes aéreas</td><td>presença confirmada, em níveis de dezenas de mg/g de extrato</td></tr>
+        <tr><td>Ácidos fenólicos totais em extratos de Parietaria</td><td>presença confirmada, com teores variáveis em função da extração</td></tr>
+        <tr><td>Atividade antioxidante total dos extratos (ensaios DPPH/ABTS)</td><td>atividade moderada a elevada com EC50 na gama de dezenas a centenas de µg/mL</td></tr>
+        <tr><td>Atividade enzimática sobre lipase e amilase em modelos in vitro</td><td>inibição significativa em concentrações na gama de centenas de µg/mL</td></tr>
+        <tr><td>Conteúdo mineral (potássio e outros eletrólitos) nas partes aéreas secas</td><td>conteúdos relevantes, na ordem de vários g/kg de matéria seca</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Indicadora de ambientes sombrios, húmidos e ricos em azoto junto a muros, paredes e taludes, ajudando a identificar microclimas protegidos na horta ou jardim. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Utilizada em banhos de ervas e defumações em contextos de práticas energéticas e populares de limpeza e proteção simbólica. <a href="#ref-A3">[A3]</a></li>
+        <li>Potencial fonte de verdura silvestre em sopas e caldos regionais, em pequenas quantidades, contribuindo para aumentar a diversidade alimentar. <a href="#ref-R4">[R4]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Papel ecológico como planta ruderal que oferece abrigo a pequenos invertebrados e ajuda a cobrir superfícies nuas em estruturas de pedra e cimento. <a href="#ref-P1">[P1]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 6,4 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em permacultura, a alfavaca-de-cobra é uma espécie ruderal útil sobretudo em bordaduras, muros, taludes e zonas menos manejadas do espaço produtivo. Contribui com funções medicinais (uso depurativo e urinário), alguma função alimentar silvestre em sopas e caldos, e um papel ecológico ao cobrir superfícies nuas e oferecer abrigo a pequenos invertebrados. A facilidade com que coloniza fendas e paredes indica microambientes frescos e húmidos que podem ser aproveitados no desenho do sistema.
+A pontuação da alfavaca-de-cobra resulta de valores moderados em uso alimentar (ALIM=1), uso medicinal tradicional (MED=2), contribuição limitada para estrutura e porte (ESTR=0–1), ajuda moderada a solo/biomassa e cobertura em superfícies verticais (SOLO=1), suporte ecológico razoável a fauna de pequena escala (ECO=1), e rusticidade elevada em contextos sombrios e húmidos urbanos e rurais (RUST=2). Soma ainda multifuncionalidade cultural e utilitária modesta (MULT=1), associada a usos em infusões, sopas e práticas tradicionais.
+As penalizações aplicam-se sobretudo à tendência da espécie para se comportar como infestante em muros, paredes e canteiros pouco manejados (INVAS=-1), e à possível competição por água e nutrientes em espaços muito confinados (COMP=-1). O risco de toxicidade relevante nas formas habituais de uso (TOX) e de perigo físico (PERIGO) é considerado baixo. O valor final em escala 0–10 resulta da aplicação do algoritmo descrito no projeto (soma dos critérios positivos até 14 pontos, subtração de penalizações e conversão por regra de três simples), situando a alfavaca-de-cobra em cerca de 6,4/10 e indicando uma planta moderadamente funcional em permacultura, especialmente interessante em bordaduras espontâneas, muros vivos e zonas de transição entre estruturas e áreas cultivadas.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        Em permacultura, a alfavaca-de-cobra é uma espécie ruderal útil sobretudo em bordaduras, muros, taludes e zonas menos manejadas do espaço produtivo. Contribui com funções medicinais (uso depurativo e urinário), alguma função alimentar silvestre em sopas e caldos, e um papel ecológico ao cobrir superfícies nuas e oferecer abrigo a pequenos invertebrados. A facilidade com que coloniza fendas e paredes indica microambientes frescos e húmidos que podem ser aproveitados no desenho do sistema.
+A pontuação da alfavaca-de-cobra resulta de valores moderados em uso alimentar (ALIM=1), uso medicinal tradicional (MED=2), contribuição limitada para estrutura e porte (ESTR=0–1), ajuda moderada a solo/biomassa e cobertura em superfícies verticais (SOLO=1), suporte ecológico razoável a fauna de pequena escala (ECO=1), e rusticidade elevada em contextos sombrios e húmidos urbanos e rurais (RUST=2). Soma ainda multifuncionalidade cultural e utilitária modesta (MULT=1), associada a usos em infusões, sopas e práticas tradicionais.
+As penalizações aplicam-se sobretudo à tendência da espécie para se comportar como infestante em muros, paredes e canteiros pouco manejados (INVAS=-1), e à possível competição por água e nutrientes em espaços muito confinados (COMP=-1). O risco de toxicidade relevante nas formas habituais de uso (TOX) e de perigo físico (PERIGO) é considerado baixo. O valor final em escala 0–10 resulta da aplicação do algoritmo descrito no projeto (soma dos critérios positivos até 14 pontos, subtração de penalizações e conversão por regra de três simples), situando a alfavaca-de-cobra em cerca de 6,4/10 e indicando uma planta moderadamente funcional em permacultura, especialmente interessante em bordaduras espontâneas, muros vivos e zonas de transição entre estruturas e áreas cultivadas.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-A1">[A1]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Revista Jardins – Fernanda Botelho. &quot;Alfavaca, uma planta amiga da saúde&quot; descreve Parietaria officinalis, nomes comuns, características botânicas e usos tradicionais. Disponível em: <a href="https://revistajardins.pt/alfavaca-planta-amiga-da-saude/" target="_blank" rel="noopener">https://revistajardins.pt/alfavaca-planta-amiga-da-saude/</a></li>
+        <li id="ref-D2">[D2] Wikipedia. &quot;Parietaria officinalis&quot; descreve a espécie, morfologia, família botânica e distribuição geográfica, incluindo o nome comum inglês pellitory-of-the-wall. Disponível em: <a href="https://en.wikipedia.org/wiki/Parietaria_officinalis" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Parietaria_officinalis</a></li>
+        <li id="ref-D3">[D3] Temperate Plants Database. &quot;Parietaria officinalis&quot; apresenta descrição da planta, porte, habitats típicos e usos como alimento e medicina. Disponível em: <a href="https://temperate.theferns.info/plant/Parietaria+officinalis" target="_blank" rel="noopener">https://temperate.theferns.info/plant/Parietaria+officinalis</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Plantcompass. &quot;Pellitory of the Wall (Parietaria officinalis)&quot; ficha que descreve hábito, porte, folhas, habitats ruderalizados e presença em regiões mediterrânicas. Disponível em: <a href="https://www.polleninformation.at/lt/allergy/plantcompass/dilgele-urtica-ir-sienzole-parietaria" target="_blank" rel="noopener">https://www.polleninformation.at/lt/allergy/plantcompass/dilgele-urtica-ir-sienzole-parietaria</a></li>
+        <li id="ref-S2">[S2] Thermo Fisher Phadia. &quot;w19 Wall pellitory&quot; resumo com altura típica, período de polinização prolongado e habitats em muros e zonas urbanas. Disponível em: <a href="https://www.thermofisher.com/phadia/wo/en/resources/allergen-encyclopedia/w19.html" target="_blank" rel="noopener">https://www.thermofisher.com/phadia/wo/en/resources/allergen-encyclopedia/w19.html</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] Sociedade Portuguesa de Alergologia e Imunologia Clínica (SPAIC). &quot;Pólen de Parietaria judaica: aerobiologia e alergenicidade&quot; descreve Parietaria como importante fonte de pólen alergénico na região mediterrânica. Disponível em: <a href="https://www.spaic.pt/client_files/rpia_artigos/polen-de-parietaria-judaica%3A-aerobiologia-e-alergenicidade.pdf" target="_blank" rel="noopener">https://www.spaic.pt/client_files/rpia_artigos/polen-de-parietaria-judaica%3A-aerobiologia-e-alergenicidade.pdf</a></li>
+        <li id="ref-U2">[U2] PubMed. &quot;Hypersensitivity to Parietaria officinalis pollen in pollinosis patients&quot; caracteriza a alergia ao pólen de P. officinalis em doentes com polinose. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/8116858/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/8116858/</a></li>
+        <li id="ref-U3">[U3] Aerobiologia.cat. &quot;Parietaria or pellitory of the wall&quot; ficha em PDF sobre Parietaria, com informação sobre pólen, distribuição e relevância alergológica. Disponível em: <a href="https://aerobiologia.cat/botanical-factsheet-parietaria" target="_blank" rel="noopener">https://aerobiologia.cat/botanical-factsheet-parietaria</a></li>
+        <li id="ref-U4">[U4] Fernandes J. &quot;Análise química elementar de plantas medicinais&quot; (dissertação, FCT NOVA) inclui referências ao efeito de Parietaria officinalis na cristalização de oxalato de cálcio e considerações sobre segurança em plantas diuréticas. Disponível em: <a href="https://run.unl.pt/bitstream/10362/141454/1/Fernandes_2022.pdf" target="_blank" rel="noopener">https://run.unl.pt/bitstream/10362/141454/1/Fernandes_2022.pdf</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Cantinho Verde (blog). Entrada sobre Parietaria officinalis e Parietaria judaica, referindo o uso tradicional do chá das folhas e caules como diurético e para rins e fígado. Disponível em: <a href="https://cantinhoverde.blogspot.com/2007/01/" target="_blank" rel="noopener">https://cantinhoverde.blogspot.com/2007/01/</a></li>
+        <li id="ref-R2">[R2] Continente. &quot;Infusão Nº8 Celulitessil Raízes da Natureza&quot; lista alfavaca (Parietaria officinalis) como ingrediente principal em mistura drenante para retenção de líquidos e celulite. Disponível em: <a href="https://www.continente.pt/produto/infusao-n8-celulitessil-saquetas-raizes-da-natureza-raizes-da-natureza-2005430.html" target="_blank" rel="noopener">https://www.continente.pt/produto/infusao-n8-celulitessil-saquetas-raizes-da-natureza-raizes-da-natureza-2005430.html</a></li>
+        <li id="ref-R3">[R3] Harmonia dos Anjos. &quot;Alfavaca (Parietaria officinalis)&quot; descreve banhos de ervas, infusões terapêuticas e usos energéticos da planta, com instruções gerais de preparação. Disponível em: <a href="https://harmoniadosanjos.blogs.sapo.pt/alfavaca-parietaria-officinalis-325966" target="_blank" rel="noopener">https://harmoniadosanjos.blogs.sapo.pt/alfavaca-parietaria-officinalis-325966</a></li>
+        <li id="ref-R4">[R4] Governo Regional dos Açores. &quot;Plantas Aromáticas e Medicinais nos Açores&quot; (PDF) descreve a utilização tradicional das folhas de Parietaria officinalis em sopas com feijão e toucinho. Disponível em: <a href="https://pt.scribd.com/document/460140061/Plantas-Aromaticas-e-Medicinais-nos-Acores-Set-2010-pdf" target="_blank" rel="noopener">https://pt.scribd.com/document/460140061/Plantas-Aromaticas-e-Medicinais-nos-Acores-Set-2010-pdf</a></li>
+        <li id="ref-R5">[R5] Cantinho Verde e outras fontes de herbalismo popular que recomendam infusões depurativas de primavera com Parietaria em combinação com outras ervas, sem detalhes clínicos formais. Disponível em: <a href="https://cantinhoverde.blogspot.com/2007/01/" target="_blank" rel="noopener">https://cantinhoverde.blogspot.com/2007/01/</a></li>
+        <li id="ref-R6">[R6] Continente. Informação adicional sobre o modo de utilização da Infusão Nº8 Celulitessil e mistura de plantas drenantes em saquetas. Disponível em: <a href="https://www.continente.pt/produto/infusao-n8-celulitessil-saquetas-raizes-da-natureza-raizes-da-natureza-2005430.html" target="_blank" rel="noopener">https://www.continente.pt/produto/infusao-n8-celulitessil-saquetas-raizes-da-natureza-raizes-da-natureza-2005430.html</a></li>
+        <li id="ref-R7">[R7] Harmonia dos Anjos. Detalhes sobre banhos de ervas com alfavaca e utilização de infusões concentradas para banhos de imersão e de assento. Disponível em: <a href="https://harmoniadosanjos.blogs.sapo.pt/alfavaca-parietaria-officinalis-325966" target="_blank" rel="noopener">https://harmoniadosanjos.blogs.sapo.pt/alfavaca-parietaria-officinalis-325966</a></li>
+        <li id="ref-R8">[R8] &quot;Plantas Aromáticas e Medicinais nos Açores&quot; e outras fontes de gastronomia regional dos Açores que mencionam sopas com Parietaria como verdura silvestre. Disponível em: <a href="https://pt.scribd.com/document/460140061/Plantas-Aromaticas-e-Medicinais-nos-Acores-Set-2010-pdf" target="_blank" rel="noopener">https://pt.scribd.com/document/460140061/Plantas-Aromaticas-e-Medicinais-nos-Acores-Set-2010-pdf</a></li>
+        <li id="ref-R9">[R9] Cantinho Verde e blogs de herbalismo que sugerem combinações de alfavaca com hortelã e outras ervas em infusões diárias. Disponível em: <a href="https://cantinhoverde.blogspot.com/2007/01/" target="_blank" rel="noopener">https://cantinhoverde.blogspot.com/2007/01/</a></li>
+        <li id="ref-R10">[R10] Fontes de naturopatia e bem-estar que descrevem banhos de pés com infusões de ervas, incluindo espécies ruderais como Parietaria, em rotinas de relaxamento. Disponível em: <a href="https://we.riseup.net/assets/495942/ervas%2Be%2Bautonomia.pdf" target="_blank" rel="noopener">https://we.riseup.net/assets/495942/ervas%2Be%2Bautonomia.pdf</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] Herbal Reality. &quot;Pellitory of the wall (Parietaria officinalis)&quot; monografia que descreve a planta como demulcente e diurética, usada em cistites, pedras nos rins e inflamações urinárias. Disponível em: <a href="https://www.herbalreality.com/herb/pellitory-of-the-wall/" target="_blank" rel="noopener">https://www.herbalreality.com/herb/pellitory-of-the-wall/</a></li>
+        <li id="ref-M2">[M2] Qadi M. et al. &quot;Antibacterial, Anticandidal, Phytochemical, and Biological Activities of Parietaria judaica L.&quot; estudo que explora atividades biológicas de extratos de Parietaria, incluindo efeitos antioxidantes e enzimáticos. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7769628/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC7769628/</a></li>
+        <li id="ref-M3">[M3] Caring Sunshine. &quot;Relationship: Digestive System and Pellitory&quot; artigo de divulgação que resume usos tradicionais de Parietaria officinalis no aparelho urinário e digestivo. Disponível em: <a href="https://caringsunshine.com/relationships/relationship-digestive-system-and-pellitory/" target="_blank" rel="noopener">https://caringsunshine.com/relationships/relationship-digestive-system-and-pellitory/</a></li>
+        <li id="ref-M4">[M4] BSBI. &quot;Parietaria judaica L., Pellitory-of-the-wall&quot; nota que compila usos medicinais históricos de Parietaria como remédio para cálculos e queixas urinárias. Disponível em: <a href="https://bsbi.org/parietaria-judaica-l" target="_blank" rel="noopener">https://bsbi.org/parietaria-judaica-l</a></li>
+        <li id="ref-M5">[M5] Botanical.com. &quot;Pellitory-of-the-Wall&quot; entrada de A Modern Herbal sobre Parietaria officinalis, com descrição das ações diurética, laxante suave e refrigerante. Disponível em: <a href="https://botanical.com/botanical/mgmh/p/pelwal22.html" target="_blank" rel="noopener">https://botanical.com/botanical/mgmh/p/pelwal22.html</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Budzianowski J. &quot;Flavonoids of Parietaria officinalis&quot; (Journal of Natural Products). Artigo que identifica quercetina, kaempferol e outros flavonoides nas folhas e flores da espécie. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/17316097/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/17316097/</a></li>
+        <li id="ref-F2">[F2] Budzianowski J. &quot;Caffeoylmalic and two pyrrole acids from Parietaria officinalis&quot; (Phytochemistry). Estudo que descreve ácidos fenólicos e derivados em P. officinalis. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/003194229380080N" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/003194229380080N</a></li>
+        <li id="ref-F3">[F3] Qadi M. et al. &quot;Antibacterial, Anticandidal, Phytochemical, and Biological Activities of Parietaria judaica L.&quot; detalha composição fitoquímica e atividades antioxidantes e enzimáticas de extratos de Parietaria. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7769628/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC7769628/</a></li>
+        <li id="ref-F4">[F4] Bielecka I. et al. &quot;Phytochemical Profile and Selective Anticancer Activity of Parietaria judaica L. Extracts&quot; (Molecules, 2025) analisa perfis de compostos fenólicos e atividades citotóxicas em folhas de Parietaria. Disponível em: <a href="https://www.mdpi.com/1420-3049/30/13/2739" target="_blank" rel="noopener">https://www.mdpi.com/1420-3049/30/13/2739</a></li>
+        <li id="ref-F5">[F5] Fernandes J. &quot;Análise química elementar de plantas medicinais&quot; inclui dados sobre composição mineral de espécies de Parietaria utilizadas em infusões. Disponível em: <a href="https://run.unl.pt/bitstream/10362/141454/1/Fernandes_2022.pdf" target="_blank" rel="noopener">https://run.unl.pt/bitstream/10362/141454/1/Fernandes_2022.pdf</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Revista Jardins – Fernanda Botelho. &quot;Alfavaca, uma planta amiga da saúde&quot; menciona usos domésticos, banhos e aplicações em contexto tradicional. Disponível em: <a href="https://revistajardins.pt/alfavaca-planta-amiga-da-saude/" target="_blank" rel="noopener">https://revistajardins.pt/alfavaca-planta-amiga-da-saude/</a></li>
+        <li id="ref-A2">[A2] Cantinho Verde (blog). Descrição de Parietaria como erva selvagem comestível usada em chás, sopas e remédios caseiros. Disponível em: <a href="https://cantinhoverde.blogspot.com/2007/01/" target="_blank" rel="noopener">https://cantinhoverde.blogspot.com/2007/01/</a></li>
+        <li id="ref-A3">[A3] Harmonia dos Anjos. Texto sobre alfavaca com enfoque em usos energéticos, banhos de ervas e defumações. Disponível em: <a href="https://harmoniadosanjos.blogs.sapo.pt/alfavaca-parietaria-officinalis-325966" target="_blank" rel="noopener">https://harmoniadosanjos.blogs.sapo.pt/alfavaca-parietaria-officinalis-325966</a></li>
+        <li id="ref-A4">[A4] &quot;Plantas Aromáticas e Medicinais nos Açores&quot; descreve o uso culinário de Parietaria officinalis em sopas e pratos regionais, reforçando o seu papel como verdura silvestre. Disponível em: <a href="https://pt.scribd.com/document/460140061/Plantas-Aromaticas-e-Medicinais-nos-Acores-Set-2010-pdf" target="_blank" rel="noopener">https://pt.scribd.com/document/460140061/Plantas-Aromaticas-e-Medicinais-nos-Acores-Set-2010-pdf</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] European Agroforestry Federation (EURAF). Casos de estudo sobre sistemas agroflorestais mediterrânicos que incluem espécies ruderais e espontâneas em muros e taludes como parte da biodiversidade útil. Disponível em: <a href="https://europeanagroforestry.eu/" target="_blank" rel="noopener">https://europeanagroforestry.eu/</a></li>
+        <li id="ref-P2">[P2] Revista Jardins e outras fontes de jardinagem ecológica em português que realçam a importância de plantas ruderalizadas como indicadores de microclimas e solo em espaços de permacultura. Disponível em: <a href="https://revistajardins.pt/" target="_blank" rel="noopener">https://revistajardins.pt/</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

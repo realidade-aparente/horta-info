@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html" class="ativa">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="louro.html">Louro</a>
+  <a class="next" href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Lúcia-lima (<em>Aloysia citrodora Paláu (sin. Aloysia triphylla; Lippia citriodora)</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Verbenaceae</span>
+  <span>Parte usada: folhas e sumidades floridas</span>
+  <span>Tipo: arbusto aromático perene medicinal</span>
+  <span>Produção: <strong>cultivada em jardins, hortas, vasos</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> nativa da América do Sul, amplamente cultivada em regiões mediterrânicas</div>
+  <div><strong>Uso principal</strong> calmante digestiva, ajuda sono, útil em ansiedade ligeira</div>
+  <div><strong>Perfil medicinal</strong> planta aromática digestiva, sedativa suave, antioxidante e relaxante</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Lúcia-lima (Aloysia citrodora Paláu (sin. Aloysia triphylla; Lippia citriodora))</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>A lúcia-lima (Aloysia citrodora Paláu), também conhecida em Portugal por lúcia-lima, lúcia-lima-cheirosa, bela-luísa ou bela-luísa-do-Chile, é um subarbusto aromático perene de 1–2 m de altura, com ramos lenhosos na base e folhas estreitas, lanceoladas, muito aromáticas ao serem esmagadas. Em inglês é geralmente chamada lemon verbena ou lemon beebrush. As folhas exalam um aroma intenso e fresco a limão, devido à presença de citral e outros monoterpenos.</p>
+      <p>A planta apresenta folhas inseridas em verticilos de três ao longo dos caules, com superfície ligeiramente rugosa. As inflorescências são panículas terminais de pequenas flores branco-esverdeadas a lilases, muito atrativas para abelhas e outros polinizadores. Em condições favoráveis, forma um arbusto denso, podado regularmente para estimular nova rebentação e manter porte compacto.</p>
+      <p>Nativa do Chile e de outras regiões da América do Sul, a lúcia-lima foi introduzida na Europa no século XVIII para extração de óleo essencial e uso perfumista, tendo-se tornado uma planta popular em jardins e hortas mediterrânicas. Em Portugal é comum em hortas familiares, quintais e bordaduras aromáticas, onde é colhida sobretudo para infusões digestivas e relaxantes e para aromatizar águas, licores e sobremesas.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, a lúcia-lima comporta-se como subarbusto caducifólio ou semi-persistente, perdendo parte ou a totalidade das folhas no inverno, sobretudo em regiões com geadas. Rebenta com vigor na primavera e cresce ativamente durante a primavera e o verão, altura em que a produção de folhas aromáticas é máxima.
+As folhas para uso alimentar e medicinal colhem-se tipicamente da primavera ao início do outono, escolhendo rebentos jovens mas já bem desenvolvidos. Em locais abrigados, junto a paredes quentes ou em vasos protegidos, a planta pode manter alguma folhagem durante o inverno, embora o aroma tenda a ser mais intenso na estação quente.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Rebentação e crescimento vegetativo: primavera (março–maio), com forte emissão de novos ramos e folhas.</li>
+        <li>Pico de produção de folhas aromáticas: final da primavera e verão (maio–setembro), período ideal para colheita para secagem.</li>
+        <li>Floração: em geral no verão, com panículas de pequenas flores esbranquiçadas ou lilases atraentes para polinizadores.</li>
+        <li>Em regiões com invernos frios pode perder as folhas e sofrer danos nas partes aéreas; a base lenhosa rebenta de novo na primavera se protegida do frio intenso.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Infusões de folhas de lúcia-lima (cerca de 1–2 g de folhas secas ou 1–2 colheres de chá por 150–250 mL de água quente, em infusão 5–10 minutos) como adjuvante em dispepsia, flatulência e desconforto digestivo associado a stress, descritas em monografias e revisões etnofarmacológicas. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a></li>
+        <li>Extratos padronizados de Aloysia citrodora ricos em verbascosídeo e outros polifenóis, administrados por via oral, têm sido estudados em ensaios clínicos e experimentais pela sua atividade antioxidante e anti-inflamatória, nomeadamente em contexto de recuperação muscular pós-exercício e stress oxidativo induzido. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-M2">[M2]</a></li>
+        <li>Suplementos de extrato de lúcia-lima (por exemplo 400–500 mg/dia de extrato padronizado) em combinação com outras substâncias, avaliados em estudos clínicos pela sua capacidade de melhorar a qualidade subjetiva do sono e reduzir ansiedade leve em adultos, através de efeitos neuro-moduladores e sedativos suaves. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-F2">[F2]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Infusão simples de lúcia-lima, isolada ou combinada com erva-cidreira, tília ou camomila, como chá de fim de dia para relaxar, aliviar o nervosismo e favorecer o sono. <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a></li>
+        <li>Chá digestivo de lúcia-lima após refeições, especialmente em casos de sensação de peso, digestão lenta, gases e desconforto abdominal associado a tensão. <a href="#ref-R1">[R1]</a> <a href="#ref-R3">[R3]</a></li>
+        <li>Uso de folhas frescas ou secas em jarros de água aromatizada, limonadas e outras bebidas frias, para refrescar no verão e proporcionar aroma cítrico agradável. <a href="#ref-R2">[R2]</a> <a href="#ref-A1">[A1]</a></li>
+        <li>Emprego culinário em pequenas quantidades para aromatizar compotas, sobremesas, caldas, pratos de fruta e alguns licores artesanais. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>A lúcia-lima é geralmente considerada segura quando usada em doses moderadas, como chá aromático ou condimento, em adultos saudáveis. A evidência de toxicidade grave em humanos é escassa nas formas tradicionais de uso, embora o óleo essencial concentrado possa ser irritante para pele e mucosas e deva ser manipulado com cuidado. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a></p>
+      <p>Como muitas plantas aromáticas ricas em óleos essenciais, o uso de lúcia-lima em doses muito elevadas ou por períodos prolongados não é recomendado sem acompanhamento profissional. Pessoas com doenças hepáticas, renais, em tratamento crónico ou com antecedentes de alergia a plantas da família Verbenaceae devem usar com prudência e observar a tolerância individual. <a href="#ref-U1">[U1]</a> <a href="#ref-U3">[U3]</a></p>
+      <p>Em grávidas, lactantes e crianças pequenas, a utilização deve ser cautelosa, limitando-se a infusões fracas e esporádicas ou sendo evitada na ausência de orientação especializada, dada a falta de dados de segurança robustos em doses repetidas. Também se recomenda prudência no uso de suplementos concentrados de extrato de lúcia-lima em conjunto com fármacos sedativos, ansiolíticos ou hipotensores, devido a possíveis efeitos aditivos. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        No uso fitoterapêutico e caseiro, a lúcia-lima é preparada sobretudo em infusões simples ou combinadas para apoio digestivo e relaxamento, bem como em bebidas frias aromatizadas, licores e sobremesas. Alguns estudos utilizam extratos padronizados em cápsulas ou comprimidos, mas na prática doméstica predominam os chás e as misturas de ervas. As receitas devem respeitar doses moderadas e ser enquadradas pelo Disclaimer padrão, especialmente quando se considera uso continuado ou em grupos mais sensíveis.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="lucia-lima_receitas.html">Infusão simples de lúcia-lima:</a> chá preparado com folhas secas em água quente, tomado morno para relaxar e aliviar tensão digestiva e nervosa. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="lucia-lima_receitas.html">Chá de lúcia-lima para relaxar:</a> infusão aromática bebida ao final do dia, isolada ou com outras plantas calmantes, para ajudar a diminuir stress e ansiedade ligeira. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="lucia-lima_receitas.html">Infusão digestiva combinada:</a> chá que associa lúcia-lima a outras ervas digestivas, usado após refeições mais pesadas para facilitar a digestão e reduzir gases. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="lucia-lima_receitas.html">Água aromatizada de lúcia-lima:</a> jarro de água fresca perfumado com ramos de lúcia-lima, consumido ao longo do dia como bebida refrescante e suavemente relaxante. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="lucia-lima_receitas.html">Xarope de lúcia-lima para bebidas:</a> xarope aromático preparado a partir de infusão concentrada, utilizado em pequenas quantidades para aromatizar águas, limonadas e cocktails sem álcool. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="lucia-lima_receitas.html">Licor caseiro de lúcia-lima:</a> bebida alcoólica artesanal aromatizada com folhas frescas, consumida em pequenas quantidades como digestivo após as refeições. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="lucia-lima_receitas.html">Sobremesa de fruta aromatizada:</a> pratos de fruta fresca ou saladas de fruta enriquecidos com folhas de lúcia-lima, conferindo aroma cítrico delicado à preparação. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="lucia-lima_receitas.html">Gelado ou sorvete de lúcia-lima:</a> sobremesa fria em que uma infusão de lúcia-lima é incorporada na base do gelado ou sorvete para obter sabor cítrico floral característico. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="lucia-lima_receitas.html">Banho relaxante com lúcia-lima:</a> adição de infusão concentrada de lúcia-lima à água morna do banho, criando um momento de relaxamento aromático corporal e mental. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="lucia-lima_receitas.html">Almofada aromática de lúcia-lima:</a> pequeno saco de tecido preenchido com folhas secas e colocado junto da almofada, libertando gradualmente aroma suave durante o sono. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>A lúcia-lima é tradicionalmente utilizada como planta digestiva, carminativa e levemente sedativa, especialmente em contextos de desconforto digestivo associado a stress, insónia ligeira e ansiedade moderada. Infusões de folhas são um recurso comum em hortas mediterrânicas, combinando efeito aromático agradável com sensação subjetiva de relaxamento. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-R1">[R1]</a></p>
+      <p>Estudos contemporâneos com extratos padronizados de Aloysia citrodora indicam que a planta possui atividade antioxidante significativa e pode modular respostas inflamatórias e de stress oxidativo, o que tem sido explorado em ensaios sobre recuperação muscular, fadiga e qualidade do sono. Alguns estudos clínicos sugerem que suplementos de lúcia-lima podem melhorar parâmetros de sono e reduzir sintomas de ansiedade em adultos, embora a evidência seja ainda limitada e frequentemente associada a formulações combinadas. <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-M3">[M3]</a></p>
+      <p>De forma complementar, a lúcia-lima é usada como planta aromática coadjuvante em perda de peso, bem-estar geral e apoio a estados de tensão nervosa, embora estes usos se baseiem sobretudo em tradição, efeitos digestivos e relaxantes leves, e menos em ensaios clínicos robustos. <a href="#ref-M1">[M1]</a> <a href="#ref-R2">[R2]</a> <a href="#ref-R3">[R3]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Adjuvante em desconforto digestivo funcional, dispepsia ligeira e flatulência associadas a estados de stress, ayudando a aliviar sensação de peso e gases após refeições. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a></li>
+        <li>Suporte relaxante em ansiedade ligeira, irritabilidade e dificuldade em adormecer, como parte de rotinas de higiene do sono e gestão de stress. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a></li>
+        <li>Apoio antioxidante e anti-inflamatório moderado em contextos de stress oxidativo aumentado, como exercício físico intenso ou estilos de vida exigentes, através do uso de extratos padronizados de lúcia-lima ricos em polifenóis. <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></li>
+        <li>Potencial contribuição para melhoria subjetiva de bem-estar geral e de qualidade do sono em adultos saudáveis ou com queixas leves, quando associada a outros hábitos saudáveis (atividade física, alimentação equilibrada e gestão de stress). <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>Aloysia citrodora é rica em óleo essencial (tipicamente 0,5–1,5% m/m nas folhas secas), cuja composição é dominada por monoterpenos oxigenados de aroma cítrico. Os principais componentes descritos incluem geranial e neral (o par de isómeros conhecido como citral), além de limoneno, 1,8-cineol, linalol e outros terpenos, com variação de quimiotipos em função da origem geográfica e das condições de cultivo. <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F5">[F5]</a></p>
+      <p>Para além do óleo essencial, a planta contém quantidades relevantes de compostos fenólicos, em particular o verbascosídeo (actoósido), ácidos fenólicos (como ácido rosmarínico) e flavonoides. Estudos fitoquímicos mostram teores de verbascosídeo na ordem de dezenas de mg/g de extrato, com forte correlação com a atividade antioxidante medida por ensaios DPPH, ABTS e FRAP. <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F5">[F5]</a></p>
+      <p>Ensaios in vitro e in vivo indicam que extratos de lúcia-lima podem exercer efeitos antioxidantes, anti-inflamatórios, ansiolíticos e moduladores do sono, provavelmente resultantes da combinação entre os componentes voláteis (citral e outros monoterpenos) e a fração polifenólica (verbascosídeo e ácidos fenólicos). Estudos recentes relacionam a composição do óleo essencial e dos extratos com efeitos sobre parâmetros de sono, resposta ao stress e recuperação muscular. <a href="#ref-F3">[F3]</a> <a href="#ref-F5">[F5]</a> <a href="#ref-F6">[F6]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Teor de óleo essencial nas folhas secas</td><td>≈0,5–1,5 % m/m</td></tr>
+        <tr><td>Citral total (geranial + neral) no óleo essencial</td><td>≈20–40 % (área relativa)</td></tr>
+        <tr><td>Limoneno, 1,8-cineol e outros monoterpenos no óleo essencial</td><td>≈10–30 % (área relativa, somado)</td></tr>
+        <tr><td>Verbascosídeo (actoósido) em extratos hidroalcoólicos</td><td>≈10–50 mg/g de extrato seco</td></tr>
+        <tr><td>Fenólicos totais em extratos (equivalentes de ácido gálico)</td><td>≈20–100 mg GAE/g de extrato seco</td></tr>
+        <tr><td>Atividade antioxidante global em ensaios DPPH/ABTS/FRAP</td><td>atividade elevada (IC50 na gama de poucas dezenas de µg/mL)</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Planta ornamental e aromática muito apreciada em jardins e hortas pela folhagem perfumada e flores melíferas, utilizada em bordaduras, talhões de ervas aromáticas e vasos. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Uso em saquetas perfumadas, pot-pourri e arranjos aromáticos para perfumar gavetas, roupeiros e divisões, explorando o aroma fresco a limão. <a href="#ref-A2">[A2]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Ingrediente em cosmética natural (sabões, óleos de banho, cremes e loções) e perfumaria artesanal, conferindo notas cítricas suaves a composições aromáticas. <a href="#ref-A3">[A3]</a> <a href="#ref-A4">[A4]</a></li>
+        <li>Aplicação em sprays e soluções de limpeza caseiras com base em vinagre ou álcool, onde a lúcia-lima acrescenta aroma cítrico agradável e, em combinação com outros ingredientes, pode contribuir para propriedades desodorizantes. <a href="#ref-A4">[A4]</a> <a href="#ref-A5">[A5]</a></li>
+        <li>Planta companheira em hortas, usada em consociações e bordaduras para atrair polinizadores e diversificar o estrato aromático, embora não seja considerada repelente de pragas tão marcada como outras espécies. <a href="#ref-P1">[P1]</a> <a href="#ref-A1">[A1]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 7,1 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em sistemas de permacultura de clima mediterrânico, a lúcia-lima oferece um conjunto muito interessante de funções: é uma planta medicinal e aromática de uso diário, funciona como bordadura aromática e elemento de bem-estar para os habitantes humanos, atrai polinizadores com as suas flores estivais e adapta-se bem a solos drenados e exposições solares fortes. É particularmente valiosa em espirais de ervas, talhões de plantas aromáticas e junto a zonas de estar, onde o aroma a limão pode ser apreciado.
+A produção de biomassa não é tão elevada como a de arbustos de maior porte, mas fornece material para podas regulares, coberturas leves e compostagem. Não é considerada invasora no contexto hortícola habitual, embora possa sofrer com geadas fortes e solos encharcados, o que limita em parte a sua rusticidade em climas mais frios ou húmidos.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação da lúcia-lima resulta de valores moderados a elevados em vários critérios positivos do índice. No uso alimentar (ALIM=1), contribui sobretudo como aromática e condimento em chás, bebidas e alguns pratos, não sendo um alimento volumoso. O uso medicinal é relevante (MED=2), com funções digestivas e calmantes valorizadas na fitoterapia e em estudos recentes com extratos. A nível estrutural (ESTR=1), atua como subarbusto de pequeno a médio porte, útil em bordaduras e espirais de ervas, mas sem o impacto de sebes altas ou árvores. O contributo para solo e biomassa (SOLO=1) é moderado, com material de poda utilizável em cobertura ligeira e compostagem. Em ecologia (ECO=2), oferece flores melíferas e néctar para insetos benéficos e polinizadores. A rusticidade (RUST=1) é razoável em climas mediterrânicos suaves, mas a sensibilidade a geadas fortes e a solos encharcados impede uma classificação máxima. A multifuncionalidade cultural e aromática (MULT=2) é elevada, dada a combinação de usos culinários, medicinais, cosméticos e de bem-estar.
+Nas penalizações, o risco de toxicidade relevante para humanos nas formas de uso tradicionais é baixo (TOX=0), embora o óleo essencial concentrado exija manipulação cuidadosa. Não apresenta perigo físico (PERIGO=0) e não é tipicamente invasora em hortas bem geridas (INVAS=0). A competição por água e luz (COMP=0) é moderada e gerível com espaçamento adequado. O valor final em escala 0–10 resulta da aplicação do algoritmo descrito em anexo (soma dos critérios positivos até 14 pontos, subtração de penalizações, com conversão por regra de três simples), situando a lúcia-lima em cerca de 7,1/10 e indicando uma planta de elevada funcionalidade em permacultura, especialmente útil em bordaduras aromáticas, espirais de ervas e zonas de convívio do jardim.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Plants For A Future. Ficha de Aloysia citriodora (lemon verbena) com descrição botânica, origem, usos culinários e medicinais. Disponível em: <a href="https://pfaf.org/user/Plant.aspx?LatinName=Aloysia+citriodora" target="_blank" rel="noopener">https://pfaf.org/user/Plant.aspx?LatinName=Aloysia+citriodora</a></li>
+        <li id="ref-D2">[D2] HerbalGram (American Botanical Council). Perfil de erva sobre lemon verbena com história, taxonomia, morfologia e usos tradicionais. Disponível em: <a href="https://www.herbalgram.org/resources/herbalgram/issues/144/table-of-contents/hg144-herbprofile-lemonverbena/" target="_blank" rel="noopener">https://www.herbalgram.org/resources/herbalgram/issues/144/table-of-contents/hg144-herbprofile-lemonverbena/</a></li>
+        <li id="ref-D3">[D3] Jekka&#x27;s. Artigo &quot;All About Herbs: Lemon verbena (Aloysia citrodora)&quot; com notas sobre origem, introdução na Europa, características botânicas e usos em jardim e cozinha. Disponível em: <a href="https://www.jekkas.com/blogs/jekkas-blog/all-about-herbs-lemon-verbena-aloysia-citrodora" target="_blank" rel="noopener">https://www.jekkas.com/blogs/jekkas-blog/all-about-herbs-lemon-verbena-aloysia-citrodora</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Jardim Seco (PT). Ficha de planta &quot;Aloysia citrodora&quot; com informação sobre tipo de planta, porte, exposição solar, floração de verão e necessidades de solo bem drenado. Disponível em: <a href="https://www.jardimseco.com/pt/online-store-algarve/Aloysia-citrodora-p251645091" target="_blank" rel="noopener">https://www.jardimseco.com/pt/online-store-algarve/Aloysia-citrodora-p251645091</a></li>
+        <li id="ref-S2">[S2] Jekka&#x27;s. Secções de cultivo no artigo sobre lemon verbena, com recomendações de poda, proteção contra geadas, cultivo em vasos e necessidades de sol. Disponível em: <a href="https://www.jekkas.com/blogs/jekkas-blog/all-about-herbs-lemon-verbena-aloysia-citrodora" target="_blank" rel="noopener">https://www.jekkas.com/blogs/jekkas-blog/all-about-herbs-lemon-verbena-aloysia-citrodora</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] Plants For A Future. Secções sobre usos medicinais, comestibilidade e advertências de segurança de Aloysia citriodora, incluindo notas gerais sobre doses e formas de uso. Disponível em: <a href="https://pfaf.org/user/Plant.aspx?LatinName=Aloysia+citriodora" target="_blank" rel="noopener">https://pfaf.org/user/Plant.aspx?LatinName=Aloysia+citriodora</a></li>
+        <li id="ref-U2">[U2] ASPCA. Página &quot;Lemon Verbena&quot; com informação sobre toxicidade do óleo essencial e das folhas frescas para animais domésticos, sinais clínicos e nível de preocupação. Disponível em: <a href="https://www.aspca.org/pet-care/aspca-poison-control/toxic-and-non-toxic-plants/lemon-verbena" target="_blank" rel="noopener">https://www.aspca.org/pet-care/aspca-poison-control/toxic-and-non-toxic-plants/lemon-verbena</a></li>
+        <li id="ref-U3">[U3] Plant Addicts. Artigo &quot;Are Verbena Poisonous?&quot; com referência a Aloysia triphylla/lemon verbena como potencialmente tóxica para animais quando ingerida em quantidades significativas, embora segura em usos culinários moderados. Disponível em: <a href="https://plantaddicts.com/are-verbena-poisonous/" target="_blank" rel="noopener">https://plantaddicts.com/are-verbena-poisonous/</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Panelinha (ou blogs culinários em português). Receitas de chá de lúcia-lima indicando 1–2 colheres de chá de folhas secas em 200 mL de água quente, com tempo de infusão de 5–10 minutos e consumo moderado. Disponível em: <a href="https://www.panelinha.com.br/receita/cha-de-lucia-lima" target="_blank" rel="noopener">https://www.panelinha.com.br/receita/cha-de-lucia-lima</a></li>
+        <li id="ref-R2">[R2] Vários blogs e sites de saúde natural em português que descrevem chá de lúcia-lima como calmante e digestivo, incluindo instruções de quantidade por chávena e horário de consumo (por exemplo Tua Saúde, GreenMe). Disponível em: <a href="https://www.greenme.com.br/usos-beneficios/ervas-aromaticas/103906-cha-de-lucia-lima/" target="_blank" rel="noopener">https://www.greenme.com.br/usos-beneficios/ervas-aromaticas/103906-cha-de-lucia-lima/</a></li>
+        <li id="ref-R3">[R3] Receitas de infusões digestivas combinadas com lúcia-lima, erva-cidreira e hortelã em sites de fitoterapia e culinária, com proporções aproximadas por chávena. Disponível em: <a href="https://www.saberviver.pt/bem-estar/plantas-medicinais-cha-digestivo/" target="_blank" rel="noopener">https://www.saberviver.pt/bem-estar/plantas-medicinais-cha-digestivo/</a></li>
+        <li id="ref-R4">[R4] Artigos e blogs sobre águas aromatizadas e bebidas de verão com ervas (incluindo lúcia-lima) que indicam como preparar jarros de água com ervas frescas e frutas. Disponível em: <a href="https://www.pingodoce.pt/receitas/agua-aromatizada-de-limao-e-ervas-aromaticas/" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/agua-aromatizada-de-limao-e-ervas-aromaticas/</a></li>
+        <li id="ref-R5">[R5] Blogs de cozinha e conservação que ensinam a preparar xaropes aromatizados com ervas como lúcia-lima para usar em bebidas, com proporções de açúcar, água e erva. Disponível em: <a href="https://www.lacucinaitaliana.it/tendenze-in-cucina/consigli-in-cucina/sciroppi-di-erbe-fatte-in-casa" target="_blank" rel="noopener">https://www.lacucinaitaliana.it/tendenze-in-cucina/consigli-in-cucina/sciroppi-di-erbe-fatte-in-casa</a></li>
+        <li id="ref-R6">[R6] Receitas de licores caseiros de ervas aromáticas (incluindo lúcia-lima) em blogs portugueses, com proporções de folhas, álcool e calda de açúcar, tempos de maceração e diluição. Disponível em: <a href="https://ruralea.com/licor-de-lucia-lima/" target="_blank" rel="noopener">https://ruralea.com/licor-de-lucia-lima/</a></li>
+        <li id="ref-R7">[R7] Artigos culinários que sugerem o uso de lúcia-lima para aromatizar saladas de fruta, compotas e sobremesas, descrevendo forma de adição e remoção das folhas. Disponível em: <a href="https://www.jekkas.com/blogs/jekkas-blog/all-about-herbs-lemon-verbena-aloysia-citrodora" target="_blank" rel="noopener">https://www.jekkas.com/blogs/jekkas-blog/all-about-herbs-lemon-verbena-aloysia-citrodora</a></li>
+        <li id="ref-R8">[R8] Receitas de gelados e sorvetes de lemon verbena em sites de culinária internacional, indicando quantidades de folhas por volume de líquido e processos de infusão e congelação. Disponível em: <a href="https://www.bbcgoodfood.com/recipes/lemon-verbena-ice-cream" target="_blank" rel="noopener">https://www.bbcgoodfood.com/recipes/lemon-verbena-ice-cream</a></li>
+        <li id="ref-R9">[R9] Blogs de bem-estar e aromaterapia que descrevem banhos relaxantes com infusões de lúcia-lima, incluindo quantidades aproximadas de erva por litro de água e tempo de permanência no banho. Disponível em: <a href="https://www.thespruceeats.com/how-to-make-herbal-bath-tea-1762123" target="_blank" rel="noopener">https://www.thespruceeats.com/how-to-make-herbal-bath-tea-1762123</a></li>
+        <li id="ref-R10">[R10] Tutoriais sobre almofadas aromáticas com ervas (lavanda, lúcia-lima, erva-cidreira) para apoio ao sono, com indicações de enchimento e utilização. Disponível em: <a href="https://www.thesprucecrafts.com/how-to-make-herbal-dream-pillows-4047475" target="_blank" rel="noopener">https://www.thesprucecrafts.com/how-to-make-herbal-dream-pillows-4047475</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] Arajyan G. et al. &quot;Phytochemical insights and therapeutic benefits of Aloysia citrodora (lemon verbena)&quot; em Functional Foods in Health and Disease, revisão recente sobre usos tradicionais, atividades farmacológicas e potenciais aplicações clínicas. Disponível em: <a href="https://www.ffhdj.com/index.php/FunctionalFoodScience/article/view/1708/4637" target="_blank" rel="noopener">https://www.ffhdj.com/index.php/FunctionalFoodScience/article/view/1708/4637</a></li>
+        <li id="ref-M2">[M2] Majewska M. et al. &quot;Chemical composition and antioxidant properties of Verbena officinalis L. and Aloysia citrodora Paláu&quot; em Antioxidants, estudo comparativo de extratos com destaque para atividade antioxidante e teor de compostos fenólicos. Disponível em: <a href="https://bibliotecadigital.ipb.pt/handle/10198/24924" target="_blank" rel="noopener">https://bibliotecadigital.ipb.pt/handle/10198/24924</a></li>
+        <li id="ref-M3">[M3] Pérez-Piñero S. et al. &quot;Dietary supplementation with an extract of Aloysia citrodora (lemon verbena) improves sleep quality in healthy subjects&quot; em International Journal of Molecular Sciences, ensaio clínico randomizado que avalia efeitos de extrato de lúcia-lima na qualidade do sono. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11123999" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11123999</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Pérez-Piñero S. et al. Estudo clínico em humanos que utiliza extrato padronizado de Aloysia citrodora, discutindo composição polifenólica e possíveis mecanismos antioxidantes e neuromoduladores. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11123999" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11123999</a></li>
+        <li id="ref-F2">[F2] Choi M. et al. &quot;Lemon Verbena Extract Enhances Sleep Quality and Modulates GABAergic and Serotonergic Systems&quot; em International Journal of Molecular Sciences, estudo em modelo animal relacionando extrato de lúcia-lima com composição química e efeitos no sono. Disponível em: <a href="https://www.mdpi.com/1422-0067/26/12/5723" target="_blank" rel="noopener">https://www.mdpi.com/1422-0067/26/12/5723</a></li>
+        <li id="ref-F3">[F3] Elechosa M. et al. &quot;Essential oil chemotypes of Aloysia citrodora Palau&quot; em Biochemical Systematics and Ecology, estudo que descreve quimiotipos do óleo essencial e variações nos teores de citral e outros monoterpenos. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0305197817300996" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S0305197817300996</a></li>
+        <li id="ref-F4">[F4] Polumackanycz M. et al. &quot;Chemical composition and antioxidant properties of Verbena officinalis L. and Aloysia citrodora Paláu&quot; em Antioxidants, com dados quantitativos de compostos fenólicos e atividade antioxidante de diferentes tipos de extratos. Disponível em: <a href="https://bibliotecadigital.ipb.pt/handle/10198/24924" target="_blank" rel="noopener">https://bibliotecadigital.ipb.pt/handle/10198/24924</a></li>
+        <li id="ref-F5">[F5] HerbalGram. Perfil de lemon verbena com secções sobre constituintes principais do óleo essencial, destacando citral, limoneno, 1,8-cineol e linalol. Disponível em: <a href="https://www.herbalgram.org/resources/herbalgram/issues/144/table-of-contents/hg144-herbprofile-lemonverbena/" target="_blank" rel="noopener">https://www.herbalgram.org/resources/herbalgram/issues/144/table-of-contents/hg144-herbprofile-lemonverbena/</a></li>
+        <li id="ref-F6">[F6] Recio-Cázares S. et al. &quot;Relationship between the chemical composition and biological properties of Mexican lemon verbena (Aloysia citrodora) essential oil&quot; em Biointerface Research in Applied Chemistry, relacionando composição do óleo com atividade biológica. Disponível em: <a href="https://biointerfaceresearch.com/wp-content/uploads/2023/02/BRIAC136.560.pdf" target="_blank" rel="noopener">https://biointerfaceresearch.com/wp-content/uploads/2023/02/BRIAC136.560.pdf</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Jekka&#x27;s. Artigo sobre lemon verbena com ênfase no uso em jardins, culinária, perfumaria e produtos da marca L’Occitane, destacando o valor aromático da planta. Disponível em: <a href="https://www.jekkas.com/blogs/jekkas-blog/all-about-herbs-lemon-verbena-aloysia-citrodora" target="_blank" rel="noopener">https://www.jekkas.com/blogs/jekkas-blog/all-about-herbs-lemon-verbena-aloysia-citrodora</a></li>
+        <li id="ref-A2">[A2] Jardim Seco (PT). Ficha de Aloysia citrodora com usos ornamentais, aromáticos e em jardins secos mediterrânicos. Disponível em: <a href="https://www.jardimseco.com/pt/online-store-algarve/Aloysia-citrodora-p251645091" target="_blank" rel="noopener">https://www.jardimseco.com/pt/online-store-algarve/Aloysia-citrodora-p251645091</a></li>
+        <li id="ref-A3">[A3] HerbalGram. Notas sobre uso de lemon verbena em perfumaria, cosmética e produtos comerciais, incluindo aplicações em chás e bebidas funcionais. Disponível em: <a href="https://www.herbalgram.org/resources/herbalgram/issues/144/table-of-contents/hg144-herbprofile-lemonverbena/" target="_blank" rel="noopener">https://www.herbalgram.org/resources/herbalgram/issues/144/table-of-contents/hg144-herbprofile-lemonverbena/</a></li>
+        <li id="ref-A4">[A4] Artigos de blogs de limpeza ecológica que ensinam a preparar sprays multiusos com vinagre e ervas aromáticas como lúcia-lima para perfumar a casa. Disponível em: <a href="https://www.treehugger.com/homemade-all-purpose-cleaner-recipes-4858786" target="_blank" rel="noopener">https://www.treehugger.com/homemade-all-purpose-cleaner-recipes-4858786</a></li>
+        <li id="ref-A5">[A5] Recursos de jardinagem ecológica que sugerem o uso de plantas aromáticas, incluindo lúcia-lima, como elementos de diversidade e atração de polinizadores em hortas. Disponível em: <a href="https://www.rhs.org.uk/plants/lemon-verbena-grow-care" target="_blank" rel="noopener">https://www.rhs.org.uk/plants/lemon-verbena-grow-care</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] Recursos de permacultura e jardinagem mediterrânica que recomendam lemon verbena/lúcia-lima como planta aromática perene para bordaduras, espirais de ervas e zonas de estar, valorizando o seu papel ecológico e cultural. Disponível em: <a href="https://www.permaculturenews.org/2017/07/07/mediterranean-herbs-in-permaculture/" target="_blank" rel="noopener">https://www.permaculturenews.org/2017/07/07/mediterranean-herbs-in-permaculture/</a></li>
+        <li id="ref-P2">[P2] Royal Horticultural Society (RHS). Ficha de cultivo de lemon verbena com notas sobre rusticidade limitada, exigência de solos bem drenados e valor para polinizadores, relevante para a avaliação da funcionalidade em permacultura. Disponível em: <a href="https://www.rhs.org.uk/plants/lemon-verbena-grow-care" target="_blank" rel="noopener">https://www.rhs.org.uk/plants/lemon-verbena-grow-care</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

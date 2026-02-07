@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html" class="ativa">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="serralha.html">Serralha</a>
+  <a class="next" href="tanchagem.html">Tanchagem</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Silva / Amora-silvestre (<em>Rubus fruticosus L.</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Rosaceae</span>
+  <span>Parte usada: folhas, frutos, raízes jovens</span>
+  <span>Tipo: arbusto sarmentoso perene</span>
+  <span>Produção: <strong>espontânea e cultivo em sebes</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> espécie eurasiática, comum em sebes, matos e terrenos agrícolas</div>
+  <div><strong>Uso principal</strong> folha adstringente e fruto nutritivo para uso interno</div>
+  <div><strong>Perfil medicinal</strong> adstringente digestivo, apoio oral, vascular e metabólico suave</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Silva / Amora-silvestre (Rubus fruticosus L.)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>A silva, também conhecida como amora-silvestre ou amora-preta, é um arbusto sarmentoso da família das Rosáceas, com caules arqueados e espinhosos, folhas compostas e frutos agregados de cor negra ou roxo-escura quando maduros. No contexto hortícola e medicinal, o nome Rubus fruticosus é usado de forma abrangente para o complexo de silvas que produz as amoras-silvestres comestíveis.</p>
+      <p>Em Portugal, as silvas surgem de forma espontânea em sebes, margens de caminhos, matos e taludes, sendo simultaneamente um recurso alimentar e medicinal e uma espécie pioneira importante para a estruturação de ecossistemas rurais. Os frutos são apreciados frescos ou transformados, enquanto as folhas e raízes são tradicionalmente usadas em infusões e decocções de uso interno e externo.</p>
+      <p>As folhas destacam‑se pelo elevado teor em taninos e outros compostos fenólicos com ação adstringente, enquanto os frutos são ricos em antocianinas, vitamina C e outros antioxidantes. Esta combinação explica o duplo interesse da planta: como fruto silvestre altamente nutritivo e como planta medicinal multifuncional, especialmente útil em perturbações digestivas ligeiras, inflamações da boca e garganta e apoio geral à saúde vascular.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a> <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D1">[D1]</a> <a href="#ref-D3">[D3]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        A silva é um arbusto perene, mas o interesse medicinal e alimentar concentra‑se sobretudo nas folhas jovens e nos frutos do ano. Em clima atlântico e mediterrânico de Portugal, o ciclo é marcado por brotação primaveril, floração estival e frutificação no final do Verão e início do Outono.
+As folhas podem ser colhidas para uso medicinal durante a primavera e o verão, escolhendo rebentos bem desenvolvidos mas ainda tenros. As raízes e a casca da raiz, quando usadas, colhem‑se geralmente no final do Outono ou no Inverno, com a planta em repouso vegetativo.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Brotação vegetativa: sobretudo de março a maio, com rebentos vigorosos nos taludes e sebes.</li>
+        <li>Floração: em geral de abril a julho, com flores brancas ou rosadas muito atrativas para polinizadores.</li>
+        <li>Frutificação: principalmente de julho a setembro, podendo prolongar‑se até outubro em zonas mais frescas.</li>
+        <li>Colheita de folhas para uso medicinal: preferencialmente da primavera ao verão, evitando folhas muito velhas.</li>
+        <li>Colheita de raízes/casca: usualmente no final do Outono ou Inverno, quando a parte aérea está menos ativa.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a> <a href="#ref-S3">[S3]</a> <a href="#ref-S1">[S1]</a> <a href="#ref-S3">[S3]</a> <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a> <a href="#ref-S4">[S4]</a> <a href="#ref-S1">[S1]</a> <a href="#ref-S3">[S3]</a> <a href="#ref-S1">[S1]</a> <a href="#ref-S4">[S4]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Infusão de folhas secas (uso interno, curto prazo) como adjuvante em diarreias ligeiras e inflamações gastrointestinais, beneficiando da forte ação adstringente dos taninos para reduzir a perda de líquidos e tonificar as mucosas. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-U4">[U4]</a></li>
+        <li>Infusão concentrada ou decocção branda de folhas usada como gargarejo e bochecho em inflamações da boca e garganta, gengivites ligeiras e aftas recorrentes, aproveitando o efeito adstringente e anti‑inflamatório local. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></li>
+        <li>Preparações aquosas de folhas e raízes usadas tradicionalmente como coadjuvantes em hemorroidas, pequenas hemorragias e afecções ligeiras do trato urinário, combinando ação adstringente e ligeiramente anti‑inflamatória. <a href="#ref-U1">[U1]</a> <a href="#ref-U3">[U3]</a></li>
+        <li>Extratos de frutos e folhas estudados como fonte de compostos antioxidantes e com potencial efeito antidiabético e modulador da glicemia, sempre enquadrados num plano global de alimentação equilibrada e estilo de vida saudável. <a href="#ref-U4">[U4]</a> <a href="#ref-U5">[U5]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Chá de folhas de silva, tradicionalmente preparado com folhas secas em água quente, usado como &quot;chá de amora-silvestre&quot; para aliviar diarreias ligeiras, desconforto gástrico e sensação de &quot;barriga pesada&quot; após excessos alimentares. <a href="#ref-U6">[U6]</a> <a href="#ref-U7">[U7]</a></li>
+        <li>Infusão de folhas utilizada morna ou fria para gargarejos em dores de garganta, aftas e inflamações da boca, podendo ser associada a mel ou outras plantas suavizantes em uso popular. <a href="#ref-U6">[U6]</a> <a href="#ref-U8">[U8]</a></li>
+        <li>Uso de folhas e ramos jovens em banhos de assento ou compressas locais em hemorroidas externas e pequenas inflamações cutâneas, como prática tradicional em meio rural. <a href="#ref-U6">[U6]</a></li>
+        <li>Consumo regular de frutos frescos ou em compotas pouco açucaradas como forma de &quot;fortalecer o sangue&quot; e apoiar a saúde vascular na ótica da medicina popular. <a href="#ref-U3">[U3]</a> <a href="#ref-U6">[U6]</a></li>
+        <li>Misturas caseiras de tisanas com folhas de amora-silvestre associadas a outras plantas (como camomila ou hibisco) em infusões depurativas e de bem‑estar geral. <a href="#ref-U6">[U6]</a> <a href="#ref-U7">[U7]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>Preparações com folhas e raízes de silva são geralmente bem toleradas em doses tradicionais e por períodos curtos, mas o elevado teor em taninos pode causar irritação gástrica, náuseas ou obstipação em pessoas sensíveis ou em uso prolongado. <a href="#ref-SG1">[SG1]</a> <a href="#ref-SG2">[SG2]</a></p>
+      <p>O uso interno continuado de infusões muito concentradas, especialmente em pessoas com história de úlceras digestivas, doenças inflamatórias intestinais ou patologias renais, deve ser evitado sem acompanhamento profissional. <a href="#ref-SG1">[SG1]</a> <a href="#ref-SG3">[SG3]</a></p>
+      <p>Em grávidas, lactantes, crianças pequenas, idosos frágeis e pessoas sob medicação crónica, o uso regular de preparados concentrados de folhas ou raízes de silva deve ser avaliado com o médico ou farmacêutico, dadas as potenciais interações com fármacos e a escassez de estudos clínicos robustos nestes grupos. <a href="#ref-SG1">[SG1]</a> <a href="#ref-SG2">[SG2]</a> <a href="#ref-SG3">[SG3]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        Na fitoterapia de uso caseiro, a silva é sobretudo utilizada em chás de folhas e raízes, gargarejos, bochechos e banhos locais, quase sempre sob a forma de infusões ou decocções aquosas. As receitas variam na proporção de planta e água, mas mantêm em comum a procura de um efeito adstringente suave e de apoio à mucosa digestiva e oral.
+As receitas abaixo são um conjunto representativo de preparações tradicionais e contemporâneas baseadas em fontes fiáveis, devendo ser vistas como exemplos para uso pontual e nunca como substitutos de diagnóstico ou tratamento médico.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="silva-amora-silvestre_receitas.html">Chá simples de folhas de amora-silvestre:</a> Infusão quente preparada com folhas secas de silva em água acabada de ferver, usada em pequenos goles ao longo do dia como apoio digestivo e adstringente suave. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="silva-amora-silvestre_receitas.html">Chá de folhas de amora para menopausa e bem-estar metabólico:</a> Bebida quente ou morna, preparada com folhas frescas ou secas, usada popularmente como apoio complementar em sintomas de menopausa e equilíbrio da glicemia. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="silva-amora-silvestre_receitas.html">Chá de folha de amora silvestre para pressão arterial:</a> Infusão de folhas secas, tomada em 1–3 chávenas por dia, inserida em rotinas de estilo de vida saudável para controlo complementar da tensão arterial. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="silva-amora-silvestre_receitas.html">Chá de folhas verdes de amora:</a> Infusão simples de folhas verdes bem lavadas, utilizada como bebida diária leve, com enfoque em bem‑estar geral e suporte antioxidante. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="silva-amora-silvestre_receitas.html">Chá de folhas de amoras silvestres para uso diário:</a> Receita tradicional com maior volume de água e várias colheres de folhas secas, usada como bebida de consumo ao longo do dia em contextos rurais. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="silva-amora-silvestre_receitas.html">Tisana de amora silvestre para garganta e mucosas:</a> Infusão de folhas, casca ou raiz de silva, usada morna em gargarejos e bochechos para aliviar irritações da garganta e inflamações da boca. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="silva-amora-silvestre_receitas.html">Chá de amora-silvestre para memória e concentração:</a> Variante de chá com folhas verdes de amora combinada com outros hábitos saudáveis, divulgada como apoio suave à memória e foco mental. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="silva-amora-silvestre_receitas.html">Infusão de folha de amora em misturas depurativas:</a> Chá de mistura onde a folha de amora entra associada a outras plantas, usado em contextos populares como bebida depurativa e de equilíbrio geral. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="silva-amora-silvestre_receitas.html">Chá gelado de amora-silvestre:</a> Preparado a partir de uma infusão concentrada de folhas ou frutos, arrefecida e servida fria, usado como bebida refrescante com finalidade antioxidante. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="silva-amora-silvestre_receitas.html">Chá de folhas de amora em rotinas de bem-estar:</a> Infusão regular de folhas secas preparada em casa, integrada em rotinas pessoais de autocuidado, muitas vezes associada a prática de exercício e alimentação equilibrada. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>A silva combina o interesse nutricional dos frutos com o valor medicinal das folhas e raízes. As folhas são ricas em taninos, flavonoides e outros compostos fenólicos com ação adstringente, antioxidante e ligeiramente anti‑inflamatória, sustentando o uso tradicional em diarreias ligeiras, inflamações da boca e garganta e pequenas hemorragias. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a></p>
+      <p>Os frutos destacam‑se pelo elevado teor em antocianinas, vitamina C e outros polifenóis, associados a forte capacidade antioxidante e a potenciais efeitos protetores cardiovasculares e metabólicos. Estudos in vitro e em modelos animais apontam para efeitos antidiabéticos, moduladores da glicemia e protetores do endotélio vascular. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-M5">[M5]</a></p>
+      <p>No conjunto, a planta é vista como um recurso fitoterapêutico de suporte: não substitui terapêutica convencional, mas pode contribuir, em uso prudente, para o conforto digestivo, equilíbrio da mucosa oral, apoio vascular e gestão de alguns fatores de risco metabólico, sempre enquadrada em aconselhamento profissional adequado. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M5">[M5]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Apoio em diarreias ligeiras e inflamações gastrointestinais, pela ação adstringente dos taninos das folhas e raízes. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a></li>
+        <li>Alívio de inflamações da boca e garganta, gengivites ligeiras e aftas, através de gargarejos e bochechos com infusões concentradas. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a></li>
+        <li>Contribuição antioxidante relevante associada ao elevado teor em antocianinas e outros polifenóis nos frutos maduros. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a></li>
+        <li>Potencial efeito antidiabético e modulador da glicemia, sugerido em estudos com extratos de folhas e frutos. <a href="#ref-M2">[M2]</a> <a href="#ref-M5">[M5]</a></li>
+        <li>Apoio complementar à saúde cardiovascular, através da combinação de fibras, polifenóis e micronutrientes presentes nos frutos. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-M5">[M5]</a></li>
+        <li>Contribuição geral para o bem‑estar e vitalidade quando integrada numa alimentação diversificada rica em frutos vermelhos. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>Estudos de composição em frutos de amora-silvestre indicam um elevado teor em polifenóis totais, incluindo antocianinas, flavonóis e outros compostos fenólicos, em concentrações que podem atingir dezenas de miligramas por grama de peso seco. Estes teores variam de forma significativa com a cultivar, maturação, solo e condições de cultivo. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></p>
+      <p>Em diferentes linhas de amora-preta foram descritos intervalos aproximados de 23,6–84,4 mg/g de fenóis totais e de 2,7–27,5 mg/g de flavonoides totais no fruto, bem como extratos metanólicos com cerca de 38 mg de equivalentes de ácido gálico por grama de peso seco e teores mensuráveis de antocianinas e capacidade redutora de ferro. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>Extratos concentrados de frutos demonstraram ainda atividade antioxidante expressiva em ensaios in vitro, incluindo capacidade de redução férrica e forte atividade quelante de metais, o que ajuda a explicar parte dos efeitos protetores observados sobre células expostas a stress oxidativo em modelos laboratoriais. <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Fenóis totais em frutos maduros (várias cultivares)</td><td>≈23,6–84,4 mg/g peso seco</td></tr>
+        <tr><td>Flavonoides totais em frutos maduros</td><td>≈2,7–27,5 mg/g peso seco</td></tr>
+        <tr><td>Fenóis totais no extrato metanólico de frutos</td><td>≈38 mg GAE/g peso seco</td></tr>
+        <tr><td>Antocianinas totais no extrato de frutos</td><td>≈7,7 mg/kg peso seco</td></tr>
+        <tr><td>Capacidade redutora férrica do extrato de frutos</td><td>≈20,5 mg FeSO4/g peso seco</td></tr>
+        <tr><td>Atividade quelante de metais do extrato de frutos</td><td>≈182 mg Fe2+/g peso seco</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Formação de sebes vivas defensivas em redor de propriedades rurais, pela combinação de crescimento vigoroso e espinhos abundantes. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Fornecimento de alimento e abrigo para aves, pequenos mamíferos e inúmeros insetos, contribuindo para a biodiversidade local.</li>
+        <li>Produção de frutos para compotas, xaropes, vinagres aromatizados e bebidas fermentadas artesanais.</li>
+        <li>Uso das folhas e ramos em tinturas e preparados artesanais, incluindo corantes naturais em pequena escala.</li>
+        <li>Função de planta pioneira em taludes e terrenos abandonados, ajudando a estabilizar o solo e a criar micro‑habitats.</li>
+        <li>Valor paisagístico em jardins de inspiração silvestre, bordaduras comestíveis e sebes naturais.</li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 6,4 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        A silva tem um papel marcante em muitos contextos de permacultura, combinando produção abundante de frutos comestíveis, uso medicinal tradicional das folhas e raízes e funções ecológicas relevantes. Do ponto de vista alimentar (ALIM=2), os frutos são muito apreciados e podem ser consumidos frescos ou transformados; a função medicinal (MED=2) é bem documentada em usos digestivos e para a mucosa oral. Em termos de estrutura (ESTR=2), trata‑se de um arbusto sarmentoso que forma sebes densas, quebra‑ventos baixos e barreiras vivas eficazes.
+A contribuição para solo e biomassa (SOLO=2) é elevada, uma vez que a planta coloniza taludes e margens, produz grande quantidade de ramos e folhas e atua como espécie pioneira. O suporte à fauna (ECO=2) é muito significativo, fornecendo néctar, pólen, frutos e abrigo para múltiplas espécies; a rusticidade (RUST=2) é elevada em climas atlânticos e mediterrânicos, com baixa necessidade de cuidados após o estabelecimento. A multifuncionalidade extra (MULT=2) inclui valor cultural, paisagístico e de recurso silvestre. As principais penalizações vêm do forte armamento em espinhos (PERIGO=-2), da tendência marcada para comportamento invasor e expansão agressiva em solos férteis (INVAS=-2) e de alguma competição por luz e espaço com culturas vizinhas (COMP=-1). O grau final em escala 0–10 resulta da aplicação do algoritmo descrito na metodologia (soma dos critérios positivos até 14 pontos, subtração das penalizações e conversão por regra de três simples), situando a silva em cerca de 6,4/10 e caracterizando‑a como planta de elevada funcionalidade ecológica e produtiva, mas que exige desenho cuidadoso para evitar excesso de competição e dificuldades de manejo.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        Índice calculado para silvas produtivas de amora-silvestre em contexto hortícola e de bordadura, assumindo manejo regular para controlo da expansão e colheita dos frutos.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-P3">[P3]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Zia-Ul-Haq M, Riaz M, De Feo V. Rubus fruticosus L.: constituents, biological activities and health related uses. Molecules. Revisão científica sobre composição e usos medicinais da amora-preta. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6271759/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6271759/</a></li>
+        <li id="ref-D2">[D2] Instituto Nacional de Investigação Agrária e Veterinária (INIAV). A planta da Amora de silva. Manual técnico sobre botânica e cultivo de amoras-silvestres em Portugal. Disponível em: <a href="https://www.iniav.pt/images/publicacoes/livros-manuais/planta_amora_silva.pdf" target="_blank" rel="noopener">https://www.iniav.pt/images/publicacoes/livros-manuais/planta_amora_silva.pdf</a></li>
+        <li id="ref-D3">[D3] Nutramedic &amp; Cosmetics. Medicinal Plant Blackberry (Rubus fruticosus L.). Artigo de enquadramento sobre morfologia, habitat e usos medicinais da amora-preta. Disponível em: <a href="https://nmc-magazine.com/medicinal-plant-blackberry/" target="_blank" rel="noopener">https://nmc-magazine.com/medicinal-plant-blackberry/</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] INIAV. A planta da Amora de silva. Descrição do ciclo biológico, fenologia e aspectos agronómicos da amora-silvestre em Portugal. Disponível em: <a href="https://www.iniav.pt/images/publicacoes/livros-manuais/planta_amora_silva.pdf" target="_blank" rel="noopener">https://www.iniav.pt/images/publicacoes/livros-manuais/planta_amora_silva.pdf</a></li>
+        <li id="ref-S2">[S2] AJAP. Manual Culturas Emergentes – Amora. Informação sobre zonas de produção, épocas de frutificação e requisitos climáticos da cultura. Disponível em: <a href="https://culturasemergentes.ajap.pt/assets/2019/01/Manual_Culturas_Emergentes_Amora_Digital.pdf" target="_blank" rel="noopener">https://culturasemergentes.ajap.pt/assets/2019/01/Manual_Culturas_Emergentes_Amora_Digital.pdf</a></li>
+        <li id="ref-S3">[S3] Wilder. O que procurar no Verão: a silva. Artigo de divulgação sobre espécies de silvas em Portugal, floração e frutificação estivais. Disponível em: <a href="https://wilder.pt/diversoes/o-que-procurar-no-verao-a-silva" target="_blank" rel="noopener">https://wilder.pt/diversoes/o-que-procurar-no-verao-a-silva</a></li>
+        <li id="ref-S4">[S4] UTAD Jardim Botânico. Rubus fruticosus L. Ficha de espécie com notas de habitat, sinónimos e ocorrência em Portugal. Disponível em: <a href="https://jb.utad.pt/especie/7d2gMwIDN9d1" target="_blank" rel="noopener">https://jb.utad.pt/especie/7d2gMwIDN9d1</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] Verma R, Gangrade T, Ahmad N, et al. Rubus fruticosus (blackberry) use as an herbal medicine. Pharmacognosy Reviews. Revisão sobre usos tradicionais e farmacologia da amora-preta, incluindo aplicações digestivas e orofaríngeas. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4127818/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4127818/</a></li>
+        <li id="ref-U2">[U2] Ferlemi AV, Lamari FN. Berry leaves: an alternative source of bioactive natural products of nutritional and medicinal value. Antioxidants. Revisão sobre folhas de pequenos frutos, incluindo propriedades adstringentes e aplicações terapêuticas. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4931538/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4931538/</a></li>
+        <li id="ref-U3">[U3] Herbal Reality. Blackberry (Rubus fruticosus): benefits, uses &amp; research. Síntese de usos tradicionais e evidência moderna para folhas e frutos de amora-preta. Disponível em: <a href="https://www.herbalreality.com/herb/blackberry/" target="_blank" rel="noopener">https://www.herbalreality.com/herb/blackberry/</a></li>
+        <li id="ref-U4">[U4] Joshi A, et al. Anti-diabetic potential of Rubus species: a systematic review. Foods. Revisão sobre efeitos antidiabéticos de espécies de Rubus, incluindo estudos com frutos e folhas. Disponível em: <a href="https://link.springer.com/article/10.1186/s43014-024-00263-3" target="_blank" rel="noopener">https://link.springer.com/article/10.1186/s43014-024-00263-3</a></li>
+        <li id="ref-U5">[U5] Buczyński K, et al. Review of the report on the nutritional and health effects of berry fruits. Agriculture. Análise de estudos recentes sobre efeitos metabólicos e antioxidantes de frutos de Rubus. Disponível em: <a href="https://www.mdpi.com/2077-0472/14/8/1324" target="_blank" rel="noopener">https://www.mdpi.com/2077-0472/14/8/1324</a></li>
+        <li id="ref-U6">[U6] Chef é Cuco. Chá (tisana) de amora silvestre. Artigo em português sobre chá de folhas de silva, uso digestivo e para garganta. Disponível em: <a href="https://chefecuco.blogspot.com/2013/09/cha-tisana-de-amora-silvestre.html" target="_blank" rel="noopener">https://chefecuco.blogspot.com/2013/09/cha-tisana-de-amora-silvestre.html</a></li>
+        <li id="ref-U7">[U7] 1001 Ideias. Os milagres do chá de folhas de amoras silvestres. Texto popular sobre usos tradicionais do chá de folhas de amora-silvestre. Disponível em: <a href="https://www.1001ideias.pt/os-milagres-do-cha-de-folhas-de-amoras-silvestres/" target="_blank" rel="noopener">https://www.1001ideias.pt/os-milagres-do-cha-de-folhas-de-amoras-silvestres/</a></li>
+        <li id="ref-U8">[U8] Learning Herbs. Blackberry uses and plant profile. Artigo sobre usos de folhas e raízes de Rubus fruticosus em medicina tradicional ocidental. Disponível em: <a href="https://www.learningherbs.com/blog/blackberry-uses%E2%80%A8%E2%80%A8" target="_blank" rel="noopener">https://www.learningherbs.com/blog/blackberry-uses%E2%80%A8%E2%80%A8</a></li>
+        <li id="ref-SG1">[SG1] Societé Apothecary. Blackberry leaf: materia medica. Ficha com indicações, precauções e modo de uso de folhas de amora-preta. Disponível em: <a href="https://www.societeapothecary.com/s/stories/blackberry-leaf-materia-medica" target="_blank" rel="noopener">https://www.societeapothecary.com/s/stories/blackberry-leaf-materia-medica</a></li>
+        <li id="ref-SG2">[SG2] Herbal Reality. Blackberry (Rubus fruticosus): benefits, uses &amp; research. Secção de segurança e contra-indicações para uso de preparados de amora-preta. Disponível em: <a href="https://www.herbalreality.com/herb/blackberry/" target="_blank" rel="noopener">https://www.herbalreality.com/herb/blackberry/</a></li>
+        <li id="ref-SG3">[SG3] Verma R, et al. Rubus fruticosus (blackberry) use as an herbal medicine. Pharmacognosy Reviews. Discussão de segurança, efeitos adversos e limites de uso de preparações de amora-preta. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4127818/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4127818/</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Tua Saúde. Chá de amora: para que serve, como fazer e efeitos colaterais. Receita básica de infusão de folhas de amora com modo de preparo passo a passo. Disponível em: <a href="https://www.tuasaude.com/cha-de-amora/" target="_blank" rel="noopener">https://www.tuasaude.com/cha-de-amora/</a></li>
+        <li id="ref-R2">[R2] Minha Saúde / Proteste. Chá de folha de amora: como preparar? Veja o passo a passo e benefícios. Receita de chá de folhas de amora com instruções detalhadas. Disponível em: <a href="https://minhasaude.proteste.org.br/cha-de-folha-de-amora-como-preparar-veja-o-passo-a-passo-e-beneficios/" target="_blank" rel="noopener">https://minhasaude.proteste.org.br/cha-de-folha-de-amora-como-preparar-veja-o-passo-a-passo-e-beneficios/</a></li>
+        <li id="ref-R3">[R3] Metrópoles. Chá de folha de amora: saiba como preparar a infusão rica em cálcio. Artigo com receita de chá de folhas de amora e orientações de consumo. Disponível em: <a href="https://www.metropoles.com/saude/cha-folha-amora-veja-como-preparar-calcio" target="_blank" rel="noopener">https://www.metropoles.com/saude/cha-folha-amora-veja-como-preparar-calcio</a></li>
+        <li id="ref-R4">[R4] Receitas Nestlé. Chá da folha de amora: uma receita que ajuda na memória. Receita simples de chá com folhas verdes de amora. Disponível em: <a href="https://www.receitasnestle.com.br/artigos/cha-amora" target="_blank" rel="noopener">https://www.receitasnestle.com.br/artigos/cha-amora</a></li>
+        <li id="ref-R5">[R5] 1001 Ideias. Os milagres do chá de folhas de amoras silvestres. Receita tradicional de chá de folhas de amora-silvestre com indicação de preparo. Disponível em: <a href="https://www.1001ideias.pt/os-milagres-do-cha-de-folhas-de-amoras-silvestres/" target="_blank" rel="noopener">https://www.1001ideias.pt/os-milagres-do-cha-de-folhas-de-amoras-silvestres/</a></li>
+        <li id="ref-R6">[R6] Chef é Cuco. Chá (tisana) de amora silvestre. Receita de tisana de folhas, casca e raízes de silva, usada para uso interno e gargarejos. Disponível em: <a href="https://chefecuco.blogspot.com/2013/09/cha-tisana-de-amora-silvestre.html" target="_blank" rel="noopener">https://chefecuco.blogspot.com/2013/09/cha-tisana-de-amora-silvestre.html</a></li>
+        <li id="ref-R7">[R7] Tua Saúde. Amora: 10 benefícios para a saúde e como consumir. Secção com receita de chá de amora e sugestões de consumo. Disponível em: <a href="https://www.tuasaude.com/amora/" target="_blank" rel="noopener">https://www.tuasaude.com/amora/</a></li>
+        <li id="ref-R8">[R8] English Tea Shop. Energise Me. Mistura de chá com folhas de amora e outras plantas, com instruções de preparação em embalagem. Disponível em: <a href="https://www.englishteashop.pt/cha-chas-e-infusoes-energise-me" target="_blank" rel="noopener">https://www.englishteashop.pt/cha-chas-e-infusoes-energise-me</a></li>
+        <li id="ref-R9">[R9] Receitas de Chás. Receita de chá de amora silvestre e seus benefícios. Receita de infusão de folhas de amora-silvestre com tempo de infusão e rendimento. Disponível em: <a href="https://receitasdechas.com/receita-de-cha-de-amora-silvestre-e-seus-beneficios" target="_blank" rel="noopener">https://receitasdechas.com/receita-de-cha-de-amora-silvestre-e-seus-beneficios</a></li>
+        <li id="ref-R10">[R10] Instagram. Chá de folhas de amora: modo de preparo. Publicação com receita prática de chá de folhas de amora para consumo diário. Disponível em: <a href="https://www.instagram.com/p/DTxcKMmFbGV/" target="_blank" rel="noopener">https://www.instagram.com/p/DTxcKMmFbGV/</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] Verma R, Gangrade T, Ahmad N, et al. Rubus fruticosus (blackberry) use as an herbal medicine. Pharmacognosy Reviews. Revisão dos usos tradicionais e ações farmacológicas de diferentes partes da planta. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4127818/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4127818/</a></li>
+        <li id="ref-M2">[M2] Zia-Ul-Haq M, Riaz M, De Feo V. Rubus fruticosus L.: constituents, biological activities and health related uses. Molecules. Revisão sobre nutrientes, compostos bioativos e benefícios para a saúde da amora-preta. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6271759/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6271759/</a></li>
+        <li id="ref-M3">[M3] Ferlemi AV, Lamari FN. Berry leaves: an alternative source of bioactive natural products of nutritional and medicinal value. Antioxidants. Revisão com destaque para folhas de Rubus e seus usos medicinais. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4931538/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4931538/</a></li>
+        <li id="ref-M4">[M4] Oszmiański J, Lachowicz S, Gorzelany J, Matłok N. Determination of phenolic compounds and antioxidant activity in berries. Molecules. Estudo sobre compostos fenólicos e capacidade antioxidante de frutos de amora-preta. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6272394/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6272394/</a></li>
+        <li id="ref-M5">[M5] Herbal Reality. Blackberry (Rubus fruticosus): benefits, uses &amp; research. Síntese de evidência moderna sobre efeitos antidiabéticos, cardiovasculares e antioxidantes. Disponível em: <a href="https://www.herbalreality.com/herb/blackberry/" target="_blank" rel="noopener">https://www.herbalreality.com/herb/blackberry/</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Koczka N, Stefanovits-Bányai É, Ombódi A. Some selected physico-chemical characteristics of wild and cultivated blackberry fruits (Rubus fruticosus L.) from Turkey. Notulae Botanicae Horti Agrobotanici Cluj-Napoca. Dados sobre fenóis e flavonoides totais em frutos de amora. Disponível em: <a href="https://www.notulaebotanicae.ro/index.php/nbha/article/download/10993/8129" target="_blank" rel="noopener">https://www.notulaebotanicae.ro/index.php/nbha/article/download/10993/8129</a></li>
+        <li id="ref-F2">[F2] Qader AF, et al. Blackberry (Rubus fruticosus L.) fruit extract: phenolic content and antioxidant activity. Aro – The Scientific Journal of Koya University. Estudo de extrato metanólico de amora-preta com quantificação de fenóis, flavonoides, antocianinas e atividade antioxidante. Disponível em: <a href="https://aro.koyauniversity.org/index.php/aro/article/view/1189" target="_blank" rel="noopener">https://aro.koyauniversity.org/index.php/aro/article/view/1189</a></li>
+        <li id="ref-F3">[F3] Oszmiański J, Lachowicz S, Gorzelany J, Matłok N. Determination of phenolic compounds and antioxidant activity in berries. Molecules. Avaliação da capacidade antioxidante e perfil fenólico de frutos de amora-preta. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6272394/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6272394/</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Plantar Portugal. Amora Silvestre (Rubus fruticosus). Informação sobre rusticidade, adaptação a diferentes tipos de solo e utilização em jardins e pomares. Disponível em: <a href="https://www.plantarportugal.org/index.php/frutos-silvestres/amora-silvestre.html" target="_blank" rel="noopener">https://www.plantarportugal.org/index.php/frutos-silvestres/amora-silvestre.html</a></li>
+        <li id="ref-A2">[A2] Vida Rural. Amoras silvestres – um recurso natural a explorar em Portugal. Artigo sobre produção, potencial económico e integração da cultura em sistemas agrícolas. Disponível em: <a href="https://www.vidarural.pt/wp-content/uploads/sites/5/2019/01/aqui.-2.pdf" target="_blank" rel="noopener">https://www.vidarural.pt/wp-content/uploads/sites/5/2019/01/aqui.-2.pdf</a></li>
+        <li id="ref-A3">[A3] Wilder. O que procurar no Verão: a silva. Referência a funções ecológicas, abrigo para fauna e valor natural das sebes de silva. Disponível em: <a href="https://wilder.pt/diversoes/o-que-procurar-no-verao-a-silva" target="_blank" rel="noopener">https://wilder.pt/diversoes/o-que-procurar-no-verao-a-silva</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] Vida Rural. Amoras silvestres – um recurso natural a explorar em Portugal. Discussão sobre comportamento de silvas em paisagens agrícolas e necessidade de controlo. Disponível em: <a href="https://www.vidarural.pt/wp-content/uploads/sites/5/2019/01/aqui.-2.pdf" target="_blank" rel="noopener">https://www.vidarural.pt/wp-content/uploads/sites/5/2019/01/aqui.-2.pdf</a></li>
+        <li id="ref-P2">[P2] Wilder. O que procurar no Verão: a silva. Descrição do caráter pioneiro, capacidade colonizadora e importância ecológica das silvas em Portugal. Disponível em: <a href="https://wilder.pt/diversoes/o-que-procurar-no-verao-a-silva" target="_blank" rel="noopener">https://wilder.pt/diversoes/o-que-procurar-no-verao-a-silva</a></li>
+        <li id="ref-P3">[P3] Flora-On. Género Rubus em Portugal. Dados de distribuição, habitat e ocorrência de espécies de silvas em território continental. Disponível em: <a href="https://flora-on.pt/?q=Rubus" target="_blank" rel="noopener">https://flora-on.pt/?q=Rubus</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

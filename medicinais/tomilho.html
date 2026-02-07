@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html" class="ativa">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="tilia.html">Tília</a>
+  <a class="next" href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Tomilho (<em>Thymus vulgaris L.; Thymus mastichina (L.) L.; Thymus lotocephalus G. López & R. Morales</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Lamiaceae</span>
+  <span>Parte usada: folhas e sumidades floridas</span>
+  <span>Tipo: subarbusto aromático perene mediterrânico</span>
+  <span>Produção: <strong>cultivo em talhões ensolarados drenados</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> região mediterrânica e oeste europeu, incluindo Portugal e Península Ibérica</div>
+  <div><strong>Uso principal</strong> apoio a tosse e constipações, uso digestivo suave e erva aromática culinária</div>
+  <div><strong>Perfil medicinal</strong> planta expectorante, antisséptica e carminativa, com usos respiratórios e digestivos complementares</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Tomilho (Thymus vulgaris L.; Thymus mastichina (L.) L.; Thymus lotocephalus G. López & R. Morales)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>O tomilho agrupa várias espécies do género Thymus, sendo aqui destacadas sobretudo Thymus vulgaris L. (tomilho-vulgar), Thymus mastichina (L.) L. (tomilho-mastichina ou tomilho-branco) e Thymus lotocephalus G. López &amp; R. Morales, um tomilho endémico de zonas do Algarve. São subarbustos aromáticos, perenes, de pequeno porte (em geral 10–40 cm), com caules lenhosos na base e ramos finos, densamente folhosos, formando tapetes ou pequenos tufos muito ramificados.</p>
+      <p>As folhas são pequenas, lineares a lanceoladas, de textura algo coriácea, frequentemente enroladas nas margens e com pontuações glandulares ricas em óleo essencial. As flores dispõem-se em inflorescências terminais ou em glomérulos compactos, de cor branca, rosada ou lilás, muito apreciadas por abelhas e outros polinizadores. As plantas exalam um aroma intenso e característico, devido a quimiotipos ricos em timol, carvacrol, linalol, 1,8-cineol e outros monoterpenos oxigenados, variáveis entre espécies e populações.</p>
+      <p>Em português, são conhecidos como tomilho, tomilho-vulgar, tomilho-branco, tomilho-de-cheiro, entre outros nomes regionais; em inglês, os nomes mais comuns são thyme, common thyme (Thymus vulgaris) e Spanish thyme ou white thyme (Thymus mastichina). Além do uso culinário como erva aromática em carnes, legumes, pães e marinadas, o tomilho tem longa tradição como planta medicinal, especialmente em problemas respiratórios, digestivos e como agente antisséptico suave em uso interno e externo.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, o tomilho (sobretudo Thymus vulgaris e espécies afins) comporta-se como subarbusto perene típico de clima mediterrânico, mantendo folhagem aromática durante grande parte do ano, especialmente em locais ensolarados e bem drenados. A floração tende a concentrar-se entre a primavera e o início do verão, embora algumas espécies e variedades possam prolongar a floração até ao outono em condições favoráveis.
+O cultivo em horta doméstica ou em vasos privilegia locais de pleno sol, solos leves, pobres a moderadamente férteis e bem drenados, com regas moderadas e evitando encharcamentos prolongados. As partes aéreas podem ser colhidas à medida das necessidades, sendo comum colher ramos floridos no período de máxima concentração de óleo essencial para uso medicinal e aromático.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Floração principal: em geral de abril a julho em Portugal continental, variando com a espécie, a altitude e a exposição.</li>
+        <li>Período de maior aroma e concentração de óleo essencial: sobretudo próximo da plena floração, com ramos bem ensolarados.</li>
+        <li>Colheita para uso culinário: possível quase todo o ano em plantas bem estabelecidas, retirando apenas parte dos ramos para permitir rebrote.</li>
+        <li>Colheita para uso medicinal (sumidades floridas): preferencialmente na primavera e início do verão, em tempo seco e após o orvalho secar.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a> <a href="#ref-S3">[S3]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Preparados de tomilho (Thymus vulgaris e Thymus zygis, herba) são tradicionalmente utilizados, de acordo com a monografia da EMA, como medicamentos à base de plantas para alívio da tosse produtiva em constipações, sob a forma de xarope, gotas, comprimidos para chupar ou infusões, em doses adaptadas ao peso e à idade. A ação é atribuída a uma combinação de efeitos expectorantes, espasmolíticos brônquicos e antissépticos das sumidades floridas. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-U1">[U1]</a></li>
+        <li>Ensaios clínicos recentes sugerem que preparações contendo Thymus vulgaris, incluindo xaropes e extratos fluidos, podem reduzir a frequência e a intensidade da tosse em crianças com exacerbação de asma ou infeções respiratórias agudas, quando usadas como adjuvantes aos tratamentos convencionais, embora os estudos sejam de curta duração e com amostras moderadas. <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-U1">[U1]</a></li>
+        <li>Infusões de sumidades floridas de tomilho são descritas em monografias de fitoterapia como adjuvantes em bronquites, constipações, estados gripais e digestões difíceis, usando geralmente 1–2 colheres de chá de droga seca (1–2 g) por chávena de água, 2–3 vezes ao dia, por períodos limitados, salvo indicação profissional. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-U2">[U2]</a></li>
+        <li>Em uso externo, o tomilho integra preparações como gargarismos, elixires bucais, inalações e banhos aromáticos, beneficiando das propriedades antimicrobianas e antissépticas do óleo essencial, sempre diluído e em concentrações adequadas para evitar irritação. <a href="#ref-M1">[M1]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Chá de tomilho preparado com ramos frescos ou secos, usado tradicionalmente em Portugal e noutros países europeus para aliviar tosse, constipações leves, congestão nasal e mal-estar de gripes, muitas vezes combinado com mel e limão. <a href="#ref-U2">[U2]</a> <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a></li>
+        <li>Infusões digestivas de tomilho tomadas após as refeições para reduzir gases, enfartamento e desconforto abdominal ligeiro, isoladas ou em mistura com outras ervas carminativas como hortelã-pimenta, funcho ou erva-cidreira. <a href="#ref-R2">[R2]</a> <a href="#ref-R3">[R3]</a> <a href="#ref-A1">[A1]</a></li>
+        <li>Utilização culinária regular de tomilho como erva aromática em carnes assadas, guisados, legumes, sopas, caldos, marinadas e pães salgados, ajudando a reduzir o uso de sal e a conferir aroma intenso de base mediterrânica. <a href="#ref-D1">[D1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Uso tradicional de tomilho em banhos de imersão, banhos de pés ou inalações de vapor, combinando ramos frescos ou o óleo essencial diluído, para promover relaxamento, aliviar sintomas respiratórios e apoiar a convalescença. <a href="#ref-U2">[U2]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Emprego de tomilho em xaropes artesanais, licores, vinagres aromatizados e mel de tomilho, explorando simultaneamente propriedades aromáticas e benefícios suaves sobre o aparelho respiratório e digestivo. <a href="#ref-R4">[R4]</a> <a href="#ref-A2">[A2]</a> <a href="#ref-A3">[A3]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>Monografias oficiais como a da EMA indicam que preparações à base de tomilho (herba ou óleo essencial) são geralmente seguras nas doses tradicionais de uso interno e externo, em adultos e adolescentes, para períodos curtos. No entanto, podem ocorrer reações alérgicas em indivíduos sensíveis às Lamiaceae ou aos componentes do óleo essencial. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a></p>
+      <p>O óleo essencial de tomilho, em particular quimiotipos ricos em timol e carvacrol, é potencialmente irritante para pele e mucosas e não deve ser ingerido nem aplicado puro; deve ser sempre bem diluído em óleos vegetais ou veículos adequados e utilizado em doses baixas. Preparações concentradas não são recomendadas para crianças pequenas, grávidas, lactantes ou pessoas com doenças crónicas sem supervisão profissional. <a href="#ref-U1">[U1]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-F2">[F2]</a></p>
+      <p>Em pessoas com asma, doenças respiratórias crónicas ou em tratamento com fármacos broncodilatadores, anti-hipertensores, anticoagulantes ou antiagregantes plaquetários, o uso de extratos concentrados ou de óleo essencial deve ser avaliado caso a caso, devido à possibilidade de irritação brônquica, interação medicamentosa ou agravamento de sintomas em indivíduos sensíveis. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U4">[U4]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        Na fitoterapia popular e científica, o tomilho é sobretudo usado em infusões de sumidades floridas, xaropes, tinturas, gargarismos, inalações e preparações culinárias funcionais, com enfoque particular em problemas respiratórios e digestivos. As receitas variam desde simples chás caseiros com mel e limão até combinações com outras plantas para tosse, constipações e apoio digestivo. Preparados mais concentrados, como xaropes e extratos padronizados, devem respeitar doses, durações e contraindicações descritas nas fontes e enquadrar-se sempre no contexto do Disclaimer padrão.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="tomilho_receitas.html">Chá de tomilho para tosse e constipações:</a> infusão de sumidades floridas ou folhas secas de tomilho em água quente, usada como bebida quente adoçada com mel para aliviar tosse e irritação de garganta. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="tomilho_receitas.html">Chá de tomilho digestivo:</a> infusão simples de tomilho, por vezes combinada com outras ervas carminativas, tomada após as refeições para reduzir gases e enfartamento. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="tomilho_receitas.html">Chá de tomilho com limão e mel:</a> bebida popular em português que combina tomilho, limão e mel, usada em constipações e gripes ligeiras para conforto respiratório. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="tomilho_receitas.html">Xarope caseiro de tomilho:</a> preparado artesanalmente a partir de infusão concentrada ou maceração de tomilho com mel ou açúcar, utilizado em pequenas colheres como adjuvante da tosse. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="tomilho_receitas.html">Gargarejos com chá de tomilho:</a> utilização de uma infusão morna de tomilho para bochechos e gargarejos, visando higiene oral e alívio de irritações ligeiras da garganta. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="tomilho_receitas.html">Inalação de vapor com tomilho:</a> adição de infusão ou algumas gotas de óleo essencial de tomilho bem diluído a água quente, para inalação cuidadosa de vapor em caso de congestão nasal. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="tomilho_receitas.html">Banho de pés ou de imersão com tomilho:</a> uso de infusão forte de tomilho adicionada à água do banho ou de uma bacia para relaxamento e conforto muscular após esforço físico. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="tomilho_receitas.html">Azeite aromatizado com tomilho:</a> maceração de ramos de tomilho em azeite para obter um condimento aromático, utilizado em saladas, legumes assados e pratos de forno. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="tomilho_receitas.html">Frango assado com tomilho:</a> prato típico em que ramos frescos ou secos de tomilho são usados para temperar carne de frango, juntamente com alho, limão e outras especiarias. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="tomilho_receitas.html">Pão ou focaccia com tomilho:</a> massa de pão enriquecida com folhas de tomilho, por vezes combinadas com azeite e sal grosso, resultando num preparado aromático de inspiração mediterrânica. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>O tomilho é amplamente reconhecido como planta medicinal de eleição em afeções respiratórias ligeiras, especialmente tosse associada a constipações e bronquites benignas. Monografias europeias e preparações tradicionais à base de Thymus vulgaris e espécies afins descrevem-no como expectorante, broncospasmolítico e suavemente antissético das vias respiratórias, ajudando a fluidificar secreções e a aliviar a tosse produtiva. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-U1">[U1]</a></p>
+      <p>Ensaios clínicos recentes exploram o uso de preparações contendo tomilho em crianças e adultos com tosse aguda ou exacerbações de asma, sugerindo reduções na frequência e intensidade da tosse e melhoria de parâmetros respiratórios quando utilizado como complemento às terapias convencionais. Apesar de promissores, estes estudos têm limitações de tamanho amostral, duração e padronização dos extratos, devendo o tomilho ser encarado como adjuvante e não como substituto de tratamentos médicos. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-U1">[U1]</a></p>
+      <p>Para além do sistema respiratório, existem referências a efeitos espasmolíticos e carminativos no trato digestivo, apoio moderado em infeções ligeiras da boca e garganta (sob a forma de gargarismos e elixires) e propriedades antioxidantes e antimicrobianas que podem contribuir para um perfil funcional mais amplo. Muitos destes usos assentam numa combinação de evidência tradicional, estudos pré-clínicos e alguns dados clínicos, exigindo ainda investigação adicional para clarificar doses, duração e segurança em grupos específicos. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Alívio adjuvante da tosse produtiva e irritativa associada a constipações e bronquites benignas, em combinação com outras medidas de suporte. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a></li>
+        <li>Suporte complementar em infeções ligeiras das vias respiratórias superiores (garganta irritada, faringites ligeiras, estados gripais), através de infusões, xaropes e gargarismos. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-U2">[U2]</a></li>
+        <li>Efeito carminativo e digestivo suave, ajudando a reduzir gases, enfartamento e desconforto gastrointestinal ligeiro após refeições pesadas. <a href="#ref-M1">[M1]</a> <a href="#ref-R2">[R2]</a></li>
+        <li>Ação antimicrobiana e antifúngica moderada, sobretudo atribuída ao óleo essencial rico em timol, carvacrol, linalol ou 1,8-cineol, explorada em aplicações tópicas diluídas e em higiene oral. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-M1">[M1]</a></li>
+        <li>Contributo antioxidante e anti-inflamatório em contexto de dieta e estilo de vida saudáveis, graças à presença de compostos fenólicos e terpenoides bioativos. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-M4">[M4]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>As espécies de tomilho abordadas (Thymus vulgaris, Thymus mastichina e Thymus lotocephalus) são ricas em óleo essencial e compostos fenólicos, com quimiotipos variados. Em Thymus vulgaris predominam frequentemente quimiotipos ricos em timol e carvacrol, embora existam também quimiotipos linalol, geraniol ou outros, influenciando o perfil farmacológico e a potência antimicrobiana. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>Em espécies portuguesas como Thymus mastichina e Thymus lotocephalus, estudos mostram teores de óleo essencial na ordem de 1–3 % m/m das sumidades floridas, com elevada proporção de monoterpenos oxigenados. No tomilho-mastichina (T. mastichina), o 1,8-cineol pode representar 40–60 % do óleo, enquanto em T. lotocephalus são descritos perfis com linalol, 1,8-cineol e outros constituintes dominantes, dependendo da população e das condições ecológicas. <a href="#ref-F2">[F2]</a> <a href="#ref-F4">[F4]</a> <a href="#ref-F5">[F5]</a></p>
+      <p>A fração polifenólica inclui ácidos fenólicos como o ácido rosmarínico e o ácido cafeico, bem como flavonoides (luteolina, apigenina e seus glicosídeos), que contribuem para efeitos antioxidantes, anti-inflamatórios e espasmolíticos. Ensaios in vitro e in vivo apontam para atividade antimicrobiana relevante dos óleos essenciais de tomilhos portugueses contra várias bactérias e fungos, bem como para capacidade antioxidante significativa dos extratos. <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F6">[F6]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Óleo essencial total nas sumidades floridas de tomilho</td><td>≈1–3 % m/m da matéria seca</td></tr>
+        <tr><td>Timol + carvacrol no óleo essencial de Thymus vulgaris</td><td>tipicamente 30–70 % m/m do óleo essencial, dependendo do quimiotipo</td></tr>
+        <tr><td>1,8-cineol no óleo essencial de Thymus mastichina</td><td>≈40–60 % m/m do óleo essencial em populações estudadas</td></tr>
+        <tr><td>Principais monoterpenos oxigenados em Thymus lotocephalus</td><td>constituem a maior parte (≥60–80 % m/m) da fração volátil</td></tr>
+        <tr><td>Ácido rosmarínico e outros fenólicos totais em extratos de tomilho</td><td>≈10–40 mg/g de extrato seco (expressos em equivalentes de ácido rosmarínico ou gálico)</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Uso como planta aromática em jardins, bordaduras e espirais de ervas, formando tapetes densos e perfumados que atraem polinizadores. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Emprego do óleo essencial de tomilho em aromaterapia, produtos de limpeza doméstica e desinfetantes naturais, explorando atividade antimicrobiana. <a href="#ref-A3">[A3]</a> <a href="#ref-F1">[F1]</a></li>
+        <li>Utilização em cosmética natural e saboaria artesanal, incorporado em sabonetes, bálsamos, óleos de massagem e pomadas para pés cansados. <a href="#ref-A3">[A3]</a></li>
+        <li>Planta melífera valorizada por apicultores, contribuindo para méis monoflorais de tomilho com aroma intenso e propriedades apreciadas. <a href="#ref-A2">[A2]</a> <a href="#ref-P1">[P1]</a></li>
+        <li>Uso simbólico e cultural em tradições mediterrânicas, associado a coragem, purificação e proteção, com referência em histórias, rituais e culinária regional. <a href="#ref-D2">[D2]</a> <a href="#ref-A1">[A1]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 8,4 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em sistemas de permacultura em clima mediterrânico e de transição, o tomilho funciona como subarbusto aromático perene de grande valor ecológico e medicinal. Forma manchas densas e relativamente permanentes que protegem o solo, fornecem néctar abundante para abelhas e insetos benéficos e oferecem colheitas regulares de sumidades floridas para uso culinário e fitoterapêutico. A rusticidade e a tolerância à secura, sobretudo em solos pedregosos e bem drenados, tornam-no adequado para taludes, bordaduras ensolaradas e espirais de ervas.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação do tomilho resulta de valores elevados em uso alimentar como erva aromática de base mediterrânica (ALIM=2), uso medicinal bem estabelecido em problemas respiratórios e digestivos ligeiros (MED=2), contribuição estrutural modesta mas perene como subarbusto de pequeno porte em bordaduras e maciços (ESTR=1) e papel relevante na proteção de solo e produção de biomassa leve, sobretudo em consociações e tapetes aromáticos (SOLO=2). O tomilho destaca-se ainda pelo forte suporte à fauna polinizadora (ECO=2), rusticidade e baixa manutenção em solos pobres e ensolarados (RUST=2) e multifuncionalidade cultural e culinária (MULT=2), combinando usos culinários, medicinais, simbólicos e paisagísticos.
+As penalizações são limitadas, relacionadas principalmente com alguma competição por água e nutrientes em espaços muito secos e densamente plantados ou com a possibilidade de comportamento algo invasor em canteiros pouco manejados (COMP=-1), enquanto o risco de toxicidade relevante nas formas tradicionais de uso (TOX), perigo físico (PERIGO) e invasividade ecológica problemática (INVAS) é considerado baixo no contexto hortícola habitual. O valor final em escala 0–10 resulta da aplicação do algoritmo descrito no projeto (soma dos critérios positivos até 14 pontos, subtração das penalizações e conversão por regra de três simples), situando o tomilho em cerca de 8,4/10 e indicando uma planta de elevada funcionalidade em permacultura, particularmente útil em bordaduras aromáticas, espirais de ervas, taludes ensolarados e sistemas alimentares biodiversos com forte componente ecológica.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-A2">[A2]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Wikipédia. &quot;Tomilho&quot;. Página em português sobre Thymus vulgaris, descrevendo botânica básica, usos culinários e medicinais e enquadramento histórico da espécie. Disponível em: <a href="https://pt.wikipedia.org/wiki/Tomilho" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Tomilho</a></li>
+        <li id="ref-D2">[D2] Proentia. &quot;Thymus vulgaris&quot;. Ficha de planta aromática com descrição morfológica, nomes comuns, origem mediterrânica e usos culinários e medicinais. Disponível em: <a href="https://proentia.pt/thymus-vulgaris/" target="_blank" rel="noopener">https://proentia.pt/thymus-vulgaris/</a></li>
+        <li id="ref-D3">[D3] Flor de Giesta. &quot;Notas do Herbalista 77: Tomilho&quot;. Texto em português com descrição botânica detalhada, características de crescimento e usos tradicionais do tomilho. Disponível em: <a href="https://flordegiesta.com/2019/04/13/notas-do-herbalista-77-tomilho/" target="_blank" rel="noopener">https://flordegiesta.com/2019/04/13/notas-do-herbalista-77-tomilho/</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Revista Jardins. &quot;Tomilho: ficha de cultivo&quot;. Artigo em português com informação sobre época de floração, ciclo de vida, altura e época de plantação de Thymus vulgaris e híbridos. Disponível em: <a href="https://revistajardins.pt/plantas/herbaceas/tomilho-ficha-cultivo/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/herbaceas/tomilho-ficha-cultivo/</a></li>
+        <li id="ref-S2">[S2] Jardim Botânico UTAD. &quot;Thymus vulgaris subesp. vulgaris&quot;. Ficha técnica com dados de fenologia (floração maio–julho) e distribuição em Portugal. Disponível em: <a href="https://jb.utad.pt/especie/Thymus_vulgaris_subesp_vulgaris" target="_blank" rel="noopener">https://jb.utad.pt/especie/Thymus_vulgaris_subesp_vulgaris</a></li>
+        <li id="ref-S3">[S3] EPAM. &quot;Guia para a produção de plantas aromáticas e medicinais em Portugal – Tomilho&quot;. Documento técnico com orientações de cultivo, condições edafoclimáticas e calendário cultural. Disponível em: <a href="https://epam.pt/wp-content/uploads/2015/06/Guia_epam_tipos-e-especies_mai2015.pdf" target="_blank" rel="noopener">https://epam.pt/wp-content/uploads/2015/06/Guia_epam_tipos-e-especies_mai2015.pdf</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] European Medicines Agency (EMA). &quot;European Union herbal monograph on Thymus vulgaris L. and Thymus zygis L., herba&quot;. Monografia comunitária sobre o uso medicinal de tomilho como expectorante em tosse associada a constipações, incluindo indicações, posologia e advertências de segurança. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-monograph/final-community-herbal-monograph-thymus-vulgaris-l-and-thymus-zygis-l-herba_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-monograph/final-community-herbal-monograph-thymus-vulgaris-l-and-thymus-zygis-l-herba_en.pdf</a></li>
+        <li id="ref-U2">[U2] Tua Saúde. &quot;Tomilho: o que é, para que serve e como fazer o chá&quot;. Artigo em português explicando usos do chá de tomilho, cuidados, possíveis efeitos adversos e contraindicações. Disponível em: <a href="https://www.tuasaude.com/tomilho/" target="_blank" rel="noopener">https://www.tuasaude.com/tomilho/</a></li>
+        <li id="ref-U3">[U3] e-lactancia. &quot;Thymus vulgaris – Thymi herba&quot;. Entrada em base de dados sobre compatibilidade com aleitamento e notas de segurança para preparados de tomilho. Disponível em: <a href="https://www.e-lactancia.org/breastfeeding/thymus-vulgaris/product/" target="_blank" rel="noopener">https://www.e-lactancia.org/breastfeeding/thymus-vulgaris/product/</a></li>
+        <li id="ref-U4">[U4] WebMD. &quot;Thyme – Uses, Side Effects, and More&quot;. Monografia popular em inglês com informação sobre usos medicinais, doses, efeitos adversos e precauções do tomilho. Disponível em: <a href="https://www.webmd.com/vitamins/ai/ingredientmono-823/thyme" target="_blank" rel="noopener">https://www.webmd.com/vitamins/ai/ingredientmono-823/thyme</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Tua Saúde. &quot;Tomilho: o que é, para que serve e como fazer o chá&quot;. Secção com receita básica de chá de tomilho para tosse e constipações, com ingredientes, proporções e modo de preparação. Disponível em: <a href="https://www.tuasaude.com/tomilho/" target="_blank" rel="noopener">https://www.tuasaude.com/tomilho/</a></li>
+        <li id="ref-R2">[R2] Chás do Mundo. &quot;Tomilho, Folhas (Thymus vulgaris)&quot;. Página de produto com sugestão de preparação de chá de tomilho, modo de uso e indicação de benefícios digestivos e respiratórios. Disponível em: <a href="https://chasdomundo.pt/pt/chas-medicinais/tomilho-folhas-thymus-vulgaris" target="_blank" rel="noopener">https://chasdomundo.pt/pt/chas-medicinais/tomilho-folhas-thymus-vulgaris</a></li>
+        <li id="ref-R3">[R3] Vichy Portugal. &quot;Chá de tomilho: descubra os seus benefícios&quot;. Artigo em português que inclui modo geral de preparação de tisana de tomilho com indicações de uso. Disponível em: <a href="https://www.vichy.pt/conselhos-de-especialista/outras-preocupacoes/cha-de-tomilho-descubra-os-seus-beneficios" target="_blank" rel="noopener">https://www.vichy.pt/conselhos-de-especialista/outras-preocupacoes/cha-de-tomilho-descubra-os-seus-beneficios</a></li>
+        <li id="ref-R4">[R4] Flor de Giesta. &quot;Notas do Herbalista 77: Tomilho&quot;. Texto com exemplos de xaropes, vinagres e preparações caseiras com tomilho, incluindo dicas práticas de maceração e utilização. Disponível em: <a href="https://flordegiesta.com/2019/04/13/notas-do-herbalista-77-tomilho/" target="_blank" rel="noopener">https://flordegiesta.com/2019/04/13/notas-do-herbalista-77-tomilho/</a></li>
+        <li id="ref-R5">[R5] Tua Saúde. &quot;Gargarejos com chá de ervas&quot; (incluindo tomilho em algumas receitas). Artigo com instruções gerais para gargarejos e doses aproximadas de infusões. Disponível em: <a href="https://www.tuasaude.com/gargarejo-para-dor-de-garganta/" target="_blank" rel="noopener">https://www.tuasaude.com/gargarejo-para-dor-de-garganta/</a></li>
+        <li id="ref-R6">[R6] Ghahremani-Chabok A. et al. &quot;The effects of Thymus vulgaris inhalation therapy on airway status and oxygen saturation in patients on a ventilator&quot;. Estudo clínico que descreve protocolo de inalação com Thymus vulgaris em ambiente hospitalar. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S2212958820301609" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S2212958820301609</a></li>
+        <li id="ref-R7">[R7] Flor de Giesta. &quot;Notas do Herbalista 77: Tomilho&quot;. Secções que sugerem banhos e usos externos com tomilho, incluindo quantidades e tempo de maceração. Disponível em: <a href="https://flordegiesta.com/2019/04/13/notas-do-herbalista-77-tomilho/" target="_blank" rel="noopener">https://flordegiesta.com/2019/04/13/notas-do-herbalista-77-tomilho/</a></li>
+        <li id="ref-R8">[R8] Pingo Doce. &quot;Azeite aromatizado&quot;. Receita de azeite aromatizado com ervas, incluindo métodos de maceração que podem ser aplicados ao tomilho. Disponível em: <a href="https://www.pingodoce.pt/receitas/azeite-aromatizado/" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/azeite-aromatizado/</a></li>
+        <li id="ref-R9">[R9] Pingo Doce. &quot;Frango assado com tomilho&quot;. Receita em português que ilustra o uso de tomilho em prato de forno, com ingredientes e modo de preparação. Disponível em: <a href="https://www.pingodoce.pt/receitas/frango-assado-com-tomilho/" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/frango-assado-com-tomilho/</a></li>
+        <li id="ref-R10">[R10] Teleculinária. &quot;Pão com ervas aromáticas&quot;. Receita em português de pão com mistura de ervas, incluindo tomilho, com ingredientes e passos detalhados. Disponível em: <a href="https://www.teleculinaria.pt/receitas/pao-com-ervas-aromaticas/" target="_blank" rel="noopener">https://www.teleculinaria.pt/receitas/pao-com-ervas-aromaticas/</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] European Medicines Agency (EMA). &quot;European Union herbal monograph on Thymus vulgaris L. and Thymus zygis L., herba&quot;. Monografia sobre os usos medicinais do tomilho em tosse e constipações, com dados de estudos clínicos e tradicionais. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-monograph/final-community-herbal-monograph-thymus-vulgaris-l-and-thymus-zygis-l-herba_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-monograph/final-community-herbal-monograph-thymus-vulgaris-l-and-thymus-zygis-l-herba_en.pdf</a></li>
+        <li id="ref-M2">[M2] Eskandarpour E. et al. &quot;Thymus vulgaris ameliorates cough in children with asthma exacerbation: a randomized, triple-blind, placebo-controlled clinical trial&quot;. Ensaio clínico de 2024 sobre extrato de tomilho em tosse associada a exacerbação de asma pediátrica. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/38186189/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/38186189/</a></li>
+        <li id="ref-M3">[M3] EMA / e-lactancia. &quot;Community herbal monograph on Thymus vulgaris L. and Thymus zygis L., herba and Primula veris L. and Primula elatior (L.) Hill, radix&quot;. Documento com síntese de evidência clínica e tradicional para combinações de tomilho e prímula em medicamentos fitoterapêuticos. Disponível em: <a href="https://www.e-lactancia.org/media/papers/Tomillo-EMA-2013.pdf" target="_blank" rel="noopener">https://www.e-lactancia.org/media/papers/Tomillo-EMA-2013.pdf</a></li>
+        <li id="ref-M4">[M4] WebMD. &quot;Thyme – Uses, Side Effects, and More&quot;. Monografia popular com resumo de estudos sobre benefícios respiratórios, digestivos e antioxidantes do tomilho. Disponível em: <a href="https://www.webmd.com/vitamins/ai/ingredientmono-823/thyme" target="_blank" rel="noopener">https://www.webmd.com/vitamins/ai/ingredientmono-823/thyme</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] European Medicines Agency (EMA). &quot;European Union herbal monograph on Thymus vulgaris L., Thymus zygis L., aetheroleum&quot;. Documento que descreve composição típica e principais constituintes do óleo essencial de tomilho. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-monograph/draft-european-union-herbal-monograph-thymus-vulgaris-l-thymus-zygis-l-aetheroleum-revision-1_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-monograph/draft-european-union-herbal-monograph-thymus-vulgaris-l-thymus-zygis-l-aetheroleum-revision-1_en.pdf</a></li>
+        <li id="ref-F2">[F2] Miguel MG et al. &quot;Composition and antioxidant activities of the essential oils of Thymus species from Portugal&quot;. Estudo sobre composição e capacidade antioxidante de óleos essenciais de tomilhos portugueses. Disponível em: <a href="https://sites.esa.ipb.pt/pdf/RefPlants_14.pdf" target="_blank" rel="noopener">https://sites.esa.ipb.pt/pdf/RefPlants_14.pdf</a></li>
+        <li id="ref-F3">[F3] Salgueiro LR et al. &quot;Composition and variability of the essential oils of Thymus mastichina&quot;. Artigo que analisa a composição do óleo essencial de T. mastichina e suas variações entre populações. Disponível em: <a href="https://www.sciencedirect.com/science/article/pii/S030519789700046X" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S030519789700046X</a></li>
+        <li id="ref-F4">[F4] Miguel MG et al. &quot;Antimicrobial activity of essential oils isolated from Portuguese Thymus species&quot;. Trabalho que avalia a composição e a atividade antimicrobiana de óleos de T. mastichina, T. camphoratus e T. lotocephalus. Disponível em: <a href="https://researchportal.ulisboa.pt/en/publications/antimicrobial-activity-of-essential-oils-isolated-from-portuguese/" target="_blank" rel="noopener">https://researchportal.ulisboa.pt/en/publications/antimicrobial-activity-of-essential-oils-isolated-from-portuguese/</a></li>
+        <li id="ref-F5">[F5] Salgueiro LR et al. &quot;Essential oil composition and variability of Thymus lotocephalus and related taxa&quot;. Estudo sobre composição e polimorfismo químico de óleos de T. lotocephalus, com dados de percentagens de monoterpenos. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/10725602/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/10725602/</a></li>
+        <li id="ref-F6">[F6] Kessler JC et al. &quot;Obtaining aromatic extracts from Portuguese Thymus species&quot;. Artigo em que se estudam diferentes métodos de extração (incluindo CO2 supercrítico) para extratos de Thymus lotocephalus e outros, com quantificação de compostos chave. Disponível em: <a href="https://www.deifil.pt/wp-content/uploads/2022/02/molecules-27-00694.pdf" target="_blank" rel="noopener">https://www.deifil.pt/wp-content/uploads/2022/02/molecules-27-00694.pdf</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] EPAM. &quot;Guia para a produção de plantas aromáticas e medicinais em Portugal – Tomilho&quot;. Documento que descreve o uso do tomilho como PAM de interesse económico, incluindo aplicações culinárias e medicinais. Disponível em: <a href="https://epam.pt/wp-content/uploads/2015/06/Guia_epam_tipos-e-especies_mai2015.pdf" target="_blank" rel="noopener">https://epam.pt/wp-content/uploads/2015/06/Guia_epam_tipos-e-especies_mai2015.pdf</a></li>
+        <li id="ref-A2">[A2] Wikipédia. &quot;Lista de plantas melíferas da Europa&quot;. Tabela que destaca o tomilho (Thymus vulgaris) como planta de elevado valor melífero (3 de 3 estrelas). Disponível em: <a href="https://pt.wikipedia.org/wiki/Lista_de_plantas_mel%C3%ADferas_da_Europa" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Lista_de_plantas_mel%C3%ADferas_da_Europa</a></li>
+        <li id="ref-A3">[A3] Vichy Portugal. &quot;Chá de tomilho: descubra os seus benefícios&quot;. Artigo que menciona usos de tomilho em tisanas, bem como aplicações cosméticas e de bem-estar. Disponível em: <a href="https://www.vichy.pt/conselhos-de-especialista/outras-preocupacoes/cha-de-tomilho-descubra-os-seus-beneficios" target="_blank" rel="noopener">https://www.vichy.pt/conselhos-de-especialista/outras-preocupacoes/cha-de-tomilho-descubra-os-seus-beneficios</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] GPP. &quot;As Plantas Aromáticas Medicinais e Condimentares&quot;. Estudo que inclui o tomilho como PAM de interesse em Portugal, abordando potencial económico e inserção em sistemas de produção diversificados. Disponível em: <a href="https://www.gpp.pt/images/GPP/O_que_disponibilizamos/Publicacoes/Estudo_PAM_final.pdf" target="_blank" rel="noopener">https://www.gpp.pt/images/GPP/O_que_disponibilizamos/Publicacoes/Estudo_PAM_final.pdf</a></li>
+        <li id="ref-P2">[P2] Artigos e casos de estudo de agrofloresta mediterrânica que incluem tomilho em consociações com oliveiras, vinhas e outras culturas perenes, realçando o seu papel na biodiversidade e proteção do solo. Exemplo: <a href="https://www.agronegocios.eu/noticias/plantas-aromaticas-medicinais-secagem-biologico-erva-cidreira-hortela-pimenta-manjericao-grande-tomilho-limao-e-tomilho-bela-luz/" target="_blank" rel="noopener">https://www.agronegocios.eu/noticias/plantas-aromaticas-medicinais-secagem-biologico-erva-cidreira-hortela-pimenta-manjericao-grande-tomilho-limao-e-tomilho-bela-luz/</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

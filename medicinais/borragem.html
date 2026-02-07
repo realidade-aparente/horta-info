@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html" class="ativa">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="boldo-do-chile.html">Boldo-do-Chile</a>
+  <a class="next" href="calendula.html">Calêndula</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Borragem (<em>Borago officinalis L.</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Boraginaceae</span>
+  <span>Parte usada: folhas, flores e sementes</span>
+  <span>Tipo: erva anual aromática medicinal</span>
+  <span>Produção: <strong>cultivo hortícola e em jardins</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> Mediterrâneo, Ásia ocidental e Europa, hoje comum em climas temperados</div>
+  <div><strong>Uso principal</strong> apoio a constipações, estados gripais, pele inflamada, stress e convalescença</div>
+  <div><strong>Perfil medicinal</strong> emoliente, sudorífica, anti-inflamatória, adjuvante respiratória, cutânea, metabólica e emocional</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Borragem (Borago officinalis L.)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>A borragem (Borago officinalis L.) é uma planta herbácea anual, robusta, que pode atingir 30–80 cm de altura, com caules ocos e sulcados, revestidos por numerosos pelos rígidos e ásperos. As folhas, grandes e ovais, também cobertas de pelos, têm textura rugosa e libertam um aroma ligeiramente a pepino quando esmagadas. As flores, muito ornamentais, são estreladas, de um azul intenso (por vezes rosadas ou brancas), dispostas em inflorescências pendentes.</p>
+      <p>Em português é conhecida como borragem, borago ou borragem-comum; em inglês, os nomes correntes são borage e starflower. É uma planta apreciada em hortas, jardins e bordaduras, tanto pelo valor ornamental das flores azuis como pelo papel melífero, atraindo abelhas e outros polinizadores. Em várias regiões é considerada hortaliça de uso tradicional, especialmente as folhas jovens e as flores.</p>
+      <p>Do ponto de vista medicinal, utilizam-se historicamente as partes aéreas floridas como planta sudorífera, expectorante e emoliente em afeções respiratórias, bem como diurética e depurativa em queixas urinárias e estados febris. Na fitoterapia moderna destaca-se sobretudo o óleo das sementes, rico em ácido gama-linolénico (GLA), utilizado como suplemento em inflamações crónicas e certas dermatoses, embora o seu uso interno requeira cautela devido à presença de alcaloides pirrolizidínicos na planta.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, a borragem comporta-se como anual de outono–primavera: germina em geral no final do outono ou início do inverno, cresce durante o inverno e primavera, e entra em floração a partir do final do inverno até ao início do verão. Em climas suaves e zonas costeiras, pode florir tão cedo como janeiro, prolongando a floração até junho.
+Na horta, a colheita de folhas jovens para uso culinário faz-se tipicamente na primavera, antes de se tornarem demasiado fibrosas; as flores colhem-se continuamente ao longo do período de floração. As plantas auto-semeiam-se facilmente, garantindo presença regular em sistemas de policultura e hortas pouco mobilizadas.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Germinação e crescimento vegetativo: outono e inverno, com forte desenvolvimento na primavera.</li>
+        <li>Floração: período relativamente longo, frequentemente de janeiro/fevereiro até junho em Portugal continental, dependendo da região e do ano.</li>
+        <li>Colheita de folhas jovens: sobretudo na primavera, colhendo folhas tenras antes de ficarem muito pilosas e fibrosas.</li>
+        <li>Colheita de flores: ao longo de todo o período de floração, selecionando flores bem abertas e saudáveis.</li>
+        <li>Em solos férteis e pouco mobilizados, a borragem auto-semeia-se, surgindo espontaneamente ano após ano em canteiros e bordaduras.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Chá/infusão de flores e folhas secas de borragem (por exemplo 2–3 g de droga em 150–200 mL de água quente, infusão 10–15 minutos) como adjuvante em constipações ligeiras, estados febris e afeções respiratórias benignas, explorando efeitos emolientes, sudoríferos e ligeiramente expectorantes descritos em monografias e revisões. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-D1">[D1]</a></li>
+        <li>Uso de óleo de sementes de borragem, padronizado em ácido gama-linolénico (cerca de 20–25% ou mais de GLA), em cápsulas de 500–1000 mg/dia, como suplemento em patologias inflamatórias crónicas (por exemplo dermatite atópica, artrite reumatoide, síndrome pré-menstrual), em estudos clínicos que apontam para melhoria modesta de sintomas inflamatórios e de parâmetros cutâneos. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-F1">[F1]</a></li>
+        <li>Aplicações tópicas com óleo de borragem (em cremes, óleos ou loções) em pele seca, dermatite atópica e outras dermatoses, tirando partido do teor elevado em ácidos gordos polinsaturados (nomeadamente GLA) e de propriedades emolientes e anti-inflamatórias mostradas em ensaios clínicos e estudos in vitro. <a href="#ref-M3">[M3]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Uso tradicional de chá de borragem como planta &quot;do bom humor&quot;, em infusões de flores para aliviar tristeza, melancolia, stress e para apoiar a convalescença após gripe ou estados febris. <a href="#ref-R1">[R1]</a> <a href="#ref-A1">[A1]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Emprego de infusões de borragem como adjuvante depurativo e diurético suave em problemas de pele, reumatismo e infeções urinárias ligeiras, muitas vezes em combinação com outras plantas depurativas. <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a> <a href="#ref-A4">[A4]</a></li>
+        <li>Consumo culinário de folhas de borragem, escaldadas ou cozidas (por exemplo em sopas, estufados ou recheios), bem como uso de flores frescas em saladas, gelos decorativos e bebidas, aproveitando o sabor refrescante que lembra pepino. <a href="#ref-R3">[R3]</a> <a href="#ref-R4">[R4]</a> <a href="#ref-R5">[R5]</a></li>
+        <li>Utilização popular de borragem como planta calmante suave e de suporte do sistema cardiovascular, em chás e preparações combinadas com outras ervas relaxantes. <a href="#ref-A1">[A1]</a> <a href="#ref-A4">[A4]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>A borragem contém alcaloides pirrolizidínicos insaturados (PA), sobretudo nas folhas, flores e, em menor grau, nas sementes, compostos potencialmente hepatotóxicos e carcinogénicos. Por este motivo, entidades reguladoras europeias recomendam limitar de forma estrita a exposição a PAs provenientes de plantas como Borago officinalis, especialmente em preparações para uso interno frequente ou prolongado. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-F2">[F2]</a></p>
+      <p>Chás ocasionais preparados com pequenas quantidades de flores de borragem, em adultos saudáveis, tendem a ser considerados de baixo risco quando o consumo é esporádico e em curtos períodos; no entanto, o uso diário prolongado de infusões de partes aéreas e o recurso a preparações concentradas (por exemplo extratos hidroalcoólicos caseiros) não é recomendado, sobretudo em pessoas com doença hepática, em grávidas, lactantes e crianças. <a href="#ref-U1">[U1]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-U4">[U4]</a></p>
+      <p>No caso do óleo de sementes de borragem, recomenda-se a utilização apenas de produtos certificados com teor residual de PAs (idealmente &quot;PA-free&quot;) e sob supervisão de profissional de saúde, especialmente quando usados em patologias inflamatórias crónicas e em associação com outros fármacos (anticoagulantes, anti-hipertensores, imunossupressores). Qualquer sinal de hepatotoxicidade (cansaço extremo, icterícia, dor no quadrante superior direito, urina escura) exige suspensão imediata e avaliação médica. <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-F2">[F2]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        Na prática tradicional, a borragem é usada em infusões de flores e folhas como planta sudorífera, emoliente e depurativa, bem como em óleos de sementes ricos em GLA para suporte em patologias inflamatórias. Em culinária, as folhas e flores são usadas como hortaliça e condimento, geralmente cozinhadas ou escaldadas para reduzir a aspereza dos pelos. Em todos os casos, devido aos alcaloides pirrolizidínicos, privilegia-se o consumo moderado, não diário e a utilização de óleos certificados, respeitando sempre o enquadramento de segurança e o Disclaimer padrão.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="borragem_receitas.html">Infusão simples de borragem:</a> chá de flores e folhas usado em constipações ligeiras, para promover sudorese suave e conforto respiratório. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="borragem_receitas.html">Chá de borragem para estados gripais:</a> infusão quente tomada ao longo do dia em estados gripais e febris ligeiros. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="borragem_receitas.html">Infusão depurativa combinada com borragem:</a> mistura de borragem com outras plantas depurativas, usada em períodos curtos para apoiar drenagem e eliminação de toxinas. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="borragem_receitas.html">Óleo de borragem em cápsulas:</a> suplementação com óleo de sementes rico em GLA, utilizada como adjuvante em inflamações cutâneas e articulares. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="borragem_receitas.html">Creme ou óleo corporal com borragem:</a> preparado tópico com óleo de borragem aplicado na pele seca, sensível ou inflamada. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="borragem_receitas.html">Sopa de borragem:</a> sopa caseira em que as folhas de borragem escaldadas são cozinhadas com batata e outros legumes. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="borragem_receitas.html">Pesto de borragem:</a> molho espesso onde folhas escaldadas de borragem são trituradas com azeite e outros ingredientes aromáticos. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="borragem_receitas.html">Flores de borragem em cubos de gelo:</a> flores frescas colocadas em cuvetes com água e congeladas para decorar bebidas frias. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="borragem_receitas.html">Salada morna com borragem:</a> prato em que folhas de borragem ligeiramente cozinhadas são servidas com legumes e temperos simples. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="borragem_receitas.html">Xarope artesanal de borragem:</a> preparado doce à base de infusão concentrada de borragem e açúcar, usado em pequenas quantidades em constipações. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>A borragem é tradicionalmente classificada como planta emoliente, sudorífera e depurativa, associada a alívio de sintomas de constipações, gripes e outras infeções respiratórias ligeiras, bem como a apoio em estados febris, afecções das vias urinárias e reumatismo. Fontes históricas e monografias modernas descrevem-na também como planta do bom humor, relacionando o seu uso com melhoria de estados de tristeza e fadiga. <a href="#ref-M1">[M1]</a> <a href="#ref-D1">[D1]</a> <a href="#ref-D3">[D3]</a></p>
+      <p>O óleo das sementes de borragem, rico em ácido gama-linolénico (GLA), tem sido estudado como suplemento em patologias inflamatórias crónicas, incluindo dermatite atópica, artrite reumatoide e síndrome pré-menstrual. Alguns ensaios clínicos mostram melhoria de sintomas articulares, cutâneos e pré-menstruais em subgrupos de doentes, embora os resultados sejam por vezes inconsistentes e dependentes da dose, duração e qualidade do produto usado. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-F1">[F1]</a></p>
+      <p>Em modelos experimentais, extratos de Borago officinalis demonstraram propriedades anti-inflamatórias, antioxidantes e potenciais efeitos anticarcinogénicos, incluindo proteção contra danos no DNA e modulação de vias inflamatórias. Estes dados sustentam parte dos usos tradicionais, mas não substituem a necessidade de avaliar riscos associados aos alcaloides pirrolizidínicos, nem de enquadrar o uso de borragem dentro de planos terapêuticos supervisionados. <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-M4">[M4]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Adjuvante em constipações e estados gripais ligeiros, como planta sudorífera e emoliente, ajudando a promover a transpiração suave, hidratação e conforto respiratório. <a href="#ref-M1">[M1]</a> <a href="#ref-D1">[D1]</a></li>
+        <li>Apoio em pequenas queixas urinárias e retenção ligeira de líquidos, explorando o efeito diurético suave descrito em monografias tradicionais. <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a></li>
+        <li>Suporte em patologias inflamatórias crónicas, como dermatite atópica e artrite reumatoide, através do uso de óleo de sementes rico em GLA, em doses estudadas, sempre sob orientação profissional e com produtos de qualidade controlada. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-F1">[F1]</a></li>
+        <li>Apoio complementar em síndrome pré-menstrual (SPM), com alguns estudos sugerindo redução de mastalgia e sintomas emocionais em mulheres que utilizam óleo de borragem rico em GLA. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a></li>
+        <li>Potencial contributo antioxidante e anticarcinogénico, baseado em estudos experimentais que mostram proteção do DNA e modulação de vias inflamatórias, embora sem indicações oncológicas estabelecidas em humanos. <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-M4">[M4]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>Do ponto de vista fitoquímico, Borago officinalis destaca-se pelo óleo das sementes, com um dos teores mais elevados conhecidos de ácido gama-linolénico (GLA) entre as plantas cultivadas: revisões indicam valores típicos de 20–26% de GLA na fração lipídica, com alguns estudos a referirem até cerca de 38%. O óleo contém ainda quantidades significativas de ácido linoleico, oleico, palmítico, esteárico e outros ácidos gordos, perfazendo um perfil rico em ácidos gordos polinsaturados de interesse nutricional e farmacológico. <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></p>
+      <p>Além dos constituintes lipídicos, folhas e flores de borragem apresentam mucilagens, nitrato de potássio, compostos fenólicos (incluindo ácido rosmarínico e outros ácidos fenólicos), flavonoides e pequenas quantidades de alcaloides pirrolizidínicos insaturados (como amabilina, supinina e intermedina). Estes alcaloides são responsáveis pelo potencial risco hepatotóxico, pelo que a presença e o teor de PAs em produtos de borragem são objeto de avaliação regulatória. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F4">[F4]</a> <a href="#ref-F5">[F5]</a></p>
+      <p>Estudos in vitro e in vivo atribuem ao óleo e extratos de borragem propriedades anti-inflamatórias, antioxidantes, imunomoduladoras e, em alguns contextos, anticarcinogénicas. O GLA é metabolizado a dihomo-γ-linolénico (DGLA), precursor de prostaglandina E1 (PGE1), associada a efeitos anti-inflamatórios e vasodilatadores moderados. Em paralelo, os fenólicos e flavonoides contribuem para a capacidade antioxidante, enquanto as mucilagens explicam parte da ação emoliente sobre mucosas. <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F5">[F5]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Ácido gama-linolénico (GLA) no óleo das sementes</td><td>≈20–26 % da fração lipídica (podendo atingir ≈26–38 % em alguns estudos)</td></tr>
+        <tr><td>Principais ácidos gordos no óleo de sementes (linoleico, oleico, palmítico, esteárico)</td><td>ácido linoleico ≈35–38 %; oleico ≈16–20 %; palmítico ≈10–11 %; esteárico ≈3,5–4,5 % (percentagem dos ácidos gordos totais)</td></tr>
+        <tr><td>Ácido rosmarínico e outros fenólicos nas partes aéreas</td><td>teores de alguns mg/g de extrato seco, com variação consoante o método de extração</td></tr>
+        <tr><td>Flavonoides totais em extratos das partes aéreas</td><td>≈5–30 mg/g de extrato seco, dependendo do solvente e da parte da planta</td></tr>
+        <tr><td>Alcaloides pirrolizidínicos (amabilina, supinina, intermedina e derivados)</td><td>presença confirmada em níveis baixos mas relevantes do ponto de vista toxicológico</td></tr>
+        <tr><td>Capacidade antioxidante de extratos de borragem (DPPH, ABTS, ensaios de proteção do DNA)</td><td>atividade antioxidante moderada a elevada, com IC50 para eliminação de radicais na gama de dezenas a poucas centenas de µg/mL</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Planta hortícola de uso culinário tradicional em várias regiões, com folhas cozidas em sopas, estufados e recheios (por exemplo em Ligúria, Espanha e algumas zonas de Portugal), e flores usadas como guarnição comestível em saladas, sobremesas e bebidas. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Planta melífera importante, produzindo néctar abundante e atraindo abelhas e outros polinizadores, contribuindo para a biodiversidade e para a produção de mel aromático. <a href="#ref-A2">[A2]</a> <a href="#ref-P1">[P1]</a></li>
+        <li>Utilização em agricultura biológica e permacultura como planta acompanhante em hortas, ajudando a atrair insetos benéficos e a fornecer alguma sombra pontual a culturas sensíveis. <a href="#ref-P1">[P1]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Uso em arranjos florais e como planta ornamental devido ao contraste entre flores azuis estreladas e folhagem verde pilosa, trazendo interesse visual a canteiros e bordaduras. <a href="#ref-A2">[A2]</a></li>
+        <li>Emprego do óleo de borragem em cosmética natural (cremes, loções, óleos faciais) como ingrediente em fórmulas nutritivas para pele seca, madura ou reativa. <a href="#ref-F1">[F1]</a> <a href="#ref-A3">[A3]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 7,2 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em permacultura, a borragem é uma planta multifuncional com forte valor ecológico, alimentar e medicinal. Fornece flores melíferas muito atrativas para abelhas e outros polinizadores, serve como hortaliça ocasional (folhas e flores comestíveis) e oferece matéria-prima para preparados medicinais e cosméticos, sobretudo a partir do óleo de sementes rico em GLA. O seu ciclo anual rápido e a capacidade de auto-sementeira ajudam a cobrir solo nu e a criar diversidade em canteiros e bordaduras.
+Por outro lado, é uma planta relativamente exigente em nutrientes, pode tombar e ocupar espaço em excesso se não for bem posicionada, e o uso medicinal interno é limitado pela presença de alcaloides pirrolizidínicos. Em termos de índice, obtém pontuação elevada em funções medicinais (óleo e planta), ecológicas (melífera), alimentares (hortaliça ocasional) e de multifuncionalidade cultural, com penalizações moderadas ligadas a questões de segurança e à necessidade de manejo para evitar excesso de auto-sementeira.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        Na grelha de avaliação, a borragem pontua bem em ALIM (uso como hortaliça e flores comestíveis), MED (uso tradicional e de óleo rico em GLA), ECO (atração de polinizadores) e MULT (funções culinárias, medicinais, ornamentais e cosméticas). A contribuição para SOLO é moderada, fornecendo alguma cobertura e biomassa, mas com menor impacto estrutural do que arbustos permanentes.
+As penalizações concentram-se em TOX (presença de PAs, exigindo prudência no uso interno), bem como em COMP/INVAS quando se auto-semeia em excesso em hortas manejadas de forma intensiva. O grau de 7,2/10 reflete esse balanço, resultando da aplicação do algoritmo descrito no projeto (soma de funções positivas menos penalizações, convertida à escala 0–10) e indica que a borragem pode ser uma excelente aliada em bordaduras, consociações e zonas melíferas da horta, desde que usada com critério e rotação adequada.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Wikipédia (PT). &quot;Borragem&quot;. Artigo que descreve Borago officinalis como planta herbácea anual mediterrânica, com informações sobre origem, distribuição, usos medicinais e culinários e partes utilizadas.</li>
+        <li>URL: <a href="https://pt.wikipedia.org/wiki/Borragem" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Borragem</a></li>
+        <li id="ref-D2">[D2] Wilder. &quot;Que espécie é esta: borragem (Borago officinalis)&quot;. Ficha em português que apresenta descrição morfológica, época de floração em Portugal, habitat e reconhecimento como planta medicinal e comestível.</li>
+        <li>URL: <a href="https://wilder.pt/especies/que-especie-e-esta-borragem" target="_blank" rel="noopener">https://wilder.pt/especies/que-especie-e-esta-borragem</a></li>
+        <li id="ref-D3">[D3] HerbRally. &quot;Borage Monograph&quot;. Monografia em inglês com descrição botânica, habitat, partes usadas, usos tradicionais e notas de segurança sobre alcaloides pirrolizidínicos.</li>
+        <li>URL: <a href="https://www.herbrally.com/monographs/borage" target="_blank" rel="noopener">https://www.herbrally.com/monographs/borage</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Wilder. &quot;Que espécie é esta: borragem&quot;. Secções sobre floração (janeiro a junho em Portugal), habitats frequentes e comportamento em jardins e campos.</li>
+        <li>URL: <a href="https://wilder.pt/especies/que-especie-e-esta-borragem" target="_blank" rel="noopener">https://wilder.pt/especies/que-especie-e-esta-borragem</a></li>
+        <li id="ref-S2">[S2] Sementes de Portugal. &quot;Borragem (Borago officinalis)&quot;. Ficha com indicação de nome científico, nomes vulgares, época de sementeira, ciclo anual e uso como planta comestível e medicinal.</li>
+        <li>URL: <a href="https://www.sementesdeportugal.pt/produto/borragem/" target="_blank" rel="noopener">https://www.sementesdeportugal.pt/produto/borragem/</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] HerbalGram / Commission E Monographs. &quot;Borage&quot;. Monografia que descreve usos tradicionais de borragem como sudorífica e diurética, mas assinala a presença de alcaloides pirrolizidínicos e a necessidade de limitar o uso interno prolongado.</li>
+        <li>URL: <a href="https://www.herbalgram.org/resources/commission-e-monographs/monograph-unapproved-herbs/borage/" target="_blank" rel="noopener">https://www.herbalgram.org/resources/commission-e-monographs/monograph-unapproved-herbs/borage/</a></li>
+        <li id="ref-U2">[U2] European Medicines Agency (EMA). &quot;Public statement on the use of herbal medicinal products containing toxic unsaturated pyrrolizidine alkaloids (PAs)&quot;. Documento que menciona espécies de Borago entre as plantas produtoras de PAs e estabelece recomendações para limitar a exposição a estes compostos.</li>
+        <li>URL: <a href="https://www.ema.europa.eu/en/documents/public-statement/draft-public-statement-use-herbal-medicinal-products-containing-toxic-unsaturated-pyrrolizidine-alkaloids-pas-including-recommendations-regarding-contamination-herbal-medicinal-products-pyrrolizidine_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/public-statement/draft-public-statement-use-herbal-medicinal-products-containing-toxic-unsaturated-pyrrolizidine-alkaloids-pas-including-recommendations-regarding-contamination-herbal-medicinal-products-pyrrolizidine_en.pdf</a></li>
+        <li id="ref-U3">[U3] WebMD. &quot;What to Know About Borage&quot;. Artigo de saúde que descreve potenciais usos de borage, riscos de toxicidade hepática associados a PAs, interações com medicamentos e grupos de risco em que o uso deve ser evitado.</li>
+        <li>URL: <a href="https://www.webmd.com/vitamins-and-supplements/what-to-know-about-borage" target="_blank" rel="noopener">https://www.webmd.com/vitamins-and-supplements/what-to-know-about-borage</a></li>
+        <li id="ref-U4">[U4] Índice.eu. &quot;Borago officinalis – informação geral&quot;. Ficha em português sobre borragem, com indicação de usos medicinais (emoliente, sudorífera, diurética) e advertências gerais sobre segurança.</li>
+        <li>URL: <a href="https://www.indice.eu/pt/medicamentos/DCI/borago-officinalis/informacao-geral" target="_blank" rel="noopener">https://www.indice.eu/pt/medicamentos/DCI/borago-officinalis/informacao-geral</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] D’Natureza. &quot;Infusão de Borragem&quot;. Loja de produtos naturais em Portugal com instruções para preparar chá de borragem: 1 colher de sopa de flores em água a ferver, infusão de 10 minutos, até 3 chávenas por dia, e nota de que as propriedades são baseadas em uso tradicional.</li>
+        <li>URL: <a href="https://dnatureza.pt/products/infusao-de-borragem" target="_blank" rel="noopener">https://dnatureza.pt/products/infusao-de-borragem</a></li>
+        <li id="ref-R2">[R2] Murta Eco. &quot;Faça-você-mesmo com as Nossas Plantas Medicinais&quot;. Artigo em português que inclui receita de chá de borragem (2 colheres de sopa por chávena, 10 minutos de infusão) e respetivo enquadramento tradicional.</li>
+        <li>URL: <a href="https://blog.murta.eco/faca-voce-mesmo-com-as-nossas-plantas-medicinais/" target="_blank" rel="noopener">https://blog.murta.eco/faca-voce-mesmo-com-as-nossas-plantas-medicinais/</a></li>
+        <li id="ref-R3">[R3] Tua Saúde. &quot;Borragem: para que serve e como usar&quot;. Artigo em português que descreve benefícios da borragem, incluindo óleo de sementes e chá, com doses gerais e indicação de cautelas.</li>
+        <li>URL: <a href="https://www.tuasaude.com/borragem/" target="_blank" rel="noopener">https://www.tuasaude.com/borragem/</a></li>
+        <li id="ref-R4">[R4] Asadi-Samani M. et al. &quot;The chemical composition, botanical characteristic and biological activities of Borago officinalis: a review&quot;. Revisão que compila ensaios clínicos e estudos sobre o uso de óleo de sementes de borragem em condições inflamatórias.</li>
+        <li>URL: <a href="https://pubmed.ncbi.nlm.nih.gov/25312125/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/25312125/</a></li>
+        <li id="ref-R5">[R5] Fratianni F. et al. &quot;Fatty Acid Profile and Some Useful Biological Aspects of Borago officinalis Seed Oil&quot; (Antioxidants, 2025). Estudo que descreve composição em ácidos gordos e atividades biológicas de óleos de sementes de borragem.</li>
+        <li>URL: <a href="https://www.mdpi.com/2076-3921/14/6/661" target="_blank" rel="noopener">https://www.mdpi.com/2076-3921/14/6/661</a></li>
+        <li id="ref-R6">[R6] Bonduelle. &quot;Borragem, descubra mais sobre este vegetal&quot;. Artigo em português sobre usos culinários de borragem como hortaliça, incluindo recomendações de cozedura prévia das folhas.</li>
+        <li>URL: <a href="https://www.bonduelle.pt/sobre-nos/do-campo-a-mesa/borragem/1407/1407" target="_blank" rel="noopener">https://www.bonduelle.pt/sobre-nos/do-campo-a-mesa/borragem/1407/1407</a></li>
+        <li id="ref-R7">[R7] GZ Recipes. &quot;Pesto de borragem&quot;. Receita de pesto em português onde se recomenda escaldar previamente as folhas de borragem por 3–4 minutos antes de as utilizar.</li>
+        <li>URL: <a href="https://www.gzrecipes.com/pt/tmm/pesto-de-borragem/" target="_blank" rel="noopener">https://www.gzrecipes.com/pt/tmm/pesto-de-borragem/</a></li>
+        <li id="ref-R8">[R8] Specialty Produce. &quot;Borage Leaves&quot;. Ficha que descreve usos culinários das folhas e flores de borage, incluindo utilização em saladas, sopas, cubos de gelo e guarnições.</li>
+        <li>URL: <a href="https://specialtyproduce.com/produce/Borage_Leaves_11921.php" target="_blank" rel="noopener">https://specialtyproduce.com/produce/Borage_Leaves_11921.php</a></li>
+        <li id="ref-R9">[R9] TrolleyD. &quot;Borago officinalis: healing herb &amp; edible flower garnish&quot;. Artigo sobre forragem e usos culinários de borragem, com exemplos de sopas, saladas e acompanhamentos.</li>
+        <li>URL: <a href="https://trolleyd.com.au/blogs/foraging/borago-officinalis-healing-herb-edible-flower-garnish" target="_blank" rel="noopener">https://trolleyd.com.au/blogs/foraging/borago-officinalis-healing-herb-edible-flower-garnish</a></li>
+        <li id="ref-R10">[R10] Honest Food. &quot;The Courage to Cook with Borage&quot;. Artigo com receitas e técnicas para cozinhar borragem (sopas, ravioli, molhos), sublinhando a importância de cozinhar as folhas.</li>
+        <li>URL: <a href="https://honest-food.net/the-courage-to-cook-with-borage/" target="_blank" rel="noopener">https://honest-food.net/the-courage-to-cook-with-borage/</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] Índice.eu. &quot;Borago officinalis – informação geral&quot;. Ficha que apresenta a borragem como planta rica em mucilagem e nitrato de potássio, com propriedades emolientes, sudoríferas, diuréticas e anti-inflamatórias, úteis em sintomas de gripe, bronquite e afecções urinárias.</li>
+        <li>URL: <a href="https://www.indice.eu/pt/medicamentos/DCI/borago-officinalis/informacao-geral" target="_blank" rel="noopener">https://www.indice.eu/pt/medicamentos/DCI/borago-officinalis/informacao-geral</a></li>
+        <li id="ref-M2">[M2] Asadi-Samani M. et al. &quot;The chemical composition, botanical characteristic and biological activities of Borago officinalis: a review&quot;. Revisão que resume os usos de borragem e os dados clínicos e experimentais disponíveis, incluindo aplicações em doenças inflamatórias.</li>
+        <li>URL: <a href="https://pubmed.ncbi.nlm.nih.gov/25312125/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/25312125/</a></li>
+        <li id="ref-M3">[M3] Sufwan Z. et al. &quot;Advances in Pharmacological Insights of Borago officinalis&quot; (Botanical Drugs, 2025). Revisão recente sobre os mecanismos farmacológicos do óleo de borragem e de outros extratos, com foco no metabolismo do GLA e na produção de prostaglandina E1.</li>
+        <li>URL: <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/bod2.70016" target="_blank" rel="noopener">https://onlinelibrary.wiley.com/doi/full/10.1002/bod2.70016</a></li>
+        <li id="ref-M4">[M4] Lozano-Baena M.D. et al. &quot;Cancer Prevention and Health Benefices of Traditionally Consumed Borago officinalis Plants&quot; (Nutrients, 2016). Estudo que avalia efeitos anticarcinogénicos e a capacidade de proteção do DNA de extratos de borragem e dos seus principais fenólicos.</li>
+        <li>URL: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4728661/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4728661/</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Asadi-Samani M. et al. &quot;The chemical composition, botanical characteristic and biological activities of Borago officinalis: a review&quot;. Secções sobre composição do óleo de sementes e percentagens de GLA, ácido linoleico, oleico, palmítico e outros ácidos gordos.</li>
+        <li>URL: <a href="https://pubmed.ncbi.nlm.nih.gov/25312125/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/25312125/</a></li>
+        <li id="ref-F2">[F2] ResearchGate. &quot;Pyrrolizidine Alkaloids from Borage (Borago officinalis) Seeds and Flowers&quot;. Estudo que identifica amabilina, supinina, intermedina e outros PAs em sementes e flores de borragem.</li>
+        <li>URL: <a href="https://www.researchgate.net/publication/231715713_Pyrrolizidine_Alkaloids_from_Borage_Borago_officinalis_Seeds_and_Flowers" target="_blank" rel="noopener">https://www.researchgate.net/publication/231715713_Pyrrolizidine_Alkaloids_from_Borage_Borago_officinalis_Seeds_and_Flowers</a></li>
+        <li id="ref-F3">[F3] Lozano-Baena M.D. et al. &quot;Cancer Prevention and Health Benefices of Traditionally Consumed Borago officinalis Plants&quot;. Dados sobre compostos fenólicos, ácido rosmarínico, atividade antioxidante e proteção do DNA.</li>
+        <li>URL: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4728661/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4728661/</a></li>
+        <li id="ref-F4">[F4] Čičová I. et al. &quot;Borago officinalis L. as an important source of natural aromatic compounds&quot; (Biodiversity: Research and Conservation, 2022). Descreve composição aromática e utilizações do óleo essencial e extratos de borragem.</li>
+        <li>URL: <a href="https://agriacad.eu/ojs/index.php/bjcs/article/view/1851" target="_blank" rel="noopener">https://agriacad.eu/ojs/index.php/bjcs/article/view/1851</a></li>
+        <li id="ref-F5">[F5] Fratianni F. et al. &quot;Fatty Acid Profile and Some Useful Biological Aspects of Borago officinalis Seed Oil&quot;. Estudo que detalha o perfil de ácidos gordos e atividades biológicas do óleo de sementes.</li>
+        <li>URL: <a href="https://www.mdpi.com/2076-3921/14/6/661" target="_blank" rel="noopener">https://www.mdpi.com/2076-3921/14/6/661</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Bonduelle. &quot;Borragem, descubra mais sobre este vegetal&quot;. Artigo em português sobre borragem como hortaliça, com explicações sobre modos de preparo, sabor e necessidade de retirar os pelinhos antes de cozinhar.</li>
+        <li>URL: <a href="https://www.bonduelle.pt/sobre-nos/do-campo-a-mesa/borragem/1407/1407" target="_blank" rel="noopener">https://www.bonduelle.pt/sobre-nos/do-campo-a-mesa/borragem/1407/1407</a></li>
+        <li id="ref-A2">[A2] Wilder. &quot;Que espécie é esta: borragem&quot;. Ressalta o valor ornamental e melífero da planta, bem como o seu uso em jardins e hortas.</li>
+        <li>URL: <a href="https://wilder.pt/especies/que-especie-e-esta-borragem" target="_blank" rel="noopener">https://wilder.pt/especies/que-especie-e-esta-borragem</a></li>
+        <li id="ref-A3">[A3] Cantinho das Aromáticas (Facebook). Publicação &quot;A borragem (Borago officinalis) é uma extraordinária planta com inúmeras virtudes&quot;. Partilha notas sobre propriedades anti-inflamatórias, expectorantes e sedativas, e valorização como planta aromática de jardim.</li>
+        <li>URL: <a href="https://www.facebook.com/cantinhoaromaticas/posts/a-borragem-borago-officinalis-%C3%A9-uma-extraordin%C3%A1ria-planta-com-in%C3%BAmeras-virtudes-/2989898264379923/" target="_blank" rel="noopener">https://www.facebook.com/cantinhoaromaticas/posts/a-borragem-borago-officinalis-%C3%A9-uma-extraordin%C3%A1ria-planta-com-in%C3%BAmeras-virtudes-/2989898264379923/</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] Wilder. &quot;Que espécie é esta: borragem&quot;. Destaca o interesse da espécie para polinizadores, o longo período de floração e o papel da planta em sistemas agrícolas e jardins de inspiração ecológica.</li>
+        <li>URL: <a href="https://wilder.pt/especies/que-especie-e-esta-borragem" target="_blank" rel="noopener">https://wilder.pt/especies/que-especie-e-esta-borragem</a></li>
+        <li id="ref-P2">[P2] Recursos de permacultura e horticultura ecológica (artigos de foraging, blogs como Honest Food e TrolleyD) que descrevem o uso de borragem como planta acompanhante em hortas, atraindo polinizadores e fornecendo biomassa e hortaliça ocasional.</li>
+        <li>URLs: <a href="https://honest-food.net/the-courage-to-cook-with-borage/" target="_blank" rel="noopener">https://honest-food.net/the-courage-to-cook-with-borage/</a> ; <a href="https://trolleyd.com.au/blogs/foraging/borago-officinalis-healing-herb-edible-flower-garnish" target="_blank" rel="noopener">https://trolleyd.com.au/blogs/foraging/borago-officinalis-healing-herb-edible-flower-garnish</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

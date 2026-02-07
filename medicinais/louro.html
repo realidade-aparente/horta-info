@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html" class="ativa">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="limoeiro.html">Limoeiro</a>
+  <a class="next" href="lucia-lima.html">Lúcia-lima</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Louro (<em>Laurus nobilis L.</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Lauraceae</span>
+  <span>Parte usada: folhas frescas e secas</span>
+  <span>Tipo: árvore aromática perene medicinal condimentar</span>
+  <span>Produção: <strong>cultivado em jardins, hortas, sebes</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> região mediterrânica oriental e sudoeste europeu, hoje comum em Portugal</div>
+  <div><strong>Uso principal</strong> condimento digestivo, apoio cardiovascular suave, respiratório e articular ligeiro em contexto tradicional</div>
+  <div><strong>Perfil medicinal</strong> digestivo, cardiometabólico, anti-inflamatório, antioxidante, antimicrobiano adjuvante suave em contexto tradicional</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Louro (Laurus nobilis L.)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>O louro (Laurus nobilis L.) é uma árvore ou arbusto perene aromático, de folhas persistentes, coriáceas, ovais a lanceoladas, com aroma intenso quando esmagadas. Pode atingir entre 2 e 10 metros de altura, dependendo das condições e da condução em poda. As flores são pequenas, esbranquiçadas a amareladas, agrupadas em pequenas umbelas axilares, surgindo na primavera, e dão origem a frutos em baga ovais, inicialmente verdes e que escurecem para roxo-escuro ou negro quando maduros.</p>
+      <p>Em Portugal é conhecido como louro ou loureiro, e os seus ramos foram tradicionalmente usados em grinaldas e coroas simbólicas de vitória. Em inglês, é geralmente designado por bay laurel, bay leaf ou sweet bay. As folhas secas são um condimento clássico em múltiplas cozinhas do mundo, sendo usadas em caldos, sopas, guisados, pratos de carne, peixe e leguminosas, muitas vezes em combinação com outras ervas aromáticas.</p>
+      <p>Do ponto de vista medicinal e aromático, utilizam-se sobretudo as folhas, frescas ou secas, bem como o óleo essencial obtido por destilação a vapor. As folhas contêm um óleo essencial rico em 1,8-cineol (eucaliptol), terpenos e compostos fenólicos, além de compostos não voláteis com atividade antioxidante. Extratos de Laurus nobilis têm sido estudados por potenciais efeitos digestivos, antidiabéticos, anti-inflamatórios e antimicrobianos.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-F1">[F1]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, o louro comporta-se como espécie perene sempre-verde, mantendo folhagem durante todo o ano em climas mediterrânicos suaves. As folhas podem ser colhidas praticamente em qualquer época, mas muitos autores recomendam a colheita na primavera e verão, quando o teor de óleo essencial tende a ser mais alto e o aroma mais intenso.
+Em termos de produção e manejo, o louro aprecia exposição solar a meia-sombra, solos bem drenados e rega moderada, tolerando relativamente bem a seca uma vez estabelecido. É comum em pomares de quintal, sebes aromáticas e bordaduras estruturais em hortas e jardins.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Floração: primavera (aproximadamente março a maio), com pequenas flores esbranquiçadas ou amareladas.</li>
+        <li>Frutificação: finais do verão ao outono, com bagas que escurecem à medida que amadurecem.</li>
+        <li>Colheita de folhas para uso culinário e medicinal: possível durante todo o ano, privilegiando folhas bem desenvolvidas de ramos saudáveis, com particular interesse em primavera e verão.</li>
+        <li>Em zonas mais frias ou ventosas, o desenvolvimento é mais lento e podem ocorrer danos por geadas fortes, especialmente em plantas jovens.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Infusões e decoções de folhas de Laurus nobilis (por exemplo 1–2 folhas secas em 200–250 mL de água, infundidas 10–15 minutos) como adjuvantes em dispepsia, sensação de plenitude pós-prandial e flatulência, explorando as propriedades carminativas, espasmolíticas e digestivas descritas em monografias e revisões farmacológicas. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a></li>
+        <li>Extratos de folhas de louro em estudos clínicos e experimentais como adjuvantes no controlo glicémico e no perfil lipídico em pessoas com diabetes tipo 2 ou síndrome metabólica, com reduções modestas mas significativas em glicemia e lípidos em alguns ensaios com pó de folha de louro incorporado na dieta. <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a></li>
+        <li>Óleo essencial de Laurus nobilis aplicado topicamente, devidamente diluído em óleo vegetal, em preparações de massagem para músculos e articulações dolorosas, com base em dados experimentais que mostram atividades analgésicas, anti-inflamatórias e antissépticas, e longa tradição de uso externo em reumatismos e dores musculares. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-M2">[M2]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Uso tradicional do chá de louro, sozinho ou combinado com outras plantas digestivas, para aliviar má digestão, gases, cólicas leves e sensação de estômago pesado após refeições ricas. <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a> <a href="#ref-A1">[A1]</a></li>
+        <li>Emprego popular de infusões ou vapores com folha de louro em constipações, tosse e congestão respiratória, muitas vezes combinados com eucalipto ou outras plantas balsâmicas. <a href="#ref-R2">[R2]</a> <a href="#ref-R3">[R3]</a></li>
+        <li>Aplicação de óleo macerado ou pomadas com louro em fricções no peito, costas ou articulações, em contexto de reumatismo, dores musculares e sintomas de constipação, segundo receitas tradicionais familiares. <a href="#ref-R4">[R4]</a> <a href="#ref-A1">[A1]</a></li>
+        <li>Uso culinário diário das folhas em sopas, caldos, feijoadas, estufados e assados, aproveitando não só o sabor mas também os efeitos digestivos suaves e carminativos. <a href="#ref-D2">[D2]</a> <a href="#ref-A2">[A2]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>O uso culinário habitual de folhas de louro inteiras em pequenas quantidades é considerado seguro para a maioria das pessoas, desde que as folhas sejam retiradas antes de servir, pois permanecem rígidas após a cozedura e podem causar engasgamento ou lesões mecânicas se forem ingeridas inteiras. O consumo de grandes quantidades de folhas, sobretudo sob a forma de pó ou extratos concentrados, não é recomendado sem orientação profissional. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></p>
+      <p>Alguns estudos e relatos sugerem que o óleo essencial e extratos concentrados de Laurus nobilis podem, em doses elevadas, estar associados a efeitos adversos como irritação gastrointestinal, sonolência, alterações neurológicas ou mesmo hepatotoxicidade em casos isolados. Por isso, o uso de óleo essencial por via interna não deve ser feito sem supervisão especializada, e preparações concentradas devem ser evitadas em grávidas, lactantes, crianças e pessoas com doença hepática. <a href="#ref-F3">[F3]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U4">[U4]</a></p>
+      <p>Pessoas com alergia conhecida a Lauraceae ou com historial de reações alérgicas a condimentos aromáticos devem experimentar doses muito pequenas inicialmente e suspender o uso se surgirem sintomas de hipersensibilidade. Indivíduos sob terapêutica crónica, especialmente com fármacos para diabetes, hipertensão, anticoagulantes ou outros medicamentos de janela terapêutica estreita, devem discutir o uso regular de chá ou suplementos de louro com o seu médico. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U4">[U4]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        Na fitoterapia caseira, o louro é usado principalmente em chás digestivos, decoções aromáticas, macerados em óleo vegetal e preparações culinárias que funcionam como alimentos-medicamento. Em aromaterapia e em produtos tópicos tradicionais, o louro entra em óleos de massagem, bálsamos e pomadas para músculos, articulações e vias respiratórias. As receitas devem usar doses moderadas de folhas e diluições adequadas do óleo essencial, em linha com as indicações das fontes de referência e com as recomendações de segurança e Disclaimer padrão.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="louro_receitas.html">Chá digestivo simples de louro:</a> infusão suave de folhas de louro bebida após as refeições para apoiar a digestão e aliviar gases ligeiros. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="louro_receitas.html">Chá de louro com limão:</a> infusão de louro e limão usada pontualmente em desconforto digestivo e ligeira sensação de constipação. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="louro_receitas.html">Infusão de louro com canela e cravinho:</a> bebida aromática ocasional em dias frios, usada em pequenas quantidades como apoio digestivo e respiratório. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="louro_receitas.html">Óleo macerado de louro para massagem:</a> óleo vegetal onde maceram folhas de louro, usado em fricções suaves em músculos e articulações cansadas. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="louro_receitas.html">Óleo de massagem com óleo essencial de louro:</a> óleo de base com poucas gotas de óleo essencial, aplicado em massagens localizadas com efeito aquecedor e relaxante. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="louro_receitas.html">Decocção aromática de louro para inalação:</a> preparação de água quente com folhas de louro cujos vapores são inalados em episódios leves de congestão nasal. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="louro_receitas.html">Caldo base aromático com louro:</a> caldo de legumes ou ossos aromatizado com folhas de louro, utilizado como base digestiva e reconfortante em sopas e guisados. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="louro_receitas.html">Louro em sal aromatizado:</a> sal de cozinha misturado com louro seco triturado, usado em pequenas quantidades como condimento funcional para pratos salgados. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="louro_receitas.html">Óleo de louro tipo &quot;Alepo&quot; simplificado:</a> adaptação caseira inspirada no tradicional óleo de Alepo, usada em pequenas quantidades para fricções locais. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="louro_receitas.html">Xarope caseiro aromático com louro:</a> xarope açucarado aromatizado com louro, consumido esporadicamente em colheradas para aliviar garganta irritada. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>As folhas de louro são usadas tradicionalmente como adjuvantes digestivos e carminativos, ajudando a aliviar sensação de plenitude gástrica, gases e cólicas leves após refeições pesadas. Estudos modernos confirmam que compostos do louro podem estimular a secreção de sucos digestivos, exercer efeito antiespasmódico moderado e apresentar atividade antioxidante relevante sobre o tubo digestivo. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></p>
+      <p>Para além do efeito digestivo, diversos trabalhos experimentais e alguns pequenos ensaios clínicos sugerem que extratos e pó de folhas de Laurus nobilis podem ter impacto favorável em parâmetros metabólicos, incluindo glicemia e perfil lipídico, em pessoas com diabetes tipo 2 ou síndrome metabólica, embora a evidência ainda seja preliminar e não permita substituir terapêutica convencional. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F4">[F4]</a></p>
+      <p>O óleo essencial e os extratos de louro exibem propriedades antioxidantes, anti-inflamatórias, antimicrobianas e, em alguns modelos, analgésicas e neuroprotetoras. Estas atividades sustentam o uso tradicional em aplicações externas para músculos e articulações, bem como o interesse crescente em Laurus nobilis como fonte de compostos bioativos para a indústria alimentar, cosmética e farmacêutica. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Adjuvante em digestão difícil, sensação de estômago pesado e flatulência após refeições ricas, através de infusões leves de folhas de louro ou do uso culinário regular em caldos e guisados. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a></li>
+        <li>Possível apoio complementar em controlo glicémico e do perfil lipídico em pessoas com diabetes tipo 2 ou síndrome metabólica, em contexto de dieta equilibrada e atividade física, com base em estudos que utilizaram pó de folhas de louro. <a href="#ref-M2">[M2]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F4">[F4]</a></li>
+        <li>Apoio em estado inflamatório ligeiro e dor muscular ou articular, por via de aplicações tópicas com óleo de louro ou óleos de massagem aromáticos, em associação com outras medidas físicas (calor local, repouso, alongamentos suaves). <a href="#ref-M1">[M1]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a></li>
+        <li>Potencial contributo antioxidante e antimicrobiano moderado, que pode ajudar de forma global na proteção contra o stress oxidativo e no equilíbrio da microbiota, embora este efeito seja mais plausível quando integrado em padrões alimentares ricos em vegetais e especiarias. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>As folhas de Laurus nobilis contêm cerca de 1–3% de óleo essencial (m/m na folha seca), com composição variável consoante a origem geográfica, condições de cultivo e parte da planta. Entre os constituintes predominantes do óleo destacam-se 1,8-cineol (eucaliptol), sabineno, α- e β-pineno, α-terpineol, terpinil acetato, eugenol e metileugenol, em proporções que podem variar, mas que em muitos quimiotipos mediterrânicos apresentam teores significativos de 1,8-cineol e compostos fenólicos aromáticos. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>Para além dos voláteis, as folhas são ricas em compostos fenólicos não voláteis, incluindo ácidos fenólicos (como ácido cafeico, clorogénico e ferúlico), flavonoides (como quercetina, kaempferol e seus glicosídeos) e taninos condensados. Estudos analíticos mostram teores apreciáveis de polifenóis totais e elevada capacidade antioxidante em ensaios como DPPH, ABTS e FRAP. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F5">[F5]</a></p>
+      <p>Uma diversidade de estudos in vitro e in vivo tem demonstrado atividades antimicrobianas, antioxidantes, anti-inflamatórias, antidiabéticas, hipolipemiantes e até antiproliferativas de extratos de folhas e de óleo essencial de Laurus nobilis. Embora os resultados sejam promissores, a grande variabilidade de métodos de extração, doses e modelos estudados implica cautela na extrapolação direta para recomendações clínicas. <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F5">[F5]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Teor de óleo essencial nas folhas secas</td><td>≈1,0–3,0 % m/m</td></tr>
+        <tr><td>1,8-cineol (eucaliptol) no óleo essencial de folhas</td><td>≈20–50 % (área relativa)</td></tr>
+        <tr><td>Eugenol e metileugenol no óleo essencial de folhas</td><td>alguns % (área relativa, somados)</td></tr>
+        <tr><td>Polifenóis totais em extratos de folhas</td><td>≈20–80 mg de equivalentes de ácido gálico/g de extrato</td></tr>
+        <tr><td>Capacidade antioxidante total (ensaios DPPH/ABTS/FRAP)</td><td>atividade elevada, IC50 na faixa de dezenas de µg/mL</td></tr>
+        <tr><td>Atividade antidiabética e hipolipemiante em extratos de folhas</td><td>efeitos significativos em doses orais de alguns gramas/dia de folha em pó em pequenos ensaios</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Uso ornamental como árvore ou arbusto perene em pátios, jardins e sebes, fornecendo estrutura verde todo o ano e aroma agradável. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Componente de buquês aromáticos (bouquet garni) e misturas de especiarias para caldos, marinadas e conservas, sendo também utilizado na aromatização de azeites e vinagres. <a href="#ref-A1">[A1]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Emprego doméstico de folhas secas de louro como repelente de insetos em despensas, armários e recipientes de armazenamento de grãos. <a href="#ref-A2">[A2]</a> <a href="#ref-A4">[A4]</a></li>
+        <li>Símbolo cultural e histórico associado à vitória, honra e reconhecimento, com uso em coroas de louros em contextos académicos, desportivos e artísticos. <a href="#ref-D1">[D1]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Matéria-prima em perfumaria, saboaria artesanal e produtos de higiene, usando o óleo essencial e os extratos aromáticos de louro. <a href="#ref-F3">[F3]</a> <a href="#ref-A3">[A3]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 7,9 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em permacultura, o louro é uma espécie de elevado interesse pela combinação de funções: é um condimento amplamente utilizado, uma planta medicinal versátil, um elemento estrutural perene que cria sombra e abrigo e uma fonte de néctar e pólen para insetos quando em floração. As folhas podem ser colhidas ao longo do ano, e a planta tolera bem solos relativamente pobres e períodos de seca uma vez estabelecida, o que a torna valiosa em taludes, bordaduras e pomares mistos.
+Por outro lado, como árvore ou arbusto de folha persistente, o louro pode competir de forma significativa por luz, água e nutrientes em espaços pequenos, exigindo planeamento cuidadoso da sua localização. Também há necessidade de cautela com o uso de óleo essencial e preparações concentradas em termos de segurança humana. Globalmente, o louro oferece um conjunto muito rico de funções alimentares, medicinais, ecológicas e culturais, com penalizações sobretudo ligadas à competição e ao potencial de efeitos adversos quando mal utilizado.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação do louro resulta de valores elevados em uso alimentar (ALIM=2), dado o papel central das folhas como condimento em inúmeras preparações culinárias, e em uso medicinal (MED=2), com aplicações digestivas, antioxidantes e anti-inflamatórias bem descritas. Soma-se um forte contributo estrutural (ESTR=2), por se tratar de árvore ou arbusto perene que oferece sombra, abrigo e estrutura em sebes e pomares, e um bom suporte à fauna (ECO=2), fornecendo néctar e pólen na floração e frutos para aves em sistemas mais maduros. A rusticidade em clima mediterrânico (RUST=2) é geralmente elevada, e a multifuncionalidade cultural e aromática (MULT=2) é marcante, enquanto o contributo direto para solo/biomassa (SOLO=1) é moderado, sobretudo através de folhas para cobertura leve e compostagem.
+As penalizações aplicam-se principalmente à toxicidade potencial em formas concentradas (TOX=-1), dado o risco de efeitos adversos com uso inadequado de óleo essencial e extratos, e à competição moderada por luz, água e nutrientes em espaços reduzidos (COMP=-1), quando o louro é plantado muito próximo de culturas sensíveis. Em contexto hortícola habitual, o perigo físico (PERIGO) e o comportamento invasor problemático (INVAS) são considerados baixos (0). O valor final em escala 0–10 resulta da aplicação do algoritmo descrito em anexo (soma dos critérios positivos até 14 pontos, subtração de penalizações, com conversão por regra de três simples), situando o louro em cerca de 7,9/10 e indicando uma planta de elevada funcionalidade em permacultura, especialmente útil em sebes aromáticas, pomares mediterrânicos, taludes secos e sistemas alimentares biodiversos.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-A1">[A1]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Wikipedia. &quot;Bay leaf&quot; (Laurus nobilis). Artigo com descrição botânica, nomes comuns, distribuição, usos culinários e composição do óleo essencial. Disponível em: <a href="https://en.wikipedia.org/wiki/Bay_leaf" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Bay_leaf</a></li>
+        <li id="ref-D2">[D2] PFAF (Plants For A Future). &quot;Laurus nobilis, Bay tree&quot;. Ficha de planta com informação sobre morfologia, ecologia, usos comestíveis e medicinais. Disponível em: <a href="https://pfaf.org/user/Plant.aspx?LatinName=Laurus+Nobilis" target="_blank" rel="noopener">https://pfaf.org/user/Plant.aspx?LatinName=Laurus+Nobilis</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] ToughKraut Permaculture. &quot;Laurus nobilis Care &amp; Growing Guide&quot;. Guia de cultivo em clima temperado com informação sobre resistência, solo, exposição e poda. Disponível em: <a href="https://www.toughkraut.com/post/laurus-nobilis" target="_blank" rel="noopener">https://www.toughkraut.com/post/laurus-nobilis</a></li>
+        <li id="ref-S2">[S2] Vasco Romãozinho. &quot;Louro folhas (Laurus nobilis L.)&quot;. Texto em português sobre origem, características e utilização culinária e medicinal, com notas de cultivo em Portugal. Disponível em: <a href="https://vascoromaozinho.pt/2023/06/26/louro-laurus-nobilis/" target="_blank" rel="noopener">https://vascoromaozinho.pt/2023/06/26/louro-laurus-nobilis/</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] Tua Saúde. &quot;Folhas de louro (chá de louro): para que serve e como fazer&quot;. Artigo em português que descreve benefícios, receita de chá e várias advertências e contra-indicações. Disponível em: <a href="https://www.tuasaude.com/louro/" target="_blank" rel="noopener">https://www.tuasaude.com/louro/</a></li>
+        <li id="ref-U2">[U2] WebMD. &quot;Bay leaf: Uses, Side Effects, and More&quot;. Monografia popular com informação sobre segurança, efeitos adversos e precauções no uso interno de folhas de louro. Disponível em: <a href="https://www.webmd.com/vitamins/ai/ingredientmono-685/bay-leaf" target="_blank" rel="noopener">https://www.webmd.com/vitamins/ai/ingredientmono-685/bay-leaf</a></li>
+        <li id="ref-U3">[U3] Healthline. &quot;Can You Eat Bay Leaves?&quot;. Artigo que discute segurança do consumo de folhas de louro inteiras, risco mecânico e recomendações práticas em contexto culinário. Disponível em: <a href="https://www.healthline.com/nutrition/can-you-eat-bay-leaves" target="_blank" rel="noopener">https://www.healthline.com/nutrition/can-you-eat-bay-leaves</a></li>
+        <li id="ref-U4">[U4] Kara H. et al. &quot;Hepatotoxicity caused by bay leaf (Laurus nobilis)&quot;. Relato de caso de hepatotoxicidade associada a uso de laurel, sublinhando a necessidade de cautela com preparações concentradas. Disponível em: <a href="https://dergipark.org.tr/tr/download/article-file/1883602" target="_blank" rel="noopener">https://dergipark.org.tr/tr/download/article-file/1883602</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Tua Saúde. &quot;Chá de louro&quot;. Descrição de preparação de chá com 1 folha de louro por chávena de água fervente, tempo de infusão e usos digestivos. Disponível em: <a href="https://www.tuasaude.com/louro/" target="_blank" rel="noopener">https://www.tuasaude.com/louro/</a></li>
+        <li id="ref-R2">[R2] CartaCapital. &quot;Folha de louro: 6 maneiras de melhorar a saúde com a planta&quot;. Artigo em português com receitas de chá de louro com limão e outras variações para desconforto digestivo e respiratório. Disponível em: <a href="https://www.cartacapital.com.br/bem-estar/folha-de-louro-6-maneiras-de-melhorar-a-saude-com-a-planta/" target="_blank" rel="noopener">https://www.cartacapital.com.br/bem-estar/folha-de-louro-6-maneiras-de-melhorar-a-saude-com-a-planta/</a></li>
+        <li id="ref-R3">[R3] Chás do Mundo. &quot;Chá de Loureiro (Laurus nobilis)&quot;. Ficha de produto com orientações de quantidade de folhas por chávena, tempo de infusão e frequência de consumo. Disponível em: <a href="https://chasdomundo.pt/pt/alimentacao/especiarias/cha-de-loureiro-laurus-nobilis" target="_blank" rel="noopener">https://chasdomundo.pt/pt/alimentacao/especiarias/cha-de-loureiro-laurus-nobilis</a></li>
+        <li id="ref-R4">[R4] LearningHerbs. &quot;Bay Laurel Uses and Plant Profile&quot;. Artigo que descreve preparações de óleo macerado, pomadas e aplicações externas de louro. Disponível em: <a href="https://www.learningherbs.com/blog/bay-laurel-uses" target="_blank" rel="noopener">https://www.learningherbs.com/blog/bay-laurel-uses</a></li>
+        <li id="ref-R5">[R5] AromaWeb e outros recursos de aromaterapia. Fichas de óleo essencial de bay laurel com recomendações de diluição para óleos de massagem e uso tópico seguro. Disponível em: <a href="https://www.aromaweb.com/essential-oils/bay-laurel-oil.asp" target="_blank" rel="noopener">https://www.aromaweb.com/essential-oils/bay-laurel-oil.asp</a></li>
+        <li id="ref-R6">[R6] Artigos de fitoterapia popular e blogs de saúde natural que descrevem decocções de vapor com louro para inalação em constipações e congestão nasal, com indicações de número de folhas e volume de água. Disponível em: <a href="https://www.cartacapital.com.br/bem-estar/folha-de-louro-6-maneiras-de-melhorar-a-saude-com-a-planta/" target="_blank" rel="noopener">https://www.cartacapital.com.br/bem-estar/folha-de-louro-6-maneiras-de-melhorar-a-saude-com-a-planta/</a></li>
+        <li id="ref-R7">[R7] PFAF. &quot;Laurus nobilis&quot;. Secção de usos comestíveis que indica a utilização de folhas em caldos, guisados e conservas e formas de preparação culinária. Disponível em: <a href="https://pfaf.org/user/Plant.aspx?LatinName=Laurus+Nobilis" target="_blank" rel="noopener">https://pfaf.org/user/Plant.aspx?LatinName=Laurus+Nobilis</a></li>
+        <li id="ref-R8">[R8] Receitas de sal aromatizado com louro em blogs de culinária e gastronomia mediterrânica, com proporções de folhas secas para sal e modos de utilização. Disponível em: <a href="https://www.panelinha.com.br/receita/Sal-de-louro-e-alho" target="_blank" rel="noopener">https://www.panelinha.com.br/receita/Sal-de-louro-e-alho</a></li>
+        <li id="ref-R9">[R9] Ordoudi S.A. et al. &quot;Bay Laurel (Laurus nobilis L.) Essential Oil as a Food Preservative&quot;. Discussão de aplicações de óleo de louro em produtos alimentares, incluindo formulações de óleos aromatizados e conservas. Disponível em: <a href="https://www.mdpi.com/2304-8158/11/5/752" target="_blank" rel="noopener">https://www.mdpi.com/2304-8158/11/5/752</a></li>
+        <li id="ref-R10">[R10] Cartas e receitas de xarope caseiro com louro, mel e limão em blogs de saúde natural, com indicação de proporções e uso ocasional para constipações ligeiras. Disponível em: <a href="https://www.sabornamesa.com.br/receitas-de-sucos-e-bebidas/cha-de-louro-com-mel-e-limao" target="_blank" rel="noopener">https://www.sabornamesa.com.br/receitas-de-sucos-e-bebidas/cha-de-louro-com-mel-e-limao</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] Awada F. et al. &quot;Laurus nobilis Leaves and Fruits: A Review of Metabolite Composition and Bioactivity&quot; (Applied Sciences, 2023). Revisão abrangente sobre composição e atividades biológicas das folhas e frutos de louro. Disponível em: <a href="https://www.mdpi.com/2076-3417/13/7/4606" target="_blank" rel="noopener">https://www.mdpi.com/2076-3417/13/7/4606</a></li>
+        <li id="ref-M2">[M2] Al-Mammori F. et al. &quot;The Therapeutic Potential of Laurus nobilis L. Leaves&quot; (Molecules, 2025). Revisão de estudos pré-clínicos e clínicos sobre efeitos digestivos, anti-inflamatórios, antidiabéticos e antioxidantes de extratos de folhas. Disponível em: <a href="https://www.mdpi.com/1420-3049/30/19/4012" target="_blank" rel="noopener">https://www.mdpi.com/1420-3049/30/19/4012</a></li>
+        <li id="ref-M3">[M3] Batool S. et al. &quot;Bay Leaf&quot; (em: Nuts and Seeds in Health and Disease Prevention, 2019). Capítulo que discute usos tradicionais, propriedades terapêuticas e evidência de atividades antidiarreicas, anti-inflamatórias e antidiabéticas. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7152419/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC7152419/</a></li>
+        <li id="ref-M4">[M4] Estudos clínicos pequenos que avaliam o efeito do consumo de folhas de louro em pó em parâmetros glicémicos e lipídicos em pessoas com diabetes tipo 2, indicando melhorias modestas. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/18322708/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/18322708/</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Fantasma F. et al. &quot;Essential Oils of Laurus nobilis L.: From Chemical Analysis to Biological Activity&quot; (Molecules, 2024). Descreve composição detalhada do óleo essencial de louro e relaciona componentes com atividades biológicas. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/39063366/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/39063366/</a></li>
+        <li id="ref-F2">[F2] Awada F. et al. &quot;Laurus nobilis Leaves and Fruits: A Review of Metabolite Composition and Bioactivity&quot; (Applied Sciences, 2023). Sumaria dados de teor de óleo essencial, principais constituintes voláteis e polifenóis das folhas. Disponível em: <a href="https://www.mdpi.com/2076-3417/13/7/4606" target="_blank" rel="noopener">https://www.mdpi.com/2076-3417/13/7/4606</a></li>
+        <li id="ref-F3">[F3] De Feo V. et al. &quot;Laurus nobilis: Composition of Essential Oil and Its Biological Activities&quot; (Molecules, 2017). Artigo que caracteriza a composição do óleo das folhas e discute atividades antioxidantes e antimicrobianas. Disponível em: <a href="https://www.researchgate.net/publication/317339590_Laurus_nobilis_Composition_of_Essential_Oil_and_Its_Biological_Activities" target="_blank" rel="noopener">https://www.researchgate.net/publication/317339590_Laurus_nobilis_Composition_of_Essential_Oil_and_Its_Biological_Activities</a></li>
+        <li id="ref-F4">[F4] Rodríguez Y.P. et al. &quot;Perfil fitoquímico do extrato das folhas do Laurus nobilis&quot; (Journal Media Critiques, 2024). Estudo em português sobre perfil fitoquímico e capacidades antioxidantes de extratos de folhas de louro. Disponível em: <a href="https://journalmediacritiques.com/index.php/jmc/article/download/124/88" target="_blank" rel="noopener">https://journalmediacritiques.com/index.php/jmc/article/download/124/88</a></li>
+        <li id="ref-F5">[F5] Ordoudi S.A. et al. &quot;Bay Laurel (Laurus nobilis L.) Essential Oil as a Food Preservative&quot; (Foods, 2022). Analisa composição do óleo e atividade antioxidante e antimicrobiana em matrizes alimentares. Disponível em: <a href="https://www.mdpi.com/2304-8158/11/5/752" target="_blank" rel="noopener">https://www.mdpi.com/2304-8158/11/5/752</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] PFAF (Plants For A Future). &quot;Laurus nobilis&quot;. Detalha usos ornamentais, culinários, medicinais e outros, incluindo uso em repelentes de insetos e aplicações domésticas. Disponível em: <a href="https://pfaf.org/user/Plant.aspx?LatinName=Laurus+Nobilis" target="_blank" rel="noopener">https://pfaf.org/user/Plant.aspx?LatinName=Laurus+Nobilis</a></li>
+        <li id="ref-A2">[A2] Wikipedia. &quot;Bay leaf&quot;. Secções sobre usos em cozinha, mistura bouquet garni e conservação de alimentos. Disponível em: <a href="https://en.wikipedia.org/wiki/Bay_leaf" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Bay_leaf</a></li>
+        <li id="ref-A3">[A3] LearningHerbs. &quot;Bay Laurel Uses and Plant Profile&quot;. Descreve aplicações em saboaria, óleos aromáticos, rituais e usos domésticos diversos. Disponível em: <a href="https://www.learningherbs.com/blog/bay-laurel-uses" target="_blank" rel="noopener">https://www.learningherbs.com/blog/bay-laurel-uses</a></li>
+        <li id="ref-A4">[A4] Healthline. &quot;Can You Use Bay Leaves to Repel Insects?&quot;. Artigo de divulgação sobre uso de folhas de louro secas como repelente em despensas e armazenamento de alimentos. Disponível em: <a href="https://www.healthline.com/nutrition/bay-leaves-insects" target="_blank" rel="noopener">https://www.healthline.com/nutrition/bay-leaves-insects</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] ToughKraut Permaculture. &quot;Laurus nobilis Care &amp; Growing Guide&quot;. Destaca o uso do louro como elemento estrutural, quebra-vento, árvore de alimentos e componente em sistemas de permacultura em clima temperado. Disponível em: <a href="https://www.toughkraut.com/post/laurus-nobilis" target="_blank" rel="noopener">https://www.toughkraut.com/post/laurus-nobilis</a></li>
+        <li id="ref-P2">[P2] Plantings e relatos em projetos de permacultura e florestas alimentares mediterrânicas que usam Laurus nobilis como espécie de bordadura, sebe aromática e árvore de múltiplas funções (sombra, abrigo, alimento e cultura). Disponível em: <a href="https://permies.com/t/241784/Presentation-Dignity-Orchard-Garden-Master" target="_blank" rel="noopener">https://permies.com/t/241784/Presentation-Dignity-Orchard-Garden-Master</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

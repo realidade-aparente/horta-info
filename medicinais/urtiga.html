@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html" class="ativa">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Urtiga (<em>Urtica dioica L.; Urtica urens L.</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Urticaceae</span>
+  <span>Parte usada: folhas jovens, partes aéreas e raízes</span>
+  <span>Tipo: erva perene medicinal urticante</span>
+  <span>Produção: <strong>espontânea em solos ricos, cultivo possível</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> nativa da Europa e Ásia, hoje quase cosmopolita</div>
+  <div><strong>Uso principal</strong> apoio urinário, depurativo, articular, metabólico e tónico geral</div>
+  <div><strong>Perfil medicinal</strong> planta nutritiva, anti-inflamatória, diurética, metabólica e moduladora imunitária</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Urtiga (Urtica dioica L.; Urtica urens L.)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>A urtiga (Urtica dioica L. e Urtica urens L.) é uma planta herbácea perene (ou vivaz de vida longa nas touceiras), dotada de caules eretos e quadrangulares, folhas opostas, serradas e recobertas por pelos urticantes ricos em histamina e outros compostos irritantes. É espontânea em solos ricos em azoto, húmidos ou moderadamente frescos, aparecendo com frequência em margens de cursos de água, sebes, muros, zonas ruderalizadas e bordaduras de caminhos.</p>
+      <p>Em Portugal continental, as espécies mais comuns são Urtica dioica (urtiga-maior) e Urtica urens (urtiga-menor), ambas utilizadas de forma semelhante em alimentação e fitoterapia. As folhas jovens, antes da floração, são colhidas com luvas e, depois de escaldadas ou secas, perdem o poder urticante e tornam-se um “verdinho” muito nutritivo. Raízes e, por vezes, sementes são também colhidas para usos medicinais específicos, sobretudo em preparações para o aparelho urinário e próstata.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a> <a href="#ref-D4">[D4]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, a urtiga é uma vivaz que rebenta muito cedo, a partir do final do inverno, acompanhando zonas húmidas, taludes, margens de linhas de água e solos ricos em matéria orgânica. Em locais sombrios e férteis pode manter-se verde praticamente todo o ano, mas o auge de crescimento concentra-se na primavera.
+As folhas jovens, antes da floração, são a parte mais aproveitada em alimentação e chás, enquanto as raízes são geralmente colhidas no outono e inverno, quando a parte aérea reduz a sua atividade. Em pousios, hortas naturais e permaculturas, forma manchas espontâneas que podem ser manejadas por corte sucessivo para produção de biomassa, alimentação e preparados líquidos para fertilização.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Emergência: rebentos jovens a partir de fim de inverno (fevereiro–março), sobretudo em solos húmidos e ricos em azoto.</li>
+        <li>Crescimento vegetativo: forte desenvolvimento de folhas de março a maio, com possibilidade de novos fluxos após cortes sucessivos.</li>
+        <li>Floração e sementes: geralmente da primavera ao verão (aprox. abril–julho), com produção abundante de sementes viáveis.</li>
+        <li>Colheita de folhas: preferir folhas jovens antes da floração plena; evitar folhas muito velhas e plantas em frutificação avançada.</li>
+        <li>Colheita de raízes: de fim de outono a fim de inverno, quando a planta está em repouso relativo e a energia se concentra no sistema radicular.</li>
+        <li>Secagem e armazenamento: secar folhas à sombra, em local ventilado, e guardar em frascos bem fechados, protegidos de luz e humidade.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-Informação">[Informação]</a> <a href="#ref-baseada">[baseada]</a> <a href="#ref-em">[em]</a> <a href="#ref-floras">[floras]</a> <a href="#ref-europeias">[europeias]</a> <a href="#ref-recursos">[recursos]</a> <a href="#ref-de">[de]</a> <a href="#ref-etnobotânica">[etnobotânica]</a> <a href="#ref-e">[e]</a> <a href="#ref-guias">[guias]</a> <a href="#ref-de">[de]</a> <a href="#ref-cultivo">[cultivo]</a> <a href="#ref-de">[de]</a> <a href="#ref-plantas">[plantas]</a> <a href="#ref-medicinais">[medicinais]</a> <a href="#ref-para">[para]</a> <a href="#ref-climas">[climas]</a> <a href="#ref-temperados">[temperados]</a> <a href="#ref-e">[e]</a> <a href="#ref-mediterrânicos.">[mediterrânicos.]</a> <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a> <a href="#ref-S3">[S3]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Extratos de raiz padronizados para sintomas de hiperplasia benigna da próstata (HPB) ligeira a moderada, como adjuvantes em homens com queixas urinárias de esvaziamento incompleto, jato fraco ou nictúria, de acordo com monografias europeias e meta‑análises clínicas. <a href="#ref-M5">[M5]</a> <a href="#ref-M6">[M6]</a> <a href="#ref-U1">[U1]</a></li>
+        <li>Infusões ou extratos de folhas em protocolos de apoio a doenças inflamatórias crónicas (artrite, dor musculoesquelética) e em ensaios que sugerem redução de marcadores inflamatórios e melhoria subjetiva da dor. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-U2">[U2]</a></li>
+        <li>Preparações aquosas ou hidroalcoólicas de folhas utilizadas como diuréticos suaves e coadjuvantes em distúrbios urinários leves, com suporte de estudos observacionais e uso consolidado em fitoterapia europeia. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></li>
+        <li>Extratos de folhas ricos em compostos fenólicos estudados em modelos de stress oxidativo, metabolismo da glicose e perfil lipídico, apontando para potenciais efeitos antioxidantes, hipoglicemiantes e hipolipemiantes ainda em avaliação clínica. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M7">[M7]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Uso alimentar tradicional como “verdura selvagem” em sopas, estufados, omeletes e pestos, onde as folhas jovens escaldadas substituem parcialmente espinafres ou outras hortaliças verdes. <a href="#ref-U3">[U3]</a> <a href="#ref-U4">[U4]</a> <a href="#ref-R1">[R1]</a> <a href="#ref-R4">[R4]</a></li>
+        <li>Banhos de cabelo e loções de urtiga para couro cabeludo oleoso ou com tendência a queda, usando decocções concentradas de folhas e raízes como tónico capilar caseiro. <a href="#ref-A1">[A1]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-R2">[R2]</a></li>
+        <li>Banhos de imersão, lavagens e cataplasmas com folhas frescas ou secas para aliviar dores articulares, fadiga muscular e desconforto em pernas pesadas, combinando muitas vezes com outras plantas em tradições populares europeias. <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-U4">[U4]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>O contacto direto com folhas e caules frescos pode provocar reação urticante intensa na pele sensível, com ardor e comichão transitórios; a colheita deve ser feita com luvas e, em contexto doméstico, deve evitar-se a aplicação de folhas frescas diretamente sobre a pele em pessoas com alergias cutâneas ou dermatites ativas. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></p>
+      <p>Para uso interno, chás e extratos de urtiga devem respeitar doses recomendadas por fontes credíveis e ser usados com prudência em pessoas com doença renal, cardíaca, hipertensão ou que tomem diuréticos, antipertensores, antidiabéticos, anticoagulantes ou outros medicamentos de uso contínuo. Em grávidas, lactantes, crianças pequenas e em casos de hiperplasia benigna da próstata ou outras doenças urológicas, o uso deve ser sempre previamente discutido com profissional de saúde. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-U5">[U5]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        Com urtiga usam‑se sobretudo chás (folhas e/ou raízes), decocções para banhos e loções capilares, bem como preparações culinárias simples, em que as folhas jovens escaldadas entram em sopas, estufados, omeletes e pestos. As receitas selecionadas focam sobretudo usos terapêuticos suaves e tradicionais (apoio urinário, metabólico, articulações, pele e cabelo), remetendo para as fontes originais para quantidades exatas, tempos de preparação e eventuais combinações com outras plantas.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="urtiga_receitas.html">Chá simples de folhas de urtiga:</a> infusão de folhas secas em água quente para apoio geral a circulação, metabolismo e articulações, usada em 1–2 chávenas diárias. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="urtiga_receitas.html">Chá de raiz de urtiga para próstata:</a> decocção de raiz seca indicada como adjuvante em queixas urinárias associadas à hiperplasia benigna da próstata. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="urtiga_receitas.html">Chá tradicional de urtiga vulgar:</a> preparado com planta seca vendida em herbanárias, usado como complemento em anemias ligeiras, retenção de líquidos e distúrbios urinários. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="urtiga_receitas.html">Chá de raiz de urtiga‑dioica:</a> infusão de raiz seca com sabor terroso, utilizada como tónico depurativo e de suporte ao bem‑estar masculino. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="urtiga_receitas.html">Sopa cremosa de urtigas:</a> sopa de legumes enriquecida com folhas de urtiga escaldadas adicionadas no final da cozedura, servida como prato quente nutritivo. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="urtiga_receitas.html">Sopa vegetariana de urtigas:</a> receita simples em que as urtigas substituem parte das hortaliças verdes, aproveitando o seu valor mineral e proteico. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="urtiga_receitas.html">Pesto de urtiga:</a> pasta tipo pesto em que as folhas escaldadas de urtiga substituem ou complementam o manjericão, usada em massas, torradas ou legumes. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="urtiga_receitas.html">Pesto de urtiga com frutos secos:</a> variação de pesto preparada com urtigas tenras, frutos secos e azeite, servida como molho ou pasta para barrar. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="urtiga_receitas.html">Sopa camponesa de urtigas:</a> versão tradicional de sopa rica em leguminosas e hortícolas, em que as folhas de urtiga entram no final para preservar sabor e nutrientes. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="urtiga_receitas.html">Conjunto de receitas vegetarianas com urtiga:</a> seleção de sopas, pães, sumos e pestos em que a urtiga surge como verdura principal ou complementar. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>A urtiga é tradicionalmente encarada como uma planta “tonificante” e remineralizante, rica em vitaminas, minerais e compostos fenólicos, utilizada em muitas culturas europeias como verdura de primavera e como base de chás para apoio geral ao bem‑estar. Estudos de composição confirmam teores apreciáveis de vitamina C, carotenoides, ferro, cálcio e outros micronutrientes, bem como um perfil interessante de flavonoides e outros antioxidantes. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-M7">[M7]</a></p>
+      <p>Na fitoterapia moderna, preparações de raiz de Urtica dioica/urens são utilizadas como adjuvantes em sintomas urinários associados à hiperplasia benigna da próstata, havendo ensaios clínicos e meta‑análises que apontam para melhoria de parâmetros como volume de urina residual e frequência de micção em alguns doentes. Extratos de folhas têm sido investigados em inflamação crónica, dor articular e alergias sazonais, com resultados promissores mas ainda heterogéneos. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-M6">[M6]</a></p>
+      <p>Estudos in vitro e em modelos animais sugerem ainda efeitos antioxidantes, moduladores de vias inflamatórias, bem como possíveis impactos sobre glicemia e perfil lipídico, o que pode explicar parte do uso popular em contextos metabólicos. No entanto, a evidência clínica robusta é limitada e não permite encarar a urtiga como substituto de terapêuticas médicas estabelecidas, devendo ser entendida sobretudo como coadjuvante em estilos de vida saudáveis. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M6">[M6]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Suporte aos sintomas urinários de hiperplasia benigna da próstata ligeira a moderada, sobretudo com extratos de raiz padronizados, podendo ajudar a reduzir nictúria, sensação de esvaziamento incompleto e volume de urina residual em alguns doentes. <a href="#ref-M2">[M2]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-M6">[M6]</a> <a href="#ref-U1">[U1]</a> <a href="#ref-U5">[U5]</a></li>
+        <li>Ação diurética suave e depurativa, tradicionalmente utilizada em casos de retenção ligeira de líquidos, apoio a rins e vias urinárias e como componente de misturas para “drenagem” metabólica. <a href="#ref-M1">[M1]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></li>
+        <li>Apoio complementar em inflamação crónica e dor articular (artrite, reumatismo), onde extratos de folhas mostraram em estudos preliminares redução de marcadores inflamatórios e melhoria subjetiva de dor e rigidez. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M7">[M7]</a></li>
+        <li>Potenciais efeitos sobre glicemia e perfil lipídico, com dados experimentais e alguns estudos clínicos sugerindo melhoria modesta de parâmetros metabólicos quando a urtiga é usada como coadjuvante. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a></li>
+        <li>Contribuição para o aporte de micronutrientes (ferro, cálcio, magnésio, vitamina C e carotenoides), especialmente quando as folhas jovens são consumidas como verdura, podendo ajudar em dietas com maior risco de carências. <a href="#ref-M1">[M1]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-R4">[R4]</a></li>
+        <li>Atividade antioxidante relevante dos extratos de folhas, com capacidade de neutralizar espécies reativas de oxigénio em ensaios laboratoriais, o que poderá contribuir indiretamente para proteção de tecidos sujeitos a stress oxidativo. <a href="#ref-M1">[M1]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>Os estudos de composição das folhas de Urtica dioica/Urtica urens mostram um teor apreciável de compostos fenólicos, incluindo derivados de ácidos hidroxicinâmicos (como o ácido clorogénico e cafeico) e vários flavonoides (rutina, quercetina, kaempferol e outros glicosídeos). A quantidade de fenóis totais varia de forma ampla consoante a origem da planta, época de colheita e método de extração, mas vários trabalhos apontam para valores na ordem de poucas unidades até algumas dezenas de mg de equivalentes de ácido gálico por grama de material seco. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>As folhas secas apresentam igualmente teores relevantes de pigmentos (clorofilas e carotenoides) e de vitamina A, bem como uma fração mineral rica em potássio, cálcio, magnésio, ferro e outros oligoelementos, confirmando a reputação da urtiga como “verdura” nutritiva e como matéria‑prima para preparados concentrados ricos em micronutrientes. <a href="#ref-F2">[F2]</a> <a href="#ref-F4">[F4]</a></p>
+      <p>Ensaios antioxidantes in vitro (DPPH, ABTS, FRAP) mostram que extratos aquosos e hidroalcoólicos de urtiga apresentam capacidade significativa de neutralização de radicais livres e poder redutor, frequentemente correlacionados com o teor de fenóis totais, embora outros constituintes como vitaminas e pigmentos também contribuam para a atividade observada. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Fenóis totais nas folhas secas (TPC)</td><td>3,3–40 mg GAE/g massa seca</td></tr>
+        <tr><td>Vitamina A nas folhas secas</td><td>5,7–13,6 mg/kg massa seca</td></tr>
+        <tr><td>Rutin nas folhas secas</td><td>≈180–2425 mg/kg massa seca</td></tr>
+        <tr><td>Capacidade antioxidante (DPPH, IC50)</td><td>12,5–33,7 mg/mL</td></tr>
+        <tr><td>Fenóis totais em extratos otimizados por ultrassons</td><td>3,3–27,0 mg GAE/g massa seca</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Preparação de chorume de urtigas como biofertilizante líquido e inseticida natural na horta, usado para estimular o crescimento das culturas, reforçar a resistência a doenças e repelir afídeos e outros insetos. [A1] <a href="#ref-A1">[A1]</a></li>
+        <li>Utilização do chorume de urtigas como ativador de pilhas de compostagem e como estimulante do solo, ajudando a dinamizar a atividade microbiana e a disponibilização de nutrientes em sistemas de agricultura biológica. [A2] <a href="#ref-A2">[A2]</a></li>
+        <li>Emprego de extratos e loções de urtiga em cuidados capilares naturais (cabelos oleosos, caspa, queda moderada), incluindo champôs e tónicos onde o extrato de urtiga ajuda a regular a oleosidade do couro cabeludo. [A3] <a href="#ref-A3">[A3]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 7,9 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        A urtiga tem um papel marcante em sistemas de permacultura como fonte abundante de biomassa, verdura nutritiva e planta medicinal multifuncional. Forma manchas vigorosas em solos férteis, criando uma reserva permanente de folhas para sopas, chás, compostos e chorumes, ao mesmo tempo que protege o solo, sombreia zonas nuas e oferece abrigo e alimento para insetos benéficos e outras formas de fauna associada a ecossistemas mais naturais.
+Em termos práticos, é uma espécie de baixa manutenção após instalada, capaz de rebentar ano após ano a partir do rizoma, tolerando cortes regulares para produção de verde e preparação de biofertilizantes. Em espaços pequenos ou muito frequentados, os pelos urticantes e a tendência para formar moitas densas exigem alguma gestão (delimitação de áreas, uso de luvas na colheita), mas em talhões dedicados, bordaduras de horta, zonas de compostagem e “cantos selvagens” a urtiga funciona como uma aliada poderosa na ciclagem de nutrientes, apoio à biodiversidade e produção de alimentos e remédios locais.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação da urtiga resulta de valores elevados em uso alimentar (ALIM=2), graças ao consumo regular de folhas jovens como verdura nutritiva, e em uso medicinal (MED=2), refletindo a multiplicidade de aplicações tradicionais e estudadas em fitoterapia (apoio urinário, articular, metabólico e tónico geral). Há ainda contributos fortes em solo/biomassa (SOLO=2), pela grande produção de massa verde e utilização em chorumes e compostagem, em ecologia e suporte à fauna (ECO=2), pela importância para insetos, artrópodes e cadeias tróficas associadas, e em rusticidade (RUST=2), dado o bom desempenho em solos férteis, taludes e margens pouco manejadas. A multifuncionalidade e valor cultural (MULT=2) somam‑se a estes aspetos, já que a urtiga integra tradições culinárias, medicinais e agrícolas em diversos contextos europeus.
+Em contrapartida, aplicam‑se penalizações moderadas pela presença de pelos urticantes e risco de contacto desagradável (PERIGO=-1), bem como pela tendência a formar manchas densas e comportar‑se como infestante se não for devidamente gerida em espaços limitados (INVAS=-1). No contexto considerado, o risco de toxicidade sistémica em usos corretos (TOX=0) e a competição por água/luz (COMP=0) são avaliados como aceitáveis e geríveis com planeamento do desenho. O valor final em escala 0–10 resulta da aplicação do algoritmo descrito em anexo (soma dos critérios positivos até 14 pontos, subtração das penalizações, com conversão por regra de três simples), situando a urtiga em cerca de 7,9/10 e indicando uma planta de muito elevada funcionalidade em permacultura, especialmente útil em zonas de biomassa, cantos de biodiversidade, consociações e sistemas alimentares biodiversos.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-Referência(s)">[Referência(s)]</a> <a href="#ref-em">[em]</a> <a href="#ref-horticultura">[horticultura]</a> <a href="#ref-biológica">[biológica]</a> <a href="#ref-e">[e]</a> <a href="#ref-materiais">[materiais]</a> <a href="#ref-de">[de]</a> <a href="#ref-permacultura">[permacultura]</a> <a href="#ref-que">[que]</a> <a href="#ref-discutem">[discutem]</a> <a href="#ref-o">[o]</a> <a href="#ref-uso">[uso]</a> <a href="#ref-da">[da]</a> <a href="#ref-urtiga">[urtiga]</a> <a href="#ref-como">[como]</a> <a href="#ref-planta">[planta]</a> <a href="#ref-de">[de]</a> <a href="#ref-biomassa">[biomassa]</a> <a href="#ref-adubo">[adubo]</a> <a href="#ref-verde">[verde]</a> <a href="#ref-alimento">[alimento]</a> <a href="#ref-e">[e]</a> <a href="#ref-suporte">[suporte]</a> <a href="#ref-à">[à]</a> <a href="#ref-fauna:">[fauna:]</a> <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-P3">[P3]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Wikipédia. Urtica dioica – urtiga-maior. Descrição botânica básica, distribuição e usos gerais da espécie. Disponível em: <a href="https://pt.wikipedia.org/wiki/Urtica_dioica" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Urtica_dioica</a></li>
+        <li id="ref-D2">[D2] Jardineiro.net. Urtiga – Urtica dioica. Ficha de identificação, cultivo e utilizações ornamentais e medicinais em contexto hortícola. Disponível em: <a href="https://www.jardineiro.net/plantas/urtiga-urtica-dioica.html" target="_blank" rel="noopener">https://www.jardineiro.net/plantas/urtiga-urtica-dioica.html</a></li>
+        <li id="ref-D3">[D3] Flora-on. Urtica dioica. Informação florística para Portugal (distribuição, ecologia, estatuto e habitats preferenciais). Disponível em: <a href="https://flora-on.pt/?q=Urtica+dioica" target="_blank" rel="noopener">https://flora-on.pt/?q=Urtica+dioica</a></li>
+        <li id="ref-D4">[D4] Plants For A Future. Urtica dioica. Ficha etnobotânica com síntese de usos alimentares, medicinais e ecológicos da urtiga. Disponível em: <a href="https://pfaf.org/user/Plant.aspx?LatinName=Urtica+dioica" target="_blank" rel="noopener">https://pfaf.org/user/Plant.aspx?LatinName=Urtica+dioica</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Plants For A Future. Urtica dioica. Notas de cultivo, preferências de solo, humidade e exposição em climas temperados. Disponível em: <a href="https://pfaf.org/user/Plant.aspx?LatinName=Urtica+dioica" target="_blank" rel="noopener">https://pfaf.org/user/Plant.aspx?LatinName=Urtica+dioica</a></li>
+        <li id="ref-S2">[S2] Flora-on. Urtica dioica. Dados de distribuição em Portugal, tipos de habitat e fenologia da espécie. Disponível em: <a href="https://flora-on.pt/?q=Urtica+dioica" target="_blank" rel="noopener">https://flora-on.pt/?q=Urtica+dioica</a></li>
+        <li id="ref-S3">[S3] Permaculture Women’s Guild. The life of a stinging nettle in a permaculture garden. Artigo descritivo sobre o ciclo de vida e funções ecológicas da urtiga em jardins de permacultura. Disponível em: <a href="https://www.permaculturewomen.com/stinging-nettle-permaculture/" target="_blank" rel="noopener">https://www.permaculturewomen.com/stinging-nettle-permaculture/</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] European Medicines Agency (EMA). Assessment report on Urtica dioica L. and Urtica urens L., radix. Monografia europeia sobre segurança, indicações tradicionais e dados clínicos de preparações de raiz de urtiga. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-urtica-dioica-l-urtica-urens-l-radix-revision-1_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-urtica-dioica-l-urtica-urens-l-radix-revision-1_en.pdf</a></li>
+        <li id="ref-U2">[U2] Tua Saúde. Urtiga: para que serve (e como fazer o chá). Artigo em português com usos populares, modo de preparo e principais cuidados de segurança. Disponível em: <a href="https://www.tuasaude.com/urtiga/" target="_blank" rel="noopener">https://www.tuasaude.com/urtiga/</a></li>
+        <li id="ref-U3">[U3] Energia em Equilíbrio. Urtiga vulgar planta 50g MC. Ficha de planta medicinal com recomendações gerais de uso, precauções e modo de preparação do chá. Disponível em: <a href="https://www.energiaemequilibrio.com/loja/urtiga-vulgar-planta-50g-mc" target="_blank" rel="noopener">https://www.energiaemequilibrio.com/loja/urtiga-vulgar-planta-50g-mc</a></li>
+        <li id="ref-U4">[U4] Ervanário Portuense. Urtiga, raiz 100g. Informação comercial com modo de uso, dose típica diária e alertas para consulta médica em caso de medicação ou doença crónica. Disponível em: <a href="https://www.ervanarioportuense.pt/loja/plantas/urtiga-planta-medicinal/" target="_blank" rel="noopener">https://www.ervanarioportuense.pt/loja/plantas/urtiga-planta-medicinal/</a></li>
+        <li id="ref-U5">[U5] Gervida. Chá de raiz de urtiga dioica. Descrição de preparado de raiz de urtiga com indicações tradicionais e recomendações de uso. Disponível em: <a href="https://www.gervida.pt/cha-de-raiz-de-urtiga-dioica/" target="_blank" rel="noopener">https://www.gervida.pt/cha-de-raiz-de-urtiga-dioica/</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Tua Saúde. Urtiga: para que serve (e como fazer o chá). Receita básica de chá de folhas de urtiga com orientações de preparo e consumo. Disponível em: <a href="https://www.tuasaude.com/urtiga/" target="_blank" rel="noopener">https://www.tuasaude.com/urtiga/</a></li>
+        <li id="ref-R2">[R2] Gervida. Chá de raiz de urtiga dioica. Indicações tradicionais e modo de uso de decocção de raiz de urtiga. Disponível em: <a href="https://www.gervida.pt/cha-de-raiz-de-urtiga-dioica/" target="_blank" rel="noopener">https://www.gervida.pt/cha-de-raiz-de-urtiga-dioica/</a></li>
+        <li id="ref-R3">[R3] Energia em Equilíbrio. Urtiga vulgar planta 50g MC. Sugestão de preparação de chá tradicional de urtiga vulgar para uso interno. Disponível em: <a href="https://www.energiaemequilibrio.com/loja/urtiga-vulgar-planta-50g-mc" target="_blank" rel="noopener">https://www.energiaemequilibrio.com/loja/urtiga-vulgar-planta-50g-mc</a></li>
+        <li id="ref-R4">[R4] Centro Vegetariano. Sopa de Urtigas. Receita vegetariana de sopa em que as urtigas são usadas como verdura principal. Disponível em: <a href="https://www.centrovegetariano.org/receitas/Article-656-Sopa%2Bde%2Burtigas.html" target="_blank" rel="noopener">https://www.centrovegetariano.org/receitas/Article-656-Sopa%2Bde%2Burtigas.html</a></li>
+        <li id="ref-R5">[R5] Tuduu. Sopa de Urtigas. Versão simples de sopa de urtigas com indicação do modo de confeção passo a passo. Disponível em: <a href="https://tuduu.it/pt/receitas/tuduu/sopa-de-urtigas" target="_blank" rel="noopener">https://tuduu.it/pt/receitas/tuduu/sopa-de-urtigas</a></li>
+        <li id="ref-R6">[R6] Cinco Quartos de Laranja. Sopa de Urtigas. Receita caseira de sopa cremosa de urtigas com legumes. Disponível em: <a href="http://www.cincoquartosdelaranja.com/2010/05/sopa-de-urtigas.html" target="_blank" rel="noopener">http://www.cincoquartosdelaranja.com/2010/05/sopa-de-urtigas.html</a></li>
+        <li id="ref-R7">[R7] The UniPlanet. 10 receitas vegetarianas com urtigas. Artigo que compila várias receitas (sopas, pestos, pães, sumos) com urtigas como ingrediente central. Disponível em: <a href="https://theuniplanet.com/2017/03/10-receitas-vegetarianas-com-urtigas/" target="_blank" rel="noopener">https://theuniplanet.com/2017/03/10-receitas-vegetarianas-com-urtigas/</a></li>
+        <li id="ref-R8">[R8] Pharmácia das Ervas. Três receitas com Urtigas. Sugestões de pesto, bolo e outros preparados culinários com urtiga. Disponível em: <a href="https://www.pharmaciadaservas.pt/2020/05/02/tres-receitas-com-urtigas/" target="_blank" rel="noopener">https://www.pharmaciadaservas.pt/2020/05/02/tres-receitas-com-urtigas/</a></li>
+        <li id="ref-R9">[R9] RTP Praça. Sopa de urtigas. Receita televisiva com demonstração prática da confeção de sopa de urtigas. Disponível em: <a href="https://media.rtp.pt/praca/rubricas/culinaria/sopa-de-urtigas/" target="_blank" rel="noopener">https://media.rtp.pt/praca/rubricas/culinaria/sopa-de-urtigas/</a></li>
+        <li id="ref-R10">[R10] Quercus. Alimentação sustentável: propostas de receitas com plantas silvestres. Texto que inclui sugestões de utilização culinária de urtigas em sopas e outros pratos. Disponível em: <a href="https://quercus.pt/alimentacao-sustentavel/" target="_blank" rel="noopener">https://quercus.pt/alimentacao-sustentavel/</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] Bhusal KK et al. Nutritional and pharmacological importance of stinging nettle (Urtica dioica). Revisão sobre composição nutricional, fitoquímica e usos terapêuticos da urtiga. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9065371/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9065371/</a></li>
+        <li id="ref-M2">[M2] Alimohammadi M et al. Pharmacological applications of Urtica dioica. Revisão recente sobre atividades farmacológicas e potenciais aplicações clínicas. Disponível em: <a href="https://www.sciencedirect.com/science/article/pii/S1319016423001603" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S1319016423001603</a></li>
+        <li id="ref-M3">[M3] Taheri Y et al. Urtica dioica-derived phytochemicals for pharmacological applications. Revisão focada em compostos ativos e mecanismos de ação. Disponível em: <a href="https://onlinelibrary.wiley.com/doi/10.1002/ptr.7394" target="_blank" rel="noopener">https://onlinelibrary.wiley.com/doi/10.1002/ptr.7394</a></li>
+        <li id="ref-M4">[M4] Carvalho AR et al. Urtica spp.: Phenolic composition, safety and antioxidant activity. Estudo sobre composição fenólica, segurança e atividade antioxidante de espécies de Urtica. Disponível em: <a href="https://www.sciencedirect.com/science/article/pii/S0963996917303764" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S0963996917303764</a></li>
+        <li id="ref-M5">[M5] Safarinejad MR. Urtica dioica for treatment of benign prostatic hyperplasia. Ensaio clínico randomizado avaliando o efeito de extratos de raiz de urtiga em sintomas de HPB. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/15879722/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/15879722/</a></li>
+        <li id="ref-M6">[M6] Safarinejad MR. Urtica dioica in the treatment of benign prostatic hyperplasia: a meta-analysis. Meta‑análise sobre eficácia de preparados de urtiga em HPB. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/17004927/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/17004927/</a></li>
+        <li id="ref-M7">[M7] Jaiswal D et al. Evaluation of antioxidant and anti-inflammatory properties of Urtica dioica leaf extracts. Estudo experimental que relaciona compostos fenólicos com efeitos antioxidantes e anti-inflamatórios. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9054919/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9054919/</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Woźniak Ł et al. Antioxidant extracts of nettle (Urtica dioica) leaves: A response surface methodology approach. Trabalho que quantifica fenóis totais e capacidade antioxidante em extratos de folhas de urtiga. Disponível em: <a href="https://www.mdpi.com/2076-3921/11/6/1061" target="_blank" rel="noopener">https://www.mdpi.com/2076-3921/11/6/1061</a></li>
+        <li id="ref-F2">[F2] Yildirim NC et al. Evaluation of antioxidant properties, elemental and phenolic content of wild nettle (Urtica dioica L.). Estudo que apresenta teores de fenóis totais, rutina, vitamina A e outros parâmetros em folhas de urtiga. Disponível em: <a href="https://www.cellmolbiol.org/index.php/CMB/article/view/336" target="_blank" rel="noopener">https://www.cellmolbiol.org/index.php/CMB/article/view/336</a></li>
+        <li id="ref-F3">[F3] Carvalho AR et al. Urtica spp.: Phenolic composition, safety and antioxidant activity. Dados de composição fenólica e ensaios antioxidantes em extratos de Urtica spp. Disponível em: <a href="https://www.sciencedirect.com/science/article/pii/S0963996917303764" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S0963996917303764</a></li>
+        <li id="ref-F4">[F4] Dakhli R et al. Urtica dioica aqueous leaf extract: chemical composition and biological activities. Artigo que descreve composição química detalhada e atividades biológicas de extratos aquosos de urtiga. Disponível em: <a href="https://www.sciencedirect.com/science/article/pii/S2212429225000204" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S2212429225000204</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Agricultura e Mar. Chorume de urtiga: útil como fertilizante e inseticida. Artigo em português explicando preparação e aplicação do chorume de urtiga na horta. Disponível em: <a href="https://www.agriculturaemar.com/chorume-de-urtigas-para-que-serve-e-como-fazer/" target="_blank" rel="noopener">https://www.agriculturaemar.com/chorume-de-urtigas-para-que-serve-e-como-fazer/</a></li>
+        <li id="ref-A2">[A2] Horta Biológica. Como fazer chorume de urtigas. Guia prático para utilizar urtigas como biofertilizante líquido e estimulante de compostagem. Disponível em: <a href="https://horta-biologica.com/chorume-de-urtigas/" target="_blank" rel="noopener">https://horta-biologica.com/chorume-de-urtigas/</a></li>
+        <li id="ref-A3">[A3] Klorane. Cabelos oleosos: como controlar a produção de sebo? Página de dermocosmética que refere o extrato de urtiga na regulação da oleosidade do couro cabeludo. Disponível em: <a href="https://www.klorane.com/pt-pt/conselhos-peritos/cabelos-oleosos-como-controlar-producao-de-sebo" target="_blank" rel="noopener">https://www.klorane.com/pt-pt/conselhos-peritos/cabelos-oleosos-como-controlar-producao-de-sebo</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] Permaculture Women’s Guild. The life of a stinging nettle in a permaculture garden. Reflexão sobre o papel da urtiga em jardins de permacultura, incluindo funções ecológicas e produtivas. Disponível em: <a href="https://www.permaculturewomen.com/stinging-nettle-permaculture/" target="_blank" rel="noopener">https://www.permaculturewomen.com/stinging-nettle-permaculture/</a></li>
+        <li id="ref-P2">[P2] Plants For A Future. Urtica dioica. Discussão de múltiplas funções da urtiga (alimentar, medicinal, ecológica) relevantes para desenho em permacultura. Disponível em: <a href="https://pfaf.org/user/Plant.aspx?LatinName=Urtica+dioica" target="_blank" rel="noopener">https://pfaf.org/user/Plant.aspx?LatinName=Urtica+dioica</a></li>
+        <li id="ref-P3">[P3] The UniPlanet. 10 receitas vegetarianas com urtigas. Exemplo de integração de urtiga em alimentação sustentável e aproveitamento de plantas espontâneas em sistemas agroecológicos. Disponível em: <a href="https://theuniplanet.com/2017/03/10-receitas-vegetarianas-com-urtigas/" target="_blank" rel="noopener">https://theuniplanet.com/2017/03/10-receitas-vegetarianas-com-urtigas/</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

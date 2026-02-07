@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html" class="ativa">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="cardo-mariano.html">Cardo-mariano</a>
+  <a class="next" href="cipreste.html">Cipreste</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Cavalinha (<em>Equisetum arvense L. (cavalinha-dos-campos); Equisetum ramosissimum Desf. (pinheirinha); Equisetum telmateia Ehrh.</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Equisetaceae</span>
+  <span>Parte usada: caules estéreis verdes secos</span>
+  <span>Tipo: pteridófita perene rizomatosa medicinal</span>
+  <span>Produção: <strong>espontânea em solos húmidos e margens</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> regiões temperadas do hemisfério norte e Europa, incluindo Portugal</div>
+  <div><strong>Uso principal</strong> diurético e depurativo suave, apoio urinário, edemas e cálculos</div>
+  <div><strong>Perfil medicinal</strong> diurético, remineralizante, suporte ósseo, articular, cutâneo e capilar</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Cavalinha (Equisetum arvense L. (cavalinha-dos-campos); Equisetum ramosissimum Desf. (pinheirinha); Equisetum telmateia Ehrh.)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>A cavalinha é o nome comum de várias espécies do género Equisetum, em especial Equisetum arvense L., uma pteridófita perene de caules articulados que lembra a cauda de um cavalo. Apresenta caules férteis pardos na fase inicial da primavera, seguidos por caules estéreis verdes, finos e segmentados, que podem atingir 10–50 cm de altura.</p>
+      <p>Em Portugal é conhecida como cavalinha, cavalinha-dos-campos ou pinheirinha, entre outros nomes populares; em inglês é geralmente designada por horsetail ou field horsetail. As plantas formam manchas densas em solos húmidos, com rizomas profundos e muito persistentes, que lhes permitem rebentar ano após ano.</p>
+      <p>Os caules estéreis verdes são finos, estriados e ásperos ao toque devido ao elevado teor em sílica das paredes celulares. Esta textura levou ao uso tradicional da cavalinha como &quot;lixa vegetal&quot; para polir madeira, metais ou utensílios domésticos.</p>
+      <p>Do ponto de vista medicinal utilizam‑se sobretudo as partes aéreas estéreis de E. arvense, colhidas na primavera/verão. Outras espécies semelhantes, como E. ramosissimum (pinheirinha) e E. telmateia, são por vezes usadas localmente, mas as monografias oficiais e de fitoterapia moderna tendem a restringir o uso medicinal de rotina à Equisetum arvense devidamente identificada, para reduzir o risco de confusão com espécies potencialmente tóxicas.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, a cavalinha é sobretudo uma planta espontânea de locais húmidos, aparecendo em taludes, margens de linhas de água, zonas encharcadas e solos compactados. É perene, rebentando todos os anos a partir de um sistema rizomatoso profundo.
+A parte medicinalmente usada corresponde aos caules estéreis verdes, que surgem após os caules férteis de primavera. A colheita faz‑se tipicamente entre a primavera e o início do verão, quando os caules estão bem desenvolvidos mas ainda verdes e vigorosos.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Caules férteis pardos surgem no final do inverno/início da primavera e não são usados medicinalmente.</li>
+        <li>Os caules estéreis verdes, usados em fitoterapia, aparecem em seguida e podem ser colhidos aproximadamente de abril a julho, dependendo da região e da altitude.</li>
+        <li>Em locais muito húmidos ou irrigados, a vegetação verde pode manter‑se até ao final do verão ou início do outono; em verões secos as partes aéreas secam e rebentam novamente com as chuvas.</li>
+        <li>Devido ao comportamento invasivo dos rizomas, é aconselhável limitar a cavalinha a áreas bem delimitadas ou recipientes, sobretudo em hortas pequenas ou jardins urbanos.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Infusões das partes aéreas secas (2–3 g em 150–250 mL de água quente, até 3–4 vezes ao dia por períodos curtos) como diurético em pequenas queixas urinárias, para aumentar a produção de urina e favorecer a &quot;lavagem&quot; das vias urinárias. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a></li>
+        <li>Extratos secos padronizados de Equisetum arvense (por exemplo 4–7:1 ou 7,5–10,5:1) em cápsulas ou comprimidos, em doses diárias de algumas centenas de miligramas, utilizados em estudos clínicos como diuréticos comparáveis à hidroclorotiazida e, mais recentemente, como adjuvantes em hipertensão ligeira. <a href="#ref-M3">[M3]</a> <a href="#ref-M7">[M7]</a></li>
+        <li>Decoções mais concentradas ou infusões fortes usadas externamente em lavagens, compressas e banhos de assento sobre áreas com feridas superficiais, irritações cutâneas ou problemas da pele, explorando a combinação de ação adstringente, anti-inflamatória e remineralizante. <a href="#ref-M1">[M1]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-F1">[F1]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Uso tradicional do chá de cavalinha, sozinho ou em combinação com outras plantas diuréticas, como apoio em retenção de líquidos, sensação de pernas pesadas e como complemento em dietas de controlo de peso. <a href="#ref-R1">[R1]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-U6">[U6]</a></li>
+        <li>Emprego popular como &quot;chá para os rins&quot;, adjuvante em pequenos cálculos renais e infeções urinárias ligeiras, em conjunto com aumento de ingestão de água e medidas dietéticas. <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a> <a href="#ref-U3">[U3]</a></li>
+        <li>Uso empírico como planta remineralizante para unhas frágeis, queda de cabelo e pele baça, através de infusões internas e lavagens capilares com decoções de cavalinha. <a href="#ref-R3">[R3]</a> <a href="#ref-A1">[A1]</a> <a href="#ref-U4">[U4]</a></li>
+        <li>Banhos de assento, compressas e escalda‑pés com decoções concentradas de cavalinha em contextos de desconforto venoso ligeiro, pés cansados e recuperação após esforço físico. <a href="#ref-R4">[R4]</a> <a href="#ref-A1">[A1]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>Preparações à base de cavalinha parecem ser bem toleradas por adultos saudáveis quando usadas em doses habituais e por períodos curtos. Contudo, por ter efeito diurético, não é recomendada a pessoas com insuficiência renal ou cardíaca significativa, edema de causa cardíaca/renal ou obstrução das vias urinárias, nem a quem tenha indicação para restrição de líquidos. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U4">[U4]</a></p>
+      <p>A planta contém enzima tiaminase e pequenas quantidades de alcaloides; o uso prolongado ou em doses muito elevadas pode, em teoria, contribuir para défice de vitamina B1 e alterações de eletrólitos, sobretudo se associado a álcool ou dietas pobres em tiamina. As monografias recomendam limitar o uso contínuo a poucas semanas, com pausas. <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-U5">[U5]</a></p>
+      <p>Por precaução, a cavalinha é desaconselhada em gravidez, amamentação e em crianças, pela falta de dados de segurança robustos nessas populações. Deve haver cuidado adicional em doentes com patologia hepática ou renal prévia, e em pessoas medicadas com diuréticos, anti-hipertensores, lítio, digoxina ou outros fármacos com janela terapêutica estreita, devido a potenciais interações. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-U4">[U4]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        A cavalinha é usada sobretudo em chás/infusões diuréticas, muitas vezes em combinação com outras plantas para apoio às vias urinárias e à drenagem de líquidos. Em fitoterapia também se encontram decoções mais concentradas para banhos de assento, escalda‑pés e compressas, bem como tinturas e extratos secos em cápsulas. As receitas devem respeitar as doses das fontes de referência e ser sempre enquadradas pelas recomendações de segurança.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="cavalinha_receitas.html">Chá de cavalinha simples para uso diurético:</a> infusão leve de partes aéreas de cavalinha bebida em algumas chávenas ao longo do dia em programas curtos. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="cavalinha_receitas.html">Chá de cavalinha para retenção de líquidos e apoio renal:</a> infusão de cavalinha utilizada por períodos limitados como adjuvante em retenção ligeira de líquidos e bem-estar dos rins. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="cavalinha_receitas.html">Infusão de cavalinha em mistura diurética:</a> chá que combina cavalinha com outras plantas diuréticas e urinárias, tomado em pequenas porções ao longo do dia para apoio urinário. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="cavalinha_receitas.html">Banho de assento com cavalinha para conforto urinário:</a> infusão concentrada adicionada à água do banho de assento, usada para aliviar desconforto na região genital e perineal. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="cavalinha_receitas.html">Banho de assento de cavalinha em hemorroidas:</a> preparação semelhante utilizada em banhos locais mornos para aliviar prurido, ardor e desconforto associados a hemorroidas. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="cavalinha_receitas.html">Decoção de cavalinha para compressas:</a> líquido obtido por cozedura suave da planta, aplicado em compressas limpas sobre feridas superficiais e zonas de pele irritada. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="cavalinha_receitas.html">Enxaguatório capilar com cavalinha:</a> decoção de cavalinha usada como último enxaguamento após a lavagem, com objetivo de fortalecer o cabelo e melhorar o brilho. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="cavalinha_receitas.html">Tintura de cavalinha:</a> extrato hidroalcoólico de partes aéreas de cavalinha administrado em gotas diluídas em água, segundo a posologia descrita em formulários fitoterápicos. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="cavalinha_receitas.html">Extrato seco de cavalinha em cápsulas:</a> formas padronizadas em cápsulas utilizadas como diurético suave e adjuvante em queixas urinárias, seguindo as recomendações de bula. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="cavalinha_receitas.html">Chá de cavalinha em combinação com ervas calmantes:</a> infusão que junta cavalinha com plantas relaxantes, usada ao fim do dia como apoio à drenagem e ao relaxamento geral. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>A cavalinha é tradicionalmente usada como planta diurética suave em pequenas queixas do trato urinário, como adjuvante na retenção ligeira de líquidos, em infeções urinárias não complicadas e em pequenas litíases renais. Monografias europeias reconhecem este uso com base em longa experiência tradicional, e ensaios clínicos em adultos saudáveis demonstraram aumento da diurese com boa tolerabilidade a curto prazo. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a></p>
+      <p>Além do efeito diurético, a cavalinha destaca‑se pelo elevado teor em sílica e outros minerais, o que tem sustentado o seu uso como planta remineralizante, em particular em contextos de suporte de ossos, cartilagens, tendões, pele, unhas e cabelo. Alguns estudos pré‑clínicos e observacionais apontam para efeitos positivos na regeneração do tecido conjuntivo e na densidade mineral óssea, embora os dados humanos ainda sejam limitados. <a href="#ref-M4">[M4]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-M6">[M6]</a></p>
+      <p>Tradicionalmente, atribuem‑se ainda à cavalinha ações adstringentes, anti-inflamatórias e antioxidantes moderadas, exploradas sobretudo em problemas cutâneos ligeiros e em formulações cosméticas naturais. Usos populares como coadjuvante em perda de peso, celulite ou melhoria da circulação periférica existem, mas em grande parte baseiam‑se em extrapolações do efeito diurético e da atividade antioxidante, carecendo de ensaios clínicos robustos. <a href="#ref-M4">[M4]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-U3">[U3]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Adjuvante diurético em pequenas queixas urinárias (disúria ligeira, sensação de &quot;areia&quot; urinária, necessidade de aumentar a produção de urina), ajudando a promover a lavagem mecânica das vias urinárias quando não há sinais de gravidade. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a></li>
+        <li>Apoio em casos selecionados de pequenos cálculos renais e infecções urinárias ligeiras, sempre associado a maior ingestão de líquidos e, idealmente, acompanhamento médico, podendo contribuir para reduzir sintomas como ardor e desconforto urinário. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-U3">[U3]</a></li>
+        <li>Suporte remineralizante para ossos, articulações, tendões, unhas e cabelo, em associação com dieta adequada em cálcio, vitamina D e outros micronutrientes, aproveitando o teor elevado de sílica e minerais e potenciais efeitos sobre o metabolismo do tecido conjuntivo. <a href="#ref-M4">[M4]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-M6">[M6]</a></li>
+        <li>Apoio complementar em problemas cutâneos ligeiros e cicatrização de feridas superficiais, através de lavagens, compressas ou banhos de assento com decoções de cavalinha, beneficiando de efeitos adstringentes, calmantes e antioxidantes. <a href="#ref-M1">[M1]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-F3">[F3]</a></li>
+        <li>Potencial efeito antioxidante e anti-inflamatório moderado, demonstrado sobretudo em modelos experimentais, que pode contribuir para o efeito global da planta em contextos de inflamação ligeira e stress oxidativo aumentado. <a href="#ref-M4">[M4]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></li>
+        <li>Evidência preliminar de benefício adjuvante na modulação da pressão arterial em hipertensão ligeira, em formulações padronizadas, embora sejam necessários mais dados para definir o papel clínico e a segurança a longo prazo. <a href="#ref-M7">[M7]</a> <a href="#ref-M3">[M3]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>A droga vegetal de cavalinha é particularmente rica em constituintes inorgânicos: cerca de 10% da massa seca corresponde a substâncias minerais, das quais uma grande parte é sílica (silício na forma de ácido silícico e silicates) e sais de potássio. Análises de composição indicam teores de sílica na ordem dos 7,5–14% (m/m), bem como quantidades apreciáveis de cálcio, potássio e outros oligoelementos, o que ajuda a explicar o uso tradicional como planta remineralizante. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></p>
+      <p>Entre os constituintes orgânicos destacam‑se flavonoides (glicósidos de quercetina, kaempferol e apigenina), ácidos fenólicos (incluindo derivados do ácido cafeico e di‑E‑cafeoil‑meso‑tartárico), pequenas quantidades de alcaloides (nicotina e outros em traços) e esteróis. Estudos de extratos hidroalcoólicos mostram teores significativos de flavonoides totais (variando de alguns mg/g até mais de 100 mg/g de extrato, consoante a fração), com atividade antioxidante e capacidade moderada de neutralização de radicais livres. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></p>
+      <p>Ensaios in vitro e em modelos animais sugerem que extratos de Equisetum arvense podem exercer efeitos diuréticos, antioxidantes, anti-inflamatórios e moduladores de células do tecido ósseo (osteoblastos e osteoclastos), bem como alguma atividade antibacteriana. Estes resultados sustentam, em parte, os usos tradicionais, embora haja ainda necessidade de estudos clínicos adicionais para clarificar a relevância clínica de cada grupo de compostos e a relação dose–resposta. <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Sílica total nas partes aéreas secas</td><td>≈7,5–14 % m/m</td></tr>
+        <tr><td>Inorgânicos totais (sílica + sais de potássio)</td><td>≈10–15 % m/m</td></tr>
+        <tr><td>Flavonoides totais na droga seca (quercetina, kaempferol, apigenina glicósidos)</td><td>0,2–0,9 % m/m</td></tr>
+        <tr><td>Cálcio nas partes aéreas secas</td><td>≈1,5–2,0 % m/m</td></tr>
+        <tr><td>Potássio nas partes aéreas secas</td><td>≈1,5–2,0 % m/m</td></tr>
+        <tr><td>Isoquercitrina em extratos ricos em flavonoides (EtOAc/n‑BuOH)</td><td>152–382 mg/g de extrato seco</td></tr>
+        <tr><td>Flavonoides totais em extratos hidroalcoólicos (n‑BuOH vs. aquoso)</td><td>≈5–135 mg/g de extrato seco</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Uso tradicional como &quot;lixa vegetal&quot; ou esfregão abrasivo para polir madeira, panelas metálicas e outros utensílios, aproveitando o elevado teor de sílica dos caules. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Matéria‑prima em formulações cosméticas naturais (tónicos faciais, loções corporais, shampoos e máscaras capilares) destinada a apoiar a firmeza da pele, reduzir oleosidade ligeira e fortalecer unhas e cabelo. <a href="#ref-A1">[A1]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Preparação de macerados, purins e decocções de cavalinha para pulverização em culturas hortícolas e frutícolas como fungicida natural de suporte, ajudando a prevenir doenças fúngicas como míldio e oídio e a fortalecer os tecidos vegetais. <a href="#ref-A3">[A3]</a> <a href="#ref-A4">[A4]</a> <a href="#ref-P1">[P1]</a></li>
+        <li>Utilização ornamental em jardins de água, zonas de charco e vasos grandes, explorando o porte vertical e o aspeto arquitetónico dos caules de cavalinha, sempre com contenção adequada para evitar invasividade. <a href="#ref-A2">[A2]</a> <a href="#ref-A5">[A5]</a></li>
+        <li>Banhos de ervas e usos rituais/energéticos em algumas tradições populares, associando a cavalinha a limpeza, proteção e fortalecimento simbólico, normalmente em banhos de corpo ou de pés com infusões concentradas. <a href="#ref-A6">[A6]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 5 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em contexto de permacultura, a cavalinha oferece sobretudo funções medicinais e de suporte ecológico indireto. Fornece matéria‑prima para preparados diuréticos, remineralizantes e de cuidado da pele, além de decocções e purins utilizados como fungicida natural e reforço da resistência de outras plantas, graças ao seu elevado teor de sílica e minerais.
+Estruturalmente, forma touceiras baixas a médias que podem ajudar a estabilizar taludes húmidos e bordas de linhas de água, produzindo alguma biomassa para "chop‑and‑drop" e cobertura morta rica em sílica. No entanto, não oferece flores nectaríferas marcantes nem grande aporte alimentar direto, pelo que o seu papel ecológico é mais discreto. A pontuação resulta de um equilíbrio entre multifuncionalidade medicinal/hortícola e limitações ligadas à toxicidade em animais e ao comportamento invasivo.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        O grau de funcionalidade é penalizado pela forte tendência invasiva dos rizomas, pela potencial toxicidade para equinos e pela escassa oferta de alimento direto para humanos ou polinizadores. Em espaços pequenos ou perto de pastagens, a cavalinha deve ser cultivada apenas em contentores estanques ou zonas bem confinadas.
+Por outro lado, em taludes húmidos, valas de drenagem ou zonas marginais pouco produtivas, pode desempenhar um papel útil como fonte local de biomassa rica em sílica para mulching e para a preparação de caldas anti‑fúngicas, dentro de um desenho que preveja o seu controlo. A pontuação segue o algoritmo descrito no projeto, combinando funções alimentares (limitadas), medicinais, ecológicas e estruturais com penalizações por invasividade e aspectos de segurança.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-A3">[A3]</a> <a href="#ref-A4">[A4]</a> <a href="#ref-S1">[S1]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] European Medicines Agency (EMA). *Equiseti herba – herbal medicinal product* (monografia da União Europeia para Equisetum arvense L., herba). Disponível em: <a href="https://www.ema.europa.eu/en/medicines/herbal/equiseti-herba" target="_blank" rel="noopener">https://www.ema.europa.eu/en/medicines/herbal/equiseti-herba</a></li>
+        <li id="ref-D2">[D2] Câmara Municipal de Guimarães. *Jardim de plantas aromáticas e medicinais – Cavalinha (Equisetum arvense)*, descrição resumida, principais constituintes e usos medicinais tradicionais. Disponível em: <a href="https://www.cm-guimaraes.pt/rota-da-biodiversidade-do-monte-latito-biodiversity-route-of-the-latito-hill/visite-a-rota-da-biodiversidade-visit-the-biodiversity-route/jardim-de-plantas-aromaticas-e-medicinais" target="_blank" rel="noopener">https://www.cm-guimaraes.pt/rota-da-biodiversidade-do-monte-latito-biodiversity-route-of-the-latito-hill/visite-a-rota-da-biodiversidade-visit-the-biodiversity-route/jardim-de-plantas-aromaticas-e-medicinais</a></li>
+        <li id="ref-D3">[D3] Naturdata. Ficha de espécie *Equisetum arvense* (cavalinha-dos-campos), com nomes comuns em Portugal, família, classificação taxonómica e distribuição. Disponível em: <a href="https://naturdata.com/especie/Equisetum-arvense/4083/0/" target="_blank" rel="noopener">https://naturdata.com/especie/Equisetum-arvense/4083/0/</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Infopédia – Dicionário da Língua Portuguesa. Entrada “rabo de cavalo (Equisetum arvense)”, descrevendo a espécie como planta herbácea vivaz, espontânea em Portugal, própria de solos húmidos e com caules dimorfos. Disponível em: <a href="https://www.infopedia.pt/dicionarios/lingua-portuguesa/rabo%20de%20cavalo" target="_blank" rel="noopener">https://www.infopedia.pt/dicionarios/lingua-portuguesa/rabo%20de%20cavalo</a></li>
+        <li id="ref-S2">[S2] Revista Jardins. Artigo “A cultura da cavalinha”, com informação sobre habitat, exigências de solo, humidade, fertilização e comportamento como planta espontânea em zonas junto a linhas de água. Disponível em: <a href="https://revistajardins.pt/plantas/herbaceas/cultura-cavalinha/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/herbaceas/cultura-cavalinha/</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] European Medicines Agency. *Assessment report on Equisetum arvense L., herba* (2016), com avaliação de eficácia tradicional, limites de utilização e dados de segurança em humanos. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-equisetum-arvense-l-herba_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-equisetum-arvense-l-herba_en.pdf</a></li>
+        <li id="ref-U2">[U2] European Medicines Agency. *European Union herbal monograph on Equisetum arvense L., herba* (EMA/HMPC/278091/2015), incluindo indicações aprovadas, posologia e advertências de segurança para preparações tradicionais de cavalinha. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-equisetum-arvense-l-herba_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-equisetum-arvense-l-herba_en.pdf</a></li>
+        <li id="ref-U3">[U3] Cosmetic Ingredient Review (CIR). *Safety Assessment of Equisetum arvense-Derived Ingredients as Used in Cosmetics* (2021), síntese de dados toxicológicos e limites de uso seguro em produtos cosméticos. Disponível em: <a href="https://www.cir-safety.org/sites/default/files/equise092021TR.pdf" target="_blank" rel="noopener">https://www.cir-safety.org/sites/default/files/equise092021TR.pdf</a></li>
+        <li id="ref-U4">[U4] Tua Saúde. Artigo “Chá de cavalinha: para que serve, como fazer e efeitos colaterais”, com benefícios, modo de preparo, doses usuais, contraindicações e potenciais efeitos adversos. Disponível em: <a href="https://www.tuasaude.com/cavalinha/" target="_blank" rel="noopener">https://www.tuasaude.com/cavalinha/</a></li>
+        <li id="ref-U5">[U5] Revista *Saúde é Vital* (Editora Abril). Artigo “Chá de cavalinha: para que serve, a planta, contraindicações”, com resumo de benefícios, riscos de uso prolongado e grupos para os quais o consumo não é recomendado. Disponível em: <a href="https://saude.abril.com.br/alimentacao/cha-de-cavalinha-para-que-serve-a-planta-contraindicacoes/" target="_blank" rel="noopener">https://saude.abril.com.br/alimentacao/cha-de-cavalinha-para-que-serve-a-planta-contraindicacoes/</a></li>
+        <li id="ref-U6">[U6] Câmara Municipal de Mafra. Ficha “Cavalinha”, com destaque para toxicidade em grandes quantidades, contraindicações na gravidez e lactação e potencial comportamento invasivo. Disponível em: <a href="https://www.cm-mafra.pt/pages/984" target="_blank" rel="noopener">https://www.cm-mafra.pt/pages/984</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Receitas Globo. “Chá de cavalinha: aprenda receita de como fazer”, com proporções de planta seca (2–3 colheres de chá) para 150 mL de água e tempo de infusão recomendado. Disponível em: <a href="https://receitas.globo.com/blog/alimentacao-e-saude/c-cha-de-cavalinha-para-que-serve-beneficios-e-como-fazer.ghtml" target="_blank" rel="noopener">https://receitas.globo.com/blog/alimentacao-e-saude/c-cha-de-cavalinha-para-que-serve-beneficios-e-como-fazer.ghtml</a></li>
+        <li id="ref-R2">[R2] Receitas Nestlé. Artigo “Chá de cavalinha: benefícios e como fazer”, indicando modo de preparação do chá e recomendação prática de limite de consumo diário. Disponível em: <a href="https://www.receitasnestle.com.br/artigos/cha-de-cavalinha-beneficios-e-como-fazer" target="_blank" rel="noopener">https://www.receitasnestle.com.br/artigos/cha-de-cavalinha-beneficios-e-como-fazer</a></li>
+        <li id="ref-R3">[R3] Tua Saúde. Artigo “3 chás de cavalinha para tratar a infecção urinária”, com várias combinações de cavalinha em infusões terapêuticas e instruções de preparo. Disponível em: <a href="https://www.tuasaude.com/cha-de-cavalinha-para-infeccao-urinaria/" target="_blank" rel="noopener">https://www.tuasaude.com/cha-de-cavalinha-para-infeccao-urinaria/</a></li>
+        <li id="ref-R4">[R4] Atlas da Saúde. Artigo “Hemorroidas: como aliviar os sintomas”, incluindo receita de banho de assento com cavalinha (5 g por 100 mL de água) e modo de aplicação local. Disponível em: <a href="https://www.atlasdasaude.pt/publico/content/hemorroidas-como-aliviar-os-sintomas" target="_blank" rel="noopener">https://www.atlasdasaude.pt/publico/content/hemorroidas-como-aliviar-os-sintomas</a></li>
+        <li id="ref-R5">[R5] Portal eCycle. Artigo “Hemorroida: o que é, causas e como tratar”, referindo o uso de infusão de cavalinha e banhos de assento como medida complementar para alívio de sintomas. Disponível em: <a href="https://www.ecycle.com.br/hemorroida/" target="_blank" rel="noopener">https://www.ecycle.com.br/hemorroida/</a></li>
+        <li id="ref-R6">[R6] MOFGA – Maine Organic Farmers and Gardeners Association. Texto “Horsetails”, descrevendo usos tradicionais de cavalinha em tónicos, banhos e cataplasmas para feridas, inchaços e problemas de pele. Disponível em: <a href="https://www.mofga.org/resources/health/horsetails/" target="_blank" rel="noopener">https://www.mofga.org/resources/health/horsetails/</a></li>
+        <li id="ref-R7">[R7] Jaciara de Angelis. Artigo “Conheça os benefícios da cavalinha nos cabelos e na saúde”, com receita simples de tónico de chá de cavalinha usado como último enxaguamento capilar. Disponível em: <a href="https://jaciaradeangelis.com.br/cabelos/conheca-os-beneficios-da-cavalinha-nos-cabelos-e-na-saude/" target="_blank" rel="noopener">https://jaciaradeangelis.com.br/cabelos/conheca-os-beneficios-da-cavalinha-nos-cabelos-e-na-saude/</a></li>
+        <li id="ref-R8">[R8] Fitoterapia Brasil. Ficha “Tintura de Equisetum arvense L.” no *Formulário Fitoterápico Brasileiro*, com proporção droga/solvente, graduação alcoólica e orientações gerais de uso. Disponível em: <a href="https://fitoterapiabrasil.com.br/sites/default/files/formulario-fitoterapico/tintura_de_equisetum_arvense.pdf" target="_blank" rel="noopener">https://fitoterapiabrasil.com.br/sites/default/files/formulario-fitoterapico/tintura_de_equisetum_arvense.pdf</a></li>
+        <li id="ref-R9">[R9] Agência Nacional de Vigilância Sanitária (ANVISA). *Formulário de Fitoterápicos da Farmacopeia Brasileira* (2.ª edição), monografia de Equisetum arvense L. com formas farmacêuticas (incluindo extratos secos) e posologia. Disponível em: <a href="https://www.gov.br/anvisa/pt-br/assuntos/farmacopeia/formulario-fitoterapico/2024-fffb2-1-er-3-atual-final-versao-com-capa-em-word-2-jan-2024.pdf" target="_blank" rel="noopener">https://www.gov.br/anvisa/pt-br/assuntos/farmacopeia/formulario-fitoterapico/2024-fffb2-1-er-3-atual-final-versao-com-capa-em-word-2-jan-2024.pdf</a></li>
+        <li id="ref-R10">[R10] Tua Saúde. Artigo “Chá diurético: 14 opções para inchaço e retenção de líquidos”, secção sobre chá de cavalinha com orientações genéricas de dose e duração de uso. Disponível em: <a href="https://www.tuasaude.com/cha-diuretico/" target="_blank" rel="noopener">https://www.tuasaude.com/cha-diuretico/</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] European Medicines Agency. *European Union herbal monograph on Equisetum arvense L., herba* (EMA/HMPC/278091/2015), com indicações aprovadas para queixas urinárias ligeiras e retenção de líquidos, bem como posologia recomendada. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-equisetum-arvense-l-herba_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-equisetum-arvense-l-herba_en.pdf</a></li>
+        <li id="ref-M2">[M2] Carneiro, D. M. et al. “Randomized, Double-Blind Clinical Trial to Assess the Acute Diuretic Effect of Equisetum arvense (Field Horsetail) in Healthy Volunteers”. *Evidence-Based Complementary and Alternative Medicine* (2014), estudo clínico que demonstra efeito diurético comparável à hidroclorotiazida. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3960516/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3960516/</a></li>
+        <li id="ref-M3">[M3] Carneiro, D. M. et al. “Antihypertensive effect of Equisetum arvense L.: a double-blind, randomized efficacy and safety clinical trial”. *Phytomedicine* (2022), avaliando extrato seco de cavalinha em doentes com hipertensão arterial estágio I. Resumo disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/35168030/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/35168030/</a></li>
+        <li id="ref-M4">[M4] Mimica-Dukić, N. et al. “Phenolic Compounds in Field Horsetail (Equisetum arvense L.) as Natural Antioxidants”. *Molecules* 13(7):1455–1464 (2008), estudo de composição e atividade antioxidante de extratos de cavalinha. Disponível em: <a href="https://www.mdpi.com/1420-3049/13/7/1455" target="_blank" rel="noopener">https://www.mdpi.com/1420-3049/13/7/1455</a></li>
+        <li id="ref-M5">[M5] Carneiro, D. M. et al. “Equisetum arvense: New Evidences Supports Medical Use”. *Pharmacognosy Reviews* 13(26):50–60 (2019), revisão narrativa com síntese de ensaios farmacológicos e clínicos sobre a planta. Disponível em: <a href="https://phcogrev.com/sites/default/files/PharmacognRev-13-26-50.pdf" target="_blank" rel="noopener">https://phcogrev.com/sites/default/files/PharmacognRev-13-26-50.pdf</a></li>
+        <li id="ref-M6">[M6] Asgharikhatooni, A. et al. “Effect of Equisetum arvense (Horse Tail) Ointment on Wound Healing and Pain Relief of Episiotomy: A Randomized, Double-Blind Clinical Trial”. *Iranian Red Crescent Medical Journal* (2017). Disponível em: <a href="https://www.ircmj.com/article_198173.html" target="_blank" rel="noopener">https://www.ircmj.com/article_198173.html</a></li>
+        <li id="ref-M7">[M7] Khademolkhamseh, F. et al. “Evaluation of the Safety and Efficacy of Equisetum arvense Cream on Striae Gravidarum”. *Journal of Integrative Medicine* (2025), estudo clínico recente sobre uso tópico em alterações da pele. Resumo disponível em: <a href="https://www.sciencedirect.com/science/article/pii/S2210803324001301" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S2210803324001301</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Mimica-Dukić, N. et al. “Phenolic Compounds in Field Horsetail (Equisetum arvense L.) as Natural Antioxidants”. *Molecules* 13(7):1455–1464 (2008), quantificando ácidos fenólicos e flavonoides e avaliando atividade antioxidante de extratos da planta. Disponível em: <a href="https://www.mdpi.com/1420-3049/13/7/1455" target="_blank" rel="noopener">https://www.mdpi.com/1420-3049/13/7/1455</a></li>
+        <li id="ref-F2">[F2] Carneiro, D. M. et al. “Equisetum arvense: New Evidences Supports Medical Use”. *Pharmacognosy Reviews* 13(26):50–60 (2019), com tabela de fitoquímicos, tipos de extratos testados e resultados de ensaios in vitro e in vivo. Disponível em: <a href="https://phcogrev.com/sites/default/files/PharmacognRev-13-26-50.pdf" target="_blank" rel="noopener">https://phcogrev.com/sites/default/files/PharmacognRev-13-26-50.pdf</a></li>
+        <li id="ref-F3">[F3] Mo, B. et al. “Aqueous extract from Equisetum arvense stimulates the diuretic and natriuretic mechanisms: pharmacological insights” e outras revisões sobre farmacologia de Equisetum spp., discutindo teores de sílica, compostos fenólicos e atividade antimicrobiana. Resumo disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0944711322003816" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S0944711322003816</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Biodynamic Association (Reino Unido). Página “Biodynamic spray Equisetum (Field Horsetail) – Preparation 508”, descrevendo o uso de infusão e fermentado de cavalinha como pulverização foliar e drench de solo para prevenir fungos. Disponível em: <a href="https://www.biodynamic.org.uk/biodynamic-preparation-equisetum-508-field-horsetail/" target="_blank" rel="noopener">https://www.biodynamic.org.uk/biodynamic-preparation-equisetum-508-field-horsetail/</a></li>
+        <li id="ref-A2">[A2] Veganic.bio. Artigo “Benefits of Horsetail in Agriculture”, explicando o uso de extratos de cavalinha ricos em silício e flavonoides para prevenção de míldio e outros fungos, sem resíduos sintéticos. Disponível em: <a href="https://veganic.bio/benefits-of-horsetail-in-agriculture/" target="_blank" rel="noopener">https://veganic.bio/benefits-of-horsetail-in-agriculture/</a></li>
+        <li id="ref-A3">[A3] Agrobiotop. Ficha de produto “Horsetail decoction”, descrevendo a decocção de cavalinha como substância básica fungicida utilizável em agricultura biológica. Disponível em: <a href="https://www.agrobiotop.com/en/produit/horsetail-decoction/" target="_blank" rel="noopener">https://www.agrobiotop.com/en/produit/horsetail-decoction/</a></li>
+        <li id="ref-A4">[A4] Adler Agro. Ficha “Equimax”, solução foliar à base de decocção aquosa de Equisetum arvense L. aprovada como substância básica segundo o Regulamento (CE) n.º 1107/2009. Disponível em: <a href="https://adleragro.com/en/products/fortex/equimax/" target="_blank" rel="noopener">https://adleragro.com/en/products/fortex/equimax/</a></li>
+        <li id="ref-A5">[A5] Semillas Batlle. Produto “Organic Powdery Mildew-Downy Mildew Fungicide”, fungicida ecológico baseado em Equisetum arvense para controlo de oídio e míldio em horticultura. Disponível em: <a href="https://semillasbatlle.com/en/productsbatlle/ecological-products/ecological-plant-protection/organic-powdery-mildew-downy-mildew-fungicide/" target="_blank" rel="noopener">https://semillasbatlle.com/en/productsbatlle/ecological-products/ecological-plant-protection/organic-powdery-mildew-downy-mildew-fungicide/</a></li>
+        <li id="ref-A6">[A6] No Dig Home. Artigo “Horsetail potions”, descrevendo o uso de “chá” de cavalinha como fungicida natural e pulverização rica em magnésio para reforço nutricional das plantas. Disponível em: <a href="https://nodighome.com/2017/06/17/horsetail-potions/" target="_blank" rel="noopener">https://nodighome.com/2017/06/17/horsetail-potions/</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] Biodynamics Australia. Folheto “Equisetum arvense (Biodynamic preparation 508) – Instructions for use”, detalhando modos de preparação (chá e fermentado), diluições e aplicações em foliar e solo para prevenção de doenças fúngicas. Disponível em: <a href="https://biodynamics.net.au/v3/wp-content/uploads/Equisetum-Instructions-for-Use.pdf" target="_blank" rel="noopener">https://biodynamics.net.au/v3/wp-content/uploads/Equisetum-Instructions-for-Use.pdf</a></li>
+        <li id="ref-P2">[P2] Stag Hill Farm. Artigo “Making and using the horsetail preparation”, explicando a preparação biodinâmica 508 com cavalinha, o seu papel na regulação do elemento água e no apoio a sistemas agrícolas ecológicos. Disponível em: <a href="https://www.staghillfarm.com/blog/making-and-using-the-horsetail-preparation" target="_blank" rel="noopener">https://www.staghillfarm.com/blog/making-and-using-the-horsetail-preparation</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

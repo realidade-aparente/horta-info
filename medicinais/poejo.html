@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html" class="ativa">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="perpetuas-roxas.html">Perpétuas roxas</a>
+  <a class="next" href="ricino-mamona.html">Rícino / Mamona</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Poejo (<em>Mentha pulegium L.</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Lamiaceae</span>
+  <span>Parte usada: folhas e sumidades floridas</span>
+  <span>Tipo: erva aromática perene mediterrânica</span>
+  <span>Produção: <strong>cultivado em hortas húmidas e margens</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> região mediterrânica e oeste da Ásia, hoje comum em Portugal</div>
+  <div><strong>Uso principal</strong> digestiva e carminativa tradicional, hoje de uso muito cauteloso, limitado</div>
+  <div><strong>Perfil medicinal</strong> ação digestiva, respiratória e depurativa com risco tóxico relevante importante</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Poejo (Mentha pulegium L.)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>O poejo (Mentha pulegium L.) é uma planta aromática perene da família Lamiaceae, com caules quadrangulares que podem atingir cerca de 20–40 cm de altura, frequentemente prostrados ou ligeiramente ascendentes. Apresenta folhas opostas, ovadas a lanceoladas, verde-médio a verde-acinzentadas, com margens ligeiramente serradas e forte aroma mentolado característico. As flores são pequenas, rosadas a lilases, reunidas em verticilastros globosos ao longo do caule.</p>
+      <p>Em Portugal é conhecido sobretudo por poejo, mas também por hortelã-dos-azeites, poejo-dos-rios ou poejo-fino em alguns dialectos regionais. Em inglês é habitualmente designado por European pennyroyal, pennyroyal mint ou pennyroyal. A espécie é comum em solos húmidos, margens de cursos de água, linhas de água temporárias e depressões encharcadas, sendo muito associada à paisagem alentejana e ribatejana.</p>
+      <p>Além da utilização culinária em sopas, migas, pratos de peixe e infusões digestivas tradicionais, o poejo tem longa história como planta medicinal na Europa e no Norte de África, usado em pequenas doses como carminativo, emenagogo e expectorante. Hoje sabe-se que o óleo essencial é rico em pulegona, composto com potencial hepatotóxico e abortivo, o que leva a uma abordagem moderna muito mais cautelosa e a uma distinção clara entre o uso alimentar moderado e o uso medicinal intensivo, especialmente de preparações concentradas.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, o poejo comporta-se como planta perene de ciclo acima do solo muitas vezes aparentemente anual nos locais mais frios, rebentando a partir de rizomas ou partes subterrâneas no final do inverno e início da primavera. Prefere solos húmidos, margens de linhas de água e zonas temporariamente alagadas, onde forma manchas densas ao longo dos anos.
+A floração ocorre tipicamente entre o final da primavera e o verão, com maior intensidade entre junho e agosto. Para uso culinário e fitoterapêutico colhem-se sobretudo as pontas tenras e sumidades floridas em início de floração, quando o teor de óleo essencial é significativo mas a planta ainda se mantém viçosa. Em regiões de clima mais ameno e com rega, pode manter produtividade vegetativa durante grande parte do ano.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Rebentação vegetativa: final do inverno e início da primavera, a partir de rizomas e estolhos em solos húmidos.</li>
+        <li>Floração: principalmente de junho a agosto em Portugal continental, podendo estender-se até setembro em locais frescos.</li>
+        <li>Colheita culinária: folhas e rebentos tenros colhidos na primavera e início do verão, antes de a planta ficar demasiado lenhosa.</li>
+        <li>Colheita de sumidades floridas para uso medicinal tradicional: em início de floração, em locais limpos e longe de contaminações.</li>
+        <li>Manutenção: corte regular de rebentos floridos pode estimular novo crescimento e prolongar a disponibilidade de folhas tenras.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a> <a href="#ref-S3">[S3]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Estudos fitoquímicos e farmacológicos com extratos de Mentha pulegium documentam atividade antioxidante, antimicrobiana, antinflamatória e antiespasmódica em modelos in vitro e in vivo, associadas sobretudo ao óleo essencial rico em pulegona e a outros monoterpenos oxigenados. Estes dados ajudam a explicar usos digestivos e respiratórios tradicionais, mas não definem por si só esquemas de dosagem seguros para uso humano prolongado. <a href="#ref-M1">[M1]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></li>
+        <li>Ensaios experimentais com extratos da parte aérea de poejo sugerem potencial para modulação de motilidade gastrointestinal, efeitos carminativos e possível ação em dor visceral funcional. Alguns estudos exploram a utilização em dispepsia funcional e distúrbios digestivos leves, geralmente em combinação com outras plantas, sendo necessários mais ensaios clínicos robustos. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-F3">[F3]</a></li>
+        <li>O óleo essencial de poejo, quando testado em modelos microbiológicos e de conservação de alimentos, demonstra forte atividade antimicrobiana, antioxidante e inseticida, com interesse para aplicações tecnológicas e agroalimentares. Contudo, a elevada concentração de pulegona e mentofurano faz com que o uso interno em humanos seja considerado de alto risco, limitando o interesse a utilizações externas e tecnológicas sob controlo rigoroso. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F4">[F4]</a> <a href="#ref-F5">[F5]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Infusões ligeiras de poejo usadas tradicionalmente em Portugal como chá digestivo e carminativo após refeições pesadas, em particular em pratos típicos alentejanos e de outras regiões do interior, muitas vezes associadas a períodos curtos de uso. <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a> <a href="#ref-A1">[A1]</a></li>
+        <li>Chá de poejo empregado popularmente para alívio de constipações, tosse, congestão nasal e gripes, por vezes combinado com mel, limão ou outras plantas respiratórias, em usos de curta duração. <a href="#ref-R1">[R1]</a> <a href="#ref-R3">[R3]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Uso tradicional como planta emenagoga e para aliviar cólicas menstruais, o que, em parte, está ligado ao efeito espasmolítico e à presença de pulegona, mas também ao risco de efeitos abortivos quando usado em doses elevadas. <a href="#ref-M1">[M1]</a> <a href="#ref-A1">[A1]</a> <a href="#ref-U1">[U1]</a></li>
+        <li>Emprego culinário como aromática em sopas, migas, pratos de peixe, enchidos e outras receitas regionais, em quantidades moderadas de folhas frescas adicionadas no final da confeção. <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-A3">[A3]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>O poejo é uma planta com risco toxicológico significativo devido ao alto teor de pulegona no óleo essencial, associado a hepatotoxicidade grave, convulsões e efeitos abortivos quando ingerido em doses elevadas. Casos de intoxicação e mesmo de morte estão descritos em consequência da ingestão do óleo essencial de pennyroyal, pelo que o uso interno do óleo essencial de poejo é atualmente considerado contraindicado em automedicação. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-F6">[F6]</a></p>
+      <p>Mesmo na forma de chá ou infusão, entidades reguladoras e autores de segurança recomendam grande prudência: evitar uso prolongado e evitar completamente o uso em grávidas, lactantes, crianças, pessoas com doença hepática, renal ou com epilepsia, e em indivíduos sob medicação complexa. Sempre que existam alternativas mais seguras para a mesma indicação digestiva ou respiratória, estas devem ser preferidas. <a href="#ref-U1">[U1]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-U4">[U4]</a> <a href="#ref-U5">[U5]</a></p>
+      <p>Em particular, o poejo não deve ser utilizado com o objetivo de induzir menstruação ou aborto, nem em doses superiores às alimentares habituais. A combinação com outros produtos contendo pulegona ou mentofurano (óleos essenciais de outras mentas com esses compostos) pode aumentar a carga total de exposição. Em caso de náuseas intensas, dor abdominal, icterícia, confusão, convulsões ou outros sintomas graves após uso de poejo, é necessária assistência médica urgente. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        As receitas tradicionais com poejo incluem infusões digestivas e respiratórias, muitas vezes associadas à culinária regional, bem como usos externos em banhos aromáticos e compressas. Contudo, devido à presença de pulegona, a fitoterapia moderna reforça que qualquer preparado medicinal com poejo deve ser usado com grande cautela, em doses baixas, por períodos curtos e, idealmente, sob acompanhamento profissional. Em muitos contextos, outras mentas e plantas digestivas mais seguras são preferidas. O texto das receitas abaixo inspira-se em fontes etnobotânicas e populares, mas não substitui aconselhamento individualizado e deve ser sempre enquadrado pelas recomendações de segurança.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="poejo_receitas.html">Chá digestivo de poejo:</a> infusão tradicional de poejo usada para aliviar digestão difícil e gases, hoje recomendada apenas com grande prudência e por períodos muito curtos. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="poejo_receitas.html">Infusão de poejo para constipações:</a> chá aromático quente tomado em constipações e gripes ligeiras, explorando efeito sudorífero e descongestionante, mas atualmente desencorajado em uso interno prolongado. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="poejo_receitas.html">Chá de poejo e hortelã para digestão:</a> combinação caseira de poejo com hortelã bebida após refeições pesadas, visando aliviar dispepsia nervosa e flatulência, em uso muito moderado e ocasional. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="poejo_receitas.html">Infusão de poejo em sopas ou caldos:</a> utilização culinário-medicinal em pratos líquidos quentes, onde pequenas quantidades de poejo aromatizam e conferem efeito digestivo suave. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="poejo_receitas.html">Chá de poejo para cólicas menstruais:</a> receita tradicional para aliviar cólicas e atrasos menstruais, hoje considerada de risco devido ao potencial efeito abortivo e hepatotóxico do poejo. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="poejo_receitas.html">Infusão de poejo com outras plantas digestivas:</a> mistura de poejo com ervas como hortelã, erva-cidreira ou funcho, sugerida para desconfortos digestivos ligeiros, mas com preferência atual por alternativas mais seguras. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="poejo_receitas.html">Compressas aromáticas com poejo:</a> aplicação externa de pano embebido em infusão morna de poejo sobre zonas de tensão ou cólicas, aproveitando o aroma e calor local sem ingestão interna. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="poejo_receitas.html">Banho de pés aromático com poejo:</a> adição de pequena quantidade de poejo a água morna para banho de pés relaxante, usado como prática ocasional de conforto e não como tratamento médico. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="poejo_receitas.html">Macerado de poejo em vinho ou aguardente:</a> preparado histórico em que poejo é deixado em bebida alcoólica para uso interno, atualmente visto como de elevado risco e desaconselhado em automedicação. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="poejo_receitas.html">Preparados tecnológicos com óleo essencial de poejo:</a> formulações controladas que usam o óleo em contexto farmacêutico ou industrial, não devendo ser reproduzidas em casa devido à elevada toxicidade. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>Na tradição fitoterapêutica e culinária, o poejo é descrito como planta digestiva, carminativa e antiespasmódica, útil em dispepsia, gases e cólicas leves, bem como em constipações e estados gripais, favorecendo a expetoração e o alívio de tosse. Registos etnobotânicos em Portugal, no Magrebe e noutras regiões mediterrânicas reforçam o uso em pequenas queixas do aparelho digestivo e respiratório, muitas vezes em associação com outras mentas e plantas aromáticas. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-A1">[A1]</a></p>
+      <p>Revisões científicas e estudos experimentais demonstram que extratos de Mentha pulegium possuem atividades antimicrobianas, antioxidantes, antinflamatórias e antiespasmódicas, que podem explicar alguns destes efeitos, incluindo a melhoria da digestão e a redução de desconforto gastrointestinal funcional. Ensaios em modelos celulares e animais indicam ainda possível ação em dor visceral e inflamação respiratória. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>Contudo, devido ao teor em pulegona e aos relatos de toxicidade grave com óleo essencial e preparados concentrados, o poejo deve ser entendido hoje como planta de janela terapêutica estreita. Em muitos contextos clínicos, outras mentas e plantas digestivas/respiratórias com melhor perfil de segurança são preferíveis, ficando o poejo restrito a usos muito moderados, em adultos sem contraindicações, e idealmente sob orientação profissional. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-F6">[F6]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Adjuvante tradicional em distúrbios digestivos leves (gases, dispepsia, sensação de enfartamento), em pequenas doses e por períodos curtos, graças a efeitos carminativos e antiespasmódicos. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-A1">[A1]</a> <a href="#ref-D2">[D2]</a></li>
+        <li>Uso complementar histórico em constipações, gripes e infeções respiratórias ligeiras, como planta aromática expectorante e sudorífera em chás e caldos quentes. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Potencial contribuição antioxidante e antimicrobiana de extratos de poejo, sugerida por estudos in vitro e em modelos animais, podendo apoiar o equilíbrio da microbiota e a resposta a infeções leves, embora a evidência clínica ainda seja limitada. <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a></li>
+        <li>Utilização tradicional como emenagogo e em cólicas menstruais, associada a efeitos sobre músculo liso uterino, mas hoje considerada de risco, em particular pela possibilidade de efeito abortivo e hepatotóxico em doses elevadas. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-M1">[M1]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>O perfil fitoquímico de Mentha pulegium é dominado pelo óleo essencial, cuja composição varia com a origem geográfica e as condições de cultivo, mas em muitos quimiotipos é rico em pulegona, frequentemente em teores de 30–60% do óleo, acompanhada de mentona, piperitenona, piperitenona óxido e outros monoterpenos. Estudos em diferentes países europeus e mediterrânicos mostraram que a pulegona pode ser o componente maioritário do óleo essencial, o que está na base tanto de algumas atividades farmacológicas quanto do perfil de toxicidade hepática. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></p>
+      <p>Extratos aquosos e hidroalcoólicos das partes aéreas apresentam teores significativos de compostos fenólicos totais, com atividade antioxidante relevante em ensaios como DPPH, ABTS e FRAP. Estes extratos mostram ainda atividade antimicrobiana contra várias bactérias e fungos, bem como efeitos antinflamatórios e anti-quorum sensing em modelos experimentais, sugerindo potencial uso como conservante natural e agente bioativo em alimentos e cosméticos. <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a> <a href="#ref-F5">[F5]</a></p>
+      <p>Estudos toxicológicos e avaliações de risco recentes sobre pulegona classificam este monoterpeno como potencialmente carcinogénico e claramente hepatotóxico em doses elevadas. Organismos internacionais estabeleceram limites máximos de exposição diária a pulegona em produtos alimentares e fitoterapêuticos, o que condiciona fortemente a formulação de produtos com poejo e reforça a necessidade de controlo rigoroso de dose, duração e via de administração. <a href="#ref-F6">[F6]</a> <a href="#ref-F7">[F7]</a> <a href="#ref-F8">[F8]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Pulegona no óleo essencial de poejo</td><td>≈30–60 % (m/m) do óleo essencial em muitos quimiotipos</td></tr>
+        <tr><td>Mentona e outros monoterpenos oxigenados no óleo essencial</td><td>≈10–30 % (m/m) do óleo essencial combinando mentona, piperitenona e derivados</td></tr>
+        <tr><td>Óleo essencial total na parte aérea (rendimento em relação à massa fresca/seca)</td><td>≈1–3 % (v/m) de óleo essencial em relação à massa seca da parte aérea</td></tr>
+        <tr><td>Fenóis totais em extratos aquosos/hidroalcoólicos da parte aérea</td><td>≈20–80 mg GAE/g de extrato seco</td></tr>
+        <tr><td>Capacidade antioxidante dos extratos (ensaios DPPH/ABTS/FRAP)</td><td>EC50 ou IC50 na gama de dezenas a poucas centenas de µg/mL, indicando atividade antioxidante moderada a elevada</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Uso tradicional como planta aromática em cozinha regional portuguesa, em particular em sopas, migas e pratos de peixe e carne do Alentejo e Ribatejo. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Emprego do óleo essencial e de extratos de poejo em investigação como conservante natural e agente antimicrobiano para alimentos, carnes e produtos embalados. <a href="#ref-F1">[F1]</a> <a href="#ref-F4">[F4]</a></li>
+        <li>Utilização do aroma intenso do poejo como repelente natural de insetos, formigas e traças em contextos domésticos, com ramos frescos ou secos colocados em armários ou divisões. <a href="#ref-A3">[A3]</a> <a href="#ref-A4">[A4]</a></li>
+        <li>Interesse ornamental e ecológico em jardins de plantas aromáticas, margens de charcos e espirais de ervas, atraindo polinizadores quando em flor. <a href="#ref-D1">[D1]</a> <a href="#ref-P1">[P1]</a></li>
+        <li>Planta indicadora de solos húmidos e por vezes encharcados, ajudando a identificar zonas de acumulação de água superficial e possíveis áreas para charcos, swales ou zonas ripícolas em desenho de permacultura. <a href="#ref-P1">[P1]</a> <a href="#ref-S2">[S2]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 6,2 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em sistemas de permacultura em clima mediterrânico, o poejo oferece várias funções úteis: é uma erva aromática forte, com papel culinário marcante em pratos regionais, uma planta medicinal tradicional com afinidade pelo sistema digestivo e respiratório (ainda que hoje vista com maior cautela) e um elemento interessante para bordaduras húmidas, margens de charcos e zonas de solo periodicamente encharcado. As suas flores atraem insetos polinizadores e outros artrópodes, e a planta funciona como indicadora de microáreas húmidas no terreno.
+Por outro lado, a toxicidade associada à pulegona limita o entusiasmo em promover o poejo como planta medicinal central, e o seu porte baixo confere-lhe pouco valor estrutural em termos de sombra ou quebra-vento. Em solos muito húmidos pode expandir-se e competir com outras pequenas aromáticas, embora seja relativamente fácil de controlar por corte. No balanço, o poejo é uma planta útil, sobretudo como componente aromático-cultural e indicador ecológico, mas não atinge a multifuncionalidade e segurança de outras espécies-chave em permacultura.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação do poejo resulta de valores moderados em uso alimentar humano (ALIM=1), dado ser uma erva aromática usada em pequenas quantidades, e em uso medicinal (MED=1), refletindo um conjunto de usos tradicionais relevantes mas limitados pela janela terapêutica estreita. O critério de estrutura (ESTR=0) é baixo, porque se trata de uma planta de porte reduzido, sem papel de sebe ou sombreamento, enquanto o contributo para solo e biomassa (SOLO=1) é modesto, baseado sobretudo em alguma produção de verde para coberturas leves e compostagem. O suporte à fauna (ECO=1) é positivo graças à floração atrativa, e a rusticidade (RUST=2) é elevada em solos húmidos de clima mediterrânico, onde a espécie se mantém com poucos cuidados. A multifuncionalidade cultural (MULT=2) é significativa, dada a importância do poejo na gastronomia e etnobotânica locais.
+Nas penalizações, considera-se um risco toxicológico não negligenciável (TOX=-1) associado sobretudo ao óleo essencial e a usos internos em doses elevadas, embora o risco em usos alimentares habituais seja menor. O perigo físico (PERIGO=0) é irrelevante, e o comportamento invasivo (INVAS=-1) é moderado em solos muito húmidos, podendo exigir algum controlo. A competição (COMP=0) é considerada limitada a nível de raízes e sombreamento. O valor final em escala 0–10 resulta da aplicação do algoritmo descrito no projeto (soma dos critérios positivos até 14 pontos, subtração das penalizações e conversão por regra de três simples), situando o poejo em cerca de 6,2/10 e indicando uma planta útil e com identidade cultural forte, mas com relevância estrutural e medicinal mais limitada do que outras espécies mediterrânicas de referência em permacultura.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-D2">[D2]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Wilder. &quot;Que espécie é esta: poejo&quot;. Artigo em português com descrição botânica, habitat, distribuição em Portugal e usos tradicionais do poejo. Disponível em: <a href="https://wilder.pt/especies/que-especie-e-esta-poejo" target="_blank" rel="noopener">https://wilder.pt/especies/que-especie-e-esta-poejo</a></li>
+        <li id="ref-D2">[D2] Revista Jardins. &quot;Poejo: ficha de cultivo&quot;. Ficha prática em português sobre cultivo de Mentha pulegium, com informações sobre ciclo de vida, solo, exposição e usos em horta e culinária. Disponível em: <a href="https://revistajardins.pt/plantas/herbaceas/poejo-ficha-de-cultivo/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/herbaceas/poejo-ficha-de-cultivo/</a></li>
+        <li id="ref-D3">[D3] Soria Natural. &quot;Poejo (Mentha pulegium L.)&quot;. Entrada de enciclopédia de plantas com descrição morfológica, distribuição e partes usadas. Disponível em: <a href="https://www.sorianatural.com/pt/enciclopedia-de-plantas/poleo" target="_blank" rel="noopener">https://www.sorianatural.com/pt/enciclopedia-de-plantas/poleo</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Revista Jardins. &quot;Poejo: ficha de cultivo&quot;. Descreve exposição solar, tipo de solo, ciclo de vida e época de floração e plantação do poejo em clima português. Disponível em: <a href="https://revistajardins.pt/plantas/herbaceas/poejo-ficha-de-cultivo/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/herbaceas/poejo-ficha-de-cultivo/</a></li>
+        <li id="ref-S2">[S2] AMU.bio. &quot;Poejo - Mentha pulegium&quot;. Ficha em PDF com informação sobre necessidades de solo húmido, clima ameno, épocas de plantação e cuidados culturais. Disponível em: <a href="https://www.amu.bio/docs/poejo.pdf" target="_blank" rel="noopener">https://www.amu.bio/docs/poejo.pdf</a></li>
+        <li id="ref-S3">[S3] Wilder. &quot;Que espécie é esta: poejo&quot;. Refere período de floração (junho a agosto) e ocorrência de norte a sul de Portugal em zonas húmidas e temporariamente alagadas. Disponível em: <a href="https://wilder.pt/especies/que-especie-e-esta-poejo" target="_blank" rel="noopener">https://wilder.pt/especies/que-especie-e-esta-poejo</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] EMA. &quot;Public statement on the use of herbal medicinal products containing pulegone and menthofuran&quot;. Documento científico sobre a toxicidade de pulegona e mentofurano e limites de exposição em produtos à base de plantas. Disponível em: <a href="https://www.ema.europa.eu/en/use-herbal-medicinal-products-containing-pulegone-menthofuran-scientific-guideline" target="_blank" rel="noopener">https://www.ema.europa.eu/en/use-herbal-medicinal-products-containing-pulegone-menthofuran-scientific-guideline</a></li>
+        <li id="ref-U2">[U2] IARC. &quot;Some Drugs and Herbal Products&quot; (Monographs). Secção sobre pulegona como constituinte maioritário do óleo de pennyroyal (Mentha pulegium) e risco carcinogénico e hepatotóxico. Disponível em: <a href="https://publications.iarc.who.int/_publications/media/download/6706/3594e060d33695e56883dfe9674dd2d11a0bd4a1.pdf" target="_blank" rel="noopener">https://publications.iarc.who.int/_publications/media/download/6706/3594e060d33695e56883dfe9674dd2d11a0bd4a1.pdf</a></li>
+        <li id="ref-U3">[U3] NCBI Bookshelf. &quot;Pulegone&quot; em &quot;Some Drugs and Herbal Products&quot;. Entrada que descreve a presença de pulegona no óleo de pennyroyal e a associação a toxicidade hepática e neurológica. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/books/NBK350485/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/books/NBK350485/</a></li>
+        <li id="ref-U4">[U4] Tua Saúde. &quot;Poejo: para que serve, como preparar o chá e contraindicações&quot;. Artigo em português com instruções de preparação do chá de poejo, benefícios propostos e contraindicações em gravidez, lactação e doenças hepáticas. Disponível em: <a href="https://www.tuasaude.com/poejo/" target="_blank" rel="noopener">https://www.tuasaude.com/poejo/</a></li>
+        <li id="ref-U5">[U5] CNN Brasil. &quot;Chá de poejo: benefícios para a digestão e calmante natural&quot;. Artigo sobre uso do chá de poejo, forma de preparação e contraindicações para grupos de risco. Disponível em: <a href="https://www.cnnbrasil.com.br/saude/cha-de-poejo-beneficios-para-a-digestao-e-calmante-natural/" target="_blank" rel="noopener">https://www.cnnbrasil.com.br/saude/cha-de-poejo-beneficios-para-a-digestao-e-calmante-natural/</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Tua Saúde. &quot;Poejo: para que serve, como preparar o chá e contraindicações&quot;. Descreve receita de chá de poejo com quantidade de planta, volume de água, tempo de infusão e limites de uso diário. Disponível em: <a href="https://www.tuasaude.com/poejo/" target="_blank" rel="noopener">https://www.tuasaude.com/poejo/</a></li>
+        <li id="ref-R2">[R2] Plantae &amp; Prato. &quot;Chá de Poejo Caseiro&quot;. Receita de chá de poejo com proporções de folhas frescas ou secas, tempo de infusão e advertências básicas de segurança. Disponível em: <a href="https://plantaeprato.com.br/receita-de-ch-de-poejo-caseiro-2/" target="_blank" rel="noopener">https://plantaeprato.com.br/receita-de-ch-de-poejo-caseiro-2/</a></li>
+        <li id="ref-R3">[R3] Receitas Nestlé Brasil. &quot;Chá de poejo: benefícios, contra indicações e usos&quot;. Artigo que explica como fazer chá de poejo, quantidade de folhas e água e principais cuidados. Disponível em: <a href="https://www.receitasnestle.com.br/artigos/cha-de-poejo-beneficios-contra-indicacoes-e-usos" target="_blank" rel="noopener">https://www.receitasnestle.com.br/artigos/cha-de-poejo-beneficios-contra-indicacoes-e-usos</a></li>
+        <li id="ref-R4">[R4] CNN Brasil. &quot;Chá de poejo: benefícios para a digestão e calmante natural&quot;. Inclui modo de preparo do chá com número de folhas, volume de água e tempo de infusão. Disponível em: <a href="https://www.cnnbrasil.com.br/saude/cha-de-poejo-beneficios-para-a-digestao-e-calmante-natural/" target="_blank" rel="noopener">https://www.cnnbrasil.com.br/saude/cha-de-poejo-beneficios-para-a-digestao-e-calmante-natural/</a></li>
+        <li id="ref-R5">[R5] Psicopedagogia.com.br. &quot;Chá de Poejo: Como Fazer, Benefícios e Receita&quot;. Explica passo a passo a preparação do chá de poejo em casa, com tempos de infusão e orientações de consumo moderado. Disponível em: <a href="https://psicopedagogia.com.br/blog/cha-de-poejo-como-fazer" target="_blank" rel="noopener">https://psicopedagogia.com.br/blog/cha-de-poejo-como-fazer</a></li>
+        <li id="ref-R6">[R6] Leve Bem Delivery. &quot;Poejo Seco Orgânico (Chá)&quot;. Ficha de produto com instruções de uso do poejo seco em chá, incluindo quantidade de folhas e volume de água. Disponível em: <a href="https://www.levebemdelivery.com.br/poejo-seco-organico-cha" target="_blank" rel="noopener">https://www.levebemdelivery.com.br/poejo-seco-organico-cha</a></li>
+        <li id="ref-R7">[R7] Folhas Sugestivas. &quot;Poejo - Mentha pulegium&quot;. Post de blogue com indicação de usos em decocção, maceração e óleo essencial, incluindo descrições de formas de uso tradicionais. Disponível em: <a href="https://folhas-sugestivas.blogs.sapo.pt/poejo-mentha-pulegium-23852" target="_blank" rel="noopener">https://folhas-sugestivas.blogs.sapo.pt/poejo-mentha-pulegium-23852</a></li>
+        <li id="ref-R8">[R8] Diversas fontes de fitoterapia popular e culinária portuguesa que descrevem o uso de ramos de poejo em sopas, migas e pratos tradicionais, com indicação de adicionar a erva no final da confeção em pequenas quantidades. Disponível em: <a href="https://revistajardins.pt/plantas/herbaceas/poejo-ficha-de-cultivo/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/herbaceas/poejo-ficha-de-cultivo/</a></li>
+        <li id="ref-R9">[R9] Silva H. et al. &quot;A Descriptive Overview of the Medical Uses Given to Mentha Species&quot;. Revisão etnofarmacológica que cita usos históricos de Mentha pulegium em macerados alcoólicos e outros preparados tradicionais. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7767097/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC7767097/</a></li>
+        <li id="ref-R10">[R10] Luís Â. et al. &quot;Screening of the Potential Bioactivities of Pennyroyal (Mentha pulegium L.) Essential Oil&quot;. Artigo que descreve usos do óleo essencial em aplicações tecnológicas e experimentais, incluindo formulações de conservação de alimentos. Disponível em: <a href="https://ubibliorum.ubi.pt/bitstream/10400.6/11245/1/antibiotics-10-01266.pdf" target="_blank" rel="noopener">https://ubibliorum.ubi.pt/bitstream/10400.6/11245/1/antibiotics-10-01266.pdf</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] Silva H. et al. &quot;A Descriptive Overview of the Medical Uses Given to Mentha Species&quot;. Revisão que compila usos tradicionais de Mentha pulegium em digestão, sistema respiratório, emenagogia e outras indicações. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7767097/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC7767097/</a></li>
+        <li id="ref-M2">[M2] Hadi MY et al. &quot;Mentha Pulegium: medicinal uses, anti-hepatic, antibacterial, antioxidant effect and analysis of bioactive natural compounds: A Review&quot;. Revisão sobre propriedades medicinais e compostos bioativos de Mentha pulegium. Disponível em: <a href="https://www.eurekaselect.com/221058/article" target="_blank" rel="noopener">https://www.eurekaselect.com/221058/article</a></li>
+        <li id="ref-M3">[M3] Zadeh AM et al. &quot;Effects of Pennyroyal (Mentha pulegium L.) supplementation&quot;. Estudo sobre impactos de suplementação com poejo em parâmetros biológicos, ilustrando potenciais efeitos metabólicos. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9857014/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC9857014/</a></li>
+        <li id="ref-M4">[M4] Khonche A. et al. &quot;Efficacy of Mentha pulegium extract in the treatment of functional dyspepsia&quot;. Estudo clínico que avalia extrato de poejo em dispepsia funcional segundo critérios de Roma III. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0378874116316257" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S0378874116316257</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Teixeira B. et al. &quot;European pennyroyal (Mentha pulegium) from Portugal: chemical composition of essential oil and in vitro bioactivities&quot;. Estudo que caracteriza composição do óleo essencial de poejo português e avalia atividades antioxidantes e antimicrobianas. Disponível em: <a href="https://science.egasmoniz.com.pt/en/publications/european-pennyroyal-mentha-pulegium-from-portugal-chemical-compos/" target="_blank" rel="noopener">https://science.egasmoniz.com.pt/en/publications/european-pennyroyal-mentha-pulegium-from-portugal-chemical-compos/</a></li>
+        <li id="ref-F2">[F2] Casiglia S. et al. &quot;The Chemical Composition of the Mentha pulegium L. Essential Oil from Sicily and its Antioxidant Activity&quot;. Artigo que identifica pulegona como componente maioritário e avalia atividade antioxidante. Disponível em: <a href="https://journals.sagepub.com/doi/pdf/10.1177/1934578X1701200840" target="_blank" rel="noopener">https://journals.sagepub.com/doi/pdf/10.1177/1934578X1701200840</a></li>
+        <li id="ref-F3">[F3] Amara N. et al. &quot;Chemical Composition of Mentha pulegium and its Bioactive Properties&quot;. Estudo recente que analisa composição do óleo essencial e discute propriedades antioxidantes e antimicrobianas. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12529172/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC12529172/</a></li>
+        <li id="ref-F4">[F4] Luís Â. et al. &quot;Screening of the Potential Bioactivities of Pennyroyal (Mentha pulegium L.) Essential Oil&quot;. Caracteriza o óleo essencial e avalia atividades antioxidante, antimicrobiana, anti-quorum sensing e anti-inflamatória. Disponível em: <a href="https://ubibliorum.ubi.pt/bitstream/10400.6/11245/1/antibiotics-10-01266.pdf" target="_blank" rel="noopener">https://ubibliorum.ubi.pt/bitstream/10400.6/11245/1/antibiotics-10-01266.pdf</a></li>
+        <li id="ref-F5">[F5] Sardashti A. et al. &quot;Chemical composition of the essential oil of Mentha pulegium L.&quot;. Artigo que descreve rendimento de óleo essencial e teores de pulegona e outros monoterpenos em diferentes populações. Disponível em: <a href="https://academicjournals.org/journal/JMPR/article-full-text-pdf/143387241435" target="_blank" rel="noopener">https://academicjournals.org/journal/JMPR/article-full-text-pdf/143387241435</a></li>
+        <li id="ref-F6">[F6] Voigt V. et al. &quot;Risk Assessment of Pulegone in Foods Based on Benchmark Dose-Response Modeling&quot;. Avaliação de risco de pulegona em alimentos e discussão de limites de exposição humana. Disponível em: <a href="https://www.mdpi.com/2304-8158/13/18/2906" target="_blank" rel="noopener">https://www.mdpi.com/2304-8158/13/18/2906</a></li>
+        <li id="ref-F7">[F7] IARC. &quot;Some Drugs and Herbal Products&quot;. Secções sobre pulegona como constituinte de óleos de pennyroyal e toxicidade hepática. Disponível em: <a href="https://publications.iarc.who.int/_publications/media/download/6706/3594e060d33695e56883dfe9674dd2d11a0bd4a1.pdf" target="_blank" rel="noopener">https://publications.iarc.who.int/_publications/media/download/6706/3594e060d33695e56883dfe9674dd2d11a0bd4a1.pdf</a></li>
+        <li id="ref-F8">[F8] EMA. &quot;Public statement on the use of herbal medicinal products containing pulegone and menthofuran&quot;. Documento que sumariza dados de toxicidade de pulegona/mentofurano e estabelece limites de exposição em preparados de plantas. Disponível em: <a href="https://www.ema.europa.eu/en/use-herbal-medicinal-products-containing-pulegone-menthofuran-scientific-guideline" target="_blank" rel="noopener">https://www.ema.europa.eu/en/use-herbal-medicinal-products-containing-pulegone-menthofuran-scientific-guideline</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Monteiro A. &quot;Os poejos na boa cozinha portuguesa&quot;. Trabalho que descreve o uso do poejo e de outras mentas em pratos tradicionais e infusões, com ênfase na gastronomia portuguesa. Disponível em: <a href="https://repositorio.ulisboa.pt/entities/publication/37802292-e7f6-4b0a-ab9e-193e304b8a83" target="_blank" rel="noopener">https://repositorio.ulisboa.pt/entities/publication/37802292-e7f6-4b0a-ab9e-193e304b8a83</a></li>
+        <li id="ref-A2">[A2] SementeZona. &quot;Poejo – Mentha pulegium&quot;. Página de produtor de sementes em português que descreve usos culinários e medicinais básicos do poejo. Disponível em: <a href="https://sementezona.pt/produto/poejo-mentha-pulegium/" target="_blank" rel="noopener">https://sementezona.pt/produto/poejo-mentha-pulegium/</a></li>
+        <li id="ref-A3">[A3] Leve Bem Delivery. &quot;Poejo Seco Orgânico (Chá)&quot;. Ficha de produto que refere uso em chá e aplicação de folhas esmagadas em feridas e como repelente de insetos. Disponível em: <a href="https://www.levebemdelivery.com.br/poejo-seco-organico-cha" target="_blank" rel="noopener">https://www.levebemdelivery.com.br/poejo-seco-organico-cha</a></li>
+        <li id="ref-A4">[A4] Folhas Sugestivas. &quot;Poejo - Mentha pulegium&quot;. Entrada que menciona propriedades medicinais, formas de uso tradicional e uso do poejo queimado como repelente de pulgas. Disponível em: <a href="https://folhas-sugestivas.blogs.sapo.pt/poejo-mentha-pulegium-23852" target="_blank" rel="noopener">https://folhas-sugestivas.blogs.sapo.pt/poejo-mentha-pulegium-23852</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] AMU.bio. &quot;Poejo - Mentha pulegium&quot;. Ficha que destaca preferência da planta por solos húmidos e ricos em matéria orgânica, útil como indicadora ecológica em jardins e hortas. Disponível em: <a href="https://www.amu.bio/docs/poejo.pdf" target="_blank" rel="noopener">https://www.amu.bio/docs/poejo.pdf</a></li>
+        <li id="ref-P2">[P2] Wilder. &quot;Que espécie é esta: poejo&quot;. Descreve a ocorrência do poejo em zonas húmidas e temporariamente alagadas em Portugal, relevante para desenho de zonas ripícolas em permacultura. Disponível em: <a href="https://wilder.pt/especies/que-especie-e-esta-poejo" target="_blank" rel="noopener">https://wilder.pt/especies/que-especie-e-esta-poejo</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html" class="ativa">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="arruda.html">Arruda</a>
+  <a class="next" href="boldo-do-chile.html">Boldo-do-Chile</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Boldo-brasileiro (<em>Plectranthus barbatus Andrews</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Lamiaceae</span>
+  <span>Parte usada: folhas frescas e secas</span>
+  <span>Tipo: subarbusto aromático perene medicinal</span>
+  <span>Produção: <strong>cultivo em hortas, vasos e canteiros</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> América do Sul tropical, hoje cultivado e aclimatado em Portugal</div>
+  <div><strong>Uso principal</strong> apoio digestivo e hepático, alívio de dispepsia e empachamento</div>
+  <div><strong>Perfil medicinal</strong> colagogo, digestivo, possivelmente hepatoprotetor, com evidência clínica ainda limitada</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Boldo-brasileiro (Plectranthus barbatus Andrews)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>O boldo-brasileiro (Plectranthus barbatus Andrews) é um subarbusto aromático perene da família Lamiaceae, que pode atingir 0,6–1,5 m de altura. Apresenta caules suculentos, eretos quando jovens e mais decumbentes com a idade, ramificados, de secção quadrangular típica das labiadas.</p>
+      <p>As folhas são opostas, simples, elípticas a ovadas, de 5–8 cm de comprimento, margens grosseiramente serradas, textura aveludada e aroma intenso, amargo e alcanforado. As flores, azul-arroxeadas, dispõem-se em inflorescências racemosas terminais que atraem insetos polinizadores. Em português é conhecido como boldo-brasileiro, malva-santa, boldo-da-terra ou boldo-falso, entre outros; em inglês podem usar-se designações como Indian coleus ou false boldo, embora exista alguma confusão com espécies próximas do género Coleus.</p>
+      <p>É importante distinguir o boldo-brasileiro de outras plantas chamadas popularmente &quot;boldo&quot;, como o boldo-do-Chile (Peumus boldus, árvore sul-americana) e o boldo-da-terra de outras espécies de Plectranthus (por exemplo Plectranthus neochilus). As propriedades químicas e perfis de segurança não são idênticos entre espécies, pelo que a identificação botânica correta é fundamental em fitoterapia.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, o boldo-brasileiro comporta-se como subarbusto sensível ao frio, crescendo melhor em regiões de invernos suaves e verões quentes. Em locais protegidos de geadas pode manter-se verde todo o ano, com maior vigor na primavera e verão.
+A colheita de folhas e ramos tenros para uso medicinal faz-se preferencialmente durante a estação de crescimento ativo (primavera ao início do outono), escolhendo ramos saudáveis e evitando períodos de frio intenso ou stress hídrico extremo.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Crescimento ativo: primavera ao início do outono, com maior produção de biomassa em condições de calor e boa luminosidade.</li>
+        <li>Floração: em geral na primavera/verão, quando surgem inflorescências terminais azul-arroxeadas.</li>
+        <li>Colheita de folhas para uso medicinal: pode ser feita de forma escalonada durante a estação de crescimento, evitando retirar mais de 1/3 da folhagem de cada vez.</li>
+        <li>Em regiões com geadas, o boldo-brasileiro deve ser protegido (vasos recolhidos ou coberturas) ou replantado a partir de estacas enraizadas na primavera seguinte.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Infusões das folhas secas de Plectranthus barbatus (por exemplo 1–2 g em 150–200 mL de água quente, até 2–3 vezes ao dia) como adjuvante em dispepsia funcional, sensação de empachamento e desconforto após refeições gordurosas, descritas em formulários fitoterápicos brasileiros. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a></li>
+        <li>Extratos padronizados de folhas de Plectranthus barbatus, em cápsulas ou comprimidos, usados em fitoterápicos registrados no Brasil para alívio de distúrbios digestivos leves e como protetores gástricos, com estudos pré-clínicos que demonstram atividade gastroprotetora e antioxidante em modelos de lesão gástrica e sobrecarga de ferro. <a href="#ref-M1">[M1]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a></li>
+        <li>Preparações líquidas (gotas, soluções) contendo extrato de Plectranthus barbatus em formulações comerciais para apoio hepatobiliar e digestivo, com posologias definidas em bulas aprovadas por autoridades sanitárias, devendo ser seguidas rigorosamente. <a href="#ref-M1">[M1]</a> <a href="#ref-U1">[U1]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Uso popular do chá de boldo-brasileiro (uma ou poucas folhas frescas em água quente) após refeições pesadas, para aliviar má digestão, náuseas ligeiras e sensação de fígado &quot;carregado&quot;. <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a> <a href="#ref-A1">[A1]</a></li>
+        <li>Emprego de boldo-brasileiro em combinações com outras plantas digestivas, como hortelã, camomila ou erva-doce, para chás caseiros de apoio digestivo e alívio de gases. <a href="#ref-R2">[R2]</a> <a href="#ref-A1">[A1]</a></li>
+        <li>Uso tradicional de folhas frescas maceradas em pequena quantidade de água ou outro veículo como cataplasma sobre a região abdominal superior em contextos de desconforto gástrico, seguindo práticas empíricas de algumas comunidades. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Em quintais e hortas, utilização de boldo-brasileiro como planta aromática e &quot;de farmácia caseira&quot;, colhendo folhas conforme necessidade para preparados digestivos. <a href="#ref-A1">[A1]</a> <a href="#ref-A3">[A3]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>Apesar de ser amplamente utilizado na prática popular, o boldo-brasileiro não é isento de riscos. Revisões de segurança apontam para potenciais efeitos adversos hepáticos e reprodutivos em doses elevadas ou uso prolongado de fitoterápicos à base de &quot;boldo&quot;, incluindo espécies como Plectranthus barbatus, sendo recomendada prudência no consumo crónico e na automedicação em pessoas com doença hepática prévia. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></p>
+      <p>O uso é desaconselhado em grávidas, lactantes e crianças, pela ausência de dados clínicos robustos de segurança e pela possibilidade de efeitos sobre o útero e sobre o metabolismo hepático descritos em estudos pré-clínicos. Pessoas que utilizam fármacos hepatotóxicos, anticoagulantes, anti-hipertensores ou outros medicamentos com janela terapêutica estreita devem evitar o uso de boldo-brasileiro sem aconselhamento médico. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U4">[U4]</a></p>
+      <p>Chás muito concentrados, uso de grandes quantidades de folhas frescas ou associações de boldo-brasileiro com outros produtos potencialmente hepatotóxicos podem aumentar o risco de efeitos adversos, incluindo náuseas, vómitos, irritação gastrointestinal e, em casos extremos, lesão hepática. Produtos industriais devem ser usados estritamente conforme a bula e não se recomenda o uso prolongado sem supervisão profissional. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        O boldo-brasileiro é utilizado sobretudo em chás simples de folhas frescas ou secas, em combinações digestivas e em fitoterápicos padronizados (cápsulas, comprimidos, gotas) com indicações para má digestão e apoio hepatobiliar. No uso caseiro, recomenda-se moderação na quantidade de folhas, evitando preparações excessivamente concentradas ou uso prolongado sem orientação. As receitas e preparados devem seguir as indicações das fontes de referência e ser sempre enquadrados pelas recomendações de segurança.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="boldo-brasileiro_receitas.html">Chá simples de boldo-brasileiro:</a> infusão de poucas folhas frescas usada como bebida ocasional após refeições pesadas para aliviar empachamento e desconforto digestivo ligeiro. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="boldo-brasileiro_receitas.html">Infusão de folhas secas:</a> chá preparado com folhas secas de boldo-brasileiro, tomado em pequenas quantidades como apoio em dispepsia funcional e digestão de gorduras. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="boldo-brasileiro_receitas.html">Chá digestivo combinado:</a> infusão que junta boldo-brasileiro com outras ervas digestivas, consumida após refeições mais ricas para aliviar sensação de peso gástrico. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="boldo-brasileiro_receitas.html">Fitoterápico padronizado em cápsulas:</a> suplemento à base de extrato de Plectranthus barbatus, utilizado segundo posologia do fabricante como coadjuvante em queixas digestivas. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="boldo-brasileiro_receitas.html">Solução oral em gotas de boldo-brasileiro:</a> preparado líquido concentrado tomado diluído em água antes ou depois das refeições, respeitando doses e advertências da embalagem. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="boldo-brasileiro_receitas.html">Macerato suave de folhas frescas:</a> folhas de boldo-brasileiro ligeiramente esmagadas e maceradas em água morna, ingeridas em pequenas porções em situações pontuais de empachamento. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="boldo-brasileiro_receitas.html">Cataplasma externo de folhas:</a> aplicação tópica de folhas frescas amassadas sobre a zona abdominal, usada tradicionalmente para aliviar desconforto gástrico ligeiro. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="boldo-brasileiro_receitas.html">Chá morno antes de deitar:</a> pequena chávena de infusão suave de boldo-brasileiro tomada à noite quando o desconforto digestivo interfere com o adormecer. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="boldo-brasileiro_receitas.html">Infusão concentrada para higiene:</a> chá forte de boldo-brasileiro utilizado como base em produtos de higiene natural destinados a peles oleosas ou congestionadas. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="boldo-brasileiro_receitas.html">Decocção leve para apoio digestivo:</a> preparação de folhas em água fervida por curto período, bebida ocasionalmente após refeições gordurosas em pessoas sem doença hepática conhecida. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>Na fitoterapia popular brasileira, o boldo-brasileiro é um dos principais remédios caseiros para queixas digestivas, em especial má digestão, empachamento, náuseas ligeiras e sensação de &quot;fígado carregado&quot; após excessos alimentares. É descrito como colerético e colagogo, estimulando a produção e a secreção da bile, o que pode facilitar a digestão de gorduras em pessoas sem doença hepatobiliar grave. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a></p>
+      <p>Estudos pré-clínicos com extratos de Plectranthus barbatus indicam efeitos gastroprotetores em modelos de lesão gástrica induzida por etanol ou fármacos ulcerogénicos, bem como ação antioxidante e possível modulação de enzimas e mediadores inflamatórios no fígado e no estômago. Tais resultados ajudam a explicar o uso tradicional como planta de apoio ao fígado e ao estômago, embora a extrapolação para benefícios clínicos em humanos exija cautela. <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>Revisões recentes chamam a atenção para uma dualidade: por um lado, a existência de fitoterápicos padronizados com evidência razoável de eficácia e segurança em doses recomendadas; por outro, relatos de toxicidade hepática e de efeitos adversos reprodutivos em contextos de uso excessivo, prolongado ou em combinação com outros ingredientes. Isso reforça a importância de distinguir entre preparações tradicionais moderadas e o uso indiscriminado de extratos concentrados. <a href="#ref-M3">[M3]</a> <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Adjuvante em queixas de má digestão e empachamento após refeições gordurosas, ajudando a aliviar sensação de peso gástrico, flatulência e náuseas ligeiras. <a href="#ref-M1">[M1]</a> <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a></li>
+        <li>Apoio complementar em distúrbios digestivos funcionais, como dispepsia não ulcerosa, em pessoas sem sinais de alarme nem doença hepatobiliar grave conhecida. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a></li>
+        <li>Potencial efeito gastroprotetor e antioxidante em situações de agressão gástrica aguda (por exemplo por álcool ou AINEs), sugerido por estudos experimentais com extratos de folhas. <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a></li>
+        <li>Possível apoio hepatoprotetor em contextos de stress oxidativo hepático moderado, em doses e preparações específicas estudadas experimentalmente, embora ainda sem indicações clínicas firmemente estabelecidas em humanos. <a href="#ref-F3">[F3]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-U2">[U2]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>Plectranthus barbatus é rico em diterpenóides do tipo labdano e outros constituintes lipofílicos, incluindo forskolina (coleonol) e uma série de coleonas (como 16S-coleon E), além de óleos essenciais, fenóis, flavonoides e outros metabólitos secundários. Revisões fitoquímicas indicam que diterpenos diterpenóides oxidativamente funcionalizados são alguns dos principais responsáveis por atividades farmacológicas observadas, incluindo efeitos sobre a produção de AMP cíclico e sobre a motilidade gastrointestinal. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>Estudos in vitro e in vivo mostraram que extratos de Plectranthus barbatus podem exercer efeitos gastroprotetores, antioxidantes e hepatomoduladores, reduzindo lesões gástricas induzidas por etanol e atenuando danos hepáticos associados a sobrecarga de ferro e stress oxidativo. Estes efeitos têm sido relacionados com a presença de diterpenos específicos e de compostos fenólicos com capacidade antioxidante. <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>Por outro lado, trabalhos toxicológicos em modelos animais com extratos concentrados ou com espécies próximas conhecidas como &quot;boldo&quot; evidenciam uma janela terapêutica relativamente estreita em doses elevadas, com relatos de hepatotoxicidade e efeitos adversos reprodutivos. Este conjunto de dados reforça a necessidade de respeitar doses tradicionais e informações de monografias oficiais ao utilizar Plectranthus barbatus como fitoterápico. <a href="#ref-F2">[F2]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Diterpenóides labdânicos totais nas folhas (incluindo coleonas)</td><td>presença confirmada; múltiplos compostos isolados</td></tr>
+        <tr><td>Forskolina (coleonol) em raízes e partes aéreas</td><td>traços a dezenas de µg/g de material seco (dependendo da parte da planta)</td></tr>
+        <tr><td>Teor de óleo essencial nas folhas</td><td>≈0,1–0,5 % v/m</td></tr>
+        <tr><td>Fenóis totais em extratos das folhas</td><td>≈10–50 mg de equivalentes de ácido gálico/g de extrato</td></tr>
+        <tr><td>Atividade gastroprotetora em modelos de lesão gástrica (extratos de folhas)</td><td>redução significativa de lesões gástricas vs. controlo em doses na gama de dezenas a centenas de mg/kg</td></tr>
+        <tr><td>Atividade hepatoprotetora/antioxidante em modelos de sobrecarga de ferro</td><td>redução de marcadores de stress oxidativo hepático em modelos animais tratados com extratos</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Planta aromática de quintal usada como elemento de bordadura e de farmácia caseira em jardins de clima ameno. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Uso em preparações de cosmética natural (sabonetes artesanais, tônicos, loções) destinadas a peles oleosas ou congestionadas, aproveitando o aroma intenso e a perceção de apoio hepático/digestivo. <a href="#ref-A2">[A2]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Emprego em jardins sensoriais e hortas pedagógicas como planta de cheiro forte, utilizada para ensinar sobre plantas medicinais e diferenças entre espécies de &quot;boldo&quot;. <a href="#ref-A1">[A1]</a> <a href="#ref-A4">[A4]</a></li>
+        <li>Planta companheira em canteiros de aromáticas, podendo ajudar a confundir insetos herbívoros pelo cheiro intenso, embora a evidência seja sobretudo empírica. <a href="#ref-P1">[P1]</a> <a href="#ref-A1">[A1]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 6,7 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em permacultura, o boldo-brasileiro oferece funções medicinais relevantes (apoio digestivo e hepatobiliar), aroma intenso e algum contributo ecológico como planta melífera e aromática em bordaduras e canteiros de ervas. Desenvolve-se bem em solos férteis e bem drenados, produzindo biomassa moderada para compostagem ou cobertura leve, e pode ser multiplicado facilmente por estacas, o que facilita a sua integração em sistemas domésticos.
+As limitações prendem-se com a sensibilidade ao frio em climas atlânticos mais rigorosos, a dependência de solos relativamente férteis e bem drenados e a necessidade de prudência no uso medicinal devido a potenciais riscos hepáticos em doses elevadas ou uso prolongado. O grau de funcionalidade reflete um bom equilíbrio entre funções medicinais, aromáticas e ecológicas, com penalizações moderadas por questões de segurança e por uma contribuição estrutural e de biomassa que, embora útil, não é das mais elevadas.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        Na avaliação do índice, o boldo-brasileiro pontua bem em função medicinal (MED), rusticidade em climas adequados (RUST) e multifuncionalidade cultural (MULT), bem como em ecologia (ECO) pelo seu potencial melífero e valor para insetos. A contribuição para solo/biomassa (SOLO) é moderada e a função estrutural (ESTR) é sobretudo de subarbusto de bordadura.
+As penalizações consideram o risco de toxicidade hepática em uso indevido (TOX) e a sensibilidade a geadas e solos encharcados (COMP no sentido de exigência de maneio). O resultado final é uma planta bastante interessante em quintais de clima ameno, sobretudo como recurso medicinal e aromático, mas que não atinge os valores máximos de funcionalidade de espécies mais robustas e multifuncionais.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-A1">[A1]</a> <a href="#ref-M3">[M3]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Fitoterapia Brasil. &quot;Plectranthus barbatus Andr.&quot; Ficha da planta medicinal com descrição botânica, nomes populares, partes usadas e principais indicações.</li>
+        <li>URL: <a href="https://fitoterapiabrasil.com.br/planta-medicinal/plectranthus-barbatus" target="_blank" rel="noopener">https://fitoterapiabrasil.com.br/planta-medicinal/plectranthus-barbatus</a></li>
+        <li id="ref-D2">[D2] Wikipedia (PT). &quot;Plectranthus barbatus&quot;. Entrada com informações sobre taxonomia, distribuição, nomes comuns e usos tradicionais.</li>
+        <li>URL: <a href="https://pt.wikipedia.org/wiki/Plectranthus_barbatus" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Plectranthus_barbatus</a></li>
+        <li id="ref-D3">[D3] Alasbahi RH, Melzig MF. &quot;Plectranthus barbatus: A Review of Phytochemistry, Ethnobotanical Uses and Pharmacology&quot;. Planta Medica, 2010;76(7):653–661.</li>
+        <li>URL: <a href="https://www.thieme-connect.com/products/ejournals/pdf/10.1055/s-0029-1240898.pdf" target="_blank" rel="noopener">https://www.thieme-connect.com/products/ejournals/pdf/10.1055/s-0029-1240898.pdf</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Fitoterapia Brasil. &quot;Plectranthus barbatus Andr.&quot; Secções sobre cultivo, condições de solo, clima e propagação por estacas.</li>
+        <li>URL: <a href="https://fitoterapiabrasil.com.br/planta-medicinal/plectranthus-barbatus" target="_blank" rel="noopener">https://fitoterapiabrasil.com.br/planta-medicinal/plectranthus-barbatus</a></li>
+        <li id="ref-S2">[S2] Artigos de horticultura e blogs de jardinagem brasileiros que descrevem o cultivo de boldo-brasileiro em vasos e canteiros, com recomendações de proteção contra frio e excesso de água.</li>
+        <li>Exemplo: <a href="https://saborgaia.com/boldo-brasileiro-cultivo-e-usos-medicinais/" target="_blank" rel="noopener">https://saborgaia.com/boldo-brasileiro-cultivo-e-usos-medicinais/</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] Souza GAB et al. &quot;Safety of Boldo phytomedicines following systemic administration: A systematic review of pre-clinical studies&quot;. Revista Brasileira de Plantas Medicinais, 2023.</li>
+        <li>URL: <a href="https://rbpm.emnuvens.com.br/revista/article/view/128" target="_blank" rel="noopener">https://rbpm.emnuvens.com.br/revista/article/view/128</a></li>
+        <li id="ref-U2">[U2] De Souza GAB et al. &quot;Uso do fitoterápico Plectranthus barbatus (boldo brasileiro): benefícios e potenciais riscos à saúde hepática&quot;. Trabalho de revisão disponível em ResearchGate.</li>
+        <li>URL: <a href="https://www.researchgate.net/publication/398898318_USO_DO_FITOTERAPICO_PLECTRANTHUS_BARBATUS_BOLDO_BRASILEIRO_BENEFICIOS_E_POTENCIAIS_RISCOS_A_SAUDE_HEPATICA" target="_blank" rel="noopener">https://www.researchgate.net/publication/398898318_USO_DO_FITOTERAPICO_PLECTRANTHUS_BARBATUS_BOLDO_BRASILEIRO_BENEFICIOS_E_POTENCIAIS_RISCOS_A_SAUDE_HEPATICA</a></li>
+        <li id="ref-U3">[U3] Revisão &quot;Safety of Boldo phytomedicines following systemic administration&quot; em ResearchGate, abordando relatos de hepatotoxicidade, teratogenicidade e abortividade associados a diferentes espécies chamadas &quot;boldo&quot;.</li>
+        <li>URL: <a href="https://www.researchgate.net/publication/377463839_Safety_of_Boldo_phytomedicines_following_systemic_administration_A_systematic_review_of_pre-clinical_studies" target="_blank" rel="noopener">https://www.researchgate.net/publication/377463839_Safety_of_Boldo_phytomedicines_following_systemic_administration_A_systematic_review_of_pre-clinical_studies</a></li>
+        <li id="ref-U4">[U4] Davies EC et al. Revisão sobre hepatotoxicidade associada a suplementos herbais, incluindo casos envolvendo preparados de boldo e plantas coleréticas, enfatizando cautelas em doentes hepáticos.</li>
+        <li>URL: <a href="https://febs.onlinelibrary.wiley.com/doi/full/10.1002/2211-5463.70170" target="_blank" rel="noopener">https://febs.onlinelibrary.wiley.com/doi/full/10.1002/2211-5463.70170</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Westwing Brasil. &quot;Boldo: aprenda os benefícios e como utilizá-lo na saúde&quot;. Artigo em português com dicas de preparo de chá de boldo para digestão, incluindo quantidades e frequência.</li>
+        <li>URL: <a href="https://www.westwing.com.br/guiar/boldo/" target="_blank" rel="noopener">https://www.westwing.com.br/guiar/boldo/</a></li>
+        <li id="ref-R2">[R2] Correio Braziliense. Artigo de divulgação sobre chá de boldo e digestão, explicando uso após refeições gordurosas e salientando a ação colerética e colagoga.</li>
+        <li>URL: <a href="https://www.correiobraziliense.com.br/cbradar/senti-alivio-imediato-no-estomago-e-mais-disposicao-ao-experimentar-este-cha-natural/" target="_blank" rel="noopener">https://www.correiobraziliense.com.br/cbradar/senti-alivio-imediato-no-estomago-e-mais-disposicao-ao-experimentar-este-cha-natural/</a></li>
+        <li id="ref-R3">[R3] Blogs de saúde natural em português (por exemplo, &quot;Use Orgânico&quot; e outros) que sugerem receitas de chás digestivos combinados com boldo, camomila e erva-doce, com proporções aproximadas.</li>
+        <li>Exemplo: <a href="https://www.useorganico.com.br/blog/cha-de-boldo-para-que-serve" target="_blank" rel="noopener">https://www.useorganico.com.br/blog/cha-de-boldo-para-que-serve</a></li>
+        <li id="ref-R4">[R4] Formulário de Fitoterápicos da Farmacopeia Brasileira, 2ª edição. Monografia de preparações contendo Plectranthus barbatus, indicando formas farmacêuticas em comprimidos e cápsulas e doses recomendadas.</li>
+        <li>URL: <a href="https://www.gov.br/anvisa/pt-br/assuntos/farmacopeia/formulario-fitoterapico/2024-fffb2-1-er-3-atual-final-versao-com-capa-em-word-2-jan-2024.pdf" target="_blank" rel="noopener">https://www.gov.br/anvisa/pt-br/assuntos/farmacopeia/formulario-fitoterapico/2024-fffb2-1-er-3-atual-final-versao-com-capa-em-word-2-jan-2024.pdf</a></li>
+        <li id="ref-R5">[R5] Bulas de fitoterápicos comerciais brasileiros à base de Plectranthus barbatus (malva-santa/boldo-brasileiro), com posologias de gotas ou comprimidos para distúrbios digestivos leves.</li>
+        <li>Exemplo: <a href="https://www.bulas.med.br/p/bulas-de-medicamentos/bula/6139/fitoterapico-boldo-barbatus.htm" target="_blank" rel="noopener">https://www.bulas.med.br/p/bulas-de-medicamentos/bula/6139/fitoterapico-boldo-barbatus.htm</a></li>
+        <li id="ref-R6">[R6] Artigos de herbalistas e blogs de fitoterapia que descrevem uso de macerados suaves de folhas frescas de boldo-brasileiro, com ênfase em doses pequenas e uso pontual.</li>
+        <li>Exemplo: <a href="https://www.herbalsafety.com.br/boldo-brasileiro-uso-tradicional" target="_blank" rel="noopener">https://www.herbalsafety.com.br/boldo-brasileiro-uso-tradicional</a></li>
+        <li id="ref-R7">[R7] Registos etnobotânicos e blogs populares que referem uso tópico de folhas amassadas de boldo-brasileiro na região abdominal como prática empírica em desconforto digestivo.</li>
+        <li id="ref-R8">[R8] Textos de bem-estar e sono que sugerem chá suave de boldo como parte de rituais noturnos em pessoas com digestão difícil, sempre em pequenas doses.</li>
+        <li id="ref-R9">[R9] Blogs de cosmética natural que utilizam infusões de boldo-brasileiro como fase aquosa em sabonetes artesanais e tônicos para pele oleosa.</li>
+        <li id="ref-R10">[R10] Fontes populares em português que descrevem decocções leves de boldo para apoio digestivo, insistindo na necessidade de uso moderado e de evitar concentrações elevadas.</li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] Formulário de Fitoterápicos da Farmacopeia Brasileira, 2ª edição. Monografia de Plectranthus barbatus (malva-santa), com indicações para distúrbios digestivos leves, posologia e forma de uso.</li>
+        <li>URL: <a href="https://www.gov.br/anvisa/pt-br/assuntos/farmacopeia/formulario-fitoterapico/2024-fffb2-1-er-3-atual-final-versao-com-capa-em-word-2-jan-2024.pdf" target="_blank" rel="noopener">https://www.gov.br/anvisa/pt-br/assuntos/farmacopeia/formulario-fitoterapico/2024-fffb2-1-er-3-atual-final-versao-com-capa-em-word-2-jan-2024.pdf</a></li>
+        <li id="ref-M2">[M2] Campos A. et al. &quot;Efeito gastroprotetor de fitoterápicos à base de Plectranthus barbatus (malva-santa)&quot;. GEINTEC, 2015. Estudo que demonstra atividade gastroprotetora em modelo experimental.</li>
+        <li>URL: <a href="http://revistageintec.net/portal/index.php/revista/article/view/433" target="_blank" rel="noopener">http://revistageintec.net/portal/index.php/revista/article/view/433</a></li>
+        <li id="ref-M3">[M3] Souza GAB et al. &quot;Safety of Boldo phytomedicines following systemic administration: A systematic review of pre-clinical studies&quot;. Rev. Bras. Plantas Med., 2023, discutindo benefícios e riscos potenciais de boldo.</li>
+        <li>URL: <a href="https://rbpm.emnuvens.com.br/revista/article/view/128" target="_blank" rel="noopener">https://rbpm.emnuvens.com.br/revista/article/view/128</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Alasbahi RH, Melzig MF. &quot;Plectranthus barbatus: A Review of Phytochemistry, Ethnobotanical Uses and Pharmacology&quot;. Planta Medica, 2010;76(7):653–661. Revisão abrangente dos diterpenos, óleos essenciais e outras substâncias.</li>
+        <li>URL: <a href="https://www.thieme-connect.com/products/ejournals/pdf/10.1055/s-0029-1240898.pdf" target="_blank" rel="noopener">https://www.thieme-connect.com/products/ejournals/pdf/10.1055/s-0029-1240898.pdf</a></li>
+        <li id="ref-F2">[F2] Kulbat-Warycha K. et al. &quot;Bioactive Properties of Extracts from Plectranthus barbatus Andr.&quot; Molecules, 2022;27(24):8986. Estudo que avalia propriedades antioxidantes e bioativas de extratos de P. barbatus.</li>
+        <li>URL: <a href="https://www.mdpi.com/1420-3049/27/24/8986" target="_blank" rel="noopener">https://www.mdpi.com/1420-3049/27/24/8986</a></li>
+        <li id="ref-F3">[F3] Perandin D. et al. &quot;Protection against hepatic oxidative damage induced by iron overload using Plectranthus barbatus aqueous extract&quot;. Revista Brasileira de Plantas Medicinais, 2015. Demonstra efeito hepatoprotetor em modelo de sobrecarga de ferro.</li>
+        <li>URL: <a href="https://www.scielo.br/j/rbpm/a/LsVSwCmZ7dDJBDc3XxRvs3q/?lang=en" target="_blank" rel="noopener">https://www.scielo.br/j/rbpm/a/LsVSwCmZ7dDJBDc3XxRvs3q/?lang=en</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Fitoterapia Brasil. &quot;Plectranthus barbatus Andr.&quot;. Secções sobre usos tradicionais, cultivo em quintais e papel como planta de farmácia caseira.</li>
+        <li>URL: <a href="https://fitoterapiabrasil.com.br/planta-medicinal/plectranthus-barbatus" target="_blank" rel="noopener">https://fitoterapiabrasil.com.br/planta-medicinal/plectranthus-barbatus</a></li>
+        <li id="ref-A2">[A2] Blogs de jardinagem e hortas urbanas que descrevem o uso ornamental e aromático do boldo-brasileiro em vasos e canteiros.</li>
+        <li>Exemplo: <a href="https://saborgaia.com/boldo-brasileiro-cultivo-e-usos-medicinais/" target="_blank" rel="noopener">https://saborgaia.com/boldo-brasileiro-cultivo-e-usos-medicinais/</a></li>
+        <li id="ref-A3">[A3] Artigos de cosmética natural que referem o uso de infusões de boldo-brasileiro em sabonetes, tônicos e loções artesanais.</li>
+        <li id="ref-A4">[A4] Recursos educativos em permacultura e hortas pedagógicas que incluem boldo-brasileiro como exemplo de planta medicinal aromática de fácil propagação.</li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] Recursos de permacultura e agroecologia que recomendam a inclusão de boldo-brasileiro em canteiros de ervas e bordaduras medicinais em climas amenos, devido ao seu valor como planta digestiva e aromática.</li>
+        <li id="ref-P2">[P2] Artigos de jardinagem e hortas urbanas que abordam a rusticidade relativa do boldo-brasileiro em solos bem drenados, bem como a necessidade de proteção contra geadas, úteis para ponderar o seu papel estrutural em sistemas de permacultura domésticos.</li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

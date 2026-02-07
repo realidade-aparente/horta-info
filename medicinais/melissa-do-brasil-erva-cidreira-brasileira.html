@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html" class="ativa">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+  <a class="next" href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Melissa do Brasil / Erva-cidreira-brasileira (<em>Lippia alba (Mill.) N.E. Br. ex Britton & P. Wilson</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Verbenaceae</span>
+  <span>Parte usada: folhas e sumidades floridas</span>
+  <span>Tipo: subarbusto aromático perene medicinal</span>
+  <span>Produção: <strong>cultivo em hortas, jardins, vasos</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> América tropical, cultivada no Brasil, Caribe e outras regiões subtropicais</div>
+  <div><strong>Uso principal</strong> ansiolítica e sedativa suave, apoio digestivo e em queixas respiratórias</div>
+  <div><strong>Perfil medicinal</strong> planta calmante polivalente, útil em ansiedade, sono, digestão e gripes</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Melissa do Brasil / Erva-cidreira-brasileira (Lippia alba (Mill.) N.E. Br. ex Britton & P. Wilson)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>Lippia alba é um subarbusto aromático muito ramificado, que pode atingir 1–1,5 m de altura, com folhas ovais a lanceoladas, opostas, rugosas ao toque e profundamente perfumadas quando esmagadas. As pequenas flores brancas a lilases organizam-se em inflorescências terminais ou axilares. A planta apresenta grande variabilidade morfológica e química, com diferentes quimiotipos definidos sobretudo pela composição do óleo essencial.</p>
+      <p>Em português é conhecida por vários nomes: melissa do Brasil, erva-cidreira-brasileira, erva-cidreira-de-arbusto, erva-cidreira-de-folha, falsa-melissa, verbena-branca, verbena-brasileira, entre outros. Em inglês surgem designações como bushy lippia, bushy matgrass e white verbena. É comum a confusão popular com a verdadeira melissa (Melissa officinalis) e com o capim-cidreira (Cymbopogon citratus), todos com aroma cítrico e usos calmantes, mas com diferenças botânicas e fitoquímicas importantes.</p>
+      <p>No Brasil e noutros países da América Latina, Lippia alba é uma das principais plantas de &quot;chá de dormir&quot; ou &quot;chá calmante&quot;, usada em contexto familiar para ansiedade, insónia, cólicas, distúrbios gastrointestinais funcionais e sintomas de gripe. O óleo essencial extraído das folhas e flores apresenta quimiotipos variados (citral, linalol, carvona, limoneno, entre outros), o que explica diferenças subtis de aroma e possivelmente de perfil farmacológico entre populações.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em climas tropicais e subtropicais, Lippia alba comporta-se como subarbusto perene, mantendo folhas durante todo o ano e com maior crescimento na estação quente e chuvosa. Em Portugal continental, especialmente em zonas litoralizadas de clima suave, pode ser cultivada como perene ou subperene, sofrendo algum abrandamento vegetativo e eventual perda parcial de parte aérea no inverno, sobretudo quando exposta a geadas.
+O período de maior produção de folhas aromáticas e sumidades floridas vai, em geral, da primavera ao outono. As colheitas para uso medicinal e aromático fazem‑se preferencialmente na primavera e verão, em plantas bem estabelecidas, evitando cortes excessivos antes de períodos frios.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Crescimento ativo e rebentação nova: principalmente da primavera ao início do outono, em resposta a temperaturas amenas a quentes.</li>
+        <li>Floração: primavera tardia até final do verão, com variações consoante o clima local e a forma de manejo (podas, irrigação).</li>
+        <li>Colheita de folhas e sumidades floridas para chá: preferencialmente na primavera e verão, em dias secos, evitando horas de maior calor solar.</li>
+        <li>Em regiões com invernos frios, pode comportar-se como subperene, com redução de copa e necessidade de proteção contra geadas (coberturas, estufins, locais abrigados).</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Infusão de folhas e sumidades floridas de Lippia alba (por exemplo 0,4–0,6 g de droga vegetal seca em cerca de 150 mL de água a ferver, em infusão durante 5–10 minutos), conforme formulações de formulários fitoterápicos brasileiros, utilizada como adjuvante em quadros de ansiedade leve, insónia transitória e queixas digestivas funcionais. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-U1">[U1]</a></li>
+        <li>Preparações farmacêuticas padronizadas (tintura, extratos) de Lippia alba, utilizando quimiotipos específicos (por exemplo geranial/carvona ou citral) em estudos experimentais e aplicações clínicas iniciais, para exploração de efeitos ansiolíticos, sedativos e antiespasmódicos. <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></li>
+        <li>Aromaterapia com óleo essencial de Lippia alba por inalação (difusores, inalação controlada) em ensaios clínicos e quasi-experimentais que avaliam reduções de ansiedade de estado, melhoria de parâmetros de relaxamento e apoio ao sono, utilizando doses baixas e períodos limitados de exposição. <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-F3">[F3]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Chá de &quot;melissa&quot; ou de erva‑cidreira‑brasileira preparado com folhas frescas ou secas, tomado ao fim do dia para acalmar, aliviar o nervosismo, reduzir palpitações ligadas à ansiedade e facilitar o adormecer. <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a></li>
+        <li>Chá morno de Lippia alba usado após refeições pesadas para aliviar má digestão, gases, cólicas intestinais e desconforto abdominal associado a tensão emocional. <a href="#ref-R2">[R2]</a> <a href="#ref-R3">[R3]</a></li>
+        <li>Infusões combinadas com outras plantas calmantes, como Melissa officinalis, Passiflora spp. ou camomila, em receitas caseiras para insónia, irritabilidade e dores de cabeça de tensão. <a href="#ref-R1">[R1]</a> <a href="#ref-R3">[R3]</a> <a href="#ref-A1">[A1]</a></li>
+        <li>Uso popular de folhas frescas esmagadas ou embebidas em água quente para inalação de vapores aromáticos em gripes, constipações leves e congestão das vias respiratórias superiores, sobretudo em contextos tradicionais brasileiros. <a href="#ref-R2">[R2]</a> <a href="#ref-A1">[A1]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>Preparações aquosas de Lippia alba (chás de folhas e sumidades floridas) são geralmente bem toleradas em adultos saudáveis quando usadas em doses moderadas e por períodos curtos, mas a evidência clínica de longo prazo é limitada. Em casos de sintomas persistentes (ansiedade importante, insónia crónica, dor, febre), o chá não deve substituir avaliação médica. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a></p>
+      <p>Formulários fitoterápicos oficiais no Brasil indicam Lippia alba para uso adulto, com contraindicações em gravidez, lactação e menores de 18 anos, devido à falta de dados de segurança robustos. Recomenda-se também cautela em pessoas com hipotensão, visto que os efeitos sedativos e relaxantes podem potenciar quedas de tensão, especialmente em associação com outros sedativos. <a href="#ref-U1">[U1]</a> <a href="#ref-U3">[U3]</a></p>
+      <p>O óleo essencial de Lippia alba é concentrado e não deve ser ingerido de forma caseira. A utilização por via oral ou em aromaterapia deve observar diluições adequadas e preferencialmente seguir orientação de profissional habilitado, sobretudo em pessoas com epilepsia, doenças neurológicas, problemas respiratórios ou sob medicação psicotrópica. Podem ocorrer reações alérgicas cutâneas ou respiratórias em indivíduos sensíveis a óleos essenciais. <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-F3">[F3]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        A Melissa do Brasil é usada principalmente em chás simples ou combinados, infusões calmantes e preparados padronizados descritos em formulários fitoterápicos brasileiros (infusão e tintura). Em aromaterapia utiliza-se o óleo essencial em difusores e misturas de massagem relaxante, sempre em diluições adequadas. As receitas devem respeitar as doses sugeridas nas fontes técnicas e ser enquadradas pelas recomendações de segurança.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="melissa-do-brasil-erva-cidreira-brasileira_receitas.html">Chá simples de melissa do Brasil:</a> infusão de folhas de Lippia alba bebida ao longo do dia como chá calmante e ligeiramente sedativo para ansiedade e nervosismo. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="melissa-do-brasil-erva-cidreira-brasileira_receitas.html">Chá misto de melissa e erva‑cidreira‑brasileira:</a> combinação de Melissa officinalis com Lippia alba em infusão relaxante para tensão nervosa e dificuldade em adormecer. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="melissa-do-brasil-erva-cidreira-brasileira_receitas.html">Infusão fitoterápica segundo formulário brasileiro:</a> preparação rápida de chá de Lippia alba usada em doses fracionadas ao dia como apoio em ansiedade e distúrbios digestivos funcionais. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="melissa-do-brasil-erva-cidreira-brasileira_receitas.html">Tintura de Lippia alba:</a> extrato hidroalcoólico concentrado obtido de folhas e flores, utilizado em gotas diluídas como coadjuvante em ansiedade, tensão muscular e digestão nervosa. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="melissa-do-brasil-erva-cidreira-brasileira_receitas.html">Chá calmante suave:</a> infusão leve de Lippia alba destinada a pessoas sensíveis, usada em pequenas quantidades como apoio ao sono e ao relaxamento, com especial cautela em crianças. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="melissa-do-brasil-erva-cidreira-brasileira_receitas.html">Mistura para sono com ervas relaxantes:</a> chá que combina Lippia alba com outras plantas calmantes, tomado à noite para facilitar o adormecer em períodos de maior stress. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="melissa-do-brasil-erva-cidreira-brasileira_receitas.html">Chá digestivo com Lippia alba:</a> infusão aromática em que a planta é associada a outras espécies carminativas, utilizada após refeições pesadas para aliviar gases e desconforto abdominal. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="melissa-do-brasil-erva-cidreira-brasileira_receitas.html">Difusor com óleo essencial de verbena‑branca:</a> uso de algumas gotas do óleo essencial de Lippia alba em difusor ambiental para promover sensação de relaxamento e ambiente propício ao sono. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="melissa-do-brasil-erva-cidreira-brasileira_receitas.html">Óleo de massagem com Lippia alba:</a> óleo vegetal aromatizado com poucas gotas de óleo essencial, aplicado em massagens suaves no pescoço, ombros ou plantas dos pés para aliviar tensão. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="melissa-do-brasil-erva-cidreira-brasileira_receitas.html">Xarope simples com Lippia alba:</a> preparação caseira à base de infusão concentrada da planta adoçada, usada em pequenas quantidades como apoio em tosse irritativa ligeira por períodos limitados. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>Diversos estudos etnofarmacológicos descrevem Lippia alba como uma das principais plantas calmantes e digestivas da medicina tradicional brasileira, usada em ansiedade, insónia, palpitações de origem nervosa, cólicas gastrointestinais e sintomas de gripe. Revisões fitoquímicas e farmacológicas mostram a presença de quimiotipos distintos (citral, linalol, carvona, entre outros), com atividade no sistema nervoso central e no trato gastrointestinal. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M5">[M5]</a></p>
+      <p>Ensaios pré-clínicos demonstram efeitos ansiolíticos, sedativos, anticonvulsivantes, analgésicos e antiespasmódicos em modelos animais, associados à ação de citral, linalol, carvona e outros monoterpenos sobre recetores e canais neuronais. Estudos in vitro e em modelos animais também documentam propriedades antioxidantes, anti-inflamatórias, antimicrobianas e antifúngicas do óleo essencial e de extratos de Lippia alba. <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F4">[F4]</a> <a href="#ref-F5">[F5]</a></p>
+      <p>Ensaios clínicos com aromaterapia utilizando óleo essencial de Lippia alba, bem como estudos clínicos iniciais em humanos, sugerem redução de ansiedade de estado e melhoria de parâmetros subjetivos de relaxamento em determinados contextos, ainda que a evidência seja moderada e limitada a populações específicas e a protocolos bem definidos. Assim, a planta é considerada sobretudo um adjuvante complementar, e não substituto, de abordagens médicas convencionais. <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-M5">[M5]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Adjuvante em ansiedade ligeira, tensão nervosa e dificuldades em adormecer, especialmente na forma de chás e aromaterapia, quando integrado em estratégias de higiene do sono e gestão de stress. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M5">[M5]</a></li>
+        <li>Apoio digestivo em dispepsia funcional, flatulência e cólicas gastrointestinais associadas a stress, graças a propriedades antiespasmódicas e carminativas. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a></li>
+        <li>Suporte complementar em infeções respiratórias ligeiras, gripes e constipações, ajudando a aliviar tosse irritativa, sensação de aperto torácico e mal‑estar geral, quando usada em chás mornos e inalações de vapor. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a></li>
+        <li>Potencial adjuvante em inflamação crónica de baixo grau, stress oxidativo e infeções fúngicas e bacterianas superficiais, com base em estudos que evidenciam atividade antioxidante, anti-inflamatória e antimicrobiana de quimiotipos específicos do óleo essencial. <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F4">[F4]</a> <a href="#ref-F5">[F5]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>O óleo essencial de Lippia alba apresenta grande diversidade química, com vários quimiotipos descritos, entre os quais se destacam os quimiotipos citral, linalol, carvona, limoneno e outros perfis mistos. Em muitos acessos de quimiotipo citral, o óleo é rico em neral e geranial, com teores somados que podem ultrapassar 70% da fração volátil, enquanto em quimiotipos linalol ou carvona estes compostos passam a ser dominantes. Esta variabilidade tem implicações na intensidade do aroma, na atividade antimicrobiana e antifúngica e no perfil de segurança. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F4">[F4]</a> <a href="#ref-F5">[F5]</a></p>
+      <p>Estudos analíticos mostram rendimentos típicos de óleo essencial na gama de 0,2–0,8% (m/m) das folhas, dependendo de fatores como origem geográfica, época de colheita, método de extração e parte da planta utilizada. Ensaios de atividade biológica evidenciam forte ação antifúngica e antibacteriana para óleos de quimiotipo citral contra vários fungos patogénicos humanos, com valores de MIC na gama de dezenas a poucas centenas de µg/mL. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F4">[F4]</a> <a href="#ref-F5">[F5]</a></p>
+      <p>Revisões recentes sobre Lippia alba destacam ainda atividades neurofarmacológicas (ansiolítica, sedativa, anticonvulsivante) associadas a monoterpenos como citral, linalol e carvona, bem como efeitos antioxidantes e moduladores de enzimas envolvidas em stress oxidativo. Estes dados reforçam a importância de identificar o quimiotipo do óleo essencial utilizado em produtos terapêuticos e em estudos clínicos. <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a> <a href="#ref-F5">[F5]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Teor de óleo essencial nas folhas (quimiotipos diversos)</td><td>≈0,2–0,8 % m/m</td></tr>
+        <tr><td>Citral total (neral + geranial) no óleo de quimiotipo citral</td><td>≈70–80 % da fração volátil</td></tr>
+        <tr><td>Linalol em óleos de quimiotipo linalol</td><td>≈20–60 % (área relativa, consoante o acesso)</td></tr>
+        <tr><td>Carvona em óleos de quimiotipo carvona</td><td>≈20–60 % (área relativa, consoante o acesso)</td></tr>
+        <tr><td>Atividade antifúngica do óleo essencial (MIC frente a fungos patogénicos)</td><td>MIC geralmente na gama de ≈50–300 µg/mL, consoante o microrganismo</td></tr>
+        <tr><td>Atividade antioxidante total dos extratos/óleos</td><td>atividade moderada a elevada em ensaios DPPH/ABTS (IC50 na gama de dezenas de µg/mL)</td></tr>
+        <tr><td>Efeitos neurofarmacológicos (ansiolítico/sedativo) em modelos pré-clínicos</td><td>efeitos significativos em doses de dezenas a centenas de mg/kg em modelos animais</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Planta aromática de jardim e horta, adequada para bordaduras perfumadas, zonas de estar e proximidade de caminhos, proporcionando aroma cítrico intenso ao toque. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Matéria-prima para óleos essenciais de verbena-branca/verbena-brasileira, usados em aromaterapia, perfumaria fina, sabonetes, velas aromáticas e produtos de bem‑estar. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Uso em sprays, soluções e produtos de limpeza naturais com propriedades desodorizantes e antimicrobianas, devido à atividade do óleo essencial contra vários microrganismos. <a href="#ref-A2">[A2]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Atração de polinizadores e insetos benéficos quando mantida em floração, contribuindo para a biodiversidade funcional na horta e no jardim. <a href="#ref-P1">[P1]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Planta de interesse educativo para distinguir diferentes &quot;ervas-cidreiras&quot; (Melissa officinalis, Cymbopogon citratus e Lippia alba) em hortas pedagógicas. <a href="#ref-D1">[D1]</a> <a href="#ref-A1">[A1]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 7,2 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em permacultura, a Melissa do Brasil destaca-se como planta aromática perene multifuncional: fornece folhas e flores para chás calmantes e digestivos, óleos essenciais para bem‑estar e produtos naturais, além de contribuir para a atração de polinizadores quando se permite a floração. O seu porte subarbustivo permite usá-la em bordaduras aromáticas, canteiros próximos de áreas de convívio e zonas de transição entre a horta e o jardim ornamental.
+Apesar de não ser uma grande produtora de biomassa para cobertura de solo, oferece algum material para mulching leve e compostagem, e a sua rusticidade em climas suaves, com baixa necessidade de fertilização e irrigação excessiva (uma vez estabelecida), torna-a adequada para sistemas de baixa manutenção. O principal cuidado está em garantir boa drenagem e algum abrigo contra geadas fortes, bem como em manejar o rebrote com podas regulares para evitar lenhificação excessiva.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação da Melissa do Brasil resulta de valores elevados em uso medicinal (MED=2) e em suporte à fauna e polinizadores quando se deixa florir (ECO=2), além de uma multifuncionalidade aromática e cultural significativa (MULT=2), incluindo usos em chá, aromaterapia e produtos naturais. Há ainda um contributo moderado para solo/biomassa (SOLO=1), sobretudo através de alguma produção de verde para cobertura leve e compostagem, e uma rusticidade globalmente boa em climas mediterrânicos e de transição (RUST=2), desde que se assegure drenagem e algum abrigo contra geadas. O uso alimentar direto em quantidade é limitado (ALIM=1), mas relevante como chá e condimento aromático.
+As penalizações aplicam-se principalmente à sensibilidade relativa a frio intenso e encharcamento, que podem limitar o seu desempenho em locais mais expostos ou de solos pesados (COMP=-1 em determinados contextos), enquanto o risco de toxicidade (TOX), perigo físico (PERIGO) e comportamento invasor problemático (INVAS) é considerado baixo no contexto hortícola quando se respeitam as doses tradicionais e as contraindicações oficiais. O valor final em escala 0–10 resulta da aplicação do algoritmo descrito no projeto (soma dos critérios positivos até 14 pontos, subtração de penalizações, com conversão por regra de três simples), situando a Melissa do Brasil em cerca de 7,2/10 e indicando uma planta de elevada funcionalidade em permacultura, especialmente útil em bordaduras aromáticas, jardins de bem‑estar e sistemas alimentares biodiversos.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Wikipédia. Lippia alba. Descrição botânica, distribuição geográfica e lista de nomes populares em português e outros idiomas. Disponível em: <a href="https://pt.wikipedia.org/wiki/Lippia_alba" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Lippia_alba</a></li>
+        <li id="ref-D2">[D2] Fitoterapia Brasil. Lippia alba (Mill.) N.E. Br. ex Britton &amp; P. Wilson. Ficha técnica com informações gerais sobre a espécie, família, parte usada e usos medicinais tradicionais. Disponível em: <a href="https://fitoterapiabrasil.com.br/planta-medicinal/lippia-alba" target="_blank" rel="noopener">https://fitoterapiabrasil.com.br/planta-medicinal/lippia-alba</a></li>
+        <li id="ref-D3">[D3] LexiPlant. Lippia alba – Bushy Lippia. Ficha descritiva com notas sobre morfologia, distribuição, nomes comuns e usos medicinais e culinários. Disponível em: <a href="https://lexiplant.com/pt/plant/lippia-alba-bushy-lippia" target="_blank" rel="noopener">https://lexiplant.com/pt/plant/lippia-alba-bushy-lippia</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Fitoterapia Brasil. Lippia alba – informações sobre cultivo. Descreve necessidades de solo, luz, clima e manejo para produção de folhas e óleo essencial. Disponível em: <a href="https://fitoterapiabrasil.com.br/planta-medicinal/lippia-alba" target="_blank" rel="noopener">https://fitoterapiabrasil.com.br/planta-medicinal/lippia-alba</a></li>
+        <li id="ref-S2">[S2] Bamburral. Erva-cidreira-brasileira: o que é, para que serve e os benefícios medicinais da planta. Artigo que inclui orientações práticas de cultivo e épocas de colheita em contexto brasileiro. Disponível em: <a href="https://bamburral.com.br/cidreira-brasileira-o-que-e-pra-que-serve-e-os-beneficios-medicinais-da-planta" target="_blank" rel="noopener">https://bamburral.com.br/cidreira-brasileira-o-que-e-pra-que-serve-e-os-beneficios-medicinais-da-planta</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] Formulário de Fitoterápicos da Farmacopeia Brasileira, 2ª edição. Monografia de Lippia alba com indicações, contraindicações, posologia e precauções de uso em adultos. Disponível em: <a href="https://www.gov.br/anvisa/pt-br/assuntos/farmacopeia/formulario-fitoterapico/2024-fffb2-1-er-3-atual-final-versao-com-capa-em-word-2-jan-2024.pdf" target="_blank" rel="noopener">https://www.gov.br/anvisa/pt-br/assuntos/farmacopeia/formulario-fitoterapico/2024-fffb2-1-er-3-atual-final-versao-com-capa-em-word-2-jan-2024.pdf</a></li>
+        <li id="ref-U2">[U2] Fitoterapia Brasil. Lippia alba – preparações extemporâneas e tintura. Fichas técnicas que descrevem doses, formas farmacêuticas e avisos de segurança. Disponível em: <a href="https://fitoterapiabrasil.com.br/sites/default/files/formulario-fitoterapico/lippia_alba_preparacao_extemporanea_folha_e_flor_2021.pdf" target="_blank" rel="noopener">https://fitoterapiabrasil.com.br/sites/default/files/formulario-fitoterapico/lippia_alba_preparacao_extemporanea_folha_e_flor_2021.pdf</a></li>
+        <li id="ref-U3">[U3] Natudonum. Óleo essencial da Lippia alba. Texto informativo sobre usos, propriedades e cautelas do óleo essencial de verbena-brasileira, incluindo recomendações de diluição e contraindicações. Disponível em: <a href="https://natudonum.com.br/oe_lippia_alba.html" target="_blank" rel="noopener">https://natudonum.com.br/oe_lippia_alba.html</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Tua Saúde. Chá de melissa: para que serve e como fazer. Explica o preparo do chá de melissa com Melissa officinalis e Lippia alba (falsa-melissa), com doses em colher de sopa e volume de água. Disponível em: <a href="https://www.tuasaude.com/cha-de-melissa/" target="_blank" rel="noopener">https://www.tuasaude.com/cha-de-melissa/</a></li>
+        <li id="ref-R2">[R2] Erva-cidreira – Wikipédia. Secção sobre Lippia alba como erva-cidreira de folha e falsa-melissa, comentando semelhanças de uso e formas de preparo em chá. Disponível em: <a href="https://pt.wikipedia.org/wiki/Erva-cidreira" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Erva-cidreira</a></li>
+        <li id="ref-R3">[R3] Formulário de Fitoterápicos da Farmacopeia Brasileira, 2ª edição. Seção de preparação extemporânea de Lippia alba (folha e flor 0,4–0,6 g/150 mL), indicando modo de preparo da infusão. Disponível em: <a href="https://www.gov.br/anvisa/pt-br/assuntos/farmacopeia/formulario-fitoterapico/2024-fffb2-1-er-3-atual-final-versao-com-capa-em-word-2-jan-2024.pdf" target="_blank" rel="noopener">https://www.gov.br/anvisa/pt-br/assuntos/farmacopeia/formulario-fitoterapico/2024-fffb2-1-er-3-atual-final-versao-com-capa-em-word-2-jan-2024.pdf</a></li>
+        <li id="ref-R4">[R4] Fitoterapia Brasil. Tintura de Lippia alba. Documento técnico baseado no Formulário de Fitoterápicos que descreve a preparação de tintura 1:10 em álcool 70% e doses usuais em gotas. Disponível em: <a href="https://fitoterapiabrasil.com.br/sites/default/files/formulario-fitoterapico/tintura_de_lippia_alba.pdf" target="_blank" rel="noopener">https://fitoterapiabrasil.com.br/sites/default/files/formulario-fitoterapico/tintura_de_lippia_alba.pdf</a></li>
+        <li id="ref-R5">[R5] Oficina de Ervas. Lippia alba: para que serve o uso medicinal. Artigo em português que sugere formas de preparo de chás calmantes e doses aproximadas para adultos. Disponível em: <a href="https://www.oficinadeervas.com.br/conteudo/lipia-alba-para-que-serve-o-uso-medicinal" target="_blank" rel="noopener">https://www.oficinadeervas.com.br/conteudo/lipia-alba-para-que-serve-o-uso-medicinal</a></li>
+        <li id="ref-R6">[R6] Bamburral. Erva-cidreira-brasileira: benefícios medicinais. Inclui receitas simples de chás calmantes e combinados com outras plantas relaxantes. Disponível em: <a href="https://bamburral.com.br/cidreira-brasileira-o-que-e-pra-que-serve-e-os-beneficios-medicinais-da-planta" target="_blank" rel="noopener">https://bamburral.com.br/cidreira-brasileira-o-que-e-pra-que-serve-e-os-beneficios-medicinais-da-planta</a></li>
+        <li id="ref-R7">[R7] Tua Saúde. Chá de melissa: para que serve e como fazer. Secções que mencionam uso digestivo e combinados com funcho, por analogia aplicada à falsa-melissa. Disponível em: <a href="https://www.tuasaude.com/cha-de-melissa/" target="_blank" rel="noopener">https://www.tuasaude.com/cha-de-melissa/</a></li>
+        <li id="ref-R8">[R8] Nutriboty. A ciência por detrás dos óleos essenciais relaxantes. Artigo que descreve o óleo essencial de verbena-branca (Lippia alba), com referências a modos de uso em difusor. Disponível em: <a href="https://www.nutriboty.eu/blogs/novidades/a-ciencia-por-detras-dos-oleos-essenciais-relaxantes" target="_blank" rel="noopener">https://www.nutriboty.eu/blogs/novidades/a-ciencia-por-detras-dos-oleos-essenciais-relaxantes</a></li>
+        <li id="ref-R9">[R9] Scents Nature. Óleo essencial biológico Verbena Branca – propriedades, benefícios e aplicações. Sugere diluições típicas e formas de aplicação tópica em massagem relaxante. Disponível em: <a href="https://www.scentsnature.com/pt/tudo-sobre-oleos/etnobotanica/oleo-essencial-biologico-verbena-branca-propriedades-beneficios-e-aplicacoes" target="_blank" rel="noopener">https://www.scentsnature.com/pt/tudo-sobre-oleos/etnobotanica/oleo-essencial-biologico-verbena-branca-propriedades-beneficios-e-aplicacoes</a></li>
+        <li id="ref-R10">[R10] Benjamim Primores Naturais. Óleo essencial de Verbena Brasileira (Lippia alba). Ficha comercial com indicação de usos calmantes, ansiolíticos e sugestões gerais de diluição. Disponível em: <a href="https://www.benjamimprimoresnaturais.com.br/leoessencialdeverbenabrasileiraorgnicolippiaalba/prod-10742282" target="_blank" rel="noopener">https://www.benjamimprimoresnaturais.com.br/leoessencialdeverbenabrasileiraorgnicolippiaalba/prod-10742282</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] Oliveira D.R. et al. Ethnopharmacological study of two Lippia species from northeastern Brazil. Journal of Ethnopharmacology. Descreve usos populares de Lippia alba como calmante, digestiva e antiespasmódica na medicina tradicional brasileira. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/16784826/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/16784826/</a></li>
+        <li id="ref-M2">[M2] Pascual M.E. et al. Lippia: traditional uses, chemistry and pharmacology. Journal of Ethnopharmacology. Revisão ampla sobre o género Lippia, incluindo usos gastrointestinais, respiratórios e calmantes de Lippia alba. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0378874101002343" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S0378874101002343</a></li>
+        <li id="ref-M3">[M3] Alvarado-García P.A.A. et al. Anxiolytic-like effect of essential oils extracted from Lippia alba and Lippia citriodora. Pharmacognosy Journal. Ensaio clínico randomizado que avalia aromaterapia com óleo essencial de Lippia alba na redução de ansiedade de estado. Disponível em: <a href="https://www.phcogj.com/article/1672" target="_blank" rel="noopener">https://www.phcogj.com/article/1672</a></li>
+        <li id="ref-M4">[M4] Silva P.I.C. et al. Unraveling the neuropharmacological properties of Lippia alba. Pharmaceuticals. Revisão recente sobre efeitos ansiolíticos, anticonvulsivantes e neuroprotetores de Lippia alba. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11945933/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC11945933/</a></li>
+        <li id="ref-M5">[M5] A comprehensive ethnopharmacological review on Lippia alba. Artigo de revisão que compila dados de usos tradicionais, fitoquímica e estudos farmacológicos, incluindo atividades sedativas, analgésicas e antimicrobianas. Disponível em: <a href="https://scispace.com/pdf/a-comprehensive-ethnopharmacological-review-on-lippia-alba-m-2usweprilu.pdf" target="_blank" rel="noopener">https://scispace.com/pdf/a-comprehensive-ethnopharmacological-review-on-lippia-alba-m-2usweprilu.pdf</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Glamočlija J. et al. Chemical characterization of Lippia alba essential oil and antifungal activity. Brazilian Journal of Microbiology. Estudo que classifica um óleo de Lippia alba como quimiotipo citral e avalia atividade antifúngica com MIC na gama de 0,300–1,250 mg/mL. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3768719/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC3768719/</a></li>
+        <li id="ref-F2">[F2] Mesa-Arango A.C. et al. Citral and carvone chemotypes from the essential oils of Colombian Lippia alba: composition, cytotoxicity and antifungal activity. Memórias do Instituto Oswaldo Cruz. Compara quimiotipos citral e carvona quanto à composição e atividade antifúngica. Disponível em: <a href="https://www.scielo.br/j/mioc/a/nDFJn7KXZTgH935njhQt3Mz/" target="_blank" rel="noopener">https://www.scielo.br/j/mioc/a/nDFJn7KXZTgH935njhQt3Mz/</a></li>
+        <li id="ref-F3">[F3] Anxiolytic-like effect of Lippia alba essential oil: a randomized, placebo-controlled trial. Journal of Intercultural Ethnopharmacology. Relaciona composição do óleo essencial com efeitos ansiolíticos em humanos. Disponível em: <a href="https://jocmr.com/uploads/paper/f780003bbec9b21d9b6041e829ba354b.pdf" target="_blank" rel="noopener">https://jocmr.com/uploads/paper/f780003bbec9b21d9b6041e829ba354b.pdf</a></li>
+        <li id="ref-F4">[F4] Gomes A.F. et al. Seasonal variation in the chemical composition of two chemotypes of Lippia alba. Food Chemistry. Estuda variações sazonais de metabolitos e composição do óleo em quimiotipos carvona e linalol. Disponível em: <a href="https://www.sciencedirect.com/science/article/pii/S030881461731909X" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S030881461731909X</a></li>
+        <li id="ref-F5">[F5] Chemical Diversity in Lippia alba (Mill.) N.E. Brown accessions. Article in Evidence-Based Complementary and Alternative Medicine. Analisa a diversidade química de vários acessos de Lippia alba e a distribuição de quimiotipos. Disponível em: <a href="https://onlinelibrary.wiley.com/doi/10.1155/2015/321924" target="_blank" rel="noopener">https://onlinelibrary.wiley.com/doi/10.1155/2015/321924</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Nutriboty. A ciência por detrás dos óleos essenciais relaxantes. Artigo que destaca o óleo essencial de verbena-branca (Lippia alba) como ansiolítico suave e descreve usos em bem‑estar. Disponível em: <a href="https://www.nutriboty.eu/blogs/novidades/a-ciencia-por-detras-dos-oleos-essenciais-relaxantes" target="_blank" rel="noopener">https://www.nutriboty.eu/blogs/novidades/a-ciencia-por-detras-dos-oleos-essenciais-relaxantes</a></li>
+        <li id="ref-A2">[A2] Scents Nature. Óleo essencial biológico Verbena Branca – propriedades, benefícios e aplicações. Ficha informativa com aplicações cosméticas, antimicrobianas e de aromaterapia da Lippia alba. Disponível em: <a href="https://www.scentsnature.com/pt/tudo-sobre-oleos/etnobotanica/oleo-essencial-biologico-verbena-branca-propriedades-beneficios-e-aplicacoes" target="_blank" rel="noopener">https://www.scentsnature.com/pt/tudo-sobre-oleos/etnobotanica/oleo-essencial-biologico-verbena-branca-propriedades-beneficios-e-aplicacoes</a></li>
+        <li id="ref-A3">[A3] Natudonum. Óleo essencial da Lippia alba. Texto que descreve nomes populares, características aromáticas e usos do óleo essencial de verbena-brasileira em contexto doméstico. Disponível em: <a href="https://natudonum.com.br/oe_lippia_alba.html" target="_blank" rel="noopener">https://natudonum.com.br/oe_lippia_alba.html</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] LexiPlant. Lippia alba – Bushy Lippia. Ficha que menciona a utilização de Lippia alba em permacultura como planta aromática, melífera e útil em chás calmantes, com notas sobre manejo ecológico. Disponível em: <a href="https://lexiplant.com/pt/plant/lippia-alba-bushy-lippia" target="_blank" rel="noopener">https://lexiplant.com/pt/plant/lippia-alba-bushy-lippia</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html" class="ativa">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="oregao-oregano.html">Orégão / Orégano</a>
+  <a class="next" href="passiflora-medicinal.html">Passiflora medicinal</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Passiflora frutífera (maracujá) (<em>Passiflora edulis Sims</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Passifloraceae</span>
+  <span>Parte usada: fruto, casca e folhas</span>
+  <span>Tipo: trepadeira perene frutífera medicinal</span>
+  <span>Produção: <strong>cultivada em pomares tropicais</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> América do Sul tropical, hoje cultivada em regiões tropicais globais</div>
+  <div><strong>Uso principal</strong> fruto nutritivo e planta calmante para suporte metabólico e cardiovascular</div>
+  <div><strong>Perfil medicinal</strong> antioxidante, calmante, metabólico, digestivo e cardiovascular complementar suave</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Passiflora frutífera (maracujá) (Passiflora edulis Sims)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>Passiflora edulis é uma trepadeira lenhosa e perene, de crescimento relativamente rápido, que se agarra a suportes através de gavinhas. Pode atingir vários metros de comprimento, formando uma densa cortina de folhagem quando bem conduzida. As folhas são alternas, geralmente trilobadas, de verde intenso e textura fina, e as flores são grandes, vistosas, com corola esbranquiçada e uma coroa de filamentos roxos, lilases ou arroxeados, conferindo à planta elevado valor ornamental.</p>
+      <p>O fruto, conhecido como maracujá, é uma baga arredondada ou ovóide, com casca espessa de cor roxa ou amarela, consoante a variedade. No interior encontra-se uma polpa aromática, ácida e doce, rica em sementes envolvidas por um arilo suculento. Em português é vulgarmente designada por maracujá ou maracujazeiro; em inglês, os nomes mais comuns são passion fruit e passionflower (quando se fala da planta). As variedades cultivadas incluem formas roxas (P. edulis f. edulis) e amarelas (P. edulis f. flavicarpa), adaptadas a diferentes climas e condições de cultivo.</p>
+      <p>Além de fornecer frutos de elevado interesse gastronómico, a espécie integra tradições medicinais latino-americanas e de outras regiões, onde folhas, flores, casca e até as sementes são utilizadas em chás, macerados e extratos. Do ponto de vista ecológico, a passiflora frutífera é importante fonte de néctar e pólen para insetos polinizadores e um elemento estruturante em sebes vivas, pergulas e sistemas agroflorestais tropicais e subtropicais.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a> <a href="#ref-D4">[D4]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, a passiflora frutífera comporta-se como trepadeira perene sensível ao frio intenso, adaptando-se melhor a zonas de inverno suave e verões quentes, como o litoral centro e sul ou microclimas abrigados. Em regiões de geadas fortes pode comportar-se como semi-perene ou sofrer danos aéreos, rebentando de novo a partir da base.
+O ciclo produtivo típico inclui crescimento vegetativo na primavera, floração abundante do final da primavera ao verão e frutificação no verão e outono. Em climas adequados e com boa condução, a planta pode produzir várias floradas e colheitas escalonadas.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Floração em Portugal: principalmente de maio a agosto, podendo estender-se em locais abrigados e com boa disponibilidade hídrica.</li>
+        <li>Frutificação: desenvolvimento dos frutos ao longo do verão (junho a setembro), com maturação sobretudo entre final do verão e outono (agosto a novembro), dependendo da região e da variedade.</li>
+        <li>Crescimento vegetativo mais intenso: primavera e início do verão, com rebentação após riscos de geada.</li>
+        <li>Colheita de folhas para uso medicinal/popular: preferencialmente na época de crescimento ativo, em plantas sãs e não tratadas com pesticidas, evitando extremos de frio ou de stress hídrico.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a> <a href="#ref-S3">[S3]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Extratos de casca (epicarpo) de Passiflora edulis, obtidos a partir de subprodutos da indústria do sumo, têm sido estudados em modelos animais e em pequenos ensaios clínicos como adjuvantes na redução da pressão arterial e na melhoria de parâmetros metabólicos, explorando o teor em flavonoides e outros polifenóis com potencial efeito vasodilatador e antioxidante. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></li>
+        <li>Estudos com extratos aquosos e hidroalcoólicos de folhas de Passiflora edulis indicam atividade antioxidante, anti-inflamatória e, em alguns modelos, efeitos ansiolíticos e sedativos ligeiros, embora a maior parte da evidência clínica em humanos sobre propriedades calmantes esteja associada a outras espécies do género (como P. incarnata). Ainda assim, estes resultados sustentam o interesse em folhas de P. edulis como complemento em preparações fitoterapêuticas. <a href="#ref-M1">[M1]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></li>
+        <li>A polpa e o sumo do fruto de maracujá, consumidos como alimento funcional, têm sido associados em estudos epidemiológicos e de intervenção a melhorias em marcadores de stress oxidativo, inflamação e, em alguns casos, à modulação de parâmetros da síndrome metabólica, quando integrados em padrões alimentares saudáveis, como dietas ricas em frutas e vegetais. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F5">[F5]</a></li>
+        <li>Farinha obtida da casca do maracujá (rica em fibra solúvel e pectinas) tem sido investigada em ensaios clínicos pequenos como coadjuvante na redução da glicemia pós-prandial e na melhoria do controlo glicémico em pessoas com excesso de peso ou com alterações metabólicas, sugerindo um papel útil no contexto de dieta equilibrada e exercício. <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-F2">[F2]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Consumo da polpa fresca de maracujá ao natural, ou em sumos, batidos e sobremesas, frequentemente associado na tradição popular a efeitos calmantes e ao alívio do nervosismo ligeiro. <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a> <a href="#ref-A1">[A1]</a></li>
+        <li>Chá de folhas de maracujá (passiflora) preparado com folhas frescas ou secas, usado como infusão calmante e auxiliar do sono, geralmente em combinação com outras plantas sedativas suaves (como tília, lúcia-lima ou erva-cidreira). <a href="#ref-R2">[R2]</a> <a href="#ref-R3">[R3]</a> <a href="#ref-A1">[A1]</a></li>
+        <li>Xaropes, sumos concentrados e bebidas de maracujá utilizados como &quot;refresco calmante&quot; em vários países tropicais, onde se associa o fruto à tranquilidade e ao relaxamento, muitas vezes preparado em casa a partir da polpa. <a href="#ref-R1">[R1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Uso de farinha de casca de maracujá, adicionada a iogurtes, batidos ou papas, em contextos populares e de nutrição natural como apoio ao trânsito intestinal, saciedade e controlo de peso. <a href="#ref-R4">[R4]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Emprego de folhas e flores de passiflora em misturas de chás vendidos em ervanárias e lojas de produtos naturais como auxiliares em estados de ansiedade ligeira, insónia, tensão pré-menstrual e agitação em geral. <a href="#ref-R3">[R3]</a> <a href="#ref-R5">[R5]</a> <a href="#ref-A1">[A1]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>O consumo de polpa de maracujá como alimento é considerado seguro para a maioria das pessoas, quando integrado numa alimentação equilibrada. Contudo, preparações concentradas de casca, sementes ou folhas (farinhas, extratos, suplementos) devem ser utilizadas com cautela, sobretudo em pessoas com patologia cardiovascular, metabólica ou em polimedicação, devido ao potencial efeito sobre pressão arterial, glicemia ou sedação. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></p>
+      <p>Fontes de fitoterapia e etnofarmacologia referem que folhas de maracujá podem conter compostos potencialmente tóxicos, incluindo traços de glicosídeos cianogénicos, pelo que o uso de chás muito concentrados, em grandes quantidades ou por períodos prolongados, especialmente em crianças, grávidas, lactantes e pessoas fragilizadas, não deve ser feito sem orientação profissional. Há também relatos de sonolência excessiva e interações teóricas com fármacos sedativos ou anti-hipertensores. <a href="#ref-U1">[U1]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-U4">[U4]</a></p>
+      <p>Recomenda-se evitar o uso de extratos concentrados de Passiflora edulis em conjunto com medicamentos ansiolíticos, hipnóticos, anti-hipertensores ou anticoagulantes sem supervisão médica, bem como suspender o uso e procurar aconselhamento caso surjam sintomas como hipotensão acentuada, confusão, náuseas fortes, dificuldades respiratórias ou reações alérgicas. <a href="#ref-U2">[U2]</a> <a href="#ref-U4">[U4]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        No âmbito medicinal e funcional, a Passiflora edulis é utilizada sobretudo através do consumo regular da polpa e do sumo de maracujá, do uso culinário de farinha de casca rica em fibra e, em contexto fitoterapêutico tradicional, de infusões de folhas em associação com outras plantas calmantes. Receitas de chás, sumos, batidos e sobremesas terapêuticas exploram o potencial calmante, digestivo e antioxidante do fruto e, em alguns casos, das folhas. Todas estas utilizações devem respeitar doses moderadas, bom senso alimentar e as recomendações de segurança, integrando-se no quadro do Disclaimer padrão.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="passiflora-frutifera-maracuja_receitas.html">Chá simples de folhas de passiflora:</a> infusão preparada com folhas de maracujá usada como bebida calmante suave ao fim do dia, em programas de curta duração. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="passiflora-frutifera-maracuja_receitas.html">Infusão calmante de passiflora com erva-cidreira:</a> combinação de folhas de maracujá com erva-cidreira em chá relaxante, tomada sobretudo à noite para auxiliar o sono e reduzir a ansiedade ligeira. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="passiflora-frutifera-maracuja_receitas.html">Sumo de maracujá fresco:</a> bebida obtida a partir da polpa do fruto, geralmente diluída em água e consumida ao natural como refresco aromático e rico em vitamina C. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="passiflora-frutifera-maracuja_receitas.html">Batido de maracujá com iogurte:</a> preparado cremoso que combina polpa de maracujá com iogurte, usado como pequeno-almoço ou lanche nutritivo e saciante. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="passiflora-frutifera-maracuja_receitas.html">Mousse de maracujá funcional:</a> sobremesa leve em que a polpa de maracujá aromatiza uma mousse com teor de açúcar moderado, adequada a consumos ocasionais. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="passiflora-frutifera-maracuja_receitas.html">Uso de farinha de casca de maracujá:</a> incorporação de farinha obtida do epicarpo em receitas de pão, papas ou batidos para aumentar o teor de fibra solúvel. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="passiflora-frutifera-maracuja_receitas.html">Chá combinado de maracujá com tília ou camomila:</a> infusão que associa passiflora a outras plantas sedativas suaves, tomada ao deitar em contextos de stress e insónia ligeira. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="passiflora-frutifera-maracuja_receitas.html">Refresco de maracujá e citrinos:</a> bebida fria preparada com polpa de maracujá e sumo de citrinos, servida como refresco aromático em dias quentes com pouca adição de açúcar. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="passiflora-frutifera-maracuja_receitas.html">Geleia ou compota de maracujá com menos açúcar:</a> doce de fruta em que se reduz a quantidade de açúcar face às receitas tradicionais, consumido em pequenas porções. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="passiflora-frutifera-maracuja_receitas.html">Decocção suave de casca de maracujá:</a> preparado tradicional ou experimental em que a casca é fervida em água para obtenção de bebida rica em fibra e polifenóis, usada sob orientação profissional. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>A passiflora frutífera combina um perfil alimentar interessante, através da polpa rica em vitamina C, fibra e compostos fenólicos, com potenciais efeitos funcionais derivados de componentes presentes na casca, nas sementes e nas folhas. Revisões recentes destacam a elevada diversidade de fitoquímicos identificados em Passiflora edulis, incluindo flavonoides, triterpenos e alcaloides, associados a atividades antioxidantes, anti-inflamatórias e moduladoras de parâmetros metabólicos em modelos pré-clínicos. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>Estudos em animais e pequenos ensaios humanos sugerem que extratos de casca e de polpa de maracujá podem exercer efeitos benéficos sobre a pressão arterial, o perfil lipídico, a resistência à insulina e marcadores de inflamação de baixo grau, quando usados como complemento de dietas equilibradas. A farinha de casca de maracujá, rica em pectinas e fibra solúvel, tem sido apontada como coadjuvante no controlo da glicemia pós-prandial. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F5">[F5]</a></p>
+      <p>Do ponto de vista neurofuncional, a tradição popular e alguns trabalhos com partes da planta indicam um potencial efeito calmante e ansiolítico suave, embora a evidência clínica mais robusta para ação sedativa se concentre noutras espécies de Passiflora. Em qualquer caso, a Passiflora edulis pode ser entendida como planta de interesse sobretudo funcional e complementar, não substituindo terapêuticas convencionais em situações patológicas. <a href="#ref-M1">[M1]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-U2">[U2]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Suporte antioxidante e anti-inflamatório, através da ingestão de polpa, sumo e, em alguns casos, extratos de casca e folhas ricos em polifenóis. <a href="#ref-M1">[M1]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></li>
+        <li>Adjuvante no controlo da glicemia e de parâmetros da síndrome metabólica, em associação com dieta equilibrada, exercício físico e acompanhamento médico. <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-F2">[F2]</a></li>
+        <li>Apoio complementar à saúde cardiovascular, contribuindo para modulação de pressão arterial, perfil lipídico e stress oxidativo, especialmente quando a Passiflora edulis integra um padrão alimentar rico em frutas, vegetais e gorduras saudáveis. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-F5">[F5]</a></li>
+        <li>Potencial efeito calmante e ansiolítico ligeiro em preparações à base de passiflora, sobretudo em infusões de folhas usadas em contexto tradicional, em combinação com outras plantas com propriedades sedativas suaves. <a href="#ref-M1">[M1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-R2">[R2]</a> <a href="#ref-R5">[R5]</a></li>
+        <li>Auxílio digestivo e no trânsito intestinal, graças ao teor de fibra solúvel e insolúvel da polpa e da casca, favorecendo saciedade e regularidade intestinal quando inserida em hábitos alimentares saudáveis. <a href="#ref-M3">[M3]</a> <a href="#ref-R4">[R4]</a> <a href="#ref-R6">[R6]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>Diferentes partes de Passiflora edulis apresentam perfis fitoquímicos distintos, mas complementares. As folhas concentram flavonoides C-glicosilados, alcaloides β-carbolínicos em baixos teores e outros polifenóis com atividade antioxidante e potencial efeito neuromodulador e anti-inflamatório, em linha com o observado noutras espécies do género. Extratos aquosos e hidroalcoólicos de folhas mostram elevada capacidade de neutralização de radicais livres em ensaios in vitro. <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a> <a href="#ref-F6">[F6]</a></p>
+      <p>A casca e a polpa do fruto são ricas em polifenóis, carotenoides e vitamina C, com estudos a demonstrar capacidade antioxidante significativa e conteúdo notável de compostos fenólicos totais. A casca, em particular, contém pectinas e fibra solúvel em quantidades relevantes, bem como flavonoides que têm sido associados a efeitos hipotensores e hipolipemiantes em modelos animais. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F5">[F5]</a> <a href="#ref-F6">[F6]</a></p>
+      <p>As sementes e o óleo delas extraído apresentam proporções elevadas de ácidos gordos insaturados e compostos fenólicos associados a atividade antioxidante e, em alguns estudos, a efeitos cardioprotetores e antiproliferativos. Ensaios recentes exploram também a atividade antibacteriana de extratos de diferentes partes da planta, relacionando-a com o conjunto de polifenóis, flavonoides e antocianinas presentes. <a href="#ref-F2">[F2]</a> <a href="#ref-F5">[F5]</a> <a href="#ref-F6">[F6]</a> <a href="#ref-F7">[F7]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Fenóis totais em extratos de folhas de Passiflora edulis</td><td>≈20–80 mg GAE/g de extrato seco</td></tr>
+        <tr><td>Fenóis totais em extratos de casca/polpa de maracujá</td><td>≈10–50 mg GAE/g de extrato seco</td></tr>
+        <tr><td>Capacidade antioxidante de extratos de partes aéreas (DPPH, ABTS)</td><td>EC50 antioxidante na ordem de 0,5–2,5 mg/mL</td></tr>
+        <tr><td>Conteúdo de pectinas e fibra solúvel na casca de maracujá</td><td>teores de fibra/polissacarídeos na ordem de dezenas de % m/m da casca seca</td></tr>
+        <tr><td>Principais compostos fenólicos identificados (flavonoides C-glicosilados, triterpenos, antocianinas)</td><td>quantificação em faixas de dezenas a centenas de mg/100 g de parte fresca ou mg/g de extrato</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Planta ornamental de elevado valor estético, usada para cobrir pérgulas, muros e sebes, graças às flores vistosas e ao perfume delicado. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Uso do fruto em pastelaria, gelados, bebidas fermentadas e cocktails, explorando o aroma intenso e tropical do maracujá. <a href="#ref-A1">[A1]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Aproveitamento da casca e de subprodutos industriais na produção de farinhas ricas em fibra, ingredientes funcionais e aditivos naturais para a indústria alimentar. <a href="#ref-A2">[A2]</a> <a href="#ref-F2">[F2]</a></li>
+        <li>Utilização das sementes e do óleo de sementes em produtos cosméticos naturais (sabonetes, cremes, óleos corporais) devido ao teor em ácidos gordos insaturados e antioxidantes. <a href="#ref-A3">[A3]</a> <a href="#ref-F6">[F6]</a></li>
+        <li>Integração em sistemas agroflorestais tropicais e subtropicais como cultura trepadeira que utiliza árvores de suporte ou estruturas artificiais, contribuindo para diversidade produtiva. <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 7,9 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em permacultura, a passiflora frutífera destaca-se como trepadeira perene altamente produtiva, capaz de fornecer frutos ricos e aromáticos, criar sombra leve em estruturas verticais e atrair polinizadores com as suas flores vistosas. A planta contribui para a diversidade vertical da horta, permitindo aproveitar muros, sebes e pergulados como superfícies produtivas adicionais, ao mesmo tempo que produz biomassa foliar para cobertura leve de solo ou compostagem.
+Em climas adequados, integra-se bem em pomares e sistemas agroflorestais tropicais e subtropicais, desde que se tenha em conta a necessidade de suportes robustos, fertilidade moderada e alguma proteção contra geadas. A combinação de funções alimentares, medicinais complementares, valor ecológico e ornamental torna-a uma espécie versátil em espaços reduzidos e em designs de jardins comestíveis.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação da Passiflora edulis resulta de valores elevados em uso alimentar humano (ALIM=2), dado o papel central do maracujá enquanto fruto aromático e nutritivo, e em uso medicinal complementar (MED=2), graças ao potencial calmante, antioxidante e cardiometabólico explorado em diversas partes da planta. Recebe ainda pontuação alta em estrutura e perenidade (ESTR=2), por funcionar como trepadeira permanente em pérgulas, sebes e sistemas verticais, e em contribuição para solo e biomassa (SOLO=2), pela produção regular de folhas e ramos que podem ser devolvidos ao sistema como cobertura ou matéria para compostagem. O suporte à fauna e polinizadores (ECO=2) é significativo, dado o aporte de néctar e abrigo, e a multifuncionalidade cultural e alimentar (MULT=2) reflete o uso do fruto em inúmeras preparações culinárias e o simbolismo associado à "fruta da paixão".
+A rusticidade (RUST=1) é considerada boa mas não máxima em contexto português, pois a planta é sensível a geadas fortes e exige alguma proteção em invernos rigorosos. Aplicam-se penalizações moderadas por potencial toxicidade em usos inadequados de folhas e casca (TOX=-1), devido à presença de compostos que exigem prudência em doses concentradas, e por competição por luz em estruturas densamente vegetadas (COMP=-1), já que a trepadeira pode sombrear culturas vizinhas se não for conduzida. O risco de perigo físico (PERIGO) e de comportamento invasor problemático (INVAS) é, em geral, baixo no contexto hortícola. O valor final em escala 0–10 resulta da aplicação do algoritmo descrito no projeto (soma dos critérios positivos até 14 pontos, subtração das penalizações e conversão por regra de três simples), situando a passiflora frutífera em cerca de 7,9/10 e indicando uma planta de elevada funcionalidade em permacultura, particularmente interessante em estruturas verticais, sebes comestíveis e sistemas agroflorestais de clima ameno.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-A1">[A1]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Wikipedia. &quot;Passiflora edulis&quot;. Descrição botânica, origem geográfica, variedades roxa e amarela e principais características da espécie. Disponível em: <a href="https://pt.wikipedia.org/wiki/Passiflora_edulis" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Passiflora_edulis</a></li>
+        <li id="ref-D2">[D2] Wikipedia. &quot;Maracujá&quot;. Artigo em português sobre o maracujá, com informações sobre espécie principal (Passiflora edulis), usos alimentares e valor nutritivo. Disponível em: <a href="https://pt.wikipedia.org/wiki/Maracuj%C3%A1" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Maracuj%C3%A1</a></li>
+        <li id="ref-D3">[D3] Useful Tropical Plants. &quot;Passiflora edulis&quot;. Ficha técnica que descreve a espécie como trepadeira perene vigorosa, com notas sobre porte, cultivo e usos. Disponível em: <a href="https://tropical.theferns.info/viewtropical.php?id=Passiflora+edulis" target="_blank" rel="noopener">https://tropical.theferns.info/viewtropical.php?id=Passiflora+edulis</a></li>
+        <li id="ref-D4">[D4] LexiPlant. &quot;Passiflora edulis&quot;. Descrição em português da passiflora como trepadeira vigorosa, origem, necessidades de luz e solo e recomendações de cultivo. Disponível em: <a href="https://lexiplant.com/pt/plant/passiflora-edulis-passion-fruit" target="_blank" rel="noopener">https://lexiplant.com/pt/plant/passiflora-edulis-passion-fruit</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] WikiFarmer. &quot;Maracujá – tipos, variedades e características da planta&quot;. Artigo em português que descreve Passiflora edulis como trepadeira lenhosa perene de rápido crescimento, com referência às formas roxa e amarela. Disponível em: <a href="https://wikifarmer.com/library/pt-br/article/maracuja-tipos-variedades-de-maracuja-e-caracteristicas-da-planta" target="_blank" rel="noopener">https://wikifarmer.com/library/pt-br/article/maracuja-tipos-variedades-de-maracuja-e-caracteristicas-da-planta</a></li>
+        <li id="ref-S2">[S2] Useful Tropical Plants. &quot;Passiflora edulis&quot;. Informação sobre distribuição, habitat, exigências de clima e solo, reforçando preferência por regiões tropicais e subtropicais sem geadas fortes. Disponível em: <a href="https://tropical.theferns.info/viewtropical.php?id=Passiflora+edulis" target="_blank" rel="noopener">https://tropical.theferns.info/viewtropical.php?id=Passiflora+edulis</a></li>
+        <li id="ref-S3">[S3] Sargaçal. &quot;Maracujá, Passiflora edulis (Passifloraceae)&quot;. Nota de blogue com observações de cultivo de maracujá em Portugal, incluindo comportamento espontâneo e produção em condições amenas. Disponível em: <a href="https://sargacal.com/2008/04/25/maracuja-passiflora-edulis-passifloraceae" target="_blank" rel="noopener">https://sargacal.com/2008/04/25/maracuja-passiflora-edulis-passifloraceae</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] Wikipedia. &quot;Maracujá&quot;. Secção sobre uso medicinal, incluindo referência a efeitos sedativos e à presença de ácido cianídrico nas folhas, recomendando cautela no uso de chás concentrados. Disponível em: <a href="https://pt.wikipedia.org/wiki/Maracuj%C3%A1" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Maracuj%C3%A1</a></li>
+        <li id="ref-U2">[U2] Tua Saúde. &quot;Passiflora: para que serve, como consumir (e efeitos colaterais)&quot;. Artigo em português que descreve usos calmantes da passiflora, possíveis efeitos adversos e contraindicações. Disponível em: <a href="https://www.tuasaude.com/passiflora" target="_blank" rel="noopener">https://www.tuasaude.com/passiflora</a></li>
+        <li id="ref-U3">[U3] Tua Saúde. &quot;Maracujá: 10 benefícios e como consumir (com receitas)&quot;. Texto que destaca benefícios e cuidados no consumo de maracujá, incluindo recomendações de moderação e contexto de diabetes e outras condições. Disponível em: <a href="https://www.tuasaude.com/maracuja" target="_blank" rel="noopener">https://www.tuasaude.com/maracuja</a></li>
+        <li id="ref-U4">[U4] Ask Ayurveda. &quot;Passiflora edulis (Krishna Phal) – Ayurvedic Benefits, Uses&quot;. Síntese em inglês sobre usos tradicionais, efeitos calmantes, potenciais interações medicamentosas e cautelas em grupos de risco. Disponível em: <a href="https://ask-ayurveda.com/wiki/article/5239-passiflora-edulis" target="_blank" rel="noopener">https://ask-ayurveda.com/wiki/article/5239-passiflora-edulis</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Rota das Índias. &quot;Passiflora (folhas) – Chá do maracujá&quot;. Ficha de produto com instruções de preparação de infusão de folhas de passiflora, doses por chávena e indicações calmantes. Disponível em: <a href="https://www.rotadasindias.pt/pt/passiflora-%28folhas%29" target="_blank" rel="noopener">https://www.rotadasindias.pt/pt/passiflora-%28folhas%29</a></li>
+        <li id="ref-R2">[R2] Girassol. &quot;PASSIFLORA MARACUJA 50 g&quot;. Descrição de chá de passiflora com propriedades calmantes e sedativas ligeiras, incluindo modo de preparação e dose diária recomendada. Disponível em: <a href="https://www.girassol.com/cha-simples-p-t/5157-passiflora-maracuja-50g.html" target="_blank" rel="noopener">https://www.girassol.com/cha-simples-p-t/5157-passiflora-maracuja-50g.html</a></li>
+        <li id="ref-R3">[R3] Tua Saúde. &quot;Maracujá: 10 benefícios e como consumir (com receitas)&quot;. Apresenta formas de consumo do maracujá em sumos e preparações simples, com orientação de quantidades aproximadas. Disponível em: <a href="https://www.tuasaude.com/maracuja" target="_blank" rel="noopener">https://www.tuasaude.com/maracuja</a></li>
+        <li id="ref-R4">[R4] Tua Saúde. &quot;Maracujá: 10 benefícios e como consumir (com receitas)&quot;. Secções que incluem sugestões de batidos e sobremesas com maracujá, explorando o uso funcional do fruto. Disponível em: <a href="https://www.tuasaude.com/maracuja" target="_blank" rel="noopener">https://www.tuasaude.com/maracuja</a></li>
+        <li id="ref-R5">[R5] Tua Saúde. &quot;Passiflora: para que serve, como consumir (e efeitos colaterais)&quot;. Inclui orientações gerais para uso em chás e suplementos de passiflora em contexto de ansiedade e insónia. Disponível em: <a href="https://www.tuasaude.com/passiflora" target="_blank" rel="noopener">https://www.tuasaude.com/passiflora</a></li>
+        <li id="ref-R6">[R6] LibertyPrim. &quot;Medicinal Benefits of Passion Fruit&quot;. Artigo em inglês com descrição de bebidas e formas de consumo de maracujá como alimento funcional, incluindo sumos e preparados caseiros. Disponível em: <a href="https://www.libertyprim.com/en/top-news/57/medicinal-benefits-of-passion-fruit.htm" target="_blank" rel="noopener">https://www.libertyprim.com/en/top-news/57/medicinal-benefits-of-passion-fruit.htm</a></li>
+        <li id="ref-R7">[R7] Chá do Mundo. &quot;Passiflora (Planta) – Passiflora incarnata Premium&quot;. Ficha de chá medicinal que, embora focada em P. incarnata, exemplifica proporções e modo de preparo de infusões de passiflora usadas como calmante. Disponível em: <a href="https://chasdomundo.pt/pt/chas-medicinais/passiflora-planta-passiflora-incarnata-premium" target="_blank" rel="noopener">https://chasdomundo.pt/pt/chas-medicinais/passiflora-planta-passiflora-incarnata-premium</a></li>
+        <li id="ref-R8">[R8] Receitas várias de cozinha mediterrânica e tropical que utilizam maracujá em refrescos com citrinos e outras frutas, com instruções de quantidades e preparação. Exemplo: receita de refresco de maracujá e laranja com indicação de proporções. Disponível em: <a href="https://www.pingodoce.pt/receitas/refresco-de-maracuja" target="_blank" rel="noopener">https://www.pingodoce.pt/receitas/refresco-de-maracuja</a></li>
+        <li id="ref-R9">[R9] Blogs de culinária saudável que ensinam a preparar geleia e compota de maracujá com redução de açúcar, indicando quantidades de polpa, açúcar e tempo de cozedura. Exemplo: receita de doce de maracujá caseiro. Disponível em: <a href="https://www.panelinha.com.br/receita/geleia-de-maracuja" target="_blank" rel="noopener">https://www.panelinha.com.br/receita/geleia-de-maracuja</a></li>
+        <li id="ref-R10">[R10] He X. et al. &quot;Passiflora edulis: An Insight Into Current Researches on Phytochemistry, Nutritional and Pharmacological Properties&quot;. Revisão que descreve usos de extratos de casca e partes do fruto em contextos funcionais e experimentais. Disponível em: <a href="https://www.frontiersin.org/articles/10.3389/fphar.2020.00617/full" target="_blank" rel="noopener">https://www.frontiersin.org/articles/10.3389/fphar.2020.00617/full</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] He X. et al. &quot;Passiflora edulis: An Insight Into Current Researches on Phytochemistry, Nutritional and Pharmacological Properties&quot;. Revisão abrangente sobre constituintes, atividades antioxidantes, metabólicas e cardiovasculares de P. edulis. Disponível em: <a href="https://www.frontiersin.org/articles/10.3389/fphar.2020.00617/full" target="_blank" rel="noopener">https://www.frontiersin.org/articles/10.3389/fphar.2020.00617/full</a></li>
+        <li id="ref-M2">[M2] Lewis BJ. et al. &quot;Antihypertensive effect of passion fruit peel extract and its influence on hemodynamic parameters in spontaneously hypertensive rats&quot;. Estudo que avalia o efeito de extrato de casca de Passiflora edulis na pressão arterial em modelo animal. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0955286312002884" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S0955286312002884</a></li>
+        <li id="ref-M3">[M3] Vieira W. et al. &quot;Phytochemical composition and antioxidant activity of passion fruit (Passiflora edulis)&quot;. Trabalho que relaciona composição polifenólica da polpa e outras partes com atividade antioxidante. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8838848" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8838848</a></li>
+        <li id="ref-M4">[M4] Deng J. et al. Estudos citados em revisões sobre efeitos ansiolíticos e sedativos de extratos aquosos de maracujá amarelo (P. edulis f. flavicarpa) em modelos animais, com referência a modulação do sistema nervoso central. Disponível em: <a href="https://www.libertyprim.com/en/top-news/57/medicinal-benefits-of-passion-fruit.htm" target="_blank" rel="noopener">https://www.libertyprim.com/en/top-news/57/medicinal-benefits-of-passion-fruit.htm</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] He X. et al. &quot;Passiflora edulis: An Insight Into Current Researches on Phytochemistry, Nutritional and Pharmacological Properties&quot;. Apresenta mais de 110 compostos fitoquímicos identificados em diferentes partes da planta, incluindo flavonoides, triterpenos e alcaloides. Disponível em: <a href="https://www.frontiersin.org/articles/10.3389/fphar.2020.00617/full" target="_blank" rel="noopener">https://www.frontiersin.org/articles/10.3389/fphar.2020.00617/full</a></li>
+        <li id="ref-F2">[F2] Quirós-Cubillo M. et al. &quot;Antioxidant and Antibacterial Potential of Passiflora edulis&quot;. Estudo recente que demonstra elevado teor de polifenóis e forte atividade antioxidante e antibacteriana em extratos de P. edulis. Disponível em: <a href="https://www.mdpi.com/1420-3049/30/17/3454" target="_blank" rel="noopener">https://www.mdpi.com/1420-3049/30/17/3454</a></li>
+        <li id="ref-F3">[F3] Carmo MCL do et al. &quot;Passion fruit (Passiflora edulis) leaf aqueous extract: anti-inflammatory properties in intestinal epithelial cells&quot;. Artigo que caracteriza extrato aquoso de folhas rico em polifenóis e avalia efeitos anti-inflamatórios em modelo celular. Disponível em: <a href="https://www.sciencedirect.com/science/article/pii/S0963996920301873" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S0963996920301873</a></li>
+        <li id="ref-F4">[F4] Guimarães SF et al. &quot;Phenolic content and antioxidant activity of parts of Passiflora edulis as a function of plant developmental stage&quot;. Estudo que quantifica conteúdo fenólico e atividade antioxidante em folhas, casca e polpa em diferentes estádios. Disponível em: <a href="https://www.scielo.br/j/abb/a/pmb7nF4HcY4yCqrFTjFstmD" target="_blank" rel="noopener">https://www.scielo.br/j/abb/a/pmb7nF4HcY4yCqrFTjFstmD</a></li>
+        <li id="ref-F5">[F5] Vieira W. et al. &quot;Phytochemical composition and antioxidant activity of passion fruit&quot;. Detalha atividade antioxidante de extratos de polpa e casca e relação com teores de fenol total. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8838848" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8838848</a></li>
+        <li id="ref-F6">[F6] Lewis BJ. et al. &quot;Antihypertensive effect of passion fruit peel extract&quot;. Inclui dados sobre composição química de extratos de casca ricos em flavonoides e outros componentes bioativos. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0955286312002884" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S0955286312002884</a></li>
+        <li id="ref-F7">[F7] Kawakami S. et al. &quot;Constituent Characteristics and Functional Properties of Passion Fruit Seed Extract&quot;. Estudo sobre composição de sementes de P. edulis, incluindo polifenóis e atividade antioxidante de extratos de sementes. Disponível em: <a href="https://www.researchgate.net/publication/357372528_Constituent_Characteristics_and_Functional_Properties_of_Passion_Fruit_Seed_Extract" target="_blank" rel="noopener">https://www.researchgate.net/publication/357372528_Constituent_Characteristics_and_Functional_Properties_of_Passion_Fruit_Seed_Extract</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Raíces Cultural Center. &quot;The Medicinal and Spiritual Properties of Passion Fruit&quot;. Texto que aborda o maracujá como planta de valor alimentar, medicinal e simbólico, incluindo usos de folhas, flores, casca e fruto. Disponível em: <a href="https://raicesculturalcenter.org/the-medicinal-and-spiritual-properties-of-passion-fruit" target="_blank" rel="noopener">https://raicesculturalcenter.org/the-medicinal-and-spiritual-properties-of-passion-fruit</a></li>
+        <li id="ref-A2">[A2] LibertyPrim. &quot;Medicinal Benefits of Passion Fruit&quot;. Artigo em inglês com resumo de benefícios do fruto e referências a usos tradicionais e modernos. Disponível em: <a href="https://www.libertyprim.com/en/top-news/57/medicinal-benefits-of-passion-fruit.htm" target="_blank" rel="noopener">https://www.libertyprim.com/en/top-news/57/medicinal-benefits-of-passion-fruit.htm</a></li>
+        <li id="ref-A3">[A3] Artigos de cosmética natural que utilizam óleo de sementes de maracujá em sabonetes, cremes e óleos corporais, devido ao teor em ácidos gordos essenciais e antioxidantes. Exemplo de ficha técnica de óleo de maracujá. Disponível em: <a href="https://www.armazemdasessencias.pt/blog/oleo-de-maracuja" target="_blank" rel="noopener">https://www.armazemdasessencias.pt/blog/oleo-de-maracuja</a></li>
+        <li id="ref-A4">[A4] WikiFarmer. &quot;Maracujá – tipos, variedades e características da planta&quot;. Referência ao uso da passiflora em sistemas de produção e ao seu valor ornamental em pomares e jardins. Disponível em: <a href="https://wikifarmer.com/library/pt-br/article/maracuja-tipos-variedades-de-maracuja-e-caracteristicas-da-planta" target="_blank" rel="noopener">https://wikifarmer.com/library/pt-br/article/maracuja-tipos-variedades-de-maracuja-e-caracteristicas-da-planta</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] Useful Tropical Plants. &quot;Passiflora edulis&quot;. Descreve a espécie como trepadeira vigorosa usada em sebes e estruturas de suporte, com nota sobre valor ecológico e produtivo. Disponível em: <a href="https://tropical.theferns.info/viewtropical.php?id=Passiflora+edulis" target="_blank" rel="noopener">https://tropical.theferns.info/viewtropical.php?id=Passiflora+edulis</a></li>
+        <li id="ref-P2">[P2] Useful Tropical Plants. &quot;Passiflora edulis flavicarpa&quot;. Ficha complementar sobre a forma amarela, com informações sobre cultivo, porte e integração em sistemas agrícolas tropicais. Disponível em: <a href="https://tropical.theferns.info/viewtropical.php?id=Passiflora+edulis+flavicarpa" target="_blank" rel="noopener">https://tropical.theferns.info/viewtropical.php?id=Passiflora+edulis+flavicarpa</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

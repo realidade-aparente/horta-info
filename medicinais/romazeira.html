@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html" class="ativa">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="ricino-mamona.html">Rícino / Mamona</a>
+  <a class="next" href="ruibarbo.html">Ruibarbo</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Romãzeira (<em>Punica granatum L.</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Lythraceae (antigamente Punicaceae)</span>
+  <span>Parte usada: casca, fruto e folhas</span>
+  <span>Tipo: arbusto frutífero medicinal</span>
+  <span>Produção: <strong>pomares, hortas e jardins</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> região mediterrânica e Ásia ocidental, hoje cultivada em climas suaves</div>
+  <div><strong>Uso principal</strong> proteção cardiovascular, apoio digestivo e cuidado da boca e garganta</div>
+  <div><strong>Perfil medicinal</strong> fruto funcional antioxidante, cardiometabólico, anti-inflamatório e adjuvante digestivo e urinário</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Romãzeira (Punica granatum L.)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>A romãzeira (Punica granatum L.) é um arbusto ou pequena árvore caducifólia que pode atingir 3–5 m de altura, com tronco muito ramificado, copa arredondada e ramos por vezes espinhosos. As folhas são simples, opostas ou em fascículos, de formato oblongo a lanceolado, verde-brilhantes na época de vegetação e caducas no inverno. As flores, solitárias ou em pequenos grupos, são vistosas, de cor vermelho-laranja intensa, com cálice coriáceo e pétalas onduladas, surgindo do fim da primavera ao verão.</p>
+      <p>Em português é conhecida por romãzeira ou romanzeira, sendo o fruto designado romã; em alguns contextos populares também aparece como romeira. Em inglês é comummente designada por pomegranate tree ou simplesmente pomegranate. A espécie inclui numerosas cultivares seleccionadas para consumo em fresco, produção de sumo, uso ornamental ou adaptação a diferentes climas e solos, desde pomares comerciais a pequenas hortas familiares.</p>
+      <p>No interior do fruto, a casca coriácea de cor vermelho-escura a amarelada protege compartimentos separados por membranas esbranquiçadas, preenchidos por centenas de arilos translúcidos, suculentos, que envolvem cada semente. Estes arilos são a parte mais consumida em fresco ou em sumo, enquanto a casca, mais rica em taninos, é tradicionalmente seca e usada em chás, gargarejos e outros preparados de fitoterapia popular.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, a romãzeira comporta-se como arbusto ou pequena árvore de folha caduca, típica de climas mediterrânicos com verões quentes e secos e invernos relativamente suaves. A rebentação ocorre na primavera, seguida de floração prolongada do final da primavera ao verão e frutificação que culmina no outono.
+O fruto é considerado de época outonal, com maturação principal entre outubro e novembro na maior parte do território, embora possa variar ligeiramente consoante a cultivar, a região e o ano agrícola. A casca para uso medicinal é habitualmente obtida de frutos maduros, aproveitando material que de outro modo poderia ser desperdiçado, e seca à sombra para conservação.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Floração: sobretudo entre abril e junho em Portugal continental, com variações regionais e consoante a cultivar.</li>
+        <li>Formação e crescimento dos frutos: primavera tardia e verão, com desenvolvimento gradual dos arilos e acumulação de pigmentos e polifenóis.</li>
+        <li>Maturação e colheita das romãs: principalmente em outubro e novembro, podendo estender-se do fim de setembro ao início de dezembro em algumas zonas.</li>
+        <li>Colheita da casca para uso medicinal: normalmente a partir de frutos maduros colhidos na época, retirando a casca saudável e secando-a em local ventilado e à sombra.</li>
+        <li>Podas de formação e frutificação: realizadas sobretudo no inverno, durante o período de dormência, para manter estrutura aberta e equilibrar produção.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a> <a href="#ref-S3">[S3]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Ensaios clínicos e revisões sugerem que o consumo regular de sumo de romã, em doses na ordem de 200–250 mL por dia, pode contribuir para pequenas reduções da pressão arterial e melhoria de alguns marcadores lipídicos e inflamatórios, como complemento a terapêuticas convencionais em indivíduos com risco cardiovascular aumentado. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a></li>
+        <li>Extratos padronizados de casca ou pericarpo de romã, ricos em ellagitanninas e outros polifenóis, têm sido estudados em modelos experimentais e alguns estudos clínicos como adjuvantes em dislipidemia, obesidade, inflamação crónica de baixo grau e proteção da mucosa gastrointestinal, embora a evidência clínica ainda seja heterogénea. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M5">[M5]</a></li>
+        <li>Preparados aquosos (chás ou decoctos) da casca de romã, utilizando por exemplo 5–10 g de casca seca por chávena de água em decocção breve, são descritos em fontes de fitoterapia e etnofarmacologia como coadjuvantes no alívio de dor de garganta, afecções orais ligeiras e diarreia, explorando o efeito adstringente e antimicrobiano dos taninos. <a href="#ref-M1">[M1]</a> <a href="#ref-M6">[M6]</a> <a href="#ref-F1">[F1]</a></li>
+        <li>Estudos farmacológicos com extratos de folha, flor, casca e sementes de Punica granatum apontam para atividades antioxidante, anti-inflamatória, hipoglicemiante, hipolipemiante e potencialmente anticancerígena, suportando o interesse da planta como fonte de compostos bioativos, ainda que a transposição direta de doses e efeitos para uso caseiro exija prudência. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Chá da casca de romã, preparado em decocção e utilizado em gargarejos ou bochechos para aliviar dor de garganta, aftas, gengivite e pequenas inflamações da boca e faringe. <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a> <a href="#ref-U1">[U1]</a></li>
+        <li>Chá da casca de romã ingerido em pequenas quantidades, por períodos curtos, como remédio tradicional para diarreia ligeira, disenteria e desconforto gastrointestinal. <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a> <a href="#ref-U1">[U1]</a></li>
+        <li>Sumo de romã fresca, consumido em jejum ou ao longo do dia, como bebida antioxidante associada popularmente à proteção do coração, reforço da imunidade e apoio ao emagrecimento. <a href="#ref-R3">[R3]</a> <a href="#ref-R4">[R4]</a> <a href="#ref-R5">[R5]</a></li>
+        <li>Uso da romã em xaropes caseiros ou granadina artesanal para aliviar rouquidão e irritação de garganta, combinada por vezes com mel e outras plantas calmantes. <a href="#ref-R2">[R2]</a> <a href="#ref-R6">[R6]</a></li>
+        <li>Emprego culinário abundante dos arilos em saladas, sobremesas, molhos e pratos salgados, aproveitando simultaneamente o valor gastronómico e funcional do fruto. <a href="#ref-R3">[R3]</a> <a href="#ref-A1">[A1]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>O consumo do fruto fresco e do sumo de romã, em quantidades alimentares, é considerado seguro para a maioria das pessoas e compatível com uma alimentação equilibrada. Já o uso da casca e de extratos concentrados, ricos em taninos, requer mais prudência, particularmente em pessoas com história de gastrite, úlcera péptica ou sensibilidade digestiva. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-R1">[R1]</a></p>
+      <p>Fontes de saúde e fitoterapia alertam que o chá da casca de romã não deve ser ingerido em doses elevadas ou por períodos prolongados, uma vez que a concentração de taninos pode provocar irritação gástrica, náuseas, vómitos ou, em casos extremos, quadros de toxicidade. Alguns autores recomendam restringir o uso interno da casca a períodos curtos e sob orientação profissional. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></p>
+      <p>Pessoas em tratamento com fármacos cardiovasculares, anticoagulantes, anti-hipertensores ou hipoglicemiantes devem falar com o médico antes de utilizar suplementos concentrados de romã (cápsulas, extratos padronizados), dado o potencial de interação com a função endotelial, a agregação plaquetária e o metabolismo de lípidos e glicose descritos em estudos. Grávidas, lactantes, crianças pequenas e doentes crónicos devem evitar usos intensivos ou prolongados de casca e extratos sem acompanhamento especializado. <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a> <a href="#ref-M2">[M2]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        As principais formas terapêuticas de utilização da romãzeira concentram-se no chá ou decocto da casca, em gargarejos e ingestão moderada, no consumo regular de sumo de romã e em alguns preparados tradicionais como xaropes caseiros. Em paralelo, existem suplementos com extratos padronizados de fruto, casca ou semente utilizados como adjuvantes em contextos cardiovasculares e metabólicos. Todas estas utilizações devem ser integradas num estilo de vida saudável e enquadradas pelas recomendações de segurança.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="romazeira_receitas.html">Chá de casca de romã para dor de garganta:</a> decocção simples da casca usada morna em gargarejos para aliviar irritação e inflamação ligeira da garganta. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="romazeira_receitas.html">Chá de casca de romã para diarreia ligeira:</a> decoção suave da casca bebida em pequenas quantidades por períodos curtos como apoio em diarreia e desconforto intestinal ligeiro. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="romazeira_receitas.html">Chá de casca de romã para apoio cardiovascular:</a> infusão ou decocção leve da casca consumida regularmente como complemento em rotinas de proteção cardiovascular. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="romazeira_receitas.html">Sumo de romã fresco:</a> bebida obtida a partir dos arilos espremidos, consumida em cru como fonte concentrada de polifenóis antioxidantes. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="romazeira_receitas.html">Sumo de romã com outras frutas:</a> mistura de romã com citrinos ou outras frutas, tomada como bebida funcional rica em antioxidantes, integrada numa alimentação equilibrada. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="romazeira_receitas.html">Infusão de romã com gengibre:</a> combinação de casca de romã e gengibre em bebida quente usada para confortar a garganta e apoiar defesas sazonais. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="romazeira_receitas.html">Xarope caseiro de romã (granadina artesanal):</a> redução doce de sumo de romã utilizada diluída em água ou bebidas quentes para suavizar a garganta e aromatizar. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="romazeira_receitas.html">Enxaguatório bucal com decocto de casca de romã:</a> decoção concentrada usada em bochechos e gargarejos curtos para apoio em inflamações ligeiras da boca e gengivas. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="romazeira_receitas.html">Banho de assento ou de pés com infusão de casca de romã:</a> infusão concentrada adicionada à água morna do banho parcial para cuidado da pele e conforto em zonas sensíveis. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="romazeira_receitas.html">Suplementos com extrato de romã:</a> cápsulas ou comprimidos padronizados em polifenóis de romã, usados como complemento antioxidante sob orientação profissional. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>A romã tem sido extensivamente estudada como fruto funcional rico em polifenóis, com destaque para as ellagitanninas (punicalaginas), ácido elágico e antocianinas, que conferem elevada capacidade antioxidante e efeitos anti-inflamatórios. Revisões recentes apontam para benefícios potenciais em parâmetros cardiovasculares, incluindo modulação de lípidos, melhoria de marcadores de aterosclerose e ligeiras reduções de pressão arterial em alguns ensaios com sumo ou extratos padronizados. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M5">[M5]</a></p>
+      <p>Para além do impacto cardiometabólico, diversas partes da planta (casca, flor, sementes e folhas) são investigadas quanto a atividades antimicrobianas, antidiarreicas, gastroprotetoras e possíveis efeitos adjuvantes em doenças metabólicas e inflamatórias crónicas. A evidência clínica é mais robusta para o fruto e o sumo, enquanto o uso interno da casca assenta em grande parte em tradição e estudos pré-clínicos. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-M6">[M6]</a></p>
+      <p>Estudos de segurança e ensaios em humanos sugerem que o consumo alimentar de romã é bem tolerado, mas reforçam a necessidade de cautela com extratos concentrados e doses elevadas de pericarpo, sobretudo em pessoas medicadas ou com patologias crónicas, reforçando o papel da planta como complemento e não substituto de terapêuticas convencionais. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-U2">[U2]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Adjuvante na proteção cardiovascular, ajudando a modular marcadores de stress oxidativo, inflamação e perfil lipídico quando integrada num padrão alimentar saudável. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M5">[M5]</a></li>
+        <li>Apoio em hipertensão ligeira e risco cardiometabólico aumentado, com pequenas reduções adicionais de pressão arterial e melhoria de alguns marcadores em ensaios com sumo e extratos de romã. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a></li>
+        <li>Ação antioxidante e anti-inflamatória que pode contribuir para reduzir danos oxidativos celulares, apoiar a saúde da pele e complementar estratégias de prevenção de envelhecimento precoce. <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-R4">[R4]</a></li>
+        <li>Uso tradicional e apoio experimental em distúrbios digestivos ligeiros, como diarreia e inflamações da mucosa oral e faríngea, através de chás e gargarejos de casca de romã. <a href="#ref-M1">[M1]</a> <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a> <a href="#ref-R5">[R5]</a></li>
+        <li>Potencial adjuvante em contextos metabólicos e oncológicos específicos (por exemplo, obesidade, resistência à insulina e alguns tipos de cancro), sobretudo em fase de investigação, sem substituir terapêuticas médicas estabelecidas. <a href="#ref-M3">[M3]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-M5">[M5]</a> <a href="#ref-F2">[F2]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>Punica granatum é rico em polifenóis, com destaque para as ellagitanninas (sobretudo punicalaginas) presentes no pericarpo, sumo e outras partes da planta. Estes compostos, juntamente com o ácido elágico, antocianinas e flavonoides diversos, são apontados como principais responsáveis pela elevada capacidade antioxidante e por grande parte das atividades biológicas atribuídas à romã. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>Estudos de composição mostram que o teor de punicalaginas no pericarpo seco pode representar vários por cento da matéria seca, enquanto o sumo concentrado apresenta teores relevantes de ellagitanninas e antocianinas, com variações marcadas entre cultivares, condições edafoclimáticas e métodos de processamento. Extratos padronizados procuram estabilizar estes teores para uso em suplementos e ensaios clínicos. <a href="#ref-F1">[F1]</a> <a href="#ref-F4">[F4]</a> <a href="#ref-F6">[F6]</a></p>
+      <p>A capacidade antioxidante de extratos de fruto, casca, folhas e flores é frequentemente quantificada por ensaios como DPPH, ABTS e FRAP, revelando valores elevados quando comparados com outras frutas ricas em polifenóis. Trabalhos recentes reforçam ainda a presença de ácidos gordos específicos no óleo de semente, como o ácido punícico, com potenciais efeitos anti-inflamatórios e metabólicos. <a href="#ref-F1">[F1]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F5">[F5]</a></p>
+      <p>Revisões farmacológicas consolidam a visão de que a romãzeira constitui uma &quot;planta-plataforma&quot; em termos farmacêuticos, fornecendo matrizes para extratos aquosos, hidroalcoólicos e oleosos com múltiplas ações biológicas, embora a padronização, biodisponibilidade dos metabolitos (como urolitinas) e a tradução para doses humanas consistentes permaneçam desafios importantes. <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F6">[F6]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Punicalaginas totais no pericarpo seco</td><td>≈5–15 % m/m da matéria seca</td></tr>
+        <tr><td>Ácido elágico total em extratos de casca</td><td>≈0,5–3 % m/m da matéria seca</td></tr>
+        <tr><td>Polifenóis totais no sumo de romã (equivalentes de ácido gálico)</td><td>≈1,0–3,0 g GAE/L de sumo</td></tr>
+        <tr><td>Capacidade antioxidante de extratos de casca e fruto (ensaios DPPH/ABTS)</td><td>EC50 frequentemente na gama de 5–50 µg/mL</td></tr>
+        <tr><td>Ácido punícico e outros ácidos gordos do óleo de semente de romã</td><td>≈60–80 % dos ácidos gordos totais do óleo de semente</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Uso da casca e de outros resíduos da transformação da romã como fonte de corantes naturais e taninos para curtumes, tinturaria artesanal e indústria alimentar. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Emprego do fruto e de extratos em cosmética natural (cremes, séruns, óleos corporais e capilares) pela ação antioxidante, emoliente e protetora da pele.</li>
+        <li>Importância cultural e simbólica em diversas tradições religiosas e populares, associada à fertilidade, abundância e renovação, sendo a romã utilizada em celebrações sazonais e rituais.</li>
+        <li>Valorização ornamental da romãzeira em jardins, sebes e pátios, graças às flores vistosas e ao fruto decorativo, contribuindo para a estética do espaço e para alimentação de fauna.</li>
+        <li>Aproveitamento de restos de poda e cascas para compostagem e cobertura de solo, contribuindo para reciclagem de nutrientes e melhoria da matéria orgânica em sistemas agroecológicos.</li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 8,6 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em permacultura, a romãzeira destaca-se como pequena árvore frutífera de grande valor alimentar e medicinal, bem adaptada a climas mediterrânicos e semiáridos. Produz frutos nutritivos e altamente antioxidantes no outono, contribui com flores muito atrativas para polinizadores e oferece alguma sombra e estrutura em sistemas de pomar, bordaduras e zonas de transição entre horta e jardim. A tolerância à seca depois de estabelecida e a relativa rusticidade fazem dela um elemento robusto para taludes, socalcos e sistemas agroflorestais com baixa disponibilidade hídrica.
+Embora não seja uma grande produtora de biomassa lenhosa quando comparada com espécies florestais, gera folhagem, cascas e restos de poda aproveitáveis para cobertura leve e compostagem. A presença eventual de espinhos em certos ramos e alguma competição por água em solos muito secos exigem planeamento do espaçamento e consociações, mas em geral a romãzeira integra-se bem em pomares biodiversos, sebes produtivas e florestas alimentares de pequena escala.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação da romãzeira resulta de valores elevados em uso alimentar humano (ALIM=2), pelo papel dos frutos e do sumo na dieta e como alimentos funcionais, e em uso medicinal (MED=2), graças à diversidade de preparados tradicionais (casca, flores, sumo) e à evidência crescente em contexto cardiometabólico. A estrutura arbustiva ou de pequena árvore confere um contributo importante em termos de porte e longevidade (ESTR=2), enquanto a produção de folhagem, casca e restos de poda garante um apoio moderado à regeneração do solo e à biomassa (SOLO=1). A atração de polinizadores pelas flores vistosas e o fornecimento de alimento a aves e insetos elevam a relevância ecológica da espécie (ECO=2), somando-se a uma boa rusticidade em climas mediterrânicos, com baixa necessidade de manutenção após o estabelecimento (RUST=2) e a um forte valor cultural e multifuncionalidade (MULT=2).
+As penalizações consideram sobretudo a competição moderada por água e nutrientes em solos muito secos ou pouco profundos, quando a romãzeira é implantada demasiado próxima de culturas sensíveis (COMP=-1). O risco de toxicidade nas formas tradicionais de uso alimentar (fruto, sumo) e o perigo físico são geralmente reduzidos, embora alguns ramos possam apresentar espinhos moderados geríveis com uma poda adequada (TOX=0; PERIGO=0; INVAS=0). O valor final em escala 0–10 resulta da aplicação do algoritmo descrito no projeto (soma dos critérios positivos até 14 pontos, subtração das penalizações e conversão por regra de três simples), situando a romãzeira em cerca de 8,6/10 e indicando uma planta de elevada funcionalidade em permacultura, especialmente útil em sebes produtivas, pomares biodiversos e sistemas alimentares resilientes em clima mediterrânico.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-P3">[P3]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Wikipedia. &quot;Romã&quot;. Artigo em português com descrição geral do fruto da romãzeira, origem geográfica, características morfológicas básicas e usos alimentares tradicionais. Disponível em: <a href="https://pt.wikipedia.org/wiki/Rom%C3%A3" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Rom%C3%A3</a></li>
+        <li id="ref-D2">[D2] LexiPlant. &quot;Punica granatum&quot;. Ficha botânica que descreve a romãzeira como arbusto frutífero ou pequena árvore, origem do Médio Oriente e características gerais de porte e folhas. Disponível em: <a href="https://lexiplant.com/pt/plant/punica-granatum-pomegranate" target="_blank" rel="noopener">https://lexiplant.com/pt/plant/punica-granatum-pomegranate</a></li>
+        <li id="ref-D3">[D3] PictureThis. &quot;Romã - Punica granatum&quot;. Descrição acessível da romãzeira, incluindo altura típica, caducidade da folha, história de domesticação e principais usos do fruto. Disponível em: <a href="https://www.picturethisai.com/pt/wiki/Punica_granatum.html" target="_blank" rel="noopener">https://www.picturethisai.com/pt/wiki/Punica_granatum.html</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] AJAP. &quot;A Cultura da Romã (Punica granatum L.)&quot;. Manual técnico português sobre a cultura da romãzeira, com informação sobre floração, frutificação, exigências climáticas e práticas culturais. Disponível em: <a href="https://culturasemergentes.ajap.pt/assets/2019/01/Manual_Culturas_Emergentes_Roma_Digital-min.pdf" target="_blank" rel="noopener">https://culturasemergentes.ajap.pt/assets/2019/01/Manual_Culturas_Emergentes_Roma_Digital-min.pdf</a></li>
+        <li id="ref-S2">[S2] Revista Jardins. &quot;Romãzeira, uma árvore mediterrânica&quot;. Artigo em português que aborda origem, época de plantação, necessidades de solo e água e indicações práticas para o cultivo em Portugal. Disponível em: <a href="https://revistajardins.pt/plantas/arvores/romazeira-arvore-mediterranica/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/arvores/romazeira-arvore-mediterranica/</a></li>
+        <li id="ref-S3">[S3] Batata Doceira. &quot;Cultivo da Romãzeira - Punica granatum&quot;. Texto prático sobre ciclo de floração e frutificação em Portugal, início de produção e cuidados gerais de cultivo. Disponível em: <a href="https://batatadoceira.blogspot.com/2018/11/cultivo-romazeira.html" target="_blank" rel="noopener">https://batatadoceira.blogspot.com/2018/11/cultivo-romazeira.html</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] Tua Saúde. &quot;Chá de romã: para que serve e como fazer&quot;. Artigo em português descrevendo indicações do chá de casca de romã, modo de preparo, possíveis efeitos colaterais e riscos de intoxicação em doses elevadas. Disponível em: <a href="https://www.tuasaude.com/cha-de-cascas-de-roma-para-dor-de-garganta/" target="_blank" rel="noopener">https://www.tuasaude.com/cha-de-cascas-de-roma-para-dor-de-garganta/</a></li>
+        <li id="ref-U2">[U2] Tua Saúde. &quot;11 benefícios da romã, como comer (e como preparar o chá)&quot;. Texto que apresenta benefícios, formas de consumo e cuidados gerais com o uso do fruto e do chá de romã. Disponível em: <a href="https://www.tuasaude.com/roma/" target="_blank" rel="noopener">https://www.tuasaude.com/roma/</a></li>
+        <li id="ref-U3">[U3] Review Eghbali S. et al. &quot;Therapeutic Effects of Punica granatum and Its Components&quot;. Revisão científica que discute efeitos terapêuticos e considerações de segurança de extratos de romã. Disponível em: <a href="https://www.mdpi.com/2223-7747/11/21/2820" target="_blank" rel="noopener">https://www.mdpi.com/2223-7747/11/21/2820</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Tua Saúde. &quot;Chá de romã: para que serve e como fazer&quot;. Receita detalhada de chá da casca de romã com quantidades, modo de preparação, frequência de toma e indicações para dor de garganta e inflamações orofaríngeas. Disponível em: <a href="https://www.tuasaude.com/cha-de-cascas-de-roma-para-dor-de-garganta/" target="_blank" rel="noopener">https://www.tuasaude.com/cha-de-cascas-de-roma-para-dor-de-garganta/</a></li>
+        <li id="ref-R2">[R2] Chá do Mundo. &quot;Cascas de Romã (Punica granatum L.)&quot;. Ficha de chá medicinal com descrição de preparo da decocção da casca, doses e usos tradicionais em diarreia, infeções da boca e garganta e apoio cardiovascular. Disponível em: <a href="https://chasdomundo.pt/pt/chas-medicinais/cha-cascas-de-roma-punica-granatum" target="_blank" rel="noopener">https://chasdomundo.pt/pt/chas-medicinais/cha-cascas-de-roma-punica-granatum</a></li>
+        <li id="ref-R3">[R3] Energia &amp; Equilíbrio. &quot;Romã Casca 50gr&quot;. Ficha de produto que descreve o chá de casca de romã como apoio à garganta, indica benefícios e sugere preparação em infusão ou decocção. Disponível em: <a href="https://energiaemequilibrio.com/pt/plantas-medicinais/6632-RomaCasca50gr-5604345011278.html" target="_blank" rel="noopener">https://energiaemequilibrio.com/pt/plantas-medicinais/6632-RomaCasca50gr-5604345011278.html</a></li>
+        <li id="ref-R4">[R4] Tua Saúde. &quot;Suco de romã: para que serve e como fazer&quot;. Artigo com receitas de sumo de romã, quantidades recomendadas, formas de combinar com outras frutas e benefícios associados. Disponível em: <a href="https://www.tuasaude.com/suco-de-roma/" target="_blank" rel="noopener">https://www.tuasaude.com/suco-de-roma/</a></li>
+        <li id="ref-R5">[R5] CUF. &quot;Romã: conheça os benefícios deste fruto&quot;. Texto em português que sugere formas de incluir a romã na alimentação, incluindo consumo em sumo e em pratos variados, com enfoque em benefícios cardiovasculares. Disponível em: <a href="https://www.cuf.pt/mais-saude/roma-conheca-os-beneficios-deste-fruto" target="_blank" rel="noopener">https://www.cuf.pt/mais-saude/roma-conheca-os-beneficios-deste-fruto</a></li>
+        <li id="ref-R6">[R6] Atida | Mifarma. &quot;Romã: todos os seus benefícios e propriedades&quot;. Artigo que descreve a romã como superalimento, inclui sugestões de consumo e combinações com outras frutas e bebidas. Disponível em: <a href="https://www.atida.com/pt-pt/blog/roma-todos-os-seus-beneficios-e-propriedades" target="_blank" rel="noopener">https://www.atida.com/pt-pt/blog/roma-todos-os-seus-beneficios-e-propriedades</a></li>
+        <li id="ref-R7">[R7] Clínicas Persona. &quot;11 enormes benefícios da romã para a sua saúde&quot;. Texto em português que, além de benefícios, menciona a utilização do sumo de romã em contextos de bem-estar, com referências a preparações práticas. Disponível em: <a href="https://clinicaspersona.com/blog/11-enormes-beneficios-da-roma-saude/" target="_blank" rel="noopener">https://clinicaspersona.com/blog/11-enormes-beneficios-da-roma-saude/</a></li>
+        <li id="ref-R8">[R8] Fitoterapia Brasil. &quot;Pericarpium Granati&quot;. Monografia sobre o pericarpo de Punica granatum com indicações de usos em gargarejos e formas farmacêuticas que podem ser adaptadas a enxaguatórios caseiros. Disponível em: <a href="https://fitoterapiabrasil.com.br/file/6333/download?token=C_VB1S6t" target="_blank" rel="noopener">https://fitoterapiabrasil.com.br/file/6333/download?token=C_VB1S6t</a></li>
+        <li id="ref-R9">[R9] Publicações e blogs de fitoterapia que descrevem banhos locais e de pés com decocções concentradas de plantas adstringentes (incluindo casca de romã) para cuidado da pele e conforto circulatório. Disponível em: <a href="https://www.remedio-natura.com/banho-de-pes-erva" target="_blank" rel="noopener">https://www.remedio-natura.com/banho-de-pes-erva</a></li>
+        <li id="ref-R10">[R10] PhcogJ. &quot;Pomegranate (Punica granatum) – a fruitful fountain of remedial potential&quot;. Artigo e derivados de mercado que descrevem suplementos com extratos de romã, incluindo doses utilizadas em estudos e produtos comerciais. Disponível em: <a href="https://www.phcogj.com/article/994" target="_blank" rel="noopener">https://www.phcogj.com/article/994</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] Maphetu N. et al. &quot;Medicinal uses, pharmacological activities, phytochemistry, and molecular mechanisms of Punica granatum L. plant extracts: A review&quot;. Biomedicine &amp; Pharmacotherapy, 2022. Revisão abrangente de usos etnomedicinais, atividades farmacológicas e mecanismos de ação. Disponível em: <a href="https://www.sciencedirect.com/science/article/pii/S075333222200645X" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S075333222200645X</a></li>
+        <li id="ref-M2">[M2] Mohan M. et al. &quot;Review of Pharmacological and Medicinal Uses of Punica granatum&quot;. Plants, 2024. Revisão sobre constituintes, efeitos cardiovasculares, metabólicos e outros benefícios potenciais. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11563771/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC11563771/</a></li>
+        <li id="ref-M3">[M3] Noreen S. et al. &quot;Phytochemicals and pharmacology of pomegranate (Punica granatum L.)&quot;. Frontiers in Nutrition, 2025. Artigo de revisão recente sobre fitoquímicos, atividades farmacológicas e potencial terapêutico da romã. Disponível em: <a href="https://www.frontiersin.org/articles/10.3389/fnut.2025.1528897/full" target="_blank" rel="noopener">https://www.frontiersin.org/articles/10.3389/fnut.2025.1528897/full</a></li>
+        <li id="ref-M4">[M4] Eghbali S. et al. &quot;Therapeutic Effects of Punica granatum and Its Components&quot;. Plants, 2021. Revisão que sumariza evidência experimental e clínica em áreas como doença cardiovascular, diabetes e inflamação. Disponível em: <a href="https://www.mdpi.com/2223-7747/11/21/2820" target="_blank" rel="noopener">https://www.mdpi.com/2223-7747/11/21/2820</a></li>
+        <li id="ref-M5">[M5] Liang K. et al. &quot;An updated systematic review and meta-analysis of pomegranate supplementation on cardiovascular risk factors&quot;. Clinical Nutrition ESPEN, 2025. Meta-análise sobre efeitos do consumo de romã em lípidos, pressão arterial e outros parâmetros de risco. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S1098882325000450" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S1098882325000450</a></li>
+        <li id="ref-M6">[M6] Stockton A. et al. &quot;Effect of pomegranate extract on blood pressure and anthropometric measures&quot;. Clinical trial que avaliou cápsulas de extrato de romã em adultos, medindo pressões arteriais e outros parâmetros. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5672313/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC5672313/</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Yisimayili Z. et al. &quot;A review on phytochemicals, metabolic profiles and pharmacokinetics studies of different parts of pomegranate (Punica granatum L.)&quot;. Food Chemistry, 2022. Revisão de composição e perfis de ellagitanninas, antocianinas e outros polifenóis em diferentes partes da planta. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S030881462201562X" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S030881462201562X</a></li>
+        <li id="ref-F2">[F2] Noreen S. et al. &quot;Phytochemicals and pharmacology of pomegranate (Punica granatum L.)&quot;. Frontiers in Nutrition, 2025. Discussão detalhada de punicalaginas, ácido elágico e capacidade antioxidante de extratos. Disponível em: <a href="https://www.frontiersin.org/articles/10.3389/fnut.2025.1528897/full" target="_blank" rel="noopener">https://www.frontiersin.org/articles/10.3389/fnut.2025.1528897/full</a></li>
+        <li id="ref-F3">[F3] Jacob J. et al. &quot;Pomegranate (Punica granatum): A Fruitful Fountain of Remedial Potential&quot;. Pharmacognosy Journal, 2019. Revisão de fitoquímicos e múltiplas propriedades biológicas da romã. Disponível em: <a href="https://www.phcogj.com/sites/default/files/PJ-11-5-330.pdf" target="_blank" rel="noopener">https://www.phcogj.com/sites/default/files/PJ-11-5-330.pdf</a></li>
+        <li id="ref-F4">[F4] Coronado-Reyes J.A. et al. &quot;Chemical composition and great applications to the fruit of Punica granatum&quot;. Ciência e Tecnologia de Alimentos, 2021. Artigo que aborda composição química do fruto, incluindo taninos, antocianinas e aplicações industriais. Disponível em: <a href="https://www.scielo.br/j/cta/a/4DXqPzNfyrcyDDMHQPJvgZM/?lang=en" target="_blank" rel="noopener">https://www.scielo.br/j/cta/a/4DXqPzNfyrcyDDMHQPJvgZM/?lang=en</a></li>
+        <li id="ref-F5">[F5] Sharma J. et al. &quot;Pomegranate Phytochemicals: Nutraceutical and Therapeutic Values&quot;. Review que quantifica polifenóis totais, atividade antioxidante e potenciais aplicações em saúde. Disponível em: <a href="https://globalsciencebooks.info/Online/GSBOnline/images/2010/FVCSB_4(SI2)/FVCSB_4(SI2)56-76o.pdf" target="_blank" rel="noopener">https://globalsciencebooks.info/Online/GSBOnline/images/2010/FVCSB_4(SI2)/FVCSB_4(SI2)56-76o.pdf</a></li>
+        <li id="ref-F6">[F6] Zam T. et al. &quot;Advancements in Biotechnological Approaches for the Extraction and Applications of Pomegranate Bioactive Compounds&quot;. ACS Food Science &amp; Technology, 2025. Revisão de métodos de extração, teores de compostos e aplicações de punicalaginas e ácido punícico. Disponível em: <a href="https://pubs.acs.org/doi/full/10.1021/acsfoodscitech.5c00190" target="_blank" rel="noopener">https://pubs.acs.org/doi/full/10.1021/acsfoodscitech.5c00190</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Wikipedia (en). &quot;Pomegranate&quot;. Artigo que descreve usos culinários, históricos e simbólicos da romã, incluindo aplicações como corante e em rituais culturais. Disponível em: <a href="https://en.wikipedia.org/wiki/Pomegranate" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Pomegranate</a></li>
+        <li id="ref-A2">[A2] PlantNet / LexiPlant. &quot;Punica granatum&quot;. Entradas que mencionam usos ambientais, alimentares e medicinais tradicionais da romãzeira. Disponível em: <a href="https://identify.plantnet.org/pt-br/k-world-flora/species/Punica%20granatum%20L./data" target="_blank" rel="noopener">https://identify.plantnet.org/pt-br/k-world-flora/species/Punica%20granatum%20L./data</a></li>
+        <li id="ref-A3">[A3] Atida | Mifarma. &quot;Romã: todos os seus benefícios e propriedades&quot;. Artigo que destaca a romã como superalimento, com benefícios digestivos, imunológicos e cardiovasculares e sugestões de uso em rotinas de bem-estar. Disponível em: <a href="https://www.atida.com/pt-pt/blog/roma-todos-os-seus-beneficios-e-propriedades" target="_blank" rel="noopener">https://www.atida.com/pt-pt/blog/roma-todos-os-seus-beneficios-e-propriedades</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] Savour Soil Permaculture. &quot;Plant Profile: Pomegranate (Punica granatum)&quot;. Perfil da romãzeira em contexto de floresta de alimentos, salientando tolerância à seca, valor para polinizadores e funções de bordadura. Disponível em: <a href="https://savoursoilpermaculture.com/plant-profile-pomegranate-punica-granatum/" target="_blank" rel="noopener">https://savoursoilpermaculture.com/plant-profile-pomegranate-punica-granatum/</a></li>
+        <li id="ref-P2">[P2] PermaSystems. &quot;Dryland Permaculture Plant Profile – Pomegranates&quot;. Artigo que descreve a romãzeira como espécie muito resistente e adequada a solos difíceis, com funções estruturais e ecológicas em permacultura de sequeiro. Disponível em: <a href="https://www.permasystems.org/blog/dryland-permaculture-plant-profile-pomegranates" target="_blank" rel="noopener">https://www.permasystems.org/blog/dryland-permaculture-plant-profile-pomegranates</a></li>
+        <li id="ref-P3">[P3] Permaculture Course Online. &quot;Pomegranate Tree Friend&quot;. Ficha que apresenta a romãzeira como árvore amiga em sistemas de permacultura, discutindo rusticidade, necessidades de água, funções de habitat e papel em florestas alimentares. Disponível em: <a href="https://www.permaculturecourseonline.com/assignments/tree-friends/pomegranate-tree-friend/" target="_blank" rel="noopener">https://www.permaculturecourseonline.com/assignments/tree-friends/pomegranate-tree-friend/</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html" class="ativa">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="erva-gateira.html">Erva-gateira</a>
+  <a class="next" href="figueira.html">Figueira</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Erva-príncipe / Capim-limão (<em>Cymbopogon citratus (DC.) Stapf</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Poaceae</span>
+  <span>Parte usada: folhas aromáticas frescas ou secas</span>
+  <span>Tipo: gramínea aromática perene tropical</span>
+  <span>Produção: <strong>cultivo em tufos, canteiros, vasos</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> Sudeste asiático, Índia e regiões tropicais, hoje comum em Portugal</div>
+  <div><strong>Uso principal</strong> calmante e digestiva, apoio respiratório, febrífugo, antimicrobiano suave leve</div>
+  <div><strong>Perfil medicinal</strong> ansiolítico suave, sedativo, digestivo, antiespasmódico, analgésico e anti-inflamatório</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Erva-príncipe / Capim-limão (Cymbopogon citratus (DC.) Stapf)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>A erva-príncipe (Cymbopogon citratus (DC.) Stapf) é uma gramínea aromática perene, de porte cespitoso, que forma tufos densos de folhas lineares e compridas, com margens cortantes e intenso aroma a limão quando esmagadas. Cada tufo pode atingir 1–1,5 m de altura em condições favoráveis, com folhas de cor verde a verde-azulada.</p>
+      <p>Em português é conhecida por vários nomes comuns, incluindo erva-príncipe, capim-limão, capim-santo, capim-cidreira ou capim-cidró (particularmente no Brasil). É importante não confundir com a erva-cidreira verdadeira (Melissa officinalis), que pertence à família Lamiaceae e tem folhas ovadas. Em inglês, é geralmente designada por lemongrass ou West Indian lemon grass.</p>
+      <p>As folhas são a parte mais utilizada, colhidas frescas ou secas para infusões, tisanas e preparados culinários. O óleo essencial extraído por destilação a vapor é rico em citral (mistura dos isómeros geranial e neral) e contém ainda mirceno, citronelal, linalol, geraniol e outros monoterpenos, sendo amplamente utilizado em aromaterapia, perfumaria, produtos cosméticos e repelentes naturais de insetos.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, a erva-príncipe comporta-se como perene sensível ao frio, crescendo de forma mais vigorosa na primavera e verão, quando as temperaturas são amenas a quentes e existe boa disponibilidade de água. Em regiões com geadas frequentes pode perder parte da folhagem no inverno ou mesmo não sobreviver sem proteção.
+A colheita das folhas para uso medicinal e culinário faz-se sobretudo durante a época de crescimento ativo, da primavera ao outono, escolhendo folhas bem desenvolvidas mas ainda tenras. Em cultivo protegido ou em zonas muito amenas, é possível colher ao longo de todo o ano, ajustando cortes para permitir a regeneração do tufo.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Reinício de crescimento vigoroso: primavera, com subida das temperaturas e aumento da fotoperíodo.</li>
+        <li>Período principal de colheita das folhas: primavera ao outono (aproximadamente março/abril a outubro), em função do clima local.</li>
+        <li>Sensibilidade a frio e geadas: no inverno, em regiões frias, a parte aérea pode secar parcial ou totalmente; a planta beneficia de proteção ou cultivo em vaso em locais abrigados.</li>
+        <li>Em zonas de inverno suave ou com proteção adequada, é possível realizar cortes moderados ao longo de todo o ano, evitando desfolhar completamente o tufo.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Infusões de folhas secas ou frescas de Cymbopogon citratus (por exemplo 1–3 g de folha seca ou 4–6 g de folha fresca em 150–250 mL de água quente, infundidas 5–10 minutos) como adjuvantes em queixas digestivas ligeiras, cólicas, nervosismo e intranquilidade, conforme formulários de fitoterápicos e monografias farmacêuticas brasileiras. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-M1">[M1]</a></li>
+        <li>Consumo regular de chá de erva-príncipe como parte de um padrão alimentar saudável em pessoas com hipertensão ligeira, explorando evidência pré-clínica e alguns estudos em humanos que indicam efeito anti-hipertensivo moderado e ligeira atividade diurética, associados à presença de compostos fenólicos, flavonoides e potássio. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-F3">[F3]</a></li>
+        <li>Utilização do óleo essencial de Cymbopogon citratus, rico em citral, em preparações tópicas diluídas e em aromaterapia, como adjuvante em queixas de ansiedade, tensão, dores musculares e infeções fúngicas superficiais, apoiada por estudos experimentais que demonstram atividades antimicrobianas, antifúngicas, anti-inflamatórias e analgésicas. <a href="#ref-M1">[M1]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F4">[F4]</a></li>
+        <li>Investigação laboratorial que documenta atividades anti-amoebianas, antidiarreicas, antifilariais, antileishmaniais e antifúngicas do óleo essencial e de compostos isolados (como citral), sugerindo potencial terapêutico em várias áreas, embora ainda sem indicações clínicas amplamente validadas. <a href="#ref-M1">[M1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F5">[F5]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Chá de erva-príncipe como bebida calmante e digestiva, tomado ao final do dia para aliviar tensão, stress e má digestão leve, sendo muitas vezes combinado com outras plantas relaxantes como tília, camomila ou lúcia-lima. <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a> <a href="#ref-A1">[A1]</a></li>
+        <li>Infusões de erva-príncipe usadas em gripes e constipações, como bebida quente sudorífica e reconfortante, às vezes aromatizada com limão e mel, para ajudar a baixar febre ligeira e aliviar dores de cabeça. <a href="#ref-R3">[R3]</a> <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Uso culinário das folhas frescas de erva-príncipe em sopas, marinadas, caris, pratos de peixe e infusões frias, aproveitando o aroma cítrico intenso para perfumar alimentos e bebidas. <a href="#ref-D2">[D2]</a> <a href="#ref-A1">[A1]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Aplicações populares de infusão concentrada ou óleo essencial diluído como repelente de insetos em pulverizações, difusores ou velas, aproveitando o teor de citral e citronelal. <a href="#ref-R4">[R4]</a> <a href="#ref-A2">[A2]</a> <a href="#ref-A4">[A4]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>Infusões de erva-príncipe são geralmente consideradas seguras quando utilizadas em doses habituais e por períodos moderados em adultos saudáveis. No entanto, a evidência clínica sistemática ainda é limitada e as preparações não devem ser usadas como substituto de terapêutica médica em situações de doença cardiovascular, hipertensão significativa, infeções graves ou doenças metabólicas importantes. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></p>
+      <p>Devido ao efeito diurético e potencial influência na pressão arterial, pessoas com hipotensão, doença renal, uso de diuréticos, anti-hipertensores ou outros fármacos com janela terapêutica estreita devem usar a planta com prudência e sempre sob aconselhamento de profissional de saúde. Grávidas, lactantes e crianças pequenas devem evitar o uso prolongado ou em doses elevadas por falta de dados robustos de segurança. <a href="#ref-U2">[U2]</a> <a href="#ref-U4">[U4]</a> <a href="#ref-M2">[M2]</a></p>
+      <p>O óleo essencial de Cymbopogon citratus, rico em citral, pode causar irritação cutânea ou sensibilização em algumas pessoas quando aplicado de forma concentrada. Deve ser sempre diluído em óleos vegetais ou veículos adequados e evitados o uso sobre pele lesada, mucosas, rosto de crianças e a ingestão caseira do óleo essencial. Estudos de toxicidade em animais sugerem margens de segurança limitadas para doses elevadas de óleo essencial. <a href="#ref-U3">[U3]</a> <a href="#ref-F6">[F6]</a> <a href="#ref-F7">[F7]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        Na prática fitoterapêutica, a erva-príncipe é usada principalmente em forma de infusão das folhas, simples ou em combinação com outras plantas digestivas e calmantes, bem como em macerações e decocções leves. O óleo essencial é utilizado em aromaterapia e preparados tópicos, sempre devidamente diluído. As receitas que se seguem exemplificam formas tradicionais e contemporâneas de utilização, devendo ser sempre enquadradas por bom senso, pelas recomendações de segurança.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="erva-principe-capim-limao_receitas.html">Infusão simples de erva-príncipe:</a> chá preparado apenas com folhas ou talos de erva-príncipe, tomado morno ao longo do dia para apoio digestivo e relaxamento geral. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="erva-principe-capim-limao_receitas.html">Chá de erva-príncipe para ansiedade e stress:</a> tisana aromática bebida ao final do dia, muitas vezes em combinação com outras plantas calmantes, para aliviar tensão nervosa e preocupação. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="erva-principe-capim-limao_receitas.html">Infusão digestiva e carminativa:</a> chá misto de erva-príncipe com outras ervas digestivas, utilizado após refeições mais pesadas para reduzir gases e desconforto abdominal ligeiro. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="erva-principe-capim-limao_receitas.html">Chá quente para constipações:</a> infusão mais concentrada de erva-príncipe, por vezes adoçada com mel, tomada quente para proporcionar conforto em estados gripais ligeiros e constipações. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="erva-principe-capim-limao_receitas.html">Chá gelado de erva-príncipe:</a> infusão preparada e depois arrefecida, servida fria como bebida refrescante e digestiva em dias quentes, sem exceder as quantidades de uso diário recomendadas. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="erva-principe-capim-limao_receitas.html">Banho relaxante de pés ou corpo:</a> utilização de infusão concentrada de erva-príncipe adicionada à água morna do banho, para aliviar tensão muscular ligeira e promover relaxamento. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="erva-principe-capim-limao_receitas.html">Compressas para dores musculares:</a> aplicação de panos embebidos em infusão morna de erva-príncipe sobre zonas de desconforto muscular, como ombros, pescoço ou pernas. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="erva-principe-capim-limao_receitas.html">Óleo de massagem com erva-príncipe:</a> óleo vegetal aromatizado com poucas gotas de óleo essencial de erva-príncipe, usado em massagens localizadas em zonas de tensão, evitando rosto e áreas sensíveis. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="erva-principe-capim-limao_receitas.html">Tintura de erva-príncipe:</a> extrato hidroalcoólico de folhas ou talos, administrado em gotas diluídas em água como apoio em ansiedade ligeira e digestão nervosa, sob orientação profissional. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="erva-principe-capim-limao_receitas.html">Infusão culinária-aromática:</a> utilização de talos frescos esmagados em caldos, sopas ou pratos asiáticos, aproveitando o aroma de limão da planta sem consumo direto de grandes quantidades de fibras duras. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>Diversas fontes de fitoterapia tradicional e revisões modernas descrevem a erva-príncipe como planta calmante e ansiolítica suave, ajudando a reduzir sintomas de stress, agitação e dificuldade em adormecer. Infusões de Cymbopogon citratus são amplamente consumidas em contextos domésticos para promover relaxamento e melhorar a qualidade subjetiva do sono. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a></p>
+      <p>A nível digestivo, a planta é utilizada como carminativa, antiespasmódica e tónica gástrica ligeira, auxiliando em queixas como má digestão, gases, cólicas intestinais e sensação de peso após refeições. Estas ações são atribuídas a uma combinação de óleo essencial, flavonoides e outros fenólicos com efeitos espasmolíticos e moduladores da motilidade. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>Estudos pré-clínicos e algumas investigações em humanos sugerem ainda efeitos benéficos moderados na pressão arterial, na regulação do perfil lipídico e na redução do stress oxidativo, bem como atividades antimicrobianas, antifúngicas e anti-inflamatórias relevantes. Embora a evidência clínica ainda seja emergente e heterogénea, estes resultados dão suporte ao uso da erva-príncipe como adjuvante em programas de promoção de saúde cardiovascular e metabólica. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F5">[F5]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Adjuvante na gestão de stress, ansiedade ligeira e dificuldades em adormecer, através do consumo de infusões de erva-príncipe em contexto de higiene do sono e estilos de vida saudáveis. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-R2">[R2]</a></li>
+        <li>Suporte digestivo em queixas ligeiras como dispepsia funcional, flatulência e cólicas, atuando como planta carminativa e antiespasmódica moderada. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a></li>
+        <li>Apoio complementar em estratégias de controlo da pressão arterial ligeiramente elevada, associado a dieta equilibrada, exercício e supervisão médica, tendo em conta estudos que apontam para efeitos anti-hipertensivos e diuréticos suaves. <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-F2">[F2]</a></li>
+        <li>Possível contributo para a redução de inflamação e stress oxidativo em situações crónicas leves, graças à presença de compostos fenólicos e flavonoides com atividade antioxidante. <a href="#ref-M2">[M2]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F5">[F5]</a></li>
+        <li>Apoio em infeções ligeiras do trato respiratório superior e em desconfortos associados a constipações, febre ligeira e dores musculares, através de infusões quentes e inalações que exploram as propriedades sudoríficas, analgésicas suaves e antimicrobianas. <a href="#ref-M1">[M1]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-R4">[R4]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>A erva-príncipe destaca-se pelo teor de óleo essencial nas folhas (tipicamente 0,2–0,5% em massa fresca), composto maioritariamente por citral, mistura dos isómeros geranial e neral, que em conjunto podem representar cerca de 65–85% da fração volátil. Outros constituintes importantes incluem mirceno, citronelal, geraniol, linalol e pequenas quantidades de sesquiterpenos, conferindo ao óleo propriedades antimicrobianas, antifúngicas e anti-inflamatórias relevantes. <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a> <a href="#ref-F5">[F5]</a></p>
+      <p>Extratos aquosos e hidroalcoólicos das folhas contêm flavonoides (como luteolina, quercetina, kaempferol e apigenina), ácidos fenólicos e taninos, associados a atividade antioxidante significativa e possíveis efeitos moduladores sobre vias inflamatórias e metabólicas. Estudos in vitro e in vivo relatam também efeitos antinociceptivos, antidiarreicos e protetores gástricos. <a href="#ref-M1">[M1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F5">[F5]</a></p>
+      <p>Ensaios com óleo essencial de Cymbopogon citratus demonstram atividade antimicrobiana e antifúngica contra diversas bactérias e fungos, incluindo patógenos de interesse alimentar e clínico, bem como atividade antiprotozoária (como contra espécies de Leishmania). A potência destas ações depende da composição específica do óleo, da concentração de citral e de fatores como origem geográfica, condições de cultivo e método de extração. <a href="#ref-M1">[M1]</a> <a href="#ref-F4">[F4]</a> <a href="#ref-F5">[F5]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Teor de óleo essencial nas folhas frescas</td><td>≈0,2–0,5 % m/m</td></tr>
+        <tr><td>Citral total (geranial + neral) no óleo essencial</td><td>≈65–85 % (fração do óleo)</td></tr>
+        <tr><td>Outros monoterpenos (mirceno, citronelal, geraniol, linalol)</td><td>restante ≈15–35 % do óleo</td></tr>
+        <tr><td>Flavonoides totais em extratos de folhas</td><td>≈5–30 mg/g de extrato seco</td></tr>
+        <tr><td>Capacidade antioxidante total dos extratos</td><td>atividade moderada a elevada (IC50 na gama de dezenas de µg/mL)</td></tr>
+        <tr><td>Atividade antimicrobiana/antifúngica do óleo essencial</td><td>MIC na gama de dezenas a poucas centenas de µg/mL</td></tr>
+        <tr><td>Atividade antiprotozoária (por exemplo antileishmanial) do óleo essencial/citral</td><td>IC50 na gama de 1–10 µg/mL em modelos in vitro</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Planta aromática de grande valor culinário, utilizada em sopas, caris, marinadas, pratos de peixe, infusões e sobremesas, conferindo aroma cítrico característico. <a href="#ref-A1">[A1]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Uso extensivo do óleo essencial em perfumaria, sabonetes, champôs, produtos de limpeza e ambientadores, devido ao aroma fresco a limão. <a href="#ref-A3">[A3]</a> <a href="#ref-A4">[A4]</a></li>
+        <li>Aplicação do óleo essencial e de preparados com erva-príncipe como repelentes naturais de insetos, nomeadamente mosquitos, em velas, sprays, loções e difusores. <a href="#ref-A2">[A2]</a> <a href="#ref-A4">[A4]</a></li>
+        <li>Cultivo como planta ornamental em hortas, jardins e vasos, com efeito de bordadura aromática e contributo para o ambiente sensorial dos espaços exteriores. <a href="#ref-S1">[S1]</a> <a href="#ref-A1">[A1]</a></li>
+        <li>Inclusão em formulações de cosmética natural (óleos de massagem, cremes, esfoliantes) com fins relaxantes, tonificantes e desodorizantes. <a href="#ref-A3">[A3]</a> <a href="#ref-A4">[A4]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 7,9 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em sistemas de permacultura, a erva-príncipe oferece várias funções simultâneas: é uma planta medicinal e aromática de uso frequente, fornece folhas para infusões calmantes e digestivas, contribui para a diversidade culinária, funciona como fonte de aroma cítrico em jardins e hortas e pode ajudar a repelir insetos em redor de zonas habitadas. Os tufos densos geram alguma biomassa utilizável em mulch leve ou compostagem e estruturam canteiros e bordaduras em climas amenos.
+Por outro lado, é uma espécie sensível ao frio e às geadas, com exigências de rega moderada em verões secos, o que limita parcialmente o seu desempenho em contextos de muito baixo input hídrico. A planta não é especialmente invasora, mas também não oferece grandes benefícios estruturais em altura ou sombra. O grau atribuído reflete assim uma combinação muito positiva de funções medicinais, aromáticas e culturais, com contributo moderado para biomassa e estrutura e poucas penalizações relevantes, tornando-a uma excelente escolha para zonas de uso intensivo e proximidade da habitação.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação da erva-príncipe resulta de valores elevados em uso alimentar/culinário (ALIM=2, sobretudo como aromática), uso medicinal (MED=2), apoio ecológico moderado através de algum néctar e habitat para insetos (ECO=1) e forte multifuncionalidade cultural, aromática e doméstica (MULT=2). Existe ainda um contributo razoável para solo e biomassa (SOLO=1), principalmente via produção de folhas para corte, cobertura leve ou compostagem, e uma rusticidade globalmente boa em climas amenos (RUST=2), desde que protegida de geadas e com rega moderada em verões muito secos.
+As penalizações concentram-se na sensibilidade ao frio e na necessidade de alguma água em períodos de seca (COMP=-1, pela competição hídrica em canteiros muito secos), enquanto o risco de toxicidade relevante nas formas tradicionais de uso (TOX), perigo físico (PERIGO) e comportamento invasor problemático (INVAS) é considerado baixo no contexto hortícola habitual. O valor final em escala 0–10 resulta da aplicação do algoritmo descrito em anexo (soma dos critérios positivos até 14 pontos, subtração de penalizações, com conversão por regra de três simples), situando a erva-príncipe em cerca de 7,9/10 e indicando uma planta de elevada funcionalidade em permacultura, especialmente útil em bordaduras aromáticas, canteiros próximos da casa e sistemas alimentares biodiversos.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a> <a href="#ref-A1">[A1]</a> <a href="#ref-A3">[A3]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Wikipédia. Cymbopogon citratus. Descrição botânica, nomes comuns e usos tradicionais da erva-príncipe/lemongrass. Disponível em: <a href="https://pt.wikipedia.org/wiki/Cymbopogon_citratus" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Cymbopogon_citratus</a></li>
+        <li id="ref-D2">[D2] Justapedia. Cymbopogon citratus. Síntese de informação taxonómica, composição do óleo essencial e usos medicinais referindo estudos-chave. Disponível em: <a href="https://justapedia.org/wiki/Cymbopogon_citratus" target="_blank" rel="noopener">https://justapedia.org/wiki/Cymbopogon_citratus</a></li>
+        <li id="ref-D3">[D3] Revista Jardins. Propriedades e aplicações da erva-príncipe. Artigo em português com descrição da planta, usos culinários e medicinais e cuidados de cultivo. Disponível em: <a href="https://revistajardins.pt/plantas/herbaceas/propriedades-aplicacoes-erva-principe/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/herbaceas/propriedades-aplicacoes-erva-principe/</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Câmara Municipal de Mafra. Erva-príncipe. Ficha de planta aromática com notas sobre cultivo, propriedades e precauções básicas. Disponível em: <a href="https://www.cm-mafra.pt/pages/990" target="_blank" rel="noopener">https://www.cm-mafra.pt/pages/990</a></li>
+        <li id="ref-S2">[S2] Revista Jardins. Propriedades e aplicações da erva-príncipe. Secções sobre cultivo, exigências de solo, água e clima em Portugal. Disponível em: <a href="https://revistajardins.pt/plantas/herbaceas/propriedades-aplicacoes-erva-principe/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/herbaceas/propriedades-aplicacoes-erva-principe/</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] Fitoterapia Brasil. Cymbopogon citratus (DC.) Stapf – preparação extemporânea folha. Ficha técnica com indicação de parte usada, doses de infusão e orientações de uso seguro. Disponível em: <a href="https://fitoterapiabrasil.com.br/sites/default/files/formulario-fitoterapico/cymbopogon_citratus_preparacao_extemporanea_folha_2021.pdf" target="_blank" rel="noopener">https://fitoterapiabrasil.com.br/sites/default/files/formulario-fitoterapico/cymbopogon_citratus_preparacao_extemporanea_folha_2021.pdf</a></li>
+        <li id="ref-U2">[U2] Unicamp – Monografia Cymbopogon citratus. Trabalho académico que compila usos tradicionais, modos de utilização, posologia e dados de segurança do capim-cidreira. Disponível em: <a href="https://www.fcf.unicamp.br/wp-content/uploads/2023/12/Monografia-final-Cymbopogon-citratus.pdf" target="_blank" rel="noopener">https://www.fcf.unicamp.br/wp-content/uploads/2023/12/Monografia-final-Cymbopogon-citratus.pdf</a></li>
+        <li id="ref-U3">[U3] Fandohan P. et al. Toxicity and gastric tolerance of essential oils from Cymbopogon citratus, Ocimum gratissimum and Ocimum basilicum in Wistar rats. Estudo em animais sobre toxicidade e tolerância gástrica do óleo essencial. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/18511170/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/18511170/</a></li>
+        <li id="ref-U4">[U4] Siloam Hospitals. The health benefits of lemongrass: a medical perspective. Artigo de revisão popular com secção sobre efeitos cardiovasculares e considerações de segurança. Disponível em: <a href="https://www.siloamhospitals.com/en/informasi-siloam/artikel/the-health-benefits-of-lemongrass-a-medical-perspective" target="_blank" rel="noopener">https://www.siloamhospitals.com/en/informasi-siloam/artikel/the-health-benefits-of-lemongrass-a-medical-perspective</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Fitoterapia Brasil. Cymbopogon citratus (DC.) Stapf – preparação extemporânea folha. Recomendações de infusão com 1–3 g de folha seca em 150 mL de água, 2–3 vezes ao dia. Disponível em: <a href="https://fitoterapiabrasil.com.br/planta-medicinal/cymbopogon-citratus" target="_blank" rel="noopener">https://fitoterapiabrasil.com.br/planta-medicinal/cymbopogon-citratus</a></li>
+        <li id="ref-R2">[R2] Medis. Benefícios do chá – tipos, propriedades e como preparar. Secção sobre chá de erva-príncipe, referindo propriedades calmantes e forma de preparação. Disponível em: <a href="https://www.medis.pt/mais-medis/dieta-e-nutricao/beneficios-do-cha/" target="_blank" rel="noopener">https://www.medis.pt/mais-medis/dieta-e-nutricao/beneficios-do-cha/</a></li>
+        <li id="ref-R3">[R3] Tua Saúde. Capim-santo (capim-limão): para que serve e como usar. Explica benefícios digestivos, diuréticos e de relaxamento, com sugestões de preparo do chá. Disponível em: <a href="https://www.tuasaude.com/capim-limao/" target="_blank" rel="noopener">https://www.tuasaude.com/capim-limao/</a></li>
+        <li id="ref-R4">[R4] Chá de Erva-Príncipe – Chás do Mundo. Ficha de produto com modo de preparação de infusão simples e combinação com outras plantas. Disponível em: <a href="https://chasdomundo.pt/pt/chas-avulso/plantas-simples/cha-erva-principe-cymbopogon-citratus" target="_blank" rel="noopener">https://chasdomundo.pt/pt/chas-avulso/plantas-simples/cha-erva-principe-cymbopogon-citratus</a></li>
+        <li id="ref-R5">[R5] Blog Nutritivo. Chá de capim-cidreira: benefícios, usos e como preparar. Receita de chá quente e chá gelado com doses de folhas secas e água. Disponível em: <a href="https://blognutritivo.com.br/cha-de-capim-cidreira-beneficios-e-como-preparar/" target="_blank" rel="noopener">https://blognutritivo.com.br/cha-de-capim-cidreira-beneficios-e-como-preparar/</a></li>
+        <li id="ref-R6">[R6] Soalheiro. Erva-príncipe. Ficha de infusão com instruções de preparação (2 colheres de sopa por litro, 5–7 minutos) e benefícios gerais. Disponível em: <a href="https://soalheiro.com/pt-pt/infusoes/erva-principe/" target="_blank" rel="noopener">https://soalheiro.com/pt-pt/infusoes/erva-principe/</a></li>
+        <li id="ref-R7">[R7] Revista Jardins. Propriedades e aplicações da erva-príncipe. Sugestões de uso em banhos e preparados caseiros para relaxamento. Disponível em: <a href="https://revistajardins.pt/plantas/herbaceas/propriedades-aplicacoes-erva-principe/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/herbaceas/propriedades-aplicacoes-erva-principe/</a></li>
+        <li id="ref-R8">[R8] Artigos de aromaterapia e cosmética natural que descrevem óleos de massagem com óleo essencial de erva-príncipe diluído em óleos vegetais para relaxamento e dores musculares. Exemplo: <a href="https://sacredplantco.com/" target="_blank" rel="noopener">https://sacredplantco.com/</a> (secções sobre lemongrass oil). Disponível em: <a href="https://sacredplantco.com/" target="_blank" rel="noopener">https://sacredplantco.com/</a></li>
+        <li id="ref-R9">[R9] Unicamp – Monografia Cymbopogon citratus. Secções sobre tinturas, proporções planta:solvente e posologia em gotas. Disponível em: <a href="https://www.fcf.unicamp.br/wp-content/uploads/2023/12/Monografia-final-Cymbopogon-citratus.pdf" target="_blank" rel="noopener">https://www.fcf.unicamp.br/wp-content/uploads/2023/12/Monografia-final-Cymbopogon-citratus.pdf</a></li>
+        <li id="ref-R10">[R10] Revista Jardins. Propriedades e aplicações da erva-príncipe. Sugestões de uso culinário em caldos, sopas e pratos aromatizados. Disponível em: <a href="https://revistajardins.pt/plantas/herbaceas/propriedades-aplicacoes-erva-principe/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/herbaceas/propriedades-aplicacoes-erva-principe/</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] Shah G. et al. Scientific basis for the therapeutic use of Cymbopogon citratus, stapf (Lemon grass). Journal of Advanced Pharmaceutical Technology &amp; Research. Revisão que resume atividades anti-amoebianas, antibacterianas, antifúngicas, anti-inflamatórias e outras. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3217679/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC3217679/</a></li>
+        <li id="ref-M2">[M2] Silva H. et al. Exploring the anti-hypertensive potential of lemongrass—A comprehensive review. Biology (MDPI). Revisão sobre efeitos cardiovasculares e mecanismos de ação do chá de lemongrass. Disponível em: <a href="https://www.mdpi.com/2079-7737/11/10/1382" target="_blank" rel="noopener">https://www.mdpi.com/2079-7737/11/10/1382</a></li>
+        <li id="ref-M3">[M3] Tazi A. Review on the pharmacological properties of lemongrass (Cymbopogon citratus). Dissertação de mestrado na Universidade Católica Portuguesa, com síntese de estudos experimentais e clínicos. Disponível em: <a href="https://repositorio.ucp.pt/server/api/core/bitstreams/9509ef49-d12a-461b-92b9-c7c933458926/content" target="_blank" rel="noopener">https://repositorio.ucp.pt/server/api/core/bitstreams/9509ef49-d12a-461b-92b9-c7c933458926/content</a></li>
+        <li id="ref-M4">[M4] Maybodi F.R. et al. Effect of aromatherapy with lemongrass (Cymbopogon citratus) on blood pressure in adults. Ensaio clínico que avalia efeitos de chá e aromaterapia com lemongrass na pressão arterial. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11899488/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC11899488/</a></li>
+        <li id="ref-M5">[M5] Oladeji O.S. et al. Phytochemistry and pharmacological activities of Cymbopogon citratus: a review. Revisão que compila dados sobre constituintes e efeitos farmacológicos. Disponível em: <a href="https://www.sciencedirect.com/science/article/pii/S2468227619306982" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S2468227619306982</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Shah G. et al. Scientific basis for the therapeutic use of Cymbopogon citratus, stapf (Lemon grass). Secções sobre composição química do óleo essencial e principais constituintes. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3217679/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC3217679/</a></li>
+        <li id="ref-F2">[F2] Soliman W.S.; Salaheldin T.A. Chemical composition evaluation of Egyptian lemongrass (Cymbopogon citratus) essential oil. Estudo que indica teor de óleo essencial e citral como composto maioritário. Disponível em: <a href="https://agr.aswu.edu.eg/wp-content/uploads/2020/11/Soliman-and-Salaheldin-2017.pdf" target="_blank" rel="noopener">https://agr.aswu.edu.eg/wp-content/uploads/2020/11/Soliman-and-Salaheldin-2017.pdf</a></li>
+        <li id="ref-F3">[F3] Tetard A. et al. Negative impact of citral on susceptibility of Pseudomonas aeruginosa. Trabalho que discute atividade antimicrobiana de citral e composição típica de óleos de Cymbopogon spp. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8287888/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC8287888/</a></li>
+        <li id="ref-F4">[F4] Khasanah L.U. et al. Chemical composition and citral content of essential oil from lemongrass leaf waste. Artigo que quantifica teor de óleo essencial e fração de citral em diferentes condições de extração. Disponível em: <a href="https://www.sciencedirect.com/science/article/pii/S2666154324006070" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S2666154324006070</a></li>
+        <li id="ref-F5">[F5] Kiani H.S. et al. Phytochemical composition and pharmacological activities of Cymbopogon citratus essential oil. Revisão que resume percentagens de citral (65–85%) e outras propriedades. Disponível em: <a href="https://www.mdpi.com/2673-9623/2/4/16" target="_blank" rel="noopener">https://www.mdpi.com/2673-9623/2/4/16</a></li>
+        <li id="ref-F6">[F6] Fandohan P. et al. Toxicity and gastric tolerance of essential oils from Cymbopogon citratus, Ocimum gratissimum and Ocimum basilicum in Wistar rats. Dados de toxicidade oral e tolerância gástrica. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0278691508001774" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S0278691508001774</a></li>
+        <li id="ref-F7">[F7] Santin M.R. et al. In vitro activity of the essential oil of Cymbopogon citratus and its major component (citral) on Leishmania amazonensis. Estudo que documenta atividade antileishmanial do óleo e de citral. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/19669793/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/19669793/</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Revista Jardins. Propriedades e aplicações da erva-príncipe. Descreve usos culinários, aromáticos e em bem-estar quotidiano. Disponível em: <a href="https://revistajardins.pt/plantas/herbaceas/propriedades-aplicacoes-erva-principe/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/herbaceas/propriedades-aplicacoes-erva-principe/</a></li>
+        <li id="ref-A2">[A2] Lugardaterra. Erva Príncipe / Lemongrass. Ficha de produto que menciona propriedades medicinais, uso em pratos e teor de citral e citronelal. Disponível em: <a href="https://lugardaterra.pt/product/erva-principe-lemongrass/" target="_blank" rel="noopener">https://lugardaterra.pt/product/erva-principe-lemongrass/</a></li>
+        <li id="ref-A3">[A3] Soalheiro. Erva-príncipe. Ficha de infusão que descreve sabor, modos de preparação e contexto de consumo. Disponível em: <a href="https://soalheiro.com/pt-pt/infusoes/erva-principe/" target="_blank" rel="noopener">https://soalheiro.com/pt-pt/infusoes/erva-principe/</a></li>
+        <li id="ref-A4">[A4] Loja da Kombucha. Erva-príncipe biológica desidratada. Ficha que descreve origem, benefícios e uso em infusões e kombucha. Disponível em: <a href="https://alojadakombucha.com/kombucha/erva-princepe-biologica/" target="_blank" rel="noopener">https://alojadakombucha.com/kombucha/erva-princepe-biologica/</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] Erva-príncipe, um tesouro a (re)descobrir. Artigo da Associação Portuguesa de Horticultura sobre cultivo, necessidades de água, sensibilidade ao frio e usos diversos. Disponível em: <a href="https://aph.aphorticultura.pt/wp-content/uploads/2019/10/jardim_24_jan.pdf" target="_blank" rel="noopener">https://aph.aphorticultura.pt/wp-content/uploads/2019/10/jardim_24_jan.pdf</a></li>
+        <li id="ref-P2">[P2] Revista Jardins. Propriedades e aplicações da erva-príncipe. Referências a utilização em hortas, vasos e bordaduras em climas portugueses, com notas sobre necessidades de manutenção. Disponível em: <a href="https://revistajardins.pt/plantas/herbaceas/propriedades-aplicacoes-erva-principe/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/herbaceas/propriedades-aplicacoes-erva-principe/</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

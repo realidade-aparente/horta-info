@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html" class="ativa">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="salsa.html">Salsa</a>
+  <a class="next" href="saramago.html">Saramago</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Sálvia (<em>Salvia officinalis L.</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Lamiaceae</span>
+  <span>Parte usada: folhas e sumidades floridas secas</span>
+  <span>Tipo: subarbusto perene aromático medicinal</span>
+  <span>Produção: <strong>hortícola em canteiros, vasos, bordaduras</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> Mediterrâneo seco, encostas pedregosas, hoje amplamente cultivada em hortas</div>
+  <div><strong>Uso principal</strong> condimento aromático, apoio digestivo e em sudorese menopáusica</div>
+  <div><strong>Perfil medicinal</strong> ação digestiva, antisudorífica, antisséptica, antioxidante, tónica e cognitiva</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Sálvia (Salvia officinalis L.)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>A sálvia (Salvia officinalis L.) é um subarbusto perene, aromático, de base lenhosa, com 30–70 cm de altura, folhas opostas, oblongas a lanceoladas, de cor verde-acinzentada e textura ligeiramente rugosa, e flores em tons de azul-violeta dispostas em inflorescências verticiladas. Pertence à família Lamiaceae, a mesma do alecrim, da hortelã e do tomilho, e é caracterizada por glândulas de óleo essencial dispersas nas folhas e caules.</p>
+      <p>É nativa da região mediterrânica, onde cresce em encostas secas, solos pedregosos e bem drenados, muitas vezes calcários, sendo hoje amplamente cultivada em hortas, jardins e vasos em várias regiões temperadas. Em português é conhecida por sálvia, salva, salva-das-boticas ou erva-santa; em inglês os nomes comuns incluem common sage, garden sage, culinary sage e Dalmatian sage.</p>
+      <p>Para fins medicinais utilizam-se sobretudo as folhas e as sumidades floridas secas (Salviae officinalis folium), ricas em óleo essencial (com tujonas, cânfora e 1,8-cineol), ácidos fenólicos como o ácido rosmarínico e diversos flavonoides. A planta é tradicionalmente associada a propriedades digestivas, antisudoríficas, adstringentes, antissépticas e tónicas, ao mesmo tempo que mantém um papel importante como erva culinária em pratos de carne, recheios, sopas e receitas mediterrânicas sazonais.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, a sálvia comporta-se como subarbusto perene aromático adaptado ao clima mediterrânico e de transição, apreciando invernos relativamente suaves e verões quentes e secos. Em solos bem drenados e exposições ensolaradas, mantém folhagem verde-acinzentada durante todo o ano, embora possa sofrer com geadas fortes e humidade excessiva no inverno.
+A floração ocorre geralmente da primavera ao início do verão, com maior intensidade entre maio e julho, dependendo da região e da altitude. As folhas para uso medicinal e culinário são frequentemente colhidas pouco antes da floração ou no início desta, quando o teor de compostos aromáticos e fenólicos tende a ser mais elevado.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Floração: em Portugal, tipicamente de abril/maio até junho/julho, com variações conforme a região e o microclima.</li>
+        <li>Período de maior vigor vegetativo: primavera e início de verão, com rebentação de novos ramos e folhas aromáticas.</li>
+        <li>Colheita de folhas para uso medicinal e culinário: preferencialmente na primavera e no início do verão, pouco antes da plena floração.</li>
+        <li>Persistência de folhagem: planta perene que mantém folhas ao longo do ano em climas amenos; pode sofrer redução de copa ou danos em invernos muito húmidos ou gelados.</li>
+        <li>Adaptação climática: adequada a zonas com verões secos e invernos moderados, típica de zonas mediterrânicas e de encostas bem drenadas.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a> <a href="#ref-S3">[S3]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Extratos hidroalcoólicos padronizados de folhas de Salvia officinalis têm sido utilizados em ensaios clínicos em mulheres na peri e pós-menopausa, em doses diárias definidas pelo fabricante (por exemplo preparações contendo vários gramas de extrato de folhas frescas equivalentes), mostrando reduções estatisticamente significativas na frequência e na intensidade de afrontamentos e sintomas vasomotores quando comparados com placebo ou com valores basais. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a></li>
+        <li>Preparados de folha de sálvia são reconhecidos em monografias oficiais como medicamentos à base de plantas de uso tradicional para o alívio de queixas dispépticas ligeiras (azia, enfartamento, flatulência) e como adjuvantes em inflamações ligeiras da boca e garganta, frequentemente sob a forma de infusões ou soluções para bochechos e gargarejos. <a href="#ref-M1">[M1]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-M5">[M5]</a></li>
+        <li>Dados clínicos e pré-clínicos apontam para efeitos sobre a sudorese excessiva (hiperidrose), nomeadamente em situações de afrontamentos e transpiração noturna da menopausa, bem como para possíveis efeitos moduladores da cognição e do humor em adultos, embora a evidência seja ainda limitada e baseada em estudos de pequena dimensão. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M6">[M6]</a></li>
+        <li>O conteúdo em óleo essencial, fenóis e ácidos fenólicos (como o ácido rosmarínico) varia com a origem, a época de colheita e o método de secagem, influenciando a potência dos preparados. Por isso, muitos estudos em humanos utilizam extratos padronizados, enquanto as infusões caseiras apresentam maior variabilidade na composição. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Infusão de folhas de sálvia, isolada ou combinada com outras plantas digestivas, utilizada tradicionalmente em Portugal e noutros países como apoio em digestões difíceis, sensação de enfartamento após refeições ricas em gordura e alívio de gases. <a href="#ref-R1">[R1]</a> <a href="#ref-R3">[R3]</a></li>
+        <li>Chás e infusões de sálvia tomados ao longo do dia por mulheres na peri ou pós-menopausa, segundo a tradição popular, para ajudar a reduzir afrontamentos, suores noturnos e sensação de calor súbito. <a href="#ref-R2">[R2]</a> <a href="#ref-R5">[R5]</a></li>
+        <li>Uso de infusões de sálvia arrefecidas como colutórios, bochechos ou gargarejos em inflamações ligeiras da boca e garganta, aftas ou irritações das gengivas, em complemento à higiene oral habitual. <a href="#ref-R1">[R1]</a> <a href="#ref-R4">[R4]</a></li>
+        <li>Aplicação externa de infusões concentradas ou macerados em vinagre ou álcool suave em compressas sobre pequenas áreas de pele (não lesionada) em contextos de dor muscular ligeira ou fadiga, seguindo práticas de fitoterapia popular. <a href="#ref-R4">[R4]</a> <a href="#ref-R6">[R6]</a></li>
+        <li>Utilização quotidiana das folhas frescas ou secas como condimento aromático em pratos de carne, recheios, sopas e legumes assados, reduzindo a necessidade de sal em algumas receitas e acrescentando complexidade aromática. <a href="#ref-R1">[R1]</a> <a href="#ref-R3">[R3]</a> <a href="#ref-A3">[A3]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>A utilização de sálvia nas quantidades culinárias habituais é geralmente considerada segura para a maioria dos adultos saudáveis, quando integrada numa alimentação equilibrada. No entanto, preparados concentrados de folhas e, sobretudo, o óleo essencial de sálvia contêm tujonas, cânfora e outros monoterpenos que, em doses elevadas, podem ter efeitos neurotóxicos e pró-convulsivantes, especialmente em crianças e pessoas com epilepsia ou predisposição para convulsões. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></p>
+      <p>Monografias e relatórios de segurança de agências reguladoras apontam para casos de convulsões após ingestão acidental ou uso inadequado de óleo essencial de sálvia, bem como para limites máximos recomendados de exposição à tujona. O óleo essencial puro não deve ser ingerido nem aplicado de forma extensiva na pele sem supervisão especializada, e não é adequado para uso interno caseiro. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U4">[U4]</a></p>
+      <p>Em grávidas, lactantes, crianças pequenas, pessoas com epilepsia, doenças neurológicas, patologia hepática relevante ou em terapêuticas complexas, o uso de extratos concentrados de sálvia deve ser evitado ou feito apenas com acompanhamento de profissional de saúde. Mesmo o uso em forma de infusão deve ser moderado em duração e dose em grupos de risco. É importante considerar ainda possíveis interações com fármacos que atuam no sistema nervoso central ou em metabolismo hepático. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U5">[U5]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        Na fitoterapia, a sálvia é utilizada sobretudo sob a forma de infusões de folhas secas, bochechos e gargarejos com infusões concentradas, bem como extratos hidroalcoólicos padronizados em gotas ou comprimidos para apoio digestivo, sudorífico e em sintomas da menopausa. Preparos caseiros devem respeitar doses moderadas e períodos de uso limitados, complementando – e nunca substituindo – a avaliação médica. O óleo essencial puro de sálvia não é recomendado para uso interno caseiro devido ao teor de tujona e ao risco de efeitos neurológicos.
+As receitas e preparados descritos a seguir baseiam-se em fontes de fitoterapia e sites especializados, com indicação de quantidades, modos de preparação e utilização tradicional, devendo ser sempre enquadrados pelas recomendações de segurança.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="salvia_receitas.html">Infusão digestiva simples de sálvia:</a> 1 colher de sopa de folhas secas de sálvia por chávena (200–250 mL) de água a ferver; deixar infundir 5–10 minutos, coar e tomar após refeições pesadas para apoio digestivo, por períodos curtos. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="salvia_receitas.html">Chá de sálvia para suor excessivo:</a> 1 colher (de sopa) de folhas secas por 1 chávena de água; deixar repousar 5–10 minutos, coar e beber até 2 vezes por dia em casos de sudorese excessiva ligeira, salvo contraindicações. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="salvia_receitas.html">Chá de sálvia para uso geral:</a> 1 colher de chá de folhas secas (ou 2–3 folhas frescas) por chávena de água a ferver; infundir 5–10 minutos, coar e tomar 1–3 chávenas por dia em programas curtos, conforme tolerância individual. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="salvia_receitas.html">Infusão de sálvia para bochechos e gargarejos:</a> 1 colher de sopa de folhas secas por 150–200 mL de água a ferver; infundir 10–15 minutos, coar, deixar arrefecer até morno e usar em bochechos e gargarejos 2–4 vezes ao dia em inflamações ligeiras da boca e garganta, sem engolir. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="salvia_receitas.html">Chá de sálvia em associação para menopausa:</a> preparos combinando folhas de sálvia com outras plantas suaves, como tília ou erva-cidreira, com doses semelhantes de 1 colher de chá de cada planta por chávena, tomados 1–3 vezes ao dia em programas de curta duração. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="salvia_receitas.html">Tintura ou extrato hidroalcoólico de sálvia (produto comercial):</a> utilizar exclusivamente conforme a posologia recomendada no rótulo, por exemplo, 20–30 gotas diluídas em água, 2–3 vezes por dia, em programas de apoio digestivo ou climatérico. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="salvia_receitas.html">Compressas externas com infusão de sálvia:</a> preparar uma infusão concentrada (cerca de 1 colher de sopa de folhas secas por 150 mL de água), deixar arrefecer até morno, embeber compressas de gaze e aplicar sobre áreas de pele íntegra em casos de fadiga muscular ligeira, evitando contacto com mucosas e feridas abertas. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="salvia_receitas.html">Vinagre aromatizado com sálvia e outras ervas:</a> macerar folhas frescas de sálvia e outras aromáticas em vinagre de vinho ou de maçã durante 2–3 semanas, em frasco bem fechado, e utilizar em pequenas quantidades como condimento em saladas e pratos de carne. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="salvia_receitas.html">Mel aromatizado com sálvia:</a> colocar folhas frescas de sálvia num frasco com mel, deixar macerar pelo menos 2–3 semanas e usar uma colher de chá ocasionalmente para saborizar chás e, de forma pontual, aliviar irritações ligeiras de garganta. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="salvia_receitas.html">Extrato padronizado de sálvia em comprimidos para sintomas da menopausa:</a> preparações comercializadas contendo extrato hidroalcoólico de Salvia officinalis em doses diárias definidas (por exemplo, 2800–3400 mg de extrato de folhas frescas equivalentes), seguindo estritamente a posologia constante no folheto informativo ou a orientação do profissional de saúde. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>A sálvia possui uma longa história de uso medicinal na Europa e no Mediterrâneo, sendo atualmente reconhecida em monografias oficiais como medicamento à base de plantas de uso tradicional para alívio de queixas dispépticas ligeiras, transpiração excessiva e inflamações ligeiras da boca e garganta. Estes usos assentam em experiências de longa data e em dados farmacológicos que apontam para efeitos espasmolíticos suaves, adstringentes, antissépticos e reguladores da sudorese. <a href="#ref-M1">[M1]</a> <a href="#ref-M4">[M4]</a> <a href="#ref-M5">[M5]</a></p>
+      <p>Ensaios clínicos com extratos hidroalcoólicos padronizados de Salvia officinalis em mulheres na peri e pós-menopausa sugerem que a planta pode ajudar a reduzir a frequência e a intensidade de afrontamentos e suores noturnos, melhorando pontuações de escalas de sintomas climatéricos. Revisões recentes concluem que, embora ainda sejam necessários mais estudos robustos, a evidência disponível apoia um papel adjuvante da sálvia na gestão de queixas vasomotoras da menopausa. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M6">[M6]</a></p>
+      <p>Há também interesse crescente nos potenciais efeitos da sálvia sobre cognição, humor e desempenho mental, com alguns estudos a mostrar melhorias modestas em testes de memória e atenção em adultos saudáveis e em pessoas com compromisso cognitivo ligeiro. Os mecanismos propostos incluem inibição da acetilcolinesterase, modulação de recetores colinérgicos e efeitos antioxidantes e anti-inflamatórios, embora a evidência ainda não permita conclusões definitivas para utilização isolada em doenças neurodegenerativas. <a href="#ref-M3">[M3]</a> <a href="#ref-M6">[M6]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Adjuvante no alívio de queixas dispépticas ligeiras (azia, enfartamento, flatulência), integrando medidas dietéticas e de estilo de vida. <a href="#ref-M1">[M1]</a> <a href="#ref-M4">[M4]</a></li>
+        <li>Suporte complementar na redução de afrontamentos e suores noturnos em mulheres na peri e pós-menopausa, em associação com acompanhamento médico. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-M6">[M6]</a></li>
+        <li>Apoio em inflamações ligeiras da boca e garganta, através de bochechos e gargarejos com infusões de sálvia, como complemento à higiene oral. <a href="#ref-M1">[M1]</a> <a href="#ref-M5">[M5]</a></li>
+        <li>Contribuição para modulação de stress oxidativo e inflamação de baixo grau, com base na presença de fenóis e ácidos fenólicos de reconhecida atividade antioxidante. <a href="#ref-F5">[F5]</a> <a href="#ref-F6">[F6]</a> <a href="#ref-M6">[M6]</a></li>
+        <li>Possível efeito modulador da cognição e do humor em adultos, com melhorias discretas em memória e atenção em alguns estudos experimentais. <a href="#ref-M3">[M3]</a> <a href="#ref-M6">[M6]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>As folhas de Salvia officinalis contêm uma fração significativa de óleo essencial (tipicamente em torno de 1–2,5 % m/m em folhas secas, com valor mínimo de 0,1 % m/m exigido em algumas monografias farmacopéicas), na qual se destacam as tujonas (α- e β-tujona), a cânfora e o 1,8-cineol, além de outros monoterpenos e sesquiterpenos como α-pineno e borneol. A proporção destes constituintes varia consoante a origem geográfica, a época de colheita e as condições de cultivo. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F4">[F4]</a></p>
+      <p>Para além do óleo essencial, as folhas são ricas em compostos fenólicos hidrossolúveis, em particular o ácido rosmarínico e os seus derivados, bem como flavonoides (luteolina, apigenina e glicosídeos associados). Estudos com extratos hidroalcoólicos de sálvia mostram conteúdos totais de fenóis na ordem de dezenas a mais de uma centena de mg de equivalentes de ácido gálico por grama de extrato seco, com forte correlação com a capacidade antioxidante in vitro. <a href="#ref-F5">[F5]</a> <a href="#ref-F6">[F6]</a> <a href="#ref-F7">[F7]</a></p>
+      <p>Ensaios de atividade antioxidante (como DPPH, ABTS e FRAP) realizados com extratos de folhas de sálvia indicam elevada capacidade de neutralização de radicais livres e potenciais efeitos protetores sobre lípidos, proteínas e ADN em modelos experimentais. A combinação de óleo essencial rico em monoterpenos bioativos e de uma fração polifenólica abundante ajuda a explicar a multiplicidade de ações farmacológicas observadas, incluindo efeitos antimicrobianos, anti-inflamatórios, espasmolíticos suaves e moduladores da sudorese. <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a> <a href="#ref-F5">[F5]</a> <a href="#ref-F6">[F6]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Óleo essencial total em folhas secas de sálvia</td><td>≈1,0–2,5 % m/m da matéria seca (mínimo 0,1 % m/m exigido)</td></tr>
+        <tr><td>Tujonas (α- e β-tujona) no óleo essencial de sálvia</td><td>≈18–43 % m/m do óleo essencial (variações entre populações)</td></tr>
+        <tr><td>Camphor (cânfora) e 1,8-cineol no óleo essencial</td><td>≈5–27 % m/m do óleo essencial para camphor; ≈4–18 % para 1,8-cineol</td></tr>
+        <tr><td>Fenóis totais em extratos hidroalcoólicos de folhas</td><td>≈55–136 mg GAE/g de extrato seco</td></tr>
+        <tr><td>Ácido rosmarínico e derivados em extratos de folhas</td><td>≈0,35–2,5 mg/g de ácido rosmarínico na matéria seca ou em extratos</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Planta ornamental aromática amplamente usada em bordaduras, canteiros de ervas e espirais de aromáticas, contribuindo com textura cinzento-prateada e flores roxas atrativas. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a></li>
+        <li>Componente clássico de hortas de cozinha, pomares e jardins de mosteiros, associada a simbolismo de sabedoria, proteção e longevidade em tradições europeias. <a href="#ref-A1">[A1]</a> <a href="#ref-D2">[D2]</a></li>
+        <li>Uso da sálvia seca em defumações e rituais em diversas culturas contemporâneas, embora este tipo de uso deva ter em conta a sustentabilidade e o respeito por tradições locais. <a href="#ref-A3">[A3]</a></li>
+        <li>Emprego do extrato e do óleo de sálvia, em concentrações controladas, em produtos cosméticos e de higiene oral (pastas de dentes, colutórios, desodorizantes) explorando a sua ação aromática, adstringente e ligeiramente antisséptica. <a href="#ref-A2">[A2]</a> <a href="#ref-A4">[A4]</a></li>
+        <li>Planta de apoio à biodiversidade em hortas e jardins, fornecendo néctar e pólen a abelhas, abelhões e outros polinizadores, sobretudo durante a floração primaveril. <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 6,4 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em sistemas de permacultura em clima mediterrânico e de transição, a sálvia funciona como subarbusto aromático perene de baixa a média altura, útil em bordaduras, taludes secos, espirais de ervas e canteiros mistos. Fornece folhas aromáticas para uso culinário regular, flores ricas em néctar para abelhas e outros polinizadores, alguma biomassa para cobertura leve do solo e um elemento visual marcante com folhagem cinzento-prateada.
+Embora não seja uma planta de grande porte estrutural, contribui para a estratificação de canteiros perenes, ajuda a quebrar o vento ao nível baixo e oferece habitat para insetos benéficos. A sua rusticidade em solos bem drenados, tolerância à seca e longevidade em locais adequados tornam-na uma espécie interessante para zonas 1 e 2 da horta, particularmente em canteiros de aromáticas de baixa manutenção.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação da sálvia resulta de um conjunto de critérios positivos moderados a elevados: uso alimentar sobretudo como condimento (ALIM=1), uso medicinal relevante e bem documentado em fitoterapia tradicional e estudos modernos (MED=2), presença como subarbusto perene de pequena dimensão com algum papel estrutural em bordaduras e espirais de ervas (ESTR=1), contribuição moderada para solo e biomassa através de folhas aromáticas e podas regulares (SOLO=1), apoio importante a polinizadores e insetos benéficos durante a floração (ECO=2), boa rusticidade em climas secos e bem drenados após estabelecimento (RUST=2) e multifuncionalidade cultural e culinária significativa (MULT=2).
+As penalizações aplicam-se sobretudo ao risco associado à presença de tujona em óleo essencial e extratos muito concentrados (TOX=-1), o que exige cuidados no desenho de usos medicinais caseiros, e a alguma competição por água e luz em espaços muito secos e densos, quando plantada demasiado próxima de culturas sensíveis (COMP=-1). O perigo físico direto (PERIGO) e o comportamento invasivo problemático (INVAS) são considerados baixos no contexto hortícola habitual. O valor final em escala 0–10 resulta da aplicação do algoritmo descrito no projeto (soma dos critérios positivos até 14 pontos, subtração das penalizações e conversão por regra de três simples), situando a sálvia em cerca de 6,4/10 e sugerindo uma planta de boa funcionalidade em permacultura, especialmente útil em bordaduras aromáticas, espirais de ervas e consórcios com culturas alimentares.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Wikipédia (pt). &quot;Salvia officinalis&quot; – descrição botânica, nomes comuns em português, origem mediterrânica e usos culinários e medicinais da sálvia-comum. Disponível em: <a href="https://pt.wikipedia.org/wiki/Salvia_officinalis" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Salvia_officinalis</a></li>
+        <li id="ref-D2">[D2] Kew Science. &quot;Garden sage – Salvia officinalis&quot; – ficha de espécie com descrição morfológica, habitat, distribuição e notas sobre ecologia e polinizadores. Disponível em: <a href="https://www.kew.org/plants/garden-sage" target="_blank" rel="noopener">https://www.kew.org/plants/garden-sage</a></li>
+        <li id="ref-D3">[D3] Wikipedia (en). &quot;Salvia officinalis&quot; – descrição adicional da espécie, sinónimos, usos históricos e culinários, e referências a investigações recentes. Disponível em: <a href="https://en.wikipedia.org/wiki/Salvia_officinalis" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Salvia_officinalis</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] Flora Digital de Portugal – Universidade de Trás-os-Montes e Alto Douro (UTAD). &quot;Salvia officinalis&quot; – informação sobre ocorrência em Portugal, habitat e preferências ecológicas. Disponível em: <a href="https://jb.utad.pt/especie/Salvia_officinalis" target="_blank" rel="noopener">https://jb.utad.pt/especie/Salvia_officinalis</a></li>
+        <li id="ref-S2">[S2] Soria Natural. &quot;Sage (Salvia officinalis)&quot; – descrição de cultivo, preferência por solos calcários, secos e ensolarados, época de floração e colheita das folhas. Disponível em: <a href="https://www.sorianatural.com/en/enciclopedia-de-plantas/salvia" target="_blank" rel="noopener">https://www.sorianatural.com/en/enciclopedia-de-plantas/salvia</a></li>
+        <li id="ref-S3">[S3] Wikifarmer. &quot;Usos comuns da sálvia e informações da planta&quot; – artigo em português sobre usos agrícolas, países produtores e adaptação da sálvia a climas mediterrânicos. Disponível em: <a href="https://wikifarmer.com/library/pt-br/article/usos-comuns-da-salvia-e-informacoes-da-planta" target="_blank" rel="noopener">https://wikifarmer.com/library/pt-br/article/usos-comuns-da-salvia-e-informacoes-da-planta</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] European Medicines Agency (EMA). &quot;Final European Union herbal monograph on Salvia officinalis L., folium (revision 1)&quot; – monografia que define indicações tradicionais, precauções, contraindicações e limites de utilização de folhas de sálvia. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-salvia-officinalis-l-folium-revision-1_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-salvia-officinalis-l-folium-revision-1_en.pdf</a></li>
+        <li id="ref-U2">[U2] European Medicines Agency (EMA). &quot;Assessment report on Salvia officinalis L., folium and S. officinalis L., aetheroleum (revision 1)&quot; – relatório que aborda segurança do óleo essencial de sálvia, teor de tujona e casos de convulsões. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-salvia-officinalis-l-folium-and-salvia-officinalis-l-aetheroleum-revision-1_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-salvia-officinalis-l-folium-and-salvia-officinalis-l-aetheroleum-revision-1_en.pdf</a></li>
+        <li id="ref-U3">[U3] WebMD. &quot;Sage – Uses, Side Effects, and More&quot; – monografia popular com informação sobre usos, potenciais efeitos adversos, interações e grupos de risco. Disponível em: <a href="https://www.webmd.com/vitamins/ai/ingredientmono-504/sage" target="_blank" rel="noopener">https://www.webmd.com/vitamins/ai/ingredientmono-504/sage</a></li>
+        <li id="ref-U4">[U4] Halicioglu O. et al. &quot;Toxicity of Salvia officinalis in a newborn and a child&quot; – relato de casos de convulsões associadas à exposição a óleo de sálvia em crianças pequenas. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/21907890/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/21907890/</a></li>
+        <li id="ref-U5">[U5] Lachenmeier DW et al. &quot;Risk assessment of thujone in foods and medicines&quot; – artigo que discute limites de exposição à tujona e segurança de chás de sálvia e outras plantas. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/20727933/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/20727933/</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Tua Saúde. &quot;Sálvia: para que serve, benefícios e como fazer o chá&quot; – artigo em português com receitas de chá de sálvia, quantidades aproximadas e formas de uso interno e em gargarejos. Disponível em: <a href="https://www.tuasaude.com/salvia/" target="_blank" rel="noopener">https://www.tuasaude.com/salvia/</a></li>
+        <li id="ref-R2">[R2] Tua Saúde. &quot;4 tratamentos caseiros para suor excessivo&quot; – inclui receita de chá de sálvia com dose e modo de uso para hiperidrose. Disponível em: <a href="https://www.tuasaude.com/remedio-caseiro-para-hiperidrose/" target="_blank" rel="noopener">https://www.tuasaude.com/remedio-caseiro-para-hiperidrose/</a></li>
+        <li id="ref-R3">[R3] Oficina de Ervas. &quot;Sálvia – benefícios e como usar&quot; – texto em português que descreve preparos de chá de sálvia, doses tradicionais e cuidados de utilização. Disponível em: <a href="https://www.oficinadeervas.com.br/conteudo/salvia-beneficios-e-como-usar" target="_blank" rel="noopener">https://www.oficinadeervas.com.br/conteudo/salvia-beneficios-e-como-usar</a></li>
+        <li id="ref-R4">[R4] Vitat. &quot;Chá de sálvia: benefícios e como fazer&quot; – artigo que apresenta receitas de chá, incluindo tempos de infusão e quantidades recomendadas. Disponível em: <a href="https://www.vitat.com.br/alimentacao/cha-de-salvia-beneficios-e-como-fazer/" target="_blank" rel="noopener">https://www.vitat.com.br/alimentacao/cha-de-salvia-beneficios-e-como-fazer/</a></li>
+        <li id="ref-R5">[R5] Folha Vitória. &quot;Sálvia é bom para saúde? Veja para que serve, benefícios e como fazer chá&quot; – reportagem que descreve o preparo de chá de sálvia com medidas em colher e ml, e usos digestivos e para suor. Disponível em: <a href="https://www.folhavitoria.com.br/saude/salvia-e-bom-para-saude-veja-para-que-serve-beneficios-e-como-fazer-cha-viral/" target="_blank" rel="noopener">https://www.folhavitoria.com.br/saude/salvia-e-bom-para-saude-veja-para-que-serve-beneficios-e-como-fazer-cha-viral/</a></li>
+        <li id="ref-R6">[R6] Heali. &quot;Chá de Salvia Bio&quot; – página de produto com recomendações de utilização (quantidade de chá por chávena e tempo de infusão) para chá de sálvia biológico. Disponível em: <a href="https://heali.pt/products/cha-de-salvia-bio" target="_blank" rel="noopener">https://heali.pt/products/cha-de-salvia-bio</a></li>
+        <li id="ref-R7">[R7] Tua Saúde. &quot;Sálvia: para que serve, benefícios e como fazer o chá&quot; – secções que descrevem o uso de chá de sálvia para compressas, bochechos e gargarejos, com instruções gerais de preparação. Disponível em: <a href="https://www.tuasaude.com/salvia/" target="_blank" rel="noopener">https://www.tuasaude.com/salvia/</a></li>
+        <li id="ref-R8">[R8] Ana Maria Braga. &quot;Vinagre aromatizado&quot; – receita de vinagre aromatizado com ervas (incluindo sálvia), com lista de ingredientes e modo de preparo. Disponível em: <a href="https://anamariabraga.globo.com/receita/vinagre-aromatizado/" target="_blank" rel="noopener">https://anamariabraga.globo.com/receita/vinagre-aromatizado/</a></li>
+        <li id="ref-R9">[R9] Comida com Paixão. &quot;Mel Aromatizado com Tomilho e Limão &amp; Mel Aromatizado com Salva&quot; – receita de mel aromatizado com ervas, incluindo sálvia (salva), com quantidades e modo de preparação. Disponível em: <a href="http://www.comidacompaixao.com/2015/12/mimo-.html" target="_blank" rel="noopener">http://www.comidacompaixao.com/2015/12/mimo-.html</a></li>
+        <li id="ref-R10">[R10] Wilfried D. et al. &quot;Effectiveness of Menosan® Salvia officinalis in the treatment of menopausal complaints&quot; – ensaio clínico com comprimidos de extrato de sálvia, que descreve a dosagem utilizada em mulheres na menopausa. Disponível em: <a href="https://www.avogel.ca/download/Studies/MenoForce-Effectiveness-of-Menosan-Salvia-officinalis-in-the-treatment-of-menopausal-complaints.pdf" target="_blank" rel="noopener">https://www.avogel.ca/download/Studies/MenoForce-Effectiveness-of-Menosan-Salvia-officinalis-in-the-treatment-of-menopausal-complaints.pdf</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] European Medicines Agency (EMA). &quot;Final European Union herbal monograph on Salvia officinalis L., folium (revision 1)&quot; – monografia que descreve indicações tradicionais, posologia, contra-indicações e evidência de uso clínico. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-salvia-officinalis-l-folium-revision-1_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-monograph/final-european-union-herbal-monograph-salvia-officinalis-l-folium-revision-1_en.pdf</a></li>
+        <li id="ref-M2">[M2] Bommer S. et al. &quot;First time proof of sage&#x27;s tolerability and efficacy in menopausal women with hot flushes&quot; – ensaio clínico aberto que avalia preparação fresca de sálvia em afrontamentos e sintomas climatéricos. Disponível em: <a href="https://link.springer.com/article/10.1007/s12325-011-0027-z" target="_blank" rel="noopener">https://link.springer.com/article/10.1007/s12325-011-0027-z</a></li>
+        <li id="ref-M3">[M3] Moradi M. et al. &quot;The Effect of Salvia officinalis on Hot Flashes in Postmenopausal Women: A Systematic Review and Meta-analysis&quot; – revisão sistemática de ensaios com extratos de sálvia em afrontamentos. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10363264/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC10363264/</a></li>
+        <li id="ref-M4">[M4] Wilfried D. et al. &quot;Effectiveness of Menosan® Salvia officinalis in the treatment of menopausal complaints&quot; – estudo randomizado, duplo-cego, com comprimidos de extrato etanólico de sálvia em mulheres na menopausa. Disponível em: <a href="https://www.avogel.ca/download/Studies/MenoForce-Effectiveness-of-Menosan-Salvia-officinalis-in-the-treatment-of-menopausal-complaints.pdf" target="_blank" rel="noopener">https://www.avogel.ca/download/Studies/MenoForce-Effectiveness-of-Menosan-Salvia-officinalis-in-the-treatment-of-menopausal-complaints.pdf</a></li>
+        <li id="ref-M5">[M5] CPT – Centro de Produções Técnicas. &quot;A sálvia possui benefícios cientificamente comprovados?&quot; – artigo em português que sintetiza dados sobre efeitos analgésicos, antioxidantes, anti-inflamatórios, hipoglicemiantes e hipolipemiantes da sálvia. Disponível em: <a href="https://www.cpt.com.br/cursos-plantasmedicinais/artigos/a-salvia-possui-beneficios-cientificamente-comprovados-com-certeza" target="_blank" rel="noopener">https://www.cpt.com.br/cursos-plantasmedicinais/artigos/a-salvia-possui-beneficios-cientificamente-comprovados-com-certeza</a></li>
+        <li id="ref-M6">[M6] Tildesley NTJ. et al. e outras revisões sobre Salvia officinalis e cognição, sumarizadas em artigos de revisão de fitoterapia e neurociências que analisam os efeitos da sálvia em memória e desempenho cognitivo. Disponível em: <a href="https://link.springer.com/article/10.2165/11591150-000000000-00000" target="_blank" rel="noopener">https://link.springer.com/article/10.2165/11591150-000000000-00000</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] European Medicines Agency (EMA). &quot;Assessment report on Salvia officinalis L., folium and Salvia officinalis L., aetheroleum (revision 1)&quot; – relatório que apresenta dados de composição do óleo essencial, teor mínimo e variações entre preparações. Disponível em: <a href="https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-salvia-officinalis-l-folium-and-salvia-officinalis-l-aetheroleum-revision-1_en.pdf" target="_blank" rel="noopener">https://www.ema.europa.eu/en/documents/herbal-report/final-assessment-report-salvia-officinalis-l-folium-and-salvia-officinalis-l-aetheroleum-revision-1_en.pdf</a></li>
+        <li id="ref-F2">[F2] Craft JD et al. &quot;The Chemotaxonomy of Common Sage (Salvia officinalis L.)&quot; – artigo que descreve perfis de óleo essencial comerciais, com faixas típicas de α- e β-tujona, cânfora e 1,8-cineol. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5622382/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC5622382/</a></li>
+        <li id="ref-F3">[F3] El Jery A. et al. &quot;Phytochemical characterization, and antioxidant and antimicrobial activities of essential oil from leaves of the common sage&quot; – estudo que detalha a composição do óleo essencial de folhas de sálvia e a sua atividade antioxidante e antimicrobiana. Disponível em: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10373391/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC10373391/</a></li>
+        <li id="ref-F4">[F4] Zawiślak G. &quot;Yield and chemical composition of essential oil from Salvia officinalis L.&quot; – artigo que apresenta rendimentos em óleo essencial e percentagens dos principais monoterpenos em diferentes condições de cultivo. Disponível em: <a href="https://herbapolonica.pl/api/files/view/2291723.pdf" target="_blank" rel="noopener">https://herbapolonica.pl/api/files/view/2291723.pdf</a></li>
+        <li id="ref-F5">[F5] Farhat MB et al. &quot;Phytochemical composition and in vitro antioxidant activity of Salvia officinalis L. leaves&quot; – estudo que quantifica o conteúdo fenólico total em extratos de sálvia e a capacidade antioxidante. Disponível em: <a href="https://www.sciencedirect.com/science/article/pii/S0926669013002434" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S0926669013002434</a></li>
+        <li id="ref-F6">[F6] Martins N. et al. &quot;Evaluation of bioactive properties and phenolic compounds of Salvia officinalis L.&quot; – trabalho que relaciona teores de fenóis e flavonoides com atividades antioxidantes em diferentes extratos de sálvia. Disponível em: <a href="https://bibliotecadigital.ipb.pt/bitstreams/9327e3eb-d9ff-4be0-a968-4733cb99f6c2/download" target="_blank" rel="noopener">https://bibliotecadigital.ipb.pt/bitstreams/9327e3eb-d9ff-4be0-a968-4733cb99f6c2/download</a></li>
+        <li id="ref-F7">[F7] Duletić-Laušević S. et al. e outros estudos compilados em revisões sobre a atividade antioxidante de espécies de Salvia, descrevendo intervalos de teor de ácido rosmarínico e correlação com ensaios de capacidade antioxidante. Disponível em: <a href="https://www.thieme-connect.com/products/ejournals/pdf/10.1055/a-1087-8276.pdf" target="_blank" rel="noopener">https://www.thieme-connect.com/products/ejournals/pdf/10.1055/a-1087-8276.pdf</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Wisconsin Horticulture. &quot;Sage – Salvia officinalis&quot; – artigo sobre uso ornamental e hortícola da sálvia, incluindo descrição de porte, floração e valor paisagístico. Disponível em: <a href="https://hort.extension.wisc.edu/articles/sage-salvia-officinalis/" target="_blank" rel="noopener">https://hort.extension.wisc.edu/articles/sage-salvia-officinalis/</a></li>
+        <li id="ref-A2">[A2] Gardenia.net. &quot;Salvia officinalis (Common Sage)&quot; – ficha hortícola que realça o uso como arbusto ornamental, baixa manutenção e valor em bordaduras e vasos. Disponível em: <a href="https://www.gardenia.net/plant/salvia-officinalis" target="_blank" rel="noopener">https://www.gardenia.net/plant/salvia-officinalis</a></li>
+        <li id="ref-A3">[A3] Useful Tropical Plants. &quot;Salvia officinalis&quot; – entrada que comenta usos medicinais, culinários e algumas aplicações rituais e culturais da sálvia. Disponível em: <a href="https://tropical.theferns.info/viewtropical.php?id=Salvia+officinalis" target="_blank" rel="noopener">https://tropical.theferns.info/viewtropical.php?id=Salvia+officinalis</a></li>
+        <li id="ref-A4">[A4] Weleda. &quot;Sage Deodorant&quot; – exemplo de produto cosmético que utiliza extrato e óleo de sálvia em desodorizantes naturais, ilustrando o uso em higiene corporal. Disponível em: <a href="https://www.weleda.com/product/s/sage-deodorant" target="_blank" rel="noopener">https://www.weleda.com/product/s/sage-deodorant</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] CABI Compendium. &quot;Salvia officinalis (common sage)&quot; – perfil de espécie que descreve o porte como subarbusto, rusticidade, preferências de solo e valor ecológico. Disponível em: <a href="https://www.cabidigitallibrary.org/doi/full/10.1079/cabicompendium.48211" target="_blank" rel="noopener">https://www.cabidigitallibrary.org/doi/full/10.1079/cabicompendium.48211</a></li>
+        <li id="ref-P2">[P2] Modern Farmer. &quot;Herb Spirals&quot; – artigo que apresenta o conceito de espiral de ervas em permacultura, com referência a espécies mediterrânicas como sálvia, alecrim e tomilho como componentes típicos. Disponível em: <a href="https://modernfarmer.com/2020/11/herb-spirals/" target="_blank" rel="noopener">https://modernfarmer.com/2020/11/herb-spirals/</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>

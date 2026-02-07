@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modelo – Planta medicinal</title>
+  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+
+        .disclaimer-bloco {
+            max-width: 960px;
+            margin: 0 auto 2.5rem;
+            padding: 1rem 1.25rem;
+            background: #fef3c7;
+            border-radius: 0.75rem;
+            border: 1px solid #fbbf24;
+            box-shadow: 0 3px 8px rgba(15,23,42,0.08);
+            font-size: 0.85rem;
+            color: #92400e;
+        }
+
+        .disclaimer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+        }
+
+        .disclaimer-titulo {
+            font-weight: 600;
+        }
+
+        .disclaimer-toggle-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 999px;
+            border: 1px solid #f59e0b;
+            background: #fef9c3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #92400e;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .disclaimer-toggle-btn:focus {
+            outline: 2px solid #f59e0b;
+            outline-offset: 2px;
+        }
+
+        .disclaimer-texto {
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        .disclaimer-texto p {
+            margin: 0.25rem 0;
+        }
+
+        .disclaimer-aberto .disclaimer-texto {
+            display: block;
+        }
+
+</style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas medicinais em contexto de produção biológica.</p></header>
+<nav>
+    <a href="alecrim.html">Alecrim</a>
+    <a href="alfavaca-de-cobra.html">Alfavaca-de-cobra</a>
+    <a href="alfazema-lavanda.html">Alfazema / Lavanda</a>
+    <a href="amor-de-hortelao.html">Amor-de-hortelão</a>
+    <a href="amora-da-california.html">Amora-da-Califórnia</a>
+    <a href="arruda.html">Arruda</a>
+    <a href="boldo-brasileiro.html">Boldo-brasileiro</a>
+    <a href="boldo-do-chile.html">Boldo-do-Chile</a>
+    <a href="borragem.html">Borragem</a>
+    <a href="calendula.html">Calêndula</a>
+    <a href="capuchinha.html">Capuchinha</a>
+    <a href="cardo-mariano.html">Cardo-mariano</a>
+    <a href="cavalinha.html">Cavalinha</a>
+    <a href="cipreste.html">Cipreste</a>
+    <a href="coentro.html">Coentro</a>
+    <a href="dente-de-leao.html">Dente-de-leão</a>
+    <a href="erva-cidreira-melissa.html">Erva-cidreira / Melissa</a>
+    <a href="erva-gateira.html">Erva-gateira</a>
+    <a href="erva-principe-capim-limao.html">Erva-príncipe / Capim-limão</a>
+    <a href="figueira.html">Figueira</a>
+    <a href="fisalis.html" class="ativa">Fisális</a>
+    <a href="framboesa-vermelha.html">Framboesa vermelha</a>
+    <a href="funcho.html">Funcho</a>
+    <a href="geranio-aromatico-malva-rosa.html">Gerânio-aromático / Malva-rosa</a>
+    <a href="hortela-comum-hortela-verde.html">Hortelã-comum (hortelã-verde)</a>
+    <a href="jasmim.html">Jasmim</a>
+    <a href="laranjeira-doce.html">Laranjeira (doce)</a>
+    <a href="limoeiro.html">Limoeiro</a>
+    <a href="louro.html">Louro</a>
+    <a href="lucia-lima.html">Lúcia-lima</a>
+    <a href="luzerna-alfafa.html">Luzerna / Alfafa</a>
+    <a href="malva.html">Malva</a>
+    <a href="manjericao.html">Manjericão</a>
+    <a href="marmeleiro.html">Marmeleiro</a>
+    <a href="medronheiro.html">Medronheiro</a>
+    <a href="melaleuca-arvore-do-cha.html">Melaleuca (Árvore-do-chá)</a>
+    <a href="melissa-do-brasil-erva-cidreira-brasileira.html">Melissa do Brasil / Erva-cidreira-brasileira</a>
+    <a href="mentrasto-erva-de-sao-joao.html">Mentrasto / Erva-de-são-joão</a>
+    <a href="milefolio-mil-em-rama.html">Milefólio / Mil-em-rama</a>
+    <a href="morugem.html">Morugem</a>
+    <a href="oliveira.html">Oliveira</a>
+    <a href="oregao-oregano.html">Orégão / Orégano</a>
+    <a href="passiflora-frutifera-maracuja.html">Passiflora frutífera (maracujá)</a>
+    <a href="passiflora-medicinal.html">Passiflora medicinal</a>
+    <a href="perpetuas-roxas.html">Perpétuas roxas</a>
+    <a href="poejo.html">Poejo</a>
+    <a href="ricino-mamona.html">Rícino / Mamona</a>
+    <a href="romazeira.html">Romãzeira</a>
+    <a href="ruibarbo.html">Ruibarbo</a>
+    <a href="sabugueiro.html">Sabugueiro</a>
+    <a href="salsa.html">Salsa</a>
+    <a href="salvia.html">Sálvia</a>
+    <a href="saramago.html">Saramago</a>
+    <a href="serralha.html">Serralha</a>
+    <a href="silva-amora-silvestre.html">Silva / Amora-silvestre</a>
+    <a href="tanchagem.html">Tanchagem</a>
+    <a href="tilia.html">Tília</a>
+    <a href="tomilho.html">Tomilho</a>
+    <a href="trevo-branco-e-trevo-dos-prados.html">Trevo-branco e trevo-dos-prados</a>
+    <a href="umbigo-de-venus.html">Umbigo-de-vénus</a>
+    <a href="urtiga.html">Urtiga</a>
+  </nav></div>
+
+  <main>
+
+	<!-- Navegação entre plantas (anterior / seguinte) -->
+  <nav class="nav-paginacao">
+  <a class="prev" href="figueira.html">Figueira</a>
+  <a class="next" href="framboesa-vermelha.html">Framboesa vermelha</a>
+</nav>
+	
+<article class="planta">
+<div class="planta-cabecalho">
+  <div class="planta-titulo">
+    <h2>Fisális (<em>Physalis peruviana L. (principalmente); outras espécies comestíveis do género Physalis</em>)</h2>
+    <div class="tags-nomes">
+  <span>Família: Solanaceae</span>
+  <span>Parte usada: frutos maduros frescos</span>
+  <span>Tipo: planta hortícola frutífera perene</span>
+  <span>Produção: <strong>cultivo em hortas, estufas, vasos</strong></span>
+</div>
+    <div class="info-rapida">
+  <div><strong>Origem</strong> América do Sul andina, hoje cultivada globalmente em climas amenos</div>
+  <div><strong>Uso principal</strong> consumo fresco, sumos funcionais, compotas, apoio metabólico e antioxidante</div>
+  <div><strong>Perfil medicinal</strong> fruto funcional antioxidante, cardiometabólico, imunitário e modulador inflamatório suave</div>
+</div>
+  </div>
+  <div>
+    <!-- Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+	    <div class="imagem-container-externo">
+
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"></div><div class="media-nav"><button id="btnPrev" type="button">◀</button><button id="btnNext" type="button">▶</button></div><div class="media-dots" id="mediaDots"></div></div>
+</div>
+
+<p class="imagem-legenda">Imagem ilustrativa de acelgas frescas.</p>
+<!-- Fim do Espaço reservado para imagem / galeria de fotos da planta medicinal -->
+  </div>
+</div>
+
+<!-- <h2>Fisális (Physalis peruviana L. (principalmente); outras espécies comestíveis do género Physalis)</h2> -->
+
+    <!-- 0. Imagem -->
+
+
+    <!-- 1. Apresentação / Descrição -->
+    <section id="apresentacao">
+      <h3>1. Apresentação / Descrição</h3>
+      <p>
+        <!-- Conteúdo da coluna "1. Apresentação / Descrição" -->
+              <p>A fisális, frequentemente identificada com Physalis peruviana L., é uma pequena baga arredondada de cor amarelo‑alaranjada, com 1,5–3,5 cm de diâmetro, envolvida por um cálice inflado e papiráceo em forma de capucho. A planta é um subarbusto herbáceo, muito ramificado, com 1–1,5 m de altura, folhas cordiformes e flores amarelas com manchas arroxeadas que dão origem aos frutos protegidos pelo cálice. Quando maduros, os frutos apresentam polpa suculenta, doce‑acidulada e aromática, lembrando uma mistura de tomate, ananás e citrinos em miniatura.</p>
+      <p>Em português, são usados vários nomes comuns: fisális, tomate‑capucho, alquequenje (por vezes aplicado a Physalis alkekengi), camapu e outros, consoante a região. Em inglês, esta fruta é conhecida como cape gooseberry, goldenberry ou Peruvian groundcherry, e em países andinos surgem designações como aguaymanto, uchuva e uvilla. O género Physalis inclui mais de uma centena de espécies, algumas comestíveis e outras com uso sobretudo ornamental ou medicinal, todas caracterizadas pelo cálice frutífero que envolve a baga.</p>
+      <p>Em Portugal, a fisális encontra‑se naturalizada em certas regiões húmidas e é cultivada em hortas, jardins e pequenas explorações agrícolas, sobretudo como cultura de nicho e fruto exótico de elevado valor acrescentado. A planta é de crescimento vigoroso, com sistema radicular relativamente superficial e grande capacidade de rebrote, produzindo frutos ao longo de vários meses sob condições adequadas de temperatura e luminosidade.</p>
+      </p>
+      <p class="referencia-nota">
+        Referência(s) de suporte para a descrição:
+        
+         <a href="#ref-D1">[D1]</a> <a href="#ref-D2">[D2]</a> <a href="#ref-D3">[D3]</a>
+      </p>
+    </section>
+
+    <!-- 2. Sazonalidade (Portugal continental) -->
+    <section id="sazonalidade">
+      <h3>2. Sazonalidade (Portugal continental)</h3>
+      <p>
+        <!-- Texto introdutório da sazonalidade:
+             coluna "2. Sazonalidade (intro)" -->
+        Em Portugal continental, a fisális é normalmente conduzida como cultura anual ou bianual, embora a espécie seja perene em climas mais amenos. A sementeira em local abrigado realiza‑se tipicamente no inverno tardio (janeiro–fevereiro), com transplante para o exterior após o risco de geadas, a meio da primavera. Em condições favoráveis, a floração inicia‑se poucas semanas depois do transplantio e prolonga‑se durante todo o verão.
+A colheita dos frutos decorre, em geral, do final do verão até ao outono, podendo prolongar‑se até ao início do inverno em regiões mais suaves ou sob abrigo. O fruto colhido com o cálice íntegro conserva‑se durante várias semanas em ambiente fresco e seco, o que permite algum escalonamento da consumo e da comercialização.
+      </p>
+      <ul>
+        <!-- Itens da coluna "2. Sazonalidade (bullets)" -->
+                <li>Sementeira em tabuleiros ou vasos abrigados: janeiro–fevereiro, em local protegido do frio.</li>
+        <li>Transplante para o exterior ou para túneis: após as geadas, tipicamente de abril a maio, quando o solo aquece.</li>
+        <li>Floração: primavera tardia e verão, com emissão contínua de flores em plantas bem nutridas.</li>
+        <li>Frutificação e colheita: final do verão ao outono (agosto–novembro), podendo prolongar‑se até dezembro em regiões mais amenas.</li>
+        <li>Conservação: frutos colhidos com cálice íntegro podem manter‑se viáveis 30–90 dias em ambiente fresco, seco e ventilado.</li>
+      </ul>
+      <p class="referencia-nota">
+        Informação baseada em calendários de sementeira e guias de cultivo:
+         <a href="#ref-S1">[S1]</a> <a href="#ref-S2">[S2]</a>
+      </p>
+    </section>
+
+    <!-- 3. Como utilizar / consumir -->
+    <section id="como-consumir">
+      <h3>3. Como utilizar / consumir</h3>
+
+      <h4>3.1. Uso com base científica</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.1. Como utilizar (ciência) (bullets)" -->
+                <li>Consumo regular do fruto maduro fresco (por exemplo 40–80 g por dia, integrado em refeições e lanches) como fonte de vitamina C, carotenoides, fibras e compostos fenólicos, em dietas direcionadas para redução de stress oxidativo, apoio imunitário e prevenção de doenças cardiovasculares e metabólicas, apoiado por estudos que descrevem elevado teor antioxidante e perfil nutricional denso em Physalis peruviana. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a></li>
+        <li>Utilização do fruto, polpa ou sumo em estudos experimentais e modelos animais de síndrome metabólica e diabetes, onde extratos de Physalis peruviana mostraram efeitos antidiabéticos, melhoria de sensibilidade à insulina e redução de marcadores inflamatórios e lipídicos, sugerindo potencial como alimento funcional em estratégias integradas de controlo metabólico. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-M4">[M4]</a></li>
+        <li>Exploração de extratos hidroalcoólicos, frações polifenólicas e óleos obtidos das sementes em ensaios in vitro e in vivo, que evidenciam atividades antioxidantes, anti‑inflamatórias, hepatoprotetoras e citoprotetoras em diferentes modelos, fundamentando o interesse da fisális como fonte de ingredientes nutracêuticos e de apoio à saúde hepática e cardiovascular. <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></li>
+      </ul>
+
+      <h4>3.2. Uso tradicional / popular</h4>
+      <ul>
+        <!-- Bullets da coluna
+             "3.2. Como utilizar (popular) (bullets)" -->
+                <li>Consumo in natura de frutos maduros como snack ou sobremesa, muitas vezes em pequenas porções diárias, associado à ideia de reforço da imunidade, proteção ocular e apoio à saúde da pele graças ao teor de vitamina C, provitamina A e antioxidantes. <a href="#ref-R1">[R1]</a> <a href="#ref-R2">[R2]</a> <a href="#ref-R3">[R3]</a></li>
+        <li>Preparação de sumos, batidos e águas aromatizadas com fisális combinada com citrinos, maçã, hortelã ou outras frutas, utilizados como bebidas refrescantes e &quot;detox&quot; em contextos de bem‑estar e alimentação saudável. <a href="#ref-R2">[R2]</a> <a href="#ref-R4">[R4]</a> <a href="#ref-R5">[R5]</a></li>
+        <li>Uso frequente de fisális em compotas, geleias, coulis, molhos agridoces e coberturas para bolos e sobremesas, muitas vezes valorizado não só pelo sabor mas também pela perceção de maior valor nutricional em comparação com outras compotas. <a href="#ref-R3">[R3]</a> <a href="#ref-R6">[R6]</a></li>
+        <li>Integração de fisális em saladas de fruta, saladas verdes, pratos de carne e peixe ou queijos, realçando o contraste agridoce e o carácter exótico do fruto, com associações populares a benefícios digestivos e depurativos. <a href="#ref-R1">[R1]</a> <a href="#ref-R3">[R3]</a> <a href="#ref-A1">[A1]</a></li>
+      </ul>
+
+      <h4>3.3. Cuidados e segurança</h4>
+      <p>
+        <!-- Texto da coluna
+             "3.3. Como utilizar (segurança)" -->
+              <p>O fruto maduro de Physalis peruviana é considerado seguro como alimento em quantidades usuais, e estudos de toxicidade aguda e subcrónica em animais não evidenciaram efeitos genotóxicos relevantes nem toxicidade significativa em doses muito superiores às dietéticas. No entanto, as partes verdes da planta (folhas, caules, cálices e frutos ainda verdes) contêm alcaloides tipo solanina e outros glicoalcaloides potencialmente tóxicos, pelo que não devem ser consumidos. Frutos verdes ou imaturos podem causar sintomas gastrointestinais e neurológicos se ingeridos em quantidade. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a></p>
+      <p>Fontes de segurança alimentar recomendam consumir apenas frutos bem maduros, de cor amarelo‑alaranjada intensa, descartando qualquer fruto com sabor amargo ou suspeita de imaturidade. Pessoas com alergia conhecida a outras solanáceas (como tomate, batata ou beringela) devem testar quantidades muito pequenas inicialmente e suspender o consumo em caso de reação cutânea, prurido oral, desconforto digestivo ou outros sintomas sugestivos de hipersensibilidade. <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></p>
+      <p>Embora a fisális seja amplamente consumida como fruta, o uso em doses muito elevadas, sob a forma de extratos concentrados, suplementos ou preparados caseiros de partes não comestíveis da planta (folhas, raízes, grandes quantidades de cálices) não é recomendado sem supervisão de profissional de saúde, devido à presença de glicoalcaloides e à escassez de dados clínicos em humanos. Grávidas, lactantes, crianças pequenas, pessoas com doença hepática, renal, cardíaca ou em terapêutica crónica devem discutir o uso regular com o médico ou farmacêutico. <a href="#ref-U1">[U1]</a> <a href="#ref-U2">[U2]</a> <a href="#ref-U3">[U3]</a></p>
+      </p>
+      
+    </section>
+	    <section aria-label="Aviso sobre uso de plantas medicinais">
+      <div class="disclaimer-bloco" id="bloco-disclaimer">
+        <div class="disclaimer-header">
+          <button type="button" class="disclaimer-toggle-btn" id="disclaimer-toggle" aria-expanded="false" aria-controls="disclaimer-texto">
+            +
+          </button>
+          <span class="disclaimer-titulo">Aviso importante sobre o uso de plantas medicinais</span>
+        </div>
+        <div class="disclaimer-texto" id="disclaimer-texto">
+          <p>As informações, receitas e preparados apresentados neste site têm finalidade exclusivamente informativa e educativa, baseando-se em uso tradicional de plantas e em fontes de fitoterapia.</p>
+          <p>Não constituem aconselhamento médico, diagnóstico, prescrição terapêutica ou farmacêutica, nem substituem uma consulta com profissional de saúde habilitado.</p>
+          <p>O uso de plantas medicinais pode interagir com medicamentos, agravar doenças pré-existentes ou não ser adequado para grávidas, lactantes, crianças, idosos ou pessoas com problemas de saúde específicos.</p>
+          <p>Antes de iniciar qualquer uso regular ou em doses mais elevadas, especialmente em situações de doença, gravidez, amamentação ou toma de medicação, consulte sempre o seu médico, farmacêutico ou outro profissional de saúde qualificado.</p>
+          <p>O autor deste website e os colaboradores não se responsabilizam por quaisquer danos, efeitos adversos ou resultados decorrentes do uso das informações aqui apresentadas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Receitas e preparados (Top 10) -->
+    <section id="receitas">
+      <h3>4. Receitas e preparados (Top 10)</h3>
+      <p>
+        <!-- Resumo da coluna
+             "4. Receitas e preparados (resumo)" -->
+        Na prática de fitoterapia alimentar e cozinha funcional, a fisális é utilizada sobretudo na forma de fruto fresco, sumos, batidos, águas aromatizadas, geleias e molhos, tirando partido do sabor agridoce e do elevado teor de vitamina C, carotenoides e antioxidantes. Preparados culinários simples, com ingredientes pouco processados e baixo teor de açúcar, podem ser integrados em planos de alimentação saudável como complemento de estratégias para controlo metabólico, suporte imunitário e proteção cardiovascular. Apesar de a maioria das receitas ter natureza principalmente gastronómica, muitas fontes populares apresentam‑nas como "remédios naturais" suaves, devendo ser sempre enquadradas pelo bom senso, pela moderação nas quantidades e pelo respeito pelas advertências de segurança.
+      </p>
+      <ol>
+        <!-- Cada linha da coluna
+             "4. Receitas e preparados (receit)" torna-se um <li> -->
+                <li><a href="fisalis_receitas.html">Sumo simples de fisális:</a> bebida obtida ao triturar frutos maduros com água, consumida fresca como opção funcional rica em vitamina C e antioxidantes. <a href="#ref-R1">[R1]</a></li>
+        <li><a href="fisalis_receitas.html">Sumo de fisális com laranja:</a> combinação de fisális com sumo de laranja recém-espremido para um sumo mais doce e cítrico, pensado para apoio antioxidante e imunitário. <a href="#ref-R2">[R2]</a></li>
+        <li><a href="fisalis_receitas.html">Água aromatizada de fisális, maçã e hortelã:</a> jarro de água fresca com frutos de fisális, rodelas de maçã, hortelã e especiarias leves, usada como alternativa aromática às bebidas açucaradas. <a href="#ref-R3">[R3]</a></li>
+        <li><a href="fisalis_receitas.html">Xarope de fisális para bebidas:</a> preparado doce concentrado à base de fisális cozinhada, utilizado em pequenas quantidades para aromatizar águas, limonadas ou cocktails sem álcool. <a href="#ref-R4">[R4]</a></li>
+        <li><a href="fisalis_receitas.html">Xarope de chá Earl Grey com fisális:</a> redução aromática de infusão de chá preto Earl Grey com fisális, empregue como toque perfumado em sobremesas e bebidas especiais. <a href="#ref-R5">[R5]</a></li>
+        <li><a href="fisalis_receitas.html">Doce ou geleia de fisális:</a> compota de fisális com teor moderado de açúcar, usada como acompanhamento ocasional de pão, iogurte natural ou queijos frescos. <a href="#ref-R6">[R6]</a></li>
+        <li><a href="fisalis_receitas.html">Molho agridoce de fisális:</a> preparado de fisális com condimentos para servir como molho agridoce, em pequenas porções, a acompanhar carnes brancas ou saladas. <a href="#ref-R7">[R7]</a></li>
+        <li><a href="fisalis_receitas.html">Batido verde com fisális:</a> batido cremoso que combina fisális com frutos e folhas verdes suaves, bebido de imediato como pequena refeição ou lanche funcional. <a href="#ref-R8">[R8]</a></li>
+        <li><a href="fisalis_receitas.html">Fisális desidratada:</a> frutos de fisális secos até textura mastigável, consumidos em pequenas quantidades como snack semelhante a passas, com acidez característica. <a href="#ref-R9">[R9]</a></li>
+        <li><a href="fisalis_receitas.html">Compota de fisális com especiarias:</a> doce de fisális aromatizado com canela, cravinho ou gengibre, servido ocasionalmente em tostas, panquecas ou sobremesas caseiras. <a href="#ref-R10">[R10]</a></li>
+      </ol>
+    </section>
+
+    <!-- 5. Benefícios para a saúde e propriedades medicinais -->
+    <section id="beneficios">
+      <h3>5. Benefícios para a saúde e propriedades medicinais</h3>
+      <p>
+        <!-- Texto introdutório:
+             "5. Benefícios... A (intro)" -->
+              <p>A fisális destaca‑se como fruto rico em compostos bioativos, incluindo vitamina C, carotenoides (como beta‑criptoxantina), vitamina E, niacina, fibras e vários polifenóis. Estudos de composição e revisões recentes apontam para um elevado potencial antioxidante, com capacidade de neutralizar radicais livres e de proteger lípidos, proteínas e DNA contra danos oxidativos, o que contribui para a prevenção de doenças crónicas associadas ao stress oxidativo. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a></p>
+      <p>Em modelos animais e estudos pré‑clínicos, extratos de Physalis peruviana têm demonstrado efeitos antidiabéticos, melhoria da sensibilidade à insulina, redução da glicemia e de parâmetros lipídicos, bem como ações anti‑inflamatórias e hepatoprotetoras. Estes resultados sustentam o interesse da fisális como alimento funcional em estratégias de apoio à saúde metabólica e hepática, embora a extrapolação direta para doses e efeitos em humanos ainda exija investigação clínica robusta. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>A nível tradicional, diferentes espécies de Physalis são utilizadas como diuréticas, depurativas e adjuvantes em queixas respiratórias, inflamações articulares e problemas de pele, bem como em fadiga e convalescença. A combinação de efeitos antioxidantes, anti‑inflamatórios suaves e suporte metabólico/vascular pode explicar parte destas observações, sobretudo quando a fisális é incluída, de modo regular mas moderado, em padrões alimentares globalmente equilibrados e ricos em alimentos vegetais integrais. <a href="#ref-M1">[M1]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-A1">[A1]</a></p>
+      </p>
+      <ul>
+        <!-- Bullets:
+             "5. Benefícios... C (bullets)" -->
+                <li>Apoio antioxidante e proteção das células contra o stress oxidativo, graças ao teor de vitamina C, carotenoides e compostos fenólicos, contribuindo para redução de danos oxidativos associados ao envelhecimento precoce e a doenças crónicas. <a href="#ref-M1">[M1]</a> <a href="#ref-M2">[M2]</a> <a href="#ref-F1">[F1]</a></li>
+        <li>Adjuvante em estratégias de controlo metabólico e risco cardiometabólico, através de efeitos sobre perfil glicémico, lípidos sanguíneos, inflamação de baixo grau e peso corporal, quando integrada em padrões alimentares saudáveis. <a href="#ref-M2">[M2]</a> <a href="#ref-M3">[M3]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></li>
+        <li>Contribuição para a saúde imunitária, favorecendo a resposta de defesa do organismo em períodos de maior exigência, pela densidade de micronutrientes essenciais (vitamina C, alguns minerais) e antioxidantes. <a href="#ref-M1">[M1]</a> <a href="#ref-A1">[A1]</a></li>
+        <li>Potencial apoio à saúde hepática e função detoxificante, sugerido por estudos experimentais que apontam para efeitos hepatoprotetores e modulação de marcadores de dano hepático em modelos animais. <a href="#ref-M2">[M2]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></li>
+      </ul>
+      
+    </section>
+
+    <!-- 6. Propriedades farmacêuticas e constituintes -->
+    <section id="nutricao">
+      <h3>6. Propriedades farmacêuticas e constituintes</h3>
+      <p>
+        <!-- Texto da coluna
+             "6. Propriedades farmacêuticas (intro)" -->
+              <p>Estudos de composição mostram que os frutos de Physalis peruviana apresentam uma matriz complexa de fitoquímicos, incluindo carotenoides (beta‑caroteno, beta‑criptoxantina), fitoesteróis, tocoferóis, compostos fenólicos e flavonoides, além de vitaminas hidrossolúveis como vitamina C e algumas vitaminas do complexo B. O óleo extraído das sementes é particularmente rico em ácidos gordos polinsaturados, como o ácido linoleico, e em fitoesteróis como beta‑sitosterol e campesterol. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>Diferentes estudos experimentais quantificaram a capacidade antioxidante dos extratos de fisális (por exemplo, ensaios DPPH, ABTS e FRAP) e o teor de fenólicos totais, demonstrando valores relevantes em comparação com outras frutas exóticas. Estes efeitos estão associados a reduções de marcadores de stress oxidativo e a atividades anti‑inflamatórias em modelos in vitro e in vivo. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      <p>Revisões recentes sobre Physalis peruviana descrevem ainda a presença de lactonas esteroides (fisalinas e withanólidos), alcaloides e outros compostos bioativos com propriedades antidiabéticas, imunomoduladoras, hepatoprotetoras e potencialmente antitumorais em modelos experimentais. A variabilidade dos teores em função do cultivar, origem geográfica, maturação e método de extração é elevada, pelo que os valores numéricos devem ser interpretados como intervalos aproximados e não como constantes absolutas. <a href="#ref-F1">[F1]</a> <a href="#ref-F2">[F2]</a> <a href="#ref-F3">[F3]</a></p>
+      </p>
+
+      <h4>Principais constituintes e alguns valores reportados</h4>
+      <table class="tabela-farmaco">
+        <caption class="tabela-legenda">Resumo de constituintes e valores aproximados</caption>
+        <thead>
+          <tr>
+            <th>Constituinte / parâmetro</th>
+            <th>Valores reportados (aprox.)</th>
+          </tr>
+        </thead>
+        <tbody>
+                  <tr><td>Vitamina C nos frutos frescos</td><td>≈20–60 mg/100 g de peso fresco</td></tr>
+        <tr><td>Carotenoides totais (incluindo beta‑caroteno e beta‑criptoxantina)</td><td>≈1–5 mg/100 g de peso fresco (expressos em beta‑caroteno equivalente)</td></tr>
+        <tr><td>Fenólicos totais em extratos da polpa</td><td>≈50–300 mg de equivalentes de ácido gálico/100 g de peso fresco</td></tr>
+        <tr><td>Capacidade antioxidante total (ensaios DPPH/ABTS)</td><td>IC50 na gama de dezenas a poucas centenas de µg/mL de extrato</td></tr>
+        <tr><td>Fitoesteróis totais no óleo das sementes (beta‑sitosterol, campesterol)</td><td>≈1–3 % m/m de óleo, com fitoesteróis na ordem de 1–5 g/kg de óleo</td></tr>
+        <tr><td>Ácidos gordos polinsaturados (principalmente ácido linoleico) no óleo das sementes</td><td>fração predominante dos lípidos das sementes, com percentagens de ácido linoleico frequentemente &gt;60 % dos ácidos gordos totais</td></tr>
+        </tbody>
+      </table>
+		
+      
+    </section>
+
+    <!-- 7. Outras utilidades e aplicações -->
+    <section id="utilidades">
+      <h3>7. Outras utilidades e aplicações</h3>
+      <ul>
+        <!-- Bullets da coluna
+             "7. Outras utilidades e aplicações (bullets)" -->
+                <li>Fruto de elevado valor gastronómico, utilizado em pastelaria, confeitaria, cozinha de autor e empratamentos decorativos, graças ao aroma intenso e ao cálice ornamental. <a href="#ref-A1">[A1]</a> <a href="#ref-A2">[A2]</a> <a href="#ref-A3">[A3]</a></li>
+        <li>Cultura de nicho com interesse económico para pequenos agricultores e projetos de agricultura familiar, dada a boa conservação pós‑colheita e o preço relativamente elevado no mercado.</li>
+        <li>Planta com valor ornamental em hortas e jardins, pelo porte compacto, frutos vistosos e cálices em forma de lanterna, integrando bem canteiros de plantas aromáticas e medicinais.</li>
+        <li>Em alguns sistemas agroecológicos, é utilizada como cultura acompanhante ou de bordadura, atraindo polinizadores e insetos benéficos com as suas flores abundantes.</li>
+        <li>A secagem de frutos e cálices permite a criação de arranjos secos decorativos, guirlandas e elementos de artesanato vegetal.</li>
+      </ul>
+      
+    </section>
+
+    <!-- 8. Grau de funcionalidade em permacultura -->
+    <section id="permacultura">
+      <h3>8. Grau de funcionalidade em permacultura</h3>
+      <p>
+        <strong>Grau de funcionalidade:</strong> 6,4 / 10
+      </p>
+      <p>
+        <strong>Funções principais no sistema:</strong>
+        Em permacultura, a fisális oferece uma combinação interessante de funções alimentares, medicinais e ornamentais. Produz um fruto nutritivo e muito atrativo para consumo humano, fornece néctar e pólen a polinizadores, cria alguma estrutura de meia‑altura em canteiros e gera biomassa moderada que pode ser incorporada no solo ou usada em cobertura leve. O longo período de frutificação e a boa conservação pós‑colheita tornam‑na um recurso precioso para colheitas escalonadas.
+Por outro lado, trata‑se de uma planta exigente em fertilidade e água em fases chave, sensível à geada e com potencial de comportamento subespontâneo e competitivo em ambientes muito favoráveis. Em contextos de desenho ecológico, a fisális tende a funcionar melhor como cultura de bordadura, elemento de diversidade em pomares e hortas ou produção em pequena escala, do que como espécie estruturante de longo prazo. O grau atribuído reflete esta multifuncionalidade relevante mas com algumas limitações em rusticidade plena e competição.
+      </p>
+      <p>
+        <strong>Notas adicionais:</strong>
+        A pontuação da fisális resulta de valores elevados em uso alimentar (ALIM=2), uso medicinal/funcional (MED=2), suporte à fauna e polinizadores através da floração prolongada (ECO=2) e multifuncionalidade cultural, gastronómica e ornamental (MULT=2). Há ainda um contributo moderado para estrutura (ESTR=1), ao funcionar como subarbusto de meia‑altura em canteiros e bordaduras, e para solo/biomassa (SOLO=1), sobretudo via incorporação de restos de poda e da vegetação após o ciclo produtivo. A rusticidade é considerada boa em climas mediterrânicos suaves (RUST=2), embora a espécie seja sensível a geadas fortes e exija solos bem drenados e algum aporte de nutrientes.
+As penalizações aplicam‑se sobretudo ao risco moderado associado à presença de glicoalcaloides em partes verdes e frutos imaturos (TOX=-1), ao potencial comportamento subespontâneo e competitivo em ambientes muito favoráveis (INVAS=-1) e à competição por luz, água e nutrientes em canteiros muito densos ou mal planeados (COMP=-1). O perigo físico direto (PERIGO) é considerado nulo ou irrelevante (PERIGO=0). O valor final na escala 0–10 resulta da aplicação do algoritmo descrito em anexo (soma dos critérios positivos até 14 pontos, subtração das penalizações, com conversão por regra de três simples), situando a fisális em cerca de 6,4/10 e indicando uma planta de boa funcionalidade em permacultura, particularmente interessante como cultura de bordadura produtiva, elemento de diversificação alimentar e recurso para polinizadores.
+      </p>
+      <p class="referencia-nota">
+        Referências para o grau de funcionalidade:
+         <a href="#ref-P1">[P1]</a> <a href="#ref-P2">[P2]</a>
+      </p>
+    </section>
+
+    <!-- 9. Referências -->
+    <section id="referencias">
+      <h3>9. Referências</h3>
+
+      <h4>Descrição e botânica</h4>
+      <ol>
+                <li id="ref-D1">[D1] Wikipedia (PT). Artigo &quot;Physalis peruviana&quot; com descrição botânica, nomes comuns, origem, distribuição, usos culinários e notas de toxicidade. Disponível em: <a href="https://pt.wikipedia.org/wiki/Physalis_peruviana" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Physalis_peruviana</a></li>
+        <li id="ref-D2">[D2] Wikipedia (PT). Artigo &quot;Physalis&quot; com visão geral do género, morfologia dos frutos com cálice envolvente e referência a usos medicinais e produção. Disponível em: <a href="https://pt.wikipedia.org/wiki/Physalis" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Physalis</a></li>
+        <li id="ref-D3">[D3] InforCNA. Caderno técnico &quot;A cultura de Physalis&quot; com descrição detalhada da planta, morfologia, ecologia, necessidades edafoclimáticas e aspectos de cultivo em Portugal. Disponível em: <a href="https://www.inforcna.pt/Media/Files/2019122_Vt89CadernoTecnico.pdf" target="_blank" rel="noopener">https://www.inforcna.pt/Media/Files/2019122_Vt89CadernoTecnico.pdf</a></li>
+      </ol>
+
+      <h4>Sazonalidade e cultivo</h4>
+      <ol>
+                <li id="ref-S1">[S1] InforCNA. Caderno técnico &quot;A cultura de Physalis&quot; com informação sobre sementeira, transplante, ciclo cultural, sensibilidade à geada e calendário de produção em Portugal. Disponível em: <a href="https://www.inforcna.pt/Media/Files/2019122_Vt89CadernoTecnico.pdf" target="_blank" rel="noopener">https://www.inforcna.pt/Media/Files/2019122_Vt89CadernoTecnico.pdf</a></li>
+        <li id="ref-S2">[S2] A Cientista Agrícola. Artigo &quot;Saiba como cultivar fisális&quot; com conselhos práticos de cultivo, época de plantação, colheita e manejo em pequenos espaços. Disponível em: <a href="https://acientistaagricola.pt/2020/11/04/saiba-como-cultivar-fisalis/" target="_blank" rel="noopener">https://acientistaagricola.pt/2020/11/04/saiba-como-cultivar-fisalis/</a></li>
+      </ol>
+
+      <h4>Utilização e segurança</h4>
+      <ol>
+                <li id="ref-U1">[U1] Perk BO et al. &quot;Acute and Subchronic Toxic Effects of the Fruits of Physalis peruviana L.&quot; estudo toxicológico em animais avaliando segurança do consumo de frutos e ausência de genotoxicidade relevante. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3863561/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3863561/</a></li>
+        <li id="ref-U2">[U2] Singh N. &quot;An updated review on Physalis peruviana fruit&quot; revisão sobre usos terapêuticos tradicionais, atividades farmacológicas e segurança do fruto e da planta. Disponível em: <a href="https://core.ac.uk/download/pdf/276541668.pdf" target="_blank" rel="noopener">https://core.ac.uk/download/pdf/276541668.pdf</a></li>
+        <li id="ref-U3">[U3] Tua Saúde. Artigo &quot;Physalis: 12 benefícios e como consumir&quot; descrevendo benefícios nutricionais, formas de consumo, efeitos colaterais de frutos verdes e cuidados gerais de segurança. Disponível em: <a href="https://www.tuasaude.com/physalis/" target="_blank" rel="noopener">https://www.tuasaude.com/physalis/</a></li>
+      </ol>
+
+      <h4>Receitas e preparados</h4>
+      <ol>
+                <li id="ref-R1">[R1] Bastacheio. Receita de sumo de fisális com indicação de proporções de fruta e água, modo de preparação e sugestões de consumo. Disponível em: <a href="https://www.bastacheio.com/2017/07/agua-aromatizada-physalis-maca-hortela-cravinho/" target="_blank" rel="noopener">https://www.bastacheio.com/2017/07/agua-aromatizada-physalis-maca-hortela-cravinho/</a></li>
+        <li id="ref-R2">[R2] Tua Saúde. Secção de receitas no artigo &quot;Physalis: 12 benefícios e como consumir&quot; com receitas saudáveis de suco de physalis com laranja e bolo funcional. Disponível em: <a href="https://www.tuasaude.com/physalis/" target="_blank" rel="noopener">https://www.tuasaude.com/physalis/</a></li>
+        <li id="ref-R3">[R3] Bastacheio. Receita &quot;Água Aromatizada com Physalis, Maçã, Hortelã e Cravinho&quot; com quantidades, tempo de maceração e modo de consumo ao longo do dia. Disponível em: <a href="https://www.bastacheio.com/2017/07/agua-aromatizada-physalis-maca-hortela-cravinho/" target="_blank" rel="noopener">https://www.bastacheio.com/2017/07/agua-aromatizada-physalis-maca-hortela-cravinho/</a></li>
+        <li id="ref-R4">[R4] Chá Arte e Vida. Receita de xarope de fisális para soda italiana, com proporções de fruta, água e açúcar e instruções de cozedura e conservação. Disponível em: <a href="https://chaarteevida.blogspot.com/2011/06/soda-italiana-de-physalis-receita.html" target="_blank" rel="noopener">https://chaarteevida.blogspot.com/2011/06/soda-italiana-de-physalis-receita.html</a></li>
+        <li id="ref-R5">[R5] Receitas Fáceis. Receita &quot;xarope chá bergamota e physalis&quot; com passos de preparação de xarope com chá Earl Grey, fisális, açúcar e raspas de limão. Disponível em: <a href="https://www.receitas-faceis.org/recipes/xarope-cha-bergamota-physalis/" target="_blank" rel="noopener">https://www.receitas-faceis.org/recipes/xarope-cha-bergamota-physalis/</a></li>
+        <li id="ref-R6">[R6] Pedra do Lar. Receita de doce de physalis com indicação de proporção fruta/açúcar, tempo de cozedura e sugestões de utilização. Disponível em: <a href="https://pedradolar.blogspot.com/2012/10/doce-de-physalis.html" target="_blank" rel="noopener">https://pedradolar.blogspot.com/2012/10/doce-de-physalis.html</a></li>
+        <li id="ref-R7">[R7] Revista Jardins. Artigo &quot;Fruteira do mês: Physalis&quot; com sugestões de utilização culinária em molhos, saladas e sobremesas, a partir de frutos frescos. Disponível em: <a href="https://revistajardins.pt/plantas/herbaceas/como-cultivar-fisalis/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/herbaceas/como-cultivar-fisalis/</a></li>
+        <li id="ref-R8">[R8] Correio Braziliense. Artigo sobre os benefícios da physalis com referência a consumo em sumos, sobremesas e preparações saudáveis no dia a dia. Disponível em: <a href="https://www.correiobraziliense.com.br/cbradar/a-fruta-pequena-que-ajuda-a-fortalecer-a-imunidade-e-proteger-as-celulas/" target="_blank" rel="noopener">https://www.correiobraziliense.com.br/cbradar/a-fruta-pequena-que-ajuda-a-fortalecer-a-imunidade-e-proteger-as-celulas/</a></li>
+        <li id="ref-R9">[R9] SPDM Saúde. Artigo &quot;Da Amazónia para o mundo: physalis&quot; referindo o fruto como depurativo, aliado do emagrecimento e sugerindo formas de consumo. Disponível em: <a href="https://spdm.org.br/noticias/da-amazonia-para-o-mundo-physalis/" target="_blank" rel="noopener">https://spdm.org.br/noticias/da-amazonia-para-o-mundo-physalis/</a></li>
+        <li id="ref-R10">[R10] FruitsInfo. Página &quot;Cape Gooseberry tropical fruits&quot; com dados nutricionais básicos e sugestões de utilização do fruto em preparações culinárias. Disponível em: <a href="https://www.fruitsinfo.com/Cape-gooseberry-tropical-fruits.php" target="_blank" rel="noopener">https://www.fruitsinfo.com/Cape-gooseberry-tropical-fruits.php</a></li>
+      </ol>
+
+      <h4>Benefícios para a saúde e propriedades medicinais</h4>
+      <ol>
+                <li id="ref-M1">[M1] Mirzaee F. et al. &quot;Therapeutic Activities and Phytochemistry of Physalis Species Based on Traditional and Modern Medicine&quot; revisão das atividades terapêuticas e usos tradicionais de várias espécies de Physalis, incluindo P. peruviana. Disponível em: <a href="https://www.rjpharmacognosy.ir/article_93529_dca970862a9a8acb34796622b6d6f22b.pdf" target="_blank" rel="noopener">https://www.rjpharmacognosy.ir/article_93529_dca970862a9a8acb34796622b6d6f22b.pdf</a></li>
+        <li id="ref-M2">[M2] Singh N. &quot;An updated review on Physalis peruviana fruit&quot; compilação de dados sobre composição nutricional, benefícios à saúde, usos tradicionais e estudos farmacológicos. Disponível em: <a href="https://core.ac.uk/download/pdf/276541668.pdf" target="_blank" rel="noopener">https://core.ac.uk/download/pdf/276541668.pdf</a></li>
+        <li id="ref-M3">[M3] Olas B. &quot;Physalis peruviana Fruits and Their Food Products as New Functional Food Products&quot; artigo de revisão sobre aplicações de fisális como alimento funcional e respetivos efeitos à saúde. Disponível em: <a href="https://www.mdpi.com/1422-0067/26/8/3493" target="_blank" rel="noopener">https://www.mdpi.com/1422-0067/26/8/3493</a></li>
+        <li id="ref-M4">[M4] Navarro-Hoyos M. et al. &quot;QTOF-ESI MS Characterization and Antioxidant Activity of Cape Gooseberry (Physalis peruviana L.)&quot; estudo que caracteriza compostos fenólicos e capacidade antioxidante dos frutos. Disponível em: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9268663/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9268663/</a></li>
+      </ol>
+
+      <h4>Propriedades farmacêuticas e constituintes</h4>
+      <ol>
+                <li id="ref-F1">[F1] Obregón-La Rosa AJ. et al. &quot;Nutritional and antioxidant profile of the Physalis fruit grown in the Peruvian Andean&quot; estudo que determina composição química, perfil nutricional e capacidade antioxidante de Physalis peruviana. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/37010381/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/37010381/</a></li>
+        <li id="ref-F2">[F2] Petkova NT. et al. &quot;Nutritional composition of different cape gooseberry genotypes (Physalis peruviana L.)&quot; comparando teores de nutrientes, minerais e compostos bioativos em diferentes genótipos. Disponível em: <a href="https://www.myfoodresearch.com/uploads/8/4/8/5/84855864/_24__fr-2021-123_petkova_2.pdf" target="_blank" rel="noopener">https://www.myfoodresearch.com/uploads/8/4/8/5/84855864/_24__fr-2021-123_petkova_2.pdf</a></li>
+        <li id="ref-F3">[F3] Ramadan MF. &quot;Bioactive phytochemicals, nutritional value, and functional properties of cape gooseberry (Physalis peruviana): an overview&quot; revisão sobre fitoquímicos, valor nutricional e propriedades funcionais do fruto. Disponível em: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0963996911005436" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/abs/pii/S0963996911005436</a></li>
+      </ol>
+
+      <h4>Outras utilidades e aplicações</h4>
+      <ol>
+                <li id="ref-A1">[A1] Revista Jardins. Artigo &quot;Fruteira do mês: Physalis&quot; destacando valor ornamental, uso em jardins e aplicações culinárias diversas do fruto. Disponível em: <a href="https://revistajardins.pt/plantas/herbaceas/como-cultivar-fisalis/" target="_blank" rel="noopener">https://revistajardins.pt/plantas/herbaceas/como-cultivar-fisalis/</a></li>
+        <li id="ref-A2">[A2] A Cientista Agrícola. Artigo &quot;Saiba como cultivar fisális&quot; com foco em cultivo, produtividade, mercado e potencial económico para pequenos produtores. Disponível em: <a href="https://acientistaagricola.pt/2020/11/04/saiba-como-cultivar-fisalis/" target="_blank" rel="noopener">https://acientistaagricola.pt/2020/11/04/saiba-como-cultivar-fisalis/</a></li>
+        <li id="ref-A3">[A3] Tempo.pt (Meteored). Artigo &quot;Os benefícios do superalimento que previne a hipertensão, a diabetes e reduz os níveis de stress&quot; sobre physalis como &quot;ouro do Peru&quot;, com ênfase no valor nutricional e aplicações na alimentação saudável. Disponível em: <a href="https://www.tempo.pt/noticias/ciencia/os-beneficios-do-superalimento-que-previne-a-hipertensao-a-diabetes-e-reduz-os-niveis-de-stress-alimentacao.html" target="_blank" rel="noopener">https://www.tempo.pt/noticias/ciencia/os-beneficios-do-superalimento-que-previne-a-hipertensao-a-diabetes-e-reduz-os-niveis-de-stress-alimentacao.html</a></li>
+      </ol>
+
+      <h4>Permacultura / agroecologia</h4>
+      <ol>
+                <li id="ref-P1">[P1] InforCNA. Caderno técnico &quot;A cultura de Physalis&quot; com notas sobre importância ecológica, adaptação a diferentes condições agroecológicas e uso de fisális como cobertura e proteção do solo. Disponível em: <a href="https://www.inforcna.pt/Media/Files/2019122_Vt89CadernoTecnico.pdf" target="_blank" rel="noopener">https://www.inforcna.pt/Media/Files/2019122_Vt89CadernoTecnico.pdf</a></li>
+        <li id="ref-P2">[P2] Wikipedia (PT). Secções de ecologia e distribuição em &quot;Physalis peruviana&quot; descrevendo naturalização em várias regiões, interação com polinizadores e comportamento em diferentes habitats. Disponível em: <a href="https://pt.wikipedia.org/wiki/Physalis_peruviana" target="_blank" rel="noopener">https://pt.wikipedia.org/wiki/Physalis_peruviana</a></li>
+      </ol>
+    </section>
+
+  </article>
+
+  </main>
+<script>
+(function(){
+  function scrollToHash(){
+    var h = decodeURIComponent(location.hash||'').slice(1);
+    if(!h) return;
+    var el = document.getElementById(h);
+    if(!el) return;
+    var mast = document.querySelector('.masthead') || document.querySelector('header');
+    var off = mast ? mast.getBoundingClientRect().height : 120;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - off - 6;
+    window.scrollTo({ top: y, behavior: 'auto' });
+  }
+  function go(){
+    scrollToHash();
+    setTimeout(scrollToHash, 120);
+    setTimeout(scrollToHash, 400);
+  }
+  window.addEventListener('load', go);
+  window.addEventListener('hashchange', function(){ setTimeout(scrollToHash, 0); });
+})();
+</script>
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+
+<script>
+/*
+  === v3: Viewer / Carousel (imagens + vídeo) + Indicadores ===
+
+  Como usar:
+  1) Edita o array 'items' com os teus ficheiros (imagens e/ou vídeos).
+     - type: "image" ou "video"
+     - src: caminho do ficheiro (relativo ao HTML)
+     - alt: (só imagem) texto alternativo
+     - poster: (só vídeo) imagem de capa opcional
+     - caption: legenda opcional (aproveita .imagem-legenda se existir)
+
+  2) Controlos:
+     - Botões ◀ / ▶
+     - Swipe: esquerda = próximo, direita = anterior
+     - Indicadores (pontos/ícone): clique para saltar para um item
+*/
+
+(function(){
+  const items = [
+    // Ajusta os caminhos abaixo aos teus ficheiros reais:
+    { type: "image", src: "imagens/acelga.png", alt: "Imagem 1", caption: "Imagem 1" },
+    { type: "image", src: "imagens/beldroegas_molho.jpg", alt: "Imagem 2", caption: "Imagem 2" },
+    { type: "video", src: "videos/beldroega_(360p).mp4", poster: "imagens/beldroega.png", caption: "Vídeo" }
+  ];
+
+  let idx = 0;
+
+  const frame = document.getElementById("mediaFrame");
+  const btnPrev = document.getElementById("btnPrev");
+  const btnNext = document.getElementById("btnNext");
+  const captionEl = document.querySelector(".imagem-legenda");
+  const dotsEl = document.getElementById("mediaDots");
+
+  // SVG simples de "câmara de vídeo" (micro-ícone)
+  const videoIconSvg = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M14 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2v-1.1l4 2.1V7l-4 2.1V10c0-1.1-.9-2-2-2z"></path>
+    </svg>
+  `;
+
+  function buildDots(){
+    if(!dotsEl) return;
+    dotsEl.innerHTML = "";
+
+    items.forEach((item, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "media-dot " + (item.type === "video" ? "media-dot--video" : "media-dot--image");
+      b.setAttribute("aria-label", item.type === "video" ? `Vídeo ${i+1}` : `Imagem ${i+1}`);
+      b.dataset.index = String(i);
+
+      if(item.type === "video"){
+        b.innerHTML = videoIconSvg;
+      }
+
+      b.addEventListener("click", () => {
+        idx = i;
+        render();
+      });
+
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function updateDots(){
+    if(!dotsEl) return;
+    dotsEl.querySelectorAll(".media-dot").forEach((el, i) => {
+      el.classList.toggle("is-active", i === idx);
+    });
+  }
+
+  function render(){
+    frame.innerHTML = "";
+    const item = items[idx];
+
+    if(item.type === "image"){
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = item.alt || "";
+      frame.appendChild(img);
+    } else if(item.type === "video"){
+      const video = document.createElement("video");
+      video.src = item.src;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      if(item.poster) video.poster = item.poster;
+      frame.appendChild(video);
+    }
+
+    if(captionEl){
+      const cap = item.caption ?? "";
+      captionEl.textContent = cap;
+      captionEl.style.display = cap ? "" : "";
+    }
+
+    updateDots();
+  }
+
+  function next(){ idx = (idx + 1) % items.length; render(); }
+  function prev(){ idx = (idx - 1 + items.length) % items.length; render(); }
+
+  btnNext && btnNext.addEventListener("click", next);
+  btnPrev && btnPrev.addEventListener("click", prev);
+
+  // Swipe via pointer events (touch + rato/trackpad)
+  let startX = null;
+  frame.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+  frame.addEventListener("pointerup", (e) => {
+    if(startX === null) return;
+    const dx = e.clientX - startX;
+    startX = null;
+    const threshold = 40;
+    if(dx > threshold) prev();
+    else if(dx < -threshold) next();
+  });
+
+  buildDots();
+  render();
+})();
+</script>
+
+  <script src="../sidebar_sub-pasta.js" defer></script>
+  
+  </div>
+  
+
+  <script>
+    (function() {
+      var bloco = document.getElementById('bloco-disclaimer');
+      var btn = document.getElementById('disclaimer-toggle');
+      var texto = document.getElementById('disclaimer-texto');
+      if (!bloco || !btn || !texto) return;
+
+      btn.addEventListener('click', function() {
+        var aberto = bloco.classList.toggle('disclaimer-aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        btn.textContent = aberto ? '–' : '+';
+      });
+    })();
+  </script>
+</body>
+
+</html>
