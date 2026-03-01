@@ -481,13 +481,31 @@ footer {
 }
 
 .sidebar .nav-item .icon{
-  width: 22px;
+  width: 26px;       /* antes 22px */
+  height: 26px;      /* adiciona altura para manter quadrado */
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  font-size: 18px;
-  line-height: 1;
 }
+
+/* garantir que o SVG ocupa o espaço todo */
+.sidebar .nav-item .icon img{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.sidebar .nav-item .icon img{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* se fizeres inline SVG em vez de <img>, podes fazer algo assim:
+.sidebar .nav-item .icon svg {
+  fill: #2f855a;
+}
+*/
 
 .sidebar .nav-item .label{
   white-space: nowrap;
