@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contactos – Horta da Terra para o prato</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    main { max-width: 900px; }
+
+    .contact-card {
+      background: var(--cor-caixa);
+      border-radius: 1rem;
+      padding: 1.3rem 1.5rem;
+      border: 1px solid var(--cor-borda);
+      box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+      margin-bottom: 1.4rem;
+      font-size: 0.95rem;
+    }
+
+    .contact-card h2 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      color: var(--cor-secundaria);
+    }
+
+    .contact-card h3 {
+      margin-top: 0.9rem;
+      font-size: 1.1rem;
+      color: var(--cor-secundaria);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: 0.8rem;
+    }
+
+    .contact-box {
+      background: #f9fafb;
+      border-radius: 0.9rem;
+      padding: 0.9rem 1rem;
+      border: 1px solid #e5e7eb;
+      font-size: 0.9rem;
+    }
+
+    .contact-box h4 {
+      margin-top: 0;
+      margin-bottom: 0.4rem;
+      font-size: 1rem;
+      color: var(--cor-secundaria);
+    }
+
+    .contact-box ul {
+      padding-left: 1.1rem;
+      margin: 0.2rem 0 0;
+    }
+
+    .contact-box li {
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    .contact-tag {
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: #ecfdf3;
+      border: 1px solid #bbf7d0;
+      font-size: 0.85rem;
+      color: #166534;
+    }
+
+    .contact-note {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-top: 0.5rem;
+    }
+
+    .contact-template {
+      background: #fef3c7;
+      border-radius: 0.75rem;
+      border: 1px solid #facc15;
+      padding: 0.6rem 0.8rem;
+      font-size: 0.9rem;
+      margin-top: 0.7rem;
+    }
+
+    @media (max-width: 640px) {
+      .contact-inline {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+    <div class="masthead">
+      <header>
+        <h1>Contactos</h1>
+        <p>Como falar comigo, encomendar e saber onde encontrar a horta “Da Terra para o prato”.</p>
+      </header>
+    </div>
+
+    <main>
+      <!-- BLOCO 1: ENCOMENDAS E DÚVIDAS GERAIS -->
+      <section class="contact-card">
+        <h2>Encomendas, dúvidas e pedidos especiais</h2>
+        <p>
+          Se tens alguma dúvida sobre os produtos, queres encomendar uma caixa/cabaz, sugerir algo novo
+          ou combinar detalhes específicos (por exemplo, intolerâncias, preferências de verduras,
+          etc.), podes falar diretamente comigo.
+        </p>
+
+        <div class="contact-template">
+          <strong>✍️ Dados de contacto:</strong><br>
+          <!-- SUBSTITUI ESTES EXEMPLOS PELOS TEUS DADOS REAIS OU APAGA O QUE NÃO QUISERES MOSTRAR -->
+          <ul>
+            <li><strong>Email:</strong> <span>cmatos.mobile@gmail.com</span></li>
+            <li><strong>Telefone / WhatsApp:</strong> <span>937029409</span></li>
+            <li><strong>Outros canais:</strong> <span>[brevemente]</span></li>
+          </ul>
+        </div>
+      
+	  <!--
+        <p class="contact-note">
+          🔒 Se preferires não colocar contactos diretos no site, podes apagar o bloco acima e
+          deixar apenas a informação sobre os pontos de venda e a forma de falar pessoalmente
+          nos mercados.
+        </p>
+		-->
+      </section>
+
+      <!-- BLOCO 2: PONTOS DE VENDA E RECOLHA -->
+      <section class="contact-card">
+        <h2>Onde nos podes encontrar</h2>
+        <p>
+          Os produtos da horta “Da Terra para o prato” chegam até ti através de
+          <strong>pontos de venda e de recolha</strong>, em colaboração com o
+          <strong>Quiosque da Natureza</strong> e ourtos fornecedores de produtos 
+		  que não produzimos na quinta e com entregas em locais combinados.
+        </p>
+
+        <div class="contact-grid">
+          <article class="contact-box">
+            <h4>Na quinta (Palmela)</h4>
+            <ul>
+              <li><strong>Local:</strong> Quinta do <em>Quiosque da Natureza</em> (Palmela, freguesia da Quinta do Anjo).</li>
+              <li><strong>Como chegar:</strong> pesquisar por “<em>Quiosque da Natureza</em>” no Google Maps.</li>
+              <li><strong>Horário habitual:</strong> quartas e sextas ao fim do dia <em>(confirmar horários atualizados)</em>.</li>
+            </ul>
+          </article>
+
+          <article class="contact-box">
+            <h4>Mercado biológico de Telheiras</h4>
+            <ul>
+              <li><strong>Local:</strong> Mercado Biológico de Telheiras (Lisboa).</li>
+              <li><strong>Como encontrar:</strong> pesquisar “<em>mercado biológico de Telheiras</em>”.</li>
+              <li><strong>Horário:</strong> sábados, aproximadamente das 8h às 12h.</li>
+              <li><strong>Quem vende:</strong> Quiosque da Natureza, com produtos da quinta e da horta.</li>
+            </ul>
+          </article>
+
+          <article class="contact-box">
+            <h4>Caixas / cabazes por encomenda</h4>
+            <ul>
+              <li><strong>Verdizela / Aroeira:</strong> ponto de recolha à quinta-feira de manhã.</li>
+              <li><strong>Quinta do Anjo / Cabanas:</strong> ponto de recolha à quinta-feira de manhã.</li>
+              <li><strong>Como combinar:</strong> comunicar por whatsapp ou falar diretamente comigo para reservas e horários.</li>
+            </ul>
+          </article>
+
+          <article class="contact-box">
+            <h4>Novos mercados (brevemente)</h4>
+            <ul>
+              <li>Está prevista a presença regular em mais um mercado, entre <strong>Almada</strong> e <strong>Setúbal</strong>.</li>
+              <li>Assim que houver data e local definidos, a informação será atualizada aqui e nos grupos do whatsapp.</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="contact-note">
+          💡 Sempre que alguma coisa mudar (horários, novos mercados, pausas sazonais), este espaço será o ponto
+          de referência para informação atualizada.
+        </p>
+      </section>
+
+<!-- BLOCO X: PAUSAS SAZONAIS -->
+      <section class="contact-card">
+        <h2>Pausas sazonais e calendário da horta</h2>
+        <p>
+          Sendo uma horta de pequena escala, alinhada com os ritmos da natureza, há alturas do ano
+          em que é necessário fazer <strong>pausas</strong> para descanso do hortelão, reorganização
+          de culturas ou trabalhos estruturais na quinta.
+        </p>
+
+        <!-- EXEMPLO: substitui as datas pelos teus períodos reais -->
+        <div class="contact-template">
+          <strong>🗓️ Próximas pausas previstas (2026):</strong>
+          <ul>
+            <li><strong>Pausa de verão:</strong> [de 11/07 até 18/07] – descanso e reorganização da horta e trabalhos de infraestrutura e manutenção do sistema de rega.</li>
+            <li><strong>Pausa de inverno:</strong> [de DD/MM até DD/MM] – manutenção de estufas, planeamento de culturas e descanso.</li>
+          </ul>
+        </div>
+
+<!--
+        <p class="contact-note">
+          ➤ Substitui as datas entre parênteses retos pelas tuas pausas reais, ou apaga esta lista
+          quando não houver pausas previstas. Podes também acrescentar pausas pontuais (festas,
+          formação, etc.) sempre que fizer sentido.
+        </p>
+ -->
+
+        <div class="contact-box" style="margin-top: 0.9rem;">
+          <h4>O que acontece durante as pausas?</h4>
+          <ul>
+            <li>Podem não haver <strong>cabazes</strong> ou entregas nos pontos de recolha habituais.</li>
+            <li>Alguns <strong>mercados</strong> ou bancas podem ficar temporariamente sem a presença da horta “Da Terra para o prato”.</li>
+            <li>É o momento de <strong>descansar o corpo e a mente</strong>, e aguardar pela próxima época com mais diversidade e qualidade.
+			<strong> Entretanto o solo continua a trabalhar na sua natureza incansável, abundante e inesgotável.</strong></li>
+          </ul>
+        </div>
+
+        <p class="contact-note">
+          Para confirmar se estamos em plena atividade ou em pausa, podes:
+          <br>
+          – consultar esta página antes de encomendar, ou<br>
+		  – ligar-me ou enviar-me uma mensagem diretamente, ou<br>
+          – perguntar diretamente nos pontos de venda (quinta, mercado de Telheiras, etc.).
+        </p>
+      </section>
+
+      <!-- BLOCO 3: COMO PREFERES SER CONTACTADO -->
+      <section class="contact-card">
+        <h2>Qual é a melhor forma de falar comigo?</h2>
+        <p>
+          Como pequeno produtor, o meu tempo de trabalho divide-se entre a horta, a quinta-mãe e em breve a banca no mercado.<br>
+          Por norma estou desconectado da internet na maior parte do tempo (email e whatsapp).<br>
+		  Por isso, nem sempre consigo ler e responder a mensagens de imediato – mas geralmente tenho o telefone por perto e a intenção é estar <strong>próximo e acessível</strong>.
+        </p>
+
+        <div class="contact-inline">
+          <div>
+            <strong>Formas preferenciais de contacto (ajusta à tua realidade):</strong>
+            <ul>
+              <li>Ligar para o meu contacto telefónico pessoal.</li>
+			  <li>Falar comigo pessoalmente em qualquer um dos pontos de venda.</li>
+              <li>Enviar mensagem por telefone (sms), whatsapp ou email quando houver questões específicas.</li>
+              <li>Combinar cabazes e recolhas com a antecedência requerida, de forma a agilizar e manter o fluxo/rotina das tarefas.</li>
+            </ul>
+          </div>
+        </div>
+
+<!--
+        <p class="contact-note">
+          Se quiseres, mais tarde podemos acrescentar aqui um <em>formulário simples de contacto</em> ou
+          ligações diretas para redes sociais, assim que fizer sentido para a forma como organizas o teu tempo.
+        </p>
+		-->
+      </section>
+
+      <footer style="margin: 1.5rem 0 2.5rem; font-size: 0.85rem; color:#4b5563;">
+        Horta da Terra para o prato – pequeno produtor de agricultura biológica-regenerativa em Palmela.
+      </footer>
+    </main>
+
+    <script src="sidebar.js" defer></script>
+  </div>
+</body>
+</html>

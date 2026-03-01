@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Horta (apresentação) – Horta da Terra para o prato</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    /* Estilos específicos desta página de apresentação */
+
+    main { max-width: 1040px; }
+
+    .apresentacao-intro {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
+      gap: 1.5rem;
+      margin-bottom: 1.8rem;
+      align-items: center;
+    }
+
+    @media (max-width: 800px) {
+      .apresentacao-intro {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .apresentacao-card {
+      background: var(--cor-caixa);
+      border-radius: 1rem;
+      padding: 1.4rem 1.5rem;
+      box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+      border: 1px solid #e5e7eb;
+    }
+
+    .apresentacao-card h2 {
+      margin-top: 0;
+      font-size: 1.6rem;
+      color: var(--cor-secundaria);
+    }
+
+    .terra-personagem {
+      text-align: center;
+    }
+
+    .terra-personagem figure {
+      margin: 0;
+    }
+
+    .terra-personagem img {
+      max-width: 260px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .terra-personagem figcaption {
+      margin-top: 0.35rem;
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+
+    .apresentacao-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .apresentacao-bloco {
+      background: var(--cor-caixa);
+      border-radius: 1rem;
+      padding: 1.1rem 1.25rem;
+      border: 1px solid var(--cor-borda);
+      box-shadow: 0 1px 4px rgba(15,23,42,0.04);
+      font-size: 0.95rem;
+    }
+
+    .apresentacao-bloco h3 {
+      margin-top: 0;
+      font-size: 1.1rem;
+      color: var(--cor-secundaria);
+    }
+
+    .apresentacao-bloco ul {
+      padding-left: 1.15rem;
+      margin-bottom: 0;
+    }
+
+    .apresentacao-bloco li {
+      margin-bottom: 0.25rem;
+    }
+
+    .destaque-suave {
+      background: #ecfdf3;
+      border-radius: 0.75rem;
+      padding: 0.75rem 0.9rem;
+      font-size: 0.9rem;
+      border: 1px solid #bbf7d0;
+    }
+
+    .tabela-comparativa {
+      margin: 1.2rem 0 2rem;
+    }
+
+    .tabela-comparativa caption {
+      text-align: left;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: var(--cor-secundaria);
+    }
+
+    .tabela-comparativa th,
+    .tabela-comparativa td {
+      font-size: 0.9rem;
+      vertical-align: top;
+    }
+
+    .secao-mitos h3 {
+      margin-top: 0;
+    }
+
+    .mitos-lista {
+      margin: 0.6rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .mitos-lista details {
+      background: #f9fafb;
+      border-radius: 0.75rem;
+      border: 1px solid #e5e7eb;
+      margin-bottom: 0.4rem;
+      padding: 0.4rem 0.75rem;
+    }
+
+    .mitos-lista summary {
+      cursor: pointer;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      list-style: none;
+    }
+
+    .mitos-lista summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .mito-marker {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.2rem;
+      height: 1.2rem;
+      border-radius: 999px;
+      border: 1px solid #9ca3af;
+      font-size: 0.9rem;
+      line-height: 1;
+    }
+
+    .mitos-lista details[open] .mito-marker {
+      background: var(--cor-principal);
+      color: #fff;
+      border-color: var(--cor-principal);
+    }
+
+    .mitos-lista p {
+      margin: 0.4rem 0 0.3rem 1.6rem;
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+
+    .pontos-venda {
+      background: var(--cor-caixa);
+      border-radius: 1rem;
+      padding: 1.25rem 1.3rem;
+      border: 1px solid var(--cor-borda);
+      box-shadow: 0 1px 4px rgba(15,23,42,0.04);
+      font-size: 0.95rem;
+    }
+
+    .pontos-venda h3 {
+      margin-top: 0;
+    }
+
+    .pontos-venda ul {
+      padding-left: 1.15rem;
+    }
+
+    .produtores-parceiros ul {
+      padding-left: 1.15rem;
+      font-size: 0.9rem;
+    }
+
+    .nota-template {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-top: 0.3rem;
+    }
+  </style>
+</head>
+<body id="topo">
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+    <div class="masthead">
+      <header>
+        <h1>Horta da Terra para o prato</h1>
+        <p>Pequena horta biológica-regenerativa em Palmela – da Mãe Terra para o teu prato.</p>
+      </header>
+    </div>
+
+    <main>
+      <!-- INTRO: hortelão ao serviço da Mãe Terra -->
+      <section class="apresentacao-intro">
+        <article class="apresentacao-card">
+          <h2>Quem está por detrás da horta?</h2>
+          <p>
+            Olá, sou o hortelão ao serviço da <strong>Mãe Terra</strong> e de quem se senta à mesa.
+            Vejo-me como um <strong>empregado da Terra</strong>: aprendo com ela, recolho o que
+            ela faz nascer e crescer e entrego-o a ti, em forma de hortícolas, ervas aromáticas, plantas
+            espontâneas comestíveis e medicinais.
+          </p>
+          <p>
+            O meu nome é Cláudio Matos.
+			Depois de alguns anos a trabalhar na indústria agro-alimentar, no comércio grossista e no ramo da segurança e qualidade alimentar dei por mim a querer
+            algo mais simples e direto: <strong>produzir alimentos vivos, íntegros e o mais
+            naturais possível</strong>, cuidando do solo e do ecossistema em vez de os esgotar.
+          </p>
+          <p class="destaque-suave">
+            Hoje dedico-me à <strong>agricultura biológica-regenerativa</strong> em modo
+            <em>no-till</em> (sem lavrar), inspirada em princípios de JADAM: alimentar o solo com
+            compostos naturais, micro-organismos e minerais, para que seja o solo a cuidar
+            das plantas – e não o contrário.
+          </p>
+        </article>
+
+        <aside class="terra-personagem">
+          <figure>
+            <!-- Ajusta o caminho da imagem conforme a tua estrutura de pastas -->
+            <img src="imagens/Entrada_Terra.jpg"
+                 alt="Planeta Terra em estilo cartoon a oferecer um cesto de vegetais com a frase 'Come o que a Terra te oferece'">
+            <figcaption>
+              Mãe Terra como personagem-símbolo do projeto “Da Terra para o prato”.
+            </figcaption>
+          </figure>
+        </aside>
+      </section>
+
+      <!-- BLOCO SOBRE TI + CAMINHO ATÉ À HORTA -->
+      <section class="apresentacao-grid">
+        <article class="apresentacao-bloco">
+          <h3>O meu percurso até chegar à horta</h3>
+          <p>
+            Sou engenheiro agro-alimentar de formação. Entre 2007 e 2014 trabalhei na área
+            industrial e, mais tarde, como inspetor de higiene, segurança e qualidade alimentar.
+            Em 2012, no meio de fábricas e auditorias, surgiu uma inquietação: <strong>aprender a
+            produzir os meus próprios alimentos de forma mais pura e natural</strong>, ganhando
+            autonomia e ligação direta ao que como.
+          </p>
+          <p>
+            Em 2014/2015 trabalhei na Direção Regional de Agricultura da Península de Setúbal,
+            onde tive o primeiro contacto com produtores de agricultura biológica da região.
+            Fiz um curso teórico-prático de agricultura biológica no IEFP e foi aí que conheci
+            o casal responsável pelo projeto <strong>Quiosque da Natureza</strong> – uma relação
+            profissional e humana que se mantém até hoje.
+          </p>
+          <p>
+            Em 2015 comecei a trabalhar a tempo inteiro com o Quiosque da Natureza, a semear,
+            preparar solos, controlar infestantes e colher produtos biológicos. Houve um
+            intervalo entre 2020 e 2023 em que trabalhei em Lagos, mas no final de 2023
+            regressei à equipa. Desde o início de 2025, a minha horta
+            <strong>“Da Terra para o prato”</strong> está instalada na quinta deste mesmo casal.
+          </p>
+        </article>
+
+        <article class="apresentacao-bloco">
+          <h3>Da terra para o prato – a horta</h3>
+          <p>
+            A horta <strong>“Da Terra para o prato”</strong> vive num solo arenoso, em ambiente
+            rural, no concelho de Palmela (freguesia da Quinta do Anjo). “Da terra” aqui tem
+            um duplo sentido: vem do <strong>solo físico</strong> mas também da nossa
+            <strong>Mãe Terra</strong>, entendida como provedora, cuidadora e mestra.
+          </p>
+          <ul>
+            <li><strong>Tipo de produção:</strong> agricultura biológica-regenerativa em modo
+                <em>no-till</em> (sem lavrar).</li>
+            <li><strong>O que produzimos:</strong> hortícolas de época, plantas aromáticas,
+                espontâneas comestíveis e plantas medicinais – as mesmas que encontras nos
+                índices de <em>cultivadas</em>, <em>espontâneas</em> e <em>medicinais</em> do site.</li>
+            <li><strong>Adubações:</strong> composto, rocha moída, biochar, chorumes e “chás”
+                de composto, reforçando a microflora do solo.</li>
+            <li><strong>Princípio base:</strong> <em>“Eu alimento o solo, o solo alimenta
+                as plantas.”</em></li>
+          </ul>
+          <p>
+            Deixei de consumir alimentos de origem animal em 2018, por motivos de prevenção
+            de saúde. Curiosamente essa mudança além de trazer diversas melhorias no estado de saúde 
+			também trouxe num crescente e profundo respeito pelos animais e, sempre que
+            possível, evito <strong>fertilizantes dependentes da exploração animal</strong>.
+          </p>
+        </article>
+
+        <article class="apresentacao-bloco">
+          <h3>A quinta-mãe: Quiosque da Natureza</h3>
+          <p>
+            A horta está integrada numa quinta familiar, o projeto
+            <strong>Quiosque da Natureza</strong> (Palmela), iniciado por volta de 2009 por
+            <strong>Vasco Correia e Liliana Correia</strong>. É aqui que tudo começou e continua
+            a acontecer.
+          </p>
+          <p>
+            Trabalhei com o Quiosque a tempo inteiro entre 2015 e 2020 e, depois de um período
+            fora, regressei em 2023. Atualmente organizo o tempo entre:
+          </p>
+          <ul>
+            <li><strong>3 dias/semana</strong> dedicados ao Quiosque da Natureza;</li>
+            <li><strong>2 a 3 dias/semana</strong> dedicados à minha horta “Da Terra para o prato”.</li>
+          </ul>
+          <p>
+            A quinta-mãe é o <strong>berço do projeto</strong>, parceiro principal e uma
+            família alargada: fornece infraestruturas, partilha experiência e acolhe a horta
+            como parte do seu ecossistema.
+			https://quiosquedanatureza.com/pt
+          </p>
+        </article>
+      </section>
+
+      <!-- AGRICULTURA CONVENCIONAL vs BIO vs BIO-REGENERATIVA -->
+      <section>
+        <article class="apresentacao-card">
+          <h2>Convencional, biológica e biológica-regenerativa – o que muda na prática?</h2>
+          <p>
+            Do ponto de vista de quem compra, pode ser confuso perceber o que distingue
+            <strong>agricultura convencional</strong>, <strong>biológica</strong> e
+            <strong>biológica-regenerativa</strong>. De forma simplificada, é assim que
+            este projeto entende as diferenças:
+          </p>
+
+          <table class="tabela-comparativa">
+            <caption>Comparação do ponto de vista do consumidor</caption>
+            <thead>
+              <tr>
+                <th>Abordagem</th>
+                <th>Como funciona (em geral)</th>
+                <th>O que pode ser vantagem para o consumidor</th>
+                <th>Pontos a ter em conta</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Convencional</strong></td>
+                <td>
+                  Uso livre/regulamentado de <strong>pesticidas e fertilizantes sintéticos</strong>,
+                  foco em produtividade e aparência visual. Muitas vezes associada a
+                  grandes explorações e cadeias longas. Mas um risco considerável para a 
+				  saúde que muitos consumidores não ponderam reside no consumo de produtos de 
+				  pequenos produtores de proximidade que praticam produção convencionais não controlada,
+				  que muitas vezes não têm a formação e/ou consciência necessárias para não exceder limites 
+				  de segurança e muitas vezes aplicam produtos nocivos sem necessidade.
+                </td>
+                <td>
+                  <ul>
+                    <li>Preço normalmente mais baixo.</li>
+                    <li>Grande disponibilidade e oferta todo o ano.</li>
+                    <li>Produtos com aspeto muito uniforme.</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>Uso regular de químicos de síntese no solo e nas plantas.</li>
+                    <li>Menor foco declarado em biodiversidade e regeneração do solo.</li>
+                    <li>Rastreabilidade e proximidade ao produtor costumam ser menores.</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Biológica (certificada)</strong></td>
+                <td>
+                  Não permite <strong>pesticidas nem fertilizantes de síntese</strong>;
+                  usa adubos de origem natural e regras definidas por regulamento.
+                  É fiscalizada por entidades certificadoras.
+                </td>
+                <td>
+                  <ul>
+                    <li>Restrição de insumos químicos de síntese.</li>
+                    <li>Maior atenção ao ecossistema, rotação de culturas, polinizadores.</li>
+                    <li>Registos e auditorias que dão alguma garantia formal.</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>Preço normalmente mais elevado.</li>
+                    <li>Intensidade ecológica pode variar de produtor para produtor.</li>
+                    <li>Alguns fertilizantes permitidos têm origem animal
+                        (estrumes, farinhas de osso, hidrolisados de peixe, etc.).</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Biológica-regenerativa</strong><br>(como praticada aqui)</td>
+                <td>
+                  Parte da base da agricultura biológica mas dá um passo extra:
+                  <strong>regenerar o solo e o ecossistema</strong>, aumentar a matéria orgânica
+                  e a vida do solo, reduzindo ao máximo a mobilização e interferência pesada.
+                </td>
+                <td>
+                  <ul>
+                    <li>Foco em solos vivos, cobertos e estruturados.</li>
+                    <li>Menos mobilização (sem lavrar), mais micro-organismos e carbono no solo.</li>
+                    <li>Uso intensivo de compostos naturais, rocha moída, biochar e microbiologia
+                        local para nutrir as plantas “a partir de baixo”.</li>
+                    <li>Maior proximidade ao produtor e transparência de práticas.</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>Produção de pequena escala, com forte sazonalidade.</li>
+                    <li>Algumas culturas podem ter aspeto menos “perfeito”, apesar de saudáveis.</li>
+                    <li>Sem químicos de síntese, certas pragas/doenças podem obrigar a aceitar
+                        perdas em vez de “forçar” a produção.</li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>
+            Em resumo, ao escolheres os produtos desta horta estás a apoiar um sistema que
+            procura <strong>regenerar o solo externo</strong> e, por consequência, contribuir
+            para um melhor cuidado com o <strong>“solo interno” – o intestino</strong>, símbolo
+            do trabalho de manutenção e regeneração continua do corpo de dentro para fora.
+          </p>
+        </article>
+      </section>
+
+      <!-- MITOS E ESCLARECIMENTOS EM FORMATO EXPANSÍVEL -->
+      <section class="apresentacao-card secao-mitos">
+        <h2>Mitos sobre agricultura biológica e regenerativa</h2>
+        <ul class="mitos-lista">
+          <li>
+            <details>
+              <summary>
+                <span class="mito-marker">+</span>
+                <span>“Bio não usa qualquer fertilizante.”</span>
+              </summary>
+              <p>
+                Agricultura biológica <strong>usa fertilizantes</strong>, mas de origem natural:
+                compostos, estrumes, adubos verdes, minerais naturais, etc. A diferença está em
+                evitar fertilizantes de síntese química e focar na fertilidade do solo em vez de
+                “empurrar” a planta com nutrientes solúveis rápidos.
+              </p>
+            </details>
+          </li>
+
+          <li>
+            <details>
+              <summary>
+                <span class="mito-marker">+</span>
+                <span>“Fertilização em bio depende sempre de estrume animal ou de produtos de origem animal.”</span>
+              </summary>
+              <p>
+                Muitos produtores biológicos usam estrume, farinhas de osso ou hidrolisados de
+                peixe – e isso é permitido pelas regras. Neste projeto, por opção pessoal e ética,
+                procura-se <strong>reduzir ao máximo a dependência de insumos de origem animal</strong>,
+                privilegiando composto vegetal, rocha moída, biochar, chorumes de plantas e
+                microbiologia local.
+              </p>
+            </details>
+          </li>
+
+          <li>
+            <details>
+              <summary>
+                <span class="mito-marker">+</span>
+                <span>“Bio-regenerativo é só uma moda de marketing.”</span>
+              </summary>
+              <p>
+                “Regenerativo” descreve uma intenção concreta: não só evitar químicos de
+                síntese, mas <strong>deixar o solo e o ecossistema em melhor estado</strong>
+                do que estavam. Neste projeto isso traduz-se em não lavrar, manter o solo
+                coberto, reforçar a matéria orgânica e a vida microbiana, aceitando que
+                nem tudo será perfeito mas que o sistema ganha saúde a médio prazo.
+              </p>
+            </details>
+          </li>
+
+          <li>
+            <details>
+              <summary>
+                <span class="mito-marker">+</span>
+                <span>“Produtos bio têm sempre mais nutrientes.”</span>
+              </summary>
+              <p>
+                A densidade nutricional depende de muitos fatores (variedade, maturação,
+                solo, clima, pós-colheita). Práticas biológicas e regenerativas tendem a
+                favorecer <strong>solos mais vivos e plantas mais equilibradas</strong>, o que
+                pode contribuir para melhor perfil nutricional, mas não é uma garantia
+                matemática. O foco aqui é qualidade global: solo + planta + sabor + contexto.
+              </p>
+            </details>
+          </li>
+
+          <li>
+            <details>
+              <summary>
+                <span class="mito-marker">+</span>
+                <span>“Se é bio, não há qualquer risco ou necessidade de cuidado.”</span>
+              </summary>
+              <p>
+                “Bio” não é sinónimo de “sem risco”: plantas podem ter componentes fortes,
+                alergénios ou interações com medicamentos. É por isso que, nas secções de <em>Cuidados e segurança</em>
+                e na <em>Farmácia do campo</em>, se dá importância à <strong>segurança, doses e
+                contraindicações</strong>, mesmo quando o cultivo é biológico.
+              </p>
+            </details>
+          </li>
+
+          <li>
+            <details>
+              <summary>
+                <span class="mito-marker">+</span>
+                <span>“Produção pequena significa falta de profissionalismo.”</span>
+              </summary>
+              <p>
+                A opção por uma <strong>escala pequena</strong> permite atenção ao detalhe,
+                experimentação e contacto direto com quem consome. Aqui, a prioridade não
+                é maximizar toneladas por hectare, mas <strong>cuidar da terra e de quem
+                come</strong>, mantendo uma relação de proximidade e transparência.
+              </p>
+            </details>
+          </li>
+        </ul>
+      </section>
+
+      <!-- PRODUTORES PARCEIROS (TEMPLATE) -->
+      <section class="apresentacao-card produtores-parceiros">
+        <h2>Produtores parceiros e fornecedores</h2>
+        <p>
+          Para além da produção própria na horta “Da Terra para o prato”, o cabaz e as
+          bancas contam com o apoio de <strong>produtores parceiros</strong> que partilham
+          valores de respeito pela terra, pela saúde e pelo consumidor.
+        </p>
+        <ul>
+          <!-- Exemplo de template: substitui [ ... ] pelos teus dados reais -->
+          <li>
+            <strong>[Nome do produtor / projeto]</strong> – [tipo de produtos que fornece:
+            fruta, pão, azeite, leguminosas secas, etc.]. [Uma frase sobre a confiança
+            e a relação (por exemplo, anos de colaboração, práticas que valorizas, proximidade geográfica).]
+          </li>
+          <li>
+            <strong>[Nome do produtor / projeto]</strong> – [tipo de produtos]. [Frase
+            curta sobre o que torna este parceiro especial.]
+          </li>
+          <li>
+            <strong>Quiosque da Natureza</strong> – projeto-mãe onde a horta está instalada,
+            certificado em modo biológico, responsável por grande parte da oferta de
+            hortícolas e pela organização do mercado e da venda direta ao consumidor.
+          </li>
+        </ul>
+        
+		<!-- <p class="nota-template">
+          💡 Podes duplicar ou editar estas linhas diretamente no HTML para acrescentar
+          mais parceiros sempre que fizer sentido.
+        </p> -->
+      </section>
+
+      <!-- PONTOS DE VENDA -->
+      <section class="pontos-venda">
+        <h2>Como, onde e quando podes comprar</h2>
+        <p>
+          Os produtos da horta “Da Terra para o prato” chegam até ti de várias formas:
+        </p>
+        <ul>
+          <li>
+            <strong>Na quinta</strong> – procura por “<em>Quiosque da Natureza</em>” no Google Maps
+            (Palmela). Normalmente com disponibilidade à
+            <strong>quarta-feira e sexta-feira ao fim do dia</strong>.
+          </li>
+          <li>
+            <strong>Mercado biológico de Telheiras (Lisboa)</strong> – produtos comercializados
+            pelo Quiosque da Natureza, <strong>ao sábado de manhã (8h–12h)</strong>.
+          </li>
+          <li>
+            <strong>Caixas/encomenda com ponto de recolha</strong>:
+            <ul>
+              <li><strong>Verdizela / Aroeira</strong> – entregas à <strong>quinta-feira de manhã</strong>.</li>
+              <li><strong>Quinta do Anjo / Cabanas</strong> – também à <strong>quinta-feira de manhã</strong>.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Novos mercados</strong> – está previsto abrir presença num mercado
+            (a definir) em breve na região da penísula de <strong>Almada - Setúbal</strong>.
+          </li>
+        </ul>
+        <p>
+          Para detalhes atualizados sobre horários, épocas e disponibilidade, consulta
+          também a página de <a href="contactos.html">Contactos</a> ou fala diretamente
+          connosco nos pontos de venda habituais.
+        </p>
+      </section>
+
+      <footer style="margin: 1.5rem 0 2.5rem; font-size: 0.85rem; color:#4b5563;">
+        Horta da Terra para o prato – pequeno produtor de agricultura biológica-regenerativa em Palmela.
+      </footer>
+    </main>
+
+    <script src="sidebar.js" defer></script>
+  </div>
+</body>
+</html>
