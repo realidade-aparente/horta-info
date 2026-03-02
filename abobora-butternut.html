@@ -322,11 +322,16 @@
 </style>
 </head>
 <body id="topo">
+
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
   <div class="masthead"><header>
     <h1>Horta da Terra para o prato</h1>
     <p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar.</p></header>
+  </header>
 <nav>
-    <a href="index.html">Início</a>
 	<a href="abobora-butternut.html" class="ativa">Abóbora butternut</a>
 	<a href="abobora-grande.html">Abóbora grande</a>
     <a href="acelga.html">Acelga</a>
@@ -375,7 +380,7 @@
     <a href="tomate.html">Tomate (genérico)</a>
     <a href="tomate-chucha.html">Tomate tipo chucha / Roma</a>
 </nav>
-  </header></div>
+</div>
 
   <main>
     
@@ -399,7 +404,7 @@
 
     <!-- 1. Apresentação / Descrição -->
     <section id="apresentacao">
-      <h3>Apresentação / Descrição</h3>
+      <h3>1. Apresentação / Descrição</h3>
       <p>
         A abóbora butternut é uma variedade de abóbora de inverno da espécie
         <em>Cucurbita moschata</em>, de tamanho médio, forma de pêra (mais
@@ -421,7 +426,7 @@
 
     <!-- 1a. Sazonalidade -->
     <section id="sazonalidade">
-      <h3>Sazonalidade</h3>
+      <h3>2. Sazonalidade</h3>
       <p>
         A informação seguinte refere-se a condições típicas de clima
         temperado-mediterrânico, como o de Portugal continental; em zonas
@@ -469,7 +474,7 @@
 
     <!-- 2. Propriedades nutricionais -->
     <section id="nutricao">
-      <h3>Propriedades nutricionais</h3>
+      <h3>3. Propriedades nutricionais</h3>
       <p>
         Os valores abaixo referem-se a aproximadamente 100&nbsp;g de abóbora
         butternut crua (sem casca nem sementes). Diferentes bases de dados
@@ -562,7 +567,7 @@
 
     <!-- 3. Benefícios para a saúde e propriedades medicinais -->
     <section id="beneficios">
-      <h3>Benefícios para a saúde e propriedades medicinais</h3>
+      <h3>4. Benefícios para a saúde e propriedades medicinais</h3>
       <p>
         A abóbora butternut é um alimento de baixa densidade energética e rico
         em nutrientes (vitaminas, minerais, fibra e compostos bioativos como
@@ -617,7 +622,7 @@
 
     <!-- 4. Utilidades e aplicações (não apenas alimentares) -->
     <section id="utilidades">
-      <h3>Utilidades e aplicações</h3>
+      <h3>5. Utilidades e aplicações</h3>
       <ul>
         <li>
           <strong>Uso alimentar principal:</strong> consumida cozinhada em
@@ -649,7 +654,7 @@
 
     <!-- 5. Como consumir -->
     <section id="como-consumir">
-      <h3>Como consumir</h3>
+      <h3>6. Como consumir</h3>
       <ul>
         <li>
           <strong>Partes utilizadas:</strong> principalmente a polpa; a casca
@@ -687,7 +692,7 @@
 
     <!-- 6. Grau de funcionalidade em permacultura -->
     <section id="permacultura">
-      <h3>Grau de funcionalidade em permacultura</h3>
+      <h3>7. Grau de funcionalidade em permacultura</h3>
       <p>
         Classificação indicativa (1 a 10) baseada nas múltiplas funções que a
         abóbora butternut pode desempenhar num sistema de permacultura ou
@@ -724,7 +729,7 @@
 
     <!-- 7. Receitas e preparados (Top 10) -->
     <section id="receitas">
-      <h3>Receitas e preparados (Top 10)</h3>
+      <h3>8. Receitas e preparados (Top 10)</h3>
 	  <div class="diet-links">
   <div class="diet-links-left">
     <a href="/horta-info/data/refeicoes/vegetariana/abobora-butternut_receitas_vegetariana.html">(Vegetariana)</a>
@@ -734,7 +739,9 @@
   <div class="diet-links-right">
     <a href="/horta-info/data/refeicoes.html">(Filtro por ingredientes)</a>
   </div>
+  <!--
 </div>
+ -->
 
       <p>
         Exemplos de preparações populares com abóbora butternut / manteiga.
@@ -796,7 +803,7 @@
 
     <!-- 8. Referências -->
     <section id="referencias">
-      <h3>Referências</h3>
+      <h3>9. Referências</h3>
 
       <h4>Descrição e botânica</h4>
       <ol>
@@ -1030,5 +1037,67 @@
   <footer>
     <a href="index.html">← Voltar à lista de plantas</a>
   </footer>
+</div>  
+    <script>
+  (function(){
+    const mount = document.getElementById("sidebar-mount");
+    if(!mount) return;
+
+    const applyActive = (root) => {
+      const path = (location.pathname.split("/").pop() || "inicio.html").toLowerCase();
+      root.querySelectorAll(".nav-item").forEach(a => {
+        const route = (a.getAttribute("data-route") || a.getAttribute("href") || "").toLowerCase();
+        const href = (a.getAttribute("href") || "").toLowerCase();
+        const isActive = (route && route === path) || (href && href === path);
+        if(isActive) a.classList.add("active");
+        else a.classList.remove("active");
+      });
+    };
+
+    const setCollapsed = (sidebar, collapsed) => {
+      sidebar.setAttribute("data-collapsed", collapsed ? "1" : "0");
+      document.body.classList.toggle("sidebar-collapsed", !!collapsed);
+      localStorage.setItem("sidebar-collapsed", collapsed ? "1" : "0");
+    };
+
+    fetch("sidebar.html", { cache: "no-store" })
+      .then(r => r.text())
+      .then(html => {
+        mount.innerHTML = html;
+
+        const sidebar = mount.querySelector(".sidebar");
+        const toggle = mount.querySelector(".sidebar-toggle");
+        if(!sidebar || !toggle) return;
+
+        // restore collapsed state
+        const saved = localStorage.getItem("sidebar-collapsed");
+        const collapsed = saved === "1";
+        setCollapsed(sidebar, collapsed);
+
+        toggle.addEventListener("click", () => {
+          const now = sidebar.getAttribute("data-collapsed") === "1";
+          setCollapsed(sidebar, !now);
+        });
+
+        applyActive(mount);
+      })
+      .catch(() => {
+        // se sidebar.html não existir, não quebra a página
+      });
+
+    // Masthead "stuck" feedback
+    const masthead = document.querySelector(".with-sidebar .masthead");
+    const sentinel = document.querySelector(".masthead-sentinel");
+    if(masthead && sentinel && "IntersectionObserver" in window){
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          masthead.classList.toggle("is-stuck", !entry.isIntersecting);
+        });
+      }, {root: null, threshold: 0});
+      io.observe(sentinel);
+    }
+  })();
+  </script>
+  
 </body>
 </html>

@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Abóbora grande de polpa densa (Cucurbita maxima) | Horta da Terra para o prato</title>
+	  <link rel="stylesheet" href="style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
+<style>
         :root {
             --cor-fundo: #f5f7f2;
             --cor-principal: #2f855a;
@@ -15,9 +16,7 @@
             --cor-caixa: #ffffff;
         }
 
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         body {
             margin: 0;
@@ -27,26 +26,19 @@
             line-height: 1.6;
         }
 
-        /* Header + nav fixos ao topo */
-        .site-header {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.10);
-        }
-
-        .header-top {
+        header {
             background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
             color: #fff;
             padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
         }
 
-        .header-top h1 {
+        header h1 {
             margin: 0 0 0.25rem;
             font-size: 1.7rem;
         }
 
-        .header-top p {
+        header p {
             margin: 0;
             opacity: 0.9;
         }
@@ -54,7 +46,7 @@
         nav {
             background: #ffffff;
             border-bottom: 1px solid var(--cor-borda);
-            padding: 0.4rem 1rem 0.5rem;
+            padding: 0.5rem 1rem;
             overflow-x: auto;
             white-space: nowrap;
         }
@@ -114,9 +106,7 @@
             color: var(--cor-secundaria);
         }
 
-        .planta-titulo p {
-            margin: 0.2rem 0;
-        }
+        .planta-titulo p { margin: 0.2rem 0; }
 
         .tags-nomes {
             margin-top: 0.4rem;
@@ -166,7 +156,7 @@
 
         .info-rapida {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 0.5rem;
             margin: 0.5rem 0 1.25rem;
             font-size: 0.9rem;
@@ -187,9 +177,7 @@
             color: #6b7280;
         }
 
-        section {
-            margin-bottom: 1.5rem;
-        }
+        section { margin-bottom: 1.5rem; }
 
         section h3 {
             margin-top: 0;
@@ -199,9 +187,7 @@
             padding-left: 0.5rem;
         }
 
-        ul {
-            padding-left: 1.2rem;
-        }
+        ul { padding-left: 1.2rem; }
 
         table {
             width: 100%;
@@ -216,26 +202,13 @@
             text-align: left;
         }
 
-        th {
-            background: #f3f4f6;
-        }
+        th { background: #f3f4f6; }
 
-        tbody tr:nth-child(even) {
-            background: #f9fafb;
-        }
+        tbody tr:nth-child(even) { background: #f9fafb; }
 
-        .nota, .referencia-nota {
+        .nota {
             font-size: 0.8rem;
             color: #6b7280;
-        }
-
-        .nota-aviso {
-            font-size: 0.85rem;
-            color: #9a3412;
-            background: #fff7ed;
-            border-radius: 0.5rem;
-            padding: 0.5rem 0.75rem;
-            border: 1px solid #fed7aa;
         }
 
         .lista-permacultura {
@@ -260,7 +233,7 @@
         }
 
         .referencias-lista li {
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.2rem;
         }
 
         .referencias-lista a {
@@ -268,9 +241,7 @@
             text-decoration: none;
         }
 
-        .referencias-lista a:hover {
-            text-decoration: underline;
-        }
+        .referencias-lista a:hover { text-decoration: underline; }
 
         .topo-link {
             text-align: right;
@@ -282,11 +253,9 @@
             text-decoration: none;
         }
 
-        .topo-link a:hover {
-            text-decoration: underline;
-        }
-		
-		.masthead{position:sticky;top:0;z-index:1000}
+        .topo-link a:hover { text-decoration: underline; }
+    
+.masthead{position:sticky;top:0;z-index:1000}
 		
 		.nav-paginacao {
     display: flex;
@@ -353,13 +322,17 @@
     </style>
 </head>
 <body id="topo">
-<header class="site-header">
-    <div class="header-top">
-        <h1>Horta da Terra para o prato</h1>
-        <p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar.</p>
-    </div>
-    <nav>
-    <a href="index.html">Início</a>
+
+  <div id="sidebar-mount"></div>
+  <div class="with-sidebar">
+    <div class="masthead-sentinel" aria-hidden="true"></div>
+
+  <div class="masthead"><header>
+    <h1>Horta da Terra para o prato</h1>
+    <p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar.</p>
+	</header>
+	
+    <nav>    
 	<a href="abobora-butternut.html">Abóbora butternut</a>
 	<a href="abobora-grande.html" class="ativa">Abóbora grande</a>
     <a href="acelga.html">Acelga</a>
@@ -968,7 +941,77 @@
         <div class="topo-link">
             <a href="#topo">Voltar ao topo ▲</a>
         </div>
+		
     </article>
+
+  <footer>
+    <a href="index.html">← Voltar à lista de plantas</a>
+  </footer>
+  </div>
+
 </main>
+
+
+  <script>
+  (function(){
+    const mount = document.getElementById("sidebar-mount");
+    if(!mount) return;
+
+    const applyActive = (root) => {
+      const path = (location.pathname.split("/").pop() || "inicio.html").toLowerCase();
+      root.querySelectorAll(".nav-item").forEach(a => {
+        const route = (a.getAttribute("data-route") || a.getAttribute("href") || "").toLowerCase();
+        const href = (a.getAttribute("href") || "").toLowerCase();
+        const isActive = (route && route === path) || (href && href === path);
+        if(isActive) a.classList.add("active");
+        else a.classList.remove("active");
+      });
+    };
+
+    const setCollapsed = (sidebar, collapsed) => {
+      sidebar.setAttribute("data-collapsed", collapsed ? "1" : "0");
+      document.body.classList.toggle("sidebar-collapsed", !!collapsed);
+      localStorage.setItem("sidebar-collapsed", collapsed ? "1" : "0");
+    };
+
+    fetch("sidebar.html", { cache: "no-store" })
+      .then(r => r.text())
+      .then(html => {
+        mount.innerHTML = html;
+
+        const sidebar = mount.querySelector(".sidebar");
+        const toggle = mount.querySelector(".sidebar-toggle");
+        if(!sidebar || !toggle) return;
+
+        // restore collapsed state
+        const saved = localStorage.getItem("sidebar-collapsed");
+        const collapsed = saved === "1";
+        setCollapsed(sidebar, collapsed);
+
+        toggle.addEventListener("click", () => {
+          const now = sidebar.getAttribute("data-collapsed") === "1";
+          setCollapsed(sidebar, !now);
+        });
+
+        applyActive(mount);
+      })
+      .catch(() => {
+        // se sidebar.html não existir, não quebra a página
+      });
+
+    // Masthead "stuck" feedback
+    const masthead = document.querySelector(".with-sidebar .masthead");
+    const sentinel = document.querySelector(".masthead-sentinel");
+    if(masthead && sentinel && "IntersectionObserver" in window){
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          masthead.classList.toggle("is-stuck", !entry.isIntersecting);
+        });
+      }, {root: null, threshold: 0});
+      io.observe(sentinel);
+    }
+  })();
+  </script>
+
 </body>
 </html>
