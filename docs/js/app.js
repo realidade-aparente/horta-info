@@ -2,17 +2,25 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  onAuthStateChanged
+  onAuthStateChanged,
+  EmailAuthProvider,
+  reauthenticateWithCredential,
+  verifyBeforeUpdateEmail,
+  updatePassword,
+  sendPasswordResetEmail
 } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
 import { auth } from "./firebase-config.js";
 import {
-  getCurrentWeekId,
   getWeekData,
   getClientProfile,
   saveClientProfile,
   getOrder,
-  saveOrder
+  saveOrder,
+  patchOrder,
+  getConditionalOrder,
+  saveConditionalOrder,
+  patchConditionalOrder
 } from "./db.js";
 
 import {
@@ -23,31 +31,316 @@ import {
   renderPickupOptions,
   renderProducts,
   calculateSummary,
-  renderReview
+  renderReview,
+  getDisplayedPrice
 } from "./ui.js";
+
+function getCurrentWeekInfo() {
+  const now = new Date();
+  const localDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+  const day = localDate.getDay();
+  const diffToMonday = day === 0 ? -6 : 1 - day;
+
+  const monday = new Date(localDate);
+  monday.setDate(localDate.getDate() + diffToMonday);
+
+  const isoDate = new Date(Date.UTC(monday.getFullYear(), monday.getMonth(), monday.getDate()));
+  isoDate.setUTCDate(isoDate.getUTCDate() + 3);
+  const firstThursday = new Date(Date.UTC(isoDate.getUTCFullYear(), 0, 4));
+  const weekNumber = 1 + Math.round(
+    ((isoDate - firstThursday) / 86400000 - 3 + ((firstThursday.getUTCDay() + 6) % 7)) / 7
+  );
+
+  const yyyy = monday.getFullYear();
+  const mm = String(monday.getMonth() + 1).padStart(2, "0");
+  const dd = String(monday.getDate()).padStart(2, "0");
+  const weekId = `${yyyy}-${mm}-${dd}`;
+  const weekLabel = `Semana ${String(weekNumber).padStart(2, "0")} - ${weekId}`;
+
+  return {
+    weekId,
+    weekNumber,
+    weekLabel
+  };
+}
+
+const EMAILJS_PUBLIC_KEY = "hgrb7V-u6GGGCYUTa";
+const EMAILJS_SERVICE_ID = "service_ja0vggr";
+const EMAILJS_TEMPLATE_CLIENTE = "template_08hxlen";
+const PASSWORD_MIN_LENGTH = 6;
+const PASSWORD_MAX_LENGTH = 10;
+const PASSWORD_ALLOWED_REGEX = /^[A-Za-zÀ-ÿ0-9 !"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~]+$/;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const PICKUP_FRIDAY = "Na quinta de produção – (sexta-feira)";
+const PICKUP_SATURDAY = "No mercado de rua biológico – (sábado)";
+
+const PICKUP_LOCATIONS_NORMAL = [
+  "Na Quinta do Paraíso – (quarta-feira)",
+  "Na Verdizela – (quarta-feira)",
+  "Em Quinta do Conde – (quarta-feira)",
+  "Em local alternativo combinado – (quinta-feira)",
+  PICKUP_FRIDAY,
+  PICKUP_SATURDAY
+];
+
+const PICKUP_LOCATIONS_CONDITIONAL = [
+  PICKUP_FRIDAY,
+  PICKUP_SATURDAY
+];
+
+const ORDER_WINDOW_NOTICE_NORMAL =
+  "Há dois períodos de encomendas: 1.º período — segunda-feira às 08:00 até terça-feira às 20:00. " +
+  "2.º período condicionado — terça-feira às 20:00 até quinta-feira às 20:00; nesse período só ficam disponíveis as recolhas de sexta-feira e sábado.";
+
+const ORDER_WINDOW_NOTICE_CONDITIONAL =
+  "2.º período de encomendas condicionadas: terça-feira às 20:00 até quinta-feira às 20:00. " +
+  "Neste período só estão disponíveis as recolhas de sexta-feira e sábado.";
+
+function getPortugalWeekdayAndTime(date = new Date()) {
+  const formatter = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/Lisbon",
+    weekday: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23"
+  });
+
+  const parts = formatter.formatToParts(date);
+  const values = Object.fromEntries(
+    parts
+      .filter((part) => part.type !== "literal")
+      .map((part) => [part.type, part.value])
+  );
+
+  const weekdayMap = {
+    Mon: 1,
+    Tue: 2,
+    Wed: 3,
+    Thu: 4,
+    Fri: 5,
+    Sat: 6,
+    Sun: 0
+  };
+
+  return {
+    day: weekdayMap[values.weekday],
+    hour: Number(values.hour),
+    minute: Number(values.minute)
+  };
+}
+
+function getScheduledOrderMode(date = new Date()) {
+  const { day, hour, minute } = getPortugalWeekdayAndTime(date);
+  const minutes = hour * 60 + minute;
+
+  // 1.º período: segunda 08:00 <= agora < terça 20:00
+  if (day === 1 && minutes >= 8 * 60) return "normal";
+  if (day === 2 && minutes < 20 * 60) return "normal";
+
+  // 2.º período: terça 20:00 <= agora < quinta 20:00
+  if (day === 2 && minutes >= 20 * 60) return "conditional";
+  if (day === 3) return "conditional";
+  if (day === 4 && minutes < 20 * 60) return "conditional";
+
+  return "closed";
+}
+
+function setOperationalStatus(mode) {
+  if (!els.weekStatus) return;
+
+  if (mode === "normal") {
+    els.weekStatus.textContent = "Encomendas abertas";
+    els.weekStatus.style.background = "#dff3e2";
+    return;
+  }
+
+  if (mode === "conditional") {
+    els.weekStatus.textContent = "Encomendas condicionadas";
+    els.weekStatus.style.background = "#fff0c2";
+    return;
+  }
+
+  els.weekStatus.textContent = "Encomendas encerradas";
+  els.weekStatus.style.background = "#f3dfdf";
+}
+
+function ensureOrderWindowNotice() {
+  let notice = document.getElementById("orderWindowNotice");
+
+  if (!notice && els.weekStatus?.parentElement) {
+    notice = document.createElement("div");
+    notice.id = "orderWindowNotice";
+    notice.className = "order-window-notice hidden";
+    els.weekStatus.insertAdjacentElement("afterend", notice);
+  }
+
+  return notice;
+}
+
+function updateOrderWindowNotice(mode) {
+  const notice = ensureOrderWindowNotice();
+  if (!notice) return;
+
+  if (mode === "normal") {
+    notice.textContent = ORDER_WINDOW_NOTICE_NORMAL;
+    notice.classList.remove("hidden");
+    return;
+  }
+
+  if (mode === "conditional") {
+    notice.textContent = ORDER_WINDOW_NOTICE_CONDITIONAL;
+    notice.classList.remove("hidden");
+    return;
+  }
+
+  notice.textContent = "";
+  notice.classList.add("hidden");
+}
+
+function getPickupOptionsForOrderType(orderType) {
+  return orderType === "conditional"
+    ? [...PICKUP_LOCATIONS_CONDITIONAL]
+    : [...PICKUP_LOCATIONS_NORMAL];
+}
+
+function includeSelectedPickup(options, selectedValue) {
+  const result = [...options];
+
+  if (selectedValue && !result.includes(selectedValue)) {
+    result.push(selectedValue);
+  }
+
+  return result;
+}
+
+function getMostRecentOrderType(normalOrder, conditionalOrder) {
+  if (normalOrder && !conditionalOrder) return "normal";
+  if (conditionalOrder && !normalOrder) return "conditional";
+  if (!normalOrder && !conditionalOrder) return "normal";
+
+  const normalTime = Date.parse(normalOrder?.ultimaAtualizacao || "") || 0;
+  const conditionalTime = Date.parse(conditionalOrder?.ultimaAtualizacao || "") || 0;
+
+  return conditionalTime > normalTime ? "conditional" : "normal";
+}
+
+function getActiveOrderType(scheduledMode, normalOrder, conditionalOrder) {
+  if (scheduledMode === "normal") return "normal";
+  if (scheduledMode === "conditional") return "conditional";
+  return getMostRecentOrderType(normalOrder, conditionalOrder);
+}
+
+async function getOrderForType(orderType, weekId, uid) {
+  return orderType === "conditional"
+    ? getConditionalOrder(weekId, uid)
+    : getOrder(weekId, uid);
+}
+
+async function saveOrderForType(orderType, weekId, uid, payload) {
+  if (orderType === "conditional") {
+    await saveConditionalOrder(weekId, uid, payload);
+    return;
+  }
+
+  await saveOrder(weekId, uid, payload);
+}
+
+async function patchOrderForType(orderType, weekId, uid, payload) {
+  if (orderType === "conditional") {
+    await patchConditionalOrder(weekId, uid, payload);
+    return;
+  }
+
+  await patchOrder(weekId, uid, payload);
+}
+
+function initEmailJS() {
+  if (window.emailjs) {
+    window.emailjs.init({
+      publicKey: EMAILJS_PUBLIC_KEY
+    });
+  }
+}
 
 const els = {
   secAuth: document.getElementById("secAuth"),
   secApp: document.getElementById("secApp"),
   secClosed: document.getElementById("secClosed"),
 
-  authEmail: document.getElementById("authEmail"),
-  authPassword: document.getElementById("authPassword"),
+  loginPanel: document.getElementById("loginPanel"),
+  registerPanel: document.getElementById("registerPanel"),
+
+  loginEmail: document.getElementById("loginEmail"),
+  loginPassword: document.getElementById("loginPassword"),
+  registerEmail: document.getElementById("registerEmail"),
+  registerPassword: document.getElementById("registerPassword"),
+  registerPasswordConfirm: document.getElementById("registerPasswordConfirm"),
+
+  loginEmailError: document.getElementById("loginEmailError"),
+  loginPasswordError: document.getElementById("loginPasswordError"),
+  registerEmailError: document.getElementById("registerEmailError"),
+  registerPasswordError: document.getElementById("registerPasswordError"),
+  registerPasswordConfirmError: document.getElementById("registerPasswordConfirmError"),
+  regNameError: document.getElementById("regNameError"),
+
+  btnToggleLoginPassword: document.getElementById("btnToggleLoginPassword"),
+  btnToggleRegisterPassword: document.getElementById("btnToggleRegisterPassword"),
+  btnToggleRegisterPasswordConfirm: document.getElementById("btnToggleRegisterPasswordConfirm"),
+  btnShowRegister: document.getElementById("btnShowRegister"),
+  btnShowLogin: document.getElementById("btnShowLogin"),
+
+  btnShowLoggedOutReset: document.getElementById("btnShowLoggedOutReset"),
+  loggedOutResetPanel: document.getElementById("loggedOutResetPanel"),
+  loggedOutResetEmail: document.getElementById("loggedOutResetEmail"),
+  loggedOutResetEmailError: document.getElementById("loggedOutResetEmailError"),
+  loggedOutResetMessage: document.getElementById("loggedOutResetMessage"),
+  btnSendLoggedOutReset: document.getElementById("btnSendLoggedOutReset"),
+  btnCancelLoggedOutReset: document.getElementById("btnCancelLoggedOutReset"),
+
   regName: document.getElementById("regName"),
   regPhone: document.getElementById("regPhone"),
-  registerExtra: document.getElementById("registerExtra"),
   authMessage: document.getElementById("authMessage"),
   btnLogin: document.getElementById("btnLogin"),
   btnRegister: document.getElementById("btnRegister"),
   btnLogout: document.getElementById("btnLogout"),
 
+  btnToggleAccount: document.getElementById("btnToggleAccount"),
+  btnCloseAccount: document.getElementById("btnCloseAccount"),
+  accountPanel: document.getElementById("accountPanel"),
+  accountName: document.getElementById("accountName"),
+  accountPhone: document.getElementById("accountPhone"),
+  accountEmail: document.getElementById("accountEmail"),
+  accountCurrentPasswordEmail: document.getElementById("accountCurrentPasswordEmail"),
+  accountCurrentPassword: document.getElementById("accountCurrentPassword"),
+  accountNewPassword: document.getElementById("accountNewPassword"),
+  accountConfirmPassword: document.getElementById("accountConfirmPassword"),
+  accountNameError: document.getElementById("accountNameError"),
+  accountEmailError: document.getElementById("accountEmailError"),
+  accountCurrentPasswordEmailError: document.getElementById("accountCurrentPasswordEmailError"),
+  accountCurrentPasswordError: document.getElementById("accountCurrentPasswordError"),
+  accountNewPasswordError: document.getElementById("accountNewPasswordError"),
+  accountConfirmPasswordError: document.getElementById("accountConfirmPasswordError"),
+  accountMessage: document.getElementById("accountMessage"),
+  btnSaveProfile: document.getElementById("btnSaveProfile"),
+  btnChangeEmail: document.getElementById("btnChangeEmail"),
+  btnChangePassword: document.getElementById("btnChangePassword"),
+  btnResetPassword: document.getElementById("btnResetPassword"),
+  btnToggleAccountCurrentPasswordEmail: document.getElementById("btnToggleAccountCurrentPasswordEmail"),
+  btnToggleAccountCurrentPassword: document.getElementById("btnToggleAccountCurrentPassword"),
+  btnToggleAccountNewPassword: document.getElementById("btnToggleAccountNewPassword"),
+  btnToggleAccountConfirmPassword: document.getElementById("btnToggleAccountConfirmPassword"),
+
   weekLabel: document.getElementById("weekLabel"),
   weekStatus: document.getElementById("weekStatus"),
   customerName: document.getElementById("customerName"),
   customerEmail: document.getElementById("customerEmail"),
+  lastUpdate: document.getElementById("lastUpdate"),
 
   pickupLocation: document.getElementById("pickupLocation"),
   productsList: document.getElementById("productsList"),
+  summaryBar: document.getElementById("summaryBar"),
   summaryLines: document.getElementById("summaryLines"),
   summaryTotal: document.getElementById("summaryTotal"),
 
@@ -60,7 +353,9 @@ const els = {
   btnReview: document.getElementById("btnReview"),
   btnCloseReview: document.getElementById("btnCloseReview"),
   btnSubmitOrder: document.getElementById("btnSubmitOrder"),
-  btnSaveOrder: document.getElementById("btnSaveOrder")
+  btnSaveOrder: document.getElementById("btnSaveOrder"),
+  orderNotes: document.getElementById("orderNotes"),
+  orderNotesCounter: document.getElementById("orderNotesCounter"),
 };
 
 const state = {
@@ -69,9 +364,14 @@ const state = {
   profile: null,
   weekId: null,
   weekData: null,
-  products: {},
-  quantities: {},
-  pickupLocation: ""
+  products: [],
+  items: {},
+  pickupLocation: "",
+  notasEncomenda: "",
+  scheduledMode: "closed",
+  orderWindow: "closed",
+  orderType: "normal",
+  canEdit: false
 };
 
 function setMessage(msg, isError = false) {
@@ -79,59 +379,839 @@ function setMessage(msg, isError = false) {
   els.authMessage.style.color = isError ? "#b00020" : "#2f7d32";
 }
 
-function normalizeQty(value) {
+function clearAuthMessage() {
+  setMessage("", false);
+}
+
+function setLoggedOutResetMessage(msg, isError = false) {
+  if (!els.loggedOutResetMessage) return;
+  els.loggedOutResetMessage.textContent = msg;
+  els.loggedOutResetMessage.style.color = isError ? "#b00020" : "#2f7d32";
+}
+
+function clearLoggedOutResetMessage() {
+  setLoggedOutResetMessage("", false);
+}
+
+function openLoggedOutResetPanel() {
+  if (!els.loggedOutResetPanel) return;
+
+  clearLoggedOutResetMessage();
+  clearFieldState(
+    els.loggedOutResetEmail,
+    els.loggedOutResetEmailError
+  );
+
+  const loginEmail = String(els.loginEmail?.value || "").trim();
+
+  if (loginEmail && EMAIL_REGEX.test(loginEmail)) {
+    els.loggedOutResetEmail.value = loginEmail;
+  }
+
+  show(els.loggedOutResetPanel);
+
+  setTimeout(() => {
+    els.loggedOutResetEmail?.focus();
+  }, 0);
+}
+
+function closeLoggedOutResetPanel() {
+  if (!els.loggedOutResetPanel) return;
+
+  hide(els.loggedOutResetPanel);
+  clearLoggedOutResetMessage();
+  clearFieldState(
+    els.loggedOutResetEmail,
+    els.loggedOutResetEmailError
+  );
+}
+
+async function handleLoggedOutPasswordReset() {
+  clearLoggedOutResetMessage();
+
+  const emailOk = validateEmailField(
+    els.loggedOutResetEmail,
+    els.loggedOutResetEmailError,
+    { required: true }
+  );
+
+  if (!emailOk) return;
+
+  const email = els.loggedOutResetEmail.value.trim();
+  const button = els.btnSendLoggedOutReset;
+  const originalText = button?.textContent || "Enviar email de recuperação";
+
+  if (button) {
+    button.disabled = true;
+    button.textContent = "A enviar...";
+  }
+
+  try {
+    await sendPasswordResetEmail(auth, email);
+
+    console.info("Pedido de recuperação aceite pelo Firebase para:", email);
+
+    setLoggedOutResetMessage(
+      `Pedido enviado. Se existir uma conta associada a ${email}, o Firebase enviará um email com as instruções. Verifica também a pasta Spam/Lixo e aguarda alguns minutos.`
+    );
+  } catch (err) {
+    console.error(
+      "Erro ao enviar recuperação de palavra-passe:",
+      err?.code || "(sem código)",
+      err
+    );
+
+    setLoggedOutResetMessage(
+      getFriendlyAuthError(
+        err,
+        `Não foi possível enviar o email de recuperação${err?.code ? ` (${err.code})` : ""}.`
+      ),
+      true
+    );
+  } finally {
+    if (button) {
+      button.disabled = false;
+      button.textContent = originalText;
+    }
+  }
+}
+
+function setAccountMessage(msg, isError = false) {
+  if (!els.accountMessage) return;
+  els.accountMessage.textContent = msg;
+  els.accountMessage.style.color = isError ? "#b00020" : "#2f7d32";
+  els.accountMessage.style.background = msg
+    ? (isError ? "#fff3f5" : "#f3faf4")
+    : "#f7f7f7";
+}
+
+function clearAccountMessage() {
+  setAccountMessage("", false);
+}
+
+function populateAccountPanel() {
+  if (!state.user || !state.profile) return;
+
+  if (els.accountName) {
+    els.accountName.value = state.profile?.nome || "";
+  }
+
+  if (els.accountPhone) {
+    els.accountPhone.value = state.profile?.telefone || "";
+  }
+
+  if (els.accountEmail) {
+    els.accountEmail.value = state.user?.email || state.profile?.email || "";
+  }
+
+  if (els.accountCurrentPasswordEmail) els.accountCurrentPasswordEmail.value = "";
+  if (els.accountCurrentPassword) els.accountCurrentPassword.value = "";
+  if (els.accountNewPassword) els.accountNewPassword.value = "";
+  if (els.accountConfirmPassword) els.accountConfirmPassword.value = "";
+
+  clearAccountMessage();
+
+  clearFieldState(els.accountName, els.accountNameError);
+  clearFieldState(els.accountEmail, els.accountEmailError);
+  clearFieldState(els.accountCurrentPasswordEmail, els.accountCurrentPasswordEmailError);
+  clearFieldState(els.accountCurrentPassword, els.accountCurrentPasswordError);
+  clearFieldState(els.accountNewPassword, els.accountNewPasswordError);
+  clearFieldState(els.accountConfirmPassword, els.accountConfirmPasswordError);
+}
+
+function openAccountPanel() {
+  if (!state.user) return;
+  populateAccountPanel();
+  show(els.accountPanel);
+  els.accountPanel?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function closeAccountPanel() {
+  hide(els.accountPanel);
+  clearAccountMessage();
+}
+
+function getFriendlyAuthError(err, fallback) {
+  const code = String(err?.code || "");
+
+  const messages = {
+    "auth/invalid-credential": "A palavra-passe atual não está correta.",
+    "auth/wrong-password": "A palavra-passe atual não está correta.",
+    "auth/requires-recent-login": "Por segurança, volta a iniciar sessão e tenta novamente.",
+    "auth/email-already-in-use": "Esse endereço de email já está associado a outra conta.",
+    "auth/invalid-email": "O endereço de email não é válido.",
+    "auth/operation-not-allowed": "O Firebase não permitiu esta alteração de email. Tenta novamente ou contacta o administrador.",
+    "auth/email-change-needs-verification": "Por segurança, a alteração do email precisa de ser confirmada através de uma mensagem enviada para o novo endereço.",
+    "auth/weak-password": "A nova palavra-passe não cumpre os requisitos mínimos.",
+    "auth/too-many-requests": "Foram feitas demasiadas tentativas. Tenta novamente mais tarde.",
+    "auth/network-request-failed": "Não foi possível comunicar com o serviço. Verifica a ligação à internet."
+  };
+
+  return messages[code] || fallback;
+}
+
+async function reauthenticateCurrentUser(currentPassword) {
+  if (!state.user?.email) {
+    throw new Error("Não foi possível identificar o email atual da conta.");
+  }
+
+  const credential = EmailAuthProvider.credential(
+    state.user.email,
+    currentPassword
+  );
+
+  await reauthenticateWithCredential(state.user, credential);
+}
+
+async function handleSaveProfile() {
+  if (!state.user || !state.uid || !state.profile) return;
+
+  clearAccountMessage();
+
+  const nomeOk = validateNameField(els.accountName, els.accountNameError);
+  if (!nomeOk) return;
+
+  const nome = els.accountName.value.trim();
+  const telefone = els.accountPhone.value.trim();
+
+  try {
+    const updatedProfile = {
+      ...state.profile,
+      nome,
+      telefone,
+      email: state.user.email || state.profile?.email || ""
+    };
+
+    await saveClientProfile(state.uid, updatedProfile);
+
+    state.profile = updatedProfile;
+    els.customerName.textContent = nome;
+    setAccountMessage("Nome e telefone atualizados com sucesso.");
+  } catch (err) {
+    console.error("Erro ao atualizar perfil:", err);
+    setAccountMessage("Não foi possível atualizar os dados do perfil.", true);
+  }
+}
+
+async function handleChangeEmail() {
+  if (!state.user || !state.uid || !state.profile) return;
+
+  clearAccountMessage();
+
+  const emailOk = validateEmailField(
+    els.accountEmail,
+    els.accountEmailError,
+    { required: true }
+  );
+
+  const passwordOk = validatePasswordField(
+    els.accountCurrentPasswordEmail,
+    els.accountCurrentPasswordEmailError,
+    { required: true }
+  );
+
+  if (!emailOk || !passwordOk) return;
+
+  const newEmail = els.accountEmail.value.trim();
+  const currentPassword = els.accountCurrentPasswordEmail.value;
+
+  if (newEmail.toLowerCase() === String(state.user.email || "").toLowerCase()) {
+    setFieldError(
+      els.accountEmail,
+      els.accountEmailError,
+      "Este já é o email atual da tua conta."
+    );
+    return;
+  }
+
+  const button = els.btnChangeEmail;
+  const originalText = button?.textContent || "Alterar email";
+
+  if (button) {
+    button.disabled = true;
+    button.textContent = "A enviar confirmação...";
+  }
+
+  try {
+    // O Firebase exige autenticação recente para esta operação.
+    await reauthenticateCurrentUser(currentPassword);
+
+    // Fluxo recomendado: o novo endereço só passa a ser o email da conta
+    // depois de o cliente confirmar o link recebido no NOVO email.
+    await verifyBeforeUpdateEmail(state.user, newEmail);
+
+    els.accountCurrentPasswordEmail.value = "";
+    clearFieldState(
+      els.accountCurrentPasswordEmail,
+      els.accountCurrentPasswordEmailError
+    );
+
+    setAccountMessage(
+      `Foi enviado um email de confirmação para ${newEmail}. ` +
+      `Abre essa mensagem e confirma a alteração. Até confirmares, ` +
+      `continua a entrar com ${state.user.email}.`
+    );
+  } catch (err) {
+    console.error(
+      "Erro ao iniciar alteração de email:",
+      err?.code || "(sem código)",
+      err
+    );
+
+    setAccountMessage(
+      getFriendlyAuthError(
+        err,
+        `Não foi possível iniciar a alteração do email${err?.code ? ` (${err.code})` : ""}.`
+      ),
+      true
+    );
+  } finally {
+    if (button) {
+      button.disabled = false;
+      button.textContent = originalText;
+    }
+  }
+}
+
+async function handleChangePassword() {
+  if (!state.user) return;
+
+  clearAccountMessage();
+
+  const currentOk = validatePasswordField(
+    els.accountCurrentPassword,
+    els.accountCurrentPasswordError,
+    { required: true }
+  );
+
+  const newOk = validatePasswordField(
+    els.accountNewPassword,
+    els.accountNewPasswordError,
+    { required: true }
+  );
+
+  const confirmValue = String(els.accountConfirmPassword?.value || "");
+
+  let confirmOk = true;
+
+  if (!confirmValue) {
+    confirmOk = setFieldError(
+      els.accountConfirmPassword,
+      els.accountConfirmPasswordError,
+      "Repete a nova palavra-passe."
+    );
+  } else if (confirmValue !== els.accountNewPassword.value) {
+    confirmOk = setFieldError(
+      els.accountConfirmPassword,
+      els.accountConfirmPasswordError,
+      "As duas novas palavras-passe não são iguais."
+    );
+  } else {
+    setFieldValid(
+      els.accountConfirmPassword,
+      els.accountConfirmPasswordError
+    );
+  }
+
+  if (!currentOk || !newOk || !confirmOk) return;
+
+  if (els.accountCurrentPassword.value === els.accountNewPassword.value) {
+    setFieldError(
+      els.accountNewPassword,
+      els.accountNewPasswordError,
+      "A nova palavra-passe deve ser diferente da atual."
+    );
+    return;
+  }
+
+  try {
+    await reauthenticateCurrentUser(els.accountCurrentPassword.value);
+    await updatePassword(state.user, els.accountNewPassword.value);
+
+    els.accountCurrentPassword.value = "";
+    els.accountNewPassword.value = "";
+    els.accountConfirmPassword.value = "";
+
+    clearFieldState(
+      els.accountCurrentPassword,
+      els.accountCurrentPasswordError
+    );
+    clearFieldState(
+      els.accountNewPassword,
+      els.accountNewPasswordError
+    );
+    clearFieldState(
+      els.accountConfirmPassword,
+      els.accountConfirmPasswordError
+    );
+
+    setAccountMessage("Palavra-passe atualizada com sucesso.");
+  } catch (err) {
+    console.error("Erro ao alterar palavra-passe:", err);
+    setAccountMessage(
+      getFriendlyAuthError(err, "Não foi possível alterar a palavra-passe."),
+      true
+    );
+  }
+}
+
+async function handleResetPassword() {
+  if (!state.user?.email) return;
+
+  clearAccountMessage();
+
+  const button = els.btnResetPassword;
+  const originalText = button?.textContent || "Enviar email de recuperação";
+
+  if (button) {
+    button.disabled = true;
+    button.textContent = "A enviar...";
+  }
+
+  try {
+    await sendPasswordResetEmail(auth, state.user.email);
+
+    console.info(
+      "Pedido de recuperação aceite pelo Firebase para:",
+      state.user.email
+    );
+
+    setAccountMessage(
+      `Pedido enviado para ${state.user.email}. Verifica também a pasta Spam/Lixo e aguarda alguns minutos.`
+    );
+  } catch (err) {
+    console.error(
+      "Erro ao enviar recuperação de palavra-passe:",
+      err?.code || "(sem código)",
+      err
+    );
+
+    setAccountMessage(
+      getFriendlyAuthError(
+        err,
+        `Não foi possível enviar o email de recuperação${err?.code ? ` (${err.code})` : ""}.`
+      ),
+      true
+    );
+  } finally {
+    if (button) {
+      button.disabled = false;
+      button.textContent = originalText;
+    }
+  }
+}
+
+function setFieldError(inputEl, errorEl, message) {
+  if (!inputEl || !errorEl) return false;
+  inputEl.classList.add("input-error");
+  inputEl.classList.remove("input-valid");
+  errorEl.textContent = message;
+  errorEl.classList.remove("hidden");
+  return false;
+}
+
+function setFieldValid(inputEl, errorEl) {
+  if (!inputEl || !errorEl) return true;
+  inputEl.classList.remove("input-error");
+  inputEl.classList.add("input-valid");
+  errorEl.textContent = "";
+  errorEl.classList.add("hidden");
+  return true;
+}
+
+function clearFieldState(inputEl, errorEl) {
+  if (!inputEl || !errorEl) return;
+  inputEl.classList.remove("input-error", "input-valid");
+  errorEl.textContent = "";
+  errorEl.classList.add("hidden");
+}
+
+function clearAllAuthFieldStates() {
+  clearFieldState(els.loginEmail, els.loginEmailError);
+  clearFieldState(els.loginPassword, els.loginPasswordError);
+  clearFieldState(els.registerEmail, els.registerEmailError);
+  clearFieldState(els.registerPassword, els.registerPasswordError);
+  clearFieldState(els.registerPasswordConfirm, els.registerPasswordConfirmError);
+  clearFieldState(els.regName, els.regNameError);
+}
+
+function showLoginPanel() {
+  show(els.loginPanel);
+  hide(els.registerPanel);
+  closeLoggedOutResetPanel();
+  clearAuthMessage();
+  clearAllAuthFieldStates();
+}
+
+function showRegisterPanel() {
+  hide(els.loginPanel);
+  show(els.registerPanel);
+  closeLoggedOutResetPanel();
+  clearAuthMessage();
+  clearAllAuthFieldStates();
+}
+
+function setPasswordVisibility(inputEl, buttonEl, visible) {
+  if (!inputEl || !buttonEl) return;
+  inputEl.type = visible ? "text" : "password";
+  buttonEl.textContent = visible ? "🙈" : "👁";
+}
+
+function togglePasswordVisibility(inputEl, buttonEl) {
+  if (!inputEl || !buttonEl) return;
+  const isVisible = inputEl.type === "text";
+  setPasswordVisibility(inputEl, buttonEl, !isVisible);
+}
+
+function validateEmailField(inputEl, errorEl, { required = true } = {}) {
+  const value = String(inputEl?.value || "").trim();
+
+  if (!value) {
+    if (!required) {
+      clearFieldState(inputEl, errorEl);
+      return true;
+    }
+    return setFieldError(inputEl, errorEl, "Preenche o endereço de email.");
+  }
+
+  if (!EMAIL_REGEX.test(value)) {
+    return setFieldError(inputEl, errorEl, "Introduz um endereço de email válido.");
+  }
+
+  return setFieldValid(inputEl, errorEl);
+}
+
+function validatePasswordField(inputEl, errorEl, { required = true } = {}) {
+  const value = String(inputEl?.value || "");
+
+  if (!value) {
+    if (!required) {
+      clearFieldState(inputEl, errorEl);
+      return true;
+    }
+    return setFieldError(inputEl, errorEl, "Preenche a palavra-passe.");
+  }
+
+  if (value.length < PASSWORD_MIN_LENGTH) {
+    return setFieldError(inputEl, errorEl, `A palavra-passe deve ter pelo menos ${PASSWORD_MIN_LENGTH} caracteres.`);
+  }
+
+  if (value.length > PASSWORD_MAX_LENGTH) {
+    return setFieldError(inputEl, errorEl, `A palavra-passe deve ter no máximo ${PASSWORD_MAX_LENGTH} caracteres.`);
+  }
+
+  if (!PASSWORD_ALLOWED_REGEX.test(value)) {
+    return setFieldError(inputEl, errorEl, "Usa apenas letras, números e símbolos normais do teclado.");
+  }
+
+  return setFieldValid(inputEl, errorEl);
+}
+
+function validateNameField(inputEl, errorEl) {
+  const value = String(inputEl?.value || "").trim();
+
+  if (!value) {
+    return setFieldError(inputEl, errorEl, "Preenche o nome para criar conta.");
+  }
+
+  return setFieldValid(inputEl, errorEl);
+}
+
+function validateLoginForm() {
+  clearAuthMessage();
+  const emailOk = validateEmailField(els.loginEmail, els.loginEmailError);
+  const passwordOk = validatePasswordField(els.loginPassword, els.loginPasswordError);
+  return emailOk && passwordOk;
+}
+
+function validateRegisterPasswordConfirmation() {
+  const password = String(els.registerPassword?.value || "");
+  const confirmation = String(els.registerPasswordConfirm?.value || "");
+
+  if (!confirmation) {
+    return setFieldError(
+      els.registerPasswordConfirm,
+      els.registerPasswordConfirmError,
+      "Repete a palavra-passe para confirmar."
+    );
+  }
+
+  if (confirmation !== password) {
+    return setFieldError(
+      els.registerPasswordConfirm,
+      els.registerPasswordConfirmError,
+      "As duas palavras-passe não são iguais."
+    );
+  }
+
+  return setFieldValid(
+    els.registerPasswordConfirm,
+    els.registerPasswordConfirmError
+  );
+}
+
+function validateRegisterForm() {
+  clearAuthMessage();
+  const emailOk = validateEmailField(els.registerEmail, els.registerEmailError);
+  const passwordOk = validatePasswordField(els.registerPassword, els.registerPasswordError);
+  const confirmationOk = validateRegisterPasswordConfirmation();
+  const nameOk = validateNameField(els.regName, els.regNameError);
+  return emailOk && passwordOk && confirmationOk && nameOk;
+}
+
+function escapeHtml(value = "") {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function buildWeeklyCatalog(produtosGerais = {}, produtosSemana = {}) {
+  const result = [];
+
+  for (const [productId, dadosSemana] of Object.entries(produtosSemana || {})) {
+    const dadosGeral = produtosGerais?.[productId];
+    if (!dadosGeral) continue;
+
+    const tipoAtividade = dadosGeral.tipoAtividade ?? "i";
+    if (tipoAtividade === "i") continue;
+
+    const item = {
+      id: productId,
+      nome: dadosGeral.nome ?? productId,
+      unidade: dadosGeral.unidade ?? "",
+      aceitaNotaCliente: !!dadosGeral.aceitaNotaCliente,
+      quantidadeComercializacaoGr: dadosGeral.quantidadeComercializacaoGr ?? 0,
+      tipoAtividade,
+      preco: dadosSemana.preco ?? dadosGeral.precoConsumidor ?? 0,
+      origem: dadosSemana.origem ?? dadosGeral.origemPadrao ?? "",
+      comentario: dadosSemana.comentario ?? dadosGeral.comentarioPadrao ?? "",
+      ordem: dadosSemana.ordem ?? dadosGeral.ordem ?? 999,
+      ativo: dadosSemana.ativo ?? true
+    };
+
+    result.push(item);
+  }
+
+  result.sort((a, b) => {
+    const ordemDiff = (a.ordem ?? 999) - (b.ordem ?? 999);
+    if (ordemDiff !== 0) return ordemDiff;
+    return String(a.nome || "").localeCompare(String(b.nome || ""), "pt");
+  });
+
+  return result;
+}
+
+function getProductById(productId) {
+  return state.products.find((product) => product?.id === productId) || null;
+}
+
+function buildOrderRowsHtml() {
+  const rows = [];
+
+  for (const [productId, item] of Object.entries(state.items || {})) {
+    const qty = Number(item?.quantidade || 0);
+    const note = item?.nota || "";
+    const product = getProductById(productId);
+
+    if (!product || qty <= 0) continue;
+
+    const subtotal = qty * getDisplayedPrice(product);
+    const noteHtml = note
+      ? `<div style="font-size:12px; color:#777; margin-top:4px;">Nota: ${escapeHtml(note)}</div>`
+      : "";
+
+    rows.push(`
+      <tr>
+        <td style="padding:14px 0; border-bottom:1px solid #e5e5e5; vertical-align:top;">
+          <div>${escapeHtml(product.nome)}</div>
+          ${noteHtml}
+        </td>
+        <td style="padding:14px 0; border-bottom:1px solid #e5e5e5; vertical-align:top;">
+          ${escapeHtml(String(qty))} ${escapeHtml(product.unidade)}
+        </td>
+        <td style="padding:14px 0; border-bottom:1px solid #e5e5e5; text-align:right; vertical-align:top;">
+          ${money(subtotal)}
+        </td>
+      </tr>
+    `);
+  }
+
+  return rows.join("");
+}
+
+function buildNotesHtml() {
+  if (!state.notasEncomenda) return "";
+
+  return `
+    <div style="border-top:1px solid #ddd; padding-top:20px; margin-top:20px;">
+      <div style="font-size:12px; text-transform:uppercase; color:#888; margin-bottom:8px;">Notas gerais</div>
+      <div style="font-size:16px; line-height:1.6;">
+        ${escapeHtml(state.notasEncomenda)}
+      </div>
+    </div>
+  `;
+}
+
+function normalizeQty(value, product) {
   if (value === "" || value === null || value === undefined) return "";
-  const n = Number(String(value).replace(",", "."));
+
+  const cleaned = String(value).replace(",", ".").trim();
+  const n = Number(cleaned);
+
   if (Number.isNaN(n) || n < 0) return "";
-  return n;
+
+  const unidade = String(product?.unidade || "").toLowerCase();
+  const integerOnly = ["molho", "emb", "un"].includes(unidade);
+
+  if (integerOnly) {
+    return Math.round(n);
+  }
+
+  return Number(n.toFixed(3));
 }
 
 function refreshSummary() {
-  const { lines, total } = calculateSummary(state.products, state.quantities);
+  const { lines, total } = calculateSummary(state.products, state.items);
   els.summaryLines.textContent = `${lines} produtos`;
   els.summaryTotal.textContent = `Total estimado: ${money(total)}`;
+}
+
+function getQuantityStepMinus(product, currentQty = 0) {
+  const unidade = String(product?.unidade || "").toLowerCase();
+
+  if (["molho", "emb", "un"].includes(unidade)) {
+    return 1;
+  }
+
+  if (unidade === "kg") {
+    return currentQty <= 1 ? 0.1 : 1;
+  }
+
+  return 1;
 }
 
 function renderAllProducts() {
   renderProducts({
     container: els.productsList,
     products: state.products,
-    quantities: state.quantities,
-    isClosed: state.weekData?.estado !== "aberta",
+    items: state.items,
+    isClosed: !state.canEdit,
     onMinus: (productId) => {
-      const current = Number(state.quantities[productId] || 0);
-      const next = Math.max(0, current - 1);
+      const product = getProductById(productId);
+      const current = Number(state.items[productId]?.quantidade || 0);
+      const step = getQuantityStepMinus(product, current);
+      const next = Math.max(0, Number((current - step).toFixed(3)));
+
       if (next === 0) {
-        delete state.quantities[productId];
+        delete state.items[productId];
       } else {
-        state.quantities[productId] = next;
+        state.items[productId] = {
+          quantidade: next,
+          nota: state.items[productId]?.nota || ""
+        };
       }
+
       renderAllProducts();
       refreshSummary();
     },
     onPlus: (productId) => {
-      const current = Number(state.quantities[productId] || 0);
-      state.quantities[productId] = current + 1;
+      const product = getProductById(productId);
+      const unidade = String(product?.unidade || "").toLowerCase();
+      const current = Number(state.items[productId]?.quantidade || 0);
+
+      let next;
+
+      if (["molho", "emb", "un"].includes(unidade)) {
+        next = current + 1;
+      } else if (unidade === "kg") {
+        if (current < 0.9) {
+          next = Number((current + 0.1).toFixed(3));
+        } else {
+          next = Math.floor(current) + 1;
+        }
+      } else {
+        next = current + 1;
+      }
+
+      state.items[productId] = {
+        quantidade: next,
+        nota: state.items[productId]?.nota || ""
+      };
+
       renderAllProducts();
       refreshSummary();
     },
-    onInput: (productId, value) => {
-      const normalized = normalizeQty(value);
+    onInputQty: (productId, value) => {
+      const product = getProductById(productId);
+      const normalized = normalizeQty(value, product);
+
       if (normalized === "") {
-        delete state.quantities[productId];
+        delete state.items[productId];
       } else {
-        state.quantities[productId] = normalized;
+        state.items[productId] = {
+          quantidade: normalized,
+          nota: state.items[productId]?.nota || ""
+        };
       }
+
       refreshSummary();
+    },
+    onInputNote: (productId, value) => {
+      const cleaned = String(value || "").slice(0, 20);
+
+      if (!state.items[productId]) {
+        state.items[productId] = {
+          quantidade: 0,
+          nota: cleaned
+        };
+      } else {
+        state.items[productId].nota = cleaned;
+      }
     }
   });
 }
 
+function buildOrderLinesText() {
+  const lines = [];
+
+  for (const [productId, item] of Object.entries(state.items || {})) {
+    const qty = Number(item?.quantidade || 0);
+    const note = item?.nota || "";
+    const product = getProductById(productId);
+
+    if (!product || qty <= 0) continue;
+
+    const subtotal = qty * getDisplayedPrice(product);
+    const noteText = note ? ` | Nota: ${note}` : "";
+
+    lines.push(
+      `${qty} x ${product.nome} (${product.unidade}) — ${money(subtotal)}${noteText}`
+    );
+  }
+
+  if (state.notasEncomenda) {
+    lines.push(`\nNotas da encomenda: ${state.notasEncomenda}`);
+  }
+
+  return lines.length > 0 ? lines.join("\n") : "Sem produtos selecionados.";
+}
+
 function buildOrderPayload(submitState = "submetida") {
   const cleanItems = {};
-  for (const [productId, qty] of Object.entries(state.quantities)) {
-    const n = Number(qty || 0);
-    if (n > 0) cleanItems[productId] = n;
+
+  for (const [productId, item] of Object.entries(state.items || {})) {
+    const quantidade = Number(item?.quantidade || 0);
+    const nota = String(item?.nota || "").slice(0, 20);
+
+    if (quantidade > 0) {
+      cleanItems[productId] = {
+        quantidade,
+        nota
+      };
+    }
   }
 
   const { lines, total } = calculateSummary(state.products, cleanItems);
@@ -139,11 +1219,13 @@ function buildOrderPayload(submitState = "submetida") {
   return {
     clienteUid: state.uid,
     email: state.user.email,
-    nomeCliente: state.profile?.nome || "",
+    nomeCliente: String(state.profile?.nome || "").trim(),
     origem: "web",
+    tipoEncomenda: state.orderType === "conditional" ? "condicionada" : "normal",
     estado: submitState,
     ultimaAtualizacao: new Date().toISOString(),
     localRecolha: state.pickupLocation || "",
+    notasEncomenda: String(state.notasEncomenda || "").slice(0, 100),
     itens: cleanItems,
     totais: {
       valorEstimado: Number(total.toFixed(2)),
@@ -152,37 +1234,179 @@ function buildOrderPayload(submitState = "submetida") {
   };
 }
 
+async function ensureClientProfile() {
+  if (!state.user || !state.uid) return null;
+
+  let profile = await getClientProfile(state.uid);
+
+  if (!profile) {
+    const email = state.user.email || "";
+    const nomeBase = email ? email.split("@")[0] : "Cliente";
+
+    profile = {
+      email,
+      nome: nomeBase,
+      telefone: "",
+      ativo: true,
+      criadoEm: new Date().toISOString()
+    };
+
+    await saveClientProfile(state.uid, profile);
+  } else {
+    const authEmail = String(state.user.email || "").trim();
+    const profileEmail = String(profile.email || "").trim();
+
+    // Depois de o cliente confirmar uma alteração de email no Firebase,
+    // sincroniza automaticamente o mesmo endereço no perfil da RTDB.
+    if (authEmail && authEmail.toLowerCase() !== profileEmail.toLowerCase()) {
+      profile = {
+        ...profile,
+        email: authEmail
+      };
+
+      await saveClientProfile(state.uid, profile);
+    }
+  }
+
+  return profile;
+}
+
 async function loadAppData() {
-  state.weekId = await getCurrentWeekId();
-  if (!state.weekId) throw new Error("semanaAtual não definida");
+  const currentWeek = getCurrentWeekInfo();
+  state.weekId = currentWeek.weekId;
 
   state.weekData = await getWeekData(state.weekId);
-  state.profile = await getClientProfile(state.uid);
 
-  const order = await getOrder(state.weekId, state.uid);
+  els.weekLabel.textContent = currentWeek.weekLabel;
 
-  els.weekLabel.textContent = state.weekData?.meta?.label || state.weekId;
-  setWeekStatus(els.weekStatus, state.weekData?.estado || "fechada");
+  state.scheduledMode = getScheduledOrderMode();
 
-  els.customerName.textContent = state.profile?.nome || "Cliente";
-  els.customerEmail.textContent = state.user?.email || "";
+  const manualOpen = state.weekData?.estado === "aberta";
+  state.orderWindow = manualOpen ? state.scheduledMode : "closed";
+  state.canEdit = !!state.user && state.orderWindow !== "closed";
 
-  state.products = state.weekData?.produtos || {};
-  state.quantities = order?.itens || {};
-  state.pickupLocation = order?.localRecolha || "";
+  setOperationalStatus(state.orderWindow);
+  updateOrderWindowNotice(state.orderWindow);
 
-  const pickupOptions = state.weekData?.locaisRecolha || [
-    "Quinta",
-    "Mercado local",
-    "Entrega combinada"
-  ];
+  state.products = buildWeeklyCatalog(
+    state.weekData?.produtosGerais || {},
+    state.weekData?.produtosSemana || {}
+  );
 
-  renderPickupOptions(els.pickupLocation, pickupOptions, state.pickupLocation);
+  let pickupOptions = [];
 
-  if (state.weekData?.estado !== "aberta") {
+  if (state.user && state.uid) {
+    state.profile = await ensureClientProfile();
+
+    const [normalOrder, conditionalOrder] = await Promise.all([
+      getOrder(state.weekId, state.uid),
+      getConditionalOrder(state.weekId, state.uid)
+    ]);
+
+    state.orderType = getActiveOrderType(
+      state.scheduledMode,
+      normalOrder,
+      conditionalOrder
+    );
+
+    let order =
+      state.orderType === "conditional"
+        ? conditionalOrder
+        : normalOrder;
+
+    const authEmail = String(state.user?.email || "").trim();
+    const orderEmail = String(order?.email || "").trim();
+
+    // Mantém o email da encomenda ativa sincronizado com o Firebase Auth.
+    if (
+      order &&
+      authEmail &&
+      authEmail.toLowerCase() !== orderEmail.toLowerCase()
+    ) {
+      await patchOrderForType(
+        state.orderType,
+        state.weekId,
+        state.uid,
+        { email: authEmail }
+      );
+
+      order = {
+        ...order,
+        email: authEmail
+      };
+    }
+
+    els.customerName.textContent = state.profile?.nome || "Cliente";
+    els.customerEmail.textContent = state.user?.email || "";
+
+    if (els.accountPanel && !els.accountPanel.classList.contains("hidden")) {
+      populateAccountPanel();
+    }
+
+    state.items = order?.itens || {};
+    state.pickupLocation = order?.localRecolha || "";
+    state.notasEncomenda = order?.notasEncomenda || "";
+    els.orderNotes.value = state.notasEncomenda;
+
+    if (els.orderNotesCounter) {
+      els.orderNotesCounter.textContent = `${state.notasEncomenda.length}/100`;
+    }
+
+    els.lastUpdate.textContent = order?.ultimaAtualizacao
+      ? new Date(order.ultimaAtualizacao).toLocaleString("pt-PT")
+      : "Sem registo";
+
+    pickupOptions = includeSelectedPickup(
+      getPickupOptionsForOrderType(state.orderType),
+      state.pickupLocation
+    );
+  } else {
+    state.profile = null;
+    state.items = {};
+    state.pickupLocation = "";
+    state.notasEncomenda = "";
+    state.orderType =
+      state.scheduledMode === "conditional"
+        ? "conditional"
+        : "normal";
+
+    els.orderNotes.value = "";
+
+    if (els.orderNotesCounter) {
+      els.orderNotesCounter.textContent = "0/100";
+    }
+
+    els.customerName.textContent = "Visitante";
+    els.customerEmail.textContent =
+      "Inicia sessão para criar uma nova encomenda ou editar e guardar uma encomenda existente";
+    els.lastUpdate.textContent = "Sem registo";
+
+    if (els.accountPanel) {
+      hide(els.accountPanel);
+    }
+
+    pickupOptions = getPickupOptionsForOrderType(state.orderType);
+  }
+
+  renderPickupOptions(
+    els.pickupLocation,
+    pickupOptions,
+    state.pickupLocation
+  );
+
+  els.pickupLocation.disabled = !state.canEdit;
+  els.orderNotes.disabled = !state.canEdit;
+
+  if (state.orderWindow === "closed") {
     show(els.secClosed);
   } else {
     hide(els.secClosed);
+  }
+
+  if (state.user) {
+    show(els.summaryBar);
+  } else {
+    hide(els.summaryBar);
   }
 
   renderAllProducts();
@@ -190,16 +1414,12 @@ async function loadAppData() {
 }
 
 async function handleRegister() {
-  const email = els.authEmail.value.trim();
-  const password = els.authPassword.value.trim();
+  if (!validateRegisterForm()) return;
+
+  const email = els.registerEmail.value.trim();
+  const password = els.registerPassword.value;
   const nome = els.regName.value.trim();
   const telefone = els.regPhone.value.trim();
-
-  if (!nome) {
-    setMessage("Preenche o nome para criar conta.", true);
-    show(els.registerExtra);
-    return;
-  }
 
   try {
     const cred = await createUserWithEmailAndPassword(auth, email, password);
@@ -217,49 +1437,365 @@ async function handleRegister() {
 }
 
 async function handleLogin() {
-  const email = els.authEmail.value.trim();
-  const password = els.authPassword.value.trim();
+  if (!validateLoginForm()) return;
+
+  const email = els.loginEmail.value.trim();
+  const password = els.loginPassword.value;
 
   try {
     await signInWithEmailAndPassword(auth, email, password);
     setMessage("Sessão iniciada.");
   } catch (err) {
-    show(els.registerExtra);
-    setMessage("Não foi possível entrar. Se ainda não tens conta, preenche o nome e cria conta.", true);
+    setMessage("Não foi possível entrar. Verifica se o email e a palavra-passe estão corretos.", true);
   }
 }
 
+async function sendClientConfirmationEmail(payload, isUpdate = false) {
+  if (!window.emailjs) {
+    console.warn("EmailJS não está disponível.");
+    return;
+  }
+
+  const isFinal = payload.estado === "entregue";
+
+  const templateParams = {
+    to_email: state.user.email,
+    to_name: state.profile?.nome || "Cliente",
+    week_label: state.weekData?.meta?.label || state.weekId,
+    email_heading: isUpdate ? "Encomenda atualizada" : "Encomenda confirmada",
+    intro_text: isUpdate
+      ? "Confirmo a atualização da seguinte encomenda:"
+      : "Confirmo a receção da seguinte encomenda:",
+    order_rows_html: buildOrderRowsHtml(),
+    pickup_location: payload.localRecolha || "",
+    order_total_label: isFinal ? "Valor final" : "Valor estimado",
+    order_total: money(payload.totais?.valorEstimado || 0),
+    notes_html: buildNotesHtml(),
+    updated_at: new Date(payload.ultimaAtualizacao).toLocaleString("pt-PT"),
+    order_status: payload.estado || "submetida"
+  };
+
+  await window.emailjs.send(
+    EMAILJS_SERVICE_ID,
+    EMAILJS_TEMPLATE_CLIENTE,
+    templateParams
+  );
+}
+
 async function handleSave(submitState = "submetida") {
+  if (!state.user || !state.uid) {
+    alert("Inicia sessão ou cria conta para guardar ou submeter a encomenda.");
+    return;
+  }
+
+  if (!state.canEdit || state.orderWindow === "closed") {
+    alert("As encomendas estão encerradas neste momento.");
+    return;
+  }
+
+  if (!state.profile?.nome || !String(state.profile.nome).trim()) {
+    alert("O perfil deste cliente está incompleto. Termina sessão e volta a entrar.");
+    return;
+  }
+
   if (!state.weekId || !state.uid) return;
+
+  if (!state.pickupLocation) {
+    alert("Escolhe um local de recolha antes de guardar a encomenda.");
+    return;
+  }
+
+  const allowedPickups = getPickupOptionsForOrderType(state.orderType);
+
+  if (!allowedPickups.includes(state.pickupLocation)) {
+    alert(
+      state.orderType === "conditional"
+        ? "Neste período só podes escolher um dos locais de recolha de sexta-feira ou sábado."
+        : "Escolhe um local de recolha válido para este período."
+    );
+    return;
+  }
+
+  const previousOrder = await getOrderForType(
+    state.orderType,
+    state.weekId,
+    state.uid
+  );
+
+  const isUpdate = !!previousOrder;
   const payload = buildOrderPayload(submitState);
-  await saveOrder(state.weekId, state.uid, payload);
-  alert("Encomenda guardada com sucesso.");
+
+  await saveOrderForType(
+    state.orderType,
+    state.weekId,
+    state.uid,
+    payload
+  );
+
+  if (submitState === "submetida") {
+    try {
+      await sendClientConfirmationEmail(payload, isUpdate);
+    } catch (err) {
+      console.error("Erro ao enviar email:", err);
+      alert(
+        "A encomenda foi submetida, mas houve um erro ao enviar o email de confirmação."
+      );
+    }
+  }
+
+  els.lastUpdate.textContent =
+    new Date(payload.ultimaAtualizacao).toLocaleString("pt-PT");
+
+  if (submitState === "rascunho") {
+    alert(
+      state.orderType === "conditional"
+        ? "Rascunho da encomenda condicionada guardado com sucesso."
+        : "Rascunho guardado com sucesso."
+    );
+  } else {
+    alert(
+      state.orderType === "conditional"
+        ? "Encomenda condicionada submetida com sucesso. Foi enviado um email de confirmação."
+        : "Encomenda submetida com sucesso. Foi enviado um email de confirmação."
+    );
+  }
 }
 
 function openReview() {
-  els.reviewWeek.textContent = state.weekData?.meta?.label || "";
+  els.reviewWeek.textContent = els.weekLabel.textContent;
   els.reviewCustomer.textContent = state.profile?.nome || "";
   els.reviewPickup.textContent = `Local de recolha: ${state.pickupLocation || "(não escolhido)"}`;
+
   renderReview({
     container: els.reviewItems,
     products: state.products,
-    quantities: state.quantities
+    items: state.items,
+    notasEncomenda: state.notasEncomenda
   });
 
-  const { total } = calculateSummary(state.products, state.quantities);
+  const { total } = calculateSummary(state.products, state.items);
   els.reviewTotal.textContent = `Total estimado: ${money(total)}`;
   show(els.reviewModal);
 }
 
+function bindValidationEvents() {
+  els.loginEmail.addEventListener("blur", () => {
+    validateEmailField(els.loginEmail, els.loginEmailError, { required: true });
+  });
+
+  els.loginPassword.addEventListener("blur", () => {
+    validatePasswordField(els.loginPassword, els.loginPasswordError, { required: true });
+  });
+
+  els.registerEmail.addEventListener("blur", () => {
+    validateEmailField(els.registerEmail, els.registerEmailError, { required: true });
+  });
+
+  els.registerPassword.addEventListener("blur", () => {
+    validatePasswordField(els.registerPassword, els.registerPasswordError, { required: true });
+
+    if (String(els.registerPasswordConfirm?.value || "")) {
+      validateRegisterPasswordConfirmation();
+    }
+  });
+
+  els.registerPasswordConfirm?.addEventListener("blur", () => {
+    validateRegisterPasswordConfirmation();
+  });
+
+  els.regName.addEventListener("blur", () => {
+    validateNameField(els.regName, els.regNameError);
+  });
+
+  els.loginEmail.addEventListener("input", () => {
+    clearFieldState(els.loginEmail, els.loginEmailError);
+  });
+
+  els.loginPassword.addEventListener("input", () => {
+    clearFieldState(els.loginPassword, els.loginPasswordError);
+  });
+
+  els.registerEmail.addEventListener("input", () => {
+    clearFieldState(els.registerEmail, els.registerEmailError);
+  });
+
+  els.registerPassword.addEventListener("input", () => {
+    clearFieldState(els.registerPassword, els.registerPasswordError);
+    clearFieldState(
+      els.registerPasswordConfirm,
+      els.registerPasswordConfirmError
+    );
+  });
+
+  els.registerPasswordConfirm?.addEventListener("input", () => {
+    clearFieldState(
+      els.registerPasswordConfirm,
+      els.registerPasswordConfirmError
+    );
+  });
+
+  els.regName.addEventListener("input", () => {
+    clearFieldState(els.regName, els.regNameError);
+  });
+
+  els.loggedOutResetEmail?.addEventListener("input", () => {
+    clearFieldState(
+      els.loggedOutResetEmail,
+      els.loggedOutResetEmailError
+    );
+    clearLoggedOutResetMessage();
+  });
+
+  els.loggedOutResetEmail?.addEventListener("blur", () => {
+    if (String(els.loggedOutResetEmail?.value || "").trim()) {
+      validateEmailField(
+        els.loggedOutResetEmail,
+        els.loggedOutResetEmailError,
+        { required: true }
+      );
+    }
+  });
+
+  els.accountName?.addEventListener("input", () => {
+    clearFieldState(els.accountName, els.accountNameError);
+  });
+
+  els.accountEmail?.addEventListener("input", () => {
+    clearFieldState(els.accountEmail, els.accountEmailError);
+  });
+
+  els.accountCurrentPasswordEmail?.addEventListener("input", () => {
+    clearFieldState(
+      els.accountCurrentPasswordEmail,
+      els.accountCurrentPasswordEmailError
+    );
+  });
+
+  els.accountCurrentPassword?.addEventListener("input", () => {
+    clearFieldState(
+      els.accountCurrentPassword,
+      els.accountCurrentPasswordError
+    );
+  });
+
+  els.accountNewPassword?.addEventListener("input", () => {
+    clearFieldState(els.accountNewPassword, els.accountNewPasswordError);
+  });
+
+  els.accountConfirmPassword?.addEventListener("input", () => {
+    clearFieldState(
+      els.accountConfirmPassword,
+      els.accountConfirmPasswordError
+    );
+  });
+
+  els.accountName?.addEventListener("blur", () => {
+    validateNameField(els.accountName, els.accountNameError);
+  });
+
+  els.accountEmail?.addEventListener("blur", () => {
+    validateEmailField(
+      els.accountEmail,
+      els.accountEmailError,
+      { required: true }
+    );
+  });
+
+  els.accountNewPassword?.addEventListener("blur", () => {
+    const value = String(els.accountNewPassword?.value || "");
+    if (value) {
+      validatePasswordField(
+        els.accountNewPassword,
+        els.accountNewPasswordError,
+        { required: true }
+      );
+    }
+  });
+}
+
 function bindEvents() {
   els.btnLogin.addEventListener("click", handleLogin);
-  els.btnRegister.addEventListener("click", () => {
-    show(els.registerExtra);
-    handleRegister();
+  els.btnRegister.addEventListener("click", handleRegister);
+
+  els.btnShowRegister.addEventListener("click", () => {
+    showRegisterPanel();
+  });
+
+  els.btnShowLogin.addEventListener("click", () => {
+    showLoginPanel();
+  });
+
+  els.btnShowLoggedOutReset?.addEventListener("click", () => {
+    openLoggedOutResetPanel();
+  });
+
+  els.btnCancelLoggedOutReset?.addEventListener("click", () => {
+    closeLoggedOutResetPanel();
+  });
+
+  els.btnSendLoggedOutReset?.addEventListener("click", async () => {
+    await handleLoggedOutPasswordReset();
+  });
+
+  els.loggedOutResetEmail?.addEventListener("keydown", async (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      await handleLoggedOutPasswordReset();
+    }
+  });
+
+  els.btnToggleLoginPassword.addEventListener("click", () => {
+    togglePasswordVisibility(els.loginPassword, els.btnToggleLoginPassword);
+  });
+
+  els.btnToggleRegisterPassword.addEventListener("click", () => {
+    togglePasswordVisibility(els.registerPassword, els.btnToggleRegisterPassword);
+  });
+
+  els.btnToggleRegisterPasswordConfirm?.addEventListener("click", () => {
+    togglePasswordVisibility(
+      els.registerPasswordConfirm,
+      els.btnToggleRegisterPasswordConfirm
+    );
   });
 
   els.btnLogout.addEventListener("click", async () => {
     await signOut(auth);
+  });
+
+  els.btnToggleAccount?.addEventListener("click", openAccountPanel);
+  els.btnCloseAccount?.addEventListener("click", closeAccountPanel);
+  els.btnSaveProfile?.addEventListener("click", handleSaveProfile);
+  els.btnChangeEmail?.addEventListener("click", handleChangeEmail);
+  els.btnChangePassword?.addEventListener("click", handleChangePassword);
+  els.btnResetPassword?.addEventListener("click", handleResetPassword);
+
+  els.btnToggleAccountCurrentPasswordEmail?.addEventListener("click", () => {
+    togglePasswordVisibility(
+      els.accountCurrentPasswordEmail,
+      els.btnToggleAccountCurrentPasswordEmail
+    );
+  });
+
+  els.btnToggleAccountCurrentPassword?.addEventListener("click", () => {
+    togglePasswordVisibility(
+      els.accountCurrentPassword,
+      els.btnToggleAccountCurrentPassword
+    );
+  });
+
+  els.btnToggleAccountNewPassword?.addEventListener("click", () => {
+    togglePasswordVisibility(
+      els.accountNewPassword,
+      els.btnToggleAccountNewPassword
+    );
+  });
+
+  els.btnToggleAccountConfirmPassword?.addEventListener("click", () => {
+    togglePasswordVisibility(
+      els.accountConfirmPassword,
+      els.btnToggleAccountConfirmPassword
+    );
   });
 
   els.pickupLocation.addEventListener("change", (e) => {
@@ -270,13 +1806,25 @@ function bindEvents() {
   els.btnCloseReview.addEventListener("click", () => hide(els.reviewModal));
 
   els.btnSaveOrder.addEventListener("click", async () => {
-    await handleSave("submetida");
+    await handleSave("rascunho");
   });
 
   els.btnSubmitOrder.addEventListener("click", async () => {
     await handleSave("submetida");
     hide(els.reviewModal);
   });
+
+  els.orderNotes.addEventListener("input", (e) => {
+    const value = String(e.target.value || "").slice(0, 100);
+    e.target.value = value;
+    state.notasEncomenda = value;
+
+    if (els.orderNotesCounter) {
+      els.orderNotesCounter.textContent = `${value.length}/100`;
+    }
+  });
+
+  bindValidationEvents();
 }
 
 function initAuthObserver() {
@@ -284,13 +1832,30 @@ function initAuthObserver() {
     if (!user) {
       state.uid = null;
       state.user = null;
-      hide(els.secApp);
-      show(els.secAuth);
+
+      if (els.accountPanel) {
+        hide(els.accountPanel);
+      }
+
+      try {
+        await loadAppData();
+        show(els.secAuth);
+        show(els.secApp);
+        showLoginPanel();
+      } catch (err) {
+        console.error(err);
+        alert("Erro ao carregar dados.");
+      }
+
       return;
     }
 
     state.uid = user.uid;
     state.user = user;
+
+    if (els.loggedOutResetPanel) {
+      hide(els.loggedOutResetPanel);
+    }
 
     try {
       await loadAppData();
@@ -303,5 +1868,6 @@ function initAuthObserver() {
   });
 }
 
+initEmailJS();
 bindEvents();
 initAuthObserver();

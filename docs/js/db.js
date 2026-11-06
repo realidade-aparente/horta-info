@@ -13,8 +13,21 @@ export async function getCurrentWeekId() {
 }
 
 export async function getWeekData(weekId) {
-  const snap = await get(ref(db, `semanas/${weekId}`));
-  return snap.exists() ? snap.val() : null;
+  const [metaSnap, estadoSnap, locaisSnap, produtosSemanaSnap, produtosGeraisSnap] = await Promise.all([
+    get(ref(db, `semanas/${weekId}/meta`)),
+    get(ref(db, `semanas/${weekId}/estado`)),
+    get(ref(db, `semanas/${weekId}/locaisRecolha`)),
+    get(ref(db, `semanas/${weekId}/produtos`)),
+    get(ref(db, "produtosGerais"))
+  ]);
+
+  return {
+    meta: metaSnap.exists() ? metaSnap.val() : {},
+    estado: estadoSnap.exists() ? estadoSnap.val() : "fechada",
+    locaisRecolha: locaisSnap.exists() ? locaisSnap.val() : [],
+    produtosSemana: produtosSemanaSnap.exists() ? produtosSemanaSnap.val() : {},
+    produtosGerais: produtosGeraisSnap.exists() ? produtosGeraisSnap.val() : {}
+  };
 }
 
 export async function getClientProfile(uid) {
@@ -38,3 +51,25 @@ export async function saveOrder(weekId, uid, payload) {
 export async function patchOrder(weekId, uid, payload) {
   await update(ref(db, `semanas/${weekId}/encomendas/${uid}`), payload);
 }
+
+export async function deleteOrder(weekId, uid) {
+  await set(ref(db, `semanas/${weekId}/encomendas/${uid}`), null);
+}
+
+export async function getConditionalOrder(weekId, uid) {
+  const snap = await get(ref(db, `semanas/${weekId}/encomendasCondicionadas/${uid}`));
+  return snap.exists() ? snap.val() : null;
+}
+
+export async function saveConditionalOrder(weekId, uid, payload) {
+  await set(ref(db, `semanas/${weekId}/encomendasCondicionadas/${uid}`), payload);
+}
+
+export async function patchConditionalOrder(weekId, uid, payload) {
+  await update(ref(db, `semanas/${weekId}/encomendasCondicionadas/${uid}`), payload);
+}
+
+export async function deleteConditionalOrder(weekId, uid) {
+  await set(ref(db, `semanas/${weekId}/encomendasCondicionadas/${uid}`), null);
+}
+
