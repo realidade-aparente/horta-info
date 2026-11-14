@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+
+<html lang="pt">
+<head>
+<meta charset="utf-8"/>
+<title>Couve frisada (Kale / Borecole) – Horta da Terra para o prato</title>
+<link href="style.css" rel="stylesheet"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+</style>
+<meta content="Couve frisada (Kale / Borecole, Brassica oleracea, grupo Acephala): cultivo, sazonalidade, receitas, nutrição, segurança, permacultura e referências." name="description"/><style>
+/* Extensões discretas da ficha da couve frisada: manter cores e grelha do modelo. */
+.planta-cabecalho .imagem-container{min-height:210px;}
+.imagem-em-falta{width:100%;min-height:210px;display:flex;flex-direction:column;
+ align-items:center;justify-content:center;gap:.35rem;padding:1.2rem;
+ color:#50605a;text-align:center;background:linear-gradient(145deg,#f5f8f3,#eaf2e9);}
+.imagem-em-falta .sinal{font-size:2rem;line-height:1.3;}
+.imagem-em-falta small{font-style:italic;color:#6b7280;}
+.tabela-scroll{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.tabela-scroll table{min-width:570px;}
+.referencia-nota sup a, section:not(#referencias) sup a{color:var(--cor-secundaria);text-decoration:none;}
+.referencia-nota sup a:hover, section:not(#referencias) sup a:hover{text-decoration:underline;}
+#referencias li{overflow-wrap:anywhere;}
+#referencias li:target{background:#f0faf3;}
+.diet-links .diet-links-right{margin-left:auto;}
+#permacultura dd p{margin:.3rem 0 .75rem;}
+</style></head>
+<body id="topo">
+<div id="sidebar-mount"></div>
+<div class="with-sidebar">
+<div aria-hidden="true" class="masthead-sentinel"></div>
+<div class="masthead"><header>
+<h1>Horta da Terra para o prato</h1>
+<p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar.</p></header>
+<nav>
+<a href="abobora-butternut.html">Abóbora butternut</a>
+<a href="abobora-grande.html">Abóbora grande</a>
+<a class="" href="acelga.html">Acelga</a>
+<a href="agriao.html">Agrião-de-água</a>
+<a href="agriao-terra.html">Agrião-da-terra</a>
+<a href="aipo.html">Aipo (talos e folhas)</a>
+<a href="alface.html">Alface</a>
+<a href="alho.html">Alho</a>
+<a href="alho-frances.html">Alho-francês</a>
+<a href="aneto.html">Aneto / Endro</a>
+<a href="batata-comum.html">Batata comum</a>
+<a href="batata-doce.html">Batata-doce</a><a href="batata-ratte.html">Batata Ratte</a>
+<a href="beringela.html">Beringela</a>
+<a href="beterraba.html">Beterraba</a>
+<a href="brocolo.html">Brócolo</a>
+<a href="canonigos.html">Canónigos</a>
+<a href="cebola.html">Cebola</a>
+<a href="cebola-fresca.html">Cebola fresca</a>
+<a href="cenoura.html">Cenoura</a>
+<a href="coentros.html">Coentros</a>
+<a href="couve-chinesa.html">Couve chinesa</a>
+<a href="couve-flor.html">Couve-flor</a><a class="ativa" href="couve-frisada.html">Couve frisada</a><a href="couve-portuguesa.html">Couve portuguesa</a>
+<a href="couve-rabano.html">Couve-rábano</a>
+<a href="couve-repolho.html">Couve repolho</a>
+<a href="couve-toscana.html">Couve toscana</a>
+<a href="curgete.html">Curgete</a>
+<a href="ervilhas-frescas.html">Ervilhas frescas</a>
+<a href="espinafre.html">Espinafre</a>
+<a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+<a href="feijao-verde.html">Feijão verde</a>
+<a href="manjericao.html">Manjericão</a>
+<a href="milho-doce.html">Milho doce</a>
+<a href="mizuna.html">Mizuna</a>
+<a href="morangos.html">Morangueiro / Morangos</a>
+<a href="moringa.html">Moringa</a>
+<a href="nabica.html">Nabiça</a>
+<a href="nabo.html">Nabo</a>
+<a href="pak-choi.html">Pak choi</a>
+<a href="pepino.html">Pepino</a>
+<a href="pimento.html">Pimento</a>
+<a href="rabanete.html">Rabanete</a>
+<a href="rabano.html">Rábano / Daikon</a>
+<a href="rucula.html">Rúcula</a>
+<a href="salanova.html">Salanova</a>
+<a href="salsa.html">Salsa</a>
+<a href="tomate.html">Tomate (genérico)</a>
+<a href="tomate-chucha.html">Tomate tipo chucha / Roma</a>
+<a href="tremoco-doce-australiano.html">Tremoço-doce australiano</a></nav></div>
+<main>
+<!-- Navegação entre plantas (anterior / seguinte) -->
+<nav class="nav-paginacao">
+<a class="prev" href="couve-flor.html">Couve-flor</a>
+<a class="next" href="couve-portuguesa.html">Couve portuguesa</a>
+</nav>
+<article class="planta">
+<div class="planta-cabecalho">
+<div class="planta-titulo">
+<h2>Couve frisada (kale / borecole) (<em>Brassica oleracea L. (grupo Acephala; formas de folhas frisadas, por vezes designadas B. oleracea var. sabellica)</em>)</h2>
+<div class="tags-nomes"><span>Família: Brassicáceas (Brassicaceae)</span><span>Parte Usada: folhas jovens, maduras e rebentos</span><span>Tipo: hortícola folhosa geralmente bienal</span><span>Produção: <strong>cultivada por sementeira e transplante</strong></span></div>
+<div class="info-rapida"><div><strong>Origem</strong> seleção hortícola europeia de couves ancestrais, difundida em regiões temperadas e mediterrânicas</div><div><strong>Uso principal</strong> folhas para saladas, sopas, salteados, guisados, pestos e chips de forno</div><div><strong>Perfil nutricional</strong> rica em vitaminas K, C e A, fibras, cálcio e carotenoides</div></div>
+</div>
+<div>
+<div class="imagem-container-externo">
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"><div aria-label="Fotografia da couve frisada ainda não disponível" class="imagem-em-falta" role="img"><span aria-hidden="true" class="sinal">🌱</span><span>Fotografia da planta a adicionar</span><small>Brassica oleracea L. (grupo Acephala; formas de folhas frisadas, por vezes designadas B. oleracea var. sabellica)</small></div></div></div>
+</div>
+<p class="imagem-legenda">Sem fotografia associada à ficha Excel.</p>
+</div>
+</div>
+<!-- <h2>Acelga (<em>Beta vulgaris</em> var. <em>cicla</em>)</h2> -->
+<!-- 0. Imagem -->
+<!-- 1. Apresentação / Descrição -->
+<section id="apresentacao"><h3>1. Apresentação / Descrição</h3><p>A couve frisada, muitas vezes comercializada como kale crespa ou borecole, é uma hortícola de folha da família Brassicaceae. Pertence à espécie Brassica oleracea L., grupo Acephala: não forma repolho compacto e desenvolve folhas verdes ou arroxeadas com bordos muito ondulados ou densamente frisados. As variedades cultivadas podem atingir cerca de 40–90 cm, conforme o cultivar e as condições. As folhas exteriores são colhidas individualmente, mantendo-se a gema central ativa.</p><p>O nome kale abrange diversas couves de folha. Esta ficha centra-se nas formas crespas ou frisadas (curly kale, borecole), distintas da couve toscana, que tem folhas longas, escuras e enrugadas, mas pouco crespas nas margens. Entre os cultivares frisados estão 'Reflex' e 'Redbor'. Os nomes históricos de algumas formas incluem Brassica oleracea var. sabellica, tratado por Kew como sinónimo taxonómico de B. oleracea.</p><p>A couve frisada resulta de uma longa seleção hortícola de couves europeias, com antepassados silvestres associados às costas atlânticas e à região mediterrânica. Cultivada para alimentação desde há séculos, é hoje comum em hortas de clima temperado e adapta-se ao cultivo biológico, em alfobre seguido de transplante ou por sementeira direta. É geralmente bienal: produz folhas no primeiro ciclo e, quando mantida para semente, pode florir no segundo ano; também existem formas perenes no conjunto alargado de kale. As folhas, tenras ou desenvolvidas, são consumidas cruas, cozidas, salteadas, assadas ou trituradas em molhos e batidos.</p><p class="referencia-nota">Referência(s) de suporte para a descrição: <sup><a aria-label="Consultar referência D1" href="#ref-D1">[D1]</a></sup><sup><a aria-label="Consultar referência D2" href="#ref-D2">[D2]</a></sup><sup><a aria-label="Consultar referência D3" href="#ref-D3">[D3]</a></sup><sup><a aria-label="Consultar referência D4" href="#ref-D4">[D4]</a></sup></p></section>
+<!-- 2. Sazonalidade (Portugal continental) -->
+<section id="sazonalidade"><h3>2. Sazonalidade (Portugal continental)</h3><p>Em Portugal continental, a couve frisada é especialmente interessante para produção de outono, inverno e início da primavera, devido à sua elevada tolerância ao frio. As indicações de sementeira variam com a região, o cultivar e o objetivo (folhas jovens ou plantas adultas). Como referência de clima temperado, a RHS propõe sementeiras de primavera e início do verão para colheitas de outono a primavera; em Portugal, nas zonas de verão muito quente, o calendário deve ser ajustado para evitar stress térmico das plantas jovens.</p><p>Prefere exposição solar, embora tolere sombra ligeira, e solo firme, fértil, com boa drenagem e humidade relativamente regular. Pode iniciar-se em alfobre e transplantar-se após formação de várias folhas verdadeiras. A colheita faseada das folhas inferiores prolonga a produção, sem retirar a gema central. A rotação com outras famílias hortícolas é essencial para reduzir a acumulação de problemas típicos das brássicas.</p><ul><li><strong>Sementeira:</strong> sobretudo entre março e junho como referência temperada; adaptar as datas à região portuguesa, podendo recorrer a alfobre e sementeira de fim de verão para ciclos de outono.</li><li><strong>Transplante:</strong> em geral após 6–8 semanas de viveiro ou quando as plantas estão suficientemente desenvolvidas; respeitar o compasso do cultivar e evitar transplantes em vagas de calor.</li><li><strong>Espaçamento:</strong> em plantas adultas, aproximadamente 30–60 cm entre plantas conforme o porte; para folhas baby e microvegetais podem usar-se densidades maiores.</li><li><strong>Colheita:</strong> folhas jovens a partir da implantação da cultura e folhas desenvolvidas sobretudo de setembro à primavera; retirar poucas folhas inferiores de cada vez.</li><li><strong>Condições:</strong> sol ou meia-sombra ligeira, solo fértil e drenado, regas regulares durante a instalação, proteção contra lagartas, afídeos, lesmas e aves.</li><li><strong>Rotação:</strong> não repetir brássicas no mesmo canteiro em anos consecutivos; prevenir a hérnia das crucíferas e outras doenças do solo.</li></ul><p class="referencia-nota">Referência(s) para a sazonalidade e o cultivo: <sup><a aria-label="Consultar referência S1" href="#ref-S1">[S1]</a></sup><sup><a aria-label="Consultar referência S2" href="#ref-S2">[S2]</a></sup><sup><a aria-label="Consultar referência S3" href="#ref-S3">[S3]</a></sup><sup><a aria-label="Consultar referência S4" href="#ref-S4">[S4]</a></sup></p></section>
+<!-- 3. Como consumir -->
+<section id="como-consumir"><h3>3. Como consumir</h3><ul><li><strong>Folhas jovens:</strong> podem comer-se cruas em saladas; retirar nervuras duras e massajar ligeiramente as folhas com azeite e limão para melhorar a textura.</li><li><strong>Folhas desenvolvidas:</strong> usar em sopas, caldos, guisados, salteados, pratos de massa, gratinados ou estufados; retirar os talos mais fibrosos e cozinhar até ficarem tenras.</li><li><strong>Preparações secas ou trituradas:</strong> assar folhas para obter chips crocantes, triturar folhas em pesto ou incorporar pequenas porções em batidos com fruta.</li><li><strong>Higiene e segurança:</strong> lavar cuidadosamente antes de consumir, cozinhar quando adequado e evitar oscilações bruscas na ingestão de vitamina K se estiver sob terapêutica com varfarina ou medicamentos semelhantes.</li></ul><p class="referencia-nota">Referência(s) para consumo e segurança: <sup><a aria-label="Consultar referência C1" href="#ref-C1">[C1]</a></sup><sup><a aria-label="Consultar referência C2" href="#ref-C2">[C2]</a></sup><sup><a aria-label="Consultar referência C3" href="#ref-C3">[C3]</a></sup><sup><a aria-label="Consultar referência C4" href="#ref-C4">[C4]</a></sup></p></section>
+<!-- 4. Receitas e preparados (Top 10) -->
+<section id="receitas"><h3 id="titulo-receitas">4. Receitas e preparados (Top 10)</h3><div class="diet-links"><div class="diet-links-right"><a href="/horta-info/data/refeicoes.html">(Filtro por ingredientes)</a></div></div><p>Dez propostas culinárias documentadas para kale frisada: saladas, chips assados, pesto, sopa cremosa, acompanhamento salteado, feijão com couve, batido verde, nhoques, minestrone e polenta com legumes. Os títulos abaixo foram traduzidos para português, mas as fontes mantêm a receita original em inglês, com ingredientes, quantidades e preparação.</p><ol><li><strong><a href="https://www.bbcgoodfood.com/recipes/kale-salad" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Salada de couve kale</a></strong> – folhas cruas de couve frisada amaciadas com molho de limão e mostarda, combinadas com beterraba, cenoura e frutos secos; pode levar queijo de cabra. <sup><a aria-label="Consultar referência R1" href="#ref-R1">[R1]</a></sup></li><li><strong><a href="https://www.bbcgoodfood.com/recipes/spiced-kale-crisps" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Chips de couve kale com especiarias</a></strong> – folhas frisadas assadas com um pouco de azeite e uma mistura aromática de especiarias, servidas crocantes como aperitivo. <sup><a aria-label="Consultar referência R2" href="#ref-R2">[R2]</a></sup></li><li><strong><a href="https://www.bbcgoodfood.com/recipes/kale-pesto" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Pesto de couve kale</a></strong> – molho triturado de folhas de couve com pinhões, parmesão, alho, azeite e limão, adequado para envolver em massa. <sup><a aria-label="Consultar referência R3" href="#ref-R3">[R3]</a></sup></li><li><strong><a href="https://www.bbcgoodfood.com/recipes/easy-kale-soup" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Sopa cremosa de couve kale</a></strong> – sopa de legumes com batata, ervilhas e folhas de couve frisada, triturada até obter textura aveludada. <sup><a aria-label="Consultar referência R4" href="#ref-R4">[R4]</a></sup></li><li><strong><a href="https://www.bbcgoodfood.com/recipes/pan-roasted-kale-with-lemon" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Couve kale salteada com limão</a></strong> – acompanhamento simples de folhas salteadas numa frigideira com azeite, terminado com sumo de limão. <sup><a aria-label="Consultar referência R5" href="#ref-R5">[R5]</a></sup></li><li><strong><a href="https://www.bbcgoodfood.com/recipes/butter-beans-with-kale-lemon-chilli-garlic" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Feijão branco com kale, limão, malagueta e alho</a></strong> – feijão branco graúdo aquecido com alho e especiarias, misturado com couve frisada tenra e limão. <sup><a aria-label="Consultar referência R6" href="#ref-R6">[R6]</a></sup></li><li><strong><a href="https://www.bbcgoodfood.com/recipes/kale-smoothie" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Batido verde de couve kale</a></strong> – bebida triturada com folhas de kale, ananás, abacate, lima, gengibre e frutos secos, servida fresca. <sup><a aria-label="Consultar referência R7" href="#ref-R7">[R7]</a></sup></li><li><strong><a href="https://www.bbcgoodfood.com/recipes/sausage-kale-gnocchi-one-pot" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Nhoques com salsicha e couve kale</a></strong> – prato de um só tacho em que os nhoques cozinham com caldo e couve frisada, finalizado com salsicha e parmesão. <sup><a aria-label="Consultar referência R8" href="#ref-R8">[R8]</a></sup></li><li><strong><a href="https://www.bbcgoodfood.com/recipes/sausage-kale-minestrone" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Sopa minestrone com salsicha e couve kale</a></strong> – sopa completa de legumes, massa e salsicha, enriquecida no fim com folhas de couve frisada e limão. <sup><a aria-label="Consultar referência R9" href="#ref-R9">[R9]</a></sup></li><li><strong><a href="https://www.bbcgoodfood.com/recipes/soft-polenta-roast-squash-kale-hazelnuts" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Polenta cremosa com abóbora, couve kale e avelãs</a></strong> – polenta macia acompanhada por abóbora assada, folhas frisadas, ervas e avelãs tostadas. <sup><a aria-label="Consultar referência R10" href="#ref-R10">[R10]</a></sup></li></ol></section>
+<!-- 5. Benefícios para a saúde e propriedades medicinais -->
+<section id="beneficios"><h3>5. Benefícios para a saúde e propriedades medicinais</h3><p>A couve frisada é, antes de tudo, um alimento com elevada densidade nutricional. As folhas fornecem fibra alimentar, vitaminas K e C, precursores vegetais de vitamina A, cálcio e vários carotenoides. Inserida numa alimentação variada, pode contribuir para satisfazer necessidades diárias de micronutrientes; os seus efeitos não devem ser confundidos com os de um medicamento.</p><p>A vitamina K participa na coagulação normal e no metabolismo ósseo; a vitamina C contribui para funções fisiológicas como a síntese normal de colagénio; a fibra alimentar integra uma dieta favorável à função intestinal. A couve kale também fornece luteína e zeaxantina e contém glucosinolatos, que podem originar isotiocianatos durante a preparação e digestão dos vegetais.</p><p>Estudos laboratoriais investigam possíveis ações biológicas de compostos de brássicas, mas a evidência clínica não demonstra que o consumo isolado de kale previna ou trate cancro ou outras doenças. A composição varia entre cultivares, locais de cultivo, maturação e formas de confeção. O benefício mais seguro e documentado é o contributo nutricional num padrão alimentar equilibrado.</p><ul><li><strong>Densidade nutricional elevada:</strong> fornece quantidades relevantes de vitamina K, vitamina C, provitamina A e minerais, com baixo valor energético por 100 g. <sup><a aria-label="Consultar referência M1" href="#ref-M1">[M1]</a></sup><sup><a aria-label="Consultar referência M3" href="#ref-M3">[M3]</a></sup><sup><a aria-label="Consultar referência N1" href="#ref-N1">[N1]</a></sup></li><li><strong>Contributo para a coagulação normal e metabolismo ósseo:</strong> associado ao fornecimento de vitamina K, sem substituir cuidados médicos. <sup><a aria-label="Consultar referência M1" href="#ref-M1">[M1]</a></sup><sup><a aria-label="Consultar referência M3" href="#ref-M3">[M3]</a></sup></li><li><strong>Apoio à diversidade de fibras alimentares:</strong> integra uma alimentação vegetal variada e pode favorecer a regularidade alimentar e intestinal. <sup><a aria-label="Consultar referência M1" href="#ref-M1">[M1]</a></sup><sup><a aria-label="Consultar referência N1" href="#ref-N1">[N1]</a></sup></li><li><strong>Carotenoides alimentares:</strong> fornece betacaroteno, luteína e zeaxantina, compostos naturais presentes nas folhas verdes. <sup><a aria-label="Consultar referência M1" href="#ref-M1">[M1]</a></sup><sup><a aria-label="Consultar referência N1" href="#ref-N1">[N1]</a></sup><sup><a aria-label="Consultar referência M4" href="#ref-M4">[M4]</a></sup></li><li><strong>Glucosinolatos e derivados:</strong> apresenta compostos sulfurados sob investigação laboratorial; não há base suficiente para alegar tratamento ou prevenção de cancro pela planta isolada. <sup><a aria-label="Consultar referência M1" href="#ref-M1">[M1]</a></sup><sup><a aria-label="Consultar referência M2" href="#ref-M2">[M2]</a></sup><sup><a aria-label="Consultar referência M4" href="#ref-M4">[M4]</a></sup></li><li><strong>Versatilidade numa alimentação equilibrada:</strong> pode substituir acompanhamentos pobres em vegetais e aumentar o consumo de hortícolas ao longo do ano. <sup><a aria-label="Consultar referência M1" href="#ref-M1">[M1]</a></sup><sup><a aria-label="Consultar referência N1" href="#ref-N1">[N1]</a></sup></li></ul><p class="nota-aviso">A couve frisada é um alimento e não deve ser apresentada como cura de doenças ou alternativa a terapêuticas prescritas. Os possíveis efeitos protetores de compostos de brássicas em doenças crónicas continuam a ser investigados e não autorizam promessas clínicas específicas.</p><p class="nota-aviso">Devido ao teor elevado de vitamina K, quem utiliza varfarina ou outros antagonistas da vitamina K deve manter um consumo relativamente constante de couves e outros vegetais folhosos, acordado com a equipa de saúde; não é necessário eliminá-los automaticamente da alimentação.</p><p class="nota-aviso">Tal como outras brássicas, contém substâncias goitrogénicas em quantidades variáveis. O consumo habitual, em doses alimentares e com ingestão adequada de iodo, é geralmente compatível com uma dieta normal; pessoas com doença tiroideia ou restrições médicas específicas devem pedir orientação individual. Lavar as folhas e adaptar a quantidade à tolerância digestiva.</p></section>
+<!-- 6. Propriedades nutricionais -->
+<section id="nutricao"><h3>6. Propriedades nutricionais</h3><p>Valores orientadores por 100 g de parte comestível de couve kale, sem molhos nem gordura adicionada. A coluna «crua» corresponde a um registo USDA apresentado em WhatYouEat; a coluna «cozida» a kale cozida em água e escorrida, num registo USDA histórico reproduzido em Foodstruct. Não se trata necessariamente de medições pareadas da mesma variedade ou lote.</p><p>Como as tabelas usam amostras, épocas e metodologias diferentes, diferenças como a vitamina K por 100 g não devem ser interpretadas diretamente como ganho ou perda provocado pela cozedura. O valor real depende do cultivar, das partes utilizadas e da confeção. O conteúdo de vitamina C pode diminuir com tratamentos térmicos e perdas para a água.</p><div class="tabela-scroll"><table><thead><tr><th scope="col">Componente</th><th scope="col">Couve kale crua (100 g)</th><th scope="col">Couve kale cozida e escorrida (100 g)</th></tr></thead><tbody><tr><td>Energia</td><td>35 kcal</td><td>28 kcal</td></tr><tr><td>Hidratos de carbono (totais)</td><td>4,42 g</td><td>5,63 g</td></tr><tr><td>Fibra alimentar</td><td>4,1 g</td><td>2,0 g</td></tr><tr><td>Proteína</td><td>2,92 g</td><td>1,90 g</td></tr><tr><td>Lípidos totais</td><td>1,49 g</td><td>0,40 g</td></tr><tr><td>Vitamina C</td><td>93,4 mg</td><td>41 mg</td></tr><tr><td>Vitamina K (filoquinona)</td><td>390 µg</td><td>817 µg</td></tr><tr><td>Vitamina A (RAE)</td><td>241 µg</td><td>681 µg</td></tr><tr><td>Cálcio</td><td>254 mg</td><td>72 mg</td></tr><tr><td>Potássio</td><td>348 mg</td><td>228 mg</td></tr></tbody></table></div><p class="referencia-nota">Fonte(s) dos dados nutricionais: <sup><a aria-label="Consultar referência N1" href="#ref-N1">[N1]</a></sup><sup><a aria-label="Consultar referência N2" href="#ref-N2">[N2]</a></sup><sup><a aria-label="Consultar referência N3" href="#ref-N3">[N3]</a></sup></p></section>
+<!-- 7. Utilidades e aplicações (não apenas alimentares) -->
+<section id="utilidades"><h3>7. Utilidades e aplicações</h3><ul><li><strong>Alimentação humana:</strong> folhas utilizadas em saladas, sopas, guisados, salteados, pestos, chips e batidos, com adaptações culinárias a vários hábitos alimentares. <sup><a aria-label="Consultar referência U1" href="#ref-U1">[U1]</a></sup><sup><a aria-label="Consultar referência U4" href="#ref-U4">[U4]</a></sup></li><li><strong>Produção de folhas ao longo de meses:</strong> colheita gradual das folhas inferiores sem destruir a planta, especialmente útil no outono e inverno. <sup><a aria-label="Consultar referência U1" href="#ref-U1">[U1]</a></sup></li><li><strong>Microvegetais e folhas baby:</strong> plantas jovens produzidas em pequenos tabuleiros ou vasos, para saladas e guarnições. <sup><a aria-label="Consultar referência U1" href="#ref-U1">[U1]</a></sup></li><li><strong>Planta ornamental comestível:</strong> cultivares de folhas muito crespas ou arroxeadas dão cor e textura a canteiros e bordaduras. <sup><a aria-label="Consultar referência U1" href="#ref-U1">[U1]</a></sup><sup><a aria-label="Consultar referência U2" href="#ref-U2">[U2]</a></sup></li><li><strong>Forragem:</strong> algumas variedades de kale ou couves de folha também são cultivadas para alimentação animal, exigindo manejo adequado. <sup><a aria-label="Consultar referência U2" href="#ref-U2">[U2]</a></sup><sup><a aria-label="Consultar referência U3" href="#ref-U3">[U3]</a></sup></li><li><strong>Compostagem e rotação:</strong> os restos vegetais saudáveis podem integrar compostagem; a cultura deve alternar com famílias não brássicas para reduzir doenças do solo. <sup><a aria-label="Consultar referência U1" href="#ref-U1">[U1]</a></sup><sup><a aria-label="Consultar referência P2" href="#ref-P2">[P2]</a></sup></li></ul></section>
+<!-- 8. Grau de funcionalidade em permacultura -->
+<section id="permacultura"><h3>8. Grau de funcionalidade em permacultura</h3><p>Classificação indicativa segundo o algoritmo de funcionalidade em permacultura definido para o projeto.</p><dl><dt>Grau de funcionalidade</dt><dd><p>6,4 / 10</p></dd><dt>Funções principais</dt><dd><p>Na horta de permacultura, a couve frisada fornece folhas muito nutritivas durante a estação fresca e admite colheitas sucessivas, facilitando uma produção escalonada sem arrancar imediatamente toda a planta. Pode integrar canteiros alimentares, bordaduras e espaços com cultivo biológico, contribuindo também para a diversidade de formas e cores.</p><p>Além do consumo humano, o conjunto dos cultivares de kale inclui usos ornamentais e forrageiros. Quando se deixa a cultura completar o ciclo, a floração pode disponibilizar recursos a insetos, embora a maioria das plantas destinadas à produção de folhas seja colhida antes dessa fase. Exige solo fértil, espaço suficiente e rotação cuidada, pelo que o seu contributo para a melhoria do solo e a autonomia do sistema é moderado.</p></dd><dt>Notas</dt><dd><p>Critérios positivos (0–2 pontos cada): ALIM = +2 (folhas comestíveis, nutritivas e colhidas repetidamente); MED = +1 (contributo nutricional para a saúde, sem uso terapêutico clínico estabelecido); ESTR = +1 (folhagem volumosa útil na composição de bordaduras, sem função estrutural permanente); SOLO = +1 (cobertura temporária e biomassa residual, mas sem fixação de azoto); ECO = +1 (floração eventual útil a insetos, limitada pelo maneio para colheita); RUST = +2 (boa rusticidade ao frio e produção no inverno); MULT = +2 (alimento, microvegetais, ornamentação e potencial forrageiro). SOMA POSITIVOS = +10.</p><p>Penalizações (0, −1 ou −2): TOX = 0 (alimento comum, apesar de precauções para terapêutica com antagonistas da vitamina K); PERIGO = 0 (sem perigo físico relevante); INVAS = 0 (cultivar não considerado invasor); COMP = −1 (exigência de fertilidade, água e espaço e necessidade de rotação). SOMA PENALIZAÇÕES = −1.</p><p>Algoritmo do projeto: BRUTA = POS + NEG = 10 − 1 = 9; grau = (BRUTA / 14) × 10 = (9 / 14) × 10 = 6,428…; arredondado a uma casa decimal = 6,4 / 10. Pontuação interpretativa relativa a um sistema de permacultura, não índice científico oficial.</p></dd></dl><p class="referencia-nota">Referência(s) de suporte à avaliação: <sup><a aria-label="Consultar referência P1" href="#ref-P1">[P1]</a></sup><sup><a aria-label="Consultar referência P2" href="#ref-P2">[P2]</a></sup><sup><a aria-label="Consultar referência P3" href="#ref-P3">[P3]</a></sup><sup><a aria-label="Consultar referência P4" href="#ref-P4">[P4]</a></sup><sup><a aria-label="Consultar referência P5" href="#ref-P5">[P5]</a></sup></p></section>
+<!-- 9. Referências -->
+<section id="referencias"><h3>9. Referências</h3><h4>Descrição e botânica</h4><ol><li id="ref-D1">[D1] Royal Horticultural Society (RHS), Brassica oleracea Acephala Group. Identificação e morfologia do grupo hortícola, incluindo borecole e folhas onduladas ou frisadas. Disponível em: <a href="https://www.rhs.org.uk/plants/106079/brassica-oleracea-acephala-group/details" rel="noopener noreferrer" target="_blank">https://www.rhs.org.uk/plants/106079/brassica-oleracea-acephala-group/details</a></li><li id="ref-D2">[D2] Royal Botanic Gardens, Kew, Brassica oleracea L., Plants of the World Online. Espécie aceite, origem silvestre e grupos cultivados, incluindo kale e borecole. Disponível em: <a href="https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:279435-1/general-information" rel="noopener noreferrer" target="_blank">https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:279435-1/general-information</a></li><li id="ref-D3">[D3] RHS, How to Grow Kale. Diferenças entre couves frisadas e toscanas, ciclo de vida, tipos de folhas e cultivo. Disponível em: <a href="https://www.rhs.org.uk/vegetables/kale/grow-your-own" rel="noopener noreferrer" target="_blank">https://www.rhs.org.uk/vegetables/kale/grow-your-own</a></li><li id="ref-D4">[D4] Harvard T. H. Chan School of Public Health, Kale. História hortícola, variedades de kale e diversidade de formas. Disponível em: <a href="https://nutritionsource.hsph.harvard.edu/food-features/kale/" rel="noopener noreferrer" target="_blank">https://nutritionsource.hsph.harvard.edu/food-features/kale/</a></li></ol><h4>Sazonalidade e cultivo (Portugal e clima mediterrânico)</h4><ol><li id="ref-S1">[S1] RHS, How to Grow Kale. Sementeira, transplante, compassos, colheita escalonada e cuidados com pragas em climas temperados. Disponível em: <a href="https://www.rhs.org.uk/vegetables/kale/grow-your-own" rel="noopener noreferrer" target="_blank">https://www.rhs.org.uk/vegetables/kale/grow-your-own</a></li><li id="ref-S2">[S2] GROWIT Portugal, Bio Couve frisada (Kale). Variedade de folhas muito frisadas, tolerância ao frio, alfobre, transplante e rotação. Disponível em: <a href="https://growit.pt/produto/pt-bio-03-couve-frisada/" rel="noopener noreferrer" target="_blank">https://growit.pt/produto/pt-bio-03-couve-frisada/</a></li><li id="ref-S3">[S3] RHS, Fascinating facts: kale. Origens culturais, sementeira entre março e junho e época de colheita em clima temperado. Disponível em: <a href="https://www.rhs.org.uk/advice/grow-your-own/features/fascinating-facts-kale" rel="noopener noreferrer" target="_blank">https://www.rhs.org.uk/advice/grow-your-own/features/fascinating-facts-kale</a></li><li id="ref-S4">[S4] RHS, Crop rotation. Rotação de brássicas para reduzir a acumulação de doenças do solo. Disponível em: <a href="https://www.rhs.org.uk/vegetables/crop-rotation" rel="noopener noreferrer" target="_blank">https://www.rhs.org.uk/vegetables/crop-rotation</a></li></ol><h4>Consumo, cuidados e segurança</h4><ol><li id="ref-C1">[C1] RHS, How to Grow Kale. Consumo das folhas jovens e maduras, microvegetais e colheita continuada. Disponível em: <a href="https://www.rhs.org.uk/vegetables/kale/grow-your-own" rel="noopener noreferrer" target="_blank">https://www.rhs.org.uk/vegetables/kale/grow-your-own</a></li><li id="ref-C2">[C2] Harvard T. H. Chan School of Public Health, Kale. Usos culinários e precauções relativas à vitamina K e à tiroide. Disponível em: <a href="https://nutritionsource.hsph.harvard.edu/food-features/kale/" rel="noopener noreferrer" target="_blank">https://nutritionsource.hsph.harvard.edu/food-features/kale/</a></li><li id="ref-C3">[C3] BBC Good Food, Kale recipes. Conjunto de receitas culinárias com diferentes formas de preparar couve kale. Disponível em: <a href="https://www.bbcgoodfood.com/recipes/collection/kale-recipes" rel="noopener noreferrer" target="_blank">https://www.bbcgoodfood.com/recipes/collection/kale-recipes</a></li><li id="ref-C4">[C4] NIH Office of Dietary Supplements, Vitamin K: Fact Sheet for Health Professionals. Função da vitamina K e necessidade de consumo alimentar consistente com antagonistas da vitamina K. Disponível em: <a href="https://ods.od.nih.gov/factsheets/VitaminK-HealthProfessional/" rel="noopener noreferrer" target="_blank">https://ods.od.nih.gov/factsheets/VitaminK-HealthProfessional/</a></li></ol><h4>Receitas e preparados</h4><ol><li id="ref-R1">[R1] BBC Good Food — Kale salad. Salada de couve kale com beterraba, cenoura, frutos secos, queijo opcional e molho de limão e mostarda. Disponível em: <a href="https://www.bbcgoodfood.com/recipes/kale-salad" rel="noopener noreferrer" target="_blank">https://www.bbcgoodfood.com/recipes/kale-salad</a></li><li id="ref-R2">[R2] BBC Good Food — Spiced kale crisps. Folhas de couve kale assadas com azeite e ras el hanout. Disponível em: <a href="https://www.bbcgoodfood.com/recipes/spiced-kale-crisps" rel="noopener noreferrer" target="_blank">https://www.bbcgoodfood.com/recipes/spiced-kale-crisps</a></li><li id="ref-R3">[R3] BBC Good Food — Kale pesto. Pesto de couve kale com pinhões, parmesão, alho, azeite e limão. Disponível em: <a href="https://www.bbcgoodfood.com/recipes/kale-pesto" rel="noopener noreferrer" target="_blank">https://www.bbcgoodfood.com/recipes/kale-pesto</a></li><li id="ref-R4">[R4] BBC Good Food — Easy kale soup. Sopa cremosa de kale, ervilhas, batatas, cebola e caldo vegetal. Disponível em: <a href="https://www.bbcgoodfood.com/recipes/easy-kale-soup" rel="noopener noreferrer" target="_blank">https://www.bbcgoodfood.com/recipes/easy-kale-soup</a></li><li id="ref-R5">[R5] BBC Good Food — Pan-roasted kale with lemon. Couve kale salteada na frigideira com azeite e limão. Disponível em: <a href="https://www.bbcgoodfood.com/recipes/pan-roasted-kale-with-lemon" rel="noopener noreferrer" target="_blank">https://www.bbcgoodfood.com/recipes/pan-roasted-kale-with-lemon</a></li><li id="ref-R6">[R6] BBC Good Food — Butter beans with kale, lemon, chilli &amp; garlic. Feijão branco graúdo com kale, limão, alho e malagueta. Disponível em: <a href="https://www.bbcgoodfood.com/recipes/butter-beans-with-kale-lemon-chilli-garlic" rel="noopener noreferrer" target="_blank">https://www.bbcgoodfood.com/recipes/butter-beans-with-kale-lemon-chilli-garlic</a></li><li id="ref-R7">[R7] BBC Good Food — Kale smoothie. Batido com couve kale, abacate, ananás, lima, gengibre e caju. Disponível em: <a href="https://www.bbcgoodfood.com/recipes/kale-smoothie" rel="noopener noreferrer" target="_blank">https://www.bbcgoodfood.com/recipes/kale-smoothie</a></li><li id="ref-R8">[R8] BBC Good Food — Sausage, kale &amp; gnocchi one-pot. Nhoques num só tacho com couve kale, salsicha, caldo e parmesão. Disponível em: <a href="https://www.bbcgoodfood.com/recipes/sausage-kale-gnocchi-one-pot" rel="noopener noreferrer" target="_blank">https://www.bbcgoodfood.com/recipes/sausage-kale-gnocchi-one-pot</a></li><li id="ref-R9">[R9] BBC Good Food — Sausage &amp; kale minestrone. Sopa minestrone com couve kale frisada, legumes, massa e salsicha. Disponível em: <a href="https://www.bbcgoodfood.com/recipes/sausage-kale-minestrone" rel="noopener noreferrer" target="_blank">https://www.bbcgoodfood.com/recipes/sausage-kale-minestrone</a></li><li id="ref-R10">[R10] BBC Good Food — Soft polenta with roast squash, kale &amp; hazelnuts. Polenta cremosa acompanhada por abóbora, kale e avelãs assadas. Disponível em: <a href="https://www.bbcgoodfood.com/recipes/soft-polenta-roast-squash-kale-hazelnuts" rel="noopener noreferrer" target="_blank">https://www.bbcgoodfood.com/recipes/soft-polenta-roast-squash-kale-hazelnuts</a></li></ol><h4>Estudos científicos e revisões (benefícios e propriedades medicinais)</h4><ol><li id="ref-M1">[M1] Harvard T. H. Chan School of Public Health, Kale. Perfil nutricional e interpretação prudente dos estudos sobre glucosinolatos e saúde. Disponível em: <a href="https://nutritionsource.hsph.harvard.edu/food-features/kale/" rel="noopener noreferrer" target="_blank">https://nutritionsource.hsph.harvard.edu/food-features/kale/</a></li><li id="ref-M2">[M2] National Cancer Institute, Cruciferous Vegetables and Cancer Prevention. Glucosinolatos, carotenoides e limites das conclusões sobre prevenção de cancro. Disponível em: <a href="https://www.cancer.gov/about-cancer/causes-prevention/risk/diet/cruciferous-vegetables-fact-sheet" rel="noopener noreferrer" target="_blank">https://www.cancer.gov/about-cancer/causes-prevention/risk/diet/cruciferous-vegetables-fact-sheet</a></li><li id="ref-M3">[M3] NIH Office of Dietary Supplements, Vitamin K. Papel da vitamina K na coagulação e no metabolismo ósseo. Disponível em: <a href="https://ods.od.nih.gov/factsheets/VitaminK-HealthProfessional/" rel="noopener noreferrer" target="_blank">https://ods.od.nih.gov/factsheets/VitaminK-HealthProfessional/</a></li><li id="ref-M4">[M4] Ferioli F. et al., Comparison of leafy kale populations from Italy, Portugal, and Turkey (2013). Estudo de fenólicos, glucosinolatos, carotenoides e sua variabilidade em populações de kale. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/23749678/" rel="noopener noreferrer" target="_blank">https://pubmed.ncbi.nlm.nih.gov/23749678/</a></li></ol><h4>Dados nutricionais</h4><ol><li id="ref-N1">[N1] USDA FoodData Central, Kale, raw (reprodução em WhatYouEat). Valores por 100 g de kale crua: registo de 35 kcal, macronutrientes, vitaminas e minerais. Disponível em: <a href="https://whatyoueat.io/foods/168421-kale" rel="noopener noreferrer" target="_blank">https://whatyoueat.io/foods/168421-kale</a></li><li id="ref-N2">[N2] USDA, Kale, cooked, boiled, drained, without salt (reprodução em Foodstruct). Valores por 100 g de kale cozida e escorrida; registo USDA com 28 kcal e vitaminas. Disponível em: <a href="https://foodstruct.com/food/kale" rel="noopener noreferrer" target="_blank">https://foodstruct.com/food/kale</a></li><li id="ref-N3">[N3] Harvard T. H. Chan School of Public Health, Kale. Vitamina K, C, A, luteína, zeaxantina e outros nutrientes relevantes. Disponível em: <a href="https://nutritionsource.hsph.harvard.edu/food-features/kale/" rel="noopener noreferrer" target="_blank">https://nutritionsource.hsph.harvard.edu/food-features/kale/</a></li></ol><h4>Utilidades e aplicações</h4><ol><li id="ref-U1">[U1] RHS, How to Grow Kale. Produção de microvegetais, folhas comestíveis e variedades ornamentais. Disponível em: <a href="https://www.rhs.org.uk/vegetables/kale/grow-your-own" rel="noopener noreferrer" target="_blank">https://www.rhs.org.uk/vegetables/kale/grow-your-own</a></li><li id="ref-U2">[U2] Kew, Brassica oleracea L.. Utilização de variedades de couve para alimentação humana, forragem e ornamentação. Disponível em: <a href="https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:279435-1/general-information" rel="noopener noreferrer" target="_blank">https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:279435-1/general-information</a></li><li id="ref-U3">[U3] GROWIT Portugal, Bio Couve frisada (Kale). Utilização alimentar e forrageira de kale frisada. Disponível em: <a href="https://growit.pt/produto/pt-bio-03-couve-frisada/" rel="noopener noreferrer" target="_blank">https://growit.pt/produto/pt-bio-03-couve-frisada/</a></li><li id="ref-U4">[U4] BBC Good Food, Kale recipes. Versatilidade culinária em saladas, sopas, pestos, salteados e pratos de forno. Disponível em: <a href="https://www.bbcgoodfood.com/recipes/collection/kale-recipes" rel="noopener noreferrer" target="_blank">https://www.bbcgoodfood.com/recipes/collection/kale-recipes</a></li></ol><h4>Permacultura</h4><ol><li id="ref-P1">[P1] RHS, How to Grow Kale. Colheitas sucessivas, robustez ao frio, cultivo e riscos de competição/pragas. Disponível em: <a href="https://www.rhs.org.uk/vegetables/kale/grow-your-own" rel="noopener noreferrer" target="_blank">https://www.rhs.org.uk/vegetables/kale/grow-your-own</a></li><li id="ref-P2">[P2] RHS, Crop rotation. Importância das rotações para evitar doenças de brássicas na horta. Disponível em: <a href="https://www.rhs.org.uk/vegetables/crop-rotation" rel="noopener noreferrer" target="_blank">https://www.rhs.org.uk/vegetables/crop-rotation</a></li><li id="ref-P3">[P3] Kew, Brassica oleracea L.. Aplicações alimentares, forrageiras e ornamentais dos cultivares de couve. Disponível em: <a href="https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:279435-1/general-information" rel="noopener noreferrer" target="_blank">https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:279435-1/general-information</a></li><li id="ref-P4">[P4] RHS, Brassica oleracea Acephala Group. Porte, floração e risco de pragas em kale e borecole. Disponível em: <a href="https://www.rhs.org.uk/plants/106079/brassica-oleracea-acephala-group/details" rel="noopener noreferrer" target="_blank">https://www.rhs.org.uk/plants/106079/brassica-oleracea-acephala-group/details</a></li><li id="ref-P5">[P5] GROWIT Portugal, Bio Couve frisada (Kale). Sementes biológicas, caráter forrageiro, adaptação a zonas frias e rotação. Disponível em: <a href="https://growit.pt/produto/pt-bio-03-couve-frisada/" rel="noopener noreferrer" target="_blank">https://growit.pt/produto/pt-bio-03-couve-frisada/</a></li></ol></section>
+</article>
+</main>
+<footer>
+<a href="index.html">← Voltar à lista de plantas</a>
+</footer>
+
+</div>
+<script>
+  (function(){
+    const mount = document.getElementById("sidebar-mount");
+    if(!mount) return;
+
+    const applyActive = (root) => {
+      const path = (location.pathname.split("/").pop() || "inicio.html").toLowerCase();
+      root.querySelectorAll(".nav-item").forEach(a => {
+        const route = (a.getAttribute("data-route") || a.getAttribute("href") || "").toLowerCase();
+        const href = (a.getAttribute("href") || "").toLowerCase();
+        const isActive = (route && route === path) || (href && href === path);
+        if(isActive) a.classList.add("active");
+        else a.classList.remove("active");
+      });
+    };
+
+    const setCollapsed = (sidebar, collapsed) => {
+      sidebar.setAttribute("data-collapsed", collapsed ? "1" : "0");
+      document.body.classList.toggle("sidebar-collapsed", !!collapsed);
+      localStorage.setItem("sidebar-collapsed", collapsed ? "1" : "0");
+    };
+
+    fetch("sidebar.html", { cache: "no-store" })
+      .then(r => r.text())
+      .then(html => {
+        mount.innerHTML = html;
+
+        const sidebar = mount.querySelector(".sidebar");
+        const toggle = mount.querySelector(".sidebar-toggle");
+        if(!sidebar || !toggle) return;
+
+        // restore collapsed state
+        const saved = localStorage.getItem("sidebar-collapsed");
+        const collapsed = saved === "1";
+        setCollapsed(sidebar, collapsed);
+
+        toggle.addEventListener("click", () => {
+          const now = sidebar.getAttribute("data-collapsed") === "1";
+          setCollapsed(sidebar, !now);
+        });
+
+        applyActive(mount);
+      })
+      .catch(() => {
+        // se sidebar.html não existir, não quebra a página
+      });
+
+    // Masthead "stuck" feedback
+    const masthead = document.querySelector(".with-sidebar .masthead");
+    const sentinel = document.querySelector(".masthead-sentinel");
+    if(masthead && sentinel && "IntersectionObserver" in window){
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          masthead.classList.toggle("is-stuck", !entry.isIntersecting);
+        });
+      }, {root: null, threshold: 0});
+      io.observe(sentinel);
+    }
+  })();
+  </script>
+</body>
+</html>
