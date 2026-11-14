@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+
+<html lang="pt">
+<head>
+<meta charset="utf-8"/>
+<title>Tremoço-doce australiano – Horta da Terra para o prato</title>
+<link href="style.css" rel="stylesheet"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+</style>
+<meta content="Tremoço-doce australiano (Lupinus angustifolius): cultivo biológico, sazonalidade, receitas, nutrição, segurança, permacultura e referências." name="description"/><style>
+/* Extensões discretas da ficha do tremoço: manter cores e grelha do modelo. */
+.planta-cabecalho .imagem-container{min-height:210px;}
+.imagem-em-falta{width:100%;min-height:210px;display:flex;flex-direction:column;
+ align-items:center;justify-content:center;gap:.35rem;padding:1.2rem;
+ color:#50605a;text-align:center;background:linear-gradient(145deg,#f5f8f3,#eaf2e9);}
+.imagem-em-falta .sinal{font-size:2rem;line-height:1.3;}
+.imagem-em-falta small{font-style:italic;color:#6b7280;}
+.tabela-scroll{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.tabela-scroll table{min-width:570px;}
+.referencia-nota sup a, section:not(#referencias) sup a{color:var(--cor-secundaria);text-decoration:none;}
+.referencia-nota sup a:hover, section:not(#referencias) sup a:hover{text-decoration:underline;}
+#referencias li{overflow-wrap:anywhere;}
+#referencias li:target{background:#f0faf3;}
+.diet-links .diet-links-right{margin-left:auto;}
+#permacultura dd p{margin:.3rem 0 .75rem;}
+</style></head>
+<body id="topo">
+<div id="sidebar-mount"></div>
+<div class="with-sidebar">
+<div aria-hidden="true" class="masthead-sentinel"></div>
+<div class="masthead"><header>
+<h1>Horta da Terra para o prato</h1>
+<p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar.</p></header>
+<nav>
+<a href="abobora-butternut.html">Abóbora butternut</a>
+<a href="abobora-grande.html">Abóbora grande</a>
+<a class="" href="acelga.html">Acelga</a>
+<a href="agriao.html">Agrião-de-água</a>
+<a href="agriao-terra.html">Agrião-da-terra</a>
+<a href="aipo.html">Aipo (talos e folhas)</a>
+<a href="alface.html">Alface</a>
+<a href="alho.html">Alho</a>
+<a href="alho-frances.html">Alho-francês</a>
+<a href="aneto.html">Aneto / Endro</a>
+<a href="batata-comum.html">Batata comum</a>
+<a href="batata-doce.html">Batata-doce</a><a href="batata-ratte.html">Batata Ratte</a>
+<a href="beringela.html">Beringela</a>
+<a href="beterraba.html">Beterraba</a>
+<a href="brocolo.html">Brócolo</a>
+<a href="canonigos.html">Canónigos</a>
+<a href="cebola.html">Cebola</a>
+<a href="cebola-fresca.html">Cebola fresca</a>
+<a href="cenoura.html">Cenoura</a>
+<a href="coentros.html">Coentros</a>
+<a href="couve-chinesa.html">Couve chinesa</a>
+<a href="couve-flor.html">Couve-flor</a><a href="couve-frisada.html">Couve frisada</a><a href="couve-portuguesa.html">Couve portuguesa</a>
+<a href="couve-rabano.html">Couve-rábano</a>
+<a href="couve-repolho.html">Couve repolho</a>
+<a href="couve-toscana.html">Couve toscana</a>
+<a href="curgete.html">Curgete</a>
+<a href="ervilhas-frescas.html">Ervilhas frescas</a>
+<a href="espinafre.html">Espinafre</a>
+<a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+<a href="feijao-verde.html">Feijão verde</a>
+<a href="manjericao.html">Manjericão</a>
+<a href="milho-doce.html">Milho doce</a>
+<a href="mizuna.html">Mizuna</a>
+<a href="morangos.html">Morangueiro / Morangos</a>
+<a href="moringa.html">Moringa</a>
+<a href="nabica.html">Nabiça</a>
+<a href="nabo.html">Nabo</a>
+<a href="pak-choi.html">Pak choi</a>
+<a href="pepino.html">Pepino</a>
+<a href="pimento.html">Pimento</a>
+<a href="rabanete.html">Rabanete</a>
+<a href="rabano.html">Rábano / Daikon</a>
+<a href="rucula.html">Rúcula</a>
+<a href="salanova.html">Salanova</a>
+<a href="salsa.html">Salsa</a>
+<a href="tomate.html">Tomate (genérico)</a>
+<a href="tomate-chucha.html">Tomate tipo chucha / Roma</a>
+<a class="ativa" href="tremoco-doce-australiano.html">Tremoço-doce australiano</a></nav></div>
+<main>
+<!-- Navegação entre plantas (anterior / seguinte) -->
+<nav class="nav-paginacao">
+<a class="prev" href="tomate-chucha.html">Tomate tipo chucha / Roma</a>
+
+</nav>
+<article class="planta">
+<div class="planta-cabecalho">
+<div class="planta-titulo">
+<h2>Tremoço-doce australiano (de folha estreita) (<em>Lupinus angustifolius</em>)</h2>
+<div class="tags-nomes"><span>Família: Fabaceae (Leguminosae)</span><span>Parte Usada: sementes maduras das variedades doces</span><span>Tipo: leguminosa herbácea anual granífera</span><span>Produção: <strong>anual, biológico</strong></span></div>
+<div class="info-rapida"><div><strong>Origem</strong> espécie mediterrânica nativa também de Portugal; variedades doces melhoradas na Austrália</div><div><strong>Uso principal</strong> grão doce para farinha, flocos, húmus, sopas, saladas, pão e massas</div><div><strong>Perfil nutricional</strong> muito proteico e rico em fibra, com poucos hidratos digestíveis e minerais</div></div>
+</div>
+<div>
+<div class="imagem-container-externo">
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"><div aria-label="Fotografia do tremoço-doce australiano ainda não disponível" class="imagem-em-falta" role="img"><span aria-hidden="true" class="sinal">🌱</span><span>Fotografia da planta a adicionar</span><small>Lupinus angustifolius L.</small></div></div></div>
+</div>
+<p class="imagem-legenda">Sem fotografia associada à ficha Excel.</p>
+</div>
+</div>
+<!-- <h2>Acelga (<em>Beta vulgaris</em> var. <em>cicla</em>)</h2> -->
+<!-- 0. Imagem -->
+<!-- 1. Apresentação / Descrição -->
+<section id="apresentacao"><h3>1. Apresentação / Descrição</h3><p>O tremoço-doce australiano é uma forma alimentar selecionada de Lupinus angustifolius L., uma leguminosa herbácea anual da família Fabaceae também conhecida como tremoço-de-folha-estreita, tremoço-azul ou narrow-leafed lupin. A planta apresenta caules eretos, folhas palmadas de folíolos estreitos, inflorescências geralmente azuis ou violáceas (podem ocorrer outras cores) e vagens que encerram os grãos. É essencial distinguir esta espécie do tremoço-branco (Lupinus albus L.) tradicionalmente consumido em salmoura em Portugal: não são a mesma planta. <sup><a aria-label="Consultar referência D1" href="#ref-D1">[D1]</a></sup><sup><a aria-label="Consultar referência D2" href="#ref-D2">[D2]</a></sup><sup><a aria-label="Consultar referência D3" href="#ref-D3">[D3]</a></sup></p><p>Lupinus angustifolius tem origem mediterrânica, com ocorrência nativa documentada em Portugal. A designação «australiano» refere-se à seleção e ao desenvolvimento agrícola de variedades doces, com teor reduzido de alcaloides quinolizidínicos, e à importância da sua produção na Austrália Ocidental; não significa que a espécie seja nativa da Austrália. A seleção de baixo amargor torna possível utilizar grãos alimentares corretamente classificados e controlados, sem os confundir com sementes amargas ou de plantas ornamentais. <sup><a aria-label="Consultar referência D1" href="#ref-D1">[D1]</a></sup><sup><a aria-label="Consultar referência D3" href="#ref-D3">[D3]</a></sup><sup><a aria-label="Consultar referência D4" href="#ref-D4">[D4]</a></sup></p><p>A cultura é anual e adapta-se a ambientes de estação húmida e fresca com maturação em tempo mais quente, sendo particularmente interessante em solos ligeiros, ácidos a moderadamente ácidos, bem drenados e expostos ao sol. Como leguminosa, pode formar nódulos radiculares com rizóbios compatíveis, fixar azoto atmosférico e participar em rotações com cereais e outras culturas. Para alimentação humana interessam as sementes de variedades doces comprovadas, comercializadas como grão, grão descascado, farinha, flocos, granulado ou partidas; a identificação da variedade e o controlo de alcaloides são indispensáveis quando se produzem sementes para consumo próprio. <sup><a aria-label="Consultar referência D2" href="#ref-D2">[D2]</a></sup><sup><a aria-label="Consultar referência D3" href="#ref-D3">[D3]</a></sup><sup><a aria-label="Consultar referência D4" href="#ref-D4">[D4]</a></sup></p><p class="referencia-nota">Referência(s) de suporte para a descrição: <sup><a aria-label="Consultar referência D1" href="#ref-D1">[D1]</a></sup><sup><a aria-label="Consultar referência D2" href="#ref-D2">[D2]</a></sup><sup><a aria-label="Consultar referência D3" href="#ref-D3">[D3]</a></sup><sup><a aria-label="Consultar referência D4" href="#ref-D4">[D4]</a></sup></p></section>
+<!-- 2. Sazonalidade (Portugal continental) -->
+<section id="sazonalidade"><h3>2. Sazonalidade (Portugal continental)</h3><p>Em clima mediterrânico, Lupinus angustifolius pode ser cultivado como anual de outono-inverno, com instalação após as primeiras chuvas úteis e colheita depois da secagem das vagens. Para Portugal continental, uma janela exploratória de sementeira situa-se em geral no outono ou início do inverno, ajustada à região, ao encharcamento, à temperatura do solo, às geadas e ao ciclo da variedade. Esta janela é uma adaptação agronómica fundamentada no comportamento mediterrânico da cultura e não um calendário experimental português específico para todas as variedades australianas. <sup><a aria-label="Consultar referência S1" href="#ref-S1">[S1]</a></sup><sup><a aria-label="Consultar referência S2" href="#ref-S2">[S2]</a></sup><sup><a aria-label="Consultar referência S3" href="#ref-S3">[S3]</a></sup></p><p>A vegetação desenvolve-se durante os meses frescos; a floração tende a ocorrer na primavera, seguida da formação e maturação das vagens até ao fim da primavera ou início do verão, conforme sementeira, precipitação e genótipo. É fundamental usar sementes certificadas de variedade doce apropriada, preferir solos bem drenados e vigiar infestantes, pulgões e doenças. Em terrenos sem histórico da cultura pode ser útil inocular a semente com rizóbios específicos de tremoceiro, seguindo orientação do fornecedor. <sup><a aria-label="Consultar referência S1" href="#ref-S1">[S1]</a></sup><sup><a aria-label="Consultar referência S2" href="#ref-S2">[S2]</a></sup><sup><a aria-label="Consultar referência S3" href="#ref-S3">[S3]</a></sup></p><ul><li><strong>Preparação do terreno:</strong> antes das chuvas de outono, escolher parcela soalheira, bem drenada e sem calcário livre; planear rotação com culturas não leguminosas.</li><li><strong>Sementeira:</strong> habitualmente outono/início do inverno em clima mediterrânico, ajustando à região e à variedade doce disponível; evitar solo encharcado.</li><li><strong>Estabelecimento:</strong> outono e inverno, com vigilância de infestantes e verificação de nodulação; ponderar inoculação com rizóbios compatíveis.</li><li><strong>Crescimento e floração:</strong> normalmente do fim do inverno à primavera em sementeiras outonais, dependendo da temperatura e fotoperíodo.</li><li><strong>Enchimento das vagens:</strong> primavera, com necessidade de água em fases críticas mas sem encharcamento.</li><li><strong>Colheita do grão seco:</strong> geralmente do fim da primavera ao início do verão, quando as vagens amadurecem, antes de perdas por abertura e dispersão.</li><li><strong>Conservação e segurança:</strong> secar adequadamente; manter lotes identificados como variedades doces próprias para alimentação e livres de contaminação.</li></ul><p class="referencia-nota">Referência(s) para a sazonalidade e o cultivo: <sup><a aria-label="Consultar referência S1" href="#ref-S1">[S1]</a></sup><sup><a aria-label="Consultar referência S2" href="#ref-S2">[S2]</a></sup><sup><a aria-label="Consultar referência S3" href="#ref-S3">[S3]</a></sup><sup><a aria-label="Consultar referência S4" href="#ref-S4">[S4]</a></sup></p></section>
+<!-- 3. Como consumir -->
+<section id="como-consumir"><h3>3. Como consumir</h3><ul><li>Utilizar exclusivamente grão ou ingredientes de variedades doces próprias para alimentação humana, provenientes de fornecedor fiável; não usar sementes silvestres, ornamentais ou amargas sem controlo de alcaloides.</li><li><strong>Grão descascado ou partido:</strong> cozinhar segundo a apresentação comercial e as instruções do fornecedor; depois incorporar em húmus, sopas, saladas, guisados e preparações de leguminosas.</li><li><strong>Flocos alimentares:</strong> juntar a sopas, papas, batidos, tabules, recheios ou bolos, hidratando ou cozinhando de acordo com a receita e a indicação do fabricante.</li><li><strong>Farinha de tremoço-doce:</strong> utilizar em pães, bases de massa, bolos e outros produtos de forno, isolada ou misturada com outras farinhas de acordo com formulações testadas.</li><li><strong>Como substituto parcial de ingredientes amiláceos:</strong> usar grão ou flocos para aumentar o teor de proteína e fibra de pratos com arroz, saladas e acompanhamentos.</li><li><strong>Em produtos de confeitaria:</strong> incorporar farinha ou flocos em bolinhos, barras de aveia e mousses, mantendo proporções e técnicas das receitas publicadas.</li><li>Confirmar sempre a presença de tremoço no rótulo para pessoas com alergia alimentar, incluindo possível reatividade cruzada em algumas pessoas alérgicas a amendoim.</li></ul><p class="referencia-nota">Referência(s) para consumo e segurança: <sup><a aria-label="Consultar referência C1" href="#ref-C1">[C1]</a></sup><sup><a aria-label="Consultar referência C2" href="#ref-C2">[C2]</a></sup><sup><a aria-label="Consultar referência C3" href="#ref-C3">[C3]</a></sup><sup><a aria-label="Consultar referência C4" href="#ref-C4">[C4]</a></sup><sup><a aria-label="Consultar referência R1" href="#ref-R1">[R1]</a></sup><sup><a aria-label="Consultar referência R2" href="#ref-R2">[R2]</a></sup><sup><a aria-label="Consultar referência R3" href="#ref-R3">[R3]</a></sup><sup><a aria-label="Consultar referência R4" href="#ref-R4">[R4]</a></sup><sup><a aria-label="Consultar referência R5" href="#ref-R5">[R5]</a></sup><sup><a aria-label="Consultar referência R6" href="#ref-R6">[R6]</a></sup><sup><a aria-label="Consultar referência R7" href="#ref-R7">[R7]</a></sup><sup><a aria-label="Consultar referência R8" href="#ref-R8">[R8]</a></sup><sup><a aria-label="Consultar referência R9" href="#ref-R9">[R9]</a></sup><sup><a aria-label="Consultar referência R10" href="#ref-R10">[R10]</a></sup></p></section>
+<!-- 4. Receitas e preparados (Top 10) -->
+<section id="receitas"><h3 id="titulo-receitas">4. Receitas e preparados (Top 10)</h3><div class="diet-links"><div class="diet-links-right"><a href="/horta-info/data/refeicoes.html">(Filtro por ingredientes)</a></div></div><p>Dez receitas culinárias verificáveis com tremoço-doce australiano, em grão partido, farinha ou flocos: húmus, sopa de batata-doce, tabule, pão com sementes, bolinhos de curgete, gözleme recheado, quibe de frango, batido verde, fatias de aveia com frutos vermelhos e mousse de chocolate. Foram privilegiadas preparações efetivamente diferentes. Os nomes e resumos estão traduzidos para português; os links preservam as páginas originais em inglês, com ingredientes e instruções. Em todas as receitas deve ser usado apenas ingrediente alimentar de variedade doce certificada. <sup><a aria-label="Consultar referência R1" href="#ref-R1">[R1]</a></sup><sup><a aria-label="Consultar referência R2" href="#ref-R2">[R2]</a></sup><sup><a aria-label="Consultar referência R3" href="#ref-R3">[R3]</a></sup><sup><a aria-label="Consultar referência R4" href="#ref-R4">[R4]</a></sup><sup><a aria-label="Consultar referência R5" href="#ref-R5">[R5]</a></sup><sup><a aria-label="Consultar referência R6" href="#ref-R6">[R6]</a></sup><sup><a aria-label="Consultar referência R7" href="#ref-R7">[R7]</a></sup><sup><a aria-label="Consultar referência R8" href="#ref-R8">[R8]</a></sup><sup><a aria-label="Consultar referência R9" href="#ref-R9">[R9]</a></sup><sup><a aria-label="Consultar referência R10" href="#ref-R10">[R10]</a></sup></p><ol><li><strong><a href="https://aussielupins.org.au/recipes/lupin-hummus-3-ways/" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Húmus de tremoço de três maneiras</a></strong> – pasta cremosa preparada com tremoço partido cozido, tahini, limão e alho; a fonte inclui variantes com beterraba ou com abacate e pistácio. <sup><a aria-label="Consultar referência R1" href="#ref-R1">[R1]</a></sup></li><li><strong><a href="https://aussielupins.org.au/recipes/sweet-potato-and-ginger-soup-2/" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Sopa de batata-doce e gengibre</a></strong> – sopa cremosa de legumes, especiarias e flocos de tremoço, servida com iogurte e pão. <sup><a aria-label="Consultar referência R2" href="#ref-R2">[R2]</a></sup></li><li><strong><a href="https://thelupinco.com.au/high-protein-lupin-flake-tabbouleh/" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Tabule de flocos de tremoço rico em proteína</a></strong> – salada fresca em que os flocos hidratados substituem o bulgur e se misturam com tomate, pepino, ervas e molho de limão. <sup><a aria-label="Consultar referência R3" href="#ref-R3">[R3]</a></sup></li><li><strong><a href="https://thelupinco.com.au/easy-rustic-lupin-seed-protein-bread/" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Pão rústico de tremoço e sementes</a></strong> – pão de forno sem amassar feito com farinha de tremoço, sementes, ovos, iogurte e azeite. <sup><a aria-label="Consultar referência R4" href="#ref-R4">[R4]</a></sup></li><li><strong><a href="https://thelupinco.com.au/zucchini-haloumi-mint-fritters/" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Bolinhos de curgete, halloumi e hortelã</a></strong> – pequenos fritos de frigideira que combinam flocos de tremoço com curgete, queijo, ovo e hortelã. <sup><a aria-label="Consultar referência R5" href="#ref-R5">[R5]</a></sup></li><li><strong><a href="https://aussielupins.org.au/recipes/chicken-and-spinach-gozlemes/" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Gözleme de frango e espinafres</a></strong> – pão achatado recheado com frango, espinafres e queijo, cuja massa incorpora flocos de tremoço. <sup><a aria-label="Consultar referência R6" href="#ref-R6">[R6]</a></sup></li><li><strong><a href="https://aussielupins.org.au/recipes/bowl-of-things/" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Quibe de frango com tremoço</a></strong> – bolinhos salgados de inspiração médio-oriental feitos com tremoço partido e frango, moldados e recheados antes de fritar. <sup><a aria-label="Consultar referência R7" href="#ref-R7">[R7]</a></sup></li><li><strong><a href="https://aussielupins.org.au/recipes/green-smoothie/" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Batido verde com tremoço</a></strong> – bebida batida de ananás, espinafres, gengibre, leite e flocos de tremoço, com textura cremosa. <sup><a aria-label="Consultar referência R8" href="#ref-R8">[R8]</a></sup></li><li><strong><a href="https://aussielupins.org.au/recipes/baked-berry-oat-slice/" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Fatias assadas de aveia e frutos vermelhos</a></strong> – bolo de tabuleiro com flocos de tremoço, aveia, banana e frutos vermelhos, servido em quadrados. <sup><a aria-label="Consultar referência R9" href="#ref-R9">[R9]</a></sup></li><li><strong><a href="https://thelupinco.com.au/velvet-chocolate-lupin-mousse/" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Mousse aveludada de chocolate e tremoço</a></strong> – sobremesa cremosa em que a farinha de tremoço espessa a mistura de chocolate, leite e natas. <sup><a aria-label="Consultar referência R10" href="#ref-R10">[R10]</a></sup></li></ol></section>
+<!-- 5. Benefícios para a saúde e propriedades medicinais -->
+<section id="beneficios"><h3>5. Benefícios para a saúde e propriedades medicinais</h3><p>O principal interesse do tremoço-doce australiano é nutricional e agrícola. Os grãos secos descascados de Lupinus angustifolius cultivado na Austrália apresentam cerca de 40 g de proteína, 34,5 g de fibra alimentar e 4 g de hidratos de carbono disponíveis por 100 g, segundo os valores médios publicados pelo setor. São valores do produto seco e descascado, não de grão cozido ou de uma dose habitual pronta a comer. Esta composição pode ajudar a diversificar fontes de proteína vegetal e de fibra na alimentação. <sup><a aria-label="Consultar referência M1" href="#ref-M1">[M1]</a></sup><sup><a aria-label="Consultar referência N1" href="#ref-N1">[N1]</a></sup></p><p>A investigação clínica é promissora, mas não equivale à demonstração de que o alimento previna ou trate doenças. Uma revisão sistemática específica de Lupinus angustifolius reuniu sete ensaios aleatorizados, com 302 participantes, e encontrou um efeito médio favorável no colesterol LDL; os resultados para outras variáveis, como peso e triglicéridos, não foram uniformemente significativos. Uma segunda revisão, sobre tremoços de diferentes espécies e frações alimentares, encontrou sinais de benefício em saciedade, pressão arterial e controlo glicémico, com heterogeneidade e limitações metodológicas. <sup><a aria-label="Consultar referência M2" href="#ref-M2">[M2]</a></sup><sup><a aria-label="Consultar referência M3" href="#ref-M3">[M3]</a></sup></p><p>O efeito nutricional depende da quantidade consumida, da formulação alimentar e das condições de cada pessoa. A fibra pode favorecer a saciedade e a regularidade intestinal, mas o aumento brusco do consumo pode causar gases e desconforto. Não existem razões para substituir uma alimentação equilibrada ou tratamentos médicos por tremoço, e a alergia ao tremoço pode ser grave em indivíduos sensíveis. <sup><a aria-label="Consultar referência M1" href="#ref-M1">[M1]</a></sup><sup><a aria-label="Consultar referência M3" href="#ref-M3">[M3]</a></sup><sup><a aria-label="Consultar referência C3" href="#ref-C3">[C3]</a></sup></p><ul><li>Fonte concentrada de proteína vegetal no grão seco descascado, útil na diversidade alimentar, incluindo dietas vegetarianas. <sup><a aria-label="Consultar referência M1" href="#ref-M1">[M1]</a></sup><sup><a aria-label="Consultar referência N1" href="#ref-N1">[N1]</a></sup></li><li>Teor elevado de fibra alimentar, com potencial para apoiar saciedade e hábitos alimentares favoráveis ao trânsito intestinal. <sup><a aria-label="Consultar referência M1" href="#ref-M1">[M1]</a></sup><sup><a aria-label="Consultar referência M3" href="#ref-M3">[M3]</a></sup></li><li>Baixo teor de hidratos de carbono disponíveis na fração seca descascada, sem que isso se traduza automaticamente na composição de qualquer prato preparado. <sup><a aria-label="Consultar referência N1" href="#ref-N1">[N1]</a></sup><sup><a aria-label="Consultar referência M1" href="#ref-M1">[M1]</a></sup></li><li>Possível redução modesta do colesterol LDL em alguns ensaios com produtos de Lupinus angustifolius; evidência clínica limitada e não aplicável a todas as preparações. <sup><a aria-label="Consultar referência M2" href="#ref-M2">[M2]</a></sup><sup><a aria-label="Consultar referência M3" href="#ref-M3">[M3]</a></sup></li><li>Resultados experimentais e clínicos preliminares sobre resposta glicémica e saciedade, variáveis segundo doses, pessoas e formatos de tremoço. <sup><a aria-label="Consultar referência M2" href="#ref-M2">[M2]</a></sup><sup><a aria-label="Consultar referência M3" href="#ref-M3">[M3]</a></sup><sup><a aria-label="Consultar referência M4" href="#ref-M4">[M4]</a></sup></li><li>Fornecimento de potássio, magnésio, cálcio e ferro como parte da alimentação; os valores documentados dependem da fração analisada. <sup><a aria-label="Consultar referência N1" href="#ref-N1">[N1]</a></sup></li></ul><p class="nota-aviso">O tremoço é um alergénio alimentar reconhecido. Pode provocar reações imediatas, incluindo anafilaxia, e algumas pessoas alérgicas ao amendoim também reagem ao tremoço; a reatividade cruzada não ocorre em todas. Pessoas com alergia confirmada ao tremoço devem evitá-lo e ler os rótulos. <sup><a aria-label="Consultar referência C3" href="#ref-C3">[C3]</a></sup><sup><a aria-label="Consultar referência C4" href="#ref-C4">[C4]</a></sup></p><p class="nota-aviso">As variedades de tremoço amargo ou de origem incerta podem conter alcaloides quinolizidínicos tóxicos. A indicação «doce» diz respeito à seleção de baixo teor destes compostos, e não ao sabor açucarado. Só se devem consumir sementes e preparados de lotes alimentares identificados, com controlo de alcaloides; a cozedura caseira não é uma garantia suficiente para tornar seguro um lote desconhecido. Não usar sementes de tremoços ornamentais nem misturar as espécies. <sup><a aria-label="Consultar referência C2" href="#ref-C2">[C2]</a></sup><sup><a aria-label="Consultar referência C4" href="#ref-C4">[C4]</a></sup><sup><a aria-label="Consultar referência D4" href="#ref-D4">[D4]</a></sup></p><p class="nota-aviso">Introduzir gradualmente produtos muito ricos em fibra, especialmente em pessoas com sensibilidade digestiva. Farinhas e flocos comerciais seguem instruções próprias de utilização. Crianças pequenas e pessoas com alergias ou problemas digestivos relevantes merecem aconselhamento profissional individualizado. A informação apresentada é alimentar e não substitui aconselhamento médico. <sup><a aria-label="Consultar referência C1" href="#ref-C1">[C1]</a></sup><sup><a aria-label="Consultar referência C3" href="#ref-C3">[C3]</a></sup></p></section>
+<!-- 6. Propriedades nutricionais -->
+<section id="nutricao"><h3>6. Propriedades nutricionais</h3><p>Os valores apresentados na coluna «cru» correspondem a 100 g de cotilédones secos descascados (kernel) de variedades alimentares australianas de Lupinus angustifolius, tal como publicados pela associação setorial Aussie Lupin Beans. Não são valores de sementes frescas nem de tremoços cozidos e demolhados. O produto apresenta, em média, 323 kcal, 40 g de proteína, 34,5 g de fibra e 7 g de gordura por 100 g. <sup><a aria-label="Consultar referência N1" href="#ref-N1">[N1]</a></sup></p><p>Para 100 g de tremoço-doce australiano cozido e escorrido, processado de forma comparável, não foi localizada uma tabela analítica específica da espécie e fração alimentares que permita preencher honestamente a coluna «cozido». Essa coluna é assinalada «n.d.» (não determinado), em vez de se converterem valores secos por estimativa ou se atribuírem à espécie dados genéricos de outros tremoços. A água absorvida altera muito a composição por 100 g de alimento pronto. <sup><a aria-label="Consultar referência N1" href="#ref-N1">[N1]</a></sup><sup><a aria-label="Consultar referência N2" href="#ref-N2">[N2]</a></sup></p><div class="tabela-scroll"><table><thead><tr><th scope="col">Nutriente</th><th scope="col">Grão seco descascado (100 g)</th><th scope="col">Grão cozido (100 g): dados específicos indisponíveis</th></tr></thead><tbody><tr><td>Energia</td><td>323 kcal (1350 kJ)</td><td>n.d.</td></tr><tr><td>Proteína</td><td>40 g</td><td>n.d.</td></tr><tr><td>Hidratos de carbono disponíveis</td><td>4 g</td><td>n.d.</td></tr><tr><td>Fibra alimentar total</td><td>34,5 g</td><td>n.d.</td></tr><tr><td>Lípidos totais</td><td>7 g</td><td>n.d.</td></tr><tr><td>Potássio</td><td>810 mg</td><td>n.d.</td></tr><tr><td>Cálcio</td><td>110 mg</td><td>n.d.</td></tr><tr><td>Magnésio</td><td>160 mg</td><td>n.d.</td></tr><tr><td>Ferro</td><td>3 mg</td><td>n.d.</td></tr></tbody></table></div><p class="referencia-nota">Fonte(s) dos dados nutricionais: <sup><a aria-label="Consultar referência N1" href="#ref-N1">[N1]</a></sup><sup><a aria-label="Consultar referência N2" href="#ref-N2">[N2]</a></sup></p></section>
+<!-- 7. Utilidades e aplicações (não apenas alimentares) -->
+<section id="utilidades"><h3>7. Utilidades e aplicações</h3><ul><li><strong>Alimentação humana:</strong> utilização das variedades doces certificadas como grão, partidas, farinha, flocos e ingrediente de pratos salgados e doces com interesse proteico e tecnológico. <sup><a aria-label="Consultar referência U1" href="#ref-U1">[U1]</a></sup><sup><a aria-label="Consultar referência U2" href="#ref-U2">[U2]</a></sup></li><li><strong>Fixação biológica de azoto:</strong> associação das raízes com rizóbios compatíveis, permitindo integrar a cultura em rotações e reduzir a necessidade de adubação azotada quando o sistema funciona. <sup><a aria-label="Consultar referência U2" href="#ref-U2">[U2]</a></sup><sup><a aria-label="Consultar referência U3" href="#ref-U3">[U3]</a></sup></li><li><strong>Adubação verde e cobertura sazonal:</strong> incorporação ou aproveitamento da biomassa vegetal, tendo em conta que a gestão para grão e a gestão para adubação verde são opções culturais diferentes. <sup><a aria-label="Consultar referência U2" href="#ref-U2">[U2]</a></sup><sup><a aria-label="Consultar referência U3" href="#ref-U3">[U3]</a></sup></li><li><strong>Rotação de culturas:</strong> cultura de quebra em relação aos cereais, contribuindo para diversificação, gestão de doenças e aproveitamento do azoto residual. <sup><a aria-label="Consultar referência U2" href="#ref-U2">[U2]</a></sup><sup><a aria-label="Consultar referência U3" href="#ref-U3">[U3]</a></sup></li><li><strong>Alimentação animal:</strong> variedades apropriadas e devidamente controladas podem ser utilizadas como fonte proteica em rações; não utilizar material amargo ou impróprio. <sup><a aria-label="Consultar referência U1" href="#ref-U1">[U1]</a></sup><sup><a aria-label="Consultar referência U3" href="#ref-U3">[U3]</a></sup></li><li><strong>Biodiversidade agrícola:</strong> floração que disponibiliza pólen a insetos visitantes e ajuda a diversificar a paisagem agrícola, embora não deva ser tratada como planta melífera de néctar abundante sem comprovação. <sup><a aria-label="Consultar referência U3" href="#ref-U3">[U3]</a></sup><sup><a aria-label="Consultar referência P1" href="#ref-P1">[P1]</a></sup></li><li><strong>Cultivo biológico:</strong> opção para solos drenados com pH adequado, mas requer identificação varietal, manejo de infestantes, rotação e vigilância sanitária, não sendo uma cultura universal para qualquer solo. <sup><a aria-label="Consultar referência U2" href="#ref-U2">[U2]</a></sup><sup><a aria-label="Consultar referência U3" href="#ref-U3">[U3]</a></sup><sup><a aria-label="Consultar referência S3" href="#ref-S3">[S3]</a></sup></li></ul></section>
+<!-- 8. Grau de funcionalidade em permacultura -->
+<section id="permacultura"><h3>8. Grau de funcionalidade em permacultura</h3><p>Classificação indicativa segundo o algoritmo de funcionalidade em permacultura definido para o projeto.</p><dl><dt>Grau de funcionalidade</dt><dd><p>6,4 / 10</p></dd><dt>Funções principais</dt><dd><p>Leguminosa alimentar anual de elevado teor proteico, utilizável em rotação com cereais e hortícolas. A simbiose radicular com rizóbios pode contribuir para o azoto do sistema, enquanto a cobertura sazonal e os resíduos da cultura oferecem possibilidades de incorporação de matéria orgânica. Os grãos de variedades doces permitem diversificar a produção para alimentação humana e, quando apropriado, animal.</p><p>A sua integração exige realismo: sementes alimentares corretamente identificadas, solo não calcário, boa drenagem, condições favoráveis à nodulação, controlo de infestantes e rotação sanitária. A utilidade para polinizadores depende da floração efetiva; a produção de grão e a adubação verde não podem ser maximizadas simultaneamente na mesma cultura.</p></dd><dt>Notas</dt><dd><p>Critérios positivos (0 a 2): ALIM = +2 (grão doce alimentar com numerosas aplicações); MED = +1 (alimento funcional estudado, sem indicação medicinal comprovada); ESTR = +1 (cobertura herbácea sazonal, sem estrutura perene); SOLO = +2 (fixação de azoto por simbiose, restos culturais e possibilidade de adubação verde); ECO = +1 (diversidade e pólen para insetos, função ecológica moderada); RUST = +1 (boa adaptação a solos leves ácidos, mas sensível a calcário e encharcamento); MULT = +2 (alimento, rotação, biomassa, alimento animal e melhoria do sistema).</p><p>Penalizações (0 a −2): TOX = −1 (exige variedade doce com alcaloides controlados; risco alergénico relevante); PERIGO = 0 (não apresenta perigo físico significativo na cultura); INVAS = 0 (sem evidência nesta avaliação de comportamento invasor das variedades alimentares no sistema gerido); COMP = 0 (competição controlável por desenho de rotação; pode, pelo contrário, sofrer com infestantes no arranque).</p><p>Cálculo segundo o algoritmo do projeto: POS = 10; NEG = -1; BRUTA = 9; grau = (9 ÷ 14) × 10 = 6,4 / 10. Os critérios representam uma avaliação funcional fundamentada, não um índice científico homologado. <sup><a aria-label="Consultar referência P1" href="#ref-P1">[P1]</a></sup><sup><a aria-label="Consultar referência P2" href="#ref-P2">[P2]</a></sup><sup><a aria-label="Consultar referência P3" href="#ref-P3">[P3]</a></sup><sup><a aria-label="Consultar referência P4" href="#ref-P4">[P4]</a></sup></p></dd></dl><p class="referencia-nota">Referência(s) de suporte à avaliação: <sup><a aria-label="Consultar referência P1" href="#ref-P1">[P1]</a></sup><sup><a aria-label="Consultar referência P2" href="#ref-P2">[P2]</a></sup><sup><a aria-label="Consultar referência P3" href="#ref-P3">[P3]</a></sup><sup><a aria-label="Consultar referência P4" href="#ref-P4">[P4]</a></sup></p></section>
+<!-- 9. Referências -->
+<section id="referencias"><h3>9. Referências</h3><h4>Descrição e botânica</h4><ol><li id="ref-D1">[D1] Royal Botanic Gardens, Kew — Plants of the World Online: Lupinus angustifolius L. Taxonomia, ciclo anual e distribuição nativa mediterrânica, incluindo Portugal. Disponível em: <a href="https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:504124-1" rel="noopener noreferrer" target="_blank">https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:504124-1</a></li><li id="ref-D2">[D2] FAO Ecocrop — Lupinus angustifolius, ficha de cultura. Hábito anual, morfologia geral, condições ecológicas e utilizações. Disponível em: <a href="https://ecocrop.apps.fao.org/ecocrop/srv/en/cropView?id=2519" rel="noopener noreferrer" target="_blank">https://ecocrop.apps.fao.org/ecocrop/srv/en/cropView?id=2519</a></li><li id="ref-D3">[D3] Aussie Lupin Beans — Facts. Identidade do Australian Sweet Lupin, formas de grão alimentar, composição e importância da produção australiana. Disponível em: <a href="https://aussielupins.org.au/facts/" rel="noopener noreferrer" target="_blank">https://aussielupins.org.au/facts/</a></li><li id="ref-D4">[D4] The Lupin Co — Lupin Flakes Technical Data Sheet. Identificação expressa de Australian Sweet Lupin como Lupinus angustifolius e processamento dos grãos. Disponível em: <a href="https://thelupinco.com.au/more-great-information/lupin-flakes-tds/" rel="noopener noreferrer" target="_blank">https://thelupinco.com.au/more-great-information/lupin-flakes-tds/</a></li></ol><h4>Sazonalidade e cultivo (Portugal e clima mediterrânico)</h4><ol><li id="ref-S1">[S1] FAO Ecocrop — View crop: Lupinus angustifolius. Cultura anual de inverno em ambientes mediterrânicos, duração e adaptação climática. Disponível em: <a href="https://ecocrop.apps.fao.org/ecocrop/srv/en/cropView?id=2519" rel="noopener noreferrer" target="_blank">https://ecocrop.apps.fao.org/ecocrop/srv/en/cropView?id=2519</a></li><li id="ref-S2">[S2] FAO Ecocrop — Data sheet: Lupinus angustifolius. Solo, drenagem, temperatura, luz, ciclo de 100–180 dias e usos ambientais. Disponível em: <a href="https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2519" rel="noopener noreferrer" target="_blank">https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2519</a></li><li id="ref-S3">[S3] Feedipedia / INRAE-CIRAD-FAO — Blue lupin (Lupinus angustifolius) seeds. Sementeira, inoculação, cultivo de outono e limitações agronómicas. Disponível em: <a href="https://feedipedia.review.fao.org/node/23099" rel="noopener noreferrer" target="_blank">https://feedipedia.review.fao.org/node/23099</a></li><li id="ref-S4">[S4] PROSEA / Pl@ntUse — Lupinus. Sementeira após chuvas de outono, inoculação com rizóbios, rotação e gestão de infestantes. Disponível em: <a href="https://plantuse.plantnet.org/en/Lupinus_%28PROSEA%29" rel="noopener noreferrer" target="_blank">https://plantuse.plantnet.org/en/Lupinus_%28PROSEA%29</a></li></ol><h4>Consumo, cuidados e segurança</h4><ol><li id="ref-C1">[C1] Grains &amp; Legumes Nutrition Council — Lupins. Formatos alimentares e usos culinários para farinhas, flocos e grão. Disponível em: <a href="https://www.glnc.org.au/lupins/" rel="noopener noreferrer" target="_blank">https://www.glnc.org.au/lupins/</a></li><li id="ref-C2">[C2] Innovation Centre for Organic Farming (Dinamarca) — Lupin seeds as food. Distingue espécies doces e amargas, alcaloides e exigências de segurança alimentar. Disponível em: <a href="https://icoel.dk/en/plant-production/lupin-seeds-as-food/" rel="noopener noreferrer" target="_blank">https://icoel.dk/en/plant-production/lupin-seeds-as-food/</a></li><li id="ref-C3">[C3] Australasian Society of Clinical Immunology and Allergy — Lupin Allergy FAQ. Alergia alimentar, reação cruzada com amendoim e leitura de rótulos. Disponível em: <a href="https://allergy.org.au/patients/food-allergy/lupin-food-allergy" rel="noopener noreferrer" target="_blank">https://allergy.org.au/patients/food-allergy/lupin-food-allergy</a></li><li id="ref-C4">[C4] Allergy UK / Anaphylaxis UK — Lupin allergy. Reações, anafilaxia, rotulagem e cuidados com ingredientes que contêm tremoço. Disponível em: <a href="https://anaphylaxis.org.uk/factsheets/lupin-allergy/" rel="noopener noreferrer" target="_blank">https://anaphylaxis.org.uk/factsheets/lupin-allergy/</a></li></ol><h4>Receitas e preparados</h4><ol><li id="ref-R1">[R1] Aussie Lupin Beans / Grain Industry Association of Western Australia — Lupin Hummus – 3 ways. Receita com quantidades e métodos para húmus e variantes. Disponível em: <a href="https://aussielupins.org.au/recipes/lupin-hummus-3-ways/" rel="noopener noreferrer" target="_blank">https://aussielupins.org.au/recipes/lupin-hummus-3-ways/</a></li><li id="ref-R2">[R2] Aussie Lupin Beans / Grains &amp; Legumes Nutrition Council — Sweet potato and ginger soup. Sopa com flocos de tremoço, vegetais e instruções. Disponível em: <a href="https://aussielupins.org.au/recipes/sweet-potato-and-ginger-soup-2/" rel="noopener noreferrer" target="_blank">https://aussielupins.org.au/recipes/sweet-potato-and-ginger-soup-2/</a></li><li id="ref-R3">[R3] The Lupin Co / Anna Van Dyken — High-Protein Lupin Flake Tabbouleh. Salada de flocos de tremoço com legumes e vinagrete. Disponível em: <a href="https://thelupinco.com.au/high-protein-lupin-flake-tabbouleh/" rel="noopener noreferrer" target="_blank">https://thelupinco.com.au/high-protein-lupin-flake-tabbouleh/</a></li><li id="ref-R4">[R4] The Lupin Co / Anna Van Dyken — Easy Rustic Lupin &amp; Seed Protein Bread. Pão de farinha de tremoço e sementes com receita completa. Disponível em: <a href="https://thelupinco.com.au/easy-rustic-lupin-seed-protein-bread/" rel="noopener noreferrer" target="_blank">https://thelupinco.com.au/easy-rustic-lupin-seed-protein-bread/</a></li><li id="ref-R5">[R5] The Lupin Co — Zucchini, Haloumi &amp; Mint Fritters. Fritos salgados de curgete com flocos de tremoço, queijo e hortelã. Disponível em: <a href="https://thelupinco.com.au/zucchini-haloumi-mint-fritters/" rel="noopener noreferrer" target="_blank">https://thelupinco.com.au/zucchini-haloumi-mint-fritters/</a></li><li id="ref-R6">[R6] Aussie Lupin Beans / Grains &amp; Legumes Nutrition Council — Chicken and spinach gozlemes. Massa com flocos de tremoço e recheio de frango. Disponível em: <a href="https://aussielupins.org.au/recipes/chicken-and-spinach-gozlemes/" rel="noopener noreferrer" target="_blank">https://aussielupins.org.au/recipes/chicken-and-spinach-gozlemes/</a></li><li id="ref-R7">[R7] Aussie Lupin Beans / Grain Industry Association of Western Australia — Chicken kibbeh – middle eastern tapas. Quibe de frango e tremoço partido. Disponível em: <a href="https://aussielupins.org.au/recipes/bowl-of-things/" rel="noopener noreferrer" target="_blank">https://aussielupins.org.au/recipes/bowl-of-things/</a></li><li id="ref-R8">[R8] Aussie Lupin Beans / Grains &amp; Legumes Nutrition Council — Green Smoothie. Batido verde com flocos de tremoço, ananás e espinafre. Disponível em: <a href="https://aussielupins.org.au/recipes/green-smoothie/" rel="noopener noreferrer" target="_blank">https://aussielupins.org.au/recipes/green-smoothie/</a></li><li id="ref-R9">[R9] Aussie Lupin Beans / Grains &amp; Legumes Nutrition Council — Baked berry oat slice. Quadrados de aveia, frutos vermelhos e flocos de tremoço. Disponível em: <a href="https://aussielupins.org.au/recipes/baked-berry-oat-slice/" rel="noopener noreferrer" target="_blank">https://aussielupins.org.au/recipes/baked-berry-oat-slice/</a></li><li id="ref-R10">[R10] The Lupin Co / Anna Van Dyken — Velvet Chocolate Lupin Mousse. Mousse de chocolate espessada com farinha de tremoço. Disponível em: <a href="https://thelupinco.com.au/velvet-chocolate-lupin-mousse/" rel="noopener noreferrer" target="_blank">https://thelupinco.com.au/velvet-chocolate-lupin-mousse/</a></li></ol><h4>Estudos científicos e revisões (benefícios e propriedades medicinais)</h4><ol><li id="ref-M1">[M1] Aussie Lupin Beans — Facts. Composição alimentar média do grão descascado de Australian Sweet Lupin. Disponível em: <a href="https://aussielupins.org.au/facts/" rel="noopener noreferrer" target="_blank">https://aussielupins.org.au/facts/</a></li><li id="ref-M2">[M2] Fernández Castillo e colaboradores (2023) — Therapeutic Applications and Effects of Lupinus angustifolius: A Systematic Review and Meta-Analysis. Sete ensaios aleatorizados, 302 participantes, resultados para LDL e outros parâmetros. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/37509841/" rel="noopener noreferrer" target="_blank">https://pubmed.ncbi.nlm.nih.gov/37509841/</a></li><li id="ref-M3">[M3] Bryant, Rangan e Grafenauer (2022) — Lupins and Health Outcomes: A Systematic Literature Review. Síntese de 21 estudos e limitações da evidência. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/35057507/" rel="noopener noreferrer" target="_blank">https://pubmed.ncbi.nlm.nih.gov/35057507/</a></li><li id="ref-M4">[M4] Hall e colaboradores — Australian sweet lupin flour addition reduces the glycaemic index of a white bread breakfast. Ensaio humano com farinha de Lupinus angustifolius em pão. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/15734714/" rel="noopener noreferrer" target="_blank">https://pubmed.ncbi.nlm.nih.gov/15734714/</a></li></ol><h4>Dados nutricionais</h4><ol><li id="ref-N1">[N1] Aussie Lupin Beans — Facts, Nutrition profile for the kernel. Composição média por 100 g de Australian Sweet Lupin (Lupinus angustifolius) seco descascado, incluindo energia, macronutrientes e minerais. Disponível em: <a href="https://aussielupins.org.au/facts/" rel="noopener noreferrer" target="_blank">https://aussielupins.org.au/facts/</a></li><li id="ref-N2">[N2] The Lupin Co — Lupin Flakes Technical Data Sheet. Confirma a identidade botânica, a forma desidratada dos produtos e a necessidade de distinguir frações e formatos alimentares. Disponível em: <a href="https://thelupinco.com.au/more-great-information/lupin-flakes-tds/" rel="noopener noreferrer" target="_blank">https://thelupinco.com.au/more-great-information/lupin-flakes-tds/</a></li></ol><h4>Utilidades e aplicações</h4><ol><li id="ref-U1">[U1] Grains &amp; Legumes Nutrition Council — Lupins. Aplicações alimentares e uso industrial de grão, farinha, flocos e granulado. Disponível em: <a href="https://www.glnc.org.au/lupins/" rel="noopener noreferrer" target="_blank">https://www.glnc.org.au/lupins/</a></li><li id="ref-U2">[U2] PROSEA / Pl@ntUse — Lupinus. Inoculação, fixação de azoto, adubação verde, culturas de cobertura e rotações. Disponível em: <a href="https://plantuse.plantnet.org/en/Lupinus_%28PROSEA%29" rel="noopener noreferrer" target="_blank">https://plantuse.plantnet.org/en/Lupinus_%28PROSEA%29</a></li><li id="ref-U3">[U3] FAO Ecocrop — Data sheet Lupinus angustifolius. Utilizações para grão, forragem, fixação de azoto, cobertura e flores. Disponível em: <a href="https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2519" rel="noopener noreferrer" target="_blank">https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2519</a></li></ol><h4>Permacultura</h4><ol><li id="ref-P1">[P1] FAO Ecocrop — Data sheet Lupinus angustifolius. Contributos para solo, azoto, cobertura, usos ambientais e limitações de cultivo. Disponível em: <a href="https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2519" rel="noopener noreferrer" target="_blank">https://ecocrop.apps.fao.org/ecocrop/srv/en/dataSheet?id=2519</a></li><li id="ref-P2">[P2] PROSEA / Pl@ntUse — Lupinus. Efeitos da cultura sobre rotação, adubação verde, simbiose radicular e plantas consociadas. Disponível em: <a href="https://plantuse.plantnet.org/en/Lupinus_%28PROSEA%29" rel="noopener noreferrer" target="_blank">https://plantuse.plantnet.org/en/Lupinus_%28PROSEA%29</a></li><li id="ref-P3">[P3] Australasian Society of Clinical Immunology and Allergy — Lupin Allergy. Base da penalização de segurança por potencial de alergia ao tremoço. Disponível em: <a href="https://allergy.org.au/patients/food-allergy/lupin-food-allergy" rel="noopener noreferrer" target="_blank">https://allergy.org.au/patients/food-allergy/lupin-food-allergy</a></li><li id="ref-P4">[P4] Innovation Centre for Organic Farming — Lupin seeds as food. Segurança dos alcaloides em variedades doces versus amargas. Disponível em: <a href="https://icoel.dk/en/plant-production/lupin-seeds-as-food/" rel="noopener noreferrer" target="_blank">https://icoel.dk/en/plant-production/lupin-seeds-as-food/</a></li></ol></section>
+</article>
+</main>
+<footer>
+<a href="index.html">← Voltar à lista de plantas</a>
+</footer>
+
+</div>
+<script>
+  (function(){
+    const mount = document.getElementById("sidebar-mount");
+    if(!mount) return;
+
+    const applyActive = (root) => {
+      const path = (location.pathname.split("/").pop() || "inicio.html").toLowerCase();
+      root.querySelectorAll(".nav-item").forEach(a => {
+        const route = (a.getAttribute("data-route") || a.getAttribute("href") || "").toLowerCase();
+        const href = (a.getAttribute("href") || "").toLowerCase();
+        const isActive = (route && route === path) || (href && href === path);
+        if(isActive) a.classList.add("active");
+        else a.classList.remove("active");
+      });
+    };
+
+    const setCollapsed = (sidebar, collapsed) => {
+      sidebar.setAttribute("data-collapsed", collapsed ? "1" : "0");
+      document.body.classList.toggle("sidebar-collapsed", !!collapsed);
+      localStorage.setItem("sidebar-collapsed", collapsed ? "1" : "0");
+    };
+
+    fetch("sidebar.html", { cache: "no-store" })
+      .then(r => r.text())
+      .then(html => {
+        mount.innerHTML = html;
+
+        const sidebar = mount.querySelector(".sidebar");
+        const toggle = mount.querySelector(".sidebar-toggle");
+        if(!sidebar || !toggle) return;
+
+        // restore collapsed state
+        const saved = localStorage.getItem("sidebar-collapsed");
+        const collapsed = saved === "1";
+        setCollapsed(sidebar, collapsed);
+
+        toggle.addEventListener("click", () => {
+          const now = sidebar.getAttribute("data-collapsed") === "1";
+          setCollapsed(sidebar, !now);
+        });
+
+        applyActive(mount);
+      })
+      .catch(() => {
+        // se sidebar.html não existir, não quebra a página
+      });
+
+    // Masthead "stuck" feedback
+    const masthead = document.querySelector(".with-sidebar .masthead");
+    const sentinel = document.querySelector(".masthead-sentinel");
+    if(masthead && sentinel && "IntersectionObserver" in window){
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          masthead.classList.toggle("is-stuck", !entry.isIntersecting);
+        });
+      }, {root: null, threshold: 0});
+      io.observe(sentinel);
+    }
+  })();
+  </script>
+</body>
+</html>
