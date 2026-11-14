@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+
+<html lang="pt">
+<head>
+<meta charset="utf-8"/>
+<title>Batata Ratte – Horta da Terra para o prato</title>
+<link href="style.css" rel="stylesheet"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+</style>
+<meta content="Batata Ratte (Solanum tuberosum): cultivo biológico, sazonalidade, receitas, nutrição, segurança, permacultura e referências." name="description"/><style>
+/* Extensões discretas da ficha da batata Ratte: manter cores e grelha do modelo. */
+.planta-cabecalho .imagem-container{min-height:210px;}
+.imagem-em-falta{width:100%;min-height:210px;display:flex;flex-direction:column;
+ align-items:center;justify-content:center;gap:.35rem;padding:1.2rem;
+ color:#50605a;text-align:center;background:linear-gradient(145deg,#f5f8f3,#eaf2e9);}
+.imagem-em-falta .sinal{font-size:2rem;line-height:1.3;}
+.imagem-em-falta small{font-style:italic;color:#6b7280;}
+.tabela-scroll{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.tabela-scroll table{min-width:570px;}
+.referencia-nota sup a, section:not(#referencias) sup a{color:var(--cor-secundaria);text-decoration:none;}
+.referencia-nota sup a:hover, section:not(#referencias) sup a:hover{text-decoration:underline;}
+#referencias li{overflow-wrap:anywhere;}
+#referencias li:target{background:#f0faf3;}
+.diet-links .diet-links-right{margin-left:auto;}
+#permacultura dd p{margin:.3rem 0 .75rem;}
+</style></head>
+<body id="topo">
+<div id="sidebar-mount"></div>
+<div class="with-sidebar">
+<div aria-hidden="true" class="masthead-sentinel"></div>
+<div class="masthead"><header>
+<h1>Horta da Terra para o prato</h1>
+<p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar.</p></header>
+<nav>
+<a href="abobora-butternut.html">Abóbora butternut</a>
+<a href="abobora-grande.html">Abóbora grande</a>
+<a class="" href="acelga.html">Acelga</a>
+<a href="agriao.html">Agrião-de-água</a>
+<a href="agriao-terra.html">Agrião-da-terra</a>
+<a href="aipo.html">Aipo (talos e folhas)</a>
+<a href="alface.html">Alface</a>
+<a href="alho.html">Alho</a>
+<a href="alho-frances.html">Alho-francês</a>
+<a href="aneto.html">Aneto / Endro</a>
+<a href="batata-comum.html">Batata comum</a>
+<a href="batata-doce.html">Batata-doce</a><a class="ativa" href="batata-ratte.html">Batata Ratte</a>
+<a href="beringela.html">Beringela</a>
+<a href="beterraba.html">Beterraba</a>
+<a href="brocolo.html">Brócolo</a>
+<a href="canonigos.html">Canónigos</a>
+<a href="cebola.html">Cebola</a>
+<a href="cebola-fresca.html">Cebola fresca</a>
+<a href="cenoura.html">Cenoura</a>
+<a href="coentros.html">Coentros</a>
+<a href="couve-chinesa.html">Couve chinesa</a>
+<a href="couve-flor.html">Couve-flor</a><a href="couve-frisada.html">Couve frisada</a><a href="couve-portuguesa.html">Couve portuguesa</a>
+<a href="couve-rabano.html">Couve-rábano</a>
+<a href="couve-repolho.html">Couve repolho</a>
+<a href="couve-toscana.html">Couve toscana</a>
+<a href="curgete.html">Curgete</a>
+<a href="ervilhas-frescas.html">Ervilhas frescas</a>
+<a href="espinafre.html">Espinafre</a>
+<a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+<a href="feijao-verde.html">Feijão verde</a>
+<a href="manjericao.html">Manjericão</a>
+<a href="milho-doce.html">Milho doce</a>
+<a href="mizuna.html">Mizuna</a>
+<a href="morangos.html">Morangueiro / Morangos</a>
+<a href="moringa.html">Moringa</a>
+<a href="nabica.html">Nabiça</a>
+<a href="nabo.html">Nabo</a>
+<a href="pak-choi.html">Pak choi</a>
+<a href="pepino.html">Pepino</a>
+<a href="pimento.html">Pimento</a>
+<a href="rabanete.html">Rabanete</a>
+<a href="rabano.html">Rábano / Daikon</a>
+<a href="rucula.html">Rúcula</a>
+<a href="salanova.html">Salanova</a>
+<a href="salsa.html">Salsa</a>
+<a href="tomate.html">Tomate (genérico)</a>
+<a href="tomate-chucha.html">Tomate tipo chucha / Roma</a>
+<a href="tremoco-doce-australiano.html">Tremoço-doce australiano</a></nav></div>
+<main>
+<!-- Navegação entre plantas (anterior / seguinte) -->
+<nav class="nav-paginacao">
+<a class="prev" href="batata-doce.html">Batata-doce</a>
+<a class="next" href="beringela.html">Beringela</a>
+</nav>
+<article class="planta">
+<div class="planta-cabecalho">
+<div class="planta-titulo">
+<h2>Batata Ratte (La Ratte) (<em>Solanum tuberosum L. 'Ratte'</em>)</h2>
+<div class="tags-nomes"><span>Família: Solanáceas (Solanaceae)</span><span>Parte Usada: tubérculos próprios para consumo</span><span>Tipo: batata hortícola de polpa firme</span><span>Produção: <strong>anual, biológico</strong></span></div>
+<div class="info-rapida"><div><strong>Origem</strong> variedade tradicional historicamente difundida em França, de origem genética ainda desconhecida</div><div><strong>Uso principal</strong> tubérculos firmes para cozer, assar, saladas, gratinados, purés, gnocchi e raclette</div><div><strong>Perfil nutricional</strong> fonte energética de amido, potássio e vitamina C, com fibra alimentar</div></div>
+</div>
+<div>
+<div class="imagem-container-externo">
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"><div aria-label="Fotografia da batata Ratte ainda não disponível" class="imagem-em-falta" role="img"><span aria-hidden="true" class="sinal">🌱</span><span>Fotografia da planta a adicionar</span><small>Solanum tuberosum L. 'Ratte'</small></div></div></div>
+</div>
+<p class="imagem-legenda">Sem fotografia associada à ficha Excel.</p>
+</div>
+</div>
+<!-- <h2>Acelga (<em>Beta vulgaris</em> var. <em>cicla</em>)</h2> -->
+<!-- 0. Imagem -->
+<!-- 1. Apresentação / Descrição -->
+<section id="apresentacao"><h3>1. Apresentação / Descrição</h3><p>A batata Ratte (La Ratte) é uma variedade tradicional de Solanum tuberosum L., da família Solanaceae, cultivada sobretudo pelos seus pequenos tubérculos alongados, irregulares ou ligeiramente curvos, de pele amarela fina e polpa amarela muito firme. A textura cerosa e o sabor delicado, frequentemente comparado ao de castanha ou avelã, distinguem-na das batatas farinhentas. Conserva bem a forma após cozedura, sendo especialmente apreciada cozida, a vapor, em saladas e em pratos de forno. A planta forma uma rama herbácea de porte médio, com folhas compostas; multiplica-se habitualmente por tubérculos de plantação e é cultivada como cultura anual. <sup><a aria-label="Consultar referência D1" href="#ref-D1">[D1]</a></sup><sup><a aria-label="Consultar referência D2" href="#ref-D2">[D2]</a></sup><sup><a aria-label="Consultar referência D3" href="#ref-D3">[D3]</a></sup></p><p>A origem genética exata da variedade é indicada como desconhecida na base varietal francesa da SEMAE; o seu registo no catálogo francês data de 1935. Há referências históricas à sua circulação anterior na horticultura francesa, mas não é rigoroso apresentar um local ou ano de criação como facto confirmado. No comércio, «Ratte du Touquet» surge em receitas e na apresentação comercial da Ratte; a ficha descreve a variedade 'Ratte', e não uma nova espécie nem um valor nutricional específico dessa designação comercial. <sup><a aria-label="Consultar referência D1" href="#ref-D1">[D1]</a></sup><sup><a aria-label="Consultar referência D3" href="#ref-D3">[D3]</a></sup><sup><a aria-label="Consultar referência D4" href="#ref-D4">[D4]</a></sup></p><p>Na horta, a Ratte pede solo profundo, fértil, solto e com drenagem, humidade regular e exposição solar, podendo também ser cultivada em recipientes grandes. Tem produção relativamente modesta e tubérculos geralmente pequenos: a avaliação francesa apresenta rendimento de cerca de 65% do da variedade Bintje nas condições do ensaio de referência. É sensível ao míldio no folhedo e nos tubérculos, pelo que são importantes plantações em locais ventilados, material de propagação saudável, amontoa, vigilância sanitária e rotação. <sup><a aria-label="Consultar referência D1" href="#ref-D1">[D1]</a></sup><sup><a aria-label="Consultar referência D2" href="#ref-D2">[D2]</a></sup><sup><a aria-label="Consultar referência D3" href="#ref-D3">[D3]</a></sup></p><p class="referencia-nota">Referência(s) de suporte para a descrição: <sup><a aria-label="Consultar referência D1" href="#ref-D1">[D1]</a></sup><sup><a aria-label="Consultar referência D2" href="#ref-D2">[D2]</a></sup><sup><a aria-label="Consultar referência D3" href="#ref-D3">[D3]</a></sup><sup><a aria-label="Consultar referência D4" href="#ref-D4">[D4]</a></sup></p></section>
+<!-- 2. Sazonalidade (Portugal continental) -->
+<section id="sazonalidade"><h3>2. Sazonalidade (Portugal continental)</h3><p>Em Portugal continental, a batata Ratte pode ser instalada na primavera, após diminuir o risco de geadas e quando o solo estiver suficientemente aquecido. Uma ficha de produção biológica elaborada nos Açores refere fevereiro–março para aquele contexto regional; no continente, o calendário deve ser ajustado às diferenças entre litoral, interior, altitude e exposição. O perfil varietal classifica a Ratte como de maturação semiprecoce a média; não existe nesta ficha um ensaio local que permita fixar um número universal de dias até à colheita. <sup><a aria-label="Consultar referência S1" href="#ref-S1">[S1]</a></sup><sup><a aria-label="Consultar referência S2" href="#ref-S2">[S2]</a></sup><sup><a aria-label="Consultar referência S3" href="#ref-S3">[S3]</a></sup></p><p>O período de produção concentra-se habitualmente da primavera ao fim do verão: em condições adequadas, podem colher-se tubérculos novos antes da maturação plena ou esperar pelo amarelecimento da rama para uma colheita destinada a conservação. Em verões quentes e secos, a rega e a cobertura do solo merecem atenção; em períodos húmidos, a vigilância do míldio é particularmente importante. Para guardar tubérculos, selecionar apenas os sãos e conservar ao abrigo da luz. <sup><a aria-label="Consultar referência S2" href="#ref-S2">[S2]</a></sup><sup><a aria-label="Consultar referência S3" href="#ref-S3">[S3]</a></sup><sup><a aria-label="Consultar referência S4" href="#ref-S4">[S4]</a></sup><sup><a aria-label="Consultar referência S5" href="#ref-S5">[S5]</a></sup></p><ul><li><strong>Pré-brotação dos tubérculos-semente:</strong> opcional no final do inverno, em local luminoso e protegido de geadas.</li><li><strong>Plantação:</strong> geralmente fevereiro–abril em Portugal continental, com ajustamento ao clima e à segurança face às geadas.</li><li><strong>Desenvolvimento vegetativo:</strong> primavera e início do verão; exige água regular sem encharcamento e amontoa para proteger os tubérculos da luz.</li><li><strong>Vigilância fitossanitária:</strong> observar com especial atenção sinais de míldio em tempo húmido e moderado; manter a rotação com outras famílias botânicas.</li><li><strong>Colheita:</strong> aproximadamente do início do verão ao começo do outono, em função da data de plantação e da maturação efetiva dos tubérculos.</li><li><strong>Conservação:</strong> guardar somente batatas sãs em local fresco, seco, escuro e ventilado; verificar regularmente brotação e deterioração.</li></ul><p class="referencia-nota">Referência(s) para a sazonalidade e o cultivo: <sup><a aria-label="Consultar referência S1" href="#ref-S1">[S1]</a></sup><sup><a aria-label="Consultar referência S2" href="#ref-S2">[S2]</a></sup><sup><a aria-label="Consultar referência S3" href="#ref-S3">[S3]</a></sup><sup><a aria-label="Consultar referência S4" href="#ref-S4">[S4]</a></sup><sup><a aria-label="Consultar referência S5" href="#ref-S5">[S5]</a></sup></p></section>
+<!-- 3. Como consumir -->
+<section id="como-consumir"><h3>3. Como consumir</h3><ul><li><strong>Cozida em água ou ao vapor:</strong> a polpa firme mantém a forma, permitindo servir as batatas inteiras ou cortadas, com azeite, ervas e outros legumes.</li><li><strong>Em saladas:</strong> utilizar as Ratte cozidas e arrefecidas ou ainda mornas, com vinagrete, mostarda, ervas, ovos ou queijo.</li><li><strong>Assada:</strong> cozinhar os tubérculos com alho, tomilho, alecrim e uma pequena quantidade de azeite, valorizando a pele fina quando está intacta e própria para consumo.</li><li><strong>Em raclette:</strong> acompanhar queijo de raclette fundido, legumes e outros ingredientes, depois de cozer previamente as batatas.</li><li><strong>Em gratinados e tartes salgadas:</strong> dispor rodelas de Ratte com leite, natas, queijo ou legumes, conforme cada receita.</li><li><strong>Em puré e gnocchi:</strong> também admite esmagamento ou transformação em massa de gnocchi, embora a polpa firme produza texturas diferentes das variedades farinhentas.</li><li><strong>Em caril e sopas cremosas:</strong> absorve molhos e pode ser utilizada em guisados de vegetais ou triturada para veloutés.</li></ul><p class="referencia-nota">Referência(s) para consumo e segurança: <sup><a aria-label="Consultar referência C1" href="#ref-C1">[C1]</a></sup><sup><a aria-label="Consultar referência C2" href="#ref-C2">[C2]</a></sup><sup><a aria-label="Consultar referência C4" href="#ref-C4">[C4]</a></sup><sup><a aria-label="Consultar referência C5" href="#ref-C5">[C5]</a></sup><sup><a aria-label="Consultar referência R1" href="#ref-R1">[R1]</a></sup><sup><a aria-label="Consultar referência R2" href="#ref-R2">[R2]</a></sup><sup><a aria-label="Consultar referência R3" href="#ref-R3">[R3]</a></sup><sup><a aria-label="Consultar referência R4" href="#ref-R4">[R4]</a></sup><sup><a aria-label="Consultar referência R5" href="#ref-R5">[R5]</a></sup><sup><a aria-label="Consultar referência R6" href="#ref-R6">[R6]</a></sup><sup><a aria-label="Consultar referência R7" href="#ref-R7">[R7]</a></sup><sup><a aria-label="Consultar referência R9" href="#ref-R9">[R9]</a></sup></p></section>
+<!-- 4. Receitas e preparados (Top 10) -->
+<section id="receitas"><h3 id="titulo-receitas">4. Receitas e preparados (Top 10)</h3><div class="diet-links"><div class="diet-links-right"><a href="/horta-info/data/refeicoes.html">(Filtro por ingredientes)</a></div></div><p>Dez receitas distintas, publicadas com batata Ratte ou Ratte du Touquet entre os ingredientes: raclette à espanhola, batatas assadas com aromáticas, salada, gratinado dauphinois, puré à Joël Robuchon, gnocchi, velouté, tarte de cogumelos e ricotta, caril e sanduíche de batata tipo croque-monsieur. Foram selecionados métodos culinários efetivamente diferentes; os títulos foram traduzidos para português e as ligações remetem para as receitas completas em francês. <sup><a aria-label="Consultar referência R1" href="#ref-R1">[R1]</a></sup><sup><a aria-label="Consultar referência R2" href="#ref-R2">[R2]</a></sup><sup><a aria-label="Consultar referência R3" href="#ref-R3">[R3]</a></sup><sup><a aria-label="Consultar referência R4" href="#ref-R4">[R4]</a></sup><sup><a aria-label="Consultar referência R5" href="#ref-R5">[R5]</a></sup><sup><a aria-label="Consultar referência R6" href="#ref-R6">[R6]</a></sup><sup><a aria-label="Consultar referência R7" href="#ref-R7">[R7]</a></sup><sup><a aria-label="Consultar referência R8" href="#ref-R8">[R8]</a></sup><sup><a aria-label="Consultar referência R9" href="#ref-R9">[R9]</a></sup><sup><a aria-label="Consultar referência R10" href="#ref-R10">[R10]</a></sup></p><ol><li><strong><a href="https://www.hachette.fr/recette/diego-alary-la-recette-revisitee-de-la-raclette-lespagnole-version-pata-negra/" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Raclette à espanhola com presunto pata negra</a></strong> – batatas pequenas do tipo Ratte, cozidas com ervas, recebem presunto, condimento de cornichons e queijo de raclette fundido. Receita de Diego Alary. <sup><a aria-label="Consultar referência R1" href="#ref-R1">[R1]</a></sup></li><li><strong><a href="https://touquetsavour.com/recette/ratte-du-touquet-roties-au-four/" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Batatas Ratte assadas no forno com aromáticas</a></strong> – pequenos tubérculos assados com alho, tomilho, alecrim, louro e azeite, servidos como acompanhamento. <sup><a aria-label="Consultar referência R2" href="#ref-R2">[R2]</a></sup></li><li><strong><a href="https://www.lechtimarche.fr/actus/recette-chti-salade-de-pommes-de-terre-rattes.html" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Salada de batatas Ratte com ovo e molho de mostarda</a></strong> – batatas cozidas e arrefecidas misturadas com ovos, legumes e molho cremoso de mostarda, numa preparação de salada fria. <sup><a aria-label="Consultar referência R3" href="#ref-R3">[R3]</a></sup></li><li><strong><a href="https://www.aldi.fr/marques/crofton/recette-gratin-dauphinois.html" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Gratinado dauphinois de Paul Pairet</a></strong> – rodelas de batata Ratte envolvidas em leite, natas, ervas e alho, terminadas no forno com cobertura dourada. <sup><a aria-label="Consultar referência R4" href="#ref-R4">[R4]</a></sup></li><li><strong><a href="https://touquetsavour.com/recette/puree-ratte-du-touquet-joel-robuchon/" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Puré de batata Ratte de Joël Robuchon</a></strong> – batata Ratte cozida e passada finamente, ligada com manteiga e leite quente para um puré liso e rico. <sup><a aria-label="Consultar referência R5" href="#ref-R5">[R5]</a></sup></li><li><strong><a href="https://touquetsavour.com/recette/gnocchis-de-ratte-du-touquet/" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Gnocchi de batata Ratte com abóbora-manteiga</a></strong> – massa de gnocchi feita com batata Ratte, farinha e gema, servida com creme de abóbora e molho de avelãs e ervas. <sup><a aria-label="Consultar referência R6" href="#ref-R6">[R6]</a></sup></li><li><strong><a href="https://touquetsavour.com/recette/veloute-truffe-ratte-touquet/" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Velouté de batata Ratte com manteiga de trufa</a></strong> – sopa cremosa que combina Ratte, cebola, caldo, leite e natas, terminada com manteiga aromatizada com trufa. <sup><a aria-label="Consultar referência R7" href="#ref-R7">[R7]</a></sup></li><li><strong><a href="https://cuisine.journaldesfemmes.fr/recette/3131116-tarte-de-ratte-du-touquet-aux-champignons-de-paris-et-ricotta" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Tarte de batata Ratte, cogumelos e ricotta</a></strong> – tarte salgada de massa folhada recheada com rodelas de Ratte, cogumelos e mistura de ricotta e ovos. <sup><a aria-label="Consultar referência R8" href="#ref-R8">[R8]</a></sup></li><li><strong><a href="https://touquetsavour.com/recette/curry-ratte-touquet/" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Caril de batata Ratte com tomate e coco</a></strong> – prato de Ratte salteada e estufada com cebola, tomate, leite de coco, caril e coentros. <sup><a aria-label="Consultar referência R9" href="#ref-R9">[R9]</a></sup></li><li><strong><a href="https://cuisine.journaldesfemmes.fr/recette/358973-croque-monsieur-de-ratte-du-touquet" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Croque-monsieur de batata Ratte</a></strong> – sanduíche quente formada com bases de batata Ratte ralada e assada, recheadas com carne e queijo fundido. <sup><a aria-label="Consultar referência R10" href="#ref-R10">[R10]</a></sup></li></ol></section>
+<!-- 5. Benefícios para a saúde e propriedades medicinais -->
+<section id="beneficios"><h3>5. Benefícios para a saúde e propriedades medicinais</h3><p>O principal valor da Ratte é alimentar e culinário, não medicinal. Tal como outras batatas, fornece energia sobretudo sob a forma de hidratos de carbono amiláceos, com pequenas quantidades de proteína e gordura. A polpa muito firme e o sabor característico diferenciam-na na cozinha, mas não autorizam a atribuir-lhe uma composição nutricional quantitativa singular sem medições laboratoriais desta variedade. <sup><a aria-label="Consultar referência M1" href="#ref-M1">[M1]</a></sup><sup><a aria-label="Consultar referência M2" href="#ref-M2">[M2]</a></sup><sup><a aria-label="Consultar referência M3" href="#ref-M3">[M3]</a></sup></p><p>Os registos de batata comum do USDA usados nesta ficha, por 100 g, indicam na batata crua com casca 77 kcal, 17,49 g de hidratos de carbono, 2,1 g de fibra, 425 mg de potássio e 19,7 mg de vitamina C; para batata cozida na casca, analisando a polpa e sem sal, registam 87 kcal, 20,13 g de hidratos de carbono, 1,8 g de fibra, 379 mg de potássio e 13 mg de vitamina C. São dois alimentos/formas de preparação catalogados separadamente, não uma experiência de perdas da mesma amostra nem valores específicos da Ratte. <sup><a aria-label="Consultar referência M2" href="#ref-M2">[M2]</a></sup><sup><a aria-label="Consultar referência M3" href="#ref-M3">[M3]</a></sup></p><p>Batata cozida, assada ou preparada com pouca gordura pode integrar uma alimentação variada e fornecer energia, potássio e alguma fibra; a presença de casca comestível aumenta a contribuição de fibra. O teor final da refeição depende fortemente dos acompanhamentos e das quantidades adicionadas de queijo, natas, manteiga, azeite ou sal. A batata não substitui os restantes hortícolas nem tratamentos médicos. <sup><a aria-label="Consultar referência M1" href="#ref-M1">[M1]</a></sup><sup><a aria-label="Consultar referência M4" href="#ref-M4">[M4]</a></sup></p><ul><li><strong>Fornecimento de energia e hidratos de carbono:</strong> a batata é alimento amiláceo que pode constituir a base energética de refeições equilibradas. <sup><a aria-label="Consultar referência M1" href="#ref-M1">[M1]</a></sup><sup><a aria-label="Consultar referência M2" href="#ref-M2">[M2]</a></sup></li><li><strong>Contributo de potássio:</strong> o mineral está presente nas tabelas de batata crua e cozida e participa em funções fisiológicas normais. <sup><a aria-label="Consultar referência M2" href="#ref-M2">[M2]</a></sup><sup><a aria-label="Consultar referência M3" href="#ref-M3">[M3]</a></sup><sup><a aria-label="Consultar referência M4" href="#ref-M4">[M4]</a></sup></li><li><strong>Contributo de vitamina C e vitamina B6:</strong> nutrientes presentes na batata, em quantidades dependentes da preparação e da fonte. <sup><a aria-label="Consultar referência M2" href="#ref-M2">[M2]</a></sup><sup><a aria-label="Consultar referência M3" href="#ref-M3">[M3]</a></sup></li><li><strong>Fornecimento de fibra alimentar:</strong> sobretudo quando a casca se encontra em bom estado e é consumida, em preparações apropriadas. <sup><a aria-label="Consultar referência M1" href="#ref-M1">[M1]</a></sup><sup><a aria-label="Consultar referência M2" href="#ref-M2">[M2]</a></sup></li><li><strong>Versatilidade culinária:</strong> a variedade mantém boa estrutura em saladas, ao vapor, assados e raclette, podendo reduzir a necessidade de fritura. <sup><a aria-label="Consultar referência M1" href="#ref-M1">[M1]</a></sup><sup><a aria-label="Consultar referência C2" href="#ref-C2">[C2]</a></sup></li><li><strong>Perfil de gordura naturalmente baixo no alimento simples:</strong> a gordura das receitas pode aumentar muito com manteiga, queijo e natas. <sup><a aria-label="Consultar referência M1" href="#ref-M1">[M1]</a></sup><sup><a aria-label="Consultar referência M2" href="#ref-M2">[M2]</a></sup><sup><a aria-label="Consultar referência M3" href="#ref-M3">[M3]</a></sup></li></ul><p class="nota-aviso">Consumir apenas os tubérculos próprios para alimentação. As partes verdes da batateira, os frutos e os rebentos não são alimentos. Batatas esverdeadas, amargas, apodrecidas, muito brotadas ou seriamente danificadas podem conter concentrações elevadas de glicoalcaloides, especialmente α-solanina e α-chaconina; devem ser rejeitadas quando a alteração é significativa. Evitar que a luz incida sobre os tubérculos na horta e no armazenamento. <sup><a aria-label="Consultar referência C3" href="#ref-C3">[C3]</a></sup><sup><a aria-label="Consultar referência M5" href="#ref-M5">[M5]</a></sup></p><p class="nota-aviso">A cozedura normal não deve ser considerada um método fiável para eliminar glicoalcaloides elevados. Para consumir batatas com pele, escolher apenas exemplares recentes, sãos e sem sinais de esverdeamento. Remover os olhos e as partes alteradas e não consumir batatas com sabor amargo ou sensação de ardor. Lavar bem os tubérculos e cozinhar com higiene. <sup><a aria-label="Consultar referência C3" href="#ref-C3">[C3]</a></sup><sup><a aria-label="Consultar referência M5" href="#ref-M5">[M5]</a></sup></p><p class="nota-aviso">Para pessoas que precisam controlar a ingestão de hidratos de carbono ou potássio, as porções e o método de confeção devem ser adaptados às recomendações clínicas individuais. A informação apresentada é nutricional e culinária, não é uma alegação terapêutica da variedade Ratte. <sup><a aria-label="Consultar referência M1" href="#ref-M1">[M1]</a></sup><sup><a aria-label="Consultar referência M4" href="#ref-M4">[M4]</a></sup></p></section>
+<!-- 6. Propriedades nutricionais -->
+<section id="nutricao"><h3>6. Propriedades nutricionais</h3><p>Não foi localizada uma tabela pública de composição laboratorial, por 100 g, específica e rastreável para a cultivar 'Ratte'. Por isso, a tabela abaixo reproduz exclusivamente dados genéricos de Solanum tuberosum da USDA Food Composition Database (SR Legacy, 2018), explicitamente identificados como batata comum. Estes valores não podem ser apresentados como resultados medidos na Ratte. <sup><a aria-label="Consultar referência N1" href="#ref-N1">[N1]</a></sup><sup><a aria-label="Consultar referência N2" href="#ref-N2">[N2]</a></sup></p><p>A coluna crua corresponde ao registo «Potatoes, flesh and skin, raw»; a coluna cozida ao registo «Potatoes, boiled, cooked in skin, flesh, without salt». O segundo registo é da polpa de batata cozida dentro da casca, sem sal adicionado; não representa uma medição da polpa e casca em conjunto. Os registos são diferentes e os valores por 100 g não demonstram, isoladamente, a percentagem de nutrientes perdidos ou ganhos na mesma batata. <sup><a aria-label="Consultar referência N1" href="#ref-N1">[N1]</a></sup><sup><a aria-label="Consultar referência N2" href="#ref-N2">[N2]</a></sup></p><p>Em refeições com Ratte, a quantidade real de nutrientes variará com a variedade, o local de produção, a dimensão do tubérculo, o armazenamento, a retirada da casca, a cozedura e os ingredientes acrescentados. A tabela serve como orientação nutricional geral, não como certificado analítico da cultivar. <sup><a aria-label="Consultar referência N1" href="#ref-N1">[N1]</a></sup><sup><a aria-label="Consultar referência N2" href="#ref-N2">[N2]</a></sup></p><div class="tabela-scroll"><table><thead><tr><th scope="col">Componente</th><th scope="col">Batata comum crua, polpa e casca (100 g)</th><th scope="col">Batata comum cozida na casca; polpa sem sal (100 g)</th></tr></thead><tbody><tr><td>Energia</td><td>77 kcal</td><td>87 kcal</td></tr><tr><td>Água</td><td>79,25 g</td><td>76,98 g</td></tr><tr><td>Hidratos de carbono</td><td>17,49 g</td><td>20,13 g</td></tr><tr><td>Açúcares totais</td><td>0,82 g</td><td>0,91 g</td></tr><tr><td>Fibra alimentar</td><td>2,1 g</td><td>1,8 g</td></tr><tr><td>Proteína</td><td>2,05 g</td><td>1,87 g</td></tr><tr><td>Lípidos totais</td><td>0,09 g</td><td>0,10 g</td></tr><tr><td>Ácidos gordos saturados</td><td>0,025 g</td><td>0,026 g</td></tr><tr><td>Sódio</td><td>6 mg</td><td>4 mg</td></tr><tr><td>Potássio</td><td>425 mg</td><td>379 mg</td></tr><tr><td>Magnésio</td><td>23 mg</td><td>22 mg</td></tr><tr><td>Fósforo</td><td>57 mg</td><td>44 mg</td></tr><tr><td>Vitamina C</td><td>19,7 mg</td><td>13 mg</td></tr><tr><td>Vitamina B6</td><td>0,298 mg</td><td>0,299 mg</td></tr><tr><td>Ferro</td><td>0,81 mg</td><td>0,31 mg</td></tr><tr><td>Cálcio</td><td>12 mg</td><td>5 mg</td></tr></tbody></table></div><p class="referencia-nota">Fonte(s) dos dados nutricionais: <sup><a aria-label="Consultar referência N1" href="#ref-N1">[N1]</a></sup><sup><a aria-label="Consultar referência N2" href="#ref-N2">[N2]</a></sup></p></section>
+<!-- 7. Utilidades e aplicações (não apenas alimentares) -->
+<section id="utilidades"><h3>7. Utilidades e aplicações</h3><ul><li><strong>Diversificação hortícola:</strong> preservar e cultivar uma variedade tradicional de tubérculo pequeno e polpa firme, distinta das batatas de grande calibre. <sup><a aria-label="Consultar referência U1" href="#ref-U1">[U1]</a></sup><sup><a aria-label="Consultar referência U3" href="#ref-U3">[U3]</a></sup></li><li><strong>Horta biológica:</strong> usar tubérculos-semente sãos, matéria orgânica bem decomposta, rega controlada e acompanhamento do míldio, sem assumir que a variedade é resistente. <sup><a aria-label="Consultar referência U1" href="#ref-U1">[U1]</a></sup><sup><a aria-label="Consultar referência U2" href="#ref-U2">[U2]</a></sup><sup><a aria-label="Consultar referência U3" href="#ref-U3">[U3]</a></sup></li><li><strong>Rotação de culturas:</strong> alternar a batata com famílias não solanáceas, evitando a repetição seguida da batata e do tomate no mesmo talhão. <sup><a aria-label="Consultar referência U1" href="#ref-U1">[U1]</a></sup><sup><a aria-label="Consultar referência U4" href="#ref-U4">[U4]</a></sup></li><li><strong>Cultivo em recipientes:</strong> aproveitar sacos de cultivo ou vasos grandes onde não haja espaço suficiente para canteiros extensos. <sup><a aria-label="Consultar referência U1" href="#ref-U1">[U1]</a></sup></li><li><strong>Cobertura sazonal do solo:</strong> a folhagem pode sombrear a superfície entre linhas durante o crescimento, embora a amontoa e a colheita revolvam algum solo. <sup><a aria-label="Consultar referência U1" href="#ref-U1">[U1]</a></sup><sup><a aria-label="Consultar referência U2" href="#ref-U2">[U2]</a></sup></li><li><strong>Gastronomia de especialidade:</strong> aproveitar a boa resistência à cozedura para pratos em que a batata mantém a forma, incluindo saladas e raclette. <sup><a aria-label="Consultar referência U3" href="#ref-U3">[U3]</a></sup><sup><a aria-label="Consultar referência C2" href="#ref-C2">[C2]</a></sup><sup><a aria-label="Consultar referência R1" href="#ref-R1">[R1]</a></sup></li><li><strong>Conservação alimentar:</strong> guardar tubérculos sãos no escuro, com inspeção regular para rejeitar os verdes, danificados ou excessivamente germinados. <sup><a aria-label="Consultar referência U1" href="#ref-U1">[U1]</a></sup><sup><a aria-label="Consultar referência C3" href="#ref-C3">[C3]</a></sup></li></ul></section>
+<!-- 8. Grau de funcionalidade em permacultura -->
+<section id="permacultura"><h3>8. Grau de funcionalidade em permacultura</h3><p>Classificação indicativa segundo o algoritmo de funcionalidade em permacultura definido para o projeto.</p><dl><dt>Grau de funcionalidade</dt><dd><p>4,3 / 10</p></dd><dt>Funções principais</dt><dd><p>Na permacultura, a Ratte acrescenta diversidade alimentar com um tubérculo de boa qualidade gastronómica e adapta-se a canteiros ou recipientes em cultivo biológico. Durante o crescimento forma cobertura folhosa sazonal e pode integrar rotações planeadas, com aproveitamento de composto vegetal bem maturado e rega eficiente. A conservação de uma cultivar tradicional também tem interesse para a diversidade de escolhas hortícolas.</p><p>A contribuição estrutural e ecológica é, porém, temporária: não é uma cultura perene de estrato alto nem uma planta fixadora de azoto. O rendimento relativamente baixo, a suscetibilidade varietal ao míldio, as exigências de água e a necessidade de proteger os tubérculos contra a luz justificam uma avaliação cautelosa. A sua utilidade é sobretudo alimentar, sem alegações terapêuticas próprias.</p></dd><dt>Notas</dt><dd><p>Critérios positivos (0–2 pontos cada): ALIM = +2 (tubérculos alimentares muito versáteis); MED = +1 (valor nutricional, sem uso terapêutico demonstrado da cultivar); ESTR = +1 (cobertura e estrutura herbácea sazonais, sem permanência); SOLO = +1 (sombreamento e biomassa durante a cultura, contrabalançados pela amontoa/colheita); ECO = +1 (algum contributo de diversidade cultivada e cobertura, sem benefício ecológico elevado documentado); RUST = +1 (adapta-se a diferentes solos, mas é sensível ao míldio e necessita de rega); MULT = +1 (alimento, cultura em recipientes e preservação de cultivar tradicional).</p><p>Penalizações (0, −1 ou −2): TOX = −1 (glicoalcaloides nas partes verdes e em tubérculos esverdeados/brotados); PERIGO = 0 (sem perigo físico especial inerente à planta); INVAS = 0 (não classificada aqui como invasora); COMP = −1 (necessita de água, nutrientes, espaço e gestão sanitária nas associações).</p><p>Cálculo: POS = 8; NEG = -2; BRUTA = 8 + (-2) = 6; grau = (6 ÷ 14) × 10 = 4,3 / 10. Escala definida pelo projeto; avaliação funcional fundamentada nas características agrícolas, sem pretensão de equivaler a um índice científico normalizado. <sup><a aria-label="Consultar referência P1" href="#ref-P1">[P1]</a></sup><sup><a aria-label="Consultar referência P2" href="#ref-P2">[P2]</a></sup><sup><a aria-label="Consultar referência P3" href="#ref-P3">[P3]</a></sup><sup><a aria-label="Consultar referência P4" href="#ref-P4">[P4]</a></sup></p></dd></dl><p class="referencia-nota">Referência(s) de suporte à avaliação: <sup><a aria-label="Consultar referência P1" href="#ref-P1">[P1]</a></sup><sup><a aria-label="Consultar referência P2" href="#ref-P2">[P2]</a></sup><sup><a aria-label="Consultar referência P3" href="#ref-P3">[P3]</a></sup><sup><a aria-label="Consultar referência P4" href="#ref-P4">[P4]</a></sup></p></section>
+<!-- 9. Referências -->
+<section id="referencias"><h3>9. Referências</h3><h4>Descrição e botânica</h4><ol><li id="ref-D1">[D1] ARVALIS/GEVES — RATTE. Ficha varietal com inscrição, morfologia, rendimento comparativo, culinária e resistência a doenças. Disponível em: <a href="https://fiches.arvalis-infos.fr/fiche_variete/fiches_varietes.php?id_espece=001&amp;id_variete=292&amp;mode=fv" rel="noopener noreferrer" target="_blank">https://fiches.arvalis-infos.fr/fiche_variete/fiches_varietes.php?id_espece=001&amp;id_variete=292&amp;mode=fv</a></li><li id="ref-D2">[D2] Royal Horticultural Society — Solanum tuberosum 'Ratte'. Descrição botânica, tubérculos, sabor, cultivo e produtividade. Disponível em: <a href="https://www.rhs.org.uk/plants/139340/solanum-tuberosum-ratte/details" rel="noopener noreferrer" target="_blank">https://www.rhs.org.uk/plants/139340/solanum-tuberosum-ratte/details</a></li><li id="ref-D3">[D3] SEMAE/FN3PT — RATTE. Registo francês de 1935, origem genética desconhecida, descrição dos tubérculos e suscetibilidades. Disponível em: <a href="https://www.plantdepommedeterre.org/variete/ratte/" rel="noopener noreferrer" target="_blank">https://www.plantdepommedeterre.org/variete/ratte/</a></li><li id="ref-D4">[D4] Société Nationale d’Horticulture de France — Pomme de terre. Tipos culinários, precocidade, produtividade e contexto de variedades históricas. Disponível em: <a href="https://www.snhf.org/fiche-plante/pomme-de-terre/" rel="noopener noreferrer" target="_blank">https://www.snhf.org/fiche-plante/pomme-de-terre/</a></li></ol><h4>Sazonalidade e cultivo (Portugal e clima mediterrânico)</h4><ol><li id="ref-S1">[S1] Governo Regional dos Açores / Universidade dos Açores — Produção de hortícolas em modo de produção biológico (2020). Ficha técnica de batata, com calendário e práticas gerais em Portugal. Disponível em: <a href="https://agricultura.azores.gov.pt/wp-content/uploads/2022/01/manual-fichas-de-cultura-mpbpdf.pdf" rel="noopener noreferrer" target="_blank">https://agricultura.azores.gov.pt/wp-content/uploads/2022/01/manual-fichas-de-cultura-mpbpdf.pdf</a></li><li id="ref-S2">[S2] Royal Horticultural Society — How to grow potatoes. Plantação, amontoa, rega, colheita, conservação e rotação. Disponível em: <a href="https://www.rhs.org.uk/vegetables/potatoes/grow-your-own" rel="noopener noreferrer" target="_blank">https://www.rhs.org.uk/vegetables/potatoes/grow-your-own</a></li><li id="ref-S3">[S3] ARVALIS/GEVES — RATTE. Maturação semiprecoce a média, conservação e resistência ao míldio. Disponível em: <a href="https://fiches.arvalis-infos.fr/fiche_variete/fiches_varietes.php?id_espece=001&amp;id_variete=292&amp;mode=fv" rel="noopener noreferrer" target="_blank">https://fiches.arvalis-infos.fr/fiche_variete/fiches_varietes.php?id_espece=001&amp;id_variete=292&amp;mode=fv</a></li><li id="ref-S4">[S4] RHS — Solanum tuberosum 'Ratte'. Exigências de solo, temperatura e propagação por tubérculos. Disponível em: <a href="https://www.rhs.org.uk/plants/139340/solanum-tuberosum-ratte/details" rel="noopener noreferrer" target="_blank">https://www.rhs.org.uk/plants/139340/solanum-tuberosum-ratte/details</a></li><li id="ref-S5">[S5] RHS — Potato blight. Vigilância, remoção de material afetado e rotação para prevenção de problemas sanitários. Disponível em: <a href="https://www.rhs.org.uk/disease/potato-blight" rel="noopener noreferrer" target="_blank">https://www.rhs.org.uk/disease/potato-blight</a></li></ol><h4>Consumo, cuidados e segurança</h4><ol><li id="ref-C1">[C1] RHS — How to grow potatoes. Colheita, consumo, conservação e cultivo em recipientes. Disponível em: <a href="https://www.rhs.org.uk/vegetables/potatoes/grow-your-own" rel="noopener noreferrer" target="_blank">https://www.rhs.org.uk/vegetables/potatoes/grow-your-own</a></li><li id="ref-C2">[C2] ARVALIS/GEVES — RATTE. Grupo culinário A e muito boa resistência à cozedura. Disponível em: <a href="https://fiches.arvalis-infos.fr/fiche_variete/fiches_varietes.php?id_espece=001&amp;id_variete=292&amp;mode=fv" rel="noopener noreferrer" target="_blank">https://fiches.arvalis-infos.fr/fiche_variete/fiches_varietes.php?id_espece=001&amp;id_variete=292&amp;mode=fv</a></li><li id="ref-C3">[C3] Bundesinstitut für Risikobewertung (BfR) — Frequently asked questions about solanine in potatoes. Segurança de tubérculos esverdeados e brotados. Disponível em: <a href="https://www.bfr.bund.de/en/service/frequently-asked-questions/topic/frequently-asked-questions-about-solanine-glycoalkaloids-in-potatoes/" rel="noopener noreferrer" target="_blank">https://www.bfr.bund.de/en/service/frequently-asked-questions/topic/frequently-asked-questions-about-solanine-glycoalkaloids-in-potatoes/</a></li><li id="ref-C4">[C4] NHS — Starchy foods and carbohydrates. Preparação culinária da batata e contribuição numa alimentação equilibrada. Disponível em: <a href="https://www.nhs.uk/live-well/eat-well/food-types/starchy-foods-and-carbohydrates/" rel="noopener noreferrer" target="_blank">https://www.nhs.uk/live-well/eat-well/food-types/starchy-foods-and-carbohydrates/</a></li><li id="ref-C5">[C5] SEMAE/FN3PT — RATTE. Textura e classificação culinária da variedade. Disponível em: <a href="https://www.plantdepommedeterre.org/variete/ratte/" rel="noopener noreferrer" target="_blank">https://www.plantdepommedeterre.org/variete/ratte/</a></li></ol><h4>Receitas e preparados</h4><ol><li id="ref-R1">[R1] Hachette Cuisine / Diego Alary — Raclette à l’espagnole, version pata negra. Receita com batatas pequenas tipo Ratte, presunto e queijo de raclette. Disponível em: <a href="https://www.hachette.fr/recette/diego-alary-la-recette-revisitee-de-la-raclette-lespagnole-version-pata-negra/" rel="noopener noreferrer" target="_blank">https://www.hachette.fr/recette/diego-alary-la-recette-revisitee-de-la-raclette-lespagnole-version-pata-negra/</a></li><li id="ref-R2">[R2] Touquet Savour — Ratte du Touquet rôties au four. Receita de batatas assadas com alho, alecrim e tomilho. Disponível em: <a href="https://touquetsavour.com/recette/ratte-du-touquet-roties-au-four/" rel="noopener noreferrer" target="_blank">https://touquetsavour.com/recette/ratte-du-touquet-roties-au-four/</a></li><li id="ref-R3">[R3] Le Ch'ti Marché — Recette Salade de pommes de terre Rattes. Salada de batata com ovos, legumes e molho de mostarda. Disponível em: <a href="https://www.lechtimarche.fr/actus/recette-chti-salade-de-pommes-de-terre-rattes.html" rel="noopener noreferrer" target="_blank">https://www.lechtimarche.fr/actus/recette-chti-salade-de-pommes-de-terre-rattes.html</a></li><li id="ref-R4">[R4] ALDI France / Paul Pairet — Gratin Dauphinois. Gratinado que especifica pommes de terre Ratte nos ingredientes. Disponível em: <a href="https://www.aldi.fr/marques/crofton/recette-gratin-dauphinois.html" rel="noopener noreferrer" target="_blank">https://www.aldi.fr/marques/crofton/recette-gratin-dauphinois.html</a></li><li id="ref-R5">[R5] Touquet Savour — La purée de Ratte de Joël Robuchon. Puré de batata Ratte com manteiga e leite. Disponível em: <a href="https://touquetsavour.com/recette/puree-ratte-du-touquet-joel-robuchon/" rel="noopener noreferrer" target="_blank">https://touquetsavour.com/recette/puree-ratte-du-touquet-joel-robuchon/</a></li><li id="ref-R6">[R6] Touquet Savour — Gnocchis de Ratte du Touquet. Gnocchi com creme de abóbora e molho de avelã. Disponível em: <a href="https://touquetsavour.com/recette/gnocchis-de-ratte-du-touquet/" rel="noopener noreferrer" target="_blank">https://touquetsavour.com/recette/gnocchis-de-ratte-du-touquet/</a></li><li id="ref-R7">[R7] Touquet Savour — Velouté de Ratte du Touquet au beurre de truffe. Sopa cremosa de Ratte com trufa. Disponível em: <a href="https://touquetsavour.com/recette/veloute-truffe-ratte-touquet/" rel="noopener noreferrer" target="_blank">https://touquetsavour.com/recette/veloute-truffe-ratte-touquet/</a></li><li id="ref-R8">[R8] Journal des Femmes — Tarte de Ratte du Touquet aux champignons de Paris et ricotta. Tarte salgada de batata e cogumelos. Disponível em: <a href="https://cuisine.journaldesfemmes.fr/recette/3131116-tarte-de-ratte-du-touquet-aux-champignons-de-paris-et-ricotta" rel="noopener noreferrer" target="_blank">https://cuisine.journaldesfemmes.fr/recette/3131116-tarte-de-ratte-du-touquet-aux-champignons-de-paris-et-ricotta</a></li><li id="ref-R9">[R9] Touquet Savour — Curry de Ratte du Touquet express. Caril de batata com tomate, coco e coentros. Disponível em: <a href="https://touquetsavour.com/recette/curry-ratte-touquet/" rel="noopener noreferrer" target="_blank">https://touquetsavour.com/recette/curry-ratte-touquet/</a></li><li id="ref-R10">[R10] Journal des Femmes — Croque-monsieur de Ratte du Touquet. Preparação de batata ralada com carne e queijo. Disponível em: <a href="https://cuisine.journaldesfemmes.fr/recette/358973-croque-monsieur-de-ratte-du-touquet" rel="noopener noreferrer" target="_blank">https://cuisine.journaldesfemmes.fr/recette/358973-croque-monsieur-de-ratte-du-touquet</a></li></ol><h4>Estudos científicos e revisões (benefícios e propriedades medicinais)</h4><ol><li id="ref-M1">[M1] NHS — Starchy foods and carbohydrates. Função alimentar da batata, hidratos de carbono, fibra e métodos de confeção. Disponível em: <a href="https://www.nhs.uk/live-well/eat-well/food-types/starchy-foods-and-carbohydrates/" rel="noopener noreferrer" target="_blank">https://www.nhs.uk/live-well/eat-well/food-types/starchy-foods-and-carbohydrates/</a></li><li id="ref-M2">[M2] USDA Standard Reference 2018, reproduzido por SelfMadeHealth — Potatoes, flesh and skin, raw. Composição genérica por 100 g, não específica de Ratte. Disponível em: <a href="https://selfmadehealth.com/en/ndb/pml/us-11352" rel="noopener noreferrer" target="_blank">https://selfmadehealth.com/en/ndb/pml/us-11352</a></li><li id="ref-M3">[M3] USDA FoodData Central (SR Legacy), reproduzido por WhatYouEat — Potatoes, boiled, cooked in skin, flesh, without salt. Composição genérica por 100 g. Disponível em: <a href="https://whatyoueat.io/foods/170438" rel="noopener noreferrer" target="_blank">https://whatyoueat.io/foods/170438</a></li><li id="ref-M4">[M4] NIH Office of Dietary Supplements — Potassium: Fact Sheet for Health Professionals. Funções fisiológicas do potássio. Disponível em: <a href="https://ods.od.nih.gov/factsheets/potassium-healthprofessional/" rel="noopener noreferrer" target="_blank">https://ods.od.nih.gov/factsheets/potassium-healthprofessional/</a></li><li id="ref-M5">[M5] EFSA Journal — Risk assessment of glycoalkaloids in feed and food, in particular potatoes (2020). Bases científicas dos riscos por glicoalcaloides. Disponível em: <a href="https://efsa.onlinelibrary.wiley.com/doi/full/10.2903/j.efsa.2020.6222" rel="noopener noreferrer" target="_blank">https://efsa.onlinelibrary.wiley.com/doi/full/10.2903/j.efsa.2020.6222</a></li></ol><h4>Dados nutricionais</h4><ol><li id="ref-N1">[N1] USDA Food Composition Database, SR Legacy (2018), via SelfMadeHealth — Potatoes, flesh and skin, raw (100 g). Tabela genérica da batata crua com casca. Disponível em: <a href="https://selfmadehealth.com/en/ndb/pml/us-11352" rel="noopener noreferrer" target="_blank">https://selfmadehealth.com/en/ndb/pml/us-11352</a></li><li id="ref-N2">[N2] USDA FoodData Central, SR Legacy (2018), via WhatYouEat — Potatoes, boiled, cooked in skin, flesh, without salt (100 g). Tabela genérica da polpa cozida sem sal. Disponível em: <a href="https://whatyoueat.io/foods/170438" rel="noopener noreferrer" target="_blank">https://whatyoueat.io/foods/170438</a></li></ol><h4>Utilidades e aplicações</h4><ol><li id="ref-U1">[U1] Royal Horticultural Society — How to grow potatoes. Práticas culturais, cultivo em recipientes, rotação, composto e cuidados de conservação. Disponível em: <a href="https://www.rhs.org.uk/vegetables/potatoes/grow-your-own" rel="noopener noreferrer" target="_blank">https://www.rhs.org.uk/vegetables/potatoes/grow-your-own</a></li><li id="ref-U2">[U2] Governo dos Açores / Universidade dos Açores — Produção de hortícolas em modo de produção biológico. Orientações gerais de produção de batata. Disponível em: <a href="https://agricultura.azores.gov.pt/wp-content/uploads/2022/01/manual-fichas-de-cultura-mpbpdf.pdf" rel="noopener noreferrer" target="_blank">https://agricultura.azores.gov.pt/wp-content/uploads/2022/01/manual-fichas-de-cultura-mpbpdf.pdf</a></li><li id="ref-U3">[U3] ARVALIS/GEVES — RATTE. Identidade varietal, rendimento, comportamento sanitário e características culinárias. Disponível em: <a href="https://fiches.arvalis-infos.fr/fiche_variete/fiches_varietes.php?id_espece=001&amp;id_variete=292&amp;mode=fv" rel="noopener noreferrer" target="_blank">https://fiches.arvalis-infos.fr/fiche_variete/fiches_varietes.php?id_espece=001&amp;id_variete=292&amp;mode=fv</a></li><li id="ref-U4">[U4] Royal Horticultural Society — Potato blight. Prevenção e rotação da batata em hortas. Disponível em: <a href="https://www.rhs.org.uk/disease/potato-blight" rel="noopener noreferrer" target="_blank">https://www.rhs.org.uk/disease/potato-blight</a></li></ol><h4>Permacultura</h4><ol><li id="ref-P1">[P1] Royal Horticultural Society — How to grow potatoes. Ocupação sazonal do solo, cultivo em canteiro/recipiente, amontoa e rotação. Disponível em: <a href="https://www.rhs.org.uk/vegetables/potatoes/grow-your-own" rel="noopener noreferrer" target="_blank">https://www.rhs.org.uk/vegetables/potatoes/grow-your-own</a></li><li id="ref-P2">[P2] ARVALIS/GEVES — RATTE. Rendimentos relativos e sensibilidade varietal ao míldio. Disponível em: <a href="https://fiches.arvalis-infos.fr/fiche_variete/fiches_varietes.php?id_espece=001&amp;id_variete=292&amp;mode=fv" rel="noopener noreferrer" target="_blank">https://fiches.arvalis-infos.fr/fiche_variete/fiches_varietes.php?id_espece=001&amp;id_variete=292&amp;mode=fv</a></li><li id="ref-P3">[P3] Bundesinstitut für Risikobewertung — Solanine glycoalkaloids in potatoes. Base para penalização de toxicidade. Disponível em: <a href="https://www.bfr.bund.de/en/service/frequently-asked-questions/topic/frequently-asked-questions-about-solanine-glycoalkaloids-in-potatoes/" rel="noopener noreferrer" target="_blank">https://www.bfr.bund.de/en/service/frequently-asked-questions/topic/frequently-asked-questions-about-solanine-glycoalkaloids-in-potatoes/</a></li><li id="ref-P4">[P4] Governo dos Açores / Universidade dos Açores — Manual de produção biológica: ficha da batata, necessidades culturais e sanitárias. Disponível em: <a href="https://agricultura.azores.gov.pt/wp-content/uploads/2022/01/manual-fichas-de-cultura-mpbpdf.pdf" rel="noopener noreferrer" target="_blank">https://agricultura.azores.gov.pt/wp-content/uploads/2022/01/manual-fichas-de-cultura-mpbpdf.pdf</a></li></ol></section>
+</article>
+</main>
+<footer>
+<a href="index.html">← Voltar à lista de plantas</a>
+</footer>
+
+</div>
+<script>
+  (function(){
+    const mount = document.getElementById("sidebar-mount");
+    if(!mount) return;
+
+    const applyActive = (root) => {
+      const path = (location.pathname.split("/").pop() || "inicio.html").toLowerCase();
+      root.querySelectorAll(".nav-item").forEach(a => {
+        const route = (a.getAttribute("data-route") || a.getAttribute("href") || "").toLowerCase();
+        const href = (a.getAttribute("href") || "").toLowerCase();
+        const isActive = (route && route === path) || (href && href === path);
+        if(isActive) a.classList.add("active");
+        else a.classList.remove("active");
+      });
+    };
+
+    const setCollapsed = (sidebar, collapsed) => {
+      sidebar.setAttribute("data-collapsed", collapsed ? "1" : "0");
+      document.body.classList.toggle("sidebar-collapsed", !!collapsed);
+      localStorage.setItem("sidebar-collapsed", collapsed ? "1" : "0");
+    };
+
+    fetch("sidebar.html", { cache: "no-store" })
+      .then(r => r.text())
+      .then(html => {
+        mount.innerHTML = html;
+
+        const sidebar = mount.querySelector(".sidebar");
+        const toggle = mount.querySelector(".sidebar-toggle");
+        if(!sidebar || !toggle) return;
+
+        // restore collapsed state
+        const saved = localStorage.getItem("sidebar-collapsed");
+        const collapsed = saved === "1";
+        setCollapsed(sidebar, collapsed);
+
+        toggle.addEventListener("click", () => {
+          const now = sidebar.getAttribute("data-collapsed") === "1";
+          setCollapsed(sidebar, !now);
+        });
+
+        applyActive(mount);
+      })
+      .catch(() => {
+        // se sidebar.html não existir, não quebra a página
+      });
+
+    // Masthead "stuck" feedback
+    const masthead = document.querySelector(".with-sidebar .masthead");
+    const sentinel = document.querySelector(".masthead-sentinel");
+    if(masthead && sentinel && "IntersectionObserver" in window){
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          masthead.classList.toggle("is-stuck", !entry.isIntersecting);
+        });
+      }, {root: null, threshold: 0});
+      io.observe(sentinel);
+    }
+  })();
+  </script>
+</body>
+</html>
