@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+
+<html lang="pt">
+<head>
+<meta charset="utf-8"/>
+<title>Couve-portuguesa (Penca / Tronchuda) – Horta da Terra para o prato</title>
+<link href="style.css" rel="stylesheet"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<style>
+        :root {
+            --cor-fundo: #f5f7f2;
+            --cor-principal: #2f855a;
+            --cor-secundaria: #276749;
+            --cor-destaque: #dd6b20;
+            --cor-borda: #d1d5db;
+            --cor-texto: #1f2933;
+            --cor-caixa: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-principal), var(--cor-secundaria));
+            color: #fff;
+            padding: 1.2rem 1rem 0.8rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+        }
+
+        header h1 {
+            margin: 0 0 0.25rem;
+            font-size: 1.7rem;
+        }
+
+        header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 0.5rem 1rem;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        nav a {
+            display: inline-block;
+            margin-right: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            color: var(--cor-principal);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: #ecfdf3;
+            border-color: var(--cor-principal);
+        }
+
+        nav a.ativa {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 1.5rem auto 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .planta {
+            background: var(--cor-caixa);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.06);
+            border: 1px solid #e5e7eb;
+        }
+
+        .planta-cabecalho {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+            gap: 1.5rem;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 720px) {
+            .planta-cabecalho {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planta-titulo h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--cor-secundaria);
+        }
+
+        .planta-titulo p { margin: 0.2rem 0; }
+
+        .tags-nomes {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .tags-nomes span {
+            display: inline-block;
+            background: #ecfdf3;
+            color: var(--cor-secundaria);
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            margin: 0.1rem 0.25rem 0 0;
+        }
+
+        .imagem-container-externo {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .imagem-container {
+            max-width: 320px;
+            max-height: 240px;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--cor-borda);
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagem-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .imagem-legenda {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .info-rapida {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+            margin: 0.5rem 0 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .info-rapida div {
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .info-rapida strong {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: #6b7280;
+        }
+
+        section { margin-bottom: 1.5rem; }
+
+        section h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--cor-secundaria);
+            border-left: 4px solid var(--cor-destaque);
+            padding-left: 0.5rem;
+        }
+
+        ul { padding-left: 1.2rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.45rem 0.55rem;
+            text-align: left;
+        }
+
+        th { background: #f3f4f6; }
+
+        tbody tr:nth-child(even) { background: #f9fafb; }
+
+        .nota {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .lista-permacultura {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .lista-permacultura li::before {
+            content: "• ";
+            color: var(--cor-destaque);
+        }
+
+        .referencias-subsecao {
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: var(--cor-secundaria);
+        }
+
+        .referencias-lista {
+            font-size: 0.85rem;
+        }
+
+        .referencias-lista li {
+            margin-bottom: 0.2rem;
+        }
+
+        .referencias-lista a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .referencias-lista a:hover { text-decoration: underline; }
+
+        .topo-link {
+            text-align: right;
+            font-size: 0.8rem;
+        }
+
+        .topo-link a {
+            color: var(--cor-principal);
+            text-decoration: none;
+        }
+
+        .topo-link a:hover { text-decoration: underline; }
+
+    
+.masthead{position:sticky;top:0;z-index:1000}
+		
+		.nav-paginacao {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin: 0.8rem 0 1.2rem;
+    font-size: 0.9rem;
+}
+
+.nav-paginacao a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    background: #ffffff;
+    color: var(--cor-secundaria);
+    white-space: nowrap;
+}
+
+.nav-paginacao a:hover {
+    border-color: var(--cor-principal);
+    background: #ecfdf3;
+}
+
+.nav-paginacao a.prev::before {
+    content: "← ";
+}
+
+.nav-paginacao a.next::after {
+    content: " →";
+}
+
+@media (max-width: 600px) {
+    .nav-paginacao {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .nav-paginacao a {
+        text-align: center;
+        width: 100%;
+    }
+}
+/* links entre dietas + filtro */
+.diet-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin:.35rem 0 1rem;
+}
+.diet-links-left a,
+.diet-links-right a{
+  color:var(--cor-principal);
+  text-decoration:none;
+  margin-right:.5rem;
+}
+.diet-links-left a:hover,
+.diet-links-right a:hover{
+  text-decoration:underline;
+}
+
+
+/* === v2: Media carousel (imagens + vídeo) === */
+.imagem-container video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.media-nav{
+  display:flex;
+  gap:.5rem;
+  justify-content:flex-end;
+  margin-top:.5rem;
+}
+.media-nav button{
+  padding:.35rem .6rem;
+  border-radius:.5rem;
+  border:1px solid rgba(0,0,0,.25);
+  background:rgba(255,255,255,.9);
+  cursor:pointer;
+}
+
+/* === v3: Indicadores (pontos / ícone de vídeo) === */
+.media-dots{
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  align-items:center;
+  margin-top:.5rem;
+  flex-wrap:wrap;
+}
+
+.media-dot{
+  width:.55rem;
+  height:.55rem;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.35);
+  background:rgba(0,0,0,.15);
+  cursor:pointer;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+}
+
+.media-dot.is-active{
+  background:rgba(0,0,0,.55);
+  transform:scale(1.2);
+}
+
+.media-dot--video{
+  width:.8rem;
+  height:.8rem;
+  border-radius:.25rem;
+  background:rgba(0,0,0,.12);
+}
+
+.media-dot--video svg{
+  width:.65rem;
+  height:.65rem;
+  display:block;
+  opacity:.75;
+}
+
+.media-dot--video.is-active svg{
+  opacity:1;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .media-dot.is-active{ transform:none; }
+}
+
+/* === v4: garantir que moldura + botões + marcadores ficam em coluna === */
+.media-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.media-nav, .media-dots{
+  width:100%;
+}
+
+</style>
+<meta content="Couve-portuguesa (Penca / Tronchuda, Brassica oleracea var. costata): cultivo biológico, sazonalidade, receitas, nutrição, segurança, permacultura e referências." name="description"/><style>
+/* Extensões discretas da ficha da couve-portuguesa: manter cores e grelha do modelo. */
+.planta-cabecalho .imagem-container{min-height:210px;}
+.imagem-em-falta{width:100%;min-height:210px;display:flex;flex-direction:column;
+ align-items:center;justify-content:center;gap:.35rem;padding:1.2rem;
+ color:#50605a;text-align:center;background:linear-gradient(145deg,#f5f8f3,#eaf2e9);}
+.imagem-em-falta .sinal{font-size:2rem;line-height:1.3;}
+.imagem-em-falta small{font-style:italic;color:#6b7280;}
+.tabela-scroll{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.tabela-scroll table{min-width:570px;}
+.referencia-nota sup a, section:not(#referencias) sup a{color:var(--cor-secundaria);text-decoration:none;}
+.referencia-nota sup a:hover, section:not(#referencias) sup a:hover{text-decoration:underline;}
+#referencias li{overflow-wrap:anywhere;}
+#referencias li:target{background:#f0faf3;}
+.diet-links .diet-links-right{margin-left:auto;}
+#permacultura dd p{margin:.3rem 0 .75rem;}
+</style></head>
+<body id="topo">
+<div id="sidebar-mount"></div>
+<div class="with-sidebar">
+<div aria-hidden="true" class="masthead-sentinel"></div>
+<div class="masthead"><header>
+<h1>Horta da Terra para o prato</h1>
+<p>Informação prática sobre plantas hortícolas de produção biológica – para partilhar.</p></header>
+<nav>
+<a href="abobora-butternut.html">Abóbora butternut</a>
+<a href="abobora-grande.html">Abóbora grande</a>
+<a class="" href="acelga.html">Acelga</a>
+<a href="agriao.html">Agrião-de-água</a>
+<a href="agriao-terra.html">Agrião-da-terra</a>
+<a href="aipo.html">Aipo (talos e folhas)</a>
+<a href="alface.html">Alface</a>
+<a href="alho.html">Alho</a>
+<a href="alho-frances.html">Alho-francês</a>
+<a href="aneto.html">Aneto / Endro</a>
+<a href="batata-comum.html">Batata comum</a>
+<a href="batata-doce.html">Batata-doce</a><a href="batata-ratte.html">Batata Ratte</a>
+<a href="beringela.html">Beringela</a>
+<a href="beterraba.html">Beterraba</a>
+<a href="brocolo.html">Brócolo</a>
+<a href="canonigos.html">Canónigos</a>
+<a href="cebola.html">Cebola</a>
+<a href="cebola-fresca.html">Cebola fresca</a>
+<a href="cenoura.html">Cenoura</a>
+<a href="coentros.html">Coentros</a>
+<a href="couve-chinesa.html">Couve chinesa</a>
+<a href="couve-flor.html">Couve-flor</a><a href="couve-frisada.html">Couve frisada</a><a class="ativa" href="couve-portuguesa.html">Couve portuguesa</a>
+<a href="couve-rabano.html">Couve-rábano</a>
+<a href="couve-repolho.html">Couve repolho</a>
+<a href="couve-toscana.html">Couve toscana</a>
+<a href="curgete.html">Curgete</a>
+<a href="ervilhas-frescas.html">Ervilhas frescas</a>
+<a href="espinafre.html">Espinafre</a>
+<a href="espinafre-nova-zelandia.html">Espinafre da Nova Zelândia</a>
+<a href="feijao-verde.html">Feijão verde</a>
+<a href="manjericao.html">Manjericão</a>
+<a href="milho-doce.html">Milho doce</a>
+<a href="mizuna.html">Mizuna</a>
+<a href="morangos.html">Morangueiro / Morangos</a>
+<a href="moringa.html">Moringa</a>
+<a href="nabica.html">Nabiça</a>
+<a href="nabo.html">Nabo</a>
+<a href="pak-choi.html">Pak choi</a>
+<a href="pepino.html">Pepino</a>
+<a href="pimento.html">Pimento</a>
+<a href="rabanete.html">Rabanete</a>
+<a href="rabano.html">Rábano / Daikon</a>
+<a href="rucula.html">Rúcula</a>
+<a href="salanova.html">Salanova</a>
+<a href="salsa.html">Salsa</a>
+<a href="tomate.html">Tomate (genérico)</a>
+<a href="tomate-chucha.html">Tomate tipo chucha / Roma</a>
+<a href="tremoco-doce-australiano.html">Tremoço-doce australiano</a></nav></div>
+<main>
+<!-- Navegação entre plantas (anterior / seguinte) -->
+<nav class="nav-paginacao">
+<a class="prev" href="couve-frisada.html">Couve frisada</a>
+<a class="next" href="couve-rabano.html">Couve-rábano</a>
+</nav>
+<article class="planta">
+<div class="planta-cabecalho">
+<div class="planta-titulo">
+<h2>Couve-portuguesa (penca / tronchuda) (<em>Brassica oleracea L. var. costata DC. (sin. var. tronchuda)</em>)</h2>
+<div class="tags-nomes"><span>Família: Brassicáceas (Brassicaceae)</span><span>Parte Usada: folhas, nervuras e talos tenros</span><span>Tipo: hortícola folhosa de estação fresca</span><span>Produção: <strong>bienal, biológico</strong></span></div>
+<div class="info-rapida"><div><strong>Origem</strong> seleção hortícola ibérica de couves europeias, tradicional nas hortas de Portugal</div><div><strong>Uso principal</strong> folhas e talos para cozidos, sopas, migas, salteados e guisados</div><div><strong>Perfil nutricional</strong> pouca energia, fibra, vitamina C, provitamina A, potássio e cálcio</div></div>
+</div>
+<div>
+<div class="imagem-container-externo">
+<div class="media-wrapper"><div class="imagem-container" id="mediaFrame"><div aria-label="Fotografia da couve-portuguesa ainda não disponível" class="imagem-em-falta" role="img"><span aria-hidden="true" class="sinal">🌱</span><span>Fotografia da planta a adicionar</span><small>Brassica oleracea L. var. costata DC. (sin. var. tronchuda)</small></div></div></div>
+</div>
+<p class="imagem-legenda">Sem fotografia associada à ficha Excel.</p>
+</div>
+</div>
+<!-- <h2>Acelga (<em>Beta vulgaris</em> var. <em>cicla</em>)</h2> -->
+<!-- 0. Imagem -->
+<!-- 1. Apresentação / Descrição -->
+<section id="apresentacao"><h3>1. Apresentação / Descrição</h3><p>A couve-portuguesa, também chamada couve-penca ou couve-tronchuda, pertence à espécie Brassica oleracea L. e à família Brassicaceae. As variedades hortícolas tradicionalmente designadas por var. costata DC. (sinónimo var. tronchuda) caracterizam-se por folhas largas, verde-claras a verde-escuras, nervura central proeminente e pecíolos espessos e carnudos. A planta forma um centro de folhas pouco fechado, ou «pseudo-repolho», não uma cabeça compacta como a couve-repolho. Os nomes Penca de Chaves, Penca da Póvoa e tronchuda podem referir cultivares ou populações locais deste mesmo grupo.</p><p>É uma couve de forte tradição na Península Ibérica, particularmente em Portugal, onde integra hortas familiares, sebes agrícolas e a alimentação de outono e inverno. A «Penca de Chaves» é um produto tradicional descrito pela Direção-Geral de Agricultura e Desenvolvimento Rural, associado ao Alto Tâmega. A hipótese histórica de seleção a partir de diferentes tipos de couve é plausível, mas não deve ser tomada como origem genética definitivamente demonstrada.</p><p>Botanicamente é uma bienal: no primeiro ciclo forma folhas e talos comestíveis; se permanecer no terreno após passar pelo período frio, pode desenvolver hastes com flores geralmente esbranquiçadas e sementes no segundo ano. Na horta biológica é normalmente cultivada para colher folhas ou pés inteiros antes da floração, em solo fértil e fresco, com sol, rega adequada, composto orgânico e rotação de culturas. É relativamente resistente ao frio e muito apreciada em pratos tradicionais, sobretudo na ceia de Natal.</p><p class="referencia-nota">Referência(s) de suporte para a descrição: <sup><a aria-label="Consultar referência D1" href="#ref-D1">[D1]</a></sup><sup><a aria-label="Consultar referência D2" href="#ref-D2">[D2]</a></sup><sup><a aria-label="Consultar referência D3" href="#ref-D3">[D3]</a></sup><sup><a aria-label="Consultar referência D4" href="#ref-D4">[D4]</a></sup></p></section>
+<!-- 2. Sazonalidade (Portugal continental) -->
+<section id="sazonalidade"><h3>2. Sazonalidade (Portugal continental)</h3><p>Em Portugal continental, a couve-portuguesa é sobretudo uma cultura de estação fresca, com maior presença no mercado e nas hortas entre outubro e maio. O calendário é variável com a região, a variedade, a altitude e a disponibilidade de água: a Associação Portuguesa de Nutrição refere sementeiras de agosto a dezembro, enquanto um levantamento de variedades tradicionais do Tâmega e Sousa descreve alfobres em abril e maio, transplantes entre agosto e setembro e colheitas entre outubro e dezembro. Não existe, por isso, um único calendário adequado a todo o país.</p><p>Para produzir folhas de outono e inverno, é habitual instalar plantas a partir do final da primavera ou verão e prolongar a colheita durante os meses frescos. O frio moderado é geralmente bem tolerado, mas as temperaturas elevadas, a seca e as pragas das brássicas podem comprometer o crescimento. Para recolha de sementes é necessário reservar alguns exemplares para o segundo ano, afastados de outras couves compatíveis quando se pretende conservar a variedade.</p><ul><li><strong>Sementeira em alfobre:</strong> em função da variedade e região, desde a primavera ao outono; para produção invernal são frequentes sementeiras de verão e início de outono.</li><li><strong>Transplante:</strong> quando as plantas estiverem bem estabelecidas, geralmente com algumas folhas verdadeiras; ajustar às chuvas e ao calendário regional.</li><li><strong>Desenvolvimento:</strong> melhor em temperaturas amenas, com sol, solo fértil e humidade regular; resistência apreciável ao frio e a algumas geadas.</li><li><strong>Colheita:</strong> sobretudo de outubro a maio; os pés destinados ao Natal são colhidos no outono ou início do inverno, mas podem colher-se folhas gradualmente.</li><li><strong>Floração e semente:</strong> geralmente no segundo ano, se a planta permanecer no solo; reservar apenas plantas saudáveis e com características típicas da variedade.</li><li><strong>Maneio biológico:</strong> composto bem curtido, cobertura orgânica do solo, inspeção das folhas e rotação de brássicas para limitar pragas e doenças.</li></ul><p class="referencia-nota">Referência(s) para a sazonalidade e o cultivo: <sup><a aria-label="Consultar referência S1" href="#ref-S1">[S1]</a></sup><sup><a aria-label="Consultar referência S2" href="#ref-S2">[S2]</a></sup><sup><a aria-label="Consultar referência S3" href="#ref-S3">[S3]</a></sup><sup><a aria-label="Consultar referência S4" href="#ref-S4">[S4]</a></sup><sup><a aria-label="Consultar referência S5" href="#ref-S5">[S5]</a></sup></p></section>
+<!-- 3. Como consumir -->
+<section id="como-consumir"><h3>3. Como consumir</h3><ul><li><strong>Cozida em água ou ao vapor:</strong> servir as folhas e nervuras tenras com azeite e alho, como acompanhamento de bacalhau, carne ou leguminosas.</li><li><strong>Em cozidos tradicionais:</strong> juntar folhas grandes cortadas aos restantes legumes; a couve-portuguesa é ingrediente documentado do cozido à portuguesa.</li><li><strong>Em sopas:</strong> cortar as folhas em tiras e acrescentá-las a caldos de feijão, batata, legumes e enchidos; aproveitar os talos tenros com cozedura adequada.</li><li><strong>Em migas e açordas:</strong> combinar couve cozida e picada com broa ou pão, alho, azeite e feijões, servindo como prato ou acompanhamento.</li><li><strong>Salteada ou gratinada:</strong> escaldar primeiro as folhas maiores, quando necessário, e finalizar com azeite, alho ou outros ingredientes.</li><li><strong>Em saladas:</strong> utilizar folhas adequadas, muito bem lavadas e cortadas finamente; as folhas mais fibrosas beneficiam de cozedura ou massagem para amaciar.</li></ul><p class="referencia-nota">Referência(s) para consumo e segurança: <sup><a aria-label="Consultar referência C1" href="#ref-C1">[C1]</a></sup><sup><a aria-label="Consultar referência C2" href="#ref-C2">[C2]</a></sup><sup><a aria-label="Consultar referência C3" href="#ref-C3">[C3]</a></sup><sup><a aria-label="Consultar referência C4" href="#ref-C4">[C4]</a></sup></p></section>
+<!-- 4. Receitas e preparados (Top 10) -->
+<section id="receitas"><h3 id="titulo-receitas">4. Receitas e preparados (Top 10)</h3><div class="diet-links"><div class="diet-links-right"><a href="/horta-info/data/refeicoes.html">(Filtro por ingredientes)</a></div></div><p>Dez receitas culinárias publicadas que indicam expressamente couve-portuguesa nos ingredientes: migas de couve, alheira com migas, cozido à portuguesa, sopa de presunto, entrecosto com migas, cozido de frango com batata-doce, sopa de sobras de cozido, bacalhau com legumes, salada de queijo e legumes e filetes de bacalhau com migas de feijoca. As descrições seguintes são resumos, sem quantidades nem instruções detalhadas; as receitas completas permanecem nas fontes identificadas por <sup><a aria-label="Consultar referência R1" href="#ref-R1">[R1]</a></sup> a <sup><a aria-label="Consultar referência R10" href="#ref-R10">[R10]</a></sup>.</p><ol><li><strong><a href="https://cozinha.continente.pt/receitas/migas-de-couve" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Migas de Couve</a></strong> – broa de milho, feijão-frade e couve-portuguesa cozinhada e envolvida com alho e azeite; acompanha carnes ou pode integrar uma refeição principal. <sup><a aria-label="Consultar referência R1" href="#ref-R1">[R1]</a></sup></li><li><strong><a href="https://teleculinaria.pt/receitas/alheira-assada-com-migas-de-couve-portuguesa/" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Alheira assada com migas de couve portuguesa</a></strong> – alheiras assadas sobre migas feitas com couve e broa, enriquecidas com alho e azeite. <sup><a aria-label="Consultar referência R2" href="#ref-R2">[R2]</a></sup></li><li><strong><a href="https://teleculinaria.pt/receitas/receita-de-cozido-a-portuguesa/" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Receita de cozido à portuguesa</a></strong> – couve-portuguesa e outros legumes cozidos em caldo de carnes, servidos com enchidos, feijão e arroz. <sup><a aria-label="Consultar referência R3" href="#ref-R3">[R3]</a></sup></li><li><strong><a href="https://teleculinaria.pt/receitas/sopa-de-presunto/" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Sopa de presunto</a></strong> – sopa reconfortante que combina couve-portuguesa, presunto, enchidos, feijão e massa num caldo saboroso. <sup><a aria-label="Consultar referência R4" href="#ref-R4">[R4]</a></sup></li><li><strong><a href="https://teleculinaria.pt/receitas/entrecosto-frito-com-migas-de-couve/" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Entrecosto frito com migas de couve</a></strong> – entrecosto temperado e frito, acompanhado por migas de pão e couve-portuguesa com alho e coentros. <sup><a aria-label="Consultar referência R5" href="#ref-R5">[R5]</a></sup></li><li><strong><a href="https://teleculinaria.pt/receitas/cozido-de-frango-batata-doce-e-hortalicas/" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Cozido de frango, batata-doce e hortaliças</a></strong> – frango servido com couve-portuguesa, couve-lombarda, cenoura e batata-doce cozidos no mesmo caldo. <sup><a aria-label="Consultar referência R6" href="#ref-R6">[R6]</a></sup></li><li><strong><a href="https://cozinha.continente.pt/receitas/sopa-de-cozido-a-portuguesa" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Sopa de Cozido à Portuguesa</a></strong> – aproveitamento de sobras de cozido com carne, massa, hortelã e folhas de couve-portuguesa cortadas finamente. <sup><a aria-label="Consultar referência R7" href="#ref-R7">[R7]</a></sup></li><li><strong><a href="https://pt.petitchef.com/receitas/prato-principal/bacalhau-com-couve-portuguesa-fid-602439" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Bacalhau com couve portuguesa</a></strong> – bacalhau assado servido com couve-portuguesa e cenoura cozidas, temperadas com azeite e ervas. <sup><a aria-label="Consultar referência R8" href="#ref-R8">[R8]</a></sup></li><li><strong><a href="https://teleculinaria.pt/receitas/salada-de-queijo-e-legumes/" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Salada de queijo e legumes</a></strong> – salada com folhas de couve-portuguesa picadas, abóbora assada, maçã, abacate e queijo vegetal, temperada com vinagrete. <sup><a aria-label="Consultar referência R9" href="#ref-R9">[R9]</a></sup></li><li><strong><a href="https://www.must.jornaldenegocios.pt/prazeres/sabores/detalhe/receita-filetes-de-bacalhau-de-cura-tradicional-migas-de-feijoca-com-couve-portuguesa-do-chef-manuel-figueira" rel="noopener noreferrer" target="_blank" title="Abrir a receita original">Filetes de bacalhau com migas de feijoca e couve portuguesa</a></strong> – filetes de bacalhau servidos com migas que integram couve cortada, feijoca, pão de centeio e coentros. <sup><a aria-label="Consultar referência R10" href="#ref-R10">[R10]</a></sup></li></ol></section>
+<!-- 5. Benefícios para a saúde e propriedades medicinais -->
+<section id="beneficios"><h3>5. Benefícios para a saúde e propriedades medicinais</h3><p>A couve-portuguesa tem interesse sobretudo como alimento, não como medicamento. A tabela nutricional da Associação Portuguesa de Nutrição, baseada no PortFIR, indica, por 100 g de couve crua, 31 kcal, 2,4 g de fibra, 90 mg de vitamina C, 233 µg de vitamina A, 270 mg de potássio e 76 mg de cálcio. O seu baixo valor energético e a presença de fibra tornam-na adequada a refeições variadas que incluam hortícolas regularmente.</p><p>A vitamina C contribui para a síntese normal de colagénio e para o funcionamento do sistema imunitário, enquanto a vitamina A tem funções importantes na visão, imunidade e manutenção dos tecidos. Estes efeitos decorrem do fornecimento de nutrientes numa dieta equilibrada; não significam que a couve trate infeções ou doenças específicas. A composição também inclui compostos fenólicos, como derivados de campferol identificados em estudos laboratoriais específicos da couve-tronchuda.</p><p>A presença de glucosinolatos e fenólicos em brássicas motiva investigação sobre processos antioxidantes e outros mecanismos biológicos. Os ensaios químicos e in vitro não equivalem a evidência clínica de prevenção ou tratamento do cancro. O teor de vitamina C apresenta diferença importante entre os valores tabelados para couve crua e cozida; o resultado real depende do tempo, temperatura, água e preparação culinária.</p><ul><li><strong>Alimento de baixa densidade energética:</strong> fornece cerca de 31 kcal por 100 g em cru e permite aumentar a proporção de hortícolas nas refeições. <sup><a aria-label="Consultar referência M1" href="#ref-M1">[M1]</a></sup><sup><a aria-label="Consultar referência N1" href="#ref-N1">[N1]</a></sup></li><li><strong>Fonte de fibra alimentar:</strong> contribui para o funcionamento intestinal e para uma alimentação saciante e diversificada. <sup><a aria-label="Consultar referência M1" href="#ref-M1">[M1]</a></sup><sup><a aria-label="Consultar referência N1" href="#ref-N1">[N1]</a></sup></li><li><strong>Fornecimento de vitamina C:</strong> nutriente envolvido na formação de colagénio e na função imunitária normal, com teor documentado em couve-portuguesa. <sup><a aria-label="Consultar referência M1" href="#ref-M1">[M1]</a></sup><sup><a aria-label="Consultar referência M2" href="#ref-M2">[M2]</a></sup><sup><a aria-label="Consultar referência N1" href="#ref-N1">[N1]</a></sup></li><li><strong>Contributo de vitamina A e carotenoides:</strong> nutrientes relevantes para a visão e a manutenção normal das mucosas e da pele. <sup><a aria-label="Consultar referência M1" href="#ref-M1">[M1]</a></sup><sup><a aria-label="Consultar referência M3" href="#ref-M3">[M3]</a></sup><sup><a aria-label="Consultar referência N1" href="#ref-N1">[N1]</a></sup></li><li>Aporte de minerais como potássio, cálcio, fósforo e ferro, em quantidades documentadas por 100 g na tabela nutricional portuguesa. <sup><a aria-label="Consultar referência M1" href="#ref-M1">[M1]</a></sup><sup><a aria-label="Consultar referência N1" href="#ref-N1">[N1]</a></sup></li><li>Presença de compostos fenólicos identificados nas folhas de couve-tronchuda, sem que a sua deteção laboratorial demonstre por si só benefícios terapêuticos. <sup><a aria-label="Consultar referência M4" href="#ref-M4">[M4]</a></sup><sup><a aria-label="Consultar referência M5" href="#ref-M5">[M5]</a></sup></li></ul><p class="nota-aviso">A couve-portuguesa é um alimento habitual e pode integrar a alimentação de pessoas saudáveis, desde que esteja em bom estado e seja lavada e confecionada com higiene. As folhas grandes ou nervuras fibrosas devem ser preparadas de modo a facilitar a mastigação e digestão. Uma alimentação diversificada é preferível ao consumo excessivo de um único hortícola.</p><p class="nota-aviso">Quem toma varfarina ou outros antagonistas da vitamina K deve manter um consumo relativamente regular de verduras folhosas e consultar a equipa de saúde antes de alterações significativas; não é necessário excluir automaticamente a couve. Esta precaução diz respeito à interação entre a vitamina K da dieta e a terapêutica, não a uma toxicidade da couve em doses alimentares.</p><p class="nota-aviso">As referências bioquímicas a antioxidantes e glucosinolatos não autorizam promessas de prevenção ou tratamento de doenças. Em dietas clinicamente restringidas em potássio ou perante problemas digestivos específicos, as porções e o modo de confeção devem ser individualizados com um profissional de saúde. Fontes: <sup><a aria-label="Consultar referência C4" href="#ref-C4">[C4]</a></sup><sup><a aria-label="Consultar referência M1" href="#ref-M1">[M1]</a></sup><sup><a aria-label="Consultar referência M4" href="#ref-M4">[M4]</a></sup><sup><a aria-label="Consultar referência N1" href="#ref-N1">[N1]</a></sup>.</p></section>
+<!-- 6. Propriedades nutricionais -->
+<section id="nutricao"><h3>6. Propriedades nutricionais</h3><p>Composição da couve-portuguesa por 100 g de parte edível, com valores em cru e após cozedura, transcrita do guia «Couve Portuguesa à lupa» da Associação Portuguesa de Nutrição (2018), que cita o PortFIR 2015. Os dois registos dizem respeito ao alimento na condição indicada, não constituindo uma medição de perdas nutricionais do mesmo lote antes e depois da cozedura. O sal apresentado na tabela não deve ser interpretado como quantidade fixa em qualquer receita, pois depende da preparação.</p><p>Os valores são de referência, sujeitos a diferenças entre cultivares, solos, época de colheita e métodos culinários. O PortFIR dispõe de versões posteriores, incluindo a versão 7.1 de 2026; os números aqui reproduzidos foram mantidos exatamente como publicados no guia APN, para assegurar rastreabilidade e não simular valores da atualização.</p><div class="tabela-scroll"><table><thead><tr><th scope="col">Componente</th><th scope="col">Couve-portuguesa crua (100 g)</th><th scope="col">Couve-portuguesa cozida (100 g)</th></tr></thead><tbody><tr><td>Energia</td><td>31 kcal</td><td>27 kcal</td></tr><tr><td>Hidratos de carbono</td><td>3,5 g</td><td>2,5 g</td></tr><tr><td>Açúcares</td><td>3,4 g</td><td>2,4 g</td></tr><tr><td>Fibra alimentar</td><td>2,4 g</td><td>2,4 g</td></tr><tr><td>Proteína</td><td>2,2 g</td><td>2,1 g</td></tr><tr><td>Lípidos totais</td><td>0,4 g</td><td>0,4 g</td></tr><tr><td>Ácidos gordos saturados</td><td>0,0 g</td><td>0,0 g</td></tr><tr><td>Sal</td><td>0,038 g</td><td>0,28 g</td></tr><tr><td>Vitamina A</td><td>233 µg</td><td>207 µg</td></tr><tr><td>Vitamina C</td><td>90 mg</td><td>58 mg</td></tr><tr><td>Potássio</td><td>270 mg</td><td>230 mg</td></tr><tr><td>Cálcio</td><td>76 mg</td><td>71 mg</td></tr><tr><td>Fósforo</td><td>65 mg</td><td>61 mg</td></tr><tr><td>Ferro</td><td>1,0 mg</td><td>0,7 mg</td></tr></tbody></table></div><p class="referencia-nota">Fonte(s) dos dados nutricionais: <sup><a aria-label="Consultar referência N1" href="#ref-N1">[N1]</a></sup><sup><a aria-label="Consultar referência N2" href="#ref-N2">[N2]</a></sup></p></section>
+<!-- 7. Utilidades e aplicações (não apenas alimentares) -->
+<section id="utilidades"><h3>7. Utilidades e aplicações</h3><ul><li><strong>Culinária familiar:</strong> folhas, talos e «olho» da couve integram cozidos, sopas, migas e receitas sazonais, particularmente na época do Natal. <sup><a aria-label="Consultar referência U1" href="#ref-U1">[U1]</a></sup><sup><a aria-label="Consultar referência U2" href="#ref-U2">[U2]</a></sup></li><li><strong>Conservação de variedades locais:</strong> manutenção de sementes de populações tradicionais como a Penca de Chaves, com seleção de plantas típicas e sãs. <sup><a aria-label="Consultar referência U1" href="#ref-U1">[U1]</a></sup><sup><a aria-label="Consultar referência U2" href="#ref-U2">[U2]</a></sup></li><li><strong>Horta biológica:</strong> utilização de estrume bem decomposto, composto vegetal, cobertura do solo e rotação de brássicas, de acordo com a disponibilidade local. <sup><a aria-label="Consultar referência U2" href="#ref-U2">[U2]</a></sup><sup><a aria-label="Consultar referência U3" href="#ref-U3">[U3]</a></sup></li><li><strong>Produção de biomassa:</strong> folhas exteriores sadias e restos vegetais podem ser compostados ou usados como cobertura, quando não apresentem sinais de doenças persistentes. <sup><a aria-label="Consultar referência U3" href="#ref-U3">[U3]</a></sup><sup><a aria-label="Consultar referência U4" href="#ref-U4">[U4]</a></sup></li><li><strong>Uso forrageiro documentado:</strong> estudos agronómicos descrevem couves portuguesas também utilizadas na alimentação animal, dependendo do maneio e das condições. <sup><a aria-label="Consultar referência U5" href="#ref-U5">[U5]</a></sup></li><li><strong>Função ecológica condicionada:</strong> exemplares deixados florir no segundo ano podem oferecer recursos a insetos; em produção alimentar normal a floração costuma ser evitada. <sup><a aria-label="Consultar referência U2" href="#ref-U2">[U2]</a></sup><sup><a aria-label="Consultar referência U4" href="#ref-U4">[U4]</a></sup></li><li><strong>Valor paisagístico e cultural:</strong> o porte e as nervuras marcadas distinguem-na visualmente nas hortas e fazem parte do património alimentar português. <sup><a aria-label="Consultar referência U1" href="#ref-U1">[U1]</a></sup><sup><a aria-label="Consultar referência U2" href="#ref-U2">[U2]</a></sup></li></ul></section>
+<!-- 8. Grau de funcionalidade em permacultura -->
+<section id="permacultura"><h3>8. Grau de funcionalidade em permacultura</h3><p>Classificação indicativa segundo o algoritmo de funcionalidade em permacultura definido para o projeto.</p><dl><dt>Grau de funcionalidade</dt><dd><p>6,4 / 10</p></dd><dt>Funções principais</dt><dd><p>Na horta de permacultura, a couve-portuguesa fornece folhas e talos nutritivos durante os meses frescos e pode integrar canteiros alimentares tradicionais, consociações e rotações. O cultivo biológico favorece o aproveitamento de composto e coberturas orgânicas; as folhas excedentárias sadias podem regressar ao sistema na forma de biomassa. A capacidade de suportar frio reforça a sua utilidade no outono e inverno, quando algumas hortícolas são menos produtivas.</p><p>A sua funcionalidade não é permanente: ocupa espaço, precisa de rega e de fertilidade e partilha pragas e doenças com outras brássicas. A floração no segundo ano pode apoiar insetos e a produção de sementes, mas compete com a colheita de folhas. É especialmente útil quando inserida numa rotação diversificada, em vez de cultivada repetidamente no mesmo local.</p></dd><dt>Notas</dt><dd><p>Critérios positivos (0 a 2 pontos cada): ALIM = +2 (folhas e talos comestíveis, de uso culinário variado); MED = +1 (valor nutricional para a saúde, sem eficácia fitoterapêutica clínica demonstrada); ESTR = +1 (volume foliar útil temporariamente em canteiros, sem estrutura permanente); SOLO = +1 (cobertura sazonal e biomassa aproveitável para composto, sem fixação de azoto); ECO = +1 (potencial florífero para insetos quando se reservam plantas para sementes, função normalmente reduzida pela colheita); RUST = +2 (boa resistência ao frio e aptidão para outono/inverno); MULT = +2 (alimentação humana, aproveitamento forrageiro documentado, biomassa e conservação de sementes). SOMA POSITIVOS = +10.</p><p>Penalizações (0, −1 ou −2): TOX = 0 (hortícola alimentar comum, com precaução dietética específica para anticoagulantes); PERIGO = 0 (sem perigo físico significativo na horta); INVAS = 0 (não é considerada espécie invasora em cultivo); COMP = −1 (exigência de fertilidade, rega e espaço e necessidade de rotação para controlar problemas de brássicas). SOMA PENALIZAÇÕES = −1.</p><p>Algoritmo do projeto: BRUTA = POS + NEG = 10 − 1 = 9; grau = (BRUTA / 14) × 10 = (9 / 14) × 10 = 6,428571…; arredondamento a uma casa decimal = 6,4 / 10. Este grau traduz uma avaliação funcional para o projeto, não uma classificação científica oficial.</p></dd></dl><p class="referencia-nota">Referência(s) de suporte à avaliação: <sup><a aria-label="Consultar referência P1" href="#ref-P1">[P1]</a></sup><sup><a aria-label="Consultar referência P2" href="#ref-P2">[P2]</a></sup><sup><a aria-label="Consultar referência P3" href="#ref-P3">[P3]</a></sup><sup><a aria-label="Consultar referência P4" href="#ref-P4">[P4]</a></sup><sup><a aria-label="Consultar referência P5" href="#ref-P5">[P5]</a></sup></p></section>
+<!-- 9. Referências -->
+<section id="referencias"><h3>9. Referências</h3><h4>Descrição e botânica</h4><ol><li id="ref-D1">[D1] Revista Jardins — Pedro Rau, Cultura da couve-portuguesa. Descrição botânica, variedades, ciclo bienal e origem hortícola. Disponível em: <a href="https://revistajardins.pt/plantas/horticolas/cultura-da-couve-portuguesa/" rel="noopener noreferrer" target="_blank">https://revistajardins.pt/plantas/horticolas/cultura-da-couve-portuguesa/</a></li><li id="ref-D2">[D2] DGADR, Couve Penca de Chaves. Caracterização de folhas, nervuras, pseudo-repolho e tradição regional. Disponível em: <a href="https://tradicional.dgadr.gov.pt/pt/cat/horticolas-e-cereais/294-couve-penca-de-chaves" rel="noopener noreferrer" target="_blank">https://tradicional.dgadr.gov.pt/pt/cat/horticolas-e-cereais/294-couve-penca-de-chaves</a></li><li id="ref-D3">[D3] INIAV, Portuguese Inventory of Food and Agricultural Crop Landraces. Registos de variedades locais portuguesas identificadas como Brassica oleracea var. costata. Disponível em: <a href="https://www.iniav.pt/images/Recursos-Geneticos/Portuguese_Inventory_of_Food_and_other_Agricultural_crop_Landraces_for_INIAV_Inventory.pdf" rel="noopener noreferrer" target="_blank">https://www.iniav.pt/images/Recursos-Geneticos/Portuguese_Inventory_of_Food_and_other_Agricultural_crop_Landraces_for_INIAV_Inventory.pdf</a></li><li id="ref-D4">[D4] Ferreres F. et al., Phenolic compounds in external leaves of tronchuda cabbage. Artigo científico sobre a identificação de compostos fenólicos nas folhas de B. oleracea var. costata. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/15826037/" rel="noopener noreferrer" target="_blank">https://pubmed.ncbi.nlm.nih.gov/15826037/</a></li></ol><h4>Sazonalidade e cultivo (Portugal e clima mediterrânico)</h4><ol><li id="ref-S1">[S1] Revista Jardins — Pedro Rau, Cultura da couve-portuguesa. Condições de cultivo, sementeira, transplante, colheita, consociações e rotação. Disponível em: <a href="https://revistajardins.pt/plantas/horticolas/cultura-da-couve-portuguesa/" rel="noopener noreferrer" target="_blank">https://revistajardins.pt/plantas/horticolas/cultura-da-couve-portuguesa/</a></li><li id="ref-S2">[S2] Associação Portuguesa de Nutrição, Couve Portuguesa à lupa (2018). Época de consumo, sementeira e características agronómicas. Disponível em: <a href="https://www.apn.org.pt/documentos/Guias_APN/Guia_Couve_portuguesa_a_lupa.pdf" rel="noopener noreferrer" target="_blank">https://www.apn.org.pt/documentos/Guias_APN/Guia_Couve_portuguesa_a_lupa.pdf</a></li><li id="ref-S3">[S3] Comunidade Intermunicipal do Tâmega e Sousa, Levantamento das Variedades Hortofrutícolas Tradicionais. Calendário regional de produção da couve-tronchuda portuguesa. Disponível em: <a href="https://www.cimtamegaesousa.pt/storage/files/levantamento-das-variedades-hortofruticolas-tradicionais-do-tamega-e-sousa.pdf" rel="noopener noreferrer" target="_blank">https://www.cimtamegaesousa.pt/storage/files/levantamento-das-variedades-hortofruticolas-tradicionais-do-tamega-e-sousa.pdf</a></li><li id="ref-S4">[S4] Governo dos Açores e Universidade dos Açores, Produção de hortícolas em modo de produção biológico (2020). Ficha de cultura de couves com indicações de ciclo, solo e maneio biológico. Disponível em: <a href="https://agricultura.azores.gov.pt/wp-content/uploads/2022/01/manual-fichas-de-cultura-mpbpdf.pdf" rel="noopener noreferrer" target="_blank">https://agricultura.azores.gov.pt/wp-content/uploads/2022/01/manual-fichas-de-cultura-mpbpdf.pdf</a></li><li id="ref-S5">[S5] Royal Horticultural Society (RHS), Crop rotation. Rotações de brássicas para prevenção de problemas fitossanitários. Disponível em: <a href="https://www.rhs.org.uk/vegetables/crop-rotation" rel="noopener noreferrer" target="_blank">https://www.rhs.org.uk/vegetables/crop-rotation</a></li></ol><h4>Consumo, cuidados e segurança</h4><ol><li id="ref-C1">[C1] Projeto Alimentação Sustentável — Couve Portuguesa. Utilizações culinárias da couve cozida, salteada, gratinada e em sopa. Disponível em: <a href="https://alimentacao-lt.aproder.pt/pt/noticia/sabias%20que/couve-portuguesa" rel="noopener noreferrer" target="_blank">https://alimentacao-lt.aproder.pt/pt/noticia/sabias%20que/couve-portuguesa</a></li><li id="ref-C2">[C2] Teleculinária, Receita de cozido à portuguesa. Ingredientes e confeção do cozido tradicional com couve-portuguesa. Disponível em: <a href="https://teleculinaria.pt/receitas/receita-de-cozido-a-portuguesa/" rel="noopener noreferrer" target="_blank">https://teleculinaria.pt/receitas/receita-de-cozido-a-portuguesa/</a></li><li id="ref-C3">[C3] Continente, Migas de Couve. Utilização da couve-portuguesa em migas de broa, feijão-frade e alho. Disponível em: <a href="https://cozinha.continente.pt/receitas/migas-de-couve" rel="noopener noreferrer" target="_blank">https://cozinha.continente.pt/receitas/migas-de-couve</a></li><li id="ref-C4">[C4] NHS, Anticoagulant medicines — Considerations. Consumo regular de verduras folhosas durante terapêutica com varfarina. Disponível em: <a href="https://www.nhs.uk/medicines/anticoagulants/considerations/" rel="noopener noreferrer" target="_blank">https://www.nhs.uk/medicines/anticoagulants/considerations/</a></li></ol><h4>Receitas e preparados</h4><ol><li id="ref-R1">[R1] Continente, Migas de Couve. Receita com couve-portuguesa, broa de milho, feijão-frade e alho. Disponível em: <a href="https://cozinha.continente.pt/receitas/migas-de-couve" rel="noopener noreferrer" target="_blank">https://cozinha.continente.pt/receitas/migas-de-couve</a></li><li id="ref-R2">[R2] Teleculinária, Alheira assada com migas de couve portuguesa. Receita de alheira no forno sobre migas de broa e couve. Disponível em: <a href="https://teleculinaria.pt/receitas/alheira-assada-com-migas-de-couve-portuguesa/" rel="noopener noreferrer" target="_blank">https://teleculinaria.pt/receitas/alheira-assada-com-migas-de-couve-portuguesa/</a></li><li id="ref-R3">[R3] Teleculinária, Receita de cozido à portuguesa. Receita completa com couve-portuguesa, carnes, enchidos e legumes. Disponível em: <a href="https://teleculinaria.pt/receitas/receita-de-cozido-a-portuguesa/" rel="noopener noreferrer" target="_blank">https://teleculinaria.pt/receitas/receita-de-cozido-a-portuguesa/</a></li><li id="ref-R4">[R4] Teleculinária, Sopa de presunto. Sopa de couve-portuguesa, presunto, feijão, enchidos e massa. Disponível em: <a href="https://teleculinaria.pt/receitas/sopa-de-presunto/" rel="noopener noreferrer" target="_blank">https://teleculinaria.pt/receitas/sopa-de-presunto/</a></li><li id="ref-R5">[R5] Teleculinária, Entrecosto frito com migas de couve. Receita de migas com folhas de couve-portuguesa e entrecosto. Disponível em: <a href="https://teleculinaria.pt/receitas/entrecosto-frito-com-migas-de-couve/" rel="noopener noreferrer" target="_blank">https://teleculinaria.pt/receitas/entrecosto-frito-com-migas-de-couve/</a></li><li id="ref-R6">[R6] Teleculinária, Cozido de frango, batata-doce e hortaliças. Prato que inclui couve-portuguesa, couve-lombarda e batata-doce. Disponível em: <a href="https://teleculinaria.pt/receitas/cozido-de-frango-batata-doce-e-hortalicas/" rel="noopener noreferrer" target="_blank">https://teleculinaria.pt/receitas/cozido-de-frango-batata-doce-e-hortalicas/</a></li><li id="ref-R7">[R7] Continente, Sopa de Cozido à Portuguesa. Sopa de aproveitamento com folhas de couve-portuguesa. Disponível em: <a href="https://cozinha.continente.pt/receitas/sopa-de-cozido-a-portuguesa" rel="noopener noreferrer" target="_blank">https://cozinha.continente.pt/receitas/sopa-de-cozido-a-portuguesa</a></li><li id="ref-R8">[R8] Petitchef, Bacalhau com couve portuguesa. Bacalhau assado com cenoura e couve-portuguesa cozida. Disponível em: <a href="https://pt.petitchef.com/receitas/prato-principal/bacalhau-com-couve-portuguesa-fid-602439" rel="noopener noreferrer" target="_blank">https://pt.petitchef.com/receitas/prato-principal/bacalhau-com-couve-portuguesa-fid-602439</a></li><li id="ref-R9">[R9] Teleculinária, Salada de queijo e legumes. Salada de couve-portuguesa, abóbora, maçã e queijo vegetal. Disponível em: <a href="https://teleculinaria.pt/receitas/salada-de-queijo-e-legumes/" rel="noopener noreferrer" target="_blank">https://teleculinaria.pt/receitas/salada-de-queijo-e-legumes/</a></li><li id="ref-R10">[R10] Must/Jornal de Negócios, Filetes de bacalhau e migas de feijoca com couve portuguesa — chef Manuel Figueira. Receita de filetes com migas de couve, feijoca e pão de centeio. Disponível em: <a href="https://www.must.jornaldenegocios.pt/prazeres/sabores/detalhe/receita-filetes-de-bacalhau-de-cura-tradicional-migas-de-feijoca-com-couve-portuguesa-do-chef-manuel-figueira" rel="noopener noreferrer" target="_blank">https://www.must.jornaldenegocios.pt/prazeres/sabores/detalhe/receita-filetes-de-bacalhau-de-cura-tradicional-migas-de-feijoca-com-couve-portuguesa-do-chef-manuel-figueira</a></li></ol><h4>Estudos científicos e revisões (benefícios e propriedades medicinais)</h4><ol><li id="ref-M1">[M1] Associação Portuguesa de Nutrição, Couve Portuguesa à lupa (2018). Dados nutricionais e características do alimento. Disponível em: <a href="https://www.apn.org.pt/documentos/Guias_APN/Guia_Couve_portuguesa_a_lupa.pdf" rel="noopener noreferrer" target="_blank">https://www.apn.org.pt/documentos/Guias_APN/Guia_Couve_portuguesa_a_lupa.pdf</a></li><li id="ref-M2">[M2] NIH Office of Dietary Supplements, Vitamin C — Health Professional Fact Sheet. Funções fisiológicas da vitamina C, incluindo síntese do colagénio e antioxidante. Disponível em: <a href="https://ods.od.nih.gov/factsheets/VitaminC-HealthProfessional/" rel="noopener noreferrer" target="_blank">https://ods.od.nih.gov/factsheets/VitaminC-HealthProfessional/</a></li><li id="ref-M3">[M3] NIH Office of Dietary Supplements, Vitamin A and Carotenoids — Health Professional Fact Sheet. Funções da vitamina A na visão, imunidade e tecidos. Disponível em: <a href="https://ods.od.nih.gov/factsheets/VitaminA-HealthProfessional/?uid=ae74e00cb9569s16" rel="noopener noreferrer" target="_blank">https://ods.od.nih.gov/factsheets/VitaminA-HealthProfessional/?uid=ae74e00cb9569s16</a></li><li id="ref-M4">[M4] Ferreres F. et al. (2005), Phenolic compounds in external leaves of tronchuda cabbage. Identificação experimental de derivados de campferol na couve-tronchuda. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/15826037/" rel="noopener noreferrer" target="_blank">https://pubmed.ncbi.nlm.nih.gov/15826037/</a></li><li id="ref-M5">[M5] Sousa C. et al. (2005), Influence of two fertilization regimens on the amounts of organic acids and phenolic compounds of tronchuda cabbage. Perfil bioquímico de folhas em diferentes sistemas de fertilização. Disponível em: <a href="https://pubmed.ncbi.nlm.nih.gov/16277412/" rel="noopener noreferrer" target="_blank">https://pubmed.ncbi.nlm.nih.gov/16277412/</a></li></ol><h4>Dados nutricionais</h4><ol><li id="ref-N1">[N1] Associação Portuguesa de Nutrição, Couve Portuguesa à lupa (2018; dados PortFIR 2015). Tabela quantitativa por 100 g de couve-portuguesa crua e cozida. Disponível em: <a href="https://www.apn.org.pt/documentos/Guias_APN/Guia_Couve_portuguesa_a_lupa.pdf" rel="noopener noreferrer" target="_blank">https://www.apn.org.pt/documentos/Guias_APN/Guia_Couve_portuguesa_a_lupa.pdf</a></li><li id="ref-N2">[N2] INSA/PortFIR, Versões e atualizações. Histórico das atualizações da Tabela da Composição de Alimentos, incluindo 2026. Disponível em: <a href="https://portfir.insa.min-saude.pt/pt/versoes-e-atualizacoes/" rel="noopener noreferrer" target="_blank">https://portfir.insa.min-saude.pt/pt/versoes-e-atualizacoes/</a></li></ol><h4>Utilidades e aplicações</h4><ol><li id="ref-U1">[U1] DGADR, Couve Penca de Chaves. Produto tradicional, partes comestíveis e identidade regional. Disponível em: <a href="https://tradicional.dgadr.gov.pt/pt/cat/horticolas-e-cereais/294-couve-penca-de-chaves" rel="noopener noreferrer" target="_blank">https://tradicional.dgadr.gov.pt/pt/cat/horticolas-e-cereais/294-couve-penca-de-chaves</a></li><li id="ref-U2">[U2] Revista Jardins, Cultura da couve-portuguesa. Utilização culinária e cultivo, flores e consociações. Disponível em: <a href="https://revistajardins.pt/plantas/horticolas/cultura-da-couve-portuguesa/" rel="noopener noreferrer" target="_blank">https://revistajardins.pt/plantas/horticolas/cultura-da-couve-portuguesa/</a></li><li id="ref-U3">[U3] Governo dos Açores/Universidade dos Açores, Produção de hortícolas em modo de produção biológico. Composto, fertilização orgânica e maneio integrado de couves. Disponível em: <a href="https://agricultura.azores.gov.pt/wp-content/uploads/2022/01/manual-fichas-de-cultura-mpbpdf.pdf" rel="noopener noreferrer" target="_blank">https://agricultura.azores.gov.pt/wp-content/uploads/2022/01/manual-fichas-de-cultura-mpbpdf.pdf</a></li><li id="ref-U4">[U4] RHS, Crop rotation. Rotação de brássicas e gestão de problemas de solo. Disponível em: <a href="https://www.rhs.org.uk/vegetables/crop-rotation" rel="noopener noreferrer" target="_blank">https://www.rhs.org.uk/vegetables/crop-rotation</a></li><li id="ref-U5">[U5] Rosa E.; Heaney R., Seasonal variation in protein, mineral and glucosinolate composition of Portuguese cabbages and kale. Estudo agronómico que documenta emprego forrageiro de couves portuguesas. Disponível em: <a href="https://www.sciencedirect.com/science/article/pii/0377840195008411" rel="noopener noreferrer" target="_blank">https://www.sciencedirect.com/science/article/pii/0377840195008411</a></li></ol><h4>Permacultura</h4><ol><li id="ref-P1">[P1] RHS, Crop rotation. Necessidade de rotação das brássicas e riscos de pragas e doenças. Disponível em: <a href="https://www.rhs.org.uk/vegetables/crop-rotation" rel="noopener noreferrer" target="_blank">https://www.rhs.org.uk/vegetables/crop-rotation</a></li><li id="ref-P2">[P2] Revista Jardins, Cultura da couve-portuguesa. Rusticidade, resistência ao frio, cultivo e manejo orgânico. Disponível em: <a href="https://revistajardins.pt/plantas/horticolas/cultura-da-couve-portuguesa/" rel="noopener noreferrer" target="_blank">https://revistajardins.pt/plantas/horticolas/cultura-da-couve-portuguesa/</a></li><li id="ref-P3">[P3] DGADR, Couve Penca de Chaves. Importância alimentar e resistência a geadas de variedade tradicional. Disponível em: <a href="https://tradicional.dgadr.gov.pt/pt/cat/horticolas-e-cereais/294-couve-penca-de-chaves" rel="noopener noreferrer" target="_blank">https://tradicional.dgadr.gov.pt/pt/cat/horticolas-e-cereais/294-couve-penca-de-chaves</a></li><li id="ref-P4">[P4] Rosa E.; Heaney R. (1996), Seasonal variation in protein, mineral and glucosinolate composition of Portuguese cabbages and kale. Investigação de couve-portuguesa e couve-galega no contexto forrageiro. Disponível em: <a href="https://www.sciencedirect.com/science/article/pii/0377840195008411" rel="noopener noreferrer" target="_blank">https://www.sciencedirect.com/science/article/pii/0377840195008411</a></li><li id="ref-P5">[P5] Governo dos Açores, Produção de hortícolas em modo de produção biológico. Ficha agronómica para ciclo e manejo de brássicas em cultivo biológico. Disponível em: <a href="https://agricultura.azores.gov.pt/wp-content/uploads/2022/01/manual-fichas-de-cultura-mpbpdf.pdf" rel="noopener noreferrer" target="_blank">https://agricultura.azores.gov.pt/wp-content/uploads/2022/01/manual-fichas-de-cultura-mpbpdf.pdf</a></li></ol></section>
+</article>
+</main>
+<footer>
+<a href="index.html">← Voltar à lista de plantas</a>
+</footer>
+
+</div>
+<script>
+  (function(){
+    const mount = document.getElementById("sidebar-mount");
+    if(!mount) return;
+
+    const applyActive = (root) => {
+      const path = (location.pathname.split("/").pop() || "inicio.html").toLowerCase();
+      root.querySelectorAll(".nav-item").forEach(a => {
+        const route = (a.getAttribute("data-route") || a.getAttribute("href") || "").toLowerCase();
+        const href = (a.getAttribute("href") || "").toLowerCase();
+        const isActive = (route && route === path) || (href && href === path);
+        if(isActive) a.classList.add("active");
+        else a.classList.remove("active");
+      });
+    };
+
+    const setCollapsed = (sidebar, collapsed) => {
+      sidebar.setAttribute("data-collapsed", collapsed ? "1" : "0");
+      document.body.classList.toggle("sidebar-collapsed", !!collapsed);
+      localStorage.setItem("sidebar-collapsed", collapsed ? "1" : "0");
+    };
+
+    fetch("sidebar.html", { cache: "no-store" })
+      .then(r => r.text())
+      .then(html => {
+        mount.innerHTML = html;
+
+        const sidebar = mount.querySelector(".sidebar");
+        const toggle = mount.querySelector(".sidebar-toggle");
+        if(!sidebar || !toggle) return;
+
+        // restore collapsed state
+        const saved = localStorage.getItem("sidebar-collapsed");
+        const collapsed = saved === "1";
+        setCollapsed(sidebar, collapsed);
+
+        toggle.addEventListener("click", () => {
+          const now = sidebar.getAttribute("data-collapsed") === "1";
+          setCollapsed(sidebar, !now);
+        });
+
+        applyActive(mount);
+      })
+      .catch(() => {
+        // se sidebar.html não existir, não quebra a página
+      });
+
+    // Masthead "stuck" feedback
+    const masthead = document.querySelector(".with-sidebar .masthead");
+    const sentinel = document.querySelector(".masthead-sentinel");
+    if(masthead && sentinel && "IntersectionObserver" in window){
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          masthead.classList.toggle("is-stuck", !entry.isIntersecting);
+        });
+      }, {root: null, threshold: 0});
+      io.observe(sentinel);
+    }
+  })();
+  </script>
+</body>
+</html>
